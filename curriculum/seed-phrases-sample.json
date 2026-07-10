@@ -1,0 +1,153 @@
+{
+  "$schema_note": "Sample seed bank demonstrating the format from exercise-construction-spec.md §4.2. Three worked seeds: an original G1-level phrase, a public-domain folk adaptation, and a cadence-ready G5 phrase. Pitches in scientific pitch notation; durations reference knowledge-base note_values. properties_index is precomputed at ingest time by the indexer, never hand-maintained.",
+
+  "seeds": [
+    {
+      "seed_id": "seed_0001",
+      "source": "original",
+      "review": {"musicality_approved": true, "reviewer": "TBD", "date": "TBD"},
+      "native": {"key": "G_major", "clef": "treble", "time_sig": "3/4", "range": "D4-E5", "bars": 4},
+      "music": {
+        "clef": "treble", "key_sig": "G_major", "time_sig": "3/4", "anacrusis": false,
+        "voices": [{"events": [
+          {"type": "note", "pitch": "G4", "dur": "crotchet"},
+          {"type": "note", "pitch": "A4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "B4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "C5", "dur": "crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "D5", "dur": "minim"},
+          {"type": "note", "pitch": "B4", "dur": "crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "C5", "dur": "quaver", "beam_group": 2},
+          {"type": "note", "pitch": "B4", "dur": "quaver", "beam_group": 2},
+          {"type": "note", "pitch": "A4", "dur": "crotchet"},
+          {"type": "note", "pitch": "F#4", "dur": "crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "G4", "dur": "dotted_minim"},
+          {"type": "barline", "style": "double"}
+        ]}]
+      },
+      "properties_index": {
+        "melodic_intervals": ["M2", "M2", "m2", "M2", "m3", "m2", "m2", "M2", "m3", "M2"],
+        "chord_tone_map": [
+          {"bar": 1, "beat": 1, "pitch": "G4", "fits_chords": ["I"]},
+          {"bar": 2, "beat": 1, "pitch": "D5", "fits_chords": ["I", "V"]},
+          {"bar": 3, "beat": 3, "pitch": "F#4", "fits_chords": ["V"]},
+          {"bar": 4, "beat": 1, "pitch": "G4", "fits_chords": ["I", "IV"]}
+        ],
+        "cadence_ready": {"final_two_notes_support": ["perfect"], "penultimate_pitch": "F#4", "final_pitch": "G4"},
+        "rhythm_atoms": ["crotchet", "quaver_pair", "minim", "dotted_minim"],
+        "leading_note_resolves_up": true,
+        "min_grade": 1
+      },
+      "transform_constraints": {
+        "transposable_keys": "any major in grade scope; mode_swap to relative minor valid from G2 (yields E minor: raise D to D# for harmonic form)",
+        "clefs_allowed": ["treble", "bass", "alto", "tenor"],
+        "compound_time_rewrite": true,
+        "range_after_transpose": "must stay within grade ledger-line policy"
+      }
+    },
+
+    {
+      "seed_id": "seed_0002",
+      "source": "folk:pd",
+      "source_detail": "adapted from a traditional public-domain melody; our own encoding and simplification",
+      "review": {"musicality_approved": true, "reviewer": "TBD", "date": "TBD"},
+      "native": {"key": "F_major", "clef": "treble", "time_sig": "6/8", "range": "C4-D5", "bars": 4},
+      "music": {
+        "clef": "treble", "key_sig": "F_major", "time_sig": "6/8", "anacrusis": true,
+        "voices": [{"events": [
+          {"type": "note", "pitch": "C4", "dur": "quaver"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "F4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "G4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "A4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "C5", "dur": "dotted_crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "D5", "dur": "quaver", "beam_group": 2},
+          {"type": "note", "pitch": "C5", "dur": "quaver", "beam_group": 2},
+          {"type": "note", "pitch": "A4", "dur": "quaver", "beam_group": 2},
+          {"type": "note", "pitch": "G4", "dur": "dotted_crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "A4", "dur": "quaver", "beam_group": 3},
+          {"type": "note", "pitch": "G4", "dur": "quaver", "beam_group": 3},
+          {"type": "note", "pitch": "E4", "dur": "quaver", "beam_group": 3},
+          {"type": "note", "pitch": "G4", "dur": "quaver", "beam_group": 4},
+          {"type": "note", "pitch": "E4", "dur": "quaver", "beam_group": 4},
+          {"type": "note", "pitch": "C4", "dur": "quaver", "beam_group": 4},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "F4", "dur": "dotted_crotchet"},
+          {"type": "rest", "dur": "crotchet"},
+          {"type": "rest", "dur": "quaver"},
+          {"type": "barline", "style": "double"}
+        ]}]
+      },
+      "properties_index": {
+        "melodic_intervals": ["P4", "M2", "M2", "m3", "M2", "M2", "m3", "M2", "M2", "m3", "m3", "m3", "M3", "P4"],
+        "chord_tone_map": [
+          {"bar": 1, "beat": 1, "pitch": "F4", "fits_chords": ["I", "IV"]},
+          {"bar": 2, "beat": 2, "pitch": "G4", "fits_chords": ["V", "II"]},
+          {"bar": 4, "beat": 1, "pitch": "F4", "fits_chords": ["I", "IV"]}
+        ],
+        "cadence_ready": {"final_two_notes_support": ["perfect", "plagal"], "penultimate_pitch": "C4", "final_pitch": "F4"},
+        "rhythm_atoms": ["quaver_triple_beam", "dotted_crotchet", "anacrusis", "compound_time_rests"],
+        "min_grade": 3
+      },
+      "transform_constraints": {
+        "transposable_keys": "any in grade scope",
+        "clefs_allowed": ["treble", "bass", "alto", "tenor"],
+        "compound_time_rewrite": "already compound; rewrite_metre target 2/4 for G5 rewriting tasks",
+        "notes": "anacrusis makes this a prime add_barlines stimulus at G3+ (first+last bar sum rule)"
+      }
+    },
+
+    {
+      "seed_id": "seed_0003",
+      "source": "llm_draft",
+      "review": {"musicality_approved": false, "reviewer": null, "date": null, "status": "PENDING - do not serve until approved"},
+      "native": {"key": "D_major", "clef": "treble", "time_sig": "4/4", "range": "A3-F#5", "bars": 4},
+      "music": {
+        "clef": "treble", "key_sig": "D_major", "time_sig": "4/4", "anacrusis": false,
+        "voices": [{"events": [
+          {"type": "note", "pitch": "F#4", "dur": "crotchet"},
+          {"type": "note", "pitch": "G4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "A4", "dur": "quaver", "beam_group": 1},
+          {"type": "note", "pitch": "D5", "dur": "minim"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "C#5", "dur": "dotted_crotchet"},
+          {"type": "note", "pitch": "B4", "dur": "quaver"},
+          {"type": "note", "pitch": "A4", "dur": "crotchet"},
+          {"type": "note", "pitch": "F#4", "dur": "crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "B4", "dur": "crotchet"},
+          {"type": "note", "pitch": "G4", "dur": "crotchet"},
+          {"type": "note", "pitch": "E4", "dur": "crotchet"},
+          {"type": "note", "pitch": "A4", "dur": "crotchet"},
+          {"type": "barline", "style": "single"},
+          {"type": "note", "pitch": "F#4", "dur": "minim"},
+          {"type": "note", "pitch": "D4", "dur": "minim"},
+          {"type": "barline", "style": "double"}
+        ]}]
+      },
+      "properties_index": {
+        "melodic_intervals": ["m2", "M2", "P4", "m2", "M2", "M2", "m3", "P4", "M3", "m3", "P4", "m3", "M3"],
+        "chord_tone_map": [
+          {"bar": 3, "beat": 4, "pitch": "A4", "fits_chords": ["V", "II(7th context excluded)"]},
+          {"bar": 4, "beat": 1, "pitch": "F#4", "fits_chords": ["I"]},
+          {"bar": 4, "beat": 3, "pitch": "D4", "fits_chords": ["I", "II", "IV"]}
+        ],
+        "cadence_ready": {"final_two_notes_support": ["perfect", "imperfect(at bar3-4 boundary)"], "penultimate_pitch": "A4", "final_pitch": "F#4/D4"},
+        "rhythm_atoms": ["dotted_crotchet_quaver", "minim", "crotchet"],
+        "min_grade": 1
+      },
+      "transform_constraints": {
+        "transposable_keys": "any in grade scope",
+        "clefs_allowed": ["treble", "bass", "alto", "tenor"],
+        "compound_time_rewrite": true,
+        "notes": "designed for cadence_and_chord_choice at G5 (D major is a syllabus cadence key)"
+      }
+    }
+  ],
+
+  "ingest_pipeline_note": "On ingest: (1) run deterministic validator (bar sums, beaming, spelling); (2) compute properties_index automatically; (3) queue for human musicality review; (4) only review-approved seeds enter the serving pool. LLM-drafted seeds are never served unreviewed - see seed_0003 status field."
+}
