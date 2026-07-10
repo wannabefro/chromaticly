@@ -43,6 +43,15 @@ Canonical model is JSON; renderers translate it to notation. Recommended render 
 
 Rules: pitch = scientific pitch notation (`C4` = middle C). Accidentals are implied by pitch spelling plus `key_sig` — the renderer computes what to print (this is essential for correctly grading transposition and scale-writing answers). `beam_group` ids group beamed notes explicitly, because beaming *is content* in this curriculum, not a rendering nicety. Multi-voice/multi-stave (Grade 5 piano textures) = multiple `voices` with a `staff` field.
 
+### 2.1 Playback engine (decided 2026-07-10)
+
+Commandment 8 requires every stimulus to sound; the synth was left open until now. **Decision: abcjs's built-in synth**, driven from the same `renderAbc` visual object the emitter already produces, with a **locally-bundled soundfont** so playback works offline.
+
+- **Why abcjs synth:** it collapses render and playback into one dependency and one runtime context, gives cursor-follows-playback for free, and single-line theory stimuli don't need richer timbre. Weakest raw sound quality of the options, but sufficient here.
+- **Runtime placement:** abcjs's synth is Web Audio, so on any platform it plays in the same in-app browser context that renders the notation. On the current React Native target that context is a `react-native-webview` — RN posts the ABC string in; the WebView renders *and* plays. The soundfont ships as a bundled app asset, not a CDN fetch.
+- **Rejected for now:** *Tone.js + soundfont* (more scheduling control, but also Web Audio, and unneeded until tap-along timing demands it) and *server-side pre-rendered audio* (best quality, but kills instant playback of learner-constructed answers and adds a pipeline).
+- **Revisit trigger:** the tap-along / "Theory in sound" exercises (Tier B/C) are the one place abcjs scheduling may be too loose. If so, move to Tone.js **inside the same runtime as the audio clock** — the tap→audio timing loop must not cross a process/bridge boundary (e.g. RN-native taps against WebView audio), or latency defeats the exercise. That is a deferred feature; it does not affect the Grade 1 MVP.
+
 ## 3. Exercise instance format
 
 Defined fully in `exercise-templates.json → exercise_instance_schema`. The essentials: every instance carries `template_id / grade / strand / seed` (provenance), a `stimulus` (Music object and/or text), an `interaction` type, an `answer` block with **canonical answer + accepted alternatives**, `hints` (the app equivalent of the books' Smart Tips — progressive reveal, hint use discounts mastery), and `srs_tags` — fine-grained skill atoms (`key_sig:Eb_major`, `note_read:tenor:ledger_above`, `term:sotto_voce`) that drive spaced repetition and weakness targeting.
