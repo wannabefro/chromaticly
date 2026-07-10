@@ -1,0 +1,259 @@
+// Tier-A validator (spec §5 commandments 1/3/4/6, §6 checklist) — the quality
+// gate every generated instance must pass before being served (KTD5).
+//
+// Pure TypeScript, no DOM. Deliberately does NOT check ABC parseability:
+// abcjs is DOM/Web-Audio-only and can only run inside the music-surface
+// WebView (KTD2), never on the RN JS thread this module runs on. "ABC
+// compiles" is covered elsewhere — the emitter's own tests, and the WebView's
+// runtime `error` event as a backstop — not here.
+//
+// accepted_alternatives (commandment 5) are computed by each generator, not
+// hand-listed or computed here; this validator only avoids ever rejecting an
+// answer that already appears in that list — it does not grade.
+
+import type { Music } from '../music/types';
+import { G1_CLEFS, G1_KEYS_MAJOR, G1_NOTE_VALUES, G1_TIME_SIGNATURES, pitchRange } from './scope';
+import type { ExerciseInstance } from './schema';
+import { ExerciseInstanceSchema } from './schema';
+
+export interface ValidationResult {
+  ok: boolean;
+  errors: string[];
+}
+
+export function validate(instance: ExerciseInstance): ValidationResult {
+  const parsed = ExerciseInstanceSchema.safeParse(instance);
+  if (!parsed.success) {
+    return {
+      ok: false,
+      errors: parsed.error.issues.map((issue) => `schema: ${issue.path.join('.') || '(root)'}: ${issue.message}`),
+    };
+  }
+
+  const inst = parsed.data;
+  const errors: string[] = [];
+
+  checkScope(inst, errors);
+  checkClosedItemDistractors(inst, errors);
+
+  const hook = TEMPLATE_HOOKS[inst.template_id];
+  if (hook) errors.push(...hook(inst));
+
+  return { ok: errors.length === 0, errors };
+}
+
+// --- Shared check: commandment 1 (scope is law) --------------------------
+
+const LETTER_ORDER = ['C', 'D', 'E', 'F', 'G', 'A', 'B'] as const;
+
+interface ParsedPitch {
+  letter: string;
+  accidental: string | null; // '#' | '##' | 'b' | 'bb' | null
+  octave: number;
+}
+
+function parseScientificPitch(pitch: string): ParsedPitch | null {
+  const match = /^([A-G])(##|#|bb|b)?(-?\d+)$/.exec(pitch);
+  if (!match) return null;
+  const [, letter, symbol, octave] = match;
+  return { letter, accidental: symbol ?? null, octave: Number(octave) };
+}
+
+function pitchOrdinal(letter: string, octave: number): number {
+  return octave * 7 + LETTER_ORDER.indexOf(letter as (typeof LETTER_ORDER)[number]);
+}
+
+function checkPitchScope(pitch: string, range: { low: string; high: string } | null, errors: string[]): void {
+  const parsed = parseScientificPitch(pitch);
+  if (!parsed) {
+    errors.push(`scope: "${pitch}" is not a valid pitch`);
+    return;
+  }
+  if (parsed.accidental === '##' || parsed.accidental === 'bb') {
+    errors.push(`scope: pitch "${pitch}" uses a double accidental, outside G1 scope`);
+  }
+  if (!range) return;
+  const low = parseScientificPitch(range.low);
+  const high = parseScientificPitch(range.high);
+  if (!low || !high) return;
+  const ord = pitchOrdinal(parsed.letter, parsed.octave);
+  if (ord < pitchOrdinal(low.letter, low.octave) || ord > pitchOrdinal(high.letter, high.octave)) {
+    errors.push(`scope: pitch "${pitch}" is outside the G1 range (${range.low}-${range.high})`);
+  }
+}
+
+function eventPitches(ev: Music['voices'][number]['events'][number]): string[] {
+  if (ev.type === 'note') return [ev.pitch];
+  if (ev.type === 'chord') return ev.pitches;
+  return [];
+}
+
+function checkScope(inst: ExerciseInstance, errors: string[]): void {
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return;
+
+  const clefInScope = G1_CLEFS.includes(music.clef);
+  if (!clefInScope) {
+    errors.push(`scope: clef "${music.clef}" is outside G1 scope`);
+  }
+  const range = clefInScope ? pitchRange(music.clef) : null;
+
+  if (music.key_sig != null) {
+    const [tonic, mode] = music.key_sig.split('_');
+    if (mode !== 'major' || !G1_KEYS_MAJOR.includes(tonic)) {
+      errors.push(`scope: key signature "${music.key_sig}" is outside G1 scope`);
+    }
+  }
+
+  if (music.time_sig != null && !G1_TIME_SIGNATURES.includes(music.time_sig)) {
+    errors.push(`scope: time signature "${music.time_sig}" is outside G1 scope`);
+  }
+
+  for (const voice of music.voices) {
+    for (const ev of voice.events) {
+      if (ev.type === 'note' || ev.type === 'chord' || ev.type === 'rest') {
+        if (!G1_NOTE_VALUES.includes(ev.dur)) {
+          errors.push(`scope: note value "${ev.dur}" is outside G1 scope`);
+        }
+      }
+      for (const pitch of eventPitches(ev)) {
+        checkPitchScope(pitch, range, errors);
+      }
+    }
+  }
+}
+
+// --- Shared check: commandments 3/4 (diagnostic distractors, one answer) --
+
+const CLOSED_INTERACTION_TYPES = new Set(['mcq', 'multi_select', 'true_false']);
+
+function deepEqual(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) return false;
+  if (Array.isArray(a) || Array.isArray(b)) {
+    if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+    return a.every((v, i) => deepEqual(v, b[i]));
+  }
+  const aKeys = Object.keys(a as object);
+  const bKeys = Object.keys(b as object);
+  if (aKeys.length !== bKeys.length) return false;
+  return aKeys.every((k) => deepEqual((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k]));
+}
+
+function checkClosedItemDistractors(inst: ExerciseInstance, errors: string[]): void {
+  if (!CLOSED_INTERACTION_TYPES.has(inst.interaction.type)) return;
+
+  const distractors = inst.distractors;
+  if (distractors.length === 0) {
+    errors.push('closed item has no distractors (commandment 3)');
+    return;
+  }
+
+  if (distractors.some((d) => deepEqual(d, inst.answer.canonical))) {
+    errors.push('a distractor equals the canonical answer — not exactly one defensible answer (commandment 4)');
+  }
+
+  outer: for (let i = 0; i < distractors.length; i++) {
+    for (let j = i + 1; j < distractors.length; j++) {
+      if (deepEqual(distractors[i], distractors[j])) {
+        errors.push('duplicate distractors present (commandment 3)');
+        break outer;
+      }
+    }
+  }
+}
+
+// --- Per-template hooks ----------------------------------------------------
+// Thin, defensive stubs (missing optional fields → no error, not a crash).
+// U6-U8 strengthen these as the generators land; the registry shape is the
+// point here.
+
+type TemplateHook = (instance: ExerciseInstance) => string[];
+
+const NOTE_NAME_RE = /^[A-G]\s*(flat|sharp|#|b|♭|♯)?$/i;
+
+function noteNamingHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string' || !NOTE_NAME_RE.test(canonical.trim())) {
+    errors.push('note_naming: canonical answer is not a note name');
+  }
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !NOTE_NAME_RE.test(d.trim())) {
+      errors.push(`note_naming: distractor "${String(d)}" is not a note name`);
+    }
+  }
+  return errors;
+}
+
+function intervalNamingHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  const num = typeof canonical === 'number' ? canonical : typeof canonical === 'string' ? Number(canonical) : NaN;
+  if (!Number.isInteger(num) || num < 1 || num > 8) {
+    return ['interval_naming: canonical answer must be an interval number 1..8'];
+  }
+  return [];
+}
+
+function extractKeyTonic(raw: string): string | null {
+  const match = /^([A-G])/.exec(raw.trim());
+  return match ? match[1] : null;
+}
+
+function keySignatureIdHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string') {
+    return ['key_signature_id: canonical answer must be a key name string'];
+  }
+  const tonic = extractKeyTonic(canonical);
+  if (!tonic || !G1_KEYS_MAJOR.includes(tonic) || /minor/i.test(canonical)) {
+    return [`key_signature_id: canonical key "${canonical}" is outside G1 scope`];
+  }
+  return [];
+}
+
+function rhythmSumHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+
+  if (typeof canonical === 'object' && canonical !== null && 'dur' in canonical) {
+    const dur = (canonical as { dur: unknown }).dur;
+    if (typeof dur !== 'string' || !(G1_NOTE_VALUES as readonly string[]).includes(dur)) {
+      return ['rhythm_sum: canonical duration is outside G1 scope'];
+    }
+    return [];
+  }
+
+  if (typeof canonical === 'string') {
+    const words = canonical.trim().toLowerCase().split(/\s+/);
+    const durWord = words[0] === 'dotted' ? words[1] : words[0];
+    if (!durWord || !(G1_NOTE_VALUES as readonly string[]).includes(durWord)) {
+      return [`rhythm_sum: canonical value "${canonical}" is not a single G1 note value`];
+    }
+    return [];
+  }
+
+  return ['rhythm_sum: canonical answer must name a single note value'];
+}
+
+function termMeaningHook(inst: ExerciseInstance): string[] {
+  const category = inst.interaction.config?.category;
+  if (category === undefined) return []; // no category info carried — skip gracefully
+
+  const errors: string[] = [];
+  for (const d of inst.distractors) {
+    if (d && typeof d === 'object' && 'category' in d) {
+      if ((d as { category: unknown }).category !== category) {
+        errors.push('term_meaning: distractor category does not match the answer category');
+      }
+    }
+  }
+  return errors;
+}
+
+const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
+  note_naming: noteNamingHook,
+  interval_naming: intervalNamingHook,
+  key_signature_id: keySignatureIdHook,
+  rhythm_sum: rhythmSumHook,
+  term_meaning: termMeaningHook,
+};
