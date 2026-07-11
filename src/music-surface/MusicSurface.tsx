@@ -18,6 +18,9 @@ export interface MusicSurfaceProps {
   music: Music;
   soundFontUrl?: string;
   onEvent?: (ev: SurfaceEvent) => void;
+  /** Explicit height for the notation. react-native-webview collapses to 0 with
+   *  no height (unlike a browser, which flows to content), so a stave needs one. */
+  height?: number;
 }
 
 /** Pure message seam: decode a WebView message and forward it. Returns the event (or null). */
@@ -33,7 +36,7 @@ export function dispatchMessage(data: string, onEvent?: (ev: SurfaceEvent) => vo
 }
 
 export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(function MusicSurface(
-  { music, soundFontUrl, onEvent },
+  { music, soundFontUrl, onEvent, height = 160 },
   ref,
 ) {
   const webRef = useRef<WebView>(null);
@@ -72,7 +75,7 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
       domStorageEnabled
       mediaPlaybackRequiresUserAction={false}
       allowsInlineMediaPlayback
-      style={{ backgroundColor: 'transparent' }}
+      style={{ height, backgroundColor: 'transparent' }}
     />
   );
 });
