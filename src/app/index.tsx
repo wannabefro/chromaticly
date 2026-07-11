@@ -1,28 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function HomeScreen() {
-  return (
-    <View style={styles.container} testID="home-screen">
-      <Text style={styles.title}>Chromaticly</Text>
-      <Text style={styles.subtitle}>Grade 1 music theory practice</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-    padding: 24,
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: '700',
-  },
-  subtitle: {
-    fontSize: 16,
-    opacity: 0.7,
-  },
-});
+// Route file — thin by design. Screen implementation and its tests live in
+// src/screens (outside expo-router's route scan, which would otherwise bundle
+// colocated *.test.tsx as routes and pull test-only deps into the app).
+export { default } from '../screens/HomeScreen';
