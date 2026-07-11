@@ -1,0 +1,59 @@
+# Completes the first lesson end-to-end and asserts the next one unlocks.
+# The generators are pure functions of (grade, seed) and the lesson runner
+# feeds seeds 0,1,2,… so the correct answers are fixed: the note_naming
+# answers for seeds 0-4 are B, C flat, B, A, A. This closes the
+# completion→unlock check that can't be verified from a static screenshot.
+# Idempotent — safe to re-run (completing an already-done lesson re-fires).
+#
+# Prerequisite: Metro running and Chromaticly active in Expo Go (see README).
+# DEV_URL must be supplied via -e:
+#   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/lesson-complete.yaml
+appId: host.exp.Exponent
+---
+# Cold start so we land on Home (openLink alone only foregrounds the current route).
+- stopApp
+- openLink: ${DEV_URL}
+- tapOn:
+    text: "Open"
+    optional: true
+- extendedWaitUntil:
+    visible: "Chromaticly"
+    timeout: 60000
+
+- tapOn:
+    id: "start-learn"
+- tapOn: "Reading notes on the treble stave"
+
+# Worked example first, then the exercise stream.
+- assertVisible: "WORKED EXAMPLE"
+- tapOn:
+    id: "start-lesson"
+
+# 5 hint-free correct answers (seeds 0-4). ^X$ anchors to the exact option label.
+- tapOn: "^B$"
+- tapOn:
+    id: "next"
+- tapOn: "C flat"
+- tapOn:
+    id: "next"
+- tapOn: "^B$"
+- tapOn:
+    id: "next"
+- tapOn: "^A$"
+- tapOn:
+    id: "next"
+- tapOn: "^A$"
+
+# Lesson completes and unlocks the next.
+- extendedWaitUntil:
+    visible:
+      id: "lesson-complete"
+    timeout: 15000
+- assertVisible: "Next lesson unlocked."
+- tapOn:
+    id: "back-to-map"
+
+# Back on the map: lesson 1 is Done and lesson 2 is now an open link.
+- assertVisible: "Done"
+- assertVisible:
+    id: "lesson-link-bass-notes"

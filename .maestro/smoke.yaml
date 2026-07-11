@@ -1,0 +1,30 @@
+# Smoke test: the app launches and the primary navigation works.
+# Runs against Expo Go (dev): opens the Metro dev URL rather than launchApp.
+# DEV_URL must be supplied via -e (Maestro's flow-level env would override it):
+#   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/smoke.yaml
+# or use the npm scripts (see .maestro/README.md).
+appId: host.exp.Exponent
+---
+# Cold start so we land on Home (openLink alone only foregrounds the current route).
+- stopApp
+- openLink: ${DEV_URL}
+# Expo Go may show a system "Open in Expo Go?" prompt.
+- tapOn:
+    text: "Open"
+    optional: true
+# Allow for the JS bundle to build/reload on a cold open.
+- extendedWaitUntil:
+    visible: "Chromaticly"
+    timeout: 60000
+
+# Home → Learn map
+- tapOn:
+    id: "start-learn"
+- assertVisible: "Reading notes on the treble stave"
+- assertVisible: "Locked" # later lessons are gated
+
+# Learn map → Free practice
+- tapOn:
+    id: "practice-link"
+- assertVisible:
+    id: "practice-screen"
