@@ -1,0 +1,33 @@
+/* Chromaticly shape, spacing & elevation tokens */
+:root {
+  /* radii */
+  --radius-card: 18px;        /* content cards (16–22 acceptable range) */
+  --radius-card-lg: 22px;     /* hero cards */
+  --radius-button: 15px;      /* primary buttons */
+  --radius-control: 13px;     /* small buttons, palette tiles */
+  --radius-paper: 16px;       /* notation paper card */
+  --radius-chip: 999px;       /* pills, chips, progress */
+  --radius-swatch: 3px;       /* strand color squares (slightly rounded) */
+
+  /* borders */
+  --border-w: 1px;            /* resting cards */
+  --border-w-active: 1.5px;   /* selected/interactive states */
+
+  /* spacing rhythm (screen padding 20–22px; card padding 14–17px) */
+  --space-screen-x: 20px;
+  --space-card: 16px;
+  --space-stack: 16px;        /* gap between stacked cards */
+  --space-inline: 12px;       /* gap inside rows */
+
+  /* tap targets: minimum 44px; answer options ~56px; SRS grade buttons 56px */
+  --tap-min: 44px;
+
+  /* elevation — used sparingly; dark UI relies on borders not shadows */
+  --shadow-paper: 0 6px 20px -8px rgba(0,0,0,0.5);      /* notation paper on dark */
+  --shadow-paper-light: 0 4px 14px -8px rgba(0,0,0,0.2);
+  --shadow-sheet: 0 -20px 40px -10px rgba(0,0,0,0.5);   /* feedback bottom sheet */
+  --shadow-phone: 0 40px 80px -24px rgba(0,0,0,0.7);
+
+  /* motif: faint staff-line texture on hero/flashcards
+     background: repeating-linear-gradient(0deg, transparent 0 11px, <tint> 11px 12px); */
+}

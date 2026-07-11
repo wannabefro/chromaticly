@@ -2,6 +2,16 @@
 
 This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
 
+## Design System — source of truth
+
+`design/` is the authoritative design system for all UI. **When building or changing any user-facing screen or component, consult `design/` first and match it exactly** — tokens, component contracts, copy voice, states, and the screen prototype. Do not invent substitutes, approximate colours/spacing, or "improve" the design; a divergence that reads as finished is worse than an obvious gap. If the design is missing, ambiguous, or looks wrong, surface the conflict and get a decision — never silently drift.
+
+Read before UI work: `design/README.md` (6 principles + voice/casing/terminology), `design/tokens/{colors,typography,shape}.css` (use the token, never a raw hex), `design/components/core/*.prompt.md` (component contracts), `design/Chromaticly Core Flows.dc.html` (every screen, tagged 2a–5x).
+
+Never-violate rules: (1) notation always on the light `--paper` card, even in dark mode — never inverts; (2) every notation display has a play affordance; (3) strand colour always paired with a glyph/label, one accent per screen; (4) assessment mode = `--exam-*` paper + Source Serif 4 headings, zero gamification; (5) wrong-answer feedback names the misconception and shows the rendered correct answer with play (a FeedbackSheet bottom sheet, not a toast).
+
+Current UI is functionally complete but **not yet styled to this system**; new UI work adopts it now, a retro-styling pass is pending. Full rule + code↔design mapping in `CLAUDE.md`.
+
 > **Architecture in one line:** Issues live in a local Dolt database
 > (`.beads/dolt/`); cross-machine sync uses `bd dolt push/pull` (a
 > git-compatible protocol), stored under `refs/dolt/data` on your git

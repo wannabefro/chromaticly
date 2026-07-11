@@ -1,0 +1,97 @@
+/* Chromaticly color tokens — dark mode is the default register */
+:root {
+  /* ---- surfaces (dark) ---- */
+  --bg: #0b0c0f;                 /* app canvas */
+  --surface: #111318;            /* phone screen background */
+  --surface-card: #1a1d24;       /* default card */
+  --surface-card-sunken: #141619;/* locked/disabled cards */
+  --border: #23272f;
+  --border-strong: #2a2f39;
+  --tabbar: #131519;
+
+  /* ---- text (dark) ---- */
+  --text: #f3f4f6;
+  --text-muted: #969ba7;
+  --text-faint: #6b7280;
+  --text-ghost: #565d69;
+
+  /* ---- notation paper: SAME in both modes; notation never inverts ---- */
+  --paper: #f6f4ee;
+  --paper-ink: #1a1a1a;
+  --paper-line: #2b2b2b;         /* staff lines */
+  --paper-muted: #9a9488;
+  --paper-slot: #d8d3c4;         /* ghost/placeholder noteheads */
+
+  /* ---- 7 strand hues (dark surfaces) ---- */
+  --strand-rhythm: #f0666f;
+  --strand-pitch: #f0a94f;
+  --strand-scales: #57cf87;
+  --strand-intervals: #2fbfae;
+  --strand-chords: #46b0e6;
+  --strand-terms: #8b8ef2;
+  --strand-context: #cb7ad4;
+
+  /* strand tints: use color-mix(in oklab, var(--strand-x) 12%, transparent)
+     for selected fills; 16% for stronger emphasis */
+
+  /* ---- semantic ---- */
+  --correct: #57cf87;
+  --correct-deep: #08351d;       /* text on correct fill */
+  --correct-surface: #14231a;
+  --incorrect: #f0666f;          /* warm, not punishing */
+  --incorrect-deep: #3a0d10;
+  --incorrect-surface: #231619;
+  --hint: #f0c489;               /* smart tips, hinted gems */
+  --hint-surface: #241f12;
+
+  /* ---- exam register (assessment mode only) ---- */
+  --exam-bg: #f2efe8;
+  --exam-card: #fbfaf6;
+  --exam-border: #e2dccc;
+  --exam-border-strong: #d8d0bd;
+  --exam-ink: #23201a;
+  --exam-muted: #8a8272;
+  --exam-faint: #a0977f;
+  --exam-accent: #c9964f;        /* timer, merit band */
+  --exam-band-pass: #b8ab8c;
+  --exam-band-merit: #c9964f;
+  --exam-band-distinction: #a8843c;
+
+  /* ---- brand ---- */
+  --brand-gradient: linear-gradient(135deg,#f0666f,#f0a94f,#57cf87,#2fbfae,#46b0e6,#8b8ef2,#cb7ad4);
+  --accent: var(--strand-context); /* app-level accent = context violet */
+}
+
+/* Light mode scope — apply .theme-light to the screen root */
+.theme-light {
+  --bg: #e9e6de;
+  --surface: #f4f2ec;
+  --surface-card: #ffffff;
+  --surface-card-sunken: #efece3;
+  --border: #e7e3d8;
+  --border-strong: #cfc9ba;
+  --tabbar: #fbfaf6;
+
+  --text: #2a2620;
+  --text-muted: #8a8272;
+  --text-faint: #a89f8c;
+  --text-ghost: #b8b0a0;
+
+  /* strand hues darkened for contrast on white (rhythm passes as-is) */
+  --strand-rhythm: #f0666f;
+  --strand-pitch: #e0952f;
+  --strand-scales: #3a9e63;
+  --strand-intervals: #1f9e90;
+  --strand-chords: #2f8fc4;
+  --strand-terms: #6d70de;
+  --strand-context: #b269be;
+
+  --correct: #3a9e63;
+  --correct-deep: #ffffff;
+  --correct-surface: #e8f4ec;
+  --incorrect: #e0575e;
+  --incorrect-deep: #ffffff;
+  --incorrect-surface: #faeceb;
+  --hint: #c9964f;
+  --hint-surface: #f8f0dd;
+}

@@ -60,18 +60,38 @@ This protocol applies when ending a Beads implementation workflow. It is subordi
 
 ## Build & Test
 
-_Add your build and test commands here_
-
 ```bash
-# Example:
-# npm install
-# npm test
+npx jest                 # unit suite (jest-expo)
+npx tsc --noEmit         # typecheck
+npx expo start --port 8090   # dev server — 8090, NOT 8081 (8081 collides with another local Expo project)
+DEV_URL=exp://127.0.0.1:8090 npm run e2e   # Maestro E2E on a booted sim (see .maestro/README.md)
 ```
 
 ## Architecture Overview
 
-_Add a brief overview of your project architecture_
+Expo / React Native (SDK 57, expo-router). Routes in `src/app` are thin re-exports of screen impls in `src/screens` (keeps `*.test.tsx` out of the route bundle).
 
-## Conventions & Patterns
+**Portable core + platform edge (enforced).** The domain core — `src/engine` (seed-based generators), `src/learn` (SRS/mastery/progress), `src/music` (Music model + abc emitter), `src/content` — is RN-agnostic TypeScript behind ports. Platform adapters live in `src/platform` (e.g. the expo-sqlite storage behind `SnapshotStorage`); RN/WebView UI lives in `src/ui`. `src/core-boundary.test.ts` fails if the core imports `react-native*`/`expo*`, so the core stays web-reusable. Direction + rationale: `docs/plans/2026-07-11-002-architecture-direction-plan.md` (untracked).
 
-_Add your project-specific conventions here_
+Notation + audio: abcjs in a **persistent** `react-native-webview` (`src/music-surface`) — one surface fed notation via a render message, not remounted per exercise.
+
+## Design System — source of truth
+
+`design/` is the authoritative design system for all UI. **When building or changing any user-facing screen or component, consult `design/` first and match it exactly** — tokens, component contracts, copy voice, states, and the screen prototype. Do not invent substitutes, approximate colours/spacing, or "improve" the design; a divergence that reads as finished is worse than an obvious gap. If the design is missing, ambiguous, or looks wrong, surface the conflict and get a decision — never silently drift.
+
+Read before UI work:
+- `design/README.md` — 6 design principles ("treat as law") + voice, casing, UK/US terminology, iconography.
+- `design/tokens/{colors,typography,shape}.css` — the only source for colour/type/radius/shadow values. Use the token, never a raw hex.
+- `design/components/core/*.prompt.md` (+ `.d.ts`, `.jsx`) — contract for each core component: Button, AnswerOption, NotationCard, PlayButton, StrandChip, ProgressSegments, MasteryGems, FeedbackSheet.
+- `design/Chromaticly Core Flows.dc.html` — every screen, tagged 2a–5x. Find the screen you're building before building it.
+
+Never-violate rules (from the brief):
+1. Notation always renders on the light `--paper` card, even in dark mode — notation never inverts.
+2. Every notation display carries a play affordance (solid triangle in a circle).
+3. Strand colour is always paired with a glyph or text label (colour-vision safety); one accent — the current strand's hue — per screen.
+4. Assessment/exam mode shifts register: `--exam-*` paper + Source Serif 4 headings, zero gamification (no XP/streak/hints/celebration).
+5. Wrong-answer feedback names the misconception and shows the rendered correct answer with play — a designed bottom sheet (FeedbackSheet), not a toast.
+
+Code ↔ design: `src/music-surface/MusicSurface` implements the `NotationCard` contract; `src/ui/{ExerciseLoop,Lesson,Practice}` build the exercise-loop/SRS screens; `src/ui/{Feedback,Hints,interactions/*}` map to FeedbackSheet / smart-tip hints / AnswerOption.
+
+Reality gap: the Grade 1 slice is functionally complete but **not yet styled to this system** — screens use placeholder styling. New UI work adopts the tokens/components now; a retro-styling pass over existing screens is pending (unscheduled).
