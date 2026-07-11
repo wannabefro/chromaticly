@@ -1,36 +1,52 @@
-// MCQ interaction (U10): renders the answer + distractors from the grading
-// core's assembleOptions as pressable buttons. Grading itself stays in
-// grading.ts — this component only reports which value was picked.
+// MCQ interaction (U6 reskin): a controlled grid of AnswerOption cards. Selection is
+// reported upward; grading happens on Check in ExerciseLoop — pressing an option no
+// longer grades (select → Check → feedback). When graded, the correct option shows
+// ✓ and a wrong pick shows ×.
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import type { ExerciseInstance } from '../../engine/schema';
-import { assembleOptions } from '../grading';
+import { AnswerOption } from '../components/AnswerOption';
+import type { Option } from '../grading';
+import { shape, type Strand } from '../theme';
+
+const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 export interface McqProps {
-  instance: ExerciseInstance;
-  onSelect: (value: unknown) => void;
+  options: Option[];
+  selectedIndex: number | null;
+  graded: boolean | null;
+  strand: Strand;
+  onSelectIndex: (index: number) => void;
 }
 
-export function Mcq({ instance, onSelect }: McqProps) {
-  const options = assembleOptions(instance);
+export function Mcq({ options, selectedIndex, graded, strand, onSelectIndex }: McqProps) {
   return (
     <View style={styles.container} testID="mcq">
-      {options.map((option, index) => (
-        <Pressable
-          key={index}
-          testID={`option-${index}`}
-          style={styles.option}
-          onPress={() => onSelect(option.value)}
-        >
-          <Text>{option.label}</Text>
-        </Pressable>
-      ))}
+      {options.map((option, index) => {
+        let state: 'default' | 'selected' | 'correct' | 'incorrect' = 'default';
+        if (graded !== null) {
+          if (option.correct) state = 'correct';
+          else if (index === selectedIndex) state = 'incorrect';
+        } else if (index === selectedIndex) {
+          state = 'selected';
+        }
+        return (
+          <AnswerOption
+            key={index}
+            testID={`option-${index}`}
+            letter={LETTERS[index] ?? String(index + 1)}
+            label={option.label}
+            state={state}
+            strand={strand}
+            meta={graded !== null && index === selectedIndex && !option.correct ? 'your pick' : undefined}
+            onPress={graded === null ? () => onSelectIndex(index) : undefined}
+          />
+        );
+      })}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { gap: 8 },
-  option: { padding: 12, borderWidth: 1, borderColor: '#ccc', borderRadius: 8 },
+  container: { gap: shape.spaceInline },
 });

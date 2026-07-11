@@ -30,12 +30,20 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
 
 const trebleNotes = lessonById('treble-notes')!;
 
-async function pressCorrectOption(getByTestId: (id: string) => any, seed: number) {
+// New flow: select the correct option → Check → Continue (advances). Continue is
+// the FeedbackSheet's advance affordance; there is no separate Next button.
+async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
   const instance = generate(trebleNotes.templates[0], { grade: 1, seed });
   const options = assembleOptions(instance);
   const index = options.findIndex((o) => o.correct);
   await act(async () => {
     fireEvent.press(getByTestId(`option-${index}`));
+  });
+  await act(async () => {
+    fireEvent.press(getByTestId('check'));
+  });
+  await act(async () => {
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
   });
 }
 
@@ -72,12 +80,7 @@ describe('Lesson — worked example then exercises', () => {
     });
 
     for (let seed = 0; seed < 5; seed++) {
-      await pressCorrectOption(getByTestId, seed);
-      if (seed < 4) {
-        await act(async () => {
-          fireEvent.press(getByTestId('next'));
-        });
-      }
+      await answerCorrect(getByTestId, seed);
     }
 
     expect(getByTestId('lesson-complete')).toBeTruthy();

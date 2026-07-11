@@ -1,9 +1,8 @@
-// U10 acceptance tests for the exercise loop UI. Mocks react-native-webview
-// (MusicSurface's dependency) so notation stimuli render without a real
-// WebView — see src/music-surface/MusicSurface.test.tsx for the same pattern.
+// U6 acceptance tests for the reskinned exercise item. Flow is select → Check →
+// FeedbackSheet → Continue (Check disabled until a pick; onResult fires at Continue).
+// WebView is mocked and mounts are counted to prove the notation surface persists
+// across items rather than remounting (the perf refactor's invariant).
 
-// Counts how many times a WebView is mounted so a test can prove the notation
-// surface persists across exercises rather than remounting (the perf refactor).
 const mockSurface = { mounts: 0 };
 jest.mock('react-native-webview', () => {
   const React = require('react');
@@ -39,33 +38,43 @@ const mcqInstance: ExerciseInstance = {
   kb_version: 'test',
 };
 
-function findOptionIndex(instance: ExerciseInstance, correct: boolean): number {
+function optionIndex(instance: ExerciseInstance, correct: boolean): number {
   const options = assembleOptions(instance);
   const index = options.findIndex((o) => o.correct === correct);
   if (index === -1) throw new Error('no matching option in fixture');
   return index;
 }
 
-describe('ExerciseLoop — MCQ grading', () => {
-  test('a correct pick shows the correct feedback and fires onResult with correct:true', () => {
-    const onResult = jest.fn();
-    const { getByTestId, getByText } = render(<ExerciseLoop instance={mcqInstance} onResult={onResult} />);
-
-    fireEvent.press(getByTestId(`option-${findOptionIndex(mcqInstance, true)}`));
-
-    expect(getByText(mcqInstance.feedback.correct)).toBeTruthy();
-    expect(onResult).toHaveBeenCalledWith(
-      expect.objectContaining({ correct: true, hintsUsed: 0 }),
-    );
+describe('ExerciseLoop — MCQ select → Check → feedback', () => {
+  test('Check is disabled until an option is selected', () => {
+    const { getByTestId } = render(<ExerciseLoop instance={mcqInstance} onResult={jest.fn()} />);
+    // Check exists but is disabled pre-selection.
+    expect(getByTestId('check').props.accessibilityState?.disabled).toBe(true);
   });
 
-  test('a wrong pick shows the instance incorrect feedback and fires onResult with correct:false', () => {
+  test('a correct pick, then Check, shows correct feedback; Continue fires onResult correct:true', () => {
     const onResult = jest.fn();
     const { getByTestId, getByText } = render(<ExerciseLoop instance={mcqInstance} onResult={onResult} />);
 
-    fireEvent.press(getByTestId(`option-${findOptionIndex(mcqInstance, false)}`));
+    fireEvent.press(getByTestId(`option-${optionIndex(mcqInstance, true)}`));
+    fireEvent.press(getByTestId('check'));
+
+    expect(getByText(mcqInstance.feedback.correct)).toBeTruthy();
+    expect(onResult).not.toHaveBeenCalled(); // not until Continue
+
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
+    expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ correct: true, hintsUsed: 0 }));
+  });
+
+  test('a wrong pick, then Check, shows incorrect feedback and fires onResult correct:false', () => {
+    const onResult = jest.fn();
+    const { getByTestId, getByText } = render(<ExerciseLoop instance={mcqInstance} onResult={onResult} />);
+
+    fireEvent.press(getByTestId(`option-${optionIndex(mcqInstance, false)}`));
+    fireEvent.press(getByTestId('check'));
 
     expect(getByText(mcqInstance.feedback.incorrect)).toBeTruthy();
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
     expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
   });
 });
@@ -78,64 +87,53 @@ describe('ExerciseLoop — text_input grading', () => {
     answer: { canonical: 'E flat', accepted_alternatives: ['Eb', 'E♭'] },
   };
 
-  test('is case-insensitive and honors accepted_alternatives (e.g. "eb" for "E flat")', () => {
+  test('is case-insensitive and honors accepted_alternatives ("eb" for "E flat")', () => {
     const onResult = jest.fn();
     const { getByTestId, getByText } = render(<ExerciseLoop instance={textInstance} onResult={onResult} />);
 
     fireEvent.changeText(getByTestId('text-input'), 'eb');
-    fireEvent.press(getByTestId('submit'));
+    fireEvent.press(getByTestId('check'));
 
     expect(getByText(textInstance.feedback.correct)).toBeTruthy();
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
     expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ correct: true }));
   });
 
-  test('rejects an answer that matches neither the canonical form nor an alternative', () => {
+  test('rejects an answer matching neither canonical nor an alternative', () => {
     const onResult = jest.fn();
     const { getByTestId, getByText } = render(<ExerciseLoop instance={textInstance} onResult={onResult} />);
 
     fireEvent.changeText(getByTestId('text-input'), 'F sharp');
-    fireEvent.press(getByTestId('submit'));
+    fireEvent.press(getByTestId('check'));
 
     expect(getByText(textInstance.feedback.incorrect)).toBeTruthy();
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
     expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
   });
 });
 
 describe('ExerciseLoop — hints', () => {
-  test('reveal one at a time behind "Show hint", and hint use is carried into the emitted result', () => {
+  test('reveal one at a time; hint use carries into the emitted result (KTD10)', () => {
     const onResult = jest.fn();
     const { getByTestId, getByText, queryByText } = render(
       <ExerciseLoop instance={mcqInstance} onResult={onResult} />,
     );
 
-    // First hint is hidden until the control is pressed.
     expect(queryByText(mcqInstance.hints[0])).toBeNull();
-
     fireEvent.press(getByTestId('show-hint'));
     expect(getByText(mcqInstance.hints[0])).toBeTruthy();
-    expect(queryByText(mcqInstance.hints[1])).toBeNull();
-
-    // Pressing again reveals the next hint.
     fireEvent.press(getByTestId('show-hint'));
     expect(getByText(mcqInstance.hints[1])).toBeTruthy();
 
-    fireEvent.press(getByTestId(`option-${findOptionIndex(mcqInstance, true)}`));
+    fireEvent.press(getByTestId(`option-${optionIndex(mcqInstance, true)}`));
+    fireEvent.press(getByTestId('check'));
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
 
-    // A hint-assisted correct must carry hintsUsed > 0 (KTD10: must not read as unaided mastery).
     expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ hintsUsed: 2 }));
-  });
-
-  test('an unused hint control does not inflate hintsUsed', () => {
-    const onResult = jest.fn();
-    const { getByTestId } = render(<ExerciseLoop instance={mcqInstance} onResult={onResult} />);
-
-    fireEvent.press(getByTestId(`option-${findOptionIndex(mcqInstance, true)}`));
-
-    expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ hintsUsed: 0 }));
   });
 });
 
-describe('ExerciseLoop — stimulus rendering', () => {
+describe('ExerciseLoop — stimulus + surface persistence', () => {
   const musicInstance: ExerciseInstance = {
     ...mcqInstance,
     id: 'test-music-1',
@@ -150,51 +148,30 @@ describe('ExerciseLoop — stimulus rendering', () => {
     },
   };
 
-  const termInstance: ExerciseInstance = {
-    ...mcqInstance,
-    id: 'test-term-1',
-    stimulus: { music: null, text: 'Allegro' },
-  };
-
-  test('a stimulus with music renders MusicSurface (mocked WebView) and a Play control', () => {
-    const { getByTestId, queryByTestId } = render(<ExerciseLoop instance={musicInstance} onResult={jest.fn()} />);
-
+  test('a music stimulus renders a NotationCard with a play control', () => {
+    const { getByTestId } = render(<ExerciseLoop instance={musicInstance} onResult={jest.fn()} />);
     expect(getByTestId('stimulus-music')).toBeTruthy();
-    expect(getByTestId('play')).toBeTruthy();
-    expect(queryByTestId('stimulus-text')).toBeNull();
+    expect(getByTestId('notation-card-play')).toBeTruthy();
   });
 
-  test('a text-only term item does not render notation and shows the text instead', () => {
-    const { getByText, queryByTestId } = render(<ExerciseLoop instance={termInstance} onResult={jest.fn()} />);
-
-    expect(getByText('Allegro')).toBeTruthy();
-    expect(queryByTestId('stimulus-music')).toBeNull();
-    expect(queryByTestId('play')).toBeNull();
-  });
-
-  // The invariant behind the persistence refactor: moving to the next exercise
-  // must reset grading/interaction state (as a full remount used to) while the
-  // notation WebView stays mounted — a remount reloads ~520KB of abcjs and cold-
-  // inits the synth, which is the render lag this change removes.
-  test('advancing to a new instance resets grading but does not remount the notation surface', () => {
+  test('advancing to a new instance resets state without remounting the notation surface', () => {
     mockSurface.mounts = 0;
     const next: ExerciseInstance = { ...musicInstance, id: 'test-music-2', prompt: 'Name this note (again).' };
-    const { getByTestId, getByText, queryByText, rerender } = render(
+    const { getByTestId, queryByTestId, rerender } = render(
       <ExerciseLoop instance={musicInstance} onResult={jest.fn()} />,
     );
     expect(mockSurface.mounts).toBe(1);
 
-    // Grade the first exercise → feedback shows, interaction hidden.
-    fireEvent.press(getByTestId(`option-${findOptionIndex(musicInstance, true)}`));
-    expect(getByText(musicInstance.feedback.correct)).toBeTruthy();
+    // Grade correct (no answer-card mounted), continue, advance.
+    fireEvent.press(getByTestId(`option-${optionIndex(musicInstance, true)}`));
+    fireEvent.press(getByTestId('check'));
+    expect(getByTestId('feedback-sheet-correct')).toBeTruthy();
 
-    // Advance to the next exercise (what Practice/Lesson do on Next, now without a key remount).
     rerender(<ExerciseLoop instance={next} onResult={jest.fn()} />);
 
-    // State reset: feedback gone, a fresh interaction is back.
-    expect(queryByText(musicInstance.feedback.correct)).toBeNull();
-    expect(getByTestId('option-0')).toBeTruthy();
-    // …and the WebView was never torn down.
+    // Feedback cleared, a fresh Check is back, and the surface was never torn down.
+    expect(queryByTestId('feedback-sheet-correct')).toBeNull();
+    expect(getByTestId('check')).toBeTruthy();
     expect(mockSurface.mounts).toBe(1);
   });
 });

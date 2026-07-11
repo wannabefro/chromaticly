@@ -1,100 +1,143 @@
-// Exercise loop shell (U10): the RN presentational layer over grading.ts.
-// Renders the prompt, stimulus (notation or text), the interaction
-// component dispatched by interaction.type, a Hints control, and feedback
-// after grading. Grading/labelling logic stays in grading.ts — this
-// component only wires user input to it and emits the AttemptResult.
+// Exercise item shell (U6 reskin, design 2b/2c/2e): StrandChip + prompt + notation
+// (NotationCard) + AnswerOption grid, a Check button (disabled until a pick), Hints,
+// and the FeedbackSheet on grade. Flow is select → Check → FeedbackSheet → Continue;
+// onResult fires at Continue (once per item — SetRunner records the atom there, A2).
+// Grading/labelling logic stays in grading.ts. The NotationCard (persistent WebView)
+// stays mounted across items — item state resets without a remount (perf refactor).
 
-import { useCallback, useRef, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { StyleSheet, Text, TextInput as RNTextInput, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
-import { MusicSurface, type MusicSurfaceHandle } from '../music-surface/MusicSurface';
-import { Feedback } from './Feedback';
-import { type AttemptResult, gradeMcq, gradeText, toResult } from './grading';
+import { FeedbackSheet } from './components/FeedbackSheet';
+import { NotationCard, type NotationCardHandle } from './components/NotationCard';
+import { StrandChip } from './components/StrandChip';
+import { Button } from './components/Button';
+import { type AttemptResult, assembleOptions, gradeMcq, gradeText, optionLabel, toResult } from './grading';
 import { Hints } from './Hints';
 import { Mcq } from './interactions/Mcq';
-import { TextInputInteraction } from './interactions/TextInput';
+import { colors, shape, type as typo, type Strand } from './theme';
 
 export interface ExerciseLoopProps {
   instance: ExerciseInstance;
+  /** Fired once, when the learner presses Continue on the FeedbackSheet. The parent
+   *  records the atom (A2) and advances to the next item. */
   onResult: (result: AttemptResult) => void;
 }
 
 export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [textValue, setTextValue] = useState('');
   const [graded, setGraded] = useState<boolean | null>(null);
   const hintsUsedRef = useRef(0);
-  const surfaceRef = useRef<MusicSurfaceHandle>(null);
+  const surfaceRef = useRef<NotationCardHandle>(null);
 
-  // Reset per-exercise state when the instance changes — without remounting this
-  // component. Practice/Lesson pass a fresh instance per step, so identity change
-  // is the "next exercise" signal. Resetting here (rather than via a parent key=)
-  // keeps the MusicSurface WebView mounted across exercises: notation arrives as a
-  // cheap render message instead of reloading ~520KB abcjs + cold-initing the synth
-  // every time. `reset.key` remounts only the (cheap) interaction/hints subtree so
-  // Mcq/TextInput/Hints internal state clears the same way a full remount used to.
-  const [reset, setReset] = useState({ instance, key: 0 });
-  if (instance !== reset.instance) {
-    setReset((r) => ({ instance, key: r.key + 1 }));
+  // Reset item state when the instance changes — without remounting, so the
+  // NotationCard's WebView (warm abcjs/synth) persists across items.
+  const [prev, setPrev] = useState(instance);
+  if (instance !== prev) {
+    setPrev(instance);
+    setSelectedIndex(null);
+    setTextValue('');
     setGraded(null);
     hintsUsedRef.current = 0;
   }
 
-  const submit = useCallback(
-    (correct: boolean) => {
-      setGraded(correct);
-      onResult(toResult(instance, correct, hintsUsedRef.current));
-    },
-    [instance, onResult],
-  );
+  const options = useMemo(() => assembleOptions(instance), [instance]);
+  const strand = instance.strand as Strand;
+  const isMcq = instance.interaction.type !== 'text_input';
+  const canCheck = isMcq ? selectedIndex !== null : textValue.trim().length > 0;
 
-  const handleSelect = useCallback((value: unknown) => submit(gradeMcq(instance, value)), [instance, submit]);
-  const handleSubmitText = useCallback((text: string) => submit(gradeText(instance, text)), [instance, submit]);
+  const check = useCallback(() => {
+    const correct = isMcq
+      ? gradeMcq(instance, options[selectedIndex ?? 0].value)
+      : gradeText(instance, textValue);
+    setGraded(correct);
+  }, [isMcq, instance, options, selectedIndex, textValue]);
+
+  const handleContinue = useCallback(() => {
+    onResult(toResult(instance, graded ?? false, hintsUsedRef.current));
+  }, [onResult, instance, graded]);
+
   const handleHintUsed = useCallback((count: number) => {
     hintsUsedRef.current = count;
   }, []);
 
+  const music = instance.stimulus.music;
+  const answerLabel = optionLabel(instance.answer.canonical);
+
   return (
     <View style={styles.container}>
+      <StrandChip strand={strand} showGlyph />
       <Text testID="prompt" style={styles.prompt}>
         {instance.prompt}
       </Text>
 
-      {instance.stimulus.music ? (
-        <View style={styles.stimulus} testID="stimulus-music">
-          <MusicSurface ref={surfaceRef} music={instance.stimulus.music} />
-          <Pressable testID="play" onPress={() => surfaceRef.current?.play()}>
-            <Text>Play</Text>
-          </Pressable>
+      {music ? (
+        <View testID="stimulus-music">
+          <NotationCard ref={surfaceRef} music={music} />
         </View>
       ) : (
         instance.stimulus.text != null && (
-          <Text testID="stimulus-text" style={styles.stimulus}>
+          <Text testID="stimulus-text" style={styles.stimulusText}>
             {instance.stimulus.text}
           </Text>
         )
       )}
 
-      <View key={reset.key} style={styles.interaction}>
-        {graded === null &&
-          (instance.interaction.type === 'text_input' ? (
-            <TextInputInteraction onSubmit={handleSubmitText} />
-          ) : (
-            <Mcq instance={instance} onSelect={handleSelect} />
-          ))}
+      {isMcq ? (
+        <Mcq options={options} selectedIndex={selectedIndex} graded={graded} strand={strand} onSelectIndex={setSelectedIndex} />
+      ) : (
+        <RNTextInput
+          testID="text-input"
+          style={styles.input}
+          value={textValue}
+          onChangeText={setTextValue}
+          editable={graded === null}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Type your answer"
+          placeholderTextColor={colors.textFaint}
+        />
+      )}
 
-        <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
+      <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
 
-        {graded !== null && (
-          <Feedback correct={graded} message={graded ? instance.feedback.correct : instance.feedback.incorrect} />
-        )}
-      </View>
+      {graded === null && (
+        <Button label="Check" strand={strand} disabled={!canCheck} onPress={check} testID="check" />
+      )}
+
+      {graded !== null && (
+        <FeedbackSheet
+          kind={graded ? 'correct' : 'incorrect'}
+          message={graded ? instance.feedback.correct : instance.feedback.incorrect}
+          correctAnswer={
+            graded ? undefined : music ? (
+              <NotationCard music={music} caption={answerLabel} testID="answer-notation" />
+            ) : (
+              <Text testID="answer-label" style={styles.answerLabel}>
+                {answerLabel}
+              </Text>
+            )
+          }
+          onContinue={handleContinue}
+        />
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { gap: 12, padding: 16 },
-  prompt: { fontSize: 18, fontWeight: '600' },
-  stimulus: { marginVertical: 8 },
-  interaction: { gap: 12 },
+  container: { gap: shape.spaceCard, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceCard },
+  prompt: { ...typo.prompt, color: colors.text },
+  stimulusText: { ...typo.title, color: colors.text, textAlign: 'center' },
+  input: {
+    borderWidth: shape.borderW,
+    borderColor: colors.border,
+    borderRadius: shape.radiusControl,
+    padding: shape.spaceInline,
+    color: colors.text,
+    ...typo.option,
+  },
+  answerLabel: { ...typo.title, color: colors.text },
 });

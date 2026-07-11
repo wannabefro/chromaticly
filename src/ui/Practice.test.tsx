@@ -35,19 +35,18 @@ describe('Practice — SRS-driven exercise stream', () => {
     await act(async () => {});
 
     expect(getByTestId('prompt')).toBeTruthy();
-    expect(queryByTestId('practice-next')).toBeNull();
 
+    // select → Check → Continue advances the stream (no separate Next button).
     await act(async () => {
       fireEvent.press(getByTestId('option-0'));
     });
-
-    expect(getByTestId('practice-next')).toBeTruthy();
-
     await act(async () => {
-      fireEvent.press(getByTestId('practice-next'));
+      fireEvent.press(getByTestId('check'));
+    });
+    await act(async () => {
+      fireEvent.press(getByTestId('feedback-sheet-continue'));
     });
 
     expect(getByTestId('prompt')).toBeTruthy();
-    expect(queryByTestId('practice-next')).toBeNull();
   });
 });

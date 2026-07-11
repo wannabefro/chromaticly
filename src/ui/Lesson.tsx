@@ -25,7 +25,6 @@ export function Lesson({ lesson, onDone }: LessonProps) {
   const { recordAtom, complete } = useProgressContext();
   const [started, setStarted] = useState(lesson.worked_example == null);
   const [attemptIndex, setAttemptIndex] = useState(0);
-  const [awaitingNext, setAwaitingNext] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
   const [done, setDone] = useState(false);
   // Session-local monotonic clock driving SRS `now`; resets on app restart —
@@ -48,27 +47,25 @@ export function Lesson({ lesson, onDone }: LessonProps) {
     [lesson, attemptIndex],
   );
 
+  // The FeedbackSheet's Continue is the advance affordance (it fires onResult), so
+  // recording and advancing both happen here — no separate Next button.
   const handleResult = useCallback(
     async (result: AttemptResult) => {
       const atom = instance.srs_tags[0];
       await recordAtom(atom, result, tickRef.current++);
-      setAwaitingNext(true);
       if (result.correct && result.hintsUsed === 0) {
         const next = correctCount + 1;
         setCorrectCount(next);
         if (next >= LESSON_TARGET) {
           await complete(lesson);
           setDone(true);
+          return;
         }
       }
+      setAttemptIndex((i) => i + 1);
     },
     [instance, recordAtom, correctCount, complete, lesson],
   );
-
-  const handleNext = useCallback(() => {
-    setAwaitingNext(false);
-    setAttemptIndex((i) => i + 1);
-  }, []);
 
   if (done) {
     return (
@@ -105,11 +102,6 @@ export function Lesson({ lesson, onDone }: LessonProps) {
   return (
     <View style={styles.container}>
       <ExerciseLoop instance={instance} onResult={handleResult} />
-      {awaitingNext && (
-        <Pressable testID="next" style={styles.button} onPress={handleNext}>
-          <Text style={styles.buttonText}>Next</Text>
-        </Pressable>
-      )}
     </View>
   );
 }
