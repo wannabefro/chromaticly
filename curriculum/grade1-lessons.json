@@ -1,0 +1,193 @@
+{
+  "grade": 1,
+  "version": "g1-lessons-2026-07-11",
+  "lessons": [
+    {
+      "id": "treble-notes",
+      "title": "Reading notes on the treble stave",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:treble:C4",
+        "note_read:treble:D4",
+        "note_read:treble:E4",
+        "note_read:treble:F4",
+        "note_read:treble:G4",
+        "note_read:treble:A4",
+        "note_read:treble:B4",
+        "note_read:treble:C5",
+        "note_read:treble:D5",
+        "note_read:treble:E5",
+        "note_read:treble:F5",
+        "note_read:treble:G5",
+        "note_read:treble:A5"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 1,
+        "seed": 1
+      },
+      "unlocks": "bass-notes"
+    },
+    {
+      "id": "bass-notes",
+      "title": "Reading notes on the bass stave",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:bass:E2",
+        "note_read:bass:F2",
+        "note_read:bass:G2",
+        "note_read:bass:A2",
+        "note_read:bass:B2",
+        "note_read:bass:C3",
+        "note_read:bass:D3",
+        "note_read:bass:E3",
+        "note_read:bass:F3",
+        "note_read:bass:G3",
+        "note_read:bass:A3",
+        "note_read:bass:B3",
+        "note_read:bass:C4",
+        "note_read:bass:D4"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 1,
+        "seed": 7
+      },
+      "unlocks": "accidentals"
+    },
+    {
+      "id": "accidentals",
+      "title": "Sharps and flats",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:treble:F#5",
+        "note_read:treble:C#5",
+        "note_read:treble:Bb4",
+        "note_read:bass:F#3",
+        "note_read:bass:Bb2"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 1,
+        "seed": 3
+      },
+      "unlocks": "note-values"
+    },
+    {
+      "id": "note-values",
+      "title": "Note values and rhythm sums",
+      "strand": "rhythm",
+      "atoms": [
+        "rhythm_sum"
+      ],
+      "templates": [
+        "rhythm_sum"
+      ],
+      "worked_example": {
+        "template_id": "rhythm_sum",
+        "grade": 1,
+        "seed": 1
+      },
+      "unlocks": "key-signatures"
+    },
+    {
+      "id": "key-signatures",
+      "title": "Naming key signatures",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:C_major",
+        "key_sig:G_major",
+        "key_sig:D_major",
+        "key_sig:F_major"
+      ],
+      "templates": [
+        "key_signature_id"
+      ],
+      "worked_example": {
+        "template_id": "key_signature_id",
+        "grade": 1,
+        "seed": 1
+      },
+      "unlocks": "intervals"
+    },
+    {
+      "id": "intervals",
+      "title": "Naming intervals above the tonic",
+      "strand": "intervals",
+      "atoms": [
+        "interval:2",
+        "interval:3",
+        "interval:4",
+        "interval:5",
+        "interval:6",
+        "interval:7",
+        "interval:8"
+      ],
+      "templates": [
+        "interval_naming"
+      ],
+      "worked_example": {
+        "template_id": "interval_naming",
+        "grade": 1,
+        "seed": 1
+      },
+      "unlocks": "terms-and-signs"
+    },
+    {
+      "id": "terms-and-signs",
+      "title": "Musical terms and signs",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:fortissimo",
+        "term:forte",
+        "term:mezzo_forte",
+        "term:mezzo_piano",
+        "term:piano",
+        "term:pianissimo",
+        "term:crescendo",
+        "term:decrescendo",
+        "term:diminuendo",
+        "term:allegro",
+        "term:allegretto",
+        "term:moderato",
+        "term:andante",
+        "term:adagio",
+        "term:accelerando",
+        "term:rallentando",
+        "term:ritardando",
+        "term:a_tempo",
+        "term:cantabile",
+        "term:da_capo",
+        "term:dolce",
+        "term:fine",
+        "term:legato",
+        "term:staccato",
+        "term:accent",
+        "term:slur",
+        "term:tie",
+        "term:staccato_dot",
+        "term:pause",
+        "term:metronome_mark",
+        "term:repeat_marks"
+      ],
+      "templates": [
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 1,
+        "seed": 1
+      },
+      "unlocks": null
+    }
+  ]
+}

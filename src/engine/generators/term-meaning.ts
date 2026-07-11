@@ -28,6 +28,10 @@ function slugify(text: string): string {
     .replace(/^_+|_+$/g, '');
 }
 
+/** Every term-atom slug the generator can emit — the authoritative vocabulary
+ *  for cross-checking `term:<slug>` references (e.g. lesson data). */
+export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(TERMS_DECK_G1.map((e) => slugify(label(e))));
+
 function sampleDistinct<T>(rng: () => number, items: T[], n: number): T[] {
   const pool = [...items];
   const result: T[] = [];
