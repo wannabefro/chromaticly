@@ -19,11 +19,17 @@ export interface LessonProgress {
   completed: boolean;
 }
 
+export interface Profile {
+  birthYear: number;
+  onboardedAt: string;
+}
+
 export interface ProgressSnapshot {
   version: number;
   atoms: Record<string, AtomProgress>;
   lessons: Record<string, LessonProgress>;
   unlocked: string[];
+  profile: Profile | null;
 }
 
 /** Async persistence port — implemented by expo-sqlite/MMKV on device and by an
@@ -34,7 +40,7 @@ export interface SnapshotStorage {
 }
 
 function emptySnapshot(): ProgressSnapshot {
-  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [] };
+  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], profile: null };
 }
 
 /** Bring any persisted snapshot up to the current shape. A version mismatch we
@@ -48,12 +54,14 @@ export class ProgressStore {
   private atoms: Record<string, AtomProgress>;
   private lessons: Record<string, LessonProgress>;
   private unlocked: Set<string>;
+  private profile: Profile | null;
 
   constructor(snapshot: ProgressSnapshot = emptySnapshot()) {
     const s = migrate(snapshot);
     this.atoms = { ...s.atoms };
     this.lessons = { ...s.lessons };
     this.unlocked = new Set(s.unlocked);
+    this.profile = s.profile;
   }
 
   getAtom(atom: string): AtomProgress {
@@ -88,12 +96,25 @@ export class ProgressStore {
     this.unlocked.add(id);
   }
 
+  getProfile(): Profile | null {
+    return this.profile;
+  }
+
+  setProfile(profile: Profile): void {
+    this.profile = profile;
+  }
+
+  isOnboarded(): boolean {
+    return this.profile !== null;
+  }
+
   toSnapshot(): ProgressSnapshot {
     return {
       version: STORE_VERSION,
       atoms: { ...this.atoms },
       lessons: { ...this.lessons },
       unlocked: [...this.unlocked],
+      profile: this.profile,
     };
   }
 }

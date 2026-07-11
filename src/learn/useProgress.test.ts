@@ -1,7 +1,22 @@
+import { renderHook, waitFor } from '@testing-library/react-native';
+
 import type { Lesson } from '../content/lessons';
 import { selectDue } from './srs';
-import { ProgressStore } from './store';
-import { applyAttempt, ensureRootUnlocked } from './useProgress';
+import { ProgressStore, type SnapshotStorage } from './store';
+import { applyAttempt, ensureRootUnlocked, useProgress } from './useProgress';
+
+/** In-memory SnapshotStorage, mirroring store.test.ts's fake. */
+function memoryStorage(): SnapshotStorage & { blob: string | null } {
+  return {
+    blob: null as string | null,
+    async load() {
+      return this.blob;
+    },
+    async save(serialized: string) {
+      this.blob = serialized;
+    },
+  };
+}
 
 const lessonA: Lesson = {
   id: 'a',
@@ -70,5 +85,26 @@ describe('progression — Practice eligibility respects lesson unlock state', ()
 
     expect(served).toContain('x'); // from unlocked lesson A
     expect(served).not.toContain('z'); // from still-locked lesson B
+  });
+});
+
+describe('useProgress — onboarding (KTD4 profile persistence)', () => {
+  test('isOnboarded is false until completeOnboarding, then persists across a reload', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB]));
+
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    expect(result.current.isOnboarded).toBe(false);
+    expect(result.current.profile).toBeNull();
+
+    await result.current.completeOnboarding(2015, '2026-07-12T00:00:00.000Z');
+
+    await waitFor(() => expect(result.current.isOnboarded).toBe(true));
+    expect(result.current.profile).toEqual({ birthYear: 2015, onboardedAt: '2026-07-12T00:00:00.000Z' });
+
+    // Reload from the same underlying storage — profile must have been persisted, not just in-memory.
+    const reloaded = new ProgressStore(JSON.parse(storage.blob as string));
+    expect(reloaded.isOnboarded()).toBe(true);
+    expect(reloaded.getProfile()).toEqual({ birthYear: 2015, onboardedAt: '2026-07-12T00:00:00.000Z' });
   });
 });

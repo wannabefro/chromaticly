@@ -10,7 +10,7 @@ import type { Lesson } from '../content/lessons';
 import type { AttemptResult } from '../ui/grading';
 import { lessonComplete, recordAttempt } from './mastery';
 import { reviewSrs } from './srs';
-import { loadProgress, ProgressStore, saveProgress, type SnapshotStorage } from './store';
+import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
 /** Ensure the entry lesson is always reachable, even on a fresh store. */
 export function ensureRootUnlocked(store: ProgressStore, lessons: Lesson[]): void {
@@ -72,6 +72,10 @@ export interface UseProgress {
   complete: (lesson: Lesson) => Promise<boolean>;
   isUnlocked: (lessonId: string) => boolean;
   isLessonComplete: (lessonId: string) => boolean;
+  profile: Profile | null;
+  isOnboarded: boolean;
+  /** Persist the onboarding profile (birth year + completion timestamp). */
+  completeOnboarding: (birthYear: number, onboardedAt: string) => Promise<void>;
 }
 
 export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UseProgress {
@@ -118,8 +122,32 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   const isUnlocked = useCallback((lessonId: string) => store?.isUnlocked(lessonId) ?? false, [store]);
   const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store]);
 
+  const completeOnboarding = useCallback<UseProgress['completeOnboarding']>(
+    async (birthYear, onboardedAt) => {
+      if (!store) return;
+      store.setProfile({ birthYear, onboardedAt });
+      await saveProgress(store, storage);
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
+  const profile = store?.getProfile() ?? null;
+  const isOnboarded = store?.isOnboarded() ?? false;
+
   return useMemo(
-    () => ({ ready, store, revision, recordAtom, complete, isUnlocked, isLessonComplete }),
-    [ready, store, revision, recordAtom, complete, isUnlocked, isLessonComplete],
+    () => ({
+      ready,
+      store,
+      revision,
+      recordAtom,
+      complete,
+      isUnlocked,
+      isLessonComplete,
+      profile,
+      isOnboarded,
+      completeOnboarding,
+    }),
+    [ready, store, revision, recordAtom, complete, isUnlocked, isLessonComplete, profile, isOnboarded, completeOnboarding],
   );
 }
