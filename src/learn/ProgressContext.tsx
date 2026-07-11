@@ -1,12 +1,12 @@
 // One progress store shared across every screen (learn map, lesson, practice)
 // so they never diverge. The provider owns a single useProgress; screens read it
-// via useProgressContext. Storage is injectable (real app: sqliteStorage; tests:
-// an in-memory fake), which is why the concrete adapter is a prop, not a hardcode.
+// via useProgressContext. Storage is injected by the platform edge (the app supplies
+// the device adapter; tests supply an in-memory fake) — this core module never names
+// a concrete adapter, so it stays free of platform imports and portable to web.
 
 import { createContext, useContext, type ReactNode } from 'react';
 
 import { LESSONS } from '../content/lessons';
-import { sqliteStorage } from './sqlite-storage';
 import type { SnapshotStorage } from './store';
 import { useProgress, type UseProgress } from './useProgress';
 
@@ -14,10 +14,10 @@ const ProgressContext = createContext<UseProgress | null>(null);
 
 export function ProgressProvider({
   children,
-  storage = sqliteStorage,
+  storage,
 }: {
   children: ReactNode;
-  storage?: SnapshotStorage;
+  storage: SnapshotStorage;
 }) {
   const progress = useProgress(storage, LESSONS);
   return <ProgressContext.Provider value={progress}>{children}</ProgressContext.Provider>;
