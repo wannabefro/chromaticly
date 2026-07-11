@@ -51,7 +51,7 @@ export function Practice() {
 
   return (
     <View style={styles.container}>
-      <ExerciseLoop key={step} instance={instance} onResult={handleResult} />
+      <ExerciseLoop instance={instance} onResult={handleResult} />
       {awaitingNext && (
         <Pressable testID="practice-next" style={styles.button} onPress={handleNext}>
           <Text style={styles.buttonText}>Next</Text>

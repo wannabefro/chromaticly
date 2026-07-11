@@ -104,7 +104,7 @@ export function Lesson({ lesson, onDone }: LessonProps) {
 
   return (
     <View style={styles.container}>
-      <ExerciseLoop key={attemptIndex} instance={instance} onResult={handleResult} />
+      <ExerciseLoop instance={instance} onResult={handleResult} />
       {awaitingNext && (
         <Pressable testID="next" style={styles.button} onPress={handleNext}>
           <Text style={styles.buttonText}>Next</Text>

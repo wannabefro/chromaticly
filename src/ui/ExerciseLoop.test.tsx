@@ -2,9 +2,19 @@
 // (MusicSurface's dependency) so notation stimuli render without a real
 // WebView — see src/music-surface/MusicSurface.test.tsx for the same pattern.
 
+// Counts how many times a WebView is mounted so a test can prove the notation
+// surface persists across exercises rather than remounting (the perf refactor).
+const mockSurface = { mounts: 0 };
 jest.mock('react-native-webview', () => {
   const React = require('react');
-  return { WebView: React.forwardRef((props: Record<string, unknown>, _ref: unknown) => null) };
+  return {
+    WebView: React.forwardRef((_props: Record<string, unknown>, _ref: unknown) => {
+      React.useEffect(() => {
+        mockSurface.mounts += 1;
+      }, []);
+      return null;
+    }),
+  };
 });
 
 import { fireEvent, render } from '@testing-library/react-native';
@@ -160,5 +170,31 @@ describe('ExerciseLoop — stimulus rendering', () => {
     expect(getByText('Allegro')).toBeTruthy();
     expect(queryByTestId('stimulus-music')).toBeNull();
     expect(queryByTestId('play')).toBeNull();
+  });
+
+  // The invariant behind the persistence refactor: moving to the next exercise
+  // must reset grading/interaction state (as a full remount used to) while the
+  // notation WebView stays mounted — a remount reloads ~520KB of abcjs and cold-
+  // inits the synth, which is the render lag this change removes.
+  test('advancing to a new instance resets grading but does not remount the notation surface', () => {
+    mockSurface.mounts = 0;
+    const next: ExerciseInstance = { ...musicInstance, id: 'test-music-2', prompt: 'Name this note (again).' };
+    const { getByTestId, getByText, queryByText, rerender } = render(
+      <ExerciseLoop instance={musicInstance} onResult={jest.fn()} />,
+    );
+    expect(mockSurface.mounts).toBe(1);
+
+    // Grade the first exercise → feedback shows, interaction hidden.
+    fireEvent.press(getByTestId(`option-${findOptionIndex(musicInstance, true)}`));
+    expect(getByText(musicInstance.feedback.correct)).toBeTruthy();
+
+    // Advance to the next exercise (what Practice/Lesson do on Next, now without a key remount).
+    rerender(<ExerciseLoop instance={next} onResult={jest.fn()} />);
+
+    // State reset: feedback gone, a fresh interaction is back.
+    expect(queryByText(musicInstance.feedback.correct)).toBeNull();
+    expect(getByTestId('option-0')).toBeTruthy();
+    // …and the WebView was never torn down.
+    expect(mockSurface.mounts).toBe(1);
   });
 });

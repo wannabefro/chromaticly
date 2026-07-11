@@ -25,6 +25,20 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
   const hintsUsedRef = useRef(0);
   const surfaceRef = useRef<MusicSurfaceHandle>(null);
 
+  // Reset per-exercise state when the instance changes — without remounting this
+  // component. Practice/Lesson pass a fresh instance per step, so identity change
+  // is the "next exercise" signal. Resetting here (rather than via a parent key=)
+  // keeps the MusicSurface WebView mounted across exercises: notation arrives as a
+  // cheap render message instead of reloading ~520KB abcjs + cold-initing the synth
+  // every time. `reset.key` remounts only the (cheap) interaction/hints subtree so
+  // Mcq/TextInput/Hints internal state clears the same way a full remount used to.
+  const [reset, setReset] = useState({ instance, key: 0 });
+  if (instance !== reset.instance) {
+    setReset((r) => ({ instance, key: r.key + 1 }));
+    setGraded(null);
+    hintsUsedRef.current = 0;
+  }
+
   const submit = useCallback(
     (correct: boolean) => {
       setGraded(correct);
@@ -60,18 +74,20 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
         )
       )}
 
-      {graded === null &&
-        (instance.interaction.type === 'text_input' ? (
-          <TextInputInteraction onSubmit={handleSubmitText} />
-        ) : (
-          <Mcq instance={instance} onSelect={handleSelect} />
-        ))}
+      <View key={reset.key} style={styles.interaction}>
+        {graded === null &&
+          (instance.interaction.type === 'text_input' ? (
+            <TextInputInteraction onSubmit={handleSubmitText} />
+          ) : (
+            <Mcq instance={instance} onSelect={handleSelect} />
+          ))}
 
-      <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
+        <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
 
-      {graded !== null && (
-        <Feedback correct={graded} message={graded ? instance.feedback.correct : instance.feedback.incorrect} />
-      )}
+        {graded !== null && (
+          <Feedback correct={graded} message={graded ? instance.feedback.correct : instance.feedback.incorrect} />
+        )}
+      </View>
     </View>
   );
 }
@@ -80,4 +96,5 @@ const styles = StyleSheet.create({
   container: { gap: 12, padding: 16 },
   prompt: { fontSize: 18, fontWeight: '600' },
   stimulus: { marginVertical: 8 },
+  interaction: { gap: 12 },
 });
