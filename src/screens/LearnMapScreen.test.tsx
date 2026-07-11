@@ -7,6 +7,8 @@ jest.mock('expo-router', () => {
   return {
     Link: ({ children, testID }: { children: React.ReactNode; testID?: string }) =>
       React.createElement(Text, { testID }, children),
+    // Run the focus callback once on mount, mirroring a screen gaining focus.
+    useFocusEffect: (cb: () => void) => React.useEffect(() => cb(), []),
   };
 });
 

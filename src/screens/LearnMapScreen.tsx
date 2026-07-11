@@ -2,7 +2,8 @@
 // by the progress store. Locked lessons render as plain text — nothing to
 // press until their prerequisite unlocks them.
 
-import { Link } from 'expo-router';
+import { Link, useFocusEffect } from 'expo-router';
+import { useCallback, useReducer } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS } from '../content/lessons';
@@ -17,6 +18,13 @@ function statusLabel(complete: boolean, unlocked: boolean): string {
 
 export default function LearnMapScreen() {
   const { ready, isUnlocked, isLessonComplete } = useProgressContext();
+
+  // Re-read the (mutable) progress store whenever the map regains focus — the
+  // store is mutated while this screen is backgrounded (e.g. finishing a lesson),
+  // and react-navigation freezes off-screen screens, so a focus-time re-render is
+  // what surfaces the new unlock/complete state.
+  const [, bump] = useReducer((n: number) => n + 1, 0);
+  useFocusEffect(useCallback(() => bump(), []));
 
   if (!ready) {
     return (
