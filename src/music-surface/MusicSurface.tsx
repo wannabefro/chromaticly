@@ -1,4 +1,5 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { View } from 'react-native';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
 import { musicToAbc } from '../music/abc-emitter';
@@ -65,17 +66,23 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     [onEvent],
   );
 
+  // Wrap in a fixed-height View: react-native-webview does not reliably honor its
+  // own style `height` in every parent layout (it collapsed to 0 inside a plain
+  // flex column), but a View with an explicit height always lays out, and the
+  // WebView fills it via flex.
   return (
-    <WebView
-      ref={webRef}
-      originWhitelist={['*']}
-      source={{ html }}
-      onMessage={handleMessage}
-      javaScriptEnabled
-      domStorageEnabled
-      mediaPlaybackRequiresUserAction={false}
-      allowsInlineMediaPlayback
-      style={{ height, backgroundColor: 'transparent' }}
-    />
+    <View style={{ height }}>
+      <WebView
+        ref={webRef}
+        originWhitelist={['*']}
+        source={{ html }}
+        onMessage={handleMessage}
+        javaScriptEnabled
+        domStorageEnabled
+        mediaPlaybackRequiresUserAction={false}
+        allowsInlineMediaPlayback
+        style={{ flex: 1, backgroundColor: 'transparent' }}
+      />
+    </View>
   );
 });
