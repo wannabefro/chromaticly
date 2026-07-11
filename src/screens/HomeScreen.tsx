@@ -6,8 +6,13 @@ export default function HomeScreen() {
     <View style={styles.container} testID="home-screen">
       <Text style={styles.title}>Chromaticly</Text>
       <Text style={styles.subtitle}>Grade 1 music theory practice</Text>
+      <Link href="/learn" asChild>
+        <Pressable style={styles.start} testID="start-learn">
+          <Text style={styles.startText}>Learn</Text>
+        </Pressable>
+      </Link>
       <Link href="/practice" asChild>
-        <Pressable style={styles.start} testID="start-practice">
+        <Pressable style={styles.startSecondary} testID="start-practice">
           <Text style={styles.startText}>Start practice</Text>
         </Pressable>
       </Link>
@@ -37,6 +42,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     borderRadius: 8,
     backgroundColor: '#2a6',
+  },
+  startSecondary: {
+    marginTop: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 28,
+    borderRadius: 8,
+    backgroundColor: '#888',
   },
   startText: {
     color: '#fff',

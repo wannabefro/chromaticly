@@ -19,9 +19,33 @@ export function ensureRootUnlocked(store: ProgressStore, lessons: Lesson[]): voi
   if (root && !store.isUnlocked(root.id)) store.unlock(root.id);
 }
 
+/** Fold one graded attempt on `atom` into the store's mastery + SRS state at
+ *  logical time `now`. Lesson-agnostic — Practice records atoms with no lesson. */
+export function recordAtomAttempt(
+  store: ProgressStore,
+  atom: string,
+  attempt: Pick<AttemptResult, 'correct' | 'hintsUsed'>,
+  now: number,
+): void {
+  const before = store.getAtom(atom);
+  store.setAtom(atom, {
+    mastery: recordAttempt(before.mastery, attempt),
+    srs: reviewSrs(before.srs, attempt.correct, now),
+  });
+}
+
+/** Mark a lesson complete and unlock its target. Idempotent — returns true only
+ *  on the transition, so callers can fire an unlock reaction exactly once. */
+export function completeLesson(store: ProgressStore, lesson: Lesson): boolean {
+  if (store.getLesson(lesson.id).completed) return false;
+  store.setLesson(lesson.id, { completed: true });
+  if (lesson.unlocks) store.unlock(lesson.unlocks);
+  return true;
+}
+
 /** Fold one graded attempt on `atom` (belonging to `lesson`) into the store, at
- *  logical time `now`. Mutates the store; returns whether the lesson just
- *  completed so callers can react (e.g. surface an unlock). */
+ *  logical time `now`, auto-completing the lesson if every atom is now mastered.
+ *  Mutates the store; returns whether the lesson just completed. */
 export function applyAttempt(
   store: ProgressStore,
   lesson: Lesson,
@@ -29,19 +53,9 @@ export function applyAttempt(
   attempt: Pick<AttemptResult, 'correct' | 'hintsUsed'>,
   now: number,
 ): { lessonJustCompleted: boolean } {
-  const before = store.getAtom(atom);
-  store.setAtom(atom, {
-    mastery: recordAttempt(before.mastery, attempt),
-    srs: reviewSrs(before.srs, attempt.correct, now),
-  });
-
-  const wasComplete = store.getLesson(lesson.id).completed;
-  const nowComplete = lessonComplete(lesson.atoms, (a) => store.masteryOf(a));
-
-  if (nowComplete && !wasComplete) {
-    store.setLesson(lesson.id, { completed: true });
-    if (lesson.unlocks) store.unlock(lesson.unlocks);
-    return { lessonJustCompleted: true };
+  recordAtomAttempt(store, atom, attempt, now);
+  if (lessonComplete(lesson.atoms, (a) => store.masteryOf(a))) {
+    return { lessonJustCompleted: completeLesson(store, lesson) };
   }
   return { lessonJustCompleted: false };
 }
@@ -49,16 +63,21 @@ export function applyAttempt(
 export interface UseProgress {
   ready: boolean;
   store: ProgressStore | null;
-  /** Record an attempt and persist; returns the applyAttempt outcome. */
-  record: (lesson: Lesson, atom: string, attempt: AttemptResult, now: number) => Promise<{ lessonJustCompleted: boolean }>;
+  /** Monotonic counter bumped after every mutation, so consumers re-read the
+   *  (mutable) store. */
+  revision: number;
+  /** Record one attempt on an atom and persist. */
+  recordAtom: (atom: string, attempt: AttemptResult, now: number) => Promise<void>;
+  /** Mark a lesson complete + unlock its target and persist; true on transition. */
+  complete: (lesson: Lesson) => Promise<boolean>;
   isUnlocked: (lessonId: string) => boolean;
+  isLessonComplete: (lessonId: string) => boolean;
 }
 
 export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UseProgress {
   const [store, setStore] = useState<ProgressStore | null>(null);
   const [ready, setReady] = useState(false);
-  // Bump to force consumers to re-read the (mutable) store after a write.
-  const [, setRevision] = useState(0);
+  const [revision, setRevision] = useState(0);
 
   useEffect(() => {
     let live = true;
@@ -73,18 +92,34 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     };
   }, [storage, lessons]);
 
-  const record = useCallback<UseProgress['record']>(
-    async (lesson, atom, attempt, now) => {
-      if (!store) return { lessonJustCompleted: false };
-      const outcome = applyAttempt(store, lesson, atom, attempt, now);
+  const recordAtom = useCallback<UseProgress['recordAtom']>(
+    async (atom, attempt, now) => {
+      if (!store) return;
+      recordAtomAttempt(store, atom, attempt, now);
       await saveProgress(store, storage);
       setRevision((r) => r + 1);
-      return outcome;
+    },
+    [store, storage],
+  );
+
+  const complete = useCallback<UseProgress['complete']>(
+    async (lesson) => {
+      if (!store) return false;
+      const transitioned = completeLesson(store, lesson);
+      if (transitioned) {
+        await saveProgress(store, storage);
+        setRevision((r) => r + 1);
+      }
+      return transitioned;
     },
     [store, storage],
   );
 
   const isUnlocked = useCallback((lessonId: string) => store?.isUnlocked(lessonId) ?? false, [store]);
+  const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store]);
 
-  return useMemo(() => ({ ready, store, record, isUnlocked }), [ready, store, record, isUnlocked]);
+  return useMemo(
+    () => ({ ready, store, revision, recordAtom, complete, isUnlocked, isLessonComplete }),
+    [ready, store, revision, recordAtom, complete, isUnlocked, isLessonComplete],
+  );
 }

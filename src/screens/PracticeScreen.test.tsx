@@ -1,30 +1,39 @@
-// Mock react-native-webview so ExerciseLoop's MusicSurface renders headless.
+// PracticeScreen is now a thin ProgressProvider-context wrapper around the
+// real Practice stream (src/ui/Practice, covered in depth by its own test).
+// This only proves the route mounts inside a provider and exposes its testID.
 jest.mock('react-native-webview', () => {
   const React = require('react');
   return { WebView: React.forwardRef((_props: Record<string, unknown>, _ref: unknown) => null) };
 });
 
-import { fireEvent, render } from '@testing-library/react-native';
+import { act, render } from '@testing-library/react-native';
 
+import { ProgressProvider } from '../learn/ProgressContext';
+import type { SnapshotStorage } from '../learn/store';
 import PracticeScreen from './PracticeScreen';
 
-describe('PracticeScreen — runnable exercise harness', () => {
-  test('mounts a real generated exercise (the first template) with its prompt', () => {
-    const { getByTestId } = render(<PracticeScreen />);
+function memoryStorage(): SnapshotStorage & { blob: string | null } {
+  return {
+    blob: null as string | null,
+    async load() {
+      return this.blob;
+    },
+    async save(serialized: string) {
+      this.blob = serialized;
+    },
+  };
+}
+
+describe('PracticeScreen — mounts the real Practice stream', () => {
+  test('renders the practice-screen wrapper and a generated exercise', async () => {
+    const { getByTestId } = render(
+      <ProgressProvider storage={memoryStorage()}>
+        <PracticeScreen />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
     expect(getByTestId('practice-screen')).toBeTruthy();
-    expect(getByTestId('template-label')).toHaveTextContent('note_naming');
     expect(getByTestId('prompt')).toBeTruthy();
-  });
-
-  test('answering reveals Next, which advances to the following template', () => {
-    const { getByTestId, queryByTestId } = render(<PracticeScreen />);
-
-    expect(queryByTestId('next')).toBeNull();
-    fireEvent.press(getByTestId('option-0')); // any answer fires the result
-    expect(getByTestId('next')).toBeTruthy();
-
-    fireEvent.press(getByTestId('next'));
-    expect(getByTestId('template-label')).toHaveTextContent('interval_naming');
-    expect(queryByTestId('next')).toBeNull(); // fresh exercise, not yet answered
   });
 });
