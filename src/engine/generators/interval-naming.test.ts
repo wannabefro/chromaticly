@@ -1,3 +1,5 @@
+import { musicToAbc } from '../../music/abc-emitter';
+import type { Music } from '../../music/types';
 import { G1_CLEFS, G1_KEYS_MAJOR, pitchRange } from '../scope';
 import { validate } from '../validator';
 import { scientificPitchOrdinal } from './pitch-math';
@@ -31,16 +33,21 @@ describe('intervalNaming — G1 rule: lower note pinned to the tonic, above-toni
       const [tonic] = music.key_sig.split('_');
       const [lower, upper] = music.voices[0].events[0].pitches;
 
+      // Interval number counts letter positions, so compare on the natural
+      // letter+octave — the upper note may carry a diatonic accidental (e.g.
+      // Bb in F major) that does not change the step count.
+      const naturalize = (p: string) => p.replace(/[#b]/, '');
+
       expect(G1_KEYS_MAJOR).toContain(tonic);
       expect(G1_CLEFS).toContain(music.clef);
       expect(lower[0]).toBe(tonic);
 
       const range = pitchRange(music.clef);
-      expect(scientificPitchOrdinal(lower)).toBeGreaterThanOrEqual(scientificPitchOrdinal(range.low));
-      expect(scientificPitchOrdinal(upper)).toBeLessThanOrEqual(scientificPitchOrdinal(range.high));
+      expect(scientificPitchOrdinal(naturalize(lower))).toBeGreaterThanOrEqual(scientificPitchOrdinal(range.low));
+      expect(scientificPitchOrdinal(naturalize(upper))).toBeLessThanOrEqual(scientificPitchOrdinal(range.high));
 
       // above tonic only, at most an octave (7 diatonic steps)
-      const steps = scientificPitchOrdinal(upper) - scientificPitchOrdinal(lower);
+      const steps = scientificPitchOrdinal(naturalize(upper)) - scientificPitchOrdinal(naturalize(lower));
       expect(steps).toBeGreaterThanOrEqual(1);
       expect(steps).toBeLessThanOrEqual(7);
     }
@@ -66,6 +73,20 @@ describe('intervalNaming — distractor rule: +/-1 number', () => {
       for (const d of instance.distractors as number[]) {
         expect(Math.abs(d - canonical)).toBe(1);
       }
+    }
+  });
+});
+
+describe('intervalNaming — notes are spelled diatonically within the key', () => {
+  // A G1 interval above the tonic is diatonic, so the key signature carries any
+  // accidental and the emitter never prints an explicit natural (=) — e.g. the
+  // 7th above D in D major must render as C#, not a chromatic C-natural.
+  test('no generated interval renders an explicit accidental in the ABC body', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 1, seed });
+      const abc = musicToAbc(instance.stimulus.music as Music);
+      const body = abc.split('\n').filter((line) => !/^[A-Za-z]:/.test(line)).join('\n');
+      expect(body).not.toMatch(/[=^_]/);
     }
   });
 });

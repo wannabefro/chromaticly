@@ -6,6 +6,7 @@
 // stay natural-letter (commandment 1: scope is law).
 
 import { KB_VERSION } from '../../content/knowledge-base';
+import { keyAccidentals } from '../../music/abc-emitter';
 import { intervalAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR, pitchRange } from '../scope';
@@ -13,6 +14,18 @@ import type { ExerciseInstance } from '../schema';
 import { naturalPitchStepsAbove, scientificPitchOrdinal } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
+
+/** Spell a natural-letter pitch (e.g. "C5") diatonically within a major key,
+ *  so the key signature carries the accidental and nothing chromatic is printed
+ *  (e.g. in D major the 7th above the tonic is C#, not C-natural). */
+function spellInKey(naturalPitch: string, key: string): string {
+  const m = /^([A-G])(-?\d+)$/.exec(naturalPitch);
+  if (!m) return naturalPitch;
+  const [, letter, octave] = m;
+  const acc = keyAccidentals(`${key}_major`)[letter];
+  const symbol = acc === 'sharp' ? '#' : acc === 'flat' ? 'b' : '';
+  return `${letter}${symbol}${octave}`;
+}
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
   const rng = mulberry32(contentSeed);
@@ -33,7 +46,7 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
   }
 
   const steps = int(rng, 1, maxSteps);
-  const upperPitch = naturalPitchStepsAbove(lowerPitch, steps);
+  const upperPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
   const intervalNumber = steps + 1;
 
   const distractors = [intervalNumber - 1, intervalNumber + 1].filter(
