@@ -29,7 +29,7 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
           style={styles.brandMark}
         />
         <Text style={styles.wordmark}>Chromaticly</Text>
-        <Text style={styles.tagline}>Music theory that you can hear.</Text>
+        <Text style={styles.tagline}>Music theory that you can hear. Grades 1–5, free.</Text>
       </View>
 
       <View style={styles.ctaBlock}>
