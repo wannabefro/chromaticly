@@ -193,8 +193,34 @@ function noteNamingHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// U8/RD2: the stave_input variant's canonical answer is the SEMANTIC target
+// { pitch, dur } (AD5) — a different shape from the mcq variant's interval
+// number — so this hook branches on interaction.type rather than assuming a
+// number. Both variants share one hook (registered under both template_ids
+// below), matching the plan's "extend intervalNamingHook" instruction.
 function intervalNamingHook(inst: ExerciseInstance): string[] {
   const canonical = inst.answer.canonical;
+
+  if (inst.interaction.type === 'stave_input') {
+    if (!canonical || typeof canonical !== 'object' || Array.isArray(canonical)) {
+      return ['interval_naming: stave_input canonical answer must be a {pitch, dur} object'];
+    }
+    const { pitch, dur } = canonical as { pitch?: unknown; dur?: unknown };
+    const errors: string[] = [];
+    if (typeof pitch !== 'string' || !/^[A-G](#|b)?-?\d+$/.test(pitch)) {
+      errors.push('interval_naming: stave_input canonical pitch is not a valid scientific pitch');
+    } else {
+      const music = inst.stimulus.music as Music | null;
+      if (music && G1_CLEFS.includes(music.clef)) {
+        checkPitchScope(pitch, pitchRange(music.clef), errors);
+      }
+    }
+    if (typeof dur !== 'string' || !(G1_NOTE_VALUES as readonly string[]).includes(dur)) {
+      errors.push('interval_naming: stave_input canonical duration is outside G1 scope');
+    }
+    return errors;
+  }
+
   const num = typeof canonical === 'number' ? canonical : typeof canonical === 'string' ? Number(canonical) : NaN;
   if (!Number.isInteger(num) || num < 1 || num > 8) {
     return ['interval_naming: canonical answer must be an interval number 1..8'];
@@ -286,6 +312,7 @@ function termMeaningHook(inst: ExerciseInstance): string[] {
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
+  interval_naming_stave_input: intervalNamingHook,
   key_signature_id: keySignatureIdHook,
   rhythm_sum: rhythmSumHook,
   term_meaning: termMeaningHook,

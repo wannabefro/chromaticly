@@ -4,6 +4,7 @@ import { GENERATORS, generate } from './index';
 const TEMPLATE_IDS = [
   'note_naming',
   'interval_naming',
+  'interval_naming_stave_input',
   'rhythm_sum',
   'key_signature_id',
   'term_meaning',
@@ -18,7 +19,7 @@ describe('GENERATORS registry', () => {
     }
   });
 
-  test('has exactly the seven Tier-A template ids registered — no extras, no gaps', () => {
+  test('has exactly the eight Tier-A template ids registered — no extras, no gaps', () => {
     expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS].sort());
   });
 });

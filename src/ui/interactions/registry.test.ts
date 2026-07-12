@@ -21,7 +21,7 @@ jest.mock('react-native-webview', () => {
 
 import { generate } from '../../engine/generators';
 import type { ExerciseInstance } from '../../engine/schema';
-import { assembleOptions, gradeMcq, gradeText } from '../grading';
+import { assembleOptions, gradeMcq, gradeStaveInput, gradeText } from '../grading';
 import { INTERACTIONS, lookupInteraction } from './registry';
 
 const MCQ_TEMPLATE_IDS = ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning'];
@@ -105,14 +105,50 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
   });
 
   test('throws for every schema-enum value with no registered entry', () => {
-    const unsupported = ['multi_select', 'stave_input', 'tap_placement', 'grid_fill', 'roman_numeral_boxes'] as const;
+    const unsupported = ['multi_select', 'tap_placement', 'grid_fill', 'roman_numeral_boxes'] as const;
     for (const type of unsupported) {
       expect(() => lookupInteraction(type)).toThrow();
     }
   });
 
-  test('the registry is partial — only mcq, text_input, true_false, and flashcard are registered', () => {
-    expect(Object.keys(INTERACTIONS).sort()).toEqual(['flashcard', 'mcq', 'text_input', 'true_false']);
+  test('the registry is partial — only mcq, text_input, true_false, flashcard, and stave_input are registered', () => {
+    expect(Object.keys(INTERACTIONS).sort()).toEqual(['flashcard', 'mcq', 'stave_input', 'text_input', 'true_false']);
+  });
+});
+
+describe('registry — stave_input (U8, interval_naming_stave_input)', () => {
+  const staveInstance = generate('interval_naming_stave_input', { grade: 1, seed: 5 });
+
+  test('emptyResponse resets to no placement', () => {
+    expect(lookupInteraction('stave_input').emptyResponse(staveInstance)).toBeNull();
+  });
+
+  test('canCheck is false until a note is placed, true once one is', () => {
+    const spec = lookupInteraction('stave_input');
+    expect(spec.canCheck(null)).toBe(false);
+    const canonical = staveInstance.answer.canonical as { pitch: string; dur: string };
+    expect(spec.canCheck({ pitch: canonical.pitch, dur: canonical.dur })).toBe(true);
+  });
+
+  test('grade matches gradeStaveInput exactly (registry stays a thin dispatch, not a second grading rule)', () => {
+    const spec = lookupInteraction('stave_input');
+    const canonical = staveInstance.answer.canonical as { pitch: string; dur: string };
+    const placement = { pitch: canonical.pitch, dur: canonical.dur };
+    expect(spec.grade(staveInstance, placement)).toBe(gradeStaveInput(staveInstance, placement));
+    expect(spec.grade(staveInstance, placement)).toBe(true);
+    expect(spec.grade(staveInstance, { pitch: 'Z9', dur: canonical.dur })).toBe(false);
+  });
+
+  test('submits is true — stave_input uses the shared Check button', () => {
+    expect(lookupInteraction('stave_input').submits).toBe(true);
+  });
+
+  test('correctAnswerView renders the target pitch and duration', () => {
+    const canonical = staveInstance.answer.canonical as { pitch: string; dur: string };
+    const view = lookupInteraction('stave_input').correctAnswerView(staveInstance);
+    const rendered = JSON.stringify(view);
+    expect(rendered).toContain(canonical.pitch);
+    expect(rendered).toContain(canonical.dur);
   });
 });
 

@@ -111,6 +111,15 @@ export function gradeTrueFalse(instance: ExerciseInstance, response: boolean[]):
   return response.every((v, i) => v === perItem[i]);
 }
 
+/** A stave-input placement is correct only when BOTH the placed pitch and
+ *  duration match answer.canonical (AE5) — a right pitch at the wrong
+ *  duration, or vice versa, is incorrect, with no partial credit. */
+export function gradeStaveInput(instance: ExerciseInstance, response: { pitch: string; dur: string } | null): boolean {
+  if (!response) return false;
+  const canonical = instance.answer.canonical as { pitch?: unknown; dur?: unknown };
+  return response.pitch === canonical.pitch && response.dur === canonical.dur;
+}
+
 function normalize(text: string): string {
   return text.trim().toLowerCase().replace(/\s+/g, ' ');
 }

@@ -2,7 +2,7 @@
 
 import type { ExerciseInstance } from '../schema';
 import { barValidity } from './bar-validity';
-import { intervalNaming } from './interval-naming';
+import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { noteNaming } from './note-naming';
 import { rhythmSum } from './rhythm-sum';
@@ -12,6 +12,7 @@ import type { GenerateOptions, Generator } from './types';
 export const GENERATORS: Record<string, Generator> = {
   note_naming: noteNaming,
   interval_naming: intervalNaming,
+  interval_naming_stave_input: intervalNamingStaveInput,
   rhythm_sum: rhythmSum,
   key_signature_id: keySignatureId,
   term_meaning: termMeaning,

@@ -9,7 +9,7 @@ import { KB_VERSION } from '../../content/knowledge-base';
 import { keyAccidentals } from '../../music/abc-emitter';
 import { intervalAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR, pitchRange } from '../scope';
+import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR, G1_NOTE_VALUES, pitchRange } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { naturalPitchStepsAbove, scientificPitchOrdinal } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -27,10 +27,14 @@ function spellInKey(naturalPitch: string, key: string): string {
   return `${letter}${symbol}${octave}`;
 }
 
-function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
-  const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...G1_CLEFS]);
-  const key = pick(rng, [...G1_KEYS_MAJOR]);
+/** Shared sampling core for both the mcq and stave_input variants: pin the
+ *  lower note to the sampled key's tonic and draw a diatonic interval above
+ *  it that stays within the clef's G1 range (G1_INTERVAL_RULE). */
+function sampleInterval(
+  rng: () => number,
+  clef: (typeof G1_CLEFS)[number],
+  key: string,
+): { lowerPitch: string; steps: number; intervalNumber: number } {
   const range = pitchRange(clef);
 
   const tonicOccurrences = diatonicPitchesInRange(clef).filter((p) => p.startsWith(key));
@@ -46,8 +50,15 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
   }
 
   const steps = int(rng, 1, maxSteps);
+  return { lowerPitch, steps, intervalNumber: steps + 1 };
+}
+
+function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...G1_CLEFS]);
+  const key = pick(rng, [...G1_KEYS_MAJOR]);
+  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key);
   const upperPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
-  const intervalNumber = steps + 1;
 
   const distractors = [intervalNumber - 1, intervalNumber + 1].filter(
     (n) => n >= 1 && n <= 8 && n !== intervalNumber,
@@ -83,3 +94,69 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 
 export const intervalNaming: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+
+// --- Stave-input variant (U8/RD2): "write the note a [interval] higher than
+// the given note" — the sole Grade 1 stave-input item; no general write-any-
+// note (RD2). A separate template_id ("interval_naming_stave_input") rather
+// than a mode flag on `intervalNaming`, mirroring term-meaning's mcq/flashcard
+// split (AD2's reasoning): `intervalNaming` (mcq) stays byte-identical for
+// every existing caller, and U9 points the intervals lesson at whichever id it
+// wants. `answer.canonical` is the SEMANTIC target { pitch, dur } — a
+// scientific pitch spelled in the sampled key + a G1 duration — never a
+// rendered Music object (mirrors AD5's semantic-canonical rule; StaveInput's
+// grading never deep-equals a Music object either).
+
+function ordinal(n: number): string {
+  if (n % 100 >= 11 && n % 100 <= 13) return `${n}th`;
+  switch (n % 10) {
+    case 1:
+      return `${n}st`;
+    case 2:
+      return `${n}nd`;
+    case 3:
+      return `${n}rd`;
+    default:
+      return `${n}th`;
+  }
+}
+
+function buildStaveInput(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...G1_CLEFS]);
+  const key = pick(rng, [...G1_KEYS_MAJOR]);
+  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key);
+  const targetPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
+  const targetDur = pick(rng, [...G1_NOTE_VALUES]);
+
+  return {
+    id: makeInstanceId('interval_naming_stave_input', grade, idSeed),
+    template_id: 'interval_naming_stave_input',
+    grade,
+    strand: 'intervals',
+    prompt: `Write the note a ${ordinal(intervalNumber)} higher than the given note, as a ${targetDur}.`,
+    stimulus: {
+      music: {
+        clef,
+        key_sig: `${key}_major`,
+        time_sig: null,
+        voices: [{ events: [{ type: 'note', pitch: lowerPitch, dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'stave_input', config: {} },
+    answer: { canonical: { pitch: targetPitch, dur: targetDur }, accepted_alternatives: [] },
+    distractors: [],
+    hints: [
+      'Count the letter names from the given note up to the target note, counting both ends — then match the requested duration.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'Not quite — recount the interval inclusively from the given note, and check you used the requested duration.',
+    },
+    srs_tags: [intervalAtom(intervalNumber)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const intervalNamingStaveInput: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildStaveInput(candidateSeed, opts.grade, opts.seed));

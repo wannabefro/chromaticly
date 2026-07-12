@@ -1,6 +1,6 @@
 import { generate } from '../engine/generators';
 import type { ExerciseInstance } from '../engine/schema';
-import { assembleOptions, gradeMcq, gradeText, gradeTrueFalse, optionLabel, toResult } from './grading';
+import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel, toResult } from './grading';
 
 describe('optionLabel — every G1 answer shape gets a readable label', () => {
   test.each([
@@ -130,6 +130,36 @@ describe('gradeTrueFalse — correct only when EVERY per-bar verdict matches (no
     const instance = generate('bar_validity', { grade: 1, seed: 6 });
     const perItem = instance.answer.per_item as boolean[];
     expect(gradeTrueFalse(instance, perItem.slice(0, -1))).toBe(false);
+  });
+});
+
+// U8/AE5: "a wrong pitch or wrong duration grades incorrect" — the invariant
+// under test is that BOTH fields must match; either one alone is not enough.
+describe('gradeStaveInput — correct only when BOTH pitch and duration match (AE5, no partial credit)', () => {
+  test('the generated canonical placement grades correct, across many generated instances', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = generate('interval_naming_stave_input', { grade: 1, seed });
+      const canonical = instance.answer.canonical as { pitch: string; dur: string };
+      expect(gradeStaveInput(instance, { pitch: canonical.pitch, dur: canonical.dur })).toBe(true);
+    }
+  });
+
+  test('the right pitch at the wrong duration grades incorrect', () => {
+    const instance = generate('interval_naming_stave_input', { grade: 1, seed: 3 });
+    const canonical = instance.answer.canonical as { pitch: string; dur: string };
+    const wrongDur = canonical.dur === 'crotchet' ? 'minim' : 'crotchet';
+    expect(gradeStaveInput(instance, { pitch: canonical.pitch, dur: wrongDur })).toBe(false);
+  });
+
+  test('the right duration at the wrong pitch grades incorrect', () => {
+    const instance = generate('interval_naming_stave_input', { grade: 1, seed: 3 });
+    const canonical = instance.answer.canonical as { pitch: string; dur: string };
+    expect(gradeStaveInput(instance, { pitch: 'Z9', dur: canonical.dur })).toBe(false);
+  });
+
+  test('no placement (null response) never grades correct', () => {
+    const instance = generate('interval_naming_stave_input', { grade: 1, seed: 3 });
+    expect(gradeStaveInput(instance, null)).toBe(false);
   });
 });
 

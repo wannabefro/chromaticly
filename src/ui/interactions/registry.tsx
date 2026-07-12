@@ -14,11 +14,13 @@ import { useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance, InteractionType } from '../../engine/schema';
+import type { Duration, Music } from '../../music/types';
 import { NotationCard } from '../components/NotationCard';
-import { assembleOptions, gradeMcq, gradeText, gradeTrueFalse, optionLabel } from '../grading';
+import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel } from '../grading';
 import { colors, shape, type as typo } from '../theme';
 import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
+import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
@@ -119,6 +121,31 @@ const flashcardSpec: InteractionSpec<FlashcardResponse> = {
   correctAnswerView: defaultCorrectAnswerView,
 };
 
+// U8/RD2: interval_naming_stave_input's only write-item — a single {pitch,
+// dur} target — so the FeedbackSheet's correct-answer render builds a
+// one-note Music from the semantic canonical (never deep-equalled, AD5) using
+// the same clef/key signature as the given-note stimulus.
+function staveInputCorrectAnswerView(instance: ExerciseInstance) {
+  const stimulusMusic = instance.stimulus.music as Music | null;
+  const canonical = instance.answer.canonical as { pitch: string; dur: Duration };
+  const targetMusic: Music = {
+    clef: stimulusMusic?.clef ?? 'treble',
+    key_sig: stimulusMusic?.key_sig ?? null,
+    time_sig: null,
+    voices: [{ events: [{ type: 'note', pitch: canonical.pitch, dur: canonical.dur }] }],
+  };
+  return <NotationCard music={targetMusic} caption={`${canonical.pitch} · ${canonical.dur}`} testID="answer-notation" />;
+}
+
+const staveInputSpec: InteractionSpec<StaveInputResponse> = {
+  Component: StaveInput,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeStaveInput(instance, response),
+  submits: true,
+  correctAnswerView: staveInputCorrectAnswerView,
+};
+
 // Stored as InteractionSpec<any> — each entry's Response type differs (a selected
 // index, raw text, later a boolean[] or a self-grade enum), and Response appears
 // nested inside Component's props object, which TS checks structurally rather
@@ -131,6 +158,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   text_input: textInputSpec,
   true_false: trueFalseSpec,
   flashcard: flashcardSpec,
+  stave_input: staveInputSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather
