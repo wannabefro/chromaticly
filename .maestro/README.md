@@ -9,7 +9,17 @@ They exercise the real app on a simulator/device — the layer the Jest tests mo
 | Flow | What it proves |
 |---|---|
 | `smoke.yaml` | App launches and routes to first-run onboarding (Welcome → Age gate). |
-| `onboarding-first-set.yaml` | The first shippable slice end to end: under-13 → soft-block (no path forward), then a new guest onboards (Welcome → birth-year 13+) → Dashboard → Begin → completes the 8-item set (deterministic seed answers B, C flat, B, A, A, F, A, C sharp) → mastery-gems payoff (2f, 8/8). Each pass starts with `clearState` so onboarding fires fresh. |
+| `onboarding-first-set.yaml` | The first shippable slice end to end: under-13 → soft-block (no path forward), then a new guest onboards (Welcome → birth-year 13+) → **level map (3a)** → the locked exam-gate node is present (AE2) → tap the first unit (`treble-notes`) → completes the 8-item set (deterministic seed answers B, C flat, B, A, A, F, A, C sharp) → mastery-gems payoff (2f, 8/8). Each pass starts with `clearState` so onboarding fires fresh. |
+
+### New Grade 1 interactions — coverage note
+
+The four new interaction types (notation-answer MCQ on key-signatures, true/false
+bar-validity + add-time-signature on note-values, SRS flashcard on terms, tap-to-place
+stave input on intervals) sit **deeper in the linear unlock chain** — reaching them from
+a fresh state means completing the units ahead of them. Their grading/rendering logic is
+covered by Jest; a full Maestro pass over each (AE3/AE4/AE5) plus the mandatory U8
+touch dogfood needs a progress-seeding step (or grinding the chain) and a stable
+simulator — see the open bd issue tracking that on-device pass.
 
 ## Prerequisites
 

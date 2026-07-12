@@ -4,7 +4,8 @@
 #
 # Two passes in one flow, each begins with clearState so onboarding fires fresh:
 #   1. Under-13 → soft-block, no path forward (never onboards).
-#   2. New user → Welcome → birth-year 13+ → Dashboard → Begin → 8 correct → 2f.
+#   2. New user → Welcome → birth-year 13+ → level map (3a) → tap first unit →
+#      8 correct → 2f.
 #
 # The 8 answers are pure functions of (grade 1, seed 0..7) fed by SetRunner, so
 # they're fixed: B, C flat, B, A, A, F, A, C sharp. Regenerate if the generator
@@ -82,7 +83,7 @@ appId: host.exp.Exponent
 - assertVisible:
     id: "age-gate-screen"
 
-# Born 20 years ago → 13+. Continue onboards and lands on the Dashboard.
+# Born 20 years ago → 13+. Continue onboards and lands on the level map (3a).
 - scrollUntilVisible:
     element:
       id: "year-2006"
@@ -95,12 +96,16 @@ appId: host.exp.Exponent
 
 - extendedWaitUntil:
     visible:
-      id: "dashboard-screen"
+      id: "level-map-screen"
     timeout: 15000
 
-# Begin the first lesson set.
+# The exam-gate node is present and locked (display-only, AE2).
+- assertVisible:
+    id: "exam-gate-level-1"
+
+# Begin the first unit (treble-notes) from the level map.
 - tapOn:
-    id: "begin-lesson"
+    id: "unit-row-treble-notes"
 - assertVisible:
     id: "set-runner"
 
