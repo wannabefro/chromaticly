@@ -8,7 +8,7 @@
 // Grading/labelling logic stays in grading.ts. The NotationCard (persistent WebView)
 // stays mounted across items — item state resets without a remount (perf refactor).
 
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
@@ -33,9 +33,26 @@ export interface ExerciseLoopProps {
    *  render for these — `graded` stays null because nothing ever calls `check()`
    *  when `spec.submits` is false. */
   onSelfGrade?: (grade: SrsGrade) => void;
+  /** Opt-in chrome suppression for the coached warm-up (U6). All default to the
+   *  normal exercise look, so existing callers are unaffected. */
+  showStrandChip?: boolean;
+  showHints?: boolean;
+  /** Rendered directly under the notation stimulus (the warm-up's play coach mark). */
+  coachMark?: ReactNode;
+  /** Override the FeedbackSheet message per outcome (warm-up coached copy). When a
+   *  value is returned it replaces the instance's feedback copy for that outcome. */
+  feedbackMessage?: (correct: boolean) => ReactNode;
 }
 
-export function ExerciseLoop({ instance, onResult, onSelfGrade }: ExerciseLoopProps) {
+export function ExerciseLoop({
+  instance,
+  onResult,
+  onSelfGrade,
+  showStrandChip = true,
+  showHints = true,
+  coachMark,
+  feedbackMessage,
+}: ExerciseLoopProps) {
   const spec = useMemo(() => lookupInteraction(instance.interaction.type), [instance.interaction.type]);
   const [response, setResponse] = useState<unknown>(() => spec.emptyResponse(instance));
   const [graded, setGraded] = useState<boolean | null>(null);
@@ -71,7 +88,7 @@ export function ExerciseLoop({ instance, onResult, onSelfGrade }: ExerciseLoopPr
 
   return (
     <View style={styles.container}>
-      <StrandChip strand={strand} showGlyph />
+      {showStrandChip && <StrandChip strand={strand} showGlyph />}
       <Text testID="prompt" style={styles.prompt}>
         {instance.prompt}
       </Text>
@@ -88,6 +105,8 @@ export function ExerciseLoop({ instance, onResult, onSelfGrade }: ExerciseLoopPr
         )
       )}
 
+      {coachMark}
+
       <spec.Component
         instance={instance}
         response={response}
@@ -97,7 +116,7 @@ export function ExerciseLoop({ instance, onResult, onSelfGrade }: ExerciseLoopPr
         onSelfGrade={onSelfGrade}
       />
 
-      <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
+      {showHints && <Hints hints={instance.hints} onHintUsed={handleHintUsed} />}
 
       {graded === null && spec.submits && (
         <Button label="Check" strand={strand} disabled={!canCheck} onPress={check} testID="check" />
@@ -106,7 +125,7 @@ export function ExerciseLoop({ instance, onResult, onSelfGrade }: ExerciseLoopPr
       {graded !== null && (
         <FeedbackSheet
           kind={graded ? 'correct' : 'incorrect'}
-          message={graded ? instance.feedback.correct : instance.feedback.incorrect}
+          message={feedbackMessage?.(graded) ?? (graded ? instance.feedback.correct : instance.feedback.incorrect)}
           correctAnswer={graded ? undefined : spec.correctAnswerView(instance)}
           onContinue={handleContinue}
         />
