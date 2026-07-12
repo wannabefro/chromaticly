@@ -8,7 +8,7 @@ They exercise the real app on a simulator/device — the layer the Jest tests mo
 
 | Flow | What it proves |
 |---|---|
-| `onboarding-first-set.yaml` | The first shippable slice end to end: under-13 → soft-block (no path forward), then a new guest onboards (Welcome → birth-year 13+) → **level map (3a)** → the locked exam-gate node is present (AE2) → tap the first unit (`treble-notes`) → completes the 8-item set (deterministic correct-option indices 0,0,2,1,0,0,2,2) → mastery-gems payoff (2f, 8/8). Each pass starts with `clearState` so onboarding fires fresh. Also covers app-launch → Welcome → age-gate (the smoke path), so no separate smoke flow is kept. |
+| `onboarding-first-set.yaml` | The first-run journey end to end: a fresh guest goes Welcome → **grade select** (Grade 1) → your plan → a **3-question coached warm-up** (deterministic correct-option indices 0,1,1) → the "You're in. 3 for 3." landing → **level map (3a)**, then taps the first unit (`treble-notes`) to prove the set launches. There is **no age gate** on this path (it moved to account creation), so no under-13 pass. Starts with `clearState` so onboarding fires fresh. |
 
 ### New Grade 1 interactions — coverage note
 
@@ -64,9 +64,10 @@ maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
   (or a dev build) so the subsequent `openLink` re-routes to the right project.
   These `clearState` cold reloads dominate the flow's wall-time; keep the suite
   to this single flow rather than adding more `clearState` passes.
-- The flow taps answers by **option index** (`option-<i>`), not by note-name
-  label: treble-notes is atom-driven so every option is a single natural letter,
-  which collides with the A/B/C position badges on each row. The correct indices
-  (and answers) are derived from the pure generators + `assembleOptions` shuffle
-  for seeds 0-7. If the generator, the treble-notes atoms, or the shuffle change,
-  regenerate them (see the header comment in the flow).
+- The flow taps warm-up answers by **option index** (`option-<i>`), not by
+  label: every option is a plain-language note-value phrase, and single-letter
+  fragments collide with the A/B position badges on each row. The correct indices
+  (0,1,1) are derived from the `note_value_compare` generator + `assembleOptions`
+  shuffle for seeds 0-2. If the generator or the shuffle change, regenerate them
+  (see the header comment in the flow). Retry-until-correct means a wrong tap
+  loops the item rather than failing the run.
