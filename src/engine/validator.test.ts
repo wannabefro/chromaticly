@@ -95,6 +95,37 @@ describe('validate — commandment 1 (scope is law)', () => {
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('double accidental'))).toBe(true);
   });
+
+  test.each(['Cb4', 'Fb2', 'B#4', 'E#5'])(
+    'the never-Grade-1 spelling %s (enharmonic of a natural) is rejected',
+    (pitch) => {
+      const instance = validNoteNamingInstance();
+      (instance.stimulus.music as any).voices[0].events[0].pitch = pitch;
+      const result = validate(instance);
+      expect(result.ok).toBe(false);
+      expect(result.errors.some((e) => e.includes('spells a natural'))).toBe(true);
+    },
+  );
+
+  test('the guard is narrow: valid enharmonic spellings outside the G1 atom set (Eb4, Ab3) are NOT rejected by it', () => {
+    // Eb/Ab are legitimate note spellings, just not Grade 1 curriculum content;
+    // a full per-pitch allowlist is deferred, so the narrow guard must not flag them.
+    for (const pitch of ['Eb4', 'Ab3']) {
+      const instance = validNoteNamingInstance();
+      (instance.stimulus.music as any).voices[0].events[0].pitch = pitch;
+      const errors = validate(instance).errors;
+      expect(errors.some((e) => e.includes('spells a natural'))).toBe(false);
+    }
+  });
+
+  test('the real Grade 1 curriculum accidentals (F#5, C#5, Bb4) pass the guard', () => {
+    for (const pitch of ['F#5', 'C#5', 'Bb4']) {
+      const instance = validNoteNamingInstance();
+      (instance.stimulus.music as any).voices[0].events[0].pitch = pitch;
+      const errors = validate(instance).errors;
+      expect(errors.some((e) => e.includes('spells a natural'))).toBe(false);
+    }
+  });
 });
 
 describe('validate — commandments 3/4 (diagnostic distractors, one defensible answer)', () => {

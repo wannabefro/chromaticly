@@ -46,6 +46,9 @@ export function validate(instance: ExerciseInstance): ValidationResult {
 
 const LETTER_ORDER = ['C', 'D', 'E', 'F', 'G', 'A', 'B'] as const;
 
+// Enharmonic-of-a-natural spellings outside Grade 1: Cb, Fb, B#, E#.
+const NEVER_G1_SPELLINGS = new Set(['Cb', 'Fb', 'B#', 'E#']);
+
 interface ParsedPitch {
   letter: string;
   accidental: string | null; // '#' | '##' | 'b' | 'bb' | null
@@ -71,6 +74,12 @@ function checkPitchScope(pitch: string, range: { low: string; high: string } | n
   }
   if (parsed.accidental === '##' || parsed.accidental === 'bb') {
     errors.push(`scope: pitch "${pitch}" uses a double accidental, outside G1 scope`);
+  }
+  // The four accidental spellings that name a natural (Cb=B, Fb=E, B#=C, E#=F)
+  // are never taught at Grade 1. Reject them as defence-in-depth so any generator
+  // that regresses is caught at generation time via generateValidated.
+  if (NEVER_G1_SPELLINGS.has(`${parsed.letter}${parsed.accidental ?? ''}`)) {
+    errors.push(`scope: pitch "${pitch}" spells a natural (never used at Grade 1)`);
   }
   if (!range) return;
   const low = parseScientificPitch(range.low);
