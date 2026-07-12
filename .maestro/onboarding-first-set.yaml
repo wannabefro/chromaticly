@@ -1,0 +1,163 @@
+# First shippable slice, end to end: guest onboarding → complete the first 8-item
+# set → mastery-gems payoff (2f), plus the under-13 soft-block. This is the DoD's
+# outer loop, the layer the Jest tests mock (persistence, WebView notation, nav).
+#
+# Two passes in one flow, each begins with clearState so onboarding fires fresh:
+#   1. Under-13 → soft-block, no path forward (never onboards).
+#   2. New user → Welcome → birth-year 13+ → Dashboard → Begin → 8 correct → 2f.
+#
+# The 8 answers are pure functions of (grade 1, seed 0..7) fed by SetRunner, so
+# they're fixed: B, C flat, B, A, A, F, A, C sharp. Regenerate if the generator
+# or the treble-notes template changes. Options are tapped by label (A10), not
+# position. ^X$ anchors a single-letter label so it can't match "C flat" etc.
+#
+# Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
+#   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
+appId: host.exp.Exponent
+---
+# ── Pass 1: under-13 soft-block ───────────────────────────────────────────────
+- clearState
+- openLink: ${DEV_URL}
+- tapOn:
+    text: "Open"
+    optional: true
+# clearState wipes Expo Go's own first-launch flag, so a fresh open shows its
+# "developer menu": first an intro sheet (Continue), then the menu itself, which
+# must be closed via its X (top-right) to reveal the app. Both no-op on a warm
+# open (Continue not found; the point tap lands on empty Welcome space).
+- tapOn:
+    text: "Continue"
+    optional: true
+- tapOn:
+    point: "90%,48%"
+- extendedWaitUntil:
+    visible:
+      id: "welcome-screen"
+    timeout: 60000
+
+- tapOn:
+    id: "start-learning"
+- assertVisible:
+    id: "age-gate-screen"
+
+# Born 8 years ago → under 13. Scroll the year list to reach it, then continue.
+- scrollUntilVisible:
+    element:
+      id: "year-2018"
+    direction: DOWN
+    timeout: 20000
+- tapOn:
+    id: "year-2018"
+- tapOn:
+    id: "age-continue"
+
+# Soft-block, and no way back into onboarding (never onboards — R2, A11).
+- assertVisible:
+    id: "under13-block"
+- assertNotVisible:
+    id: "age-gate-screen"
+
+# ── Pass 2: new user completes the first set ─────────────────────────────────
+- clearState
+- openLink: ${DEV_URL}
+- tapOn:
+    text: "Open"
+    optional: true
+# clearState wipes Expo Go's own first-launch flag, so a fresh open shows its
+# "developer menu": first an intro sheet (Continue), then the menu itself, which
+# must be closed via its X (top-right) to reveal the app. Both no-op on a warm
+# open (Continue not found; the point tap lands on empty Welcome space).
+- tapOn:
+    text: "Continue"
+    optional: true
+- tapOn:
+    point: "90%,48%"
+- extendedWaitUntil:
+    visible:
+      id: "welcome-screen"
+    timeout: 60000
+
+- tapOn:
+    id: "start-learning"
+- assertVisible:
+    id: "age-gate-screen"
+
+# Born 20 years ago → 13+. Continue onboards and lands on the Dashboard.
+- scrollUntilVisible:
+    element:
+      id: "year-2006"
+    direction: DOWN
+    timeout: 20000
+- tapOn:
+    id: "year-2006"
+- tapOn:
+    id: "age-continue"
+
+- extendedWaitUntil:
+    visible:
+      id: "dashboard-screen"
+    timeout: 15000
+
+# Begin the first lesson set.
+- tapOn:
+    id: "begin-lesson"
+- assertVisible:
+    id: "set-runner"
+
+# 8 correct answers (seeds 0..7). Each item: pick the label → Check → Continue.
+- tapOn: "^B$"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "C flat"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "^B$"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "^A$"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "^A$"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "^F$"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "^A$"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn: "C sharp"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+# 2f payoff: mastery gems + score ring 8/8.
+- extendedWaitUntil:
+    visible:
+      id: "set-complete"
+    timeout: 15000
+- assertVisible:
+    id: "set-gems"
+- assertVisible: "8/8"

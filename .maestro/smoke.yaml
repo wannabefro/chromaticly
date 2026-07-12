@@ -1,30 +1,34 @@
-# Smoke test: the app launches and the primary navigation works.
+# Smoke test: the app launches and routes to first-run onboarding.
 # Runs against Expo Go (dev): opens the Metro dev URL rather than launchApp.
+# clearState so a fresh guest lands on Welcome (the real entry since the slice).
 # DEV_URL must be supplied via -e (Maestro's flow-level env would override it):
 #   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/smoke.yaml
 # or use the npm scripts (see .maestro/README.md).
 appId: host.exp.Exponent
 ---
-# Cold start so we land on Home (openLink alone only foregrounds the current route).
-- stopApp
+- clearState
 - openLink: ${DEV_URL}
 # Expo Go may show a system "Open in Expo Go?" prompt.
 - tapOn:
     text: "Open"
     optional: true
+# clearState wipes Expo Go's own first-launch flag, so a fresh open shows its
+# "developer menu": first an intro sheet (Continue), then the menu itself, which
+# must be closed via its X (top-right) to reveal the app. Both no-op on a warm
+# open (Continue not found; the point tap lands on empty Welcome space).
+- tapOn:
+    text: "Continue"
+    optional: true
+- tapOn:
+    point: "90%,48%"
 # Allow for the JS bundle to build/reload on a cold open.
 - extendedWaitUntil:
-    visible: "Chromaticly"
+    visible:
+      id: "welcome-screen"
     timeout: 60000
 
-# Home → Learn map
+# Welcome → Age gate: the first onboarding hop works.
 - tapOn:
-    id: "start-learn"
-- assertVisible: "Reading notes on the treble stave"
-- assertVisible: "Locked" # later lessons are gated
-
-# Learn map → Free practice
-- tapOn:
-    id: "practice-link"
+    id: "start-learning"
 - assertVisible:
-    id: "practice-screen"
+    id: "age-gate-screen"

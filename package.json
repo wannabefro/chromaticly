@@ -55,7 +55,7 @@
     "typecheck": "tsc --noEmit",
     "e2e": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8081} .maestro",
     "e2e:smoke": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8081} .maestro/smoke.yaml",
-    "e2e:lesson": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8081} .maestro/lesson-complete.yaml",
+    "e2e:onboarding": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8081} .maestro/onboarding-first-set.yaml",
     "prepare": "node scripts/bundle-abcjs.js"
   },
   "private": true

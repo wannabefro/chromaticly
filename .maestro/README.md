@@ -8,8 +8,8 @@ They exercise the real app on a simulator/device — the layer the Jest tests mo
 
 | Flow | What it proves |
 |---|---|
-| `smoke.yaml` | App launches; Home → Learn map (lock states) → Free practice. |
-| `lesson-complete.yaml` | Completes the first lesson (answering the deterministic seed-based exercises B, C flat, B, A, A) and asserts the next lesson unlocks — the completion→unlock path a static screenshot can't verify. |
+| `smoke.yaml` | App launches and routes to first-run onboarding (Welcome → Age gate). |
+| `onboarding-first-set.yaml` | The first shippable slice end to end: under-13 → soft-block (no path forward), then a new guest onboards (Welcome → birth-year 13+) → Dashboard → Begin → completes the 8-item set (deterministic seed answers B, C flat, B, A, A, F, A, C sharp) → mastery-gems payoff (2f, 8/8). Each pass starts with `clearState` so onboarding fires fresh. |
 
 ## Prerequisites
 
@@ -34,10 +34,10 @@ override `-e`, so the flows intentionally omit one). The npm scripts default to
 Expo's port 8081 and honor a `DEV_URL` shell override:
 
 ```bash
-npm run e2e:smoke                              # uses exp://127.0.0.1:8081
-DEV_URL=exp://127.0.0.1:8090 npm run e2e:smoke  # this repo's dev server runs on 8090
-DEV_URL=exp://127.0.0.1:8090 npm run e2e:lesson
-DEV_URL=exp://127.0.0.1:8090 npm run e2e        # whole suite
+npm run e2e:smoke                                    # uses exp://127.0.0.1:8081
+DEV_URL=exp://127.0.0.1:8090 npm run e2e:smoke        # this repo's dev server runs on 8090
+DEV_URL=exp://127.0.0.1:8090 npm run e2e:onboarding
+DEV_URL=exp://127.0.0.1:8090 npm run e2e              # whole suite
 ```
 
 Or invoke Maestro directly:
@@ -50,10 +50,12 @@ maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/smoke.yaml
 
 ## Notes
 
-- Multiple running Expo projects make Expo Go's cold-launch deep-link routing
-  ambiguous, so the flows avoid `stopApp`/`clearState` (which reopen Expo Go to
-  its last project) and instead reload the active project via `openLink`. Keep
-  only this project's Metro running while testing, or use a dev build.
-- The correct answers in `lesson-complete.yaml` are derived from the pure
-  generators (`note_naming` seeds 0-4). If the generator or lesson templates
-  change, regenerate them.
+- `smoke.yaml` avoids `stopApp`/`clearState` (which reopen Expo Go to its last
+  project) and reloads the active project via `openLink`, so keep only this
+  project's Metro running while testing. `onboarding-first-set.yaml` **must**
+  reset persisted state so first-run onboarding fires, so it does use
+  `clearState` before each pass — run it with only this project's Metro up (or a
+  dev build) so the subsequent `openLink` re-routes to the right project.
+- The correct answers in `onboarding-first-set.yaml` are derived from the pure
+  generators (the treble-notes template, seeds 0-7). If the generator or lesson
+  templates change, regenerate them (see the header comment in the flow).
