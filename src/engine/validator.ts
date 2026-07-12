@@ -294,6 +294,19 @@ function barValidityHook(inst: ExerciseInstance): string[] {
   return [];
 }
 
+function addTimeSignatureHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string' || !(G1_TIME_SIGNATURES as readonly string[]).includes(canonical)) {
+    return [`add_time_signature: canonical answer "${String(canonical)}" is not a G1 time signature`];
+  }
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !(G1_TIME_SIGNATURES as readonly string[]).includes(d)) {
+      return [`add_time_signature: distractor "${String(d)}" is not a G1 time signature`];
+    }
+  }
+  return [];
+}
+
 function termMeaningHook(inst: ExerciseInstance): string[] {
   const category = inst.interaction.config?.category;
   if (category === undefined) return []; // no category info carried — skip gracefully
@@ -317,4 +330,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   rhythm_sum: rhythmSumHook,
   term_meaning: termMeaningHook,
   bar_validity: barValidityHook,
+  add_time_signature: addTimeSignatureHook,
 };

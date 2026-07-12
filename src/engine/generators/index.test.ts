@@ -10,6 +10,7 @@ const TEMPLATE_IDS = [
   'term_meaning',
   'term_meaning_flashcard',
   'bar_validity',
+  'add_time_signature',
 ];
 
 describe('GENERATORS registry', () => {
@@ -19,7 +20,7 @@ describe('GENERATORS registry', () => {
     }
   });
 
-  test('has exactly the eight Tier-A template ids registered — no extras, no gaps', () => {
+  test('has exactly the nine Tier-A template ids registered — no extras, no gaps', () => {
     expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS].sort());
   });
 });
@@ -42,6 +43,6 @@ describe('generate() — dispatches to the right generator', () => {
   });
 
   test('throws on an unregistered template_id', () => {
-    expect(() => generate('add_time_signature', { grade: 1, seed: 0 })).toThrow(/No generator registered/);
+    expect(() => generate('melody_generator', { grade: 1, seed: 0 })).toThrow(/No generator registered/);
   });
 });

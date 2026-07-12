@@ -30,6 +30,10 @@ export function barValidityAtom(): string {
   return 'bar_validity';
 }
 
+export function addTimeSignatureAtom(): string {
+  return 'add_time_signature';
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

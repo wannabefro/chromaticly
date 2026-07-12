@@ -87,10 +87,14 @@
       "title": "Note values and rhythm sums",
       "strand": "rhythm",
       "atoms": [
-        "rhythm_sum"
+        "rhythm_sum",
+        "bar_validity",
+        "add_time_signature"
       ],
       "templates": [
-        "rhythm_sum"
+        "rhythm_sum",
+        "bar_validity",
+        "add_time_signature"
       ],
       "worked_example": {
         "template_id": "rhythm_sum",
@@ -133,7 +137,8 @@
         "interval:8"
       ],
       "templates": [
-        "interval_naming"
+        "interval_naming",
+        "interval_naming_stave_input"
       ],
       "worked_example": {
         "template_id": "interval_naming",
@@ -180,10 +185,10 @@
         "term:repeat_marks"
       ],
       "templates": [
-        "term_meaning"
+        "term_meaning_flashcard"
       ],
       "worked_example": {
-        "template_id": "term_meaning",
+        "template_id": "term_meaning_flashcard",
         "grade": 1,
         "seed": 1
       },

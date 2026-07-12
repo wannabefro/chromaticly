@@ -148,3 +148,70 @@ describe('SetRunner — flashcard (U7): self-graded items route through recordFl
     expect(getByTestId('gem-3-missed')).toBeTruthy();
   });
 });
+
+// U9: a lesson can attach more than one template (e.g. note-values now carries
+// rhythm_sum + bar_validity + add_time_signature). Prior to this change SetRunner
+// generated every one of the 8 items from templates[0] only, so a second/third
+// attached template was silently inert — never reachable. This test guards the
+// invariant: item generation must cycle `itemIndex % templates.length`, not
+// pin to the first template.
+describe('SetRunner — multi-template lessons cycle their templates across items (U9)', () => {
+  const cyclingLesson: Lesson = {
+    id: 'test-cycling-lesson',
+    title: 'Test cycling lesson',
+    strand: 'rhythm',
+    atoms: ['rhythm_sum', 'add_time_signature'],
+    templates: ['rhythm_sum', 'add_time_signature'],
+    worked_example: null,
+    unlocks: null,
+  };
+
+  async function answerCorrectAt(getByTestId: (id: string) => any, templateId: string, seed: number) {
+    const instance = generate(templateId, { grade: 1, seed });
+    const index = assembleOptions(instance).findIndex((o) => o.correct);
+    await act(async () => {
+      fireEvent.press(getByTestId(`option-${index}`));
+    });
+    await act(async () => {
+      fireEvent.press(getByTestId('check'));
+    });
+    await act(async () => {
+      fireEvent.press(getByTestId('feedback-sheet-continue'));
+    });
+  }
+
+  test('item N is generated from templates[N % templates.length], not always templates[0]', async () => {
+    const storage = memoryStorage();
+    const { getByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={cyclingLesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    const expectedTemplateAt = (i: number) => cyclingLesson.templates[i % cyclingLesson.templates.length];
+
+    for (let i = 0; i < cyclingLesson.templates.length * 2; i++) {
+      const expectedTemplate = expectedTemplateAt(i);
+      const expectedPrompt = generate(expectedTemplate, { grade: 1, seed: i }).prompt;
+      expect(getByTestId('prompt').props.children).toBe(expectedPrompt);
+      await answerCorrectAt(getByTestId, expectedTemplate, i);
+    }
+
+    expect(getByTestId('set-count')).toBeTruthy();
+  });
+
+  test('a single-template lesson is unaffected — every item still comes from templates[0] (i % 1 === 0)', async () => {
+    const storage = memoryStorage();
+    const { getByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    expect(getByTestId('prompt').props.children).toBe(
+      generate(lesson.templates[0], { grade: 1, seed: 0 }).prompt,
+    );
+  });
+});

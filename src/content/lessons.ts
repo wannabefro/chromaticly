@@ -49,6 +49,9 @@ export function assertAtomResolves(atom: string): void {
     case 'bar_validity':
       if (parts.length !== 0) throw new Error(`lessons: malformed bar_validity atom "${atom}"`);
       return;
+    case 'add_time_signature':
+      if (parts.length !== 0) throw new Error(`lessons: malformed add_time_signature atom "${atom}"`);
+      return;
     case 'note_read': {
       const [clef, pitch] = parts;
       if (!G1_CLEFS.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G1 scope`);

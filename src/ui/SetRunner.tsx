@@ -1,8 +1,10 @@
-// SetRunner (U7): drives a fixed 8-item set for a lesson (design 2b header → items
-// → 2f). Generates items from the lesson's first template (seeds 0..7), feeds
-// ExerciseLoop, and on each Continue records the atom exactly once (A2) and the
-// per-item mastery gem. On the 8th it marks the lesson complete once (A2) and shows
-// SetComplete. The notation surface persists across items (perf refactor).
+// SetRunner (U7/U9): drives a fixed 8-item set for a lesson (design 2b header →
+// items → 2f). Cycles the lesson's templates (itemIndex % templates.length, seeds
+// 0..7) so a multi-template lesson varies its interaction across the set — a
+// single-template lesson is unaffected (i % 1 === 0 always picks templates[0]).
+// Feeds ExerciseLoop, and on each Continue records the atom exactly once (A2) and
+// the per-item mastery gem. On the 8th it marks the lesson complete once (A2) and
+// shows SetComplete. The notation surface persists across items (perf refactor).
 
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
@@ -33,7 +35,7 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
   const strand = lesson.strand as Strand;
 
   const instance = useMemo(
-    () => generate(lesson.templates[0], { grade: 1, seed: itemIndex }),
+    () => generate(lesson.templates[itemIndex % lesson.templates.length], { grade: 1, seed: itemIndex }),
     [lesson, itemIndex],
   );
 
