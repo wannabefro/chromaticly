@@ -1,21 +1,24 @@
 // Exercise item shell (U6 reskin, design 2b/2c/2e): StrandChip + prompt + notation
-// (NotationCard) + AnswerOption grid, a Check button (disabled until a pick), Hints,
-// and the FeedbackSheet on grade. Flow is select → Check → FeedbackSheet → Continue;
-// onResult fires at Continue (once per item — SetRunner records the atom there, A2).
+// (NotationCard) + the interaction's own input UI, a Check button (disabled until
+// canCheck), Hints, and the FeedbackSheet on grade. Flow is respond → Check →
+// FeedbackSheet → Continue; onResult fires at Continue (once per item — SetRunner
+// records the atom there, A2). Which component renders, how the response grades,
+// and the correct-answer view are all looked up from the interaction registry
+// (U3/AD1) keyed on `interaction.type` — no more a hardcoded isMcq boolean.
 // Grading/labelling logic stays in grading.ts. The NotationCard (persistent WebView)
 // stays mounted across items — item state resets without a remount (perf refactor).
 
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { StyleSheet, Text, TextInput as RNTextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
 import { StrandChip } from './components/StrandChip';
 import { Button } from './components/Button';
-import { type AttemptResult, assembleOptions, gradeMcq, gradeText, optionLabel, toResult } from './grading';
+import { type AttemptResult, toResult } from './grading';
 import { Hints } from './Hints';
-import { Mcq } from './interactions/Mcq';
+import { lookupInteraction } from './interactions/registry';
 import { colors, shape, type as typo, type Strand } from './theme';
 
 export interface ExerciseLoopProps {
@@ -26,8 +29,8 @@ export interface ExerciseLoopProps {
 }
 
 export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [textValue, setTextValue] = useState('');
+  const spec = useMemo(() => lookupInteraction(instance.interaction.type), [instance.interaction.type]);
+  const [response, setResponse] = useState<unknown>(() => spec.emptyResponse(instance));
   const [graded, setGraded] = useState<boolean | null>(null);
   const hintsUsedRef = useRef(0);
   const surfaceRef = useRef<NotationCardHandle>(null);
@@ -37,23 +40,17 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
   const [prev, setPrev] = useState(instance);
   if (instance !== prev) {
     setPrev(instance);
-    setSelectedIndex(null);
-    setTextValue('');
+    setResponse(spec.emptyResponse(instance));
     setGraded(null);
     hintsUsedRef.current = 0;
   }
 
-  const options = useMemo(() => assembleOptions(instance), [instance]);
   const strand = instance.strand as Strand;
-  const isMcq = instance.interaction.type !== 'text_input';
-  const canCheck = isMcq ? selectedIndex !== null : textValue.trim().length > 0;
+  const canCheck = spec.canCheck(response);
 
   const check = useCallback(() => {
-    const correct = isMcq
-      ? gradeMcq(instance, options[selectedIndex ?? 0].value)
-      : gradeText(instance, textValue);
-    setGraded(correct);
-  }, [isMcq, instance, options, selectedIndex, textValue]);
+    setGraded(Boolean(spec.grade(instance, response)));
+  }, [spec, instance, response]);
 
   const handleContinue = useCallback(() => {
     onResult(toResult(instance, graded ?? false, hintsUsedRef.current));
@@ -64,7 +61,6 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
   }, []);
 
   const music = instance.stimulus.music;
-  const answerLabel = optionLabel(instance.answer.canonical);
 
   return (
     <View style={styles.container}>
@@ -85,25 +81,11 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
         )
       )}
 
-      {isMcq ? (
-        <Mcq options={options} selectedIndex={selectedIndex} graded={graded} strand={strand} onSelectIndex={setSelectedIndex} />
-      ) : (
-        <RNTextInput
-          testID="text-input"
-          style={styles.input}
-          value={textValue}
-          onChangeText={setTextValue}
-          editable={graded === null}
-          autoCapitalize="none"
-          autoCorrect={false}
-          placeholder="Type your answer"
-          placeholderTextColor={colors.textFaint}
-        />
-      )}
+      <spec.Component instance={instance} response={response} graded={graded} strand={strand} onResponseChange={setResponse} />
 
       <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
 
-      {graded === null && (
+      {graded === null && spec.submits && (
         <Button label="Check" strand={strand} disabled={!canCheck} onPress={check} testID="check" />
       )}
 
@@ -111,15 +93,7 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
         <FeedbackSheet
           kind={graded ? 'correct' : 'incorrect'}
           message={graded ? instance.feedback.correct : instance.feedback.incorrect}
-          correctAnswer={
-            graded ? undefined : music ? (
-              <NotationCard music={music} caption={answerLabel} testID="answer-notation" />
-            ) : (
-              <Text testID="answer-label" style={styles.answerLabel}>
-                {answerLabel}
-              </Text>
-            )
-          }
+          correctAnswer={graded ? undefined : spec.correctAnswerView(instance)}
           onContinue={handleContinue}
         />
       )}
@@ -131,13 +105,4 @@ const styles = StyleSheet.create({
   container: { gap: shape.spaceCard, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceCard },
   prompt: { ...typo.prompt, color: colors.text },
   stimulusText: { ...typo.title, color: colors.text, textAlign: 'center' },
-  input: {
-    borderWidth: shape.borderW,
-    borderColor: colors.border,
-    borderRadius: shape.radiusControl,
-    padding: shape.spaceInline,
-    color: colors.text,
-    ...typo.option,
-  },
-  answerLabel: { ...typo.title, color: colors.text },
 });

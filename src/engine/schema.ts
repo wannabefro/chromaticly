@@ -4,6 +4,22 @@
 
 import { z } from 'zod';
 
+/** The `interaction.type` enum, extracted so the U3 interaction registry can key
+ *  off a named `InteractionType` instead of re-deriving it from the schema. */
+export const InteractionTypeSchema = z.enum([
+  'mcq',
+  'multi_select',
+  'true_false',
+  'text_input',
+  'stave_input',
+  'tap_placement',
+  'drag_match',
+  'grid_fill',
+  'roman_numeral_boxes',
+]);
+
+export type InteractionType = z.infer<typeof InteractionTypeSchema>;
+
 export const ExerciseInstanceSchema = z.object({
   id: z.string(),
   template_id: z.string(),
@@ -16,17 +32,7 @@ export const ExerciseInstanceSchema = z.object({
     text: z.string().nullable(),
   }),
   interaction: z.object({
-    type: z.enum([
-      'mcq',
-      'multi_select',
-      'true_false',
-      'text_input',
-      'stave_input',
-      'tap_placement',
-      'drag_match',
-      'grid_fill',
-      'roman_numeral_boxes',
-    ]),
+    type: InteractionTypeSchema,
     config: z.record(z.string(), z.any()),
   }),
   answer: z.object({

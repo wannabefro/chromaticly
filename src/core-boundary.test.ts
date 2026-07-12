@@ -68,3 +68,30 @@ describe('core boundary — the portable domain core imports no platform-only pa
     expect(violations).toEqual([]);
   });
 });
+
+// U3/AD1: the interaction registry (src/ui/interactions/*) is platform-side — it
+// renders React Native components and is only ever reached from src/ui. If core
+// imported it, the registry's Response/Component types would drag RN into the
+// portable domain, defeating the point of AD1's registry living outside core.
+function isUiInteractionsImport(spec: string): boolean {
+  return /(^|\/)ui\/interactions(\/|$)/.test(spec);
+}
+
+describe('core boundary — src/ui/interactions/* is not imported by the domain core', () => {
+  test('src/{engine,learn,music,content} never import ui/interactions', () => {
+    const violations: string[] = [];
+    let scanned = 0;
+    for (const dir of CORE_DIRS) {
+      for (const file of sourceFiles(join(__dirname, dir))) {
+        scanned += 1;
+        for (const spec of importSpecifiers(readFileSync(file, 'utf8'))) {
+          if (isUiInteractionsImport(spec)) {
+            violations.push(`${file.replace(__dirname, 'src')} imports "${spec}"`);
+          }
+        }
+      }
+    }
+    expect(scanned).toBeGreaterThan(15);
+    expect(violations).toEqual([]);
+  });
+});
