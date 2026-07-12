@@ -13,6 +13,7 @@
 import type { ReactNode } from 'react';
 
 import type { ExerciseInstance } from '../../engine/schema';
+import type { SrsGrade } from '../../learn/srs';
 import type { Strand } from '../theme';
 
 export interface InteractionComponentProps<Response> {
@@ -21,6 +22,12 @@ export interface InteractionComponentProps<Response> {
   graded: boolean | null;
   strand: Strand;
   onResponseChange: (response: Response) => void;
+  /** Self-graded interactions (flashcard) call this directly with the picked
+   *  grade instead of relying on `grade()`'s boolean verdict — the shared Check
+   *  button and FeedbackSheet never fire for these (U7), so this is the only
+   *  way a self-graded interaction reports its outcome upward. Unused by
+   *  checked interactions (mcq/text_input/true_false). */
+  onSelfGrade?: (grade: SrsGrade) => void;
 }
 
 export interface InteractionSpec<Response = unknown> {

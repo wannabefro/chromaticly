@@ -8,6 +8,7 @@ jest.mock('react-native-webview', () => {
 
 import { act, fireEvent, render } from '@testing-library/react-native';
 
+import type { Lesson } from '../content/lessons';
 import { LESSONS } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { ProgressProvider } from '../learn/ProgressContext';
@@ -82,5 +83,68 @@ describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
     expect(getByTestId('set-complete')).toBeTruthy();
     // The lesson was marked complete in the persisted snapshot.
     expect(storage.blob).toContain(`"${lesson.id}":{"completed":true}`);
+  });
+});
+
+// U7: a flashcard instance produces no correct/incorrect verdict, so it must
+// route through recordFlashcardGrade (graded-SRS + AD4b mastery mapping) —
+// never recordAtom (the binary path). The existing mcq lesson's path above is
+// unchanged; this is a separate synthetic lesson pointed at the flashcard
+// generator, the same way U9 will point the real terms-and-signs lesson at it.
+describe('SetRunner — flashcard (U7): self-graded items route through recordFlashcardGrade, not recordAtom', () => {
+  const flashcardLesson: Lesson = {
+    id: 'test-flashcard-lesson',
+    title: 'Test flashcard lesson',
+    strand: 'terms_signs',
+    atoms: ['term:staccato'],
+    templates: ['term_meaning_flashcard'],
+    worked_example: null,
+    unlocks: null,
+  };
+
+  async function gradeFlashcard(getByTestId: (id: string) => any, grade: string) {
+    await act(async () => {
+      fireEvent.press(getByTestId('flashcard-card'));
+    });
+    await act(async () => {
+      fireEvent.press(getByTestId(`grade-${grade}`));
+    });
+  }
+
+  test('picking a grade for all 8 items reaches SetComplete and persists via the graded-SRS path (the snapshot carries `ease`, which only reviewSrsGraded ever writes)', async () => {
+    const storage = memoryStorage();
+    const { getByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={flashcardLesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    for (let i = 0; i < 8; i++) {
+      await gradeFlashcard(getByTestId, 'good');
+    }
+
+    expect(getByTestId('set-complete')).toBeTruthy();
+    expect(storage.blob).toContain('"ease"'); // reviewSrs (the binary path) never writes this field
+  });
+
+  test('Good/Easy grade to a clean gem, Hard to hinted, Again to missed (AD4b)', async () => {
+    const storage = memoryStorage();
+    const { getByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={flashcardLesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    const grades = ['good', 'easy', 'hard', 'again', 'good', 'good', 'good', 'good'];
+    for (const grade of grades) {
+      await gradeFlashcard(getByTestId, grade);
+    }
+
+    expect(getByTestId('gem-0-clean')).toBeTruthy();
+    expect(getByTestId('gem-1-clean')).toBeTruthy();
+    expect(getByTestId('gem-2-hinted')).toBeTruthy();
+    expect(getByTestId('gem-3-missed')).toBeTruthy();
   });
 });

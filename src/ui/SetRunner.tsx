@@ -9,8 +9,9 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
-import { emptySet, gems, isComplete, recordItem, score, segmentStates, SET_SIZE } from '../learn/exercise-set';
+import { emptySet, gems, isComplete, recordItem, score, segmentStates, SET_SIZE, type ExerciseSetState } from '../learn/exercise-set';
 import { useProgressContext } from '../learn/ProgressContext';
+import type { SrsGrade } from '../learn/srs';
 import { ExerciseLoop } from './ExerciseLoop';
 import { ProgressSegments } from './components/ProgressSegments';
 import { SetComplete } from './SetComplete';
@@ -24,7 +25,7 @@ export interface SetRunnerProps {
 }
 
 export function SetRunner({ lesson, onDone }: SetRunnerProps) {
-  const { recordAtom, complete } = useProgressContext();
+  const { recordAtom, recordFlashcardGrade, complete } = useProgressContext();
   const [itemIndex, setItemIndex] = useState(0);
   const [setState, setSetState] = useState(emptySet());
   const [done, setDone] = useState(false);
@@ -36,11 +37,12 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
     [lesson, itemIndex],
   );
 
-  const handleResult = useCallback(
-    async (result: AttemptResult) => {
-      const atom = instance.srs_tags[0];
-      await recordAtom(atom, result, tickRef.current++); // A2: record the atom once, here
-      const nextState = recordItem(setState, result);
+  // Shared by both the checked (handleResult) and self-graded (handleSelfGrade)
+  // paths: fold one item's gem into the set and either advance or complete the
+  // lesson exactly once (A2) — the only thing that differs between them is how
+  // the atom itself gets recorded (recordAtom vs recordFlashcardGrade, AD4b).
+  const advance = useCallback(
+    async (nextState: ExerciseSetState) => {
       setSetState(nextState);
       if (isComplete(nextState)) {
         await complete(lesson); // A2: complete the lesson exactly once
@@ -49,7 +51,28 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
         setItemIndex((i) => i + 1);
       }
     },
-    [instance, recordAtom, setState, complete, lesson],
+    [complete, lesson],
+  );
+
+  const handleResult = useCallback(
+    async (result: AttemptResult) => {
+      const atom = instance.srs_tags[0];
+      await recordAtom(atom, result, tickRef.current++); // A2: record the atom once, here
+      await advance(recordItem(setState, result));
+    },
+    [instance, recordAtom, setState, advance],
+  );
+
+  // U7/AD4b: a flashcard has no correct/incorrect verdict, so it never reaches
+  // handleResult — Good/Easy count as a clean gem, Hard as hinted, Again as
+  // missed, mirroring the same mapping recordFlashcardGrade applies to mastery.
+  const handleSelfGrade = useCallback(
+    async (grade: SrsGrade) => {
+      const atom = instance.srs_tags[0];
+      await recordFlashcardGrade(atom, grade, tickRef.current++);
+      await advance(recordItem(setState, { correct: grade !== 'again', hintsUsed: grade === 'hard' ? 1 : 0 }));
+    },
+    [instance, recordFlashcardGrade, setState, advance],
   );
 
   if (done) {
@@ -73,7 +96,7 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
           {itemIndex + 1}/{SET_SIZE}
         </Text>
       </View>
-      <ExerciseLoop instance={instance} onResult={handleResult} />
+      <ExerciseLoop instance={instance} onResult={handleResult} onSelfGrade={handleSelfGrade} />
     </Screen>
   );
 }

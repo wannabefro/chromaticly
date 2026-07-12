@@ -12,6 +12,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
+import type { SrsGrade } from '../learn/srs';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
 import { StrandChip } from './components/StrandChip';
@@ -24,11 +25,17 @@ import { colors, shape, type as typo, type Strand } from './theme';
 export interface ExerciseLoopProps {
   instance: ExerciseInstance;
   /** Fired once, when the learner presses Continue on the FeedbackSheet. The parent
-   *  records the atom (A2) and advances to the next item. */
+   *  records the atom (A2) and advances to the next item. Never fires for a
+   *  self-graded interaction (flashcard) — those report through `onSelfGrade`. */
   onResult: (result: AttemptResult) => void;
+  /** Fired when a self-graded interaction (flashcard) reports its picked grade
+   *  (U7). The shared Check button and correct/incorrect FeedbackSheet never
+   *  render for these — `graded` stays null because nothing ever calls `check()`
+   *  when `spec.submits` is false. */
+  onSelfGrade?: (grade: SrsGrade) => void;
 }
 
-export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
+export function ExerciseLoop({ instance, onResult, onSelfGrade }: ExerciseLoopProps) {
   const spec = useMemo(() => lookupInteraction(instance.interaction.type), [instance.interaction.type]);
   const [response, setResponse] = useState<unknown>(() => spec.emptyResponse(instance));
   const [graded, setGraded] = useState<boolean | null>(null);
@@ -81,7 +88,14 @@ export function ExerciseLoop({ instance, onResult }: ExerciseLoopProps) {
         )
       )}
 
-      <spec.Component instance={instance} response={response} graded={graded} strand={strand} onResponseChange={setResponse} />
+      <spec.Component
+        instance={instance}
+        response={response}
+        graded={graded}
+        strand={strand}
+        onResponseChange={setResponse}
+        onSelfGrade={onSelfGrade}
+      />
 
       <Hints hints={instance.hints} onHintUsed={handleHintUsed} />
 

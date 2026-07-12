@@ -16,6 +16,7 @@ export const InteractionTypeSchema = z.enum([
   'drag_match',
   'grid_fill',
   'roman_numeral_boxes',
+  'flashcard',
 ]);
 
 export type InteractionType = z.infer<typeof InteractionTypeSchema>;

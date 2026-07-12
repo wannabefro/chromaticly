@@ -9,7 +9,7 @@
     "unit": "string e.g. 3.2",
     "prompt": "string (localizable)",
     "stimulus": {"music": "Music object (see spec doc) | null", "text": "string | null"},
-    "interaction": {"type": "mcq|multi_select|true_false|text_input|stave_input|tap_placement|drag_match|grid_fill|roman_numeral_boxes", "config": {}},
+    "interaction": {"type": "mcq|multi_select|true_false|text_input|stave_input|tap_placement|drag_match|grid_fill|roman_numeral_boxes|flashcard", "config": {}},
     "answer": {"canonical": "any", "accepted_alternatives": [], "per_item": []},
     "distractors": [],
     "hints": ["smart-tip style strings, revealed progressively"],

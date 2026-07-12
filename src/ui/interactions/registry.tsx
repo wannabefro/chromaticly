@@ -17,6 +17,7 @@ import type { ExerciseInstance, InteractionType } from '../../engine/schema';
 import { NotationCard } from '../components/NotationCard';
 import { assembleOptions, gradeMcq, gradeText, gradeTrueFalse, optionLabel } from '../grading';
 import { colors, shape, type as typo } from '../theme';
+import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
 import { TextInputField } from './TextInputField';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
@@ -104,6 +105,20 @@ const trueFalseSpec: InteractionSpec<TrueFalseResponse> = {
   correctAnswerView: trueFalseCorrectAnswerView,
 };
 
+// U7: flashcard is self-graded — grade() always returns null (no correct/
+// incorrect verdict) and submits is false (it owns its own submission via the
+// 4 grade buttons -> onSelfGrade, not the shared Check button). canCheck is
+// never read as a result (the Check button is hidden whenever submits is
+// false) but the protocol still requires a value.
+const flashcardSpec: InteractionSpec<FlashcardResponse> = {
+  Component: Flashcard,
+  emptyResponse: () => ({ revealed: false, picked: null }),
+  canCheck: () => false,
+  grade: () => null,
+  submits: false,
+  correctAnswerView: defaultCorrectAnswerView,
+};
+
 // Stored as InteractionSpec<any> — each entry's Response type differs (a selected
 // index, raw text, later a boolean[] or a self-grade enum), and Response appears
 // nested inside Component's props object, which TS checks structurally rather
@@ -115,6 +130,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   mcq: mcqSpec,
   text_input: textInputSpec,
   true_false: trueFalseSpec,
+  flashcard: flashcardSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

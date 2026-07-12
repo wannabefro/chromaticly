@@ -1,6 +1,6 @@
 import { TERMS_DECK_G1 } from '../../content/terms-deck';
 import { validate } from '../validator';
-import { termMeaning } from './term-meaning';
+import { termMeaning, termMeaningFlashcard } from './term-meaning';
 
 describe('termMeaning — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {
@@ -86,6 +86,65 @@ describe('termMeaning — fuzz gate: 100 generated items are all validator-clean
       const instance = termMeaning({ grade: 1, seed });
       const result = validate(instance);
       expect(result).toEqual({ ok: true, errors: [] });
+    }
+  });
+});
+
+describe('termMeaningFlashcard — self-graded flashcard variant (U7/AD2)', () => {
+  test('carries front (term), back (meaning), and no distractors — self-graded, not deep-equal graded', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = termMeaningFlashcard({ grade: 1, seed });
+      expect(instance.interaction.type).toBe('flashcard');
+      expect(instance.interaction.config.term).toBeTruthy(); // the front: the term
+      const canonical = instance.answer.canonical as { value: string; category: string };
+      expect(canonical.value).toBeTruthy(); // the back: the meaning
+      expect(instance.distractors).toEqual([]);
+    }
+  });
+
+  test('stimulus.text stays null — Flashcard.tsx owns the term display, so ExerciseLoop\'s generic stimulus block must not duplicate it (design 2g/2h show the term exactly once)', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = termMeaningFlashcard({ grade: 1, seed });
+      expect(instance.stimulus.text).toBeNull();
+      expect(instance.stimulus.music).toBeNull();
+    }
+  });
+
+  test('always the term->meaning direction (unlike mcq, which alternates) — matches design 2g/2h', () => {
+    const knownLabels = new Set(TERMS_DECK_G1.map((e) => e.term ?? e.sign ?? e.abbr));
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = termMeaningFlashcard({ grade: 1, seed });
+      expect(knownLabels.has(instance.interaction.config.term as string)).toBe(true);
+    }
+  });
+
+  test('carries an OPTIONAL exemplar slot in interaction.config — undefined today (no Music-model articulation support), never a fabricated mark', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = termMeaningFlashcard({ grade: 1, seed });
+      expect(instance.interaction.config).toHaveProperty('exemplar');
+      expect(instance.interaction.config.exemplar).toBeUndefined();
+    }
+  });
+
+  test('the same (grade, seed) reproduces (KTD4) and different seeds diverge', () => {
+    expect(termMeaningFlashcard({ grade: 1, seed: 9 })).toEqual(termMeaningFlashcard({ grade: 1, seed: 9 }));
+    const seeds = new Set<string>();
+    for (let seed = 0; seed < 20; seed++) seeds.add(JSON.stringify(termMeaningFlashcard({ grade: 1, seed })));
+    expect(seeds.size).toBeGreaterThan(1);
+  });
+
+  test('emits a term atom slugged from the sampled entry, same scheme as the mcq variant', () => {
+    for (let seed = 0; seed < 10; seed++) {
+      const instance = termMeaningFlashcard({ grade: 1, seed });
+      expect(instance.srs_tags).toHaveLength(1);
+      expect(instance.srs_tags[0]).toMatch(/^term:[a-z0-9_]+$/);
+    }
+  });
+
+  test('fuzz gate: seeds 0..99 all produce a validator-clean instance (no distractor requirement — flashcard is an open type)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = termMeaningFlashcard({ grade: 1, seed });
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
     }
   });
 });

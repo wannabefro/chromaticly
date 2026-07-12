@@ -1,7 +1,15 @@
 import { validate } from '../validator';
 import { GENERATORS, generate } from './index';
 
-const TEMPLATE_IDS = ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning', 'bar_validity'];
+const TEMPLATE_IDS = [
+  'note_naming',
+  'interval_naming',
+  'rhythm_sum',
+  'key_signature_id',
+  'term_meaning',
+  'term_meaning_flashcard',
+  'bar_validity',
+];
 
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {
@@ -10,7 +18,7 @@ describe('GENERATORS registry', () => {
     }
   });
 
-  test('has exactly the six Tier-A template ids registered — no extras, no gaps', () => {
+  test('has exactly the seven Tier-A template ids registered — no extras, no gaps', () => {
     expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS].sort());
   });
 });

@@ -19,6 +19,8 @@ jest.mock('react-native-webview', () => {
 import { fireEvent, render } from '@testing-library/react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
+import { ProgressProvider } from '../learn/ProgressContext';
+import type { SnapshotStorage } from '../learn/store';
 import { ExerciseLoop } from './ExerciseLoop';
 import { assembleOptions } from './grading';
 
@@ -173,5 +175,63 @@ describe('ExerciseLoop — stimulus + surface persistence', () => {
     expect(queryByTestId('feedback-sheet-correct')).toBeNull();
     expect(getByTestId('check')).toBeTruthy();
     expect(mockSurface.mounts).toBe(1);
+  });
+});
+
+describe('ExerciseLoop — self-graded flashcard (U7): routes away from Check/FeedbackSheet entirely', () => {
+  function memoryStorage(): SnapshotStorage {
+    let blob: string | null = null;
+    return {
+      async load() {
+        return blob;
+      },
+      async save(serialized: string) {
+        blob = serialized;
+      },
+    };
+  }
+
+  const flashcardInstance: ExerciseInstance = {
+    id: 'test-flashcard-1',
+    template_id: 'term_meaning_flashcard',
+    grade: 1,
+    strand: 'terms_signs',
+    prompt: 'What does "Staccato" mean?',
+    stimulus: { music: null, text: null },
+    interaction: { type: 'flashcard', config: { term: 'Staccato', category: 'other_terms' } },
+    answer: { canonical: { value: 'detached', category: 'other_terms' }, accepted_alternatives: [] },
+    distractors: [],
+    hints: [],
+    feedback: { correct: 'Correct!', incorrect: 'Not quite.' },
+    srs_tags: ['term:staccato'],
+    kb_version: 'test',
+  };
+
+  function renderFlashcardLoop(onResult = jest.fn(), onSelfGrade = jest.fn()) {
+    return {
+      onResult,
+      onSelfGrade,
+      ...render(
+        <ProgressProvider storage={memoryStorage()}>
+          <ExerciseLoop instance={flashcardInstance} onResult={onResult} onSelfGrade={onSelfGrade} />
+        </ProgressProvider>,
+      ),
+    };
+  }
+
+  test('never renders the shared Check button — flashcard owns its own submission', () => {
+    const { queryByTestId } = renderFlashcardLoop();
+    expect(queryByTestId('check')).toBeNull();
+  });
+
+  test('picking a grade calls onSelfGrade, never onResult, and no correct/incorrect FeedbackSheet ever renders', () => {
+    const { getByTestId, queryByTestId, onResult, onSelfGrade } = renderFlashcardLoop();
+
+    fireEvent.press(getByTestId('flashcard-card'));
+    fireEvent.press(getByTestId('grade-good'));
+
+    expect(onSelfGrade).toHaveBeenCalledWith('good');
+    expect(onResult).not.toHaveBeenCalled();
+    expect(queryByTestId('feedback-sheet')).toBeNull();
   });
 });

@@ -9,6 +9,7 @@
 
 import { KB_VERSION } from '../../content/knowledge-base';
 import { TERMS_DECK_G1, type TermsDeckEntry } from '../../content/terms-deck';
+import type { Music } from '../../music/types';
 import { termAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
 import type { ExerciseInstance } from '../schema';
@@ -89,3 +90,55 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 
 export const termMeaning: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+
+// --- Flashcard variant (U7/AD2): term recall as a self-graded flashcard —
+// front = term, revealed = meaning + an optional notated exemplar, no
+// distractors (grading is self-reported, not deep-equal). A separate
+// template_id ("term_meaning_flashcard") rather than a mode flag on the
+// existing generator, so `term_meaning` (mcq) stays byte-identical for every
+// existing caller/test and U9 can point a lesson's `templates` at the
+// flashcard id the same way it points at any other generator.
+
+/** The current Music model has no articulation/dynamics/tempo markup (no
+ *  staccato dot, accent, hairpin, or tempo marking — see src/music/types.ts),
+ *  so no G1 term/sign can be honestly rendered as a notated exemplar without
+ *  inventing a mark the renderer can't draw. This stays undefined for every
+ *  entry until the Music model grows that vocabulary; the field is wired
+ *  end-to-end (here -> Flashcard.tsx -> NotationCard) so populating it later
+ *  needs no further plumbing. */
+function exemplarFor(_entry: TermsDeckEntry): Music | undefined {
+  return undefined;
+}
+
+function buildFlashcard(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const entry = pick(rng, TERMS_DECK_G1);
+  const termLabel = label(entry);
+  const categoryLabel = entry.category.replace('_', ' ');
+
+  return {
+    id: makeInstanceId('term_meaning_flashcard', grade, idSeed),
+    template_id: 'term_meaning_flashcard',
+    grade,
+    strand: 'terms_signs',
+    prompt: `What does "${termLabel}" mean?`,
+    // stimulus.text stays null (unlike the mcq variant): Flashcard.tsx owns the
+    // whole front/back card, including the term, so ExerciseLoop's generic
+    // stimulus-text block must not ALSO render it above the card (design 2g/2h
+    // show the term exactly once, inside the card).
+    stimulus: { music: null, text: null },
+    interaction: { type: 'flashcard', config: { term: termLabel, category: entry.category, exemplar: exemplarFor(entry) } },
+    answer: { canonical: { value: entry.meaning, category: entry.category }, accepted_alternatives: [] },
+    distractors: [],
+    hints: [],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Not quite — that's a different ${categoryLabel} term or sign.`,
+    },
+    srs_tags: [termAtom(slugify(termLabel))],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const termMeaningFlashcard: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildFlashcard(candidateSeed, opts.grade, opts.seed));

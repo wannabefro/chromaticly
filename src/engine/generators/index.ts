@@ -6,7 +6,7 @@ import { intervalNaming } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { noteNaming } from './note-naming';
 import { rhythmSum } from './rhythm-sum';
-import { termMeaning } from './term-meaning';
+import { termMeaning, termMeaningFlashcard } from './term-meaning';
 import type { GenerateOptions, Generator } from './types';
 
 export const GENERATORS: Record<string, Generator> = {
@@ -15,6 +15,7 @@ export const GENERATORS: Record<string, Generator> = {
   rhythm_sum: rhythmSum,
   key_signature_id: keySignatureId,
   term_meaning: termMeaning,
+  term_meaning_flashcard: termMeaningFlashcard,
   bar_validity: barValidity,
 };
 

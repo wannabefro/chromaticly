@@ -111,8 +111,33 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
     }
   });
 
-  test('the registry is partial — only mcq, text_input, and true_false are registered', () => {
-    expect(Object.keys(INTERACTIONS).sort()).toEqual(['mcq', 'text_input', 'true_false']);
+  test('the registry is partial — only mcq, text_input, true_false, and flashcard are registered', () => {
+    expect(Object.keys(INTERACTIONS).sort()).toEqual(['flashcard', 'mcq', 'text_input', 'true_false']);
+  });
+});
+
+describe('registry — flashcard (U7, term_meaning_flashcard)', () => {
+  const flashcardInstance = generate('term_meaning_flashcard', { grade: 1, seed: 3 });
+
+  test('emptyResponse resets to unrevealed with no grade picked', () => {
+    const spec = lookupInteraction('flashcard');
+    expect(spec.emptyResponse(flashcardInstance)).toEqual({ revealed: false, picked: null });
+  });
+
+  test('grade always returns null — self-graded, no correct/incorrect verdict (AD1)', () => {
+    const spec = lookupInteraction('flashcard');
+    expect(spec.grade(flashcardInstance, { revealed: false, picked: null })).toBeNull();
+    expect(spec.grade(flashcardInstance, { revealed: true, picked: 'good' })).toBeNull();
+  });
+
+  test('submits is false — flashcard owns its own submission (the 4 grade buttons), not the shared Check button', () => {
+    expect(lookupInteraction('flashcard').submits).toBe(false);
+  });
+
+  test('correctAnswerView renders the term\'s meaning (used only if ever reached — graded stays null in practice)', () => {
+    const view = lookupInteraction('flashcard').correctAnswerView(flashcardInstance);
+    const canonical = flashcardInstance.answer.canonical as { value: string };
+    expect(JSON.stringify(view)).toContain(canonical.value);
   });
 });
 
