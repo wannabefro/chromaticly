@@ -14,8 +14,8 @@ const SRC = join(__dirname, '..', '..'); // repo src/
 
 // A8: the guard covers the slice's surfaces — the component library plus the
 // reskinned/new files this slice owns. It deliberately EXCLUDES the legacy
-// unstyled screens (Lesson/Practice/HomeScreen/LearnMapScreen/Screen and the
-// non-reskinned interactions), which are Deferred to Follow-Up Work.
+// unstyled screens (Lesson/Practice/Screen and the non-reskinned interactions),
+// which are Deferred to Follow-Up Work.
 const SLICE_FILES = [
   'ui/ExerciseLoop.tsx',
   'ui/interactions/Mcq.tsx',
@@ -23,7 +23,7 @@ const SLICE_FILES = [
   'ui/SetComplete.tsx',
   'screens/onboarding/WelcomeScreen.tsx',
   'screens/onboarding/AgeGateScreen.tsx',
-  'screens/DashboardScreen.tsx',
+  'screens/LevelMapScreen.tsx',
 ];
 
 function componentFiles(dir: string): string[] {

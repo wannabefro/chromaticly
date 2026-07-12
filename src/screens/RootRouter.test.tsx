@@ -1,6 +1,7 @@
-// U10 acceptance for first-run routing (KTD5/A7) — the DoD's outer loop:
-//   new user   → Welcome → Age gate (13+) → Dashboard
-//   returning  → straight to the Dashboard, Welcome never shown
+// U10 acceptance for first-run routing (KTD5/A7; U2: home is the level map) —
+// the DoD's outer loop:
+//   new user   → Welcome → Age gate (13+) → level map
+//   returning  → straight to the level map, Welcome never shown
 // The returning-user seed is the blob a real onboarding persists, so this guards
 // that isOnboarded routing keys off the actual persisted profile, not a flag reset.
 
@@ -30,7 +31,7 @@ function memoryStorage(seed: string | null = null): SnapshotStorage & { blob: st
 const CURRENT_YEAR = new Date().getFullYear();
 
 describe('RootRouter — first-run routing (A7)', () => {
-  test('new user walks Welcome → Age gate → Dashboard', async () => {
+  test('new user walks Welcome → Age gate → level map', async () => {
     const storage = memoryStorage();
     const { getByTestId, findByTestId } = render(
       <ProgressProvider storage={storage}>
@@ -51,12 +52,12 @@ describe('RootRouter — first-run routing (A7)', () => {
       fireEvent.press(getByTestId('age-continue'));
     });
 
-    // Onboarding persisted → context re-renders onboarded → Dashboard.
-    expect(await findByTestId('dashboard-screen')).toBeTruthy();
+    // Onboarding persisted → context re-renders onboarded → level map (R1: grade home).
+    expect(await findByTestId('level-map-screen')).toBeTruthy();
     expect(storage.blob).toContain('"birthYear":' + (CURRENT_YEAR - 20));
   });
 
-  test('returning user skips onboarding and lands on the Dashboard', async () => {
+  test('returning user skips onboarding and lands on the level map', async () => {
     // Seed the blob a completed onboarding leaves behind.
     const seedStorage = memoryStorage();
     const seedRender = render(
@@ -72,7 +73,7 @@ describe('RootRouter — first-run routing (A7)', () => {
     await act(async () => {
       fireEvent.press(seedRender.getByTestId('age-continue'));
     });
-    await seedRender.findByTestId('dashboard-screen');
+    await seedRender.findByTestId('level-map-screen');
     const seededBlob = seedStorage.blob;
     seedRender.unmount();
 
@@ -82,7 +83,7 @@ describe('RootRouter — first-run routing (A7)', () => {
       </ProgressProvider>,
     );
 
-    expect(await findByTestId('dashboard-screen')).toBeTruthy();
+    expect(await findByTestId('level-map-screen')).toBeTruthy();
     expect(queryByTestId('welcome-screen')).toBeNull();
   });
 });
