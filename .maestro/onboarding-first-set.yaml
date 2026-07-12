@@ -7,10 +7,14 @@
 #   2. New user → Welcome → birth-year 13+ → level map (3a) → tap first unit →
 #      8 correct → 2f.
 #
-# The 8 answers are pure functions of (grade 1, seed 0..7) fed by SetRunner, so
-# they're fixed: B, C flat, B, A, A, F, A, C sharp. Regenerate if the generator
-# or the treble-notes template changes. Options are tapped by label (A10), not
-# position. ^X$ anchors a single-letter label so it can't match "C flat" etc.
+# The 8 items are pure functions of (grade 1, seed 0..7) fed by SetRunner, so
+# the correct-option index is fixed: 0,0,2,1,0,0,2,2 (answers D,B,C,E,D,G,G,B).
+# Regenerate both if the generator, the treble-notes atoms, or assembleOptions'
+# shuffle changes. We tap by option INDEX (`option-<i>`), not by the note-name
+# label: since treble-notes is atom-driven every option is a single natural
+# letter, which collides with the A/B/C position badges on each row (a `^B$`
+# regex matches the badge as readily as the value), so a label tap is ambiguous.
+# Index taps are unambiguous.
 #
 # Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
 #   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
@@ -99,9 +103,20 @@ appId: host.exp.Exponent
       id: "level-map-screen"
     timeout: 15000
 
-# The exam-gate node is present and locked (display-only, AE2).
-- assertVisible:
-    id: "exam-gate-level-1"
+# The exam-gate node is present and locked (display-only, AE2). On a fresh
+# onboard the six locked units carry two-line "Finish … to unlock" subtitles, so
+# the gate sits below the fold — scroll to prove it's there (layout-height-
+# independent), then scroll back up to the first unit before starting it.
+- scrollUntilVisible:
+    element:
+      id: "exam-gate-level-1"
+    direction: DOWN
+    timeout: 15000
+- scrollUntilVisible:
+    element:
+      id: "unit-row-treble-notes"
+    direction: UP
+    timeout: 15000
 
 # Begin the first unit (treble-notes) from the level map.
 - tapOn:
@@ -110,49 +125,57 @@ appId: host.exp.Exponent
     id: "set-runner"
 
 # 8 correct answers (seeds 0..7). Each item: pick the label → Check → Continue.
-- tapOn: "^B$"
+- tapOn:
+    id: "option-0"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "C flat"
+- tapOn:
+    id: "option-0"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "^B$"
+- tapOn:
+    id: "option-2"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "^A$"
+- tapOn:
+    id: "option-1"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "^A$"
+- tapOn:
+    id: "option-0"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "^F$"
+- tapOn:
+    id: "option-0"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "^A$"
+- tapOn:
+    id: "option-2"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
-- tapOn: "C sharp"
+- tapOn:
+    id: "option-2"
 - tapOn:
     id: "check"
 - tapOn:
