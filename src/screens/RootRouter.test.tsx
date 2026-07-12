@@ -1,19 +1,21 @@
-// U10 acceptance for first-run routing (KTD5/A7; U2: home is the level map) —
-// the DoD's outer loop:
-//   new user   → Welcome → Age gate (13+) → level map
+// First-run routing (U7) — the DoD's outer loop for the new journey:
+//   new user   → Welcome → grade select → your plan → 3-question warm-up →
+//                landed → Continue → level map
 //   returning  → straight to the level map, Welcome never shown
-// The returning-user seed is the blob a real onboarding persists, so this guards
-// that isOnboarded routing keys off the actual persisted profile, not a flag reset.
+// Invariants guarded: the age gate never appears on the primary path (it moved to
+// account creation), and BOTH Landing CTAs mark the guest onboarded.
 
 jest.mock('react-native-webview', () => {
   const React = require('react');
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
-import { act, fireEvent, render, waitFor } from '@testing-library/react-native';
+import { act, fireEvent, render } from '@testing-library/react-native';
 
+import { generate } from '../engine/generators';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
+import { assembleOptions } from '../ui/grading';
 import RootRouter from './RootRouter';
 
 function memoryStorage(seed: string | null = null): SnapshotStorage & { blob: string | null } {
@@ -28,10 +30,56 @@ function memoryStorage(seed: string | null = null): SnapshotStorage & { blob: st
   };
 }
 
-const CURRENT_YEAR = new Date().getFullYear();
+function correctIndexFor(seed: number): number {
+  const instance = generate('note_value_compare', { grade: 1, seed, atoms: ['note_value_compare'] });
+  return assembleOptions(instance).findIndex((o) => o.correct);
+}
 
-describe('RootRouter — first-run routing (A7)', () => {
-  test('new user walks Welcome → Age gate → level map', async () => {
+async function answerWarmUp(getByTestId: (id: string) => any) {
+  for (let seed = 0; seed < 3; seed++) {
+    await act(async () => fireEvent.press(getByTestId(`option-${correctIndexFor(seed)}`)));
+    await act(async () => fireEvent.press(getByTestId('check')));
+    await act(async () => fireEvent.press(getByTestId('feedback-sheet-continue')));
+  }
+}
+
+/** Walk Welcome → grade → plan → warm-up (3 correct) → Landing, stopping there. */
+async function walkToLanding(getByTestId: (id: string) => any, findByTestId: (id: string) => Promise<any>) {
+  await findByTestId('welcome-screen');
+  await act(async () => fireEvent.press(getByTestId('start-learning')));
+  await findByTestId('grade-select-screen');
+  await act(async () => fireEvent.press(getByTestId('start-grade')));
+  await findByTestId('plan-screen');
+  await act(async () => fireEvent.press(getByTestId('plan-start-warmup')));
+  await findByTestId('warm-up-screen');
+  await answerWarmUp(getByTestId);
+  await findByTestId('landed-screen');
+}
+
+describe('RootRouter — new first-run journey (A7, no age gate)', () => {
+  test('new user walks Welcome → grade → plan → warm-up → landed → Continue → level map', async () => {
+    const storage = memoryStorage();
+    const { getByTestId, findByTestId, queryByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <RootRouter />
+      </ProgressProvider>,
+    );
+
+    await walkToLanding(getByTestId, findByTestId);
+
+    // The age gate never appeared anywhere on the primary path.
+    expect(queryByTestId('age-gate-screen')).toBeNull();
+    expect(queryByTestId('under13-block')).toBeNull();
+
+    await act(async () => fireEvent.press(getByTestId('landed-continue')));
+
+    expect(await findByTestId('level-map-screen')).toBeTruthy();
+    // Onboarding persisted the selected grade, not a birth year.
+    expect(storage.blob).toContain('"grade":1');
+    expect(storage.blob).not.toContain('birthYear');
+  });
+
+  test('the "Explore the app" CTA also onboards (both Landing CTAs persist)', async () => {
     const storage = memoryStorage();
     const { getByTestId, findByTestId } = render(
       <ProgressProvider storage={storage}>
@@ -39,43 +87,26 @@ describe('RootRouter — first-run routing (A7)', () => {
       </ProgressProvider>,
     );
 
-    // Welcome first (ready resolves, no profile).
-    expect(await findByTestId('welcome-screen')).toBeTruthy();
+    await walkToLanding(getByTestId, findByTestId);
+    await act(async () => fireEvent.press(getByTestId('landed-explore')));
 
-    await act(async () => {
-      fireEvent.press(getByTestId('start-learning'));
-    });
-    expect(getByTestId('age-gate-screen')).toBeTruthy();
-
-    fireEvent.press(getByTestId(`year-${CURRENT_YEAR - 20}`));
-    await act(async () => {
-      fireEvent.press(getByTestId('age-continue'));
-    });
-
-    // Onboarding persisted → context re-renders onboarded → level map (R1: grade home).
     expect(await findByTestId('level-map-screen')).toBeTruthy();
-    expect(storage.blob).toContain('"birthYear":' + (CURRENT_YEAR - 20));
+    expect(storage.blob).toContain('"grade":1');
   });
 
   test('returning user skips onboarding and lands on the level map', async () => {
-    // Seed the blob a completed onboarding leaves behind.
+    // Seed the blob a completed onboarding leaves behind, then reload from it.
     const seedStorage = memoryStorage();
-    const seedRender = render(
+    const seed = render(
       <ProgressProvider storage={seedStorage}>
         <RootRouter />
       </ProgressProvider>,
     );
-    await seedRender.findByTestId('welcome-screen');
-    await act(async () => {
-      fireEvent.press(seedRender.getByTestId('start-learning'));
-    });
-    fireEvent.press(seedRender.getByTestId(`year-${CURRENT_YEAR - 20}`));
-    await act(async () => {
-      fireEvent.press(seedRender.getByTestId('age-continue'));
-    });
-    await seedRender.findByTestId('level-map-screen');
+    await walkToLanding(seed.getByTestId, seed.findByTestId);
+    await act(async () => fireEvent.press(seed.getByTestId('landed-continue')));
+    await seed.findByTestId('level-map-screen');
     const seededBlob = seedStorage.blob;
-    seedRender.unmount();
+    seed.unmount();
 
     const { findByTestId, queryByTestId } = render(
       <ProgressProvider storage={memoryStorage(seededBlob)}>
