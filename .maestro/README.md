@@ -8,8 +8,7 @@ They exercise the real app on a simulator/device — the layer the Jest tests mo
 
 | Flow | What it proves |
 |---|---|
-| `smoke.yaml` | App launches and routes to first-run onboarding (Welcome → Age gate). |
-| `onboarding-first-set.yaml` | The first shippable slice end to end: under-13 → soft-block (no path forward), then a new guest onboards (Welcome → birth-year 13+) → **level map (3a)** → the locked exam-gate node is present (AE2) → tap the first unit (`treble-notes`) → completes the 8-item set (deterministic seed answers B, C flat, B, A, A, F, A, C sharp) → mastery-gems payoff (2f, 8/8). Each pass starts with `clearState` so onboarding fires fresh. |
+| `onboarding-first-set.yaml` | The first shippable slice end to end: under-13 → soft-block (no path forward), then a new guest onboards (Welcome → birth-year 13+) → **level map (3a)** → the locked exam-gate node is present (AE2) → tap the first unit (`treble-notes`) → completes the 8-item set (deterministic correct-option indices 0,0,2,1,0,0,2,2) → mastery-gems payoff (2f, 8/8). Each pass starts with `clearState` so onboarding fires fresh. Also covers app-launch → Welcome → age-gate (the smoke path), so no separate smoke flow is kept. |
 
 ### New Grade 1 interactions — coverage note
 
@@ -41,18 +40,17 @@ self-contained launch, build a standalone/dev build and switch the flows to
 
 The dev URL is passed via `-e DEV_URL=…` (a flow-level `env:` default would
 override `-e`, so the flows intentionally omit one). The npm scripts default to
-Expo's port 8081 and honor a `DEV_URL` shell override:
+this repo's port 8090 and honor a `DEV_URL` shell override:
 
 ```bash
-npm run e2e:smoke                                    # uses exp://127.0.0.1:8081
-DEV_URL=exp://127.0.0.1:8090 npm run e2e:smoke        # this repo's dev server runs on 8090
-DEV_URL=exp://127.0.0.1:8090 npm run e2e:onboarding
-DEV_URL=exp://127.0.0.1:8090 npm run e2e              # whole suite
+npm run e2e                                          # uses exp://127.0.0.1:8090
+DEV_URL=exp://127.0.0.1:8091 npm run e2e             # override the Metro port
+npm run e2e:onboarding                               # the single flow directly
 ```
 
 Or invoke Maestro directly:
 ```bash
-maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/smoke.yaml
+maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
 ```
 
 > This repo's dev server uses **port 8090** (8081 collides with another local
@@ -60,12 +58,15 @@ maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/smoke.yaml
 
 ## Notes
 
-- `smoke.yaml` avoids `stopApp`/`clearState` (which reopen Expo Go to its last
-  project) and reloads the active project via `openLink`, so keep only this
-  project's Metro running while testing. `onboarding-first-set.yaml` **must**
-  reset persisted state so first-run onboarding fires, so it does use
-  `clearState` before each pass — run it with only this project's Metro up (or a
-  dev build) so the subsequent `openLink` re-routes to the right project.
-- The correct answers in `onboarding-first-set.yaml` are derived from the pure
-  generators (the treble-notes template, seeds 0-7). If the generator or lesson
-  templates change, regenerate them (see the header comment in the flow).
+- `onboarding-first-set.yaml` **must** reset persisted state so first-run
+  onboarding fires, so it uses `clearState` before each pass. `clearState`
+  reopens Expo Go to its last project, so run with only this project's Metro up
+  (or a dev build) so the subsequent `openLink` re-routes to the right project.
+  These `clearState` cold reloads dominate the flow's wall-time; keep the suite
+  to this single flow rather than adding more `clearState` passes.
+- The flow taps answers by **option index** (`option-<i>`), not by note-name
+  label: treble-notes is atom-driven so every option is a single natural letter,
+  which collides with the A/B/C position badges on each row. The correct indices
+  (and answers) are derived from the pure generators + `assembleOptions` shuffle
+  for seeds 0-7. If the generator, the treble-notes atoms, or the shuffle change,
+  regenerate them (see the header comment in the flow).
