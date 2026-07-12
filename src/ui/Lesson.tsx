@@ -1,7 +1,7 @@
 // Lesson runner (U12): worked example (if any) → a stream of generated
 // exercises → completion. MVP completion rule is 5 hint-free correct answers
-// (cumulative, not consecutive) on the lesson's first template — generators can't yet target the
-// specific atoms a lesson lists, so per-atom mastery is still recorded (for
+// (cumulative, not consecutive) on the lesson's first template. Generation is
+// scoped to the lesson's declared atoms; per-atom mastery is recorded (for
 // Practice/SRS) but does not gate lesson completion here.
 
 import { useCallback, useMemo, useRef, useState } from 'react';
@@ -37,13 +37,14 @@ export function Lesson({ lesson, onDone }: LessonProps) {
         ? generate(lesson.worked_example.template_id, {
             grade: lesson.worked_example.grade,
             seed: lesson.worked_example.seed,
+            atoms: lesson.atoms,
           })
         : null,
     [lesson],
   );
 
   const instance = useMemo(
-    () => generate(lesson.templates[0], { grade: 1, seed: attemptIndex }),
+    () => generate(lesson.templates[0], { grade: 1, seed: attemptIndex, atoms: lesson.atoms }),
     [lesson, attemptIndex],
   );
 

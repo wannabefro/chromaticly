@@ -18,12 +18,15 @@ export function Practice() {
   // cross-session SRS precision is out of MVP scope.
   const tickRef = useRef(0);
 
-  const template = useMemo(
+  const pick = useMemo(
     () => (store ? nextPracticeTemplate(store.atomEntries(), tickRef.current, isUnlocked, step) : null),
     [store, isUnlocked, step],
   );
 
-  const instance = useMemo(() => (template ? generate(template, { grade: 1, seed: step }) : null), [template, step]);
+  const instance = useMemo(
+    () => (pick ? generate(pick.template, { grade: 1, seed: step, atoms: pick.atoms }) : null),
+    [pick, step],
+  );
 
   // Continue on the FeedbackSheet fires onResult; record and advance the stream here.
   const handleResult = useCallback(

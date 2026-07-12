@@ -35,7 +35,7 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
   const strand = lesson.strand as Strand;
 
   const instance = useMemo(
-    () => generate(lesson.templates[itemIndex % lesson.templates.length], { grade: 1, seed: itemIndex }),
+    () => generate(lesson.templates[itemIndex % lesson.templates.length], { grade: 1, seed: itemIndex, atoms: lesson.atoms }),
     [lesson, itemIndex],
   );
 

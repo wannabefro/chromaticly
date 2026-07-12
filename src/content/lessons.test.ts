@@ -19,7 +19,7 @@ describe('grade1 lessons — the bundled doc loads and cross-checks clean', () =
     for (const lesson of LESSONS) {
       if (!lesson.worked_example) continue;
       const { template_id, grade, seed } = lesson.worked_example;
-      const instance = generate(template_id, { grade, seed });
+      const instance = generate(template_id, { grade, seed, atoms: [] });
       expect(validate(instance)).toEqual({ ok: true, errors: [] });
     }
   });
@@ -28,7 +28,7 @@ describe('grade1 lessons — the bundled doc loads and cross-checks clean', () =
     for (const lesson of LESSONS) {
       if (!lesson.worked_example) continue;
       const { template_id, grade, seed } = lesson.worked_example;
-      expect(generate(template_id, { grade, seed }).strand).toBe(lesson.strand);
+      expect(generate(template_id, { grade, seed, atoms: [] }).strand).toBe(lesson.strand);
     }
   });
 });

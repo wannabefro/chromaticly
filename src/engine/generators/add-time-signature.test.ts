@@ -18,15 +18,15 @@ function barTotal(events: MusicEvent[]): number {
 
 describe('addTimeSignature — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {
-    const a = addTimeSignature({ grade: 1, seed: 5 });
-    const b = addTimeSignature({ grade: 1, seed: 5 });
+    const a = addTimeSignature({ grade: 1, seed: 5, atoms: [] });
+    const b = addTimeSignature({ grade: 1, seed: 5, atoms: [] });
     expect(a).toEqual(b);
   });
 
   test('different seeds produce different instances', () => {
     const seeds = new Set<string>();
     for (let seed = 0; seed < 20; seed++) {
-      seeds.add(JSON.stringify(addTimeSignature({ grade: 1, seed })));
+      seeds.add(JSON.stringify(addTimeSignature({ grade: 1, seed, atoms: [] })));
     }
     expect(seeds.size).toBeGreaterThan(1);
   });
@@ -35,7 +35,7 @@ describe('addTimeSignature — reproducibility (KTD4: pure function of seed)', (
 describe('addTimeSignature — canonical answer matches the bar\'s actual beat sum', () => {
   test('the canonical time signature is the one whose beat count the rendered bar actually totals', () => {
     for (let seed = 0; seed < 50; seed++) {
-      const instance = addTimeSignature({ grade: 1, seed });
+      const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as string;
       const music = instance.stimulus.music as Music;
       const total = barTotal(music.voices[0].events);
@@ -45,7 +45,7 @@ describe('addTimeSignature — canonical answer matches the bar\'s actual beat s
 
   test('the stimulus itself carries no time signature — the learner must add up the bar', () => {
     for (let seed = 0; seed < 20; seed++) {
-      const instance = addTimeSignature({ grade: 1, seed });
+      const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       expect((instance.stimulus.music as Music).time_sig).toBeNull();
     }
   });
@@ -54,7 +54,7 @@ describe('addTimeSignature — canonical answer matches the bar\'s actual beat s
 describe('addTimeSignature — distractors are the other G1 time signatures', () => {
   test('every distractor is a G1 time signature, none equal the canonical answer, no duplicates', () => {
     for (let seed = 0; seed < 50; seed++) {
-      const instance = addTimeSignature({ grade: 1, seed });
+      const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as string;
       expect(instance.distractors.length).toBeGreaterThanOrEqual(1);
       for (const d of instance.distractors) {
@@ -67,7 +67,7 @@ describe('addTimeSignature — distractors are the other G1 time signatures', ()
 
   test('the distractor pool is exactly the other two G1 time signatures', () => {
     for (let seed = 0; seed < 20; seed++) {
-      const instance = addTimeSignature({ grade: 1, seed });
+      const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as string;
       const expected = G1_TIME_SIGNATURES.filter((t) => t !== canonical);
       expect([...instance.distractors].sort()).toEqual([...expected].sort());
@@ -78,7 +78,7 @@ describe('addTimeSignature — distractors are the other G1 time signatures', ()
 describe('addTimeSignature — scope', () => {
   test('every emitted note value is in G1 scope and the canonical answer is a G1 time signature', () => {
     for (let seed = 0; seed < 30; seed++) {
-      const instance = addTimeSignature({ grade: 1, seed });
+      const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       expect(G1_TIME_SIGNATURES).toContain(instance.answer.canonical);
       for (const ev of (instance.stimulus.music as Music).voices[0].events) {
         if (ev.type === 'note') expect(G1_NOTE_VALUES).toContain(ev.dur);
@@ -89,7 +89,7 @@ describe('addTimeSignature — scope', () => {
 
 describe('addTimeSignature — srs_tags', () => {
   test('emits the bare add_time_signature atom', () => {
-    const instance = addTimeSignature({ grade: 1, seed: 1 });
+    const instance = addTimeSignature({ grade: 1, seed: 1, atoms: [] });
     expect(instance.srs_tags).toEqual(['add_time_signature']);
   });
 });
@@ -97,7 +97,7 @@ describe('addTimeSignature — srs_tags', () => {
 describe('addTimeSignature — fuzz gate: 100 generated items are all validator-clean', () => {
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {
-      const instance = addTimeSignature({ grade: 1, seed });
+      const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       const result = validate(instance);
       expect(result).toEqual({ ok: true, errors: [] });
     }

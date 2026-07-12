@@ -1,19 +1,34 @@
-// Practice scheduling glue (U11). Generators can't yet target a specific atom,
-// so Practice works at *template* granularity: it uses the SRS signal to find
-// the weakest due unlocked atom and serves that atom's template, falling back to
-// a rotation over unlocked templates when nothing is due. This wires the tested
-// SRS ordering (srs.ts) into generation without atom-level targeting — an honest
-// MVP compromise, documented so it isn't mistaken for per-atom review.
+// Practice scheduling glue (U11). Generators are atom-scoped (GenerateOptions
+// .atoms), so Practice now targets a specific atom: it uses the SRS signal to
+// find the weakest due unlocked atom and serves that atom's template scoped to
+// exactly that atom. When nothing is due it falls back to a rotation over
+// unlocked templates, scoped to a concrete owning lesson's atoms so a reused
+// template (e.g. note_naming across treble/bass/accidentals lessons) still
+// renders lesson-faithful content rather than the grade-wide scope.
 
 import { LESSONS } from '../content/lessons';
 import { selectDue, type SrsState } from './srs';
 
 // atom → the template that teaches it (first lesson/template that lists the atom).
 const ATOM_TEMPLATE = new Map<string, string>();
+// template → the atoms of the first unlocked-eligible lesson that owns it,
+// used to scope the rotation fallback (a template can be shared across lessons).
+const TEMPLATE_LESSON_ATOMS = new Map<string, string[]>();
 for (const lesson of LESSONS) {
   for (const atom of lesson.atoms) {
     if (!ATOM_TEMPLATE.has(atom)) ATOM_TEMPLATE.set(atom, lesson.templates[0]);
   }
+  for (const t of lesson.templates) {
+    if (!TEMPLATE_LESSON_ATOMS.has(t)) TEMPLATE_LESSON_ATOMS.set(t, lesson.atoms);
+  }
+}
+
+/** What Practice should generate next: a template plus the atom scope to pass
+ *  as GenerateOptions.atoms. On the due path the scope is the single due atom
+ *  (per-atom review); on the rotation path it is the owning lesson's atoms. */
+export interface PracticePick {
+  template: string;
+  atoms: string[];
 }
 
 export function unlockedTemplates(isUnlocked: (lessonId: string) => boolean): string[] {
@@ -34,21 +49,22 @@ export function unlockedAtomSet(isUnlocked: (lessonId: string) => boolean): Set<
   return set;
 }
 
-/** The template Practice should serve next: the template of the weakest due
- *  unlocked atom (SRS-driven), else a rotating unlocked template. null when
- *  nothing is unlocked. */
+/** What Practice should serve next: the weakest due unlocked atom (SRS-driven,
+ *  scoped to that atom), else a rotating unlocked template (scoped to its owning
+ *  lesson's atoms). null when nothing is unlocked. */
 export function nextPracticeTemplate(
   entries: { atom: string; srs: SrsState }[],
   now: number,
   isUnlocked: (lessonId: string) => boolean,
   step: number,
-): string | null {
+): PracticePick | null {
   const eligible = unlockedAtomSet(isUnlocked);
   for (const atom of selectDue(entries, now, (a) => eligible.has(a))) {
     const template = ATOM_TEMPLATE.get(atom);
-    if (template) return template;
+    if (template) return { template, atoms: [atom] };
   }
   const templates = unlockedTemplates(isUnlocked);
   if (templates.length === 0) return null;
-  return templates[step % templates.length];
+  const template = templates[step % templates.length];
+  return { template, atoms: TEMPLATE_LESSON_ATOMS.get(template) ?? [] };
 }

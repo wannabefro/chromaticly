@@ -28,7 +28,7 @@ describe('GENERATORS registry', () => {
 describe('generate() — dispatches to the right generator', () => {
   test('generate(templateId, opts) produces an instance whose template_id matches', () => {
     for (const templateId of TEMPLATE_IDS) {
-      const instance = generate(templateId, { grade: 1, seed: 1 });
+      const instance = generate(templateId, { grade: 1, seed: 1, atoms: [] });
       expect(instance.template_id).toBe(templateId);
       expect(validate(instance).ok).toBe(true);
     }
@@ -36,13 +36,13 @@ describe('generate() — dispatches to the right generator', () => {
 
   test('generate() matches calling the registered generator directly for the same seed', () => {
     for (const templateId of TEMPLATE_IDS) {
-      const viaRegistry = generate(templateId, { grade: 1, seed: 55 });
-      const viaDirect = GENERATORS[templateId]({ grade: 1, seed: 55 });
+      const viaRegistry = generate(templateId, { grade: 1, seed: 55, atoms: [] });
+      const viaDirect = GENERATORS[templateId]({ grade: 1, seed: 55, atoms: [] });
       expect(viaRegistry).toEqual(viaDirect);
     }
   });
 
   test('throws on an unregistered template_id', () => {
-    expect(() => generate('melody_generator', { grade: 1, seed: 0 })).toThrow(/No generator registered/);
+    expect(() => generate('melody_generator', { grade: 1, seed: 0, atoms: [] })).toThrow(/No generator registered/);
   });
 });

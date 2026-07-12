@@ -34,7 +34,7 @@ describe('registry — mcq characterization (zero behavior change)', () => {
 
     for (const templateId of MCQ_TEMPLATE_IDS) {
       for (const seed of SEEDS) {
-        const instance = generate(templateId, { grade: 1, seed });
+        const instance = generate(templateId, { grade: 1, seed, atoms: [] });
         expect(instance.interaction.type).toBe('mcq');
         const options = assembleOptions(instance);
 
@@ -54,7 +54,7 @@ describe('registry — mcq characterization (zero behavior change)', () => {
   test('exactly one option per instance grades correct — the canonical pick', () => {
     const mcqSpec = lookupInteraction('mcq');
     for (const templateId of MCQ_TEMPLATE_IDS) {
-      const instance = generate(templateId, { grade: 1, seed: 7 });
+      const instance = generate(templateId, { grade: 1, seed: 7, atoms: [] });
       const options = assembleOptions(instance);
       const correctIndices = options.map((_, i) => i).filter((i) => mcqSpec.grade(instance, i));
       expect(correctIndices).toHaveLength(1);
@@ -117,7 +117,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
 });
 
 describe('registry — stave_input (U8, interval_naming_stave_input)', () => {
-  const staveInstance = generate('interval_naming_stave_input', { grade: 1, seed: 5 });
+  const staveInstance = generate('interval_naming_stave_input', { grade: 1, seed: 5, atoms: [] });
 
   test('emptyResponse resets to no placement', () => {
     expect(lookupInteraction('stave_input').emptyResponse(staveInstance)).toBeNull();
@@ -153,7 +153,7 @@ describe('registry — stave_input (U8, interval_naming_stave_input)', () => {
 });
 
 describe('registry — flashcard (U7, term_meaning_flashcard)', () => {
-  const flashcardInstance = generate('term_meaning_flashcard', { grade: 1, seed: 3 });
+  const flashcardInstance = generate('term_meaning_flashcard', { grade: 1, seed: 3, atoms: [] });
 
   test('emptyResponse resets to unrevealed with no grade picked', () => {
     const spec = lookupInteraction('flashcard');
@@ -178,7 +178,7 @@ describe('registry — flashcard (U7, term_meaning_flashcard)', () => {
 });
 
 describe('registry — true_false (U5, bar_validity)', () => {
-  const barValidityInstance = generate('bar_validity', { grade: 1, seed: 4 });
+  const barValidityInstance = generate('bar_validity', { grade: 1, seed: 4, atoms: [] });
 
   test('emptyResponse resets to a null-per-bar array sized from the bar-identity metadata', () => {
     const spec = lookupInteraction('true_false');
@@ -220,7 +220,7 @@ describe('registry — true_false (U5, bar_validity)', () => {
 
 describe('registry — protocol shape', () => {
   test('grade returns a boolean for mcq and text_input (the self-graded null path is exercised later, by flashcard)', () => {
-    const mcqInstance = generate('note_naming', { grade: 1, seed: 1 });
+    const mcqInstance = generate('note_naming', { grade: 1, seed: 1, atoms: [] });
     expect(typeof lookupInteraction('mcq').grade(mcqInstance, 0)).toBe('boolean');
 
     const textInstance: ExerciseInstance = { ...mcqInstance, interaction: { type: 'text_input', config: {} } };
@@ -241,7 +241,7 @@ describe('registry — protocol shape', () => {
   });
 
   test('emptyResponse: mcq resets to null, text_input resets to an empty string', () => {
-    const instance = generate('note_naming', { grade: 1, seed: 1 });
+    const instance = generate('note_naming', { grade: 1, seed: 1, atoms: [] });
     expect(lookupInteraction('mcq').emptyResponse(instance)).toBeNull();
     expect(lookupInteraction('text_input').emptyResponse(instance)).toBe('');
   });
@@ -269,7 +269,7 @@ describe('registry — correctAnswerView', () => {
   });
 
   test('mcq renders the correct option (the canonical answer\'s label)', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 3 });
+    const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: [] });
     const options = assembleOptions(instance);
     const correctOption = options.find((o) => o.correct)!;
     const view = lookupInteraction('mcq').correctAnswerView(instance);
@@ -283,7 +283,7 @@ describe('registry — correctAnswerView', () => {
   // through unnoticed without this option-level assertion).
   test('a notation-answer MCQ (key_signature_id) renders the correct option\'s music, sourced from its render payload', () => {
     for (let seed = 0; seed < 10; seed++) {
-      const instance = generate('key_signature_id', { grade: 1, seed });
+      const instance = generate('key_signature_id', { grade: 1, seed, atoms: [] });
       const correctOption = assembleOptions(instance).find((o) => o.correct)!;
       expect(correctOption.music).toBeDefined();
 
@@ -298,7 +298,7 @@ describe('registry — correctAnswerView', () => {
   // Rule 2/9: play is present outside options — the FeedbackSheet correct-answer
   // notation is not itself an AnswerOption, so it must not be play-disabled.
   test('the notation-answer correct-answer view carries play (unlike the play-disabled option)', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 3 });
+    const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: [] });
     const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { play?: boolean } };
     expect(view.props.play).not.toBe(false);
   });

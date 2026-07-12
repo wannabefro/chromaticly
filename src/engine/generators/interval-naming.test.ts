@@ -7,15 +7,15 @@ import { scientificPitchOrdinal } from './pitch-math';
 
 describe('intervalNaming — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {
-    const a = intervalNaming({ grade: 1, seed: 11 });
-    const b = intervalNaming({ grade: 1, seed: 11 });
+    const a = intervalNaming({ grade: 1, seed: 11, atoms: [] });
+    const b = intervalNaming({ grade: 1, seed: 11, atoms: [] });
     expect(a).toEqual(b);
   });
 
   test('different seeds produce different instances', () => {
     const seeds = new Set<string>();
     for (let seed = 0; seed < 20; seed++) {
-      seeds.add(JSON.stringify(intervalNaming({ grade: 1, seed })));
+      seeds.add(JSON.stringify(intervalNaming({ grade: 1, seed, atoms: [] })));
     }
     expect(seeds.size).toBeGreaterThan(1);
   });
@@ -24,7 +24,7 @@ describe('intervalNaming — reproducibility (KTD4: pure function of seed)', () 
 describe('intervalNaming — G1 rule: lower note pinned to the tonic, above-tonic only, <= an octave', () => {
   test('the chord\'s lower note is always the sampled key\'s tonic letter, and both pitches stay in clef range', () => {
     for (let seed = 0; seed < 30; seed++) {
-      const instance = intervalNaming({ grade: 1, seed });
+      const instance = intervalNaming({ grade: 1, seed, atoms: [] });
       const music = instance.stimulus.music as {
         clef: 'treble' | 'bass';
         key_sig: string;
@@ -57,7 +57,7 @@ describe('intervalNaming — G1 rule: lower note pinned to the tonic, above-toni
 describe('intervalNaming — answer is number-only', () => {
   test('canonical answer is an integer 2..8 (steps + 1, above tonic)', () => {
     for (let seed = 0; seed < 30; seed++) {
-      const instance = intervalNaming({ grade: 1, seed });
+      const instance = intervalNaming({ grade: 1, seed, atoms: [] });
       expect(typeof instance.answer.canonical).toBe('number');
       expect(instance.answer.canonical).toBeGreaterThanOrEqual(2);
       expect(instance.answer.canonical).toBeLessThanOrEqual(8);
@@ -68,7 +68,7 @@ describe('intervalNaming — answer is number-only', () => {
 describe('intervalNaming — distractor rule: +/-1 number', () => {
   test('every distractor is exactly one away from the canonical interval number', () => {
     for (let seed = 0; seed < 30; seed++) {
-      const instance = intervalNaming({ grade: 1, seed });
+      const instance = intervalNaming({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as number;
       for (const d of instance.distractors as number[]) {
         expect(Math.abs(d - canonical)).toBe(1);
@@ -83,7 +83,7 @@ describe('intervalNaming — notes are spelled diatonically within the key', () 
   // 7th above D in D major must render as C#, not a chromatic C-natural.
   test('no generated interval renders an explicit accidental in the ABC body', () => {
     for (let seed = 0; seed < 100; seed++) {
-      const instance = intervalNaming({ grade: 1, seed });
+      const instance = intervalNaming({ grade: 1, seed, atoms: [] });
       const abc = musicToAbc(instance.stimulus.music as Music);
       const body = abc.split('\n').filter((line) => !/^[A-Za-z]:/.test(line)).join('\n');
       expect(body).not.toMatch(/[=^_]/);
@@ -93,7 +93,7 @@ describe('intervalNaming — notes are spelled diatonically within the key', () 
 
 describe('intervalNaming — srs_tags', () => {
   test('emits an interval atom for the answer number', () => {
-    const instance = intervalNaming({ grade: 1, seed: 3 });
+    const instance = intervalNaming({ grade: 1, seed: 3, atoms: [] });
     expect(instance.srs_tags).toEqual([`interval:${instance.answer.canonical}`]);
   });
 });
@@ -101,7 +101,7 @@ describe('intervalNaming — srs_tags', () => {
 describe('intervalNaming — fuzz gate: 100 generated items are all validator-clean', () => {
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {
-      const instance = intervalNaming({ grade: 1, seed });
+      const instance = intervalNaming({ grade: 1, seed, atoms: [] });
       const result = validate(instance);
       expect(result).toEqual({ ok: true, errors: [] });
     }
@@ -114,15 +114,15 @@ describe('intervalNaming — fuzz gate: 100 generated items are all validator-cl
 // never deep-equals a Music object either.
 describe('intervalNamingStaveInput — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {
-    const a = intervalNamingStaveInput({ grade: 1, seed: 11 });
-    const b = intervalNamingStaveInput({ grade: 1, seed: 11 });
+    const a = intervalNamingStaveInput({ grade: 1, seed: 11, atoms: [] });
+    const b = intervalNamingStaveInput({ grade: 1, seed: 11, atoms: [] });
     expect(a).toEqual(b);
   });
 
   test('different seeds produce different instances', () => {
     const seeds = new Set<string>();
     for (let seed = 0; seed < 20; seed++) {
-      seeds.add(JSON.stringify(intervalNamingStaveInput({ grade: 1, seed })));
+      seeds.add(JSON.stringify(intervalNamingStaveInput({ grade: 1, seed, atoms: [] })));
     }
     expect(seeds.size).toBeGreaterThan(1);
   });
@@ -130,13 +130,13 @@ describe('intervalNamingStaveInput — reproducibility (KTD4: pure function of s
 
 describe('intervalNamingStaveInput — interaction shape', () => {
   test('interaction.type is stave_input', () => {
-    const instance = intervalNamingStaveInput({ grade: 1, seed: 2 });
+    const instance = intervalNamingStaveInput({ grade: 1, seed: 2, atoms: [] });
     expect(instance.interaction.type).toBe('stave_input');
   });
 
   test('stimulus renders exactly the given (lower) note — the learner writes the target, not the reverse', () => {
     for (let seed = 0; seed < 20; seed++) {
-      const instance = intervalNamingStaveInput({ grade: 1, seed });
+      const instance = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
       const music = instance.stimulus.music as Music;
       expect(music.voices[0].events).toHaveLength(1);
       expect(music.voices[0].events[0].type).toBe('note');
@@ -147,7 +147,7 @@ describe('intervalNamingStaveInput — interaction shape', () => {
 describe('intervalNamingStaveInput — canonical target is semantic {pitch, dur}, in G1 scope (ledger = middle C only)', () => {
   test('canonical is a scientific pitch + a G1 duration, within the sampled clef range, above the given note', () => {
     for (let seed = 0; seed < 50; seed++) {
-      const instance = intervalNamingStaveInput({ grade: 1, seed });
+      const instance = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
       const music = instance.stimulus.music as {
         clef: 'treble' | 'bass';
         key_sig: string;
@@ -171,7 +171,7 @@ describe('intervalNamingStaveInput — canonical target is semantic {pitch, dur}
 
   test('canonical answer is never a Music object — grading stays semantic (AD5)', () => {
     for (let seed = 0; seed < 20; seed++) {
-      const instance = intervalNamingStaveInput({ grade: 1, seed });
+      const instance = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as Record<string, unknown>;
       expect(canonical).not.toHaveProperty('voices');
       expect(canonical).not.toHaveProperty('clef');
@@ -183,7 +183,7 @@ describe('intervalNamingStaveInput — canonical target is semantic {pitch, dur}
 describe('intervalNamingStaveInput — srs_tags', () => {
   test('emits the same interval-atom scheme as the mcq variant (shared mastery skill)', () => {
     for (let seed = 0; seed < 20; seed++) {
-      const instance = intervalNamingStaveInput({ grade: 1, seed });
+      const instance = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
       expect(instance.srs_tags[0]).toMatch(/^interval:\d+$/);
     }
   });
@@ -192,7 +192,7 @@ describe('intervalNamingStaveInput — srs_tags', () => {
 describe('intervalNamingStaveInput — fuzz gate: 100 generated items are all validator-clean', () => {
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {
-      const instance = intervalNamingStaveInput({ grade: 1, seed });
+      const instance = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
       const result = validate(instance);
       expect(result).toEqual({ ok: true, errors: [] });
     }

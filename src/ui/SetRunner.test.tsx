@@ -31,7 +31,7 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
 const lesson = LESSONS[0];
 
 async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
-  const instance = generate(lesson.templates[0], { grade: 1, seed });
+  const instance = generate(lesson.templates[0], { grade: 1, seed, atoms: [] });
   const index = assembleOptions(instance).findIndex((o) => o.correct);
   await act(async () => {
     fireEvent.press(getByTestId(`option-${index}`));
@@ -167,7 +167,7 @@ describe('SetRunner — multi-template lessons cycle their templates across item
   };
 
   async function answerCorrectAt(getByTestId: (id: string) => any, templateId: string, seed: number) {
-    const instance = generate(templateId, { grade: 1, seed });
+    const instance = generate(templateId, { grade: 1, seed, atoms: [] });
     const index = assembleOptions(instance).findIndex((o) => o.correct);
     await act(async () => {
       fireEvent.press(getByTestId(`option-${index}`));
@@ -193,7 +193,7 @@ describe('SetRunner — multi-template lessons cycle their templates across item
 
     for (let i = 0; i < cyclingLesson.templates.length * 2; i++) {
       const expectedTemplate = expectedTemplateAt(i);
-      const expectedPrompt = generate(expectedTemplate, { grade: 1, seed: i }).prompt;
+      const expectedPrompt = generate(expectedTemplate, { grade: 1, seed: i, atoms: [] }).prompt;
       expect(getByTestId('prompt').props.children).toBe(expectedPrompt);
       await answerCorrectAt(getByTestId, expectedTemplate, i);
     }
@@ -211,7 +211,7 @@ describe('SetRunner — multi-template lessons cycle their templates across item
     await act(async () => {});
 
     expect(getByTestId('prompt').props.children).toBe(
-      generate(lesson.templates[0], { grade: 1, seed: 0 }).prompt,
+      generate(lesson.templates[0], { grade: 1, seed: 0, atoms: [] }).prompt,
     );
   });
 });
