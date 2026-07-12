@@ -1,111 +1,145 @@
-import { G1_CLEFS } from '../scope';
 import { validate } from '../validator';
 import { noteNaming } from './note-naming';
+import { atomsForLesson, optsFor } from './test-helpers';
 
-describe('noteNaming — reproducibility (KTD4: pure function of seed)', () => {
-  test('the same (grade, seed) produces a deeply-equal instance', () => {
-    const a = noteNaming({ grade: 1, seed: 42, atoms: [] });
-    const b = noteNaming({ grade: 1, seed: 42, atoms: [] });
-    expect(a).toEqual(b);
+const TREBLE = atomsForLesson('treble-notes'); // 13 treble naturals C4..A5
+const BASS = atomsForLesson('bass-notes'); // 14 bass naturals E2..D4
+const ACCIDENTALS = atomsForLesson('accidentals'); // F#5, C#5, Bb4, F#3, Bb2
+const ALL = [TREBLE, BASS, ACCIDENTALS];
+
+const NEVER_G1_LABELS = ['C flat', 'F flat', 'B sharp', 'E sharp'];
+
+function stimulus(instance: ReturnType<typeof noteNaming>): { clef: string; pitch: string } {
+  const m = instance.stimulus.music as { clef: string; voices: { events: { pitch: string }[] }[] };
+  return { clef: m.clef, pitch: m.voices[0].events[0].pitch };
+}
+
+describe('noteNaming — reproducibility (KTD4: pure function of seed + atoms)', () => {
+  test('the same (seed, atoms) produces a deeply-equal instance', () => {
+    expect(noteNaming(optsFor(TREBLE, 42))).toEqual(noteNaming(optsFor(TREBLE, 42)));
   });
 
   test('different seeds produce different instances', () => {
-    const seeds = new Set<string>();
-    for (let seed = 0; seed < 20; seed++) {
-      seeds.add(JSON.stringify(noteNaming({ grade: 1, seed, atoms: [] })));
-    }
-    expect(seeds.size).toBeGreaterThan(1);
+    const seen = new Set<string>();
+    for (let seed = 0; seed < 20; seed++) seen.add(JSON.stringify(noteNaming(optsFor(TREBLE, seed))));
+    expect(seen.size).toBeGreaterThan(1);
   });
 });
 
-describe('noteNaming — scope (commandment 1)', () => {
-  test('sampled clef and pitch stay within G1 scope across many seeds', () => {
-    for (let seed = 0; seed < 30; seed++) {
-      const instance = noteNaming({ grade: 1, seed, atoms: [] });
-      const music = instance.stimulus.music as { clef: string; voices: { events: { pitch: string }[] }[] };
-      expect(G1_CLEFS).toContain(music.clef);
-      expect(validate(instance).ok).toBe(true);
-    }
-  });
-});
-
-describe('noteNaming — distractor rule: clef confusion + adjacent line/space', () => {
-  test('one distractor names the note as it would read on the OTHER clef, at the same staff position', () => {
-    // seed 42 -> a specific deterministic instance; assert against its own
-    // clef-confusion computation rather than hand-picking a magic pitch.
-    const instance = noteNaming({ grade: 1, seed: 42, atoms: [] });
-    expect(instance.distractors).toHaveLength(2);
-    // both distractors are single note names distinct from the canonical answer
-    for (const d of instance.distractors) {
-      expect(d).not.toBe(instance.answer.canonical);
+describe('noteNaming — draws only from the lesson atoms (R1, 1uj)', () => {
+  test('treble-notes: only treble naturals in-scope, never an accidental, always treble clef', () => {
+    const allowed = new Set(TREBLE);
+    for (let seed = 0; seed < 200; seed++) {
+      const { clef, pitch } = stimulus(noteNaming(optsFor(TREBLE, seed)));
+      expect(clef).toBe('treble');
+      expect(pitch).not.toMatch(/[#b]/); // no accidental on a naturals lesson
+      expect(allowed.has(`note_read:${clef}:${pitch}`)).toBe(true);
     }
   });
 
-  test('across many seeds, distractors are always well-formed note names distinct from the answer and each other', () => {
-    for (let seed = 0; seed < 30; seed++) {
-      const instance = noteNaming({ grade: 1, seed, atoms: [] });
-      const [adjacent, clefConfusion] = instance.distractors as string[];
-      expect(adjacent).not.toBe(instance.answer.canonical);
-      expect(clefConfusion).not.toBe(instance.answer.canonical);
-      expect(adjacent).not.toBe(clefConfusion);
+  test('bass-notes: only the 14 bass naturals, always bass clef', () => {
+    const allowed = new Set(BASS);
+    for (let seed = 0; seed < 200; seed++) {
+      const { clef, pitch } = stimulus(noteNaming(optsFor(BASS, seed)));
+      expect(clef).toBe('bass');
+      expect(allowed.has(`note_read:${clef}:${pitch}`)).toBe(true);
     }
   });
-});
 
-describe('noteNaming — grading (spec example: "E flat" accepts "Eb"/"E♭")', () => {
-  test('a flat answer computes accepted_alternatives with the flat symbol and unicode flat', () => {
-    let found = false;
-    for (let seed = 0; seed < 200 && !found; seed++) {
-      const instance = noteNaming({ grade: 1, seed, atoms: [] });
-      if (typeof instance.answer.canonical === 'string' && instance.answer.canonical.endsWith('flat')) {
-        found = true;
-        const letter = instance.answer.canonical[0];
-        expect(instance.answer.accepted_alternatives).toEqual([`${letter}b`, `${letter}♭`]);
+  test('accidentals: only the five declared accidental notes, on the clefs the atoms name', () => {
+    const allowed = new Set(ACCIDENTALS);
+    for (let seed = 0; seed < 200; seed++) {
+      const { clef, pitch } = stimulus(noteNaming(optsFor(ACCIDENTALS, seed)));
+      expect(allowed.has(`note_read:${clef}:${pitch}`)).toBe(true);
+    }
+  });
+
+  test('srs_tags[0] is exactly the chosen lesson atom (mastery records what was shown)', () => {
+    for (const atoms of ALL) {
+      const allowed = new Set(atoms);
+      for (let seed = 0; seed < 100; seed++) {
+        const instance = noteNaming(optsFor(atoms, seed));
+        expect(instance.srs_tags).toHaveLength(1);
+        expect(allowed.has(instance.srs_tags[0])).toBe(true);
+        // and it is the atom for the pitch actually rendered
+        const { clef, pitch } = stimulus(instance);
+        expect(instance.srs_tags[0]).toBe(`note_read:${clef}:${pitch}`);
       }
     }
-    expect(found).toBe(true);
   });
 
-  test('a sharp answer computes accepted_alternatives with # and unicode sharp', () => {
-    let found = false;
-    for (let seed = 0; seed < 200 && !found; seed++) {
-      const instance = noteNaming({ grade: 1, seed, atoms: [] });
-      if (typeof instance.answer.canonical === 'string' && instance.answer.canonical.endsWith('sharp')) {
-        found = true;
-        const letter = instance.answer.canonical[0];
-        expect(instance.answer.accepted_alternatives).toEqual([`${letter}#`, `${letter}♯`]);
-      }
-    }
-    expect(found).toBe(true);
-  });
-
-  test('a plain natural answer has no accepted_alternatives', () => {
-    let found = false;
-    for (let seed = 0; seed < 200 && !found; seed++) {
-      const instance = noteNaming({ grade: 1, seed, atoms: [] });
-      if (typeof instance.answer.canonical === 'string' && !instance.answer.canonical.includes(' ')) {
-        found = true;
-        expect(instance.answer.accepted_alternatives).toEqual([]);
-      }
-    }
-    expect(found).toBe(true);
+  test('a lesson with no note_read:* atoms throws (fail loud, not grade-wide fallback)', () => {
+    expect(() => noteNaming(optsFor(['key_sig:C_major'], 0))).toThrow(/no note_read/);
   });
 });
 
-describe('noteNaming — srs_tags', () => {
-  test('emits a note_read atom for the sampled clef and pitch', () => {
-    const instance = noteNaming({ grade: 1, seed: 7, atoms: [] });
-    expect(instance.srs_tags).toHaveLength(1);
-    expect(instance.srs_tags[0]).toMatch(/^note_read:(treble|bass):[A-G](#|b)?\d$/);
+describe('noteNaming — no never-Grade-1 spellings (R2, R6)', () => {
+  test('no stimulus pitch is Cb / Fb / B# / E# across all lessons', () => {
+    for (const atoms of ALL) {
+      for (let seed = 0; seed < 400; seed++) {
+        const { pitch } = stimulus(noteNaming(optsFor(atoms, seed)));
+        expect(pitch).not.toMatch(/^(Cb|Fb|B#|E#)/);
+      }
+    }
+  });
+
+  test('no distractor label reads C flat / F flat / B sharp / E sharp across all lessons', () => {
+    for (const atoms of ALL) {
+      for (let seed = 0; seed < 400; seed++) {
+        for (const d of noteNaming(optsFor(atoms, seed)).distractors as string[]) {
+          expect(NEVER_G1_LABELS).not.toContain(d);
+        }
+      }
+    }
   });
 });
 
-describe('noteNaming — fuzz gate: 100 generated items are all validator-clean', () => {
-  test('seeds 0..99 all produce a passing instance', () => {
-    for (let seed = 0; seed < 100; seed++) {
-      const instance = noteNaming({ grade: 1, seed, atoms: [] });
-      const result = validate(instance);
-      expect(result).toEqual({ ok: true, errors: [] });
+describe('noteNaming — grading (spec: "F sharp" accepts "F#"/"F♯")', () => {
+  test('an accidental atom yields the accidental word plus symbol alternatives', () => {
+    // ACCIDENTALS carries both a sharp (F#5) and a flat (Bb4); assert both spellings appear.
+    const kinds = new Set<string>();
+    for (let seed = 0; seed < 200; seed++) {
+      const instance = noteNaming(optsFor(ACCIDENTALS, seed));
+      const canonical = instance.answer.canonical as string;
+      if (canonical.endsWith('sharp')) {
+        kinds.add('sharp');
+        expect(instance.answer.accepted_alternatives).toEqual([`${canonical[0]}#`, `${canonical[0]}♯`]);
+      } else if (canonical.endsWith('flat')) {
+        kinds.add('flat');
+        expect(instance.answer.accepted_alternatives).toEqual([`${canonical[0]}b`, `${canonical[0]}♭`]);
+      }
+    }
+    expect(kinds).toEqual(new Set(['sharp', 'flat']));
+  });
+
+  test('a natural (treble-notes) answer has no accepted_alternatives', () => {
+    const instance = noteNaming(optsFor(TREBLE, 0));
+    expect(instance.answer.canonical).not.toContain(' ');
+    expect(instance.answer.accepted_alternatives).toEqual([]);
+  });
+});
+
+describe('noteNaming — distractors distinct from the answer and each other', () => {
+  test('across seeds and lessons, both distractors are well-formed and distinct', () => {
+    for (const atoms of ALL) {
+      for (let seed = 0; seed < 60; seed++) {
+        const instance = noteNaming(optsFor(atoms, seed));
+        const [adjacent, clefConfusion] = instance.distractors as string[];
+        expect(instance.distractors).toHaveLength(2);
+        expect(adjacent).not.toBe(instance.answer.canonical);
+        expect(clefConfusion).not.toBe(instance.answer.canonical);
+        expect(adjacent).not.toBe(clefConfusion);
+      }
+    }
+  });
+});
+
+describe('noteNaming — fuzz gate: every generated item is validator-clean', () => {
+  test('seeds 0..99 across all lessons produce passing instances', () => {
+    for (const atoms of ALL) {
+      for (let seed = 0; seed < 100; seed++) {
+        expect(validate(noteNaming(optsFor(atoms, seed)))).toEqual({ ok: true, errors: [] });
+      }
     }
   });
 });

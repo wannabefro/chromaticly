@@ -20,6 +20,7 @@ jest.mock('react-native-webview', () => {
 });
 
 import { generate } from '../../engine/generators';
+import { atomsForTemplate } from '../../engine/generators/test-helpers';
 import type { ExerciseInstance } from '../../engine/schema';
 import { assembleOptions, gradeMcq, gradeStaveInput, gradeText } from '../grading';
 import { INTERACTIONS, lookupInteraction } from './registry';
@@ -34,7 +35,7 @@ describe('registry — mcq characterization (zero behavior change)', () => {
 
     for (const templateId of MCQ_TEMPLATE_IDS) {
       for (const seed of SEEDS) {
-        const instance = generate(templateId, { grade: 1, seed, atoms: [] });
+        const instance = generate(templateId, { grade: 1, seed, atoms: atomsForTemplate(templateId) });
         expect(instance.interaction.type).toBe('mcq');
         const options = assembleOptions(instance);
 
@@ -54,7 +55,7 @@ describe('registry — mcq characterization (zero behavior change)', () => {
   test('exactly one option per instance grades correct — the canonical pick', () => {
     const mcqSpec = lookupInteraction('mcq');
     for (const templateId of MCQ_TEMPLATE_IDS) {
-      const instance = generate(templateId, { grade: 1, seed: 7, atoms: [] });
+      const instance = generate(templateId, { grade: 1, seed: 7, atoms: atomsForTemplate(templateId) });
       const options = assembleOptions(instance);
       const correctIndices = options.map((_, i) => i).filter((i) => mcqSpec.grade(instance, i));
       expect(correctIndices).toHaveLength(1);
@@ -220,7 +221,7 @@ describe('registry — true_false (U5, bar_validity)', () => {
 
 describe('registry — protocol shape', () => {
   test('grade returns a boolean for mcq and text_input (the self-graded null path is exercised later, by flashcard)', () => {
-    const mcqInstance = generate('note_naming', { grade: 1, seed: 1, atoms: [] });
+    const mcqInstance = generate('note_naming', { grade: 1, seed: 1, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] });
     expect(typeof lookupInteraction('mcq').grade(mcqInstance, 0)).toBe('boolean');
 
     const textInstance: ExerciseInstance = { ...mcqInstance, interaction: { type: 'text_input', config: {} } };
@@ -241,7 +242,7 @@ describe('registry — protocol shape', () => {
   });
 
   test('emptyResponse: mcq resets to null, text_input resets to an empty string', () => {
-    const instance = generate('note_naming', { grade: 1, seed: 1, atoms: [] });
+    const instance = generate('note_naming', { grade: 1, seed: 1, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] });
     expect(lookupInteraction('mcq').emptyResponse(instance)).toBeNull();
     expect(lookupInteraction('text_input').emptyResponse(instance)).toBe('');
   });

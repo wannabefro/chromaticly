@@ -31,7 +31,7 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
 const lesson = LESSONS[0];
 
 async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
-  const instance = generate(lesson.templates[0], { grade: 1, seed, atoms: [] });
+  const instance = generate(lesson.templates[0], { grade: 1, seed, atoms: lesson.atoms });
   const index = assembleOptions(instance).findIndex((o) => o.correct);
   await act(async () => {
     fireEvent.press(getByTestId(`option-${index}`));
@@ -211,7 +211,7 @@ describe('SetRunner — multi-template lessons cycle their templates across item
     await act(async () => {});
 
     expect(getByTestId('prompt').props.children).toBe(
-      generate(lesson.templates[0], { grade: 1, seed: 0, atoms: [] }).prompt,
+      generate(lesson.templates[0], { grade: 1, seed: 0, atoms: lesson.atoms }).prompt,
     );
   });
 });

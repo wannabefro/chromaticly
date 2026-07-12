@@ -19,3 +19,12 @@ export function atomsForLesson(lessonId: string): string[] {
 export function optsFor(atoms: string[], seed: number): GenerateOptions {
   return { grade: 1, seed, atoms };
 }
+
+/** A valid atom scope for any template id, for tests that iterate every
+ *  generator. note_naming (and key_signature_id) derive their pool from atoms
+ *  and need a real lesson set; the rest ignore the field. */
+export function atomsForTemplate(templateId: string): string[] {
+  if (templateId === 'note_naming') return atomsForLesson('treble-notes');
+  if (templateId === 'key_signature_id') return atomsForLesson('key-signatures');
+  return [];
+}

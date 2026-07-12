@@ -1,4 +1,5 @@
 import { generate } from '../engine/generators';
+import { atomsForTemplate } from '../engine/generators/test-helpers';
 import type { ExerciseInstance } from '../engine/schema';
 import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel, toResult } from './grading';
 
@@ -26,7 +27,7 @@ describe('optionLabel — every G1 answer shape gets a readable label', () => {
 
 describe('assembleOptions — answer + distractors, deterministic order', () => {
   test('includes exactly one correct option and all distractors', () => {
-    const instance = generate('note_naming', { grade: 1, seed: 4, atoms: [] });
+    const instance = generate('note_naming', { grade: 1, seed: 4, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] });
     const options = assembleOptions(instance);
     expect(options).toHaveLength(instance.distractors.length + 1);
     expect(options.filter((o) => o.correct)).toHaveLength(1);
@@ -72,7 +73,7 @@ describe('gradeMcq — correctness is deep-equality with the canonical answer', 
   test('the correct option grades true; every distractor grades false, across all templates', () => {
     for (const template of ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning']) {
       for (let seed = 0; seed < 20; seed++) {
-        const instance = generate(template, { grade: 1, seed, atoms: [] });
+        const instance = generate(template, { grade: 1, seed, atoms: atomsForTemplate(template) });
         expect(gradeMcq(instance, instance.answer.canonical)).toBe(true);
         for (const d of instance.distractors) {
           expect(gradeMcq(instance, d)).toBe(false);
@@ -91,7 +92,7 @@ describe('gradeMcq — correctness is deep-equality with the canonical answer', 
 describe('gradeText — case/space-insensitive, honors accepted alternatives', () => {
   // Build a note_naming instance with a known accidental answer to exercise "Eb" for "E flat".
   const eFlat: ExerciseInstance = {
-    ...generate('note_naming', { grade: 1, seed: 0, atoms: [] }),
+    ...generate('note_naming', { grade: 1, seed: 0, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] }),
     answer: { canonical: 'E flat', accepted_alternatives: ['Eb', 'E♭'] },
   };
 
@@ -165,12 +166,12 @@ describe('gradeStaveInput — correct only when BOTH pitch and duration match (A
 
 describe('toResult — mastery signal carries the atom and hint use', () => {
   test('a hint-free correct reports the atom, correct, zero hints', () => {
-    const instance = generate('note_naming', { grade: 1, seed: 5, atoms: [] });
+    const instance = generate('note_naming', { grade: 1, seed: 5, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] });
     expect(toResult(instance, true, 0)).toEqual({ atom: instance.srs_tags[0], correct: true, hintsUsed: 0 });
   });
 
   test('a hint-assisted attempt records the hint count (why: KTD10 must not count it as mastery)', () => {
-    const instance = generate('note_naming', { grade: 1, seed: 5, atoms: [] });
+    const instance = generate('note_naming', { grade: 1, seed: 5, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] });
     expect(toResult(instance, true, 2).hintsUsed).toBe(2);
   });
 });

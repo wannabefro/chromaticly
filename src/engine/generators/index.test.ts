@@ -1,5 +1,6 @@
 import { validate } from '../validator';
 import { GENERATORS, generate } from './index';
+import { atomsForTemplate } from './test-helpers';
 
 const TEMPLATE_IDS = [
   'note_naming',
@@ -28,7 +29,7 @@ describe('GENERATORS registry', () => {
 describe('generate() — dispatches to the right generator', () => {
   test('generate(templateId, opts) produces an instance whose template_id matches', () => {
     for (const templateId of TEMPLATE_IDS) {
-      const instance = generate(templateId, { grade: 1, seed: 1, atoms: [] });
+      const instance = generate(templateId, { grade: 1, seed: 1, atoms: atomsForTemplate(templateId) });
       expect(instance.template_id).toBe(templateId);
       expect(validate(instance).ok).toBe(true);
     }
@@ -36,8 +37,8 @@ describe('generate() — dispatches to the right generator', () => {
 
   test('generate() matches calling the registered generator directly for the same seed', () => {
     for (const templateId of TEMPLATE_IDS) {
-      const viaRegistry = generate(templateId, { grade: 1, seed: 55, atoms: [] });
-      const viaDirect = GENERATORS[templateId]({ grade: 1, seed: 55, atoms: [] });
+      const viaRegistry = generate(templateId, { grade: 1, seed: 55, atoms: atomsForTemplate(templateId) });
+      const viaDirect = GENERATORS[templateId]({ grade: 1, seed: 55, atoms: atomsForTemplate(templateId) });
       expect(viaRegistry).toEqual(viaDirect);
     }
   });

@@ -1,15 +1,19 @@
 // Grade 1 note_naming generator (curriculum/exercise-templates.json,
-// template_id "note_naming"). Answer is the note's letter name, plus the
-// accidental word when the sampled item applies one (spec example: "E flat",
-// accepting "Eb"/"E♭"). Distractors encode two named misconceptions per the
-// template's distractor_rules: mis-stepping the line/space by one, and clef
-// confusion (reading the same staff position on the wrong clef).
+// template_id "note_naming"). The item is drawn from the lesson's declared
+// `note_read:{clef}:{pitch}` atoms (GenerateOptions.atoms) — so the clef,
+// pitch, and accidental-or-none all come from the curriculum, never the
+// grade-wide scope. This is what keeps a "treble stave" lesson on treble
+// naturals and a "sharps and flats" lesson on exactly its five accidentals,
+// and makes musically-invalid spellings (Cb/Fb/B#/E#) unreachable by
+// construction. Answer is the note's letter name plus the accidental word when
+// present ("F sharp", accepting "F#"/"F♯"). Distractors encode two named
+// misconceptions: mis-stepping the line/space by one, and clef confusion
+// (reading the same staff position on the wrong clef).
 
 import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { noteReadAtom } from '../atoms';
-import { mulberry32, pick, weighted } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS } from '../scope';
+import { noteReadAtom, parseAtom } from '../atoms';
+import { mulberry32, pick } from '../rng';
 import type { ExerciseInstance } from '../schema';
 import { naturalPitchAtOrdinal, pitchOrdinal, type Letter } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -18,6 +22,49 @@ import type { GenerateOptions, Generator } from './types';
 type Accidental = 'sharp' | 'flat' | null;
 
 const LETTER_ORDER: readonly Letter[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+
+// The four letter+accidental combinations that spell a natural — never taught
+// at Grade 1. Used to keep the clef-confusion distractor from labelling one.
+const NEVER_G1 = new Set(['Cflat', 'Fflat', 'Bsharp', 'Esharp']);
+
+/** A `note_read:{clef}:{pitch}` atom split into a renderable candidate. */
+interface NoteCandidate {
+  clef: Clef;
+  pitch: string; // scientific, may carry an accidental, e.g. "F#5" or "C4"
+  letter: Letter;
+  accidental: Accidental;
+}
+
+function parseNotePitch(pitch: string): { letter: Letter; accidental: Accidental; octave: number } {
+  const m = /^([A-G])(#|b)?(-?\d+)$/.exec(pitch);
+  if (!m) throw new Error(`note_naming: unexpected pitch "${pitch}"`);
+  const accidental: Accidental = m[2] === '#' ? 'sharp' : m[2] === 'b' ? 'flat' : null;
+  return { letter: m[1] as Letter, accidental, octave: Number(m[3]) };
+}
+
+/** The lesson's `note_read:*` atoms as renderable candidates. Throws if the
+ *  lesson declares none — a note_naming lesson with no note atoms is a data
+ *  bug, not a reason to fall back to the grade-wide scope. */
+function noteCandidates(atoms: string[]): NoteCandidate[] {
+  const candidates: NoteCandidate[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'note_read') continue;
+    const [clef, pitch] = parts;
+    const { letter, accidental } = parseNotePitch(pitch);
+    candidates.push({ clef: clef as Clef, pitch, letter, accidental });
+  }
+  if (candidates.length === 0) {
+    throw new Error('note_naming: lesson declares no note_read:* atoms');
+  }
+  return candidates;
+}
+
+/** Drop the accidental when it would spell a never-Grade-1 note (Cb/Fb/B#/E#),
+ *  so the clef-confusion distractor never shows an impossible label (R6). */
+function safeDistractorAccidental(letter: Letter, accidental: Accidental): Accidental {
+  return accidental && NEVER_G1.has(`${letter}${accidental}`) ? null : accidental;
+}
 
 // Bottom-line pitch of each G1 clef — the reference point for mapping one
 // clef's staff position onto the other (the clef-confusion distractor).
@@ -62,32 +109,19 @@ function acceptedAlternatives(letter: Letter, accidental: Accidental): string[] 
   return [];
 }
 
-function applyAccidental(basePitch: string, accidental: Accidental): string {
-  if (!accidental) return basePitch;
-  const { letter, octave } = parseLetterOctave(basePitch);
-  const symbol = accidental === 'sharp' ? '#' : 'b';
-  return `${letter}${symbol}${octave}`;
-}
-
-function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...G1_CLEFS]);
-  const basePitch = pick(rng, diatonicPitchesInRange(clef));
-  const accidental = weighted<Accidental>(rng, [
-    { value: null, weight: 70 },
-    { value: 'sharp', weight: 15 },
-    { value: 'flat', weight: 15 },
-  ]);
-
-  const { letter } = parseLetterOctave(basePitch);
-  const pitch = applyAccidental(basePitch, accidental);
+  const { clef, pitch, letter, accidental } = pick(rng, noteCandidates(atoms));
 
   const direction = pick(rng, [1, -1] as const);
   const adjacent = adjacentLetter(letter, direction);
-  const clefConfusion = clefConfusionLetter(clef, basePitch);
+  const clefConfusion = clefConfusionLetter(clef, pitch);
 
   const canonical = formatNoteName(letter, accidental);
-  const distractors = [formatNoteName(adjacent, null), formatNoteName(clefConfusion, accidental)];
+  const distractors = [
+    formatNoteName(adjacent, null),
+    formatNoteName(clefConfusion, safeDistractorAccidental(clefConfusion, accidental)),
+  ];
 
   return {
     id: makeInstanceId('note_naming', grade, idSeed),
@@ -119,4 +153,4 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 }
 
 export const noteNaming: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));

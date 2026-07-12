@@ -33,7 +33,7 @@ const trebleNotes = lessonById('treble-notes')!;
 // New flow: select the correct option → Check → Continue (advances). Continue is
 // the FeedbackSheet's advance affordance; there is no separate Next button.
 async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
-  const instance = generate(trebleNotes.templates[0], { grade: 1, seed, atoms: [] });
+  const instance = generate(trebleNotes.templates[0], { grade: 1, seed, atoms: trebleNotes.atoms });
   const options = assembleOptions(instance);
   const index = options.findIndex((o) => o.correct);
   await act(async () => {
