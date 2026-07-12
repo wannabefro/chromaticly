@@ -102,6 +102,15 @@ export function gradeMcq(instance: ExerciseInstance, selected: unknown): boolean
   return deepEqual(selected, instance.answer.canonical);
 }
 
+/** A per-bar true/false attempt is correct only when EVERY verdict matches
+ *  answer.per_item, in bar order — one wrong bar fails the whole item, there
+ *  is no partial credit (U5 test scenario). */
+export function gradeTrueFalse(instance: ExerciseInstance, response: boolean[]): boolean {
+  const perItem = instance.answer.per_item;
+  if (!Array.isArray(perItem) || perItem.length !== response.length) return false;
+  return response.every((v, i) => v === perItem[i]);
+}
+
 function normalize(text: string): string {
   return text.trim().toLowerCase().replace(/\s+/g, ' ');
 }

@@ -1,7 +1,7 @@
 import { validate } from '../validator';
 import { GENERATORS, generate } from './index';
 
-const TEMPLATE_IDS = ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning'];
+const TEMPLATE_IDS = ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning', 'bar_validity'];
 
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {
@@ -10,7 +10,7 @@ describe('GENERATORS registry', () => {
     }
   });
 
-  test('has exactly the five Tier-A template ids registered — no extras, no gaps', () => {
+  test('has exactly the six Tier-A template ids registered — no extras, no gaps', () => {
     expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS].sort());
   });
 });
@@ -33,6 +33,6 @@ describe('generate() — dispatches to the right generator', () => {
   });
 
   test('throws on an unregistered template_id', () => {
-    expect(() => generate('bar_validity', { grade: 1, seed: 0 })).toThrow(/No generator registered/);
+    expect(() => generate('add_time_signature', { grade: 1, seed: 0 })).toThrow(/No generator registered/);
   });
 });

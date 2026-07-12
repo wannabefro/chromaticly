@@ -11,14 +11,15 @@
 // this unit only relocates the existing dispatch, it does not alter grading.
 
 import { useMemo } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance, InteractionType } from '../../engine/schema';
 import { NotationCard } from '../components/NotationCard';
-import { assembleOptions, gradeMcq, gradeText, optionLabel } from '../grading';
-import { colors, type as typo } from '../theme';
+import { assembleOptions, gradeMcq, gradeText, gradeTrueFalse, optionLabel } from '../grading';
+import { colors, shape, type as typo } from '../theme';
 import { Mcq } from './Mcq';
 import { TextInputField } from './TextInputField';
+import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
 
 /** The correct-answer render shared by mcq/text_input today: the canonical
@@ -71,6 +72,38 @@ const textInputSpec: InteractionSpec<string> = {
   correctAnswerView: defaultCorrectAnswerView,
 };
 
+/** Bar count comes from the bar-identity metadata (F10), falling back to
+ *  answer.per_item's length — never from anything geometry-derived. */
+function trueFalseBarCount(instance: ExerciseInstance): number {
+  const bars = instance.interaction.config?.bars;
+  if (Array.isArray(bars)) return bars.length;
+  return Array.isArray(instance.answer.per_item) ? instance.answer.per_item.length : 0;
+}
+
+/** The per-bar correct-answer strip shown on the FeedbackSheet for a wrong
+ *  attempt: each bar's correct tick/cross verdict, read-only. */
+function trueFalseCorrectAnswerView(instance: ExerciseInstance) {
+  const perItem = (instance.answer.per_item ?? []) as boolean[];
+  return (
+    <View style={styles.trueFalseAnswer} testID="true-false-correct-answer">
+      {perItem.map((verdict, index) => (
+        <Text key={index} style={[styles.trueFalseAnswerBar, { color: verdict ? colors.correct : colors.incorrect }]}>
+          {`Bar ${index + 1} ${verdict ? '✓' : '✗'}`}
+        </Text>
+      ))}
+    </View>
+  );
+}
+
+const trueFalseSpec: InteractionSpec<TrueFalseResponse> = {
+  Component: TrueFalse,
+  emptyResponse: (instance) => Array.from({ length: trueFalseBarCount(instance) }, () => null),
+  canCheck: (response) => response.length > 0 && response.every((v) => v !== null),
+  grade: (instance, response) => gradeTrueFalse(instance, response as boolean[]),
+  submits: true,
+  correctAnswerView: trueFalseCorrectAnswerView,
+};
+
 // Stored as InteractionSpec<any> — each entry's Response type differs (a selected
 // index, raw text, later a boolean[] or a self-grade enum), and Response appears
 // nested inside Component's props object, which TS checks structurally rather
@@ -81,6 +114,7 @@ const textInputSpec: InteractionSpec<string> = {
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
+  true_false: trueFalseSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather
@@ -97,4 +131,6 @@ export function lookupInteraction(type: InteractionType): InteractionSpec {
 
 const styles = StyleSheet.create({
   answerLabel: { ...typo.title, color: colors.text },
+  trueFalseAnswer: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline },
+  trueFalseAnswerBar: { ...typo.label },
 });

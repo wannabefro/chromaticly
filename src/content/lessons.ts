@@ -46,6 +46,9 @@ export function assertAtomResolves(atom: string): void {
     case 'rhythm_sum':
       if (parts.length !== 0) throw new Error(`lessons: malformed rhythm_sum atom "${atom}"`);
       return;
+    case 'bar_validity':
+      if (parts.length !== 0) throw new Error(`lessons: malformed bar_validity atom "${atom}"`);
+      return;
     case 'note_read': {
       const [clef, pitch] = parts;
       if (!G1_CLEFS.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G1 scope`);

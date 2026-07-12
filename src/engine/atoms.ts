@@ -26,6 +26,10 @@ export function rhythmSumAtom(): string {
   return 'rhythm_sum';
 }
 
+export function barValidityAtom(): string {
+  return 'bar_validity';
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

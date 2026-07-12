@@ -1,6 +1,6 @@
 import { generate } from '../engine/generators';
 import type { ExerciseInstance } from '../engine/schema';
-import { assembleOptions, gradeMcq, gradeText, optionLabel, toResult } from './grading';
+import { assembleOptions, gradeMcq, gradeText, gradeTrueFalse, optionLabel, toResult } from './grading';
 
 describe('optionLabel — every G1 answer shape gets a readable label', () => {
   test.each([
@@ -101,6 +101,35 @@ describe('gradeText — case/space-insensitive, honors accepted alternatives', (
 
   test.each(['E', 'E sharp', 'F flat'])('rejects "%s"', (input) => {
     expect(gradeText(eFlat, input)).toBe(false);
+  });
+});
+
+describe('gradeTrueFalse — correct only when EVERY per-bar verdict matches (no partial credit)', () => {
+  test('an attempt matching every per_item verdict grades correct, across many generated bar_validity instances', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = generate('bar_validity', { grade: 1, seed });
+      const perItem = instance.answer.per_item as boolean[];
+      expect(gradeTrueFalse(instance, perItem)).toBe(true);
+    }
+  });
+
+  test('a single wrong bar grades the whole attempt incorrect', () => {
+    const instance = generate('bar_validity', { grade: 1, seed: 6 });
+    const perItem = instance.answer.per_item as boolean[];
+    const oneWrong = perItem.map((v, i) => (i === 0 ? !v : v));
+    expect(gradeTrueFalse(instance, oneWrong)).toBe(false);
+  });
+
+  test('every bar wrong grades incorrect', () => {
+    const instance = generate('bar_validity', { grade: 1, seed: 6 });
+    const perItem = instance.answer.per_item as boolean[];
+    expect(gradeTrueFalse(instance, perItem.map((v) => !v))).toBe(false);
+  });
+
+  test('a response of mismatched length never grades correct', () => {
+    const instance = generate('bar_validity', { grade: 1, seed: 6 });
+    const perItem = instance.answer.per_item as boolean[];
+    expect(gradeTrueFalse(instance, perItem.slice(0, -1))).toBe(false);
   });
 });
 

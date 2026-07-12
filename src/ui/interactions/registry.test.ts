@@ -105,14 +105,55 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
   });
 
   test('throws for every schema-enum value with no registered entry', () => {
-    const unsupported = ['multi_select', 'true_false', 'stave_input', 'tap_placement', 'grid_fill', 'roman_numeral_boxes'] as const;
+    const unsupported = ['multi_select', 'stave_input', 'tap_placement', 'grid_fill', 'roman_numeral_boxes'] as const;
     for (const type of unsupported) {
       expect(() => lookupInteraction(type)).toThrow();
     }
   });
 
-  test('the registry is partial — only mcq and text_input are registered', () => {
-    expect(Object.keys(INTERACTIONS).sort()).toEqual(['mcq', 'text_input']);
+  test('the registry is partial — only mcq, text_input, and true_false are registered', () => {
+    expect(Object.keys(INTERACTIONS).sort()).toEqual(['mcq', 'text_input', 'true_false']);
+  });
+});
+
+describe('registry — true_false (U5, bar_validity)', () => {
+  const barValidityInstance = generate('bar_validity', { grade: 1, seed: 4 });
+
+  test('emptyResponse resets to a null-per-bar array sized from the bar-identity metadata', () => {
+    const spec = lookupInteraction('true_false');
+    const barCount = (barValidityInstance.interaction.config.bars as unknown[]).length;
+    const response = spec.emptyResponse(barValidityInstance) as (boolean | null)[];
+    expect(response).toEqual(Array(barCount).fill(null));
+  });
+
+  test('canCheck is false until every bar is answered, true once all are', () => {
+    const spec = lookupInteraction('true_false');
+    const barCount = (barValidityInstance.interaction.config.bars as unknown[]).length;
+    expect(spec.canCheck(Array(barCount).fill(null))).toBe(false);
+    expect(spec.canCheck([true, ...Array(barCount - 1).fill(null)])).toBe(false);
+    expect(spec.canCheck(Array(barCount).fill(true))).toBe(true);
+  });
+
+  test('grade matches every per-bar verdict exactly — one wrong bar grades the whole item incorrect', () => {
+    const spec = lookupInteraction('true_false');
+    const perItem = barValidityInstance.answer.per_item as boolean[];
+    expect(spec.grade(barValidityInstance, perItem)).toBe(true);
+
+    const oneWrong = perItem.map((v, i) => (i === 0 ? !v : v));
+    expect(spec.grade(barValidityInstance, oneWrong)).toBe(false);
+  });
+
+  test('submits is true — true_false uses the shared Check button', () => {
+    expect(lookupInteraction('true_false').submits).toBe(true);
+  });
+
+  test('correctAnswerView renders every bar\'s correct verdict', () => {
+    const view = lookupInteraction('true_false').correctAnswerView(barValidityInstance);
+    const perItem = barValidityInstance.answer.per_item as boolean[];
+    const rendered = JSON.stringify(view);
+    perItem.forEach((verdict, i) => {
+      expect(rendered).toContain(`Bar ${i + 1} ${verdict ? '✓' : '✗'}`);
+    });
   });
 });
 

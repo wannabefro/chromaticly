@@ -143,6 +143,13 @@ function deepEqual(a: unknown, b: unknown): boolean {
 function checkClosedItemDistractors(inst: ExerciseInstance, errors: string[]): void {
   if (!CLOSED_INTERACTION_TYPES.has(inst.interaction.type)) return;
 
+  // A per-item instance (e.g. bar_validity's per-bar tick/cross) has no single
+  // canonical answer + distractor pool — it's N independent true/false verdicts,
+  // not "exactly one defensible answer among several options" (commandment 3/4
+  // is about that latter shape). answer.per_item marks that different shape;
+  // its own count/type coverage is barValidityHook's job, not this check's.
+  if (inst.answer.per_item !== undefined) return;
+
   const distractors = inst.distractors;
   if (distractors.length === 0) {
     errors.push('closed item has no distractors (commandment 3)');
@@ -235,6 +242,32 @@ function rhythmSumHook(inst: ExerciseInstance): string[] {
   return ['rhythm_sum: canonical answer must name a single note value'];
 }
 
+// F10: the bar-identity metadata (interaction.config.bars) and the per-bar
+// verdict array must agree on how many bars the item has — a mismatch means
+// the UI would render the wrong number of controls or misalign a control to
+// the wrong bar. Per-bar correctness itself (does the bar's rhythm actually
+// sum right) is the generator's own responsibility/tests, not this hook's.
+function barValidityHook(inst: ExerciseInstance): string[] {
+  const perItem = inst.answer.per_item;
+  if (!Array.isArray(perItem) || perItem.length === 0) {
+    return ['bar_validity: answer.per_item must be a non-empty array of per-bar verdicts'];
+  }
+  if (!perItem.every((v) => typeof v === 'boolean')) {
+    return ['bar_validity: every per_item entry must be a boolean'];
+  }
+
+  const bars = inst.interaction.config?.bars;
+  if (!Array.isArray(bars)) {
+    return ['bar_validity: interaction.config.bars metadata is missing'];
+  }
+  if (bars.length !== perItem.length) {
+    return [
+      `bar_validity: answer.per_item length (${perItem.length}) does not match interaction.config.bars length (${bars.length})`,
+    ];
+  }
+  return [];
+}
+
 function termMeaningHook(inst: ExerciseInstance): string[] {
   const category = inst.interaction.config?.category;
   if (category === undefined) return []; // no category info carried — skip gracefully
@@ -256,4 +289,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   key_signature_id: keySignatureIdHook,
   rhythm_sum: rhythmSumHook,
   term_meaning: termMeaningHook,
+  bar_validity: barValidityHook,
 };

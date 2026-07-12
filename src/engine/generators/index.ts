@@ -1,6 +1,7 @@
 // Tier-A generator registry (U6-U8). Maps each template_id to its generator.
 
 import type { ExerciseInstance } from '../schema';
+import { barValidity } from './bar-validity';
 import { intervalNaming } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { noteNaming } from './note-naming';
@@ -14,6 +15,7 @@ export const GENERATORS: Record<string, Generator> = {
   rhythm_sum: rhythmSum,
   key_signature_id: keySignatureId,
   term_meaning: termMeaning,
+  bar_validity: barValidity,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {
