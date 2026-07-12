@@ -34,6 +34,10 @@ export function addTimeSignatureAtom(): string {
   return 'add_time_signature';
 }
 
+export function noteValueCompareAtom(): string {
+  return 'note_value_compare';
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

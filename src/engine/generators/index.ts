@@ -6,6 +6,7 @@ import { barValidity } from './bar-validity';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { noteNaming } from './note-naming';
+import { noteValueCompare } from './note-value-compare';
 import { rhythmSum } from './rhythm-sum';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
 import type { GenerateOptions, Generator } from './types';
@@ -20,6 +21,7 @@ export const GENERATORS: Record<string, Generator> = {
   term_meaning_flashcard: termMeaningFlashcard,
   bar_validity: barValidity,
   add_time_signature: addTimeSignature,
+  note_value_compare: noteValueCompare,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {
