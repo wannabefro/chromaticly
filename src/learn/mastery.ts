@@ -5,6 +5,7 @@
 // `mastered` is the achievement). Pure: state in, state out.
 
 import type { AttemptResult } from '../ui/grading';
+import type { SrsGrade } from './srs';
 
 export const MASTERY_THRESHOLD = 3;
 
@@ -31,4 +32,14 @@ export function recordAttempt(state: MasteryState, attempt: Pick<AttemptResult, 
 /** A lesson is complete once every atom it teaches is mastered. */
 export function lessonComplete(atoms: string[], masteryOf: (atom: string) => MasteryState | undefined): boolean {
   return atoms.every((atom) => masteryOf(atom)?.mastered === true);
+}
+
+/** Flashcards have no correct/incorrect verdict, but must still roll up through
+ *  the same `MasteryState`/`deriveStars` path as MCQ atoms (AD4b). Good/Easy
+ *  behave like a clean hint-free correct; Again like a miss; Hard holds the
+ *  streak (no progress, no reset) since it signals neither mastery nor a gap. */
+export function recordFlashcardGrade(state: MasteryState, grade: SrsGrade): MasteryState {
+  if (grade === 'hard') return state;
+  const correct = grade === 'good' || grade === 'easy';
+  return recordAttempt(state, { correct, hintsUsed: 0 });
 }

@@ -3,7 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react-native';
 import type { Lesson } from '../content/lessons';
 import { selectDue } from './srs';
 import { ProgressStore, type SnapshotStorage } from './store';
-import { applyAttempt, ensureRootUnlocked, useProgress } from './useProgress';
+import { applyAttempt, ensureRootUnlocked, recordAtomFlashcardGrade, useProgress } from './useProgress';
 
 /** In-memory SnapshotStorage, mirroring store.test.ts's fake. */
 function memoryStorage(): SnapshotStorage & { blob: string | null } {
@@ -85,6 +85,26 @@ describe('progression — Practice eligibility respects lesson unlock state', ()
 
     expect(served).toContain('x'); // from unlocked lesson A
     expect(served).not.toContain('z'); // from still-locked lesson B
+  });
+});
+
+describe('progression — recordAtomFlashcardGrade (U6/AD4b): the flashcard counterpart to recordAtomAttempt', () => {
+  test('grading a term flashcard "good" three times masters the atom and schedules it via the graded SRS path', () => {
+    const store = new ProgressStore();
+    let now = 0;
+    for (let i = 0; i < 3; i++) recordAtomFlashcardGrade(store, 'term:staccato', 'good', now++);
+
+    expect(store.masteryOf('term:staccato')?.mastered).toBe(true);
+    const srs = store.getAtom('term:staccato').srs;
+    expect(srs.ease).toBeDefined();
+    expect(srs.nextDue).toBeGreaterThan(now - 1); // rescheduled into the future, not left due-now
+  });
+
+  test('"again" never masters the atom and reschedules it due immediately', () => {
+    const store = new ProgressStore();
+    recordAtomFlashcardGrade(store, 'term:legato', 'again', 10);
+    expect(store.masteryOf('term:legato')?.mastered).toBe(false);
+    expect(store.getAtom('term:legato').srs.nextDue).toBe(10);
   });
 });
 

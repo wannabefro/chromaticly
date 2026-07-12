@@ -6,7 +6,7 @@
 // concrete adapter is device-specific.
 
 import { initialMastery, type MasteryState } from './mastery';
-import { initialSrs, type SrsState } from './srs';
+import { DEFAULT_EASE, initialSrs, type SrsState } from './srs';
 
 export const STORE_VERSION = 1;
 
@@ -43,11 +43,24 @@ function emptySnapshot(): ProgressSnapshot {
   return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], profile: null };
 }
 
+/** `SrsState.ease` (U6) is additive and optional, so a snapshot written before
+ *  it existed is already structurally valid at the current STORE_VERSION —
+ *  fill the default in place rather than treating the missing field as a
+ *  reason to discard anything. */
+function withDefaultEase(progress: AtomProgress): AtomProgress {
+  if (progress.srs.ease !== undefined) return progress;
+  return { ...progress, srs: { ...progress.srs, ease: DEFAULT_EASE } };
+}
+
 /** Bring any persisted snapshot up to the current shape. A version mismatch we
- *  can't migrate is discarded (start fresh) rather than trusted — fail safe. */
+ *  can't migrate is discarded (start fresh) rather than trusted — fail safe.
+ *  Only a genuinely breaking shape change justifies that; additive optional
+ *  fields (like `ease`) are back-filled in place instead (AD4). */
 function migrate(snapshot: ProgressSnapshot): ProgressSnapshot {
   if (snapshot.version !== STORE_VERSION) return emptySnapshot();
-  return { ...emptySnapshot(), ...snapshot };
+  const merged = { ...emptySnapshot(), ...snapshot };
+  const atoms = Object.fromEntries(Object.entries(merged.atoms).map(([id, progress]) => [id, withDefaultEase(progress)]));
+  return { ...merged, atoms };
 }
 
 export class ProgressStore {

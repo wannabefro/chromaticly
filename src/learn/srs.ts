@@ -12,6 +12,11 @@ export interface SrsState {
   box: number;
   lastReviewed: number;
   nextDue: number;
+  /** Ease factor for the graded (flashcard) path only — undefined on atoms that
+   *  have only ever gone through the binary `reviewSrs` path, or on a snapshot
+   *  persisted before U6. `reviewSrsGraded` defaults it; the binary path never
+   *  reads or writes it. */
+  ease?: number;
 }
 
 export function initialSrs(now = 0): SrsState {
@@ -22,6 +27,48 @@ export function initialSrs(now = 0): SrsState {
 export function reviewSrs(state: SrsState, correct: boolean, now: number): SrsState {
   const box = correct ? Math.min(state.box + 1, MAX_BOX) : 0;
   return { box, lastReviewed: now, nextDue: now + BOX_INTERVALS[box] };
+}
+
+// --- Graded SRS (U6, AD4): self-graded flashcards (Again/Hard/Good/Easy) get
+// their own scheduling path — the binary `reviewSrs` above is untouched. An
+// SM-2-style ease factor scales a per-grade base interval so the resulting gap
+// is strictly monotonic (Again < Hard < Good < Easy) across the whole clamped
+// ease range: bases are 0/1/2/4 (a doubling-ish ladder) and ease moves in the
+// same rank order as the grade (again lowers it most, easy raises it most), so
+// the product base(grade) * ease(grade) is provably increasing — see srs.test.ts.
+
+export type SrsGrade = 'again' | 'hard' | 'good' | 'easy';
+
+export const DEFAULT_EASE = 2.5;
+const MIN_EASE = 1.3;
+const MAX_EASE = 3.5;
+
+const GRADE_BASE_INTERVAL: Record<SrsGrade, number> = {
+  again: 0,
+  hard: 1,
+  good: 2,
+  easy: 4,
+};
+
+const GRADE_EASE_DELTA: Record<SrsGrade, number> = {
+  again: -0.2,
+  hard: -0.05,
+  good: 0,
+  easy: 0.15,
+};
+
+function clampEase(ease: number): number {
+  return Math.min(MAX_EASE, Math.max(MIN_EASE, ease));
+}
+
+/** Fold one self-graded flashcard review into an atom's SRS state. Distinct
+ *  from `reviewSrs` — no correct/incorrect verdict, just a grade that both
+ *  reschedules (via the interval table) and adjusts the ease factor. */
+export function reviewSrsGraded(state: SrsState, grade: SrsGrade, now: number): SrsState {
+  const ease = clampEase((state.ease ?? DEFAULT_EASE) + GRADE_EASE_DELTA[grade]);
+  const box = grade === 'again' ? 0 : Math.min(state.box + 1, MAX_BOX);
+  const interval = Math.round(GRADE_BASE_INTERVAL[grade] * ease);
+  return { box, ease, lastReviewed: now, nextDue: now + interval };
 }
 
 export function isDue(state: SrsState, now: number): boolean {

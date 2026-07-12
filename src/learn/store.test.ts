@@ -1,5 +1,5 @@
 import { recordAttempt } from './mastery';
-import { reviewSrs } from './srs';
+import { DEFAULT_EASE, reviewSrs } from './srs';
 import { loadProgress, ProgressStore, saveProgress, STORE_VERSION, type SnapshotStorage } from './store';
 
 /** In-memory SnapshotStorage. A "restart" is loadProgress() against the same
@@ -85,6 +85,59 @@ describe('store — profile (KTD4 onboarding persistence)', () => {
     expect(snapshot.atoms['note_read:treble:C4'].mastery.streak).toBe(2);
     expect(snapshot.lessons['treble-notes'].completed).toBe(true);
     expect(snapshot.unlocked).toContain('bass-notes');
+  });
+});
+
+describe('store — U6 additive `ease` migration is non-destructive (AD4)', () => {
+  test('an old snapshot with no `ease` on any SrsState loads intact — onboarding/profile/unlocks/mastery all survive — and a default ease is filled', () => {
+    // Mirrors a real pre-U6 persisted blob: same STORE_VERSION, srs objects
+    // shaped without the (then-nonexistent) `ease` field.
+    const preU6Blob = JSON.parse(
+      JSON.stringify({
+        version: STORE_VERSION,
+        atoms: {
+          'note_read:treble:C4': { mastery: { streak: 2, mastered: false }, srs: { box: 1, lastReviewed: 0, nextDue: 2 } },
+          'term:staccato': { mastery: { streak: 3, mastered: true }, srs: { box: 3, lastReviewed: 5, nextDue: 13 } },
+        },
+        lessons: { 'treble-notes': { completed: true } },
+        unlocked: ['treble-notes', 'bass-notes'],
+        profile: { birthYear: 2014, onboardedAt: '2026-01-01T00:00:00.000Z' },
+      }),
+    );
+
+    const store = new ProgressStore(preU6Blob);
+
+    // Nothing was discarded — the version matched, so no fresh-start reset.
+    expect(store.getProfile()).toEqual({ birthYear: 2014, onboardedAt: '2026-01-01T00:00:00.000Z' });
+    expect(store.getLesson('treble-notes').completed).toBe(true);
+    expect(store.isUnlocked('treble-notes')).toBe(true);
+    expect(store.isUnlocked('bass-notes')).toBe(true);
+    expect(store.getAtom('note_read:treble:C4').mastery).toEqual({ streak: 2, mastered: false });
+    expect(store.getAtom('term:staccato').mastery).toEqual({ streak: 3, mastered: true });
+
+    // The ease-less SrsState round-trips with a default filled in, not dropped.
+    const treble = store.getAtom('note_read:treble:C4').srs;
+    expect(treble.box).toBe(1);
+    expect(treble.nextDue).toBe(2);
+    expect(treble.ease).toBe(DEFAULT_EASE);
+
+    const term = store.getAtom('term:staccato').srs;
+    expect(term.box).toBe(3);
+    expect(term.ease).toBe(DEFAULT_EASE);
+  });
+
+  test('a snapshot that already has `ease` keeps its own value rather than being overwritten with the default', () => {
+    const blob = JSON.parse(
+      JSON.stringify({
+        version: STORE_VERSION,
+        atoms: { 'term:legato': { mastery: { streak: 1, mastered: false }, srs: { box: 2, lastReviewed: 0, nextDue: 4, ease: 3.1 } } },
+        lessons: {},
+        unlocked: [],
+        profile: null,
+      }),
+    );
+    const store = new ProgressStore(blob);
+    expect(store.getAtom('term:legato').srs.ease).toBe(3.1);
   });
 });
 

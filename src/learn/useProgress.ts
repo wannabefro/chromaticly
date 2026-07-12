@@ -8,8 +8,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import type { Lesson } from '../content/lessons';
 import type { AttemptResult } from '../ui/grading';
-import { lessonComplete, recordAttempt } from './mastery';
-import { reviewSrs } from './srs';
+import { lessonComplete, recordAttempt, recordFlashcardGrade } from './mastery';
+import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
 /** Ensure the entry lesson is always reachable, even on a fresh store. */
@@ -31,6 +31,18 @@ export function recordAtomAttempt(
   store.setAtom(atom, {
     mastery: recordAttempt(before.mastery, attempt),
     srs: reviewSrs(before.srs, attempt.correct, now),
+  });
+}
+
+/** Fold one self-graded flashcard review on `atom` into the store's mastery
+ *  (AD4b mapping) + graded-SRS state at logical time `now`. The flashcard
+ *  counterpart to `recordAtomAttempt` — no correct/incorrect verdict, just a
+ *  grade. */
+export function recordAtomFlashcardGrade(store: ProgressStore, atom: string, grade: SrsGrade, now: number): void {
+  const before = store.getAtom(atom);
+  store.setAtom(atom, {
+    mastery: recordFlashcardGrade(before.mastery, grade),
+    srs: reviewSrsGraded(before.srs, grade, now),
   });
 }
 
@@ -68,6 +80,9 @@ export interface UseProgress {
   revision: number;
   /** Record one attempt on an atom and persist. */
   recordAtom: (atom: string, attempt: AttemptResult, now: number) => Promise<void>;
+  /** Record one self-graded flashcard review (Again/Hard/Good/Easy) on an atom
+   *  and persist — the flashcard counterpart to `recordAtom` (AD4b). */
+  recordFlashcardGrade: (atom: string, grade: SrsGrade, now: number) => Promise<void>;
   /** Mark a lesson complete + unlock its target and persist; true on transition. */
   complete: (lesson: Lesson) => Promise<boolean>;
   isUnlocked: (lessonId: string) => boolean;
@@ -107,6 +122,16 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     async (atom, attempt, now) => {
       if (!store) return;
       recordAtomAttempt(store, atom, attempt, now);
+      await saveProgress(store, storage);
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
+  const recordFlashcardGradeCb = useCallback<UseProgress['recordFlashcardGrade']>(
+    async (atom, grade, now) => {
+      if (!store) return;
+      recordAtomFlashcardGrade(store, atom, grade, now);
       await saveProgress(store, storage);
       setRevision((r) => r + 1);
     },
@@ -155,6 +180,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       store,
       revision,
       recordAtom,
+      recordFlashcardGrade: recordFlashcardGradeCb,
       complete,
       isUnlocked,
       isLessonComplete,
@@ -162,6 +188,18 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       isOnboarded,
       completeOnboarding,
     }),
-    [ready, store, revision, recordAtom, complete, isUnlocked, isLessonComplete, profile, isOnboarded, completeOnboarding],
+    [
+      ready,
+      store,
+      revision,
+      recordAtom,
+      recordFlashcardGradeCb,
+      complete,
+      isUnlocked,
+      isLessonComplete,
+      profile,
+      isOnboarded,
+      completeOnboarding,
+    ],
   );
 }
