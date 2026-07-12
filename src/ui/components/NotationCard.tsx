@@ -13,7 +13,8 @@ import { PlayButton } from './PlayButton';
 
 export interface NotationCardProps {
   music: Music;
-  /** Stave height; defaults tall so the stave reads as the hero, not a thumbnail. */
+  /** Stave height. Sized to hug the (centred, full-width) stave so the paper reads
+   *  as the hero without a tall empty margin below it. */
   height?: number;
   /** Show the play affordance (default true — every notation display sounds). */
   play?: boolean;
@@ -24,7 +25,7 @@ export interface NotationCardProps {
 export type NotationCardHandle = MusicSurfaceHandle;
 
 export const NotationCard = forwardRef<NotationCardHandle, NotationCardProps>(function NotationCard(
-  { music, height = 200, play = true, caption, testID = 'notation-card' },
+  { music, height = 150, play = true, caption, testID = 'notation-card' },
   ref,
 ) {
   const surfaceRef = useRef<MusicSurfaceHandle>(null);

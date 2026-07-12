@@ -4,6 +4,7 @@ import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
 import { musicToAbc } from '../music/abc-emitter';
 import type { Music } from '../music/types';
+import { colors } from '../ui/theme';
 import abcjsSource from './abcjs-source.json';
 import { decodeEvent, encodeCommand, type SurfaceCommand, type SurfaceEvent } from './bridge';
 import { buildSurfaceHtml } from './surface-html';
@@ -45,7 +46,10 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
 
   const abc = useMemo(() => musicToAbc(music), [music]);
   // HTML is stable (abcjs is 500KB — don't rebuild per note); ABC arrives via a render command.
-  const html = useMemo(() => buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE, soundFontUrl }), [soundFontUrl]);
+  const html = useMemo(
+    () => buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE, soundFontUrl, paperColor: colors.paper, inkColor: colors.paperInk }),
+    [soundFontUrl],
+  );
 
   const send = useCallback((cmd: SurfaceCommand) => {
     webRef.current?.postMessage(encodeCommand(cmd));

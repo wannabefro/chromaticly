@@ -7,7 +7,16 @@ describe('buildSurfaceHtml', () => {
     const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
     expect(html).toContain(FAKE_ABCJS);
     expect(html).toContain('id="paper"');
-    expect(html).toContain('#fdfdfb'); // light paper background even in dark mode
+    expect(html).toContain('#f6f4ee'); // default light paper background even in dark mode (rule 1)
+  });
+
+  test('themes the paper + ink from the caller (no nested white box)', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS, paperColor: '#abcabc', inkColor: '#123123' });
+    expect(html).toContain('background: #abcabc');
+    expect(html).toContain('color: #123123');
+    // The surface fills its host and centres the stave rather than drawing a nested card.
+    expect(html).toContain('height: 100%');
+    expect(html).toContain('justify-content: center');
   });
 
   test('embeds the initial ABC as a safe JS string literal', () => {

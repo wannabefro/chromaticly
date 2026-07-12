@@ -14,13 +14,26 @@ export interface SurfaceHtmlOptions {
   /** Render an in-page Play button wired to play() — a fallback control and a
    *  trusted-gesture entry point for browser verification. RN drives play via the bridge. */
   playButton?: boolean;
+  /** Paper fill — the surface IS the light card (never inverts, design rule 1), so it
+   *  paints its own paper rather than a nested box. Themed by the caller (colors.paper). */
+  paperColor?: string;
+  /** Notation ink on the paper (colors.paperInk). */
+  inkColor?: string;
 }
+
+// abcjs render options tuned so the stave reads as the hero (A9): a wide staff that
+// fills the card, notes at a legible scale, and near-zero padding so the paper isn't
+// mostly empty. `responsive:'resize'` fits the SVG to the card width.
+const RENDER_OPTS = { responsive: 'resize', add_classes: true, staffwidth: 140, scale: 1.5, stretchlast: true, paddingtop: 0, paddingbottom: 0, paddingleft: 0, paddingright: 0 };
 
 /** Pure: assembles the full HTML document string. */
 export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
   const initialAbc = JSON.stringify(opts.abc ?? null);
   const soundFont = JSON.stringify(opts.soundFontUrl ?? null);
   const autorun = opts.autorun ? 'true' : 'false';
+  const paper = opts.paperColor ?? '#f6f4ee';
+  const ink = opts.inkColor ?? '#12100c';
+  const renderOpts = JSON.stringify(RENDER_OPTS);
   const playButton = opts.playButton
     ? '<button id="surface-play" style="margin:8px">Play</button>'
     : '';
@@ -31,16 +44,21 @@ export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <style>
-  html, body { margin: 0; padding: 0; background: transparent; }
-  /* Notation always on a light "paper" card, even in dark mode (design brief). */
+  html, body { margin: 0; padding: 0; height: 100%; background: transparent; }
+  /* Notation always on a light "paper" card, even in dark mode (design brief). The
+     surface fills its host edge-to-edge and centres the stave — no nested box. */
   #paper {
-    background: #fdfdfb;
-    color: #111;
-    border-radius: 12px;
-    padding: 12px;
-    margin: 8px;
+    background: ${paper};
+    color: ${ink};
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  #paper svg { max-width: 100%; height: auto; }
+  #paper svg { display: block; width: 100%; height: auto; }
 </style>
 </head>
 <body>
@@ -65,7 +83,7 @@ ${playButton}
   function renderAbc(abc) {
     try {
       var t = performance.now();
-      visualObj = ABCJS.renderAbc('paper', abc, { responsive: 'resize', add_classes: true })[0];
+      visualObj = ABCJS.renderAbc('paper', abc, ${renderOpts})[0];
       emit({ type: 'rendered', ms: Math.round(performance.now() - t) });
     } catch (e) {
       emit({ type: 'error', message: 'render: ' + (e && e.message || e) });
