@@ -13,12 +13,31 @@
 
 import type { Music, Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { keySigAtom } from '../atoms';
+import { keySigAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR } from '../scope';
+import { diatonicPitchesInRange, G1_CLEFS } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
+
+/** The lesson's `key_sig:*` atoms as bare major-key tonics, e.g.
+ *  key_sig:C_major → "C". The atom is the scope: G1 is major-only, and a
+ *  name-the-key MCQ needs at least one distractor, so fewer than two keys is a
+ *  data bug rather than a silent grade-wide fallback. */
+function keysFromAtoms(atoms: string[]): string[] {
+  const keys: string[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'key_sig') continue;
+    const [tonic, mode] = parts[0].split('_');
+    if (mode !== 'major') throw new Error(`key_signature_id: non-major key "${parts[0]}" outside G1`);
+    if (!keys.includes(tonic)) keys.push(tonic);
+  }
+  if (keys.length < 2) {
+    throw new Error('key_signature_id: needs at least two key_sig:* atoms for a closed-item MCQ');
+  }
+  return keys;
+}
 
 function tonicPitchInRange(clef: Clef, key: string): string {
   const candidates = diatonicPitchesInRange(clef).filter((p) => p.startsWith(key));
@@ -38,12 +57,13 @@ function keyOptionMusic(clef: Clef, key: string): Music {
   };
 }
 
-function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
+  const keys = keysFromAtoms(atoms);
   const clef = pick(rng, [...G1_CLEFS]);
-  const key = pick(rng, [...G1_KEYS_MAJOR]);
+  const key = pick(rng, keys);
   const tonicPitch = tonicPitchInRange(clef, key);
-  const distractorKeys = G1_KEYS_MAJOR.filter((k) => k !== key);
+  const distractorKeys = keys.filter((k) => k !== key);
 
   const optionMusic: Record<string, Music> = {};
   for (const k of [key, ...distractorKeys]) {
@@ -79,4 +99,4 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 }
 
 export const keySignatureId: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));

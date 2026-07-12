@@ -43,7 +43,7 @@ describe('assembleOptions — answer + distractors, deterministic order', () => 
 
 describe('assembleOptions — notation-answer render payload (U4/AD5)', () => {
   test('key_signature_id options carry the generator\'s per-key stave, addressed by the semantic value', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: [] });
+    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: atomsForTemplate('key_signature_id') });
     const options = assembleOptions(instance);
     for (const option of options) {
       expect(option.music).toBeDefined();
@@ -54,7 +54,7 @@ describe('assembleOptions — notation-answer render payload (U4/AD5)', () => {
   // Invariant: when an option renders notation, its text label is never computed —
   // optionLabel's dur/term formatting is irrelevant once a stave replaces the text.
   test('a notation option gets an empty label — optionLabel formatting is skipped, not just unused', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: [] });
+    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: atomsForTemplate('key_signature_id') });
     for (const option of assembleOptions(instance)) {
       expect(option.label).toBe('');
     }

@@ -270,7 +270,7 @@ describe('registry — correctAnswerView', () => {
   });
 
   test('mcq renders the correct option (the canonical answer\'s label)', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: [] });
+    const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: atomsForTemplate('key_signature_id') });
     const options = assembleOptions(instance);
     const correctOption = options.find((o) => o.correct)!;
     const view = lookupInteraction('mcq').correctAnswerView(instance);
@@ -284,7 +284,7 @@ describe('registry — correctAnswerView', () => {
   // through unnoticed without this option-level assertion).
   test('a notation-answer MCQ (key_signature_id) renders the correct option\'s music, sourced from its render payload', () => {
     for (let seed = 0; seed < 10; seed++) {
-      const instance = generate('key_signature_id', { grade: 1, seed, atoms: [] });
+      const instance = generate('key_signature_id', { grade: 1, seed, atoms: atomsForTemplate('key_signature_id') });
       const correctOption = assembleOptions(instance).find((o) => o.correct)!;
       expect(correctOption.music).toBeDefined();
 
@@ -299,7 +299,7 @@ describe('registry — correctAnswerView', () => {
   // Rule 2/9: play is present outside options — the FeedbackSheet correct-answer
   // notation is not itself an AnswerOption, so it must not be play-disabled.
   test('the notation-answer correct-answer view carries play (unlike the play-disabled option)', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: [] });
+    const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: atomsForTemplate('key_signature_id') });
     const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { play?: boolean } };
     expect(view.props.play).not.toBe(false);
   });
