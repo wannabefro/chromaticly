@@ -173,4 +173,31 @@ describe('registry — correctAnswerView', () => {
     const view = lookupInteraction('mcq').correctAnswerView(instance);
     expect(JSON.stringify(view)).toContain(correctOption.label);
   });
+
+  // U4/AD5/F9: a notation-answer MCQ's FeedbackSheet must render the correct
+  // OPTION's stave, not the stimulus music — they can diverge for a future
+  // generator whose stimulus differs from its options (unlike key_signature_id,
+  // where they happen to coincide, so a stimulus-music regression would slip
+  // through unnoticed without this option-level assertion).
+  test('a notation-answer MCQ (key_signature_id) renders the correct option\'s music, sourced from its render payload', () => {
+    for (let seed = 0; seed < 10; seed++) {
+      const instance = generate('key_signature_id', { grade: 1, seed });
+      const correctOption = assembleOptions(instance).find((o) => o.correct)!;
+      expect(correctOption.music).toBeDefined();
+
+      const view = lookupInteraction('mcq').correctAnswerView(instance) as {
+        props: { music: unknown; caption: string };
+      };
+      expect(view.props.music).toEqual(correctOption.music);
+      expect(view.props.caption).toBe(correctOption.value);
+    }
+  });
+
+  // Rule 2/9: play is present outside options — the FeedbackSheet correct-answer
+  // notation is not itself an AnswerOption, so it must not be play-disabled.
+  test('the notation-answer correct-answer view carries play (unlike the play-disabled option)', () => {
+    const instance = generate('key_signature_id', { grade: 1, seed: 3 });
+    const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { play?: boolean } };
+    expect(view.props.play).not.toBe(false);
+  });
 });

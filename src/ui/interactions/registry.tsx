@@ -42,13 +42,24 @@ function McqInteraction({ instance, response, graded, strand, onResponseChange }
   return <Mcq options={options} selectedIndex={response} graded={graded} strand={strand} onSelectIndex={onResponseChange} />;
 }
 
+/** A notation-answer MCQ's FeedbackSheet shows the correct OPTION's rendered
+ *  stave (AD5/F9) — not the stimulus music, which may differ from what the
+ *  options render (and, unlike an option, always carries play — rule 2/9). */
+function mcqCorrectAnswerView(instance: ExerciseInstance) {
+  const correctOption = assembleOptions(instance).find((o) => o.correct);
+  if (correctOption?.music) {
+    return <NotationCard music={correctOption.music} caption={optionLabel(correctOption.value)} testID="answer-notation" />;
+  }
+  return defaultCorrectAnswerView(instance);
+}
+
 const mcqSpec: InteractionSpec<number | null> = {
   Component: McqInteraction,
   emptyResponse: () => null,
   canCheck: (response) => response !== null,
   grade: (instance, response) => gradeMcq(instance, assembleOptions(instance)[response ?? 0].value),
   submits: true,
-  correctAnswerView: defaultCorrectAnswerView,
+  correctAnswerView: mcqCorrectAnswerView,
 };
 
 const textInputSpec: InteractionSpec<string> = {

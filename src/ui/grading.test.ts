@@ -40,6 +40,34 @@ describe('assembleOptions — answer + distractors, deterministic order', () => 
   });
 });
 
+describe('assembleOptions — notation-answer render payload (U4/AD5)', () => {
+  test('key_signature_id options carry the generator\'s per-key stave, addressed by the semantic value', () => {
+    const instance = generate('key_signature_id', { grade: 1, seed: 5 });
+    const options = assembleOptions(instance);
+    for (const option of options) {
+      expect(option.music).toBeDefined();
+      expect(option.value).toBe(optionLabel(option.value)); // key names format as-is
+    }
+  });
+
+  // Invariant: when an option renders notation, its text label is never computed —
+  // optionLabel's dur/term formatting is irrelevant once a stave replaces the text.
+  test('a notation option gets an empty label — optionLabel formatting is skipped, not just unused', () => {
+    const instance = generate('key_signature_id', { grade: 1, seed: 5 });
+    for (const option of assembleOptions(instance)) {
+      expect(option.label).toBe('');
+    }
+  });
+
+  test('a text-only template (no option_music) keeps formatted labels and no music field', () => {
+    const instance = generate('rhythm_sum', { grade: 1, seed: 5 });
+    for (const option of assembleOptions(instance)) {
+      expect(option.music).toBeUndefined();
+      expect(option.label.length).toBeGreaterThan(0);
+    }
+  });
+});
+
 describe('gradeMcq — correctness is deep-equality with the canonical answer', () => {
   test('the correct option grades true; every distractor grades false, across all templates', () => {
     for (const template of ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning']) {

@@ -1,3 +1,4 @@
+import { assembleOptions, gradeMcq } from '../../ui/grading';
 import { G1_CLEFS, G1_KEYS_MAJOR } from '../scope';
 import { validate } from '../validator';
 import { keySignatureId } from './key-signature-id';
@@ -71,6 +72,39 @@ describe('keySignatureId — fuzz gate: 100 generated items are all validator-cl
       const instance = keySignatureId({ grade: 1, seed });
       const result = validate(instance);
       expect(result).toEqual({ ok: true, errors: [] });
+    }
+  });
+});
+
+describe('keySignatureId — notation-answer MCQ render payload (U4/AD5)', () => {
+  test('answer.canonical stays a semantic key-name string, never a Music object', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = keySignatureId({ grade: 1, seed });
+      expect(typeof instance.answer.canonical).toBe('string');
+    }
+  });
+
+  test('every assembled option (answer + distractors) carries a rendered key-signature stave', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = keySignatureId({ grade: 1, seed });
+      const options = assembleOptions(instance);
+      expect(options).toHaveLength(instance.distractors.length + 1);
+      for (const option of options) {
+        expect(option.music).toBeDefined();
+        expect(option.music?.key_sig).toBe(`${(option.value as string).split(' ')[0]}_major`);
+      }
+    }
+  });
+
+  // AD5's grading invariant: the rendered stave never leaks into `value`, so
+  // grading stays a semantic-string deep-equal, not a Music-object comparison.
+  test('grading compares the semantic value, never the option music payload', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = keySignatureId({ grade: 1, seed });
+      for (const option of assembleOptions(instance)) {
+        expect(typeof option.value).toBe('string');
+        expect(gradeMcq(instance, option.value)).toBe(option.correct);
+      }
     }
   });
 });

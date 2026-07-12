@@ -1,9 +1,24 @@
-// U3 acceptance tests for the MCQ option card.
+// U3/U4 acceptance tests for the MCQ option card.
+
+jest.mock('react-native-webview', () => {
+  const React = require('react');
+  return {
+    WebView: React.forwardRef((_props: Record<string, unknown>, _ref: unknown) => null),
+  };
+});
 
 import { fireEvent, render } from '@testing-library/react-native';
 import { Text } from 'react-native';
 
+import type { Music } from '../../music/types';
 import { AnswerOption } from './AnswerOption';
+
+const G_MAJOR: Music = {
+  clef: 'treble',
+  key_sig: 'G_major',
+  time_sig: null,
+  voices: [{ events: [{ type: 'note', pitch: 'G4', dur: 'semibreve' }] }],
+};
 
 describe('AnswerOption', () => {
   test('renders the letter badge and label', () => {
@@ -63,5 +78,36 @@ describe('AnswerOption', () => {
 
     expect(getByText('mini notation')).toBeTruthy();
     expect(queryByText('unused')).toBeNull();
+  });
+
+  // U4/AD5: a notation-answer option (e.g. a key signature) renders a mini
+  // stave instead of text, and that stave never carries the play affordance —
+  // play is reserved for stimulus/FeedbackSheet notation (rule 9).
+  describe('music prop (notation-answer options)', () => {
+    test('renders a NotationCard instead of the text label when music is set', () => {
+      const { getByTestId, queryByText } = render(
+        <AnswerOption letter="A" label="G major" music={G_MAJOR} testID="option-a" />,
+      );
+
+      expect(getByTestId('option-a-notation')).toBeTruthy();
+      expect(queryByText('G major')).toBeNull();
+    });
+
+    test('the notation is play-disabled — no play button inside the option', () => {
+      const { queryByTestId } = render(
+        <AnswerOption letter="A" label="G major" music={G_MAJOR} testID="option-a" />,
+      );
+
+      expect(queryByTestId('option-a-notation-play')).toBeNull();
+    });
+
+    test('falls back to the text label when music is not set', () => {
+      const { getByText, queryByTestId } = render(
+        <AnswerOption letter="A" label="G major" testID="option-a" />,
+      );
+
+      expect(getByText('G major')).toBeTruthy();
+      expect(queryByTestId('option-a-notation')).toBeNull();
+    });
   });
 });

@@ -5,11 +5,16 @@
 
 import { mulberry32 } from '../engine/rng';
 import type { ExerciseInstance } from '../engine/schema';
+import type { Music } from '../music/types';
 
 export interface Option {
   label: string;
   value: unknown;
   correct: boolean;
+  /** Render-only payload (AD5): a notation-answer option's rendered stave
+   *  (e.g. a key signature). Never participates in grading — `value` stays
+   *  the semantic answer compared by `gradeMcq`. */
+  music?: Music;
 }
 
 export interface AttemptResult {
@@ -59,13 +64,30 @@ function seedFromId(id: string): number {
   return h >>> 0;
 }
 
+/** A generator's optional per-value render payload (AD5), e.g. key_signature_id's
+ *  `interaction.config.option_music: Record<string, Music>` keyed by the same
+ *  semantic string used as `answer.canonical`/each distractor. */
+function optionMusicFor(instance: ExerciseInstance, value: unknown): Music | undefined {
+  if (typeof value !== 'string') return undefined;
+  const map = instance.interaction.config?.option_music;
+  if (!map || typeof map !== 'object') return undefined;
+  return (map as Record<string, Music>)[value];
+}
+
+/** A notation option's label is never shown (its NotationCard renders instead),
+ *  so `optionLabel` — which formats rhythm/term shapes into display text — is
+ *  skipped entirely rather than computed and discarded. */
+function buildOption(value: unknown, correct: boolean, music: Music | undefined): Option {
+  return music ? { label: '', value, correct, music } : { label: optionLabel(value), value, correct };
+}
+
 /** Answer + distractors as labelled options in a deterministic (id-seeded) order,
  *  so the correct option is not always first but the same instance always shuffles
  *  the same way (KTD4 reproducibility carries into presentation). */
 export function assembleOptions(instance: ExerciseInstance): Option[] {
   const options: Option[] = [
-    { label: optionLabel(instance.answer.canonical), value: instance.answer.canonical, correct: true },
-    ...instance.distractors.map((d) => ({ label: optionLabel(d), value: d, correct: false })),
+    buildOption(instance.answer.canonical, true, optionMusicFor(instance, instance.answer.canonical)),
+    ...instance.distractors.map((d) => buildOption(d, false, optionMusicFor(instance, d))),
   ];
   const rng = mulberry32(seedFromId(instance.id));
   for (let i = options.length - 1; i > 0; i--) {

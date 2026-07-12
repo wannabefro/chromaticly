@@ -1,11 +1,15 @@
-// U3: MCQ option card (design/components/core/AnswerOption.prompt.md). Selected
+// U3/U4: MCQ option card (design/components/core/AnswerOption.prompt.md). Selected
 // uses the current strand hue; correct/incorrect swap the letter badge for ✓/×.
-// For notation answers (e.g. key signatures), pass a mini NotationCard as children.
+// For notation answers (e.g. key signatures) pass `music` — rendered as a mini,
+// play-disabled NotationCard in place of the text label (rule 9: play is omitted
+// only inside answer options). `children` remains available as a raw override.
 
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import type { Music } from '../../music/types';
 import { ACCENT, colors, shape, strandDef, type, type Strand } from '../theme';
+import { NotationCard } from './NotationCard';
 
 export type AnswerOptionState = 'default' | 'selected' | 'correct' | 'incorrect';
 
@@ -15,6 +19,9 @@ export interface AnswerOptionProps {
   state?: AnswerOptionState;
   strand?: Strand;
   meta?: string;
+  /** A notation-answer's rendered stave (AD5). Takes precedence over `label`
+   *  when set; play is disabled (rule 9 — play omitted inside options). */
+  music?: Music;
   onPress?: () => void;
   testID?: string;
   children?: ReactNode;
@@ -31,6 +38,7 @@ export function AnswerOption({
   state = 'default',
   strand,
   meta,
+  music,
   onPress,
   testID,
   children,
@@ -71,12 +79,16 @@ export function AnswerOption({
     // announcing scaffolding over meaning, and colliding with the A–G note names.
     // Pin the accessibility label to the answer itself so it's announced (and E2E-
     // matched) by what it means, not its position.
-    <Pressable testID={testID} accessibilityLabel={label} onPress={onPress} style={containerStyle}>
+    <Pressable testID={testID} accessibilityLabel={label || letter} onPress={onPress} style={containerStyle}>
       <View style={badgeStyle}>
         <Text style={badgeTextStyle}>{badgeContent}</Text>
       </View>
       <View style={styles.body}>
-        {children ?? <Text style={styles.label}>{label}</Text>}
+        {children ?? (music ? (
+          <NotationCard music={music} play={false} height={100} testID={testID ? `${testID}-notation` : undefined} />
+        ) : (
+          <Text style={styles.label}>{label}</Text>
+        ))}
         {meta ? <Text style={metaStyle}>{meta}</Text> : null}
       </View>
     </Pressable>
