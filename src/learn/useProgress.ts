@@ -89,8 +89,11 @@ export interface UseProgress {
   isLessonComplete: (lessonId: string) => boolean;
   profile: Profile | null;
   isOnboarded: boolean;
-  /** Persist the onboarding profile (birth year + completion timestamp). */
-  completeOnboarding: (birthYear: number, onboardedAt: string) => Promise<void>;
+  /** The selected grade once onboarded, else null. */
+  grade: number | null;
+  /** Persist the onboarding profile (selected grade + completion timestamp). Birth
+   *  year is no longer captured here — it's deferred to account creation (U1/KTD1). */
+  completeOnboarding: (grade: number, onboardedAt: string) => Promise<void>;
 }
 
 export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UseProgress {
@@ -161,9 +164,9 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store, revision]);
 
   const completeOnboarding = useCallback<UseProgress['completeOnboarding']>(
-    async (birthYear, onboardedAt) => {
+    async (grade, onboardedAt) => {
       if (!store) return;
-      const next = { birthYear, onboardedAt };
+      const next: Profile = { grade, onboardedAt };
       store.setProfile(next);
       await saveProgress(store, storage);
       setProfileState(next); // real state → RootRouter reactively sees isOnboarded flip
@@ -173,6 +176,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   );
 
   const isOnboarded = profile !== null;
+  const grade = profile?.grade ?? null;
 
   return useMemo(
     () => ({
@@ -186,6 +190,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       isLessonComplete,
       profile,
       isOnboarded,
+      grade,
       completeOnboarding,
     }),
     [
@@ -199,6 +204,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       isLessonComplete,
       profile,
       isOnboarded,
+      grade,
       completeOnboarding,
     ],
   );

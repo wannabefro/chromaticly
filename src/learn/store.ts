@@ -20,7 +20,12 @@ export interface LessonProgress {
 }
 
 export interface Profile {
-  birthYear: number;
+  /** The grade the learner selected during onboarding (U1). Required; old profiles
+   *  written before grade existed are back-filled to 1 in migrate(). */
+  grade: number;
+  /** Deferred to account creation (screen 6b) — optional and absent on the primary
+   *  onboarding path, which no longer runs the age gate. */
+  birthYear?: number;
   onboardedAt: string;
 }
 
@@ -52,6 +57,15 @@ function withDefaultEase(progress: AtomProgress): AtomProgress {
   return { ...progress, srs: { ...progress.srs, ease: DEFAULT_EASE } };
 }
 
+/** `Profile.grade` (U1) is additive: a profile persisted before grade existed (the
+ *  birth-year-only age-gate era) is structurally valid at the current
+ *  STORE_VERSION — back-fill `grade: 1` (the only built grade) in place rather than
+ *  discarding it (same additive-optional strategy as `withDefaultEase`, AD4). */
+function withDefaultGrade(profile: Profile | null): Profile | null {
+  if (!profile || profile.grade !== undefined) return profile;
+  return { ...profile, grade: 1 };
+}
+
 /** Bring any persisted snapshot up to the current shape. A version mismatch we
  *  can't migrate is discarded (start fresh) rather than trusted — fail safe.
  *  Only a genuinely breaking shape change justifies that; additive optional
@@ -60,7 +74,7 @@ function migrate(snapshot: ProgressSnapshot): ProgressSnapshot {
   if (snapshot.version !== STORE_VERSION) return emptySnapshot();
   const merged = { ...emptySnapshot(), ...snapshot };
   const atoms = Object.fromEntries(Object.entries(merged.atoms).map(([id, progress]) => [id, withDefaultEase(progress)]));
-  return { ...merged, atoms };
+  return { ...merged, atoms, profile: withDefaultGrade(merged.profile) };
 }
 
 export class ProgressStore {
@@ -111,6 +125,10 @@ export class ProgressStore {
 
   getProfile(): Profile | null {
     return this.profile;
+  }
+
+  getGrade(): number | null {
+    return this.profile?.grade ?? null;
   }
 
   setProfile(profile: Profile): void {

@@ -116,15 +116,17 @@ describe('useProgress — onboarding (KTD4 profile persistence)', () => {
     await waitFor(() => expect(result.current.ready).toBe(true));
     expect(result.current.isOnboarded).toBe(false);
     expect(result.current.profile).toBeNull();
+    expect(result.current.grade).toBeNull();
 
-    await result.current.completeOnboarding(2015, '2026-07-12T00:00:00.000Z');
+    await result.current.completeOnboarding(1, '2026-07-12T00:00:00.000Z');
 
     await waitFor(() => expect(result.current.isOnboarded).toBe(true));
-    expect(result.current.profile).toEqual({ birthYear: 2015, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    expect(result.current.profile).toEqual({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    expect(result.current.grade).toBe(1);
 
     // Reload from the same underlying storage — profile must have been persisted, not just in-memory.
     const reloaded = new ProgressStore(JSON.parse(storage.blob as string));
     expect(reloaded.isOnboarded()).toBe(true);
-    expect(reloaded.getProfile()).toEqual({ birthYear: 2015, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    expect(reloaded.getProfile()).toEqual({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
   });
 });

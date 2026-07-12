@@ -34,7 +34,11 @@ export function AgeGateScreen({ onOnboarded, currentYear = new Date().getFullYea
       setBlocked(true);
       return;
     }
-    await completeOnboarding(selectedYear, new Date().toISOString());
+    // Parked screen (U1/KTD4): the primary onboarding path no longer runs the age
+    // gate — it moves to account creation (6b), where it will attach birthYear to an
+    // already-graded profile. Until then this compiles against the grade-based
+    // completeOnboarding with the only built grade; birthYear capture is deferred.
+    await completeOnboarding(1, new Date().toISOString());
     onOnboarded();
   }
 

@@ -47,16 +47,45 @@ describe('store — state survives a restart (why: KTD6 local persistence)', () 
 });
 
 describe('store — profile (KTD4 onboarding persistence)', () => {
-  test('profile round-trips through toSnapshot → new ProgressStore', () => {
+  test('profile round-trips through toSnapshot → new ProgressStore, preserving grade', () => {
     const store = new ProgressStore();
     expect(store.isOnboarded()).toBe(false);
 
-    store.setProfile({ birthYear: 2015, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    store.setProfile({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
     expect(store.isOnboarded()).toBe(true);
+    expect(store.getGrade()).toBe(1);
 
     const reloaded = new ProgressStore(store.toSnapshot());
-    expect(reloaded.getProfile()).toEqual({ birthYear: 2015, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    expect(reloaded.getProfile()).toEqual({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
     expect(reloaded.isOnboarded()).toBe(true);
+  });
+
+  test('a stored grade is never silently rewritten on round-trip (even a grade the UI cannot pick)', () => {
+    // Persistence must be grade-agnostic: a profile carrying grade 2 survives intact
+    // even though the onboarding UI only lets a user select Grade 1.
+    const store = new ProgressStore();
+    store.setProfile({ grade: 2, birthYear: 2000, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    const reloaded = new ProgressStore(store.toSnapshot());
+    expect(reloaded.getProfile()).toEqual({ grade: 2, birthYear: 2000, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    expect(reloaded.getGrade()).toBe(2);
+  });
+
+  test('a legacy birth-year-only profile (no grade) is back-filled to Grade 1, preserving birthYear (U1)', () => {
+    // Mirrors a real profile persisted in the age-gate era: { birthYear, onboardedAt }
+    // with no `grade`. migrate() must back-fill grade=1 in place, not discard it.
+    const legacyBlob = JSON.parse(
+      JSON.stringify({
+        version: STORE_VERSION,
+        atoms: {},
+        lessons: {},
+        unlocked: [],
+        profile: { birthYear: 2000, onboardedAt: '2026-01-01T00:00:00.000Z' },
+      }),
+    );
+    const store = new ProgressStore(legacyBlob);
+    expect(store.getProfile()).toEqual({ grade: 1, birthYear: 2000, onboardedAt: '2026-01-01T00:00:00.000Z' });
+    expect(store.getGrade()).toBe(1);
+    expect(store.isOnboarded()).toBe(true);
   });
 
   test('adding profile to an old v1 blob with no profile key never wipes existing progress (A1)', () => {
@@ -79,9 +108,9 @@ describe('store — profile (KTD4 onboarding persistence)', () => {
     expect(store.getLesson('treble-notes').completed).toBe(true);
     expect(store.isUnlocked('bass-notes')).toBe(true);
 
-    store.setProfile({ birthYear: 2012, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    store.setProfile({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
     const snapshot = store.toSnapshot();
-    expect(snapshot.profile).toEqual({ birthYear: 2012, onboardedAt: '2026-07-12T00:00:00.000Z' });
+    expect(snapshot.profile).toEqual({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
     expect(snapshot.atoms['note_read:treble:C4'].mastery.streak).toBe(2);
     expect(snapshot.lessons['treble-notes'].completed).toBe(true);
     expect(snapshot.unlocked).toContain('bass-notes');
@@ -107,8 +136,9 @@ describe('store — U6 additive `ease` migration is non-destructive (AD4)', () =
 
     const store = new ProgressStore(preU6Blob);
 
-    // Nothing was discarded — the version matched, so no fresh-start reset.
-    expect(store.getProfile()).toEqual({ birthYear: 2014, onboardedAt: '2026-01-01T00:00:00.000Z' });
+    // Nothing was discarded — the version matched, so no fresh-start reset. The
+    // grade-less legacy profile is back-filled to Grade 1 (U1) but otherwise intact.
+    expect(store.getProfile()).toEqual({ grade: 1, birthYear: 2014, onboardedAt: '2026-01-01T00:00:00.000Z' });
     expect(store.getLesson('treble-notes').completed).toBe(true);
     expect(store.isUnlocked('treble-notes')).toBe(true);
     expect(store.isUnlocked('bass-notes')).toBe(true);
