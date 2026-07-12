@@ -66,7 +66,12 @@ export function AnswerOption({
   const badgeContent = state === 'correct' ? '✓' : state === 'incorrect' ? '×' : letter;
 
   return (
-    <Pressable testID={testID} onPress={onPress} style={containerStyle}>
+    // The position badge (A/B/C) and note label render as separate Text nodes, but
+    // Pressable is accessible-by-default and would merge them into one "A B" label —
+    // announcing scaffolding over meaning, and colliding with the A–G note names.
+    // Pin the accessibility label to the answer itself so it's announced (and E2E-
+    // matched) by what it means, not its position.
+    <Pressable testID={testID} accessibilityLabel={label} onPress={onPress} style={containerStyle}>
       <View style={badgeStyle}>
         <Text style={badgeTextStyle}>{badgeContent}</Text>
       </View>

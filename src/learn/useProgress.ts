@@ -82,6 +82,12 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   const [store, setStore] = useState<ProgressStore | null>(null);
   const [ready, setReady] = useState(false);
   const [revision, setRevision] = useState(0);
+  // The onboarding profile is mirrored into real React state, not read from the
+  // mutable store in render. React Compiler (on in the app bundle, off in jest)
+  // infers a memo's deps from the callback body, so a store read memoizes on the
+  // store's identity — which never changes under in-place mutation — and goes
+  // stale. Genuine state is the only reliable change signal for the compiler.
+  const [profile, setProfileState] = useState<Profile | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -89,6 +95,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       if (!live) return;
       ensureRootUnlocked(loaded, lessons);
       setStore(loaded);
+      setProfileState(loaded.getProfile());
       setReady(true);
     });
     return () => {
@@ -119,21 +126,28 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     [store, storage],
   );
 
-  const isUnlocked = useCallback((lessonId: string) => store?.isUnlocked(lessonId) ?? false, [store]);
-  const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store]);
+  // These lookups read the mutable store, so under React Compiler they can serve a
+  // stale result after a mutation (the store's identity never changes). They're
+  // only consumed by the legacy learn-map, which remounts on navigation and so
+  // re-reads fresh; the in-session slice paths never depend on their reactivity.
+  // The onboarding/set flows use real state (`profile`) and local component state
+  // instead — see completeOnboarding below and SetRunner.
+  const isUnlocked = useCallback((lessonId: string) => store?.isUnlocked(lessonId) ?? false, [store, revision]);
+  const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store, revision]);
 
   const completeOnboarding = useCallback<UseProgress['completeOnboarding']>(
     async (birthYear, onboardedAt) => {
       if (!store) return;
-      store.setProfile({ birthYear, onboardedAt });
+      const next = { birthYear, onboardedAt };
+      store.setProfile(next);
       await saveProgress(store, storage);
+      setProfileState(next); // real state → RootRouter reactively sees isOnboarded flip
       setRevision((r) => r + 1);
     },
     [store, storage],
   );
 
-  const profile = store?.getProfile() ?? null;
-  const isOnboarded = store?.isOnboarded() ?? false;
+  const isOnboarded = profile !== null;
 
   return useMemo(
     () => ({
