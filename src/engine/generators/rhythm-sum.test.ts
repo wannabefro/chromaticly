@@ -88,6 +88,28 @@ describe('rhythmSum — distractor rule: adjacent tree step + the un-dotted vers
   });
 });
 
+describe('rhythmSum — Grade 1 scope: addition only, sum shown once', () => {
+  // ABRSM Grade 1 rhythm sums add note values; subtraction is out of scope and
+  // reads as an arithmetic puzzle, not theory. The expression must appear only
+  // in the stimulus (rendered as the notation-card line), never also embedded in
+  // the prompt — otherwise the UI prints it twice.
+  test('no item uses subtraction (seeds 0..99)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = rhythmSum({ grade: 1, seed, atoms: [] });
+      expect(instance.stimulus.text).not.toMatch(/-/);
+      expect(instance.stimulus.text).toMatch(/\+/);
+    }
+  });
+
+  test('the prompt is the instruction only and never repeats the sum expression', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const instance = rhythmSum({ grade: 1, seed, atoms: [] });
+      expect(instance.prompt).not.toMatch(/=|\+/);
+      expect(instance.prompt).not.toContain(instance.stimulus.text as string);
+    }
+  });
+});
+
 describe('rhythmSum — srs_tags', () => {
   test('emits the bare rhythm_sum atom', () => {
     const instance = rhythmSum({ grade: 1, seed: 1, atoms: [] });

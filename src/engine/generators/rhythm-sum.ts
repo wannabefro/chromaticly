@@ -6,10 +6,11 @@
 // Construction strategy: rather than sampling operands and rejecting sums
 // that miss a legal G1 value (a low hit-rate search), a decomposition table
 // is precomputed once at module load — pure, no randomness — mapping every
-// legal G1 target value to every 2- or 3-operand add/subtract combination
-// that sums to it exactly. build() then only has to pick among candidates
-// that are already guaranteed valid, so a single seed reliably produces a
-// legal item without leaning on generateValidated's reject-retry loop.
+// legal G1 target value to every 2- or 3-operand addition that sums to it
+// exactly. Grade 1 rhythm sums are addition of note values only (no
+// subtraction), so build() picks among decomposable targets and their add
+// combinations — a single seed reliably produces a legal item without leaning
+// on generateValidated's reject-retry loop.
 
 import { KB, KB_VERSION } from '../../content/knowledge-base';
 import type { Duration } from '../../music/types';
@@ -43,7 +44,6 @@ const TREE_ORDER: Duration[] = ['semiquaver', 'quaver', 'crotchet', 'minim', 'se
 
 interface Decomposition {
   operands: ValueEntry[];
-  op: 'add' | 'subtract';
 }
 
 function targetKey(entry: ValueEntry): string {
@@ -54,16 +54,10 @@ function findDecompositions(target: ValueEntry): Decomposition[] {
   const decomps: Decomposition[] = [];
   for (const a of VALUE_TABLE) {
     for (const b of VALUE_TABLE) {
-      if (a.units + b.units === target.units) decomps.push({ operands: [a, b], op: 'add' });
-      if (a.units - b.units === target.units && a.units > b.units) {
-        decomps.push({ operands: [a, b], op: 'subtract' });
-      }
+      if (a.units + b.units === target.units) decomps.push({ operands: [a, b] });
       for (const c of VALUE_TABLE) {
         if (a.units + b.units + c.units === target.units) {
-          decomps.push({ operands: [a, b, c], op: 'add' });
-        }
-        if (a.units + b.units - c.units === target.units && c.units > 0) {
-          decomps.push({ operands: [a, b, c], op: 'subtract' });
+          decomps.push({ operands: [a, b, c] });
         }
       }
     }
@@ -75,6 +69,12 @@ const DECOMPOSITIONS_BY_TARGET = new Map<string, Decomposition[]>(
   VALUE_TABLE.map((target) => [targetKey(target), findDecompositions(target)]),
 );
 
+// Addition-only leaves the smallest values (e.g. a lone semiquaver) with no
+// two-or-three-note sum, so only targets that decompose are eligible.
+const DECOMPOSABLE_TARGETS: ValueEntry[] = VALUE_TABLE.filter(
+  (target) => (DECOMPOSITIONS_BY_TARGET.get(targetKey(target))?.length ?? 0) > 0,
+);
+
 function toAnswerValue(entry: ValueEntry): { dur: Duration; dots: Dots } {
   return { dur: entry.dur, dots: entry.dots };
 }
@@ -83,14 +83,8 @@ function formatValue(entry: ValueEntry): string {
   return entry.dots === 1 ? `dotted ${entry.dur}` : entry.dur;
 }
 
-function formatPrompt(operands: ValueEntry[], op: 'add' | 'subtract'): string {
-  const parts = operands.map((operand, i) => {
-    const name = formatValue(operand);
-    if (i === 0) return name;
-    const sign = op === 'subtract' && i === operands.length - 1 ? '-' : '+';
-    return `${sign} ${name}`;
-  });
-  return `${parts.join(' ')} = ?`;
+function formatPrompt(operands: ValueEntry[]): string {
+  return `${operands.map(formatValue).join(' + ')} = ?`;
 }
 
 function treeIndex(dur: Duration): number {
@@ -134,22 +128,21 @@ function buildDistractors(target: ValueEntry, rng: () => number): ValueEntry[] {
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const target = pick(rng, VALUE_TABLE);
-  const decomps = DECOMPOSITIONS_BY_TARGET.get(targetKey(target)) ?? [];
-  if (decomps.length === 0) {
-    throw new Error(`no decomposition found for target ${targetKey(target)}`);
-  }
+  const target = pick(rng, DECOMPOSABLE_TARGETS);
+  const decomps = DECOMPOSITIONS_BY_TARGET.get(targetKey(target))!;
   const decomposition = pick(rng, decomps);
   const distractorEntries = buildDistractors(target, rng);
 
-  const sumPrompt = formatPrompt(decomposition.operands, decomposition.op);
+  // The instruction lives in `prompt`; the sum itself is the stimulus so the UI
+  // renders it once (as the large notation-card line), never twice.
+  const sumPrompt = formatPrompt(decomposition.operands);
 
   return {
     id: makeInstanceId('rhythm_sum', grade, idSeed),
     template_id: 'rhythm_sum',
     grade,
     strand: 'rhythm',
-    prompt: `Answer this musical sum with one note: ${sumPrompt}`,
+    prompt: 'Answer this musical sum with one note:',
     stimulus: { music: null, text: sumPrompt },
     interaction: { type: 'mcq', config: {} },
     answer: { canonical: toAnswerValue(target), accepted_alternatives: [] },
