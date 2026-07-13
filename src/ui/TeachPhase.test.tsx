@@ -67,6 +67,18 @@ describe('TeachPhase — teach/read cards before the set (302.3)', () => {
     expect(onCollectFact).toHaveBeenCalledTimes(1);
   });
 
+  test('a lesson with an authored by-ear rhythm shows the theory-in-sound card', () => {
+    const noteValues = lessonById('note-values')!;
+    const { getByTestId } = render(<TeachPhase lesson={noteValues} onStart={jest.fn()} />);
+    expect(getByTestId('theory-in-sound')).toBeTruthy();
+    expect(getByTestId('theory-play')).toBeTruthy();
+  });
+
+  test('a lesson without a by-ear rhythm shows no theory-in-sound card', () => {
+    const { queryByTestId } = render(<TeachPhase lesson={trebleNotes} onStart={jest.fn()} />);
+    expect(queryByTestId('theory-in-sound')).toBeNull();
+  });
+
   test('an already-collected fact is not re-collected on view', () => {
     const onCollectFact = jest.fn();
     render(<TeachPhase lesson={trebleNotes} onStart={jest.fn()} factCollected onCollectFact={onCollectFact} />);

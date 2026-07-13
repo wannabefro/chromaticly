@@ -14,6 +14,7 @@ import { generate } from '../engine/generators';
 import { Button } from './components/Button';
 import { NotationCard } from './components/NotationCard';
 import { StrandChip } from './components/StrandChip';
+import { TheoryInSound } from './TheoryInSound';
 import { assembleOptions, type Option } from './grading';
 import { colors, shape, strandDef, type as typo, type Strand } from './theme';
 
@@ -119,6 +120,10 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
             <Text style={styles.factText}>{teach.didYouKnow}</Text>
             <Text style={styles.factFoot}>saved to your fact-card collection</Text>
           </View>
+        )}
+
+        {teach.theoryInSound && (
+          <TheoryInSound prompt={teach.theoryInSound.prompt} rhythm={teach.theoryInSound} strand={strand} />
         )}
 
         {worked && (

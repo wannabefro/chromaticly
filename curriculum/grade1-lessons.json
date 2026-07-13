@@ -157,8 +157,9 @@
         "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver.",
         "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
         "theoryInSound": {
-          "prompt": "Play the bar and tap each strong beat you hear.",
-          "example": { "template_id": "bar_validity", "grade": 1, "seed": 2 }
+          "prompt": "Play the rhythm and tap each strong beat you hear — the beat that feels accented.",
+          "timeSignature": "3/4",
+          "notes": ["crotchet", "quaver", "quaver", "crotchet", "minim", "crotchet"]
         }
       },
       "unlocks": "key-signatures"

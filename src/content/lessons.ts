@@ -12,6 +12,7 @@ import { GENERATORS } from '../engine/generators';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
 import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR } from '../engine/scope';
 import type { Clef } from '../music/types';
+import { assertRhythmFillsBars } from './teach-rhythm';
 
 const WorkedExampleSchema = z.object({
   template_id: z.string(),
@@ -32,8 +33,14 @@ const TeachSchema = z.object({
   }),
   smartTip: z.string().min(1).nullable().optional(),
   didYouKnow: z.string().min(1).nullable().optional(),
+  // The by-ear card's rhythm is authored, not generated: it must be a metrically
+  // valid excerpt, which the exercise generators deliberately are not (302.3.5).
   theoryInSound: z
-    .object({ prompt: z.string().min(1), example: WorkedExampleSchema })
+    .object({
+      prompt: z.string().min(1),
+      timeSignature: z.string().min(3),
+      notes: z.array(z.string().min(1)).min(2),
+    })
     .nullable()
     .optional(),
 });
@@ -146,11 +153,13 @@ function load(): LessonsDoc {
     if (lesson.worked_example && !(lesson.worked_example.template_id in GENERATORS)) {
       throw new Error(`lessons: "${lesson.id}" worked example uses unknown template "${lesson.worked_example.template_id}"`);
     }
-    for (const ex of [lesson.teach?.concept.example, lesson.teach?.theoryInSound?.example]) {
-      if (ex && !(ex.template_id in GENERATORS)) {
-        throw new Error(`lessons: "${lesson.id}" teach example uses unknown template "${ex.template_id}"`);
-      }
+    const conceptExample = lesson.teach?.concept.example;
+    if (conceptExample && !(conceptExample.template_id in GENERATORS)) {
+      throw new Error(`lessons: "${lesson.id}" teach example uses unknown template "${conceptExample.template_id}"`);
     }
+    // A by-ear rhythm that doesn't fill whole bars would play as nonsense and its
+    // beat grid would be a lie — fail at import, not on device.
+    if (lesson.teach?.theoryInSound) assertRhythmFillsBars(lesson.teach.theoryInSound);
   }
   assertUnlockGraph(doc.lessons);
   return doc;

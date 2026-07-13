@@ -1,6 +1,7 @@
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
 import { assertAtomResolves, assertUnlockGraph, LESSONS, lessonById, type Lesson } from './lessons';
+import { assertRhythmFillsBars, beatGrid } from './teach-rhythm';
 
 describe('grade1 lessons — the bundled doc loads and cross-checks clean', () => {
   test('importing the module did not throw (schema + cross-refs + graph all valid)', () => {
@@ -45,13 +46,23 @@ describe('grade1 lessons — the bundled doc loads and cross-checks clean', () =
     }
   });
 
-  test('every teach example (concept + theory-in-sound) is validator-clean', () => {
+  test('every teach concept example is validator-clean', () => {
     for (const lesson of LESSONS) {
-      for (const ex of [lesson.teach?.concept.example, lesson.teach?.theoryInSound?.example]) {
-        if (!ex) continue;
-        const instance = generate(ex.template_id, { grade: ex.grade, seed: ex.seed, atoms: lesson.atoms });
-        expect(validate(instance)).toEqual({ ok: true, errors: [] });
-      }
+      const ex = lesson.teach?.concept.example;
+      if (!ex) continue;
+      const instance = generate(ex.template_id, { grade: ex.grade, seed: ex.seed, atoms: lesson.atoms });
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  // The by-ear rhythm is authored, not generated — so the thing that guarantees it
+  // plays in metre is this check, not a generator's validator (302.3.5).
+  test('every authored theory-in-sound rhythm fills whole bars', () => {
+    for (const lesson of LESSONS) {
+      const rhythm = lesson.teach?.theoryInSound;
+      if (!rhythm) continue;
+      expect(() => assertRhythmFillsBars(rhythm)).not.toThrow();
+      expect(beatGrid(rhythm).some((cell) => cell.strong)).toBe(true);
     }
   });
 });
