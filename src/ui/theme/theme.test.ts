@@ -1,7 +1,7 @@
 // U1: the theme is the token contract every component reads. These tests pin the
 // invariants downstream units rely on, so a broken/edited token fails loudly here.
 
-import { colors, type, fonts } from './tokens';
+import { colors, examColors, type, fonts } from './tokens';
 import { STRAND_DEFS, type Strand } from './strands';
 
 describe('theme tokens', () => {
@@ -39,5 +39,19 @@ describe('theme tokens', () => {
     expect(fonts.uiHeavy).toBe('Figtree_800ExtraBold');
     expect(fonts.mono).toBe('IBMPlexMono_400Regular');
     expect(fonts.music).toBe('NotoMusic_400Regular');
+  });
+
+  test('exam register exists as a separate palette (rule 4: assessment mode shifts register)', () => {
+    // Warm paper + merit banding, distinct from the dark UI palette.
+    expect(examColors.bg).toBe('#f2efe8');
+    expect(examColors.bandDistinction).toBe('#a8843c');
+    // The exam register must never be the same surface as normal UI.
+    expect(examColors.bg).not.toBe(colors.bg);
+  });
+
+  test('exam headings use the Source Serif face; exam body stays sans (rule 4)', () => {
+    expect(fonts.examBold).toBe('SourceSerif4_700Bold');
+    expect(type.examTitle.fontFamily).toBe(fonts.examBold);
+    expect(type.examPrompt.fontFamily).toBe(fonts.examSemibold);
   });
 });

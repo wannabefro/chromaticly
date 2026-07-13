@@ -39,6 +39,24 @@ export const colors = {
   hintSurface: '#241f12',
 } as const;
 
+/** Exam register (assessment mode ONLY, never-violate rule 4). Warm paper, serif
+ *  headings, and merit banding — transcribed from design/tokens/colors.css. Kept
+ *  a separate object (not merged into `colors`) so exam surfaces opt in explicitly
+ *  and normal screens can never accidentally pick up the exam palette. */
+export const examColors = {
+  bg: '#f2efe8',
+  card: '#fbfaf6',
+  border: '#e2dccc',
+  borderStrong: '#d8d0bd',
+  ink: '#23201a',
+  muted: '#8a8272',
+  faint: '#a0977f',
+  accent: '#c9964f', // timer, merit band
+  bandPass: '#b8ab8c',
+  bandMerit: '#c9964f',
+  bandDistinction: '#a8843c',
+} as const;
+
 /** 7-hue brand gradient stops (logo/score rings), in strand order. */
 export const brandGradient = [
   '#f0666f',
@@ -81,7 +99,10 @@ export const fonts = {
   mono: 'IBMPlexMono_400Regular',
   monoMedium: 'IBMPlexMono_500Medium',
   music: 'NotoMusic_400Regular',
-  // exam (Source Serif 4) deferred with the exam register (A6) — not loaded this slice.
+  // exam register (Source Serif 4) — assessment-mode headings only (rule 4).
+  examMedium: 'SourceSerif4_500Medium',
+  examSemibold: 'SourceSerif4_600SemiBold',
+  examBold: 'SourceSerif4_700Bold',
 } as const;
 
 /** Type scale (mobile, 384pt frame) — sizes/weights from typography.css. */
@@ -94,6 +115,10 @@ export const type = {
   option: { fontFamily: fonts.uiSemibold, fontSize: 16, lineHeight: 21 },
   label: { fontFamily: fonts.mono, fontSize: 11, lineHeight: 15 },
   overline: { fontFamily: fonts.mono, fontSize: 11, lineHeight: 15, letterSpacing: 1.3, textTransform: 'uppercase' as const },
+  // Exam register headings swap to the serif face (rule 4); exam body stays sans
+  // (reuse `body`). Assessment mode only.
+  examTitle: { fontFamily: fonts.examBold, fontSize: 24, lineHeight: 28 },
+  examPrompt: { fontFamily: fonts.examSemibold, fontSize: 20, lineHeight: 27 },
 } as const;
 
 export const elevation = {

@@ -7,6 +7,11 @@ import {
 } from '@expo-google-fonts/figtree';
 import { IBMPlexMono_400Regular, IBMPlexMono_500Medium } from '@expo-google-fonts/ibm-plex-mono';
 import { NotoMusic_400Regular } from '@expo-google-fonts/noto-music';
+import {
+  SourceSerif4_500Medium,
+  SourceSerif4_600SemiBold,
+  SourceSerif4_700Bold,
+} from '@expo-google-fonts/source-serif-4';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -29,6 +34,9 @@ export default function RootLayout() {
     IBMPlexMono_400Regular,
     IBMPlexMono_500Medium,
     NotoMusic_400Regular,
+    SourceSerif4_500Medium,
+    SourceSerif4_600SemiBold,
+    SourceSerif4_700Bold,
   });
 
   // Proceed once fonts load OR fail (A6: a font error must fall back to system
