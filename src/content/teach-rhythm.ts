@@ -30,10 +30,18 @@ export interface BeatCell {
 /** Rhythm-only notation sits on a single stave line by convention. */
 const RHYTHM_PITCH = 'B4';
 
+/** The note values Grade 1 knows. The knowledge base is wider than the grade (it
+ *  carries breve, demisemiquaver…), so accepting anything in `KB.noteValues` would
+ *  let a teach rhythm play material the learner has never been taught. */
+const GRADE1_DURATIONS: readonly Duration[] = ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'];
+
 export function parseNoteValue(name: string): { dur: Duration; dots: 0 | 1 } {
   const dotted = name.startsWith('dotted ');
   const dur = (dotted ? name.slice('dotted '.length) : name) as Duration;
   if (!(dur in KB.noteValues)) throw new Error(`teach rhythm: unknown note value "${name}"`);
+  if (!GRADE1_DURATIONS.includes(dur)) {
+    throw new Error(`teach rhythm: "${name}" is outside the Grade 1 note values`);
+  }
   return { dur, dots: dotted ? 1 : 0 };
 }
 
@@ -59,7 +67,12 @@ export function rhythmBeats(rhythm: TeachRhythm): number {
 }
 
 /** Fail loud on a rhythm that doesn't fill whole bars — a half-filled bar would
- *  play as nonsense and its beat grid would be a lie. */
+ *  play as nonsense and its beat grid would be a lie.
+ *
+ *  A correct total is not sufficient: a note may not straddle a barline either.
+ *  Three minims in 3/4 total 6 beats (two bars' worth) yet the first bar would
+ *  hold four beats, so `rhythmToMusic` would bar it wrong and the beat grid the
+ *  learner taps would not match what they hear. */
 export function assertRhythmFillsBars(rhythm: TeachRhythm): void {
   const perBar = beatsPerBar(rhythm.timeSignature);
   const total = rhythmBeats(rhythm);
@@ -67,6 +80,17 @@ export function assertRhythmFillsBars(rhythm: TeachRhythm): void {
     throw new Error(
       `teach rhythm: ${total} beats does not fill whole bars of ${rhythm.timeSignature} (${perBar} per bar)`,
     );
+  }
+
+  let filled = 0;
+  for (const name of rhythm.notes) {
+    const start = filled;
+    filled += beatsOf(name);
+    if (Math.floor(start / perBar) !== Math.ceil(filled / perBar) - 1) {
+      throw new Error(
+        `teach rhythm: "${name}" straddles a barline of ${rhythm.timeSignature} (starts at beat ${start % perBar + 1})`,
+      );
+    }
   }
 }
 

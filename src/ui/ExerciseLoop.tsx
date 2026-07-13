@@ -8,7 +8,7 @@
 // Grading/labelling logic stays in grading.ts. The NotationCard (persistent WebView)
 // stays mounted across items — item state resets without a remount (perf refactor).
 
-import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
@@ -58,6 +58,7 @@ export function ExerciseLoop({
   const [graded, setGraded] = useState<boolean | null>(null);
   const hintsUsedRef = useRef(0);
   const surfaceRef = useRef<NotationCardHandle>(null);
+  const scrollRef = useRef<ScrollView>(null);
 
   // Reset item state when the instance changes — without remounting, so the
   // NotationCard's WebView (warm abcjs/synth) persists across items.
@@ -68,6 +69,12 @@ export function ExerciseLoop({
     setGraded(null);
     hintsUsedRef.current = 0;
   }
+
+  // Nothing remounts between items, so the scroll offset would otherwise carry
+  // over and open the next item half-way down, prompt and notation off-screen.
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ y: 0, animated: false });
+  }, [instance]);
 
   const strand = instance.strand as Strand;
   const canCheck = spec.canCheck(response);
@@ -88,7 +95,7 @@ export function ExerciseLoop({
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.body}>
+      <ScrollView ref={scrollRef} contentContainerStyle={styles.body}>
         {showStrandChip && <StrandChip strand={strand} showGlyph />}
         <Text testID="prompt" style={styles.prompt}>
           {instance.prompt}

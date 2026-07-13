@@ -31,6 +31,21 @@ describe('teach rhythm — metre', () => {
     expect(() => assertRhythmFillsBars({ timeSignature: '3/4', notes: ['crotchet', 'crotchet'] })).toThrow();
     expect(() => assertRhythmFillsBars(twoBarsOf3)).not.toThrow();
   });
+
+  // The beat total alone is not enough: three minims in 3/4 add up to two bars'
+  // worth, but the first bar would hold four beats — barred wrong, and the beat
+  // grid would mark beats the learner never hears.
+  test('a note that straddles a barline fails loud even when the total adds up', () => {
+    const straddles: TeachRhythm = { timeSignature: '3/4', notes: ['minim', 'minim', 'minim'] };
+    expect(rhythmBeats(straddles) % beatsPerBar('3/4')).toBe(0);
+    expect(() => assertRhythmFillsBars(straddles)).toThrow(/straddles a barline/);
+  });
+
+  // The knowledge base is wider than the grade, so a teach rhythm could otherwise
+  // play a note value the learner has never been taught.
+  test('note values outside Grade 1 are rejected', () => {
+    expect(() => rhythmBeats({ timeSignature: '4/4', notes: ['breve'] })).toThrow(/outside the Grade 1/);
+  });
 });
 
 describe('teach rhythm — the beat grid the learner taps', () => {
