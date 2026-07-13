@@ -56,6 +56,24 @@ maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
 > This repo's dev server uses **port 8090** (8081 collides with another local
 > Expo project). Adjust `DEV_URL` to your Metro port.
 
+## DEV seeding seam (302.5)
+
+Interactions deep in the unlock chain are impractical to reach from a fresh
+install (you'd grind every prior unit). A `__DEV__`-only deep link fast-forwards
+progress instead:
+
+```bash
+openLink: exp://127.0.0.1:8090/--/?seed=<unitId>   # e.g. ?seed=intervals
+```
+
+It onboards (Grade 1) and unlocks `<unitId>` (marking predecessors complete but
+NOT the target), landing straight on the level map — no Welcome/onboarding. The
+seed rides as a **query param on the root route**, not a path (`/--/seed` would
+hit expo-router's Unmatched Route). Unit ids: `treble-notes`, `bass-notes`,
+`accidentals`, `note-values`, `key-signatures`, `intervals`, `terms-and-signs`.
+Never active in a release build. Logic: `src/learn/seed.ts`, wired in
+`src/screens/RootRouter.tsx`.
+
 ## Notes
 
 - `onboarding-first-set.yaml` **must** reset persisted state so first-run

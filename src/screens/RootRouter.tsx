@@ -9,7 +9,8 @@
 // transition that persists the profile (selected grade), flipping isOnboarded via
 // real state so this falls through to the level map (KTD5).
 
-import { useState } from 'react';
+import * as Linking from 'expo-linking';
+import { useEffect, useState } from 'react';
 
 import { useProgressContext } from '../learn/ProgressContext';
 import { CoachedWarmUp } from '../ui/CoachedWarmUp';
@@ -22,9 +23,25 @@ import LevelMapScreen from './LevelMapScreen';
 type Step = 'welcome' | 'grade' | 'plan' | 'warmup' | 'landed';
 
 export default function RootRouter() {
-  const { ready, isOnboarded, completeOnboarding } = useProgressContext();
+  const { ready, isOnboarded, completeOnboarding, seedTo } = useProgressContext();
   const [step, setStep] = useState<Step>('welcome');
   const [grade, setGrade] = useState(1);
+
+  // DEV/E2E only (302.5): a `--/?seed=<unitId>` deep link fast-forwards progress so
+  // a Maestro flow can jump to a deep unit instead of grinding the chain. The seed
+  // rides as a query param on the ROOT route (not a path) — expo-router owns path
+  // routing and would send `/seed` to an Unmatched Route, never mounting this
+  // screen. Never active in a release build. Hooks run before the early return.
+  const url = Linking.useURL();
+  const [seeded, setSeeded] = useState(false);
+  useEffect(() => {
+    if (!__DEV__ || !ready || seeded || !url) return;
+    const to = Linking.parse(url).queryParams?.seed;
+    if (typeof to === 'string' && to) {
+      setSeeded(true);
+      void seedTo(to);
+    }
+  }, [url, ready, seeded, seedTo]);
 
   if (!ready) return null; // A7: no flash before persisted state is known
 

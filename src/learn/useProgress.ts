@@ -10,6 +10,7 @@ import type { Lesson } from '../content/lessons';
 import type { AttemptResult } from '../ui/grading';
 import { lessonComplete, recordAttempt, recordFlashcardGrade } from './mastery';
 import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
+import { seedProgressToUnit } from './seed';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
 /** Ensure the entry lesson is always reachable, even on a fresh store. */
@@ -94,6 +95,9 @@ export interface UseProgress {
   /** Persist the onboarding profile (selected grade + completion timestamp). Birth
    *  year is no longer captured here — it's deferred to account creation (U1/KTD1). */
   completeOnboarding: (grade: number, onboardedAt: string) => Promise<void>;
+  /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is unlocked and
+   *  ready to play, then persist. Only ever called behind a __DEV__ deep link. */
+  seedTo: (targetId: string) => Promise<void>;
 }
 
 export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UseProgress {
@@ -175,6 +179,17 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     [store, storage],
   );
 
+  const seedTo = useCallback<UseProgress['seedTo']>(
+    async (targetId) => {
+      if (!store) return;
+      seedProgressToUnit(store, lessons, targetId, new Date().toISOString());
+      await saveProgress(store, storage);
+      setProfileState(store.getProfile()); // real state → onboarded flips (KTD5)
+      setRevision((r) => r + 1);
+    },
+    [store, storage, lessons],
+  );
+
   const isOnboarded = profile !== null;
   const grade = profile?.grade ?? null;
 
@@ -192,6 +207,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       isOnboarded,
       grade,
       completeOnboarding,
+      seedTo,
     }),
     [
       ready,
@@ -206,6 +222,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       isOnboarded,
       grade,
       completeOnboarding,
+      seedTo,
     ],
   );
 }
