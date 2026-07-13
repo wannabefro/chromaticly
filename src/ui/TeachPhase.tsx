@@ -6,7 +6,7 @@
 // paired with the StrandChip glyph/label). The did-you-know and theory-in-sound
 // cards (302.3.4/5) slot in between the smart tip and the worked example.
 
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { Lesson } from '../content/lessons';
@@ -23,12 +23,24 @@ export interface TeachPhaseProps {
   onStart: () => void;
   /** Back chevron. */
   onClose?: () => void;
+  /** Whether this lesson's did-you-know fact has already been collected (302.3.4). */
+  factCollected?: boolean;
+  /** Collect this lesson's did-you-know fact into the collection — fired once when
+   *  the teach phase is first viewed. */
+  onCollectFact?: () => void;
 }
 
-export function TeachPhase({ lesson, onStart, onClose }: TeachPhaseProps) {
+export function TeachPhase({ lesson, onStart, onClose, factCollected = false, onCollectFact }: TeachPhaseProps) {
   const teach = lesson.teach;
   const strand = lesson.strand as Strand;
   const hue = strandDef(strand).hue;
+
+  // Viewing the teach phase collects its fact card (design 4b) — once, and only
+  // if not already collected, so re-entering the lesson doesn't re-persist.
+  useEffect(() => {
+    if (teach?.didYouKnow && !factCollected) onCollectFact?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const conceptMusic = useMemo(() => {
     const ex = teach?.concept.example;
@@ -95,6 +107,17 @@ export function TeachPhase({ lesson, onStart, onClose }: TeachPhaseProps) {
               <Text style={styles.tipLabel}>SMART TIP</Text>
               <Text style={styles.tipText}>{teach.smartTip}</Text>
             </View>
+          </View>
+        )}
+
+        {teach.didYouKnow && (
+          <View style={styles.factCard} testID="teach-did-you-know">
+            <View style={styles.factHead}>
+              <Text style={[styles.overline, { color: hue }]}>Did you know?</Text>
+              <Text style={styles.factCollected}>★ collected</Text>
+            </View>
+            <Text style={styles.factText}>{teach.didYouKnow}</Text>
+            <Text style={styles.factFoot}>saved to your fact-card collection</Text>
           </View>
         )}
 
@@ -181,6 +204,19 @@ const styles = StyleSheet.create({
   tipBody: { flex: 1, gap: 3 },
   tipLabel: { ...typo.label, color: colors.hint, letterSpacing: 0.6 },
   tipText: { ...typo.body, color: colors.text },
+
+  factCard: {
+    backgroundColor: colors.surfaceCardSunken,
+    borderWidth: shape.borderW,
+    borderColor: colors.border,
+    borderRadius: shape.radiusCard,
+    padding: shape.spaceCard,
+    gap: 9,
+  },
+  factHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  factCollected: { ...typo.label, color: colors.hint },
+  factText: { ...typo.body, color: colors.text },
+  factFoot: { ...typo.label, color: colors.textFaint },
 
   workedOptions: { flexDirection: 'row', gap: 9 },
   workedOption: {

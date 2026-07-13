@@ -117,6 +117,37 @@ describe('store — profile (KTD4 onboarding persistence)', () => {
   });
 });
 
+describe('store — fact-card collection (302.3.4)', () => {
+  test('a collected fact survives a restart and collecting is idempotent', () => {
+    const store = new ProgressStore();
+    expect(store.isFactCollected('treble-notes')).toBe(false);
+
+    store.collectFact('treble-notes');
+    store.collectFact('treble-notes'); // idempotent — the Set dedupes
+    expect(store.isFactCollected('treble-notes')).toBe(true);
+
+    const reloaded = new ProgressStore(JSON.parse(JSON.stringify(store.toSnapshot())));
+    expect(reloaded.isFactCollected('treble-notes')).toBe(true);
+    expect(reloaded.isFactCollected('bass-notes')).toBe(false);
+    expect(reloaded.toSnapshot().collectedFacts).toEqual(['treble-notes']);
+  });
+
+  test('an old snapshot with no collectedFacts loads with an empty collection (additive, AD4)', () => {
+    const preCollectionBlob = JSON.parse(
+      JSON.stringify({
+        version: STORE_VERSION,
+        atoms: {},
+        lessons: {},
+        unlocked: ['treble-notes'],
+        profile: { grade: 1, onboardedAt: '2026-01-01T00:00:00.000Z' },
+      }),
+    );
+    const store = new ProgressStore(preCollectionBlob);
+    expect(store.isFactCollected('treble-notes')).toBe(false);
+    expect(store.isUnlocked('treble-notes')).toBe(true); // nothing else discarded
+  });
+});
+
 describe('store — U6 additive `ease` migration is non-destructive (AD4)', () => {
   test('an old snapshot with no `ease` on any SrsState loads intact — onboarding/profile/unlocks/mastery all survive — and a default ease is filled', () => {
     // Mirrors a real pre-U6 persisted blob: same STORE_VERSION, srs objects
@@ -185,6 +216,7 @@ describe('store — resilience', () => {
       atoms: { stale: { mastery: { streak: 9, mastered: true }, srs: { box: 4, lastReviewed: 0, nextDue: 8 } } },
       lessons: {},
       unlocked: ['everything'],
+      collectedFacts: [],
       profile: null,
     });
     expect(store.toSnapshot().atoms).toEqual({});

@@ -56,4 +56,20 @@ describe('TeachPhase — teach/read cards before the set (302.3)', () => {
     expect(getByTestId('teach-smart-tip')).toBeTruthy();
     expect(queryByTestId('teach-worked-example')).toBeNull();
   });
+
+  test('the did-you-know card renders and collecting fires once on first view', () => {
+    const onCollectFact = jest.fn();
+    const { getByTestId, getByText } = render(
+      <TeachPhase lesson={trebleNotes} onStart={jest.fn()} factCollected={false} onCollectFact={onCollectFact} />,
+    );
+    expect(getByTestId('teach-did-you-know')).toBeTruthy();
+    expect(getByText(trebleNotes.teach!.didYouKnow!)).toBeTruthy();
+    expect(onCollectFact).toHaveBeenCalledTimes(1);
+  });
+
+  test('an already-collected fact is not re-collected on view', () => {
+    const onCollectFact = jest.fn();
+    render(<TeachPhase lesson={trebleNotes} onStart={jest.fn()} factCollected onCollectFact={onCollectFact} />);
+    expect(onCollectFact).not.toHaveBeenCalled();
+  });
 });

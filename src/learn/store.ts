@@ -34,6 +34,9 @@ export interface ProgressSnapshot {
   atoms: Record<string, AtomProgress>;
   lessons: Record<string, LessonProgress>;
   unlocked: string[];
+  /** Lesson ids whose "did you know?" fact card (design 4b) the learner has
+   *  collected — the fact-card collection. Additive/optional (302.3.4). */
+  collectedFacts: string[];
   profile: Profile | null;
 }
 
@@ -45,7 +48,7 @@ export interface SnapshotStorage {
 }
 
 function emptySnapshot(): ProgressSnapshot {
-  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], profile: null };
+  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null };
 }
 
 /** `SrsState.ease` (U6) is additive and optional, so a snapshot written before
@@ -81,6 +84,7 @@ export class ProgressStore {
   private atoms: Record<string, AtomProgress>;
   private lessons: Record<string, LessonProgress>;
   private unlocked: Set<string>;
+  private collected: Set<string>;
   private profile: Profile | null;
 
   constructor(snapshot: ProgressSnapshot = emptySnapshot()) {
@@ -88,6 +92,7 @@ export class ProgressStore {
     this.atoms = { ...s.atoms };
     this.lessons = { ...s.lessons };
     this.unlocked = new Set(s.unlocked);
+    this.collected = new Set(s.collectedFacts);
     this.profile = s.profile;
   }
 
@@ -139,12 +144,21 @@ export class ProgressStore {
     return this.profile !== null;
   }
 
+  isFactCollected(lessonId: string): boolean {
+    return this.collected.has(lessonId);
+  }
+
+  collectFact(lessonId: string): void {
+    this.collected.add(lessonId);
+  }
+
   toSnapshot(): ProgressSnapshot {
     return {
       version: STORE_VERSION,
       atoms: { ...this.atoms },
       lessons: { ...this.lessons },
       unlocked: [...this.unlocked],
+      collectedFacts: [...this.collected],
       profile: this.profile,
     };
   }

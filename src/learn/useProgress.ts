@@ -88,6 +88,10 @@ export interface UseProgress {
   complete: (lesson: Lesson) => Promise<boolean>;
   isUnlocked: (lessonId: string) => boolean;
   isLessonComplete: (lessonId: string) => boolean;
+  /** Whether the lesson's did-you-know fact card (design 4b) has been collected. */
+  isFactCollected: (lessonId: string) => boolean;
+  /** Collect the lesson's fact card into the collection and persist (302.3.4). */
+  collectFact: (lessonId: string) => Promise<void>;
   profile: Profile | null;
   isOnboarded: boolean;
   /** The selected grade once onboarded, else null. */
@@ -166,6 +170,17 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   // instead — see completeOnboarding below and SetRunner.
   const isUnlocked = useCallback((lessonId: string) => store?.isUnlocked(lessonId) ?? false, [store, revision]);
   const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store, revision]);
+  const isFactCollected = useCallback((lessonId: string) => store?.isFactCollected(lessonId) ?? false, [store, revision]);
+
+  const collectFact = useCallback<UseProgress['collectFact']>(
+    async (lessonId) => {
+      if (!store || store.isFactCollected(lessonId)) return;
+      store.collectFact(lessonId);
+      await saveProgress(store, storage);
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
 
   const completeOnboarding = useCallback<UseProgress['completeOnboarding']>(
     async (grade, onboardedAt) => {
@@ -205,6 +220,8 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       complete,
       isUnlocked,
       isLessonComplete,
+      isFactCollected,
+      collectFact,
       profile,
       isOnboarded,
       grade,
@@ -220,6 +237,8 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       complete,
       isUnlocked,
       isLessonComplete,
+      isFactCollected,
+      collectFact,
       profile,
       isOnboarded,
       grade,
