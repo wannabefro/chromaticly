@@ -9,7 +9,7 @@
 // stays mounted across items — item state resets without a remount (perf refactor).
 
 import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
 import type { SrsGrade } from '../learn/srs';
@@ -88,38 +88,44 @@ export function ExerciseLoop({
 
   return (
     <View style={styles.container}>
-      {showStrandChip && <StrandChip strand={strand} showGlyph />}
-      <Text testID="prompt" style={styles.prompt}>
-        {instance.prompt}
-      </Text>
+      <ScrollView contentContainerStyle={styles.body}>
+        {showStrandChip && <StrandChip strand={strand} showGlyph />}
+        <Text testID="prompt" style={styles.prompt}>
+          {instance.prompt}
+        </Text>
 
-      {music ? (
-        <View testID="stimulus-music">
-          <NotationCard ref={surfaceRef} music={music} />
-        </View>
-      ) : (
-        instance.stimulus.text != null && (
-          <Text testID="stimulus-text" style={styles.stimulusText}>
-            {instance.stimulus.text}
-          </Text>
-        )
-      )}
+        {music ? (
+          <View testID="stimulus-music">
+            <NotationCard ref={surfaceRef} music={music} />
+          </View>
+        ) : (
+          instance.stimulus.text != null && (
+            <Text testID="stimulus-text" style={styles.stimulusText}>
+              {instance.stimulus.text}
+            </Text>
+          )
+        )}
 
-      {coachMark}
+        {coachMark}
 
-      <spec.Component
-        instance={instance}
-        response={response}
-        graded={graded}
-        strand={strand}
-        onResponseChange={setResponse}
-        onSelfGrade={onSelfGrade}
-      />
+        <spec.Component
+          instance={instance}
+          response={response}
+          graded={graded}
+          strand={strand}
+          onResponseChange={setResponse}
+          onSelfGrade={onSelfGrade}
+        />
 
-      {showHints && <Hints hints={instance.hints} onHintUsed={handleHintUsed} />}
+        {showHints && <Hints hints={instance.hints} onHintUsed={handleHintUsed} />}
+      </ScrollView>
 
+      {/* Sticky, so it stays reachable however tall the options grow (notation
+          answers are full staves and overflow the screen). */}
       {graded === null && spec.submits && (
-        <Button label="Check" strand={strand} disabled={!canCheck} onPress={check} testID="check" />
+        <View style={styles.footer}>
+          <Button label="Check" strand={strand} disabled={!canCheck} onPress={check} testID="check" />
+        </View>
       )}
 
       {graded !== null && (
@@ -135,7 +141,16 @@ export function ExerciseLoop({
 }
 
 const styles = StyleSheet.create({
-  container: { gap: shape.spaceCard, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceCard },
+  container: { flex: 1 },
+  body: { gap: shape.spaceCard, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceCard },
+  footer: {
+    paddingHorizontal: shape.spaceScreenX,
+    paddingTop: shape.spaceInline,
+    paddingBottom: shape.spaceCard,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: colors.border,
+    backgroundColor: colors.bg,
+  },
   prompt: { ...typo.prompt, color: colors.text },
   stimulusText: { ...typo.title, color: colors.text, textAlign: 'center' },
 });
