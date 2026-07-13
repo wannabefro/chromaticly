@@ -31,6 +31,29 @@ describe('grade1 lessons — the bundled doc loads and cross-checks clean', () =
       expect(generate(template_id, { grade, seed, atoms: lesson.atoms }).strand).toBe(lesson.strand);
     }
   });
+
+  // The teach phase (design 4a/4b) is content, so it must be as trustworthy as
+  // the exercises: every lesson carries one, and every notation it references
+  // comes from a real, validator-clean generator call — a stale template id or
+  // seed must fail loud here, not render a blank card on device.
+  test('every Grade 1 lesson carries a teach phase with objectives and a concept', () => {
+    for (const lesson of LESSONS) {
+      expect(lesson.teach).toBeTruthy();
+      expect(lesson.teach!.objectives.length).toBeGreaterThan(0);
+      expect(lesson.teach!.concept.title.length).toBeGreaterThan(0);
+      expect(lesson.teach!.concept.body.length).toBeGreaterThan(0);
+    }
+  });
+
+  test('every teach example (concept + theory-in-sound) is validator-clean', () => {
+    for (const lesson of LESSONS) {
+      for (const ex of [lesson.teach?.concept.example, lesson.teach?.theoryInSound?.example]) {
+        if (!ex) continue;
+        const instance = generate(ex.template_id, { grade: ex.grade, seed: ex.seed, atoms: lesson.atoms });
+        expect(validate(instance)).toEqual({ ok: true, errors: [] });
+      }
+    }
+  });
 });
 
 describe('grade1 lessons — atom cross-check rejects dangling references (why: a typo must fail loud, not vanish)', () => {

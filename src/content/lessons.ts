@@ -19,6 +19,25 @@ const WorkedExampleSchema = z.object({
   seed: z.number().int(),
 });
 
+// The teach/read phase ahead of the exercise set (design 4a/4b). Every field but
+// `objectives` and `concept` is optional so a lesson can carry only the cards it
+// needs. `example` refs reuse the worked-example shape (a seeded generator call)
+// so teach notation comes from the same engine as the exercises.
+const TeachSchema = z.object({
+  objectives: z.array(z.string().min(1)).min(1),
+  concept: z.object({
+    title: z.string().min(1),
+    body: z.string().min(1),
+    example: WorkedExampleSchema.nullable().optional(),
+  }),
+  smartTip: z.string().min(1).nullable().optional(),
+  didYouKnow: z.string().min(1).nullable().optional(),
+  theoryInSound: z
+    .object({ prompt: z.string().min(1), example: WorkedExampleSchema })
+    .nullable()
+    .optional(),
+});
+
 const LessonSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
@@ -26,6 +45,7 @@ const LessonSchema = z.object({
   atoms: z.array(z.string()).min(1),
   templates: z.array(z.string()).min(1),
   worked_example: WorkedExampleSchema.nullable().optional(),
+  teach: TeachSchema.nullable().optional(),
   unlocks: z.string().nullable(),
 });
 
@@ -36,6 +56,7 @@ const LessonsDocSchema = z.object({
 });
 
 export type WorkedExample = z.infer<typeof WorkedExampleSchema>;
+export type Teach = z.infer<typeof TeachSchema>;
 export type Lesson = z.infer<typeof LessonSchema>;
 export type LessonsDoc = z.infer<typeof LessonsDocSchema>;
 
@@ -124,6 +145,11 @@ function load(): LessonsDoc {
     for (const atom of lesson.atoms) assertAtomResolves(atom);
     if (lesson.worked_example && !(lesson.worked_example.template_id in GENERATORS)) {
       throw new Error(`lessons: "${lesson.id}" worked example uses unknown template "${lesson.worked_example.template_id}"`);
+    }
+    for (const ex of [lesson.teach?.concept.example, lesson.teach?.theoryInSound?.example]) {
+      if (ex && !(ex.template_id in GENERATORS)) {
+        throw new Error(`lessons: "${lesson.id}" teach example uses unknown template "${ex.template_id}"`);
+      }
     }
   }
   assertUnlockGraph(doc.lessons);

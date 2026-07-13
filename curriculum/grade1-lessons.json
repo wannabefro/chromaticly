@@ -29,6 +29,20 @@
         "grade": 1,
         "seed": 1
       },
+      "teach": {
+        "objectives": [
+          "The notes on the treble lines — E, G, B, D, F",
+          "The notes in the treble spaces — F, A, C, E",
+          "How the treble clef fixes G on the second line"
+        ],
+        "concept": {
+          "title": "Reading the treble stave",
+          "body": "The five lines spell E, G, B, D, F from the bottom up, and the four spaces spell F, A, C, E. The treble clef curls around the second line to mark it as G, so every other note follows from there.",
+          "example": { "template_id": "note_naming", "grade": 1, "seed": 2 }
+        },
+        "smartTip": "The four spaces spell the word FACE from the bottom up — the quickest notes to recall.",
+        "didYouKnow": "The treble clef is a stylised letter G — its curl loops right around the G line."
+      },
       "unlocks": "bass-notes"
     },
     {
@@ -59,6 +73,20 @@
         "grade": 1,
         "seed": 7
       },
+      "teach": {
+        "objectives": [
+          "The notes on the bass lines — G, B, D, F, A",
+          "The notes in the bass spaces — A, C, E, G",
+          "How the bass clef fixes F on the fourth line"
+        ],
+        "concept": {
+          "title": "Reading the bass stave",
+          "body": "The five lines spell G, B, D, F, A from the bottom up, and the four spaces spell A, C, E, G. The bass clef's two dots sit either side of the fourth line to mark it as F.",
+          "example": { "template_id": "note_naming", "grade": 1, "seed": 4 }
+        },
+        "smartTip": "The bass clef is the F clef — its two dots hug the F line, top and bottom.",
+        "didYouKnow": "Middle C sits just above the bass stave and just below the treble — one note shared between the two clefs."
+      },
       "unlocks": "accidentals"
     },
     {
@@ -79,6 +107,20 @@
         "template_id": "note_naming",
         "grade": 1,
         "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "What a sharp, a flat and a natural each do",
+          "That a sharp raises and a flat lowers a note by a semitone",
+          "How an accidental lasts to the end of its bar"
+        ],
+        "concept": {
+          "title": "Sharps, flats and naturals",
+          "body": "A sharp (♯) raises a note by a semitone; a flat (♭) lowers it by a semitone; a natural (♮) cancels either one. An accidental holds for the rest of the bar it appears in, then the bar-line clears it.",
+          "example": { "template_id": "note_naming", "grade": 1, "seed": 2 }
+        },
+        "smartTip": "An accidental only lasts to the next bar-line — the bar-line wipes the slate clean.",
+        "didYouKnow": "On a keyboard a sharp and the flat above it can be the same key — C♯ and D♭ are one black note."
       },
       "unlocks": "note-values"
     },
@@ -101,6 +143,24 @@
         "grade": 1,
         "seed": 1
       },
+      "teach": {
+        "objectives": [
+          "How many crotchet beats each note lasts",
+          "How note values add up to fill a bar",
+          "How a dot adds half a note's value again"
+        ],
+        "concept": {
+          "title": "How long each note lasts",
+          "body": "A semibreve lasts four crotchet beats, a minim two, a crotchet one, and a quaver half a beat. A dot after a note adds half its value again, so a dotted minim lasts three beats.",
+          "example": { "template_id": "bar_validity", "grade": 1, "seed": 5 }
+        },
+        "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver.",
+        "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
+        "theoryInSound": {
+          "prompt": "Play the bar and tap each strong beat you hear.",
+          "example": { "template_id": "bar_validity", "grade": 1, "seed": 2 }
+        }
+      },
       "unlocks": "key-signatures"
     },
     {
@@ -120,6 +180,20 @@
         "template_id": "key_signature_id",
         "grade": 1,
         "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "The key signatures for C, G, D and F major",
+          "That the key signature applies right through the piece",
+          "The order sharps and flats are written in"
+        ],
+        "concept": {
+          "title": "Grade 1 key signatures",
+          "body": "C major has no sharps or flats. G major has one sharp, F♯; D major has two, F♯ and C♯; F major has one flat, B♭. The key signature sits just after the clef and applies to every bar that follows.",
+          "example": { "template_id": "key_signature_id", "grade": 1, "seed": 2 }
+        },
+        "smartTip": "One sharp is G major and one flat is F major — the two quickest to name at a glance.",
+        "didYouKnow": "Sharps are always written in the same order — F, C, G, D — each a fifth above the last."
       },
       "unlocks": "intervals"
     },
@@ -144,6 +218,20 @@
         "template_id": "interval_naming",
         "grade": 1,
         "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "How to name an interval by its number",
+          "That you count both the lower and upper notes",
+          "The intervals from a 2nd up to an octave"
+        ],
+        "concept": {
+          "title": "Counting intervals",
+          "body": "An interval is the distance between two notes. Count every letter name from the lower note to the upper, including both ends — C up to G is a 5th (C, D, E, F, G). The same note twice is a unison; eight letters apart is an octave.",
+          "example": { "template_id": "interval_naming", "grade": 1, "seed": 2 }
+        },
+        "smartTip": "Count the lower note as ‘one’ — intervals include both ends, not just the gaps between.",
+        "didYouKnow": "An octave spans eight notes because the eighth note repeats the first — the letter names come back around."
       },
       "unlocks": "terms-and-signs"
     },
@@ -191,6 +279,19 @@
         "template_id": "term_meaning_flashcard",
         "grade": 1,
         "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "The common Italian terms for speed and volume",
+          "What each sign looks like on the page",
+          "How loud or how fast each term asks you to play"
+        ],
+        "concept": {
+          "title": "Musical terms and signs",
+          "body": "Grade 1 uses Italian words for how music is played — forte means loud, piano means soft, and allegro means fast. Signs such as the tie, the slur and the pause carry their own instructions."
+        },
+        "smartTip": "The piano is named after ‘piano e forte’ — soft and loud — because it could play both.",
+        "didYouKnow": "Most speed and volume terms are Italian because Italy led European music printing in the 1600s."
       },
       "unlocks": null
     }
