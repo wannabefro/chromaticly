@@ -16,7 +16,6 @@ import { KB, KB_VERSION } from '../../content/knowledge-base';
 import type { Duration } from '../../music/types';
 import { rhythmSumAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { G1_NOTE_VALUES } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -34,13 +33,24 @@ function unitsFor(dur: Duration, dots: Dots): number {
   return Math.round(beats * 16 * (dots === 1 ? 1.5 : 1));
 }
 
-const VALUE_TABLE: ValueEntry[] = G1_NOTE_VALUES.flatMap((dur) => [
-  { dur, dots: 0 as Dots, units: unitsFor(dur, 0) },
-  { dur, dots: 1 as Dots, units: unitsFor(dur, 1) },
-]);
+// The note values ABRSM Grade 1 uses in rhythm sums: no semiquavers, and the
+// only dotted value is the dotted minim (dotted crotchet/quaver and a dotted
+// semibreve are all out of Grade 1 scope). Both the sum operands and the MCQ
+// distractors are drawn from this set, so no item can surface an out-of-scope
+// value.
+const RHYTHM_SUM_VALUES: ReadonlyArray<{ dur: Duration; dots: Dots }> = [
+  { dur: 'semibreve', dots: 0 },
+  { dur: 'minim', dots: 1 },
+  { dur: 'minim', dots: 0 },
+  { dur: 'crotchet', dots: 0 },
+  { dur: 'quaver', dots: 0 },
+];
 
-// Ascending duration — used for "one step longer/shorter on the note tree".
-const TREE_ORDER: Duration[] = ['semiquaver', 'quaver', 'crotchet', 'minim', 'semibreve'];
+const VALUE_TABLE: ValueEntry[] = RHYTHM_SUM_VALUES.map(({ dur, dots }) => ({
+  dur,
+  dots,
+  units: unitsFor(dur, dots),
+}));
 
 interface Decomposition {
   operands: ValueEntry[];
@@ -87,40 +97,28 @@ function formatPrompt(operands: ValueEntry[]): string {
   return `${operands.map(formatValue).join(' + ')} = ?`;
 }
 
-function treeIndex(dur: Duration): number {
-  return TREE_ORDER.indexOf(dur);
-}
-
-function adjacentTreeEntry(entry: ValueEntry, direction: 1 | -1): ValueEntry | null {
-  const idx = treeIndex(entry.dur) + direction;
-  if (idx < 0 || idx >= TREE_ORDER.length) return null;
-  const dur = TREE_ORDER[idx];
-  return { dur, dots: entry.dots, units: unitsFor(dur, entry.dots) };
-}
-
 function sameValue(a: ValueEntry, b: ValueEntry): boolean {
   return a.dur === b.dur && a.dots === b.dots;
 }
 
-// Distractor rule (template): "one step longer/shorter on the note tree" AND
-// "the un-dotted version of the correct dotted answer". At the tree's edges
-// (semiquaver/semibreve) or for an undotted target, the second slot falls
-// back to the dotted/undotted sibling of the same note value so a closed
-// item always has two distinct, diagnostic options.
-function buildDistractors(target: ValueEntry, rng: () => number): ValueEntry[] {
-  const direction = pick(rng, [1, -1] as const);
-  const primary = adjacentTreeEntry(target, direction) ?? adjacentTreeEntry(target, direction === 1 ? -1 : 1);
-  const distractors: ValueEntry[] = primary ? [primary] : [];
+// Distractor rule: the un-dotted version of a dotted answer (the classic
+// "forgot the dot" error), then fill to two slots with the nearest values by
+// duration — all drawn from RHYTHM_SUM_VALUES, so every option stays in Grade 1
+// scope and near-miss diagnostic rather than obviously wrong.
+function buildDistractors(target: ValueEntry): ValueEntry[] {
+  const distractors: ValueEntry[] = [];
 
   if (target.dots === 1) {
-    distractors.push({ dur: target.dur, dots: 0, units: unitsFor(target.dur, 0) });
-  } else {
-    const secondary = adjacentTreeEntry(target, direction === 1 ? -1 : 1);
-    if (secondary && !distractors.some((d) => sameValue(d, secondary))) {
-      distractors.push(secondary);
-    } else {
-      distractors.push({ dur: target.dur, dots: 1, units: unitsFor(target.dur, 1) });
-    }
+    const undotted = VALUE_TABLE.find((v) => v.dur === target.dur && v.dots === 0);
+    if (undotted) distractors.push(undotted);
+  }
+
+  const byNearness = VALUE_TABLE.filter(
+    (v) => !sameValue(v, target) && !distractors.some((d) => sameValue(d, v)),
+  ).sort((a, b) => Math.abs(a.units - target.units) - Math.abs(b.units - target.units));
+
+  while (distractors.length < 2 && byNearness.length > 0) {
+    distractors.push(byNearness.shift()!);
   }
 
   return distractors;
@@ -131,7 +129,7 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
   const target = pick(rng, DECOMPOSABLE_TARGETS);
   const decomps = DECOMPOSITIONS_BY_TARGET.get(targetKey(target))!;
   const decomposition = pick(rng, decomps);
-  const distractorEntries = buildDistractors(target, rng);
+  const distractorEntries = buildDistractors(target);
 
   // The instruction lives in `prompt`; the sum itself is the stimulus so the UI
   // renders it once (as the large notation-card line), never twice.

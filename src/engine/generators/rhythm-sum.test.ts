@@ -60,7 +60,7 @@ describe('rhythmSum — the total always equals exactly one legal G1 note value'
   });
 });
 
-describe('rhythmSum — distractor rule: adjacent tree step + the un-dotted version of a dotted answer', () => {
+describe('rhythmSum — distractor rule: nearest values + the un-dotted version of a dotted answer', () => {
   test('when the answer is dotted, one distractor is its un-dotted version', () => {
     let found = false;
     for (let seed = 0; seed < 200 && !found; seed++) {
@@ -106,6 +106,24 @@ describe('rhythmSum — Grade 1 scope: addition only, sum shown once', () => {
       const instance = rhythmSum({ grade: 1, seed, atoms: [] });
       expect(instance.prompt).not.toMatch(/=|\+/);
       expect(instance.prompt).not.toContain(instance.stimulus.text as string);
+    }
+  });
+
+  // Grade 1 rhythm values are semibreve, dotted minim, minim, crotchet, quaver.
+  // No semiquavers, and the dotted minim is the only dotted value — so operands,
+  // the answer, and every distractor must stay inside this set (a dotted
+  // semiquaver or dotted semibreve appearing would be out of scope).
+  test('answer + distractors are all Grade 1 rhythm values (seeds 0..99)', () => {
+    const ALLOWED = new Set(['semibreve', 'dotted minim', 'minim', 'crotchet', 'quaver']);
+    const label = (v: { dur: string; dots: number }) => (v.dots === 1 ? `dotted ${v.dur}` : v.dur);
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = rhythmSum({ grade: 1, seed, atoms: [] });
+      const values = [instance.answer.canonical, ...instance.distractors] as { dur: string; dots: number }[];
+      for (const v of values) expect(ALLOWED).toContain(label(v));
+      // The stimulus operands, too — no out-of-scope value hides in the sum.
+      for (const tok of (instance.stimulus.text as string).replace(/\s*=\s*\?$/, '').split(' + ')) {
+        expect(ALLOWED).toContain(tok.trim());
+      }
     }
   });
 });
