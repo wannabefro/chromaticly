@@ -36,10 +36,13 @@ export function TheoryInSound({ prompt, rhythm, strand }: TheoryInSoundProps) {
   const missed = cells.some((cell, i) => !cell.strong && isTapped(i));
   const allFound = found === strongTotal;
 
-  const message = allFound
-    ? 'That’s it — the strong beat is the first beat of every bar.'
-    : missed
-      ? 'Not quite — listen again for the accent at the start of each bar.'
+  // A wrong tap gates the message: taps can't be taken back, so a learner who hit a
+  // weak beat and then found every strong one must not be told they got it right
+  // while the wrong beat is still flagged red on screen.
+  const message = missed
+    ? 'Not quite — listen again for the accent at the start of each bar.'
+    : allFound
+      ? 'That’s it — the strong beat is the first beat of every bar.'
       : null;
 
   return (

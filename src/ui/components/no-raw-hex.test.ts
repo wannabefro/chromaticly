@@ -19,8 +19,13 @@ const SRC = join(__dirname, '..', '..'); // repo src/
 const SLICE_FILES = [
   'ui/ExerciseLoop.tsx',
   'ui/interactions/Mcq.tsx',
+  'ui/interactions/FindTheBar.tsx',
+  'ui/interactions/registry.tsx',
   'ui/SetRunner.tsx',
   'ui/SetComplete.tsx',
+  'ui/TeachPhase.tsx',
+  'ui/TheoryInSound.tsx',
+  'ui/exam/ExamRunner.tsx',
   'screens/onboarding/WelcomeScreen.tsx',
   'screens/onboarding/AgeGateScreen.tsx',
   'screens/LevelMapScreen.tsx',

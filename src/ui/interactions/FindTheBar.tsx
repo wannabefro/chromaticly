@@ -14,9 +14,15 @@ import type { InteractionComponentProps } from './types';
 
 export type FindTheBarResponse = number | null;
 
+/** Fails loud, like `lookupInteraction`: a missing bar count would otherwise render
+ *  a fully-formed exercise with an empty bar strip — unanswerable, with no error
+ *  anywhere to say why. */
 export function barCount(instance: ExerciseInstance): number {
   const bars = instance.interaction.config?.bars;
-  return typeof bars === 'number' ? bars : 0;
+  if (typeof bars !== 'number' || !Number.isInteger(bars) || bars < 2) {
+    throw new Error(`find_the_bar: interaction.config.bars must be an integer >= 2, got ${String(bars)}`);
+  }
+  return bars;
 }
 
 export function FindTheBar({ instance, response, graded, strand, onResponseChange }: InteractionComponentProps<FindTheBarResponse>) {

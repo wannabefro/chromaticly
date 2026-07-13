@@ -18,13 +18,21 @@ function rootLesson(lessons: Lesson[]): Lesson | undefined {
  *  unlocks the next in the linear chain — so `targetId` ends up unlocked but NOT
  *  completed, ready to enter. Storage-agnostic and self-contained (mutates the
  *  store directly, no useProgress dependency, to keep this leaf module cycle-free).
- *  An unknown `targetId` leaves the chain fully completed rather than throwing. */
+ *
+ *  An unknown `targetId` throws. This is the determinism seam the E2E flows steer
+ *  with, so a typo'd unit id in a `.maestro` flow must fail here and say so —
+ *  walking the chain past the end would instead complete the entire curriculum and
+ *  leave the flow to fail later on a confusingly wrong screen. */
 export function seedProgressToUnit(
   store: ProgressStore,
   lessons: Lesson[],
   targetId: string,
   onboardedAt: string,
 ): void {
+  if (!lessons.some((l) => l.id === targetId)) {
+    throw new Error(`seed: unknown unit "${targetId}" (expected one of ${lessons.map((l) => l.id).join(', ')})`);
+  }
+
   store.setProfile({ grade: 1, onboardedAt });
 
   let cursor = rootLesson(lessons);

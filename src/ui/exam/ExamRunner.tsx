@@ -94,7 +94,7 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
           </View>
 
           <Text style={styles.bandLine}>{bandLine}</Text>
-          <Text style={styles.note}>No hints, no streaks — just like exam day.</Text>
+          <Text style={styles.note}>No hints, no streaks, no timer pauses — just like exam day.</Text>
         </ScrollView>
 
         <View style={styles.footer}>
@@ -243,7 +243,8 @@ const styles = StyleSheet.create({
   },
   sectionRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   sectionName: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, lineHeight: 21, color: x.ink },
-  sectionMarks: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.muted },
+  // Marks are numbers users scan, so they're mono (design/README.md).
+  sectionMarks: { fontFamily: type.label.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   weak: { color: x.accent },
   bandLine: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   note: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.faint },

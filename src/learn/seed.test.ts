@@ -11,6 +11,15 @@ import { ProgressStore } from './store';
 const AT = '2026-07-13T00:00:00.000Z';
 
 describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
+  // This is the seam the E2E flows steer with, so a typo'd unit id has to fail here
+  // and say so. Walking off the end of the chain instead would mark every lesson
+  // complete and leave the flow to fail later on a confusingly wrong screen.
+  test('an unknown unit id fails loud rather than completing the whole curriculum', () => {
+    const store = new ProgressStore();
+    expect(() => seedProgressToUnit(store, LESSONS, 'intervalz', AT)).toThrow(/unknown unit "intervalz"/);
+    expect(Object.values(store.toSnapshot().lessons).filter((l) => l.completed)).toHaveLength(0);
+  });
+
   test('onboards and unlocks the target (intervals) without completing it', () => {
     const store = new ProgressStore();
     seedProgressToUnit(store, LESSONS, 'intervals', AT);

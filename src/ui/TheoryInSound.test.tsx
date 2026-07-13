@@ -57,4 +57,17 @@ describe('TheoryInSound — tap the strong beats you hear (302.3.5)', () => {
     expect(feedback).toContain('Not quite');
     expect(feedback).not.toMatch(/wrong/i);
   });
+
+  // Taps can't be taken back, so a wrong tap must keep gating the message: telling
+  // the learner they got it right while a beat is still flagged red contradicts what
+  // they can see.
+  test('a wrong tap keeps correcting even once every strong beat is found', () => {
+    const { getByTestId } = renderCard();
+    fireEvent.press(getByTestId('theory-beat-1')); // weak
+    fireEvent.press(getByTestId('theory-beat-0')); // strong
+    fireEvent.press(getByTestId('theory-beat-3')); // strong — all strong beats now found
+
+    expect(getByTestId('theory-beat-3-strong')).toBeTruthy();
+    expect(getByTestId('theory-feedback').props.children).toContain('Not quite');
+  });
 });

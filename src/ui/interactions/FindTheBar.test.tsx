@@ -11,6 +11,7 @@ jest.mock('react-native-webview', () => {
 import { fireEvent, render } from '@testing-library/react-native';
 
 import { generate } from '../../engine/generators';
+import { barCount } from './FindTheBar';
 import { lookupInteraction } from './registry';
 
 const instance = generate('music_in_context', { grade: 1, seed: 2, atoms: ['find_bar:highest'] });
@@ -60,5 +61,12 @@ describe('FindTheBar — the bar strip (302.4)', () => {
     expect(spec.grade(instance, correctBar)).toBe(true);
     const wrong = correctBar === 1 ? 2 : 1;
     expect(spec.grade(instance, wrong)).toBe(false);
+  });
+
+  // Falling back to a zero-length strip would render a complete-looking exercise
+  // that cannot be answered, with nothing anywhere saying why.
+  test('a missing bar count fails loud rather than rendering an empty strip', () => {
+    const broken = { ...instance, interaction: { ...instance.interaction, config: {} } };
+    expect(() => barCount(broken)).toThrow(/bars must be an integer/);
   });
 });
