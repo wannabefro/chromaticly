@@ -1,0 +1,70 @@
+# AE5 + the mandatory stave-input touch dogfood. The intervals lesson attaches
+# interval_naming (MCQ) and interval_naming_stave_input, so item 2 is the
+# tap-to-place stave. This is the one interaction whose whole point is touch —
+# Jest can assert the reducer but not that a finger can actually land a note on the
+# right line of a real stave — so this flow is the acceptance evidence for it.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=intervals
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "unit-row-intervals" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-intervals" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+# Item 1 — interval_naming (MCQ).
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Item 2 — tap-to-place. The stave, its slots and the duration palette all render.
+- extendedWaitUntil:
+    visible: { id: "stave-input" }
+    timeout: 15000
+- assertVisible: { id: "stave-input-stave" }
+- assertVisible: { id: "stave-input-palette" }
+- takeScreenshot: stave-input-empty
+
+# Nothing is placed yet, so Check must be unavailable and no note halo drawn.
+- assertNotVisible: { id: "stave-input-halo" }
+
+# THE TOUCH DOGFOOD: tapping a slot lands a note on that line/space of the stave.
+- tapOn: { id: "duration-crotchet" }
+- tapOn: { id: "stave-slot-4" }
+- assertVisible: { id: "stave-input-halo" }
+- takeScreenshot: stave-input-placed
+
+# Undo takes it back off the stave — the note isn't stuck once placed.
+- tapOn: { id: "stave-input-undo" }
+- assertNotVisible: { id: "stave-input-halo" }
+
+# Place again and grade it.
+- tapOn: { id: "stave-slot-4" }
+- assertVisible: { id: "stave-input-halo" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: stave-input-graded

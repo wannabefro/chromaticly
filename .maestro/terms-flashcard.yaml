@@ -1,0 +1,46 @@
+# 2g/2h — the SRS flashcard (terms-and-signs). A flashcard is self-graded: there is
+# no Check button and no correct/incorrect FeedbackSheet. Tapping the card reveals
+# the meaning, and the Again/Hard/Good/Easy buttons both grade it and advance the
+# set — this flow proves that path works on a device.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=terms-and-signs
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "unit-row-terms-and-signs" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-terms-and-signs" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "flashcard" }
+    timeout: 20000
+
+# Self-graded: no shared Check button ever renders for this interaction.
+- assertNotVisible: { id: "check" }
+
+# Reveal the meaning, then grade it.
+- tapOn: { id: "flashcard-card" }
+- assertVisible: { id: "grade-good" }
+- tapOn: { id: "grade-good" }
+
+# Grading advances the set straight to the next card — no FeedbackSheet in between.
+- extendedWaitUntil:
+    visible: { id: "flashcard" }
+    timeout: 10000
+- assertVisible: { id: "set-count" }

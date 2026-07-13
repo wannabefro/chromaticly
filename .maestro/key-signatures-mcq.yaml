@@ -1,0 +1,53 @@
+# AE3 — notation-answer MCQ (key-signatures). The options are rendered staves, not
+# text, so this is the flow that proves a notation-answer option is tappable on a
+# real device (the Jest suite mocks the WebView and can't).
+#
+# Seeded straight to the unit (?seed=<unitId>) — see .maestro/README.md.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=key-signatures
+
+# Expo Go shows its dev-menu sheet on a cold launch: dismiss the intro, then close
+# the menu via its X (top-right of the sheet).
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "unit-row-key-signatures" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-key-signatures" }
+
+# Every lesson opens on the teach phase (302.3); the CTA starts the set.
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+
+# Answer, grade, and land on the FeedbackSheet — the whole touch path on device.
+# Notation options are rendered staves, so the option list runs off the bottom of the
+# screen: Check must stay reachable regardless (it's a sticky footer, not in the scroll).
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# The set advances to the next item rather than getting stuck on the sheet.
+- assertVisible: { id: "set-count" }

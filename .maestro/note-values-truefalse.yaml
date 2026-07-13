@@ -1,0 +1,62 @@
+# AE4 — per-bar true/false (bar_validity) and add_time_signature. The note-values
+# lesson attaches three templates, and SetRunner cycles them by item index, so
+# item 1 is the rhythm sum, item 2 the per-bar true/false, item 3 the time-signature
+# MCQ. This flow walks all three, which is the only way to reach the true/false
+# input on a device.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=note-values
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- tapOn: { id: "unit-row-note-values" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+# Item 1 — rhythm_sum (MCQ).
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Item 2 — bar_validity: a tick/cross per bar. Check stays disabled until EVERY bar
+# has a verdict (no partial credit), so all five must be answered.
+- extendedWaitUntil:
+    visible: { id: "true-false" }
+    timeout: 15000
+- tapOn: { id: "bar-0-true" }
+- tapOn: { id: "bar-1-true" }
+- tapOn: { id: "bar-2-false" }
+- tapOn: { id: "bar-3-false" }
+- tapOn: { id: "bar-4-false" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Item 3 — add_time_signature (MCQ over the bar's metre).
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 15000
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000

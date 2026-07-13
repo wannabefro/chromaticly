@@ -56,6 +56,8 @@
     "typecheck": "tsc --noEmit",
     "e2e": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8090} .maestro",
     "e2e:onboarding": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8090} .maestro/onboarding-first-set.yaml",
+    "e2e:interactions": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8090} .maestro/key-signatures-mcq.yaml .maestro/note-values-truefalse.yaml .maestro/terms-flashcard.yaml .maestro/intervals-stave-input.yaml",
+    "e2e:stave-input": "maestro test -e DEV_URL=${DEV_URL:-exp://127.0.0.1:8090} .maestro/intervals-stave-input.yaml",
     "prepare": "node scripts/bundle-abcjs.js"
   },
   "private": true

@@ -9,16 +9,20 @@ They exercise the real app on a simulator/device — the layer the Jest tests mo
 | Flow | What it proves |
 |---|---|
 | `onboarding-first-set.yaml` | The first-run journey end to end: a fresh guest goes Welcome → **grade select** (Grade 1) → your plan → a **3-question coached warm-up** (deterministic correct-option indices 0,1,1) → the "You're in. 3 for 3." landing → **level map (3a)**, then taps the first unit (`treble-notes`) to prove the set launches. There is **no age gate** on this path (it moved to account creation), so no under-13 pass. Starts with `clearState` so onboarding fires fresh. |
+| `key-signatures-mcq.yaml` | **AE3** — the notation-answer MCQ. Its options are rendered staves rather than text, so this proves a notation option is tappable and gradeable on a real device (Jest mocks the WebView and cannot). |
+| `note-values-truefalse.yaml` | **AE4** — the per-bar true/false (`bar_validity`) and `add_time_signature`. The lesson attaches three templates and SetRunner cycles them by item index, so the flow walks items 1–3 to reach the true/false input, and answers every bar (Check stays disabled until all bars have a verdict — no partial credit). |
+| `terms-flashcard.yaml` | **2g/2h** — the SRS flashcard. Self-graded: asserts **no** Check button and no FeedbackSheet ever render, that tapping the card reveals the meaning, and that a grade (Good) advances the set on its own. |
+| `intervals-stave-input.yaml` | **AE5 + the mandatory touch dogfood.** Tap-to-place: a finger lands a note on a real stave slot (halo appears), Undo takes it back off, and re-placing then grades. This is the one interaction whose whole point is touch — Jest can assert the reducer but not that a tap lands on the right line. |
 
-### New Grade 1 interactions — coverage note
+Every lesson now opens on the **teach phase** (302.3), so each flow taps
+`teach-start` before the set begins.
 
-The four new interaction types (notation-answer MCQ on key-signatures, true/false
-bar-validity + add-time-signature on note-values, SRS flashcard on terms, tap-to-place
-stave input on intervals) sit **deeper in the linear unlock chain** — reaching them from
-a fresh state means completing the units ahead of them. Their grading/rendering logic is
-covered by Jest; a full Maestro pass over each (AE3/AE4/AE5) plus the mandatory U8
-touch dogfood needs a progress-seeding step (or grinding the chain) and a stable
-simulator — see the open bd issue tracking that on-device pass.
+> **Expo Go dev menu.** On a cold launch (`clearState`) Expo Go shows its dev-menu
+> sheet over the app, which hides the whole RN view tree from Maestro — every
+> assertion fails until it's gone. The flows dismiss it by tapping `Continue`
+> (the intro page) and then the sheet's **X** by point. If a flow fails at the very
+> first assertion, check for that sheet, and check Metro is actually up: a dead
+> Metro shows "Could not connect to the server", not a test failure.
 
 ## Prerequisites
 
