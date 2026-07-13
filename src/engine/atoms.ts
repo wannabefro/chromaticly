@@ -38,6 +38,13 @@ export function noteValueCompareAtom(): string {
   return 'note_value_compare';
 }
 
+/** Music in Context find-the-bar (302.4) — one atom per bar property the learner
+ *  can be asked to spot, so mastery tracks "can find the highest note" separately
+ *  from "can find the longest". */
+export function findBarAtom(property: string): string {
+  return `find_bar:${property}`;
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

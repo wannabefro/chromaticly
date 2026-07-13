@@ -18,6 +18,7 @@ import type { Duration, Music } from '../../music/types';
 import { NotationCard } from '../components/NotationCard';
 import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel } from '../grading';
 import { colors, shape, type as typo } from '../theme';
+import { FindTheBar, type FindTheBarResponse } from './FindTheBar';
 import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
 import { StaveInput, type StaveInputResponse } from './StaveInput';
@@ -153,12 +154,34 @@ const staveInputSpec: InteractionSpec<StaveInputResponse> = {
 // heterogeneous assignment. `lookupInteraction` narrows back to the safe
 // Response=unknown contract at the boundary, so callers never see `any`.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+/** The wrong bar is corrected by pointing at the passage itself — the score on
+ *  paper, captioned with the bar that actually held it (rules 1/2/5). */
+function findTheBarCorrectAnswerView(instance: ExerciseInstance) {
+  const music = instance.stimulus.music;
+  const bar = optionLabel(instance.answer.canonical);
+  return music ? (
+    <NotationCard music={music} caption={`Bar ${bar}`} testID="answer-notation" />
+  ) : (
+    <Text testID="answer-label" style={styles.answerLabel}>{`Bar ${bar}`}</Text>
+  );
+}
+
+const findTheBarSpec: InteractionSpec<FindTheBarResponse> = {
+  Component: FindTheBar,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeMcq(instance, response),
+  submits: true,
+  correctAnswerView: findTheBarCorrectAnswerView,
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
   true_false: trueFalseSpec,
   flashcard: flashcardSpec,
   stave_input: staveInputSpec,
+  find_the_bar: findTheBarSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

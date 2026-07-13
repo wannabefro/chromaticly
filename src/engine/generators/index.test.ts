@@ -13,6 +13,7 @@ const TEMPLATE_IDS = [
   'bar_validity',
   'add_time_signature',
   'note_value_compare',
+  'music_in_context',
 ];
 
 describe('GENERATORS registry', () => {
@@ -22,7 +23,7 @@ describe('GENERATORS registry', () => {
     }
   });
 
-  test('has exactly the ten Tier-A template ids registered — no extras, no gaps', () => {
+  test('has exactly the Tier-A template ids registered — no extras, no gaps', () => {
     expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS].sort());
   });
 });

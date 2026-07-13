@@ -3,6 +3,7 @@
 import type { ExerciseInstance } from '../schema';
 import { addTimeSignature } from './add-time-signature';
 import { barValidity } from './bar-validity';
+import { findTheBar } from './find-the-bar';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { noteNaming } from './note-naming';
@@ -22,6 +23,7 @@ export const GENERATORS: Record<string, Generator> = {
   bar_validity: barValidity,
   add_time_signature: addTimeSignature,
   note_value_compare: noteValueCompare,
+  music_in_context: findTheBar,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

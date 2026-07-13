@@ -112,8 +112,15 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
     }
   });
 
-  test('the registry is partial — only mcq, text_input, true_false, flashcard, and stave_input are registered', () => {
-    expect(Object.keys(INTERACTIONS).sort()).toEqual(['flashcard', 'mcq', 'stave_input', 'text_input', 'true_false']);
+  test('the registry is partial — only the built interaction types are registered', () => {
+    expect(Object.keys(INTERACTIONS).sort()).toEqual([
+      'find_the_bar',
+      'flashcard',
+      'mcq',
+      'stave_input',
+      'text_input',
+      'true_false',
+    ]);
   });
 });
 

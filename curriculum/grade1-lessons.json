@@ -294,6 +294,39 @@
         "smartTip": "The piano is named after ‘piano e forte’ — soft and loud — because it could play both.",
         "didYouKnow": "Most speed and volume terms are Italian because Italy led European music printing in the 1600s."
       },
+      "unlocks": "music-in-context"
+    },
+    {
+      "id": "music-in-context",
+      "title": "Music in context — reading a passage",
+      "strand": "context",
+      "atoms": [
+        "find_bar:highest",
+        "find_bar:lowest",
+        "find_bar:longest"
+      ],
+      "templates": [
+        "music_in_context"
+      ],
+      "worked_example": {
+        "template_id": "music_in_context",
+        "grade": 1,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "How to read a whole passage bar by bar",
+          "How to find the highest and lowest notes in a melody",
+          "How to compare note lengths across bars"
+        ],
+        "concept": {
+          "title": "Reading a passage bar by bar",
+          "body": "Real music is read a bar at a time. Bars are numbered from the start, and questions often ask you to find one of them — the bar with the highest note, the lowest note, or the longest note. Look along the stave and compare the bars against each other.",
+          "example": { "template_id": "music_in_context", "grade": 1, "seed": 3 }
+        },
+        "smartTip": "Highest and lowest mean the position on the stave, not how loud a note is.",
+        "didYouKnow": "Bar numbers are a fairly modern habit — they spread in the 1800s as scores grew long enough that players needed a way to say where to restart."
+      },
       "unlocks": null
     }
   ]

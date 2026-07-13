@@ -9,6 +9,7 @@ import { z } from 'zod';
 import raw from '../../curriculum/grade1-lessons.json';
 import { parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
+import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
 import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR } from '../engine/scope';
 import type { Clef } from '../music/types';
@@ -105,6 +106,13 @@ export function assertAtomResolves(atom: string): void {
     case 'term': {
       const [slug] = parts;
       if (!TERM_ATOM_SLUGS.has(slug)) throw new Error(`lessons: atom "${atom}" references an unknown term`);
+      return;
+    }
+    case 'find_bar': {
+      const [property] = parts;
+      if (!(BAR_PROPERTIES as readonly string[]).includes(property)) {
+        throw new Error(`lessons: atom "${atom}" is not a find-the-bar property`);
+      }
       return;
     }
     default:
