@@ -30,6 +30,15 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
 
 const lesson = LESSONS[0];
 
+// Real Grade 1 lessons now open on the teach phase (302.3); the set begins once
+// the learner taps "Start exercises". Synthetic lessons with no teach content
+// skip straight to the set and don't need this.
+async function startExercises(getByTestId: (id: string) => any) {
+  await act(async () => {
+    fireEvent.press(getByTestId('teach-start'));
+  });
+}
+
 async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
   const instance = generate(lesson.templates[0], { grade: 1, seed, atoms: lesson.atoms });
   const index = assembleOptions(instance).findIndex((o) => o.correct);
@@ -44,6 +53,28 @@ async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
   });
 }
 
+// 302.3: a lesson with teach content must open on the teach/read phase (design
+// 4a/4b), never drop straight into exercises — "Start exercises" is the gate.
+describe('SetRunner — teach phase gates the set (302.3)', () => {
+  test('a lesson with teach content shows the teach phase first, then the set on Start', async () => {
+    const storage = memoryStorage();
+    const { getByTestId, queryByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    expect(getByTestId('teach-phase')).toBeTruthy();
+    expect(queryByTestId('set-count')).toBeNull(); // not in the set yet
+
+    await startExercises(getByTestId);
+
+    expect(queryByTestId('teach-phase')).toBeNull();
+    expect(getByTestId('set-count')).toBeTruthy();
+  });
+});
+
 describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
   test('answering all 8 correctly reaches SetComplete with 8/8 and all clean gems', async () => {
     const storage = memoryStorage();
@@ -53,6 +84,7 @@ describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
       </ProgressProvider>,
     );
     await act(async () => {});
+    await startExercises(getByTestId);
 
     expect(getByTestId('set-runner')).toBeTruthy();
     expect(getByTestId('set-count')).toBeTruthy(); // header progress
@@ -75,6 +107,7 @@ describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
       </ProgressProvider>,
     );
     await act(async () => {});
+    await startExercises(getByTestId);
 
     for (let seed = 0; seed < 8; seed++) {
       await answerCorrect(getByTestId, seed);
@@ -209,6 +242,7 @@ describe('SetRunner — multi-template lessons cycle their templates across item
       </ProgressProvider>,
     );
     await act(async () => {});
+    await startExercises(getByTestId);
 
     expect(getByTestId('prompt').props.children).toBe(
       generate(lesson.templates[0], { grade: 1, seed: 0, atoms: lesson.atoms }).prompt,

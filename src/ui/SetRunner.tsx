@@ -17,6 +17,7 @@ import type { SrsGrade } from '../learn/srs';
 import { ExerciseLoop } from './ExerciseLoop';
 import { ProgressSegments } from './components/ProgressSegments';
 import { SetComplete } from './SetComplete';
+import { TeachPhase } from './TeachPhase';
 import type { AttemptResult } from './grading';
 import { Screen } from './Screen';
 import { colors, shape, type as typo, type Strand } from './theme';
@@ -27,7 +28,11 @@ export interface SetRunnerProps {
 }
 
 export function SetRunner({ lesson, onDone }: SetRunnerProps) {
-  const { recordAtom, recordFlashcardGrade, complete } = useProgressContext();
+  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact } = useProgressContext();
+  // Lessons with teach content open on the teach/read phase (design 4a/4b); the
+  // sticky "Start exercises" CTA advances into the set. Lessons without teach
+  // content drop straight into exercises, unchanged.
+  const [phase, setPhase] = useState<'teach' | 'set'>(lesson.teach ? 'teach' : 'set');
   const [itemIndex, setItemIndex] = useState(0);
   const [setState, setSetState] = useState(emptySet());
   const [done, setDone] = useState(false);
@@ -76,6 +81,20 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
     },
     [instance, recordFlashcardGrade, setState, advance],
   );
+
+  if (phase === 'teach' && lesson.teach) {
+    return (
+      <Screen testID="set-runner">
+        <TeachPhase
+          lesson={lesson}
+          onStart={() => setPhase('set')}
+          onClose={() => onDone?.()}
+          factCollected={isFactCollected(lesson.id)}
+          onCollectFact={() => collectFact(lesson.id)}
+        />
+      </Screen>
+    );
+  }
 
   if (done) {
     return (
