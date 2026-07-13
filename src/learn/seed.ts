@@ -5,6 +5,7 @@
 // RootRouter behind a __DEV__ deep link.
 
 import type { Lesson } from '../content/lessons';
+import { initialSrs } from './srs';
 import type { ProgressStore } from './store';
 
 /** The chain root: the one lesson no other lesson unlocks. */
@@ -32,5 +33,20 @@ export function seedProgressToUnit(
     store.setLesson(cursor.id, { completed: true });
     if (cursor.unlocks) store.unlock(cursor.unlocks);
     cursor = cursor.unlocks ? lessons.find((l) => l.id === cursor!.unlocks) : undefined;
+  }
+}
+
+/** Onboard (Grade 1) and master every lesson + atom (3★ across the board) so the
+ *  exam gate unlocks — the seam to reach the practice exam (302.2) in an E2E
+ *  without grinding every set to full mastery. */
+export function seedExamReady(store: ProgressStore, lessons: Lesson[], onboardedAt: string): void {
+  store.setProfile({ grade: 1, onboardedAt });
+  for (const lesson of lessons) {
+    store.unlock(lesson.id);
+    store.setLesson(lesson.id, { completed: true });
+    if (lesson.unlocks) store.unlock(lesson.unlocks);
+    for (const atom of lesson.atoms) {
+      store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });
+    }
   }
 }

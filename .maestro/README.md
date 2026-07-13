@@ -66,8 +66,10 @@ progress instead:
 openLink: exp://127.0.0.1:8090/--/?seed=<unitId>   # e.g. ?seed=intervals
 ```
 
-It onboards (Grade 1) and unlocks `<unitId>` (marking predecessors complete but
-NOT the target), landing straight on the level map — no Welcome/onboarding. The
+`<unitId>` may also be `exam` — that masters every unit (3★) so the Level 1 exam
+gate unlocks, letting a flow reach the practice exam. It onboards (Grade 1) and
+unlocks `<unitId>` (marking predecessors complete but NOT the target), landing
+straight on the level map — no Welcome/onboarding. The
 seed rides as a **query param on the root route**, not a path (`/--/seed` would
 hit expo-router's Unmatched Route). Unit ids: `treble-notes`, `bass-notes`,
 `accidentals`, `note-values`, `key-signatures`, `intervals`, `terms-and-signs`.

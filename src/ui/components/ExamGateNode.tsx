@@ -1,8 +1,8 @@
-// U2: the locked exam-gate seal node capping a level on the map (design 3a,
-// KD5). Display-only this iteration — it takes no onPress at all, so it is
-// inert by construction (AE2: selecting it starts no exam).
+// The exam-gate seal node capping a level on the map (design 3a, KD5). Locked and
+// display-only until the level's units are mastered; once unlocked it becomes a
+// tappable entry to the practice exam (302.2) — pass `onPress` to enable it.
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { colors, shape, type as typo } from '../theme';
 
@@ -11,20 +11,45 @@ export interface ExamGateNodeProps {
   /** Number of Level 1 units that must reach 3★ to unlock the exam (R3's
    *  "unlocks at N units ★" copy — N is a unit count, not a raw star total). */
   unitsRequired: number;
+  /** Provided only when unlocked — makes the gate a tappable exam entry. Absent →
+   *  the node stays inert (locked display). */
+  onPress?: () => void;
   testID?: string;
 }
 
-export function ExamGateNode({ levelGrade, unitsRequired, testID }: ExamGateNodeProps) {
-  return (
-    <View style={styles.container} testID={testID}>
-      <View style={styles.seal} testID={testID ? `${testID}-seal` : undefined}>
-        <Text style={styles.sealText}>L{levelGrade}</Text>
+export function ExamGateNode({ levelGrade, unitsRequired, onPress, testID }: ExamGateNodeProps) {
+  const unlocked = onPress != null;
+  const accent = unlocked ? colors.correct : colors.hint;
+  const content = (
+    <>
+      <View style={[styles.seal, { borderColor: accent }]} testID={testID ? `${testID}-seal` : undefined}>
+        <Text style={[styles.sealText, { color: accent }]}>L{levelGrade}</Text>
       </View>
       <View style={styles.body}>
-        <Text style={styles.title}>Level {levelGrade} Exam Paper</Text>
-        <Text style={styles.subtitle}>Practice paper · unlocks at {unitsRequired} units ★</Text>
+        <Text style={[styles.title, { color: accent }]}>Level {levelGrade} Exam Paper</Text>
+        <Text style={styles.subtitle}>
+          {unlocked ? 'Ready — tap to start the practice paper' : `Practice paper · unlocks at ${unitsRequired} units ★`}
+        </Text>
       </View>
-      <Text style={styles.lock}>🔒</Text>
+      <Text style={styles.lock}>{unlocked ? '›' : '🔒'}</Text>
+    </>
+  );
+
+  if (unlocked) {
+    return (
+      <Pressable
+        onPress={onPress}
+        testID={testID}
+        style={[styles.container, { borderStyle: 'solid', borderColor: `${colors.correct}66` }]}
+      >
+        {content}
+      </Pressable>
+    );
+  }
+
+  return (
+    <View style={styles.container} testID={testID}>
+      {content}
     </View>
   );
 }

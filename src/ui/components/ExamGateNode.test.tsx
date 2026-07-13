@@ -13,13 +13,25 @@ describe('ExamGateNode', () => {
     expect(getByText('Practice paper · unlocks at 7 units ★')).toBeTruthy();
   });
 
-  // AE2: the node is display-only — selecting it starts no exam. It exposes no
-  // onPress at all, so tapping it is a structural no-op, not a handled no-op.
-  test('is inert on tap — pressing it throws nothing and has no onPress prop', () => {
-    const { getByTestId } = render(<ExamGateNode levelGrade={1} unitsRequired={7} testID="exam-gate" />);
+  // Locked (no onPress): inert display, shows the lock and the unlock condition.
+  test('is inert while locked — no onPress, lock shown', () => {
+    const { getByTestId, getByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} testID="exam-gate" />);
 
     const node = getByTestId('exam-gate');
     expect(node.props.onPress).toBeUndefined();
+    expect(getByText('🔒')).toBeTruthy();
     expect(() => fireEvent.press(node)).not.toThrow();
+  });
+
+  // Unlocked (onPress provided, 302.2): tappable exam entry, no lock, ready copy.
+  test('is a tappable exam entry once unlocked', () => {
+    const onPress = jest.fn();
+    const { getByTestId, getByText } = render(
+      <ExamGateNode levelGrade={1} unitsRequired={7} onPress={onPress} testID="exam-gate" />,
+    );
+
+    expect(getByText('Ready — tap to start the practice paper')).toBeTruthy();
+    fireEvent.press(getByTestId('exam-gate'));
+    expect(onPress).toHaveBeenCalledTimes(1);
   });
 });

@@ -22,6 +22,7 @@ import { useProgressContext } from '../learn/ProgressContext';
 import { ExamGateNode } from '../ui/components/ExamGateNode';
 import { LevelNode } from '../ui/components/LevelNode';
 import { UnitRow } from '../ui/components/UnitRow';
+import { ExamRunner } from '../ui/exam/ExamRunner';
 import { Screen } from '../ui/Screen';
 import { SetRunner } from '../ui/SetRunner';
 import { ACCENT, colors, shape, strandDef, type as typo, type Strand } from '../ui/theme';
@@ -41,6 +42,7 @@ function accentHueFor(rows: UnitRows): string {
 export default function LevelMapScreen() {
   const { ready, store, revision } = useProgressContext();
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
+  const [examGrade, setExamGrade] = useState<number | null>(null);
 
   const statesByLevel = useMemo(() => {
     const map = new Map<string, UnitRows>();
@@ -60,6 +62,10 @@ export default function LevelMapScreen() {
         <Text style={styles.loading}>Loading…</Text>
       </Screen>
     );
+  }
+
+  if (examGrade != null) {
+    return <ExamRunner grade={examGrade} onExit={() => setExamGrade(null)} />;
   }
 
   if (activeLessonId) {
@@ -117,6 +123,11 @@ export default function LevelMapScreen() {
               <ExamGateNode
                 levelGrade={level.grade}
                 unitsRequired={level.unitIds.length}
+                onPress={
+                  rows.reduce((sum, r) => sum + r.stars, 0) >= level.examGate.unlockAtStars
+                    ? () => setExamGrade(level.grade)
+                    : undefined
+                }
                 testID={`exam-gate-${level.id}`}
               />
             </LevelNode>

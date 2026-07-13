@@ -10,7 +10,7 @@ import type { Lesson } from '../content/lessons';
 import type { AttemptResult } from '../ui/grading';
 import { lessonComplete, recordAttempt, recordFlashcardGrade } from './mastery';
 import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
-import { seedProgressToUnit } from './seed';
+import { seedExamReady, seedProgressToUnit } from './seed';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
 /** Ensure the entry lesson is always reachable, even on a fresh store. */
@@ -182,7 +182,9 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   const seedTo = useCallback<UseProgress['seedTo']>(
     async (targetId) => {
       if (!store) return;
-      seedProgressToUnit(store, lessons, targetId, new Date().toISOString());
+      const at = new Date().toISOString();
+      if (targetId === 'exam') seedExamReady(store, lessons, at);
+      else seedProgressToUnit(store, lessons, targetId, at);
       await saveProgress(store, storage);
       setProfileState(store.getProfile()); // real state → onboarded flips (KTD5)
       setRevision((r) => r + 1);

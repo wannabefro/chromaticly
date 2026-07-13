@@ -2,8 +2,10 @@
 // can jump straight to a deep interaction. Guards the invariant the Maestro
 // coverage (302.6) relies on: target unlocked + playable, predecessors complete.
 
-import { LESSONS } from '../content/lessons';
-import { seedProgressToUnit } from './seed';
+import { LESSONS, lessonById } from '../content/lessons';
+import { LEVELS } from '../content/levels';
+import { unitStates } from './mastery-rollup';
+import { seedExamReady, seedProgressToUnit } from './seed';
 import { ProgressStore } from './store';
 
 const AT = '2026-07-13T00:00:00.000Z';
@@ -30,6 +32,19 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     // The target and its successor are not complete.
     expect(store.getLesson('key-signatures').completed).toBe(false);
     expect(store.getLesson('intervals').completed).toBe(false);
+  });
+
+  test('seedExamReady masters every unit so the Level 1 exam gate unlocks', () => {
+    const store = new ProgressStore();
+    seedExamReady(store, LESSONS, AT);
+
+    const level1 = LEVELS.find((l) => l.unlocked)!;
+    const rows = unitStates(level1.unitIds, store, (id) => lessonById(id)?.atoms ?? []);
+    const earned = rows.reduce((sum, r) => sum + r.stars, 0);
+
+    // The gate unlocks when earned stars reach the level's threshold.
+    expect(earned).toBeGreaterThanOrEqual(level1.examGate.unlockAtStars);
+    expect(store.isOnboarded()).toBe(true);
   });
 
   test('seeding to the root unit unlocks it and completes nothing', () => {
