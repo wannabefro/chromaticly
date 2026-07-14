@@ -12,7 +12,7 @@
 // never changes under in-place mutation) — jest stays green either way; revision
 // is what keeps the map fresh on device after React Compiler auto-memoizes it.
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, lessonById } from '../content/lessons';
@@ -39,10 +39,21 @@ function accentHueFor(rows: UnitRows): string {
   return lesson ? strandDef(lesson.strand as Strand).hue : ACCENT;
 }
 
-export default function LevelMapScreen() {
+export interface LevelMapScreenProps {
+  /** Told when a lesson or an exam takes over the screen, so the shell can drop its
+   *  tab bar — an exercise is immersive, and an exam paper must not offer a tab out of
+   *  itself mid-paper. */
+  onImmersive?: (immersive: boolean) => void;
+}
+
+export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}) {
   const { ready, store, revision } = useProgressContext();
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
   const [examGrade, setExamGrade] = useState<number | null>(null);
+
+  useEffect(() => {
+    onImmersive?.(activeLessonId !== null || examGrade !== null);
+  }, [onImmersive, activeLessonId, examGrade]);
 
   const statesByLevel = useMemo(() => {
     const map = new Map<string, UnitRows>();

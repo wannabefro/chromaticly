@@ -1,0 +1,49 @@
+# 302.7 — the tab shell (design 2a). Learn · Practice · Exams · Profile, persistent
+# across the app, and OUT OF THE WAY once a screen takes over: a tab bar over a timed
+# exam paper would be a way to walk out of it mid-question.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=exam
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+# The shell opens on Learn, with the level map inside it.
+- extendedWaitUntil:
+    visible: { id: "app-shell" }
+    timeout: 90000
+- assertVisible: { id: "tab-bar" }
+- assertVisible: { id: "level-map-screen" }
+- takeScreenshot: shell-learn
+
+# Every tab reaches its own screen.
+- tapOn: { id: "tab-practice" }
+- assertVisible: { id: "practice-screen" }
+
+- tapOn: { id: "tab-profile" }
+- assertVisible: { id: "profile-screen" }
+- assertVisible: { id: "profile-unbuilt" } # honest about 5c not being built yet
+
+- tapOn: { id: "tab-exams" }
+- assertVisible: { id: "exams-screen" }
+- takeScreenshot: shell-exams
+
+# Starting the paper takes the whole screen — the tab bar is gone until it is done.
+- tapOn: { id: "exam-gate-level-1" }
+- extendedWaitUntil:
+    visible: { id: "exam-start" }
+    timeout: 20000
+- assertNotVisible: { id: "tab-bar" }
+- tapOn: { id: "exam-begin" }
+- assertVisible: { id: "exam-paper" }
+- assertNotVisible: { id: "tab-bar" }
+- takeScreenshot: shell-immersive
+
+# Leaving the paper (× on the start screen) brings the shell back.
+- tapOn: { id: "exam-option-0" }
+- assertVisible: { id: "exam-next" }

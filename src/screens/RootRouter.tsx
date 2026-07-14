@@ -18,7 +18,7 @@ import { GradeSelectScreen } from './onboarding/GradeSelectScreen';
 import { LandedScreen } from './onboarding/LandedScreen';
 import { PlanScreen } from './onboarding/PlanScreen';
 import { WelcomeScreen } from './onboarding/WelcomeScreen';
-import LevelMapScreen from './LevelMapScreen';
+import AppShell from './AppShell';
 
 type Step = 'welcome' | 'grade' | 'plan' | 'warmup' | 'landed';
 
@@ -71,5 +71,6 @@ export default function RootRouter() {
     }
   }
 
-  return <LevelMapScreen />;
+  // Onboarded: the app proper — the tab shell (2a), whose Learn tab is the level map.
+  return <AppShell />;
 }
