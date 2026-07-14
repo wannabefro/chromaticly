@@ -13,11 +13,12 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { buildExamPaper, examMinutes, examSeconds, tallyExam, type Band, type ExamPaper, type ExamResult, EXAM_BANDS } from '../../learn/exam';
 import { assembleOptions, type Option } from '../grading';
+import { ExamReview } from './ExamReview';
 import { NotationCard } from '../components/NotationCard';
 import { Screen } from '../Screen';
 import { colors, examColors as x, shape, type } from '../theme';
 
-type Phase = 'start' | 'paper' | 'review' | 'results';
+type Phase = 'start' | 'paper' | 'review' | 'results' | 'marked';
 
 /** mm:ss — the exam clock. */
 function clock(seconds: number): string {
@@ -96,13 +97,19 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
     [paper],
   );
 
-  const result: ExamResult = useMemo(() => {
-    const correct = paper.questions.map((_, i) => {
-      const pick = picks[i];
-      return pick != null && optionsByQuestion[i][pick]?.correct === true;
-    });
-    return tallyExam(paper, correct);
-  }, [paper, picks, optionsByQuestion]);
+  const correctByQuestion = useMemo(
+    () =>
+      paper.questions.map((_, i) => {
+        const pick = picks[i];
+        return pick != null && optionsByQuestion[i][pick]?.correct === true;
+      }),
+    [paper, picks, optionsByQuestion],
+  );
+
+  const result: ExamResult = useMemo(
+    () => tallyExam(paper, correctByQuestion),
+    [paper, correctByQuestion],
+  );
 
   const answered = picks.filter((p) => p != null).length;
   const unanswered = picks.flatMap((p, i) => (p == null ? [i] : []));
@@ -202,11 +209,30 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
         </ScrollView>
 
         <View style={styles.footer}>
-          <Pressable testID="exam-back-to-learn" style={styles.primary} onPress={onExit}>
-            <Text style={styles.primaryLabel}>Back to Learn</Text>
+          <Pressable testID="exam-review-paper" style={styles.primary} onPress={() => setPhase('marked')}>
+            <Text style={styles.primaryLabel}>Review paper</Text>
+          </Pressable>
+          <Pressable testID="exam-back-to-learn" onPress={onExit} style={styles.ghost}>
+            <Text style={styles.ghostLabel}>Back to Learn</Text>
           </Pressable>
         </View>
       </Screen>
+    );
+  }
+
+  // ── Reviewing the marked paper (8b) ─────────────────────────────────────────
+  if (phase === 'marked') {
+    return (
+      <ExamReview
+        paper={paper}
+        picks={picks}
+        optionsByQuestion={optionsByQuestion}
+        correct={correctByQuestion}
+        total={result.total}
+        bandLabel={BAND_LABEL[result.band]}
+        onClose={() => setPhase('results')}
+        onRevise={onExit}
+      />
     );
   }
 

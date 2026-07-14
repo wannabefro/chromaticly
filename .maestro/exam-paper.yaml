@@ -85,10 +85,26 @@ appId: host.exp.Exponent
     timeout: 15000
 - tapOn: { id: "exam-submit" }
 
-# 3d — results. Banded, with a score; this is the ONLY place correctness surfaces.
+# 3d — results. Banded, with a score; correctness surfaces only now the paper is in.
 - extendedWaitUntil:
     visible: { id: "exam-results" }
     timeout: 15000
 - assertVisible: { id: "exam-total" }
 - assertVisible: { id: "exam-band" }
 - takeScreenshot: exam-results
+
+# 8b — the marked script. Opens on the first lost mark, names the misconception, and
+# "Next wrong" walks only the questions that cost something.
+- tapOn: { id: "exam-review-paper" }
+- extendedWaitUntil:
+    visible: { id: "exam-marked" }
+    timeout: 15000
+- assertVisible: { id: "exam-review-strip" }
+- assertVisible: { id: "exam-review-mark" }
+- assertVisible: { id: "exam-review-why" }
+- assertVisible: { id: "exam-review-revise" }
+- takeScreenshot: exam-marked
+- tapOn: { id: "exam-review-next-wrong" }
+- assertVisible: { id: "exam-review-mark" }
+- tapOn: { id: "exam-review-close" }
+- assertVisible: { id: "exam-results" }
