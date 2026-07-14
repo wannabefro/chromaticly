@@ -1,0 +1,80 @@
+# 8d — the Music in Context passage runner. One score, several sub-questions asked
+# over it: the score stays PINNED while only the question area swaps beneath. This is
+# the flow that proves the score really does persist across sub-questions on a device
+# (Jest mocks the WebView and cannot see that it never remounts).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=music-in-context
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "unit-row-music-in-context" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-music-in-context" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+# The passage: a pinned score with its own sub-question counter.
+- extendedWaitUntil:
+    visible: { id: "context-runner" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "context-count" }
+- takeScreenshot: context-q1
+
+# Q1 — find the bar (the bar strip; tapping the bar IN the score is 302.19).
+- assertVisible: { id: "find-the-bar" }
+- tapOn: { id: "bar-1" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Q2 — the same score is still there, and the question beneath it has changed.
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "mcq" }
+- takeScreenshot: context-q2
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Q3 — the true/false metre claim, still over the same passage.
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "mcq" }
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Q4 — find the bar again (second target), then the passage completes as ONE set item.
+- assertVisible: { id: "find-the-bar" }
+- tapOn: { id: "bar-2" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Back to a fresh passage as item 2 of the set — the counter moved on.
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "context-runner" }
+- takeScreenshot: context-next-item

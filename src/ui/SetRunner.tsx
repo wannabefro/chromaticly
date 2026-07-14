@@ -14,6 +14,8 @@ import { generate } from '../engine/generators';
 import { emptySet, gems, isComplete, recordItem, score, segmentStates, SET_SIZE, type ExerciseSetState } from '../learn/exercise-set';
 import { useProgressContext } from '../learn/ProgressContext';
 import type { SrsGrade } from '../learn/srs';
+import { buildContextPassage } from '../engine/generators/context-passage';
+import { ContextRunner } from './ContextRunner';
 import { ExerciseLoop } from './ExerciseLoop';
 import { ProgressSegments } from './components/ProgressSegments';
 import { SetComplete } from './SetComplete';
@@ -39,9 +41,21 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
   const tickRef = useRef(0);
   const strand = lesson.strand as Strand;
 
+  const templateId = lesson.templates[itemIndex % lesson.templates.length];
+
+  // Music in Context is a passage, not a question (8d): one score with several
+  // sub-questions asked over it. It is still ONE item in the set — the gem is the
+  // passage as a whole — but each sub-question is its own mark and its own atom.
+  const isPassage = templateId === 'music_in_context';
+
+  const passage = useMemo(
+    () => (isPassage ? buildContextPassage({ grade: 1, seed: itemIndex, atoms: lesson.atoms }) : null),
+    [isPassage, itemIndex, lesson.atoms],
+  );
+
   const instance = useMemo(
-    () => generate(lesson.templates[itemIndex % lesson.templates.length], { grade: 1, seed: itemIndex, atoms: lesson.atoms }),
-    [lesson, itemIndex],
+    () => (isPassage ? null : generate(templateId, { grade: 1, seed: itemIndex, atoms: lesson.atoms })),
+    [isPassage, templateId, itemIndex, lesson.atoms],
   );
 
   // Shared by both the checked (handleResult) and self-graded (handleSelfGrade)
@@ -61,13 +75,41 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
     [complete, lesson],
   );
 
+  // Optional chaining, not a non-null assertion: on a passage item `instance` really
+  // is null, and the React Compiler hoists a deref like `instance.srs_tags[0]` out of
+  // the callback into render scope — where it would crash the screen before the
+  // callback could ever be called. (Device-only: jest has no compiler.)
   const handleResult = useCallback(
     async (result: AttemptResult) => {
-      const atom = instance.srs_tags[0];
+      const atom = instance?.srs_tags[0];
+      if (atom === undefined) return;
       await recordAtom(atom, result, tickRef.current++); // A2: record the atom once, here
       await advance(recordItem(setState, result));
     },
     [instance, recordAtom, setState, advance],
+  );
+
+  // A passage's sub-questions each carry their own atom, so mastery moves per
+  // sub-question — but the SET sees one item, whose gem is clean only if the learner
+  // got the whole passage right. Answering three of four is not a clean read of the
+  // music.
+  const handleSubResult = useCallback(
+    async (result: AttemptResult) => {
+      if (result.atom !== null) await recordAtom(result.atom, result, tickRef.current++);
+    },
+    [recordAtom],
+  );
+
+  const handlePassageDone = useCallback(
+    async (results: AttemptResult[]) => {
+      await advance(
+        recordItem(setState, {
+          correct: results.every((r) => r.correct),
+          hintsUsed: results.reduce((n, r) => n + r.hintsUsed, 0),
+        }),
+      );
+    },
+    [setState, advance],
   );
 
   // U7/AD4b: a flashcard has no correct/incorrect verdict, so it never reaches
@@ -75,7 +117,8 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
   // missed, mirroring the same mapping recordFlashcardGrade applies to mastery.
   const handleSelfGrade = useCallback(
     async (grade: SrsGrade) => {
-      const atom = instance.srs_tags[0];
+      const atom = instance?.srs_tags[0];
+      if (atom === undefined) return;
       await recordFlashcardGrade(atom, grade, tickRef.current++);
       await advance(recordItem(setState, { correct: grade !== 'again', hintsUsed: grade === 'hard' ? 1 : 0 }));
     },
@@ -117,7 +160,11 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
           {itemIndex + 1}/{SET_SIZE}
         </Text>
       </View>
-      <ExerciseLoop instance={instance} onResult={handleResult} onSelfGrade={handleSelfGrade} />
+      {passage ? (
+        <ContextRunner passage={passage} onSubResult={handleSubResult} onDone={handlePassageDone} />
+      ) : (
+        <ExerciseLoop instance={instance!} onResult={handleResult} onSelfGrade={handleSelfGrade} />
+      )}
     </Screen>
   );
 }

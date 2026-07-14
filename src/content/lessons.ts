@@ -7,7 +7,7 @@
 
 import { z } from 'zod';
 import raw from '../../curriculum/grade1-lessons.json';
-import { parseAtom } from '../engine/atoms';
+import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
@@ -106,6 +106,13 @@ export function assertAtomResolves(atom: string): void {
     case 'term': {
       const [slug] = parts;
       if (!TERM_ATOM_SLUGS.has(slug)) throw new Error(`lessons: atom "${atom}" references an unknown term`);
+      return;
+    }
+    case 'context': {
+      const [kind] = parts;
+      if (!CONTEXT_KINDS.includes(kind)) {
+        throw new Error(`lessons: atom "${atom}" is not a Music-in-Context sub-question`);
+      }
       return;
     }
     case 'find_bar': {

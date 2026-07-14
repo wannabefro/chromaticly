@@ -38,7 +38,11 @@
         "concept": {
           "title": "Reading the treble stave",
           "body": "The five lines spell E, G, B, D, F from the bottom up, and the four spaces spell F, A, C, E. The treble clef curls around the second line to mark it as G, so every other note follows from there.",
-          "example": { "template_id": "note_naming", "grade": 1, "seed": 2 }
+          "example": {
+            "template_id": "note_naming",
+            "grade": 1,
+            "seed": 2
+          }
         },
         "smartTip": "The four spaces spell the word FACE from the bottom up — the quickest notes to recall.",
         "didYouKnow": "The treble clef is a stylised letter G — its curl loops right around the G line."
@@ -82,7 +86,11 @@
         "concept": {
           "title": "Reading the bass stave",
           "body": "The five lines spell G, B, D, F, A from the bottom up, and the four spaces spell A, C, E, G. The bass clef's two dots sit either side of the fourth line to mark it as F.",
-          "example": { "template_id": "note_naming", "grade": 1, "seed": 4 }
+          "example": {
+            "template_id": "note_naming",
+            "grade": 1,
+            "seed": 4
+          }
         },
         "smartTip": "The bass clef is the F clef — its two dots hug the F line, top and bottom.",
         "didYouKnow": "Middle C sits just above the bass stave and just below the treble — one note shared between the two clefs."
@@ -117,7 +125,11 @@
         "concept": {
           "title": "Sharps, flats and naturals",
           "body": "A sharp (♯) raises a note by a semitone; a flat (♭) lowers it by a semitone; a natural (♮) cancels either one. An accidental holds for the rest of the bar it appears in, then the bar-line clears it.",
-          "example": { "template_id": "note_naming", "grade": 1, "seed": 2 }
+          "example": {
+            "template_id": "note_naming",
+            "grade": 1,
+            "seed": 2
+          }
         },
         "smartTip": "An accidental only lasts to the next bar-line — the bar-line wipes the slate clean.",
         "didYouKnow": "On a keyboard a sharp and the flat above it can be the same key — C♯ and D♭ are one black note."
@@ -152,14 +164,25 @@
         "concept": {
           "title": "How long each note lasts",
           "body": "A semibreve lasts four crotchet beats, a minim two, a crotchet one, and a quaver half a beat. A dot after a note adds half its value again, so a dotted minim lasts three beats.",
-          "example": { "template_id": "bar_validity", "grade": 1, "seed": 5 }
+          "example": {
+            "template_id": "bar_validity",
+            "grade": 1,
+            "seed": 5
+          }
         },
         "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver.",
         "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
         "theoryInSound": {
           "prompt": "Play the rhythm and tap each strong beat you hear — the beat that feels accented.",
           "timeSignature": "3/4",
-          "notes": ["crotchet", "quaver", "quaver", "crotchet", "minim", "crotchet"]
+          "notes": [
+            "crotchet",
+            "quaver",
+            "quaver",
+            "crotchet",
+            "minim",
+            "crotchet"
+          ]
         }
       },
       "unlocks": "key-signatures"
@@ -191,7 +214,11 @@
         "concept": {
           "title": "Grade 1 key signatures",
           "body": "C major has no sharps or flats. G major has one sharp, F♯; D major has two, F♯ and C♯; F major has one flat, B♭. The key signature sits just after the clef and applies to every bar that follows.",
-          "example": { "template_id": "key_signature_id", "grade": 1, "seed": 2 }
+          "example": {
+            "template_id": "key_signature_id",
+            "grade": 1,
+            "seed": 2
+          }
         },
         "smartTip": "One sharp is G major and one flat is F major — the two quickest to name at a glance.",
         "didYouKnow": "Sharps are always written in the same order — F, C, G, D — each a fifth above the last."
@@ -229,7 +256,11 @@
         "concept": {
           "title": "Counting intervals",
           "body": "An interval is the distance between two notes. Count every letter name from the lower note to the upper, including both ends — C up to G is a 5th (C, D, E, F, G). The same note twice is a unison; eight letters apart is an octave.",
-          "example": { "template_id": "interval_naming", "grade": 1, "seed": 2 }
+          "example": {
+            "template_id": "interval_naming",
+            "grade": 1,
+            "seed": 2
+          }
         },
         "smartTip": "Count the lower note as ‘one’ — intervals include both ends, not just the gaps between.",
         "didYouKnow": "An octave spans eight notes because the eighth note repeats the first — the letter names come back around."
@@ -303,7 +334,9 @@
       "atoms": [
         "find_bar:highest",
         "find_bar:lowest",
-        "find_bar:longest"
+        "find_bar:longest",
+        "context:highest_note",
+        "context:time_sig"
       ],
       "templates": [
         "music_in_context"
@@ -322,7 +355,11 @@
         "concept": {
           "title": "Reading a passage bar by bar",
           "body": "Real music is read a bar at a time. Bars are numbered from the start, and questions often ask you to find one of them — the bar with the highest note, the lowest note, or the longest note. Look along the stave and compare the bars against each other.",
-          "example": { "template_id": "music_in_context", "grade": 1, "seed": 3 }
+          "example": {
+            "template_id": "music_in_context",
+            "grade": 1,
+            "seed": 3
+          }
         },
         "smartTip": "Highest and lowest mean the position on the stave, not how loud a note is.",
         "didYouKnow": "Bar numbers are a fairly modern habit — they spread in the 1800s as scores grew long enough that players needed a way to say where to restart."
