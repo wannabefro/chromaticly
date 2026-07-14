@@ -106,6 +106,12 @@ export const intervalNaming: Generator = (opts: GenerateOptions) =>
 // rendered Music object (mirrors AD5's semantic-canonical rule; StaveInput's
 // grading never deep-equals a Music object either).
 
+/** "an 8th", but "a 5th" — the article follows how the ordinal is SPOKEN (eighth,
+ *  eleventh, eighteenth begin with a vowel sound), not how it is spelt. */
+function article(n: number): string {
+  return [8, 11, 18].includes(n % 100) ? 'an' : 'a';
+}
+
 function ordinal(n: number): string {
   if (n % 100 >= 11 && n % 100 <= 13) return `${n}th`;
   switch (n % 10) {
@@ -133,7 +139,7 @@ function buildStaveInput(contentSeed: number, grade: number, idSeed: number): Ex
     template_id: 'interval_naming_stave_input',
     grade,
     strand: 'intervals',
-    prompt: `Write the note a ${ordinal(intervalNumber)} higher than the given note, as a ${targetDur}.`,
+    prompt: `Write the note ${article(intervalNumber)} ${ordinal(intervalNumber)} higher than the given note, as a ${targetDur}.`,
     stimulus: {
       music: {
         clef,

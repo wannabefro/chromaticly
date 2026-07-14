@@ -92,6 +92,7 @@ function accidentalOf(pitch: Pitch): Accidental {
 
 const SLOT_WIDTH = 32;
 const SLOT_MARGIN_LEFT = 60; // room for the clef + key signature glyphs
+const SLOT_MARGIN_RIGHT = 22; // room for the ledger lines the last slots overhang with
 const LINE_GAP = 14; // px between adjacent staff lines
 const STEP = LINE_GAP / 2; // px per diatonic (letter-name) step
 const LINE_TOP = 26;
@@ -129,6 +130,22 @@ function keySigGlyphs(keySig: KeySig): string {
 
 const CLEF_GLYPH: Record<Clef, string> = { treble: '𝄞', bass: '𝄢' };
 
+/** Ruling A3: the duration tiles are glyph-only, so they scale 3-5 across per grade
+ *  without the labels ever wrapping. The selected duration's name is echoed below. */
+const DURATION_GLYPH: Record<Duration, string> = {
+  breve: '𝅜',
+  semibreve: '𝅝',
+  minim: '𝅗𝅥',
+  crotchet: '𝅘𝅥',
+  quaver: '𝅘𝅥𝅮',
+  semiquaver: '𝅘𝅥𝅯',
+  demisemiquaver: '𝅘𝅥𝅰',
+};
+
+/** Design 2d: the paper keeps this inset on all sides — the stave and the accidental
+ *  picker never touch the card edge. */
+const PAPER_INSET = 14;
+
 // --- Component --------------------------------------------------------
 
 export function StaveInput({ instance, response, graded, strand, onResponseChange }: InteractionComponentProps<StaveInputResponse>) {
@@ -136,12 +153,23 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
   const clef: Clef = music?.clef ?? 'treble';
   const keySig: KeySig = music?.key_sig ?? null;
   const [selectedDuration, setSelectedDuration] = useState<Duration>('crotchet');
+  const [cardWidth, setCardWidth] = useState(0);
   const hue = strandDef(strand).hue;
   const locked = graded !== null;
 
   const placedSlot = response ? slotIndexOfPitch(clef, response.pitch) : -1;
-  const staveWidth = SLOT_MARGIN_LEFT + slotCount(clef) * SLOT_WIDTH + 20;
+  const slots = slotCount(clef);
+
+  // The stave scales to the card rather than the card to the stave (design 2d's
+  // stave is a viewBox that fits its paper). A fixed slot pitch made the stave
+  // wider than the phone, which bled it edge to edge and pushed the accidental
+  // picker off screen — a cropped stave, which the design forbids outright.
+  // The right reserve is not symmetry for its own sake: the highest slots carry ledger
+  // lines that overhang their slot, and they were spilling past the paper's edge.
+  const usable = Math.max(0, cardWidth - PAPER_INSET * 2 - SLOT_MARGIN_LEFT - SLOT_MARGIN_RIGHT);
+  const slotWidth = slots > 0 && usable > 0 ? usable / slots : SLOT_WIDTH;
   const staveHeight = LINE_TOP + STEP * 2 * (STAVE_LINES - 1) + LINE_TOP;
+  const slotX = (i: number) => PAPER_INSET + SLOT_MARGIN_LEFT + i * slotWidth + slotWidth / 2;
 
   const noteColor = graded === false ? colors.incorrect : graded === true ? colors.correct : colors.paperInk;
   const haloColor = graded === false ? colors.incorrectSurface : graded === true ? colors.correctSurface : `${hue}33`;
@@ -151,6 +179,8 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
     const pitch = slotToPitch(clef, slotIndex);
     onResponseChange({ pitch, dur: response?.dur ?? selectedDuration });
   };
+
+  const current = response?.dur ?? selectedDuration;
 
   const handleDuration = (dur: Duration) => {
     if (locked) return;
@@ -170,19 +200,25 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
 
   return (
     <View style={styles.container} testID="stave-input">
-      <View style={[styles.staveCard, { width: staveWidth, height: staveHeight }]} testID="stave-input-stave">
+      <View
+        style={[styles.staveCard, { height: staveHeight + PAPER_INSET * 2 }]}
+        onLayout={(e) => setCardWidth(e.nativeEvent.layout.width)}
+        testID="stave-input-stave"
+      >
         {Array.from({ length: STAVE_LINES }, (_, i) => (
-          <View key={i} style={[styles.staveLine, { top: LINE_TOP + i * LINE_GAP * 2 }]} />
+          <View key={i} style={[styles.staveLine, { top: PAPER_INSET + LINE_TOP + i * LINE_GAP * 2 }]} />
         ))}
-        <Text style={[styles.clef, { top: LINE_TOP - 8 }]}>{CLEF_GLYPH[clef]}</Text>
+        <Text style={[styles.clef, { top: PAPER_INSET + LINE_TOP - 8 }]}>{CLEF_GLYPH[clef]}</Text>
         {keySig != null && (
-          <Text style={[styles.keySig, { left: SLOT_MARGIN_LEFT - 24, top: LINE_TOP - 4 }]}>{keySigGlyphs(keySig)}</Text>
+          <Text style={[styles.keySig, { left: PAPER_INSET + SLOT_MARGIN_LEFT - 24, top: PAPER_INSET + LINE_TOP - 4 }]}>
+            {keySigGlyphs(keySig)}
+          </Text>
         )}
 
-        {Array.from({ length: slotCount(clef) }, (_, slotIndex) => {
+        {Array.from({ length: slots }, (_, slotIndex) => {
           const pitch = slotToPitch(clef, slotIndex);
-          const y = noteY(clef, pitch);
-          const x = SLOT_MARGIN_LEFT + slotIndex * SLOT_WIDTH;
+          const staveY = noteY(clef, pitch); // in stave space, before the paper inset
+          const y = PAPER_INSET + staveY;
           const isPlaced = slotIndex === placedSlot;
 
           return (
@@ -192,10 +228,15 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
               accessibilityLabel={`place note on ${pitch}`}
               onPress={() => handleSlotPress(slotIndex)}
               disabled={locked}
-              style={[styles.slotTarget, { left: x - shape.tapMin / 2, top: y - shape.tapMin / 2 }]}
+              // The hit area is exactly one slot wide so neighbouring slots can never
+              // overlap and swallow each other's taps; height stays a full tap target.
+              style={[
+                styles.slotTarget,
+                { width: slotWidth, left: slotX(slotIndex) - slotWidth / 2, top: y - shape.tapMin / 2 },
+              ]}
             >
-              {ledgerLineYs(y).map((ly) => (
-                <View key={ly} style={[styles.ledgerLine, { top: ly - y + shape.tapMin / 2 }]} />
+              {ledgerLineYs(staveY).map((ly) => (
+                <View key={ly} style={[styles.ledgerLine, { top: ly - staveY + shape.tapMin / 2 }]} />
               ))}
               {isPlaced ? (
                 <>
@@ -237,23 +278,30 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
         <Text style={styles.paletteCaption}>Duration · tap a stave slot to place</Text>
         <View style={styles.paletteButtons}>
           {G1_NOTE_VALUES.map((dur) => {
-            const selected = (response?.dur ?? selectedDuration) === dur;
+            const selected = current === dur;
             return (
               <Pressable
                 key={dur}
                 testID={`duration-${dur}`}
+                accessibilityLabel={dur}
                 disabled={locked}
                 onPress={() => handleDuration(dur)}
                 style={[styles.durationButton, selected && { borderColor: hue, backgroundColor: `${hue}1F` }]}
               >
-                <Text style={[styles.durationLabel, selected && { color: hue }]}>{dur}</Text>
+                <Text style={[styles.durationGlyph, selected && { color: hue }]}>{DURATION_GLYPH[dur]}</Text>
               </Pressable>
             );
           })}
           <Pressable testID="stave-input-undo" disabled={locked || !response} onPress={handleUndo} style={styles.undoButton}>
-            <Text style={styles.undoLabel}>↺ undo</Text>
+            <Text style={styles.undoGlyph}>↺</Text>
           </Pressable>
         </View>
+        {/* The tiles are glyph-only (Ruling A3) — a word per tile wrapped mid-word
+            ("semibr eve") once Grade 1 needed a fourth. The name lives here instead,
+            where it has a whole line and can never wrap. */}
+        <Text style={styles.paletteEcho} testID="duration-selected">
+          selected: {current}
+        </Text>
       </View>
     </View>
   );
@@ -264,14 +312,20 @@ const styles = StyleSheet.create({
   staveCard: {
     backgroundColor: colors.paper,
     borderRadius: shape.radiusPaper,
-    alignSelf: 'center',
+    alignSelf: 'stretch',
+    overflow: 'hidden', // nothing may spill past the paper's edge (design 2d)
   },
-  staveLine: { position: 'absolute', left: 12, right: 12, height: 1.4, backgroundColor: colors.paperLine },
-  clef: { position: 'absolute', left: 14, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
+  staveLine: {
+    position: 'absolute',
+    left: PAPER_INSET,
+    right: PAPER_INSET,
+    height: 1.4,
+    backgroundColor: colors.paperLine,
+  },
+  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
   keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: 18, color: colors.paperInk },
   slotTarget: {
     position: 'absolute',
-    width: shape.tapMin,
     height: shape.tapMin,
     alignItems: 'center',
     justifyContent: 'center',
@@ -288,8 +342,8 @@ const styles = StyleSheet.create({
   ledgerLine: { position: 'absolute', left: -6, width: shape.tapMin + 12, height: 1.4, backgroundColor: colors.paperLine },
   accidentalPicker: {
     position: 'absolute',
-    right: 10,
-    top: 6,
+    right: PAPER_INSET,
+    top: PAPER_INSET,
     flexDirection: 'row',
     gap: 4,
     backgroundColor: colors.surfaceCard,
@@ -314,7 +368,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 4,
   },
-  durationLabel: { ...typo.label, color: colors.textMuted, textAlign: 'center' },
+  durationGlyph: { fontFamily: fonts.music, fontSize: 22, color: colors.text, textAlign: 'center' },
+  paletteEcho: { ...typo.label, color: colors.textFaint },
   undoButton: {
     minWidth: 46,
     minHeight: shape.tapMin,
@@ -325,5 +380,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  undoLabel: { ...typo.label, color: colors.textMuted },
+  undoGlyph: { ...typo.title, color: colors.textMuted },
 });

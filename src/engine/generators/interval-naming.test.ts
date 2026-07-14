@@ -197,4 +197,13 @@ describe('intervalNamingStaveInput — fuzz gate: 100 generated items are all va
       expect(result).toEqual({ ok: true, errors: [] });
     }
   });
+
+  // "a 8th" read as broken English on device; the article follows the spoken ordinal.
+  test('the prompt takes the right article for every Grade 1 interval', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      const inst = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
+      expect(inst.prompt).not.toMatch(/\ba 8th\b/);
+      expect(inst.prompt).toMatch(/Write the note (a|an) \d+(st|nd|rd|th) higher/);
+    }
+  });
 });

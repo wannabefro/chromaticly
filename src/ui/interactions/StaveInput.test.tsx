@@ -5,6 +5,7 @@
 
 import { fireEvent, render, within } from '@testing-library/react-native';
 
+import { G1_NOTE_VALUES } from '../../engine/scope';
 import type { ExerciseInstance } from '../../engine/schema';
 import { applyAccidental, slotCount, slotToPitch, StaveInput, type Accidental, type StaveInputResponse } from './StaveInput';
 
@@ -111,6 +112,21 @@ describe('StaveInput — accidental picker (only shown once a note is placed)', 
 });
 
 describe('StaveInput — duration palette', () => {
+  // Ruling A3: the tiles carry a glyph and nothing else, and the selected duration's
+  // name is echoed on its own line. A word inside each tile wrapped mid-word
+  // ("semibr eve") the moment Grade 1 needed a fourth value; a glyph cannot wrap.
+  test('the tiles are glyph-only and the selection is named on its own line', () => {
+    const { getByTestId, queryByText } = renderStave(null);
+
+    for (const dur of G1_NOTE_VALUES) {
+      expect(queryByText(dur)).toBeNull(); // no duration NAME inside any tile
+    }
+    expect(getByTestId('duration-selected')).toHaveTextContent('selected: crotchet');
+
+    fireEvent.press(getByTestId('duration-semibreve'));
+    expect(getByTestId('duration-selected')).toHaveTextContent('selected: semibreve');
+  });
+
   test('changing duration on an already-placed note updates its duration, keeping the pitch', () => {
     const { onResponseChange, getByTestId } = renderStave({ pitch: 'E4', dur: 'crotchet' });
     fireEvent.press(getByTestId('duration-minim'));
