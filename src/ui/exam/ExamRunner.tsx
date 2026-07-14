@@ -11,7 +11,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { buildExamPaper, examMinutes, examSeconds, tallyExam, type Band, type ExamResult, EXAM_BANDS } from '../../learn/exam';
+import { buildExamPaper, examMinutes, examSeconds, tallyExam, type Band, type ExamPaper, type ExamResult, EXAM_BANDS } from '../../learn/exam';
 import { assembleOptions, type Option } from '../grading';
 import { NotationCard } from '../components/NotationCard';
 import { Screen } from '../Screen';
@@ -24,6 +24,25 @@ function clock(seconds: number): string {
   const s = Math.max(0, seconds);
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 }
+
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+/** 8a's headline states exactly what is outstanding — no score, no judgement. */
+function reviewHeadline(flags: number, blanks: number): string {
+  if (flags > 0 && blanks > 0) {
+    return `You flagged ${plural(flags, 'question', 'questions')} and left ${plural(blanks, 'unanswered', 'unanswered')}.`;
+  }
+  if (blanks > 0) return `You left ${plural(blanks, 'question', 'questions')} unanswered.`;
+  if (flags > 0) return `You flagged ${plural(flags, 'question', 'questions')}.`;
+  return 'Everything is answered.';
+}
+
+function questionsOfSection(paper: ExamPaper, strand: string): number[] {
+  return paper.questions.flatMap((q, i) => (q.section === strand ? [i] : []));
+}
+
+/** The question number the learner sees (1-based across the whole paper). */
+const qNumber = (paper: ExamPaper, index: number) => index + 1;
 
 const BAND_LABEL: Record<Band, string> = {
   distinction: 'Distinction',
@@ -86,6 +105,9 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
   }, [paper, picks, optionsByQuestion]);
 
   const answered = picks.filter((p) => p != null).length;
+  const unanswered = picks.flatMap((p, i) => (p == null ? [i] : []));
+  // A blank costs a mark; a flag is only a note to self — so blanks come first.
+  const needsAttention = [...unanswered, ...flagged.filter((i) => picks[i] != null)];
   const passMark = Math.ceil(EXAM_BANDS.pass * paper.totalMarks);
   const meritMark = Math.ceil(EXAM_BANDS.merit * paper.totalMarks);
   const distMark = Math.ceil(EXAM_BANDS.distinction * paper.totalMarks);
@@ -188,37 +210,93 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
     );
   }
 
-  // ── Flagged review, before submit ────────────────────────────────────────────
-  // The design puts a flag on every question but never shows where a flag leads;
-  // this is that step — the paper isn't submitted until the learner has had the
-  // chance to revisit what they marked. The clock keeps running throughout.
+  // ── Before you submit (8a) ───────────────────────────────────────────────────
+  // Nothing is graded here: this screen is about what still needs the learner's
+  // attention, never about how they did. Unanswered questions rank above flags —
+  // a flag is a note to self, a blank is a lost mark.
   if (phase === 'review') {
+    const jumpTo = (i: number) => {
+      setIndex(i);
+      setPhase('paper');
+    };
+    const first = needsAttention[0];
+
     return (
       <Screen style={styles.screen} testID="exam-review">
+        <View style={styles.examBar}>
+          <Text style={styles.marks}>
+            <Text style={styles.marksNow}>{answered}</Text> / {paper.totalMarks} answered
+          </Text>
+          <View style={styles.timer}>
+            <View style={styles.timerDot} />
+            <Text testID="exam-timer" style={styles.timerLabel}>
+              {clock(remaining)}
+            </Text>
+          </View>
+        </View>
+
         <ScrollView contentContainerStyle={styles.startBody}>
           <Text style={styles.overline}>Before you submit</Text>
-          <Text style={styles.h1}>
-            You flagged {flagged.length} {flagged.length === 1 ? 'question' : 'questions'}.
-          </Text>
-          <Text style={styles.conditions}>
-            {answered} of {paper.totalMarks} answered · {clock(remaining)} left
+          <Text style={styles.h1}>{reviewHeadline(flagged.length, unanswered.length)}</Text>
+          <Text style={styles.conditions}>The clock keeps running while you review.</Text>
+
+          <View style={styles.card}>
+            {paper.sections.map((s, si) => {
+              const qs = questionsOfSection(paper, s.strand);
+              const flags = qs.filter((i) => flagged.includes(i));
+              const blanks = qs.filter((i) => picks[i] == null);
+              const settled = flags.length === 0 && blanks.length === 0;
+              const target = blanks[0] ?? flags[0] ?? qs[0];
+
+              return (
+                <Pressable
+                  key={s.strand}
+                  testID={`exam-review-section-${s.strand}`}
+                  onPress={() => jumpTo(target)}
+                  style={styles.sectionRow}
+                >
+                  <Text style={styles.sectionName}>
+                    S{si + 1} {s.title}
+                  </Text>
+                  {settled ? (
+                    <Text style={styles.sectionMarks}>
+                      {qs.length}/{qs.length} ●
+                    </Text>
+                  ) : (
+                    <Text style={[styles.sectionMarks, blanks.length > 0 && styles.blank]}>
+                      {blanks.length > 0 && `Q${blanks.map((i) => qNumber(paper, i)).join(' · Q')} unanswered`}
+                      {blanks.length > 0 && flags.length > 0 && '  '}
+                      {flags.length > 0 && `⚑ Q${flags.map((i) => qNumber(paper, i)).join(' · Q')}`}
+                      {'  ›'}
+                    </Text>
+                  )}
+                </Pressable>
+              );
+            })}
+          </View>
+
+          <Text style={styles.note}>
+            Tap any row to jump there. Flags clear when you re-answer, or stay — they’re just for you.
           </Text>
         </ScrollView>
 
         <View style={styles.footer}>
-          <Pressable
-            testID="exam-review-flagged"
-            style={styles.primary}
-            onPress={() => {
-              setIndex(flagged[0]);
-              setPhase('paper');
-            }}
-          >
-            <Text style={styles.primaryLabel}>Review flagged ({flagged.length})</Text>
-          </Pressable>
-          <Pressable testID="exam-submit" onPress={() => setPhase('results')} style={styles.ghost}>
-            <Text style={styles.ghostLabel}>Submit paper</Text>
-          </Pressable>
+          {first != null ? (
+            <>
+              <Pressable testID="exam-review-flagged" style={styles.primary} onPress={() => jumpTo(first)}>
+                <Text style={styles.primaryLabel}>Review flagged &amp; unanswered ({needsAttention.length})</Text>
+              </Pressable>
+              {/* Demoted while anything still needs attention — submitting over a blank
+                  should take a deliberate second look, not a reflex tap. */}
+              <Pressable testID="exam-submit" onPress={() => setPhase('results')} style={styles.ghost}>
+                <Text style={styles.ghostLabel}>Submit paper now</Text>
+              </Pressable>
+            </>
+          ) : (
+            <Pressable testID="exam-submit" style={styles.primary} onPress={() => setPhase('results')}>
+              <Text style={styles.primaryLabel}>Submit paper</Text>
+            </Pressable>
+          )}
         </View>
       </Screen>
     );
@@ -238,7 +316,9 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
     setFlagged((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index].sort((a, b) => a - b)));
   const next = () => {
     if (!isLast) return setIndex((i) => i + 1);
-    setPhase(flagged.length > 0 ? 'review' : 'results');
+    // Anything outstanding — a flag or a blank — goes through 8a rather than being
+    // graded behind the learner's back.
+    setPhase(needsAttention.length > 0 ? 'review' : 'results');
   };
 
   return (
@@ -312,13 +392,14 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
         <Pressable testID="exam-flag" onPress={toggleFlag} hitSlop={8} style={styles.flag}>
           <Text style={[styles.flagLabel, isFlagged && styles.flagOn]}>⚑ {isFlagged ? 'flagged' : 'flag'}</Text>
         </Pressable>
-        <Pressable
-          testID="exam-next"
-          disabled={picked == null}
-          onPress={next}
-          style={[styles.primary, styles.nextButton, picked == null && styles.primaryDisabled]}
-        >
-          <Text style={styles.primaryLabel}>{isLast ? 'Finish paper' : 'Next'}</Text>
+        {/* A question may be left blank and come back to — that is what 8a's
+            "unanswered" rows are for, and it is how a real paper works. Blanks simply
+            score nothing; the review screen makes sure they are a choice, not an
+            accident. */}
+        <Pressable testID="exam-next" onPress={next} style={[styles.primary, styles.nextButton]}>
+          <Text style={styles.primaryLabel}>
+            {isLast ? 'Finish paper' : picked == null ? 'Skip' : 'Next'}
+          </Text>
         </Pressable>
       </View>
     </Screen>
@@ -395,6 +476,8 @@ const styles = StyleSheet.create({
   // Marks are numbers users scan, so they're mono (design/README.md).
   sectionMarks: { fontFamily: type.label.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   weak: { color: x.accent },
+  // A blank is not a mistake, but it is a lost mark — it outranks a flag.
+  blank: { color: x.bandDistinction },
   bandLine: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   note: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.faint },
   footer: { padding: shape.spaceScreenX, gap: shape.spaceInline },

@@ -64,12 +64,16 @@ describe('ExamRunner — silent Grade-1 paper, objectively banded (302.2)', () =
     expect(getByTestId('exam-band').props.children).toBe('Not yet passed');
   });
 
-  test('Next is disabled until an option is picked (no accidental skips)', () => {
+  // A blank used to be impossible (Next was disabled until you picked). 8a exists
+  // precisely to catch blanks, so a question can now be left and come back to — as in
+  // a real paper. The button says what it will do.
+  test('a question can be skipped and returned to, and the CTA says so', () => {
     const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
     act(() => fireEvent.press(getByTestId('exam-begin')));
-    expect(getByTestId('exam-next').props.accessibilityState?.disabled).toBe(true);
+
+    expect(getByTestId('exam-next')).toHaveTextContent('Skip');
     fireEvent.press(getByTestId('exam-option-0'));
-    expect(getByTestId('exam-next').props.accessibilityState?.disabled).toBe(false);
+    expect(getByTestId('exam-next')).toHaveTextContent('Next');
   });
 
   test('Back to Learn from results exits', () => {
@@ -151,6 +155,67 @@ describe('exam conditions — the clock, the counter and flag-for-review (302.24
     fireEvent.press(getByTestId('exam-review-flagged'));
     expect(getByTestId('exam-paper')).toBeTruthy();
     expect(getByTestId('exam-flag')).toHaveTextContent('⚑ flagged');
+  });
+
+  // 8a: a blank costs a mark, a flag is only a note to self — so an unanswered
+  // question is surfaced too, and ranks ahead of the flags.
+  test('an unanswered question routes through review and is named there', () => {
+    const { getByTestId, getByText, queryByTestId } = render(
+      <ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />,
+    );
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    fireEvent.press(getByTestId('exam-next')); // skip Q1 — leave it blank
+    for (let i = 1; i < paper.questions.length; i++) {
+      fireEvent.press(getByTestId('exam-option-0'));
+      fireEvent.press(getByTestId('exam-next'));
+    }
+
+    expect(queryByTestId('exam-results')).toBeNull();
+    expect(getByText('You left 1 question unanswered.')).toBeTruthy();
+    // Submit is demoted while anything is outstanding.
+    expect(getByTestId('exam-review-flagged')).toHaveTextContent('Review flagged & unanswered (1)');
+    expect(getByTestId('exam-submit')).toHaveTextContent('Submit paper now');
+  });
+
+  test('a review row jumps to the question that needs attention', () => {
+    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    fireEvent.press(getByTestId('exam-next')); // Q1 blank — it is in the rhythm section
+    for (let i = 1; i < paper.questions.length; i++) {
+      fireEvent.press(getByTestId('exam-option-0'));
+      fireEvent.press(getByTestId('exam-next'));
+    }
+
+    fireEvent.press(getByTestId(`exam-review-section-${paper.questions[0].section}`));
+    expect(getByTestId('exam-paper')).toBeTruthy();
+    expect(getByTestId('exam-marks')).toHaveTextContent(`${paper.questions.length - 1} / ${paper.totalMarks} marks answered`);
+
+    // Answering the blank settles the paper: Submit is primary again, nothing outstanding.
+    fireEvent.press(getByTestId('exam-option-0'));
+    for (let i = 1; i < paper.questions.length; i++) fireEvent.press(getByTestId('exam-next'));
+    fireEvent.press(getByTestId('exam-next'));
+    expect(getByTestId('exam-results')).toBeTruthy();
+  });
+
+  // Rule 4 again, on the screen most tempted to break it: review is about what still
+  // needs attention, never about how the learner is doing.
+  test('the review screen never leaks correctness', () => {
+    const { getByTestId, queryByText } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    fireEvent.press(getByTestId('exam-flag'));
+    for (let i = 0; i < paper.questions.length; i++) {
+      const options = assembleOptions(paper.questions[i].instance);
+      fireEvent.press(getByTestId(`exam-option-${options.findIndex((o) => !o.correct)}`)); // all wrong
+      fireEvent.press(getByTestId('exam-next'));
+    }
+
+    expect(getByTestId('exam-review')).toBeTruthy();
+    for (const leak of ['correct', 'Correct', 'incorrect', 'wrong', '0/20', 'Not yet passed']) {
+      expect(queryByText(new RegExp(leak))).toBeNull();
+    }
   });
 
   test('submit from review grades the paper', () => {

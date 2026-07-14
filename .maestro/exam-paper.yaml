@@ -59,10 +59,13 @@ appId: host.exp.Exponent
       - assertNotVisible: { id: "feedback-sheet" } # silent paper: never any feedback
       - tapOn: { id: "exam-next" }
 
-# The flag routed us to review rather than straight to the result.
+# The flag routed us to review (8a) rather than straight to the result. Review shows
+# what still needs attention — and never a hint of how the learner did.
 - extendedWaitUntil:
     visible: { id: "exam-review" }
     timeout: 15000
+- assertVisible: { id: "exam-timer" } # the clock keeps running while you review
+- assertNotVisible: { text: "Correct" }
 - takeScreenshot: exam-review
 - tapOn: { id: "exam-review-flagged" }
 
