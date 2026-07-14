@@ -10,7 +10,7 @@ jest.mock('react-native-webview', () => {
 
 import { act, fireEvent, render } from '@testing-library/react-native';
 
-import { buildExamPaper } from '../../learn/exam';
+import { buildExamPaper, examMinutes, examSeconds } from '../../learn/exam';
 import { assembleOptions } from '../grading';
 import { ExamRunner } from './ExamRunner';
 
@@ -34,8 +34,11 @@ describe('ExamRunner — silent Grade-1 paper, objectively banded (302.2)', () =
     const { getByTestId, getByText } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
     expect(getByTestId('exam-start')).toBeTruthy();
     expect(getByText('Practice Exam Paper')).toBeTruthy();
-    expect(getByText(`${paper.totalMarks} MARKS`)).toBeTruthy();
-    expect(getByText('5 SECTIONS')).toBeTruthy();
+    expect(getByText('MARKS')).toBeTruthy();
+    expect(getByText('SECTIONS')).toBeTruthy();
+    expect(getByText('MINUTES')).toBeTruthy();
+    expect(getByText(String(paper.totalMarks))).toBeTruthy();
+    expect(getByText(String(examMinutes(paper)))).toBeTruthy();
     expect(getByTestId('exam-begin')).toBeTruthy();
   });
 
@@ -76,5 +79,87 @@ describe('ExamRunner — silent Grade-1 paper, objectively banded (302.2)', () =
     answerPaper(getByTestId, queryByTestId, true);
     fireEvent.press(getByTestId('exam-back-to-learn'));
     expect(onExit).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('exam conditions — the clock, the counter and flag-for-review (302.24)', () => {
+  beforeEach(() => jest.useFakeTimers());
+  afterEach(() => jest.useRealTimers());
+
+  // Rule 4: the counter tracks progress, never a score. A learner who has answered
+  // three questions wrong must read "3 answered", not "0" — the paper is silent
+  // about correctness until it is submitted.
+  test('the mark counter counts answers given, never marks earned', () => {
+    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    for (let i = 0; i < 3; i++) {
+      const options = assembleOptions(paper.questions[i].instance);
+      fireEvent.press(getByTestId(`exam-option-${options.findIndex((o) => !o.correct)}`));
+      fireEvent.press(getByTestId('exam-next'));
+    }
+
+    expect(getByTestId('exam-marks')).toHaveTextContent(`3 / ${paper.totalMarks} marks answered`);
+  });
+
+  test('the clock counts down from the paper’s budget and never pauses', () => {
+    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+    expect(getByTestId('exam-timer')).toHaveTextContent(`${examMinutes(paper)}:00`);
+
+    act(() => jest.advanceTimersByTime(65_000));
+    expect(getByTestId('exam-timer')).toHaveTextContent(`${examMinutes(paper) - 2}:55`);
+  });
+
+  // Running out of time submits the paper as it stands — that's what "no timer
+  // pauses" means. Unanswered questions simply score nothing.
+  test('running out of time submits the paper as it stands', () => {
+    const { getByTestId, queryByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+    expect(queryByTestId('exam-results')).toBeNull();
+
+    act(() => jest.advanceTimersByTime(examSeconds(paper) * 1000));
+
+    expect(getByTestId('exam-results')).toBeTruthy();
+    expect(getByTestId('exam-band').props.children).toBe('Not yet passed');
+  });
+
+  test('finishing with nothing flagged submits straight to results', () => {
+    const { getByTestId, queryByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+    answerPaper(getByTestId, queryByTestId, true);
+
+    expect(queryByTestId('exam-review')).toBeNull();
+    expect(getByTestId('exam-results')).toBeTruthy();
+  });
+
+  // A flag has to lead somewhere: the paper isn't submitted until the learner has
+  // had the chance to revisit what they marked.
+  test('a flagged question routes through review before the paper is submitted', () => {
+    const { getByTestId, getByText, queryByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    fireEvent.press(getByTestId('exam-flag'));
+    expect(getByTestId('exam-flag')).toHaveTextContent('⚑ flagged');
+    answerPaper(getByTestId, queryByTestId, true);
+
+    expect(queryByTestId('exam-results')).toBeNull();
+    expect(getByTestId('exam-review')).toBeTruthy();
+    expect(getByText('You flagged 1 question.')).toBeTruthy();
+
+    // Review jumps back to the flagged question, still on the paper.
+    fireEvent.press(getByTestId('exam-review-flagged'));
+    expect(getByTestId('exam-paper')).toBeTruthy();
+    expect(getByTestId('exam-flag')).toHaveTextContent('⚑ flagged');
+  });
+
+  test('submit from review grades the paper', () => {
+    const { getByTestId, queryByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+    fireEvent.press(getByTestId('exam-flag'));
+    answerPaper(getByTestId, queryByTestId, true);
+
+    fireEvent.press(getByTestId('exam-submit'));
+    expect(getByTestId('exam-band').props.children).toBe('Distinction');
   });
 });

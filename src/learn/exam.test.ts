@@ -6,6 +6,8 @@ import {
   bandFor,
   buildExamPaper,
   EXAM_BANDS,
+  examMinutes,
+  examSeconds,
   GRADE1_EXAM_SECTIONS,
   QUESTIONS_PER_SECTION,
   tallyExam,
@@ -72,5 +74,17 @@ describe('exam model — Grade-1 paper (302.2)', () => {
     const result = tallyExam(paper, paper.questions.map(() => true));
     expect(result.total).toBe(paper.totalMarks);
     expect(result.band).toBe('distinction');
+  });
+
+  // The time limit is ABRSM's own ratio (90 minutes for 75 marks), not the design's
+  // literal "90 MINUTES" — that tile belongs to its 75-mark Grade 3 example paper.
+  // Deriving it means the limit tracks the paper instead of going stale beside it.
+  test('the time limit is derived from the paper, not hardcoded', () => {
+    const paper = buildExamPaper(0);
+    expect(examMinutes(paper)).toBe(Math.round(paper.totalMarks * (90 / 75)));
+    expect(examSeconds(paper)).toBe(examMinutes(paper) * 60);
+
+    const longer = { ...paper, totalMarks: paper.totalMarks * 2 };
+    expect(examMinutes(longer)).toBe(examMinutes(paper) * 2);
   });
 });

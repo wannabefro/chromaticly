@@ -1,0 +1,91 @@
+# 302.2 + 302.24 — the practice exam under exam conditions (design 3b/3c/3d).
+# `?seed=exam` masters every unit so the Level 1 exam gate is unlocked.
+#
+# Proves the register shift and the exam apparatus on a real device: the running
+# clock, the answered-marks counter (which must never show a score), the section
+# navigator, and flag → review-before-submit. Also asserts the never-violate rule
+# 4 negatives — no hint, no streak, no per-item feedback sheet anywhere in a paper.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=exam
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "exam-gate-level-1" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "exam-gate-level-1" }
+
+# 3b — start. The paper states its own terms: minutes, marks, sections.
+- extendedWaitUntil:
+    visible: { id: "exam-start" }
+    timeout: 20000
+- assertVisible: { text: "MINUTES" }
+- assertVisible: { text: "MARKS" }
+- assertVisible: { text: "SECTIONS" }
+- takeScreenshot: exam-start
+- tapOn: { id: "exam-begin" }
+
+# 3c — in progress. Clock, counter and navigator are all live.
+- extendedWaitUntil:
+    visible: { id: "exam-paper" }
+    timeout: 20000
+- assertVisible: { id: "exam-timer" }
+- assertVisible: { id: "exam-marks" }
+- assertVisible: { id: "exam-navigator" }
+- assertNotVisible: { id: "hint" }
+- assertNotVisible: { id: "feedback-sheet" }
+- takeScreenshot: exam-in-progress
+
+# Flag the first question — it must come back to us before the paper is submitted.
+- tapOn: { id: "exam-flag" }
+- assertVisible: { text: "⚑ flagged" }
+
+# Answer all 20 questions. Correctness doesn't matter here; reaching the end does.
+- repeat:
+    times: 20
+    commands:
+      - tapOn: { id: "exam-option-0" }
+      - assertNotVisible: { id: "feedback-sheet" } # silent paper: never any feedback
+      - tapOn: { id: "exam-next" }
+
+# The flag routed us to review rather than straight to the result.
+- extendedWaitUntil:
+    visible: { id: "exam-review" }
+    timeout: 15000
+- takeScreenshot: exam-review
+- tapOn: { id: "exam-review-flagged" }
+
+# Review lands back on the flagged question, still flagged, clock still running.
+- assertVisible: { id: "exam-paper" }
+- assertVisible: { text: "⚑ flagged" }
+- assertVisible: { id: "exam-timer" }
+
+# Walk to the end again and submit for real.
+- repeat:
+    times: 20
+    commands:
+      - tapOn: { id: "exam-option-0" }
+      - tapOn: { id: "exam-next" }
+- extendedWaitUntil:
+    visible: { id: "exam-review" }
+    timeout: 15000
+- tapOn: { id: "exam-submit" }
+
+# 3d — results. Banded, with a score; this is the ONLY place correctness surfaces.
+- extendedWaitUntil:
+    visible: { id: "exam-results" }
+    timeout: 15000
+- assertVisible: { id: "exam-total" }
+- assertVisible: { id: "exam-band" }
+- takeScreenshot: exam-results

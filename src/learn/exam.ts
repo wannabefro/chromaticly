@@ -40,6 +40,22 @@ export const GRADE1_EXAM_SECTIONS: ExamSection[] = [
 
 export const QUESTIONS_PER_SECTION = 4;
 
+/** ABRSM allows 90 minutes for a 75-mark paper. The design's "90 MINUTES" tile is
+ *  that paper (its Grade 3 example); ours is derived from Grade 1 content and is a
+ *  different length, so the ratio is what carries over, not the number — and the
+ *  limit then scales on its own as the paper grows. */
+export const EXAM_MINUTES_PER_MARK = 90 / 75;
+
+export function examMinutes(paper: ExamPaper): number {
+  return Math.round(paper.totalMarks * EXAM_MINUTES_PER_MARK);
+}
+
+/** The exam clock never pauses (design: "no timer pauses"), so this is the whole
+ *  budget from Begin to auto-submit. */
+export function examSeconds(paper: ExamPaper): number {
+  return examMinutes(paper) * 60;
+}
+
 /** ABRSM-style bands as fractions of the total (Pass 66% / Merit 80% / Dist 90%). */
 export const EXAM_BANDS = { pass: 0.66, merit: 0.8, distinction: 0.9 } as const;
 export type Band = 'below' | 'pass' | 'merit' | 'distinction';
