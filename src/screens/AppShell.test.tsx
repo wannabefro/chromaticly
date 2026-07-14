@@ -72,13 +72,15 @@ describe('AppShell — the tab shell (302.7)', () => {
     expect(queryByTestId('tab-bar')).toBeNull();
   });
 
-  // The Profile tab is honest about being unbuilt (5c / bd 302.8) rather than looking
-  // finished — a convincing fake is worse than an obvious gap.
-  test('Profile says plainly that it is not built yet', async () => {
+  // Profile's readiness card is about the paper, so it takes you there.
+  test('Profile’s exam-readiness card opens the Exams tab', async () => {
     const { getByTestId } = renderShell();
     await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
 
     act(() => fireEvent.press(getByTestId('tab-profile')));
-    await waitFor(() => expect(getByTestId('profile-unbuilt')).toBeTruthy());
+    await waitFor(() => expect(getByTestId('profile-readiness')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('profile-readiness')));
+    await waitFor(() => expect(getByTestId('exams-screen')).toBeTruthy());
   });
 });

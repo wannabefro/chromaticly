@@ -41,3 +41,51 @@ export function unitStates(
     return { unitId, stars, state: 'started' as const };
   });
 }
+
+export interface ExamReadiness {
+  stars: number;
+  maxStars: number;
+  /** 0..1 — how far through the level's stars the learner is. */
+  fraction: number;
+  /** True once the level's exam gate opens. */
+  gateOpen: boolean;
+  /** The strands holding the learner back, weakest first. Empty at full mastery. */
+  weakest: string[];
+}
+
+/** Exam readiness for a level (design 5c). Readiness is stars-earned over
+ *  stars-available — the same signal the exam gate itself uses — so the ring can
+ *  never disagree with whether the paper is actually open. */
+export function examReadiness(
+  unitIds: string[],
+  store: ProgressStore,
+  lesson: (id: string) => { atoms: string[]; strand: string } | undefined,
+  unlockAtStars: number,
+): ExamReadiness {
+  const rows = unitIds.map((id) => ({
+    stars: deriveStars(lesson(id)?.atoms ?? [], store),
+    strand: lesson(id)?.strand ?? 'unknown',
+  }));
+
+  const stars = rows.reduce((sum, r) => sum + r.stars, 0);
+  const maxStars = unitIds.length * 3;
+
+  // A strand is weak while any of its units is short of full marks; the least-starred
+  // strand is the one holding the learner back.
+  const byStrand = new Map<string, number>();
+  for (const row of rows) {
+    byStrand.set(row.strand, Math.min(byStrand.get(row.strand) ?? 3, row.stars));
+  }
+  const weakest = [...byStrand.entries()]
+    .filter(([, s]) => s < 3)
+    .sort((a, b) => a[1] - b[1])
+    .map(([strand]) => strand);
+
+  return {
+    stars,
+    maxStars,
+    fraction: maxStars === 0 ? 0 : stars / maxStars,
+    gateOpen: stars >= unlockAtStars,
+    weakest,
+  };
+}
