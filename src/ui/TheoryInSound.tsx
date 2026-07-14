@@ -1,21 +1,26 @@
-// Theory-in-sound by-ear card (302.3.5, design 4b): play a short rhythm and tap
+// Theory-in-sound by-ear card (302.3.5, design 8c): play a short rhythm and tap
 // each strong beat you hear. Teach-phase only — it draws no mastery and records
 // no SRS; it exists to connect the written metre to the sound of it.
 //
-// Two deliberate calls:
-//  - The stave is NOT shown. The card is by ear, so the notation surface is kept
-//    mounted (it is what synthesises the audio) but clipped to zero height.
-//  - The mockup's waveform draws the strong beats as taller bars. Rendering that
-//    up front would hand over the answer, so the beats start uniform and grow
-//    into that waveform as they're found.
+// 8c draws the four states: resting (dashed uniform cells, disabled until the
+// learner has actually listened), in progress (a found beat grows into the tall
+// waveform bar 4b shows), wrong tap (an amber pulse that settles back — never red,
+// it isn't a failure), and complete (naming the concept). 4b's waveform is the END
+// state, which is why nothing is revealed up front.
+//
+// The stave is NOT shown: the card is by ear, so the notation surface stays mounted
+// (it synthesises the audio) but is clipped to zero height.
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { beatGrid, rhythmToMusic, type TeachRhythm } from '../content/teach-rhythm';
 import { MusicSurface, type MusicSurfaceHandle } from '../music-surface/MusicSurface';
 import { PlayButton } from './components/PlayButton';
 import { colors, shape, strandDef, type as typo, type Strand } from './theme';
+
+/** How long a wrong tap stays amber before settling back (8c). */
+const WRONG_PULSE_MS = 1200;
 
 export interface TheoryInSoundProps {
   prompt: string;
@@ -28,22 +33,36 @@ export function TheoryInSound({ prompt, rhythm, strand }: TheoryInSoundProps) {
   const music = useMemo(() => rhythmToMusic(rhythm), [rhythm]);
   const cells = useMemo(() => beatGrid(rhythm), [rhythm]);
   const surfaceRef = useRef<MusicSurfaceHandle>(null);
-  const [tapped, setTapped] = useState<readonly number[]>([]);
+  const [played, setPlayed] = useState(false);
+  const [found, setFound] = useState<readonly number[]>([]);
+  const [wrong, setWrong] = useState<number | null>(null);
+  const pulse = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const isTapped = (i: number) => tapped.includes(i);
-  const found = cells.filter((cell, i) => cell.strong && isTapped(i)).length;
+  useEffect(() => () => (pulse.current ? clearTimeout(pulse.current) : undefined), []);
+
   const strongTotal = cells.filter((cell) => cell.strong).length;
-  const missed = cells.some((cell, i) => !cell.strong && isTapped(i));
-  const allFound = found === strongTotal;
+  const allFound = found.length === strongTotal;
 
-  // A wrong tap gates the message: taps can't be taken back, so a learner who hit a
-  // weak beat and then found every strong one must not be told they got it right
-  // while the wrong beat is still flagged red on screen.
-  const message = missed
-    ? 'Not quite — listen again for the accent at the start of each bar.'
+  const tap = (i: number) => {
+    if (cells[i].strong) {
+      setFound((prev) => (prev.includes(i) ? prev : [...prev, i]));
+      return;
+    }
+    // A wrong tap is a nudge, not a failure: it pulses amber and settles back, so the
+    // learner can simply listen again rather than being left with a red mark they
+    // cannot undo.
+    setWrong(i);
+    if (pulse.current) clearTimeout(pulse.current);
+    pulse.current = setTimeout(() => setWrong(null), WRONG_PULSE_MS);
+  };
+
+  const message = wrong != null
+    ? 'Listen again — that one’s off the beat.'
     : allFound
       ? 'That’s it — the strong beat is the first beat of every bar.'
-      : null;
+      : played
+        ? `${found.length} of ${strongTotal} found`
+        : null;
 
   return (
     <View style={styles.card} testID="theory-in-sound">
@@ -55,25 +74,36 @@ export function TheoryInSound({ prompt, rhythm, strand }: TheoryInSoundProps) {
       <Text style={styles.prompt}>{prompt}</Text>
 
       <View style={styles.row}>
-        <PlayButton strand={strand} onPress={() => surfaceRef.current?.play()} testID="theory-play" />
+        <PlayButton
+          strand={strand}
+          onPress={() => {
+            setPlayed(true);
+            surfaceRef.current?.play();
+          }}
+          testID="theory-play"
+        />
         <View style={styles.beats}>
           {cells.map((cell, i) => {
-            const revealed = cell.strong && isTapped(i);
-            const wrong = !cell.strong && isTapped(i);
+            const revealed = found.includes(i);
+            const pulsing = wrong === i;
             return (
               <Pressable
                 key={i}
                 testID={`theory-beat-${i}`}
                 accessibilityLabel={`Bar ${cell.bar}, beat ${cell.beat}`}
-                onPress={() => setTapped((prev) => (prev.includes(i) ? prev : [...prev, i]))}
+                // Disabled until they have actually listened — this is a by-ear card,
+                // so tapping before playing would be guessing, not hearing.
+                disabled={!played}
+                onPress={() => tap(i)}
                 style={styles.beatHit}
               >
                 <View
                   testID={revealed ? `theory-beat-${i}-strong` : undefined}
                   style={[
                     styles.beat,
+                    !played && styles.beatResting,
                     revealed && { height: '100%', backgroundColor: hue },
-                    wrong && styles.beatWrong,
+                    pulsing && styles.beatPulse,
                   ]}
                 />
               </Pressable>
@@ -83,7 +113,10 @@ export function TheoryInSound({ prompt, rhythm, strand }: TheoryInSoundProps) {
       </View>
 
       {message && (
-        <Text testID="theory-feedback" style={[styles.feedback, allFound && { color: colors.correct }]}>
+        <Text
+          testID="theory-feedback"
+          style={[styles.feedback, allFound && wrong == null && { color: colors.correct }]}
+        >
           {message}
         </Text>
       )}
@@ -119,7 +152,10 @@ const styles = StyleSheet.create({
     borderRadius: shape.radiusSwatch,
     backgroundColor: colors.borderStrong,
   },
-  beatWrong: { backgroundColor: colors.incorrectSurface, borderWidth: shape.borderW, borderColor: colors.incorrect },
+  // Resting: dashed and uniform — nothing about the answer is revealed yet.
+  beatResting: { borderWidth: shape.borderW, borderStyle: 'dashed', borderColor: colors.borderStrong, backgroundColor: 'transparent' },
+  // Wrong: amber, never red (8c) — a nudge to listen again, not a failure.
+  beatPulse: { backgroundColor: colors.hintSurface, borderWidth: shape.borderW, borderColor: colors.hint },
 
   feedback: { ...typo.body, color: colors.hint },
 

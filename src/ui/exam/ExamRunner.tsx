@@ -415,9 +415,10 @@ const styles = StyleSheet.create({
   primaryLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.card },
   ghost: { paddingVertical: 12, alignItems: 'center' },
   ghostLabel: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.muted },
-  // results
-  total: { fontFamily: type.examTitle.fontFamily, fontSize: 44, lineHeight: 48, color: x.ink },
-  totalOf: { fontSize: 22, color: x.muted },
+  // results. Ruling C: scannable numbers are ALWAYS mono, the results total
+  // included — serif is for exam words (headings, band names), never digits.
+  total: { fontFamily: type.label.fontFamily, fontSize: 44, lineHeight: 48, color: x.ink },
+  totalOf: { fontFamily: type.label.fontFamily, fontSize: 22, color: x.muted },
   bandChip: { alignSelf: 'flex-start', borderRadius: shape.radiusChip, paddingHorizontal: 14, paddingVertical: 6 },
   bandChipLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.card },
   // paper
