@@ -16,6 +16,7 @@ import { KB_VERSION } from '../../content/knowledge-base';
 import { keySigAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, scopeForGrade } from '../scope';
+import { spellInKey, tonicLetter } from './key-spelling';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -40,9 +41,12 @@ function keysFromAtoms(atoms: string[]): string[] {
 }
 
 function tonicPitchInRange(clef: Clef, key: string, grade: number): string {
-  const candidates = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(key));
+  // Match the tonic's natural LETTER (the enumeration is naturals-only), then
+  // spell it in the key so a flat/sharp tonic (Bb, Eb) renders under its key
+  // signature rather than as a stray natural — and never fails to match.
+  const candidates = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(tonicLetter(key)));
   if (candidates.length === 0) throw new Error(`no in-range tonic ${key} for clef ${clef}`);
-  return candidates[0];
+  return spellInKey(candidates[0], key);
 }
 
 /** The rendered stave for one key-signature option: the same one-tonic-note

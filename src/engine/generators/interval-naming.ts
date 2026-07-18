@@ -1,36 +1,28 @@
 // Grade 1 interval_naming generator (curriculum/exercise-templates.json,
 // template_id "interval_naming"). G1 rule (scope.ts scopeForGrade(1).intervalRule): the
-// lower note is pinned to the tonic of a sampled G1 major key, the upper note
-// is a diatonic pitch above it (number-only naming, above tonic, <= an
-// octave). The key signature carries the key's accidental, so both pitches
-// stay natural-letter (commandment 1: scope is law).
+// lower note is pinned to the tonic of a sampled major key, the upper note is a
+// diatonic pitch above it (number-only naming, above tonic, <= an octave). Each
+// pitch is spelled in the key (spellInKey) so the key signature carries its
+// accidental — a natural tonic prints plain, a flat/sharp tonic (Bb, Eb) prints
+// under its key signature rather than as a stray natural (commandment 1: scope
+// is law).
 
 import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { keyAccidentals } from '../../music/abc-emitter';
 import { intervalAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, pitchRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
+import { spellInKey, tonicLetter } from './key-spelling';
 import { naturalPitchStepsAbove, scientificPitchOrdinal } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-/** Spell a natural-letter pitch (e.g. "C5") diatonically within a major key,
- *  so the key signature carries the accidental and nothing chromatic is printed
- *  (e.g. in D major the 7th above the tonic is C#, not C-natural). */
-function spellInKey(naturalPitch: string, key: string): string {
-  const m = /^([A-G])(-?\d+)$/.exec(naturalPitch);
-  if (!m) return naturalPitch;
-  const [, letter, octave] = m;
-  const acc = keyAccidentals(`${key}_major`)[letter];
-  const symbol = acc === 'sharp' ? '#' : acc === 'flat' ? 'b' : '';
-  return `${letter}${symbol}${octave}`;
-}
-
 /** Shared sampling core for both the mcq and stave_input variants: pin the
  *  lower note to the sampled key's tonic and draw a diatonic interval above
- *  it that stays within the clef's grade range (scope.intervalRule). */
+ *  it that stays within the clef's grade range (scope.intervalRule). Returns the
+ *  tonic as a NATURAL-letter pitch (the interval math needs it); callers spell it
+ *  in the key for display. */
 function sampleInterval(
   rng: () => number,
   clef: Clef,
@@ -39,7 +31,9 @@ function sampleInterval(
 ): { lowerPitch: string; steps: number; intervalNumber: number } {
   const range = pitchRange(clef, grade);
 
-  const tonicOccurrences = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(key));
+  // Match the tonic's natural LETTER — the naturals-only enumeration never holds
+  // an accidented pitch, so a flat key ('Bb') would never match its full name.
+  const tonicOccurrences = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(tonicLetter(key)));
   if (tonicOccurrences.length === 0) {
     throw new Error(`no in-range occurrence of tonic ${key} for clef ${clef}`);
   }
@@ -78,7 +72,7 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
         clef,
         key_sig: `${key}_major`,
         time_sig: null,
-        voices: [{ events: [{ type: 'chord', pitches: [lowerPitch, upperPitch], dur: 'semibreve' }] }],
+        voices: [{ events: [{ type: 'chord', pitches: [spellInKey(lowerPitch, key), upperPitch], dur: 'semibreve' }] }],
       },
       text: null,
     },
@@ -149,7 +143,7 @@ function buildStaveInput(contentSeed: number, grade: number, idSeed: number): Ex
         clef,
         key_sig: `${key}_major`,
         time_sig: null,
-        voices: [{ events: [{ type: 'note', pitch: lowerPitch, dur: 'semibreve' }] }],
+        voices: [{ events: [{ type: 'note', pitch: spellInKey(lowerPitch, key), dur: 'semibreve' }] }],
       },
       text: null,
     },
