@@ -7,7 +7,7 @@ jest.mock('react-native-webview', () => {
 
 import { act, fireEvent, render, within } from '@testing-library/react-native';
 
-import { LESSONS } from '../content/lessons';
+import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { MASTERY_THRESHOLD } from '../learn/mastery';
 import { ProgressProvider } from '../learn/ProgressContext';
@@ -55,7 +55,7 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
-    for (const lesson of LESSONS) {
+    for (const lesson of LESSONS_BY_GRADE[1]) {
       const row = getByTestId(`unit-row-${lesson.id}`);
       const def = strandDef(lesson.strand as Strand);
       expect(within(row).getByText(def.label)).toBeTruthy();

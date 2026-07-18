@@ -258,7 +258,10 @@ function intervalNamingHook(inst: ExerciseInstance): string[] {
 }
 
 function extractKeyTonic(raw: string): string | null {
-  const match = /^([A-G])/.exec(raw.trim());
+  // Capture the accidental too: a flat/sharp key's tonic is "Bb"/"Eb", not the
+  // bare letter — grade-2 keysMajor holds "Bb", so dropping the "b" rejects every
+  // flat-key candidate. Grade-1 keys are all single-letter, so this is a no-op there.
+  const match = /^([A-G][b#]?)/.exec(raw.trim());
   return match ? match[1] : null;
 }
 
@@ -274,7 +277,7 @@ function keySignatureIdHook(inst: ExerciseInstance): string[] {
   const isMinor = /minor/i.test(canonical);
   const tonicInScope = !!tonic && (isMinor ? scope.keysMinor.includes(tonic) : scope.keysMajor.includes(tonic));
   if (!tonicInScope) {
-    return [`key_signature_id: canonical key "${canonical}" is outside G1 scope`];
+    return [`key_signature_id: canonical key "${canonical}" is outside grade ${inst.grade} scope`];
   }
   return [];
 }

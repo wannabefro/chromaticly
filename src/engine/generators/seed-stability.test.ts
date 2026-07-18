@@ -73,3 +73,23 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
     });
   });
 });
+
+// U2 (D12) — grade-2 cases, pinned additively and separately from the grade-1
+// block above: new snapshot keys only, and grade-1's entries must stay
+// byte-identical (verified via git diff on the snapshot file, not by this suite).
+const GRADE_2_CASES: Case[] = LESSONS_BY_GRADE[2].flatMap((lesson) =>
+  lesson.templates.map((templateId) => ({
+    label: `${templateId} @ ${lesson.id}`,
+    templateId,
+    atoms: lesson.atoms,
+  })),
+);
+
+describe('seed-stability — grade-2 generator output is pinned byte-for-byte', () => {
+  describe.each(GRADE_2_CASES)('$label', ({ templateId, atoms }) => {
+    test('instances are a pure function of (template, grade, seed, atoms)', () => {
+      const instances = SEEDS.map((seed) => generate(templateId, { grade: 2, seed, atoms }));
+      expect(instances).toMatchSnapshot();
+    });
+  });
+});

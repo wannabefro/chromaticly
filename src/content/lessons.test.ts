@@ -1,5 +1,6 @@
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
+import { SET_SIZE } from '../learn/exercise-set';
 import {
   assertAtomResolves,
   assertNoCrossDocDuplicateIds,
@@ -27,9 +28,6 @@ describe('grade1 lessons — the bundled doc loads and cross-checks clean', () =
 
   test('every loaded grade-1 lesson is stamped grade 1', () => {
     for (const lesson of LESSONS_BY_GRADE[1]) {
-      expect(lesson.grade).toBe(1);
-    }
-    for (const lesson of LESSONS) {
       expect(lesson.grade).toBe(1);
     }
   });
@@ -150,10 +148,15 @@ describe('grade1 lessons — unlock graph invariants', () => {
       grade: 1,
     }));
 
-  test('the real sequence is a single acyclic chain reaching every lesson', () => {
-    expect(() => assertUnlockGraph(LESSONS)).not.toThrow();
-    const terminal = LESSONS.filter((l) => l.unlocks === null);
-    expect(terminal).toHaveLength(1);
+  // Per grade, not over the merged LESSONS: each grade doc is its own
+  // single-root chain (D1) — registering grade-2 adds a second independent
+  // root, so asserting one root over the merge would be a false invariant.
+  test('the real sequence is a single acyclic chain reaching every lesson, per grade', () => {
+    for (const gradeLessons of Object.values(LESSONS_BY_GRADE)) {
+      expect(() => assertUnlockGraph(gradeLessons)).not.toThrow();
+      const terminal = gradeLessons.filter((l) => l.unlocks === null);
+      expect(terminal).toHaveLength(1);
+    }
   });
 
   test('rejects a cycle', () => {
@@ -176,5 +179,39 @@ describe('grade1 lessons — lessonById', () => {
   test('resolves the first lesson and returns undefined for a miss', () => {
     expect(lessonById(LESSONS[0].id)).toBe(LESSONS[0]);
     expect(lessonById('nope')).toBeUndefined();
+  });
+});
+
+// U2 — the grade-2 doc registers alongside grade-1 (see registration in
+// lessons.ts); grade-2 content validates against grade-2 scope, the same
+// teeth grade-1 content already goes through above.
+describe('grade2 lessons — the bundled doc loads and cross-checks clean', () => {
+  test('LESSONS_BY_GRADE[2] has the new-major-keys unit', () => {
+    expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual(['key-signatures-2']);
+  });
+
+  test('lessonById resolves the grade-2 lesson stamped grade 2', () => {
+    const lesson = lessonById('key-signatures-2');
+    expect(lesson).toBeTruthy();
+    expect(lesson!.grade).toBe(2);
+  });
+
+  test('the grade-2 unit is in the merged LESSONS list, after grade-1', () => {
+    expect(LESSONS.map((l) => l.id)).toContain('key-signatures-2');
+    expect(LESSONS[LESSONS.length - 1].id).toBe('key-signatures-2');
+  });
+
+  // Playability sweep: a unit the map can open must never throw mid-set. SetRunner
+  // seeds each of a set's SET_SIZE items with itemIndex (0..SET_SIZE-1,
+  // SetRunner.tsx:57,70) — this is the real seed range a learner hits.
+  describe.each(LESSONS_BY_GRADE[2])('$id playability sweep', (lesson) => {
+    for (const templateId of lesson.templates) {
+      test(`${templateId} generates across the real per-set seed range without throwing, tagging only this lesson's atoms`, () => {
+        for (let seed = 0; seed < SET_SIZE; seed++) {
+          const instance = generate(templateId, { grade: lesson.grade, seed, atoms: lesson.atoms });
+          expect(lesson.atoms).toContain(instance.srs_tags[0]);
+        }
+      });
+    }
   });
 });

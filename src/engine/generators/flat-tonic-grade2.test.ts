@@ -60,13 +60,21 @@ describe('interval_naming at grade 2 — flat-tonic keys are reachable and spell
   });
 });
 
-describe('key_signature_id at grade 2 — a flat-key atom set no longer crashes', () => {
+describe('key_signature_id at grade 2 — flat keys are reachable, valid, and spelled', () => {
   const atoms = ['key_sig:A_major', 'key_sig:Bb_major', 'key_sig:Eb_major'];
+  const instances = Array.from({ length: 60 }, (_, seed) => generate('key_signature_id', { grade: 2, seed, atoms }));
 
   test('generates valid instances across seeds without throwing (Eb/Bb in the pool poisoned every attempt before)', () => {
-    for (let seed = 0; seed < 60; seed++) {
-      const inst = generate('key_signature_id', { grade: 2, seed, atoms });
-      expect(validate(inst).ok).toBe(true);
-    }
+    for (const inst of instances) expect(validate(inst).ok).toBe(true);
+  });
+
+  test('Bb and Eb major are actually the answer sometimes — not silently skipped for A', () => {
+    // The bug this guards: extractKeyTonic dropped the accidental ("Bb major" -> "B"),
+    // so the validator rejected every flat-key candidate and generation always
+    // converged on A major. A "generates without throwing" test passed anyway
+    // because A is in the pool — only asserting the flat keys are REACHED catches it.
+    const answers = new Set(instances.map((inst) => inst.answer.canonical));
+    expect(answers).toContain('Bb major');
+    expect(answers).toContain('Eb major');
   });
 });

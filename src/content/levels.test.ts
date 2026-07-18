@@ -1,4 +1,6 @@
-import { LESSONS_BY_GRADE, lessonById } from './lessons';
+import { accountNudgeStats } from '../learn/mastery-rollup';
+import { ProgressStore } from '../learn/store';
+import { LESSONS, LESSONS_BY_GRADE, lessonsForGrade, lessonById } from './lessons';
 import { LEVELS } from './levels';
 
 describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, not a frozen fixture)', () => {
@@ -38,5 +40,36 @@ describe('levels — Levels 2-5 are locked placeholders (R1, R4)', () => {
       expect(level.unitIds).toEqual([]);
       expect(level.prerequisite).toBe('Clear the Level 1 exam to unlock');
     }
+  });
+});
+
+// D13 — registering grade-2 content must move ZERO grade-1-visible numbers
+// until Level 2 is actually unlocked. This is the test that fails if anyone
+// re-points a grade-1 surface (level1(), the Profile fact denominator, the
+// account-nudge stats) at the merged LESSONS list instead of the grade-1
+// scope. LESSONS here already includes the grade-2 doc (both are registered
+// in src/content/lessons.ts) — the point is that including it changes nothing
+// below.
+describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 zero-movement invariant)', () => {
+  const level1 = LEVELS[0];
+
+  test('Level 1 unit count and exam-gate threshold stay at the grade-1 doc values (8 units / 24 stars)', () => {
+    expect(level1.unitIds).toHaveLength(8);
+    expect(level1.examGate.unlockAtStars).toBe(24);
+    // Same numbers whether read from Level 1 or straight off the grade-1 doc.
+    expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
+    expect(level1.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[1].length * 3);
+  });
+
+  test('accountNudgeStats over the merged LESSONS equals its value over grade-1 lessons alone, on a store with no exam cleared', () => {
+    const store = new ProgressStore();
+    const now = 0;
+    const overMerged = accountNudgeStats(store, LESSONS, now);
+    const overGrade1Only = accountNudgeStats(store, LESSONS_BY_GRADE[1], now);
+    expect(overMerged).toEqual(overGrade1Only);
+  });
+
+  test('the Profile fact denominator source (lessonsForGrade(1).length) is 8', () => {
+    expect(lessonsForGrade(1)).toHaveLength(8);
   });
 });

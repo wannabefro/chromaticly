@@ -1,0 +1,43 @@
+{
+  "grade": 2,
+  "version": "g2-lessons-2026-07-18",
+  "lessons": [
+    {
+      "id": "key-signatures-2",
+      "title": "New key signatures",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:A_major",
+        "key_sig:Bb_major",
+        "key_sig:Eb_major"
+      ],
+      "templates": [
+        "key_signature_id"
+      ],
+      "worked_example": {
+        "template_id": "key_signature_id",
+        "grade": 2,
+        "seed": 5
+      },
+      "teach": {
+        "objectives": [
+          "The key signatures for A, B♭ and E♭ major",
+          "How to tell a sharp key from a flat key at a glance",
+          "The order flats are written in"
+        ],
+        "concept": {
+          "title": "Grade 2 key signatures",
+          "body": "A major has three sharps: F♯, C♯ and G♯. B♭ major has two flats, B♭ and E♭; E♭ major has three, B♭, E♭ and A♭. Flats are always written in the same order — B, E, A — each a fourth above the last.",
+          "example": {
+            "template_id": "key_signature_id",
+            "grade": 2,
+            "seed": 0
+          }
+        },
+        "smartTip": "In any flat key, the second-to-last flat names the key — B♭ major's flats are B♭, E♭ (so B♭); E♭ major's are B♭, E♭, A♭ (so E♭).",
+        "didYouKnow": "Flats are written in the order B, E, A, D, G, C, F — exactly the sharp order (F, C, G, D, A, E, B) reversed."
+      },
+      "unlocks": null
+    }
+  ]
+}

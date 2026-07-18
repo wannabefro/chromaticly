@@ -10,7 +10,7 @@ jest.mock('react-native-webview', () => {
 
 import { render, waitFor } from '@testing-library/react-native';
 
-import { LESSONS } from '../content/lessons';
+import { LESSONS_BY_GRADE } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { ProgressProvider } from '../learn/ProgressContext';
 import { initialSrs } from '../learn/srs';
@@ -21,7 +21,7 @@ import ProfileScreen from './ProfileScreen';
 function seeded(masteredLessons: string[]): string {
   const store = new ProgressStore();
   store.setProfile({ grade: 1, onboardedAt: '2026-07-14T00:00:00.000Z' });
-  for (const lesson of LESSONS) {
+  for (const lesson of LESSONS_BY_GRADE[1]) {
     store.unlock(lesson.id);
     if (!masteredLessons.includes(lesson.id)) continue;
     store.setLesson(lesson.id, { completed: true });
@@ -85,7 +85,7 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
 
   test('the fact collection counts what has actually been collected', async () => {
     const { getByTestId } = renderProfile(seeded([]));
-    await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS.length}`));
+    await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length}`));
   });
 
   // Design 6b (302.13): a named account shows its name, a guest still shows "Guest".

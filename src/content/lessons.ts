@@ -1,14 +1,16 @@
-// Multi-grade lesson loader (U9, grade-2-foundation U1). Each
+// Multi-grade lesson loader (U9, grade-2-foundation U1/U2). Each
 // curriculum/gradeN-lessons.json is authored data; loadDoc zod-validates one
 // doc, cross-checks every referenced atom/template against the live generator
 // registries at that doc's grade, and asserts its unlock graph is a single
 // acyclic, fully-reachable chain. It fails loud at import time on any
 // dangling reference, malformed graph, or lesson id reused across grades.
-// Only grade1-lessons.json is registered so far, so today's behavior is
-// Grade 1, byte-identical to before this doc became multi-grade-capable.
+// grade1-lessons.json and grade2-lessons.json are both registered; Level 2
+// stays static-locked (levels.ts) until a later unit wires up dynamic
+// unlock, so grade-2 content loads and is pinned but isn't reachable yet.
 
 import { z } from 'zod';
 import grade1Raw from '../../curriculum/grade1-lessons.json';
+import grade2Raw from '../../curriculum/grade2-lessons.json';
 import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -208,13 +210,15 @@ export function assertNoCrossDocDuplicateIds(docs: readonly LessonsDoc[]): void 
   }
 }
 
-const GRADE_DOCS: readonly LessonsDoc[] = [loadDoc(grade1Raw)];
+// Grade-1 first — order matters for the interim single-root-per-grade unlock
+// behavior (see U2 of the grade2-new-major-keys plan).
+const GRADE_DOCS: readonly LessonsDoc[] = [loadDoc(grade1Raw), loadDoc(grade2Raw)];
 
 assertNoCrossDocDuplicateIds(GRADE_DOCS);
 
 export const LESSONS_BY_GRADE: Record<number, Lesson[]> = Object.fromEntries(GRADE_DOCS.map((doc) => [doc.grade, doc.lessons]));
 
-// Grade-1 doc only — nothing else loads yet (see GRADE_DOCS above).
+// The grade-1 doc specifically — some grade-1-only surfaces still read this directly.
 export const LESSONS_DOC: LessonsDoc = GRADE_DOCS[0];
 
 // Concatenated in grade order so a second registered doc extends this, not rewrites it.
