@@ -19,7 +19,8 @@ import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ProgressProvider } from '../learn/ProgressContext';
-import { sqliteStorage } from '../platform/sqlite-storage';
+import { SettingsProvider } from '../learn/SettingsContext';
+import { settingsStorage, sqliteStorage } from '../platform/sqlite-storage';
 import { colors } from '../ui/theme';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -49,9 +50,11 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <ProgressProvider storage={sqliteStorage}>
-        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.surface } }} />
-      </ProgressProvider>
+      <SettingsProvider storage={settingsStorage}>
+        <ProgressProvider storage={sqliteStorage}>
+          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.surface } }} />
+        </ProgressProvider>
+      </SettingsProvider>
     </SafeAreaProvider>
   );
 }

@@ -29,6 +29,7 @@ import { scientificPitchOrdinal } from '../../engine/generators/pitch-math';
 import { diatonicPitchesInRange, G1_NOTE_VALUES } from '../../engine/scope';
 import { keyAccidentals } from '../../music/abc-emitter';
 import type { Clef, Duration, KeySig, Music, Pitch } from '../../music/types';
+import { useSettingsContext } from '../../learn/SettingsContext';
 import { colors, fonts, shape, strandDef, type as typo } from '../theme';
 import type { InteractionComponentProps } from './types';
 
@@ -156,6 +157,10 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
   const [cardWidth, setCardWidth] = useState(0);
   const hue = strandDef(strand).hue;
   const locked = graded !== null;
+  // Left-hand input (design 5c): the floating accidental picker mirrors to the left
+  // edge so a left thumb reaching it doesn't occlude the stave it's editing.
+  const { settings } = useSettingsContext();
+  const leftHanded = settings.handedness === 'left';
 
   const placedSlot = response ? slotIndexOfPitch(clef, response.pitch) : -1;
   const slots = slotCount(clef);
@@ -252,7 +257,10 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
         })}
 
         {response && !locked && (
-          <View style={styles.accidentalPicker} testID="accidental-picker">
+          <View
+            style={[styles.accidentalPicker, leftHanded ? { left: PAPER_INSET } : { right: PAPER_INSET }]}
+            testID="accidental-picker"
+          >
             {(['sharp', 'natural', 'flat'] as Accidental[]).map((accidental) => (
               <Pressable
                 key={accidental}
@@ -342,7 +350,7 @@ const styles = StyleSheet.create({
   ledgerLine: { position: 'absolute', left: -6, width: shape.tapMin + 12, height: 1.4, backgroundColor: colors.paperLine },
   accidentalPicker: {
     position: 'absolute',
-    right: PAPER_INSET,
+    // left/right is set inline from the handedness setting (design 5c left-hand input).
     top: PAPER_INSET,
     flexDirection: 'row',
     gap: 4,

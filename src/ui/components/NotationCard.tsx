@@ -8,6 +8,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { MusicSurface, type MusicSurfaceHandle } from '../../music-surface/MusicSurface';
 import type { SurfaceEvent } from '../../music-surface/bridge';
+import { useSettingsContext } from '../../learn/SettingsContext';
+import { NOTATION_SCALES } from '../../learn/settings';
 import type { Music } from '../../music/types';
 import { colors, elevation, shape, type } from '../theme';
 import { PlayButton } from './PlayButton';
@@ -32,6 +34,7 @@ export const NotationCard = forwardRef<NotationCardHandle, NotationCardProps>(fu
   ref,
 ) {
   const surfaceRef = useRef<MusicSurfaceHandle>(null);
+  const { settings } = useSettingsContext();
   useImperativeHandle(ref, () => ({
     play: () => surfaceRef.current?.play(),
     stop: () => surfaceRef.current?.stop(),
@@ -40,7 +43,7 @@ export const NotationCard = forwardRef<NotationCardHandle, NotationCardProps>(fu
 
   return (
     <View style={styles.card} testID={testID}>
-      <MusicSurface ref={surfaceRef} music={music} height={height} onEvent={onEvent} />
+      <MusicSurface ref={surfaceRef} music={music} height={height} onEvent={onEvent} scale={NOTATION_SCALES[settings.notationScale]} />
       {caption != null && <Text style={styles.caption}>{caption}</Text>}
       {play && (
         <View style={styles.play}>

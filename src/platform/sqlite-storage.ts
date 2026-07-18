@@ -9,9 +9,14 @@ import Storage from 'expo-sqlite/kv-store';
 
 import type { SnapshotStorage } from '../learn/store';
 
-const PROGRESS_KEY = 'chromaticly.progress';
+/** One serialized blob under one key — the store's own versioning/migration lives in
+ *  the core (learn/store.ts, learn/settings.ts); each domain gets its own key. */
+function makeSqliteStorage(key: string): SnapshotStorage {
+  return {
+    load: () => Storage.getItem(key),
+    save: (serialized) => Storage.setItem(key, serialized),
+  };
+}
 
-export const sqliteStorage: SnapshotStorage = {
-  load: () => Storage.getItem(PROGRESS_KEY),
-  save: (serialized) => Storage.setItem(PROGRESS_KEY, serialized),
-};
+export const sqliteStorage = makeSqliteStorage('chromaticly.progress');
+export const settingsStorage = makeSqliteStorage('chromaticly.settings');

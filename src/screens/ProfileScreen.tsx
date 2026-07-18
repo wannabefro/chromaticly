@@ -7,9 +7,12 @@
 //    per-atom mastery streaks (a different thing entirely) and no XP at all. Inventing
 //    numbers on the one screen whose job is telling the learner where they stand would
 //    be the worst place in the app to fake something. Filed (302.35).
-//  - The settings block (UK/US terminology, notation size, colour-vision palette,
-//    left-hand input, feedback audio). Each needs persisted settings AND real wiring;
-//    toggles that flip and change nothing are a lie. Filed (302.36).
+//  - The settings block is PARTIAL. Only the two settings with real, wired effects
+//    ship: notation size (re-scales the score) and left-hand stave input (mirrors the
+//    input controls). Terminology (UK/US), colour-vision palette, and feedback audio
+//    are omitted — each needs a large refactor, new design tokens, or an audio
+//    dependency, and a toggle that flips and changes nothing is a lie. Filed as
+//    follow-ups off 302.36.
 //
 // Grade switching is here, but only Grade 1 has content, so 2-5 read as locked —
 // the same rule GradeSelectScreen applies during onboarding, not a second one.
@@ -22,6 +25,7 @@ import { LEVELS } from '../content/levels';
 import { examReadiness, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { Screen } from '../ui/Screen';
+import { SettingsBlock } from '../ui/components/SettingsBlock';
 import { StrandRadar } from '../ui/components/StrandRadar';
 import { colors, shape, strandDef, type as typo, type Strand } from '../ui/theme';
 
@@ -146,6 +150,8 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
             Only Grade 1 has content so far — Grades 2–5 are coming.
           </Text>
         </View>
+
+        <SettingsBlock />
       </ScrollView>
     </Screen>
   );

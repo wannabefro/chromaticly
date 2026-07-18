@@ -86,13 +86,15 @@ ${playButton}
     console.log('[surface] ' + s);
   }
 
-  function renderAbc(abc) {
+  function renderAbc(abc, scale) {
     try {
       var t = performance.now();
       // clickListener is how the bar-tap (design 4c) is detected: abcjs already hit-tests
       // the tap to a note and calls back with that note's measure class. dragging stays
       // off — a tap must select a bar, never nudge a note.
       var opts = Object.assign({}, ${renderOpts}, { clickListener: onNoteClick, dragging: false });
+      // Notation size (design 5c): RN sends an explicit staff scale, else keep the baked default.
+      if (typeof scale === 'number') opts.scale = scale;
       visualObj = ABCJS.renderAbc('paper', abc, opts)[0];
       emit({ type: 'rendered', ms: Math.round(performance.now() - t) });
     } catch (e) {
@@ -233,7 +235,7 @@ ${playButton}
 
   function handle(cmd) {
     if (!cmd || !cmd.type) return;
-    if (cmd.type === 'render') renderAbc(cmd.abc);
+    if (cmd.type === 'render') renderAbc(cmd.abc, cmd.scale);
     else if (cmd.type === 'play') play();
     else if (cmd.type === 'stop') { if (synth) synth.stop(); }
     else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);

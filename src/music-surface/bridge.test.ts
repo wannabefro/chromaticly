@@ -10,6 +10,7 @@ import {
 describe('bridge protocol round-trips', () => {
   const commands: SurfaceCommand[] = [
     { type: 'render', abc: 'X:1\nK:C\nC' },
+    { type: 'render', abc: 'X:1\nK:C\nC', scale: 1.15 },
     { type: 'play' },
     { type: 'stop' },
     { type: 'highlightBar', bar: 2, color: '#cb7ad4' },

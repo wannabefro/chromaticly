@@ -64,6 +64,16 @@ describe('buildSurfaceHtml', () => {
     expect(html).not.toContain('abcjs-mm(d+)');
   });
 
+  // Design 5c notation size: a `render` command may carry an explicit abcjs staff scale;
+  // the page applies it over the baked default so the score re-scales in place.
+  test('applies a per-render notation scale over the baked default', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain('function renderAbc(abc, scale)');
+    expect(html).toContain("typeof scale === 'number'");
+    expect(html).toContain('opts.scale = scale');
+    expect(html).toContain('renderAbc(cmd.abc, cmd.scale)');
+  });
+
   // Design 4c: long-press a bar to hear just it. A press-duration flag splits a hold from
   // a tap, and playBar seeks the synth to that one bar.
   test('wires long-press-to-hear a single bar', () => {

@@ -3,10 +3,13 @@
 // StaveInput never touches MusicSurface; the given-note stimulus is rendered
 // separately by ExerciseLoop's own NotationCard.
 
-import { fireEvent, render, within } from '@testing-library/react-native';
+import { fireEvent, render, waitFor, within } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 import { G1_NOTE_VALUES } from '../../engine/scope';
 import type { ExerciseInstance } from '../../engine/schema';
+import { SettingsProvider } from '../../learn/SettingsContext';
+import type { SnapshotStorage } from '../../learn/store';
 import { applyAccidental, slotCount, slotToPitch, StaveInput, type Accidental, type StaveInputResponse } from './StaveInput';
 
 const instance: ExerciseInstance = {
@@ -178,5 +181,42 @@ describe('StaveInput — layout: the duration palette/undo never overlap the inp
     const palette = getByTestId('stave-input-palette');
     expect(within(stave).getByTestId('accidental-picker')).toBeTruthy();
     expect(within(palette).queryByTestId('accidental-picker')).toBeNull();
+  });
+});
+
+describe('StaveInput — left-hand input mirrors the accidental picker (design 5c)', () => {
+  function storageWith(handedness: 'right' | 'left'): SnapshotStorage {
+    const blob = JSON.stringify({ version: 1, settings: { notationScale: 'medium', handedness } });
+    return { load: async () => blob, save: async () => {} };
+  }
+
+  function renderWithHand(handedness: 'right' | 'left') {
+    return render(
+      <SettingsProvider storage={storageWith(handedness)}>
+        <StaveInput
+          instance={instance}
+          response={{ pitch: 'E4', dur: 'crotchet' }}
+          graded={null}
+          strand="intervals"
+          onResponseChange={jest.fn()}
+        />
+      </SettingsProvider>,
+    );
+  }
+
+  test('defaults (right-handed) sit the picker on the right edge, not the left', () => {
+    const { getByTestId } = renderWithHand('right');
+    const style = StyleSheet.flatten(getByTestId('accidental-picker').props.style);
+    expect(style.right).toBeGreaterThan(0);
+    expect(style.left).toBeUndefined();
+  });
+
+  test('left-handed mirrors the picker to the left edge, clearing the right inset', async () => {
+    const { getByTestId } = renderWithHand('left');
+    await waitFor(() => {
+      const style = StyleSheet.flatten(getByTestId('accidental-picker').props.style);
+      expect(style.left).toBeGreaterThan(0);
+      expect(style.right).toBeUndefined();
+    });
   });
 });

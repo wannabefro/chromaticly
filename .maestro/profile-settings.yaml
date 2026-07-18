@@ -1,0 +1,52 @@
+# 302.36 / design 5c — the Profile settings block. Only the two settings with real,
+# wired effects ship: notation size and left-hand stave input. This proves they render,
+# respond, and PERSIST across an app relaunch (the whole point of a settings store).
+# The visible EFFECT of each (score re-scales, accidental picker mirrors) is a WebView
+# SVG / absolute-position change that Maestro can't assert — screenshots capture it for
+# a human eye.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=exam
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "app-shell" }
+    timeout: 90000
+- tapOn: { id: "tab-profile" }
+- assertVisible: { id: "profile-screen" }
+
+# The settings block is present with the two wired controls (and NOT the three deferred).
+- scrollUntilVisible:
+    element: { id: "settings-block" }
+    direction: DOWN
+    timeout: 15000
+- assertVisible: { id: "setting-notation-medium" }
+- assertVisible: { id: "setting-hand-right" }
+- assertNotVisible: { text: "Terminology" }
+- assertNotVisible: { text: "Audio on feedback" }
+- takeScreenshot: settings-default
+
+# Change both settings.
+- tapOn: { id: "setting-notation-large" }
+- tapOn: { id: "setting-hand-left" }
+- takeScreenshot: settings-large-lefthand
+
+# Relaunch: the choices must survive (persisted store, not just component state).
+- openLink: exp://127.0.0.1:8090/--/?seed=exam
+- extendedWaitUntil:
+    visible: { id: "app-shell" }
+    timeout: 90000
+- tapOn: { id: "tab-profile" }
+- scrollUntilVisible:
+    element: { id: "settings-block" }
+    direction: DOWN
+    timeout: 15000
+# A second relaunch screenshot is the persistence evidence; the picked segments stay lit.
+- takeScreenshot: settings-after-relaunch

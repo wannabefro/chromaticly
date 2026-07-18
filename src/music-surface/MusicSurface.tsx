@@ -25,6 +25,9 @@ export interface MusicSurfaceProps {
   /** Explicit height for the notation. react-native-webview collapses to 0 with
    *  no height (unlike a browser, which flows to content), so a stave needs one. */
   height?: number;
+  /** abcjs staff scale (design 5c notation size). Omit to keep the page's baked
+   *  default; a change re-renders in place (no WebView reload — the HTML is stable). */
+  scale?: number;
 }
 
 /** Pure message seam: decode a WebView message and forward it. Returns the event (or null). */
@@ -40,7 +43,7 @@ export function dispatchMessage(data: string, onEvent?: (ev: SurfaceEvent) => vo
 }
 
 export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(function MusicSurface(
-  { music, soundFontUrl, onEvent, height = 160 },
+  { music, soundFontUrl, onEvent, height = 160, scale },
   ref,
 ) {
   const webRef = useRef<WebView>(null);
@@ -73,10 +76,11 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     [send],
   );
 
-  // Render the current stimulus once the surface is ready and whenever it changes.
+  // Render the current stimulus once the surface is ready and whenever it (or the
+  // notation scale) changes. A scale change re-renders in place — the HTML is stable.
   useEffect(() => {
-    if (ready) send({ type: 'render', abc });
-  }, [ready, abc, send]);
+    if (ready) send({ type: 'render', abc, scale });
+  }, [ready, abc, scale, send]);
 
   const handleMessage = useCallback(
     (e: WebViewMessageEvent) => {

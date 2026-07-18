@@ -3,7 +3,9 @@
 
 /** RN → WebView commands. */
 export type SurfaceCommand =
-  | { type: 'render'; abc: string }
+  /** Render ABC. `scale` (abcjs staff scale, design 5c notation size) is optional;
+   *  the page keeps its baked default when it is absent. */
+  | { type: 'render'; abc: string; scale?: number }
   | { type: 'play' }
   | { type: 'stop' }
   /** Tint the selected bar in the rendered score (design 4c), or clear it with
