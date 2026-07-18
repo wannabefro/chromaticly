@@ -38,7 +38,7 @@ export interface ProfileScreenProps {
 }
 
 export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScreenProps = {}) {
-  const { ready, store, revision, grade } = useProgressContext();
+  const { ready, store, revision, grade, name } = useProgressContext();
 
   const level = LEVELS.find((l) => l.unlocked) ?? LEVELS[0];
 
@@ -87,10 +87,10 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
       <ScrollView contentContainerStyle={styles.body}>
         <View style={styles.head}>
           <View style={styles.avatar}>
-            <Text style={styles.avatarLetter}>G</Text>
+            <Text style={styles.avatarLetter}>{(name ?? 'G').charAt(0).toUpperCase()}</Text>
           </View>
           <View>
-            <Text style={styles.name}>Guest</Text>
+            <Text style={styles.name}>{name ?? 'Guest'}</Text>
             <Text style={styles.sub}>Grade {grade ?? 1}</Text>
           </View>
         </View>

@@ -88,6 +88,20 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS.length}`));
   });
 
+  // Design 6b (302.13): a named account shows its name, a guest still shows "Guest".
+  test('a named account shows the name in place of Guest', async () => {
+    const store = new ProgressStore();
+    store.setProfile({ grade: 1, onboardedAt: '2026-07-18T00:00:00.000Z', name: 'Maya' });
+    const { getByText, queryByText } = renderProfile(JSON.stringify(store.toSnapshot()));
+    await waitFor(() => expect(getByText('Maya')).toBeTruthy());
+    expect(queryByText('Guest')).toBeNull();
+  });
+
+  test('a guest (no name) still shows "Guest"', async () => {
+    const { getByText } = renderProfile(seeded([]));
+    await waitFor(() => expect(getByText('Guest')).toBeTruthy());
+  });
+
   // Only Grade 1 has content, so the profile says so rather than offering a switch that
   // would land the learner in an empty grade.
   test('grades without content are shown locked, not offered', async () => {

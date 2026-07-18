@@ -19,6 +19,7 @@ import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { unitStates } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
+import { AccountCreateScreen } from './AccountCreateScreen';
 import { ExamGateNode } from '../ui/components/ExamGateNode';
 import { LevelNode } from '../ui/components/LevelNode';
 import { UnitRow } from '../ui/components/UnitRow';
@@ -47,13 +48,16 @@ export interface LevelMapScreenProps {
 }
 
 export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}) {
-  const { ready, store, revision } = useProgressContext();
+  const { ready, store, revision, markNudgeSeen } = useProgressContext();
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
   const [examGrade, setExamGrade] = useState<number | null>(null);
+  // The account nudge (design 6c) routed here from SetRunner (KTD6); this screen owns the
+  // name-your-account step so SetRunner (ui layer) never renders a screen.
+  const [accountFlow, setAccountFlow] = useState(false);
 
   useEffect(() => {
-    onImmersive?.(activeLessonId !== null || examGrade !== null);
-  }, [onImmersive, activeLessonId, examGrade]);
+    onImmersive?.(activeLessonId !== null || examGrade !== null || accountFlow);
+  }, [onImmersive, activeLessonId, examGrade, accountFlow]);
 
   const statesByLevel = useMemo(() => {
     const map = new Map<string, UnitRows>();
@@ -79,10 +83,28 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
     return <ExamRunner grade={examGrade} onExit={() => setExamGrade(null)} />;
   }
 
+  // Name-your-account (design 6b) — reached from the nudge's "Name my account". Marks the
+  // nudge seen only on success (KTD7); a cancel leaves it unseen so it can re-fire later.
+  if (accountFlow) {
+    return (
+      <AccountCreateScreen
+        onCreated={async () => {
+          await markNudgeSeen();
+          setAccountFlow(false);
+          setActiveLessonId(null);
+        }}
+        onCancel={() => {
+          setAccountFlow(false);
+          setActiveLessonId(null);
+        }}
+      />
+    );
+  }
+
   if (activeLessonId) {
     const lesson = lessonById(activeLessonId);
     if (lesson) {
-      return <SetRunner lesson={lesson} onDone={() => setActiveLessonId(null)} />;
+      return <SetRunner lesson={lesson} onDone={() => setActiveLessonId(null)} onCreateAccount={() => setAccountFlow(true)} />;
     }
   }
 
