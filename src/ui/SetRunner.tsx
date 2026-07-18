@@ -38,8 +38,7 @@ export interface SetRunnerProps {
 }
 
 export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
-  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, isNamed, nudgeSeen, markNudgeSeen } =
-    useProgressContext();
+  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, markNudgeSeen } = useProgressContext();
   // Lessons with teach content open on the teach/read phase (design 4a/4b); the
   // sticky "Start exercises" CTA advances into the set. Lessons without teach
   // content drop straight into exercises, unchanged.
@@ -47,10 +46,11 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   const [itemIndex, setItemIndex] = useState(0);
   const [setState, setSetState] = useState(emptySet());
   const [done, setDone] = useState(false);
-  // The nudge (design 6c) fires only on a real completion TRANSITION, not a replay of an
-  // already-complete lesson (KTD2/KTD5) — `complete()` returns false on a replay.
-  const [justCompleted, setJustCompleted] = useState(false);
-  const [nudgeDismissed, setNudgeDismissed] = useState(false);
+  // Whether to overlay the account nudge (design 6c), and its stats. The gate is decided
+  // in `advance` (an event handler, imperative fresh store reads) and stored here as real
+  // state — NEVER read off the store in render, where React Compiler would memoize the
+  // count on the stable store identity and miss the 2→3 completion transition on device.
+  const [nudgeStats, setNudgeStats] = useState<{ lessons: number; stars: number; dueCount: number } | null>(null);
   const tickRef = useRef(0);
   const strand = lesson.strand as Strand;
 
@@ -80,13 +80,24 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
       setSetState(nextState);
       if (isComplete(nextState)) {
         const transitioned = await complete(lesson); // A2: complete the lesson exactly once
-        setJustCompleted(transitioned); // true only on the first completion, not a replay
         setDone(true);
+        // Decide the nudge HERE, imperatively — `transitioned` is true only on the first
+        // completion (not a replay), and the store reads below are fresh (an event handler,
+        // not a memoized render). Gate: three lessons in, unnamed, not already seen.
+        if (
+          transitioned &&
+          store &&
+          !store.isNamed() &&
+          !store.isNudgeSeen() &&
+          store.completedLessonCount() >= NUDGE_AFTER_LESSONS
+        ) {
+          setNudgeStats(accountNudgeStats(store, LESSONS, tickRef.current));
+        }
       } else {
         setItemIndex((i) => i + 1);
       }
     },
-    [complete, lesson],
+    [complete, lesson, store],
   );
 
   // Optional chaining, not a non-null assertion: on a passage item `instance` really
@@ -154,24 +165,20 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   }
 
   if (done) {
-    // Design 6c: a one-time save-progress nudge over the dimmed complete screen, only on a
-    // real completion transition, only for an unnamed learner who hasn't seen it, ≥3 lessons
-    // in. `store` is present here (ready long before any set completes).
-    const showNudge =
-      justCompleted && !isNamed && !nudgeSeen && !nudgeDismissed && store != null && store.completedLessonCount() >= NUDGE_AFTER_LESSONS;
-    const stats = showNudge && store ? accountNudgeStats(store, LESSONS, tickRef.current) : null;
+    // Design 6c: the nudge overlays the dimmed complete screen. Whether to show it was
+    // decided in `advance` (nudgeStats set ⇒ show); render reads only that real state.
     return (
       <Screen>
         <SetComplete gems={gems(setState)} score={score(setState)} total={SET_SIZE} strand={strand} onNext={() => onDone?.()} />
-        {stats && (
+        {nudgeStats && (
           <AccountNudgeSheet
-            lessons={stats.lessons}
-            stars={stats.stars}
-            dueCount={stats.dueCount}
+            lessons={nudgeStats.lessons}
+            stars={nudgeStats.stars}
+            dueCount={nudgeStats.dueCount}
             onCreate={() => onCreateAccount?.()}
             onDismiss={async () => {
               await markNudgeSeen(); // once-only; awaited so the flag persists before we move on (KTD7)
-              setNudgeDismissed(true);
+              setNudgeStats(null);
             }}
           />
         )}

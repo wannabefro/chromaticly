@@ -36,7 +36,7 @@ export function AccountNudgeSheet({ lessons, stars, dueCount, onCreate, onDismis
     <View style={styles.overlay} testID={testID}>
       <View style={styles.backdrop} />
       <View style={[styles.sheet, { borderTopColor: accent }]}>
-        <Text style={styles.title}>Three lessons in — nice streak!</Text>
+        <Text style={styles.title}>Three lessons in — nice work!</Text>
         <Text style={styles.message}>
           Your progress lives on this device. Give your account a name so it&rsquo;s yours to keep.
         </Text>

@@ -26,6 +26,7 @@ describe('AccountNudgeSheet (design 6c)', () => {
     expect(queryByText(/XP/)).toBeNull();
     expect(queryByText(/sync/i)).toBeNull();
     expect(queryByText(/Save my progress/i)).toBeNull();
+    expect(queryByText(/streak/i)).toBeNull(); // no streak is tracked — don't imply one
   });
 
   test('the primary CTA fires onCreate, the secondary fires onDismiss', () => {
