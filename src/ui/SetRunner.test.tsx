@@ -12,7 +12,7 @@ import type { Lesson } from '../content/lessons';
 import { LESSONS } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { ProgressProvider } from '../learn/ProgressContext';
-import type { SnapshotStorage } from '../learn/store';
+import { STORE_VERSION, type ProgressSnapshot, type SnapshotStorage } from '../learn/store';
 import { assembleOptions } from './grading';
 import { SetRunner } from './SetRunner';
 
@@ -247,5 +247,77 @@ describe('SetRunner — multi-template lessons cycle their templates across item
     expect(getByTestId('prompt').props.children).toBe(
       generate(lesson.templates[0], { grade: 1, seed: 0, atoms: lesson.atoms }).prompt,
     );
+  });
+});
+
+// Design 6c (302.9): the save-progress nudge appears over the complete screen once the
+// learner is three lessons in — but only on a real completion TRANSITION, only for an
+// unnamed learner who hasn't already seen it.
+describe('SetRunner — account nudge gating (design 6c, 302.9)', () => {
+  function seededBlob(over: Partial<ProgressSnapshot> = {}, profileOver: Record<string, unknown> = {}): string {
+    return JSON.stringify({
+      version: STORE_VERSION,
+      atoms: {},
+      lessons: { 'other-a': { completed: true }, 'other-b': { completed: true } }, // 2 already done
+      unlocked: [lesson.id],
+      collectedFacts: [],
+      profile: { grade: 1, onboardedAt: 't', ...profileOver },
+      accountNudgeSeen: false,
+      ...over,
+    });
+  }
+
+  async function completeTheSet(getByTestId: (id: string) => any) {
+    await act(async () => {});
+    await startExercises(getByTestId);
+    for (let seed = 0; seed < 8; seed++) await answerCorrect(getByTestId, seed);
+  }
+
+  function renderWith(blob: string | null) {
+    const storage = memoryStorage();
+    storage.blob = blob;
+    return render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+  }
+
+  test('completing the 3rd lesson shows the nudge over the complete screen', async () => {
+    const { getByTestId } = renderWith(seededBlob()); // 2 others done → this is the 3rd
+    await completeTheSet(getByTestId);
+    expect(getByTestId('set-complete')).toBeTruthy();
+    expect(getByTestId('account-nudge-sheet')).toBeTruthy();
+  });
+
+  test('completing only the 1st lesson does NOT show the nudge', async () => {
+    const { getByTestId, queryByTestId } = renderWith(null); // fresh → count reaches 1
+    await completeTheSet(getByTestId);
+    expect(getByTestId('set-complete')).toBeTruthy();
+    expect(queryByTestId('account-nudge-sheet')).toBeNull();
+  });
+
+  test('an already-seen nudge never re-shows, even at the 3rd', async () => {
+    const { queryByTestId } = renderWith(seededBlob({ accountNudgeSeen: true }));
+    await completeTheSet(queryByTestId as (id: string) => any);
+    expect(queryByTestId('account-nudge-sheet')).toBeNull();
+  });
+
+  test('a named account never sees the nudge', async () => {
+    const { queryByTestId } = renderWith(seededBlob({}, { name: 'Maya' }));
+    await completeTheSet(queryByTestId as (id: string) => any);
+    expect(queryByTestId('account-nudge-sheet')).toBeNull();
+  });
+
+  test('replaying an already-complete lesson (no transition) does NOT show the nudge', async () => {
+    // lesson.id itself already complete + 2 others → count is already 3, but re-completing
+    // it is not a transition, so the nudge must stay hidden (the replay bug the review caught).
+    const blob = seededBlob({
+      lessons: { [lesson.id]: { completed: true }, 'other-a': { completed: true }, 'other-b': { completed: true } },
+    });
+    const { getByTestId, queryByTestId } = renderWith(blob);
+    await completeTheSet(getByTestId);
+    expect(getByTestId('set-complete')).toBeTruthy();
+    expect(queryByTestId('account-nudge-sheet')).toBeNull();
   });
 });

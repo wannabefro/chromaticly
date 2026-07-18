@@ -1,6 +1,6 @@
 import { LESSONS, lessonById } from '../content/lessons';
 import { MASTERY_THRESHOLD } from './mastery';
-import { deriveStars, strandMastery, unitStates } from './mastery-rollup';
+import { accountNudgeStats, deriveStars, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
 import { ProgressStore } from './store';
 
@@ -180,5 +180,32 @@ describe('unitStates — per-unit state for the level map', () => {
     const rows = unitStates(['done', 'active'], store, lessonAtoms);
     expect(rows[0].state).toBe('done');
     expect(rows[1]).toEqual({ unitId: 'active', stars: 0, state: 'active' });
+  });
+});
+
+describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () => {
+  test('lessons = completed count; stars = summed deriveStars; both from real derivations', () => {
+    const store = new ProgressStore();
+    const [l1, l2] = LESSONS;
+    for (const l of [l1, l2]) {
+      store.unlock(l.id);
+      store.setLesson(l.id, { completed: true });
+      masterAtoms(store, l.atoms);
+    }
+    const stats = accountNudgeStats(store, LESSONS, 0);
+    expect(stats.lessons).toBe(2);
+    expect(stats.stars).toBe(6); // two fully-mastered lessons → 3★ each; every other lesson 0
+  });
+
+  // Why: the review-queue count must mirror Practice eligibility — a due atom in a still-locked
+  // lesson is not actually reviewable, so it must not inflate the nudge's number.
+  test('dueCount counts due atoms from UNLOCKED lessons only', () => {
+    const store = new ProgressStore();
+    const [l1, l2] = LESSONS;
+    store.unlock(l1.id); // l1 unlocked
+    masterAtoms(store, l1.atoms); // due at now 0 (initialSrs)
+    masterAtoms(store, l2.atoms); // l2 touched but NOT unlocked
+    const stats = accountNudgeStats(store, LESSONS, 0);
+    expect(stats.dueCount).toBe(l1.atoms.length); // l2's atoms excluded (locked)
   });
 });

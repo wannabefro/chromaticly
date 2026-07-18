@@ -9,14 +9,16 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { Lesson } from '../content/lessons';
+import { LESSONS, type Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { emptySet, gems, isComplete, recordItem, score, segmentStates, SET_SIZE, type ExerciseSetState } from '../learn/exercise-set';
+import { accountNudgeStats } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import type { SrsGrade } from '../learn/srs';
 import { buildContextPassage } from '../engine/generators/context-passage';
 import { ContextRunner } from './ContextRunner';
 import { ExerciseLoop } from './ExerciseLoop';
+import { AccountNudgeSheet } from './components/AccountNudgeSheet';
 import { ProgressSegments } from './components/ProgressSegments';
 import { SetComplete } from './SetComplete';
 import { TeachPhase } from './TeachPhase';
@@ -24,13 +26,20 @@ import type { AttemptResult } from './grading';
 import { Screen } from './Screen';
 import { colors, shape, type as typo, type Strand } from './theme';
 
+/** The learner has invested enough to be worth an account nudge (design 6c). */
+const NUDGE_AFTER_LESSONS = 3;
+
 export interface SetRunnerProps {
   lesson: Lesson;
   onDone?: () => void;
+  /** The account nudge's "Name my account" was tapped (design 6c). The host owns the
+   *  account-creation screen (KTD6); it marks the nudge seen only on account success (KTD7). */
+  onCreateAccount?: () => void;
 }
 
-export function SetRunner({ lesson, onDone }: SetRunnerProps) {
-  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact } = useProgressContext();
+export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
+  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, isNamed, nudgeSeen, markNudgeSeen } =
+    useProgressContext();
   // Lessons with teach content open on the teach/read phase (design 4a/4b); the
   // sticky "Start exercises" CTA advances into the set. Lessons without teach
   // content drop straight into exercises, unchanged.
@@ -38,6 +47,10 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
   const [itemIndex, setItemIndex] = useState(0);
   const [setState, setSetState] = useState(emptySet());
   const [done, setDone] = useState(false);
+  // The nudge (design 6c) fires only on a real completion TRANSITION, not a replay of an
+  // already-complete lesson (KTD2/KTD5) — `complete()` returns false on a replay.
+  const [justCompleted, setJustCompleted] = useState(false);
+  const [nudgeDismissed, setNudgeDismissed] = useState(false);
   const tickRef = useRef(0);
   const strand = lesson.strand as Strand;
 
@@ -66,7 +79,8 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
     async (nextState: ExerciseSetState) => {
       setSetState(nextState);
       if (isComplete(nextState)) {
-        await complete(lesson); // A2: complete the lesson exactly once
+        const transitioned = await complete(lesson); // A2: complete the lesson exactly once
+        setJustCompleted(transitioned); // true only on the first completion, not a replay
         setDone(true);
       } else {
         setItemIndex((i) => i + 1);
@@ -140,9 +154,27 @@ export function SetRunner({ lesson, onDone }: SetRunnerProps) {
   }
 
   if (done) {
+    // Design 6c: a one-time save-progress nudge over the dimmed complete screen, only on a
+    // real completion transition, only for an unnamed learner who hasn't seen it, ≥3 lessons
+    // in. `store` is present here (ready long before any set completes).
+    const showNudge =
+      justCompleted && !isNamed && !nudgeSeen && !nudgeDismissed && store != null && store.completedLessonCount() >= NUDGE_AFTER_LESSONS;
+    const stats = showNudge && store ? accountNudgeStats(store, LESSONS, tickRef.current) : null;
     return (
       <Screen>
         <SetComplete gems={gems(setState)} score={score(setState)} total={SET_SIZE} strand={strand} onNext={() => onDone?.()} />
+        {stats && (
+          <AccountNudgeSheet
+            lessons={stats.lessons}
+            stars={stats.stars}
+            dueCount={stats.dueCount}
+            onCreate={() => onCreateAccount?.()}
+            onDismiss={async () => {
+              await markNudgeSeen(); // once-only; awaited so the flag persists before we move on (KTD7)
+              setNudgeDismissed(true);
+            }}
+          />
+        )}
       </Screen>
     );
   }

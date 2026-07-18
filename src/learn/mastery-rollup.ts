@@ -4,6 +4,8 @@
 // 0 -> 0 mastered; (0, 2/3) -> 1 star; [2/3, 1) -> 2 stars; 1 -> 3 stars.
 // A 1-atom unit is therefore 0 or 3 stars by nature (RD3, accepted).
 
+import type { Lesson } from '../content/lessons';
+import { selectDue } from './srs';
 import type { ProgressStore } from './store';
 
 export function deriveStars(atomIds: string[], store: ProgressStore): 0 | 1 | 2 | 3 {
@@ -14,6 +16,21 @@ export function deriveStars(atomIds: string[], store: ProgressStore): 0 | 1 | 2 
   if (mastered === 0) return 0;
   if (mastered === total) return 3;
   return mastered / total >= 2 / 3 ? 2 : 1;
+}
+
+/** Real, backed stats for the account nudge's stat card (design 6c) — no invented
+ *  numbers. Lessons = completed count; stars = total 0-3 stars summed over every
+ *  lesson (the same derivation the app shows elsewhere); dueCount = review-queue size
+ *  at logical time `now`, over UNLOCKED atoms only (mirrors Practice eligibility). */
+export function accountNudgeStats(
+  store: ProgressStore,
+  lessons: Lesson[],
+  now: number,
+): { lessons: number; stars: number; dueCount: number } {
+  const stars = lessons.reduce((sum, l) => sum + deriveStars(l.atoms, store), 0);
+  const unlockedAtoms = new Set(lessons.filter((l) => store.isUnlocked(l.id)).flatMap((l) => l.atoms));
+  const dueCount = selectDue(store.atomEntries(), now, (atom) => unlockedAtoms.has(atom)).length;
+  return { lessons: store.completedLessonCount(), stars, dueCount };
 }
 
 export interface StrandMastery {
