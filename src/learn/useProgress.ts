@@ -96,6 +96,19 @@ export interface UseProgress {
   isOnboarded: boolean;
   /** The selected grade once onboarded, else null. */
   grade: number | null;
+  /** The account display name once set (design 6b), else null. */
+  name: string | null;
+  /** Whether the learner has a named account (design 6b). */
+  isNamed: boolean;
+  /** Whether the guest→account nudge (design 6c) has been shown+actioned — once-only. */
+  nudgeSeen: boolean;
+  /** How many lessons are completed — the "three lessons in" trigger (design 6c).
+   *  A callback (revision-gated) so callers read a fresh count after a completion. */
+  completedLessonCount: () => number;
+  /** Upgrade the profile Guest→named with a display name and persist (design 6b). */
+  createAccount: (name: string) => Promise<void>;
+  /** Mark the account nudge shown+actioned and persist — once-only (design 6c). */
+  markNudgeSeen: () => Promise<void>;
   /** Persist the onboarding profile (selected grade + completion timestamp). Birth
    *  year is no longer captured here — it's deferred to account creation (U1/KTD1). */
   completeOnboarding: (grade: number, onboardedAt: string) => Promise<void>;
@@ -114,6 +127,9 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
   // store's identity — which never changes under in-place mutation — and goes
   // stale. Genuine state is the only reliable change signal for the compiler.
   const [profile, setProfileState] = useState<Profile | null>(null);
+  // The nudge-seen flag lives outside the profile, so it gets its own mirror (same
+  // React Compiler rationale as `profile` above). The name rides along on `profile`.
+  const [nudgeSeen, setNudgeSeen] = useState(false);
 
   useEffect(() => {
     let live = true;
@@ -122,6 +138,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       ensureRootUnlocked(loaded, lessons);
       setStore(loaded);
       setProfileState(loaded.getProfile());
+      setNudgeSeen(loaded.isNudgeSeen());
       setReady(true);
     });
     return () => {
@@ -194,6 +211,29 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     [store, storage],
   );
 
+  const createAccount = useCallback<UseProgress['createAccount']>(
+    async (name) => {
+      if (!store) return;
+      store.setName(name);
+      await saveProgress(store, storage);
+      setProfileState(store.getProfile()); // real state → ProfileScreen shows the name
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
+  const markNudgeSeen = useCallback<UseProgress['markNudgeSeen']>(async () => {
+    if (!store || store.isNudgeSeen()) return;
+    store.markNudgeSeen();
+    await saveProgress(store, storage);
+    setNudgeSeen(true);
+    setRevision((r) => r + 1);
+  }, [store, storage]);
+
+  // Read imperatively (after an awaited completion) or revision-gated — never memoized
+  // stale, since the count reflects in-place lesson mutations the revision bump signals.
+  const completedLessonCount = useCallback(() => store?.completedLessonCount() ?? 0, [store, revision]);
+
   const seedTo = useCallback<UseProgress['seedTo']>(
     async (targetId) => {
       if (!store) return;
@@ -209,6 +249,8 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
 
   const isOnboarded = profile !== null;
   const grade = profile?.grade ?? null;
+  const name = profile?.name ?? null;
+  const isNamed = name != null && name !== '';
 
   return useMemo(
     () => ({
@@ -225,6 +267,12 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       profile,
       isOnboarded,
       grade,
+      name,
+      isNamed,
+      nudgeSeen,
+      completedLessonCount,
+      createAccount,
+      markNudgeSeen,
       completeOnboarding,
       seedTo,
     }),
@@ -242,6 +290,12 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       profile,
       isOnboarded,
       grade,
+      name,
+      isNamed,
+      nudgeSeen,
+      completedLessonCount,
+      createAccount,
+      markNudgeSeen,
       completeOnboarding,
       seedTo,
     ],

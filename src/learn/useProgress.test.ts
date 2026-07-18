@@ -130,3 +130,50 @@ describe('useProgress — onboarding (KTD4 profile persistence)', () => {
     expect(reloaded.getProfile()).toEqual({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
   });
 });
+
+describe('useProgress — account name + nudge-seen (design 6b/6c, 302.9/302.13)', () => {
+  async function onboarded(storage: SnapshotStorage) {
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    await result.current.completeOnboarding(1, '2026-07-18T00:00:00.000Z');
+    await waitFor(() => expect(result.current.isOnboarded).toBe(true));
+    return result;
+  }
+
+  test('createAccount names the profile, persists, and flips isNamed (no stale read)', async () => {
+    const storage = memoryStorage();
+    const result = await onboarded(storage);
+    expect(result.current.isNamed).toBe(false);
+    expect(result.current.name).toBeNull();
+
+    await result.current.createAccount('Maya');
+
+    await waitFor(() => expect(result.current.isNamed).toBe(true));
+    expect(result.current.name).toBe('Maya');
+    // Persisted, not just in-memory — the awaited promise resolves after the blob is written.
+    expect(new ProgressStore(JSON.parse(storage.blob as string)).getName()).toBe('Maya');
+  });
+
+  test('markNudgeSeen sets the once-only flag and persists', async () => {
+    const storage = memoryStorage();
+    const result = await onboarded(storage);
+    expect(result.current.nudgeSeen).toBe(false);
+
+    await result.current.markNudgeSeen();
+
+    await waitFor(() => expect(result.current.nudgeSeen).toBe(true));
+    expect(new ProgressStore(JSON.parse(storage.blob as string)).isNudgeSeen()).toBe(true);
+  });
+
+  test('completedLessonCount reads a fresh count off the (in-place-mutated) store', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    expect(result.current.completedLessonCount()).toBe(0);
+
+    const store = result.current.store as ProgressStore;
+    masterAtom(store, lessonA, 'x', 0);
+    masterAtom(store, lessonA, 'y', 10); // both atoms mastered → applyAttempt auto-completes lessonA
+    expect(result.current.completedLessonCount()).toBe(1);
+  });
+});
