@@ -1,0 +1,42 @@
+# 302.19 / design 4c — tap the bar directly IN the score. This is the one interaction
+# whose whole point is the WebView: Jest mocks the notation surface and cannot see that
+# a tap on a rendered note hit-tests (via abcjs' clickListener) to a bar, fills the
+# answer, and tints that bar in the score. So this flow taps a note in the score (NOT
+# the bar strip) and proves the tap became the answer.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=music-in-context
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "unit-row-music-in-context" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-music-in-context" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+# Q1 is find-the-bar. The bar strip starts un-picked.
+- extendedWaitUntil:
+    visible: { id: "find-the-bar" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { text: ".*Tap the bar in the score.*" }
+
+# Tap a note IN the pinned score (the card centre lands on a note for this passage).
+# abcjs hit-tests the tap to a bar; the loop fills the strip and tints the bar.
+- tapOn: { id: "stimulus-music" }
+- assertVisible: { text: ".*You picked bar.*" }
+- takeScreenshot: bar-tapped-in-score

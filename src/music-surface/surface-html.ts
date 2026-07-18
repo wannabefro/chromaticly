@@ -83,7 +83,11 @@ ${playButton}
   function renderAbc(abc) {
     try {
       var t = performance.now();
-      visualObj = ABCJS.renderAbc('paper', abc, ${renderOpts})[0];
+      // clickListener is how the bar-tap (design 4c) is detected: abcjs already hit-tests
+      // the tap to a note and calls back with that note's measure class. dragging stays
+      // off — a tap must select a bar, never nudge a note.
+      var opts = Object.assign({}, ${renderOpts}, { clickListener: onNoteClick, dragging: false });
+      visualObj = ABCJS.renderAbc('paper', abc, opts)[0];
       emit({ type: 'rendered', ms: Math.round(performance.now() - t) });
     } catch (e) {
       emit({ type: 'error', message: 'render: ' + (e && e.message || e) });
@@ -117,11 +121,69 @@ ${playButton}
     });
   }
 
+  // --- Bar tapping (design 4c: tap the bar IN the score) ---------------------
+  // abcjs (add_classes) tags every rendered note with an "abcjs-mmN" measure class, and
+  // its clickListener hit-tests a tap to the note and hands us that note's classes. abcjs
+  // numbers measures from 0 and the leading clef shares measure 0 with bar 1, so bar =
+  // measure + 1. This is far more robust than hand-rolled x-geometry: abcjs owns the
+  // layout, so it always knows which note (and bar) a tap landed on.
+  function svgEl() { return document.querySelector('#paper svg'); }
+
+  function measureFromClasses(str) {
+    // NB: \\d — this whole script lives in a JS template literal, so a single-backslash
+    // \\d would collapse to a literal "d" in the emitted HTML and the regex would never
+    // match a measure. The double backslash puts a real \\d into the page.
+    var m = /abcjs-mm(\\d+)/.exec(str || '');
+    return m ? parseInt(m[1], 10) : null;
+  }
+
+  function onNoteClick(abcelem, tuneNumber, classes, analysis) {
+    var str = [classes, analysis && analysis.parentClasses].join(' ');
+    var raw = measureFromClasses(str);
+    if (raw != null) emit({ type: 'barTapped', bar: raw + 1 });
+  }
+
+  /** Tint the bar (1-indexed) with a translucent rect behind the notes, or clear it. The
+   *  bar's notes carry class abcjs-mm(bar-1); we union their boxes (skipping the clef and
+   *  other staff furniture that share measure 0) for the rect's x-extent. */
+  function highlightBar(bar, color) {
+    var svg = svgEl();
+    if (!svg) return;
+    var old = svg.querySelector('.bar-highlight');
+    if (old) old.parentNode.removeChild(old);
+    if (bar == null) return;
+    var sel = svg.querySelectorAll('[class~="abcjs-mm' + (bar - 1) + '"]');
+    var left = Infinity, right = -Infinity, found = false;
+    Array.prototype.forEach.call(sel, function (el) {
+      if (/abcjs-(staff|clef|key-signature|time-signature)/.test(el.getAttribute('class') || '')) return;
+      var bb;
+      try { bb = el.getBBox(); } catch (e) { return; }
+      if (!bb || (bb.width === 0 && bb.height === 0)) return;
+      left = Math.min(left, bb.x);
+      right = Math.max(right, bb.x + bb.width);
+      found = true;
+    });
+    if (!found) return;
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+    var pad = 5;
+    var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('class', 'bar-highlight');
+    rect.setAttribute('x', left - pad);
+    rect.setAttribute('y', vb ? vb.y : 0);
+    rect.setAttribute('width', (right - left) + pad * 2);
+    rect.setAttribute('height', vb ? vb.height : 100);
+    rect.setAttribute('rx', '5');
+    rect.setAttribute('fill', color || '#cb7ad4');
+    rect.setAttribute('fill-opacity', '0.18');
+    svg.insertBefore(rect, svg.firstChild);
+  }
+
   function handle(cmd) {
     if (!cmd || !cmd.type) return;
     if (cmd.type === 'render') renderAbc(cmd.abc);
     else if (cmd.type === 'play') play();
     else if (cmd.type === 'stop') { if (synth) synth.stop(); }
+    else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);
   }
 
   // RN -> WebView (react-native-webview delivers to window 'message').
@@ -138,6 +200,8 @@ ${playButton}
     if (INITIAL_ABC) renderAbc(INITIAL_ABC);
     var btn = document.getElementById('surface-play');
     if (btn) btn.addEventListener('click', play);
+    // The bar-tap is handled by abcjs's clickListener (wired in renderAbc), not a manual
+    // DOM listener — abcjs owns the note layout and hit-testing.
     if (AUTORUN) play();
   }
   if (document.readyState === 'loading') {

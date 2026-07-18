@@ -9,17 +9,18 @@
 // immediately (this is practice; an exam would defer it — 8d). The passage keeps its
 // own Q-counter, so "Q2 · 4" counts sub-questions, not items in the set.
 
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { ContextPassage } from '../engine/generators/context-passage';
+import type { SurfaceEvent } from '../music-surface/bridge';
 import { Button } from './components/Button';
 import { FeedbackSheet } from './components/FeedbackSheet';
-import { NotationCard } from './components/NotationCard';
+import { NotationCard, type NotationCardHandle } from './components/NotationCard';
 import { StrandChip } from './components/StrandChip';
 import { type AttemptResult, toResult } from './grading';
 import { lookupInteraction } from './interactions/registry';
-import { colors, shape, type as typo, type Strand } from './theme';
+import { colors, shape, strandDef, type as typo, type Strand } from './theme';
 
 export interface ContextRunnerProps {
   passage: ContextPassage;
@@ -36,7 +37,9 @@ export function ContextRunner({ passage, onSubResult, onDone }: ContextRunnerPro
   const [response, setResponse] = useState<unknown>(() => spec.emptyResponse(instance));
   const [graded, setGraded] = useState<boolean | null>(null);
   const resultsRef = useRef<AttemptResult[]>([]);
+  const surfaceRef = useRef<NotationCardHandle>(null);
   const strand = instance.strand as Strand;
+  const hue = strandDef(strand).hue;
 
   // Each sub-question starts clean — an earlier answer's selection must not carry over
   // into the next question about the same passage (8d: highlights clear between
@@ -47,6 +50,22 @@ export function ContextRunner({ passage, onSubResult, onDone }: ContextRunnerPro
     setResponse(spec.emptyResponse(instance));
     setGraded(null);
   }
+
+  // Design 4c's signature interaction: tap a bar IN the pinned score. The passage runner
+  // owns the score (not ExerciseLoop), so the score-tap must be wired here — a tap on a
+  // find-the-bar sub-question becomes the answer, and the chosen bar is tinted.
+  const handleSurfaceEvent = useCallback(
+    (ev: SurfaceEvent) => {
+      if (ev.type === 'barTapped' && graded === null && spec.onSurfaceTap) {
+        setResponse((r: unknown) => spec.onSurfaceTap!(ev.bar, r));
+      }
+    },
+    [spec, graded],
+  );
+
+  useEffect(() => {
+    surfaceRef.current?.highlightBar(spec.surfaceHighlight?.(response) ?? null, hue);
+  }, [spec, response, hue]);
 
   const check = useCallback(() => {
     setGraded(Boolean(spec.grade(instance, response)));
@@ -74,7 +93,7 @@ export function ContextRunner({ passage, onSubResult, onDone }: ContextRunnerPro
           </Text>
         </View>
         <View testID="stimulus-music">
-          <NotationCard music={passage.music} />
+          <NotationCard ref={surfaceRef} music={passage.music} onEvent={handleSurfaceEvent} />
         </View>
       </View>
 

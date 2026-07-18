@@ -173,6 +173,10 @@ const findTheBarSpec: InteractionSpec<FindTheBarResponse> = {
   grade: (instance, response) => gradeMcq(instance, response),
   submits: true,
   correctAnswerView: findTheBarCorrectAnswerView,
+  // Design 4c: tapping a bar in the score is the same answer as tapping the strip,
+  // and the chosen bar is tinted in the notation.
+  onSurfaceTap: (bar) => bar,
+  surfaceHighlight: (response) => response,
 };
 
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {

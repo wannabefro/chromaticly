@@ -14,6 +14,8 @@ const ABCJS_SOURCE = (abcjsSource as { source: string }).source;
 export interface MusicSurfaceHandle {
   play(): void;
   stop(): void;
+  /** Tint the selected bar in the score (design 4c), or clear with `null`. */
+  highlightBar(bar: number | null, color?: string): void;
 }
 
 export interface MusicSurfaceProps {
@@ -61,7 +63,15 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     webRef.current?.postMessage(encodeCommand(cmd));
   }, []);
 
-  useImperativeHandle(ref, () => ({ play: () => send({ type: 'play' }), stop: () => send({ type: 'stop' }) }), [send]);
+  useImperativeHandle(
+    ref,
+    () => ({
+      play: () => send({ type: 'play' }),
+      stop: () => send({ type: 'stop' }),
+      highlightBar: (bar: number | null, color?: string) => send({ type: 'highlightBar', bar, color }),
+    }),
+    [send],
+  );
 
   // Render the current stimulus once the surface is ready and whenever it changes.
   useEffect(() => {

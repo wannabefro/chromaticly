@@ -253,6 +253,20 @@ describe('registry — protocol shape', () => {
     expect(lookupInteraction('mcq').emptyResponse(instance)).toBeNull();
     expect(lookupInteraction('text_input').emptyResponse(instance)).toBe('');
   });
+
+  // Design 4c: only find-the-bar wires the score-tap protocol — a tap becomes the
+  // response and the response tints that bar. Other interactions opt out (no notation
+  // answer), so the loop leaves their score untouched.
+  test('find_the_bar implements the score-tap protocol; mcq/text_input do not', () => {
+    const ftb = lookupInteraction('find_the_bar');
+    expect(ftb.onSurfaceTap?.(3, null)).toBe(3); // a tap on bar 3 IS the answer
+    expect(ftb.surfaceHighlight?.(2)).toBe(2); // and the picked bar is the tint
+    expect(ftb.surfaceHighlight?.(null)).toBeNull(); // nothing picked, nothing tinted
+
+    expect(lookupInteraction('mcq').onSurfaceTap).toBeUndefined();
+    expect(lookupInteraction('mcq').surfaceHighlight).toBeUndefined();
+    expect(lookupInteraction('text_input').onSurfaceTap).toBeUndefined();
+  });
 });
 
 describe('registry — correctAnswerView', () => {

@@ -13,6 +13,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../engine/schema';
 import type { SrsGrade } from '../learn/srs';
+import type { SurfaceEvent } from '../music-surface/bridge';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
 import { StrandChip } from './components/StrandChip';
@@ -20,7 +21,7 @@ import { Button } from './components/Button';
 import { type AttemptResult, toResult } from './grading';
 import { Hints } from './Hints';
 import { lookupInteraction } from './interactions/registry';
-import { colors, shape, type as typo, type Strand } from './theme';
+import { colors, shape, strandDef, type as typo, type Strand } from './theme';
 
 export interface ExerciseLoopProps {
   instance: ExerciseInstance;
@@ -77,7 +78,24 @@ export function ExerciseLoop({
   }, [instance]);
 
   const strand = instance.strand as Strand;
+  const hue = strandDef(strand).hue;
   const canCheck = spec.canCheck(response);
+
+  // Design 4c: a tap on a bar IN the score is the same answer as the bar strip, and the
+  // chosen bar is tinted. The loop stays interaction-agnostic — only an interaction that
+  // implements onSurfaceTap/surfaceHighlight (find-the-bar) participates.
+  const handleSurfaceEvent = useCallback(
+    (ev: SurfaceEvent) => {
+      if (ev.type === 'barTapped' && graded === null && spec.onSurfaceTap) {
+        setResponse((prev: unknown) => spec.onSurfaceTap!(ev.bar, prev));
+      }
+    },
+    [spec, graded],
+  );
+
+  useEffect(() => {
+    surfaceRef.current?.highlightBar(spec.surfaceHighlight?.(response) ?? null, hue);
+  }, [spec, response, hue]);
 
   const check = useCallback(() => {
     setGraded(Boolean(spec.grade(instance, response)));
@@ -103,7 +121,7 @@ export function ExerciseLoop({
 
         {music ? (
           <View testID="stimulus-music">
-            <NotationCard ref={surfaceRef} music={music} />
+            <NotationCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />
           </View>
         ) : (
           instance.stimulus.text != null && (

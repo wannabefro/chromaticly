@@ -35,7 +35,7 @@ export function FindTheBar({ instance, response, graded, strand, onResponseChang
       <View style={styles.hint}>
         <Text style={styles.hintIcon}>👆</Text>
         <Text style={styles.hintText}>
-          {response === null ? 'Pick the bar.' : `You picked bar ${response}.`}
+          {response === null ? 'Tap the bar in the score above, or pick it below.' : `You picked bar ${response}.`}
         </Text>
       </View>
 

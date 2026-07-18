@@ -7,6 +7,7 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { MusicSurface, type MusicSurfaceHandle } from '../../music-surface/MusicSurface';
+import type { SurfaceEvent } from '../../music-surface/bridge';
 import type { Music } from '../../music/types';
 import { colors, elevation, shape, type } from '../theme';
 import { PlayButton } from './PlayButton';
@@ -18,6 +19,8 @@ export interface NotationCardProps {
   height?: number;
   /** Show the play affordance (default true — every notation display sounds). */
   play?: boolean;
+  /** Surface events (e.g. a `barTapped` when the learner taps a bar in the score). */
+  onEvent?: (ev: SurfaceEvent) => void;
   caption?: string;
   testID?: string;
 }
@@ -25,18 +28,19 @@ export interface NotationCardProps {
 export type NotationCardHandle = MusicSurfaceHandle;
 
 export const NotationCard = forwardRef<NotationCardHandle, NotationCardProps>(function NotationCard(
-  { music, height = 150, play = true, caption, testID = 'notation-card' },
+  { music, height = 150, play = true, onEvent, caption, testID = 'notation-card' },
   ref,
 ) {
   const surfaceRef = useRef<MusicSurfaceHandle>(null);
   useImperativeHandle(ref, () => ({
     play: () => surfaceRef.current?.play(),
     stop: () => surfaceRef.current?.stop(),
+    highlightBar: (bar: number | null, color?: string) => surfaceRef.current?.highlightBar(bar, color),
   }));
 
   return (
     <View style={styles.card} testID={testID}>
-      <MusicSurface ref={surfaceRef} music={music} height={height} />
+      <MusicSurface ref={surfaceRef} music={music} height={height} onEvent={onEvent} />
       {caption != null && <Text style={styles.caption}>{caption}</Text>}
       {play && (
         <View style={styles.play}>

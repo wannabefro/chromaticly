@@ -12,6 +12,8 @@ describe('bridge protocol round-trips', () => {
     { type: 'render', abc: 'X:1\nK:C\nC' },
     { type: 'play' },
     { type: 'stop' },
+    { type: 'highlightBar', bar: 2, color: '#cb7ad4' },
+    { type: 'highlightBar', bar: null },
   ];
   const events: SurfaceEvent[] = [
     { type: 'ready' },
@@ -22,6 +24,7 @@ describe('bridge protocol round-trips', () => {
     { type: 'audioUnsupported' },
     { type: 'error', message: 'boom' },
     { type: 'log', message: 'hi' },
+    { type: 'barTapped', bar: 3 },
   ];
 
   test.each(commands)('command %j survives encode -> decode', (cmd) => {

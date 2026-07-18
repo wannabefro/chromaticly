@@ -48,4 +48,11 @@ export interface InteractionSpec<Response = unknown> {
   submits: boolean;
   /** The FeedbackSheet's correct-answer render for an incorrect attempt. */
   correctAnswerView(instance: ExerciseInstance): ReactNode;
+  /** Optional score-tap protocol (design 4c). An interaction whose answer is a
+   *  position in the notation (find-the-bar) implements these so the loop can wire
+   *  the persistent NotationCard both ways without knowing the interaction type:
+   *  a tap in the score updates the response, and the response tints a bar. */
+  onSurfaceTap?(bar: number, response: Response): Response;
+  /** Which bar (1-indexed) the current response should tint in the score, or null. */
+  surfaceHighlight?(response: Response): number | null;
 }

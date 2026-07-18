@@ -5,7 +5,10 @@
 export type SurfaceCommand =
   | { type: 'render'; abc: string }
   | { type: 'play' }
-  | { type: 'stop' };
+  | { type: 'stop' }
+  /** Tint the selected bar in the rendered score (design 4c), or clear it with
+   *  `bar: null`. `color` is the strand hue the RN side owns. */
+  | { type: 'highlightBar'; bar: number | null; color?: string };
 
 /** WebView → RN events, including instrumentation timings (ms). */
 export type SurfaceEvent =
@@ -16,7 +19,9 @@ export type SurfaceEvent =
   | { type: 'finished' }
   | { type: 'audioUnsupported' }
   | { type: 'error'; message: string }
-  | { type: 'log'; message: string };
+  | { type: 'log'; message: string }
+  /** The learner tapped a bar directly in the score (1-indexed, design 4c). */
+  | { type: 'barTapped'; bar: number };
 
 export function encodeCommand(cmd: SurfaceCommand): string {
   return JSON.stringify(cmd);

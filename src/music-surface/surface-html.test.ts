@@ -42,4 +42,25 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('window.ReactNativeWebView.postMessage');
     expect(html).toContain('ABCJS.synth.supportsAudio');
   });
+
+  // Design 4c: tap a bar IN the score. abcjs' add_classes is on (RENDER_OPTS), so the
+  // page hit-tests taps against the notes' measure classes and can tint a bar.
+  test('wires bar hit-testing and highlight into the page', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain('add_classes'); // required for the abcjs-mm measure classes
+    expect(html).toContain('abcjs-mm'); // the measure class the hit-test reads
+    expect(html).toContain("type: 'barTapped'"); // tap emits the bar
+    expect(html).toContain("cmd.type === 'highlightBar'"); // and RN can tint one
+    expect(html).toContain('bar-highlight');
+  });
+
+  // Regression: the page script lives in a JS template literal, so a single-backslash
+  // \d collapses to a literal "d" in the emitted HTML and the measure regex silently
+  // never matches (the bug that made bar-tap do nothing on device). The emitted HTML
+  // must carry a real \d.
+  test('the measure regex reaches the page as \\d, not a literal d', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain('abcjs-mm(\\d+)');
+    expect(html).not.toContain('abcjs-mm(d+)');
+  });
 });
