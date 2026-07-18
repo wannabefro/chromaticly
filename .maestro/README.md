@@ -43,19 +43,25 @@ self-contained launch, build a standalone/dev build and switch the flows to
 
 ## Running
 
-The dev URL is passed via `-e DEV_URL=…` (a flow-level `env:` default would
-override `-e`, so the flows intentionally omit one). The npm scripts default to
-this repo's port 8090 and honor a `DEV_URL` shell override:
+The npm scripts go through `scripts/e2e.sh`, which **resolves this app's simulator by
+name and passes `--device`**. This is not optional cleanliness: `maestro test` targets
+whichever sim is *booted*, so with another app's sim up it silently runs our flow
+against theirs and fails with a confusing simctl error that looks like our bug. The
+wrapper resolves `Chromaticly Dogfood` by name (UDID is never hardcoded — it changes
+when the sim is recreated), boots it if needed, and never touches another app's sim.
 
 ```bash
-npm run e2e                                          # uses exp://127.0.0.1:8090
+npm run e2e                                          # whole suite, on our sim, port 8090
+npm run e2e:interactions                             # the 4 interaction flows
+npm run e2e:exam / :context / :shell / :stave-input  # one flow each
 DEV_URL=exp://127.0.0.1:8091 npm run e2e             # override the Metro port
-npm run e2e:onboarding                               # the single flow directly
+CHROMATICLY_SIM="Other Sim Name" npm run e2e         # override the target sim
 ```
 
-Or invoke Maestro directly:
+Invoking Maestro directly works too, but then **you** own picking the sim — always
+pass `--device <udid>`, or a booted sibling app's sim will be used:
 ```bash
-maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
+maestro --device <udid> test -e DEV_URL=exp://127.0.0.1:8090 .maestro/<flow>.yaml
 ```
 
 > This repo's dev server uses **port 8090** (8081 collides with another local
