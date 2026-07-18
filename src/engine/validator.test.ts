@@ -128,6 +128,96 @@ describe('validate — commandment 1 (scope is law)', () => {
   });
 });
 
+describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
+  test('time_sig 2/2 is outside G1 scope but inside G2 scope', () => {
+    const instance = validNoteNamingInstance();
+    (instance.stimulus.music as any).time_sig = '2/2';
+
+    expect(validate(instance).ok).toBe(false);
+
+    instance.grade = 2;
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('key_sig A_major is outside G1 scope but inside G2 scope', () => {
+    const instance = validNoteNamingInstance();
+    (instance.stimulus.music as any).key_sig = 'A_major';
+
+    expect(validate(instance).ok).toBe(false);
+
+    instance.grade = 2;
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('key_sig Eb_major is outside G1 scope but inside G2 scope', () => {
+    const instance = validNoteNamingInstance();
+    (instance.stimulus.music as any).key_sig = 'Eb_major';
+
+    expect(validate(instance).ok).toBe(false);
+
+    instance.grade = 2;
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('a treble C6 pitch is outside the G1 range but inside the G2 range', () => {
+    const instance = validNoteNamingInstance();
+    (instance.stimulus.music as any).voices[0].events[0].pitch = 'C6';
+
+    expect(validate(instance).ok).toBe(false);
+
+    instance.grade = 2;
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('key_sig A_minor is rejected at G1 (no minors in scope) but accepted at G2', () => {
+    const instance = validNoteNamingInstance();
+    (instance.stimulus.music as any).key_sig = 'A_minor';
+
+    expect(validate(instance).ok).toBe(false);
+
+    instance.grade = 2;
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('key_sig B_minor is rejected at both G1 and G2 — B is not a G2 minor tonic', () => {
+    const instance = validNoteNamingInstance();
+    (instance.stimulus.music as any).key_sig = 'B_minor';
+
+    expect(validate(instance).ok).toBe(false);
+
+    instance.grade = 2;
+    expect(validate(instance).ok).toBe(false);
+  });
+
+  test('a G2 instance with a dur outside the (unchanged) note-value list is still rejected', () => {
+    const instance = validNoteNamingInstance();
+    instance.grade = 2;
+    (instance.stimulus.music as any).voices[0].events[0].dur = 'hemidemisemiquaver';
+
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('note value'))).toBe(true);
+  });
+
+  test('an unsupported grade (3) fails validation cleanly instead of throwing', () => {
+    const instance = validNoteNamingInstance();
+    instance.grade = 3;
+
+    expect(() => validate(instance)).not.toThrow();
+    expect(validate(instance)).toEqual({ ok: false, errors: ['scope: grade 3 is not supported'] });
+  });
+
+  test('a Cb-spelled pitch (spells a natural) is still rejected at G2', () => {
+    const instance = validNoteNamingInstance();
+    instance.grade = 2;
+    (instance.stimulus.music as any).voices[0].events[0].pitch = 'Cb4';
+
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('spells a natural'))).toBe(true);
+  });
+});
+
 describe('validate — commandments 3/4 (diagnostic distractors, one defensible answer)', () => {
   test('a closed item whose distractor deep-equals the canonical answer is rejected', () => {
     const instance = validNoteNamingInstance();

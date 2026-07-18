@@ -12,7 +12,8 @@
 // answer that already appears in that list — it does not grade.
 
 import type { Music } from '../music/types';
-import { G1_CLEFS, G1_KEYS_MAJOR, G1_NOTE_VALUES, G1_TIME_SIGNATURES, pitchRange } from './scope';
+import { G1_CLEFS, G1_NOTE_VALUES, pitchRange, scopeForGrade } from './scope';
+import type { GradeScope } from './scope';
 import type { ExerciseInstance } from './schema';
 import { ExerciseInstanceSchema } from './schema';
 
@@ -31,9 +32,20 @@ export function validate(instance: ExerciseInstance): ValidationResult {
   }
 
   const inst = parsed.data;
+
+  // Grades outside GRADE_SCOPES (0, 3, 99…) are a clean validation failure,
+  // not a thrown exception — generateValidated's retry loop must be able to
+  // treat "unsupported grade" like any other rejected instance.
+  let scope: GradeScope;
+  try {
+    scope = scopeForGrade(inst.grade);
+  } catch (err) {
+    return { ok: false, errors: [err instanceof Error ? err.message : String(err)] };
+  }
+
   const errors: string[] = [];
 
-  checkScope(inst, errors);
+  checkScope(inst, scope, errors);
   checkClosedItemDistractors(inst, errors);
 
   const hook = TEMPLATE_HOOKS[inst.template_id];
@@ -46,8 +58,11 @@ export function validate(instance: ExerciseInstance): ValidationResult {
 
 const LETTER_ORDER = ['C', 'D', 'E', 'F', 'G', 'A', 'B'] as const;
 
-// Enharmonic-of-a-natural spellings outside Grade 1: Cb, Fb, B#, E#.
-const NEVER_G1_SPELLINGS = new Set(['Cb', 'Fb', 'B#', 'E#']);
+// Enharmonic-of-a-natural spellings: Cb, Fb, B#, E#. Still holds through
+// Grade 2 — Eb major is 3 flats (Bb/Eb/Ab), and G2 harmonic-minor raised 7ths
+// are G#/D#/C#; none of those spell a natural. Cb first appears at Gb major,
+// grade 5.
+const NEVER_SPELLINGS_THROUGH_G2 = new Set(['Cb', 'Fb', 'B#', 'E#']);
 
 interface ParsedPitch {
   letter: string;
@@ -78,7 +93,7 @@ function checkPitchScope(pitch: string, range: { low: string; high: string } | n
   // The four accidental spellings that name a natural (Cb=B, Fb=E, B#=C, E#=F)
   // are never taught at Grade 1. Reject them as defence-in-depth so any generator
   // that regresses is caught at generation time via generateValidated.
-  if (NEVER_G1_SPELLINGS.has(`${parsed.letter}${parsed.accidental ?? ''}`)) {
+  if (NEVER_SPELLINGS_THROUGH_G2.has(`${parsed.letter}${parsed.accidental ?? ''}`)) {
     errors.push(`scope: pitch "${pitch}" spells a natural (never used at Grade 1)`);
   }
   if (!range) return;
@@ -97,31 +112,33 @@ function eventPitches(ev: Music['voices'][number]['events'][number]): string[] {
   return [];
 }
 
-function checkScope(inst: ExerciseInstance, errors: string[]): void {
+function checkScope(inst: ExerciseInstance, scope: GradeScope, errors: string[]): void {
   const music = inst.stimulus.music as Music | null;
   if (!music) return;
 
-  const clefInScope = G1_CLEFS.includes(music.clef);
+  const clefInScope = scope.clefs.includes(music.clef);
   if (!clefInScope) {
     errors.push(`scope: clef "${music.clef}" is outside G1 scope`);
   }
-  const range = clefInScope ? pitchRange(music.clef) : null;
+  const range = clefInScope ? scope.pitchRanges[music.clef] : null;
 
   if (music.key_sig != null) {
     const [tonic, mode] = music.key_sig.split('_');
-    if (mode !== 'major' || !G1_KEYS_MAJOR.includes(tonic)) {
+    const tonicInScope =
+      (mode === 'major' && scope.keysMajor.includes(tonic)) || (mode === 'minor' && scope.keysMinor.includes(tonic));
+    if (!tonicInScope) {
       errors.push(`scope: key signature "${music.key_sig}" is outside G1 scope`);
     }
   }
 
-  if (music.time_sig != null && !G1_TIME_SIGNATURES.includes(music.time_sig)) {
+  if (music.time_sig != null && !scope.timeSignatures.includes(music.time_sig)) {
     errors.push(`scope: time signature "${music.time_sig}" is outside G1 scope`);
   }
 
   for (const voice of music.voices) {
     for (const ev of voice.events) {
       if (ev.type === 'note' || ev.type === 'chord' || ev.type === 'rest') {
-        if (!G1_NOTE_VALUES.includes(ev.dur)) {
+        if (!scope.noteValues.includes(ev.dur)) {
           errors.push(`scope: note value "${ev.dur}" is outside G1 scope`);
         }
       }
@@ -247,8 +264,13 @@ function keySignatureIdHook(inst: ExerciseInstance): string[] {
   if (typeof canonical !== 'string') {
     return ['key_signature_id: canonical answer must be a key name string'];
   }
+  // Grade is guaranteed valid here — validate() already rejected unsupported
+  // grades before any hook runs.
+  const scope = scopeForGrade(inst.grade);
   const tonic = extractKeyTonic(canonical);
-  if (!tonic || !G1_KEYS_MAJOR.includes(tonic) || /minor/i.test(canonical)) {
+  const isMinor = /minor/i.test(canonical);
+  const tonicInScope = !!tonic && (isMinor ? scope.keysMinor.includes(tonic) : scope.keysMajor.includes(tonic));
+  if (!tonicInScope) {
     return [`key_signature_id: canonical key "${canonical}" is outside G1 scope`];
   }
   return [];
@@ -304,12 +326,15 @@ function barValidityHook(inst: ExerciseInstance): string[] {
 }
 
 function addTimeSignatureHook(inst: ExerciseInstance): string[] {
+  // Grade is guaranteed valid here — validate() already rejected unsupported
+  // grades before any hook runs.
+  const scope = scopeForGrade(inst.grade);
   const canonical = inst.answer.canonical;
-  if (typeof canonical !== 'string' || !(G1_TIME_SIGNATURES as readonly string[]).includes(canonical)) {
+  if (typeof canonical !== 'string' || !scope.timeSignatures.includes(canonical)) {
     return [`add_time_signature: canonical answer "${String(canonical)}" is not a G1 time signature`];
   }
   for (const d of inst.distractors) {
-    if (typeof d !== 'string' || !(G1_TIME_SIGNATURES as readonly string[]).includes(d)) {
+    if (typeof d !== 'string' || !scope.timeSignatures.includes(d)) {
       return [`add_time_signature: distractor "${String(d)}" is not a G1 time signature`];
     }
   }
