@@ -24,12 +24,27 @@ const Grade1ScopeSchema = z.object({
   }),
 });
 
+const Grade2AddsSchema = z.object({
+  time_signatures: z.array(z.string()),
+  rhythm_devices: z.array(z.string()),
+  pitch_range: z.object({
+    ledger_lines: z.string(),
+  }),
+  keys_major: z.array(z.string()),
+  keys_minor: z.array(z.string()),
+  minor_forms: z.array(z.string()),
+  scale_knowledge: z.array(z.string()),
+});
+
 const KnowledgeBaseSchema = z.object({
   theory_data: z.object({
     note_values: z.record(z.string(), NoteValueEntrySchema),
   }),
   grade_scopes: z.object({
     '1': Grade1ScopeSchema,
+    '2': z.object({
+      adds: Grade2AddsSchema,
+    }),
   }),
 });
 
@@ -38,6 +53,7 @@ const parsed = KnowledgeBaseSchema.parse(raw);
 export const KB = {
   noteValues: parsed.theory_data.note_values,
   grade1: parsed.grade_scopes['1'],
+  grade2Adds: parsed.grade_scopes['2'].adds,
 };
 
 // knowledge-base.json carries no version field; this constant is the app's
