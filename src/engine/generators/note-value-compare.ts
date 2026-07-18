@@ -9,7 +9,7 @@ import { KB_VERSION } from '../../content/knowledge-base';
 import type { Music } from '../../music/types';
 import { noteValueCompareAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS, G1_NOTE_VALUES } from '../scope';
+import { diatonicPitchesInRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -49,12 +49,12 @@ const BEAT_LABEL: Record<G1Duration, string> = {
   semiquaver: 'a quarter-beat',
 };
 
-const G1_DURATIONS = G1_NOTE_VALUES as readonly G1Duration[];
-
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const G1_DURATIONS = scope.noteValues as readonly G1Duration[];
   const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...G1_CLEFS]);
-  const pitch = pick(rng, diatonicPitchesInRange(clef));
+  const clef = pick(rng, [...scope.clefs]);
+  const pitch = pick(rng, diatonicPitchesInRange(clef, grade));
 
   const first = pick(rng, [...G1_DURATIONS]);
   const second = pick(rng, G1_DURATIONS.filter((d) => d !== first));

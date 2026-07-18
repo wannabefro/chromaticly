@@ -22,15 +22,13 @@ import { DYNAMIC_GLOSS } from '../../music/dynamics';
 import type { Duration, Dynamic, Music, MusicEvent, Pitch } from '../../music/types';
 import { contextAtom, findBarAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange } from '../scope';
+import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import { scientificPitchOrdinal } from './pitch-math';
 import type { ExerciseInstance } from '../schema';
 import { makeInstanceId } from './retry';
 import type { GenerateOptions } from './types';
 
 const BARS = 4;
-const TIME_SIGNATURES: string[] = ['2/4', '3/4', '4/4'];
-const POOL = diatonicPitchesInRange('treble');
 const MAX_ATTEMPTS = 64;
 
 // Grade 1 dynamics (ABRSM): only p, mf, f are taught, so the answer is always one of
@@ -80,15 +78,20 @@ function uniqueNoteBy(notes: Note[], score: (n: Note) => number): Note | null {
   return winners.length === 1 ? winners[0] : null;
 }
 
-function drawPassage(rng: () => number): { notes: Note[]; timeSig: string; events: MusicEvent[] } {
-  const timeSig = pick(rng, TIME_SIGNATURES);
+/** Deferred (D6): grade-2 /2 meters need minim-beat bar math, so `grade`
+ *  narrows the meter to the /4 subset at every grade until the
+ *  time-signatures slice — see renderableTimeSignatures. */
+function drawPassage(rng: () => number, grade: number): { notes: Note[]; timeSig: string; events: MusicEvent[] } {
+  const timeSignatures = renderableTimeSignatures(grade);
+  const pool = diatonicPitchesInRange('treble', grade);
+  const timeSig = pick(rng, [...timeSignatures]);
   const beatsPerBar = Number(timeSig.split('/')[0]);
   const notes: Note[] = [];
   const events: MusicEvent[] = [];
 
   for (let bar = 1; bar <= BARS; bar++) {
     for (const dur of fillBar(rng, beatsPerBar)) {
-      const pitch = pick(rng, POOL);
+      const pitch = pick(rng, pool);
       notes.push({ pitch, dur, bar });
       events.push({ type: 'note', pitch, dur });
     }
@@ -218,7 +221,8 @@ function timeSigQuestion(
   n: number,
 ): ExerciseInstance {
   const claimIsTrue = rng() < 0.5;
-  const claimed = claimIsTrue ? timeSig : pick(rng, TIME_SIGNATURES.filter((t) => t !== timeSig));
+  const timeSignatures = renderableTimeSignatures(base.grade);
+  const claimed = claimIsTrue ? timeSig : pick(rng, timeSignatures.filter((t) => t !== timeSig));
 
   return {
     id: makeInstanceId('music_in_context_time_sig', base.grade, base.seed * 10 + n),
@@ -246,7 +250,7 @@ function timeSigQuestion(
 export function buildContextPassage(opts: GenerateOptions): ContextPassage {
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
     const rng = mulberry32(opts.seed * 1000 + attempt);
-    const { notes, timeSig, events } = drawPassage(rng);
+    const { notes, timeSig, events } = drawPassage(rng, opts.grade);
 
     const ord = (n: Note) => scientificPitchOrdinal(n.pitch);
     const highestBar = uniqueBarBy(notes, ord);

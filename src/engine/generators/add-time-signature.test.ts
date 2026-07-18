@@ -1,7 +1,10 @@
 import type { Music, MusicEvent } from '../../music/types';
-import { G1_NOTE_VALUES, G1_TIME_SIGNATURES } from '../scope';
+import { scopeForGrade } from '../scope';
 import { validate } from '../validator';
 import { addTimeSignature } from './add-time-signature';
+
+const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
+const G1_TIME_SIGNATURES = scopeForGrade(1).timeSignatures;
 
 // Independent recomputation of a bar's beat total, mirroring rhythm-sum.test.ts
 // and bar-validity.test.ts's own independent unit tables — a real invariant

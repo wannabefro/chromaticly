@@ -15,7 +15,7 @@ import type { Music, Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
 import { keySigAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS } from '../scope';
+import { diatonicPitchesInRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -39,8 +39,8 @@ function keysFromAtoms(atoms: string[]): string[] {
   return keys;
 }
 
-function tonicPitchInRange(clef: Clef, key: string): string {
-  const candidates = diatonicPitchesInRange(clef).filter((p) => p.startsWith(key));
+function tonicPitchInRange(clef: Clef, key: string, grade: number): string {
+  const candidates = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(key));
   if (candidates.length === 0) throw new Error(`no in-range tonic ${key} for clef ${clef}`);
   return candidates[0];
 }
@@ -48,26 +48,27 @@ function tonicPitchInRange(clef: Clef, key: string): string {
 /** The rendered stave for one key-signature option: the same one-tonic-note
  *  shape as the stimulus, on the sampled clef, so the only visual difference
  *  between options is the key signature itself. */
-function keyOptionMusic(clef: Clef, key: string): Music {
+function keyOptionMusic(clef: Clef, key: string, grade: number): Music {
   return {
     clef,
     key_sig: `${key}_major`,
     time_sig: null,
-    voices: [{ events: [{ type: 'note', pitch: tonicPitchInRange(clef, key), dur: 'semibreve' }] }],
+    voices: [{ events: [{ type: 'note', pitch: tonicPitchInRange(clef, key, grade), dur: 'semibreve' }] }],
   };
 }
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
   const keys = keysFromAtoms(atoms);
-  const clef = pick(rng, [...G1_CLEFS]);
+  const clef = pick(rng, [...scope.clefs]);
   const key = pick(rng, keys);
-  const tonicPitch = tonicPitchInRange(clef, key);
+  const tonicPitch = tonicPitchInRange(clef, key, grade);
   const distractorKeys = keys.filter((k) => k !== key);
 
   const optionMusic: Record<string, Music> = {};
   for (const k of [key, ...distractorKeys]) {
-    optionMusic[`${k} major`] = keyOptionMusic(clef, k);
+    optionMusic[`${k} major`] = keyOptionMusic(clef, k, grade);
   }
 
   return {

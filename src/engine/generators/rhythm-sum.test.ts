@@ -1,6 +1,8 @@
-import { G1_NOTE_VALUES } from '../scope';
+import { scopeForGrade } from '../scope';
 import { validate } from '../validator';
 import { rhythmSum } from './rhythm-sum';
+
+const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
 
 describe('rhythmSum — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {

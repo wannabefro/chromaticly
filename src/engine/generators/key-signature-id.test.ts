@@ -1,8 +1,10 @@
 import { assembleOptions, gradeMcq } from '../../ui/grading';
-import { G1_CLEFS } from '../scope';
+import { scopeForGrade } from '../scope';
 import { validate } from '../validator';
 import { keySignatureId } from './key-signature-id';
 import { atomsForLesson, optsFor } from './test-helpers';
+
+const G1_CLEFS = scopeForGrade(1).clefs;
 
 const KEYS = atomsForLesson('key-signatures'); // key_sig:{C,G,D,F}_major
 const G1_TONICS = ['C', 'G', 'D', 'F'];

@@ -17,7 +17,7 @@ import { KB_VERSION } from '../../content/knowledge-base';
 import type { Duration, Music, MusicEvent } from '../../music/types';
 import { barValidityAtom } from '../atoms';
 import { mulberry32, pick, weighted } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS, G1_NOTE_VALUES, G1_TIME_SIGNATURES } from '../scope';
+import { diatonicPitchesInRange, renderableTimeSignatures, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -35,8 +35,6 @@ const UNITS: Record<G1Duration, number> = {
   semibreve: 16,
 };
 
-const G1_DURATIONS = G1_NOTE_VALUES as readonly G1Duration[];
-
 const BEATS_PER_BAR: Record<string, number> = { '2/4': 2, '3/4': 3, '4/4': 4 };
 
 function barUnitsFor(timeSig: string): number {
@@ -45,15 +43,15 @@ function barUnitsFor(timeSig: string): number {
   return beats * UNITS.crotchet;
 }
 
-/** Fills a bar with random G1 durations that sum exactly to `targetUnits`,
- *  weighted toward longer values so bars don't degenerate into runs of
- *  semiquavers. Always terminates: the smallest unit (1) always divides any
- *  positive remainder, so remaining reaches exactly 0. */
-function buildBarDurations(rng: () => number, targetUnits: number): G1Duration[] {
+/** Fills a bar with random durations from `pool` that sum exactly to
+ *  `targetUnits`, weighted toward longer values so bars don't degenerate
+ *  into runs of semiquavers. Always terminates: the smallest unit (1) always
+ *  divides any positive remainder, so remaining reaches exactly 0. */
+function buildBarDurations(rng: () => number, targetUnits: number, pool: readonly G1Duration[]): G1Duration[] {
   const durations: G1Duration[] = [];
   let remaining = targetUnits;
   while (remaining > 0) {
-    const candidates = G1_DURATIONS.filter((d) => UNITS[d] <= remaining);
+    const candidates = pool.filter((d) => UNITS[d] <= remaining);
     const value = weighted(rng, candidates.map((d) => ({ value: d, weight: UNITS[d] })));
     durations.push(value);
     remaining -= UNITS[value];
@@ -61,13 +59,14 @@ function buildBarDurations(rng: () => number, targetUnits: number): G1Duration[]
   return durations;
 }
 
-/** Swaps one event's duration for a different G1 value. Since all five G1
- *  durations have distinct unit counts, this is guaranteed to change the
- *  bar's total — the bar is corrupted by construction, never by luck. */
-function corruptBarDurations(rng: () => number, durations: G1Duration[]): G1Duration[] {
+/** Swaps one event's duration for a different value from `pool`. Since all
+ *  five G1/G2 durations have distinct unit counts, this is guaranteed to
+ *  change the bar's total — the bar is corrupted by construction, never by
+ *  luck. */
+function corruptBarDurations(rng: () => number, durations: G1Duration[], pool: readonly G1Duration[]): G1Duration[] {
   const index = Math.floor(rng() * durations.length);
   const original = durations[index];
-  const alternatives = G1_DURATIONS.filter((d) => d !== original);
+  const alternatives = pool.filter((d) => d !== original);
   const replacement = pick(rng, alternatives);
   return durations.map((d, i) => (i === index ? replacement : d));
 }
@@ -99,10 +98,13 @@ interface BarRange {
 }
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const G1_DURATIONS = scope.noteValues as readonly G1Duration[];
+  const timeSignatures = renderableTimeSignatures(grade);
   const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...G1_CLEFS]);
-  const timeSig = pick(rng, [...G1_TIME_SIGNATURES]);
-  const pitch = pick(rng, diatonicPitchesInRange(clef));
+  const clef = pick(rng, [...scope.clefs]);
+  const timeSig = pick(rng, [...timeSignatures]);
+  const pitch = pick(rng, diatonicPitchesInRange(clef, grade));
   const barCount = 4 + Math.floor(rng() * 3); // 4..6 inclusive
   const targetUnits = barUnitsFor(timeSig);
 
@@ -113,9 +115,9 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
   const perItem: boolean[] = [];
 
   for (let bar = 0; bar < barCount; bar++) {
-    let durations = buildBarDurations(rng, targetUnits);
+    let durations = buildBarDurations(rng, targetUnits, G1_DURATIONS);
     const corrupted = corruptSet.has(bar);
-    if (corrupted) durations = corruptBarDurations(rng, durations);
+    if (corrupted) durations = corruptBarDurations(rng, durations, G1_DURATIONS);
 
     const start = events.length;
     for (const dur of durations as Duration[]) {

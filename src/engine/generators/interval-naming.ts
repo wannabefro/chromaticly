@@ -5,11 +5,12 @@
 // octave). The key signature carries the key's accidental, so both pitches
 // stay natural-letter (commandment 1: scope is law).
 
+import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
 import { keyAccidentals } from '../../music/abc-emitter';
 import { intervalAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR, G1_NOTE_VALUES, pitchRange } from '../scope';
+import { diatonicPitchesInRange, pitchRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { naturalPitchStepsAbove, scientificPitchOrdinal } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -29,15 +30,16 @@ function spellInKey(naturalPitch: string, key: string): string {
 
 /** Shared sampling core for both the mcq and stave_input variants: pin the
  *  lower note to the sampled key's tonic and draw a diatonic interval above
- *  it that stays within the clef's G1 range (G1_INTERVAL_RULE). */
+ *  it that stays within the clef's grade range (scope.intervalRule). */
 function sampleInterval(
   rng: () => number,
-  clef: (typeof G1_CLEFS)[number],
+  clef: Clef,
   key: string,
+  grade: number,
 ): { lowerPitch: string; steps: number; intervalNumber: number } {
-  const range = pitchRange(clef);
+  const range = pitchRange(clef, grade);
 
-  const tonicOccurrences = diatonicPitchesInRange(clef).filter((p) => p.startsWith(key));
+  const tonicOccurrences = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(key));
   if (tonicOccurrences.length === 0) {
     throw new Error(`no in-range occurrence of tonic ${key} for clef ${clef}`);
   }
@@ -54,10 +56,11 @@ function sampleInterval(
 }
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...G1_CLEFS]);
-  const key = pick(rng, [...G1_KEYS_MAJOR]);
-  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key);
+  const clef = pick(rng, [...scope.clefs]);
+  const key = pick(rng, [...scope.keysMajor]);
+  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade);
   const upperPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
 
   const distractors = [intervalNumber - 1, intervalNumber + 1].filter(
@@ -127,12 +130,13 @@ function ordinal(n: number): string {
 }
 
 function buildStaveInput(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...G1_CLEFS]);
-  const key = pick(rng, [...G1_KEYS_MAJOR]);
-  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key);
+  const clef = pick(rng, [...scope.clefs]);
+  const key = pick(rng, [...scope.keysMajor]);
+  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade);
   const targetPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
-  const targetDur = pick(rng, [...G1_NOTE_VALUES]);
+  const targetDur = pick(rng, [...scope.noteValues]);
 
   return {
     id: makeInstanceId('interval_naming_stave_input', grade, idSeed),

@@ -13,7 +13,7 @@ import { KB, KB_VERSION } from '../../content/knowledge-base';
 import type { Duration, MusicEvent } from '../../music/types';
 import { findBarAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange } from '../scope';
+import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -29,11 +29,6 @@ const PROPERTY_LABEL: Record<BarProperty, string> = {
 };
 
 const BARS = 4;
-
-/** Simple time only, so the beat is the crotchet and a bar holds `top` beats. */
-const TIME_SIGNATURES: string[] = ['2/4', '3/4', '4/4'];
-
-const POOL = diatonicPitchesInRange('treble'); // ascending
 
 function beatsOf(dur: Duration): number {
   return KB.noteValues[dur].beats_in_crotchets;
@@ -59,23 +54,28 @@ function fillBar(rng: () => number, beats: number, maxBeats: number): Duration[]
 
 function build(contentSeed: number, grade: number, idSeed: number, property: BarProperty): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const timeSig = pick(rng, TIME_SIGNATURES);
+  // Simple time only, so the beat is the crotchet and a bar holds `top` beats.
+  // Deferred (D6): grade-2 /2 meters need minim-beat bar math, so this stays
+  // the /4 subset at every grade until the time-signatures slice.
+  const timeSignatures = renderableTimeSignatures(grade);
+  const pool = diatonicPitchesInRange('treble', grade); // ascending
+  const timeSig = pick(rng, [...timeSignatures]);
   const beatsPerBar = Number(timeSig.split('/')[0]);
   const targetBar = 1 + Math.floor(rng() * BARS);
 
   // Pitch window. For "highest" the peak sits near the top of the range and every
   // other note is drawn strictly below it; "lowest" is the mirror image. For
   // "longest" pitch doesn't decide the answer, so the whole pool is fair game.
-  const peakIndex = POOL.length - 1 - Math.floor(rng() * 3); // near the top
+  const peakIndex = pool.length - 1 - Math.floor(rng() * 3); // near the top
   const troughIndex = Math.floor(rng() * 3); // near the bottom
 
-  const winnerPitch = property === 'highest' ? POOL[peakIndex] : property === 'lowest' ? POOL[troughIndex] : null;
+  const winnerPitch = property === 'highest' ? pool[peakIndex] : property === 'lowest' ? pool[troughIndex] : null;
   const otherPitches =
     property === 'highest'
-      ? POOL.slice(0, peakIndex) // strictly lower than the peak
+      ? pool.slice(0, peakIndex) // strictly lower than the peak
       : property === 'lowest'
-        ? POOL.slice(troughIndex + 1) // strictly higher than the trough
-        : POOL;
+        ? pool.slice(troughIndex + 1) // strictly higher than the trough
+        : pool;
 
   // For "longest", the target bar carries a minim and every other bar is capped at
   // a crotchet, so the long note is unique.

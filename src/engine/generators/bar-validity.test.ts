@@ -1,8 +1,11 @@
 import type { Music, MusicEvent } from '../../music/types';
-import { G1_NOTE_VALUES, G1_TIME_SIGNATURES } from '../scope';
+import { scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { validate } from '../validator';
 import { barRange, barValidity } from './bar-validity';
+
+const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
+const G1_TIME_SIGNATURES = scopeForGrade(1).timeSignatures;
 
 // Independent (not-generator-internal) recomputation of bar beat sums, mirroring
 // rhythm-sum.test.ts's own independent BEATS table — a real invariant check, not

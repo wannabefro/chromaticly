@@ -1,7 +1,11 @@
 import { musicToAbc } from '../../music/abc-emitter';
 import type { Music } from '../../music/types';
-import { G1_CLEFS, G1_KEYS_MAJOR, G1_NOTE_VALUES, pitchRange } from '../scope';
+import { pitchRange, scopeForGrade } from '../scope';
 import { validate } from '../validator';
+
+const G1_CLEFS = scopeForGrade(1).clefs;
+const G1_KEYS_MAJOR = scopeForGrade(1).keysMajor;
+const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { scientificPitchOrdinal } from './pitch-math';
 
