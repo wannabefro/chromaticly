@@ -51,8 +51,8 @@ export function parseAtom(id: string): { kind: string; parts: string[] } {
 }
 
 /** Music-in-Context sub-questions that aren't find-the-bar: reading the passage for
- *  its highest note, or for its metre (design 8d). */
-export const CONTEXT_KINDS: readonly string[] = ['highest_note', 'time_sig'];
+ *  its highest note, its metre, or a dynamic marking read in context (design 8d). */
+export const CONTEXT_KINDS: readonly string[] = ['highest_note', 'time_sig', 'dynamic_term'];
 
 export function contextAtom(kind: string): string {
   return `context:${kind}`;

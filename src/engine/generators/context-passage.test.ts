@@ -3,6 +3,7 @@
 // tie (two bars both holding the highest note) must never reach a learner.
 
 import { KB } from '../../content/knowledge-base';
+import { musicToAbc } from '../../music/abc-emitter';
 import type { NoteEvent } from '../../music/types';
 import { buildContextPassage } from './context-passage';
 import { scientificPitchOrdinal } from './pitch-math';
@@ -64,9 +65,10 @@ describe('music in context — one passage, several questions (8d)', () => {
       ).bar;
       const longestBar = notes.reduce((a, b) => (a.beats >= b.beats ? a : b)).bar;
 
-      const [q1, , , q4] = passage.questions;
+      const q1 = passage.questions[0]; // find-the-bar: highest
+      const q5 = passage.questions[4]; // find-the-bar: longest (second target)
       expect(q1.answer.canonical).toBe(highestBar);
-      expect(q4.answer.canonical).toBe(longestBar);
+      expect(q5.answer.canonical).toBe(longestBar);
       expect(q1.distractors).not.toContain(highestBar);
     }
   });
@@ -90,7 +92,7 @@ describe('music in context — one passage, several questions (8d)', () => {
   test('the true/false metre claim is graded against the passage’s real time signature', () => {
     for (const seed of SEEDS) {
       const passage = buildContextPassage(opts(seed));
-      const q = passage.questions[2];
+      const q = passage.questions[3]; // Q4: true/false about the metre
       const claimed = /in (\d+\/\d+)/.exec(q.prompt)?.[1];
 
       expect(claimed).toBeDefined();
@@ -101,6 +103,49 @@ describe('music in context — one passage, several questions (8d)', () => {
   test('each sub-question carries its own atom, so mastery moves per skill', () => {
     const tags = buildContextPassage(opts(1)).questions.flatMap((q) => q.srs_tags);
     expect(new Set(tags).size).toBe(tags.length);
-    expect(tags).toEqual(['find_bar:highest', 'context:highest_note', 'context:time_sig', 'find_bar:longest']);
+    expect(tags).toEqual([
+      'find_bar:highest',
+      'context:highest_note',
+      'context:dynamic_term',
+      'context:time_sig',
+      'find_bar:longest',
+    ]);
+  });
+
+  // Term-in-context (Q3): the passage carries exactly one dynamic, and the question is
+  // graded against that marking's real meaning — the answer must be a Grade-1 dynamic.
+  describe('term-in-context sub-question (8d Q3)', () => {
+    const G1_MEANINGS = ['quiet', 'loud', 'moderately loud']; // p, f, mf
+
+    test('exactly one dynamic is placed, and the question points at its bar', () => {
+      for (const seed of SEEDS) {
+        const passage = buildContextPassage(opts(seed));
+        const dynamics = passage.music.voices[0].events.filter((e) => e.type === 'dynamic');
+        expect(dynamics).toHaveLength(1);
+
+        const term = passage.questions[2];
+        const bar = /bar (\d+)/.exec(term.prompt)?.[1];
+        expect(bar).toBeDefined();
+        expect(Number(bar)).toBeGreaterThanOrEqual(1);
+        expect(Number(bar)).toBeLessThanOrEqual(4);
+      }
+    });
+
+    test('the placed dynamic actually renders in the score (a decoration in the ABC)', () => {
+      for (const seed of SEEDS) {
+        const abc = musicToAbc(buildContextPassage(opts(seed)).music);
+        // The term is read off the pinned score, so the marking must reach the ABC.
+        expect(abc).toMatch(/![pmf]+!/);
+      }
+    });
+
+    test('the answer is the placed dynamic’s meaning; distractors are other meanings', () => {
+      for (const seed of SEEDS) {
+        const term = buildContextPassage(opts(seed)).questions[2];
+        expect(G1_MEANINGS).toContain(term.answer.canonical); // the correct mark is a Grade-1 dynamic
+        expect(term.distractors).not.toContain(term.answer.canonical);
+        expect(new Set(term.distractors).size).toBe(term.distractors.length); // no duplicate options
+      }
+    });
   });
 });

@@ -18,7 +18,8 @@
 // reach a learner.
 
 import { KB, KB_VERSION } from '../../content/knowledge-base';
-import type { Duration, Music, MusicEvent, Pitch } from '../../music/types';
+import { DYNAMIC_GLOSS } from '../../music/dynamics';
+import type { Duration, Dynamic, Music, MusicEvent, Pitch } from '../../music/types';
 import { contextAtom, findBarAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange } from '../scope';
@@ -31,6 +32,11 @@ const BARS = 4;
 const TIME_SIGNATURES: string[] = ['2/4', '3/4', '4/4'];
 const POOL = diatonicPitchesInRange('treble');
 const MAX_ATTEMPTS = 64;
+
+// Grade 1 dynamics (ABRSM): only p, mf, f are taught, so the answer is always one of
+// these. mp joins the option set as a near distractor — the four meanings are distinct.
+const G1_DYNAMICS: Dynamic[] = ['p', 'mf', 'f'];
+const DYNAMIC_OPTIONS: Dynamic[] = ['p', 'mp', 'mf', 'f'];
 
 export interface ContextPassage {
   music: Music;
@@ -152,6 +158,57 @@ function highestNoteQuestion(
   };
 }
 
+/** Insert a dynamic before the first note of `targetBar` — the marking the "term in
+ *  context" sub-question asks about. Placed before a note (never a barline), so the ABC
+ *  emitter's fail-loud guard is satisfied by construction. Exactly one dynamic per
+ *  passage, so "the marking in bar N" is unambiguous. */
+function injectDynamic(events: MusicEvent[], targetBar: number, mark: Dynamic): MusicEvent[] {
+  const out: MusicEvent[] = [];
+  let bar = 1;
+  let injected = false;
+  for (const ev of events) {
+    if (!injected && bar === targetBar && ev.type === 'note') {
+      out.push({ type: 'dynamic', mark });
+      injected = true;
+    }
+    out.push(ev);
+    if (ev.type === 'barline') bar += 1;
+  }
+  return out;
+}
+
+/** "What does the 𝆑 in bar N mean?" — the dynamic is read straight off the pinned score
+ *  (design 8d, Q3). The answer is the marking's plain meaning; the distractors are the
+ *  meanings of the other Grade-1 dynamics, so the learner must read the actual glyph. */
+function termQuestion(
+  base: { grade: number; seed: number; music: Music },
+  mark: Dynamic,
+  bar: number,
+  n: number,
+): ExerciseInstance {
+  const gloss = DYNAMIC_GLOSS[mark];
+  const distractors = DYNAMIC_OPTIONS.filter((m) => m !== mark).map((m) => DYNAMIC_GLOSS[m].meaning);
+
+  return {
+    id: makeInstanceId('music_in_context_term', base.grade, base.seed * 10 + n),
+    template_id: 'music_in_context',
+    grade: base.grade,
+    strand: 'context',
+    prompt: `What does the dynamic marking in bar ${bar} mean?`,
+    stimulus: { music: base.music, text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: gloss.meaning, accepted_alternatives: [] },
+    distractors,
+    hints: [`Find the marking below the stave in bar ${bar} — it tells you how loud to play.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Not quite — ${gloss.italian} (${mark}) means “${gloss.meaning}”.`,
+    },
+    srs_tags: [contextAtom('dynamic_term')],
+    kb_version: KB_VERSION,
+  };
+}
+
 /** A true/false statement about the passage's metre, asked as a two-option pick (the
  *  `true_false` interaction is the per-bar tick/cross control, not a single claim). */
 function timeSigQuestion(
@@ -199,16 +256,25 @@ export function buildContextPassage(opts: GenerateOptions): ContextPassage {
 
     if (highestBar === null || lowestBar === null || longestBar === null || highestNote === null) continue;
 
-    const music: Music = { clef: 'treble', key_sig: null, time_sig: timeSig, voices: [{ events }] };
+    // Add one dynamic for the term-in-context sub-question. It is additive — a dynamic
+    // event changes no note — so the pitch/metre/bar answers computed above stay valid.
+    const termBar = 1 + Math.floor(rng() * BARS);
+    const termMark = pick(rng, G1_DYNAMICS);
+    const eventsWithDynamic = injectDynamic(events, termBar, termMark);
+
+    const music: Music = { clef: 'treble', key_sig: null, time_sig: timeSig, voices: [{ events: eventsWithDynamic }] };
     const base = { grade: opts.grade, seed: opts.seed, music };
 
+    // Sub-question order follows design 8d: find-the-bar, highest/lowest, term-in-context,
+    // true/false, find-the-bar (second target).
     return {
       music,
       questions: [
         barQuestion(base, 'highest', highestBar, 1),
         highestNoteQuestion(base, highestNote, notes, 2),
-        timeSigQuestion(base, timeSig, rng, 3),
-        barQuestion(base, 'longest', longestBar, 4),
+        termQuestion(base, termMark, termBar, 3),
+        timeSigQuestion(base, timeSig, rng, 4),
+        barQuestion(base, 'longest', longestBar, 5),
       ],
     };
   }

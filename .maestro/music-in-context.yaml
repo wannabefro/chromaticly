@@ -44,7 +44,8 @@ appId: host.exp.Exponent
     timeout: 10000
 - tapOn: { id: "feedback-sheet-continue" }
 
-# Q2 — the same score is still there, and the question beneath it has changed.
+# Q2 — the same score is still there, and the question beneath it has changed
+# (highest/lowest note · MCQ).
 - assertVisible: { id: "stimulus-music" }
 - assertVisible: { id: "mcq" }
 - takeScreenshot: context-q2
@@ -55,7 +56,20 @@ appId: host.exp.Exponent
     timeout: 10000
 - tapOn: { id: "feedback-sheet-continue" }
 
-# Q3 — the true/false metre claim, still over the same passage.
+# Q3 — term in context (302.37): "what does the dynamic marking in bar N mean?". The
+# dynamic (e.g. 𝆑) is read straight off the pinned score, so this screenshot is the
+# proof abcjs actually paints the decoration on device.
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "mcq" }
+- takeScreenshot: context-term
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Q4 — the true/false metre claim, still over the same passage.
 - assertVisible: { id: "stimulus-music" }
 - assertVisible: { id: "mcq" }
 - tapOn: { id: "option-0" }
@@ -65,7 +79,7 @@ appId: host.exp.Exponent
     timeout: 10000
 - tapOn: { id: "feedback-sheet-continue" }
 
-# Q4 — find the bar again (second target), then the passage completes as ONE set item.
+# Q5 — find the bar again (second target), then the passage completes as ONE set item.
 - assertVisible: { id: "find-the-bar" }
 - tapOn: { id: "bar-2" }
 - tapOn: { id: "check" }
