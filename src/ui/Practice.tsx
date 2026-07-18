@@ -41,19 +41,24 @@ export function Practice() {
 
   if (!instance) {
     return (
-      <View style={styles.container} testID="practice-empty">
+      <View style={styles.empty} testID="practice-empty">
         <Text>No practice available yet — unlock a lesson first.</Text>
       </View>
     );
   }
 
+  // flex:1, not padded: ExerciseLoop's own root is flex:1 and it supplies its body
+  // padding. A non-flex wrapper collapses the loop's ScrollView to zero height on
+  // device (only the notation card peeks) while jest's layout-free renderer stays
+  // green — the same trap SetRunner avoids by hosting ExerciseLoop in a flex Screen.
   return (
-    <View style={styles.container}>
+    <View style={styles.active} testID="practice-active">
       <ExerciseLoop instance={instance} onResult={handleResult} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { gap: 12, padding: 16 },
+  active: { flex: 1 },
+  empty: { gap: 12, padding: 16 },
 });

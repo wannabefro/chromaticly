@@ -34,6 +34,7 @@ describe('Practice — SRS-driven exercise stream', () => {
     );
     await act(async () => {});
 
+    expect(getByTestId('practice-active')).toBeTruthy(); // stable anchor the E2E waits on
     expect(getByTestId('prompt')).toBeTruthy();
 
     // select → Check → Continue advances the stream (no separate Next button).

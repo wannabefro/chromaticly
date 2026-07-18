@@ -1,0 +1,61 @@
+# Practice tab — the free-practice SRS review loop (design 2a). tab-shell.yaml only
+# proves the tab reaches its screen; this drives an actual review on device, the one
+# core loop the other flows never exercise.
+#
+# Seeded ?seed=exam → every atom is mastered AND due (initialSrs nextDue=0), so
+# Practice serves the weakest-due atom immediately. With Practice's tickRef starting
+# at 0, the first pick is deterministic: the first lesson's first atom
+# (note_read:treble:C4) via note_naming — an mcq. We drive TWO items to prove the
+# stream advances (an endless review queue), not just renders once.
+#
+# Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=exam
+
+# Expo Go dev-menu sheet on a cold launch: dismiss the intro, then close via its X.
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "app-shell" }
+    timeout: 90000
+- tapOn: { id: "tab-practice" }
+
+# Practice is actively running a review (not the empty state). The persistent
+# notation surface warms up on first mount, so wait for the mcq rather than
+# asserting it the instant the container appears.
+- extendedWaitUntil:
+    visible: { id: "practice-active" }
+    timeout: 20000
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+
+# First review: answer, grade, land on the FeedbackSheet — the whole touch path.
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# The stream advances to a SECOND item rather than getting stuck on the sheet —
+# this is what proves Practice is an endless SRS queue, not a one-shot screen.
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 10000
+- assertVisible: { id: "practice-active" }
+- takeScreenshot: practice-second-item
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "practice-active" }
