@@ -4,7 +4,7 @@ import { validate } from '../validator';
 import { keySignatureId } from './key-signature-id';
 import { atomsForLesson, optsFor } from './test-helpers';
 
-const G1_CLEFS = scopeForGrade(1).clefs;
+const g1Clefs = scopeForGrade(1).clefs;
 
 const KEYS = atomsForLesson('key-signatures'); // key_sig:{C,G,D,F}_major
 const G1_TONICS = ['C', 'G', 'D', 'F'];
@@ -27,7 +27,7 @@ describe('keySignatureId — key pool is atom-derived (R4, KTD5)', () => {
       const instance = keySignatureId(optsFor(KEYS, seed));
       const music = instance.stimulus.music as { clef: string; key_sig: string };
       const [tonic] = music.key_sig.split('_');
-      expect(G1_CLEFS).toContain(music.clef);
+      expect(g1Clefs).toContain(music.clef);
       expect(G1_TONICS).toContain(tonic);
       for (const d of instance.distractors as string[]) {
         expect(G1_TONICS).toContain(d.split(' ')[0]);

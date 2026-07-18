@@ -4,8 +4,8 @@ import type { ExerciseInstance } from '../schema';
 import { validate } from '../validator';
 import { barRange, barValidity } from './bar-validity';
 
-const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
-const G1_TIME_SIGNATURES = scopeForGrade(1).timeSignatures;
+const g1NoteValues = scopeForGrade(1).noteValues;
+const g1TimeSignatures = scopeForGrade(1).timeSignatures;
 
 // Independent (not-generator-internal) recomputation of bar beat sums, mirroring
 // rhythm-sum.test.ts's own independent BEATS table — a real invariant check, not
@@ -118,9 +118,9 @@ describe('barValidity — interaction shape', () => {
   test('every emitted time signature and note value is in G1 scope', () => {
     for (let seed = 0; seed < 30; seed++) {
       const instance = barValidity({ grade: 1, seed, atoms: [] });
-      expect(G1_TIME_SIGNATURES).toContain(instance.stimulus.music!.time_sig);
+      expect(g1TimeSignatures).toContain(instance.stimulus.music!.time_sig);
       for (const ev of instance.stimulus.music!.voices[0].events) {
-        if (ev.type === 'note') expect(G1_NOTE_VALUES).toContain(ev.dur);
+        if (ev.type === 'note') expect(g1NoteValues).toContain(ev.dur);
       }
     }
   });

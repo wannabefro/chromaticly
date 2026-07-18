@@ -3,9 +3,9 @@ import type { Music } from '../../music/types';
 import { pitchRange, scopeForGrade } from '../scope';
 import { validate } from '../validator';
 
-const G1_CLEFS = scopeForGrade(1).clefs;
-const G1_KEYS_MAJOR = scopeForGrade(1).keysMajor;
-const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
+const g1Clefs = scopeForGrade(1).clefs;
+const g1KeysMajor = scopeForGrade(1).keysMajor;
+const g1NoteValues = scopeForGrade(1).noteValues;
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { scientificPitchOrdinal } from './pitch-math';
 
@@ -42,11 +42,11 @@ describe('intervalNaming — G1 rule: lower note pinned to the tonic, above-toni
       // Bb in F major) that does not change the step count.
       const naturalize = (p: string) => p.replace(/[#b]/, '');
 
-      expect(G1_KEYS_MAJOR).toContain(tonic);
-      expect(G1_CLEFS).toContain(music.clef);
+      expect(g1KeysMajor).toContain(tonic);
+      expect(g1Clefs).toContain(music.clef);
       expect(lower[0]).toBe(tonic);
 
-      const range = pitchRange(music.clef);
+      const range = pitchRange(music.clef, 1);
       expect(scientificPitchOrdinal(naturalize(lower))).toBeGreaterThanOrEqual(scientificPitchOrdinal(range.low));
       expect(scientificPitchOrdinal(naturalize(upper))).toBeLessThanOrEqual(scientificPitchOrdinal(range.high));
 
@@ -160,15 +160,15 @@ describe('intervalNamingStaveInput — canonical target is semantic {pitch, dur}
       const canonical = instance.answer.canonical as { pitch: string; dur: string };
       const givenPitch = music.voices[0].events[0].pitch;
 
-      expect(G1_CLEFS).toContain(music.clef);
-      expect(G1_NOTE_VALUES).toContain(canonical.dur);
+      expect(g1Clefs).toContain(music.clef);
+      expect(g1NoteValues).toContain(canonical.dur);
 
-      const range = pitchRange(music.clef);
+      const range = pitchRange(music.clef, 1);
       const naturalize = (p: string) => p.replace(/[#b]/, '');
       expect(scientificPitchOrdinal(naturalize(canonical.pitch))).toBeGreaterThanOrEqual(scientificPitchOrdinal(range.low));
       expect(scientificPitchOrdinal(naturalize(canonical.pitch))).toBeLessThanOrEqual(scientificPitchOrdinal(range.high));
 
-      // above the given note (RD2/G1_INTERVAL_RULE: above tonic only)
+      // above the given note (RD2/scopeForGrade(1).intervalRule: above tonic only)
       expect(scientificPitchOrdinal(naturalize(canonical.pitch))).toBeGreaterThan(scientificPitchOrdinal(naturalize(givenPitch)));
     }
   });

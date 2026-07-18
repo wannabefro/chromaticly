@@ -1,6 +1,6 @@
 // Per-grade scope accessor (commandment 1, exercise-construction-spec.md §5:
-// "scope is law" — every pitch/value/key/signature/term/clef a generator
-// touches must come from here).
+// "scope is law, per grade" — every pitch/value/key/signature/term/clef a
+// generator touches must come from here, via an explicit grade).
 
 import type { Clef, Duration, Pitch } from '../music/types';
 
@@ -103,7 +103,7 @@ export function renderableTimeSignatures(_grade: number): readonly string[] {
   return RENDERABLE_TIME_SIGNATURES;
 }
 
-export function pitchRange(clef: Clef, grade = 1): { low: Pitch; high: Pitch } {
+export function pitchRange(clef: Clef, grade: number): { low: Pitch; high: Pitch } {
   return scopeForGrade(grade).pitchRanges[clef];
 }
 
@@ -126,7 +126,7 @@ function parsePitch(pitch: Pitch): { letter: string; octave: number } {
  * 3 sharps, still key-signature-carried), so a natural-only enumerator is
  * sufficient at both grades.
  */
-export function diatonicPitchesInRange(clef: Clef, grade = 1): Pitch[] {
+export function diatonicPitchesInRange(clef: Clef, grade: number): Pitch[] {
   const { low, high } = pitchRange(clef, grade);
   const lowP = parsePitch(low);
   const highP = parsePitch(high);
@@ -144,12 +144,3 @@ export function diatonicPitchesInRange(clef: Clef, grade = 1): Pitch[] {
   }
   return result;
 }
-
-// Temporary aliases (same references as GRADE_SCOPES[1] fields) so every
-// existing importer keeps compiling unchanged. Deleted in U6 — do not add
-// new importers of these; use scopeForGrade(1) instead.
-export const G1_CLEFS: readonly Clef[] = GRADE_SCOPES[1].clefs;
-export const G1_NOTE_VALUES: readonly Duration[] = GRADE_SCOPES[1].noteValues;
-export const G1_KEYS_MAJOR: readonly string[] = GRADE_SCOPES[1].keysMajor;
-export const G1_TIME_SIGNATURES: readonly string[] = GRADE_SCOPES[1].timeSignatures;
-export const G1_INTERVAL_RULE = GRADE_SCOPES[1].intervalRule;

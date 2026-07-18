@@ -3,8 +3,8 @@ import { scopeForGrade } from '../scope';
 import { validate } from '../validator';
 import { addTimeSignature } from './add-time-signature';
 
-const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
-const G1_TIME_SIGNATURES = scopeForGrade(1).timeSignatures;
+const g1NoteValues = scopeForGrade(1).noteValues;
+const g1TimeSignatures = scopeForGrade(1).timeSignatures;
 
 // Independent recomputation of a bar's beat total, mirroring rhythm-sum.test.ts
 // and bar-validity.test.ts's own independent unit tables — a real invariant
@@ -61,7 +61,7 @@ describe('addTimeSignature — distractors are the other G1 time signatures', ()
       const canonical = instance.answer.canonical as string;
       expect(instance.distractors.length).toBeGreaterThanOrEqual(1);
       for (const d of instance.distractors) {
-        expect(G1_TIME_SIGNATURES).toContain(d);
+        expect(g1TimeSignatures).toContain(d);
         expect(d).not.toBe(canonical);
       }
       expect(new Set(instance.distractors).size).toBe(instance.distractors.length);
@@ -72,7 +72,7 @@ describe('addTimeSignature — distractors are the other G1 time signatures', ()
     for (let seed = 0; seed < 20; seed++) {
       const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as string;
-      const expected = G1_TIME_SIGNATURES.filter((t) => t !== canonical);
+      const expected = g1TimeSignatures.filter((t) => t !== canonical);
       expect([...instance.distractors].sort()).toEqual([...expected].sort());
     }
   });
@@ -82,9 +82,9 @@ describe('addTimeSignature — scope', () => {
   test('every emitted note value is in G1 scope and the canonical answer is a G1 time signature', () => {
     for (let seed = 0; seed < 30; seed++) {
       const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
-      expect(G1_TIME_SIGNATURES).toContain(instance.answer.canonical);
+      expect(g1TimeSignatures).toContain(instance.answer.canonical);
       for (const ev of (instance.stimulus.music as Music).voices[0].events) {
-        if (ev.type === 'note') expect(G1_NOTE_VALUES).toContain(ev.dur);
+        if (ev.type === 'note') expect(g1NoteValues).toContain(ev.dur);
       }
     }
   });

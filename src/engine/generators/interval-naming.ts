@@ -1,5 +1,5 @@
 // Grade 1 interval_naming generator (curriculum/exercise-templates.json,
-// template_id "interval_naming"). G1 rule (scope.ts G1_INTERVAL_RULE): the
+// template_id "interval_naming"). G1 rule (scope.ts scopeForGrade(1).intervalRule): the
 // lower note is pinned to the tonic of a sampled G1 major key, the upper note
 // is a diatonic pitch above it (number-only naming, above tonic, <= an
 // octave). The key signature carries the key's accidental, so both pitches

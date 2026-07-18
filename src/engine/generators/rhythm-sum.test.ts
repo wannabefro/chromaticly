@@ -2,7 +2,7 @@ import { scopeForGrade } from '../scope';
 import { validate } from '../validator';
 import { rhythmSum } from './rhythm-sum';
 
-const G1_NOTE_VALUES = scopeForGrade(1).noteValues;
+const g1NoteValues = scopeForGrade(1).noteValues;
 
 describe('rhythmSum — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {
@@ -25,7 +25,7 @@ describe('rhythmSum — the total always equals exactly one legal G1 note value'
     for (let seed = 0; seed < 30; seed++) {
       const instance = rhythmSum({ grade: 1, seed, atoms: [] });
       const canonical = instance.answer.canonical as { dur: string; dots: number };
-      expect(G1_NOTE_VALUES).toContain(canonical.dur);
+      expect(g1NoteValues).toContain(canonical.dur);
       expect([0, 1]).toContain(canonical.dots);
     }
   });

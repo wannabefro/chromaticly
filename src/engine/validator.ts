@@ -12,7 +12,7 @@
 // answer that already appears in that list — it does not grade.
 
 import type { Music } from '../music/types';
-import { G1_CLEFS, G1_NOTE_VALUES, pitchRange, scopeForGrade } from './scope';
+import { pitchRange, scopeForGrade } from './scope';
 import type { GradeScope } from './scope';
 import type { ExerciseInstance } from './schema';
 import { ExerciseInstanceSchema } from './schema';
@@ -231,17 +231,20 @@ function intervalNamingHook(inst: ExerciseInstance): string[] {
     if (!canonical || typeof canonical !== 'object' || Array.isArray(canonical)) {
       return ['interval_naming: stave_input canonical answer must be a {pitch, dur} object'];
     }
+    // Grade is guaranteed valid here — validate() already rejected unsupported
+    // grades before any hook runs.
+    const scope = scopeForGrade(inst.grade);
     const { pitch, dur } = canonical as { pitch?: unknown; dur?: unknown };
     const errors: string[] = [];
     if (typeof pitch !== 'string' || !/^[A-G](#|b)?-?\d+$/.test(pitch)) {
       errors.push('interval_naming: stave_input canonical pitch is not a valid scientific pitch');
     } else {
       const music = inst.stimulus.music as Music | null;
-      if (music && G1_CLEFS.includes(music.clef)) {
-        checkPitchScope(pitch, pitchRange(music.clef), errors);
+      if (music && scope.clefs.includes(music.clef)) {
+        checkPitchScope(pitch, pitchRange(music.clef, inst.grade), errors);
       }
     }
-    if (typeof dur !== 'string' || !(G1_NOTE_VALUES as readonly string[]).includes(dur)) {
+    if (typeof dur !== 'string' || !(scope.noteValues as readonly string[]).includes(dur)) {
       errors.push('interval_naming: stave_input canonical duration is outside G1 scope');
     }
     return errors;
@@ -277,11 +280,14 @@ function keySignatureIdHook(inst: ExerciseInstance): string[] {
 }
 
 function rhythmSumHook(inst: ExerciseInstance): string[] {
+  // Grade is guaranteed valid here — validate() already rejected unsupported
+  // grades before any hook runs.
+  const scope = scopeForGrade(inst.grade);
   const canonical = inst.answer.canonical;
 
   if (typeof canonical === 'object' && canonical !== null && 'dur' in canonical) {
     const dur = (canonical as { dur: unknown }).dur;
-    if (typeof dur !== 'string' || !(G1_NOTE_VALUES as readonly string[]).includes(dur)) {
+    if (typeof dur !== 'string' || !(scope.noteValues as readonly string[]).includes(dur)) {
       return ['rhythm_sum: canonical duration is outside G1 scope'];
     }
     return [];
@@ -290,7 +296,7 @@ function rhythmSumHook(inst: ExerciseInstance): string[] {
   if (typeof canonical === 'string') {
     const words = canonical.trim().toLowerCase().split(/\s+/);
     const durWord = words[0] === 'dotted' ? words[1] : words[0];
-    if (!durWord || !(G1_NOTE_VALUES as readonly string[]).includes(durWord)) {
+    if (!durWord || !(scope.noteValues as readonly string[]).includes(durWord)) {
       return [`rhythm_sum: canonical value "${canonical}" is not a single G1 note value`];
     }
     return [];
