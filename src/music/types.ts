@@ -46,7 +46,20 @@ export interface BarlineEvent {
   style?: 'single' | 'double';
 }
 
-export type MusicEvent = NoteEvent | ChordEvent | RestEvent | BarlineEvent;
+/** Point dynamics for Grade 1–3 (the single-glyph markings, e.g. 𝆑 = forte). Named
+ *  with the ABC decoration tokens so the emitter maps them straight through. Hairpins
+ *  (crescendo/diminuendo spans) are a separate, later concern. */
+export type Dynamic = 'pp' | 'p' | 'mp' | 'mf' | 'f' | 'ff' | 'sfz';
+
+/** A dynamic marking sitting in the voice before the note it colours. Modelled as its
+ *  own event (not a note field) because a dynamic is positioned under the staff in its
+ *  own right; the emitter glues its decoration onto the following note. */
+export interface DynamicEvent {
+  type: 'dynamic';
+  mark: Dynamic;
+}
+
+export type MusicEvent = NoteEvent | ChordEvent | RestEvent | BarlineEvent | DynamicEvent;
 
 export interface Voice {
   events: MusicEvent[];

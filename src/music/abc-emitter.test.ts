@@ -111,3 +111,59 @@ describe('musicToAbc', () => {
     expect(musicToAbc(music)).toContain('[Fc]32');
   });
 });
+
+describe('musicToAbc — dynamics (302.32)', () => {
+  test('a dynamic glues its decoration onto the following note, not a separate token', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '4/4',
+      voices: [
+        {
+          events: [
+            { type: 'dynamic', mark: 'f' },
+            { type: 'note', pitch: 'C4', dur: 'crotchet' },
+          ],
+        },
+      ],
+    };
+    // ABC binds a decoration to the next note: `!f!C`, never `!f! C`.
+    expect(musicToAbc(music)).toContain('!f!C8');
+    expect(musicToAbc(music)).not.toContain('!f! ');
+  });
+
+  test('the mark maps straight to its ABC token', () => {
+    const withMark = (mark: 'p' | 'mf' | 'sfz') =>
+      musicToAbc({
+        clef: 'treble',
+        key_sig: null,
+        time_sig: null,
+        voices: [{ events: [{ type: 'dynamic', mark }, { type: 'note', pitch: 'C4', dur: 'crotchet' }] }],
+      });
+    expect(withMark('p')).toContain('!p!C8');
+    expect(withMark('mf')).toContain('!mf!C8');
+    expect(withMark('sfz')).toContain('!sfz!C8');
+  });
+
+  // Fail loud: a dynamic that colours no note is malformed, not silently dropped —
+  // otherwise a passage could claim to carry a term it never rendered.
+  test('a dynamic before a barline throws', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '4/4',
+      voices: [{ events: [{ type: 'dynamic', mark: 'f' }, { type: 'barline' }] }],
+    };
+    expect(() => musicToAbc(music)).toThrow(/must precede a note/);
+  });
+
+  test('a trailing dynamic with no following note throws', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '4/4',
+      voices: [{ events: [{ type: 'note', pitch: 'C4', dur: 'crotchet' }, { type: 'dynamic', mark: 'p' }] }],
+    };
+    expect(() => musicToAbc(music)).toThrow(/no following note/);
+  });
+});

@@ -9,10 +9,12 @@ import type {
   Clef,
   Dots,
   Duration,
+  DynamicEvent,
   KeySig,
   Music,
   NoteEvent,
   RestEvent,
+  Voice,
 } from './types';
 
 type Accidental = 'sharp' | 'flat' | 'natural' | 'double_sharp' | 'double_flat';
@@ -154,6 +156,45 @@ function restToAbc(ev: RestEvent): string {
   return `z${durationToAbc(ev.dur, ev.dots ?? 0)}`;
 }
 
+/** ABC decoration for a dynamic, e.g. `!f!`. The Dynamic values are the ABC tokens. */
+function dynamicToAbc(ev: DynamicEvent): string {
+  return `!${ev.mark}!`;
+}
+
+/** Emit a voice's events, gluing each dynamic's decoration onto the following note
+ *  (`!f!C`) — ABC binds a decoration to the next note, so it must not be split off as
+ *  its own space-separated token. A dynamic with no following note/chord/rest is
+ *  malformed input and throws rather than emitting a decoration on a barline or nothing. */
+function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>): string {
+  const tokens: string[] = [];
+  let pendingDecoration = '';
+  for (const ev of voice.events) {
+    switch (ev.type) {
+      case 'dynamic':
+        pendingDecoration += dynamicToAbc(ev);
+        break;
+      case 'note':
+        tokens.push(pendingDecoration + noteToAbc(ev, keyAcc));
+        pendingDecoration = '';
+        break;
+      case 'chord':
+        tokens.push(pendingDecoration + chordToAbc(ev, keyAcc));
+        pendingDecoration = '';
+        break;
+      case 'rest':
+        tokens.push(pendingDecoration + restToAbc(ev));
+        pendingDecoration = '';
+        break;
+      case 'barline':
+        if (pendingDecoration) throw new Error('Dynamic marking must precede a note, not a barline');
+        tokens.push(ev.style === 'double' ? '||' : '|');
+        break;
+    }
+  }
+  if (pendingDecoration) throw new Error('Dynamic marking has no following note');
+  return tokens.join(' ');
+}
+
 /** Project a Music object to a complete, renderable ABC tune string. */
 export function musicToAbc(music: Music): string {
   const keyAcc = keyAccidentals(music.key_sig);
@@ -164,24 +205,7 @@ export function musicToAbc(music: Music): string {
     `K:${keyName(music.key_sig)} ${clefTag(music.clef)}`,
   ].join('\n');
 
-  const body = music.voices
-    .map((voice) =>
-      voice.events
-        .map((ev) => {
-          switch (ev.type) {
-            case 'note':
-              return noteToAbc(ev, keyAcc);
-            case 'chord':
-              return chordToAbc(ev, keyAcc);
-            case 'rest':
-              return restToAbc(ev);
-            case 'barline':
-              return ev.style === 'double' ? '||' : '|';
-          }
-        })
-        .join(' '),
-    )
-    .join('\n');
+  const body = music.voices.map((voice) => voiceToAbc(voice, keyAcc)).join('\n');
 
   return `${header}\n${body}\n`;
 }
