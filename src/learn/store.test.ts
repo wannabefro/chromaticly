@@ -223,3 +223,93 @@ describe('store — resilience', () => {
     expect(store.isUnlocked('everything')).toBe(false);
   });
 });
+
+describe('store — account name + nudge-seen (design 6b/6c, 302.9/302.13)', () => {
+  test('completedLessonCount counts only completed lessons', () => {
+    const store = new ProgressStore();
+    expect(store.completedLessonCount()).toBe(0);
+    store.setLesson('a', { completed: true });
+    store.setLesson('b', { completed: false });
+    store.setLesson('c', { completed: true });
+    expect(store.completedLessonCount()).toBe(2);
+  });
+
+  test('a name upgrades an onboarded profile and survives a restart', async () => {
+    const storage = memoryStorage();
+    const store = new ProgressStore();
+    store.setProfile({ grade: 1, onboardedAt: 'now' });
+    store.setName('Maya');
+    expect(store.getName()).toBe('Maya');
+    expect(store.isNamed()).toBe(true);
+    await saveProgress(store, storage);
+
+    const reloaded = await loadProgress(storage);
+    expect(reloaded.getName()).toBe('Maya');
+    expect(reloaded.isNamed()).toBe(true);
+  });
+
+  test('setName is a no-op when there is no profile (a name upgrades, never creates)', () => {
+    const store = new ProgressStore();
+    store.setName('Ghost');
+    expect(store.getProfile()).toBeNull();
+    expect(store.isNamed()).toBe(false);
+  });
+
+  test('markNudgeSeen is a once-only flag that survives a restart', async () => {
+    const storage = memoryStorage();
+    const store = new ProgressStore();
+    expect(store.isNudgeSeen()).toBe(false);
+    store.markNudgeSeen();
+    expect(store.isNudgeSeen()).toBe(true);
+    await saveProgress(store, storage);
+    expect((await loadProgress(storage)).isNudgeSeen()).toBe(true);
+  });
+
+  // Why: the new fields are additive-optional — an old snapshot must load valid,
+  // not be discarded (fail-safe migration, AD4).
+  test('a pre-account snapshot back-fills nudge-seen false and preserves the rest', () => {
+    const store = new ProgressStore({
+      version: STORE_VERSION,
+      atoms: {},
+      lessons: { l1: { completed: true } },
+      unlocked: ['l1'],
+      collectedFacts: [],
+      profile: { grade: 1, onboardedAt: 'then' },
+      // no name, no accountNudgeSeen
+    });
+    expect(store.isNudgeSeen()).toBe(false);
+    expect(store.getName()).toBeUndefined();
+    expect(store.completedLessonCount()).toBe(1);
+    expect(store.getGrade()).toBe(1);
+  });
+
+  // Why: a returning learner already ≥3 lessons in must NOT have nudge-seen back-filled true —
+  // they are exactly who the nudge targets, on their next completion (plan Q4).
+  test('an already-invested snapshot (≥3 done, no flag) loads nudge-unseen', () => {
+    const store = new ProgressStore({
+      version: STORE_VERSION,
+      atoms: {},
+      lessons: { a: { completed: true }, b: { completed: true }, c: { completed: true } },
+      unlocked: [],
+      collectedFacts: [],
+      profile: { grade: 1, onboardedAt: 't' },
+    });
+    expect(store.completedLessonCount()).toBe(3);
+    expect(store.isNudgeSeen()).toBe(false);
+  });
+
+  // Why: a legacy age-gate-era profile still carrying birthYear must load cleanly; this
+  // slice neither reads nor clears it.
+  test('a legacy snapshot with birthYear loads with birthYear preserved and no name', () => {
+    const store = new ProgressStore({
+      version: STORE_VERSION,
+      atoms: {},
+      lessons: {},
+      unlocked: [],
+      collectedFacts: [],
+      profile: { grade: 1, birthYear: 2000, onboardedAt: 't' },
+    });
+    expect(store.getProfile()?.birthYear).toBe(2000);
+    expect(store.isNamed()).toBe(false);
+  });
+});

@@ -27,6 +27,9 @@ export interface Profile {
    *  onboarding path, which no longer runs the age gate. */
   birthYear?: number;
   onboardedAt: string;
+  /** A self-chosen display name (design 6b/6c). Its presence marks a "named account"
+   *  (Guest → named). No age, email, or auth — a local identity only, never transmitted. */
+  name?: string;
 }
 
 export interface ProgressSnapshot {
@@ -38,6 +41,9 @@ export interface ProgressSnapshot {
    *  collected — the fact-card collection. Additive/optional (302.3.4). */
   collectedFacts: string[];
   profile: Profile | null;
+  /** Whether the guest→account save-progress nudge (design 6c) has been shown and
+   *  actioned — a once-only flag. Additive/optional; back-filled false in migrate(). */
+  accountNudgeSeen?: boolean;
 }
 
 /** Async persistence port — implemented by expo-sqlite/MMKV on device and by an
@@ -48,7 +54,7 @@ export interface SnapshotStorage {
 }
 
 function emptySnapshot(): ProgressSnapshot {
-  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null };
+  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null, accountNudgeSeen: false };
 }
 
 /** `SrsState.ease` (U6) is additive and optional, so a snapshot written before
@@ -86,6 +92,7 @@ export class ProgressStore {
   private unlocked: Set<string>;
   private collected: Set<string>;
   private profile: Profile | null;
+  private nudgeSeen: boolean;
 
   constructor(snapshot: ProgressSnapshot = emptySnapshot()) {
     const s = migrate(snapshot);
@@ -94,6 +101,13 @@ export class ProgressStore {
     this.unlocked = new Set(s.unlocked);
     this.collected = new Set(s.collectedFacts);
     this.profile = s.profile;
+    this.nudgeSeen = s.accountNudgeSeen ?? false;
+  }
+
+  /** How many lessons the learner has completed — the "three lessons in" trigger for the
+   *  account nudge (design 6c). */
+  completedLessonCount(): number {
+    return Object.values(this.lessons).filter((l) => l.completed).length;
   }
 
   getAtom(atom: string): AtomProgress {
@@ -140,6 +154,30 @@ export class ProgressStore {
     this.profile = profile;
   }
 
+  getName(): string | undefined {
+    return this.profile?.name;
+  }
+
+  /** Set the account display name (design 6b). No-op if there is no profile yet —
+   *  a name is an upgrade of an existing (onboarded) profile, never its creation. */
+  setName(name: string): void {
+    if (!this.profile) return;
+    this.profile = { ...this.profile, name };
+  }
+
+  /** Whether this learner has a named account (design 6b) — the presence of a name. */
+  isNamed(): boolean {
+    return this.profile?.name != null && this.profile.name !== '';
+  }
+
+  isNudgeSeen(): boolean {
+    return this.nudgeSeen;
+  }
+
+  markNudgeSeen(): void {
+    this.nudgeSeen = true;
+  }
+
   isOnboarded(): boolean {
     return this.profile !== null;
   }
@@ -160,6 +198,7 @@ export class ProgressStore {
       unlocked: [...this.unlocked],
       collectedFacts: [...this.collected],
       profile: this.profile,
+      accountNudgeSeen: this.nudgeSeen,
     };
   }
 }
