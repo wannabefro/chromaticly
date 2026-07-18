@@ -13,22 +13,32 @@ const HEX_LITERAL = /#[0-9a-fA-F]{3,8}\b/;
 const SRC = join(__dirname, '..', '..'); // repo src/
 
 // A8: the guard covers the slice's surfaces — the component library plus the
-// reskinned/new files this slice owns. It deliberately EXCLUDES the legacy
-// unstyled screens (Lesson/Practice/Screen and the non-reskinned interactions),
-// which are Deferred to Follow-Up Work.
+// reskinned/new files this slice owns. The legacy orphaned Home screen was
+// retired (302.11) rather than styled; the surviving screens are all wired into
+// the tab shell and read colour from the theme, so they are all guarded here.
 const SLICE_FILES = [
   'ui/ExerciseLoop.tsx',
   'ui/interactions/Mcq.tsx',
   'ui/interactions/FindTheBar.tsx',
+  'ui/interactions/StaveInput.tsx',
   'ui/interactions/registry.tsx',
   'ui/SetRunner.tsx',
   'ui/SetComplete.tsx',
   'ui/TeachPhase.tsx',
   'ui/TheoryInSound.tsx',
+  'ui/ContextRunner.tsx',
+  'ui/Practice.tsx',
+  'ui/Screen.tsx',
   'ui/exam/ExamRunner.tsx',
+  'ui/exam/ExamReview.tsx',
+  'ui/components/TabBar.tsx',
   'screens/onboarding/WelcomeScreen.tsx',
   'screens/onboarding/AgeGateScreen.tsx',
   'screens/LevelMapScreen.tsx',
+  'screens/AppShell.tsx',
+  'screens/PracticeScreen.tsx',
+  'screens/ExamsScreen.tsx',
+  'screens/ProfileScreen.tsx',
 ];
 
 function componentFiles(dir: string): string[] {
