@@ -26,7 +26,7 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { scientificPitchOrdinal } from '../../engine/generators/pitch-math';
-import { diatonicPitchesInRange, G1_NOTE_VALUES } from '../../engine/scope';
+import { diatonicPitchesInRange, scopeForGrade } from '../../engine/scope';
 import { keyAccidentals } from '../../music/abc-emitter';
 import type { Clef, Duration, KeySig, Music, Pitch } from '../../music/types';
 import { useSettingsContext } from '../../learn/SettingsContext';
@@ -43,17 +43,17 @@ export type Accidental = 'sharp' | 'natural' | 'flat';
 
 // --- Pure helpers (jest-testable without rendering) -----------------------
 
-/** How many discrete ghost slots the clef's G1 range has. */
-export function slotCount(clef: Clef): number {
-  return diatonicPitchesInRange(clef).length;
+/** How many discrete ghost slots the clef's grade range has. */
+export function slotCount(clef: Clef, grade = 1): number {
+  return diatonicPitchesInRange(clef, grade).length;
 }
 
 /** The diatonic (natural-letter) pitch a stave slot represents, left-to-right
- *  low-to-high. Reuses scope.ts's G1 range enumeration rather than a second
- *  pitch list. Throws on an out-of-range index (fail loud, mirrors
+ *  low-to-high. Reuses scope.ts's per-grade range enumeration rather than a
+ *  second pitch list. Throws on an out-of-range index (fail loud, mirrors
  *  slotToPitch's sibling helpers elsewhere in the engine). */
-export function slotToPitch(clef: Clef, slotIndex: number): Pitch {
-  const pitches = diatonicPitchesInRange(clef);
+export function slotToPitch(clef: Clef, slotIndex: number, grade = 1): Pitch {
+  const pitches = diatonicPitchesInRange(clef, grade);
   const pitch = pitches[slotIndex];
   if (pitch === undefined) {
     throw new Error(`slotToPitch: slot ${slotIndex} is out of range for ${clef} clef (0..${pitches.length - 1})`);
@@ -63,9 +63,9 @@ export function slotToPitch(clef: Clef, slotIndex: number): Pitch {
 
 /** The slot index a (possibly accidented) pitch sits on — accidentals never
  *  move a notehead's line/space, only the letter+octave does. */
-function slotIndexOfPitch(clef: Clef, pitch: Pitch): number {
+function slotIndexOfPitch(clef: Clef, pitch: Pitch, grade = 1): number {
   const natural = naturalOf(pitch);
-  return diatonicPitchesInRange(clef).findIndex((p) => p === natural);
+  return diatonicPitchesInRange(clef, grade).findIndex((p) => p === natural);
 }
 
 function naturalOf(pitch: Pitch): Pitch {
@@ -162,8 +162,10 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
   const { settings } = useSettingsContext();
   const leftHanded = settings.handedness === 'left';
 
-  const placedSlot = response ? slotIndexOfPitch(clef, response.pitch) : -1;
-  const slots = slotCount(clef);
+  // Grade-2 stave input arrives with the pitch-content slice, which must pass
+  // `instance.grade` here instead of this literal — named seam.
+  const placedSlot = response ? slotIndexOfPitch(clef, response.pitch, 1) : -1;
+  const slots = slotCount(clef, 1);
 
   // The stave scales to the card rather than the card to the stave (design 2d's
   // stave is a viewBox that fits its paper). A fixed slot pitch made the stave
@@ -181,7 +183,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
 
   const handleSlotPress = (slotIndex: number) => {
     if (locked) return;
-    const pitch = slotToPitch(clef, slotIndex);
+    const pitch = slotToPitch(clef, slotIndex, 1);
     onResponseChange({ pitch, dur: response?.dur ?? selectedDuration });
   };
 
@@ -221,7 +223,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
         )}
 
         {Array.from({ length: slots }, (_, slotIndex) => {
-          const pitch = slotToPitch(clef, slotIndex);
+          const pitch = slotToPitch(clef, slotIndex, 1);
           const staveY = noteY(clef, pitch); // in stave space, before the paper inset
           const y = PAPER_INSET + staveY;
           const isPlaced = slotIndex === placedSlot;
@@ -285,7 +287,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
       <View style={styles.paletteRow} testID="stave-input-palette">
         <Text style={styles.paletteCaption}>Duration · tap a stave slot to place</Text>
         <View style={styles.paletteButtons}>
-          {G1_NOTE_VALUES.map((dur) => {
+          {scopeForGrade(1).noteValues.map((dur) => {
             const selected = current === dur;
             return (
               <Pressable

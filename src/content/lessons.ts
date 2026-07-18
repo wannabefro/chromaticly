@@ -11,7 +11,7 @@ import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
-import { diatonicPitchesInRange, G1_CLEFS, G1_KEYS_MAJOR } from '../engine/scope';
+import { diatonicPitchesInRange, scopeForGrade } from '../engine/scope';
 import type { Clef } from '../music/types';
 import { assertRhythmFillsBars } from './teach-rhythm';
 
@@ -82,10 +82,12 @@ export function assertAtomResolves(atom: string): void {
       if (parts.length !== 0) throw new Error(`lessons: malformed add_time_signature atom "${atom}"`);
       return;
     case 'note_read': {
+      // All lesson content is grade 1 today; threading `lesson.grade` through atom
+      // validation is the grade-2 content slice's job, not this one.
       const [clef, pitch] = parts;
-      if (!G1_CLEFS.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G1 scope`);
+      if (!scopeForGrade(1).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G1 scope`);
       const natural = (pitch ?? '').replace(/[#b]/, '');
-      if (!diatonicPitchesInRange(clef as Clef).includes(natural)) {
+      if (!diatonicPitchesInRange(clef as Clef, 1).includes(natural)) {
         throw new Error(`lessons: atom "${atom}" pitch is outside the ${clef} G1 range`);
       }
       return;
@@ -93,7 +95,7 @@ export function assertAtomResolves(atom: string): void {
     case 'key_sig': {
       const [key] = parts;
       const [tonic, mode] = (key ?? '').split('_');
-      if (mode !== 'major' || !G1_KEYS_MAJOR.includes(tonic)) {
+      if (mode !== 'major' || !scopeForGrade(1).keysMajor.includes(tonic)) {
         throw new Error(`lessons: atom "${atom}" is not a G1 major key`);
       }
       return;

@@ -6,7 +6,7 @@
 import { fireEvent, render, waitFor, within } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 
-import { G1_NOTE_VALUES } from '../../engine/scope';
+import { scopeForGrade } from '../../engine/scope';
 import type { ExerciseInstance } from '../../engine/schema';
 import { SettingsProvider } from '../../learn/SettingsContext';
 import type { SnapshotStorage } from '../../learn/store';
@@ -54,6 +54,21 @@ describe('slotToPitch — deterministic per-clef slot -> pitch mapping (pure, je
   test('throws on an out-of-range slot index (fail loud, never a silent undefined pitch)', () => {
     expect(() => slotToPitch('treble', slotCount('treble'))).toThrow();
     expect(() => slotToPitch('treble', -1)).toThrow();
+  });
+
+  // The grade-2 UI slice depends on this seam: the slot model already generalizes
+  // via diatonicPitchesInRange(clef, grade), so a wider grade must produce more
+  // slots, and grade 1's slots must be findable as a contiguous run within grade 2's
+  // (not a disjoint or reordered set) — nothing renders grade 2 yet, but the mapping
+  // must already hold.
+  test('a wider grade has more slots, and grade 1 slots are a contiguous window of grade 2 slots', () => {
+    expect(slotCount('treble', 2)).toBeGreaterThan(slotCount('treble', 1));
+
+    const g1Pitches = Array.from({ length: slotCount('treble', 1) }, (_, i) => slotToPitch('treble', i, 1));
+    const g2Pitches = Array.from({ length: slotCount('treble', 2) }, (_, i) => slotToPitch('treble', i, 2));
+    const start = g2Pitches.indexOf(g1Pitches[0]);
+    expect(start).toBeGreaterThanOrEqual(0);
+    expect(g2Pitches.slice(start, start + g1Pitches.length)).toEqual(g1Pitches);
   });
 });
 
@@ -121,7 +136,7 @@ describe('StaveInput — duration palette', () => {
   test('the tiles are glyph-only and the selection is named on its own line', () => {
     const { getByTestId, queryByText } = renderStave(null);
 
-    for (const dur of G1_NOTE_VALUES) {
+    for (const dur of scopeForGrade(1).noteValues) {
       expect(queryByText(dur)).toBeNull(); // no duration NAME inside any tile
     }
     expect(getByTestId('duration-selected')).toHaveTextContent('selected: crotchet');
