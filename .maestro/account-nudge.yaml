@@ -1,0 +1,72 @@
+# 302.9/302.13 / design 6c+6b — the guest→account save-progress nudge and name-your-account.
+# Seeds to key-signatures (the 5th unit), so units 1–4 are already complete; finishing the
+# key-signatures set is the completion TRANSITION that brings the learner past three lessons
+# in, firing the one-time nudge. Then exercises the primary path: Name my account → type a
+# name → the Profile reflects it. That last step is the real device gate: createAccount writes
+# through real React state (not a store-identity memo), so a name that shows here proves the
+# reactivity the React Compiler would otherwise leave stale (jest can't catch that).
+# "Maybe later" and the once-only gating are covered by SetRunner unit tests.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=key-signatures
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- tapOn: { id: "unit-row-key-signatures" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+# Drive all 8 MCQ items (key_signature_id) — answers need not be correct; finishing the set
+# marks the lesson complete, which is the completion transition the nudge keys on.
+- repeat:
+    times: 8
+    commands:
+      - extendedWaitUntil:
+          visible: { id: "mcq" }
+          timeout: 20000
+      - tapOn: { id: "option-0" }
+      - tapOn: { id: "check" }
+      - extendedWaitUntil:
+          visible: { id: "feedback-sheet" }
+          timeout: 10000
+      - tapOn: { id: "feedback-sheet-continue" }
+
+# The set completes → the nudge appears over the dimmed complete screen (three lessons in).
+- extendedWaitUntil:
+    visible: { id: "set-complete" }
+    timeout: 20000
+- assertVisible: { id: "account-nudge-sheet" }
+- assertVisible: { id: "account-nudge-sheet-stats" }
+- takeScreenshot: account-nudge
+
+# Primary path: Name my account → the account-creation screen.
+- tapOn: { id: "account-nudge-sheet-create" }
+- extendedWaitUntil:
+    visible: { id: "account-create-screen" }
+    timeout: 15000
+- tapOn: { id: "account-name-input" }
+- inputText: "Robin"
+# The keyboard covers the Continue button; the input's return key (returnKeyType "done")
+# submits via onSubmitEditing, so press Enter instead of fighting the keyboard.
+- pressKey: Enter
+
+# Back on the level map; the account now exists. Profile must reflect the name — the device
+# reactivity gate (real state, not a stale store-identity memo).
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 20000
+- tapOn: { id: "tab-profile" }
+- assertVisible: { id: "profile-screen" }
+- assertVisible: { text: "Robin" }
+- takeScreenshot: account-named-profile
