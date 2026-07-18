@@ -1,0 +1,51 @@
+# Fact-card collection → Profile count (design 4b/5c). tab-shell asserts the
+# profile-facts card is present but never that it moves; this proves the loop
+# end to end: viewing a lesson's teach phase collects its did-you-know fact
+# (TeachPhase auto-collects on view), it persists, and the Profile count — a
+# revision-gated derivation off the mutated store — increments on device.
+#
+# Seeds to treble-notes so a lesson is enterable with zero facts collected yet.
+#
+# Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=treble-notes
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# Baseline: nothing collected yet.
+- tapOn: { id: "tab-profile" }
+- assertVisible: { id: "profile-screen" }
+- assertVisible:
+    id: "profile-facts"
+    text: "0 of 8"
+- takeScreenshot: facts-before
+
+# Viewing a lesson's teach phase collects its fact (no manual button — it's the act
+# of reading the card). Leave via the × without touching the set.
+- tapOn: { id: "tab-learn" }
+- tapOn: { id: "unit-row-treble-notes" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-close" }
+
+# Profile now reflects the newly-collected fact.
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 20000
+- tapOn: { id: "tab-profile" }
+- assertVisible:
+    id: "profile-facts"
+    text: "1 of 8"
+- takeScreenshot: facts-after

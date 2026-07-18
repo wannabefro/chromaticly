@@ -1,0 +1,66 @@
+# Lesson completion → next-unit unlock on the level map (design 3a). The other
+# flows either jump past the unlock chain (?seed=<unit>) or stop at set-complete;
+# this proves the map's progression reacts on device: a finished set unlocks the
+# next unit. Reactivity here is a React Compiler hazard — the level map derives
+# unlock state from the in-place-mutated store — so only an on-device run confirms
+# the locked→enterable transition (jest's layout-free renderer can't).
+#
+# Seeds to treble-notes (the chain root): finishing it is completion #1, safely
+# below the 3-lesson account-nudge threshold, so no nudge overlays set-complete.
+#
+# Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=treble-notes
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# Baseline: bass-notes is locked, naming treble-notes as its prerequisite (R2).
+- assertVisible: { id: "unit-row-bass-notes-prerequisite" }
+
+# Finish the treble-notes set (8 note_naming MCQs). Answers need not be correct —
+# the set completes after 8 items, and completion is what unlocks the next unit.
+- tapOn: { id: "unit-row-treble-notes" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+- repeat:
+    times: 8
+    commands:
+      - extendedWaitUntil:
+          visible: { id: "mcq" }
+          timeout: 20000
+      - tapOn: { id: "option-0" }
+      - tapOn: { id: "check" }
+      - extendedWaitUntil:
+          visible: { id: "feedback-sheet" }
+          timeout: 10000
+      - tapOn: { id: "feedback-sheet-continue" }
+
+- extendedWaitUntil:
+    visible: { id: "set-complete" }
+    timeout: 20000
+- tapOn: { id: "set-next" }
+
+# Back on the map: bass-notes has unlocked. Prove it by entering it — a locked row
+# is disabled and would never reach its teach phase.
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 20000
+- assertNotVisible: { id: "unit-row-bass-notes-prerequisite" }
+- takeScreenshot: unlock-map
+- tapOn: { id: "unit-row-bass-notes" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
