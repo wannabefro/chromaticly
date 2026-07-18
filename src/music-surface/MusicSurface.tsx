@@ -1,5 +1,5 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
 import { musicToAbc } from '../music/abc-emitter';
@@ -43,6 +43,12 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
 ) {
   const webRef = useRef<WebView>(null);
   const [ready, setReady] = useState(false);
+  // Whether abcjs has painted a stave yet. The WebView loads ~500KB of abcjs cold
+  // then renders, so on a fresh mount the paper card sits blank for a beat. "The
+  // stave is the hero", so a blank flash is a smell — a faint stave skeleton shows
+  // behind the (transparent) WebView until the first `rendered` lands, so the wait
+  // reads as a stave arriving, not as empty paper.
+  const [painted, setPainted] = useState(false);
 
   const abc = useMemo(() => musicToAbc(music), [music]);
   // HTML is stable (abcjs is 500KB — don't rebuild per note); ABC arrives via a render command.
@@ -66,6 +72,7 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     (e: WebViewMessageEvent) => {
       const ev = dispatchMessage(e.nativeEvent.data, onEvent);
       if (ev?.type === 'ready') setReady(true);
+      if (ev?.type === 'rendered') setPainted(true);
     },
     [onEvent],
   );
@@ -76,6 +83,7 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   // WebView fills it via flex.
   return (
     <View style={{ height }}>
+      {!painted && <StaveSkeleton />}
       <WebView
         ref={webRef}
         originWhitelist={['*']}
@@ -89,4 +97,24 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
       />
     </View>
   );
+});
+
+/** Five faint stave lines shown behind the (transparent) WebView until abcjs paints,
+ *  so a cold mount reads as a stave loading rather than a blank paper card. */
+function StaveSkeleton() {
+  return (
+    <View style={skeletonStyles.fill} pointerEvents="none" testID="notation-skeleton">
+      <View style={skeletonStyles.stave}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <View key={i} style={skeletonStyles.line} />
+        ))}
+      </View>
+    </View>
+  );
+}
+
+const skeletonStyles = StyleSheet.create({
+  fill: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', paddingHorizontal: 24 },
+  stave: { justifyContent: 'space-between', height: 44 },
+  line: { height: 1, backgroundColor: colors.paperLine, opacity: 0.18 },
 });

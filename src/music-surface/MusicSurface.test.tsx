@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react-native';
+import { act, render } from '@testing-library/react-native';
 
 import type { Music } from '../music/types';
 import type { SurfaceEvent } from './bridge';
@@ -49,5 +49,18 @@ describe('MusicSurface', () => {
     expect(typeof capturedProps!.onMessage).toBe('function');
     expect(capturedProps!.mediaPlaybackRequiresUserAction).toBe(false);
     expect(capturedProps!.allowsInlineMediaPlayback).toBe(true);
+  });
+
+  // 302.18: a cold WebView loads ~500KB of abcjs before it paints, so the paper card
+  // must not read as blank in the meantime — a stave skeleton stands in until the first
+  // `rendered` lands, then gets out of the way.
+  test('shows a stave skeleton until the first render lands, then hides it', () => {
+    const { queryByTestId } = render(<MusicSurface music={MUSIC} />);
+    expect(queryByTestId('notation-skeleton')).not.toBeNull();
+
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'rendered', ms: 12 }) } }));
+
+    expect(queryByTestId('notation-skeleton')).toBeNull();
   });
 });
