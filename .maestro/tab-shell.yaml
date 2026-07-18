@@ -28,6 +28,8 @@ appId: host.exp.Exponent
 - tapOn: { id: "tab-profile" }
 - assertVisible: { id: "profile-screen" }
 - assertVisible: { id: "profile-readiness" } # 5c: exam readiness, from the same stars the gate counts
+- assertVisible: { id: "strand-radar" }      # 6d: the 7-strand mastery radar (react-native-svg)
+- assertVisible: { id: "radar-legend-rhythm" }
 - assertVisible: { id: "profile-facts" }
 - takeScreenshot: shell-profile
 

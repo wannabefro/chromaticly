@@ -30,7 +30,9 @@ export default function AppShell() {
         {tab === 'learn' && <LevelMapScreen onImmersive={setImmersive} />}
         {tab === 'practice' && <PracticeScreen />}
         {tab === 'exams' && <ExamsScreen onImmersive={setImmersive} />}
-        {tab === 'profile' && <ProfileScreen onOpenExams={() => setTab('exams')} />}
+        {tab === 'profile' && (
+          <ProfileScreen onOpenExams={() => setTab('exams')} onDrillStrand={() => setTab('learn')} />
+        )}
       </View>
       {!immersive && <TabBar active={tab} onChange={setTab} />}
     </View>

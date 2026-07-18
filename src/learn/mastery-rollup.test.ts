@@ -1,6 +1,6 @@
 import { LESSONS, lessonById } from '../content/lessons';
 import { MASTERY_THRESHOLD } from './mastery';
-import { deriveStars, unitStates } from './mastery-rollup';
+import { deriveStars, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
 import { ProgressStore } from './store';
 
@@ -12,6 +12,42 @@ function masterAtoms(store: ProgressStore, atoms: string[]): void {
     store.setAtom(atom, { mastery: { streak: MASTERY_THRESHOLD, mastered: true }, srs: initialSrs() });
   }
 }
+
+describe('strandMastery — whole-profile per-strand fraction (design 6d radar)', () => {
+  test('a fresh profile is 0 across every strand it has lessons for', () => {
+    const store = new ProgressStore();
+    const m = strandMastery(LESSONS, store);
+    for (const { value, mastered } of Object.values(m)) {
+      expect(value).toBe(0);
+      expect(mastered).toBe(0);
+    }
+  });
+
+  test('mastering every atom of a strand takes that strand to 1', () => {
+    const store = new ProgressStore();
+    const rhythm = LESSONS.filter((l) => l.strand === 'rhythm');
+    masterAtoms(store, rhythm.flatMap((l) => l.atoms));
+
+    const m = strandMastery(LESSONS, store);
+    expect(m.rhythm.value).toBe(1);
+    expect(m.rhythm.mastered).toBe(m.rhythm.total);
+    // Untouched strands stay at 0 — mastery is per-strand, not shared.
+    for (const [strand, { value }] of Object.entries(m)) {
+      if (strand !== 'rhythm') expect(value).toBe(0);
+    }
+  });
+
+  test('partial mastery reads as a fraction between 0 and 1', () => {
+    const store = new ProgressStore();
+    const rhythm = LESSONS.filter((l) => l.strand === 'rhythm');
+    // Master exactly one atom of the strand.
+    masterAtoms(store, [rhythm.flatMap((l) => l.atoms)[0]]);
+
+    const { value } = strandMastery(LESSONS, store).rhythm;
+    expect(value).toBeGreaterThan(0);
+    expect(value).toBeLessThan(1);
+  });
+});
 
 describe('deriveStars — RD3: fraction of atoms mastered, monotone and atom-count-agnostic', () => {
   test('0 of N mastered -> 0 stars', () => {

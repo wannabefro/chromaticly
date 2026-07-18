@@ -19,17 +19,21 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
-import { examReadiness } from '../learn/mastery-rollup';
+import { examReadiness, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { Screen } from '../ui/Screen';
+import { StrandRadar } from '../ui/components/StrandRadar';
 import { colors, shape, strandDef, type as typo, type Strand } from '../ui/theme';
 
 export interface ProfileScreenProps {
   /** "Exam readiness ›" takes the learner to the paper it is talking about. */
   onOpenExams?: () => void;
+  /** A tap on the mastery radar drills into a strand (design 6d) — the shell routes
+   *  it to the level map where that strand's next lesson lives. */
+  onDrillStrand?: (strand: Strand) => void;
 }
 
-export default function ProfileScreen({ onOpenExams }: ProfileScreenProps = {}) {
+export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScreenProps = {}) {
   const { ready, store, revision, grade } = useProgressContext();
 
   const level = LEVELS.find((l) => l.unlocked) ?? LEVELS[0];
@@ -51,6 +55,12 @@ export default function ProfileScreen({ onOpenExams }: ProfileScreenProps = {}) 
   const collected = useMemo(() => {
     if (!store) return 0;
     return LESSONS.filter((lesson) => store.isFactCollected(lesson.id)).length;
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
+  }, [store, revision]);
+
+  const mastery = useMemo(() => {
+    if (!store) return {};
+    return strandMastery(LESSONS, store);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
   }, [store, revision]);
 
@@ -102,6 +112,8 @@ export default function ProfileScreen({ onOpenExams }: ProfileScreenProps = {}) 
                 : 'Keep going to open the practice paper.'}
           </Text>
         </Pressable>
+
+        <StrandRadar mastery={mastery} onDrill={onDrillStrand} />
 
         <View style={styles.card}>
           <View style={styles.rowBetween}>

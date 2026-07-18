@@ -16,6 +16,37 @@ export function deriveStars(atomIds: string[], store: ProgressStore): 0 | 1 | 2 
   return mastered / total >= 2 / 3 ? 2 : 1;
 }
 
+export interface StrandMastery {
+  mastered: number;
+  total: number;
+  /** 0..1 — mastered atoms over the strand's total atoms in the grade. */
+  value: number;
+}
+
+/** Whole-profile mastery per strand (design 6d radar). A pure derivation over the
+ *  per-atom MasteryState: value is the fraction of the strand's atoms mastered across
+ *  ALL its lessons (locked included), so a not-yet-reached strand reads as empty.
+ *  Keyed by strand string — the canonical 7-strand order lives in the UI layer, which
+ *  the core must not import (core-boundary). */
+export function strandMastery(
+  lessons: { strand: string; atoms: string[] }[],
+  store: ProgressStore,
+): Record<string, StrandMastery> {
+  const acc: Record<string, { mastered: number; total: number }> = {};
+  for (const lesson of lessons) {
+    const bucket = (acc[lesson.strand] ??= { mastered: 0, total: 0 });
+    for (const atom of lesson.atoms) {
+      bucket.total += 1;
+      if (store.masteryOf(atom)?.mastered === true) bucket.mastered += 1;
+    }
+  }
+  const out: Record<string, StrandMastery> = {};
+  for (const [strand, b] of Object.entries(acc)) {
+    out[strand] = { ...b, value: b.total === 0 ? 0 : b.mastered / b.total };
+  }
+  return out;
+}
+
 export type UnitState = 'locked' | 'active' | 'started' | 'done';
 
 /** Per-unit state for the level map. In a linear unlock chain only one

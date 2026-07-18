@@ -25,6 +25,7 @@ describe('theme tokens', () => {
       expect(def.hue).toMatch(/^#[0-9a-f]{6}$/i);
       expect(def.glyph.length).toBeGreaterThan(0);
       expect(def.label.length).toBeGreaterThan(0);
+      expect(def.short.length).toBeGreaterThan(0);
     }
   });
 
