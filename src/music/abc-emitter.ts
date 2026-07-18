@@ -165,34 +165,71 @@ function dynamicToAbc(ev: DynamicEvent): string {
  *  (`!f!C`) — ABC binds a decoration to the next note, so it must not be split off as
  *  its own space-separated token. A dynamic with no following note/chord/rest is
  *  malformed input and throws rather than emitting a decoration on a barline or nothing. */
-function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>): string {
-  const tokens: string[] = [];
+const EPS = 1e-9;
+
+/** Crotchet-beats spanned by a duration+dots. */
+function beatsOf(dur: Duration, dots: Dots = 0): number {
+  return DURATION_BEATS[dur] * DOT_MULTIPLIER[dots];
+}
+
+/** The beat the notation groups by: a crotchet in simple time, a dotted crotchet in
+ *  compound time (x/8 with a multiple-of-three numerator) — 6/8 beams in threes, not
+ *  sixes. This is what "beat" means for beaming, not the notated bottom number. */
+function beatUnit(timeSig: string | null | undefined): number {
+  if (!timeSig) return 1;
+  const [num, den] = timeSig.split('/').map(Number);
+  return den === 8 && num % 3 === 0 ? 1.5 : 1;
+}
+
+/** Emit a voice, beaming sub-crotchet notes that share a beat. In ABC, adjacent notes
+ *  with NO space between them are beamed; a space breaks the beam. Emitting every note
+ *  space-separated (the old behaviour) left quavers unbeamed — wrong for the metre. So
+ *  notes shorter than a crotchet that fall in the same beat are glued; everything else
+ *  (crotchet-or-longer, rests, a dynamic, a bar edge, a new beat) gets a space. */
+function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, unit: number): string {
+  let out = '';
   let pendingDecoration = '';
+  let beatPos = 0; // crotchet-beats elapsed in the current bar
+  let prevBeamable = false;
+  let prevBeat = -1;
+
+  const append = (token: string, glue: boolean) => {
+    out += out === '' ? token : (glue ? '' : ' ') + token;
+  };
+
   for (const ev of voice.events) {
-    switch (ev.type) {
-      case 'dynamic':
-        pendingDecoration += dynamicToAbc(ev);
-        break;
-      case 'note':
-        tokens.push(pendingDecoration + noteToAbc(ev, keyAcc));
-        pendingDecoration = '';
-        break;
-      case 'chord':
-        tokens.push(pendingDecoration + chordToAbc(ev, keyAcc));
-        pendingDecoration = '';
-        break;
-      case 'rest':
-        tokens.push(pendingDecoration + restToAbc(ev));
-        pendingDecoration = '';
-        break;
-      case 'barline':
-        if (pendingDecoration) throw new Error('Dynamic marking must precede a note, not a barline');
-        tokens.push(ev.style === 'double' ? '||' : '|');
-        break;
+    if (ev.type === 'dynamic') {
+      pendingDecoration += dynamicToAbc(ev);
+      continue;
     }
+    if (ev.type === 'barline') {
+      if (pendingDecoration) throw new Error('Dynamic marking must precede a note, not a barline');
+      append(ev.style === 'double' ? '||' : '|', false);
+      beatPos = 0;
+      prevBeamable = false;
+      prevBeat = -1;
+      continue;
+    }
+
+    const d = beatsOf(ev.dur, ev.dots ?? 0);
+    const beat = Math.floor((beatPos + EPS) / unit);
+    const isPitched = ev.type === 'note' || ev.type === 'chord';
+    const beamable = isPitched && d <= 0.5; // quaver or shorter carries a beam
+    const body = ev.type === 'note' ? noteToAbc(ev, keyAcc) : ev.type === 'chord' ? chordToAbc(ev, keyAcc) : restToAbc(ev);
+
+    // Glue to the previous token only when both are beam-carrying notes in the same beat,
+    // and no dynamic sits between them (a marking starts a fresh group).
+    const glue = beamable && prevBeamable && beat === prevBeat && pendingDecoration === '';
+    append(pendingDecoration + body, glue);
+
+    beatPos += d;
+    prevBeamable = beamable;
+    prevBeat = beat;
+    pendingDecoration = '';
   }
+
   if (pendingDecoration) throw new Error('Dynamic marking has no following note');
-  return tokens.join(' ');
+  return out;
 }
 
 /** Project a Music object to a complete, renderable ABC tune string. */
@@ -205,7 +242,8 @@ export function musicToAbc(music: Music): string {
     `K:${keyName(music.key_sig)} ${clefTag(music.clef)}`,
   ].join('\n');
 
-  const body = music.voices.map((voice) => voiceToAbc(voice, keyAcc)).join('\n');
+  const unit = beatUnit(music.time_sig);
+  const body = music.voices.map((voice) => voiceToAbc(voice, keyAcc, unit)).join('\n');
 
   return `${header}\n${body}\n`;
 }

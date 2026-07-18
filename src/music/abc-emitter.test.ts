@@ -112,6 +112,43 @@ describe('musicToAbc', () => {
   });
 });
 
+describe('musicToAbc — beaming (302.38): a space breaks the beam, so beam within a beat', () => {
+  const quaver = (pitch: string) => ({ type: 'note' as const, pitch, dur: 'quaver' as const });
+  const crotchet = (pitch: string) => ({ type: 'note' as const, pitch, dur: 'crotchet' as const });
+  const bodyOf = (events: import('./types').MusicEvent[], time_sig: string) =>
+    musicToAbc({ clef: 'treble', key_sig: null, time_sig, voices: [{ events }] }).split('\n').filter((l) => l && !/^[XLMK]:/.test(l))[0];
+
+  test('two quavers in one beat are beamed (no space between them)', () => {
+    expect(bodyOf([quaver('C4'), quaver('D4')], '2/4')).toBe('C4D4');
+  });
+
+  test('four quavers in 2/4 beam two-by-two — a space at the beat boundary', () => {
+    expect(bodyOf([quaver('C4'), quaver('D4'), quaver('E4'), quaver('F4')], '2/4')).toBe('C4D4 E4F4');
+  });
+
+  test('a crotchet never beams to a neighbour (it carries no beam)', () => {
+    expect(bodyOf([quaver('C4'), crotchet('D4')], '2/4')).toBe('C4 D8');
+    expect(bodyOf([crotchet('C4'), quaver('D4')], '2/4')).toBe('C8 D4');
+  });
+
+  test('compound time beams by the dotted-crotchet beat — 6/8 beams in threes, not sixes', () => {
+    const six = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4'].map(quaver);
+    expect(bodyOf(six, '6/8')).toBe('C4D4E4 F4G4A4');
+  });
+
+  test('a barline breaks the beam', () => {
+    const events: import('./types').MusicEvent[] = [
+      quaver('C4'), quaver('D4'), { type: 'barline' }, quaver('E4'), quaver('F4'),
+    ];
+    expect(bodyOf(events, '2/4')).toBe('C4D4 | E4F4');
+  });
+
+  test('a dynamic starts a fresh group — the beam breaks at the marking', () => {
+    const events: import('./types').MusicEvent[] = [quaver('C4'), { type: 'dynamic', mark: 'f' }, quaver('D4')];
+    expect(bodyOf(events, '2/4')).toBe('C4 !f!D4');
+  });
+});
+
 describe('musicToAbc — dynamics (302.32)', () => {
   test('a dynamic glues its decoration onto the following note, not a separate token', () => {
     const music: Music = {
