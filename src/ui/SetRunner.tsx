@@ -62,13 +62,13 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   const isPassage = templateId === 'music_in_context';
 
   const passage = useMemo(
-    () => (isPassage ? buildContextPassage({ grade: 1, seed: itemIndex, atoms: lesson.atoms }) : null),
-    [isPassage, itemIndex, lesson.atoms],
+    () => (isPassage ? buildContextPassage({ grade: lesson.grade, seed: itemIndex, atoms: lesson.atoms }) : null),
+    [isPassage, itemIndex, lesson.atoms, lesson.grade],
   );
 
   const instance = useMemo(
-    () => (isPassage ? null : generate(templateId, { grade: 1, seed: itemIndex, atoms: lesson.atoms })),
-    [isPassage, templateId, itemIndex, lesson.atoms],
+    () => (isPassage ? null : generate(templateId, { grade: lesson.grade, seed: itemIndex, atoms: lesson.atoms })),
+    [isPassage, templateId, itemIndex, lesson.atoms, lesson.grade],
   );
 
   // Shared by both the checked (handleResult) and self-graded (handleSelfGrade)

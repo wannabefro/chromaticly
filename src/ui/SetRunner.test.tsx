@@ -9,7 +9,8 @@ jest.mock('react-native-webview', () => {
 import { act, fireEvent, render } from '@testing-library/react-native';
 
 import type { Lesson } from '../content/lessons';
-import { LESSONS } from '../content/lessons';
+import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
+import * as generators from '../engine/generators';
 import { generate } from '../engine/generators';
 import { ProgressProvider } from '../learn/ProgressContext';
 import { STORE_VERSION, type ProgressSnapshot, type SnapshotStorage } from '../learn/store';
@@ -72,6 +73,40 @@ describe('SetRunner — teach phase gates the set (302.3)', () => {
 
     expect(queryByTestId('teach-phase')).toBeNull();
     expect(getByTestId('set-count')).toBeTruthy();
+  });
+});
+
+// U3 (grade2-new-major-keys): a lesson's set must generate at the lesson's OWN
+// grade, not a hardcoded constant — otherwise a grade-2 lesson's grade-2-only
+// atoms (e.g. key_sig:Bb_major) fail validation when generated as grade 1.
+describe('SetRunner — generates at the lesson\'s own grade, not a global constant (U3)', () => {
+  test('a grade-2 lesson generates instances at grade 2', async () => {
+    const spy = jest.spyOn(generators, 'generate');
+    const grade2Lesson = LESSONS_BY_GRADE[2][0];
+    const storage = memoryStorage();
+    render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={grade2Lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    expect(spy).toHaveBeenCalledWith(grade2Lesson.templates[0], expect.objectContaining({ grade: 2 }));
+    spy.mockRestore();
+  });
+
+  test('a grade-1 lesson still generates instances at grade 1 (frozen)', async () => {
+    const spy = jest.spyOn(generators, 'generate');
+    const storage = memoryStorage();
+    render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    expect(spy).toHaveBeenCalledWith(lesson.templates[0], expect.objectContaining({ grade: 1 }));
+    spy.mockRestore();
   });
 });
 

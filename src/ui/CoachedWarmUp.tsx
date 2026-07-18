@@ -40,6 +40,9 @@ export function CoachedWarmUp({ onComplete, onClose }: CoachedWarmUpProps) {
   const tickRef = useRef(0);
 
   const instance = useMemo(
+    // Deliberately grade: 1, not lesson.grade (D11): the warm-up runs pre-onboarding,
+    // before any profile/lesson exists, and its note-read atom is G1 scope regardless
+    // of the grade the learner is about to select.
     () => generate(WARM_UP_ATOM, { grade: 1, seed: index, atoms: [WARM_UP_ATOM] }),
     // attempt is the retry signal — same seed, new identity. eslint-disable-next-line react-hooks/exhaustive-deps
     [index, attempt],

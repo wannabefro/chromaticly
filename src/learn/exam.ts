@@ -84,6 +84,8 @@ export function buildExamPaper(paperSeed = 0): ExamPaper {
       questions.push({
         section: section.strand,
         sectionTitle: section.title,
+        // Deliberately grade: 1, not threaded (D11): this builds the Grade-1 paper by
+        // definition — generalizing to other grades is the Grade-2-exam slice's job.
         instance: generate(template, { grade: 1, seed, atoms: section.atoms }),
       });
       n++;
