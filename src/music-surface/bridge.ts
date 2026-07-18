@@ -21,7 +21,10 @@ export type SurfaceEvent =
   | { type: 'error'; message: string }
   | { type: 'log'; message: string }
   /** The learner tapped a bar directly in the score (1-indexed, design 4c). */
-  | { type: 'barTapped'; bar: number };
+  | { type: 'barTapped'; bar: number }
+  /** The learner long-pressed a bar to hear just it (1-indexed, design 4c). The surface
+   *  plays that bar itself; this fires so RN can react (feedback), not to drive audio. */
+  | { type: 'barHeld'; bar: number };
 
 export function encodeCommand(cmd: SurfaceCommand): string {
   return JSON.stringify(cmd);

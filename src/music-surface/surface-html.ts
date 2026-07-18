@@ -57,6 +57,11 @@ export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* A long-press to hear a bar (design 4c) must not raise the iOS text callout /
+       selection menu, which would swallow the gesture. */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
   #paper svg { display: block; width: 100%; height: auto; }
 </style>
@@ -72,6 +77,7 @@ ${playButton}
   var AUTORUN = ${autorun};
   var visualObj = null;
   var synth = null;
+  var pressStart = 0; // touchstart time — lets onNoteClick tell a long-press from a tap
 
   function emit(ev) {
     var s = JSON.stringify(ev);
@@ -140,7 +146,54 @@ ${playButton}
   function onNoteClick(abcelem, tuneNumber, classes, analysis) {
     var str = [classes, analysis && analysis.parentClasses].join(' ');
     var raw = measureFromClasses(str);
-    if (raw != null) emit({ type: 'barTapped', bar: raw + 1 });
+    if (raw == null) return;
+    var bar = raw + 1;
+    // A long press hears the bar (design 4c); a quick tap selects it.
+    if (pressStart && (Date.now() - pressStart) > 450) {
+      emit({ type: 'barHeld', bar: bar });
+      playBar(bar);
+    } else {
+      emit({ type: 'barTapped', bar: bar });
+    }
+  }
+
+  /** Distinct measures in the score (0-indexed measure classes, incl. the clef's) — the
+   *  bar count, used to seek the synth to a single bar. */
+  function measureCount() {
+    var svg = svgEl();
+    if (!svg) return 0;
+    var set = {};
+    Array.prototype.forEach.call(svg.querySelectorAll('[class*="abcjs-mm"]'), function (el) {
+      var r = measureFromClasses(el.getAttribute('class'));
+      if (r != null) set[r] = true;
+    });
+    return Object.keys(set).length;
+  }
+
+  /** Play ONLY bar N (design 4c long-press). Bars are equal length in a uniform metre, so
+   *  bar N starts at (N-1)/bars of the tune and lasts totalTime/bars; seek there, start,
+   *  and stop after that span (+ a little ring-out). */
+  function playBar(bar) {
+    if (!ABCJS.synth.supportsAudio()) { emit({ type: 'audioUnsupported' }); return; }
+    var bars = measureCount();
+    if (!bars || bar < 1 || bar > bars) return;
+    var AC = window.AudioContext || window.webkitAudioContext;
+    var ac = new AC();
+    ac.resume().then(function () {
+      var s = new ABCJS.synth.CreateSynth();
+      return s.init({ audioContext: ac, visualObj: visualObj, options: SOUNDFONT ? { soundFontUrl: SOUNDFONT } : {} })
+        .then(function () { return s.prime(); })
+        .then(function () {
+          var total = (visualObj && visualObj.getTotalTime) ? visualObj.getTotalTime() : 0; // seconds
+          var barMs = total > 0 ? (total * 1000 / bars) : 0;
+          s.seek((bar - 1) / bars);
+          s.start();
+          emit({ type: 'played', latencyMs: 0 });
+          if (barMs > 0) setTimeout(function () { try { s.stop(); } catch (e) {} }, barMs + 40);
+        });
+    }).catch(function (e) {
+      emit({ type: 'error', message: 'playBar: ' + (e && e.message || e) });
+    });
   }
 
   /** Tint the bar (1-indexed) with a translucent rect behind the notes, or clear it. The
@@ -201,7 +254,9 @@ ${playButton}
     var btn = document.getElementById('surface-play');
     if (btn) btn.addEventListener('click', play);
     // The bar-tap is handled by abcjs's clickListener (wired in renderAbc), not a manual
-    // DOM listener — abcjs owns the note layout and hit-testing.
+    // DOM listener — abcjs owns the note layout and hit-testing. We only track when a
+    // press began, so onNoteClick can tell a long-press (hear the bar) from a tap.
+    document.addEventListener('touchstart', function () { pressStart = Date.now(); }, { passive: true });
     if (AUTORUN) play();
   }
   if (document.readyState === 'loading') {

@@ -63,4 +63,15 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('abcjs-mm(\\d+)');
     expect(html).not.toContain('abcjs-mm(d+)');
   });
+
+  // Design 4c: long-press a bar to hear just it. A press-duration flag splits a hold from
+  // a tap, and playBar seeks the synth to that one bar.
+  test('wires long-press-to-hear a single bar', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain("type: 'barHeld'"); // a long press hears the bar
+    expect(html).toContain('function playBar'); // and plays only it
+    expect(html).toContain('.seek('); // by seeking the synth to the bar
+    expect(html).toContain('pressStart'); // tap vs hold is a press-duration decision
+    expect(html).toContain('-webkit-touch-callout: none'); // no iOS callout to swallow the press
+  });
 });

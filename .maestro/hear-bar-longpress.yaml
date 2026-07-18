@@ -1,0 +1,42 @@
+# 302.39 / design 4c — long-press a bar to HEAR just that bar (vs a tap, which SELECTS
+# it). Audio can't be asserted in Maestro, so this proves the gesture split: a long
+# press must NOT select the bar (it plays it), while a quick tap on the same note does
+# select it. If the long-press wrongly selected, step 1 would already show "You picked".
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=music-in-context
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+- scrollUntilVisible:
+    element: { id: "unit-row-music-in-context" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-music-in-context" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "find-the-bar" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+
+# Long-press a note in the score: it HEARS the bar, and must NOT select it.
+- longPressOn: { id: "stimulus-music" }
+- assertVisible: { text: ".*Tap the bar in the score.*" } # still un-picked — a hold is not a pick
+- takeScreenshot: bar-long-pressed
+
+# A quick tap on the same note DOES select the bar — proving the gesture split.
+- tapOn: { id: "stimulus-music" }
+- assertVisible: { text: ".*You picked bar.*" }

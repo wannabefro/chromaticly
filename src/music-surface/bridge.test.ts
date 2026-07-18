@@ -25,6 +25,7 @@ describe('bridge protocol round-trips', () => {
     { type: 'error', message: 'boom' },
     { type: 'log', message: 'hi' },
     { type: 'barTapped', bar: 3 },
+    { type: 'barHeld', bar: 2 },
   ];
 
   test.each(commands)('command %j survives encode -> decode', (cmd) => {
