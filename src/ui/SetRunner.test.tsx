@@ -133,6 +133,7 @@ describe('SetRunner — flashcard (U7): self-graded items route through recordFl
     templates: ['term_meaning_flashcard'],
     worked_example: null,
     unlocks: null,
+    grade: 1,
   };
 
   async function gradeFlashcard(getByTestId: (id: string) => any, grade: string) {
@@ -197,6 +198,7 @@ describe('SetRunner — multi-template lessons cycle their templates across item
     templates: ['rhythm_sum', 'add_time_signature'],
     worked_example: null,
     unlocks: null,
+    grade: 1,
   };
 
   async function answerCorrectAt(getByTestId: (id: string) => any, templateId: string, seed: number) {

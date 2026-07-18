@@ -1,6 +1,15 @@
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
-import { assertAtomResolves, assertUnlockGraph, LESSONS, lessonById, type Lesson } from './lessons';
+import {
+  assertAtomResolves,
+  assertNoCrossDocDuplicateIds,
+  assertUnlockGraph,
+  loadDoc,
+  LESSONS,
+  LESSONS_BY_GRADE,
+  lessonById,
+  type Lesson,
+} from './lessons';
 import { assertRhythmFillsBars, beatGrid } from './teach-rhythm';
 
 describe('grade1 lessons — the bundled doc loads and cross-checks clean', () => {
@@ -11,8 +20,17 @@ describe('grade1 lessons — the bundled doc loads and cross-checks clean', () =
   test('every atom in every lesson resolves to a real generator atom', () => {
     for (const lesson of LESSONS) {
       for (const atom of lesson.atoms) {
-        expect(() => assertAtomResolves(atom)).not.toThrow();
+        expect(() => assertAtomResolves(atom, lesson.grade)).not.toThrow();
       }
+    }
+  });
+
+  test('every loaded grade-1 lesson is stamped grade 1', () => {
+    for (const lesson of LESSONS_BY_GRADE[1]) {
+      expect(lesson.grade).toBe(1);
+    }
+    for (const lesson of LESSONS) {
+      expect(lesson.grade).toBe(1);
     }
   });
 
@@ -79,7 +97,44 @@ describe('grade1 lessons — atom cross-check rejects dangling references (why: 
     'note_read:C4', // missing clef segment
     'gremlin:xyz', // unknown kind
   ])('rejects malformed atom "%s"', (atom) => {
-    expect(() => assertAtomResolves(atom)).toThrow();
+    expect(() => assertAtomResolves(atom, 1)).toThrow();
+  });
+});
+
+describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcoded to G1', () => {
+  // A G2-only key: in scope at grade 2, out of scope at grade 1.
+  test('key_sig:Bb_major resolves at grade 2 but not grade 1', () => {
+    expect(() => assertAtomResolves('key_sig:Bb_major', 2)).not.toThrow();
+    expect(() => assertAtomResolves('key_sig:Bb_major', 1)).toThrow();
+  });
+
+  // B3 sits inside G2's treble range (A3..C6) but below G1's floor (C4).
+  test('note_read:treble:B3 resolves at grade 2 but not grade 1', () => {
+    expect(() => assertAtomResolves('note_read:treble:B3', 2)).not.toThrow();
+    expect(() => assertAtomResolves('note_read:treble:B3', 1)).toThrow();
+  });
+});
+
+describe('lessons — a lesson id reused across two grade docs fails loud at load time', () => {
+  test('assertNoCrossDocDuplicateIds throws when a synthetic second doc reuses a grade-1 id', () => {
+    const duplicateId = LESSONS_BY_GRADE[1][0].id;
+    const syntheticDoc = loadDoc({
+      grade: 2,
+      version: 'synthetic-test-doc',
+      lessons: [
+        {
+          id: duplicateId,
+          title: 'Synthetic duplicate',
+          strand: 'pitch',
+          atoms: ['rhythm_sum'],
+          templates: ['rhythm_sum'],
+          unlocks: null,
+        },
+      ],
+    });
+    expect(() => assertNoCrossDocDuplicateIds([{ grade: 1, version: 'g1', lessons: LESSONS_BY_GRADE[1] }, syntheticDoc])).toThrow(
+      new RegExp(`"${duplicateId}".*more than one grade doc`),
+    );
   });
 });
 
@@ -92,6 +147,7 @@ describe('grade1 lessons — unlock graph invariants', () => {
       atoms: ['rhythm_sum'],
       templates: ['rhythm_sum'],
       unlocks: ids[i + 1],
+      grade: 1,
     }));
 
   test('the real sequence is a single acyclic chain reaching every lesson', () => {

@@ -25,6 +25,7 @@ const lessonA: Lesson = {
   atoms: ['x', 'y'],
   templates: ['note_naming'],
   unlocks: 'b',
+  grade: 1,
 };
 const lessonB: Lesson = { ...lessonA, id: 'b', atoms: ['z'], unlocks: null };
 

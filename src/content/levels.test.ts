@@ -1,14 +1,17 @@
-import { LESSONS, lessonById } from './lessons';
+import { LESSONS_BY_GRADE, lessonById } from './lessons';
 import { LEVELS } from './levels';
 
-describe('levels — Level 1 derives dynamically from LESSONS (AD7, not a frozen fixture)', () => {
+describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, not a frozen fixture)', () => {
   const level1 = LEVELS[0];
 
-  test('Level 1 is unlocked and has one unit id per lesson, in lesson order', () => {
+  // Sourced from the grade-1 doc alone (LESSONS_BY_GRADE[1]), not the merged
+  // LESSONS export — otherwise a later-registered grade-2 doc would silently
+  // inflate this level's unit list and exam threshold.
+  test('Level 1 is unlocked and has one unit id per grade-1 lesson, in lesson order', () => {
     expect(level1.id).toBe('level-1');
     expect(level1.grade).toBe(1);
     expect(level1.unlocked).toBe(true);
-    expect(level1.unitIds).toEqual(LESSONS.map((l) => l.id));
+    expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 
   test('every Level 1 unit id resolves to a real lesson', () => {

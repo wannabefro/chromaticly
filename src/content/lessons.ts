@@ -1,12 +1,14 @@
-// Grade 1 lesson sequence (U9): the ordered learn-path Learn-path lite consumes.
-// curriculum/grade1-lessons.json is authored data; this module loads and
-// zod-validates it, then cross-checks every referenced atom/template against the
-// live generator registries and asserts the unlock graph is a single acyclic,
-// fully-reachable chain. It fails loud at import time on any dangling reference
-// or malformed graph — a typo'd atom id is a bug, not a silently-dropped lesson.
+// Multi-grade lesson loader (U9, grade-2-foundation U1). Each
+// curriculum/gradeN-lessons.json is authored data; loadDoc zod-validates one
+// doc, cross-checks every referenced atom/template against the live generator
+// registries at that doc's grade, and asserts its unlock graph is a single
+// acyclic, fully-reachable chain. It fails loud at import time on any
+// dangling reference, malformed graph, or lesson id reused across grades.
+// Only grade1-lessons.json is registered so far, so today's behavior is
+// Grade 1, byte-identical to before this doc became multi-grade-capable.
 
 import { z } from 'zod';
-import raw from '../../curriculum/grade1-lessons.json';
+import grade1Raw from '../../curriculum/grade1-lessons.json';
 import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -65,11 +67,13 @@ const LessonsDocSchema = z.object({
 
 export type WorkedExample = z.infer<typeof WorkedExampleSchema>;
 export type Teach = z.infer<typeof TeachSchema>;
-export type Lesson = z.infer<typeof LessonSchema>;
-export type LessonsDoc = z.infer<typeof LessonsDocSchema>;
+// `grade` is stamped onto every lesson at load time from its doc's grade — it
+// is not part of the authored JSON or the zod schema (see loadDoc).
+export type Lesson = z.infer<typeof LessonSchema> & { grade: number };
+export type LessonsDoc = Omit<z.infer<typeof LessonsDocSchema>, 'lessons'> & { lessons: Lesson[] };
 
-/** Throws if an SRS-atom id does not resolve to something a generator can emit. */
-export function assertAtomResolves(atom: string): void {
+/** Throws if an SRS-atom id does not resolve to something a generator can emit at `grade`. */
+export function assertAtomResolves(atom: string, grade: number): void {
   const { kind, parts } = parseAtom(atom);
   switch (kind) {
     case 'rhythm_sum':
@@ -82,25 +86,25 @@ export function assertAtomResolves(atom: string): void {
       if (parts.length !== 0) throw new Error(`lessons: malformed add_time_signature atom "${atom}"`);
       return;
     case 'note_read': {
-      // All lesson content is grade 1 today; threading `lesson.grade` through atom
-      // validation is the grade-2 content slice's job, not this one.
       const [clef, pitch] = parts;
-      if (!scopeForGrade(1).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G1 scope`);
+      if (!scopeForGrade(grade).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G${grade} scope`);
       const natural = (pitch ?? '').replace(/[#b]/, '');
-      if (!diatonicPitchesInRange(clef as Clef, 1).includes(natural)) {
-        throw new Error(`lessons: atom "${atom}" pitch is outside the ${clef} G1 range`);
+      if (!diatonicPitchesInRange(clef as Clef, grade).includes(natural)) {
+        throw new Error(`lessons: atom "${atom}" pitch is outside the ${clef} G${grade} range`);
       }
       return;
     }
     case 'key_sig': {
       const [key] = parts;
       const [tonic, mode] = (key ?? '').split('_');
-      if (mode !== 'major' || !scopeForGrade(1).keysMajor.includes(tonic)) {
-        throw new Error(`lessons: atom "${atom}" is not a G1 major key`);
+      if (mode !== 'major' || !scopeForGrade(grade).keysMajor.includes(tonic)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} major key`);
       }
       return;
     }
     case 'interval': {
+      // Grade-agnostic: the above-tonic 2nd..octave range holds at every grade
+      // this curriculum currently covers, so there is no scope call here.
       const n = Number(parts[0]);
       if (!Number.isInteger(n) || n < 2 || n > 8) throw new Error(`lessons: atom "${atom}" is not a G1 interval (2..8)`);
       return;
@@ -160,13 +164,16 @@ export function assertUnlockGraph(lessons: Lesson[]): void {
   }
 }
 
-function load(): LessonsDoc {
-  const doc = LessonsDocSchema.parse(raw);
-  for (const lesson of doc.lessons) {
+/** Parses, cross-checks, and returns one grade's lesson doc, with `grade` stamped onto every lesson. */
+export function loadDoc(raw: unknown): LessonsDoc {
+  const parsed = LessonsDocSchema.parse(raw);
+  const lessons: Lesson[] = parsed.lessons.map((lesson) => ({ ...lesson, grade: parsed.grade }));
+
+  for (const lesson of lessons) {
     for (const template of lesson.templates) {
       if (!(template in GENERATORS)) throw new Error(`lessons: "${lesson.id}" uses unknown template "${template}"`);
     }
-    for (const atom of lesson.atoms) assertAtomResolves(atom);
+    for (const atom of lesson.atoms) assertAtomResolves(atom, lesson.grade);
     if (lesson.worked_example && !(lesson.worked_example.template_id in GENERATORS)) {
       throw new Error(`lessons: "${lesson.id}" worked example uses unknown template "${lesson.worked_example.template_id}"`);
     }
@@ -178,12 +185,47 @@ function load(): LessonsDoc {
     // beat grid would be a lie — fail at import, not on device.
     if (lesson.teach?.theoryInSound) assertRhythmFillsBars(lesson.teach.theoryInSound);
   }
-  assertUnlockGraph(doc.lessons);
-  return doc;
+  assertUnlockGraph(lessons);
+
+  return { ...parsed, lessons };
 }
 
-export const LESSONS_DOC: LessonsDoc = load();
-export const LESSONS: Lesson[] = LESSONS_DOC.lessons;
+/** Throws if any lesson id is reused across two different grade docs (within-doc dupes are a separate concern). */
+export function assertNoCrossDocDuplicateIds(docs: readonly LessonsDoc[]): void {
+  const docIndexesById = new Map<string, Set<number>>();
+  docs.forEach((doc, docIndex) => {
+    for (const lesson of doc.lessons) {
+      const docIndexes = docIndexesById.get(lesson.id) ?? new Set<number>();
+      docIndexes.add(docIndex);
+      docIndexesById.set(lesson.id, docIndexes);
+    }
+  });
+  for (const [id, docIndexes] of docIndexesById) {
+    if (docIndexes.size > 1) {
+      const grades = [...docIndexes].map((i) => docs[i].grade);
+      throw new Error(`lessons: id "${id}" is used by more than one grade doc (grades ${grades.join(', ')})`);
+    }
+  }
+}
+
+const GRADE_DOCS: readonly LessonsDoc[] = [loadDoc(grade1Raw)];
+
+assertNoCrossDocDuplicateIds(GRADE_DOCS);
+
+export const LESSONS_BY_GRADE: Record<number, Lesson[]> = Object.fromEntries(GRADE_DOCS.map((doc) => [doc.grade, doc.lessons]));
+
+// Grade-1 doc only — nothing else loads yet (see GRADE_DOCS above).
+export const LESSONS_DOC: LessonsDoc = GRADE_DOCS[0];
+
+// Concatenated in grade order so a second registered doc extends this, not rewrites it.
+export const LESSONS: Lesson[] = Object.keys(LESSONS_BY_GRADE)
+  .map(Number)
+  .sort((a, b) => a - b)
+  .flatMap((grade) => LESSONS_BY_GRADE[grade]);
+
+export function lessonsForGrade(grade: number): Lesson[] {
+  return LESSONS_BY_GRADE[grade] ?? [];
+}
 
 export function lessonById(id: string): Lesson | undefined {
   return LESSONS.find((l) => l.id === id);

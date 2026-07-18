@@ -15,7 +15,7 @@
 // (note_value_compare, term_meaning). A coverage assertion fails loudly if a
 // registered generator is ever left unpinned.
 
-import { LESSONS } from '../../content/lessons';
+import { LESSONS_BY_GRADE } from '../../content/lessons';
 import { buildContextPassage } from './context-passage';
 import { generate, GENERATORS } from './index';
 import { atomsForLesson } from './test-helpers';
@@ -28,8 +28,8 @@ interface Case {
   atoms: string[];
 }
 
-// Every (lesson, template) pair production actually generates.
-const LESSON_CASES: Case[] = LESSONS.flatMap((lesson) =>
+// Every (lesson, template) pair production actually generates, pinned at grade 1.
+const LESSON_CASES: Case[] = LESSONS_BY_GRADE[1].flatMap((lesson) =>
   lesson.templates.map((templateId) => ({
     label: `${templateId} @ ${lesson.id}`,
     templateId,

@@ -1,10 +1,11 @@
 // Level/grade model (U1, AD7). Level 1's unit list derives dynamically from
-// LESSONS rather than a frozen id literal, so a later content restructure
-// (U9) can't silently invalidate this file — one row per lesson, always.
+// LESSONS_BY_GRADE[1] rather than a frozen id literal, so a later content
+// restructure (U9) can't silently invalidate this file — one row per grade-1
+// lesson, always, and a later grade-2 doc registering can never inflate it.
 // Levels 2-5 are locked placeholders: no content, no unlock path yet
 // (RD1/R1/R4). This module must stay RN/expo-free (core-boundary test).
 
-import { LESSONS } from './lessons';
+import { LESSONS_BY_GRADE } from './lessons';
 
 export interface Level {
   id: string;
@@ -31,7 +32,7 @@ function lockedLevel(grade: number): Level {
 }
 
 function level1(): Level {
-  const unitIds = LESSONS.map((l) => l.id);
+  const unitIds = LESSONS_BY_GRADE[1].map((l) => l.id);
   return {
     id: 'level-1',
     grade: 1,

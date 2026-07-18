@@ -20,7 +20,7 @@
 import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { LESSONS, lessonById } from '../content/lessons';
+import { lessonById, lessonsForGrade } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { examReadiness, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
@@ -56,15 +56,17 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
   }, [store, revision, level]);
 
+  const grade1Lessons = lessonsForGrade(1);
+
   const collected = useMemo(() => {
     if (!store) return 0;
-    return LESSONS.filter((lesson) => store.isFactCollected(lesson.id)).length;
+    return grade1Lessons.filter((lesson) => store.isFactCollected(lesson.id)).length;
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
   }, [store, revision]);
 
   const mastery = useMemo(() => {
     if (!store) return {};
-    return strandMastery(LESSONS, store);
+    return strandMastery(grade1Lessons, store);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
   }, [store, revision]);
 
@@ -123,7 +125,7 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
           <View style={styles.rowBetween}>
             <Text style={styles.cardTitle}>Fact-card collection</Text>
             <Text style={styles.value} testID="profile-facts">
-              {collected} of {LESSONS.length}
+              {collected} of {grade1Lessons.length}
             </Text>
           </View>
           <Text style={styles.cardNote}>One to find in every lesson’s teach phase.</Text>
