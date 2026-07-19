@@ -1,0 +1,64 @@
+# Grade 2 acceptance (chromaticly-elb.3) — the headline the whole slice exists for:
+# a seeded learner lands on a map with Level 2 OPEN, enters the new key-signatures
+# unit, and answers a Grade-2 key-signature MCQ (A/B♭/E♭ major).
+#
+# ?seed=key-signatures-2 fast-forwards via the REAL unlock path (grade 1 mastered,
+# Level 1 exam recorded cleared, Level 2 root unlocked). If Level 2 were still
+# locked, level-node-level-2 would render collapsed and unit-row-key-signatures-2
+# would never appear — so reaching the set is itself the unlock proof.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=key-signatures-2
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# Level 2 is unlocked and expanded (the slice's headline user-visible behavior).
+# It sits below Level 1's eight units, so scroll it into view rather than asserting
+# at the top of the map. A locked Level 2 would render collapsed with no unit row,
+# so reaching unit-row-key-signatures-2 is itself the unlock proof.
+- scrollUntilVisible:
+    element: { id: "level-node-level-2" }
+    direction: DOWN
+    timeout: 15000
+- scrollUntilVisible:
+    element: { id: "unit-row-key-signatures-2" }
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: g2-level-map
+- tapOn: { id: "unit-row-key-signatures-2" }
+
+# Every lesson opens on the teach phase (302.3); the CTA starts the set.
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g2-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g2-mcq
+
+# Answer, grade, land on the FeedbackSheet — the whole Grade-2 touch path on device.
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# The set advances to the next item rather than getting stuck on the sheet.
+- assertVisible: { id: "set-count" }
