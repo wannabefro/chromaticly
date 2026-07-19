@@ -41,3 +41,33 @@ describe('knowledge-base.ts — grade_scopes["2"].adds is reachable (Codex findi
     expect(KB.grade2Adds.rhythm_devices).toEqual(['triplet', 'triplet_with_rests', 'dotted_rests']);
   });
 });
+
+describe('knowledge-base.ts — key_signatures is the single fifths-count source (D5)', () => {
+  test('majors and minors carry the fifths-count for every G1/G2 tonic', () => {
+    expect(KB.keySignatures.majors.C).toBe(0);
+    expect(KB.keySignatures.majors.G).toBe(1);
+    expect(KB.keySignatures.majors.D).toBe(2);
+    expect(KB.keySignatures.majors.F).toBe(-1);
+    expect(KB.keySignatures.majors.Bb).toBe(-2);
+    expect(KB.keySignatures.majors.Eb).toBe(-3);
+    expect(KB.keySignatures.minors.A).toBe(0);
+    expect(KB.keySignatures.minors.E).toBe(1);
+    expect(KB.keySignatures.minors.D).toBe(-1);
+  });
+
+  test('sharp_order and flat_order are present and canonically ordered', () => {
+    expect(KB.keySignatures.sharp_order).toEqual(['F#', 'C#', 'G#', 'D#', 'A#', 'E#']);
+    expect(KB.keySignatures.flat_order).toEqual(['Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb']);
+  });
+});
+
+describe('knowledge-base.ts — scale_patterns carries the letter-walkable T/S interval arrays', () => {
+  test('major, harmonic_minor, melodic_minor_asc parse as T/S arrays, not forced from the prose entries', () => {
+    expect(KB.scalePatterns.major).toEqual(['T', 'T', 'S', 'T', 'T', 'T', 'S']);
+    expect(KB.scalePatterns.harmonic_minor).toEqual(['T', 'S', 'T', 'T', 'S', 'T+S', 'S']);
+    expect(KB.scalePatterns.melodic_minor_asc).toEqual(['T', 'S', 'T', 'T', 'T', 'T', 'S']);
+    // prose entries stay unparsed/loosely typed — not coerced into the array shape
+    expect(KB.scalePatterns.melodic_minor_desc).toBe('natural minor descending (lowered 7th and 6th)');
+    expect(Array.isArray(KB.scalePatterns.melodic_minor_desc)).toBe(false);
+  });
+});

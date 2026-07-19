@@ -24,6 +24,26 @@ const Grade1ScopeSchema = z.object({
   }),
 });
 
+const KeySignaturesSchema = z.object({
+  sharp_order: z.array(z.string()).optional(),
+  flat_order: z.array(z.string()).optional(),
+  majors: z.record(z.string(), z.number()),
+  minors: z.record(z.string(), z.number()),
+});
+
+// major/harmonic_minor/melodic_minor_asc are the letter-walkable T/S interval
+// patterns the engine builds scales from. melodic_minor_desc and chromatic
+// are prose in the KB (e.g. "natural minor descending...") — left loosely
+// typed rather than forced into the array shape; normalizing them is the
+// G3 slice's job.
+const ScalePatternsSchema = z.object({
+  major: z.array(z.string()),
+  harmonic_minor: z.array(z.string()),
+  melodic_minor_asc: z.array(z.string()),
+  melodic_minor_desc: z.unknown(),
+  chromatic: z.unknown(),
+});
+
 const Grade2AddsSchema = z.object({
   time_signatures: z.array(z.string()),
   rhythm_devices: z.array(z.string()),
@@ -39,6 +59,8 @@ const Grade2AddsSchema = z.object({
 const KnowledgeBaseSchema = z.object({
   theory_data: z.object({
     note_values: z.record(z.string(), NoteValueEntrySchema),
+    key_signatures: KeySignaturesSchema,
+    scale_patterns: ScalePatternsSchema,
   }),
   grade_scopes: z.object({
     '1': Grade1ScopeSchema,
@@ -52,6 +74,8 @@ const parsed = KnowledgeBaseSchema.parse(raw);
 
 export const KB = {
   noteValues: parsed.theory_data.note_values,
+  keySignatures: parsed.theory_data.key_signatures,
+  scalePatterns: parsed.theory_data.scale_patterns,
   grade1: parsed.grade_scopes['1'],
   grade2Adds: parsed.grade_scopes['2'].adds,
 };

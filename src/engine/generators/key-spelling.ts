@@ -29,3 +29,18 @@ export function spellInKey(naturalPitch: string, key: string): string {
   const symbol = acc === 'sharp' ? '#' : acc === 'flat' ? 'b' : '';
   return `${letter}${symbol}${octave}`;
 }
+
+/** Spell a natural-letter pitch under a full key SIGNATURE id ("E_minor",
+ *  "Bb_major"), not just a major tonic: a minor key signature spells like its
+ *  relative major's (the signature, not the mode, owns the accidental), so
+ *  spellInKeySig('F4', 'E_minor') === 'F#4'. Superset of spellInKey, not a
+ *  fork: spellInKeySig(p, `${key}_major`) === spellInKey(p, key) for any
+ *  major key. Non-natural input is returned unchanged. */
+export function spellInKeySig(naturalPitch: string, keySig: string): string {
+  const m = /^([A-G])(-?\d+)$/.exec(naturalPitch);
+  if (!m) return naturalPitch;
+  const [, letter, octave] = m;
+  const acc = keyAccidentals(keySig)[letter];
+  const symbol = acc === 'sharp' ? '#' : acc === 'flat' ? 'b' : '';
+  return `${letter}${symbol}${octave}`;
+}
