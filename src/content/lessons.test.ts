@@ -218,22 +218,61 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
     expect(lesson!.grade).toBe(2);
   });
 
-  test('the grade-2 units are in the merged LESSONS list, after grade-1, ending on the terminal lesson', () => {
+  test('the grade-2 units are in the merged LESSONS list, after grade-1', () => {
     expect(LESSONS.map((l) => l.id)).toEqual(expect.arrayContaining(['key-signatures-2', 'minor-keys-2', 'minor-scales-2']));
-    expect(LESSONS[LESSONS.length - 1].id).toBe('minor-scales-2');
+  });
+});
+
+// U5 (grade3-melodic-minor plan, D7) — the grade-3 doc registers alongside
+// grade-1/2 (see registration in lessons.ts); grade-3 content validates
+// against grade-3 scope, the same teeth grade-1/2 content already goes
+// through above.
+describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
+  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 chain', () => {
+    expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual(['minor-keys-3', 'minor-scales-3', 'melodic-minor-3']);
   });
 
-  // Playability sweep: a unit the map can open must never throw mid-set. SetRunner
-  // seeds each of a set's SET_SIZE items with itemIndex (0..SET_SIZE-1,
-  // SetRunner.tsx:57,70) — this is the real seed range a learner hits.
-  describe.each(LESSONS_BY_GRADE[2])('$id playability sweep', (lesson) => {
-    for (const templateId of lesson.templates) {
-      test(`${templateId} generates across the real per-set seed range without throwing, tagging only this lesson's atoms`, () => {
-        for (let seed = 0; seed < SET_SIZE; seed++) {
-          const instance = generate(templateId, { grade: lesson.grade, seed, atoms: lesson.atoms });
-          expect(lesson.atoms).toContain(instance.srs_tags[0]);
-        }
-      });
-    }
+  test('lessonById resolves the grade-3 lesson stamped grade 3', () => {
+    const lesson = lessonById('minor-keys-3');
+    expect(lesson).toBeTruthy();
+    expect(lesson!.grade).toBe(3);
   });
+
+  test('the grade-3 units are in the merged LESSONS list, after grade-2, ending on the terminal lesson', () => {
+    expect(LESSONS.map((l) => l.id)).toEqual(expect.arrayContaining(['minor-keys-3', 'minor-scales-3', 'melodic-minor-3']));
+    expect(LESSONS[LESSONS.length - 1].id).toBe('melodic-minor-3');
+  });
+});
+
+describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just grade 1/2', () => {
+  test('key_sig:F#_minor resolves at grade 3 but not grade 2', () => {
+    expect(() => assertAtomResolves('key_sig:F#_minor', 3)).not.toThrow();
+    expect(() => assertAtomResolves('key_sig:F#_minor', 2)).toThrow();
+  });
+
+  test('scale:C#_minor_melodic resolves at grade 3 but not grade 2', () => {
+    expect(() => assertAtomResolves('scale:C#_minor_melodic', 3)).not.toThrow();
+    expect(() => assertAtomResolves('scale:C#_minor_melodic', 2)).toThrow();
+  });
+
+  // Bb minor is a grade-4 key (not in GRADE_3_SCOPE.keysMinor) — scope is law
+  // even for an atom that merely looks like a plausible G3 extension.
+  test('scale:Bb_minor_harmonic (a grade-4 key) throws at grade 3', () => {
+    expect(() => assertAtomResolves('scale:Bb_minor_harmonic', 3)).toThrow();
+  });
+});
+
+// Playability sweep, generalized over every grade the map can open (D7 note:
+// prefer generalizing this block over duplicating it per grade). SetRunner
+// seeds each of a set's SET_SIZE items with itemIndex (0..SET_SIZE-1,
+// SetRunner.tsx:57,70) — this is the real seed range a learner hits.
+describe.each([...LESSONS_BY_GRADE[2], ...LESSONS_BY_GRADE[3]])('$id playability sweep', (lesson) => {
+  for (const templateId of lesson.templates) {
+    test(`${templateId} generates across the real per-set seed range without throwing, tagging only this lesson's atoms`, () => {
+      for (let seed = 0; seed < SET_SIZE; seed++) {
+        const instance = generate(templateId, { grade: lesson.grade, seed, atoms: lesson.atoms });
+        expect(lesson.atoms).toContain(instance.srs_tags[0]);
+      }
+    });
+  }
 });

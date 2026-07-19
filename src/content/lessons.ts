@@ -11,6 +11,7 @@
 import { z } from 'zod';
 import grade1Raw from '../../curriculum/grade1-lessons.json';
 import grade2Raw from '../../curriculum/grade2-lessons.json';
+import grade3Raw from '../../curriculum/grade3-lessons.json';
 import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -231,7 +232,7 @@ export function assertNoCrossDocDuplicateIds(docs: readonly LessonsDoc[]): void 
 
 // Grade-1 first — order matters for the interim single-root-per-grade unlock
 // behavior (see U2 of the grade2-new-major-keys plan).
-const GRADE_DOCS: readonly LessonsDoc[] = [loadDoc(grade1Raw), loadDoc(grade2Raw)];
+const GRADE_DOCS: readonly LessonsDoc[] = [loadDoc(grade1Raw), loadDoc(grade2Raw), loadDoc(grade3Raw)];
 
 assertNoCrossDocDuplicateIds(GRADE_DOCS);
 

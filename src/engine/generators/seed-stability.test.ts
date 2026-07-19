@@ -236,3 +236,25 @@ if (GRADE_3_EXTRA_CASES.length > 0) {
     });
   });
 }
+
+// U5 (grade3-melodic-minor plan, D10) — lesson-derived grade-3 cases, mirroring
+// GRADE_2_CASES above: new snapshot keys only, additive alongside the U3/U4
+// pre-lesson GRADE_3_EXTRA_CASES pins (both may cover the same (template,
+// atoms) pair by design — the pre-lesson pins stay so a later cleanup has
+// two independent nets to delete from, not one).
+const GRADE_3_CASES: Case[] = LESSONS_BY_GRADE[3].flatMap((lesson) =>
+  lesson.templates.map((templateId) => ({
+    label: `${templateId} @ ${lesson.id}`,
+    templateId,
+    atoms: lesson.atoms,
+  })),
+);
+
+describe('seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte', () => {
+  describe.each(GRADE_3_CASES)('$label', ({ templateId, atoms }) => {
+    test('instances are a pure function of (template, grade, seed, atoms)', () => {
+      const instances = SEEDS.map((seed) => generate(templateId, { grade: 3, seed, atoms }));
+      expect(instances).toMatchSnapshot();
+    });
+  });
+});

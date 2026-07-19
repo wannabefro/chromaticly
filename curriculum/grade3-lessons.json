@@ -1,0 +1,129 @@
+{
+  "grade": 3,
+  "version": "g3-lessons-2026-07-19",
+  "lessons": [
+    {
+      "id": "minor-keys-3",
+      "title": "New minor keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:B_minor",
+        "key_sig:G_minor",
+        "key_sig:F#_minor",
+        "key_sig:C_minor",
+        "key_sig:C#_minor",
+        "key_sig:F_minor"
+      ],
+      "templates": [
+        "mode_swap"
+      ],
+      "worked_example": {
+        "template_id": "mode_swap",
+        "grade": 3,
+        "seed": 5
+      },
+      "teach": {
+        "objectives": [
+          "The six new relative pairs: B minor with D major, G minor with B♭ major, F♯ minor with A major, C minor with E♭ major, C♯ minor with E major, F minor with A♭ major",
+          "Two new major keys arrive alongside these pairs: E major (4 sharps) and A♭ major (4 flats)",
+          "How to count a minor 3rd down from a major tonic to find its relative minor"
+        ],
+        "concept": {
+          "title": "Grade 3 minor keys",
+          "body": "Six more minor keys join the syllabus, each sharing a key signature with a major key. B minor pairs with D major, G minor with B♭ major, F♯ minor with A major, C minor with E♭ major, C♯ minor with E major, and F minor with A♭ major. E major and A♭ major are new this grade too — E major has four sharps (F♯, C♯, G♯, D♯), and A♭ major has four flats (B♭, E♭, A♭, D♭). As before, the relative minor's tonic sits a minor 3rd below its major partner's.",
+          "example": {
+            "template_id": "mode_swap",
+            "grade": 3,
+            "seed": 9
+          }
+        },
+        "smartTip": "Count three semitones — a minor 3rd — down from the major tonic and you'll land on the relative minor, two letter-names lower: D down to B, B♭ down to G, A down to F♯, E♭ down to C, E down to C♯, A♭ down to F.",
+        "didYouKnow": "C♯ minor and F♯ minor are this course's first minor keys with a sharp in their own name — their key signatures still work exactly the same way as any other minor key."
+      },
+      "unlocks": "minor-scales-3"
+    },
+    {
+      "id": "minor-scales-3",
+      "title": "Harmonic minor in the new keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "scale:B_minor_harmonic",
+        "scale:G_minor_harmonic",
+        "scale:F#_minor_harmonic",
+        "scale:C_minor_harmonic",
+        "scale:C#_minor_harmonic",
+        "scale:F_minor_harmonic"
+      ],
+      "templates": [
+        "scale_construction"
+      ],
+      "worked_example": {
+        "template_id": "scale_construction",
+        "grade": 3,
+        "seed": 5
+      },
+      "teach": {
+        "objectives": [
+          "Harmonic minor is still the natural (key-signature) minor with the 7th note raised a semitone — now in six more keys",
+          "Two of the new raised 7ths spell unusual accidentals: F♯ minor's is E♯ (not F), and C♯ minor's is B♯ (not C)",
+          "C minor's raised 7th is B♮ and F minor's is E♮ — raising a flatted degree can land back on a natural"
+        ],
+        "concept": {
+          "title": "Harmonic minor in the new keys",
+          "body": "The same rule as before — raise the natural minor's 7th note a semitone — now applies to six more keys. Most of the new raised 7ths look as you'd expect: B minor's is A♯, G minor's is F♯. But the two sharp-tonic keys spell their raised 7th on the 7th letter even when that means an enharmonic-of-natural spelling: F♯ minor's raised 7th is E♯ (not F), and C♯ minor's is B♯ (not C). Meanwhile C minor's raised 7th is B♮ and F minor's is E♮ — raising a flatted note can land you back on a natural.",
+          "example": {
+            "template_id": "scale_construction",
+            "grade": 3,
+            "seed": 4
+          }
+        },
+        "smartTip": "Always spell the raised 7th on the 7th letter of the scale, never on a different letter — that's why F♯ minor's raised 7th is written E♯, not F natural.",
+        "didYouKnow": "E♯ and B♯ look unusual on the stave, but they're the correct, exam-expected spellings — writing F natural or C natural instead would name the wrong letter of the scale entirely."
+      },
+      "unlocks": "melodic-minor-3"
+    },
+    {
+      "id": "melodic-minor-3",
+      "title": "The melodic minor scale",
+      "strand": "scales_keys",
+      "atoms": [
+        "scale:A_minor_melodic",
+        "scale:E_minor_melodic",
+        "scale:D_minor_melodic",
+        "scale:B_minor_melodic",
+        "scale:G_minor_melodic",
+        "scale:F#_minor_melodic",
+        "scale:C_minor_melodic",
+        "scale:C#_minor_melodic",
+        "scale:F_minor_melodic"
+      ],
+      "templates": [
+        "scale_construction"
+      ],
+      "worked_example": {
+        "template_id": "scale_construction",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Melodic minor is directional: it raises the 6th and 7th notes going up, but reverts to natural minor coming down",
+          "The ascending and descending forms genuinely differ — the note you play going up is not always the note you play coming down",
+          "Melodic minor applies to every minor key you know so far, not just the six new ones"
+        ],
+        "concept": {
+          "title": "The melodic minor scale",
+          "body": "Melodic minor is the only minor form that changes with direction. Going up, it raises the 6th and 7th notes a semitone above the key signature, smoothing over the augmented 2nd that harmonic minor leaves between them. Coming down, both revert to natural minor — the plain key-signature 6th and 7th. So E melodic minor ascends E F♯ G A B C♯ D♯ E, but descends E D♮ C♮ B A G F♯ E: the raised C♯ and D♯ of the ascent return to C♮ and D♮ on the way down. This directional form applies to every minor key in this course, including A, E and D minor from Grade 2.",
+          "example": {
+            "template_id": "scale_construction",
+            "grade": 3,
+            "seed": 3
+          }
+        },
+        "smartTip": "Check the direction before you check the notes — a melodic minor scale's ascending and descending forms are genuinely different, not a memory slip.",
+        "didYouKnow": "Melodic minor's ascending form was designed to smooth out the awkward augmented-2nd leap of harmonic minor, which makes melodies harder to sing — the descending form then simply reverts to natural minor, since that leap isn't a problem going down."
+      },
+      "unlocks": null
+    }
+  ]
+}
