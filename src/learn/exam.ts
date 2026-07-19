@@ -94,6 +94,14 @@ export function buildExamPaper(paperSeed = 0): ExamPaper {
   return { questions, totalMarks: questions.length, sections: GRADE1_EXAM_SECTIONS };
 }
 
+/** Whether `grade` has a real exam paper (D8). Only Grade 1 does this slice —
+ *  `buildExamPaper` is Grade-1-only, and a stub "Grade 2 exam" would
+ *  misrepresent an exam paper. Gate `onPress` on both exam-gate call sites
+ *  with this, so a gate never opens onto a paper that doesn't exist. */
+export function hasExamPaper(grade: number): boolean {
+  return grade === 1;
+}
+
 export function bandFor(total: number, totalMarks: number): Band {
   const frac = totalMarks === 0 ? 0 : total / totalMarks;
   if (frac >= EXAM_BANDS.distinction) return 'distinction';

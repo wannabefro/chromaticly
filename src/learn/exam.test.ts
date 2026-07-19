@@ -9,6 +9,7 @@ import {
   examMinutes,
   examSeconds,
   GRADE1_EXAM_SECTIONS,
+  hasExamPaper,
   QUESTIONS_PER_SECTION,
   tallyExam,
 } from './exam';
@@ -86,5 +87,15 @@ describe('exam model — Grade-1 paper (302.2)', () => {
 
     const longer = { ...paper, totalMarks: paper.totalMarks * 2 };
     expect(examMinutes(longer)).toBe(examMinutes(paper) * 2);
+  });
+});
+
+// D8: no Grade 2 exam paper this slice — a gate must never open onto a paper
+// that doesn't exist, so the Level-2 exam gate stays press-disabled.
+describe('hasExamPaper — only Grade 1 has a real paper (D8, U5)', () => {
+  test('Grade 1 has a paper; Grade 2 (and beyond) does not', () => {
+    expect(hasExamPaper(1)).toBe(true);
+    expect(hasExamPaper(2)).toBe(false);
+    expect(hasExamPaper(3)).toBe(false);
   });
 });

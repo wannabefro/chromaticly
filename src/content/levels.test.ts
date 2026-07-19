@@ -27,18 +27,40 @@ describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, 
   });
 });
 
-describe('levels — Levels 2-5 are locked placeholders (R1, R4)', () => {
-  const higherLevels = LEVELS.slice(1);
+// U5: Level 2's shape derives from authored content, never a frozen literal
+// (the same anti-drift rule levels.ts:1-3 states for Level 1). Screens still
+// read the static `unlocked` field this unit (stays false — U6 wires the
+// dynamic isLevelUnlocked derivation into the UI).
+describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U5)', () => {
+  const level2 = LEVELS[1];
 
-  test('there are exactly four locked levels, grades 2 through 5', () => {
-    expect(higherLevels.map((l) => l.grade)).toEqual([2, 3, 4, 5]);
+  test('Level 2 has one unit id per grade-2 lesson, in lesson order', () => {
+    expect(level2.id).toBe('level-2');
+    expect(level2.grade).toBe(2);
+    expect(level2.unitIds).toEqual(LESSONS_BY_GRADE[2].map((l) => l.id));
   });
 
-  test('each is unlocked:false, has no units, and names a prerequisite', () => {
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1', () => {
+    expect(level2.examGate.unlockAtStars).toBe(level2.unitIds.length * 3);
+  });
+
+  test('the static unlocked field stays false this unit (U5 mid-stack; U6 removes it)', () => {
+    expect(level2.unlocked).toBe(false);
+  });
+});
+
+describe('levels — Levels 3-5 are locked placeholders (R1, R4)', () => {
+  const higherLevels = LEVELS.slice(2);
+
+  test('there are exactly three locked levels, grades 3 through 5', () => {
+    expect(higherLevels.map((l) => l.grade)).toEqual([3, 4, 5]);
+  });
+
+  test('each is unlocked:false, has no units, and names its OWN previous-grade prerequisite (D5 fixes the hardcoded "Level 1" bug)', () => {
     for (const level of higherLevels) {
       expect(level.unlocked).toBe(false);
       expect(level.unitIds).toEqual([]);
-      expect(level.prerequisite).toBe('Clear the Level 1 exam to unlock');
+      expect(level.prerequisite).toBe(`Clear the Level ${level.grade - 1} exam to unlock`);
     }
   });
 });

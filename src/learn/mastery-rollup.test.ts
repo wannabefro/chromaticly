@@ -1,6 +1,7 @@
 import { LESSONS, lessonById } from '../content/lessons';
+import { LEVELS } from '../content/levels';
 import { MASTERY_THRESHOLD } from './mastery';
-import { accountNudgeStats, deriveStars, strandMastery, unitStates } from './mastery-rollup';
+import { accountNudgeStats, currentLevel, deriveStars, isLevelUnlocked, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
 import { ProgressStore } from './store';
 
@@ -207,5 +208,41 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
     masterAtoms(store, l2.atoms); // l2 touched but NOT unlocked
     const stats = accountNudgeStats(store, LESSONS, 0);
     expect(stats.dueCount).toBe(l1.atoms.length); // l2's atoms excluded (locked)
+  });
+});
+
+// D5: a level unlocks by clearing the PREVIOUS level's exam, and only levels
+// with content can unlock — the guard that keeps content-less Levels 3-5
+// locked even after a future Grade-2 exam clear.
+describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, U5)', () => {
+  const [level1, level2, level3] = LEVELS;
+
+  test('Level 1 is always unlocked, even on a fresh store', () => {
+    const store = new ProgressStore();
+    expect(isLevelUnlocked(level1, store)).toBe(true);
+  });
+
+  test('Level 2 is locked on a fresh store, unlocked once the grade-1 exam clears', () => {
+    const store = new ProgressStore();
+    expect(isLevelUnlocked(level2, store)).toBe(false);
+
+    store.recordExamCleared(1);
+    expect(isLevelUnlocked(level2, store)).toBe(true);
+  });
+
+  test('Level 3 stays locked even with grade-2 cleared — it has no units (content-less levels never unlock)', () => {
+    const store = new ProgressStore();
+    store.recordExamCleared(1);
+    store.recordExamCleared(2);
+    expect(level3.unitIds).toEqual([]); // guards the premise: still content-less
+    expect(isLevelUnlocked(level3, store)).toBe(false);
+  });
+
+  test('currentLevel is the highest unlocked level — the learner\'s frontier', () => {
+    const store = new ProgressStore();
+    expect(currentLevel(LEVELS, store)).toBe(level1);
+
+    store.recordExamCleared(1);
+    expect(currentLevel(LEVELS, store)).toBe(level2);
   });
 });

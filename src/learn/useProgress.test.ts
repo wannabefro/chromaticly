@@ -3,7 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react-native';
 import type { Lesson } from '../content/lessons';
 import { selectDue } from './srs';
 import { ProgressStore, type SnapshotStorage } from './store';
-import { applyAttempt, ensureRootUnlocked, recordAtomFlashcardGrade, useProgress } from './useProgress';
+import { applyAttempt, ensureLevelRootsUnlocked, recordAtomFlashcardGrade, useProgress } from './useProgress';
 
 /** In-memory SnapshotStorage, mirroring store.test.ts's fake. */
 function memoryStorage(): SnapshotStorage & { blob: string | null } {
@@ -29,6 +29,10 @@ const lessonA: Lesson = {
 };
 const lessonB: Lesson = { ...lessonA, id: 'b', atoms: ['z'], unlocks: null };
 
+// A single-lesson grade-2 chain, mirroring the real key-signatures-2 shape
+// (one unit, unlocks: null) — enough to exercise the second grade's root.
+const lessonG2: Lesson = { id: 'g2a', title: 'G2A', strand: 'scales_keys', atoms: ['g2:x'], templates: ['key_signature_id'], unlocks: null, grade: 2 };
+
 const correct = { correct: true, hintsUsed: 0 };
 
 function masterAtom(store: ProgressStore, lesson: Lesson, atom: string, startTick: number): number {
@@ -37,19 +41,35 @@ function masterAtom(store: ProgressStore, lesson: Lesson, atom: string, startTic
   return now;
 }
 
-describe('progression — ensureRootUnlocked', () => {
+describe('progression — ensureLevelRootsUnlocked (D6, U5)', () => {
   test('unlocks the single entry lesson and nothing downstream', () => {
     const store = new ProgressStore();
-    ensureRootUnlocked(store, [lessonA, lessonB]);
+    ensureLevelRootsUnlocked(store, [lessonA, lessonB]);
     expect(store.isUnlocked('a')).toBe(true);
     expect(store.isUnlocked('b')).toBe(false);
+  });
+
+  test('on a fresh store only the grade-1 root unlocks — the grade-2 chain must not leak open before the exam', () => {
+    const store = new ProgressStore();
+    ensureLevelRootsUnlocked(store, [lessonA, lessonB, lessonG2]);
+    expect(store.isUnlocked('a')).toBe(true);
+    expect(store.isUnlocked('g2a')).toBe(false);
+  });
+
+  test('a restored snapshot with grade-1 cleared but the grade-2 root not yet unlocked self-heals on the next run', () => {
+    const store = new ProgressStore();
+    store.recordExamCleared(1); // the persisted fact, e.g. from a prior session
+    expect(store.isUnlocked('g2a')).toBe(false); // not yet re-derived
+
+    ensureLevelRootsUnlocked(store, [lessonA, lessonB, lessonG2]);
+    expect(store.isUnlocked('g2a')).toBe(true);
   });
 });
 
 describe('progression — a lesson completes only when all its atoms are mastered, then unlocks the next', () => {
   test('mastering every atom marks the lesson done and unlocks its target', () => {
     const store = new ProgressStore();
-    ensureRootUnlocked(store, [lessonA, lessonB]);
+    ensureLevelRootsUnlocked(store, [lessonA, lessonB]);
 
     let now = masterAtom(store, lessonA, 'x', 0);
     // Only one of two atoms mastered → not complete, next still locked.
@@ -74,7 +94,7 @@ describe('progression — a lesson completes only when all its atoms are mastere
 describe('progression — Practice eligibility respects lesson unlock state', () => {
   test('selectDue over unlocked-lesson atoms never serves an atom from a locked lesson', () => {
     const store = new ProgressStore();
-    ensureRootUnlocked(store, [lessonA, lessonB]);
+    ensureLevelRootsUnlocked(store, [lessonA, lessonB]);
     // Touch atoms from both lessons so they have SRS state and are due.
     applyAttempt(store, lessonA, 'x', { correct: false, hintsUsed: 0 }, 0);
     applyAttempt(store, lessonB, 'z', { correct: false, hintsUsed: 0 }, 0);
@@ -176,5 +196,38 @@ describe('useProgress — account name + nudge-seen (design 6b/6c, 302.9/302.13)
     masterAtom(store, lessonA, 'x', 0);
     masterAtom(store, lessonA, 'y', 10); // both atoms mastered → applyAttempt auto-completes lessonA
     expect(result.current.completedLessonCount()).toBe(1);
+  });
+});
+
+// D7: "cleared" means band ≥ pass — a failed paper must not open Level 2.
+describe('useProgress — recordExamResult (D7, U5)', () => {
+  test.each(['pass', 'merit', 'distinction'] as const)(
+    'a %s band clears the exam and unlocks the next grade\'s root, persisted',
+    async (band) => {
+      const storage = memoryStorage();
+      const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+      await waitFor(() => expect(result.current.ready).toBe(true));
+
+      await result.current.recordExamResult(1, band);
+
+      const store = result.current.store as ProgressStore;
+      expect(store.isExamCleared(1)).toBe(true);
+      expect(store.isUnlocked('g2a')).toBe(true);
+      // Persisted, not just in-memory.
+      const reloaded = new ProgressStore(JSON.parse(storage.blob as string));
+      expect(reloaded.isExamCleared(1)).toBe(true);
+    },
+  );
+
+  test('a below band clears nothing — the exam stays uncleared and Level 2 stays locked', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.recordExamResult(1, 'below');
+
+    const store = result.current.store as ProgressStore;
+    expect(store.isExamCleared(1)).toBe(false);
+    expect(store.isUnlocked('g2a')).toBe(false);
   });
 });

@@ -5,6 +5,7 @@
 // A 1-atom unit is therefore 0 or 3 stars by nature (RD3, accepted).
 
 import type { Lesson } from '../content/lessons';
+import type { Level } from '../content/levels';
 import { selectDue } from './srs';
 import type { ProgressStore } from './store';
 
@@ -136,4 +137,20 @@ export function examReadiness(
     gateOpen: stars >= unlockAtStars,
     weakest,
   };
+}
+
+/** Whether a level is reachable (D5): Level 1 always is; any other level
+ *  unlocks once its PREVIOUS grade's exam is cleared — AND only if the level
+ *  actually has content. The `unitIds.length > 0` guard keeps content-less
+ *  Levels 3-5 locked even after a future Grade-2 exam clear, so a level can
+ *  never "open" onto nothing. */
+export function isLevelUnlocked(level: Level, store: ProgressStore): boolean {
+  return level.grade === 1 || (level.unitIds.length > 0 && store.isExamCleared(level.grade - 1));
+}
+
+/** The learner's frontier: the highest unlocked level (design grade pill,
+ *  ProfileScreen readiness card). Levels are assumed grade-ordered, so the
+ *  last unlocked one in list order is the highest. */
+export function currentLevel(levels: Level[], store: ProgressStore): Level {
+  return levels.filter((l) => isLevelUnlocked(l, store)).at(-1) ?? levels[0];
 }

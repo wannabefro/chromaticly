@@ -2,6 +2,9 @@
 // here, the paper is graded and done, so correctness is visible everywhere. What must
 // hold is that the review is honest (their answer marked against the right one, the
 // misconception named) and that "Next wrong" actually skips what they got right.
+//
+// U5 (grade2-new-major-keys, D7): ExamRunner reads recordExamResult from
+// useProgressContext, so every render needs a ProgressProvider.
 
 jest.mock('react-native-webview', () => {
   const React = require('react');
@@ -11,10 +14,34 @@ jest.mock('react-native-webview', () => {
 import { act, fireEvent, render } from '@testing-library/react-native';
 
 import { buildExamPaper } from '../../learn/exam';
+import { ProgressProvider } from '../../learn/ProgressContext';
+import type { SnapshotStorage } from '../../learn/store';
 import { assembleOptions } from '../grading';
 import { ExamRunner } from './ExamRunner';
 
 const paper = buildExamPaper(0);
+
+function memoryStorage(): SnapshotStorage & { blob: string | null } {
+  return {
+    blob: null as string | null,
+    async load() {
+      return this.blob;
+    },
+    async save(serialized: string) {
+      this.blob = serialized;
+    },
+  };
+}
+
+async function renderExam() {
+  const utils = render(
+    <ProgressProvider storage={memoryStorage()}>
+      <ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />
+    </ProgressProvider>,
+  );
+  await act(async () => {});
+  return utils;
+}
 
 /** Sit the paper, answering the first `wrongCount` questions wrongly and the rest right. */
 function sitPaper(getByTestId: (id: string) => any, wrongCount: number) {
@@ -28,8 +55,8 @@ function sitPaper(getByTestId: (id: string) => any, wrongCount: number) {
 }
 
 describe('ExamReview — reviewing the marked paper (8b)', () => {
-  test('3d offers Review paper, and it opens the marked script', () => {
-    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+  test('3d offers Review paper, and it opens the marked script', async () => {
+    const { getByTestId } = await renderExam();
     sitPaper(getByTestId, 2);
 
     expect(getByTestId('exam-results')).toBeTruthy();
@@ -43,16 +70,16 @@ describe('ExamReview — reviewing the marked paper (8b)', () => {
 
   // It opens where the marks were lost, not at Q1 — walking 18 correct answers to
   // reach the two that cost something is not review, it is scrolling.
-  test('review opens on the first question they got wrong', () => {
-    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+  test('review opens on the first question they got wrong', async () => {
+    const { getByTestId } = await renderExam();
     sitPaper(getByTestId, 2);
     fireEvent.press(getByTestId('exam-review-paper'));
 
     expect(getByTestId('exam-review-mark')).toHaveTextContent('0/1 mark');
   });
 
-  test('a wrong answer names the misconception and marks their pick against the right one', () => {
-    const { getByTestId, getByText } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+  test('a wrong answer names the misconception and marks their pick against the right one', async () => {
+    const { getByTestId, getByText } = await renderExam();
     sitPaper(getByTestId, 1);
     fireEvent.press(getByTestId('exam-review-paper'));
 
@@ -61,8 +88,8 @@ describe('ExamReview — reviewing the marked paper (8b)', () => {
     expect(getByText('correct')).toBeTruthy();
   });
 
-  test('"Next wrong" skips the questions they got right', () => {
-    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+  test('"Next wrong" skips the questions they got right', async () => {
+    const { getByTestId } = await renderExam();
     // Wrong on Q1 and Q2 only; everything after is correct.
     sitPaper(getByTestId, 2);
     fireEvent.press(getByTestId('exam-review-paper'));
@@ -74,8 +101,8 @@ describe('ExamReview — reviewing the marked paper (8b)', () => {
     expect(getByTestId('exam-review-next-wrong').props.accessibilityState?.disabled).toBe(true);
   });
 
-  test('a blank is reviewed as a blank, not as a wrong answer', () => {
-    const { getByTestId } = render(<ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />);
+  test('a blank is reviewed as a blank, not as a wrong answer', async () => {
+    const { getByTestId } = await renderExam();
     act(() => fireEvent.press(getByTestId('exam-begin')));
     fireEvent.press(getByTestId('exam-next')); // skip Q1
     for (let i = 1; i < paper.questions.length; i++) {

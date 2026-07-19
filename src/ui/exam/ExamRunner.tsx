@@ -8,10 +8,11 @@
 // Notation still renders on the light --paper card even here (rule 1) via
 // NotationCard — the exam register never inverts notation.
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { buildExamPaper, examMinutes, examSeconds, tallyExam, type Band, type ExamPaper, type ExamResult, EXAM_BANDS } from '../../learn/exam';
+import { useProgressContext } from '../../learn/ProgressContext';
 import { assembleOptions, type Option } from '../grading';
 import { ExamReview } from './ExamReview';
 import { NotationCard } from '../components/NotationCard';
@@ -67,6 +68,7 @@ export interface ExamRunnerProps {
 }
 
 export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
+  const { recordExamResult } = useProgressContext();
   const paper = useMemo(() => buildExamPaper(paperSeed), [paperSeed]);
   const [phase, setPhase] = useState<Phase>('start');
   const [index, setIndex] = useState(0);
@@ -110,6 +112,18 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
     () => tallyExam(paper, correctByQuestion),
     [paper, correctByQuestion],
   );
+
+  // D7: record the exam-clear fact exactly once on entering results — a
+  // fired-once ref (not just the phase check) so a re-render while still on
+  // `results` (e.g. from the revision bump this itself causes) can't record
+  // twice. Must stay top-level, before any early return, so the hook always
+  // runs in the same order across renders.
+  const resultRecorded = useRef(false);
+  useEffect(() => {
+    if (phase !== 'results' || resultRecorded.current) return;
+    resultRecorded.current = true;
+    recordExamResult(grade, result.band);
+  }, [phase, result.band, grade, recordExamResult]);
 
   const answered = picks.filter((p) => p != null).length;
   const unanswered = picks.flatMap((p, i) => (p == null ? [i] : []));

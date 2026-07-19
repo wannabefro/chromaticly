@@ -8,16 +8,27 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import type { Lesson } from '../content/lessons';
 import type { AttemptResult } from '../ui/grading';
+import type { Band } from './exam';
 import { lessonComplete, recordAttempt, recordFlashcardGrade } from './mastery';
 import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
 import { seedExamReady, seedProgressToUnit } from './seed';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
-/** Ensure the entry lesson is always reachable, even on a fresh store. */
-export function ensureRootUnlocked(store: ProgressStore, lessons: Lesson[]): void {
-  const unlockedTargets = new Set(lessons.map((l) => l.unlocks).filter((id): id is string => id !== null));
-  const root = lessons.find((l) => !unlockedTargets.has(l.id));
-  if (root && !store.isUnlocked(root.id)) store.unlock(root.id);
+/** Ensure every grade's chain root is reachable, given what's persisted so
+ *  far (D6). Grade 1's root is always unlocked; a higher grade's root
+ *  unlocks only once the previous grade's exam is cleared. Generalizes the
+ *  old single-chain `ensureRootUnlocked` to N per-grade chains — run on load
+ *  (self-heals a restored snapshot) and again inside `recordExamResult`, so
+ *  the next grade's root opens the moment its gate clears. */
+export function ensureLevelRootsUnlocked(store: ProgressStore, lessons: Lesson[]): void {
+  const grades = new Set(lessons.map((l) => l.grade));
+  for (const grade of grades) {
+    if (grade !== 1 && !store.isExamCleared(grade - 1)) continue;
+    const gradeLessons = lessons.filter((l) => l.grade === grade);
+    const unlockedTargets = new Set(gradeLessons.map((l) => l.unlocks).filter((id): id is string => id !== null));
+    const root = gradeLessons.find((l) => !unlockedTargets.has(l.id));
+    if (root && !store.isUnlocked(root.id)) store.unlock(root.id);
+  }
 }
 
 /** Fold one graded attempt on `atom` into the store's mastery + SRS state at
@@ -115,6 +126,11 @@ export interface UseProgress {
   /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is unlocked and
    *  ready to play, then persist. Only ever called behind a __DEV__ deep link. */
   seedTo: (targetId: string) => Promise<void>;
+  /** Record a practice-exam result for `grade` (D7). A band ≥ pass clears the
+   *  exam (`store.isExamCleared(grade)`) and unlocks the next grade's chain
+   *  root; `'below'` records nothing. Idempotent by set semantics — a
+   *  replayed or double-fired result is harmless. */
+  recordExamResult: (grade: number, band: Band) => Promise<void>;
 }
 
 export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UseProgress {
@@ -135,7 +151,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     let live = true;
     loadProgress(storage).then((loaded) => {
       if (!live) return;
-      ensureRootUnlocked(loaded, lessons);
+      ensureLevelRootsUnlocked(loaded, lessons);
       setStore(loaded);
       setProfileState(loaded.getProfile());
       setNudgeSeen(loaded.isNudgeSeen());
@@ -247,6 +263,17 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     [store, storage, lessons],
   );
 
+  const recordExamResult = useCallback<UseProgress['recordExamResult']>(
+    async (grade, band) => {
+      if (!store || band === 'below') return;
+      store.recordExamCleared(grade);
+      ensureLevelRootsUnlocked(store, lessons);
+      await saveProgress(store, storage);
+      setRevision((r) => r + 1);
+    },
+    [store, storage, lessons],
+  );
+
   const isOnboarded = profile !== null;
   const grade = profile?.grade ?? null;
   const name = profile?.name ?? null;
@@ -275,6 +302,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       markNudgeSeen,
       completeOnboarding,
       seedTo,
+      recordExamResult,
     }),
     [
       ready,
@@ -298,6 +326,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       markNudgeSeen,
       completeOnboarding,
       seedTo,
+      recordExamResult,
     ],
   );
 }
