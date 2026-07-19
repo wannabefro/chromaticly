@@ -13,6 +13,16 @@ describe('knowledge-base.ts — KTD7 load-time validation', () => {
     expect(typeof KB_VERSION).toBe('string');
     expect(KB_VERSION.length).toBeGreaterThan(0);
   });
+
+  // KB_VERSION is stamped into the kb_version field of every pinned
+  // seed-stability snapshot instance (~400 keys). This slice edits KB content
+  // (melodic_minor_desc, grade-3 adds) without touching what any existing
+  // generator reads, so the anchor must NOT bump — an accidental bump would
+  // silently churn the entire seed-stability snapshot instead of failing loud
+  // here.
+  test('KB_VERSION stays pinned at g1-2026-07-10 — this slice does not bump it', () => {
+    expect(KB_VERSION).toBe('g1-2026-07-10');
+  });
 });
 
 describe('knowledge-base.ts — note-value table matches G1 theory data', () => {
@@ -62,12 +72,26 @@ describe('knowledge-base.ts — key_signatures is the single fifths-count source
 });
 
 describe('knowledge-base.ts — scale_patterns carries the letter-walkable T/S interval arrays', () => {
-  test('major, harmonic_minor, melodic_minor_asc parse as T/S arrays, not forced from the prose entries', () => {
+  test('major, harmonic_minor, melodic_minor_asc parse as T/S arrays', () => {
     expect(KB.scalePatterns.major).toEqual(['T', 'T', 'S', 'T', 'T', 'T', 'S']);
     expect(KB.scalePatterns.harmonic_minor).toEqual(['T', 'S', 'T', 'T', 'S', 'T+S', 'S']);
     expect(KB.scalePatterns.melodic_minor_asc).toEqual(['T', 'S', 'T', 'T', 'T', 'T', 'S']);
-    // prose entries stay unparsed/loosely typed — not coerced into the array shape
-    expect(KB.scalePatterns.melodic_minor_desc).toBe('natural minor descending (lowered 7th and 6th)');
-    expect(Array.isArray(KB.scalePatterns.melodic_minor_desc)).toBe(false);
+  });
+
+  // melodic_minor_desc's pitch content IS natural minor (the descending
+  // melodic form reverts). If someone "corrects" this to the ascending
+  // pattern, the descent stops reverting to natural minor and this fails.
+  test('melodic_minor_desc equals the natural-minor T/S walk, not the ascending-melodic pattern', () => {
+    expect(KB.scalePatterns.melodic_minor_desc).toEqual(['T', 'S', 'T', 'T', 'S', 'T', 'T']);
+  });
+});
+
+describe('knowledge-base.ts — grade_scopes["3"].adds is reachable', () => {
+  // KB.grade3Adds is the single source the U2 scope table is cross-checked
+  // against; a drift here silently desyncs the scope table from the KB.
+  test('grade-3 adds carry the melodic-minor keys/forms this slice consumes', () => {
+    expect(KB.grade3Adds.keys_major).toEqual(['E', 'Ab']);
+    expect(KB.grade3Adds.keys_minor).toEqual(['B', 'G', 'F#', 'C', 'C#', 'F']);
+    expect(KB.grade3Adds.minor_forms).toEqual(['melodic']);
   });
 });

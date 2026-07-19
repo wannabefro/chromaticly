@@ -31,16 +31,16 @@ const KeySignaturesSchema = z.object({
   minors: z.record(z.string(), z.number()),
 });
 
-// major/harmonic_minor/melodic_minor_asc are the letter-walkable T/S interval
-// patterns the engine builds scales from. melodic_minor_desc and chromatic
-// are prose in the KB (e.g. "natural minor descending...") — left loosely
-// typed rather than forced into the array shape; normalizing them is the
-// G3 slice's job.
+// major/harmonic_minor/melodic_minor_asc/melodic_minor_desc are the
+// letter-walkable T/S interval patterns the engine builds scales from.
+// melodic_minor_desc IS the natural-minor walk (the descending melodic
+// form reverts to natural minor). chromatic stays prose — it has no
+// single T/S walk.
 const ScalePatternsSchema = z.object({
   major: z.array(z.string()),
   harmonic_minor: z.array(z.string()),
   melodic_minor_asc: z.array(z.string()),
-  melodic_minor_desc: z.unknown(),
+  melodic_minor_desc: z.array(z.string()),
   chromatic: z.unknown(),
 });
 
@@ -56,6 +56,25 @@ const Grade2AddsSchema = z.object({
   scale_knowledge: z.array(z.string()),
 });
 
+const Grade3AddsSchema = z.object({
+  time_signatures: z.array(z.string()),
+  note_values: z.array(z.string()),
+  rests: z.array(z.string()),
+  rhythm_devices: z.array(z.string()),
+  metre_classification: z.array(z.string()),
+  pitch_range: z.object({
+    ledger_lines: z.string(),
+  }),
+  transposition: z.array(z.string()),
+  keys_major: z.array(z.string()),
+  keys_minor: z.array(z.string()),
+  minor_forms: z.array(z.string()),
+  intervals: z.object({
+    naming: z.string(),
+    above_tonic_only: z.boolean(),
+  }),
+});
+
 const KnowledgeBaseSchema = z.object({
   theory_data: z.object({
     note_values: z.record(z.string(), NoteValueEntrySchema),
@@ -66,6 +85,9 @@ const KnowledgeBaseSchema = z.object({
     '1': Grade1ScopeSchema,
     '2': z.object({
       adds: Grade2AddsSchema,
+    }),
+    '3': z.object({
+      adds: Grade3AddsSchema,
     }),
   }),
 });
@@ -78,6 +100,7 @@ export const KB = {
   scalePatterns: parsed.theory_data.scale_patterns,
   grade1: parsed.grade_scopes['1'],
   grade2Adds: parsed.grade_scopes['2'].adds,
+  grade3Adds: parsed.grade_scopes['3'].adds,
 };
 
 // knowledge-base.json carries no version field; this constant is the app's
