@@ -178,3 +178,49 @@ describe('seed-stability — grade-2 generator output is pinned byte-for-byte', 
     });
   });
 });
+
+// U3 (grade3-melodic-minor plan, D10) — grade-3-only pins, additive and
+// separate from every grade-1/2 block above: no existing key moves, these
+// are new snapshot keys only. Pinned pre-lesson (mirroring GRADE_2_EXTRA_CASES)
+// so generator-level grade-3 output is characterized before U5 registers the
+// real lessons; U4/U5 append their own cases to this same array.
+const GRADE_3_EXTRA_CASES: Case[] = [
+  {
+    label: 'scale_construction harmonic (minor-scales-3, pre-lesson pin)',
+    templateId: 'scale_construction',
+    atoms: [
+      'scale:B_minor_harmonic',
+      'scale:G_minor_harmonic',
+      'scale:F#_minor_harmonic',
+      'scale:C_minor_harmonic',
+      'scale:C#_minor_harmonic',
+      'scale:F_minor_harmonic',
+    ],
+  },
+  {
+    label: 'scale_construction melodic (melodic-minor-3, pre-lesson pin)',
+    templateId: 'scale_construction',
+    atoms: [
+      'scale:A_minor_melodic',
+      'scale:E_minor_melodic',
+      'scale:D_minor_melodic',
+      'scale:B_minor_melodic',
+      'scale:G_minor_melodic',
+      'scale:F#_minor_melodic',
+      'scale:C_minor_melodic',
+      'scale:C#_minor_melodic',
+      'scale:F_minor_melodic',
+    ],
+  },
+];
+
+if (GRADE_3_EXTRA_CASES.length > 0) {
+  describe('seed-stability — grade-3-only generator extras are pinned byte-for-byte', () => {
+    describe.each(GRADE_3_EXTRA_CASES)('$label', ({ templateId, atoms }) => {
+      test('instances are a pure function of (template, grade, seed, atoms)', () => {
+        const instances = SEEDS.map((seed) => generate(templateId, { grade: 3, seed, atoms }));
+        expect(instances).toMatchSnapshot();
+      });
+    });
+  });
+}

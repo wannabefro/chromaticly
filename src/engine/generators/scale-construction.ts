@@ -1,31 +1,39 @@
-// Grade 2 scale_construction generator (D7) — spot-the-wrong-note MCQ variant
-// CONFIRMED by the human 2026-07-19: one octave ascending, exactly one note
-// corrupted, the learner names the ordinal position that's wrong.
+// scale_construction generator (D7/G3 D3(c)) — spot-the-wrong-note MCQ.
+// Grade 2: one octave ascending harmonic minor, exactly one note corrupted,
+// the learner names the ordinal position that's wrong.
 //
 // FORM-KEYED corruption rules (human requirement): "which notes may be
 // corrupted / which corruption is the headline misconception" is looked up
 // per scale FORM, resolved from the lesson's `scale:*` atoms — never baked
-// into the generator body as a harmonic-only assumption. Grade 2 only ever
-// instantiates harmonic because FORM_TABLE has exactly one entry and the
-// atoms/scope gate it; an atom naming any other form fails loud below rather
-// than silently falling back to harmonic.
+// into the generator body as a harmonic-only assumption. An atom naming any
+// other form fails loud below rather than silently falling back to harmonic.
 //
-// Grade-3 melodic minor forward-compat is a documented SEAM, not built here:
-// a future `melodic_asc` FORM_TABLE entry (un-raised 6th/7th ascending,
-// wrong-direction alterations) plus the KB's melodic_minor_asc scale pattern
-// (already form-general in minor-keys.ts's minorScale) is the entire
-// addition — zero new interaction/UI/validator-shape work (D7).
+// Grade 3 (D3(c), settled): melodic minor is DIRECTIONAL — ascending raises
+// the 6th/7th, descending reverts to natural minor — so its FORM_TABLE entry
+// carries per-direction builderForm + corruption rules, and the generator
+// rng-picks a direction INSIDE the melodic-only branch (gated on
+// `entry.kind === 'directional'`, which harmonic's 'single' entry never is)
+// so the harmonic path's RNG draw sequence — and grade-1/2 byte-identity —
+// is untouched. A descending item's stimulus/answer_music events are emitted
+// high->low (the reversed ascending walk of the melodic-descending form) and
+// its prompt names the direction, matching the harmonic prompt's form-naming
+// pattern.
 
 import type { Clef, Music } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
 import { parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import { pitchRange, scopeForGrade } from '../scope';
+import type { GradeScope } from '../scope';
 import type { ExerciseInstance } from '../schema';
+import { tonicLetter } from './key-spelling';
 import { minorScale, shiftAccidental } from './minor-keys';
 import type { MinorScaleForm } from './minor-keys';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
+
+type Direction = 'ascending' | 'descending';
+const DIRECTIONS: Direction[] = ['ascending', 'descending'];
 
 interface CorruptionRule {
   /** 0-indexed scale degree (0 = tonic .. 7 = the octave above) this rule corrupts. */
@@ -38,18 +46,38 @@ interface CorruptionRule {
   headline?: boolean;
 }
 
-interface FormEntry {
+interface FormVariant {
+  builderForm: MinorScaleForm;
+  corruptionRules: CorruptionRule[];
+}
+
+interface SingleDirectionFormEntry {
+  kind: 'single';
   builderForm: MinorScaleForm;
   /** Form name as it reads in the prompt copy, e.g. "harmonic minor". */
   promptLabel: string;
   corruptionRules: CorruptionRule[];
 }
 
+/** Melodic minor's directional form (D3(c)): one FORM_TABLE entry carrying
+ *  BOTH directions' builder form + corruption rules, so `formEntryFor` still
+ *  resolves a single `scale:*_minor_melodic` atom to one entry — the
+ *  generator picks the direction (and therefore the variant) at build time. */
+interface DirectionalFormEntry {
+  kind: 'directional';
+  promptLabel: string;
+  ascending: FormVariant;
+  descending: FormVariant;
+}
+
+type FormEntry = SingleDirectionFormEntry | DirectionalFormEntry;
+
 // FORM_TABLE is the single source of truth the generator resolves the atom's
 // form against — an unknown/absent entry fails loud (formEntryFor throws),
 // never silently defaulting to harmonic.
 const FORM_TABLE: Partial<Record<string, FormEntry>> = {
   harmonic: {
+    kind: 'single',
     builderForm: 'harmonic_minor',
     promptLabel: 'harmonic minor',
     corruptionRules: [
@@ -72,8 +100,51 @@ const FORM_TABLE: Partial<Record<string, FormEntry>> = {
       },
     ],
   },
-  // melodic_asc: G3 seam (D7) — un-raised 6th/7th ascending + wrong-direction
-  // alterations. New KB pattern data + this table entry only; no other file changes.
+  melodic: {
+    kind: 'directional',
+    promptLabel: 'melodic minor',
+    ascending: {
+      builderForm: 'melodic_minor_asc',
+      corruptionRules: [
+        {
+          degree: 5,
+          semitones: -1,
+          headline: true,
+          feedback:
+            'The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.',
+        },
+        {
+          degree: 6,
+          semitones: -1,
+          feedback:
+            'The 7th note must also be raised going up in melodic minor — a natural 7th belongs to the descent, not the ascent.',
+        },
+        {
+          degree: 2,
+          semitones: 1,
+          feedback: 'The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.',
+        },
+      ],
+    },
+    descending: {
+      builderForm: 'melodic_minor_desc',
+      corruptionRules: [
+        {
+          degree: 6,
+          semitones: 1,
+          headline: true,
+          feedback:
+            'Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.',
+        },
+        {
+          degree: 5,
+          semitones: 1,
+          feedback:
+            'Melodic minor lowers the 6th too on the way down — keeping the raised 6th here borrows from the ascending form.',
+        },
+      ],
+    },
+  },
 };
 
 function formEntryFor(form: string): FormEntry {
@@ -90,28 +161,58 @@ function positionLabel(degree: number): string {
   return `${ORDINAL_LABELS[degree]} note`;
 }
 
+/** A degree (0=tonic..7=octave, always indexed against the ASCENDING walk)
+ *  translated to its position in PLAYED order: unchanged ascending, mirrored
+ *  (7 - degree) descending — a descending item's 2nd note played is the 7th
+ *  scale degree (D3(c)). */
+function playedIndex(degree: number, direction: Direction | null): number {
+  return direction === 'descending' ? 7 - degree : degree;
+}
+
 /** The position labels a form's rule table can produce — exported so tests
  *  can assert "the canonical/distractors come from this form's table" by
- *  form lookup, never by inlining the harmonic rule content as a literal. */
-export function formPositionLabels(form: string): string[] {
-  return formEntryFor(form).corruptionRules.map((r) => positionLabel(r.degree));
+ *  form lookup, never by inlining the harmonic rule content as a literal.
+ *  For a directional form, an explicit `direction` narrows to that
+ *  direction's played-order labels; omitted, it returns the union over both. */
+export function formPositionLabels(form: string, direction?: Direction): string[] {
+  const entry = formEntryFor(form);
+  if (entry.kind === 'single') {
+    return entry.corruptionRules.map((r) => positionLabel(r.degree));
+  }
+  if (direction) {
+    return entry[direction].corruptionRules.map((r) => positionLabel(playedIndex(r.degree, direction)));
+  }
+  const labels = DIRECTIONS.flatMap((d) => entry[d].corruptionRules.map((r) => positionLabel(playedIndex(r.degree, d))));
+  return [...new Set(labels)];
 }
 
 /** The lesson's `scale:*_minor_*` atoms as {tonic, form} pairs, e.g.
  *  scale:A_minor_harmonic -> {tonic: "A", form: "harmonic"}. Single-atom-safe
- *  (D4/D7): one atom is enough to pin one key+form pair. */
-function scaleAtomsFromAtoms(atoms: string[]): { tonic: string; form: string }[] {
-  const pairs: { tonic: string; form: string }[] = [];
+ *  (D4/D7): one atom is enough to pin one key+form pair.
+ *
+ *  Scope-filtered by `scope.minorForms` (commandment 1: scope is law, per
+ *  grade): `Music` carries no form field, so the validator's checkScope
+ *  cannot reject an out-of-grade FORM downstream (validator.ts's own
+ *  scaleConstructionHook comment names this gap) — this filter is what keeps
+ *  a stray `scale:*_minor_melodic` atom unreachable at grade 2 now that the
+ *  melodic FORM_TABLE entry exists. A no-op for every real caller today (its
+ *  atoms already only name in-scope forms), so grade-1/2 output is untouched. */
+function scaleAtomsFromAtoms(atoms: string[], scope: GradeScope): { tonic: string; form: string }[] {
+  const allPairs: { tonic: string; form: string }[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
     if (kind !== 'scale') continue;
     const [tonic, mode, ...formParts] = parts[0].split('_');
     if (mode !== 'minor' || formParts.length === 0) continue;
     const form = formParts.join('_');
-    if (!pairs.some((p) => p.tonic === tonic && p.form === form)) pairs.push({ tonic, form });
+    if (!allPairs.some((p) => p.tonic === tonic && p.form === form)) allPairs.push({ tonic, form });
   }
-  if (pairs.length === 0) {
+  if (allPairs.length === 0) {
     throw new Error('scale_construction: needs at least one scale:*_minor_* atom');
+  }
+  const pairs = allPairs.filter((p) => scope.minorForms.includes(p.form));
+  if (pairs.length === 0) {
+    throw new Error("scale_construction: no scale:*_minor_* atom's form is in scope at this grade");
   }
   return pairs;
 }
@@ -133,8 +234,16 @@ function parseNaturalPitch(pitch: string): { letter: string; octave: number } {
  *  (review finding 3): tonic ordinal >= the clef's low bound AND
  *  tonic-plus-an-octave <= its high bound. An in-range tonic does NOT imply
  *  an in-range top note — e.g. a D5 treble tonic tops at D6, past the C6
- *  ceiling — so both ends of the 8-note span are checked, not just the tonic. */
+ *  ceiling — so both ends of the 8-note span are checked, not just the tonic.
+ *
+ *  Sharp-tonic fix (D5): the ordinal math and the returned starts are keyed
+ *  on the tonic's NATURAL LETTER (`tonicLetter`), never the raw tonic — the
+ *  key signature (via `minorScale`'s `spellInKeySig`) is what puts the sharp
+ *  back on, matching `minorScale`'s natural-letter-only startPitch contract.
+ *  For a natural tonic (every grade-1/2 minor) `tonicLetter` is a no-op, so
+ *  this is byte-identical to the pre-fix output there. */
 export function validScaleStartPitches(tonic: string, clef: Clef, grade: number): string[] {
+  const naturalTonic = tonicLetter(tonic);
   const { low, high } = pitchRange(clef, grade);
   const lowP = parseNaturalPitch(low);
   const highP = parseNaturalPitch(high);
@@ -143,10 +252,10 @@ export function validScaleStartPitches(tonic: string, clef: Clef, grade: number)
 
   const starts: string[] = [];
   for (let octave = lowP.octave - 1; octave <= highP.octave; octave++) {
-    const tonicOrd = letterOrdinal(tonic, octave);
-    const topOrd = letterOrdinal(tonic, octave + 1);
+    const tonicOrd = letterOrdinal(naturalTonic, octave);
+    const topOrd = letterOrdinal(naturalTonic, octave + 1);
     if (tonicOrd >= lowOrd && topOrd <= highOrd) {
-      starts.push(`${tonic}${octave}`);
+      starts.push(`${naturalTonic}${octave}`);
     }
   }
   return starts;
@@ -161,11 +270,21 @@ function scaleMusic(clef: Clef, tonic: string, pitches: string[]): Music {
   };
 }
 
+function promptFor(tonic: string, promptLabel: string, direction: Direction | null): string {
+  const directionSuffix = direction ? `, ${direction},` : '';
+  return `One note of this ${tonic} ${promptLabel} scale${directionSuffix} is wrong — which one?`;
+}
+
+function hintFor(tonic: string, promptLabel: string, direction: Direction | null): string {
+  const directionSuffix = direction ? `, ${direction},` : '';
+  return `Compare each note against the ${tonic} ${promptLabel} scale${directionSuffix} — only one note is wrong.`;
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
 
-  const { tonic, form } = pick(rng, scaleAtomsFromAtoms(atoms));
+  const { tonic, form } = pick(rng, scaleAtomsFromAtoms(atoms, scope));
   const entry = formEntryFor(form);
   const clef = pick(rng, [...scope.clefs]);
 
@@ -175,27 +294,49 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   }
   const startPitch = pick(rng, starts);
 
-  const trueScale = minorScale(tonic, entry.builderForm, startPitch);
-  const rule = pick(rng, entry.corruptionRules);
+  // Direction is picked ONLY inside the melodic (directional) branch — the
+  // harmonic ('single') path below never calls `pick` here, so its RNG draw
+  // sequence (and grade-1/2 byte-identity) is untouched (D3(c)).
+  let builderForm: MinorScaleForm;
+  let corruptionRules: CorruptionRule[];
+  let direction: Direction | null = null;
+  if (entry.kind === 'directional') {
+    direction = pick(rng, DIRECTIONS);
+    const variant = entry[direction];
+    builderForm = variant.builderForm;
+    corruptionRules = variant.corruptionRules;
+  } else {
+    builderForm = entry.builderForm;
+    corruptionRules = entry.corruptionRules;
+  }
+
+  // Always built as the ASCENDING walk (tonic..octave) — a descending item
+  // reverses it into played order below, so answer_music is always the U2
+  // builder's own output for this key/form/register, just walked backwards.
+  const trueScale = minorScale(tonic, builderForm, startPitch);
+  const rule = pick(rng, corruptionRules);
   const corruptedScale = [...trueScale];
   corruptedScale[rule.degree] = shiftAccidental(trueScale[rule.degree], rule.semitones);
 
-  const canonical = positionLabel(rule.degree);
-  const distractors = entry.corruptionRules
+  const canonical = positionLabel(playedIndex(rule.degree, direction));
+  const distractors = corruptionRules
     .filter((r) => r !== rule)
-    .map((r) => positionLabel(r.degree));
+    .map((r) => positionLabel(playedIndex(r.degree, direction)));
+
+  const playedTrue = direction === 'descending' ? [...trueScale].reverse() : trueScale;
+  const playedCorrupted = direction === 'descending' ? [...corruptedScale].reverse() : corruptedScale;
 
   return {
     id: makeInstanceId('scale_construction', grade, idSeed),
     template_id: 'scale_construction',
     grade,
     strand: 'scales_keys',
-    prompt: `One note of this ${tonic} ${entry.promptLabel} scale is wrong — which one?`,
-    stimulus: { music: scaleMusic(clef, tonic, corruptedScale), text: null },
-    interaction: { type: 'mcq', config: { answer_music: scaleMusic(clef, tonic, trueScale) } },
+    prompt: promptFor(tonic, entry.promptLabel, direction),
+    stimulus: { music: scaleMusic(clef, tonic, playedCorrupted), text: null },
+    interaction: { type: 'mcq', config: { answer_music: scaleMusic(clef, tonic, playedTrue) } },
     answer: { canonical, accepted_alternatives: [] },
     distractors,
-    hints: [`Compare each note against the ${tonic} ${entry.promptLabel} scale — only one note is wrong.`],
+    hints: [hintFor(tonic, entry.promptLabel, direction)],
     feedback: {
       correct: 'Correct!',
       incorrect: rule.feedback,

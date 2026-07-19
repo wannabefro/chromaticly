@@ -115,6 +115,61 @@ function validScaleConstructionInstance(): ExerciseInstance {
   };
 }
 
+// D3(c)/D5: a sharp-tonic harmonic instance (F# minor, grade 3) — the raised
+// 7th spells E#, never F-natural's enharmonic. Verified against minorScale/
+// scale_construction's own generator output (scale-construction.test.ts).
+function validScaleConstructionGrade3HarmonicInstance(): ExerciseInstance {
+  const trueScale = ['F#4', 'G#4', 'A4', 'B4', 'C#5', 'D5', 'E#5', 'F#5'];
+  const corruptedScale = [...trueScale];
+  corruptedScale[6] = 'E5'; // un-raised 7th
+  return {
+    id: 'e5f6a7b8-0000-0000-0000-000000000001',
+    template_id: 'scale_construction',
+    grade: 3,
+    strand: 'scales_keys',
+    prompt: 'One note of this F# harmonic minor scale is wrong — which one?',
+    stimulus: { music: scaleMusic('F#', corruptedScale), text: null },
+    interaction: { type: 'mcq', config: { answer_music: scaleMusic('F#', trueScale) } },
+    answer: { canonical: '7th note', accepted_alternatives: [] },
+    distractors: ['6th note', '3rd note'],
+    hints: ['Compare each note against the F# harmonic minor scale — only one note is wrong.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'The 7th note must be raised with a sharp in harmonic minor.',
+    },
+    srs_tags: ['scale:F#_minor_harmonic'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
+// D3(c): a DESCENDING melodic instance — 8 notes high->low, ordinals still
+// "1st note".."8th note" IN PLAYED ORDER (the 2nd note played is the 7th
+// scale degree). The hook itself doesn't care about direction — it just
+// counts note events and matches the ordinal regex — so this is the
+// "still 8 notes, still 1st..8th" characterization the plan calls for.
+function validScaleConstructionGrade3MelodicDescendingInstance(): ExerciseInstance {
+  const truePlayed = ['A5', 'G5', 'F5', 'E5', 'D5', 'C5', 'B4', 'A4'];
+  const corruptedPlayed = ['A5', 'G#5', 'F5', 'E5', 'D5', 'C5', 'B4', 'A4']; // raised 7th left in
+  return {
+    id: 'e5f6a7b8-0000-0000-0000-000000000002',
+    template_id: 'scale_construction',
+    grade: 3,
+    strand: 'scales_keys',
+    prompt: 'One note of this A melodic minor scale, descending, is wrong — which one?',
+    stimulus: { music: scaleMusic('A', corruptedPlayed), text: null },
+    interaction: { type: 'mcq', config: { answer_music: scaleMusic('A', truePlayed) } },
+    answer: { canonical: '2nd note', accepted_alternatives: [] },
+    distractors: ['3rd note'],
+    hints: ['Compare each note against the A melodic minor scale, descending, — only one note is wrong.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.',
+    },
+    srs_tags: ['scale:A_minor_melodic'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 function validIntervalNamingStaveInputInstance(grade: 1 | 2 = 1): ExerciseInstance {
   const key = grade === 1 ? 'G' : 'A';
   const target = grade === 1 ? 'D5' : 'E5';
@@ -487,5 +542,39 @@ describe('validate — per-template hook: scale_construction (D7 spot-the-wrong-
     const result = validate(instance);
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('exactly 8 note events'))).toBe(true);
+  });
+});
+
+describe('validate — scale_construction hook is UNCHANGED at grade 3 (D3(c)): still 8 notes, 1st..8th ordinals, answer_music key in scope.keysMinor', () => {
+  test('a grade-3 sharp-tonic harmonic instance (F# minor, E# raised 7th) passes clean', () => {
+    expect(validate(validScaleConstructionGrade3HarmonicInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a grade-3 DESCENDING melodic instance (8 notes high->low) passes clean — the hook counts notes and matches the ordinal regex, direction-blind', () => {
+    expect(validate(validScaleConstructionGrade3MelodicDescendingInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a descending instance with fewer than 8 note events is still rejected (the 8-note pin holds regardless of direction)', () => {
+    const instance = validScaleConstructionGrade3MelodicDescendingInstance();
+    (instance.stimulus.music as any).voices[0].events.pop();
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('exactly 8 note events'))).toBe(true);
+  });
+
+  test('an answer_music key signature whose tonic is outside grade 3\'s keysMinor (Bb minor, a grade-4 key) is rejected', () => {
+    const instance = validScaleConstructionGrade3HarmonicInstance();
+    (instance.interaction.config.answer_music as any).key_sig = 'Bb_minor';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('scale_construction') && e.includes('minor key'))).toBe(true);
+  });
+
+  test('a grade-3 canonical answer that is not an ordinal note-position string is still rejected', () => {
+    const instance = validScaleConstructionGrade3MelodicDescendingInstance();
+    instance.answer.canonical = 'second';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('scale_construction') && e.includes('ordinal'))).toBe(true);
   });
 });
