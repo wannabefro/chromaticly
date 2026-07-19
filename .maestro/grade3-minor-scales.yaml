@@ -1,0 +1,53 @@
+# Grade 3 harmonic minor in the new keys (chromaticly-1v5.1, U8) — scale_construction
+# over the 6 new minor keys, INCLUDING the sharp tonics F#/C# whose raised 7ths spell
+# E#/B#. This flow's point is the NOTATION: a sharp-key signature (K:F#m/C#m) and an
+# enharmonic-of-natural accidental (E#/B#) rendered in the WebView — abcjs behaviour
+# no jest test can verify (plan Risk 3). Reaching a visible option proves the render.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=minor-scales-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "level-node-level-3" }
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: { id: "unit-row-minor-scales-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-minor-scales-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-minor-scales-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-minor-scales-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g3-minor-scales-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }

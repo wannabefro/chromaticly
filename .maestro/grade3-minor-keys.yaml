@@ -1,0 +1,53 @@
+# Grade 3 minor-keys (chromaticly-1v5.1, U8) — the mode_swap relative-key MCQ over
+# the 6 new minor keys. ?seed=minor-keys-3 masters grades 1-2 and records BOTH
+# exams cleared (seed.ts), unlocking Level 3 via the real gate. Reaching
+# unit-row-minor-keys-3 is the unlock proof (a locked Level 3 renders collapsed).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=minor-keys-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# Level 3 sits below Level 1 (8 units) and Level 2 (3 units) — scroll it in.
+- scrollUntilVisible:
+    element: { id: "level-node-level-3" }
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: { id: "unit-row-minor-keys-3" }
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: g3-minor-keys-map
+- tapOn: { id: "unit-row-minor-keys-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-minor-keys-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-minor-keys-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }

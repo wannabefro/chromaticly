@@ -1,0 +1,53 @@
+# Grade 3 melodic minor (chromaticly-1v5.1, U8) — the directional (variant c)
+# scale_construction over all 9 minors. Its point is the DIRECTIONAL render: a
+# descending stimulus must descend on the stave, its prompt name the direction, and
+# a wrong answer's FeedbackSheet show the CORRECT scale in the SAME direction (rule 5).
+# ?seed=melodic-minor-3 walks the full grade-3 chain to the third unit.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=melodic-minor-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "level-node-level-3" }
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: { id: "unit-row-melodic-minor-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-melodic-minor-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-melodic-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-melodic-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g3-melodic-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }
