@@ -1,4 +1,6 @@
-import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
+import { LESSONS, LESSONS_BY_GRADE, lessonById } from '../content/lessons';
+import { generate } from '../engine/generators';
+import { validate } from '../engine/validator';
 import { nextPracticeTemplate, unlockedAtomSet, unlockedTemplates } from './practice-plan';
 import { initialSrs, reviewSrs, type SrsState } from './srs';
 
@@ -110,5 +112,68 @@ describe('practice-plan — nextPracticeTemplate threads the owning lesson\'s gr
       const pick = isolated.nextPracticeTemplate([], 0, (id: string) => id === 'g2-fixture-lesson', 0);
       expect(pick).toEqual({ template: 'fixture_template_g2', atoms: ['g2-fixture-atom'], grade: 2 });
     });
+  });
+});
+
+// U7: proves picks are generatable, not merely well-shaped — the assertion
+// key_signature_id's due path lacks (Risk 2), which is why a due key_sig atom
+// served singly to key_signature_id crashes on device (separately filed bug).
+// mode_swap/scale_construction are single-atom-safe by design (U3/U4); these
+// tests exercise that guarantee through the real Practice pick path, mirroring
+// how the Practice screen consumes a pick: generate(pick.template, { grade,
+// seed, atoms: pick.atoms }).
+describe('practice-plan — grade-2 minor picks are generatable (U7)', () => {
+  test('due-path pick for key_sig:E_minor is mode_swap/grade 2 scoped to that atom, and generates', () => {
+    const dueAtom = 'key_sig:E_minor';
+    const minorKeysLesson = lessonById('minor-keys-2')!;
+    expect(minorKeysLesson.atoms).toContain(dueAtom);
+    const isUnlocked = (id: string) => id === minorKeysLesson.id;
+    const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
+
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, isUnlocked, 0);
+    expect(pick).toEqual({ template: 'mode_swap', atoms: [dueAtom], grade: 2 });
+
+    const inst = generate(pick!.template, { grade: pick!.grade, seed: 7, atoms: pick!.atoms });
+    expect(validate(inst)).toEqual({ ok: true, errors: [] });
+  });
+
+  test('due-path pick for scale:D_minor_harmonic is scale_construction/grade 2 scoped to that atom, and generates', () => {
+    const dueAtom = 'scale:D_minor_harmonic';
+    const minorScalesLesson = lessonById('minor-scales-2')!;
+    expect(minorScalesLesson.atoms).toContain(dueAtom);
+    const isUnlocked = (id: string) => id === minorScalesLesson.id;
+    const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
+
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, isUnlocked, 0);
+    expect(pick).toEqual({ template: 'scale_construction', atoms: [dueAtom], grade: 2 });
+
+    const inst = generate(pick!.template, { grade: pick!.grade, seed: 11, atoms: pick!.atoms });
+    expect(validate(inst)).toEqual({ ok: true, errors: [] });
+  });
+
+  test('rotation path with only the minor lessons unlocked serves both new templates scoped to their owning lesson', () => {
+    const minorKeysLesson = lessonById('minor-keys-2')!;
+    const minorScalesLesson = lessonById('minor-scales-2')!;
+    const isUnlocked = (id: string) => id === minorKeysLesson.id || id === minorScalesLesson.id;
+
+    const templates = unlockedTemplates(isUnlocked);
+    expect(new Set(templates)).toEqual(new Set(['mode_swap', 'scale_construction']));
+
+    // walk every rotation step so both templates are actually reached, not just present
+    const picksByTemplate = new Map<string, ReturnType<typeof nextPracticeTemplate>>();
+    for (let step = 0; step < templates.length; step++) {
+      const pick = nextPracticeTemplate([], 0, isUnlocked, step);
+      expect(pick).not.toBeNull();
+      picksByTemplate.set(pick!.template, pick);
+    }
+    expect(new Set(picksByTemplate.keys())).toEqual(new Set(['mode_swap', 'scale_construction']));
+
+    const modeSwapPick = picksByTemplate.get('mode_swap')!;
+    expect(modeSwapPick!.atoms).toEqual(minorKeysLesson.atoms);
+    expect(modeSwapPick!.grade).toBe(2);
+
+    const scaleConstructionPick = picksByTemplate.get('scale_construction')!;
+    expect(scaleConstructionPick!.atoms).toEqual(minorScalesLesson.atoms);
+    expect(scaleConstructionPick!.grade).toBe(2);
   });
 });
