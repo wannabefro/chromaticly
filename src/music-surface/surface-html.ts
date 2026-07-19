@@ -86,7 +86,7 @@ ${playButton}
     console.log('[surface] ' + s);
   }
 
-  function renderAbc(abc, scale) {
+  function renderAbc(abc, scale, staffwidth) {
     try {
       var t = performance.now();
       // clickListener is how the bar-tap (design 4c) is detected: abcjs already hit-tests
@@ -95,6 +95,11 @@ ${playButton}
       var opts = Object.assign({}, ${renderOpts}, { clickListener: onNoteClick, dragging: false });
       // Notation size (design 5c): RN sends an explicit staff scale, else keep the baked default.
       if (typeof scale === 'number') opts.scale = scale;
+      // Density-aware layout width: RN sends a wider staffwidth for note-dense stimuli
+      // (e.g. an 8-note scale) so abcjs lays them out with room and responsive:'resize'
+      // scales that DOWN to the card, instead of squeezing them into the narrow baked
+      // width and scaling the crowding UP. Absent for sparse stimuli (baked default).
+      if (typeof staffwidth === 'number') opts.staffwidth = staffwidth;
       visualObj = ABCJS.renderAbc('paper', abc, opts)[0];
       emit({ type: 'rendered', ms: Math.round(performance.now() - t) });
     } catch (e) {
@@ -235,7 +240,7 @@ ${playButton}
 
   function handle(cmd) {
     if (!cmd || !cmd.type) return;
-    if (cmd.type === 'render') renderAbc(cmd.abc, cmd.scale);
+    if (cmd.type === 'render') renderAbc(cmd.abc, cmd.scale, cmd.staffwidth);
     else if (cmd.type === 'play') play();
     else if (cmd.type === 'stop') { if (synth) synth.stop(); }
     else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);

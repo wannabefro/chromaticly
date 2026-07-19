@@ -56,6 +56,20 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   const [painted, setPainted] = useState(false);
 
   const abc = useMemo(() => musicToAbc(music), [music]);
+  // Density-aware layout width (design A9 "stave is the hero"): the baked staffwidth
+  // suits the 1–4 note stimuli that dominate, but an 8-note scale squeezed into it
+  // renders as overlapping, oversized noteheads (responsive:'resize' scales the
+  // crowding UP). Widen the layout by beat count so abcjs spaces the notes and the
+  // fit-to-card scales DOWN instead. Sparse stimuli send nothing → baked default.
+  const staffwidth = useMemo(() => {
+    const beats = Math.max(
+      0,
+      ...music.voices.map(
+        (v) => v.events.filter((e) => e.type === 'note' || e.type === 'chord' || e.type === 'rest').length,
+      ),
+    );
+    return beats > 4 ? Math.round(beats * 35) : undefined;
+  }, [music]);
   // HTML is stable (abcjs is 500KB — don't rebuild per note); ABC arrives via a render command.
   const html = useMemo(
     () => buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE, soundFontUrl, paperColor: colors.paper, inkColor: colors.paperInk }),
@@ -79,8 +93,8 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   // Render the current stimulus once the surface is ready and whenever it (or the
   // notation scale) changes. A scale change re-renders in place — the HTML is stable.
   useEffect(() => {
-    if (ready) send({ type: 'render', abc, scale });
-  }, [ready, abc, scale, send]);
+    if (ready) send({ type: 'render', abc, scale, staffwidth });
+  }, [ready, abc, scale, staffwidth, send]);
 
   const handleMessage = useCallback(
     (e: WebViewMessageEvent) => {

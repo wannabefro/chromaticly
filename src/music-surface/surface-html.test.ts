@@ -68,10 +68,18 @@ describe('buildSurfaceHtml', () => {
   // the page applies it over the baked default so the score re-scales in place.
   test('applies a per-render notation scale over the baked default', () => {
     const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
-    expect(html).toContain('function renderAbc(abc, scale)');
+    expect(html).toContain('function renderAbc(abc, scale, staffwidth)');
     expect(html).toContain("typeof scale === 'number'");
     expect(html).toContain('opts.scale = scale');
-    expect(html).toContain('renderAbc(cmd.abc, cmd.scale)');
+    expect(html).toContain('renderAbc(cmd.abc, cmd.scale, cmd.staffwidth)');
+  });
+
+  // Density-aware layout width: a render command may carry a wider staffwidth for
+  // note-dense stimuli so abcjs doesn't squeeze them into the narrow baked width.
+  test('applies a per-render staffwidth over the baked default', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain("typeof staffwidth === 'number'");
+    expect(html).toContain('opts.staffwidth = staffwidth');
   });
 
   // Design 4c: long-press a bar to hear just it. A press-duration flag splits a hold from

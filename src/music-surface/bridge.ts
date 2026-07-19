@@ -4,8 +4,10 @@
 /** RN → WebView commands. */
 export type SurfaceCommand =
   /** Render ABC. `scale` (abcjs staff scale, design 5c notation size) is optional;
-   *  the page keeps its baked default when it is absent. */
-  | { type: 'render'; abc: string; scale?: number }
+   *  the page keeps its baked default when it is absent. `staffwidth` is an optional
+   *  density-aware layout width — wider for note-dense stimuli so they aren't squeezed
+   *  into the narrow baked width; absent for sparse stimuli (keeps the baked default). */
+  | { type: 'render'; abc: string; scale?: number; staffwidth?: number }
   | { type: 'play' }
   | { type: 'stop' }
   /** Tint the selected bar in the rendered score (design 4c), or clear it with
