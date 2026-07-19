@@ -46,14 +46,47 @@ const EXTRA_CASES: Case[] = [
 
 const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 
+// U2 (grade2-minor-keys plan, review finding 1) — a generator that only
+// exists from grade 2 up has no valid grade-1 instance to snapshot (a
+// grade-1 call would throw or produce garbage), so it must never be forced
+// into CASES above. Declaring it here routes its coverage requirement to
+// GRADE_2_EXTRA_CASES instead. Both are empty until U3/U4 register the first
+// grade-2-only generator (mode_swap, scale_construction).
+const GRADE_2_ONLY_TEMPLATES = new Set<string>([]);
+
+// Grade-2-only generators, pinned directly at grade 2 (mirrors EXTRA_CASES
+// above, since no grade-1 lesson can ever reference a grade-2-only template).
+const GRADE_2_EXTRA_CASES: Case[] = [];
+
+/** A grade-2-only template is covered only by a grade-2 pin; every other template is covered by a grade-1 case. */
+function isTemplateCovered(
+  templateId: string,
+  grade1Covered: Set<string>,
+  grade2Only: Set<string>,
+  grade2Covered: Set<string>,
+): boolean {
+  return grade2Only.has(templateId) ? grade2Covered.has(templateId) : grade1Covered.has(templateId);
+}
+
+/** A grade-2-only template that also has a grade-1 case would pin a throw or an invalid instance — always a defect. */
+function grade1Leaks(grade2Only: Set<string>, grade1Covered: Set<string>): string[] {
+  return [...grade2Only].filter((templateId) => grade1Covered.has(templateId));
+}
+
 describe('seed-stability — grade-1 generator output is pinned byte-for-byte', () => {
   test('every registered generator is exercised (the net cannot silently miss one)', () => {
-    const covered = new Set(CASES.map((c) => c.templateId));
+    const grade1Covered = new Set(CASES.map((c) => c.templateId));
+    const grade2Covered = new Set(GRADE_2_EXTRA_CASES.map((c) => c.templateId));
     for (const templateId of Object.keys(GENERATORS)) {
       // Invariant: an unpinned generator would let a refactor change its output
       // undetected — so a missing template is a defect in this net, fail loud.
-      expect(covered).toContain(templateId);
+      expect(isTemplateCovered(templateId, grade1Covered, GRADE_2_ONLY_TEMPLATES, grade2Covered)).toBe(true);
     }
+  });
+
+  test('a grade-2-only template is never pinned in a grade-1 case', () => {
+    const grade1Covered = new Set(CASES.map((c) => c.templateId));
+    expect(grade1Leaks(GRADE_2_ONLY_TEMPLATES, grade1Covered)).toEqual([]);
   });
 
   describe.each(CASES)('$label', ({ templateId, atoms }) => {
@@ -71,6 +104,47 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
       const passages = SEEDS.map((seed) => buildContextPassage({ grade: 1, seed, atoms }));
       expect(passages).toMatchSnapshot();
     });
+  });
+});
+
+// describe.each rejects an empty table, and GRADE_2_EXTRA_CASES is
+// intentionally empty until U3/U4 register the first grade-2-only generator.
+if (GRADE_2_EXTRA_CASES.length > 0) {
+  describe('seed-stability — grade-2-only generator extras are pinned byte-for-byte', () => {
+    describe.each(GRADE_2_EXTRA_CASES)('$label', ({ templateId, atoms }) => {
+      test('instances are a pure function of (template, grade, seed, atoms)', () => {
+        const instances = SEEDS.map((seed) => generate(templateId, { grade: 2, seed, atoms }));
+        expect(instances).toMatchSnapshot();
+      });
+    });
+  });
+}
+
+describe('seed-stability — grade partition coverage logic (synthetic inputs, no live generator required)', () => {
+  test('a registered generator in neither partition is reported uncovered — the core "no generator ships unpinned" guarantee survives the refactor', () => {
+    const grade1Covered = new Set(['note_naming']);
+    const grade2Only = new Set(['mode_swap']);
+    const grade2Covered = new Set(['mode_swap']);
+    expect(isTemplateCovered('unregistered_orphan', grade1Covered, grade2Only, grade2Covered)).toBe(false);
+  });
+
+  test('a grade-2-only template pinned only at grade 2 counts as covered', () => {
+    const grade1Covered = new Set(['note_naming']);
+    const grade2Only = new Set(['mode_swap']);
+    const grade2Covered = new Set(['mode_swap']);
+    expect(isTemplateCovered('mode_swap', grade1Covered, grade2Only, grade2Covered)).toBe(true);
+  });
+
+  test('a template declared grade-2-only that also appears in a grade-1 case is flagged as a leak', () => {
+    const grade1Covered = new Set(['note_naming', 'mode_swap']);
+    const grade2Only = new Set(['mode_swap']);
+    expect(grade1Leaks(grade2Only, grade1Covered)).toEqual(['mode_swap']);
+  });
+
+  test('disjoint partitions report no leak', () => {
+    const grade1Covered = new Set(['note_naming']);
+    const grade2Only = new Set(['mode_swap']);
+    expect(grade1Leaks(grade2Only, grade1Covered)).toEqual([]);
   });
 });
 
