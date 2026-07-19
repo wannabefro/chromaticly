@@ -111,6 +111,28 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
     expect(() => assertAtomResolves('note_read:treble:B3', 2)).not.toThrow();
     expect(() => assertAtomResolves('note_read:treble:B3', 1)).toThrow();
   });
+
+  // D9 — key_sig now accepts minor keys, scoped by scopeForGrade(grade).keysMinor,
+  // not just major (a bare minor key is not in G1's syllabus at all).
+  test('key_sig:A_minor resolves at grade 2 but not grade 1', () => {
+    expect(() => assertAtomResolves('key_sig:A_minor', 2)).not.toThrow();
+    expect(() => assertAtomResolves('key_sig:A_minor', 1)).toThrow();
+  });
+
+  // D9 — the new `scale:` atom kind: tonic must be in keysMinor AND form in
+  // minorForms, so a melodic atom stays invalid until a grade's scope lists
+  // that form (structure-only G3 forward compat, not content shipped early).
+  test('scale:A_minor_harmonic resolves at grade 2 (tonic in scope, form in scope)', () => {
+    expect(() => assertAtomResolves('scale:A_minor_harmonic', 2)).not.toThrow();
+  });
+
+  test('scale:B_minor_harmonic rejects an out-of-scope tonic at grade 2', () => {
+    expect(() => assertAtomResolves('scale:B_minor_harmonic', 2)).toThrow();
+  });
+
+  test('scale:A_minor_melodic rejects a form not yet in grade 2 scope, even for an in-scope tonic', () => {
+    expect(() => assertAtomResolves('scale:A_minor_melodic', 2)).toThrow();
+  });
 });
 
 describe('lessons — a lesson id reused across two grade docs fails loud at load time', () => {
@@ -186,8 +208,8 @@ describe('grade1 lessons — lessonById', () => {
 // lessons.ts); grade-2 content validates against grade-2 scope, the same
 // teeth grade-1 content already goes through above.
 describe('grade2 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[2] has the new-major-keys unit', () => {
-    expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual(['key-signatures-2']);
+  test('LESSONS_BY_GRADE[2] has the single linear key-signatures-2 -> minor-keys-2 -> minor-scales-2 chain', () => {
+    expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual(['key-signatures-2', 'minor-keys-2', 'minor-scales-2']);
   });
 
   test('lessonById resolves the grade-2 lesson stamped grade 2', () => {
@@ -196,9 +218,9 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
     expect(lesson!.grade).toBe(2);
   });
 
-  test('the grade-2 unit is in the merged LESSONS list, after grade-1', () => {
-    expect(LESSONS.map((l) => l.id)).toContain('key-signatures-2');
-    expect(LESSONS[LESSONS.length - 1].id).toBe('key-signatures-2');
+  test('the grade-2 units are in the merged LESSONS list, after grade-1, ending on the terminal lesson', () => {
+    expect(LESSONS.map((l) => l.id)).toEqual(expect.arrayContaining(['key-signatures-2', 'minor-keys-2', 'minor-scales-2']));
+    expect(LESSONS[LESSONS.length - 1].id).toBe('minor-scales-2');
   });
 
   // Playability sweep: a unit the map can open must never throw mid-set. SetRunner

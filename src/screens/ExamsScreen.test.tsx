@@ -92,7 +92,7 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
 // Sanity: Level 2's own threshold/unit-count numbers still come off the real content,
 // unaffected by the sealed-paper state (D8 only gates onPress + copy, not the numbers).
 describe('ExamsScreen — Level 2 sizing still derives from LESSONS_BY_GRADE[2]', () => {
-  test('LEVELS[1] has one unit', () => {
-    expect(LEVELS[1].unitIds).toHaveLength(1);
+  test('LEVELS[1] has one unit per grade-2 lesson (moves only at content growth, not by surprise)', () => {
+    expect(LEVELS[1].unitIds).toHaveLength(LESSONS_BY_GRADE[2].length);
   });
 });

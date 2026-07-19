@@ -1,6 +1,6 @@
 {
   "grade": 2,
-  "version": "g2-lessons-2026-07-18",
+  "version": "g2-lessons-2026-07-19",
   "lessons": [
     {
       "id": "key-signatures-2",
@@ -36,6 +36,80 @@
         },
         "smartTip": "In any flat key, the second-to-last flat names the key — B♭ major's flats are B♭, E♭ (so B♭); E♭ major's are B♭, E♭, A♭ (so E♭).",
         "didYouKnow": "Flats are written in the order B, E, A, D, G, C, F — exactly the sharp order (F, C, G, D, A, E, B) reversed."
+      },
+      "unlocks": "minor-keys-2"
+    },
+    {
+      "id": "minor-keys-2",
+      "title": "Relative minor keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:A_minor",
+        "key_sig:E_minor",
+        "key_sig:D_minor"
+      ],
+      "templates": [
+        "mode_swap"
+      ],
+      "worked_example": {
+        "template_id": "mode_swap",
+        "grade": 2,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The three relative pairs: A minor with C major, E minor with G major, D minor with F major",
+          "A key and its relative minor or major always share the same key signature",
+          "How to count a minor 3rd down from a major tonic to find its relative minor"
+        ],
+        "concept": {
+          "title": "Grade 2 relative minor keys",
+          "body": "Every major key has a relative minor that shares its key signature. C major and A minor both have no sharps or flats; G major and E minor both have one sharp, F♯; F major and D minor both have one flat, B♭. The relative minor's tonic sits a minor 3rd below its major partner's.",
+          "example": {
+            "template_id": "mode_swap",
+            "grade": 2,
+            "seed": 3
+          }
+        },
+        "smartTip": "Count three semitones — a minor 3rd — down from the major tonic and you'll land on the relative minor, two letter-names lower: C down to A, G down to E, F down to D.",
+        "didYouKnow": "A relative major and minor share every note in their scale, yet sound completely different — because their home note, the tonic, is different."
+      },
+      "unlocks": "minor-scales-2"
+    },
+    {
+      "id": "minor-scales-2",
+      "title": "The harmonic minor scale",
+      "strand": "scales_keys",
+      "atoms": [
+        "scale:A_minor_harmonic",
+        "scale:E_minor_harmonic",
+        "scale:D_minor_harmonic"
+      ],
+      "templates": [
+        "scale_construction"
+      ],
+      "worked_example": {
+        "template_id": "scale_construction",
+        "grade": 2,
+        "seed": 18
+      },
+      "teach": {
+        "objectives": [
+          "Harmonic minor is the natural minor with the 7th note raised",
+          "Where the scale's semitones fall — three of them, plus the augmented 2nd between the 6th and 7th notes",
+          "The raised 7ths for A, E and D minor: G♯, D♯ and C♯"
+        ],
+        "concept": {
+          "title": "Grade 2 harmonic minor",
+          "body": "Harmonic minor is built from the natural (key-signature) minor scale with one change: the 7th note is raised a semitone. That raised 7th creates an augmented 2nd — a gap of three semitones — between the 6th and 7th notes, which is what gives harmonic minor its distinctive sound. A minor's raised 7th is G♯, E minor's is D♯, and D minor's is C♯.",
+          "example": {
+            "template_id": "scale_construction",
+            "grade": 2,
+            "seed": 4
+          }
+        },
+        "smartTip": "The 7th is raised with an accidental, written note by note — it is never written in the key signature.",
+        "didYouKnow": "The augmented-2nd gap between the 6th and 7th notes is what gives harmonic minor its distinctive, almost exotic sound."
       },
       "unlocks": null
     }

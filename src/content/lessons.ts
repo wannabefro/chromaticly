@@ -99,8 +99,27 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'key_sig': {
       const [key] = parts;
       const [tonic, mode] = (key ?? '').split('_');
-      if (mode !== 'major' || !scopeForGrade(grade).keysMajor.includes(tonic)) {
-        throw new Error(`lessons: atom "${atom}" is not a G${grade} major key`);
+      if (mode === 'major') {
+        if (!scopeForGrade(grade).keysMajor.includes(tonic)) {
+          throw new Error(`lessons: atom "${atom}" is not a G${grade} major key`);
+        }
+        return;
+      }
+      if (mode === 'minor') {
+        if (!scopeForGrade(grade).keysMinor.includes(tonic)) {
+          throw new Error(`lessons: atom "${atom}" is not a G${grade} minor key`);
+        }
+        return;
+      }
+      throw new Error(`lessons: atom "${atom}" is not a G${grade} key signature`);
+    }
+    case 'scale': {
+      const [spec] = parts;
+      const [tonic, mode, ...formParts] = (spec ?? '').split('_');
+      const form = formParts.join('_');
+      const scope = scopeForGrade(grade);
+      if (mode !== 'minor' || !scope.keysMinor.includes(tonic) || !scope.minorForms.includes(form)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} scale`);
       }
       return;
     }

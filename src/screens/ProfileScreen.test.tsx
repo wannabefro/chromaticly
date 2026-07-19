@@ -10,7 +10,7 @@ jest.mock('react-native-webview', () => {
 
 import { render, waitFor, within } from '@testing-library/react-native';
 
-import { LESSONS_BY_GRADE, lessonById } from '../content/lessons';
+import { LESSONS_BY_GRADE } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { ProgressProvider } from '../learn/ProgressContext';
 import { initialSrs } from '../learn/srs';
@@ -110,9 +110,11 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() =>
       expect(afterUnlock.getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length}`),
     );
-    // Same 4 mastered atoms, now over a 7-atom strand (grade-2's 3 unmastered new
-    // keys joined) — the radar deflates exactly because it widened.
-    const grade2Atoms = lessonById('key-signatures-2')!.atoms.length;
+    // Same 4 mastered atoms, now over the strand's full grade-2 atom set (all three
+    // grade-2 lessons are scales_keys — key-signatures-2's 3 plus minor-keys-2's and
+    // minor-scales-2's 6 unmastered new atoms joined) — the radar deflates exactly
+    // because it widened.
+    const grade2Atoms = LESSONS_BY_GRADE[2].filter((l) => l.strand === 'scales_keys').reduce((sum, l) => sum + l.atoms.length, 0);
     const expectedPct = Math.round((4 / (4 + grade2Atoms)) * 100);
     await waitFor(() =>
       expect(within(afterUnlock.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),

@@ -33749,6 +33749,3416 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
 ]
 `;
 
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte mode_swap @ minor-keys-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "E minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of C major?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of C major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "G major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of D minor?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of D minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "E minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of C major?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of C major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of A minor?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of A minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of A minor?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of A minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+]
+`;
+
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte scale_construction @ minor-scales-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s0",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s1",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s2",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the A harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s3",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "A_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this A harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:A_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the D harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s4",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "D_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "Bb2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s5",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s6",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s7",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s8",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the D harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s9",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "D_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "Bb4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the D harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s10",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "D_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "Bb4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s11",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the A harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s12",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "A_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this A harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:A_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "7th note",
+      "6th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s13",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the A harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s14",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "A_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this A harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:A_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the D harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s15",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "D_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "Bb4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "7th note",
+      "6th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the D harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s16",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "D_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "Bb4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s17",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the A harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s18",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "A_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this A harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:A_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "7th note",
+      "6th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "Compare each note against the E harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g2:s19",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "E_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this E harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:E_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+]
+`;
+
 exports[`seed-stability — grade-2-only generator extras are pinned byte-for-byte mode_swap (minor-keys-2, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

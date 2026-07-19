@@ -14,6 +14,14 @@ export function keySigAtom(key: string): string {
   return `key_sig:${key}`;
 }
 
+/** e.g. scaleAtom('A', 'harmonic') -> "scale:A_minor_harmonic" (D9) — matches
+ *  the "<tonic>_minor_<form>" convention scale_construction's srs_tags already
+ *  emit (scale-construction.ts). Minor-only for now; a major scale-family atom
+ *  would need a different helper, not a mode parameter here. */
+export function scaleAtom(tonic: string, form: string): string {
+  return `scale:${tonic}_minor_${form}`;
+}
+
 export function intervalAtom(number: number): string {
   return `interval:${number}`;
 }
