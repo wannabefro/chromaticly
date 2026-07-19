@@ -186,6 +186,18 @@ describe('seed-stability — grade-2 generator output is pinned byte-for-byte', 
 // real lessons; U4/U5 append their own cases to this same array.
 const GRADE_3_EXTRA_CASES: Case[] = [
   {
+    label: 'mode_swap (minor-keys-3, pre-lesson pin)',
+    templateId: 'mode_swap',
+    atoms: [
+      'key_sig:B_minor',
+      'key_sig:G_minor',
+      'key_sig:F#_minor',
+      'key_sig:C_minor',
+      'key_sig:C#_minor',
+      'key_sig:F_minor',
+    ],
+  },
+  {
     label: 'scale_construction harmonic (minor-scales-3, pre-lesson pin)',
     templateId: 'scale_construction',
     atoms: [
