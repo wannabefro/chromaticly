@@ -29,9 +29,15 @@ import type { InteractionComponentProps, InteractionSpec } from './types';
 /** The correct-answer render shared by mcq/text_input today: the canonical
  *  answer's label, or — when the stimulus carries notation — that notation on
  *  paper with the label as caption (rule 1/2). Lifted verbatim from the old
- *  ExerciseLoop FeedbackSheet branch (`:110-125`). */
+ *  ExerciseLoop FeedbackSheet branch (`:110-125`).
+ *
+ *  D8: for a spot-the-error item, the stimulus IS the corrupted music, so a
+ *  generator may instead set `interaction.config.answer_music` to the
+ *  rendered CORRECT answer (rule 5) — preferred over stimulus music when
+ *  present. Additive only: no existing template sets this key. */
 function defaultCorrectAnswerView(instance: ExerciseInstance) {
-  const music = instance.stimulus.music;
+  const answerMusic = instance.interaction.config?.answer_music as Music | undefined;
+  const music = answerMusic ?? instance.stimulus.music;
   const answerLabel = optionLabel(instance.answer.canonical);
   return music ? (
     <NotationCard music={music} caption={answerLabel} testID="answer-notation" />

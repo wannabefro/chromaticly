@@ -22,7 +22,8 @@ jest.mock('react-native-webview', () => {
 import { generate } from '../../engine/generators';
 import { atomsForTemplate } from '../../engine/generators/test-helpers';
 import type { ExerciseInstance } from '../../engine/schema';
-import { assembleOptions, gradeMcq, gradeStaveInput, gradeText } from '../grading';
+import { NotationCard } from '../components/NotationCard';
+import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, optionLabel } from '../grading';
 import { INTERACTIONS, lookupInteraction } from './registry';
 
 const MCQ_TEMPLATE_IDS = ['note_naming', 'interval_naming', 'rhythm_sum', 'key_signature_id', 'term_meaning'];
@@ -323,5 +324,63 @@ describe('registry — correctAnswerView', () => {
     const instance = generate('key_signature_id', { grade: 1, seed: 3, atoms: atomsForTemplate('key_signature_id') });
     const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { play?: boolean } };
     expect(view.props.play).not.toBe(false);
+  });
+});
+
+// D8: scale_construction (a spot-the-error mcq) sets interaction.config.answer_music
+// to the TRUE scale — the stimulus is, by construction, the corrupted one. This is
+// the only live template that sets the key; every other template's config omits it.
+const SCALE_ATOMS = ['scale:A_minor_harmonic', 'scale:E_minor_harmonic', 'scale:D_minor_harmonic'];
+
+describe('registry — answer_music affordance (U5/D8)', () => {
+  test('an mcq instance WITH answer_music renders answer-notation from answer_music, not stimulus.music (the stimulus is the corrupted scale)', () => {
+    for (let seed = 0; seed < 10; seed++) {
+      const instance = generate('scale_construction', { grade: 2, seed, atoms: SCALE_ATOMS });
+      const answerMusic = instance.interaction.config.answer_music;
+      expect(answerMusic).toBeDefined();
+      // The corruption rule guarantees the stimulus differs from the true scale.
+      expect(instance.stimulus.music).not.toEqual(answerMusic);
+
+      const view = lookupInteraction('mcq').correctAnswerView(instance) as {
+        props: { music: unknown; caption: string; testID: string };
+      };
+      expect(view.props.testID).toBe('answer-notation');
+      expect(view.props.music).toEqual(answerMusic);
+      expect(view.props.music).not.toEqual(instance.stimulus.music);
+      // Caption stays the canonical label (e.g. "2nd note"), not blanked out.
+      expect(view.props.caption).toBe(optionLabel(instance.answer.canonical));
+    }
+  });
+
+  test('the answer_music path renders inside a NotationCard — paper + play come from the component contract (rules 1/2)', () => {
+    const instance = generate('scale_construction', { grade: 2, seed: 0, atoms: SCALE_ATOMS });
+    const view = lookupInteraction('mcq').correctAnswerView(instance) as {
+      type: unknown;
+      props: { play?: boolean };
+    };
+    expect(view.type).toBe(NotationCard);
+    expect(view.props.play).not.toBe(false);
+  });
+
+  // Characterization (additive-only guard): no existing template sets answer_music,
+  // so their feedback rendering must be byte-identical to pre-U5 behavior.
+  describe('characterization: existing templates are unchanged', () => {
+    test('key_signature_id (option_music-shaped) still renders the correct OPTION\'s stave, ignoring the (absent) answer_music branch', () => {
+      for (let seed = 0; seed < 10; seed++) {
+        const instance = generate('key_signature_id', { grade: 1, seed, atoms: atomsForTemplate('key_signature_id') });
+        expect(instance.interaction.config?.answer_music).toBeUndefined();
+        const correctOption = assembleOptions(instance).find((o) => o.correct)!;
+        const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { music: unknown; caption: string } };
+        expect(view.props.music).toEqual(correctOption.music);
+        expect(view.props.caption).toBe(correctOption.value);
+      }
+    });
+
+    test('a plain mcq (no option_music, no answer_music) still falls through to stimulus.music unchanged', () => {
+      const instance = generate('note_naming', { grade: 1, seed: 2, atoms: atomsForTemplate('note_naming') });
+      expect(instance.interaction.config?.answer_music).toBeUndefined();
+      const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { music: unknown } };
+      expect(view.props.music).toEqual(instance.stimulus.music);
+    });
   });
 });
