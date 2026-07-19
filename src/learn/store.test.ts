@@ -313,3 +313,55 @@ describe('store — account name + nudge-seen (design 6b/6c, 302.9/302.13)', () 
     expect(store.isNamed()).toBe(false);
   });
 });
+
+describe('store — exam-clear persistence (D4, 003 U4)', () => {
+  // Why: "Clear the Level N exam to unlock" is a persistent fact, not session
+  // state — the Level N+1 unlock must survive an app restart.
+  test('an exam clear survives toSnapshot() → new ProgressStore from that snapshot', () => {
+    const store = new ProgressStore();
+    expect(store.isExamCleared(1)).toBe(false);
+
+    store.recordExamCleared(1);
+    expect(store.isExamCleared(1)).toBe(true);
+
+    const reloaded = new ProgressStore(JSON.parse(JSON.stringify(store.toSnapshot())));
+    expect(reloaded.isExamCleared(1)).toBe(true);
+    expect(reloaded.isExamCleared(2)).toBe(false);
+  });
+
+  // Why: additive-optional migration must not discard a live learner's progress
+  // just because `clearedExams` didn't exist yet when the snapshot was written
+  // (the accountNudgeSeen/collectedFacts precedent, AD4).
+  test('a pre-existing snapshot without clearedExams loads with nothing cleared and no data loss', () => {
+    const preClearedExamsBlob = JSON.parse(
+      JSON.stringify({
+        version: STORE_VERSION,
+        atoms: { 'note_read:treble:C4': { mastery: { streak: 2, mastered: false }, srs: { box: 1, lastReviewed: 0, nextDue: 2 } } },
+        lessons: { 'treble-notes': { completed: true } },
+        unlocked: ['treble-notes', 'bass-notes'],
+        collectedFacts: ['treble-notes'],
+        profile: { grade: 1, onboardedAt: 't' },
+        // no clearedExams key — mirrors a real pre-U4 persisted blob.
+      }),
+    );
+    const store = new ProgressStore(preClearedExamsBlob);
+
+    expect(store.isExamCleared(1)).toBe(false);
+    expect(store.toSnapshot().clearedExams).toEqual([]);
+    // nothing else discarded
+    expect(store.getAtom('note_read:treble:C4').mastery.streak).toBe(2);
+    expect(store.getLesson('treble-notes').completed).toBe(true);
+    expect(store.isUnlocked('bass-notes')).toBe(true);
+    expect(store.isFactCollected('treble-notes')).toBe(true);
+    expect(store.getGrade()).toBe(1);
+  });
+
+  // Why: idempotence — a re-taken or replayed exam must not corrupt or duplicate
+  // the record (D7's "safe on a replayed exam" relies on this).
+  test('recording the same grade cleared twice keeps one entry', () => {
+    const store = new ProgressStore();
+    store.recordExamCleared(1);
+    store.recordExamCleared(1);
+    expect(store.toSnapshot().clearedExams).toEqual([1]);
+  });
+});

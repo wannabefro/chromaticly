@@ -44,6 +44,10 @@ export interface ProgressSnapshot {
   /** Whether the guest→account save-progress nudge (design 6c) has been shown and
    *  actioned — a once-only flag. Additive/optional; back-filled false in migrate(). */
   accountNudgeSeen?: boolean;
+  /** Grades whose practice exam has been cleared (band ≥ pass) — the persisted
+   *  unlock record for "Clear the Level N exam to unlock" (D4). Additive/optional;
+   *  back-filled [] in migrate(). */
+  clearedExams?: number[];
 }
 
 /** Async persistence port — implemented by expo-sqlite/MMKV on device and by an
@@ -54,7 +58,7 @@ export interface SnapshotStorage {
 }
 
 function emptySnapshot(): ProgressSnapshot {
-  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null, accountNudgeSeen: false };
+  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null, accountNudgeSeen: false, clearedExams: [] };
 }
 
 /** `SrsState.ease` (U6) is additive and optional, so a snapshot written before
@@ -93,6 +97,7 @@ export class ProgressStore {
   private collected: Set<string>;
   private profile: Profile | null;
   private nudgeSeen: boolean;
+  private clearedExams: Set<number>;
 
   constructor(snapshot: ProgressSnapshot = emptySnapshot()) {
     const s = migrate(snapshot);
@@ -102,6 +107,7 @@ export class ProgressStore {
     this.collected = new Set(s.collectedFacts);
     this.profile = s.profile;
     this.nudgeSeen = s.accountNudgeSeen ?? false;
+    this.clearedExams = new Set(s.clearedExams ?? []);
   }
 
   /** How many lessons the learner has completed — the "three lessons in" trigger for the
@@ -190,6 +196,18 @@ export class ProgressStore {
     this.collected.add(lessonId);
   }
 
+  /** Whether the grade's practice exam has been cleared (band ≥ pass) — the
+   *  Level N+1 unlock signal (D4). */
+  isExamCleared(grade: number): boolean {
+    return this.clearedExams.has(grade);
+  }
+
+  /** Record the grade's practice exam as cleared. Set semantics — recording the
+   *  same grade twice keeps one entry (idempotent, safe on a replayed exam). */
+  recordExamCleared(grade: number): void {
+    this.clearedExams.add(grade);
+  }
+
   toSnapshot(): ProgressSnapshot {
     return {
       version: STORE_VERSION,
@@ -199,6 +217,7 @@ export class ProgressStore {
       collectedFacts: [...this.collected],
       profile: this.profile,
       accountNudgeSeen: this.nudgeSeen,
+      clearedExams: [...this.clearedExams],
     };
   }
 }
