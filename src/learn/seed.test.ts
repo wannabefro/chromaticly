@@ -65,4 +65,44 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     expect(store.getLesson(root.id).completed).toBe(false);
     expect(Object.values(store.toSnapshot().lessons).filter((l) => l.completed)).toHaveLength(0);
   });
+
+  // Grade-1 seeding must stay byte-for-byte today's state: existing .maestro flows
+  // (e.g. `?seed=key-signatures`) depend on this exact shape, not just "similar".
+  test('seeding to a grade-1 unit records no exam clear and unlocks nothing in grade 2', () => {
+    const store = new ProgressStore();
+    seedProgressToUnit(store, LESSONS, 'key-signatures', AT);
+
+    expect(store.isExamCleared(1)).toBe(false);
+    for (const lesson of LESSONS.filter((l) => l.grade === 2)) {
+      expect(store.isUnlocked(lesson.id)).toBe(false);
+    }
+  });
+
+  // The seam must produce a state reachable by honest play (exam cleared → level
+  // open), so an E2E targeting a grade-2 unit exercises the real unlock path
+  // (D6's ensureLevelRootsUnlocked gate) rather than a fabricated one.
+  test('seeding to a grade-2 unit masters grade 1, records its exam cleared, and leaves the target unlocked but not complete', () => {
+    const store = new ProgressStore();
+    seedProgressToUnit(store, LESSONS, 'key-signatures-2', AT);
+
+    expect(store.isExamCleared(1)).toBe(true);
+    for (const lesson of LESSONS.filter((l) => l.grade === 1)) {
+      expect(store.getLesson(lesson.id).completed).toBe(true);
+    }
+    expect(store.isUnlocked('key-signatures-2')).toBe(true);
+    expect(store.getLesson('key-signatures-2').completed).toBe(false);
+  });
+
+  // 'exam' means "the gate is open, the paper isn't taken yet" — it must not
+  // fabricate a cleared exam or reach past the Level 1 gate into grade 2.
+  test('seedExamReady masters only grade-1 lessons and does not unlock grade 2 or record an exam clear', () => {
+    const store = new ProgressStore();
+    seedExamReady(store, LESSONS, AT);
+
+    expect(store.isExamCleared(1)).toBe(false);
+    expect(store.isUnlocked('key-signatures-2')).toBe(false);
+    for (const lesson of LESSONS.filter((l) => l.grade === 2)) {
+      expect(store.getLesson(lesson.id).completed).toBe(false);
+    }
+  });
 });
