@@ -16,15 +16,29 @@ const TEMPLATE_IDS = [
   'music_in_context',
 ];
 
+// mode_swap only exists from grade 2 up (scope.keysMinor is empty at grade 1,
+// so no grade-1 instance is ever valid) — covered separately below rather
+// than through the grade-1 loops the rest of this file shares.
+const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap'];
+
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {
-    for (const templateId of TEMPLATE_IDS) {
+    for (const templateId of [...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS]) {
       expect(typeof GENERATORS[templateId]).toBe('function');
     }
   });
 
   test('has exactly the Tier-A template ids registered — no extras, no gaps', () => {
-    expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS].sort());
+    expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS].sort());
+  });
+});
+
+describe('generate() — grade-2-only templates', () => {
+  test('mode_swap produces a valid grade-2 instance (grade 1 has no valid instance — keysMinor is empty there)', () => {
+    const atoms = ['key_sig:A_minor', 'key_sig:E_minor', 'key_sig:D_minor'];
+    const instance = generate('mode_swap', { grade: 2, seed: 1, atoms });
+    expect(instance.template_id).toBe('mode_swap');
+    expect(validate(instance).ok).toBe(true);
   });
 });
 

@@ -64,6 +64,14 @@ describe('keySignatureId — key pool is atom-derived (R4, KTD5)', () => {
     expect(() => keySignatureId(optsFor(['key_sig:C_major'], 0))).toThrow(/at least two/);
     expect(() => keySignatureId(optsFor([], 0))).toThrow(/at least two/);
   });
+
+  // D10 (review finding 2): a bare key signature is ambiguous between its
+  // relative major and minor (A minor ≡ C major), so key_signature_id must
+  // never accept a minor atom — first layer of the same defence the validator
+  // tightens in validator.ts's keySignatureIdHook.
+  test('a key_sig:*_minor atom throws — key_signature_id is major-only (D10)', () => {
+    expect(() => keySignatureId(optsFor(['key_sig:A_minor', 'key_sig:C_major'], 0))).toThrow(/non-major/);
+  });
 });
 
 describe('keySignatureId — name-the-key mode answers "<Key> major"', () => {

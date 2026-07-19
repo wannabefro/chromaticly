@@ -33748,3 +33748,688 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   },
 ]
 `;
+
+exports[`seed-stability — grade-2-only generator extras are pinned byte-for-byte mode_swap (minor-keys-2, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "E minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of C major?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of C major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "G major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of D minor?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of D minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "E minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of C major?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of C major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of A minor?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of A minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "A minor",
+      "E minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of F major?",
+    "srs_tags": [
+      "key_sig:D_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of F major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "A minor",
+      "D minor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative minor of G major?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative minor of G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of A minor?",
+    "srs_tags": [
+      "key_sig:A_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of A minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "F major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "A key and its relative minor/major share the same key signature.",
+    ],
+    "id": "mode_swap:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is the relative major of E minor?",
+    "srs_tags": [
+      "key_sig:E_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Relative major of E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "mode_swap",
+  },
+]
+`;

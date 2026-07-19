@@ -265,6 +265,14 @@ function extractKeyTonic(raw: string): string | null {
   return match ? match[1] : null;
 }
 
+// D10 (review finding 2): a bare key signature is ambiguous between its
+// relative major and minor (A minor and C major share one signature), so
+// key_signature_id — which names only the signature, not a tonic-context clue
+// — must never accept a minor canonical or offer a minor distractor. This is
+// defence in depth alongside the generator-layer guard
+// (key-signature-id.ts:34): a future generator change cannot reintroduce the
+// ambiguity past this validator. `mode_swap` exists precisely to test the
+// relative relationship instead of the bare signature.
 function keySignatureIdHook(inst: ExerciseInstance): string[] {
   const canonical = inst.answer.canonical;
   if (typeof canonical !== 'string') {
@@ -274,12 +282,67 @@ function keySignatureIdHook(inst: ExerciseInstance): string[] {
   // grades before any hook runs.
   const scope = scopeForGrade(inst.grade);
   const tonic = extractKeyTonic(canonical);
-  const isMinor = /minor/i.test(canonical);
-  const tonicInScope = !!tonic && (isMinor ? scope.keysMinor.includes(tonic) : scope.keysMajor.includes(tonic));
+  if (/minor/i.test(canonical)) {
+    return [
+      `key_signature_id: canonical key "${canonical}" names a minor key — a bare key signature cannot ` +
+        'unambiguously name a minor key (D10); use mode_swap to test the relative relationship instead',
+    ];
+  }
+  const tonicInScope = !!tonic && scope.keysMajor.includes(tonic);
   if (!tonicInScope) {
     return [`key_signature_id: canonical key "${canonical}" is outside grade ${inst.grade} scope`];
   }
-  return [];
+  const errors: string[] = [];
+  for (const d of inst.distractors) {
+    if (typeof d === 'string' && /minor/i.test(d)) {
+      errors.push(
+        `key_signature_id: distractor "${d}" names a minor key — a bare key signature cannot unambiguously ` +
+          'name a minor key (D10)',
+      );
+    }
+  }
+  return errors;
+}
+
+// modeSwapHook: canonical/distractors are "<Tonic> major"/"<Tonic> minor"
+// strings whose tonic is in the grade's matching same-mode scope list —
+// commandment 1 (scope is law) applied to a key-NAME MCQ rather than a
+// notated stave, since mode_swap's stimulus is text-only (D3). Every
+// distractor must also be the SAME mode as the canonical (D4: asking for a
+// relative minor never offers a major-key distractor, and vice versa).
+function modeSwapHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string') {
+    return ['mode_swap: canonical answer must be a key name string'];
+  }
+  // Grade is guaranteed valid here — validate() already rejected unsupported
+  // grades before any hook runs.
+  const scope = scopeForGrade(inst.grade);
+  const tonic = extractKeyTonic(canonical);
+  const isMinor = /minor/i.test(canonical);
+  const tonicInScope = !!tonic && (isMinor ? scope.keysMinor.includes(tonic) : scope.keysMajor.includes(tonic));
+  if (!tonicInScope) {
+    return [`mode_swap: canonical key "${canonical}" is outside grade ${inst.grade} scope`];
+  }
+
+  const errors: string[] = [];
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string') {
+      errors.push(`mode_swap: distractor "${String(d)}" is not a key name string`);
+      continue;
+    }
+    const dIsMinor = /minor/i.test(d);
+    if (dIsMinor !== isMinor) {
+      errors.push(`mode_swap: distractor "${d}" is a different mode than the canonical answer`);
+      continue;
+    }
+    const dTonic = extractKeyTonic(d);
+    const dInScope = !!dTonic && (dIsMinor ? scope.keysMinor.includes(dTonic) : scope.keysMajor.includes(dTonic));
+    if (!dInScope) {
+      errors.push(`mode_swap: distractor "${d}" is outside grade ${inst.grade} scope`);
+    }
+  }
+  return errors;
 }
 
 function rhythmSumHook(inst: ExerciseInstance): string[] {
@@ -370,6 +433,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   interval_naming: intervalNamingHook,
   interval_naming_stave_input: intervalNamingHook,
   key_signature_id: keySignatureIdHook,
+  mode_swap: modeSwapHook,
   rhythm_sum: rhythmSumHook,
   term_meaning: termMeaningHook,
   bar_validity: barValidityHook,

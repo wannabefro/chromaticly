@@ -27,6 +27,35 @@ function validNoteNamingInstance(): ExerciseInstance {
   };
 }
 
+function validKeySignatureIdInstance(grade: 1 | 2 = 1): ExerciseInstance {
+  const key = grade === 1 ? 'G' : 'A';
+  const distractors = grade === 1 ? ['C major', 'D major'] : ['C major', 'Bb major'];
+  const musicFor = (k: string) => ({
+    clef: 'treble',
+    key_sig: `${k}_major`,
+    time_sig: null,
+    voices: [{ events: [{ type: 'note', pitch: `${k}4`, dur: 'semibreve' }] }],
+  });
+  return {
+    id: 'c3d4e5f6-0000-0000-0000-000000000000',
+    template_id: 'key_signature_id',
+    grade,
+    strand: 'scales_keys',
+    prompt: 'Name this key.',
+    stimulus: { music: musicFor(key), text: null },
+    interaction: { type: 'mcq', config: { option_music: { [`${key} major`]: musicFor(key) } } },
+    answer: { canonical: `${key} major`, accepted_alternatives: [] },
+    distractors,
+    hints: ['Count the sharps or flats on the stave and match them to a key you know.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'Not quite — recount the sharps or flats and their order on the stave.',
+    },
+    srs_tags: [`key_sig:${key}_major`],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 function validIntervalNamingInstance(): ExerciseInstance {
   return {
     id: 'b2c3d4e5-0000-0000-0000-000000000000',
@@ -263,5 +292,36 @@ describe('validate — per-template hook: interval_naming', () => {
   test('a well-formed interval_naming instance passes clean', () => {
     const result = validate(validIntervalNamingInstance());
     expect(result.ok).toBe(true);
+  });
+});
+
+// D10 (review finding 2): a bare key signature is ambiguous between its
+// relative major and minor (A minor and C major share one signature), so
+// key_signature_id must refuse a minor canonical/distractor at the validator
+// layer too — defence in depth alongside the generator's own atom guard
+// (key-signature-id.test.ts).
+describe('validate — per-template hook: key_signature_id (D10 minor-key rejection)', () => {
+  test('a canonical answer naming a minor key ("A minor") is rejected at grade 2, with an error naming the minor-key rejection', () => {
+    const instance = validKeySignatureIdInstance(2);
+    instance.answer.canonical = 'A minor';
+    // The scope-is-law pitch/key-sig check only inspects stimulus.music, which
+    // still names A major here — this assertion is purely about the semantic
+    // canonical string the hook reads, so leave stimulus.music untouched.
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('key_signature_id') && /minor/i.test(e))).toBe(true);
+  });
+
+  test('a distractor naming a minor key is rejected even when the canonical is a valid major key', () => {
+    const instance = validKeySignatureIdInstance(2);
+    instance.distractors = ['C major', 'D minor'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('key_signature_id') && /minor/i.test(e))).toBe(true);
+  });
+
+  test('characterization: existing valid MAJOR key_signature_id instances at grade 1 and grade 2 still validate — the tightening removes only the ambiguous minor case', () => {
+    expect(validate(validKeySignatureIdInstance(1))).toEqual({ ok: true, errors: [] });
+    expect(validate(validKeySignatureIdInstance(2))).toEqual({ ok: true, errors: [] });
   });
 });

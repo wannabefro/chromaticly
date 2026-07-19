@@ -6,6 +6,7 @@ import { barValidity } from './bar-validity';
 import { findTheBar } from './find-the-bar';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
+import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { rhythmSum } from './rhythm-sum';
@@ -18,6 +19,7 @@ export const GENERATORS: Record<string, Generator> = {
   interval_naming_stave_input: intervalNamingStaveInput,
   rhythm_sum: rhythmSum,
   key_signature_id: keySignatureId,
+  mode_swap: modeSwap,
   term_meaning: termMeaning,
   term_meaning_flashcard: termMeaningFlashcard,
   bar_validity: barValidity,

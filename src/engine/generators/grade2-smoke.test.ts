@@ -95,6 +95,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'add_time_signature',
       'note_value_compare',
       'music_in_context',
+      'mode_swap',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });
@@ -147,6 +148,18 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
     const atoms = atomsForLesson('key-signatures');
     for (const seed of SEEDS) {
       const instance = generate('key_signature_id', { grade: 2, seed, atoms });
+      assertValidatorClean(instance);
+      assertWithinGrade2Scope(instance.stimulus.music as Music | null);
+    }
+  });
+
+  // mode_swap is grade-2-only (U3, minor-keys-2 pre-lesson pool) — its
+  // stimulus is text-only (D3), so assertWithinGrade2Scope is a no-op here;
+  // scope-is-law for its text-only canonical/distractors is modeSwapHook's job.
+  test('mode_swap @ grade 2: validator- and scope-clean across seeds', () => {
+    const atoms = ['key_sig:A_minor', 'key_sig:E_minor', 'key_sig:D_minor'];
+    for (const seed of SEEDS) {
+      const instance = generate('mode_swap', { grade: 2, seed, atoms });
       assertValidatorClean(instance);
       assertWithinGrade2Scope(instance.stimulus.music as Music | null);
     }
