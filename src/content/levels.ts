@@ -59,7 +59,24 @@ function level2(): Level {
   };
 }
 
-export const LEVELS: Level[] = [level1(), level2(), ...[3, 4, 5].map(lockedLevel)];
+// D9: same anti-drift rule as level1()/level2() — unitIds and the exam-gate
+// threshold derive from the grade-3 doc, never a frozen literal. Level 3 is
+// still locked for real learners this slice: isLevelUnlocked gates on
+// isExamCleared(2), and no Grade 2 exam paper exists yet (hasExamPaper(2) is
+// false), so that gate is unreachable except via the __DEV__ seed seam.
+function level3(): Level {
+  const unitIds = LESSONS_BY_GRADE[3].map((l) => l.id);
+  return {
+    id: 'level-3',
+    grade: 3,
+    title: 'Grade 3',
+    prerequisite: 'Clear the Level 2 exam to unlock',
+    unitIds,
+    examGate: { unlockAtStars: unitIds.length * 3 },
+  };
+}
+
+export const LEVELS: Level[] = [level1(), level2(), level3(), ...[4, 5].map(lockedLevel)];
 
 /** Whether a grade can be picked as an onboarding start grade (D14). This is
  *  deliberately a static content concept, NOT `isLevelUnlocked` — onboarding

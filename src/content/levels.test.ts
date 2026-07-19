@@ -1,3 +1,4 @@
+import { hasExamPaper } from '../learn/exam';
 import { accountNudgeStats, isLevelUnlocked } from '../learn/mastery-rollup';
 import { ProgressStore } from '../learn/store';
 import { LESSONS, LESSONS_BY_GRADE, lessonsForGrade, lessonById } from './lessons';
@@ -52,11 +53,51 @@ describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U
   });
 });
 
-describe('levels — Levels 3-5 are locked placeholders (R1, R4)', () => {
-  const higherLevels = LEVELS.slice(2);
+// U6: Level 3's shape derives from the authored grade-3 doc, never a literal
+// (the same anti-drift rule as level1()/level2()).
+describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U6)', () => {
+  const level3 = LEVELS[2];
 
-  test('there are exactly three locked levels, grades 3 through 5', () => {
-    expect(higherLevels.map((l) => l.grade)).toEqual([3, 4, 5]);
+  test('Level 3 has one unit id per grade-3 lesson, in lesson order', () => {
+    expect(level3.id).toBe('level-3');
+    expect(level3.grade).toBe(3);
+    expect(level3.unitIds).toEqual(LESSONS_BY_GRADE[3].map((l) => l.id));
+  });
+
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (9 stars for 3 grade-3 units)', () => {
+    expect(level3.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
+    expect(level3.examGate.unlockAtStars).toBe(9);
+  });
+
+  // The unlock gate is the PREVIOUS grade's exam (Grade 2's) — and no Grade 2
+  // exam paper exists yet (hasExamPaper(2) is false), so the seed seam
+  // (recordExamCleared) is the only current path to a cleared Level 3.
+  test('Level 3 is locked on a fresh store and with only the grade-1 exam cleared; unlocks once the grade-2 exam is recorded cleared', () => {
+    const fresh = new ProgressStore();
+    expect(isLevelUnlocked(level3, fresh)).toBe(false);
+
+    const grade1Cleared = new ProgressStore();
+    grade1Cleared.recordExamCleared(1);
+    expect(isLevelUnlocked(level3, grade1Cleared)).toBe(false);
+
+    const grade2Cleared = new ProgressStore();
+    grade2Cleared.recordExamCleared(2);
+    expect(isLevelUnlocked(level3, grade2Cleared)).toBe(true);
+  });
+
+  // No stub Grade-3 (or Grade-2) exam paper exists — the exam gate must render
+  // "no paper" exactly as Grade 2's does, keeping Level 3 locked for real
+  // learners this slice (D9).
+  test('hasExamPaper(3) is false — no stub Grade-3 exam paper', () => {
+    expect(hasExamPaper(3)).toBe(false);
+  });
+});
+
+describe('levels — Levels 4-5 are locked placeholders (R1, R4)', () => {
+  const higherLevels = LEVELS.slice(3);
+
+  test('there are exactly two locked levels, grades 4 through 5', () => {
+    expect(higherLevels.map((l) => l.grade)).toEqual([4, 5]);
   });
 
   // D5: content-less levels stay locked even after their previous grade's exam clears
@@ -108,5 +149,39 @@ describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 ze
 
   test('the Profile fact denominator source (lessonsForGrade(1).length) is 8', () => {
     expect(lessonsForGrade(1)).toHaveLength(8);
+  });
+});
+
+// U6 (D9) — registering grade-3 content must move ZERO grade-1/2-visible
+// numbers. This is the trip-wire for anyone re-pointing a grade-1 or grade-2
+// surface at the merged LESSONS list instead of its own grade scope. LESSONS
+// here already includes the grade-3 doc (registered in src/content/lessons.ts)
+// — the point is that including it changes nothing below, on a store where
+// the grade-2 exam has NOT been cleared (i.e. Level 3 stays locked).
+describe('registering grade-3 content moves ZERO grade-1/2-visible numbers (D9/U6 zero-movement invariant)', () => {
+  const level1 = LEVELS[0];
+  const level2 = LEVELS[1];
+
+  test('Level 1 shape (unit count, star gate, id list) is unchanged', () => {
+    expect(level1.unitIds).toHaveLength(8);
+    expect(level1.examGate.unlockAtStars).toBe(24);
+    expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
+  });
+
+  test('Level 2 shape (unit count, star gate, id list) is unchanged', () => {
+    expect(level2.unitIds).toEqual(LESSONS_BY_GRADE[2].map((l) => l.id));
+    expect(level2.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[2].length * 3);
+  });
+
+  test('accountNudgeStats over the merged LESSONS equals its value over grade-1+2 lessons alone, on a store with no grade-2 exam cleared', () => {
+    const store = new ProgressStore();
+    const now = 0;
+    const overMerged = accountNudgeStats(store, LESSONS, now);
+    const overGrade1And2Only = accountNudgeStats(
+      store,
+      [...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2]],
+      now,
+    );
+    expect(overMerged).toEqual(overGrade1And2Only);
   });
 });

@@ -212,10 +212,12 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
 });
 
 // D5: a level unlocks by clearing the PREVIOUS level's exam, and only levels
-// with content can unlock — the guard that keeps content-less Levels 3-5
-// locked even after a future Grade-2 exam clear.
+// with content can unlock — the guard that keeps content-less Levels 4-5
+// locked even after a future Grade-3 exam clear. (U6/D9: Level 3 became
+// content-ful and is exercised in src/content/levels.test.ts instead — it's
+// no longer a content-less exemplar, so Level 4 takes over that role here.)
 describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, U5)', () => {
-  const [level1, level2, level3] = LEVELS;
+  const [level1, level2, , level4] = LEVELS;
 
   test('Level 1 is always unlocked, even on a fresh store', () => {
     const store = new ProgressStore();
@@ -230,12 +232,13 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, U5)', 
     expect(isLevelUnlocked(level2, store)).toBe(true);
   });
 
-  test('Level 3 stays locked even with grade-2 cleared — it has no units (content-less levels never unlock)', () => {
+  test('Level 4 stays locked even with grade-3 cleared — it has no units (content-less levels never unlock)', () => {
     const store = new ProgressStore();
     store.recordExamCleared(1);
     store.recordExamCleared(2);
-    expect(level3.unitIds).toEqual([]); // guards the premise: still content-less
-    expect(isLevelUnlocked(level3, store)).toBe(false);
+    store.recordExamCleared(3);
+    expect(level4.unitIds).toEqual([]); // guards the premise: still content-less
+    expect(isLevelUnlocked(level4, store)).toBe(false);
   });
 
   test('currentLevel is the highest unlocked level — the learner\'s frontier', () => {
