@@ -2,9 +2,11 @@
 // .atoms), so Practice now targets a specific atom: it uses the SRS signal to
 // find the weakest due unlocked atom and serves that atom's template scoped to
 // exactly that atom. When nothing is due it falls back to a rotation over
-// unlocked templates, scoped to a concrete owning lesson's atoms so a reused
-// template (e.g. note_naming across treble/bass/accidentals lessons) still
-// renders lesson-faithful content rather than the grade-wide scope.
+// unlocked (lesson, template) pairs (D12): every unlocked lesson contributes
+// one pair per template it lists, scoped to that lesson's own atoms/grade, so
+// a template reused across lessons or grades (e.g. scale_construction owned by
+// both a grade-2 and a grade-3 lesson) rotates through EVERY unlocked owner
+// instead of being permanently pinned to one.
 
 import { LESSONS } from '../content/lessons';
 import { selectDue, type SrsState } from './srs';
@@ -13,15 +15,9 @@ import { selectDue, type SrsState } from './srs';
 // (first-owner-wins; the same atom id reused across two grades is not yet handled —
 // see practice-plan's module doc comment and D10 of the grade2-new-major-keys plan).
 const ATOM_TEMPLATE = new Map<string, { template: string; grade: number }>();
-// template → the atoms and grade of the first unlocked-eligible lesson that owns it,
-// used to scope the rotation fallback (a template can be shared across lessons).
-const TEMPLATE_LESSON_ATOMS = new Map<string, { atoms: string[]; grade: number }>();
 for (const lesson of LESSONS) {
   for (const atom of lesson.atoms) {
     if (!ATOM_TEMPLATE.has(atom)) ATOM_TEMPLATE.set(atom, { template: lesson.templates[0], grade: lesson.grade });
-  }
-  for (const t of lesson.templates) {
-    if (!TEMPLATE_LESSON_ATOMS.has(t)) TEMPLATE_LESSON_ATOMS.set(t, { atoms: lesson.atoms, grade: lesson.grade });
   }
 }
 
@@ -45,6 +41,20 @@ export function unlockedTemplates(isUnlocked: (lessonId: string) => boolean): st
   return templates;
 }
 
+/** The rotation unit (D12): one pick per (unlocked lesson, template it lists) pair,
+ *  scoped to that lesson's own atoms/grade. A template shared across lessons —
+ *  including across grades, e.g. scale_construction owned by both a grade-2 and a
+ *  grade-3 lesson — contributes one entry per unlocked owner, so rotation reaches
+ *  every unlocked owner's content instead of pinning to a single (first) owner. */
+function unlockedRotationPairs(isUnlocked: (lessonId: string) => boolean): PracticePick[] {
+  const pairs: PracticePick[] = [];
+  for (const lesson of LESSONS) {
+    if (!isUnlocked(lesson.id)) continue;
+    for (const template of lesson.templates) pairs.push({ template, atoms: lesson.atoms, grade: lesson.grade });
+  }
+  return pairs;
+}
+
 export function unlockedAtomSet(isUnlocked: (lessonId: string) => boolean): Set<string> {
   const set = new Set<string>();
   for (const lesson of LESSONS) {
@@ -55,8 +65,8 @@ export function unlockedAtomSet(isUnlocked: (lessonId: string) => boolean): Set<
 }
 
 /** What Practice should serve next: the weakest due unlocked atom (SRS-driven,
- *  scoped to that atom), else a rotating unlocked template (scoped to its owning
- *  lesson's atoms). null when nothing is unlocked. */
+ *  scoped to that atom), else a rotating unlocked (lesson, template) pair (D12),
+ *  scoped to that lesson's own atoms/grade. null when nothing is unlocked. */
 export function nextPracticeTemplate(
   entries: { atom: string; srs: SrsState }[],
   now: number,
@@ -68,9 +78,7 @@ export function nextPracticeTemplate(
     const owner = ATOM_TEMPLATE.get(atom);
     if (owner) return { template: owner.template, atoms: [atom], grade: owner.grade };
   }
-  const templates = unlockedTemplates(isUnlocked);
-  if (templates.length === 0) return null;
-  const template = templates[step % templates.length];
-  const owner = TEMPLATE_LESSON_ATOMS.get(template);
-  return { template, atoms: owner?.atoms ?? [], grade: owner?.grade ?? 1 };
+  const pairs = unlockedRotationPairs(isUnlocked);
+  if (pairs.length === 0) return null;
+  return pairs[step % pairs.length];
 }
