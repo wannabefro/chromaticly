@@ -47,7 +47,7 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     const store = new ProgressStore();
     seedExamReady(store, LESSONS, AT);
 
-    const level1 = LEVELS.find((l) => l.unlocked)!;
+    const level1 = LEVELS.find((l) => l.grade === 1)!; // Level 1 is unconditionally unlocked (D5)
     const rows = unitStates(level1.unitIds, store, (id) => lessonById(id)?.atoms ?? []);
     const earned = rows.reduce((sum, r) => sum + r.stars, 0);
 

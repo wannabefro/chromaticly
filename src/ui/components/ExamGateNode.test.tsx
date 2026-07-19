@@ -34,4 +34,33 @@ describe('ExamGateNode', () => {
     fireEvent.press(getByTestId('exam-gate'));
     expect(onPress).toHaveBeenCalledTimes(1);
   });
+
+  // D9: a 1-unit level ("unlocks at 1 units ★") reads as bad grammar — singular must fix.
+  test('a single required unit renders "unit" singular, not "units"', () => {
+    const { getByText, queryByText } = render(<ExamGateNode levelGrade={2} unitsRequired={1} />);
+
+    expect(getByText('Practice paper · unlocks at 1 unit ★')).toBeTruthy();
+    expect(queryByText('Practice paper · unlocks at 1 units ★')).toBeNull();
+  });
+
+  // D8: a grade with no exam paper yet (hasPaper=false) must never promise a star
+  // threshold that would open onto a paper that doesn't exist — even at full stars,
+  // the gate stays sealed and reads "Coming soon" instead.
+  describe('hasPaper=false (D8 — no exam paper yet)', () => {
+    test('renders "Coming soon" and stays inert, not the star-threshold copy', () => {
+      const { getByTestId, getByText, queryByText } = render(
+        <ExamGateNode levelGrade={2} unitsRequired={1} hasPaper={false} testID="exam-gate" />,
+      );
+
+      expect(getByText('Coming soon')).toBeTruthy();
+      expect(queryByText('Practice paper · unlocks at 1 unit ★')).toBeNull();
+      expect(getByTestId('exam-gate').props.onPress).toBeUndefined();
+      expect(getByText('🔒')).toBeTruthy();
+    });
+
+    test('hasPaper defaults to true — omitting it keeps the existing star-threshold behavior', () => {
+      const { queryByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} />);
+      expect(queryByText('Coming soon')).toBeNull();
+    });
+  });
 });

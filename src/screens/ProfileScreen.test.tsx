@@ -8,9 +8,9 @@ jest.mock('react-native-webview', () => {
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
-import { render, waitFor } from '@testing-library/react-native';
+import { render, waitFor, within } from '@testing-library/react-native';
 
-import { LESSONS_BY_GRADE } from '../content/lessons';
+import { LESSONS_BY_GRADE, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { ProgressProvider } from '../learn/ProgressContext';
 import { initialSrs } from '../learn/srs';
@@ -52,7 +52,7 @@ function renderProfile(blob: string | null) {
   );
 }
 
-const LEVEL1 = LEVELS.find((l) => l.unlocked)!;
+const LEVEL1 = LEVELS.find((l) => l.grade === 1)!; // Level 1 is unconditionally unlocked (D5)
 
 describe('ProfileScreen — where the learner stands (5c)', () => {
   test('a fresh learner is 0% ready and is told what holds them back', async () => {
@@ -88,6 +88,37 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length}`));
   });
 
+  // D13 phase 2 — the zero-movement invariant's other half: grade-2 joins the
+  // fact-card denominator and the strand radar exactly at unlock, not before.
+  test('grade-2 joins the fact-card total and the strand radar only once grade 1\'s exam is cleared', async () => {
+    const beforeUnlock = renderProfile(seeded(['key-signatures']));
+    await waitFor(() => expect(beforeUnlock.getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length}`));
+    // scales_keys is 100% pre-unlock: all 4 grade-1 key-signature atoms mastered, grade-2's
+    // 3 new-key atoms not yet in scope.
+    await waitFor(() => expect(within(beforeUnlock.getByTestId('radar-legend-scales_keys')).getByText('100%')).toBeTruthy());
+
+    const store = new ProgressStore();
+    store.setProfile({ grade: 1, onboardedAt: '2026-07-14T00:00:00.000Z' });
+    for (const lesson of LESSONS_BY_GRADE[1]) {
+      store.unlock(lesson.id);
+      if (lesson.id !== 'key-signatures') continue;
+      store.setLesson(lesson.id, { completed: true });
+      for (const atom of lesson.atoms) store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });
+    }
+    store.recordExamCleared(1);
+    const afterUnlock = renderProfile(JSON.stringify(store.toSnapshot()));
+    await waitFor(() =>
+      expect(afterUnlock.getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length}`),
+    );
+    // Same 4 mastered atoms, now over a 7-atom strand (grade-2's 3 unmastered new
+    // keys joined) — the radar deflates exactly because it widened.
+    const grade2Atoms = lessonById('key-signatures-2')!.atoms.length;
+    const expectedPct = Math.round((4 / (4 + grade2Atoms)) * 100);
+    await waitFor(() =>
+      expect(within(afterUnlock.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
+    );
+  });
+
   // Design 6b (302.13): a named account shows its name, a guest still shows "Guest".
   test('a named account shows the name in place of Guest', async () => {
     const store = new ProgressStore();
@@ -109,7 +140,8 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByTestId('profile-grade-1')).toBeTruthy());
 
     expect(getByTestId('profile-grade-note')).toHaveTextContent('Only Grade 1 has content so far — Grades 2–5 are coming.');
-    for (const level of LEVELS.filter((l) => !l.unlocked)) {
+    // A fresh store has no exam cleared, so every level but Grade 1 is locked (D5).
+    for (const level of LEVELS.filter((l) => l.grade !== 1)) {
       expect(getByTestId(`profile-grade-${level.grade}`)).toBeTruthy();
     }
   });

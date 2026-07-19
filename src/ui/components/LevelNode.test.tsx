@@ -10,7 +10,6 @@ const LOCKED_LEVEL: Level = {
   id: 'level-2',
   grade: 2,
   title: 'Grade 2',
-  unlocked: false,
   prerequisite: 'Clear the Level 1 exam to unlock',
   unitIds: [],
   examGate: { unlockAtStars: 0 },
@@ -20,7 +19,6 @@ const UNLOCKED_LEVEL: Level = {
   id: 'level-1',
   grade: 1,
   title: 'Grade 1',
-  unlocked: true,
   unitIds: ['a', 'b'],
   examGate: { unlockAtStars: 6 },
 };

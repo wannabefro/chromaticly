@@ -8,7 +8,7 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { LEVELS } from '../../content/levels';
+import { isStartableGrade, LEVELS } from '../../content/levels';
 import { Button } from '../../ui/components/Button';
 import { ACCENT, colors, shape, type } from '../../ui/theme';
 
@@ -26,12 +26,12 @@ const GRADE_DESCRIPTORS: Record<number, string> = {
   5: 'Advanced rhythm, transposition',
 };
 
-const FIRST_UNLOCKED_GRADE = LEVELS.find((l) => l.unlocked)?.grade ?? 1;
+const FIRST_STARTABLE_GRADE = LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;
 
 export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
   // Default-select the first available grade so the primary CTA is immediately
   // actionable (keeps the <90s path fast); locked grades can't become selected.
-  const [selectedGrade, setSelectedGrade] = useState<number>(FIRST_UNLOCKED_GRADE);
+  const [selectedGrade, setSelectedGrade] = useState<number>(FIRST_STARTABLE_GRADE);
 
   return (
     <View style={styles.container} testID="grade-select-screen">
@@ -42,7 +42,7 @@ export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
 
       <ScrollView contentContainerStyle={styles.pills}>
         {LEVELS.map((level) => {
-          const selectable = level.unlocked;
+          const selectable = isStartableGrade(level.grade);
           const selected = selectable && level.grade === selectedGrade;
           return (
             <Pressable

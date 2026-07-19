@@ -1,7 +1,7 @@
-import { accountNudgeStats } from '../learn/mastery-rollup';
+import { accountNudgeStats, isLevelUnlocked } from '../learn/mastery-rollup';
 import { ProgressStore } from '../learn/store';
 import { LESSONS, LESSONS_BY_GRADE, lessonsForGrade, lessonById } from './lessons';
-import { LEVELS } from './levels';
+import { isStartableGrade, LEVELS } from './levels';
 
 describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, not a frozen fixture)', () => {
   const level1 = LEVELS[0];
@@ -9,10 +9,10 @@ describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, 
   // Sourced from the grade-1 doc alone (LESSONS_BY_GRADE[1]), not the merged
   // LESSONS export — otherwise a later-registered grade-2 doc would silently
   // inflate this level's unit list and exam threshold.
-  test('Level 1 is unlocked and has one unit id per grade-1 lesson, in lesson order', () => {
+  test('Level 1 is unlocked (grade === 1, unconditionally, D5) and has one unit id per grade-1 lesson, in lesson order', () => {
     expect(level1.id).toBe('level-1');
     expect(level1.grade).toBe(1);
-    expect(level1.unlocked).toBe(true);
+    expect(isLevelUnlocked(level1, new ProgressStore())).toBe(true);
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 
@@ -28,9 +28,7 @@ describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, 
 });
 
 // U5: Level 2's shape derives from authored content, never a frozen literal
-// (the same anti-drift rule levels.ts:1-3 states for Level 1). Screens still
-// read the static `unlocked` field this unit (stays false — U6 wires the
-// dynamic isLevelUnlocked derivation into the UI).
+// (the same anti-drift rule levels.ts:1-3 states for Level 1).
 describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U5)', () => {
   const level2 = LEVELS[1];
 
@@ -44,8 +42,13 @@ describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U
     expect(level2.examGate.unlockAtStars).toBe(level2.unitIds.length * 3);
   });
 
-  test('the static unlocked field stays false this unit (U5 mid-stack; U6 removes it)', () => {
-    expect(level2.unlocked).toBe(false);
+  // U6: unlock is a derivation over the store, not a field — locked on a fresh
+  // store, unlocked the moment Level 1's exam is recorded cleared (D5).
+  test('Level 2 is locked on a fresh store and unlocks once Level 1\'s exam is cleared', () => {
+    const store = new ProgressStore();
+    expect(isLevelUnlocked(level2, store)).toBe(false);
+    store.recordExamCleared(1);
+    expect(isLevelUnlocked(level2, store)).toBe(true);
   });
 });
 
@@ -56,12 +59,24 @@ describe('levels — Levels 3-5 are locked placeholders (R1, R4)', () => {
     expect(higherLevels.map((l) => l.grade)).toEqual([3, 4, 5]);
   });
 
-  test('each is unlocked:false, has no units, and names its OWN previous-grade prerequisite (D5 fixes the hardcoded "Level 1" bug)', () => {
+  // D5: content-less levels stay locked even after their previous grade's exam clears
+  // — a level can never "open" onto no units. Also names its OWN previous-grade
+  // prerequisite (fixes the hardcoded "Level 1" bug).
+  test('each stays locked even with every previous exam cleared, has no units, and names its OWN previous-grade prerequisite', () => {
+    const store = new ProgressStore();
+    for (let grade = 1; grade < 5; grade++) store.recordExamCleared(grade);
     for (const level of higherLevels) {
-      expect(level.unlocked).toBe(false);
+      expect(isLevelUnlocked(level, store)).toBe(false);
       expect(level.unitIds).toEqual([]);
       expect(level.prerequisite).toBe(`Clear the Level ${level.grade - 1} exam to unlock`);
     }
+  });
+});
+
+describe('levels — isStartableGrade is a static content concept, decoupled from progression unlock (D14)', () => {
+  test('only Grade 1 is startable, even with every exam cleared', () => {
+    expect(isStartableGrade(1)).toBe(true);
+    for (const grade of [2, 3, 4, 5]) expect(isStartableGrade(grade)).toBe(false);
   });
 });
 

@@ -17,7 +17,8 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
-import { unitStates } from '../learn/mastery-rollup';
+import { hasExamPaper } from '../learn/exam';
+import { currentLevel, isLevelUnlocked, unitStates } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { AccountCreateScreen } from './AccountCreateScreen';
 import { ExamGateNode } from '../ui/components/ExamGateNode';
@@ -63,7 +64,7 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
     const map = new Map<string, UnitRows>();
     if (!store) return map;
     for (const level of LEVELS) {
-      if (level.unlocked) {
+      if (isLevelUnlocked(level, store)) {
         map.set(level.id, unitStates(level.unitIds, store, (id) => lessonById(id)?.atoms ?? []));
       }
     }
@@ -108,19 +109,21 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
     }
   }
 
-  const currentLevel = LEVELS.find((l) => l.unlocked) ?? LEVELS[0];
+  const activeLevel = currentLevel(LEVELS, store);
 
   return (
     <Screen style={styles.screen} testID="level-map-screen">
       <View style={styles.header}>
         <Text style={styles.title}>Learn</Text>
         <View style={styles.gradePill}>
-          <Text style={styles.gradePillText}>Grade {currentLevel.grade}</Text>
+          <Text style={styles.gradePillText} testID="grade-pill">
+            Grade {activeLevel.grade}
+          </Text>
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.list}>
         {LEVELS.map((level) => {
-          if (!level.unlocked) {
+          if (!isLevelUnlocked(level, store)) {
             return <LevelNode key={level.id} level={level} expanded={false} testID={`level-node-${level.id}`} />;
           }
 
@@ -156,8 +159,9 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
               <ExamGateNode
                 levelGrade={level.grade}
                 unitsRequired={level.unitIds.length}
+                hasPaper={hasExamPaper(level.grade)}
                 onPress={
-                  rows.reduce((sum, r) => sum + r.stars, 0) >= level.examGate.unlockAtStars
+                  hasExamPaper(level.grade) && rows.reduce((sum, r) => sum + r.stars, 0) >= level.examGate.unlockAtStars
                     ? () => setExamGrade(level.grade)
                     : undefined
                 }

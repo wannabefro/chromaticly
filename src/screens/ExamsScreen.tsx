@@ -10,7 +10,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
-import { unitStates } from '../learn/mastery-rollup';
+import { hasExamPaper } from '../learn/exam';
+import { isLevelUnlocked, unitStates } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { ExamGateNode } from '../ui/components/ExamGateNode';
 import { ExamRunner } from '../ui/exam/ExamRunner';
@@ -34,7 +35,7 @@ export default function ExamsScreen({ onImmersive }: ExamsScreenProps = {}) {
     const map = new Map<string, number>();
     if (!store) return map;
     for (const level of LEVELS) {
-      if (!level.unlocked) continue;
+      if (!isLevelUnlocked(level, store)) continue;
       const rows = unitStates(level.unitIds, store, (id) => lessonById(id)?.atoms ?? []);
       map.set(
         level.id,
@@ -63,13 +64,14 @@ export default function ExamsScreen({ onImmersive }: ExamsScreenProps = {}) {
       <Text style={styles.blurb}>A practice paper under exam conditions — timed, silent, marked at the end.</Text>
 
       <View style={styles.list}>
-        {LEVELS.filter((level) => level.unlocked).map((level) => (
+        {LEVELS.filter((level) => isLevelUnlocked(level, store)).map((level) => (
           <ExamGateNode
             key={level.id}
             levelGrade={level.grade}
             unitsRequired={level.unitIds.length}
+            hasPaper={hasExamPaper(level.grade)}
             onPress={
-              (starsByLevel.get(level.id) ?? 0) >= level.examGate.unlockAtStars
+              hasExamPaper(level.grade) && (starsByLevel.get(level.id) ?? 0) >= level.examGate.unlockAtStars
                 ? () => setExamGrade(level.grade)
                 : undefined
             }

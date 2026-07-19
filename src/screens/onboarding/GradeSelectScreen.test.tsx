@@ -4,6 +4,9 @@
 
 import { fireEvent, render } from '@testing-library/react-native';
 
+import { LEVELS } from '../../content/levels';
+import { isLevelUnlocked } from '../../learn/mastery-rollup';
+import { ProgressStore } from '../../learn/store';
 import { GradeSelectScreen } from './GradeSelectScreen';
 
 describe('GradeSelectScreen — only Grade 1 is selectable; the rest are locked (R2)', () => {
@@ -47,5 +50,20 @@ describe('GradeSelectScreen — only Grade 1 is selectable; the rest are locked 
     fireEvent.press(getByTestId('start-grade'));
     expect(onSelectGrade).toHaveBeenCalledTimes(1);
     expect(onSelectGrade).toHaveBeenCalledWith(1);
+  });
+
+  // D14: onboarding's start-grade is a static content concept, deliberately decoupled
+  // from progression unlock — a device where Level 2 is reachable must not offer it to
+  // a brand-new profile at onboarding.
+  test('still offers only Grade 1, and defaults to it, even on a store where Level 2 is unlocked', () => {
+    const store = new ProgressStore();
+    store.recordExamCleared(1);
+    expect(isLevelUnlocked(LEVELS[1], store)).toBe(true); // Level 2 IS reachable on this store...
+
+    // ...but GradeSelectScreen never reads the store, so its selectability is unaffected.
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByTestId('grade-pill-1').props.accessibilityState?.disabled).toBeFalsy();
+    expect(getByTestId('grade-pill-2').props.accessibilityState?.disabled).toBe(true);
+    expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
   });
 });

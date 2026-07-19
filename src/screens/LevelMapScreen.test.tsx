@@ -7,7 +7,7 @@ jest.mock('react-native-webview', () => {
 
 import { act, fireEvent, render, within } from '@testing-library/react-native';
 
-import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
+import { LESSONS, LESSONS_BY_GRADE, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { MASTERY_THRESHOLD } from '../learn/mastery';
 import { ProgressProvider } from '../learn/ProgressContext';
@@ -137,5 +137,64 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     });
 
     expect(getByTestId('set-runner')).toBeTruthy();
+  });
+});
+
+// U6: Level 2's visibility is driven by the persisted exam-clear, not a static flag —
+// the slice's headline user-visible behavior.
+describe('LevelMapScreen — Level 2 is dynamically unlocked (D5, U6)', () => {
+  test('on a fresh store Level 2 renders collapsed/locked with "Clear the Level 1 exam to unlock"', async () => {
+    const { getByTestId, findByTestId } = renderMap();
+    await findByTestId('level-map-screen');
+
+    const level2 = LEVELS[1];
+    const node = within(getByTestId(`level-node-${level2.id}`));
+    expect(node.getByText('Clear the Level 1 exam to unlock')).toBeTruthy();
+    expect(() => getByTestId('unit-row-key-signatures-2')).toThrow();
+  });
+
+  test('once grade 1\'s exam is cleared, Level 2 renders expanded with its unit row tappable', async () => {
+    const seed = seedBlob((store) => store.recordExamCleared(1));
+    const { getByTestId, findByTestId } = renderMap(seed);
+    await findByTestId('level-map-screen');
+
+    expect(getByTestId('unit-row-key-signatures-2')).toBeTruthy();
+  });
+
+  test('the grade pill reads the highest unlocked grade, not always Level 1', async () => {
+    const seed = seedBlob((store) => store.recordExamCleared(1));
+    const { getByTestId, findByTestId } = renderMap(seed);
+    await findByTestId('level-map-screen');
+
+    expect(getByTestId('grade-pill')).toHaveTextContent('Grade 2');
+  });
+
+  // D8: Grade 2 has no exam paper this slice — the gate must never open onto a
+  // paper that doesn't exist, even at full stars.
+  test('the Level-2 exam gate stays sealed "Coming soon" even at full stars', async () => {
+    const seed = seedBlob((store) => {
+      store.recordExamCleared(1);
+      store.unlock('key-signatures-2');
+      masterAtoms(store, lessonById('key-signatures-2')!.atoms);
+      store.setLesson('key-signatures-2', { completed: true });
+    });
+    const { getByTestId, getByText, findByTestId } = renderMap(seed);
+    await findByTestId('level-map-screen');
+
+    const gate = getByTestId('exam-gate-level-2');
+    expect(gate.props.onPress).toBeUndefined();
+    expect(getByText('Coming soon')).toBeTruthy();
+  });
+
+  test('tapping the Level-2 unit row launches SetRunner on the teach phase', async () => {
+    const seed = seedBlob((store) => store.recordExamCleared(1));
+    const { getByTestId, findByTestId } = renderMap(seed);
+    await findByTestId('level-map-screen');
+
+    await act(async () => {
+      fireEvent.press(getByTestId('unit-row-key-signatures-2'));
+    });
+
+    expect(getByTestId('teach-phase')).toBeTruthy();
   });
 });
