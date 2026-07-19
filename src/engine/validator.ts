@@ -33,7 +33,7 @@ export function validate(instance: ExerciseInstance): ValidationResult {
 
   const inst = parsed.data;
 
-  // Grades outside GRADE_SCOPES (0, 3, 99…) are a clean validation failure,
+  // Grades outside GRADE_SCOPES (0, 4, 99…) are a clean validation failure,
   // not a thrown exception — generateValidated's retry loop must be able to
   // treat "unsupported grade" like any other rejected instance.
   let scope: GradeScope;
@@ -58,11 +58,15 @@ export function validate(instance: ExerciseInstance): ValidationResult {
 
 const LETTER_ORDER = ['C', 'D', 'E', 'F', 'G', 'A', 'B'] as const;
 
-// Enharmonic-of-a-natural spellings: Cb, Fb, B#, E#. Still holds through
-// Grade 2 — Eb major is 3 flats (Bb/Eb/Ab), and G2 harmonic-minor raised 7ths
-// are G#/D#/C#; none of those spell a natural. Cb first appears at Gb major,
-// grade 5.
-const NEVER_SPELLINGS_THROUGH_G2 = new Set(['Cb', 'Fb', 'B#', 'E#']);
+// Enharmonic-of-a-natural spellings: Cb, Fb, B#, E#. Cb/Fb are never taught
+// through this slice — Cb first appears at Gb major, grade 5 — so they stay
+// rejected at every grade (D6). B#/E# are grade-aware (D6): they hold
+// through Grade 2 (Eb major is 3 flats Bb/Eb/Ab, and G2 harmonic-minor raised
+// 7ths are G#/D#/C#; none of those spell a natural) but become LEGAL at
+// Grade 3, where they're required — C# minor's raised 7th is B#, F# minor's
+// is E# (both harmonic and melodic-ascending).
+const NEVER_SPELLINGS_ALWAYS = new Set(['Cb', 'Fb']);
+const NEVER_SPELLINGS_THROUGH_G2 = new Set(['B#', 'E#']);
 
 interface ParsedPitch {
   letter: string;
@@ -81,7 +85,12 @@ function pitchOrdinal(letter: string, octave: number): number {
   return octave * 7 + LETTER_ORDER.indexOf(letter as (typeof LETTER_ORDER)[number]);
 }
 
-function checkPitchScope(pitch: string, range: { low: string; high: string } | null, errors: string[]): void {
+function checkPitchScope(
+  pitch: string,
+  range: { low: string; high: string } | null,
+  grade: number,
+  errors: string[],
+): void {
   const parsed = parseScientificPitch(pitch);
   if (!parsed) {
     errors.push(`scope: "${pitch}" is not a valid pitch`);
@@ -92,8 +101,11 @@ function checkPitchScope(pitch: string, range: { low: string; high: string } | n
   }
   // The four accidental spellings that name a natural (Cb=B, Fb=E, B#=C, E#=F)
   // are never taught at Grade 1. Reject them as defence-in-depth so any generator
-  // that regresses is caught at generation time via generateValidated.
-  if (NEVER_SPELLINGS_THROUGH_G2.has(`${parsed.letter}${parsed.accidental ?? ''}`)) {
+  // that regresses is caught at generation time via generateValidated. B#/E# are
+  // grade-aware (D6) — legal from Grade 3, where they're the raised-7th spelling
+  // of F#/C# minor.
+  const spelling = `${parsed.letter}${parsed.accidental ?? ''}`;
+  if (NEVER_SPELLINGS_ALWAYS.has(spelling) || (grade <= 2 && NEVER_SPELLINGS_THROUGH_G2.has(spelling))) {
     errors.push(`scope: pitch "${pitch}" spells a natural (never used at Grade 1)`);
   }
   if (!range) return;
@@ -143,7 +155,7 @@ function checkScope(inst: ExerciseInstance, scope: GradeScope, errors: string[])
         }
       }
       for (const pitch of eventPitches(ev)) {
-        checkPitchScope(pitch, range, errors);
+        checkPitchScope(pitch, range, inst.grade, errors);
       }
     }
   }
@@ -241,7 +253,7 @@ function intervalNamingHook(inst: ExerciseInstance): string[] {
     } else {
       const music = inst.stimulus.music as Music | null;
       if (music && scope.clefs.includes(music.clef)) {
-        checkPitchScope(pitch, pitchRange(music.clef, inst.grade), errors);
+        checkPitchScope(pitch, pitchRange(music.clef, inst.grade), inst.grade, errors);
       }
     }
     if (typeof dur !== 'string' || !(scope.noteValues as readonly string[]).includes(dur)) {

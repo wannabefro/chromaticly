@@ -115,6 +115,34 @@ function validScaleConstructionInstance(): ExerciseInstance {
   };
 }
 
+function validIntervalNamingStaveInputInstance(grade: 1 | 2 = 1): ExerciseInstance {
+  const key = grade === 1 ? 'G' : 'A';
+  const target = grade === 1 ? 'D5' : 'E5';
+  return {
+    id: 'f6a7b8c9-0000-0000-0000-000000000000',
+    template_id: 'interval_naming_stave_input',
+    grade,
+    strand: 'intervals',
+    prompt: 'Write the note a 5th higher than the given note, as a crotchet.',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: `${key}_major`,
+        time_sig: null,
+        voices: [{ events: [{ type: 'note', pitch: `${key}4`, dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'stave_input', config: {} },
+    answer: { canonical: { pitch: target, dur: 'crotchet' }, accepted_alternatives: [] },
+    distractors: [],
+    hints: ['Count the letter names inclusively from the given note.'],
+    feedback: { correct: 'Correct!', incorrect: 'Not quite — recount inclusively.' },
+    srs_tags: ['interval:5'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 describe('validate — structural check (schema failure is a rejection)', () => {
   test('an instance missing kb_version fails validation with a schema error', () => {
     const instance = validNoteNamingInstance() as unknown as Record<string, unknown>;
@@ -261,12 +289,12 @@ describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
     expect(result.errors.some((e) => e.includes('note value'))).toBe(true);
   });
 
-  test('an unsupported grade (3) fails validation cleanly instead of throwing', () => {
+  test('an unsupported grade (4 — grade 3 is now supported, D1) fails validation cleanly instead of throwing', () => {
     const instance = validNoteNamingInstance();
-    instance.grade = 3;
+    instance.grade = 4;
 
     expect(() => validate(instance)).not.toThrow();
-    expect(validate(instance)).toEqual({ ok: false, errors: ['scope: grade 3 is not supported'] });
+    expect(validate(instance)).toEqual({ ok: false, errors: ['scope: grade 4 is not supported'] });
   });
 
   test('a Cb-spelled pitch (spells a natural) is still rejected at G2', () => {
@@ -277,6 +305,48 @@ describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
     const result = validate(instance);
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('spells a natural'))).toBe(true);
+  });
+});
+
+// D6: NEVER_SPELLINGS_THROUGH_G2 splits by grade. B#/E# are C#/F# minor's
+// raised-7th spelling (required at Grade 3, D5) and become legal there ONLY —
+// grades 1-2 keep rejecting them, byte-identical to the pre-D6 message
+// (review finding 3 characterization).
+describe('validate — grade-aware never-spellings (D6): B#/E# become legal at grade 3 only', () => {
+  test.each(['B#4', 'E#5'])(
+    'the pitch %s validates cleanly at grade 3 but fails naming the never-spelling at grade 2, with the message unchanged',
+    (pitch) => {
+      const instance = validNoteNamingInstance();
+      (instance.stimulus.music as any).voices[0].events[0].pitch = pitch;
+
+      instance.grade = 3;
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+
+      instance.grade = 2;
+      const g2 = validate(instance);
+      expect(g2.ok).toBe(false);
+      expect(g2.errors).toContain(`scope: pitch "${pitch}" spells a natural (never used at Grade 1)`);
+    },
+  );
+
+  test('Cb/Fb stay rejected at grade 3 — only B#/E# were admitted, not the whole never-spellings set', () => {
+    for (const pitch of ['Cb4', 'Fb2']) {
+      const instance = validNoteNamingInstance();
+      instance.grade = 3;
+      (instance.stimulus.music as any).voices[0].events[0].pitch = pitch;
+      const result = validate(instance);
+      expect(result.ok).toBe(false);
+      expect(result.errors.some((e) => e.includes('spells a natural'))).toBe(true);
+    }
+  });
+
+  test('a double-accidental pitch is still rejected at grade 3 — D6 only touches the never-spellings set', () => {
+    const instance = validNoteNamingInstance();
+    instance.grade = 3;
+    (instance.stimulus.music as any).voices[0].events[0].pitch = 'F##4';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('double accidental'))).toBe(true);
   });
 });
 
@@ -325,6 +395,29 @@ describe('validate — per-template hook: interval_naming', () => {
   test('a well-formed interval_naming instance passes clean', () => {
     const result = validate(validIntervalNamingInstance());
     expect(result.ok).toBe(true);
+  });
+});
+
+// Review finding 3: checkPitchScope has two call sites — checkScope AND
+// intervalNamingHook's stave_input branch. This block characterizes both:
+// existing valid grade-1/2 instances (mcq AND stave_input) must still
+// validate unchanged after the grade-threading, and the stave_input branch's
+// OWN checkPitchScope call must still gate the ≤G2 never-spellings.
+describe('validate — per-template hook: interval_naming_stave_input (D6 grade-threading, review finding 3 — the second checkPitchScope call site)', () => {
+  test('characterization: well-formed mcq and stave_input interval_naming instances still validate unchanged at grade 1 and grade 2', () => {
+    expect(validate(validIntervalNamingInstance())).toEqual({ ok: true, errors: [] });
+    expect(validate(validIntervalNamingStaveInputInstance(1))).toEqual({ ok: true, errors: [] });
+    expect(validate(validIntervalNamingStaveInputInstance(2))).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a stave_input canonical pitch spelling E# is rejected at grade 1 and grade 2 via the hook\'s own checkPitchScope call', () => {
+    for (const grade of [1, 2] as const) {
+      const instance = validIntervalNamingStaveInputInstance(grade);
+      (instance.answer.canonical as { pitch: string; dur: string }).pitch = 'E#5';
+      const result = validate(instance);
+      expect(result.ok).toBe(false);
+      expect(result.errors.some((e) => e.includes('spells a natural'))).toBe(true);
+    }
   });
 });
 

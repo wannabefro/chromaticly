@@ -6,9 +6,9 @@
 // below purely to prove the builder is form-general (G3 forward-compat, D5).
 
 import { KB } from '../../content/knowledge-base';
-import { spellInKeySig } from './key-spelling';
+import { spellInKeySig, tonicLetter } from './key-spelling';
 
-export type MinorScaleForm = 'harmonic_minor' | 'melodic_minor_asc';
+export type MinorScaleForm = 'harmonic_minor' | 'melodic_minor_asc' | 'melodic_minor_desc';
 
 /** Aeolian (natural minor) T/S interval pattern — the key-signature-only
  *  letter walk every minor form's alterations are diffed against. Not KB
@@ -95,7 +95,14 @@ export function relativeMinorOf(majorTonic: string): string {
  *  alterations are DERIVED by diffing the form's KB.scalePatterns interval
  *  pattern against natural minor — never a hardcoded per-form content
  *  branch, so a new form (e.g. melodic_minor_desc at G3) is new KB data,
- *  not new code. */
+ *  not new code.
+ *
+ *  startPitch contract (D5): NATURAL-LETTER only ("F2", never "F#2") — the
+ *  regex below enforces this. The tonic's own accidental is never carried in
+ *  startPitch; it comes out through spellInKeySig instead, e.g. for F# minor
+ *  startPitch "F2" spells as "F#2" because the F#-minor signature sharpens F.
+ *  This is what makes the builder sharp-tonic-safe with zero body change:
+ *  callers (including F#/C# minor) always pass the tonic's natural letter. */
 export function minorScale(tonic: string, form: MinorScaleForm, startPitch: string): string[] {
   const m = /^([A-G])(-?\d+)$/.exec(startPitch);
   if (!m) throw new Error(`Invalid start pitch: ${startPitch}`);
@@ -115,7 +122,11 @@ export function minorScale(tonic: string, form: MinorScaleForm, startPitch: stri
 }
 
 /** The raised 7th of a harmonic/melodic minor key, spelled letter-then-
- *  accidental (e.g. 'G#4' for A minor) — for distractor/feedback copy. */
+ *  accidental (e.g. 'G#4' for A minor) — for distractor/feedback copy.
+ *  Built from tonicLetter(tonic), not the raw tonic (D5): minorScale's
+ *  startPitch is natural-letter-only, so passing a sharp tonic directly
+ *  (e.g. 'F#4') would fail the regex — raisedSeventh('F#') === 'E#5' and
+ *  raisedSeventh('C#') === 'B#4' via this fix. */
 export function raisedSeventh(tonic: string): string {
-  return minorScale(tonic, 'harmonic_minor', `${tonic}4`)[6];
+  return minorScale(tonic, 'harmonic_minor', `${tonicLetter(tonic)}4`)[6];
 }

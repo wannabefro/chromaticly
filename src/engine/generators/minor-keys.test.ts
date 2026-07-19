@@ -1,6 +1,7 @@
+import { keyAccidentals } from '../../music/abc-emitter';
 import { KB } from '../../content/knowledge-base';
 import { scopeForGrade } from '../scope';
-import { spellInKey, spellInKeySig } from './key-spelling';
+import { spellInKey, spellInKeySig, tonicLetter } from './key-spelling';
 import { minorScale, raisedSeventh, relativeMajorOf, relativeMinorOf } from './minor-keys';
 
 describe('relativeMajorOf / relativeMinorOf — pairing is the KB fifths-count made executable (D5)', () => {
@@ -74,5 +75,90 @@ describe('spellInKeySig — a minor key signature spells like its relative major
 
   test('parity: spellInKeySig is a superset of spellInKey, not a fork', () => {
     expect(spellInKeySig('B4', 'Bb_major')).toBe(spellInKey('B4', 'Bb'));
+  });
+});
+
+// --- U2: grade-3 new minor keys, melodic desc form, sharp-tonic support (D1/D2/D5) ---
+
+describe('relativeMajorOf — the six new G3 minors, zero table edits (D5 payoff)', () => {
+  test('B->D, G->Bb, F#->A, C->Eb, C#->E, F->Ab', () => {
+    expect(relativeMajorOf('B')).toBe('D');
+    expect(relativeMajorOf('G')).toBe('Bb');
+    expect(relativeMajorOf('F#')).toBe('A');
+    expect(relativeMajorOf('C')).toBe('Eb');
+    expect(relativeMajorOf('C#')).toBe('E');
+    expect(relativeMajorOf('F')).toBe('Ab');
+  });
+
+  test('derivation round-trips over every grade-3-added minor tonic', () => {
+    for (const minorTonic of KB.grade3Adds.keys_minor) {
+      expect(relativeMinorOf(relativeMajorOf(minorTonic))).toBe(minorTonic);
+    }
+  });
+});
+
+describe('minorScale — sharp tonics (F#/C#) build correctly from a natural-letter startPitch (D5)', () => {
+  test("F# harmonic minor is F# G# A B C# D E# F# — the raised 7th spells E#, not the enharmonic F natural", () => {
+    expect(minorScale('F#', 'harmonic_minor', 'F2')).toEqual(['F#2', 'G#2', 'A2', 'B2', 'C#3', 'D3', 'E#3', 'F#3']);
+  });
+
+  test('C# harmonic minor carries B# as its raised 7th, spelled on the 7th letter even though it is enharmonic of C', () => {
+    expect(minorScale('C#', 'harmonic_minor', 'C4')).toEqual(['C#4', 'D#4', 'E4', 'F#4', 'G#4', 'A4', 'B#4', 'C#5']);
+  });
+});
+
+describe('minorScale — raising a flatted degree yields the natural, never a sharp (shiftAccidental level arithmetic)', () => {
+  test('C harmonic minor carries a plain B natural (not B#) as its raised 7th', () => {
+    const scale = minorScale('C', 'harmonic_minor', 'C4');
+    expect(scale[6]).toBe('B4');
+  });
+
+  test('G harmonic minor carries F# (not F##) as its raised 7th', () => {
+    const scale = minorScale('G', 'harmonic_minor', 'G3');
+    expect(scale[6]).toBe('F#4');
+  });
+});
+
+describe('minorScale — melodic_minor_asc raises the 6th and 7th in the new sharp-tonic keys too', () => {
+  test('F# melodic ascending carries D# (raised 6th) and E# (raised 7th)', () => {
+    const scale = minorScale('F#', 'melodic_minor_asc', 'F4');
+    expect(scale[5]).toBe('D#5');
+    expect(scale[6]).toBe('E#5');
+  });
+
+  test('C# melodic ascending carries A# (raised 6th) and B# (raised 7th)', () => {
+    const scale = minorScale('C#', 'melodic_minor_asc', 'C4');
+    expect(scale[5]).toBe('A#4');
+    expect(scale[6]).toBe('B#4');
+  });
+});
+
+describe('minorScale — melodic_minor_desc IS the plain key-signature letter walk (D2 zero-delta derivation)', () => {
+  test('every accidental in the desc-form scale matches the key signature exactly — no accidental the signature does not already impose, for every in-scope G3 minor', () => {
+    for (const tonic of scopeForGrade(3).keysMinor) {
+      const acc = keyAccidentals(`${tonic}_minor`);
+      const scale = minorScale(tonic, 'melodic_minor_desc', `${tonicLetter(tonic)}4`);
+      expect(scale).toHaveLength(8);
+      for (const pitch of scale) {
+        const match = /^([A-G])(#|b)?-?\d+$/.exec(pitch);
+        expect(match).not.toBeNull();
+        const [, letter, symbol] = match!;
+        const expectedSymbol = acc[letter] === 'sharp' ? '#' : acc[letter] === 'flat' ? 'b' : undefined;
+        expect(symbol).toBe(expectedSymbol);
+      }
+    }
+  });
+});
+
+describe('raisedSeventh — fixed for sharp tonics (D5, review finding 2): no public helper on the sharp-tonic surface throws', () => {
+  test("raisedSeventh('F#') === 'E#5' and raisedSeventh('C#') === 'B#4'", () => {
+    expect(raisedSeventh('F#')).toBe('E#5');
+    expect(raisedSeventh('C#')).toBe('B#4');
+  });
+
+  test('natural-tonic pins are unchanged by the fix', () => {
+    expect(raisedSeventh('A')).toBe('G#5');
+    expect(raisedSeventh('E')).toBe('D#5');
+    expect(raisedSeventh('D')).toBe('C#5');
   });
 });

@@ -2,6 +2,7 @@
 // "scope is law, per grade" — every pitch/value/key/signature/term/clef a
 // generator touches must come from here, via an explicit grade).
 
+import { KB } from '../content/knowledge-base';
 import type { Clef, Duration, Pitch } from '../music/types';
 
 export interface GradeScope {
@@ -80,9 +81,30 @@ const GRADE_2_SCOPE: GradeScope = {
   },
 };
 
-export const GRADE_SCOPES: { 1: GradeScope; 2: GradeScope } = {
+// Grade 3 (D1): keys widen to KB.grade3Adds' minors/majors and harmonic +
+// melodic minor forms — but timeSignatures/noteValues/rhythmDevices/
+// intervalRule/pitchRanges/clefs are COPIED FROM GRADE 2 UNCHANGED. This is a
+// deliberate divergence from the grade-2 precedent (which listed its new /2
+// meters here): nothing in this slice needs compound time (6/8/9/8/12/8)
+// validated, so those axes stay out of the scope list entirely rather than
+// being listed-but-unreachable. The compound-time slice adds them to BOTH
+// this list and renderableTimeSignatures together.
+const GRADE_3_SCOPE: GradeScope = {
+  clefs: GRADE_2_SCOPE.clefs,
+  noteValues: GRADE_2_SCOPE.noteValues,
+  keysMajor: [...GRADE_2_SCOPE.keysMajor, ...KB.grade3Adds.keys_major],
+  keysMinor: [...GRADE_2_SCOPE.keysMinor, ...KB.grade3Adds.keys_minor],
+  minorForms: [...GRADE_2_SCOPE.minorForms, ...KB.grade3Adds.minor_forms],
+  timeSignatures: GRADE_2_SCOPE.timeSignatures,
+  rhythmDevices: GRADE_2_SCOPE.rhythmDevices,
+  intervalRule: GRADE_2_SCOPE.intervalRule,
+  pitchRanges: GRADE_2_SCOPE.pitchRanges,
+};
+
+export const GRADE_SCOPES: { 1: GradeScope; 2: GradeScope; 3: GradeScope } = {
   1: GRADE_1_SCOPE,
   2: GRADE_2_SCOPE,
+  3: GRADE_3_SCOPE,
 };
 
 export function scopeForGrade(grade: number): GradeScope {

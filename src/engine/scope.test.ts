@@ -1,6 +1,6 @@
 import { keyAccidentals } from '../music/abc-emitter';
 import { KB } from '../content/knowledge-base';
-import { diatonicPitchesInRange, GRADE_SCOPES, pitchRange, scopeForGrade } from './scope';
+import { diatonicPitchesInRange, GRADE_SCOPES, pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
 
 // --- Ported invariants (were G1_* module-level constants; now scopeForGrade(1)) ---
 
@@ -171,23 +171,85 @@ describe('grade-2 pitch ranges (D3 judgment call)', () => {
 });
 
 describe('scopeForGrade — unsupported grades fail loud', () => {
-  test.each([0, 3, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
+  test.each([0, 4, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
     expect(() => scopeForGrade(grade)).toThrow(String(grade));
   });
 });
 
-describe('keyAccidentals round-trip — every grade-1/grade-2 tonic is emitter-safe (invariant: no scope key can reach the emitter and explode)', () => {
-  test('every keysMajor tonic at grade 1 and grade 2 resolves without throwing', () => {
-    for (const grade of [1, 2] as const) {
+describe('keyAccidentals round-trip — every grade-1/grade-2/grade-3 tonic is emitter-safe (invariant: no scope key can reach the emitter and explode)', () => {
+  test('every keysMajor tonic at grade 1, grade 2, and grade 3 resolves without throwing', () => {
+    for (const grade of [1, 2, 3] as const) {
       for (const tonic of scopeForGrade(grade).keysMajor) {
         expect(() => keyAccidentals(`${tonic}_major`)).not.toThrow();
       }
     }
   });
 
-  test('every keysMinor tonic at grade 2 resolves without throwing', () => {
-    for (const tonic of scopeForGrade(2).keysMinor) {
-      expect(() => keyAccidentals(`${tonic}_minor`)).not.toThrow();
+  test('every keysMinor tonic at grade 2 and grade 3 resolves without throwing — including the sharp tonics F#/C# (D5)', () => {
+    for (const grade of [2, 3] as const) {
+      for (const tonic of scopeForGrade(grade).keysMinor) {
+        expect(() => keyAccidentals(`${tonic}_minor`)).not.toThrow();
+      }
     }
+  });
+});
+
+// --- U2 grade-3 scope additions (D1) ---
+
+describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 unioned with KB.grade3Adds', () => {
+  test('keysMinor/keysMajor/minorForms equal grade-2 lists unioned with KB.grade3Adds, order-preserved', () => {
+    const g2 = scopeForGrade(2);
+    const g3 = scopeForGrade(3);
+    expect(g3.keysMinor).toEqual([...g2.keysMinor, ...KB.grade3Adds.keys_minor]);
+    expect(g3.keysMajor).toEqual([...g2.keysMajor, ...KB.grade3Adds.keys_major]);
+    expect(g3.minorForms).toEqual([...g2.minorForms, ...KB.grade3Adds.minor_forms]);
+  });
+
+  test('grade-3 keysMinor/keysMajor/minorForms match the plan D1 table exactly', () => {
+    const g3 = scopeForGrade(3);
+    expect(g3.keysMinor).toEqual(['A', 'E', 'D', 'B', 'G', 'F#', 'C', 'C#', 'F']);
+    expect(g3.keysMajor).toEqual(['C', 'G', 'D', 'F', 'A', 'Bb', 'Eb', 'E', 'Ab']);
+    expect(g3.minorForms).toEqual(['harmonic', 'melodic']);
+  });
+
+  test('timeSignatures/noteValues/rhythmDevices/intervalRule/pitchRanges/clefs are frozen at grade-2 values — compound time is a later slice (D1)', () => {
+    const g2 = scopeForGrade(2);
+    const g3 = scopeForGrade(3);
+    expect(g3.timeSignatures).toEqual(g2.timeSignatures);
+    expect(g3.noteValues).toEqual(g2.noteValues);
+    expect(g3.rhythmDevices).toEqual(g2.rhythmDevices);
+    expect(g3.intervalRule).toEqual(g2.intervalRule);
+    expect(g3.pitchRanges).toEqual(g2.pitchRanges);
+    expect(g3.clefs).toEqual(g2.clefs);
+  });
+
+  test('grade-3 timeSignatures has no /8 signature, and renderableTimeSignatures(3) is the /4 set — the test that fails if compound time is added early', () => {
+    expect(scopeForGrade(3).timeSignatures.some((t) => t.endsWith('/8'))).toBe(false);
+    expect(renderableTimeSignatures(3)).toEqual(['2/4', '3/4', '4/4']);
+  });
+
+  test('grade-1 and grade-2 scope objects are byte-identical to their pre-grade-3 values (additive-only)', () => {
+    expect(scopeForGrade(1)).toEqual({
+      clefs: ['treble', 'bass'],
+      noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
+      keysMajor: ['C', 'G', 'D', 'F'],
+      keysMinor: [],
+      minorForms: [],
+      timeSignatures: ['2/4', '3/4', '4/4'],
+      rhythmDevices: ['tie', 'single_dot'],
+      intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
+      pitchRanges: { treble: { low: 'C4', high: 'A5' }, bass: { low: 'E2', high: 'D4' } },
+    });
+    expect(scopeForGrade(2)).toEqual({
+      clefs: ['treble', 'bass'],
+      noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
+      keysMajor: ['C', 'G', 'D', 'F', 'A', 'Bb', 'Eb'],
+      keysMinor: ['A', 'E', 'D'],
+      minorForms: ['harmonic'],
+      timeSignatures: ['2/4', '3/4', '4/4', '2/2', '3/2', '4/2'],
+      rhythmDevices: ['tie', 'single_dot', 'triplet', 'triplet_with_rests', 'dotted_rests'],
+      intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
+      pitchRanges: { treble: { low: 'A3', high: 'C6' }, bass: { low: 'C2', high: 'E4' } },
+    });
   });
 });
