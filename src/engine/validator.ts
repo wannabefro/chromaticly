@@ -345,6 +345,49 @@ function modeSwapHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// scaleConstructionHook: D7's spot-the-wrong-note MCQ. Scope stays
+// HARMONIC-ONLY this slice: this hook, together with checkScope on the
+// stimulus (above), rejects anything the grade's minorForms doesn't list —
+// neither checks the FORM directly (Music carries no form field), but a
+// corrupted note outside the grade's key/pitch scope is caught by checkScope,
+// and the generator's own form-keyed rule table (scale-construction.ts) is
+// what keeps melodic unreachable at grade 2 structurally.
+const ORDINAL_POSITION_RE = /^(1st|2nd|3rd|[4-8]th) note$/;
+
+function scaleConstructionHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string' || !ORDINAL_POSITION_RE.test(canonical)) {
+    errors.push('scale_construction: canonical answer must be an ordinal note position ("2nd note".."8th note")');
+  }
+
+  const answerMusic = inst.interaction.config?.answer_music as Music | undefined;
+  if (!answerMusic || typeof answerMusic !== 'object') {
+    errors.push('scale_construction: interaction.config.answer_music is required');
+  } else {
+    // Grade is guaranteed valid here — validate() already rejected unsupported
+    // grades before any hook runs.
+    const scope = scopeForGrade(inst.grade);
+    const keySig = answerMusic.key_sig;
+    const tonic = typeof keySig === 'string' ? keySig.split('_')[0] : null;
+    if (!tonic || !scope.keysMinor.includes(tonic)) {
+      errors.push(
+        `scale_construction: answer_music key signature "${String(keySig)}" is not a grade ${inst.grade} minor key`,
+      );
+    }
+  }
+
+  const music = inst.stimulus.music as Music | null;
+  const noteCount = music
+    ? music.voices.flatMap((voice) => voice.events).filter((ev) => ev.type === 'note').length
+    : 0;
+  if (noteCount !== 8) {
+    errors.push(`scale_construction: stimulus music must have exactly 8 note events (found ${noteCount})`);
+  }
+
+  return errors;
+}
+
 function rhythmSumHook(inst: ExerciseInstance): string[] {
   // Grade is guaranteed valid here — validate() already rejected unsupported
   // grades before any hook runs.
@@ -434,6 +477,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   interval_naming_stave_input: intervalNamingHook,
   key_signature_id: keySignatureIdHook,
   mode_swap: modeSwapHook,
+  scale_construction: scaleConstructionHook,
   rhythm_sum: rhythmSumHook,
   term_meaning: termMeaningHook,
   bar_validity: barValidityHook,

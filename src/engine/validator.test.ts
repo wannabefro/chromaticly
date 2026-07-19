@@ -82,6 +82,39 @@ function validIntervalNamingInstance(): ExerciseInstance {
   };
 }
 
+function scaleMusic(tonic: string, pitches: string[]) {
+  return {
+    clef: 'treble',
+    key_sig: `${tonic}_minor`,
+    time_sig: null,
+    voices: [{ events: pitches.map((pitch) => ({ type: 'note', pitch, dur: 'crotchet' })) }],
+  };
+}
+
+function validScaleConstructionInstance(): ExerciseInstance {
+  const trueScale = ['A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G#5', 'A5'];
+  const corruptedScale = [...trueScale];
+  corruptedScale[6] = 'G5'; // un-raised 7th
+  return {
+    id: 'd4e5f6a7-0000-0000-0000-000000000000',
+    template_id: 'scale_construction',
+    grade: 2,
+    strand: 'scales_keys',
+    prompt: 'One note of this A harmonic minor scale is wrong — which one?',
+    stimulus: { music: scaleMusic('A', corruptedScale), text: null },
+    interaction: { type: 'mcq', config: { answer_music: scaleMusic('A', trueScale) } },
+    answer: { canonical: '7th note', accepted_alternatives: [] },
+    distractors: ['6th note', '3rd note'],
+    hints: ['Compare each note against the A harmonic minor scale — only one note is wrong.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'The 7th note must be raised with a sharp in harmonic minor.',
+    },
+    srs_tags: ['scale:A_minor_harmonic'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 describe('validate — structural check (schema failure is a rejection)', () => {
   test('an instance missing kb_version fails validation with a schema error', () => {
     const instance = validNoteNamingInstance() as unknown as Record<string, unknown>;
@@ -323,5 +356,43 @@ describe('validate — per-template hook: key_signature_id (D10 minor-key reject
   test('characterization: existing valid MAJOR key_signature_id instances at grade 1 and grade 2 still validate — the tightening removes only the ambiguous minor case', () => {
     expect(validate(validKeySignatureIdInstance(1))).toEqual({ ok: true, errors: [] });
     expect(validate(validKeySignatureIdInstance(2))).toEqual({ ok: true, errors: [] });
+  });
+});
+
+describe('validate — per-template hook: scale_construction (D7 spot-the-wrong-note MCQ)', () => {
+  test('a well-formed scale_construction instance passes clean', () => {
+    expect(validate(validScaleConstructionInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a canonical answer that is not an ordinal note-position string is rejected', () => {
+    const instance = validScaleConstructionInstance();
+    instance.answer.canonical = 'seventh';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('scale_construction') && e.includes('ordinal'))).toBe(true);
+  });
+
+  test('a missing interaction.config.answer_music is rejected', () => {
+    const instance = validScaleConstructionInstance();
+    instance.interaction.config = {};
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('answer_music is required'))).toBe(true);
+  });
+
+  test('an answer_music key signature whose tonic is outside the grade\'s keysMinor is rejected', () => {
+    const instance = validScaleConstructionInstance();
+    (instance.interaction.config.answer_music as any).key_sig = 'B_minor';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('scale_construction') && e.includes('minor key'))).toBe(true);
+  });
+
+  test('a stimulus with fewer than 8 note events is rejected', () => {
+    const instance = validScaleConstructionInstance();
+    (instance.stimulus.music as any).voices[0].events.pop();
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('exactly 8 note events'))).toBe(true);
   });
 });

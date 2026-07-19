@@ -96,6 +96,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'note_value_compare',
       'music_in_context',
       'mode_swap',
+      'scale_construction',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });
@@ -160,6 +161,19 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
     const atoms = ['key_sig:A_minor', 'key_sig:E_minor', 'key_sig:D_minor'];
     for (const seed of SEEDS) {
       const instance = generate('mode_swap', { grade: 2, seed, atoms });
+      assertValidatorClean(instance);
+      assertWithinGrade2Scope(instance.stimulus.music as Music | null);
+    }
+  });
+
+  // scale_construction is grade-2-only (U4, minor-scales-2 pre-lesson pool) —
+  // a real harmonic-minor stave, so assertWithinGrade2Scope exercises the
+  // full-octave register selection (review finding 3) same as any other
+  // notated generator here.
+  test('scale_construction @ grade 2: validator- and scope-clean across seeds', () => {
+    const atoms = ['scale:A_minor_harmonic', 'scale:E_minor_harmonic', 'scale:D_minor_harmonic'];
+    for (const seed of SEEDS) {
+      const instance = generate('scale_construction', { grade: 2, seed, atoms });
       assertValidatorClean(instance);
       assertWithinGrade2Scope(instance.stimulus.music as Music | null);
     }

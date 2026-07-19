@@ -52,7 +52,7 @@ const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 // into CASES above. Declaring it here routes its coverage requirement to
 // GRADE_2_EXTRA_CASES instead. Both are empty until U3/U4 register the first
 // grade-2-only generator (mode_swap, scale_construction).
-const GRADE_2_ONLY_TEMPLATES = new Set<string>(['mode_swap']);
+const GRADE_2_ONLY_TEMPLATES = new Set<string>(['mode_swap', 'scale_construction']);
 
 // Grade-2-only generators, pinned directly at grade 2 (mirrors EXTRA_CASES
 // above, since no grade-1 lesson can ever reference a grade-2-only template).
@@ -61,6 +61,11 @@ const GRADE_2_EXTRA_CASES: Case[] = [
     label: 'mode_swap (minor-keys-2, pre-lesson pin)',
     templateId: 'mode_swap',
     atoms: ['key_sig:A_minor', 'key_sig:E_minor', 'key_sig:D_minor'],
+  },
+  {
+    label: 'scale_construction (minor-scales-2, pre-lesson pin)',
+    templateId: 'scale_construction',
+    atoms: ['scale:A_minor_harmonic', 'scale:E_minor_harmonic', 'scale:D_minor_harmonic'],
   },
 ];
 

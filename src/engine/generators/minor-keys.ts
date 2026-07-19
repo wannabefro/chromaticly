@@ -55,8 +55,10 @@ const ACCIDENTAL_LEVEL: Record<string, number> = { '': 0, '#': 1, '##': 2, b: -1
 const LEVEL_SYMBOL: Record<number, string> = { [-2]: 'bb', [-1]: 'b', 0: '', 1: '#', 2: '##' };
 
 /** Shift a spelled pitch's accidental by `delta` semitones, letter-then-
- *  accidental (never re-letters an enharmonic). */
-function shiftAccidental(pitch: string, delta: number): string {
+ *  accidental (never re-letters an enharmonic). Exported so scale_construction
+ *  (U4) can build corrupted-note candidates from the same true-scale spelling
+ *  logic rather than a second copy of the accidental-level arithmetic. */
+export function shiftAccidental(pitch: string, delta: number): string {
   const m = /^([A-G])(##|#|bb|b)?(-?\d+)$/.exec(pitch);
   if (!m) throw new Error(`Invalid pitch: ${pitch}`);
   const [, letter, symbol, octave] = m;

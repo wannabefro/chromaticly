@@ -10,6 +10,7 @@ import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { rhythmSum } from './rhythm-sum';
+import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
 import type { GenerateOptions, Generator } from './types';
 
@@ -20,6 +21,7 @@ export const GENERATORS: Record<string, Generator> = {
   rhythm_sum: rhythmSum,
   key_signature_id: keySignatureId,
   mode_swap: modeSwap,
+  scale_construction: scaleConstruction,
   term_meaning: termMeaning,
   term_meaning_flashcard: termMeaningFlashcard,
   bar_validity: barValidity,
