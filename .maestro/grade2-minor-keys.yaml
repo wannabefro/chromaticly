@@ -1,0 +1,62 @@
+# Grade 2 minor-keys slice (chromaticly-elb.6, U9) — the relative-key mode_swap unit:
+# a seeded learner reaches the new minor-keys-2 unit through the REAL unlock path
+# (grade 1 mastered, Level 1 exam cleared, key-signatures-2 completed) and answers
+# a relative major/minor MCQ.
+#
+# ?seed=minor-keys-2 walks the grade-2 chain (key-signatures-2 -> minor-keys-2),
+# marking predecessors complete but NOT the target. A locked Level 2 would render
+# collapsed with no unit row, so reaching unit-row-minor-keys-2 is itself the
+# unlock proof.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=minor-keys-2
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# Level 2 sits below Level 1's eight units; scroll it and the new unit into view.
+- scrollUntilVisible:
+    element: { id: "level-node-level-2" }
+    direction: DOWN
+    timeout: 15000
+- scrollUntilVisible:
+    element: { id: "unit-row-minor-keys-2" }
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: g2-minor-keys-map
+- tapOn: { id: "unit-row-minor-keys-2" }
+
+# Every lesson opens on the teach phase (302.3); the CTA starts the set.
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g2-minor-keys-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g2-minor-keys-mcq
+
+# Answer, grade, land on the FeedbackSheet — the whole Grade-2 relative-key path.
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- tapOn: { id: "feedback-sheet-continue" }
+
+# The set advances rather than getting stuck on the sheet.
+- assertVisible: { id: "set-count" }

@@ -1,0 +1,63 @@
+# Grade 2 minor-scales slice (chromaticly-elb.6, U9) — the harmonic-minor
+# scale_construction unit. Same real-unlock skeleton as grade2-minor-keys, but this
+# flow's whole point is the NOTATION stimulus: an 8-note harmonic-minor scale
+# rendered in the persistent WebView. jest's layout-free renderer cannot catch a
+# flex-collapse of that surface (bd exerciseloop-needs-flex-parent) — only this
+# on-device pass proves the scale actually renders and the item is answerable.
+#
+# ?seed=minor-scales-2 walks the full grade-2 chain (key-signatures-2 ->
+# minor-keys-2 -> minor-scales-2). Reaching unit-row-minor-scales-2 is the unlock
+# proof (a locked Level 2 renders collapsed).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=minor-scales-2
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "level-node-level-2" }
+    direction: DOWN
+    timeout: 15000
+- scrollUntilVisible:
+    element: { id: "unit-row-minor-scales-2" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-minor-scales-2" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g2-minor-scales-teach
+- tapOn: { id: "teach-start" }
+
+# The MCQ carries a rendered 8-note scale as its stimulus. Reaching a visible
+# option (not a collapsed zero-height surface) is the flex-integrity proof.
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g2-minor-scales-mcq
+
+# Answer, grade, land on the FeedbackSheet. For a wrong answer U5 renders the
+# CORRECT scale on the paper card (rule 5); the screenshot captures whichever.
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g2-minor-scales-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+
+- assertVisible: { id: "set-count" }
