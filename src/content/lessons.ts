@@ -145,6 +145,18 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (!Number.isInteger(n) || n < 2 || n > 8) throw new Error(`lessons: atom "${atom}" is not a G1 interval (2..8)`);
       return;
     }
+    case 'interval_type': {
+      // D4: only resolves where the grade's namingStyle is the number+type
+      // widening (grade 3+) — a grade-1/2 lesson can never own this atom kind.
+      const n = Number(parts[0]);
+      if (!Number.isInteger(n) || n < 2 || n > 8) {
+        throw new Error(`lessons: atom "${atom}" is not a G3 interval (2..8)`);
+      }
+      if (scopeForGrade(grade).intervalRule.namingStyle !== 'number_and_type') {
+        throw new Error(`lessons: atom "${atom}" is not a number+type interval at grade ${grade}`);
+      }
+      return;
+    }
     case 'term': {
       const [slug] = parts;
       if (!TERM_ATOM_SLUGS.has(slug)) throw new Error(`lessons: atom "${atom}" references an unknown term`);

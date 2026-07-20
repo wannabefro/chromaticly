@@ -1,0 +1,2020 @@
+{
+  "mcq": [
+    {
+      "id": "interval_naming:g1:s0",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G2",
+                    "D3"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 5,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        4,
+        6
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:5"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s1",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "F2",
+                    "F3"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 8,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s2",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G2",
+                    "A2"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 2,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        1,
+        3
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:2"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s3",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G4",
+                    "C5"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 4,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        3,
+        5
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:4"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s4",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "F2",
+                    "Bb2"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 4,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        3,
+        5
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:4"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s5",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G4",
+                    "B4"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 3,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        2,
+        4
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s6",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "F4",
+                    "D5"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 6,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        5,
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:6"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s7",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "D4",
+                    "C#5"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 7,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        6,
+        8
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:7"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s8",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "D4",
+                    "A4"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 5,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        4,
+        6
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:5"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s9",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G2",
+                    "A2"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 2,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        1,
+        3
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:2"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s10",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G2",
+                    "G3"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 8,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s11",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "D3",
+                    "D4"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 8,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s12",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G4",
+                    "G5"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 8,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s13",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "C_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "C4",
+                    "C5"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 8,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s14",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "D4",
+                    "F#4"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 3,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        2,
+        4
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s15",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "G2",
+                    "F#3"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 7,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        6,
+        8
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:7"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s16",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "C_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "C3",
+                    "F3"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 4,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        3,
+        5
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:4"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s17",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "C_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "C4",
+                    "E4"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 3,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        2,
+        4
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s18",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "F4",
+                    "A4"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 3,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        2,
+        4
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming:g1:s19",
+      "template_id": "interval_naming",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Name this interval (number only).",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "chord",
+                  "pitches": [
+                    "D4",
+                    "D5"
+                  ],
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "mcq",
+        "config": {}
+      },
+      "answer": {
+        "canonical": 8,
+        "accepted_alternatives": []
+      },
+      "distractors": [
+        7
+      ],
+      "hints": [
+        "Count the letter names from the lower note up to the higher note, counting both ends."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount inclusively from the lower note to the upper note, counting both ends."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    }
+  ],
+  "stave": [
+    {
+      "id": "interval_naming_stave_input:g1:s0",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 5th higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "D3",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:5"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s1",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note an 8th higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "F2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "F3",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s2",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 2nd higher than the given note, as a semibreve.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "A2",
+          "dur": "semibreve"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:2"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s3",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 4th higher than the given note, as a crotchet.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "C5",
+          "dur": "crotchet"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:4"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s4",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 4th higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "F2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "Bb2",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:4"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s5",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 3rd higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "B4",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s6",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 6th higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "F4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "D5",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:6"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s7",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 7th higher than the given note, as a crotchet.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "D4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "C#5",
+          "dur": "crotchet"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:7"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s8",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 5th higher than the given note, as a semibreve.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "D4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "A4",
+          "dur": "semibreve"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:5"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s9",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 2nd higher than the given note, as a crotchet.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "A2",
+          "dur": "crotchet"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:2"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s10",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note an 8th higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "G3",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s11",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note an 8th higher than the given note, as a semibreve.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "D3",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "D4",
+          "dur": "semibreve"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s12",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note an 8th higher than the given note, as a crotchet.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "G5",
+          "dur": "crotchet"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s13",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note an 8th higher than the given note, as a semiquaver.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "C_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "C4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "C5",
+          "dur": "semiquaver"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s14",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 3rd higher than the given note, as a crotchet.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "D4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "F#4",
+          "dur": "crotchet"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s15",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 7th higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "G_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "G2",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "F#3",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:7"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s16",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 4th higher than the given note, as a quaver.",
+      "stimulus": {
+        "music": {
+          "clef": "bass",
+          "key_sig": "C_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "C3",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "F3",
+          "dur": "quaver"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:4"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s17",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 3rd higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "C_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "C4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "E4",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s18",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note a 3rd higher than the given note, as a minim.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "F_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "F4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "A4",
+          "dur": "minim"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:3"
+      ],
+      "kb_version": "g1-2026-07-10"
+    },
+    {
+      "id": "interval_naming_stave_input:g1:s19",
+      "template_id": "interval_naming_stave_input",
+      "grade": 1,
+      "strand": "intervals",
+      "prompt": "Write the note an 8th higher than the given note, as a quaver.",
+      "stimulus": {
+        "music": {
+          "clef": "treble",
+          "key_sig": "D_major",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "type": "note",
+                  "pitch": "D4",
+                  "dur": "semibreve"
+                }
+              ]
+            }
+          ]
+        },
+        "text": null
+      },
+      "interaction": {
+        "type": "stave_input",
+        "config": {}
+      },
+      "answer": {
+        "canonical": {
+          "pitch": "D5",
+          "dur": "quaver"
+        },
+        "accepted_alternatives": []
+      },
+      "distractors": [],
+      "hints": [
+        "Count the letter names from the given note up to the target note, counting both ends \u2014 then match the requested duration."
+      ],
+      "feedback": {
+        "correct": "Correct!",
+        "incorrect": "Not quite \u2014 recount the interval inclusively from the given note, and check you used the requested duration."
+      },
+      "srs_tags": [
+        "interval:8"
+      ],
+      "kb_version": "g1-2026-07-10"
+    }
+  ]
+}

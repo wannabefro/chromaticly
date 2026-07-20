@@ -1,12 +1,15 @@
 import { musicToAbc } from '../../music/abc-emitter';
 import type { Music } from '../../music/types';
+import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel } from '../interval-quality';
 import { pitchRange, scopeForGrade } from '../scope';
 import { validate } from '../validator';
 
 const g1Clefs = scopeForGrade(1).clefs;
 const g1KeysMajor = scopeForGrade(1).keysMajor;
 const g1NoteValues = scopeForGrade(1).noteValues;
+import preChangeGrade1Fixture from './__fixtures__/interval-naming-grade1-pre-u3.json';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
+import { spellInKeySig } from './key-spelling';
 import { scientificPitchOrdinal } from './pitch-math';
 
 describe('intervalNaming — reproducibility (KTD4: pure function of seed)', () => {
@@ -208,6 +211,198 @@ describe('intervalNamingStaveInput — fuzz gate: 100 generated items are all va
       const inst = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
       expect(inst.prompt).not.toMatch(/\ba 8th\b/);
       expect(inst.prompt).toMatch(/Write the note (a|an) \d+(st|nd|rd|th) higher/);
+    }
+  });
+});
+
+// U3 (plan 2026-07-20-002) — grade-3 number+type naming. The `namingStyle`
+// branch in build() is the slice's central regression risk, so this suite
+// leads with the grade-1/2 byte-identity hard core before covering the new
+// grade-3 behavior.
+
+describe('intervalNaming — grade-1 byte-identity (U3 hard core): the else-branch and untouched sampleInterval move nothing', () => {
+  test('seeds 0..19 deep-equal the pre-U3 fixture, both templates — independent of the seed-stability .snap net', () => {
+    const mcqNow = Array.from({ length: 20 }, (_, seed) => intervalNaming({ grade: 1, seed, atoms: [] }));
+    const staveNow = Array.from({ length: 20 }, (_, seed) => intervalNamingStaveInput({ grade: 1, seed, atoms: [] }));
+    expect(mcqNow).toEqual(preChangeGrade1Fixture.mcq);
+    expect(staveNow).toEqual(preChangeGrade1Fixture.stave);
+  });
+});
+
+describe('intervalNamingStaveInput — D7: number-only and unaffected by namingStyle at every grade, including grade 3', () => {
+  test('grade-3 output never carries quality vocabulary and keeps the bare interval:<n> atom scheme', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      const instance = intervalNamingStaveInput({ grade: 3, seed, atoms: [] });
+      expect(instance.prompt).toMatch(/^Write the note (a|an) \d+(st|nd|rd|th) higher than the given note, as a \S+\.$/);
+      expect(instance.prompt).not.toMatch(/major|minor|perfect/i);
+      expect(instance.srs_tags[0]).toMatch(/^interval:\d+$/);
+      expect(Object.keys(instance.answer.canonical as object).sort()).toEqual(['dur', 'pitch']);
+    }
+  });
+});
+
+function chordPitches(instance: ReturnType<typeof intervalNaming>): [string, string] {
+  const music = instance.stimulus.music as Music;
+  const event = music.voices[0].events[0] as { pitches: string[] };
+  return [event.pitches[0], event.pitches[1]];
+}
+
+describe('intervalNaming — grade 3: prompt and canonical shape (D5)', () => {
+  test('prompt names both number and type', () => {
+    const instance = intervalNaming({ grade: 3, seed: 0, atoms: [] });
+    expect(instance.prompt).toBe('Name this interval (number and type).');
+  });
+
+  test("every instance's canonical is exactly the label recomputed from its own stimulus (seeds 0..99)", () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      const [lower, upper] = chordPitches(instance);
+      const number = diatonicIntervalNumber(lower, upper);
+      const quality = intervalQuality(lower, upper, number);
+      expect(instance.answer.canonical).toBe(intervalLabel(quality, number));
+    }
+  });
+});
+
+describe('intervalNaming — grade 3, D3: minor is a reachable CORRECT answer, not just a distractor', () => {
+  test('seeds 0..119 reach at least one minor, one major, and one perfect canonical', () => {
+    const qualitiesSeen = new Set<string>();
+    for (let seed = 0; seed < 120; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      qualitiesSeen.add(parseIntervalLabel(instance.answer.canonical as string).quality);
+    }
+    expect(qualitiesSeen).toEqual(new Set(['perfect', 'major', 'minor']));
+  });
+
+  test('every minor-canonical instance samples a minor key signature', () => {
+    for (let seed = 0; seed < 120; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      if (parseIntervalLabel(instance.answer.canonical as string).quality !== 'minor') continue;
+      const music = instance.stimulus.music as Music;
+      expect(music.key_sig).toMatch(/_minor$/);
+    }
+  });
+});
+
+describe('intervalNaming — grade 3, ORC1/R1: minor items are natural-minor diatonic — no raised 6th/7th ever', () => {
+  test('every _minor instance renders both pitches exactly as the key signature spells them (seeds 0..119)', () => {
+    let minorInstancesSeen = 0;
+    for (let seed = 0; seed < 120; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      const music = instance.stimulus.music as Music;
+      if (!music.key_sig?.endsWith('_minor')) continue;
+      minorInstancesSeen++;
+      for (const pitch of chordPitches(instance)) {
+        const naturalLetter = pitch[0];
+        const octave = pitch.slice(-1);
+        expect(pitch).toBe(spellInKeySig(`${naturalLetter}${octave}`, music.key_sig as string));
+      }
+    }
+    expect(minorInstancesSeen).toBeGreaterThan(0);
+  });
+});
+
+describe('intervalNaming — grade 3, ORC1/R5: opts.atoms scopes the sampled interval NUMBER (the due-path fix)', () => {
+  test('atoms=["interval_type:5"] samples number 5 across every seed', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: ['interval_type:5'] });
+      expect(parseIntervalLabel(instance.answer.canonical as string).number).toBe(5);
+    }
+  });
+
+  test('the full interval_type:2..8 atom set ranges over every number 2..8', () => {
+    const atoms = [2, 3, 4, 5, 6, 7, 8].map((n) => `interval_type:${n}`);
+    const numbers = new Set<number>();
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms });
+      numbers.add(parseIntervalLabel(instance.answer.canonical as string).number);
+    }
+    expect(numbers).toEqual(new Set([2, 3, 4, 5, 6, 7, 8]));
+  });
+
+  test('empty atoms still range over every number 2..8 — the bare-draw case unchanged', () => {
+    const numbers = new Set<number>();
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      numbers.add(parseIntervalLabel(instance.answer.canonical as string).number);
+    }
+    expect(numbers).toEqual(new Set([2, 3, 4, 5, 6, 7, 8]));
+  });
+});
+
+describe('intervalNaming — grade 3, D6/ORC2: distractor shape', () => {
+  test('every instance has exactly 2 well-formed, distinct distractors, neither equal to the canonical (seeds 0..99)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      expect(instance.distractors).toHaveLength(2);
+      const [d1, d2] = instance.distractors as string[];
+      expect(() => parseIntervalLabel(d1)).not.toThrow();
+      expect(() => parseIntervalLabel(d2)).not.toThrow();
+      expect(d1).not.toBe(d2);
+      expect(d1).not.toBe(instance.answer.canonical);
+      expect(d2).not.toBe(instance.answer.canonical);
+    }
+  });
+
+  test('a major/minor-number canonical carries a same-number flipped-quality distractor (the type misconception)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      const { quality, number } = parseIntervalLabel(instance.answer.canonical as string);
+      if (quality === 'perfect') continue;
+      const flipped = quality === 'major' ? 'minor' : 'major';
+      expect(instance.distractors).toContain(intervalLabel(flipped, number));
+    }
+  });
+
+  test('a perfect-number canonical carries two distinct nearest-number distractors, neither the canonical number', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      const { quality, number } = parseIntervalLabel(instance.answer.canonical as string);
+      if (quality !== 'perfect') continue;
+      const distractorNumbers = (instance.distractors as string[]).map((d) => parseIntervalLabel(d).number);
+      expect(distractorNumbers).toHaveLength(2);
+      expect(new Set(distractorNumbers).size).toBe(2);
+      expect(distractorNumbers).not.toContain(number);
+    }
+  });
+
+  // ORC2: the octave (n=8) is the case a naive "±1 clamped" rule breaks —
+  // n+1=9 is out of range, so a clamp would yield only ONE distractor {7}.
+  // The nearest-two rule must reach past 7 to 6.
+  test('a "perfect octave" canonical yields distractors for exactly the 7th and 6th, in that order', () => {
+    let found = false;
+    for (let seed = 0; seed < 200; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: ['interval_type:8'] });
+      if (instance.answer.canonical !== 'perfect octave') continue;
+      found = true;
+      const distractorNumbers = (instance.distractors as string[]).map((d) => parseIntervalLabel(d).number);
+      expect(distractorNumbers).toEqual([7, 6]);
+    }
+    expect(found).toBe(true);
+  });
+});
+
+describe('intervalNaming — grade 3, D4: srs_tags emit the number+type atom, not the bare grade-1 atom', () => {
+  test('a grade-3 instance emits interval_type:<n> matching its canonical number', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      const { number } = parseIntervalLabel(instance.answer.canonical as string);
+      expect(instance.srs_tags).toEqual([`interval_type:${number}`]);
+    }
+  });
+
+  test('a grade-1 instance still emits the bare interval:<n> atom (unchanged)', () => {
+    const instance = intervalNaming({ grade: 1, seed: 3, atoms: [] });
+    expect(instance.srs_tags).toEqual([`interval:${instance.answer.canonical}`]);
+  });
+});
+
+describe('intervalNaming — grade 3, fuzz gate: 100 generated items are all validator-clean', () => {
+  test('seeds 0..99 all produce a passing instance', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 3, seed, atoms: [] });
+      const result = validate(instance);
+      expect(result).toEqual({ ok: true, errors: [] });
     }
   });
 });

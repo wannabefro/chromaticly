@@ -1,5 +1,6 @@
 import {
   intervalAtom,
+  intervalTypeAtom,
   keySigAtom,
   noteReadAtom,
   parseAtom,
@@ -19,6 +20,10 @@ describe('atom builders — stable exact id strings', () => {
 
   test('intervalAtom produces interval:<number>', () => {
     expect(intervalAtom(5)).toBe('interval:5');
+  });
+
+  test('intervalTypeAtom produces interval_type:<number> — a distinct kind from bare interval:<number> (D4)', () => {
+    expect(intervalTypeAtom(5)).toBe('interval_type:5');
   });
 
   test('termAtom produces term:<slug>', () => {
@@ -44,6 +49,10 @@ describe('parseAtom — build/parse round-trip recovers the original parts', () 
 
   test('interval atom round-trips the number as a string part', () => {
     expect(parseAtom(intervalAtom(5))).toEqual({ kind: 'interval', parts: ['5'] });
+  });
+
+  test('interval_type atom round-trips the number as a string part, distinct kind from interval', () => {
+    expect(parseAtom(intervalTypeAtom(5))).toEqual({ kind: 'interval_type', parts: ['5'] });
   });
 
   test('term atom round-trips the slug', () => {

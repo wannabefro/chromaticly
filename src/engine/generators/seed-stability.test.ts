@@ -274,6 +274,19 @@ const GRADE_3_EXTRA_CASES: Case[] = [
     templateId: 'metre_classification',
     atoms: ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'],
   },
+  {
+    label: 'interval_naming number+type (intervals-3, pre-lesson pin, U3)',
+    templateId: 'interval_naming',
+    atoms: [
+      'interval_type:2',
+      'interval_type:3',
+      'interval_type:4',
+      'interval_type:5',
+      'interval_type:6',
+      'interval_type:7',
+      'interval_type:8',
+    ],
+  },
 ];
 
 if (GRADE_3_EXTRA_CASES.length > 0) {

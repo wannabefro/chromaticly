@@ -573,6 +573,72 @@ describe('validate — per-template hook: interval_naming', () => {
   });
 });
 
+// U3 (plan 2026-07-20-002), Codex R6: the grade-3 mcq's canonical is a string
+// LABEL, not a bare number — the hook must independently RECOMPUTE
+// {number, quality} from the stimulus chord and never trust the label itself,
+// or a generator bug that emits a well-formed-but-wrong label would slip
+// through unnoticed.
+function validIntervalNamingGrade3Instance(): ExerciseInstance {
+  return {
+    id: 'f1a2b3c4-0000-0000-0000-000000000000',
+    template_id: 'interval_naming',
+    grade: 3,
+    strand: 'intervals',
+    prompt: 'Name this interval (number and type).',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: 'C_major',
+        time_sig: null,
+        voices: [{ events: [{ type: 'chord', pitches: ['C4', 'E4'], dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: 'major 3rd', accepted_alternatives: [] },
+    distractors: ['perfect 4th', 'major 6th'],
+    hints: ['Count the letter names for the number, then check the key signature for the type.'],
+    feedback: { correct: 'Correct!', incorrect: 'Not quite — recheck the number and the type.' },
+    srs_tags: ['interval_type:3'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
+describe('validate — per-template hook: interval_naming grade 3 (D5/D6, Codex R6 — recompute, never trust the label)', () => {
+  test('a well-formed grade-3 interval_naming instance passes clean', () => {
+    expect(validate(validIntervalNamingGrade3Instance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('canonical "major 2nd" for a C4->E4 (major 3rd) stimulus is REJECTED — the NUMBER is recomputed from the chord, not trusted from the label', () => {
+    const instance = validIntervalNamingGrade3Instance();
+    instance.answer.canonical = 'major 2nd';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('interval_naming'))).toBe(true);
+  });
+
+  test('canonical "minor 3rd" for a C4->E4 (major 3rd) stimulus is REJECTED — the QUALITY is recomputed, not trusted from the label', () => {
+    const instance = validIntervalNamingGrade3Instance();
+    instance.answer.canonical = 'minor 3rd';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+  });
+
+  test('an out-of-vocabulary canonical "diminished 5th" is REJECTED — no augmented/diminished in grade-3 scope', () => {
+    const instance = validIntervalNamingGrade3Instance();
+    instance.answer.canonical = 'diminished 5th';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+  });
+
+  test('a distractor "major 5th" (an out-of-vocabulary quality/number pairing) is REJECTED', () => {
+    const instance = validIntervalNamingGrade3Instance();
+    instance.distractors = ['major 5th', 'perfect 4th'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+  });
+});
+
 // Review finding 3: checkPitchScope has two call sites — checkScope AND
 // intervalNamingHook's stave_input branch. This block characterizes both:
 // existing valid grade-1/2 instances (mcq AND stave_input) must still

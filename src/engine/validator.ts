@@ -12,6 +12,7 @@
 // answer that already appears in that list — it does not grade.
 
 import type { Music } from '../music/types';
+import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel } from './interval-quality';
 import { classifyMetre } from './metre';
 import { pitchRange, scopeForGrade } from './scope';
 import type { GradeScope } from './scope';
@@ -263,11 +264,71 @@ function intervalNamingHook(inst: ExerciseInstance): string[] {
     return errors;
   }
 
+  // Grade is guaranteed valid here — validate() already rejected unsupported
+  // grades before any hook runs.
+  if (scopeForGrade(inst.grade).intervalRule.namingStyle === 'number_and_type') {
+    return intervalNamingQualityErrors(inst, canonical);
+  }
+
   const num = typeof canonical === 'number' ? canonical : typeof canonical === 'string' ? Number(canonical) : NaN;
   if (!Number.isInteger(num) || num < 1 || num > 8) {
     return ['interval_naming: canonical answer must be an interval number 1..8'];
   }
   return [];
+}
+
+// D5/D6/ORC(R6): the grade-3 mcq's canonical is a "<quality> <ordinal>" string
+// label (e.g. "major 3rd"). Well-formedness alone (parseIntervalLabel not
+// throwing) is not enough — a generator bug could emit a well-formed but
+// WRONG label, so this independently RECOMPUTES {number, quality} from the
+// stimulus chord's two rendered pitches and asserts the label matches; it
+// never trusts the label itself for the number/quality it names.
+function intervalNamingQualityErrors(inst: ExerciseInstance, canonical: unknown): string[] {
+  const errors: string[] = [];
+
+  if (typeof canonical !== 'string') {
+    return ['interval_naming: number+type canonical answer must be a string label'];
+  }
+  try {
+    parseIntervalLabel(canonical);
+  } catch (err) {
+    errors.push(`interval_naming: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
+  const music = inst.stimulus.music as Music | null;
+  const pitches = music ? music.voices.flatMap((voice) => voice.events).flatMap(eventPitches) : [];
+  if (pitches.length !== 2) {
+    errors.push('interval_naming: number+type stimulus must render exactly two pitches as a chord');
+    return errors;
+  }
+  const [lower, upper] = pitches;
+
+  try {
+    const number = diatonicIntervalNumber(lower, upper);
+    const quality = intervalQuality(lower, upper, number);
+    const recomputed = intervalLabel(quality, number);
+    if (canonical !== recomputed) {
+      errors.push(
+        `interval_naming: canonical "${canonical}" does not match the interval recomputed from the stimulus ("${recomputed}" for ${lower}->${upper})`,
+      );
+    }
+  } catch (err) {
+    errors.push(`interval_naming: ${err instanceof Error ? err.message : String(err)}`);
+  }
+
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string') {
+      errors.push(`interval_naming: distractor "${String(d)}" is not a grade-3 interval label`);
+      continue;
+    }
+    try {
+      parseIntervalLabel(d);
+    } catch (err) {
+      errors.push(`interval_naming: distractor "${d}": ${err instanceof Error ? err.message : String(err)}`);
+    }
+  }
+
+  return errors;
 }
 
 function extractKeyTonic(raw: string): string | null {

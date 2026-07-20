@@ -297,6 +297,18 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
   test('metre:2/2 throws at grade 3 — in scope but not renderable', () => {
     expect(() => assertAtomResolves('metre:2/2', 3)).toThrow();
   });
+
+  // U3 (plan 2026-07-20-002), D4: the number+type interval atom is gated on
+  // namingStyle, not a hardcoded grade — resolves at grade 3+ and throws at
+  // grade 1/2, where the bare `interval:<n>` atom is still the correct grammar.
+  test('interval_type:5 resolves at grade 3 but throws at grade 2 (namingStyle-gated, not just number-in-range)', () => {
+    expect(() => assertAtomResolves('interval_type:5', 3)).not.toThrow();
+    expect(() => assertAtomResolves('interval_type:5', 2)).toThrow();
+  });
+
+  test('a bare interval:5 atom still resolves at grade 1 — the legacy grammar is untouched by D4', () => {
+    expect(() => assertAtomResolves('interval:5', 1)).not.toThrow();
+  });
 });
 
 // Playability sweep, generalized over every grade the map can open (D7 note:

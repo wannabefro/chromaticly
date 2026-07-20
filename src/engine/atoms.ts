@@ -26,6 +26,14 @@ export function intervalAtom(number: number): string {
   return `interval:${number}`;
 }
 
+/** Grade-3 number+type interval atom (D4) — distinct from bare `interval:<n>`
+ *  so "name the 3rd" (grade 1) and "name it a minor 3rd" (grade 3) route to
+ *  their own owning lesson instead of first-owner-wins misrouting a due
+ *  number+type review to the grade-1 number-only lesson. */
+export function intervalTypeAtom(number: number): string {
+  return `interval_type:${number}`;
+}
+
 export function termAtom(slug: string): string {
   return `term:${slug}`;
 }
