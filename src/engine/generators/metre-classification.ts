@@ -23,7 +23,7 @@ import type { Duration, Music, MusicEvent } from '../../music/types';
 import { metreAtom, parseAtom } from '../atoms';
 import { classifyMetre, isCompoundTimeSignature, type Beats, type Division, type MetreClass } from '../metre';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInRange, scopeForGrade } from '../scope';
+import { diatonicPitchesInComfortableRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { barUnitsFor, buildBarDurations, buildCompoundBarDurations, type SimpleDuration } from './bar-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -66,7 +66,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const compound = isCompoundTimeSignature(sig);
 
   const clef = pick(rng, [...scope.clefs]);
-  const pitch = pick(rng, diatonicPitchesInRange(clef, grade));
+  // Incidental notation pitch: rhythm/metre is the subject here, not pitch,
+  // so this stays in the comfortable band rather than the (wider, grade-3+)
+  // reading range — see comfortablePitchRange in scope.ts.
+  const pitch = pick(rng, diatonicPitchesInComfortableRange(clef, grade));
 
   const events: MusicEvent[] = compound
     ? buildCompoundBarDurations(rng, sig).map((d): MusicEvent =>

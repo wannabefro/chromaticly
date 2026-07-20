@@ -1,6 +1,6 @@
 {
   "grade": 3,
-  "version": "g3-lessons-2026-07-20b",
+  "version": "g3-lessons-2026-07-20c",
   "lessons": [
     {
       "id": "minor-keys-3",
@@ -254,6 +254,48 @@
         },
         "smartTip": "Check the key signature first — above a major tonic every 2nd, 3rd, 6th and 7th is major; above a minor tonic, they're minor instead.",
         "didYouKnow": "Perfect intervals (unison, 4th, 5th, octave) get their name because their simple, pure ratios sounded \"perfect\" to early theorists — they never take a major or minor label."
+      },
+      "unlocks": "ledger-lines-3"
+    },
+    {
+      "id": "ledger-lines-3",
+      "title": "Ledger lines — notes beyond the stave",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:treble:F3",
+        "note_read:treble:G3",
+        "note_read:treble:D6",
+        "note_read:treble:E6",
+        "note_read:bass:A1",
+        "note_read:bass:B1",
+        "note_read:bass:F4",
+        "note_read:bass:G4"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 3,
+        "seed": 6
+      },
+      "teach": {
+        "objectives": [
+          "How ledger lines extend the stave one line at a time, above and below",
+          "Counting outward in 3rds — line, space, line — from a landmark note you already know",
+          "The newly reachable notes: F3 up to E6 in the treble clef, A1 up to G4 in the bass clef"
+        ],
+        "concept": {
+          "title": "Reading ledger-line notes",
+          "body": "Ledger lines are short extra lines that continue the stave, one at a time, above or below it. Rather than counting every ledger line from scratch, count outward in 3rds — line, space, line — from a landmark you already know: middle C sits on its own ledger line, just below the treble stave and just above the bass stave. Working outward this way now reaches one ledger line further than Grade 2 — down to F3 and up to E6 in the treble clef, and down to A1 and up to G4 in the bass clef.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 3,
+            "seed": 16
+          }
+        },
+        "smartTip": "Count in 3rds from a landmark you already know, not ledger line by ledger line from the stave — line to space to line gets you there in half the steps.",
+        "didYouKnow": "Ledger lines have no upper limit — orchestral parts for piccolo or double bass sometimes stack five or six of them, though this course never asks for more than one beyond Grade 2's range."
       },
       "unlocks": null
     }

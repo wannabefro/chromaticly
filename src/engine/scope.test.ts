@@ -1,6 +1,13 @@
 import { keyAccidentals } from '../music/abc-emitter';
 import { KB } from '../content/knowledge-base';
-import { diatonicPitchesInRange, GRADE_SCOPES, pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
+import {
+  comfortablePitchRange,
+  diatonicPitchesInRange,
+  GRADE_SCOPES,
+  pitchRange,
+  renderableTimeSignatures,
+  scopeForGrade,
+} from './scope';
 
 // --- Ported invariants (were G1_* module-level constants; now scopeForGrade(1)) ---
 
@@ -212,11 +219,10 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(g3.minorForms).toEqual(['harmonic', 'melodic']);
   });
 
-  test('rhythmDevices/pitchRanges/clefs are frozen at grade-2 values — anacrusis stays deferred (D1)', () => {
+  test('rhythmDevices/clefs are frozen at grade-2 values — anacrusis stays deferred (D1); pitchRanges widens (see the ledger-lines-3 block below)', () => {
     const g2 = scopeForGrade(2);
     const g3 = scopeForGrade(3);
     expect(g3.rhythmDevices).toEqual(g2.rhythmDevices);
-    expect(g3.pitchRanges).toEqual(g2.pitchRanges);
     expect(g3.clefs).toEqual(g2.clefs);
   });
 
@@ -277,5 +283,65 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
       intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
       pitchRanges: { treble: { low: 'A3', high: 'C6' }, bass: { low: 'C2', high: 'E4' } },
     });
+  });
+});
+
+// Ledger-lines-3 slice (chromaticly-1v5.6): GRADE_3_SCOPE.pitchRanges widens
+// to a distinct literal, one ledger line further out each direction — grade
+// 1/2 pitchRanges must stay untouched (proven above), and the widening must
+// be grade-3-isolated since pitchRange/diatonicPitchesInRange are grade-parameterized.
+describe('scopeForGrade(3).pitchRanges — ledger-lines-3 widening (chromaticly-1v5.6)', () => {
+  test('grade-3 pitch bounds are exactly F3/E6 for treble and A1/G4 for bass', () => {
+    expect(GRADE_SCOPES[3].pitchRanges.treble).toEqual({ low: 'F3', high: 'E6' });
+    expect(GRADE_SCOPES[3].pitchRanges.bass).toEqual({ low: 'A1', high: 'G4' });
+  });
+
+  test('grade-1 and grade-2 pitchRanges are unchanged by the grade-3 widening', () => {
+    expect(GRADE_SCOPES[1].pitchRanges).toEqual({ treble: { low: 'C4', high: 'A5' }, bass: { low: 'E2', high: 'D4' } });
+    expect(GRADE_SCOPES[2].pitchRanges).toEqual({ treble: { low: 'A3', high: 'C6' }, bass: { low: 'C2', high: 'E4' } });
+  });
+
+  test('the grade-3 range is strictly wider than grade 2 — every grade-2 diatonic pitch is also in range at grade 3', () => {
+    for (const clef of ['treble', 'bass'] as const) {
+      const g2Pitches = new Set(diatonicPitchesInRange(clef, 2));
+      const g3Pitches = new Set(diatonicPitchesInRange(clef, 3));
+      for (const pitch of g2Pitches) expect(g3Pitches.has(pitch)).toBe(true);
+      expect(g3Pitches.size).toBeGreaterThan(g2Pitches.size);
+    }
+  });
+
+  test('diatonicPitchesInRange(clef, 3) first/last elements match the declared grade-3 bounds', () => {
+    for (const clef of ['treble', 'bass'] as const) {
+      const { low, high } = pitchRange(clef, 3);
+      const pitches = diatonicPitchesInRange(clef, 3);
+      expect(pitches[0]).toBe(low);
+      expect(pitches[pitches.length - 1]).toBe(high);
+    }
+  });
+});
+
+// comfortablePitchRange (ledger-lines-3 follow-up fix): the reading range
+// (pitchRange) widens with grade, but incidental-notation generators
+// (add_time_signature, metre_classification) must stay in a comfortable band
+// that caps at the grade-2 range — see the rationale comment on
+// comfortablePitchRange in scope.ts.
+describe('comfortablePitchRange — caps at the grade-2 range, never widens past it (incidental-notation invariant)', () => {
+  test('grade 1 stays the grade-1 range (below the cap, unaffected)', () => {
+    for (const clef of ['treble', 'bass'] as const) {
+      expect(comfortablePitchRange(clef, 1)).toEqual(pitchRange(clef, 1));
+    }
+  });
+
+  test('grade 2 stays the grade-2 range (at the cap)', () => {
+    for (const clef of ['treble', 'bass'] as const) {
+      expect(comfortablePitchRange(clef, 2)).toEqual(pitchRange(clef, 2));
+    }
+  });
+
+  test('grade 3 is capped at the grade-2 range, not the wider grade-3 reading range', () => {
+    for (const clef of ['treble', 'bass'] as const) {
+      expect(comfortablePitchRange(clef, 3)).toEqual(pitchRange(clef, 2));
+      expect(comfortablePitchRange(clef, 3)).not.toEqual(pitchRange(clef, 3));
+    }
   });
 });

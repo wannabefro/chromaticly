@@ -13,7 +13,13 @@ import { intervalAtom, intervalTypeAtom, parseAtom } from '../atoms';
 import { intervalLabel, intervalQuality, type IntervalQuality } from '../interval-quality';
 import { int, mulberry32, pick } from '../rng';
 import type { GradeScope } from '../scope';
-import { diatonicPitchesInRange, pitchRange, scopeForGrade } from '../scope';
+import {
+  comfortablePitchRange,
+  diatonicPitchesInComfortableRange,
+  diatonicPitchesInRange,
+  pitchRange,
+  scopeForGrade,
+} from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { spellInKey, spellInKeySig, tonicLetter } from './key-spelling';
 import { naturalPitchStepsAbove, scientificPitchOrdinal } from './pitch-math';
@@ -173,8 +179,13 @@ function buildNumberAndType(
   const keySig = pick(rng, keySigPool);
   const tonic = keySig.split('_')[0];
 
-  const range = pitchRange(clef, grade);
-  const tonicOccurrences = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(tonicLetter(tonic)));
+  // Stimulus pitch stays in the comfortable (grade-2) range, not the widened
+  // grade-3 reading range — this exercise tests interval quality, not ledger
+  // reading (which note_naming's ledger atoms own). See comfortablePitchRange.
+  const range = comfortablePitchRange(clef, grade);
+  const tonicOccurrences = diatonicPitchesInComfortableRange(clef, grade).filter((p) =>
+    p.startsWith(tonicLetter(tonic)),
+  );
   if (tonicOccurrences.length === 0) {
     throw new Error(`interval_naming: no in-range occurrence of tonic ${tonic} for clef ${clef}`);
   }

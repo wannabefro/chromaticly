@@ -228,7 +228,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 chain', () => {
+  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 -> ledger-lines-3 chain', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'minor-keys-3',
       'minor-scales-3',
@@ -236,6 +236,7 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
       'compound-time-3',
       'compound-bars-3',
       'intervals-3',
+      'ledger-lines-3',
     ]);
   });
 
@@ -254,9 +255,39 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
         'compound-time-3',
         'compound-bars-3',
         'intervals-3',
+        'ledger-lines-3',
       ]),
     );
-    expect(LESSONS[LESSONS.length - 1].id).toBe('intervals-3');
+    expect(LESSONS[LESSONS.length - 1].id).toBe('ledger-lines-3');
+  });
+});
+
+// chromaticly-1v5.6 — the new grade-3 note-reading lesson: single-template
+// discipline (mirrors intervals-3, D7) and grade-gated ledger-line atoms
+// (the pitches only resolve once GRADE_3_SCOPE.pitchRanges widens past grade 2).
+describe('ledger-lines-3 lesson (chromaticly-1v5.6)', () => {
+  test('strand is pitch and it carries the single template note_naming', () => {
+    const lesson = lessonById('ledger-lines-3');
+    expect(lesson).toBeTruthy();
+    expect(lesson!.strand).toBe('pitch');
+    expect(lesson!.templates).toEqual(['note_naming']);
+  });
+
+  test('every ledger-lines-3 atom resolves at grade 3', () => {
+    const lesson = lessonById('ledger-lines-3')!;
+    for (const atom of lesson.atoms) {
+      expect(() => assertAtomResolves(atom, 3)).not.toThrow();
+    }
+  });
+
+  // Every declared atom pitch sits beyond grade 2's A3-C6/C2-E4 range by
+  // construction (that's the point of the lesson) — so every one of them
+  // must throw at grade 2, not just a hand-picked example.
+  test('every ledger-lines-3 atom pitch is outside the grade-2 range and throws at grade 2', () => {
+    const lesson = lessonById('ledger-lines-3')!;
+    for (const atom of lesson.atoms) {
+      expect(() => assertAtomResolves(atom, 2)).toThrow();
+    }
   });
 });
 

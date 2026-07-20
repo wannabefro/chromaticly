@@ -222,6 +222,26 @@ describe('addTimeSignature — U5 (D6): family-scoped distractors', () => {
   });
 });
 
+// Ledger-lines-3 follow-up fix: grade 3's wider reading range must not leak
+// into this generator's incidental pitch — rhythm is the subject, pitch is
+// decorative, so it must stay in the comfortable (grade-2) band.
+describe('addTimeSignature — incidental pitch stays comfortable at grade 3, never on the newly-widened 3rd-ledger pitches', () => {
+  const NEWLY_WIDENED_TREBLE = ['F3', 'G3', 'D6', 'E6'];
+  const NEWLY_WIDENED_BASS = ['A1', 'B1', 'F4', 'G4'];
+
+  test('every grade-3 stimulus pitch across seeds 0..99 avoids F3/G3/D6/E6 on treble and A1/B1/F4/G4 on bass', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: [] });
+      const music = instance.stimulus.music as Music;
+      const forbidden = music.clef === 'treble' ? NEWLY_WIDENED_TREBLE : NEWLY_WIDENED_BASS;
+      for (const ev of music.voices[0].events) {
+        if (ev.type !== 'note') continue;
+        expect(forbidden).not.toContain(ev.pitch);
+      }
+    }
+  });
+});
+
 describe('addTimeSignature — fuzz gate: 100 generated items are all validator-clean', () => {
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {

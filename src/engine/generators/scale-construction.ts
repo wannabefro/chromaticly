@@ -23,7 +23,7 @@ import type { Clef, Music } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
 import { parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { pitchRange, scopeForGrade } from '../scope';
+import { comfortablePitchRange, scopeForGrade } from '../scope';
 import type { GradeScope } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { tonicLetter } from './key-spelling';
@@ -230,7 +230,7 @@ function parseNaturalPitch(pitch: string): { letter: string; octave: number } {
 }
 
 /** Start pitches ("<Letter><Octave>") for which the COMPLETE 8-note ascending
- *  scale — tonic through the octave above — fits pitchRange(clef, grade)
+ *  scale — tonic through the octave above — fits comfortablePitchRange(clef, grade)
  *  (review finding 3): tonic ordinal >= the clef's low bound AND
  *  tonic-plus-an-octave <= its high bound. An in-range tonic does NOT imply
  *  an in-range top note — e.g. a D5 treble tonic tops at D6, past the C6
@@ -244,7 +244,10 @@ function parseNaturalPitch(pitch: string): { letter: string; octave: number } {
  *  this is byte-identical to the pre-fix output there. */
 export function validScaleStartPitches(tonic: string, clef: Clef, grade: number): string[] {
   const naturalTonic = tonicLetter(tonic);
-  const { low, high } = pitchRange(clef, grade);
+  // Comfortable (grade-2) range, not the widened grade-3 reading range: a scale
+  // spans a full octave, so a high grade-3 tonic would push the top note onto
+  // extreme ledger lines. Ledger reading is note_naming's job, not this one.
+  const { low, high } = comfortablePitchRange(clef, grade);
   const lowP = parseNaturalPitch(low);
   const highP = parseNaturalPitch(high);
   const lowOrd = letterOrdinal(lowP.letter, lowP.octave);

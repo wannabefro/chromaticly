@@ -103,7 +103,22 @@ const GRADE_3_SCOPE: GradeScope = {
     namingStyle: 'number_and_type',
     maxOctaves: 1,
   },
-  pitchRanges: GRADE_2_SCOPE.pitchRanges,
+  // KB.grade3Adds.pitch_range.ledger_lines: "up to 3 (and beyond) above and
+  // below" (prose). Resolved the same way as grade 2's range — one more
+  // outermost ledger-line NOTE each direction (+2 diatonic letters, a 3rd,
+  // per ledger line):
+  //   - treble: F3 (3rd ledger below; A3 was the 2nd) .. E6 (3rd ledger
+  //     above; C6 was the 2nd).
+  //   - bass: A1 (3rd ledger below; C2 was the 2nd) .. G4 (3rd ledger above;
+  //     E4 was the 2nd).
+  // Flagged for curriculum sign-off before this range's first pitch-content
+  // slice ships, same as grade 2's; a one-line table edit if that review
+  // disagrees, and cannot affect grades 1 or 2 (pitchRange/diatonicPitchesInRange
+  // are grade-parameterized).
+  pitchRanges: {
+    treble: { low: 'F3', high: 'E6' },
+    bass: { low: 'A1', high: 'G4' },
+  },
 };
 
 export const GRADE_SCOPES: { 1: GradeScope; 2: GradeScope; 3: GradeScope } = {
@@ -141,6 +156,21 @@ export function pitchRange(clef: Clef, grade: number): { low: Pitch; high: Pitch
   return scopeForGrade(grade).pitchRanges[clef];
 }
 
+// Ledger-lines-3 fix (chromaticly-1v5.6 follow-up): pitchRange/pitchRanges is
+// the READING range — correct for exercises whose subject IS the pitch
+// (note_naming, interval_naming, scale_construction reading ledger lines).
+// But add_time_signature/metre_classification only need ONE incidental pitch
+// to give the bar a stave position; rhythm is the subject, pitch is
+// decorative. Sampling those from the wide grade-3 reading range put ~20% of
+// rhythm bars on a 3rd-ledger-line pitch — a notation-quality regression, not
+// a curriculum requirement. comfortablePitchRange caps at the grade-2 range
+// (staff + up to 2 ledger lines, comfortable at every grade) so incidental
+// notation never drifts onto the extreme ledger lines the wider reading range
+// allows. Grade 1/2 are unaffected (min(grade, 2) === grade there).
+export function comfortablePitchRange(clef: Clef, grade: number): { low: Pitch; high: Pitch } {
+  return pitchRange(clef, Math.min(grade, 2));
+}
+
 const NATURAL_LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'] as const;
 
 function pitchOrdinal(letter: string, octave: number): number {
@@ -161,7 +191,19 @@ function parsePitch(pitch: Pitch): { letter: string; octave: number } {
  * sufficient at both grades.
  */
 export function diatonicPitchesInRange(clef: Clef, grade: number): Pitch[] {
-  const { low, high } = pitchRange(clef, grade);
+  return diatonicPitchesInBounds(pitchRange(clef, grade));
+}
+
+/** Same enumeration as diatonicPitchesInRange, but over comfortablePitchRange
+ *  — for incidental-notation generators (add_time_signature,
+ *  metre_classification) where pitch must stay comfortable, not widen with
+ *  the grade's reading range. See comfortablePitchRange for why. */
+export function diatonicPitchesInComfortableRange(clef: Clef, grade: number): Pitch[] {
+  return diatonicPitchesInBounds(comfortablePitchRange(clef, grade));
+}
+
+function diatonicPitchesInBounds(bounds: { low: Pitch; high: Pitch }): Pitch[] {
+  const { low, high } = bounds;
   const lowP = parsePitch(low);
   const highP = parsePitch(high);
   const lowOrd = pitchOrdinal(lowP.letter, lowP.octave);
