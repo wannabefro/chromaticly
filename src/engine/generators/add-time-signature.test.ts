@@ -97,6 +97,19 @@ describe('addTimeSignature — srs_tags', () => {
   });
 });
 
+describe('addTimeSignature — D13 guard (TEMPORARY until U5): grade-3 generation never emits a compound signature', () => {
+  test('seeds 0..19 at grade 3 never carry a compound canonical or distractor time signature', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: [] });
+      const canonical = instance.answer.canonical as string;
+      expect(canonical.endsWith('/8')).toBe(false);
+      for (const d of instance.distractors) {
+        expect((d as string).endsWith('/8')).toBe(false);
+      }
+    }
+  });
+});
+
 describe('addTimeSignature — fuzz gate: 100 generated items are all validator-clean', () => {
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {

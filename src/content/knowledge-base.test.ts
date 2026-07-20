@@ -94,4 +94,10 @@ describe('knowledge-base.ts — grade_scopes["3"].adds is reachable', () => {
     expect(KB.grade3Adds.keys_minor).toEqual(['B', 'G', 'F#', 'C', 'C#', 'F']);
     expect(KB.grade3Adds.minor_forms).toEqual(['melodic']);
   });
+
+  // U2: the compound-time slice's scope widening reads this list — a drift
+  // here silently desyncs GRADE_3_SCOPE.timeSignatures from the KB.
+  test('grade-3 adds carry exactly the three compound time signatures the U2 scope widening consumes', () => {
+    expect(KB.grade3Adds.time_signatures).toEqual(['6/8', '9/8', '12/8']);
+  });
 });

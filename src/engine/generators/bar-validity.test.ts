@@ -133,6 +133,16 @@ describe('barValidity — srs_tags', () => {
   });
 });
 
+describe('barValidity — D13 guard: grade-3 generation never emits a compound signature (compound support for this template is a deferred slice)', () => {
+  test('seeds 0..19 at grade 3 never carry a compound time_sig', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = barValidity({ grade: 3, seed, atoms: [] });
+      const timeSig = instance.stimulus.music!.time_sig as string;
+      expect(timeSig.endsWith('/8')).toBe(false);
+    }
+  });
+});
+
 describe('barValidity — fuzz gate: 100 generated items are all validator-clean', () => {
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {

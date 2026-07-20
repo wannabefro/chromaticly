@@ -21,6 +21,7 @@ import { KB, KB_VERSION } from '../../content/knowledge-base';
 import { DYNAMIC_GLOSS } from '../../music/dynamics';
 import type { Duration, Dynamic, Music, MusicEvent, Pitch } from '../../music/types';
 import { contextAtom, findBarAtom } from '../atoms';
+import { isCompoundTimeSignature } from '../metre';
 import { mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import { scientificPitchOrdinal } from './pitch-math';
@@ -80,9 +81,12 @@ function uniqueNoteBy(notes: Note[], score: (n: Note) => number): Note | null {
 
 /** Deferred (D6): grade-2 /2 meters need minim-beat bar math, so `grade`
  *  narrows the meter to the /4 subset at every grade until the
- *  time-signatures slice — see renderableTimeSignatures. */
+ *  time-signatures slice — see renderableTimeSignatures. D13 guard: grade 3
+ *  opens compound signatures in renderableTimeSignatures (U2), so filter
+ *  them out here too — compound support for this template is a deferred
+ *  slice. */
 function drawPassage(rng: () => number, grade: number): { notes: Note[]; timeSig: string; events: MusicEvent[] } {
-  const timeSignatures = renderableTimeSignatures(grade);
+  const timeSignatures = renderableTimeSignatures(grade).filter((t) => !isCompoundTimeSignature(t));
   const pool = diatonicPitchesInRange('treble', grade);
   const timeSig = pick(rng, [...timeSignatures]);
   const beatsPerBar = Number(timeSig.split('/')[0]);
@@ -221,7 +225,11 @@ function timeSigQuestion(
   n: number,
 ): ExerciseInstance {
   const claimIsTrue = rng() < 0.5;
-  const timeSignatures = renderableTimeSignatures(base.grade);
+  // D13 guard: this claim/distractor option must never offer a compound
+  // signature — the passage itself is always simple-only (drawPassage), so a
+  // compound distractor here would be an option no rendered passage could
+  // ever confirm. Compound support for this template is a deferred slice.
+  const timeSignatures = renderableTimeSignatures(base.grade).filter((t) => !isCompoundTimeSignature(t));
   const claimed = claimIsTrue ? timeSig : pick(rng, timeSignatures.filter((t) => t !== timeSig));
 
   return {

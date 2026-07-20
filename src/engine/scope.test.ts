@@ -212,10 +212,9 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(g3.minorForms).toEqual(['harmonic', 'melodic']);
   });
 
-  test('timeSignatures/noteValues/rhythmDevices/intervalRule/pitchRanges/clefs are frozen at grade-2 values — compound time is a later slice (D1)', () => {
+  test('noteValues/rhythmDevices/intervalRule/pitchRanges/clefs are frozen at grade-2 values — demisemiquaver enters at U4, anacrusis stays deferred (D1/R1)', () => {
     const g2 = scopeForGrade(2);
     const g3 = scopeForGrade(3);
-    expect(g3.timeSignatures).toEqual(g2.timeSignatures);
     expect(g3.noteValues).toEqual(g2.noteValues);
     expect(g3.rhythmDevices).toEqual(g2.rhythmDevices);
     expect(g3.intervalRule).toEqual(g2.intervalRule);
@@ -223,9 +222,17 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(g3.clefs).toEqual(g2.clefs);
   });
 
-  test('grade-3 timeSignatures has no /8 signature, and renderableTimeSignatures(3) is the /4 set — the test that fails if compound time is added early', () => {
-    expect(scopeForGrade(3).timeSignatures.some((t) => t.endsWith('/8'))).toBe(false);
-    expect(renderableTimeSignatures(3)).toEqual(['2/4', '3/4', '4/4']);
+  test('grade-3 timeSignatures = grade-2 list unioned with KB.grade3Adds.time_signatures, order-preserved (D2/U2)', () => {
+    const g2 = scopeForGrade(2);
+    const g3 = scopeForGrade(3);
+    expect(g3.timeSignatures).toEqual([...g2.timeSignatures, ...KB.grade3Adds.time_signatures]);
+    expect(g3.timeSignatures).toEqual(['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '6/8', '9/8', '12/8']);
+  });
+
+  test('renderableTimeSignatures(1) and (2) are the frozen /4 set; renderableTimeSignatures(3) opens exactly the compound trio alongside it, no /2 leak (D2/U2)', () => {
+    expect(renderableTimeSignatures(1)).toEqual(['2/4', '3/4', '4/4']);
+    expect(renderableTimeSignatures(2)).toEqual(['2/4', '3/4', '4/4']);
+    expect(renderableTimeSignatures(3)).toEqual(['2/4', '3/4', '4/4', '6/8', '9/8', '12/8']);
   });
 
   test('grade-1 and grade-2 scope objects are byte-identical to their pre-grade-3 values (additive-only)', () => {

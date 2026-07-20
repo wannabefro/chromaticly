@@ -12,6 +12,7 @@
 import { KB, KB_VERSION } from '../../content/knowledge-base';
 import type { Duration, MusicEvent } from '../../music/types';
 import { findBarAtom } from '../atoms';
+import { isCompoundTimeSignature } from '../metre';
 import { mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import type { ExerciseInstance } from '../schema';
@@ -56,8 +57,10 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
   const rng = mulberry32(contentSeed);
   // Simple time only, so the beat is the crotchet and a bar holds `top` beats.
   // Deferred (D6): grade-2 /2 meters need minim-beat bar math, so this stays
-  // the /4 subset at every grade until the time-signatures slice.
-  const timeSignatures = renderableTimeSignatures(grade);
+  // the /4 subset at every grade until the time-signatures slice. D13 guard:
+  // grade 3 opens compound signatures in renderableTimeSignatures (U2), so
+  // filter them out — compound support for this template is a deferred slice.
+  const timeSignatures = renderableTimeSignatures(grade).filter((t) => !isCompoundTimeSignature(t));
   const pool = diatonicPitchesInRange('treble', grade); // ascending
   const timeSig = pick(rng, [...timeSignatures]);
   const beatsPerBar = Number(timeSig.split('/')[0]);

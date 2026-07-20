@@ -82,20 +82,19 @@ const GRADE_2_SCOPE: GradeScope = {
 };
 
 // Grade 3 (D1): keys widen to KB.grade3Adds' minors/majors and harmonic +
-// melodic minor forms — but timeSignatures/noteValues/rhythmDevices/
-// intervalRule/pitchRanges/clefs are COPIED FROM GRADE 2 UNCHANGED. This is a
-// deliberate divergence from the grade-2 precedent (which listed its new /2
-// meters here): nothing in this slice needs compound time (6/8/9/8/12/8)
-// validated, so those axes stay out of the scope list entirely rather than
-// being listed-but-unreachable. The compound-time slice adds them to BOTH
-// this list and renderableTimeSignatures together.
+// melodic minor forms. timeSignatures widens to the compound trio
+// (6/8, 9/8, 12/8 — D2, compound-time slice U2) — but noteValues stays the
+// grade-2 copy this unit: demisemiquaver enters only once bar-math has its
+// UNITS row (U4, plan R1), so a simple consumer can never draw a duration
+// with no unit entry. rhythmDevices stays the grade-2 copy too — anacrusis
+// is deferred to its own slice (D1).
 const GRADE_3_SCOPE: GradeScope = {
   clefs: GRADE_2_SCOPE.clefs,
   noteValues: GRADE_2_SCOPE.noteValues,
   keysMajor: [...GRADE_2_SCOPE.keysMajor, ...KB.grade3Adds.keys_major],
   keysMinor: [...GRADE_2_SCOPE.keysMinor, ...KB.grade3Adds.keys_minor],
   minorForms: [...GRADE_2_SCOPE.minorForms, ...KB.grade3Adds.minor_forms],
-  timeSignatures: GRADE_2_SCOPE.timeSignatures,
+  timeSignatures: [...GRADE_2_SCOPE.timeSignatures, ...KB.grade3Adds.time_signatures],
   rhythmDevices: GRADE_2_SCOPE.rhythmDevices,
   intervalRule: GRADE_2_SCOPE.intervalRule,
   pitchRanges: GRADE_2_SCOPE.pitchRanges,
@@ -115,14 +114,21 @@ export function scopeForGrade(grade: number): GradeScope {
   return scope;
 }
 
-const RENDERABLE_TIME_SIGNATURES: readonly string[] = ['2/4', '3/4', '4/4'];
+const SIMPLE_RENDERABLE_TIME_SIGNATURES: readonly string[] = ['2/4', '3/4', '4/4'];
+const GRADE_3_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
+  ...SIMPLE_RENDERABLE_TIME_SIGNATURES,
+  '6/8',
+  '9/8',
+  '12/8',
+];
 
 // grade-2 /2 meters need minim-beat bar math; until the time-signatures
-// slice, only /4 renders correctly — see plan D6. Returns the same /4 subset
-// for every grade so meter/rhythm generators never silently emit a
-// wrong-length bar.
-export function renderableTimeSignatures(_grade: number): readonly string[] {
-  return RENDERABLE_TIME_SIGNATURES;
+// slice, only /4 renders correctly — see plan D6. Grades 1/2 stay the frozen
+// /4 subset (byte-identity); grade 3 opens the compound trio alongside it
+// (D2) — the /2 meters stay non-renderable at every grade, that axis is
+// still the deferred time-signatures slice.
+export function renderableTimeSignatures(grade: number): readonly string[] {
+  return grade >= 3 ? GRADE_3_RENDERABLE_TIME_SIGNATURES : SIMPLE_RENDERABLE_TIME_SIGNATURES;
 }
 
 export function pitchRange(clef: Clef, grade: number): { low: Pitch; high: Pitch } {

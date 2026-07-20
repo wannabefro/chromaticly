@@ -16,6 +16,7 @@
 import { KB_VERSION } from '../../content/knowledge-base';
 import type { Duration, Music, MusicEvent } from '../../music/types';
 import { barValidityAtom } from '../atoms';
+import { isCompoundTimeSignature } from '../metre';
 import { mulberry32, pick, weighted } from '../rng';
 import { diatonicPitchesInRange, renderableTimeSignatures, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
@@ -100,7 +101,10 @@ interface BarRange {
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const G1_DURATIONS = scope.noteValues as readonly G1Duration[];
-  const timeSignatures = renderableTimeSignatures(grade);
+  // D13 guard: bar_validity's bar math is simple-only. Grade 3 opens compound
+  // signatures in renderableTimeSignatures (U2), so filter them out here —
+  // compound support for this template is a deferred slice.
+  const timeSignatures = renderableTimeSignatures(grade).filter((t) => !isCompoundTimeSignature(t));
   const rng = mulberry32(contentSeed);
   const clef = pick(rng, [...scope.clefs]);
   const timeSig = pick(rng, [...timeSignatures]);

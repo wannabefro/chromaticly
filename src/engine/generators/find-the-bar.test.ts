@@ -76,6 +76,14 @@ describe('findTheBar — the passage is well formed', () => {
     expect(instanceFor('lowest', 0).srs_tags).toEqual(['find_bar:lowest']);
   });
 
+  test('D13 guard: grade-3 generation never emits a compound signature (compound support for this template is a deferred slice)', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = findTheBar({ grade: 3, seed, atoms: [`find_bar:highest`] });
+      const timeSig = instance.stimulus.music!.time_sig as string;
+      expect(timeSig.endsWith('/8')).toBe(false);
+    }
+  });
+
   test('seeds 0..49 are all validator-clean and reproducible', () => {
     for (let seed = 0; seed < 50; seed++) {
       const instance = instanceFor('highest', seed);
