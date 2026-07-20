@@ -1,0 +1,52 @@
+# Grade 3 ledger lines (chromaticly-1v5.6) — the note_naming lesson over the
+# 3rd-ledger notes (F3/G3/D6/E6 treble, A1/B1/F4/G4 bass) the widened grade-3
+# reading range makes legal. Its point is the LEDGER-LINE STIMULUS: a note drawn
+# on the light paper card one ledger line beyond Grade 2's range, named via the
+# note_naming MCQ — abcjs ledger-line rendering no Jest test can verify.
+# ?seed=ledger-lines-3 walks the full grade-3 chain to the seventh (last) unit;
+# reaching it proves Level 3 unlocked AND the new pitch lesson is live. No
+# level-node scroll: seeding auto-scrolls the map to the last unit.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=ledger-lines-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-ledger-lines-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-ledger-lines-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-ledger-lines-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-ledger-lines-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g3-ledger-lines-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }
