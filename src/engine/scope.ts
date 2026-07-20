@@ -96,7 +96,13 @@ const GRADE_3_SCOPE: GradeScope = {
   minorForms: [...GRADE_2_SCOPE.minorForms, ...KB.grade3Adds.minor_forms],
   timeSignatures: [...GRADE_2_SCOPE.timeSignatures, ...KB.grade3Adds.time_signatures],
   rhythmDevices: GRADE_2_SCOPE.rhythmDevices,
-  intervalRule: GRADE_2_SCOPE.intervalRule,
+  // Distinct object (not a reference copy of grade 2's) per KB.grade3Adds.intervals.naming
+  // "number + type (perfect, major, minor)" — the number+type widening lands in U3.
+  intervalRule: {
+    aboveTonicOnly: true,
+    namingStyle: 'number_and_type',
+    maxOctaves: 1,
+  },
   pitchRanges: GRADE_2_SCOPE.pitchRanges,
 };
 

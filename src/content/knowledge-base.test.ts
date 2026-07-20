@@ -101,3 +101,20 @@ describe('knowledge-base.ts — grade_scopes["3"].adds is reachable', () => {
     expect(KB.grade3Adds.time_signatures).toEqual(['6/8', '9/8', '12/8']);
   });
 });
+
+describe('knowledge-base.ts — theory_data.interval_qualities is parsed (U1)', () => {
+  // The later quality classifier (U2's interval-quality.ts) keys off these
+  // number sets — they must be the KB's, not a code duplicate a theory edit
+  // could silently desync from.
+  test('perfect_numbers and major_minor_numbers match the KB exactly', () => {
+    expect(KB.intervalQualities.perfect_numbers).toEqual([1, 4, 5, 8]);
+    expect(KB.intervalQualities.major_minor_numbers).toEqual([2, 3, 6, 7]);
+  });
+
+  test('modification_rules and compound_rule parse as non-empty prose strings', () => {
+    expect(typeof KB.intervalQualities.modification_rules).toBe('string');
+    expect(KB.intervalQualities.modification_rules.length).toBeGreaterThan(0);
+    expect(typeof KB.intervalQualities.compound_rule).toBe('string');
+    expect(KB.intervalQualities.compound_rule.length).toBeGreaterThan(0);
+  });
+});

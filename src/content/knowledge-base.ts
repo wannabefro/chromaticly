@@ -44,6 +44,13 @@ const ScalePatternsSchema = z.object({
   chromatic: z.unknown(),
 });
 
+const IntervalQualitiesSchema = z.object({
+  perfect_numbers: z.array(z.number()),
+  major_minor_numbers: z.array(z.number()),
+  modification_rules: z.string(),
+  compound_rule: z.string(),
+});
+
 const Grade2AddsSchema = z.object({
   time_signatures: z.array(z.string()),
   rhythm_devices: z.array(z.string()),
@@ -80,6 +87,7 @@ const KnowledgeBaseSchema = z.object({
     note_values: z.record(z.string(), NoteValueEntrySchema),
     key_signatures: KeySignaturesSchema,
     scale_patterns: ScalePatternsSchema,
+    interval_qualities: IntervalQualitiesSchema,
   }),
   grade_scopes: z.object({
     '1': Grade1ScopeSchema,
@@ -98,6 +106,7 @@ export const KB = {
   noteValues: parsed.theory_data.note_values,
   keySignatures: parsed.theory_data.key_signatures,
   scalePatterns: parsed.theory_data.scale_patterns,
+  intervalQualities: parsed.theory_data.interval_qualities,
   grade1: parsed.grade_scopes['1'],
   grade2Adds: parsed.grade_scopes['2'].adds,
   grade3Adds: parsed.grade_scopes['3'].adds,

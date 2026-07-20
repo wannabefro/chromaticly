@@ -212,11 +212,10 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(g3.minorForms).toEqual(['harmonic', 'melodic']);
   });
 
-  test('rhythmDevices/intervalRule/pitchRanges/clefs are frozen at grade-2 values — anacrusis stays deferred (D1)', () => {
+  test('rhythmDevices/pitchRanges/clefs are frozen at grade-2 values — anacrusis stays deferred (D1)', () => {
     const g2 = scopeForGrade(2);
     const g3 = scopeForGrade(3);
     expect(g3.rhythmDevices).toEqual(g2.rhythmDevices);
-    expect(g3.intervalRule).toEqual(g2.intervalRule);
     expect(g3.pitchRanges).toEqual(g2.pitchRanges);
     expect(g3.clefs).toEqual(g2.clefs);
   });
@@ -226,6 +225,20 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     const g3 = scopeForGrade(3);
     expect(g3.noteValues).toEqual([...g2.noteValues, ...KB.grade3Adds.note_values]);
     expect(g3.noteValues).toEqual(['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver', 'demisemiquaver']);
+  });
+
+  test('grade-3 intervalRule widens to number_and_type, cross-checked against the KB naming string it implements (D1/U1)', () => {
+    expect(scopeForGrade(3).intervalRule).toEqual({
+      aboveTonicOnly: true,
+      namingStyle: 'number_and_type',
+      maxOctaves: 1,
+    });
+    expect(KB.grade3Adds.intervals.naming).toBe('number + type (perfect, major, minor)');
+  });
+
+  test('grade-1 and grade-2 intervalRule stay number-only — the grade-3 object is additive, not a mutation of shared state (D1/U1)', () => {
+    expect(scopeForGrade(1).intervalRule).toEqual({ aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 });
+    expect(scopeForGrade(2).intervalRule).toEqual({ aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 });
   });
 
   test('grade-3 timeSignatures = grade-2 list unioned with KB.grade3Adds.time_signatures, order-preserved (D2/U2)', () => {
