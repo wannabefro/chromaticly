@@ -117,3 +117,26 @@ describe('noteValueCompare — fuzz gate: 50 generated items are all validator-c
     }
   });
 });
+
+describe('noteValueCompare — D9 hardening: grade-3 scope (with demisemiquaver) never hits an undefined UNITS/label lookup', () => {
+  test('seeds 0..99 at grade 3 all produce a passing, well-formed instance — the cast `scope.noteValues as G1Duration[]` is total, not a latent undefined-lookup', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = noteValueCompare({ grade: 3, seed, atoms: ['note_value_compare'] });
+      expect(() => durationOf(instance.answer.canonical)).not.toThrow();
+      expect(() => durationOf(instance.distractors[0])).not.toThrow();
+      const result = validate(instance);
+      expect(result).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  test('demisemiquaver is reachable as a compared duration at grade 3 (its UNITS/label rows are live, not dead code)', () => {
+    let sawDemisemiquaver = false;
+    for (let seed = 0; seed < 200; seed++) {
+      const instance = noteValueCompare({ grade: 3, seed, atoms: ['note_value_compare'] });
+      const longer = durationOf(instance.answer.canonical);
+      const shorter = durationOf(instance.distractors[0]);
+      if (longer === 'demisemiquaver' || shorter === 'demisemiquaver') sawDemisemiquaver = true;
+    }
+    expect(sawDemisemiquaver).toBe(true);
+  });
+});

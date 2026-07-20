@@ -212,14 +212,20 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(g3.minorForms).toEqual(['harmonic', 'melodic']);
   });
 
-  test('noteValues/rhythmDevices/intervalRule/pitchRanges/clefs are frozen at grade-2 values — demisemiquaver enters at U4, anacrusis stays deferred (D1/R1)', () => {
+  test('rhythmDevices/intervalRule/pitchRanges/clefs are frozen at grade-2 values — anacrusis stays deferred (D1)', () => {
     const g2 = scopeForGrade(2);
     const g3 = scopeForGrade(3);
-    expect(g3.noteValues).toEqual(g2.noteValues);
     expect(g3.rhythmDevices).toEqual(g2.rhythmDevices);
     expect(g3.intervalRule).toEqual(g2.intervalRule);
     expect(g3.pitchRanges).toEqual(g2.pitchRanges);
     expect(g3.clefs).toEqual(g2.clefs);
+  });
+
+  test('noteValues = grade-2 list unioned with KB.grade3Adds.note_values (demisemiquaver) — enters scope now that bar-math (U4) has its UNITS row (D2/R1)', () => {
+    const g2 = scopeForGrade(2);
+    const g3 = scopeForGrade(3);
+    expect(g3.noteValues).toEqual([...g2.noteValues, ...KB.grade3Adds.note_values]);
+    expect(g3.noteValues).toEqual(['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver', 'demisemiquaver']);
   });
 
   test('grade-3 timeSignatures = grade-2 list unioned with KB.grade3Adds.time_signatures, order-preserved (D2/U2)', () => {

@@ -126,6 +126,17 @@ describe('barValidity — interaction shape', () => {
   });
 });
 
+describe('barValidity — R2: bar-math extraction did not change the emitted event shape', () => {
+  test('grade-1 note events carry no "dots" key (undotted events stay bare, matching the pre-U4 shape)', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const instance = barValidity({ grade: 1, seed, atoms: [] });
+      for (const ev of instance.stimulus.music!.voices[0].events) {
+        if (ev.type === 'note') expect('dots' in ev).toBe(false);
+      }
+    }
+  });
+});
+
 describe('barValidity — srs_tags', () => {
   test('emits the bare bar_validity atom', () => {
     const instance = barValidity({ grade: 1, seed: 1, atoms: [] });

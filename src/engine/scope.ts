@@ -83,14 +83,14 @@ const GRADE_2_SCOPE: GradeScope = {
 
 // Grade 3 (D1): keys widen to KB.grade3Adds' minors/majors and harmonic +
 // melodic minor forms. timeSignatures widens to the compound trio
-// (6/8, 9/8, 12/8 — D2, compound-time slice U2) — but noteValues stays the
-// grade-2 copy this unit: demisemiquaver enters only once bar-math has its
-// UNITS row (U4, plan R1), so a simple consumer can never draw a duration
-// with no unit entry. rhythmDevices stays the grade-2 copy too — anacrusis
-// is deferred to its own slice (D1).
+// (6/8, 9/8, 12/8 — D2, compound-time slice U2). noteValues now widens to
+// demisemiquaver (U4, plan R1): bar-math.ts's UNITS table carries a
+// demisemiquaver row as of this unit, so no simple consumer can draw a
+// duration with no unit entry. rhythmDevices stays the grade-2 copy —
+// anacrusis is deferred to its own slice (D1).
 const GRADE_3_SCOPE: GradeScope = {
   clefs: GRADE_2_SCOPE.clefs,
-  noteValues: GRADE_2_SCOPE.noteValues,
+  noteValues: [...GRADE_2_SCOPE.noteValues, ...(KB.grade3Adds.note_values as Duration[])],
   keysMajor: [...GRADE_2_SCOPE.keysMajor, ...KB.grade3Adds.keys_major],
   keysMinor: [...GRADE_2_SCOPE.keysMinor, ...KB.grade3Adds.keys_minor],
   minorForms: [...GRADE_2_SCOPE.minorForms, ...KB.grade3Adds.minor_forms],

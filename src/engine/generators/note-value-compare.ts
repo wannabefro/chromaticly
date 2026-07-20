@@ -14,17 +14,20 @@ import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-type G1Duration = 'semiquaver' | 'quaver' | 'crotchet' | 'minim' | 'semibreve';
+type G1Duration = 'semiquaver' | 'quaver' | 'crotchet' | 'minim' | 'semibreve' | 'demisemiquaver';
 
-// Units = sixteenths of a crotchet (mirrors bar-validity's UNITS table) — every
-// G1 duration maps to a distinct positive integer, so "strictly longer" is a
-// plain integer comparison with no ties possible among the five G1 values.
+// Units = sixteenths of a crotchet (mirrors bar-validity's pre-rescale UNITS
+// table) — every duration maps to a distinct positive value, so "strictly
+// longer" is a plain comparison with no ties possible among the six values.
+// demisemiquaver (D9 hardening) keeps this table's own scale rather than
+// bar-math's rescaled one — this is a note-comparison table, not bar math.
 export const UNITS: Record<G1Duration, number> = {
   semiquaver: 1,
   quaver: 2,
   crotchet: 4,
   minim: 8,
   semibreve: 16,
+  demisemiquaver: 0.5,
 };
 
 // Plain-language option voice (design step 4: "The open one (minim)" / "The
@@ -37,6 +40,7 @@ export const NOTE_VALUE_LABELS: Record<G1Duration, string> = {
   crotchet: 'The filled one (crotchet)',
   quaver: 'The filled one with a flag (quaver)',
   semiquaver: 'The filled one with two flags (semiquaver)',
+  demisemiquaver: 'The filled one with three flags (demisemiquaver)',
 };
 
 // Plain beat lengths (crotchet = 1 beat) for the coached "why" — mirrors the
@@ -47,6 +51,7 @@ const BEAT_LABEL: Record<G1Duration, string> = {
   crotchet: '1 beat',
   quaver: 'half a beat',
   semiquaver: 'a quarter-beat',
+  demisemiquaver: 'an eighth-beat',
 };
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
