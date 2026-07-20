@@ -1,0 +1,53 @@
+# Grade 3 compound metres (chromaticly-1v5.2, U9) — the add_time_signature compound
+# path over 6/8/9/8/12/8. Its point is the HIDDEN-SIGNATURE stimulus (plan D5/D6): the
+# bar renders with NO printed time signature yet still beams in dotted-crotchet threes,
+# and the options are exactly the three compound signatures (the equal-total 3/4 never
+# offered). ?seed=compound-bars-3 walks the full grade-3 chain to the fifth (last) unit.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=compound-bars-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "level-node-level-3" }
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: { id: "unit-row-compound-bars-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-compound-bars-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-compound-bars-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-compound-bars-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g3-compound-bars-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }

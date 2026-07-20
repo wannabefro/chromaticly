@@ -1,0 +1,54 @@
+# Grade 3 compound time (chromaticly-1v5.2, U9) — the metre_classification MCQ over
+# all six signatures. Its point is the NOTATION: a printed compound signature (6/8/
+# 9/8/12/8) rendered in the WebView with 3+3 dotted-crotchet beam grouping (plan D8/
+# Risk 5) on the light paper card, classified via the generic mcq. ?seed=compound-time-3
+# masters grades 1-2 (both exams cleared, seed.ts) and walks the grade-3 chain to the
+# fourth unit — reaching it proves Level 3 unlocked AND the two new lessons are live.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=compound-time-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "level-node-level-3" }
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: { id: "unit-row-compound-time-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-compound-time-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-compound-time-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-compound-time-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g3-compound-time-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }
