@@ -12,6 +12,7 @@
 // answer that already appears in that list — it does not grade.
 
 import type { Music } from '../music/types';
+import { classifyMetre } from './metre';
 import { pitchRange, scopeForGrade } from './scope';
 import type { GradeScope } from './scope';
 import type { ExerciseInstance } from './schema';
@@ -465,6 +466,25 @@ function addTimeSignatureHook(inst: ExerciseInstance): string[] {
       return [`add_time_signature: distractor "${String(d)}" is not a G1 time signature`];
     }
   }
+
+  // D6: distractors must be the SAME family (simple/compound) as the
+  // canonical — vacuous-true for every grade-1/2 instance (all-simple).
+  const canonicalFamily = classifyMetre(canonical).division;
+  for (const d of inst.distractors) {
+    if (classifyMetre(d as string).division !== canonicalFamily) {
+      return [`add_time_signature: distractor "${String(d)}" is not the same family (simple/compound) as canonical "${canonical}"`];
+    }
+  }
+
+  // D6/D5: when the stimulus carries a (hidden) time_sig, it must agree with
+  // the canonical answer — the rendered bar must be a true bar of the answer
+  // signature, not just a total that happens to match. Vacuous-true for
+  // every grade-1/2 instance (time_sig: null).
+  const stimulusTimeSig = (inst.stimulus.music as Music | null)?.time_sig;
+  if (stimulusTimeSig != null && stimulusTimeSig !== canonical) {
+    return [`add_time_signature: stimulus time_sig "${stimulusTimeSig}" does not match canonical answer "${canonical}"`];
+  }
+
   return [];
 }
 

@@ -260,6 +260,23 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
   test('scale:Bb_minor_harmonic (a grade-4 key) throws at grade 3', () => {
     expect(() => assertAtomResolves('scale:Bb_minor_harmonic', 3)).toThrow();
   });
+
+  // U5 (D6): the parameterized add_time_signature:<sig> grammar — resolves
+  // only where the signature is both in scope AND renderable at that grade.
+  test('add_time_signature:6/8 resolves at grade 3 but not grade 2 (not in scope/renderable)', () => {
+    expect(() => assertAtomResolves('add_time_signature:6/8', 3)).not.toThrow();
+    expect(() => assertAtomResolves('add_time_signature:6/8', 2)).toThrow();
+  });
+
+  // 2/2 is in scope from grade 2 (GRADE_2_SCOPE.timeSignatures) but never
+  // renderable at any grade (D2) — scope membership alone isn't enough.
+  test('add_time_signature:2/2 throws at grade 3 — in scope but not renderable', () => {
+    expect(() => assertAtomResolves('add_time_signature:2/2', 3)).toThrow();
+  });
+
+  test('the bare add_time_signature atom still resolves at grade 1 (the legacy grammar untouched)', () => {
+    expect(() => assertAtomResolves('add_time_signature', 1)).not.toThrow();
+  });
 });
 
 // Playability sweep, generalized over every grade the map can open (D7 note:

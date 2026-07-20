@@ -1,4 +1,5 @@
 import type { Music, MusicEvent } from '../../music/types';
+import { classifyMetre } from '../metre';
 import { scopeForGrade } from '../scope';
 import { validate } from '../validator';
 import { addTimeSignature } from './add-time-signature';
@@ -106,17 +107,117 @@ describe('addTimeSignature — srs_tags', () => {
     const instance = addTimeSignature({ grade: 1, seed: 1, atoms: [] });
     expect(instance.srs_tags).toEqual(['add_time_signature']);
   });
+
+  // U5 (R4): a compound instance must credit the parameterized atom, not the
+  // bare one — otherwise the due path misroutes to the grade-1 owner
+  // (first-owner-wins, practice-plan.ts).
+  test('a compound instance emits the parameterized atom matching the sampled signature', () => {
+    const instance = addTimeSignature({ grade: 3, seed: 0, atoms: ['add_time_signature:9/8'] });
+    expect(instance.answer.canonical).toBe('9/8');
+    expect(instance.srs_tags).toEqual(['add_time_signature:9/8']);
+  });
 });
 
-describe('addTimeSignature — D13 guard (TEMPORARY until U5): grade-3 generation never emits a compound signature', () => {
-  test('seeds 0..19 at grade 3 never carry a compound canonical or distractor time signature', () => {
-    for (let seed = 0; seed < 20; seed++) {
-      const instance = addTimeSignature({ grade: 3, seed, atoms: [] });
+describe('addTimeSignature — U5 (D6): bare grade-3 draws sample the full renderable set, compound included', () => {
+  test('seeds 0..99 at grade 3 with bare atoms draw at least one compound canonical (the D13 guard is gone)', () => {
+    const canonicals = new Set<string>();
+    for (let seed = 0; seed < 100; seed++) {
+      canonicals.add(addTimeSignature({ grade: 3, seed, atoms: [] }).answer.canonical as string);
+    }
+    expect([...canonicals].some((sig) => sig.endsWith('/8'))).toBe(true);
+  });
+});
+
+describe('addTimeSignature — U5 (D6): atom-scoped compound sampling', () => {
+  test('a single compound atom pins the signature across seeds', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: ['add_time_signature:6/8'] });
+      expect(instance.answer.canonical).toBe('6/8');
+    }
+  });
+
+  test('the three-atom compound scope reaches all three compound signatures over seeds 0..119', () => {
+    const atoms = ['add_time_signature:6/8', 'add_time_signature:9/8', 'add_time_signature:12/8'];
+    const seen = new Set<string>();
+    for (let seed = 0; seed < 120; seed++) {
+      seen.add(addTimeSignature({ grade: 3, seed, atoms }).answer.canonical as string);
+    }
+    expect(seen).toEqual(new Set(['6/8', '9/8', '12/8']));
+  });
+});
+
+// Independent unit table (mirrors bar-math.ts's UNITS, authored separately —
+// see bar-math.test.ts's own independent-capture discipline, D3/Codex R2).
+const COMPOUND_UNITS: Record<string, number> = {
+  demisemiquaver: 1,
+  semiquaver: 2,
+  quaver: 4,
+  crotchet: 8,
+  minim: 16,
+  semibreve: 32,
+};
+const COMPOUND_BAR_UNITS: Record<string, number> = { '6/8': 24, '9/8': 36, '12/8': 48 };
+const COMPOUND_ATOMS = ['add_time_signature:6/8', 'add_time_signature:9/8', 'add_time_signature:12/8'];
+
+describe('addTimeSignature — U5 (D6/D5): compound instances are true, correctly grouped, hidden-signature bars', () => {
+  test('stimulus.music.time_sig equals the canonical answer, time_sig_hidden is true, and the bar sums to BAR_UNITS[sig]', () => {
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: COMPOUND_ATOMS });
       const canonical = instance.answer.canonical as string;
-      expect(canonical.endsWith('/8')).toBe(false);
-      for (const d of instance.distractors) {
-        expect((d as string).endsWith('/8')).toBe(false);
+      const music = instance.stimulus.music as Music;
+      expect(music.time_sig).toBe(canonical);
+      expect(music.time_sig_hidden).toBe(true);
+
+      const total = music.voices[0].events.reduce((sum, ev) => {
+        if (ev.type !== 'note') return sum;
+        return sum + COMPOUND_UNITS[ev.dur as string] * (ev.dots === 1 ? 1.5 : 1);
+      }, 0);
+      expect(total).toBe(COMPOUND_BAR_UNITS[canonical]);
+    }
+  });
+
+  // The invariant D4's pattern table guarantees by construction: no note event's
+  // span may straddle a dotted-crotchet beat boundary (every 12 units).
+  // Recomputed independently here (not by inspecting the internal pattern
+  // list) — an event straddles iff its start and end fall in different
+  // 12-unit blocks.
+  test('no compound-bar event crosses a dotted-crotchet beat boundary', () => {
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: COMPOUND_ATOMS });
+      const music = instance.stimulus.music as Music;
+      let cursor = 0;
+      for (const ev of music.voices[0].events) {
+        if (ev.type !== 'note') continue;
+        const units = COMPOUND_UNITS[ev.dur as string] * (ev.dots === 1 ? 1.5 : 1);
+        const start = cursor;
+        const end = cursor + units;
+        expect(Math.floor(start / 12)).toBe(Math.floor((end - 1) / 12));
+        cursor = end;
       }
+    }
+  });
+});
+
+describe('addTimeSignature — U5 (D6): family-scoped distractors', () => {
+  test('every instance at every grade has exactly 2 distractors, same family as canonical, distinct from canonical', () => {
+    for (const grade of [1, 2, 3] as const) {
+      for (let seed = 0; seed < 40; seed++) {
+        const instance = addTimeSignature({ grade, seed, atoms: [] });
+        const canonical = instance.answer.canonical as string;
+        expect(instance.distractors.length).toBe(2);
+        for (const d of instance.distractors) {
+          expect(d).not.toBe(canonical);
+          expect(classifyMetre(d as string).division).toBe(classifyMetre(canonical).division);
+        }
+      }
+    }
+  });
+
+  test('a 6/8 instance never offers 3/4 as an option — the equal-total ambiguity is structurally excluded', () => {
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: ['add_time_signature:6/8'] });
+      expect(instance.answer.canonical).toBe('6/8');
+      expect(instance.distractors).not.toContain('3/4');
     }
   });
 });
@@ -125,6 +226,14 @@ describe('addTimeSignature — fuzz gate: 100 generated items are all validator-
   test('seeds 0..99 all produce a passing instance', () => {
     for (let seed = 0; seed < 100; seed++) {
       const instance = addTimeSignature({ grade: 1, seed, atoms: [] });
+      const result = validate(instance);
+      expect(result).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  test('seeds 0..99 at grade 3 with the compound atom scope all produce a passing instance', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = addTimeSignature({ grade: 3, seed, atoms: COMPOUND_ATOMS });
       const result = validate(instance);
       expect(result).toEqual({ ok: true, errors: [] });
     }

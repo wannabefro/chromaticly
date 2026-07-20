@@ -46699,6 +46699,1846 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-3-only generator extras are pinned byte-for-byte add_time_signature compound (compound-bars-3, pre-lesson pin, U5) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12/8",
+    },
+    "distractors": [
+      "6/8",
+      "9/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6/8",
+    },
+    "distractors": [
+      "9/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12/8",
+    },
+    "distractors": [
+      "6/8",
+      "9/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6/8",
+    },
+    "distractors": [
+      "9/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12/8",
+    },
+    "distractors": [
+      "6/8",
+      "9/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12/8",
+    },
+    "distractors": [
+      "6/8",
+      "9/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6/8",
+    },
+    "distractors": [
+      "9/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6/8",
+    },
+    "distractors": [
+      "9/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9/8",
+    },
+    "distractors": [
+      "6/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6/8",
+    },
+    "distractors": [
+      "9/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6/8",
+    },
+    "distractors": [
+      "9/8",
+      "12/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12/8",
+    },
+    "distractors": [
+      "6/8",
+      "9/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12/8",
+    },
+    "distractors": [
+      "6/8",
+      "9/8",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.",
+    ],
+    "id": "add_time_signature:g3:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Count the dotted-crotchet beats in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+]
+`;
+
 exports[`seed-stability — grade-3-only generator extras are pinned byte-for-byte mode_swap (minor-keys-3, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

@@ -38,8 +38,12 @@ export function barValidityAtom(): string {
   return 'bar_validity';
 }
 
-export function addTimeSignatureAtom(): string {
-  return 'add_time_signature';
+/** Bare (grade-1, `sig` omitted) or parameterized (grade-3 compound, D6)
+ *  atom id. Distinct atom ids per compound signature keep the SRS due path
+ *  routed to the grade-3 owner instead of misrouting to the grade-1 lesson
+ *  that owns the bare atom (first-owner-wins, practice-plan.ts). */
+export function addTimeSignatureAtom(sig?: string): string {
+  return sig ? `add_time_signature:${sig}` : 'add_time_signature';
 }
 
 export function noteValueCompareAtom(): string {

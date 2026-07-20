@@ -263,6 +263,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
       'scale:F_minor_melodic',
     ],
   },
+  {
+    label: 'add_time_signature compound (compound-bars-3, pre-lesson pin, U5)',
+    templateId: 'add_time_signature',
+    atoms: ['add_time_signature:6/8', 'add_time_signature:9/8', 'add_time_signature:12/8'],
+  },
 ];
 
 if (GRADE_3_EXTRA_CASES.length > 0) {

@@ -16,7 +16,7 @@ import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
-import { diatonicPitchesInRange, scopeForGrade } from '../engine/scope';
+import { diatonicPitchesInRange, renderableTimeSignatures, scopeForGrade } from '../engine/scope';
 import type { Clef } from '../music/types';
 import { assertRhythmFillsBars } from './teach-rhythm';
 
@@ -85,9 +85,15 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'bar_validity':
       if (parts.length !== 0) throw new Error(`lessons: malformed bar_validity atom "${atom}"`);
       return;
-    case 'add_time_signature':
-      if (parts.length !== 0) throw new Error(`lessons: malformed add_time_signature atom "${atom}"`);
+    case 'add_time_signature': {
+      if (parts.length === 0) return; // legacy bare atom (grade 1)
+      if (parts.length !== 1) throw new Error(`lessons: malformed add_time_signature atom "${atom}"`);
+      const [sig] = parts;
+      if (!scopeForGrade(grade).timeSignatures.includes(sig) || !renderableTimeSignatures(grade).includes(sig)) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} time signature`);
+      }
       return;
+    }
     case 'note_read': {
       const [clef, pitch] = parts;
       if (!scopeForGrade(grade).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G${grade} scope`);

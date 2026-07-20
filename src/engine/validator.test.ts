@@ -198,6 +198,85 @@ function validIntervalNamingStaveInputInstance(grade: 1 | 2 = 1): ExerciseInstan
   };
 }
 
+function validAddTimeSignatureInstance(): ExerciseInstance {
+  return {
+    id: 'a1b2c3d4-0000-0000-0000-000000000001',
+    template_id: 'add_time_signature',
+    grade: 1,
+    strand: 'rhythm',
+    prompt: 'Add up the note values in this bar. Which time signature is it in?',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: null,
+        time_sig: null,
+        voices: [
+          {
+            events: [
+              { type: 'note', pitch: 'C4', dur: 'crotchet' },
+              { type: 'note', pitch: 'C4', dur: 'crotchet' },
+              { type: 'note', pitch: 'C4', dur: 'crotchet' },
+              { type: 'barline', style: 'single' },
+            ],
+          },
+        ],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: '3/4', accepted_alternatives: [] },
+    distractors: ['2/4', '4/4'],
+    hints: ['Use the note tree to add up the bar, then match the total to a time signature.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'Not quite — recount the beats in the bar and match the total to a time signature.',
+    },
+    srs_tags: ['add_time_signature'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
+// U5 (D6): a compound instance — hidden signature (D5), family-scoped
+// distractors, the parameterized SRS atom (R4).
+function validCompoundAddTimeSignatureInstance(): ExerciseInstance {
+  return {
+    id: 'a1b2c3d4-0000-0000-0000-000000000002',
+    template_id: 'add_time_signature',
+    grade: 3,
+    strand: 'rhythm',
+    prompt: 'Count the dotted-crotchet beats in this bar. Which time signature is it in?',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: null,
+        time_sig: '6/8',
+        time_sig_hidden: true,
+        voices: [
+          {
+            events: [
+              { type: 'note', pitch: 'C4', dur: 'crotchet', dots: 1 },
+              { type: 'note', pitch: 'C4', dur: 'crotchet', dots: 1 },
+              { type: 'barline', style: 'single' },
+            ],
+          },
+        ],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: '6/8', accepted_alternatives: [] },
+    distractors: ['9/8', '12/8'],
+    hints: ['Count the dotted-crotchet beats in the bar, then match the total to a compound time signature.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect:
+        'Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.',
+    },
+    srs_tags: ['add_time_signature:6/8'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 describe('validate — structural check (schema failure is a rejection)', () => {
   test('an instance missing kb_version fails validation with a schema error', () => {
     const instance = validNoteNamingInstance() as unknown as Record<string, unknown>;
@@ -576,5 +655,32 @@ describe('validate — scale_construction hook is UNCHANGED at grade 3 (D3(c)): 
     const result = validate(instance);
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('scale_construction') && e.includes('ordinal'))).toBe(true);
+  });
+});
+
+describe('validate — per-template hook: add_time_signature (U5, D6: family + hidden-signature agreement)', () => {
+  test('a well-formed grade-1 simple instance passes clean', () => {
+    expect(validate(validAddTimeSignatureInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a well-formed grade-3 compound instance (hidden signature, family-scoped distractors) passes clean', () => {
+    expect(validate(validCompoundAddTimeSignatureInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a cross-family distractor (a simple signature alongside a compound canonical) is rejected', () => {
+    const instance = validCompoundAddTimeSignatureInstance();
+    instance.distractors = ['9/8', '3/4'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('add_time_signature') && e.includes('family'))).toBe(true);
+  });
+
+  test('a hand-built instance labeling a 6/8-grouped hidden bar as 9/8 is rejected (hidden-sig/canonical mismatch)', () => {
+    const instance = validCompoundAddTimeSignatureInstance();
+    instance.answer.canonical = '9/8';
+    instance.distractors = ['6/8', '12/8'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('add_time_signature') && e.includes('does not match'))).toBe(true);
   });
 });
