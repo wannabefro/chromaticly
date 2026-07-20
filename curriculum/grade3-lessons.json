@@ -1,6 +1,6 @@
 {
   "grade": 3,
-  "version": "g3-lessons-2026-07-20",
+  "version": "g3-lessons-2026-07-20b",
   "lessons": [
     {
       "id": "minor-keys-3",
@@ -213,6 +213,47 @@
         },
         "smartTip": "Count the dotted-crotchet beats, not the quavers — three beats means 9/8, four means 12/8.",
         "didYouKnow": "Demisemiquavers are rare outside fast, decorative passages — composers reach for them to write a flourish, not a steady pulse."
+      },
+      "unlocks": "intervals-3"
+    },
+    {
+      "id": "intervals-3",
+      "title": "Interval quality — major, minor, perfect",
+      "strand": "intervals",
+      "atoms": [
+        "interval_type:2",
+        "interval_type:3",
+        "interval_type:4",
+        "interval_type:5",
+        "interval_type:6",
+        "interval_type:7",
+        "interval_type:8"
+      ],
+      "templates": [
+        "interval_naming"
+      ],
+      "worked_example": {
+        "template_id": "interval_naming",
+        "grade": 3,
+        "seed": 6
+      },
+      "teach": {
+        "objectives": [
+          "Every interval above the tonic has both a number (2nd, 3rd... octave) and a quality — perfect, major, or minor",
+          "4ths, 5ths and octaves are always perfect; 2nds, 3rds, 6ths and 7ths take a major or minor label",
+          "A minor key's 3rd, 6th and 7th above the tonic are a semitone smaller than a major key's — that's what makes them minor"
+        ],
+        "concept": {
+          "title": "Naming interval quality",
+          "body": "Every interval above the tonic has a number and a quality. 4ths, 5ths and octaves are always perfect — there's no major or minor version of them. 2nds, 3rds, 6ths and 7ths take a major or minor label. Above a major-key tonic they are all major; above a minor-key tonic the 3rd, 6th and 7th shrink by a semitone to minor, while the 2nd stays major. Compare a 3rd in both key types and you'll hear the difference: a major 3rd sounds bright, a minor 3rd sounds darker.",
+          "example": {
+            "template_id": "interval_naming",
+            "grade": 3,
+            "seed": 14
+          }
+        },
+        "smartTip": "Check the key signature first — above a major tonic every 2nd, 3rd, 6th and 7th is major; above a minor tonic, they're minor instead.",
+        "didYouKnow": "Perfect intervals (unison, 4th, 5th, octave) get their name because their simple, pure ratios sounded \"perfect\" to early theorists — they never take a major or minor label."
       },
       "unlocks": null
     }

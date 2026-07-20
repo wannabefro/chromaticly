@@ -228,13 +228,14 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 chain', () => {
+  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 chain', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'minor-keys-3',
       'minor-scales-3',
       'melodic-minor-3',
       'compound-time-3',
       'compound-bars-3',
+      'intervals-3',
     ]);
   });
 
@@ -246,9 +247,36 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
 
   test('the grade-3 units are in the merged LESSONS list, after grade-2, ending on the terminal lesson', () => {
     expect(LESSONS.map((l) => l.id)).toEqual(
-      expect.arrayContaining(['minor-keys-3', 'minor-scales-3', 'melodic-minor-3', 'compound-time-3', 'compound-bars-3']),
+      expect.arrayContaining([
+        'minor-keys-3',
+        'minor-scales-3',
+        'melodic-minor-3',
+        'compound-time-3',
+        'compound-bars-3',
+        'intervals-3',
+      ]),
     );
-    expect(LESSONS[LESSONS.length - 1].id).toBe('compound-bars-3');
+    expect(LESSONS[LESSONS.length - 1].id).toBe('intervals-3');
+  });
+});
+
+// U4 (plan 2026-07-20-002, D8) — the new grade-3 interval-quality lesson:
+// single-template discipline (D7 — the stave-input variant stays number-only
+// and is deliberately not bundled in) and grade-gated atoms (D4).
+describe('intervals-3 lesson (U4, D8)', () => {
+  test('strand is intervals and it carries the single template interval_naming (D7 single-template discipline)', () => {
+    const lesson = lessonById('intervals-3');
+    expect(lesson).toBeTruthy();
+    expect(lesson!.strand).toBe('intervals');
+    expect(lesson!.templates).toEqual(['interval_naming']);
+  });
+
+  test('every intervals-3 atom resolves at grade 3 and throws at grade 2 (D4 namingStyle gate)', () => {
+    const lesson = lessonById('intervals-3')!;
+    for (const atom of lesson.atoms) {
+      expect(() => assertAtomResolves(atom, 3)).not.toThrow();
+      expect(() => assertAtomResolves(atom, 2)).toThrow();
+    }
   });
 });
 
