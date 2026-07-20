@@ -228,8 +228,14 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 chain', () => {
-    expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual(['minor-keys-3', 'minor-scales-3', 'melodic-minor-3']);
+  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 chain', () => {
+    expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
+      'minor-keys-3',
+      'minor-scales-3',
+      'melodic-minor-3',
+      'compound-time-3',
+      'compound-bars-3',
+    ]);
   });
 
   test('lessonById resolves the grade-3 lesson stamped grade 3', () => {
@@ -239,8 +245,10 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
   });
 
   test('the grade-3 units are in the merged LESSONS list, after grade-2, ending on the terminal lesson', () => {
-    expect(LESSONS.map((l) => l.id)).toEqual(expect.arrayContaining(['minor-keys-3', 'minor-scales-3', 'melodic-minor-3']));
-    expect(LESSONS[LESSONS.length - 1].id).toBe('melodic-minor-3');
+    expect(LESSONS.map((l) => l.id)).toEqual(
+      expect.arrayContaining(['minor-keys-3', 'minor-scales-3', 'melodic-minor-3', 'compound-time-3', 'compound-bars-3']),
+    );
+    expect(LESSONS[LESSONS.length - 1].id).toBe('compound-bars-3');
   });
 });
 

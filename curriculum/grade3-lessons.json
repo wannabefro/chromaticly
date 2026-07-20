@@ -1,6 +1,6 @@
 {
   "grade": 3,
-  "version": "g3-lessons-2026-07-19",
+  "version": "g3-lessons-2026-07-20",
   "lessons": [
     {
       "id": "minor-keys-3",
@@ -122,6 +122,97 @@
         },
         "smartTip": "Check the direction before you check the notes — a melodic minor scale's ascending and descending forms are genuinely different, not a memory slip.",
         "didYouKnow": "Melodic minor's ascending form was designed to smooth out the awkward augmented-2nd leap of harmonic minor, which makes melodies harder to sing — the descending form then simply reverts to natural minor, since that leap isn't a problem going down."
+      },
+      "unlocks": "compound-time-3"
+    },
+    {
+      "id": "compound-time-3",
+      "title": "Compound time — 6/8",
+      "strand": "rhythm",
+      "atoms": [
+        "metre:2/4",
+        "metre:3/4",
+        "metre:4/4",
+        "metre:6/8",
+        "metre:9/8",
+        "metre:12/8"
+      ],
+      "templates": [
+        "metre_classification"
+      ],
+      "worked_example": {
+        "template_id": "metre_classification",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Why 6/8 has six quavers but two beats",
+          "The dotted crotchet as the compound beat",
+          "How to count and group 6/8 rhythms"
+        ],
+        "concept": {
+          "title": "Counting in 6/8",
+          "body": "In compound time the beat divides into three. Six quavers group into two dotted-crotchet beats — count 1 2 3 · 4 5 6.",
+          "example": {
+            "template_id": "metre_classification",
+            "grade": 3,
+            "seed": 2
+          }
+        },
+        "smartTip": "Feel 6/8 as a gentle two, not a fast six — like the swing of \"merri-ly, merri-ly\".",
+        "didYouKnow": "Many famous lullabies and jigs are in 6/8 — its lilting two-in-a-bar sway is why it feels like rocking.",
+        "theoryInSound": {
+          "prompt": "Play the bar and tap on each strong beat you hear.",
+          "timeSignature": "6/8",
+          "notes": [
+            "quaver",
+            "quaver",
+            "quaver",
+            "quaver",
+            "quaver",
+            "quaver",
+            "dotted crotchet",
+            "dotted crotchet"
+          ]
+        }
+      },
+      "unlocks": "compound-bars-3"
+    },
+    {
+      "id": "compound-bars-3",
+      "title": "Compound metres — 9/8 and 12/8",
+      "strand": "rhythm",
+      "atoms": [
+        "add_time_signature:6/8",
+        "add_time_signature:9/8",
+        "add_time_signature:12/8"
+      ],
+      "templates": [
+        "add_time_signature"
+      ],
+      "worked_example": {
+        "template_id": "add_time_signature",
+        "grade": 3,
+        "seed": 4
+      },
+      "teach": {
+        "objectives": [
+          "How 9/8 and 12/8 extend the dotted-crotchet beat to three and four beats a bar",
+          "Counting the dotted-crotchet beats in a hidden-signature bar to work out which compound metre it's in",
+          "The demisemiquaver — half a semiquaver — as the next step down the compound note tree"
+        ],
+        "concept": {
+          "title": "Counting 9/8 and 12/8",
+          "body": "9/8 and 12/8 work the same way as 6/8 — the beat is still a dotted crotchet, made of three quavers. 9/8 groups its nine quavers into three dotted-crotchet beats; 12/8 groups its twelve quavers into four. To find which one you're looking at, add up the dotted-crotchet beats in the bar rather than counting quavers one by one. The note tree keeps dividing too: a demisemiquaver is half a semiquaver, the smallest value you'll meet at this grade.",
+          "example": {
+            "template_id": "add_time_signature",
+            "grade": 3,
+            "seed": 9
+          }
+        },
+        "smartTip": "Count the dotted-crotchet beats, not the quavers — three beats means 9/8, four means 12/8.",
+        "didYouKnow": "Demisemiquavers are rare outside fast, decorative passages — composers reach for them to write a flourish, not a steady pulse."
       },
       "unlocks": null
     }
