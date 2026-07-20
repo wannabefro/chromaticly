@@ -1,0 +1,53 @@
+# Grade 3 interval quality (chromaticly-1v5.4, U5) — the interval_naming mcq widened
+# to number + TYPE (perfect/major/minor) above the tonic. Its point is the QUALITY
+# ANSWER: a two-note chord rendered on the light paper card, answered via labels like
+# "minor 3rd"/"perfect 5th" — and, because grade 3 samples minor-key tonics, a
+# "minor Nth" can be the CORRECT answer (plan Decision A). ?seed=intervals-3 walks the
+# full grade-3 chain to the sixth (last) unit; reaching it proves Level 3 unlocked.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=intervals-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# Seeding auto-scrolls the map to the target (last) unit, so unit-row-intervals-3
+# is already in view — reaching it is itself the Level 3 unlock proof (a locked
+# level renders collapsed with no unit rows). No level-node scroll needed.
+- scrollUntilVisible:
+    element: { id: "unit-row-intervals-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-intervals-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-intervals-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+- assertVisible: { id: "set-count" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g3-intervals-mcq
+
+- tapOn: { id: "option-0" }
+- assertVisible: { id: "check" }
+- tapOn: { id: "check" }
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet" }
+    timeout: 10000
+- takeScreenshot: g3-intervals-feedback
+- tapOn: { id: "feedback-sheet-continue" }
+- assertVisible: { id: "set-count" }
