@@ -149,6 +149,130 @@ describe('musicToAbc — beaming (302.38): a space breaks the beam, so beam with
   });
 });
 
+describe('musicToAbc — time_sig_hidden (D5): hide the glyph, keep the true beaming', () => {
+  const quaver = (pitch: string) => ({ type: 'note' as const, pitch, dur: 'quaver' as const });
+  const demisemi = (pitch: string) => ({ type: 'note' as const, pitch, dur: 'demisemiquaver' as const });
+
+  function build(
+    events: import('./types').MusicEvent[],
+    time_sig: string | null,
+    time_sig_hidden?: boolean
+  ): Music {
+    return {
+      clef: 'treble',
+      key_sig: null,
+      time_sig,
+      ...(time_sig_hidden !== undefined ? { time_sig_hidden } : {}),
+      voices: [{ events }],
+    };
+  }
+
+  const headerOf = (abc: string) => abc.split('\n').find((l) => l.startsWith('M:'));
+  const bodyOf = (abc: string) => abc.split('\n').filter((l) => l && !/^[XLMK]:/.test(l))[0];
+
+  test('a hidden 6/8 bar prints M:none but still beams 3+3 — the true metre governs grouping even though the glyph is hidden', () => {
+    const six = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4'].map(quaver);
+    const abc = musicToAbc(build(six, '6/8', true));
+    expect(headerOf(abc)).toBe('M:none');
+    expect(bodyOf(abc)).toBe('C4D4E4 F4G4A4');
+  });
+
+  test('the SAME six quavers under a plain null time_sig (no hidden flag) beam 2+2+2 — the lie D5 exists to prevent', () => {
+    const six = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4'].map(quaver);
+    const abc = musicToAbc(build(six, null));
+    expect(headerOf(abc)).toBe('M:none');
+    expect(bodyOf(abc)).toBe('C4D4 E4F4 G4A4');
+  });
+
+  test('a visible 9/8 bar beams in three groups of three (three dotted-crotchet beats)', () => {
+    const nine = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5'].map(quaver);
+    const abc = musicToAbc(build(nine, '9/8'));
+    expect(headerOf(abc)).toBe('M:9/8');
+    expect(bodyOf(abc)).toBe('C4D4E4 F4G4A4 B4c4d4');
+  });
+
+  test('a visible 12/8 bar beams in four groups of three', () => {
+    const twelve = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5'].map(quaver);
+    const abc = musicToAbc(build(twelve, '12/8'));
+    expect(headerOf(abc)).toBe('M:12/8');
+    expect(bodyOf(abc)).toBe('C4D4E4 F4G4A4 B4c4d4 e4f4g4');
+  });
+
+  test('a demisemiquaver emits as a 1-unit token under L:1/32 (empty suffix = implicit 1)', () => {
+    expect(durationToAbc('demisemiquaver')).toBe('');
+  });
+
+  test('two demisemiquavers within one beat glue into a single beam group', () => {
+    const abc = musicToAbc(build([demisemi('C4'), demisemi('D4')], '2/4'));
+    expect(bodyOf(abc)).toBe('CD');
+  });
+});
+
+describe('musicToAbc — time_sig_hidden absent: characterization, additive field, zero blast radius', () => {
+  test('a simple-metre bar renders unchanged', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: 'G_major',
+      time_sig: '4/4',
+      voices: [
+        {
+          events: [
+            { type: 'note', pitch: 'G4', dur: 'crotchet' },
+            { type: 'note', pitch: 'A4', dur: 'crotchet' },
+            { type: 'note', pitch: 'B4', dur: 'crotchet' },
+            { type: 'note', pitch: 'C5', dur: 'crotchet' },
+          ],
+        },
+      ],
+    };
+    expect(musicToAbc(music)).toBe('X:1\nL:1/32\nM:4/4\nK:G clef=treble\nG8 A8 B8 c8\n');
+  });
+
+  test('an M:none bar via a plain null time_sig renders unchanged', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: null,
+      voices: [{ events: [{ type: 'note', pitch: 'C4', dur: 'semibreve' }] }],
+    };
+    expect(musicToAbc(music)).toBe('X:1\nL:1/32\nM:none\nK:C clef=treble\nC32\n');
+  });
+
+  test('dotted values render unchanged', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '6/8',
+      voices: [
+        {
+          events: [
+            { type: 'note', pitch: 'C4', dur: 'crotchet', dots: 1 },
+            { type: 'note', pitch: 'D4', dur: 'quaver' },
+          ],
+        },
+      ],
+    };
+    expect(musicToAbc(music)).toBe('X:1\nL:1/32\nM:6/8\nK:C clef=treble\nC12 D4\n');
+  });
+
+  test('a keyed passage renders unchanged', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: 'Eb_major',
+      time_sig: '3/4',
+      voices: [
+        {
+          events: [
+            { type: 'note', pitch: 'Eb3', dur: 'minim' },
+            { type: 'note', pitch: 'F3', dur: 'crotchet' },
+          ],
+        },
+      ],
+    };
+    expect(musicToAbc(music)).toBe('X:1\nL:1/32\nM:3/4\nK:Eb clef=treble\nE,16 F,8\n');
+  });
+});
+
 describe('musicToAbc — dynamics (302.32)', () => {
   test('a dynamic glues its decoration onto the following note, not a separate token', () => {
     const music: Music = {

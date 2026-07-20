@@ -69,5 +69,9 @@ export interface Music {
   clef: Clef;
   key_sig: KeySig;
   time_sig?: string | null;
+  /** When true, the emitter hides the printed time signature (`M:none`) but still
+   *  beams by the true `time_sig` — used for "guess the signature" stimuli where the
+   *  grouping must remain honest even though the glyph is hidden. */
+  time_sig_hidden?: boolean;
   voices: Voice[];
 }

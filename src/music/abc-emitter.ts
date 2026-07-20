@@ -238,7 +238,7 @@ export function musicToAbc(music: Music): string {
   const header = [
     'X:1',
     `L:${UNIT_NOTE_LENGTH}`,
-    `M:${music.time_sig ?? 'none'}`,
+    `M:${music.time_sig_hidden ? 'none' : music.time_sig ?? 'none'}`,
     `K:${keyName(music.key_sig)} ${clefTag(music.clef)}`,
   ].join('\n');
 
