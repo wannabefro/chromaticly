@@ -5,8 +5,13 @@
 // single bar that may be one long note). Teach rhythms are therefore authored in
 // the lesson content and turned into Music here.
 //
-// Simple time only (Grade 1: 2/4, 3/4, 4/4): the beat is the crotchet, the
-// numerator is the beats per bar, and the strong beat is the first of each bar.
+// Grade 1 simple time (2/4, 3/4, 4/4): the beat is the crotchet, the numerator
+// is the beats per bar, and the strong beat is the first of each bar.
+//
+// Grade 3 compound time (6/8, 9/8, 12/8, 302.3.7/D11): fill/straddle math still
+// counts crotchet-equivalent duration (a 6/8 bar holds 3 crotchets' worth), but
+// the by-ear grid taps a DIFFERENT count — dotted-crotchet BEATS, not crotchets
+// (6/8 has 2, "that's the two in 6/8"). See `beatsPerBar` vs `beatCellsPerBar`.
 
 import type { Duration, Music, MusicEvent } from '../music/types';
 import { KB } from './knowledge-base';
@@ -51,14 +56,38 @@ function beatsOf(name: string): number {
   return dots === 1 ? base * 1.5 : base;
 }
 
-/** Beats per bar. Simple time only — the numerator is the count of crotchet beats. */
+const COMPOUND_NUMERATORS: ReadonlySet<number> = new Set([6, 9, 12]);
+
+/** Crotchet-equivalent beats per bar — the unit the fill/straddle math works
+ *  in. Grade 1 simple time (x/4): x crotchets. Grade 3 compound time (6/8,
+ *  9/8, 12/8): the crotchet-equivalent TOTAL, not the beat count a learner
+ *  taps — a 6/8 bar holds 3 crotchets' worth (= 6 quavers), 9/8 holds 4.5,
+ *  12/8 holds 6. For the tap-grid beat count, see `beatCellsPerBar`. */
 export function beatsPerBar(timeSignature: string): number {
   const [top, bottom] = timeSignature.split('/');
   const beats = Number(top);
-  if (bottom !== '4' || !Number.isInteger(beats) || beats < 2 || beats > 4) {
-    throw new Error(`teach rhythm: "${timeSignature}" is not a Grade 1 simple time signature`);
+  if (bottom === '4') {
+    if (!Number.isInteger(beats) || beats < 2 || beats > 4) {
+      throw new Error(`teach rhythm: "${timeSignature}" is not a Grade 1 simple time signature`);
+    }
+    return beats;
   }
-  return beats;
+  if (bottom === '8' && Number.isInteger(beats) && COMPOUND_NUMERATORS.has(beats)) {
+    return beats / 2;
+  }
+  throw new Error(`teach rhythm: "${timeSignature}" is not a Grade 1-3 time signature`);
+}
+
+/** Beat CELLS per bar for the by-ear tap grid — the dotted-crotchet BEAT in
+ *  compound time (6/8 ⇒ 2, 9/8 ⇒ 3, 12/8 ⇒ 4), matching the design's "that's
+ *  the two in 6/8" (Core Flows.dc.html:202). In simple time a cell IS a
+ *  crotchet beat, so this equals `beatsPerBar`. Deliberately a different
+ *  count from `beatsPerBar` in compound time — conflating them would tap
+ *  quaver-count cells and lie about which beats are strong. */
+function beatCellsPerBar(timeSignature: string): number {
+  beatsPerBar(timeSignature); // validates
+  const [top, bottom] = timeSignature.split('/');
+  return bottom === '8' ? Number(top) / 3 : Number(top);
 }
 
 /** Total crotchet beats in the excerpt. */
@@ -94,15 +123,18 @@ export function assertRhythmFillsBars(rhythm: TeachRhythm): void {
   }
 }
 
-/** The metrical grid the learner taps: every beat of every bar, with the downbeat
- *  of each bar marked strong. */
+/** The metrical grid the learner taps: every beat CELL of every bar, with the
+ *  downbeat of each bar marked strong. Bar count comes from the crotchet-
+ *  equivalent fill total (`beatsPerBar`); the cells-per-bar count is the
+ *  learner-facing beat (`beatCellsPerBar`) — the two differ in compound time. */
 export function beatGrid(rhythm: TeachRhythm): BeatCell[] {
   assertRhythmFillsBars(rhythm);
   const perBar = beatsPerBar(rhythm.timeSignature);
   const bars = rhythmBeats(rhythm) / perBar;
+  const cellsPerBar = beatCellsPerBar(rhythm.timeSignature);
   const cells: BeatCell[] = [];
   for (let bar = 1; bar <= bars; bar++) {
-    for (let beat = 1; beat <= perBar; beat++) {
+    for (let beat = 1; beat <= cellsPerBar; beat++) {
       cells.push({ bar, beat, strong: beat === 1 });
     }
   }
