@@ -48539,6 +48539,1431 @@ exports[`seed-stability — grade-3-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-3-only generator extras are pinned byte-for-byte metre_classification (compound-time-3, pre-lesson pin, U6) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound duple",
+    },
+    "distractors": [
+      "Simple duple",
+      "Compound quadruple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound duple",
+    },
+    "distractors": [
+      "Simple duple",
+      "Compound triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound duple",
+    },
+    "distractors": [
+      "Simple duple",
+      "Compound triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple duple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Simple quadruple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound triple",
+    },
+    "distractors": [
+      "Simple triple",
+      "Compound duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound quadruple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Compound duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound quadruple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Compound duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound duple",
+    },
+    "distractors": [
+      "Simple duple",
+      "Compound quadruple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple triple",
+    },
+    "distractors": [
+      "Compound triple",
+      "Simple duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple triple",
+    },
+    "distractors": [
+      "Compound triple",
+      "Simple quadruple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound triple",
+    },
+    "distractors": [
+      "Simple triple",
+      "Compound duple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Compound triple",
+    },
+    "distractors": [
+      "Simple triple",
+      "Compound quadruple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple triple",
+    },
+    "distractors": [
+      "Compound triple",
+      "Simple quadruple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Simple quadruple",
+    },
+    "distractors": [
+      "Compound quadruple",
+      "Simple triple",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?",
+    },
+    "grade": 3,
+    "hints": [
+      "Check the beaming first: notes grouped in threes are compound, in twos or fours are simple. Then count the groups for duple/triple/quadruple.",
+    ],
+    "id": "metre_classification:g3:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+]
+`;
+
 exports[`seed-stability — grade-3-only generator extras are pinned byte-for-byte mode_swap (minor-keys-3, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

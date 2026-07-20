@@ -6,6 +6,7 @@ import { barValidity } from './bar-validity';
 import { findTheBar } from './find-the-bar';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
+import { metreClassification } from './metre-classification';
 import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
@@ -26,6 +27,7 @@ export const GENERATORS: Record<string, Generator> = {
   term_meaning_flashcard: termMeaningFlashcard,
   bar_validity: barValidity,
   add_time_signature: addTimeSignature,
+  metre_classification: metreClassification,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
 };

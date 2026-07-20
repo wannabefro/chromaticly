@@ -277,6 +277,18 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
   test('the bare add_time_signature atom still resolves at grade 1 (the legacy grammar untouched)', () => {
     expect(() => assertAtomResolves('add_time_signature', 1)).not.toThrow();
   });
+
+  // U6 (D7): the metre:<sig> grammar — resolves only where the signature is
+  // both in scope AND renderable at that grade (mirrors add_time_signature's
+  // parameterized-atom discipline).
+  test('metre:6/8 resolves at grade 3 but not grade 2 (not in scope/renderable)', () => {
+    expect(() => assertAtomResolves('metre:6/8', 3)).not.toThrow();
+    expect(() => assertAtomResolves('metre:6/8', 2)).toThrow();
+  });
+
+  test('metre:2/2 throws at grade 3 — in scope but not renderable', () => {
+    expect(() => assertAtomResolves('metre:2/2', 3)).toThrow();
+  });
 });
 
 // Playability sweep, generalized over every grade the map can open (D7 note:

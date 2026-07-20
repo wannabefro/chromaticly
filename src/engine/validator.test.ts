@@ -277,6 +277,47 @@ function validCompoundAddTimeSignatureInstance(): ExerciseInstance {
   };
 }
 
+// U6 (D7/D8): a metre_classification instance — signature PRINTED (not
+// hidden, unlike add_time_signature), combined simple/compound x
+// duple/triple/quadruple label as the answer.
+function validMetreClassificationInstance(): ExerciseInstance {
+  return {
+    id: 'a1b2c3d4-0000-0000-0000-000000000003',
+    template_id: 'metre_classification',
+    grade: 3,
+    strand: 'rhythm',
+    prompt: 'Which describes this time signature?',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: null,
+        time_sig: '6/8',
+        voices: [
+          {
+            events: [
+              { type: 'note', pitch: 'C4', dur: 'crotchet', dots: 1 },
+              { type: 'note', pitch: 'C4', dur: 'crotchet', dots: 1 },
+              { type: 'barline', style: 'single' },
+            ],
+          },
+        ],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: 'Compound duple', accepted_alternatives: [] },
+    distractors: ['Simple duple', 'Compound triple'],
+    hints: ['Check the beaming first: notes grouped in threes are compound, in twos or fours are simple.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect:
+        'Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?',
+    },
+    srs_tags: ['metre:6/8'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 describe('validate — structural check (schema failure is a rejection)', () => {
   test('an instance missing kb_version fails validation with a schema error', () => {
     const instance = validNoteNamingInstance() as unknown as Record<string, unknown>;
@@ -682,5 +723,56 @@ describe('validate — per-template hook: add_time_signature (U5, D6: family + h
     const result = validate(instance);
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('add_time_signature') && e.includes('does not match'))).toBe(true);
+  });
+});
+
+describe('validate — per-template hook: metre_classification (U6, D7: canonical must match the rendered signature)', () => {
+  test('a well-formed instance passes clean', () => {
+    expect(validate(validMetreClassificationInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a mislabeled canonical (6/8-grouped bar labeled Compound triple, its own 9/8 cousin) is rejected', () => {
+    const instance = validMetreClassificationInstance();
+    instance.answer.canonical = 'Compound triple';
+    instance.distractors = ['Simple duple', 'Compound duple'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('metre_classification') && e.includes('does not match'))).toBe(true);
+  });
+
+  test('an illegal label string as the canonical answer is rejected', () => {
+    const instance = validMetreClassificationInstance();
+    instance.answer.canonical = 'Compound duplex';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('metre_classification') && e.includes('not a legal metre label'))).toBe(
+      true,
+    );
+  });
+
+  test('an illegal label string as a distractor is rejected', () => {
+    const instance = validMetreClassificationInstance();
+    instance.distractors = ['Simple duple', 'Complex triple'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('metre_classification') && e.includes('not a legal metre label'))).toBe(
+      true,
+    );
+  });
+
+  test('a distractor that duplicates the canonical answer is rejected', () => {
+    const instance = validMetreClassificationInstance();
+    instance.distractors = ['Compound duple', 'Simple duple'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('metre_classification'))).toBe(true);
+  });
+
+  test('two duplicate distractors are rejected', () => {
+    const instance = validMetreClassificationInstance();
+    instance.distractors = ['Simple duple', 'Simple duple'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('metre_classification') && e.includes('duplicates'))).toBe(true);
   });
 });

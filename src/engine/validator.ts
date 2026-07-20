@@ -488,6 +488,58 @@ function addTimeSignatureHook(inst: ExerciseInstance): string[] {
   return [];
 }
 
+// metreClassificationHook (D7): canonical must be one of the six legal
+// {Simple,Compound} x {duple,triple,quadruple} labels AND must equal the
+// label classifyMetre computes for the STIMULUS's own (printed, D8) time
+// signature — the invariant that a generated instance can never mislabel the
+// bar it renders. Distractors must also be legal labels, and distinct from
+// the canonical and from each other.
+const LEGAL_METRE_LABELS = new Set([
+  'Simple duple',
+  'Simple triple',
+  'Simple quadruple',
+  'Compound duple',
+  'Compound triple',
+  'Compound quadruple',
+]);
+
+function metreLabel(cls: { division: string; beats: string }): string {
+  return `${cls.division === 'simple' ? 'Simple' : 'Compound'} ${cls.beats}`;
+}
+
+function metreClassificationHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string' || !LEGAL_METRE_LABELS.has(canonical)) {
+    return [`metre_classification: canonical answer "${String(canonical)}" is not a legal metre label`];
+  }
+
+  const sig = (inst.stimulus.music as Music | null)?.time_sig;
+  if (typeof sig !== 'string') {
+    return ['metre_classification: stimulus must carry a time signature to classify'];
+  }
+  const expected = metreLabel(classifyMetre(sig));
+  if (canonical !== expected) {
+    return [
+      `metre_classification: canonical answer "${canonical}" does not match the rendered signature "${sig}" (expected "${expected}")`,
+    ];
+  }
+
+  const errors: string[] = [];
+  const seen = new Set<string>([canonical]);
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !LEGAL_METRE_LABELS.has(d)) {
+      errors.push(`metre_classification: distractor "${String(d)}" is not a legal metre label`);
+      continue;
+    }
+    if (seen.has(d)) {
+      errors.push(`metre_classification: distractor "${d}" duplicates the canonical answer or another distractor`);
+      continue;
+    }
+    seen.add(d);
+  }
+  return errors;
+}
+
 function termMeaningHook(inst: ExerciseInstance): string[] {
   const category = inst.interaction.config?.category;
   if (category === undefined) return []; // no category info carried — skip gracefully
@@ -514,4 +566,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   term_meaning: termMeaningHook,
   bar_validity: barValidityHook,
   add_time_signature: addTimeSignatureHook,
+  metre_classification: metreClassificationHook,
 };

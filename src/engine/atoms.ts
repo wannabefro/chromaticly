@@ -50,6 +50,13 @@ export function noteValueCompareAtom(): string {
   return 'note_value_compare';
 }
 
+/** One atom per time signature the metre_classification MCQ can be asked
+ *  about (D7) — a single atom pins the signature, matching the SRS due-path
+ *  discipline `keySigAtom`/`addTimeSignatureAtom` already establish. */
+export function metreAtom(sig: string): string {
+  return `metre:${sig}`;
+}
+
 /** Music in Context find-the-bar (302.4) — one atom per bar property the learner
  *  can be asked to spot, so mastery tracks "can find the highest note" separately
  *  from "can find the longest". */

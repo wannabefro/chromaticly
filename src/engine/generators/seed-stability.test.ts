@@ -57,6 +57,7 @@ const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3> = {
   mode_swap: 2,
   scale_construction: 2,
+  metre_classification: 3,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -267,6 +268,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
     label: 'add_time_signature compound (compound-bars-3, pre-lesson pin, U5)',
     templateId: 'add_time_signature',
     atoms: ['add_time_signature:6/8', 'add_time_signature:9/8', 'add_time_signature:12/8'],
+  },
+  {
+    label: 'metre_classification (compound-time-3, pre-lesson pin, U6)',
+    templateId: 'metre_classification',
+    atoms: ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'],
   },
 ];
 

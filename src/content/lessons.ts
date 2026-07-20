@@ -94,6 +94,14 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'metre': {
+      if (parts.length !== 1) throw new Error(`lessons: malformed metre atom "${atom}"`);
+      const [sig] = parts;
+      if (!scopeForGrade(grade).timeSignatures.includes(sig) || !renderableTimeSignatures(grade).includes(sig)) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} time signature`);
+      }
+      return;
+    }
     case 'note_read': {
       const [clef, pitch] = parts;
       if (!scopeForGrade(grade).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G${grade} scope`);

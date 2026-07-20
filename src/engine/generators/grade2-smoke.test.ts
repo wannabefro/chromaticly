@@ -97,6 +97,13 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'music_in_context',
       'mode_swap',
       'scale_construction',
+      // metre_classification (U6, D7) is grade-3-only — same reason
+      // mode_swap/scale_construction get no "produces grade-2-VALID content"
+      // case above (grade 2 has no 6/8-family signature in scope, so no
+      // grade-2 instance is ever valid): listed here so this ledger's
+      // completeness check accounts for it, exercised for real by its own
+      // grade-3 tests (metre-classification.test.ts, seed-stability.test.ts).
+      'metre_classification',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

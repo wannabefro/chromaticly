@@ -22,15 +22,24 @@ const TEMPLATE_IDS = [
 // file shares.
 const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction'];
 
+// metre_classification (U6, D7) only exists from grade 3 up (its atoms are
+// metre:<sig> over the compound trio + the three simple signatures, and
+// classifyMetre/checkScope reject a grade-1/2 call) — same "no valid
+// below-introduction instance" shape as the grade-2-only pair above, one
+// grade tier further out.
+const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification'];
+
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {
-    for (const templateId of [...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS]) {
+    for (const templateId of [...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS, ...GRADE_3_ONLY_TEMPLATE_IDS]) {
       expect(typeof GENERATORS[templateId]).toBe('function');
     }
   });
 
   test('has exactly the Tier-A template ids registered — no extras, no gaps', () => {
-    expect(Object.keys(GENERATORS).sort()).toEqual([...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS].sort());
+    expect(Object.keys(GENERATORS).sort()).toEqual(
+      [...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS, ...GRADE_3_ONLY_TEMPLATE_IDS].sort(),
+    );
   });
 });
 
@@ -46,6 +55,15 @@ describe('generate() — grade-2-only templates', () => {
     const atoms = ['scale:A_minor_harmonic', 'scale:E_minor_harmonic', 'scale:D_minor_harmonic'];
     const instance = generate('scale_construction', { grade: 2, seed: 1, atoms });
     expect(instance.template_id).toBe('scale_construction');
+    expect(validate(instance).ok).toBe(true);
+  });
+});
+
+describe('generate() — grade-3-only templates', () => {
+  test('metre_classification produces a valid grade-3 instance (grade 1/2 have no valid instance — the compound trio is outside their scope)', () => {
+    const atoms = ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'];
+    const instance = generate('metre_classification', { grade: 3, seed: 1, atoms });
+    expect(instance.template_id).toBe('metre_classification');
     expect(validate(instance).ok).toBe(true);
   });
 });
