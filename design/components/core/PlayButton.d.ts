@@ -7,6 +7,9 @@ export interface PlayButtonProps {
   strand?: 'rhythm' | 'pitch' | 'scales' | 'intervals' | 'chords' | 'terms' | 'context';
   /** true when sitting on the light paper card (solid dark fill + shadow) */
   onPaper?: boolean;
+  /** Dimmed + non-interactive when there is nothing to play yet (e.g. the
+   *  transposition answer card's "hear yours" until ≥1 note is placed). */
+  disabled?: boolean;
   onClick?: () => void;
 }
 export declare function PlayButton(props: PlayButtonProps): JSX.Element;
