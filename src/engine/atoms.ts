@@ -78,6 +78,14 @@ export function findBarAtom(property: string): string {
   return `find_bar:${property}`;
 }
 
+/** Octave transposition (Grade 3, treble<->bass clef-rewrite) — one atom for
+ *  the skill, mirroring bare `rhythm_sum`: per-direction atoms would just
+ *  split SRS signal, since direction is coupled to the clef pair, not an
+ *  independently-taught fact. */
+export function transposeAtom(): string {
+  return 'transpose:octave';
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

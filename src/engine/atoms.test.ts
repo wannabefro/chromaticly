@@ -6,6 +6,7 @@ import {
   parseAtom,
   rhythmSumAtom,
   termAtom,
+  transposeAtom,
 } from './atoms';
 
 describe('atom builders — stable exact id strings', () => {
@@ -32,6 +33,13 @@ describe('atom builders — stable exact id strings', () => {
 
   test('rhythmSumAtom is the bare constant id with no parameters', () => {
     expect(rhythmSumAtom()).toBe('rhythm_sum');
+  });
+
+  // One atom for the whole skill (D10), mirroring rhythmSumAtom — a
+  // per-direction atom would just split SRS signal, since direction is
+  // coupled to the clef pair, not an independently-taught fact.
+  test('transposeAtom is the bare constant "transpose:octave" with no parameters', () => {
+    expect(transposeAtom()).toBe('transpose:octave');
   });
 });
 
@@ -62,5 +70,9 @@ describe('parseAtom — build/parse round-trip recovers the original parts', () 
   test('a no-colon id like rhythm_sum parses to an empty parts array', () => {
     expect(parseAtom('rhythm_sum')).toEqual({ kind: 'rhythm_sum', parts: [] });
     expect(parseAtom(rhythmSumAtom())).toEqual({ kind: 'rhythm_sum', parts: [] });
+  });
+
+  test('transpose:octave atom round-trips to kind "transpose" with one part, "octave"', () => {
+    expect(parseAtom(transposeAtom())).toEqual({ kind: 'transpose', parts: ['octave'] });
   });
 });

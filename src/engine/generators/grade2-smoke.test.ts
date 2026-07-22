@@ -108,6 +108,15 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // metre_classification, its atoms are simple time signatures only, so
       // it DOES produce valid grade-2 content; exercised for real below.
       'anacrusis_recognition',
+      // octave_transposition (grade3-octave-transposition slice, D1/D8) is
+      // grade-3-only content: it samples from scopeForGrade(3) and
+      // comfortablePitchRange(clef, 3) directly (not the generic opts.grade
+      // every other generator reads), because treble<->bass octave
+      // transposition is a grade-3 KB fact (knowledge-base.json:99) with no
+      // grades-4/5 reuse of this generator (grades 4/5 add alto/any-clef via
+      // a different template, interval_transposition). Listed here so the
+      // ledger accounts for it; exercised for real by its own grade-3 tests.
+      'octave_transposition',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

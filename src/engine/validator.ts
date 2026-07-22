@@ -11,12 +11,14 @@
 // hand-listed or computed here; this validator only avoids ever rejecting an
 // answer that already appears in that list — it does not grade.
 
-import type { Music, MusicEvent } from '../music/types';
+import type { Music, MusicEvent, NoteEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
+import { spellInKeySig } from './generators/key-spelling';
+import { naturalPitchStepsAbove } from './generators/pitch-math';
 import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel } from './interval-quality';
 import { classifyMetre, isCompoundTimeSignature } from './metre';
 import { musicEventUnits } from './music-event-units';
-import { pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
+import { comfortablePitchRange, pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
 import type { GradeScope } from './scope';
 import type { ExerciseInstance } from './schema';
 import { ExerciseInstanceSchema } from './schema';
@@ -714,6 +716,127 @@ function anacrusisRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+/** Strips a scientific pitch's accidental, keeping letter+octave — a
+ *  validator-local duplicate of StaveInput's naturalOf (UI and engine stay
+ *  decoupled per the portable-core boundary, so this isn't shared code). */
+function naturalLetterOf(pitch: string): string {
+  const m = /^([A-G])(#|b)?(-?\d+)$/.exec(pitch);
+  return m ? `${m[1]}${m[3]}` : pitch;
+}
+
+// octaveTranspositionHook (D1/D4/D8, Codex findings 1/2) — independently
+// RECOMPUTES each per_item target from the stimulus, never trusting the
+// generator's own per_item array (the intervalNamingQualityErrors/
+// metreClassificationHook recompute-don't-trust discipline): target pitch =
+// spellInKeySig(naturalPitchStepsAbove(natural(source), direction === 'down'
+// ? -7 : +7), music.key_sig) — NOT spellInKey(natural, tonic), which would
+// double-append "_major" onto the already-full-form key_sig (Codex finding
+// 2). Target (dur, dots) must equal the source's exactly (Codex finding 1:
+// dots live apart from dur on NoteEvent, so a {pitch,dur}-only recompute
+// would silently pass a dropped dot).
+function octaveTranspositionHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['octave_transposition: stimulus.music is required'];
+  if (typeof music.key_sig !== 'string') return ['octave_transposition: stimulus.music.key_sig is required'];
+
+  const config = inst.interaction.config as { answerClef?: unknown; direction?: unknown } | undefined;
+  const answerClef = config?.answerClef;
+  const direction = config?.direction;
+  if (answerClef !== 'treble' && answerClef !== 'bass') {
+    return ['octave_transposition: interaction.config.answerClef must be "treble" or "bass"'];
+  }
+  if (direction !== 'up' && direction !== 'down') {
+    return ['octave_transposition: interaction.config.direction must be "up" or "down"'];
+  }
+
+  const errors: string[] = [];
+
+  // D1: the answer stave is the OPPOSITE clef, and direction is coupled to
+  // the clef pair — same-clef octave is explicitly NOT this template.
+  if (answerClef === music.clef) {
+    errors.push('octave_transposition: answerClef must be the OPPOSITE of the given clef');
+  }
+  const expectedDirection: 'up' | 'down' = music.clef === 'treble' ? 'down' : 'up';
+  if (direction !== expectedDirection) {
+    errors.push(
+      `octave_transposition: direction "${String(direction)}" does not match the given clef "${music.clef}" (expected "${expectedDirection}")`,
+    );
+  }
+
+  const sourceNotes = music.voices.flatMap((v) => v.events).filter((ev): ev is NoteEvent => ev.type === 'note');
+  const perItem = inst.answer.per_item;
+  if (!Array.isArray(perItem)) {
+    errors.push('octave_transposition: answer.per_item must be an array');
+    return errors;
+  }
+  if (perItem.length !== sourceNotes.length) {
+    errors.push(
+      `octave_transposition: per_item length (${perItem.length}) does not match the stimulus note count (${sourceNotes.length})`,
+    );
+    return errors;
+  }
+
+  // Hardcoded to grade 3 (not inst.grade), mirroring the generator
+  // (octave-transposition.ts's GENERATOR_GRADE) — this template's content is
+  // always sampled from the grade-3 scope, independent of what `grade` field
+  // the instance happens to carry.
+  const givenRange = comfortablePitchRange(music.clef, 3);
+  const answerRange = comfortablePitchRange(answerClef, 3);
+  const delta = direction === 'down' ? -7 : 7;
+
+  sourceNotes.forEach((source, i) => {
+    const item = perItem[i] as { pitch?: unknown; dur?: unknown; dots?: unknown } | null;
+    if (!item || typeof item.pitch !== 'string' || typeof item.dur !== 'string') {
+      errors.push(`octave_transposition: per_item[${i}] must be a {pitch, dur} object`);
+      return;
+    }
+
+    const natural = naturalLetterOf(source.pitch);
+    const expectedTarget = spellInKeySig(naturalPitchStepsAbove(natural, delta), music.key_sig as string);
+    if (item.pitch !== expectedTarget) {
+      errors.push(
+        `octave_transposition: per_item[${i}].pitch "${item.pitch}" does not match the recomputed octave target ` +
+          `"${expectedTarget}" (a 7th, not an octave, is the exact misconception this rejects)`,
+      );
+    }
+    if (item.dur !== source.dur) {
+      errors.push(
+        `octave_transposition: per_item[${i}].dur "${String(item.dur)}" does not match the source rhythm "${source.dur}"`,
+      );
+    }
+    const sourceDots = source.dots ?? 0;
+    const itemDots = typeof item.dots === 'number' ? item.dots : 0;
+    if (itemDots !== sourceDots) {
+      errors.push(
+        `octave_transposition: per_item[${i}].dots (${itemDots}) does not match the source rhythm's dots (${sourceDots})`,
+      );
+    }
+
+    checkPitchScope(source.pitch, givenRange, inst.grade, errors);
+    checkPitchScope(item.pitch, answerRange, inst.grade, errors);
+  });
+
+  if (typeof music.time_sig !== 'string') {
+    errors.push('octave_transposition: stimulus must carry a time signature');
+    return errors;
+  }
+  const barUnits = barUnitsFor(music.time_sig);
+  const groups = splitIntoBarGroups(music.voices[0]?.events ?? []).filter((g) => g.length > 0);
+  if (groups.length !== 2) {
+    errors.push(`octave_transposition: stimulus must render exactly 2 bars (found ${groups.length})`);
+  }
+  for (const group of groups) {
+    const units = group.reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+    if (units !== barUnits) {
+      errors.push(
+        `octave_transposition: a bar sums to ${units} units, not a full bar of ${music.time_sig} (${barUnits} units)`,
+      );
+    }
+  }
+
+  return errors;
+}
+
 function termMeaningHook(inst: ExerciseInstance): string[] {
   const category = inst.interaction.config?.category;
   if (category === undefined) return []; // no category info carried — skip gracefully
@@ -742,4 +865,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   add_time_signature: addTimeSignatureHook,
   metre_classification: metreClassificationHook,
   anacrusis_recognition: anacrusisRecognitionHook,
+  octave_transposition: octaveTranspositionHook,
 };

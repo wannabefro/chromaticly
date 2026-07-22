@@ -26,8 +26,10 @@ const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction'];
 // metre:<sig> over the compound trio + the three simple signatures, and
 // classifyMetre/checkScope reject a grade-1/2 call) — same "no valid
 // below-introduction instance" shape as the grade-2-only pair above, one
-// grade tier further out.
-const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification'];
+// grade tier further out. octave_transposition (grade3-octave-transposition
+// slice, D1/D8) joins it — a grade-3-only pitch-content template, bucketed
+// the same way.
+const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition'];
 
 // anacrusis_recognition (anacrusis slice, D5) needs an explicit anacrusis:<sig>
 // atom (no legacy bare-atom fallback, unlike add_time_signature) but — unlike
@@ -83,6 +85,12 @@ describe('generate() — grade-3-only templates', () => {
     const atoms = ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'];
     const instance = generate('metre_classification', { grade: 3, seed: 1, atoms });
     expect(instance.template_id).toBe('metre_classification');
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('octave_transposition produces a valid grade-3 instance', () => {
+    const instance = generate('octave_transposition', { grade: 3, seed: 1, atoms: ['transpose:octave'] });
+    expect(instance.template_id).toBe('octave_transposition');
     expect(validate(instance).ok).toBe(true);
   });
 });

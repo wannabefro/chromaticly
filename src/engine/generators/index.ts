@@ -11,6 +11,7 @@ import { metreClassification } from './metre-classification';
 import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
+import { octaveTransposition } from './octave-transposition';
 import { rhythmSum } from './rhythm-sum';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
@@ -32,6 +33,7 @@ export const GENERATORS: Record<string, Generator> = {
   anacrusis_recognition: anacrusisRecognition,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
+  octave_transposition: octaveTransposition,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

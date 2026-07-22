@@ -59,6 +59,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3> = {
   scale_construction: 2,
   metre_classification: 3,
   anacrusis_recognition: 3,
+  octave_transposition: 3,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -292,6 +293,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
     label: 'anacrusis_recognition (anacrusis-3, pre-lesson pin, U4)',
     templateId: 'anacrusis_recognition',
     atoms: ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'],
+  },
+  {
+    label: 'octave_transposition (transposition-3, pre-lesson pin, U2)',
+    templateId: 'octave_transposition',
+    atoms: ['transpose:octave'],
   },
 ];
 
