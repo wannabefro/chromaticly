@@ -25,12 +25,22 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { scientificPitchOrdinal } from '../../engine/generators/pitch-math';
 import { diatonicPitchesInRange, scopeForGrade } from '../../engine/scope';
-import { keyAccidentals } from '../../music/abc-emitter';
 import type { Clef, Duration, KeySig, Music, Pitch } from '../../music/types';
 import { useSettingsContext } from '../../learn/SettingsContext';
 import { colors, fonts, shape, strandDef, type as typo } from '../theme';
+import {
+  CLEF_GLYPH,
+  DURATION_GLYPH,
+  keySigGlyphs,
+  LINE_GAP,
+  LINE_TOP,
+  ledgerLineYs,
+  noteY,
+  PAPER_INSET,
+  STAVE_LINES,
+  STEP,
+} from './stave-geometry';
 import type { InteractionComponentProps } from './types';
 
 export interface StavePlacement {
@@ -90,62 +100,14 @@ function accidentalOf(pitch: Pitch): Accidental {
 }
 
 // --- Stave geometry (no react-native-svg in this app — plain Views) -------
+// Shared geometry (noteY, ledgerLineYs, keySigGlyphs, CLEF_GLYPH,
+// DURATION_GLYPH, layout constants) lives in stave-geometry.ts — this
+// component's own slot-width layout stays local since TranspositionInput's
+// x-axis model (note order, not pitch) doesn't share it.
 
 const SLOT_WIDTH = 32;
 const SLOT_MARGIN_LEFT = 60; // room for the clef + key signature glyphs
 const SLOT_MARGIN_RIGHT = 22; // room for the ledger lines the last slots overhang with
-const LINE_GAP = 14; // px between adjacent staff lines
-const STEP = LINE_GAP / 2; // px per diatonic (letter-name) step
-const LINE_TOP = 26;
-const STAVE_LINES = 5;
-const MIDDLE_LINE_PITCH: Record<Clef, Pitch> = { treble: 'B4', bass: 'D3' };
-
-function noteY(clef: Clef, pitch: Pitch): number {
-  const middleLineY = LINE_TOP + STEP * (STAVE_LINES - 1);
-  const refOrd = scientificPitchOrdinal(MIDDLE_LINE_PITCH[clef]);
-  const ord = scientificPitchOrdinal(naturalOf(pitch));
-  return middleLineY - (ord - refOrd) * STEP;
-}
-
-/** Ledger-line y-positions between the staff and a note that sits above/below
- *  it (G1's ledger allowance is narrow, but the algorithm is general rather
- *  than special-cased to middle C). */
-function ledgerLineYs(y: number): number[] {
-  const topLineY = LINE_TOP;
-  const bottomLineY = LINE_TOP + STEP * 2 * (STAVE_LINES - 1);
-  const lines: number[] = [];
-  if (y < topLineY - STEP) {
-    for (let ly = topLineY - LINE_GAP; ly >= y - STEP; ly -= LINE_GAP) lines.push(ly);
-  } else if (y > bottomLineY + STEP) {
-    for (let ly = bottomLineY + LINE_GAP; ly <= y + STEP; ly += LINE_GAP) lines.push(ly);
-  }
-  return lines;
-}
-
-function keySigGlyphs(keySig: KeySig): string {
-  const accidentals = Object.values(keyAccidentals(keySig));
-  if (accidentals.length === 0) return '';
-  const glyph = accidentals[0] === 'flat' ? '♭' : '♯';
-  return glyph.repeat(accidentals.length);
-}
-
-const CLEF_GLYPH: Record<Clef, string> = { treble: '𝄞', bass: '𝄢' };
-
-/** Ruling A3: the duration tiles are glyph-only, so they scale 3-5 across per grade
- *  without the labels ever wrapping. The selected duration's name is echoed below. */
-const DURATION_GLYPH: Record<Duration, string> = {
-  breve: '𝅜',
-  semibreve: '𝅝',
-  minim: '𝅗𝅥',
-  crotchet: '𝅘𝅥',
-  quaver: '𝅘𝅥𝅮',
-  semiquaver: '𝅘𝅥𝅯',
-  demisemiquaver: '𝅘𝅥𝅰',
-};
-
-/** Design 2d: the paper keeps this inset on all sides — the stave and the accidental
- *  picker never touch the card edge. */
-const PAPER_INSET = 14;
 
 // --- Component --------------------------------------------------------
 
@@ -162,10 +124,8 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
   const { settings } = useSettingsContext();
   const leftHanded = settings.handedness === 'left';
 
-  // Grade-2 stave input arrives with the pitch-content slice, which must pass
-  // `instance.grade` here instead of this literal — named seam.
-  const placedSlot = response ? slotIndexOfPitch(clef, response.pitch, 1) : -1;
-  const slots = slotCount(clef, 1);
+  const placedSlot = response ? slotIndexOfPitch(clef, response.pitch, instance.grade) : -1;
+  const slots = slotCount(clef, instance.grade);
 
   // The stave scales to the card rather than the card to the stave (design 2d's
   // stave is a viewBox that fits its paper). A fixed slot pitch made the stave
@@ -183,7 +143,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
 
   const handleSlotPress = (slotIndex: number) => {
     if (locked) return;
-    const pitch = slotToPitch(clef, slotIndex, 1);
+    const pitch = slotToPitch(clef, slotIndex, instance.grade);
     onResponseChange({ pitch, dur: response?.dur ?? selectedDuration });
   };
 
@@ -223,7 +183,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
         )}
 
         {Array.from({ length: slots }, (_, slotIndex) => {
-          const pitch = slotToPitch(clef, slotIndex, 1);
+          const pitch = slotToPitch(clef, slotIndex, instance.grade);
           const staveY = noteY(clef, pitch); // in stave space, before the paper inset
           const y = PAPER_INSET + staveY;
           const isPlaced = slotIndex === placedSlot;
@@ -287,7 +247,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
       <View style={styles.paletteRow} testID="stave-input-palette">
         <Text style={styles.paletteCaption}>Duration · tap a stave slot to place</Text>
         <View style={styles.paletteButtons}>
-          {scopeForGrade(1).noteValues.map((dur) => {
+          {scopeForGrade(instance.grade).noteValues.map((dur) => {
             const selected = current === dur;
             return (
               <Pressable

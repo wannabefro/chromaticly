@@ -6,7 +6,7 @@
 import { fireEvent, render, waitFor, within } from '@testing-library/react-native';
 import { StyleSheet } from 'react-native';
 
-import { scopeForGrade } from '../../engine/scope';
+import { diatonicPitchesInRange, scopeForGrade } from '../../engine/scope';
 import type { ExerciseInstance } from '../../engine/schema';
 import { SettingsProvider } from '../../learn/SettingsContext';
 import type { SnapshotStorage } from '../../learn/store';
@@ -178,6 +178,39 @@ describe('StaveInput — once graded, the input locks (no further edits)', () =>
     const { onResponseChange, getByTestId } = renderStave({ pitch: 'E4', dur: 'crotchet' }, true);
     fireEvent.press(getByTestId('stave-slot-3'));
     expect(onResponseChange).not.toHaveBeenCalled();
+  });
+});
+
+describe('StaveInput — grade seam: slot enumeration and the duration palette follow instance.grade, not a literal (U1 de-hardcode)', () => {
+  const grade3Instance: ExerciseInstance = {
+    ...instance,
+    grade: 3,
+  };
+
+  test('a grade-3 instance renders diatonicPitchesInRange(clef, 3).length slots — more than grade 1', () => {
+    const { getByTestId, queryByTestId } = render(
+      <StaveInput instance={grade3Instance} response={null} graded={null} strand="intervals" onResponseChange={jest.fn()} />,
+    );
+    const expectedSlots = diatonicPitchesInRange('treble', 3).length;
+    // Sanity: the seam only proves something if grade 3's range actually differs from grade 1's.
+    expect(expectedSlots).toBeGreaterThan(diatonicPitchesInRange('treble', 1).length);
+    for (let i = 0; i < expectedSlots; i++) {
+      expect(getByTestId(`stave-slot-${i}`)).toBeTruthy();
+    }
+    expect(queryByTestId(`stave-slot-${expectedSlots}`)).toBeNull();
+  });
+
+  test('a grade-3 instance shows the grade-3 duration set (includes demisemiquaver, absent at grade 1)', () => {
+    const { getByTestId, queryByTestId } = render(
+      <StaveInput instance={grade3Instance} response={null} graded={null} strand="intervals" onResponseChange={jest.fn()} />,
+    );
+    // Sanity: the seam only proves something if grade 3's palette actually widens over grade 1's.
+    expect(scopeForGrade(1).noteValues).not.toContain('demisemiquaver');
+    expect(scopeForGrade(3).noteValues).toContain('demisemiquaver');
+    for (const dur of scopeForGrade(3).noteValues) {
+      expect(getByTestId(`duration-${dur}`)).toBeTruthy();
+    }
+    expect(queryByTestId('duration-breve')).toBeNull(); // grade 3 doesn't reach 'breve' either — not just "render everything"
   });
 });
 
