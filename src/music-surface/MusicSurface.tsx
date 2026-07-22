@@ -63,18 +63,23 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
 
   const abc = useMemo(() => musicToAbc(music), [music]);
   // Density-aware layout width (design A9 "stave is the hero"): the baked staffwidth
-  // suits the 1–4 note stimuli that dominate, but an 8-note scale squeezed into it
-  // renders as overlapping, oversized noteheads (responsive:'resize' scales the
-  // crowding UP). Widen the layout by beat count so abcjs spaces the notes and the
-  // fit-to-card scales DOWN instead. Sparse stimuli send nothing → baked default.
+  // suits the 1–4 note single-bar stimuli that dominate, but a denser or multi-bar
+  // melody squeezed into it renders cramped — notes bunched, oversized noteheads —
+  // because responsive:'resize' scales the crowding UP. Count layout-consuming
+  // events (notes, rests, AND barlines: a 2-bar melody needs room per bar, not just
+  // per note) and widen so abcjs spaces them out and the fit-to-card scales DOWN
+  // instead. Sparse single-bar stimuli send nothing → baked default.
   const staffwidth = useMemo(() => {
-    const beats = Math.max(
+    const units = Math.max(
       0,
       ...music.voices.map(
-        (v) => v.events.filter((e) => e.type === 'note' || e.type === 'chord' || e.type === 'rest').length,
+        (v) =>
+          v.events.filter(
+            (e) => e.type === 'note' || e.type === 'chord' || e.type === 'rest' || e.type === 'barline',
+          ).length,
       ),
     );
-    return beats > 4 ? Math.round(beats * 35) : undefined;
+    return units > 4 ? Math.round(units * 35) : undefined;
   }, [music]);
   // HTML is stable (abcjs is 500KB — don't rebuild per note); ABC arrives via a render command.
   const html = useMemo(
