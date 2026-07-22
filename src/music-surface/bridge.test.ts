@@ -15,6 +15,7 @@ describe('bridge protocol round-trips', () => {
     { type: 'stop' },
     { type: 'highlightBar', bar: 2, color: '#cb7ad4' },
     { type: 'highlightBar', bar: null },
+    { type: 'playAbc', abc: 'X:1\nK:C\nC' },
   ];
   const events: SurfaceEvent[] = [
     { type: 'ready' },

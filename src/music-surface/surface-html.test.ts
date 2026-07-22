@@ -92,4 +92,32 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('pressStart'); // tap vs hold is a press-duration decision
     expect(html).toContain('-webkit-touch-callout: none'); // no iOS callout to swallow the press
   });
+
+  // D9 "hear yours": an answer card plays its own Music without a second WebView —
+  // the page parses+plays a `playAbc` command into a HIDDEN container.
+  describe('playAbc (D9): hear-yours without a second WebView', () => {
+    test('wires a playAbc command into a hidden container, distinct from the visible score', () => {
+      const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+      expect(html).toContain('id="hidden-paper"');
+      expect(html).toContain("cmd.type === 'playAbc'");
+      expect(html).toContain('function playAbc(abc)');
+      expect(html).toContain("ABCJS.renderAbc('hidden-paper', abc");
+    });
+
+    // The invariant that matters: playAbc must never repaint the GIVEN melody. Isolate
+    // playAbc's own function body (up to the next function) and assert it never touches
+    // #paper or fires 'rendered' — both are exclusive to the visible renderAbc() path.
+    test('the page handles playAbc without touching the visible score', () => {
+      const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+      const start = html.indexOf('function playAbc(abc)');
+      const end = html.indexOf('function highlightBar', start);
+      expect(start).toBeGreaterThan(-1);
+      expect(end).toBeGreaterThan(start);
+      const body = html.slice(start, end);
+
+      expect(body).not.toContain("renderAbc('paper'");
+      expect(body).not.toContain("type: 'rendered'");
+      expect(body).toContain("renderAbc('hidden-paper'");
+    });
+  });
 });

@@ -12,6 +12,10 @@ export interface PlayButtonProps {
   onPaper?: boolean;
   strand?: Strand;
   size?: number;
+  /** Dimmed, non-pressable — same visual language as Button's `disabled`
+   *  (D9: the transposition answer card's play is disabled until ≥1 note
+   *  is placed, since there is nothing yet to hear). */
+  disabled?: boolean;
   onPress?: () => void;
   testID?: string;
 }
@@ -24,7 +28,7 @@ function withAlpha(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-export function PlayButton({ onPaper = false, strand, size = 40, onPress, testID }: PlayButtonProps) {
+export function PlayButton({ onPaper = false, strand, size = 40, disabled = false, onPress, testID }: PlayButtonProps) {
   const hue = strand ? strandDef(strand).hue : undefined;
 
   const background = onPaper
@@ -41,7 +45,8 @@ export function PlayButton({ onPaper = false, strand, size = 40, onPress, testID
   return (
     <Pressable
       testID={testID}
-      onPress={onPress}
+      onPress={disabled ? undefined : onPress}
+      disabled={disabled}
       hitSlop={hitSlopValue}
       style={({ pressed }) => [
         styles.circle,
@@ -51,7 +56,7 @@ export function PlayButton({ onPaper = false, strand, size = 40, onPress, testID
           height: size,
           borderRadius: size / 2,
           backgroundColor: background,
-          opacity: pressed ? 0.85 : 1,
+          opacity: disabled ? 0.4 : pressed ? 0.85 : 1,
         },
       ]}
     >

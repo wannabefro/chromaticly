@@ -183,3 +183,63 @@ describe('registry — transposition_input (U6)', () => {
     expect(transpositionCanCheck({ placements: ['C4', 'E4', 'G4'], locked: [] })).toBe(true);
   });
 });
+
+// U7/D9: the answer card's own PlayButton plays what the LEARNER placed, never
+// the given melody — the "hear yours" affordance built from the response, not
+// the stimulus, sent up through onPlayMusic.
+describe('TranspositionInput — "hear yours" (D9): the answer card\'s play sends the answer, not the stimulus', () => {
+  test('the play button is disabled until at least one note is placed', () => {
+    const { getByTestId } = renderInput(emptyResponse());
+    expect(getByTestId('transposition-play').props.accessibilityState?.disabled).toBe(true);
+  });
+
+  test('pressing play builds Music from the PLACED pitches with copied durs — stopping at the first unplaced slot, never the stimulus melody', () => {
+    const onPlayMusic = jest.fn();
+    const partial: TranspositionResponse = { placements: ['C4', 'E4', null], locked: [] };
+    const { getByTestId } = render(
+      <TranspositionInput
+        instance={instance}
+        response={partial}
+        graded={null}
+        strand="pitch"
+        onResponseChange={jest.fn()}
+        onPlayMusic={onPlayMusic}
+      />,
+    );
+
+    fireEvent.press(getByTestId('transposition-play'));
+
+    expect(onPlayMusic).toHaveBeenCalledTimes(1);
+    const music = onPlayMusic.mock.calls[0][0];
+    expect(music.clef).toBe('bass'); // the answer clef — never the stimulus's treble
+    expect(music.key_sig).toBe(instance.stimulus.music!.key_sig);
+    expect(music.voices[0].events).toEqual([
+      { type: 'note', pitch: 'C4', dur: 'crotchet' },
+      { type: 'note', pitch: 'E4', dur: 'crotchet' },
+    ]); // the 3rd (unplaced) slot is truncated — the given melody's G5 minim never appears
+  });
+
+  test('pressing play with every slot filled plays the full answer, copied durs and dots included', () => {
+    const onPlayMusic = jest.fn();
+    const full: TranspositionResponse = { placements: ['C4', 'E4', 'G4'], locked: [] };
+    const { getByTestId } = render(
+      <TranspositionInput
+        instance={instance}
+        response={full}
+        graded={null}
+        strand="pitch"
+        onResponseChange={jest.fn()}
+        onPlayMusic={onPlayMusic}
+      />,
+    );
+
+    fireEvent.press(getByTestId('transposition-play'));
+
+    const music = onPlayMusic.mock.calls[0][0];
+    expect(music.voices[0].events).toEqual([
+      { type: 'note', pitch: 'C4', dur: 'crotchet' },
+      { type: 'note', pitch: 'E4', dur: 'crotchet' },
+      { type: 'note', pitch: 'G4', dur: 'minim' }, // per_item's copied duration, not a placement-owned one
+    ]);
+  });
+});

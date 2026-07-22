@@ -16,6 +16,12 @@ export interface MusicSurfaceHandle {
   stop(): void;
   /** Tint the selected bar in the score (design 4c), or clear with `null`. */
   highlightBar(bar: number | null, color?: string): void;
+  /** D9 "hear yours": play raw abc in the page's hidden container — never
+   *  touches or repaints the visible score. */
+  playAbc(abc: string): void;
+  /** Convenience over `playAbc` — emits `music` through the existing abc
+   *  emitter first (D9). */
+  playMusic(music: Music): void;
 }
 
 export interface MusicSurfaceProps {
@@ -86,6 +92,8 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
       play: () => send({ type: 'play' }),
       stop: () => send({ type: 'stop' }),
       highlightBar: (bar: number | null, color?: string) => send({ type: 'highlightBar', bar, color }),
+      playAbc: (abc: string) => send({ type: 'playAbc', abc }),
+      playMusic: (music: Music) => send({ type: 'playAbc', abc: musicToAbc(music) }),
     }),
     [send],
   );

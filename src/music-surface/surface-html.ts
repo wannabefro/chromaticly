@@ -69,6 +69,10 @@ export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
 <body>
 ${playButton}
 <div id="paper"></div>
+<!-- D9 "hear yours": a hidden container abcjs can render an answer-so-far
+     melody into for audio only — never painted, so it can never repaint
+     the visible score above. -->
+<div id="hidden-paper" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;"></div>
 <script>${opts.abcjsSource}</script>
 <script>
 (function () {
@@ -203,6 +207,34 @@ ${playButton}
     });
   }
 
+  /** D9 "hear yours": parse abc into the HIDDEN container and play it, never touching
+   *  #paper (the visible score) — no renderAbc('paper', ...) call and no 'rendered'
+   *  event, so the given melody on screen is never repainted. */
+  function playAbc(abc) {
+    if (!ABCJS.synth.supportsAudio()) { emit({ type: 'audioUnsupported' }); return; }
+    var hiddenObj;
+    try {
+      var hiddenOpts = Object.assign({}, ${renderOpts});
+      hiddenObj = ABCJS.renderAbc('hidden-paper', abc, hiddenOpts)[0];
+    } catch (e) {
+      emit({ type: 'error', message: 'playAbc render: ' + (e && e.message || e) });
+      return;
+    }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    var ac = new AC();
+    ac.resume().then(function () {
+      var s = new ABCJS.synth.CreateSynth();
+      return s.init({ audioContext: ac, visualObj: hiddenObj, options: SOUNDFONT ? { soundFontUrl: SOUNDFONT } : {} })
+        .then(function () { return s.prime(); })
+        .then(function () {
+          s.start();
+          emit({ type: 'played', latencyMs: 0 });
+        });
+    }).catch(function (e) {
+      emit({ type: 'error', message: 'playAbc: ' + (e && e.message || e) });
+    });
+  }
+
   /** Tint the bar (1-indexed) with a translucent rect behind the notes, or clear it. The
    *  bar's notes carry class abcjs-mm(bar-1); we union their boxes (skipping the clef and
    *  other staff furniture that share measure 0) for the rect's x-extent. */
@@ -244,6 +276,7 @@ ${playButton}
     else if (cmd.type === 'play') play();
     else if (cmd.type === 'stop') { if (synth) synth.stop(); }
     else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);
+    else if (cmd.type === 'playAbc') playAbc(cmd.abc);
   }
 
   // RN -> WebView (react-native-webview delivers to window 'message').

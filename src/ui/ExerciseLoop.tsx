@@ -14,6 +14,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { ExerciseInstance } from '../engine/schema';
 import type { SrsGrade } from '../learn/srs';
 import type { SurfaceEvent } from '../music-surface/bridge';
+import type { Music } from '../music/types';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
 import { StrandChip } from './components/StrandChip';
@@ -102,6 +103,13 @@ export function ExerciseLoop({
     surfaceRef.current?.highlightBar(spec.surfaceHighlight?.(response) ?? null, hue);
   }, [spec, response, hue]);
 
+  // D9 "hear yours": an answer card (e.g. transposition_input) builds its own
+  // Music and plays it through the persistent STIMULUS surface — no second
+  // WebView. Only handed down when a stimulus surface is actually mounted.
+  const handlePlayMusic = useCallback((responseMusic: Music) => {
+    surfaceRef.current?.playMusic(responseMusic);
+  }, []);
+
   const check = useCallback(() => {
     const verdict = Boolean(spec.grade(instance, response));
     if (!verdict) setEverFailed(true);
@@ -156,6 +164,7 @@ export function ExerciseLoop({
           strand={strand}
           onResponseChange={setResponse}
           onSelfGrade={onSelfGrade}
+          onPlayMusic={music ? handlePlayMusic : undefined}
         />
 
         {showHints && <Hints hints={instance.hints} onHintUsed={handleHintUsed} />}

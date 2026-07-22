@@ -12,7 +12,13 @@ export type SurfaceCommand =
   | { type: 'stop' }
   /** Tint the selected bar in the rendered score (design 4c), or clear it with
    *  `bar: null`. `color` is the strand hue the RN side owns. */
-  | { type: 'highlightBar'; bar: number | null; color?: string };
+  | { type: 'highlightBar'; bar: number | null; color?: string }
+  /** "Hear yours" (D9): parse+play `abc` in a HIDDEN in-page container, without
+   *  touching or repainting the visible score. Used by an answer card (e.g.
+   *  transposition_input) whose Music is built from the learner's own response,
+   *  not the stimulus — a second WebView would fight the one-persistent-surface
+   *  architecture, so this reuses the single mounted surface instead. */
+  | { type: 'playAbc'; abc: string };
 
 /** WebView → RN events, including instrumentation timings (ms). */
 export type SurfaceEvent =

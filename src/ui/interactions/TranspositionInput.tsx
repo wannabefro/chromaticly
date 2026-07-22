@@ -39,6 +39,7 @@ import {
 import type { InteractionComponentProps, InteractionSpec } from './types';
 import type { ExerciseInstance } from '../../engine/schema';
 import { NotationCard } from '../components/NotationCard';
+import { PlayButton } from '../components/PlayButton';
 
 export type TranspositionInputResponse = TranspositionResponse;
 
@@ -64,6 +65,29 @@ function answerClefOf(instance: ExerciseInstance): Clef {
  *  carry a placement, so they're skipped by construction, never targeted. */
 function activeSlotIndex(response: TranspositionResponse): number {
   return response.placements.findIndex((p) => p === null);
+}
+
+/** D9 "hear yours": the answer card's own PlayButton plays the LEARNER's
+ *  response — placed pitches with copied durs (dots included) — never the
+ *  stimulus melody. MVP unplaced handling: placement is strictly sequential
+ *  (the active slot is always the first null), so a gap can only sit at the
+ *  tail — stopping at the first null naturally plays "as far as placed so
+ *  far" pre-check, and the full melody once every slot is filled post-check
+ *  (canCheck already guarantees no gaps by then). `null` when nothing is
+ *  placed yet — nothing to play. */
+function answerSoFarMusic(instance: ExerciseInstance, response: TranspositionResponse): Music | null {
+  const clef = answerClefOf(instance);
+  const stimulusMusic = instance.stimulus.music as Music | null;
+  const items = targets(instance);
+  const events: MusicEvent[] = [];
+  for (let i = 0; i < response.placements.length; i++) {
+    const placed = response.placements[i];
+    if (placed == null) break;
+    const item = items[i];
+    events.push(item.dots ? { type: 'note', pitch: placed, dur: item.dur, dots: item.dots } : { type: 'note', pitch: placed, dur: item.dur });
+  }
+  if (events.length === 0) return null;
+  return { clef, key_sig: stimulusMusic?.key_sig ?? null, time_sig: stimulusMusic?.time_sig ?? null, voices: [{ events }] };
 }
 
 const SLOT_MARGIN_LEFT = 60;
@@ -107,7 +131,14 @@ export function transpositionCorrectAnswerView(instance: ExerciseInstance) {
 
 // --- Component --------------------------------------------------------
 
-export function TranspositionInput({ instance, response, graded, strand, onResponseChange }: InteractionComponentProps<TranspositionInputResponse>) {
+export function TranspositionInput({
+  instance,
+  response,
+  graded,
+  strand,
+  onResponseChange,
+  onPlayMusic,
+}: InteractionComponentProps<TranspositionInputResponse>) {
   const clef = answerClefOf(instance);
   const keySig: KeySig = (instance.stimulus.music as Music | null)?.key_sig ?? null;
   const items = targets(instance);
@@ -161,6 +192,14 @@ export function TranspositionInput({ instance, response, graded, strand, onRespo
 
   const canUndo = !inputLocked && response.placements.some((p, i) => p !== null && !(response.locked[i] ?? false));
   const pitchRows = diatonicPitchesInRange(clef, instance.grade);
+
+  // Rule 2: the answer stave is a notation display, so it carries its own play
+  // affordance too — "hear yours" plays the LEARNER's placed notes (D9), not
+  // the given melody, and is disabled until there's anything to hear.
+  const handlePlay = () => {
+    const music = answerSoFarMusic(instance, response);
+    if (music) onPlayMusic?.(music);
+  };
 
   return (
     <View style={styles.container} testID="transposition-input">
@@ -253,6 +292,10 @@ export function TranspositionInput({ instance, response, graded, strand, onRespo
             </View>
           );
         })}
+
+        <View style={styles.play}>
+          <PlayButton onPaper strand={strand} disabled={placedCount === 0} onPress={handlePlay} testID="transposition-play" />
+        </View>
       </View>
 
       <View style={styles.footer} testID="transposition-footer">
@@ -289,6 +332,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     overflow: 'hidden',
   },
+  play: { position: 'absolute', right: shape.spaceCard, bottom: shape.spaceCard },
   staveLine: { position: 'absolute', left: PAPER_INSET, right: PAPER_INSET, height: 1.4, backgroundColor: colors.paperLine },
   clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
   keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: 18, color: colors.paperInk },

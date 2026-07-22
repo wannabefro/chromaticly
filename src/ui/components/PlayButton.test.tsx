@@ -20,4 +20,16 @@ describe('PlayButton', () => {
 
     expect(onPress).toHaveBeenCalledTimes(1);
   });
+
+  // D9: the transposition answer card's play is disabled until there's an
+  // answer to hear — disabled must actually suppress the press, not just look dim.
+  test('disabled suppresses onPress', () => {
+    const onPress = jest.fn();
+    const { getByTestId } = render(<PlayButton testID="play" disabled onPress={onPress} />);
+
+    expect(getByTestId('play').props.accessibilityState?.disabled).toBe(true);
+    fireEvent.press(getByTestId('play'));
+
+    expect(onPress).not.toHaveBeenCalled();
+  });
 });
