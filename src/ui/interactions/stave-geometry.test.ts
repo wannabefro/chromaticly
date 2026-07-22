@@ -1,11 +1,14 @@
-// U1 — pins the geometry extracted out of StaveInput (a pure move, no
-// signature/behavior change) against an INDEPENDENT frozen copy of the
-// pre-extraction formula, not derived circularly from stave-geometry.ts
-// itself (mirrors bar-math.test.ts's own independent-capture discipline).
+// Pins noteY/ledgerLineYs against an INDEPENDENT frozen copy of the formula,
+// not derived circularly from stave-geometry.ts (mirrors bar-math.test.ts's
+// independent-capture discipline). LINE_GAP is the true line→line distance
+// (28px) so notes land ON the drawn staff lines: the drawn lines sit at
+// `i * LINE_GAP`, and a line→line is two diatonic steps (2 * STEP). The prior
+// value (14) spaced notes at half the drawn line gap, compressing them into the
+// top half of the staff — the tap-vs-visual mismatch this test now guards.
 
 import { ledgerLineYs, noteY } from './stave-geometry';
 
-const LINE_GAP = 14;
+const LINE_GAP = 28;
 const STEP = LINE_GAP / 2;
 const LINE_TOP = 26;
 const STAVE_LINES = 5;

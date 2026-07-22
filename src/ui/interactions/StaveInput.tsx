@@ -173,7 +173,7 @@ export function StaveInput({ instance, response, graded, strand, onResponseChang
         testID="stave-input-stave"
       >
         {Array.from({ length: STAVE_LINES }, (_, i) => (
-          <View key={i} style={[styles.staveLine, { top: PAPER_INSET + LINE_TOP + i * LINE_GAP * 2 }]} />
+          <View key={i} style={[styles.staveLine, { top: PAPER_INSET + LINE_TOP + i * LINE_GAP }]} />
         ))}
         <Text style={[styles.clef, { top: PAPER_INSET + LINE_TOP - 8 }]}>{CLEF_GLYPH[clef]}</Text>
         {keySig != null && (

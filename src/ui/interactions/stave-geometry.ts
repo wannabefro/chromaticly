@@ -9,8 +9,8 @@ import { scientificPitchOrdinal } from '../../engine/generators/pitch-math';
 import { keyAccidentals } from '../../music/abc-emitter';
 import type { Clef, Duration, KeySig, Pitch } from '../../music/types';
 
-export const LINE_GAP = 14; // px between adjacent staff lines
-export const STEP = LINE_GAP / 2; // px per diatonic (letter-name) step
+export const LINE_GAP = 28; // px between adjacent staff lines
+export const STEP = LINE_GAP / 2; // px per diatonic (letter-name) step (a line→space is half a line→line)
 export const LINE_TOP = 26;
 export const STAVE_LINES = 5;
 export const MIDDLE_LINE_PITCH: Record<Clef, Pitch> = { treble: 'B4', bass: 'D3' };
