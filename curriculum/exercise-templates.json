@@ -92,6 +92,23 @@
       "distractor_rules": ["same total, different beat unit (3/4 vs 6/8 vs 3/2)", "off-by-one numerator"]
     },
     {
+      "template_id": "anacrusis_recognition",
+      "grades": [3],
+      "strand": "rhythm",
+      "interaction": "mcq",
+      "parameters": {"time_signature": "pool: simple time (2/4, 3/4, 4/4)", "pickup": "whole beats, 1..beats-1"},
+      "generation_rules": [
+        "Render a melody whose first bar is a partial (upbeat) bar and whose last bar is the complementary partial bar, so first + last bar sum to exactly one whole bar",
+        "The pickup is a whole number of beats (no fractional-beat pickups this slice)"
+      ],
+      "distractor_rules": ["the full-bar beat count (not noticing the first bar is partial)", "one rng-picked value from {complement, pickup-1, pickup+1, 0} distinct from the canonical and the full-bar distractor"],
+      "grading": "exact beat-count match",
+      "example": {
+        "prompt": "How many beats are in the upbeat (anacrusis)?",
+        "answer": {"canonical": "1 beat"}
+      }
+    },
+    {
       "template_id": "regroup_rebeam",
       "grades": [1, 2, 3, 4, 5],
       "strand": "rhythm",

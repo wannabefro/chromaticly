@@ -86,8 +86,10 @@ const GRADE_2_SCOPE: GradeScope = {
 // (6/8, 9/8, 12/8 — D2, compound-time slice U2). noteValues now widens to
 // demisemiquaver (U4, plan R1): bar-math.ts's UNITS table carries a
 // demisemiquaver row as of this unit, so no simple consumer can draw a
-// duration with no unit entry. rhythmDevices stays the grade-2 copy —
-// anacrusis is deferred to its own slice (D1).
+// duration with no unit entry. rhythmDevices widens to include 'anacrusis'
+// (anacrusis slice D6) — the device is now implemented, so scope no longer
+// lies about what Grade 3 covers; rhythmDevices has no consumer in
+// generators/ or validator.ts, so this is byte-identity-safe.
 const GRADE_3_SCOPE: GradeScope = {
   clefs: GRADE_2_SCOPE.clefs,
   noteValues: [...GRADE_2_SCOPE.noteValues, ...(KB.grade3Adds.note_values as Duration[])],
@@ -95,7 +97,7 @@ const GRADE_3_SCOPE: GradeScope = {
   keysMinor: [...GRADE_2_SCOPE.keysMinor, ...KB.grade3Adds.keys_minor],
   minorForms: [...GRADE_2_SCOPE.minorForms, ...KB.grade3Adds.minor_forms],
   timeSignatures: [...GRADE_2_SCOPE.timeSignatures, ...KB.grade3Adds.time_signatures],
-  rhythmDevices: GRADE_2_SCOPE.rhythmDevices,
+  rhythmDevices: [...GRADE_2_SCOPE.rhythmDevices, ...KB.grade3Adds.rhythm_devices],
   // Distinct object (not a reference copy of grade 2's) per KB.grade3Adds.intervals.naming
   // "number + type (perfect, major, minor)" — the number+type widening lands in U3.
   intervalRule: {

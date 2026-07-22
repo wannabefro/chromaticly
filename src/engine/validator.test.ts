@@ -318,6 +318,57 @@ function validMetreClassificationInstance(): ExerciseInstance {
   };
 }
 
+// U3 (anacrusis slice, D7): a well-formed 3/4 anacrusis instance — a 1-beat
+// pickup, two full middle bars, and a 2-beat closing bar (1 + 2 = one whole
+// bar, the ABRSM rule). No trailing barline (Codex correction 2).
+function validAnacrusisRecognitionInstance(): ExerciseInstance {
+  const crotchet = (pitch: string) => ({ type: 'note' as const, pitch, dur: 'crotchet' as const });
+  return {
+    id: 'a1b2c3d4-0000-0000-0000-000000000004',
+    template_id: 'anacrusis_recognition',
+    grade: 3,
+    strand: 'rhythm',
+    prompt: 'How many beats are in the upbeat (anacrusis)?',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: null,
+        time_sig: '3/4',
+        anacrusis: true,
+        voices: [
+          {
+            events: [
+              crotchet('C4'),
+              { type: 'barline', style: 'single' },
+              crotchet('C4'),
+              crotchet('C4'),
+              crotchet('C4'),
+              { type: 'barline', style: 'single' },
+              crotchet('C4'),
+              crotchet('C4'),
+              crotchet('C4'),
+              { type: 'barline', style: 'single' },
+              crotchet('C4'),
+              crotchet('C4'),
+            ],
+          },
+        ],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: '1 beat', accepted_alternatives: [] },
+    distractors: ['3 beats', '0 beats'],
+    hints: ['Count backwards from the first barline to find how many beats the upbeat takes.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: 'Count the beats before the first barline — the last bar makes up the difference to a full bar.',
+    },
+    srs_tags: ['anacrusis:3/4'],
+    kb_version: 'g1-2026-07-10',
+  };
+}
+
 describe('validate — structural check (schema failure is a rejection)', () => {
   test('an instance missing kb_version fails validation with a schema error', () => {
     const instance = validNoteNamingInstance() as unknown as Record<string, unknown>;
@@ -840,5 +891,99 @@ describe('validate — per-template hook: metre_classification (U6, D7: canonica
     const result = validate(instance);
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('metre_classification') && e.includes('duplicates'))).toBe(true);
+  });
+});
+
+describe('validate — per-template hook: anacrusis_recognition (U3, D7: recomputes the pickup from the stimulus)', () => {
+  test('a well-formed instance passes clean', () => {
+    expect(validate(validAnacrusisRecognitionInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('cannot mislabel the rendered upbeat: a 1-beat pickup labeled "2 beats" is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.answer.canonical = '2 beats';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('does not match')),
+    ).toBe(true);
+  });
+
+  test('first + last bar must sum to one whole bar: a lengthened final bar is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    const events = instance.stimulus.music.voices[0].events;
+    events.push({ type: 'note', pitch: 'C4', dur: 'crotchet' });
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('do not sum to one whole bar')),
+    ).toBe(true);
+  });
+
+  test('a middle bar that is not full is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    const events = instance.stimulus.music.voices[0].events as Array<{ type: string }>;
+    // Drop one note from the first middle bar (indices 2..4 are its three crotchets).
+    events.splice(2, 1);
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('not a full bar')),
+    ).toBe(true);
+  });
+
+  test('the metre must be visible: a hidden time signature is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.stimulus.music.time_sig_hidden = true;
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('must be printed')),
+    ).toBe(true);
+  });
+
+  test('the metre must be visible: a null time signature is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.stimulus.music.time_sig = null;
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('anacrusis_recognition'))).toBe(true);
+  });
+
+  test('a stimulus not marked anacrusis: true is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.stimulus.music.anacrusis = false;
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('anacrusis: true')),
+    ).toBe(true);
+  });
+
+  test('a non-"N beat(s)" distractor is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.distractors = ['3 beats', 'one beat'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('is not an "N beat(s)" label')),
+    ).toBe(true);
+  });
+
+  test('two duplicate distractors are rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.distractors = ['3 beats', '3 beats'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(
+      result.errors.some((e) => e.includes('anacrusis_recognition') && e.includes('duplicates')),
+    ).toBe(true);
+  });
+
+  test('a distractor equal to the canonical answer is rejected', () => {
+    const instance = validAnacrusisRecognitionInstance();
+    instance.distractors = ['1 beat', '0 beats'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
   });
 });

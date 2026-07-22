@@ -58,6 +58,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3> = {
   mode_swap: 2,
   scale_construction: 2,
   metre_classification: 3,
+  anacrusis_recognition: 3,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -286,6 +287,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
       'interval_type:7',
       'interval_type:8',
     ],
+  },
+  {
+    label: 'anacrusis_recognition (anacrusis-3, pre-lesson pin, U4)',
+    templateId: 'anacrusis_recognition',
+    atoms: ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'],
   },
 ];
 

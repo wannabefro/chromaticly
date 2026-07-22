@@ -11,10 +11,12 @@
 // hand-listed or computed here; this validator only avoids ever rejecting an
 // answer that already appears in that list — it does not grade.
 
-import type { Music } from '../music/types';
+import type { Music, MusicEvent } from '../music/types';
+import { barUnitsFor } from './generators/bar-math';
 import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel } from './interval-quality';
-import { classifyMetre } from './metre';
-import { pitchRange, scopeForGrade } from './scope';
+import { classifyMetre, isCompoundTimeSignature } from './metre';
+import { musicEventUnits } from './music-event-units';
+import { pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
 import type { GradeScope } from './scope';
 import type { ExerciseInstance } from './schema';
 import { ExerciseInstanceSchema } from './schema';
@@ -601,6 +603,117 @@ function metreClassificationHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// anacrusisRecognitionHook (D7, U3) — landed BEFORE the generator exists so
+// the generator is born under it. Independently RECOMPUTES the pickup from
+// the rendered stimulus stream rather than trusting the generator's own
+// canonical/distractor labels (the intervalNamingQualityErrors/
+// metreClassificationHook discipline).
+const ANACRUSIS_OPTION_RE = /^\d+ beats?$/;
+
+/** Splits a voice's events into bar-groups on barline events. Codex
+ *  correction 2: the generator OMITS the trailing barline, so this never
+ *  produces an empty trailing group for a well-formed instance — a stream
+ *  ending in a barline would leave the empty group as-is, which the
+ *  min-group-count/positive-pickup checks below then reject. */
+function splitIntoBarGroups(events: MusicEvent[]): MusicEvent[][] {
+  const groups: MusicEvent[][] = [[]];
+  for (const ev of events) {
+    if (ev.type === 'barline') {
+      groups.push([]);
+    } else {
+      groups[groups.length - 1].push(ev);
+    }
+  }
+  return groups;
+}
+
+function groupUnits(group: MusicEvent[]): number {
+  return group.reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+}
+
+function beatsLabel(n: number): string {
+  return `${n} beat${n === 1 ? '' : 's'}`;
+}
+
+function anacrusisRecognitionHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  const sig = music?.time_sig;
+
+  // Self-consistency (D7 point 5): the marker + a printed (not hidden) simple
+  // renderable metre — the learner must be able to see the signature they're
+  // counting the upbeat against.
+  if (!music || typeof sig !== 'string') {
+    return ['anacrusis_recognition: stimulus must carry a time signature'];
+  }
+  if (music.anacrusis !== true) {
+    return ['anacrusis_recognition: stimulus music must be marked anacrusis: true'];
+  }
+  if (music.time_sig_hidden) {
+    return ['anacrusis_recognition: the time signature must be printed, not hidden'];
+  }
+  if (isCompoundTimeSignature(sig) || !renderableTimeSignatures(inst.grade).includes(sig)) {
+    return [`anacrusis_recognition: "${sig}" is not a renderable simple time signature`];
+  }
+
+  const barUnits = barUnitsFor(sig);
+  const groups = splitIntoBarGroups(music.voices[0]?.events ?? []);
+  if (groups.length < 2) {
+    return ['anacrusis_recognition: stimulus must render at least a pickup bar and a final bar'];
+  }
+
+  const totals = groups.map(groupUnits);
+  const first = totals[0];
+  const last = totals[totals.length - 1];
+  const middles = totals.slice(1, -1);
+
+  const errors: string[] = [];
+
+  // Pickup correctness: a positive whole-beat partial bar, strictly short of a full bar.
+  if (!(first > 0 && first < barUnits && first % 8 === 0)) {
+    errors.push('anacrusis_recognition: the pickup bar is not a positive whole-beat partial bar');
+  }
+
+  // The ABRSM rule this lesson teaches: first + last bar = one whole bar.
+  if (first + last !== barUnits) {
+    errors.push('anacrusis_recognition: the first and last bars do not sum to one whole bar');
+  }
+
+  // Metrical validity: every middle bar is a full bar.
+  if (middles.some((units) => units !== barUnits)) {
+    errors.push('anacrusis_recognition: a middle bar is not a full bar for the stimulus time signature');
+  }
+
+  // Can never mislabel the rendered upbeat: canonical must equal the recomputed pickup label.
+  const canonical = inst.answer.canonical;
+  if (first > 0 && first % 8 === 0) {
+    const expected = beatsLabel(first / 8);
+    if (canonical !== expected) {
+      errors.push(
+        `anacrusis_recognition: canonical "${String(canonical)}" does not match the rendered pickup (expected "${expected}")`,
+      );
+    }
+  }
+
+  if (typeof canonical !== 'string' || !ANACRUSIS_OPTION_RE.test(canonical)) {
+    errors.push(`anacrusis_recognition: canonical answer "${String(canonical)}" is not an "N beat(s)" label`);
+  }
+
+  const seen = new Set<string>([String(canonical)]);
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !ANACRUSIS_OPTION_RE.test(d)) {
+      errors.push(`anacrusis_recognition: distractor "${String(d)}" is not an "N beat(s)" label`);
+      continue;
+    }
+    if (seen.has(d)) {
+      errors.push(`anacrusis_recognition: distractor "${d}" duplicates the canonical answer or another distractor`);
+      continue;
+    }
+    seen.add(d);
+  }
+
+  return errors;
+}
+
 function termMeaningHook(inst: ExerciseInstance): string[] {
   const category = inst.interaction.config?.category;
   if (category === undefined) return []; // no category info carried — skip gracefully
@@ -628,4 +741,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   bar_validity: barValidityHook,
   add_time_signature: addTimeSignatureHook,
   metre_classification: metreClassificationHook,
+  anacrusis_recognition: anacrusisRecognitionHook,
 };

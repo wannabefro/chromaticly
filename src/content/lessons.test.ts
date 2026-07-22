@@ -228,7 +228,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 -> ledger-lines-3 chain', () => {
+  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 -> ledger-lines-3 -> anacrusis-3 chain', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'minor-keys-3',
       'minor-scales-3',
@@ -237,6 +237,7 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
       'compound-bars-3',
       'intervals-3',
       'ledger-lines-3',
+      'anacrusis-3',
     ]);
   });
 
@@ -256,9 +257,10 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
         'compound-bars-3',
         'intervals-3',
         'ledger-lines-3',
+        'anacrusis-3',
       ]),
     );
-    expect(LESSONS[LESSONS.length - 1].id).toBe('ledger-lines-3');
+    expect(LESSONS[LESSONS.length - 1].id).toBe('anacrusis-3');
   });
 });
 
@@ -286,6 +288,27 @@ describe('ledger-lines-3 lesson (chromaticly-1v5.6)', () => {
   test('every ledger-lines-3 atom pitch is outside the grade-2 range and throws at grade 2', () => {
     const lesson = lessonById('ledger-lines-3')!;
     for (const atom of lesson.atoms) {
+      expect(() => assertAtomResolves(atom, 2)).toThrow();
+    }
+  });
+});
+
+// The Grade 3 anacrusis slice: single-template discipline (mirrors
+// intervals-3/ledger-lines-3, D7) and the new terminal lesson of the chain.
+describe('anacrusis-3 lesson (chromaticly-1v5.3)', () => {
+  test('strand is rhythm and it carries the single template anacrusis_recognition, unlocking nothing (the new grade-3 terminal)', () => {
+    const lesson = lessonById('anacrusis-3');
+    expect(lesson).toBeTruthy();
+    expect(lesson!.strand).toBe('rhythm');
+    expect(lesson!.templates).toEqual(['anacrusis_recognition']);
+    expect(lesson!.unlocks).toBeNull();
+  });
+
+  test('every anacrusis-3 atom resolves at grade 3 and throws at grades 1/2 (rhythmDevices gate, D6)', () => {
+    const lesson = lessonById('anacrusis-3')!;
+    for (const atom of lesson.atoms) {
+      expect(() => assertAtomResolves(atom, 3)).not.toThrow();
+      expect(() => assertAtomResolves(atom, 1)).toThrow();
       expect(() => assertAtomResolves(atom, 2)).toThrow();
     }
   });
@@ -367,6 +390,23 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
 
   test('a bare interval:5 atom still resolves at grade 1 — the legacy grammar is untouched by D4', () => {
     expect(() => assertAtomResolves('interval:5', 1)).not.toThrow();
+  });
+
+  // U2 (anacrusis slice, D5/D6): the anacrusis:<sig> grammar resolves only
+  // where the grade scopes 'anacrusis' as a rhythm device AND the signature
+  // is a simple, renderable one — a Grade 3-only device with no compound form.
+  test('anacrusis:3/4 resolves at grade 3 but throws at grades 1/2 (rhythmDevices gate, not just renderability)', () => {
+    expect(() => assertAtomResolves('anacrusis:3/4', 3)).not.toThrow();
+    expect(() => assertAtomResolves('anacrusis:3/4', 1)).toThrow();
+    expect(() => assertAtomResolves('anacrusis:3/4', 2)).toThrow();
+  });
+
+  test('anacrusis:6/8 throws at grade 3 — compound anacrusis is out of scope (D3)', () => {
+    expect(() => assertAtomResolves('anacrusis:6/8', 3)).toThrow();
+  });
+
+  test('a malformed anacrusis atom (extra colon-part) throws', () => {
+    expect(() => assertAtomResolves('anacrusis:3/4:x', 3)).toThrow();
   });
 });
 

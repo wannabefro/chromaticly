@@ -273,6 +273,20 @@ describe('musicToAbc — time_sig_hidden absent: characterization, additive fiel
   });
 });
 
+describe('musicToAbc — anacrusis marker absent/present: characterization, additive field, zero blast radius', () => {
+  test('anacrusis: true and the field absent emit byte-identical abc for otherwise-identical events', () => {
+    const events: Music['voices'][number]['events'] = [
+      { type: 'note', pitch: 'C4', dur: 'crotchet' },
+      { type: 'barline', style: 'single' },
+      { type: 'note', pitch: 'D4', dur: 'crotchet' },
+      { type: 'note', pitch: 'E4', dur: 'crotchet' },
+    ];
+    const withMarker: Music = { clef: 'treble', key_sig: null, time_sig: '3/4', anacrusis: true, voices: [{ events }] };
+    const withoutMarker: Music = { clef: 'treble', key_sig: null, time_sig: '3/4', voices: [{ events }] };
+    expect(musicToAbc(withMarker)).toBe(musicToAbc(withoutMarker));
+  });
+});
+
 describe('musicToAbc — dynamics (302.32)', () => {
   test('a dynamic glues its decoration onto the following note, not a separate token', () => {
     const music: Music = {

@@ -104,6 +104,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // completeness check accounts for it, exercised for real by its own
       // grade-3 tests (metre-classification.test.ts, seed-stability.test.ts).
       'metre_classification',
+      // anacrusis_recognition (anacrusis slice, D5) — unlike
+      // metre_classification, its atoms are simple time signatures only, so
+      // it DOES produce valid grade-2 content; exercised for real below.
+      'anacrusis_recognition',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });
@@ -223,6 +227,19 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       assertWithinGrade2Scope(instance.stimulus.music as Music | null);
       expect(RENDERABLE_G2).toContain(instance.answer.canonical);
       for (const d of instance.distractors as string[]) expect(RENDERABLE_G2).toContain(d);
+    }
+  });
+
+  // rhythmDevices gating (D6) is curriculum-layer only (assertAtomResolves) —
+  // the generator itself has no grade check, so it must produce genuine
+  // grade-2-VALID content given explicit anacrusis:<sig> atoms.
+  test('anacrusis_recognition @ grade 2: validator- and scope-clean, time_sig always /4', () => {
+    const atoms = ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'];
+    for (const seed of SEEDS) {
+      const instance = generate('anacrusis_recognition', { grade: 2, seed, atoms });
+      assertValidatorClean(instance);
+      assertWithinGrade2Scope(instance.stimulus.music as Music | null);
+      assertRenderableTimeSigOnly(instance.stimulus.music as Music | null);
     }
   });
 

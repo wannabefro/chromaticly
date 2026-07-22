@@ -29,16 +29,35 @@ const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction'];
 // grade tier further out.
 const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification'];
 
+// anacrusis_recognition (anacrusis slice, D5) needs an explicit anacrusis:<sig>
+// atom (no legacy bare-atom fallback, unlike add_time_signature) but — unlike
+// metre_classification — is NOT grade-gated in the generator/validator: its
+// atoms are simple time signatures only, which are in scope at every grade.
+// "Grade 3 device" is enforced solely by assertAtomResolves reading
+// rhythmDevices at the curriculum layer (lessons.ts), so it gets its own
+// bucket rather than either grade-tier one above.
+const ATOM_REQUIRED_TEMPLATE_IDS = ['anacrusis_recognition'];
+
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {
-    for (const templateId of [...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS, ...GRADE_3_ONLY_TEMPLATE_IDS]) {
+    for (const templateId of [
+      ...TEMPLATE_IDS,
+      ...GRADE_2_ONLY_TEMPLATE_IDS,
+      ...GRADE_3_ONLY_TEMPLATE_IDS,
+      ...ATOM_REQUIRED_TEMPLATE_IDS,
+    ]) {
       expect(typeof GENERATORS[templateId]).toBe('function');
     }
   });
 
   test('has exactly the Tier-A template ids registered — no extras, no gaps', () => {
     expect(Object.keys(GENERATORS).sort()).toEqual(
-      [...TEMPLATE_IDS, ...GRADE_2_ONLY_TEMPLATE_IDS, ...GRADE_3_ONLY_TEMPLATE_IDS].sort(),
+      [
+        ...TEMPLATE_IDS,
+        ...GRADE_2_ONLY_TEMPLATE_IDS,
+        ...GRADE_3_ONLY_TEMPLATE_IDS,
+        ...ATOM_REQUIRED_TEMPLATE_IDS,
+      ].sort(),
     );
   });
 });
@@ -64,6 +83,22 @@ describe('generate() — grade-3-only templates', () => {
     const atoms = ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'];
     const instance = generate('metre_classification', { grade: 3, seed: 1, atoms });
     expect(instance.template_id).toBe('metre_classification');
+    expect(validate(instance).ok).toBe(true);
+  });
+});
+
+describe('generate() — anacrusis_recognition (requires an explicit anacrusis:<sig> atom; not grade-gated by the generator)', () => {
+  const atoms = ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'];
+
+  test('produces a valid grade-1 instance too — rhythmDevices gating (D6) is curriculum-layer only', () => {
+    const instance = generate('anacrusis_recognition', { grade: 1, seed: 1, atoms });
+    expect(instance.template_id).toBe('anacrusis_recognition');
+    expect(validate(instance).ok).toBe(true);
+  });
+
+  test('produces a valid grade-3 instance', () => {
+    const instance = generate('anacrusis_recognition', { grade: 3, seed: 1, atoms });
+    expect(instance.template_id).toBe('anacrusis_recognition');
     expect(validate(instance).ok).toBe(true);
   });
 });

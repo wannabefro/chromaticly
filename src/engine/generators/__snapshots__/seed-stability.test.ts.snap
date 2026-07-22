@@ -42409,6 +42409,2251 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte anacrusis_recognition @ anacrusis-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "2 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "2 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "2 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "3 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "4 beats",
+      "3 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte interval_naming @ intervals-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -53830,6 +56075,2251 @@ exports[`seed-stability — grade-3-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "add_time_signature",
+  },
+]
+`;
+
+exports[`seed-stability — grade-3-only generator extras are pinned byte-for-byte anacrusis_recognition (anacrusis-3, pre-lesson pin, U4) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "2 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "2 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "2 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "3 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "4 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "4 beats",
+      "3 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "3 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1 beat",
+    },
+    "distractors": [
+      "2 beats",
+      "0 beats",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2 beats",
+    },
+    "distractors": [
+      "3 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Count the beats before the first barline, then check: the first and last bars together make one whole bar.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.",
+    ],
+    "id": "anacrusis_recognition:g3:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats are in the upbeat (anacrusis)?",
+    "srs_tags": [
+      "anacrusis:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "anacrusis": true,
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "anacrusis_recognition",
   },
 ]
 `;

@@ -1,6 +1,6 @@
 {
   "grade": 3,
-  "version": "g3-lessons-2026-07-20c",
+  "version": "g3-lessons-2026-07-20d",
   "lessons": [
     {
       "id": "minor-keys-3",
@@ -296,6 +296,43 @@
         },
         "smartTip": "Count in 3rds from a landmark you already know, not ledger line by ledger line from the stave — line to space to line gets you there in half the steps.",
         "didYouKnow": "Ledger lines have no upper limit — orchestral parts for piccolo or double bass sometimes stack five or six of them, though this course never asks for more than one beyond Grade 2's range."
+      },
+      "unlocks": "anacrusis-3"
+    },
+    {
+      "id": "anacrusis-3",
+      "title": "Anacrusis — starting on an upbeat",
+      "strand": "rhythm",
+      "atoms": [
+        "anacrusis:2/4",
+        "anacrusis:3/4",
+        "anacrusis:4/4"
+      ],
+      "templates": [
+        "anacrusis_recognition"
+      ],
+      "worked_example": {
+        "template_id": "anacrusis_recognition",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "What an anacrusis (upbeat) is — one or more notes that lead into the first full bar",
+          "Why the first partial bar and the final bar together always make one complete bar",
+          "How to count the beats in the upbeat from the stave"
+        ],
+        "concept": {
+          "title": "Starting before the first full bar",
+          "body": "An anacrusis — an upbeat — is a run-up of notes before the first full bar, landing on the first strong beat. Because that opening bar is short, it has \"borrowed\" beats from a full bar's worth; the piece pays them back with a matching short bar at the very end, so the first bar and the last bar together always add up to exactly one whole bar. To find how many beats are in the upbeat, count the beats from the start of the piece to the first barline.",
+          "example": {
+            "template_id": "anacrusis_recognition",
+            "grade": 3,
+            "seed": 2
+          }
+        },
+        "smartTip": "Count backwards from the first barline to the very first note — however many beats that takes is the length of the upbeat.",
+        "didYouKnow": "Plenty of familiar songs start on an upbeat — \"Hap-py birth-day to you\" begins on the third beat of the bar — which is why the word anacrusis comes from the Greek for \"striking up\"."
       },
       "unlocks": null
     }

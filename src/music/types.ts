@@ -73,5 +73,11 @@ export interface Music {
    *  beams by the true `time_sig` — used for "guess the signature" stimuli where the
    *  grouping must remain honest even though the glyph is hidden. */
   time_sig_hidden?: boolean;
+  /** When true, the stimulus begins with a partial (upbeat) bar — a
+   *  self-describing marker for the anacrusis_recognition template. The
+   *  emitter never reads this field; the pickup is rendered structurally (a
+   *  short first bar in the event stream), so this flag cannot change
+   *  emitted abc — it only lets the generator/validator declare intent. */
+  anacrusis?: boolean;
   voices: Voice[];
 }

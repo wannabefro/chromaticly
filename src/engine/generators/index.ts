@@ -2,6 +2,7 @@
 
 import type { ExerciseInstance } from '../schema';
 import { addTimeSignature } from './add-time-signature';
+import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { findTheBar } from './find-the-bar';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
@@ -28,6 +29,7 @@ export const GENERATORS: Record<string, Generator> = {
   bar_validity: barValidity,
   add_time_signature: addTimeSignature,
   metre_classification: metreClassification,
+  anacrusis_recognition: anacrusisRecognition,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
 };

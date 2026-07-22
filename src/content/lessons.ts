@@ -16,6 +16,7 @@ import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
+import { isCompoundTimeSignature } from '../engine/metre';
 import { diatonicPitchesInRange, renderableTimeSignatures, scopeForGrade } from '../engine/scope';
 import type { Clef } from '../music/types';
 import { assertRhythmFillsBars } from './teach-rhythm';
@@ -99,6 +100,18 @@ export function assertAtomResolves(atom: string, grade: number): void {
       const [sig] = parts;
       if (!scopeForGrade(grade).timeSignatures.includes(sig) || !renderableTimeSignatures(grade).includes(sig)) {
         throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} time signature`);
+      }
+      return;
+    }
+    case 'anacrusis': {
+      if (parts.length !== 1) throw new Error(`lessons: malformed anacrusis atom "${atom}"`);
+      const [sig] = parts;
+      if (
+        isCompoundTimeSignature(sig) ||
+        !renderableTimeSignatures(grade).includes(sig) ||
+        !scopeForGrade(grade).rhythmDevices.includes('anacrusis')
+      ) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} simple anacrusis signature`);
       }
       return;
     }

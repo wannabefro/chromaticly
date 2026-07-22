@@ -219,11 +219,18 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(g3.minorForms).toEqual(['harmonic', 'melodic']);
   });
 
-  test('rhythmDevices/clefs are frozen at grade-2 values — anacrusis stays deferred (D1); pitchRanges widens (see the ledger-lines-3 block below)', () => {
+  test('clefs are frozen at grade-2 values; rhythmDevices widens with anacrusis (D6); pitchRanges widens (see the ledger-lines-3 block below)', () => {
     const g2 = scopeForGrade(2);
     const g3 = scopeForGrade(3);
-    expect(g3.rhythmDevices).toEqual(g2.rhythmDevices);
     expect(g3.clefs).toEqual(g2.clefs);
+  });
+
+  test('anacrusis is a Grade 3 device — rhythmDevices = grade-2 list unioned with KB.grade3Adds.rhythm_devices (D6)', () => {
+    const g2 = scopeForGrade(2);
+    const g3 = scopeForGrade(3);
+    expect(g3.rhythmDevices).toEqual([...g2.rhythmDevices, 'anacrusis']);
+    expect(g2.rhythmDevices).not.toContain('anacrusis');
+    expect(scopeForGrade(1).rhythmDevices).not.toContain('anacrusis');
   });
 
   test('noteValues = grade-2 list unioned with KB.grade3Adds.note_values (demisemiquaver) — enters scope now that bar-math (U4) has its UNITS row (D2/R1)', () => {

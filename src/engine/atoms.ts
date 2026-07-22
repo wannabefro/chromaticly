@@ -68,6 +68,12 @@ export function metreAtom(sig: string): string {
 /** Music in Context find-the-bar (302.4) — one atom per bar property the learner
  *  can be asked to spot, so mastery tracks "can find the highest note" separately
  *  from "can find the longest". */
+/** One atom per simple time signature the anacrusis_recognition MCQ can be
+ *  asked about (D5) — mirrors metreAtom's per-signature SRS discipline. */
+export function anacrusisAtom(sig: string): string {
+  return `anacrusis:${sig}`;
+}
+
 export function findBarAtom(property: string): string {
   return `find_bar:${property}`;
 }
