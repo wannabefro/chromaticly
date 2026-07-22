@@ -64,10 +64,10 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
     expect(level3.unitIds).toEqual(LESSONS_BY_GRADE[3].map((l) => l.id));
   });
 
-  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (24 stars for 8 grade-3 units)', () => {
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (27 stars for 9 grade-3 units)', () => {
     expect(level3.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
-    expect(level3.unitIds).toHaveLength(8);
-    expect(level3.examGate.unlockAtStars).toBe(24);
+    expect(level3.unitIds).toHaveLength(9);
+    expect(level3.examGate.unlockAtStars).toBe(27);
   });
 
   // The unlock gate is the PREVIOUS grade's exam (Grade 2's) — and no Grade 2

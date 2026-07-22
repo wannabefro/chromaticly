@@ -48794,6 +48794,2252 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte octave_transposition @ transposition-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Eb4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Eb4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s0",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Eb5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s1",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "F3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "F3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s2",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s3",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s4",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "A2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "A2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s5",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s6",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s7",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s8",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Eb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab2",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab2",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s9",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Ab4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "Db3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "Db3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s10",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "Db4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Db4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semibreve",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semibreve",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s11",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Bb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s12",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s13",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s14",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "G3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "G3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s15",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s16",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Ab4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Ab4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Ab4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s17",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+        "direction": "down",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave lower, in the bass clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s18",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each note is the SAME letter name, one octave away, on the new clef.",
+    },
+    "grade": 3,
+    "hints": [
+      "Keep the same letter name for every note — only the octave changes. Copy the rhythm exactly, note for note.",
+    ],
+    "id": "octave_transposition:g3:s19",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody one octave higher, in the treble clef — same letter names, same rhythm.",
+    "srs_tags": [
+      "transpose:octave",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "octave_transposition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte scale_construction @ melodic-minor-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

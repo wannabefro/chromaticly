@@ -228,7 +228,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 -> ledger-lines-3 -> anacrusis-3 chain', () => {
+  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 -> ledger-lines-3 -> anacrusis-3 -> transposition-3 chain', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'minor-keys-3',
       'minor-scales-3',
@@ -238,6 +238,7 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
       'intervals-3',
       'ledger-lines-3',
       'anacrusis-3',
+      'transposition-3',
     ]);
   });
 
@@ -258,9 +259,10 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
         'intervals-3',
         'ledger-lines-3',
         'anacrusis-3',
+        'transposition-3',
       ]),
     );
-    expect(LESSONS[LESSONS.length - 1].id).toBe('anacrusis-3');
+    expect(LESSONS[LESSONS.length - 1].id).toBe('transposition-3');
   });
 });
 
@@ -294,18 +296,41 @@ describe('ledger-lines-3 lesson (chromaticly-1v5.6)', () => {
 });
 
 // The Grade 3 anacrusis slice: single-template discipline (mirrors
-// intervals-3/ledger-lines-3, D7) and the new terminal lesson of the chain.
+// intervals-3/ledger-lines-3, D7).
 describe('anacrusis-3 lesson (chromaticly-1v5.3)', () => {
-  test('strand is rhythm and it carries the single template anacrusis_recognition, unlocking nothing (the new grade-3 terminal)', () => {
+  test('strand is rhythm and it carries the single template anacrusis_recognition, unlocking transposition-3 (D10 merge rule)', () => {
     const lesson = lessonById('anacrusis-3');
     expect(lesson).toBeTruthy();
     expect(lesson!.strand).toBe('rhythm');
     expect(lesson!.templates).toEqual(['anacrusis_recognition']);
-    expect(lesson!.unlocks).toBeNull();
+    expect(lesson!.unlocks).toBe('transposition-3');
   });
 
   test('every anacrusis-3 atom resolves at grade 3 and throws at grades 1/2 (rhythmDevices gate, D6)', () => {
     const lesson = lessonById('anacrusis-3')!;
+    for (const atom of lesson.atoms) {
+      expect(() => assertAtomResolves(atom, 3)).not.toThrow();
+      expect(() => assertAtomResolves(atom, 1)).toThrow();
+      expect(() => assertAtomResolves(atom, 2)).toThrow();
+    }
+  });
+});
+
+// U8 (octave-transposition slice, D10): the new grade-3 terminal lesson —
+// single-template discipline (mirrors anacrusis-3/intervals-3, D7) and the
+// transpose:octave atom, which resolves ONLY at grade 3 (the generator's own
+// GENERATOR_GRADE lock, octave-transposition.ts:98).
+describe('transposition-3 lesson (U8)', () => {
+  test('strand is pitch and it carries the single template octave_transposition, unlocking nothing (the new grade-3 terminal)', () => {
+    const lesson = lessonById('transposition-3');
+    expect(lesson).toBeTruthy();
+    expect(lesson!.strand).toBe('pitch');
+    expect(lesson!.templates).toEqual(['octave_transposition']);
+    expect(lesson!.unlocks).toBeNull();
+  });
+
+  test('every transposition-3 atom resolves at grade 3 and throws at grades 1/2 (generator-grade lock, not just a scope flag)', () => {
+    const lesson = lessonById('transposition-3')!;
     for (const atom of lesson.atoms) {
       expect(() => assertAtomResolves(atom, 3)).not.toThrow();
       expect(() => assertAtomResolves(atom, 1)).toThrow();

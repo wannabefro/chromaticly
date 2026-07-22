@@ -189,6 +189,18 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'transpose': {
+      // octave_transposition (D1/D10) is hardcoded to GENERATOR_GRADE = 3
+      // (octave-transposition.ts:98) — it has no scope flag of its own, so
+      // grade 3 is the gate directly, mirroring that generator's own lock.
+      if (parts.length !== 1 || parts[0] !== 'octave') {
+        throw new Error(`lessons: malformed transpose atom "${atom}"`);
+      }
+      if (grade !== 3) {
+        throw new Error(`lessons: atom "${atom}" only resolves at grade 3`);
+      }
+      return;
+    }
     default:
       throw new Error(`lessons: atom "${atom}" has unknown kind "${kind}"`);
   }

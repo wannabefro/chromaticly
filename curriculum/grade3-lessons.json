@@ -1,6 +1,6 @@
 {
   "grade": 3,
-  "version": "g3-lessons-2026-07-20d",
+  "version": "g3-lessons-2026-07-20e",
   "lessons": [
     {
       "id": "minor-keys-3",
@@ -333,6 +333,41 @@
         },
         "smartTip": "Count backwards from the first barline to the very first note — however many beats that takes is the length of the upbeat.",
         "didYouKnow": "Plenty of familiar songs start on an upbeat — \"Hap-py birth-day to you\" begins on the third beat of the bar — which is why the word anacrusis comes from the Greek for \"striking up\"."
+      },
+      "unlocks": "transposition-3"
+    },
+    {
+      "id": "transposition-3",
+      "title": "Octave transposition — treble to bass and back",
+      "strand": "pitch",
+      "atoms": [
+        "transpose:octave"
+      ],
+      "templates": [
+        "octave_transposition"
+      ],
+      "worked_example": {
+        "template_id": "octave_transposition",
+        "grade": 3,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "What octave transposition means — the same melody, rewritten a perfect octave away, in the opposite clef",
+          "Why every letter name stays exactly the same — only the octave number moves, never the letter",
+          "The fixed direction for each clef pair: treble down an octave into the bass clef, bass up an octave into the treble clef"
+        ],
+        "concept": {
+          "title": "Rewriting a melody an octave away",
+          "body": "Octave transposition means rewriting a melody a perfect octave away, in the opposite clef, while keeping every letter name and rhythm exactly the same. A melody given in the treble clef is rewritten one octave LOWER in the bass clef; a melody given in the bass clef is rewritten one octave HIGHER in the treble clef. Every note keeps its letter name — only its octave number changes, so a treble G4 becomes a bass G3, never a different letter. Copy the rhythm note for note too: same durations, same dots, same barlines — only the pitches move.",
+          "example": {
+            "template_id": "octave_transposition",
+            "grade": 3,
+            "seed": 3
+          }
+        },
+        "smartTip": "Keep the letter name and just move it one octave — a G stays a G, never becomes an A or an F, even though it lands on a different line or space on the new stave.",
+        "didYouKnow": "Octave transposition is the simplest kind of transposition, because the letter names never change — later grades add transposing to a different key altogether, like a clarinet in B♭ reading its part a tone higher than it actually sounds."
       },
       "unlocks": null
     }
