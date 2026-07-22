@@ -22,6 +22,7 @@ import { generate } from '../engine/generators';
 import { spellInKeySig } from '../engine/generators/key-spelling';
 import type { ExerciseInstance } from '../engine/schema';
 import { diatonicPitchesInRange } from '../engine/scope';
+import { noteY, PAPER_INSET } from './interactions/stave-geometry';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
 import { ExerciseLoop } from './ExerciseLoop';
@@ -266,16 +267,24 @@ describe('ExerciseLoop — transposition_input (U4/D5/D6): per-item grading prot
     return perItem[index].pitch.replace(/[#b]/g, '');
   }
 
+  // The answer stave is a single tap surface (design "tap-vertical = pitch"): a
+  // tap at a natural pitch's y snaps to that pitch, then spells it in-key.
+  function tapNatural(getByTestId: ReturnType<typeof render>['getByTestId'], naturalPitch: string) {
+    fireEvent.press(getByTestId('transposition-tap-surface'), {
+      nativeEvent: { locationY: PAPER_INSET + noteY(answerClef, naturalPitch) },
+    });
+  }
+
   function placeAllWrong(getByTestId: ReturnType<typeof render>['getByTestId']) {
     for (let i = 0; i < perItem.length; i++) {
-      fireEvent.press(getByTestId(`transposition-pitch-${wrongNaturalFor(i)}`));
+      tapNatural(getByTestId, wrongNaturalFor(i));
     }
   }
 
   function placeOneWrongRestCorrect(getByTestId: ReturnType<typeof render>['getByTestId']) {
-    fireEvent.press(getByTestId(`transposition-pitch-${wrongNaturalFor(0)}`));
+    tapNatural(getByTestId, wrongNaturalFor(0));
     for (let i = 1; i < perItem.length; i++) {
-      fireEvent.press(getByTestId(`transposition-pitch-${correctNaturalFor(i)}`));
+      tapNatural(getByTestId, correctNaturalFor(i));
     }
   }
 
@@ -315,7 +324,7 @@ describe('ExerciseLoop — transposition_input (U4/D5/D6): per-item grading prot
     expect(getByTestId('feedback-sheet-partial')).toBeTruthy();
 
     fireEvent.press(getByTestId('feedback-sheet-secondary')); // "Fix note 1"
-    fireEvent.press(getByTestId(`transposition-pitch-${correctNaturalFor(0)}`));
+    tapNatural(getByTestId, correctNaturalFor(0));
     fireEvent.press(getByTestId('check'));
     expect(getByTestId('feedback-sheet-correct')).toBeTruthy();
 

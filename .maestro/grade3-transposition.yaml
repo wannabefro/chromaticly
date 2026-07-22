@@ -1,0 +1,67 @@
+# Grade 3 octave transposition, transposition_input answer stave
+# (2026-07-20-004 plan, U8/U9). Seeds ?seed=transposition-3. Its point is the
+# TWO-SURFACE composition: the given melody rendered on the abcjs paper card
+# (stimulus-music) above a bespoke answer stave (transposition-input) whose
+# pitch rows are tap targets — a stave-placement exercise, not an MCQ, so this
+# mirrors intervals-stave-input.yaml's touch pattern rather than
+# grade3-anacrusis.yaml's option taps. `transposition-3` is the new Grade 3
+# terminal (D10 merge rule: appended after anacrusis-3, not ledger-lines-3),
+# so seeding auto-scrolls the map to it and reaching `unit-row-transposition-3`
+# is itself the proof the chain/unlock wiring is correct — no level-node scroll,
+# it would land past the level-3 header (same reasoning as grade3-anacrusis.yaml).
+#
+# The answer stave is a SINGLE tap surface (transposition-tap-surface): a tap
+# drops a note at the tapped height, snapped to the nearest in-range diatonic
+# pitch (design's "tap-vertical = pitch"). Tapping the surface centre places
+# whatever pitch sits there — which pitch is irrelevant to THIS test; the point
+# is that a tap places a note at all (ghost -> notehead), the on-glass proof
+# that hit-testing reaches the tap surface (a per-pitch-button model regressed
+# here: decorative Views intercepted the touch, jest never saw it).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=transposition-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-transposition-3" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-transposition-3" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g3-transposition-teach
+- tapOn: { id: "teach-start" }
+
+# The given melody (abcjs, on paper) and the bespoke answer stave both render.
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 20000
+- assertVisible: { id: "transposition-input" }
+- assertVisible: { id: "transposition-stave" }
+- assertVisible: { id: "transposition-caption" }
+
+# Nothing is placed yet, so slot 0 (the active slot, placement is strictly
+# sequential — TranspositionInput.tsx activeSlotIndex) still shows its ghost.
+- assertVisible: { id: "transposition-slot-0-ghost" }
+- takeScreenshot: g3-transposition-exercise-empty
+
+# THE TOUCH DOGFOOD: tapping the stave surface drops a note into the active
+# slot. The ghost is replaced by a real notehead once placed
+# (TranspositionInput.tsx's placed-branch), so the ghost disappearing is the
+# on-glass proof the tap actually reached the surface and placed.
+- tapOn: { id: "transposition-tap-surface" }
+- assertNotVisible: { id: "transposition-slot-0-ghost" }
+- takeScreenshot: g3-transposition-note-placed

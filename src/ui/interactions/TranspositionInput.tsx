@@ -23,6 +23,7 @@ import {
   type TranspositionResponse,
 } from '../grading';
 import { spellInKeySig } from '../../engine/generators/key-spelling';
+import { naturalPitchAtOrdinal, scientificPitchOrdinal } from '../../engine/generators/pitch-math';
 import { diatonicPitchesInRange } from '../../engine/scope';
 import { colors, fonts, shape, strandDef, type as typo } from '../theme';
 import {
@@ -31,6 +32,7 @@ import {
   LINE_GAP,
   LINE_TOP,
   ledgerLineYs,
+  MIDDLE_LINE_PITCH,
   noteY,
   PAPER_INSET,
   STAVE_LINES,
@@ -65,6 +67,24 @@ function answerClefOf(instance: ExerciseInstance): Clef {
  *  carry a placement, so they're skipped by construction, never targeted. */
 function activeSlotIndex(response: TranspositionResponse): number {
   return response.placements.findIndex((p) => p === null);
+}
+
+/** Inverse of `noteY`: which diatonic pitch does a tap at vertical `staveY`
+ *  (card-relative, PAPER_INSET already removed) land on? The design's tap
+ *  model is "tap the stave, a note drops at that height" — a single snap-to-
+ *  nearest surface, NOT one button per pitch (real staves are ~7px per step,
+ *  so per-pitch tap rects would overlap and be un-hittable). The tapped letter
+ *  is snapped to the nearest in-range diatonic position, then spelled in the
+ *  key (the accidental is implied by the key sig, exactly like the given
+ *  melody's own notation — never a per-note choice). Exported for unit tests. */
+export function pitchAtStaveY(clef: Clef, grade: number, keySig: KeySig, staveY: number): string {
+  const middleLineY = LINE_TOP + STEP * (STAVE_LINES - 1);
+  const refOrd = scientificPitchOrdinal(MIDDLE_LINE_PITCH[clef]);
+  const rawOrd = refOrd + Math.round((middleLineY - staveY) / STEP);
+  const ords = diatonicPitchesInRange(clef, grade).map(scientificPitchOrdinal);
+  const clamped = Math.max(Math.min(...ords), Math.min(Math.max(...ords), rawOrd));
+  const natural = naturalPitchAtOrdinal(clamped);
+  return keySig ? spellInKeySig(natural, keySig) : natural;
 }
 
 /** D9 "hear yours": the answer card's own PlayButton plays the LEARNER's
@@ -163,15 +183,15 @@ export function TranspositionInput({
       ? `${placedCount} of ${n} placed · tap the stave to drop note ${placedCount + 1}`
       : `${n} of ${n} placed`;
 
-  // The tapped row is the natural (letter-only) diatonic position — the
-  // accidental is never a per-note choice here (unlike StaveInput's picker):
-  // it's implied by the key signature, exactly like the given melody's own
-  // notation, so the placed pitch is spelled in-key before it's stored (the
-  // same spelling the generator used for per_item, key-spelling.ts).
-  const handlePitchPress = (naturalPitch: string) => {
+  // Tapping the stave drops a note into the active slot at the tapped height
+  // (design 9a: "tap the stave to drop note k"). The vertical tap position is
+  // snapped to the nearest in-range diatonic pitch and spelled in-key by
+  // pitchAtStaveY — the accidental is implied by the key sig, never a per-note
+  // choice (like the given melody's own notation).
+  const handleStaveTap = (localY: number) => {
     if (inputLocked || active === -1 || (response.locked[active] ?? false)) return;
     const placements = [...response.placements];
-    placements[active] = keySig ? spellInKeySig(naturalPitch, keySig) : naturalPitch;
+    placements[active] = pitchAtStaveY(clef, instance.grade, keySig, localY - PAPER_INSET);
     onResponseChange({ placements, locked: response.locked });
   };
 
@@ -191,7 +211,6 @@ export function TranspositionInput({
   };
 
   const canUndo = !inputLocked && response.placements.some((p, i) => p !== null && !(response.locked[i] ?? false));
-  const pitchRows = diatonicPitchesInRange(clef, instance.grade);
 
   // Rule 2: the answer stave is a notation display, so it carries its own play
   // affordance too — "hear yours" plays the LEARNER's placed notes (D9), not
@@ -209,32 +228,35 @@ export function TranspositionInput({
         testID="transposition-stave"
       >
         {Array.from({ length: STAVE_LINES }, (_, i) => (
-          <View key={i} style={[styles.staveLine, { top: PAPER_INSET + LINE_TOP + i * LINE_GAP * 2 }]} />
+          <View key={i} pointerEvents="none" style={[styles.staveLine, { top: PAPER_INSET + LINE_TOP + i * LINE_GAP * 2 }]} />
         ))}
-        <Text style={[styles.clef, { top: PAPER_INSET + LINE_TOP - 8 }]}>{CLEF_GLYPH[clef]}</Text>
+        <Text pointerEvents="none" style={[styles.clef, { top: PAPER_INSET + LINE_TOP - 8 }]}>
+          {CLEF_GLYPH[clef]}
+        </Text>
         {keySig != null && (
-          <Text style={[styles.keySig, { left: PAPER_INSET + SLOT_MARGIN_LEFT - 24, top: PAPER_INSET + LINE_TOP - 4 }]}>
+          <Text
+            pointerEvents="none"
+            style={[styles.keySig, { left: PAPER_INSET + SLOT_MARGIN_LEFT - 24, top: PAPER_INSET + LINE_TOP - 4 }]}
+          >
             {keySigGlyphs(keySig)}
           </Text>
         )}
 
-        {/* Pitch rows: one Pressable per diatonic pitch, spanning the whole card —
-            tapping anywhere on a row places that pitch into the active slot (the
-            design's "tap-vertical = pitch" model; x is never chosen by the tap). */}
-        {!inputLocked &&
-          active !== -1 &&
-          pitchRows.map((pitch) => {
-            const y = PAPER_INSET + noteY(clef, pitch);
-            return (
-              <Pressable
-                key={pitch}
-                testID={`transposition-pitch-${pitch}`}
-                accessibilityLabel={`place note ${active + 1}`}
-                onPress={() => handlePitchPress(pitch)}
-                style={[styles.pitchRow, { top: y - shape.tapMin / 2 }]}
-              />
-            );
-          })}
+        {/* A single tap surface over the stave — tapping anywhere drops a note
+            into the active slot at the tapped height (design's "tap-vertical =
+            pitch"). One large Pressable, not per-pitch rects: diatonic steps are
+            ~7px apart, so per-pitch tap targets would overlap and be un-hittable
+            on a real device (jest's layout-free renderer never sees that). The
+            decorative Views below it are pointerEvents="none" so nothing
+            intercepts the touch. */}
+        {!inputLocked && active !== -1 && (
+          <Pressable
+            testID="transposition-tap-surface"
+            accessibilityLabel={`place note ${active + 1}`}
+            onPress={(e) => handleStaveTap(e.nativeEvent.locationY)}
+            style={styles.tapSurface}
+          />
+        )}
 
         {Array.from({ length: n }, (_, i) => {
           const item = items[i];
@@ -250,7 +272,12 @@ export function TranspositionInput({
           const hollow = item.dur === 'semibreve' || item.dur === 'minim';
 
           return (
-            <View key={i} testID={`transposition-slot-${i}`} style={[styles.slot, { left: slotX(i) - slotWidth / 2, width: slotWidth }]}>
+            <View
+              key={i}
+              pointerEvents="none"
+              testID={`transposition-slot-${i}`}
+              style={[styles.slot, { left: slotX(i) - slotWidth / 2, width: slotWidth }]}
+            >
               {placed != null &&
                 ledgerLineYs(noteY(clef, placed)).map((ly) => (
                   <View key={ly} style={[styles.ledgerLine, { top: PAPER_INSET + ly }]} />
@@ -336,7 +363,7 @@ const styles = StyleSheet.create({
   staveLine: { position: 'absolute', left: PAPER_INSET, right: PAPER_INSET, height: 1.4, backgroundColor: colors.paperLine },
   clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
   keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: 18, color: colors.paperInk },
-  pitchRow: { position: 'absolute', left: 0, right: 0, height: shape.tapMin },
+  tapSurface: { position: 'absolute', left: PAPER_INSET + SLOT_MARGIN_LEFT - 10, right: PAPER_INSET, top: 0, bottom: 0 },
   slot: { position: 'absolute', top: 0, bottom: 0 },
   ghostSlot: { position: 'absolute', left: '50%', marginLeft: -5, width: 10, height: 10, borderRadius: 5, backgroundColor: colors.paperSlot },
   lockedHalo: { position: 'absolute', left: '50%', marginLeft: -15, width: 30, height: 30, borderRadius: 15, backgroundColor: colors.correctSurface },

@@ -16,8 +16,8 @@ import { StyleSheet } from 'react-native';
 
 import type { ExerciseInstance } from '../../engine/schema';
 import { transpositionBeginFix, type TranspositionResponse } from '../grading';
-import { noteY, PAPER_INSET } from './stave-geometry';
-import { TranspositionInput, transpositionCanCheck, transpositionEmptyResponse } from './TranspositionInput';
+import { noteY, PAPER_INSET, STEP } from './stave-geometry';
+import { pitchAtStaveY, TranspositionInput, transpositionCanCheck, transpositionEmptyResponse } from './TranspositionInput';
 
 const instance: ExerciseInstance = {
   id: 'test-transposition-1',
@@ -68,6 +68,15 @@ function emptyResponse(): TranspositionResponse {
   return transpositionEmptyResponse(instance);
 }
 
+// The stave is a single tap surface (design "tap-vertical = pitch"); a tap at a
+// given diatonic pitch's y places that pitch. locationY is card-relative, and
+// the surface sits at top:0, so it equals PAPER_INSET + noteY(clef, pitch).
+function tapPitch(getByTestId: (id: string) => { props: unknown }, pitch: string, clef: 'treble' | 'bass' = 'bass') {
+  fireEvent.press(getByTestId('transposition-tap-surface') as never, {
+    nativeEvent: { locationY: PAPER_INSET + noteY(clef, pitch) },
+  });
+}
+
 function renderInput(response: TranspositionResponse, graded: boolean | null = null, onResponseChange = jest.fn()) {
   return {
     onResponseChange,
@@ -77,29 +86,51 @@ function renderInput(response: TranspositionResponse, graded: boolean | null = n
   };
 }
 
+describe('pitchAtStaveY — a tap snaps to the nearest in-range diatonic pitch, spelled in-key', () => {
+  test('a tap exactly on a pitch position returns that pitch', () => {
+    expect(pitchAtStaveY('bass', 3, 'C_major', noteY('bass', 'C4'))).toBe('C4');
+    expect(pitchAtStaveY('bass', 3, 'C_major', noteY('bass', 'E4'))).toBe('E4');
+  });
+
+  test('a tap between two positions snaps to the nearer one (< half a step away)', () => {
+    const nearC4 = noteY('bass', 'C4') - STEP * 0.4; // drift toward D4 but still closest to C4
+    expect(pitchAtStaveY('bass', 3, 'C_major', nearC4)).toBe('C4');
+  });
+
+  test('the placed letter is spelled by the key signature (F -> F# in G major)', () => {
+    expect(pitchAtStaveY('bass', 3, 'G_major', noteY('bass', 'F3'))).toBe('F#3');
+  });
+
+  test('a tap beyond the reading range clamps to the range edge, never off-staff nonsense', () => {
+    const wayHigh = noteY('bass', 'G4') - STEP * 20;
+    const placed = pitchAtStaveY('bass', 3, 'C_major', wayHigh);
+    expect(placed).toBe('G4'); // bass grade-3 reading ceiling
+  });
+});
+
 describe('TranspositionInput — placement is pitch-only and sequential', () => {
   test('the first tap fills slot 0 with the tapped pitch — the learner never chooses a duration', () => {
     const { onResponseChange, getByTestId } = renderInput(emptyResponse());
-    fireEvent.press(getByTestId('transposition-pitch-C4'));
+    tapPitch(getByTestId, 'C4');
     expect(onResponseChange).toHaveBeenCalledWith({ placements: ['C4', null, null], locked: [] });
   });
 
   test('a subsequent tap advances to the next unfilled slot, not back to slot 0', () => {
     const afterFirst: TranspositionResponse = { placements: ['C4', null, null], locked: [] };
     const { onResponseChange, getByTestId } = renderInput(afterFirst);
-    fireEvent.press(getByTestId('transposition-pitch-E4'));
+    tapPitch(getByTestId, 'E4');
     expect(onResponseChange).toHaveBeenCalledWith({ placements: ['C4', 'E4', null], locked: [] });
   });
 
-  test('once every slot is filled, no pitch row renders — there is nothing left to place', () => {
+  test('once every slot is filled, the tap surface is gone — there is nothing left to place', () => {
     const full: TranspositionResponse = { placements: ['C4', 'E4', 'G4'], locked: [] };
     const { queryByTestId } = renderInput(full);
-    expect(queryByTestId('transposition-pitch-C4')).toBeNull();
+    expect(queryByTestId('transposition-tap-surface')).toBeNull();
   });
 });
 
 describe('TranspositionInput — a tapped pitch row is spelled in the given key, like the given melody', () => {
-  test('tapping the "F" row in a sharp key places the key-spelled pitch (F#), not the bare natural', () => {
+  test('tapping the "F" position in a sharp key places the key-spelled pitch (F#), not the bare natural', () => {
     const gMajorInstance: ExerciseInstance = {
       ...instance,
       stimulus: { ...instance.stimulus, music: { ...instance.stimulus.music!, key_sig: 'G_major' } },
@@ -113,7 +144,7 @@ describe('TranspositionInput — a tapped pitch row is spelled in the given key,
     const { getByTestId } = render(
       <TranspositionInput instance={gMajorInstance} response={{ placements: [null], locked: [] }} graded={null} strand="pitch" onResponseChange={onResponseChange} />,
     );
-    fireEvent.press(getByTestId('transposition-pitch-F3'));
+    tapPitch(getByTestId, 'F3');
     expect(onResponseChange).toHaveBeenCalledWith({ placements: ['F#3'], locked: [] });
   });
 });
@@ -165,7 +196,7 @@ describe('TranspositionInput — fix-mode locks correct slots', () => {
     expect(fixed).toEqual({ placements: ['C4', null, 'G4'], locked: [true, false, true] });
 
     const { onResponseChange, getByTestId } = renderInput(fixed, null);
-    fireEvent.press(getByTestId('transposition-pitch-E4'));
+    tapPitch(getByTestId, 'E4');
     // Slot 0 (locked, correct) and slot 2 (locked, correct) are untouched;
     // only slot 1 — the sole unlocked slot — receives the new placement.
     expect(onResponseChange).toHaveBeenCalledWith({ placements: ['C4', 'E4', 'G4'], locked: [true, false, true] });
