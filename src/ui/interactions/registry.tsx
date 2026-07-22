@@ -23,6 +23,7 @@ import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
 import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
+import { transpositionInputSpec } from './TranspositionInput';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
 
@@ -192,6 +193,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   flashcard: flashcardSpec,
   stave_input: staveInputSpec,
   find_the_bar: findTheBarSpec,
+  transposition_input: transpositionInputSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

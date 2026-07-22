@@ -21,6 +21,7 @@ const SLICE_FILES = [
   'ui/interactions/Mcq.tsx',
   'ui/interactions/FindTheBar.tsx',
   'ui/interactions/StaveInput.tsx',
+  'ui/interactions/TranspositionInput.tsx',
   'ui/interactions/registry.tsx',
   'ui/SetRunner.tsx',
   'ui/SetComplete.tsx',

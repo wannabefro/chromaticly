@@ -14,6 +14,7 @@ import type { ReactNode } from 'react';
 
 import type { ExerciseInstance } from '../../engine/schema';
 import type { SrsGrade } from '../../learn/srs';
+import type { Music } from '../../music/types';
 import type { Strand } from '../theme';
 
 export interface InteractionComponentProps<Response> {
@@ -28,6 +29,12 @@ export interface InteractionComponentProps<Response> {
    *  way a self-graded interaction reports its outcome upward. Unused by
    *  checked interactions (mcq/text_input/true_false). */
   onSelfGrade?: (grade: SrsGrade) => void;
+  /** Plays a Music the interaction builds itself (e.g. transposition_input's
+   *  answer-so-far), against the persistent stimulus surface — the "hear yours"
+   *  affordance (D9). Lands here so the protocol changes once; ExerciseLoop
+   *  only wires a real implementation from U7 onward, so this stays undefined
+   *  (and unused) until then. */
+  onPlayMusic?: (music: Music) => void;
 }
 
 export interface InteractionSpec<Response = unknown> {
@@ -46,8 +53,11 @@ export interface InteractionSpec<Response = unknown> {
    *  own submission affordance (e.g. flashcard's self-grade buttons) and the
    *  shared Check button is hidden. */
   submits: boolean;
-  /** The FeedbackSheet's correct-answer render for an incorrect attempt. */
-  correctAnswerView(instance: ExerciseInstance): ReactNode;
+  /** The FeedbackSheet's correct-answer render for an incorrect attempt. `response`
+   *  is optional (bivariant method-syntax keeps existing one-arg implementations
+   *  assignable, D5) — only per-item-graded interactions (transposition_input)
+   *  need it; the rest ignore the second argument entirely. */
+  correctAnswerView(instance: ExerciseInstance, response?: Response): ReactNode;
   /** Optional score-tap protocol (design 4c). An interaction whose answer is a
    *  position in the notation (find-the-bar) implements these so the loop can wire
    *  the persistent NotationCard both ways without knowing the interaction type:
@@ -55,4 +65,20 @@ export interface InteractionSpec<Response = unknown> {
   onSurfaceTap?(bar: number, response: Response): Response;
   /** Which bar (1-indexed) the current response should tint in the score, or null. */
   surfaceHighlight?(response: Response): number | null;
+  /** Per-item feedback summary (D5): non-null only when some but not all items are
+   *  correct — drives the amber `partial` FeedbackSheet instead of the plain
+   *  incorrect one. All-right and all-wrong both return null (those route to the
+   *  existing correct/incorrect sheets, unchanged). */
+  partialFeedback?(
+    instance: ExerciseInstance,
+    response: Response,
+  ): { correct: number; total: number; message: string; fixLabel: string } | null;
+  /** Overrides the shared Check button's label (e.g. "Check — 2 notes left").
+   *  Falls back to "Check" when absent. */
+  checkLabel?(instance: ExerciseInstance, response: Response): string;
+  /** Re-entry into fix mode (D6): "Fix note k" clears the wrong item(s) back to
+   *  unanswered and locks the right ones, returning the new response. The loop
+   *  resets `graded` to null after calling this but never launders the verdict —
+   *  see `everFailed` at the call site. */
+  beginFix?(instance: ExerciseInstance, response: Response): Response;
 }

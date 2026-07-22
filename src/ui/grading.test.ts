@@ -1,7 +1,21 @@
 import { generate } from '../engine/generators';
 import { atomsForTemplate } from '../engine/generators/test-helpers';
 import type { ExerciseInstance } from '../engine/schema';
-import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel, toResult } from './grading';
+import {
+  assembleOptions,
+  gradeMcq,
+  gradeStaveInput,
+  gradeText,
+  gradeTransposition,
+  gradeTrueFalse,
+  optionLabel,
+  toResult,
+  transpositionBeginFix,
+  transpositionCheckLabel,
+  transpositionSummary,
+  transpositionVerdicts,
+  type TranspositionResponse,
+} from './grading';
 
 describe('optionLabel — every G1 answer shape gets a readable label', () => {
   test.each([
@@ -161,6 +175,159 @@ describe('gradeStaveInput — correct only when BOTH pitch and duration match (A
   test('no placement (null response) never grades correct', () => {
     const instance = generate('interval_naming_stave_input', { grade: 1, seed: 3, atoms: [] });
     expect(gradeStaveInput(instance, null)).toBe(false);
+  });
+});
+
+// U5/D4/D5: octave transposition's per-note grading, exercised against a
+// hand-built instance (direction/misconception cases need precise control
+// over source/target/placed values that a generated seed can't guarantee).
+describe('transposition grading (Grade 3 octave transposition, D4/D5)', () => {
+  const downInstance: ExerciseInstance = {
+    id: 'test-transposition-down',
+    template_id: 'octave_transposition',
+    grade: 3,
+    strand: 'pitch',
+    prompt: 'Rewrite this melody one octave lower, in the bass clef.',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: 'C_major',
+        time_sig: '4/4',
+        voices: [
+          {
+            events: [
+              { type: 'note', pitch: 'C5', dur: 'crotchet' },
+              { type: 'note', pitch: 'E5', dur: 'crotchet' },
+              { type: 'note', pitch: 'G5', dur: 'minim' },
+              { type: 'barline', style: 'double' },
+            ],
+          },
+        ],
+      },
+      text: null,
+    },
+    interaction: { type: 'transposition_input', config: { answerClef: 'bass', direction: 'down' } },
+    answer: {
+      canonical: [
+        { pitch: 'C4', dur: 'crotchet' },
+        { pitch: 'E4', dur: 'crotchet' },
+        { pitch: 'G4', dur: 'minim' },
+      ],
+      accepted_alternatives: [],
+      per_item: [
+        { pitch: 'C4', dur: 'crotchet' },
+        { pitch: 'E4', dur: 'crotchet' },
+        { pitch: 'G4', dur: 'minim' },
+      ],
+    },
+    distractors: [],
+    hints: [],
+    feedback: { correct: 'Correct!', incorrect: 'Not quite — check each note is the SAME letter name, one octave away, on the new clef.' },
+    srs_tags: ['transpose:octave'],
+    kb_version: 'test',
+  };
+
+  test('exact pitch match, spelling included — an enharmonic respelling does not satisfy the target', () => {
+    const exact: TranspositionResponse = { placements: ['C4', 'E4', 'G4'], locked: [] };
+    expect(gradeTransposition(downInstance, exact)).toBe(true);
+
+    const respelled: TranspositionResponse = { placements: ['B#3', 'E4', 'G4'], locked: [] };
+    expect(gradeTransposition(downInstance, respelled)).toBe(false);
+  });
+
+  test('one wrong note fails the whole item but yields a partial summary (grade !== feedback register)', () => {
+    const oneWrong: TranspositionResponse = { placements: ['C4', 'F4', 'G4'], locked: [] }; // E4 -> F4
+    expect(gradeTransposition(downInstance, oneWrong)).toBe(false);
+    expect(transpositionSummary(downInstance, oneWrong)).toMatchObject({ correct: 2, total: 3 });
+  });
+
+  // Rule 5 (name-the-misconception): asserts the substring, not just a non-empty
+  // message — this must fail if the "a 7th" logic is deleted or genericized.
+  test('an off-by-one-diatonic-step placement below the octave is named "a 7th, not an octave"', () => {
+    const nearMiss: TranspositionResponse = { placements: ['D4', 'E4', 'G4'], locked: [] }; // a 7th below C5, not the octave
+    const summary = transpositionSummary(downInstance, nearMiss);
+    expect(summary?.message).toContain('a 7th');
+    expect(summary?.message).toContain('Note 1');
+  });
+
+  test('a wrong letter entirely (not an off-by-one-step) gets the generic message, not "a 7th"', () => {
+    const wrongLetter: TranspositionResponse = { placements: ['A4', 'E4', 'G4'], locked: [] }; // far from C4, not a near-miss
+    const summary = transpositionSummary(downInstance, wrongLetter);
+    expect(summary?.message).not.toContain('a 7th');
+    expect(summary?.message).toContain('right letter name');
+  });
+
+  test('all-correct and all-wrong both yield no partial summary (only some-right-some-wrong)', () => {
+    const allCorrect: TranspositionResponse = { placements: ['C4', 'E4', 'G4'], locked: [] };
+    expect(transpositionSummary(downInstance, allCorrect)).toBeNull();
+
+    const allWrong: TranspositionResponse = { placements: ['D4', 'F4', 'A4'], locked: [] };
+    expect(transpositionSummary(downInstance, allWrong)).toBeNull();
+  });
+
+  test('transpositionVerdicts reports one boolean per slot, matching gradeTransposition\'s "every" semantics', () => {
+    const oneWrong: TranspositionResponse = { placements: ['C4', 'F4', 'G4'], locked: [] };
+    expect(transpositionVerdicts(downInstance, oneWrong)).toEqual([true, false, true]);
+  });
+
+  test('transpositionBeginFix keeps and locks correct slots, clears the wrong ones', () => {
+    const oneWrong: TranspositionResponse = { placements: ['C4', 'F4', 'G4'], locked: [] };
+    expect(transpositionBeginFix(downInstance, oneWrong)).toEqual({
+      placements: ['C4', null, 'G4'],
+      locked: [true, false, true],
+    });
+  });
+
+  // Mirrored wording for the 'up' direction (bass-given -> treble): a 7th-higher
+  // near-miss is "too low", not "too high".
+  test('the mirrored "up" direction names a 7th-higher near-miss as one position too low', () => {
+    const upInstance: ExerciseInstance = {
+      ...downInstance,
+      id: 'test-transposition-up',
+      interaction: { type: 'transposition_input', config: { answerClef: 'treble', direction: 'up' } },
+      answer: {
+        canonical: [{ pitch: 'G4', dur: 'crotchet' }, { pitch: 'C5', dur: 'minim' }],
+        accepted_alternatives: [],
+        per_item: [{ pitch: 'G4', dur: 'crotchet' }, { pitch: 'C5', dur: 'minim' }],
+      },
+    };
+    const nearMiss: TranspositionResponse = { placements: ['F4', 'C5'], locked: [] }; // a 7th above G3, not the octave
+    const summary = transpositionSummary(upInstance, nearMiss);
+    expect(summary?.message).toContain('a 7th');
+    expect(summary?.message).toContain('too low');
+  });
+
+  describe('length guard (Codex finding 7): every transposition function fails closed on a malformed response', () => {
+    test('gradeTransposition returns false when placements.length !== per_item.length', () => {
+      expect(gradeTransposition(downInstance, { placements: ['C4', 'E4'], locked: [] })).toBe(false);
+    });
+
+    test('transpositionSummary returns null on the same mismatch', () => {
+      expect(transpositionSummary(downInstance, { placements: ['C4', 'E4'], locked: [] })).toBeNull();
+    });
+
+    test('transpositionVerdicts returns [] on the same mismatch', () => {
+      expect(transpositionVerdicts(downInstance, { placements: ['C4', 'E4'], locked: [] })).toEqual([]);
+    });
+
+    test('transpositionBeginFix no-ops (returns the response unchanged) on the same mismatch', () => {
+      const malformed: TranspositionResponse = { placements: ['C4', 'E4'], locked: [] };
+      expect(transpositionBeginFix(downInstance, malformed)).toBe(malformed);
+    });
+
+    test('a locked array of the wrong non-zero length also fails closed', () => {
+      const malformed: TranspositionResponse = { placements: ['C4', 'E4', 'G4'], locked: [true] };
+      expect(gradeTransposition(downInstance, malformed)).toBe(false);
+    });
+  });
+
+  describe('transpositionCheckLabel — counts remaining unplaced notes', () => {
+    test('drives the disabled Check copy, falling back to plain "Check" once every slot is filled', () => {
+      expect(transpositionCheckLabel(downInstance, { placements: [null, null, null], locked: [] })).toBe('Check — 3 notes left');
+      expect(transpositionCheckLabel(downInstance, { placements: ['C4', null, null], locked: [] })).toBe('Check — 2 notes left');
+      expect(transpositionCheckLabel(downInstance, { placements: ['C4', 'E4', null], locked: [] })).toBe('Check — 1 note left');
+      expect(transpositionCheckLabel(downInstance, { placements: ['C4', 'E4', 'G4'], locked: [] })).toBe('Check');
+    });
   });
 });
 

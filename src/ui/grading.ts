@@ -3,9 +3,10 @@
 // labelled, matched, and turned into a mastery result — are unit-testable
 // without rendering. The UI layer (ExerciseLoop) is a thin shell over this.
 
+import { scientificPitchOrdinal } from '../engine/generators/pitch-math';
 import { mulberry32 } from '../engine/rng';
 import type { ExerciseInstance } from '../engine/schema';
-import type { Music } from '../music/types';
+import type { Dots, Duration, Music } from '../music/types';
 
 export interface Option {
   label: string;
@@ -137,4 +138,141 @@ export function gradeText(instance: ExerciseInstance, input: string): boolean {
  *  a hint was used (a hint-assisted correct must not advance mastery — U11/KTD10). */
 export function toResult(instance: ExerciseInstance, correct: boolean, hintsUsed: number): AttemptResult {
   return { atom: instance.srs_tags[0] ?? null, correct, hintsUsed };
+}
+
+// --- transposition_input grading (Grade 3 octave transposition, D4/D5/D6) ---
+// Per-note grading: one placement per per_item target, pitch-only (duration is
+// copied automatically, never graded). `locked` starts empty and is only
+// populated by transpositionBeginFix (D6, fix mode) — every function here
+// treats an empty `locked` as "not in fix mode yet", not as a length mismatch.
+
+export interface TranspositionResponse {
+  placements: (string | null)[];
+  locked: boolean[];
+}
+
+export interface TranspositionSummary {
+  correct: number;
+  total: number;
+  message: string;
+  fixLabel: string;
+}
+
+interface TranspositionTarget {
+  pitch: string;
+  dur: Duration;
+  dots?: Dots;
+}
+
+function transpositionTargets(instance: ExerciseInstance): TranspositionTarget[] | null {
+  const perItem = instance.answer.per_item;
+  return Array.isArray(perItem) ? (perItem as TranspositionTarget[]) : null;
+}
+
+function naturalOfPitch(pitch: string): string {
+  return pitch.replace(/[#b]/g, '');
+}
+
+function diatonicOrdinal(pitch: string): number {
+  return scientificPitchOrdinal(naturalOfPitch(pitch));
+}
+
+/** The length guard every transposition grading function fails closed on
+ *  (Codex finding 7, mirroring the per-item length check at :108 above):
+ *  `placements` must line up 1:1 with `per_item`, and `locked` — once
+ *  populated by fix mode — must too. Returns the validated targets, or null
+ *  when the response is malformed so callers can fail closed. */
+function validTranspositionResponse(instance: ExerciseInstance, response: TranspositionResponse): TranspositionTarget[] | null {
+  const perItem = transpositionTargets(instance);
+  if (!perItem) return null;
+  if (response.placements.length !== perItem.length) return null;
+  if (response.locked.length !== 0 && response.locked.length !== perItem.length) return null;
+  return perItem;
+}
+
+/** Per-slot verdicts, in slot order — exact spelling match against per_item
+ *  (durations are copied, not graded). Fails closed to `[]` on a malformed
+ *  response (length guard) rather than throwing. */
+export function transpositionVerdicts(instance: ExerciseInstance, response: TranspositionResponse): boolean[] {
+  const perItem = validTranspositionResponse(instance, response);
+  if (!perItem) return [];
+  return response.placements.map((p, i) => p === perItem[i].pitch);
+}
+
+/** Correct only when EVERY slot's placement matches its target pitch exactly
+ *  (spelling included — `F#4` is not satisfied by `F4`) — no partial credit. */
+export function gradeTransposition(instance: ExerciseInstance, response: TranspositionResponse): boolean {
+  const perItem = validTranspositionResponse(instance, response);
+  if (!perItem) return false;
+  return response.placements.every((p, i) => p === perItem[i].pitch);
+}
+
+/** 9b's misconception copy for the first wrong note. A placement exactly one
+ *  diatonic step short of the octave reads as "a 7th, not an octave" — the
+ *  classic near-miss (this ordinal model already treats one octave as 7
+ *  diatonic steps, D8/pitch-math.ts, so a 7th sits exactly one step closer to
+ *  the source than the octave-correct target). Anything else wrong — a
+ *  different letter entirely, or the right letter at the wrong octave by more
+ *  than one step — gets the generic name-the-right-letter message. */
+function transpositionMisconceptionMessage(
+  direction: 'up' | 'down',
+  noteIndex: number,
+  placed: string | null,
+  targetPitch: string,
+): string {
+  const noteNumber = noteIndex + 1;
+  if (placed == null) return `Note ${noteNumber} hasn't been placed yet.`;
+
+  const diff = diatonicOrdinal(placed) - diatonicOrdinal(targetPitch);
+  if (direction === 'down' && diff === 1) {
+    return `Note ${noteNumber} is a 7th lower, not an octave — one position too high. The dashed green circle shows the octave spot. Hear both to compare.`;
+  }
+  if (direction === 'up' && diff === -1) {
+    return `Note ${noteNumber} is a 7th higher, not an octave — one position too low. The dashed green circle shows the octave spot. Hear both to compare.`;
+  }
+  return `Note ${noteNumber} isn't the right letter name — check it against the given melody, one octave away.`;
+}
+
+/** The partial-credit summary (D5): non-null ONLY when some but not all notes
+ *  are correct — all-right and all-wrong both return null and route to the
+ *  existing plain correct/incorrect sheets, not this amber register. */
+export function transpositionSummary(instance: ExerciseInstance, response: TranspositionResponse): TranspositionSummary | null {
+  const perItem = validTranspositionResponse(instance, response);
+  if (!perItem) return null;
+
+  const verdicts = response.placements.map((p, i) => p === perItem[i].pitch);
+  const correct = verdicts.filter(Boolean).length;
+  const total = verdicts.length;
+  if (correct === 0 || correct === total) return null;
+
+  const wrongIndices = verdicts.reduce<number[]>((acc, ok, i) => (ok ? acc : [...acc, i]), []);
+  const direction = (instance.interaction.config?.direction as 'up' | 'down' | undefined) ?? 'down';
+  const firstWrong = wrongIndices[0];
+  const message = transpositionMisconceptionMessage(direction, firstWrong, response.placements[firstWrong], perItem[firstWrong].pitch);
+  const fixLabel = wrongIndices.length === 1 ? `Fix note ${firstWrong + 1}` : `Fix ${wrongIndices.length} notes`;
+
+  return { correct, total, message, fixLabel };
+}
+
+/** D6 fix-mode re-entry: correct slots are kept and locked (✓, non-editable);
+ *  wrong slots are cleared back to unanswered. Fails closed to a no-op
+ *  (returns `response` unchanged) on a malformed response. */
+export function transpositionBeginFix(instance: ExerciseInstance, response: TranspositionResponse): TranspositionResponse {
+  const perItem = validTranspositionResponse(instance, response);
+  if (!perItem) return response;
+
+  const verdicts = response.placements.map((p, i) => p === perItem[i].pitch);
+  return {
+    placements: response.placements.map((p, i) => (verdicts[i] ? p : null)),
+    locked: verdicts,
+  };
+}
+
+/** The shared Check button's label (design's live "Check — 2 notes left"),
+ *  falling back to plain "Check" once every slot is filled. */
+export function transpositionCheckLabel(instance: ExerciseInstance, response: TranspositionResponse): string {
+  const perItem = transpositionTargets(instance);
+  const total = perItem ? perItem.length : response.placements.length;
+  const remaining = total - response.placements.filter((p) => p !== null).length;
+  return remaining <= 0 ? 'Check' : `Check — ${remaining} note${remaining === 1 ? '' : 's'} left`;
 }

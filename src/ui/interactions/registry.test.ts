@@ -120,6 +120,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
       'mcq',
       'stave_input',
       'text_input',
+      'transposition_input',
       'true_false',
     ]);
   });
@@ -158,6 +159,55 @@ describe('registry — stave_input (U8, interval_naming_stave_input)', () => {
     const rendered = JSON.stringify(view);
     expect(rendered).toContain(canonical.pitch);
     expect(rendered).toContain(canonical.dur);
+  });
+});
+
+describe('registry — transposition_input (U6, octave_transposition)', () => {
+  const transpositionInstance = generate('octave_transposition', { grade: 3, seed: 1, atoms: ['transpose:octave'] });
+
+  test('emptyResponse sizes placements from per_item, locked empty until fix-mode', () => {
+    const spec = lookupInteraction('transposition_input');
+    const perItem = transpositionInstance.answer.per_item as unknown[];
+    expect(spec.emptyResponse(transpositionInstance)).toEqual({
+      placements: Array(perItem.length).fill(null),
+      locked: [],
+    });
+  });
+
+  test('canCheck is false until every slot is placed — checkLabel names how many remain', () => {
+    const spec = lookupInteraction('transposition_input');
+    const perItem = transpositionInstance.answer.per_item as { pitch: string }[];
+    const empty = { placements: Array(perItem.length).fill(null), locked: [] };
+    expect(spec.canCheck(empty)).toBe(false);
+    expect(spec.checkLabel?.(transpositionInstance, empty)).toBe(`Check — ${perItem.length} notes left`);
+
+    const full = { placements: perItem.map((p) => p.pitch), locked: [] };
+    expect(spec.canCheck(full)).toBe(true);
+    expect(spec.checkLabel?.(transpositionInstance, full)).toBe('Check');
+  });
+
+  test('grade requires every placement to match per_item exactly (no partial credit)', () => {
+    const spec = lookupInteraction('transposition_input');
+    const perItem = transpositionInstance.answer.per_item as { pitch: string }[];
+    const allCorrect = { placements: perItem.map((p) => p.pitch), locked: [] };
+    expect(spec.grade(transpositionInstance, allCorrect)).toBe(true);
+
+    const oneWrong = { placements: perItem.map((p, i) => (i === 0 ? 'Z9' : p.pitch)), locked: [] };
+    expect(spec.grade(transpositionInstance, oneWrong)).toBe(false);
+  });
+
+  test('submits is true — transposition_input uses the shared Check button', () => {
+    expect(lookupInteraction('transposition_input').submits).toBe(true);
+  });
+
+  test('correctAnswerView renders every target pitch, in the answer clef (not the stimulus clef)', () => {
+    const spec = lookupInteraction('transposition_input');
+    const perItem = transpositionInstance.answer.per_item as { pitch: string }[];
+    const view = spec.correctAnswerView(transpositionInstance) as { props: { music: { clef: string } } };
+    const rendered = JSON.stringify(view);
+    for (const { pitch } of perItem) expect(rendered).toContain(pitch);
+    expect(view.props.music.clef).toBe(transpositionInstance.interaction.config.answerClef);
+    expect(view.props.music.clef).not.toBe(transpositionInstance.stimulus.music.clef);
   });
 });
 

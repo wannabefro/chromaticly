@@ -57,6 +57,10 @@ export function ExerciseLoop({
   const spec = useMemo(() => lookupInteraction(instance.interaction.type), [instance.interaction.type]);
   const [response, setResponse] = useState<unknown>(() => spec.emptyResponse(instance));
   const [graded, setGraded] = useState<boolean | null>(null);
+  // D6 no-grade-laundering: once any check on this item has failed, the item's
+  // eventual result is `correct: false` even if a later fix-mode re-check passes
+  // (mastery/SRS must not credit a repaired attempt as a clean pass).
+  const [everFailed, setEverFailed] = useState(false);
   const hintsUsedRef = useRef(0);
   const surfaceRef = useRef<NotationCardHandle>(null);
   const scrollRef = useRef<ScrollView>(null);
@@ -68,6 +72,7 @@ export function ExerciseLoop({
     setPrev(instance);
     setResponse(spec.emptyResponse(instance));
     setGraded(null);
+    setEverFailed(false);
     hintsUsedRef.current = 0;
   }
 
@@ -98,18 +103,29 @@ export function ExerciseLoop({
   }, [spec, response, hue]);
 
   const check = useCallback(() => {
-    setGraded(Boolean(spec.grade(instance, response)));
+    const verdict = Boolean(spec.grade(instance, response));
+    if (!verdict) setEverFailed(true);
+    setGraded(verdict);
+  }, [spec, instance, response]);
+
+  const handleFix = useCallback(() => {
+    if (!spec.beginFix) return;
+    setResponse(spec.beginFix(instance, response));
+    setGraded(null);
   }, [spec, instance, response]);
 
   const handleContinue = useCallback(() => {
-    onResult(toResult(instance, graded ?? false, hintsUsedRef.current));
-  }, [onResult, instance, graded]);
+    onResult(toResult(instance, graded === true && !everFailed, hintsUsedRef.current));
+  }, [onResult, instance, graded, everFailed]);
 
   const handleHintUsed = useCallback((count: number) => {
     hintsUsedRef.current = count;
   }, []);
 
   const music = instance.stimulus.music;
+  // The amber partial sheet is only for some-right-some-wrong (D5) — an all-wrong
+  // attempt still routes to the plain incorrect sheet below.
+  const partialSummary = graded === false ? (spec.partialFeedback?.(instance, response) ?? null) : null;
 
   return (
     <View style={styles.container}>
@@ -149,17 +165,33 @@ export function ExerciseLoop({
           answers are full staves and overflow the screen). */}
       {graded === null && spec.submits && (
         <View style={styles.footer}>
-          <Button label="Check" strand={strand} disabled={!canCheck} onPress={check} testID="check" />
+          <Button
+            label={spec.checkLabel?.(instance, response) ?? 'Check'}
+            strand={strand}
+            disabled={!canCheck}
+            onPress={check}
+            testID="check"
+          />
         </View>
       )}
 
-      {graded !== null && (
+      {graded !== null && partialSummary != null ? (
         <FeedbackSheet
-          kind={graded ? 'correct' : 'incorrect'}
-          message={feedbackMessage?.(graded) ?? (graded ? instance.feedback.correct : instance.feedback.incorrect)}
-          correctAnswer={graded ? undefined : spec.correctAnswerView(instance)}
+          kind="partial"
+          badgeLabel={`${partialSummary.correct}/${partialSummary.total}`}
+          message={partialSummary.message}
+          secondaryAction={spec.beginFix ? { label: partialSummary.fixLabel, onPress: handleFix } : undefined}
           onContinue={handleContinue}
         />
+      ) : (
+        graded !== null && (
+          <FeedbackSheet
+            kind={graded ? 'correct' : 'incorrect'}
+            message={feedbackMessage?.(graded) ?? (graded ? instance.feedback.correct : instance.feedback.incorrect)}
+            correctAnswer={graded ? undefined : spec.correctAnswerView(instance, response)}
+            onContinue={handleContinue}
+          />
+        )
       )}
     </View>
   );

@@ -27,6 +27,13 @@ export const colors = {
   paperLine: '#2b2b2b',
   paperMuted: '#9a9488',
   paperSlot: '#d8d3c4',
+  // On-paper grading marks (turn9 9b) — these read against the light `--paper`
+  // card regardless of theme (rule 1), so they live alongside the paper tokens
+  // rather than the dark `correct`/`incorrect` pair, which is tuned for dark
+  // surfaces and doesn't match turn9's on-paper ✓/✗ (`#c9423d` vs `incorrect`'s
+  // `#e0575e` — flagged for a later token-file sync, plan deviation 3).
+  paperCorrect: '#3a9e63',
+  paperIncorrect: '#c9423d',
 
   // semantic
   correct: '#57cf87',

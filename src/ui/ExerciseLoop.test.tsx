@@ -18,7 +18,10 @@ jest.mock('react-native-webview', () => {
 
 import { fireEvent, render } from '@testing-library/react-native';
 
+import { generate } from '../engine/generators';
+import { spellInKeySig } from '../engine/generators/key-spelling';
 import type { ExerciseInstance } from '../engine/schema';
+import { diatonicPitchesInRange } from '../engine/scope';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
 import { ExerciseLoop } from './ExerciseLoop';
@@ -233,5 +236,90 @@ describe('ExerciseLoop — self-graded flashcard (U7): routes away from Check/Fe
     expect(onSelfGrade).toHaveBeenCalledWith('good');
     expect(onResult).not.toHaveBeenCalled();
     expect(queryByTestId('feedback-sheet')).toBeNull();
+  });
+});
+
+// U4 (Grade 3 octave transposition): exercises the new protocol members
+// (partialFeedback/checkLabel/beginFix) through the real registered
+// transposition_input spec — the loop-side wiring these tests pin doesn't
+// depend on TranspositionInput's own rendering choices, only on the shared
+// contract every future per-item-graded interaction will also use.
+describe('ExerciseLoop — transposition_input (U4/D5/D6): per-item grading protocol wiring', () => {
+  const transpositionInstance = generate('octave_transposition', { grade: 3, seed: 1, atoms: ['transpose:octave'] });
+  const perItem = transpositionInstance.answer.per_item as { pitch: string }[];
+  const answerClef = transpositionInstance.interaction.config.answerClef as 'treble' | 'bass';
+  const keySig = transpositionInstance.stimulus.music!.key_sig;
+
+  function spelledOf(naturalPitch: string): string {
+    return keySig ? spellInKeySig(naturalPitch, keySig) : naturalPitch;
+  }
+
+  /** A tappable natural row whose key-spelled pitch differs from per_item[index]'s
+   *  target — lets a test deliberately place a wrong note at a known slot. */
+  function wrongNaturalFor(index: number): string {
+    const wrong = diatonicPitchesInRange(answerClef, 3).find((p) => spelledOf(p) !== perItem[index].pitch);
+    if (!wrong) throw new Error('fixture: no wrong candidate found — widen the pitch range or pick a different seed');
+    return wrong;
+  }
+
+  function correctNaturalFor(index: number): string {
+    return perItem[index].pitch.replace(/[#b]/g, '');
+  }
+
+  function placeAllWrong(getByTestId: ReturnType<typeof render>['getByTestId']) {
+    for (let i = 0; i < perItem.length; i++) {
+      fireEvent.press(getByTestId(`transposition-pitch-${wrongNaturalFor(i)}`));
+    }
+  }
+
+  function placeOneWrongRestCorrect(getByTestId: ReturnType<typeof render>['getByTestId']) {
+    fireEvent.press(getByTestId(`transposition-pitch-${wrongNaturalFor(0)}`));
+    for (let i = 1; i < perItem.length; i++) {
+      fireEvent.press(getByTestId(`transposition-pitch-${correctNaturalFor(i)}`));
+    }
+  }
+
+  test('checkLabel drives the disabled Check copy before every slot is placed', () => {
+    const { getByTestId } = render(<ExerciseLoop instance={transpositionInstance} onResult={jest.fn()} />);
+    expect(getByTestId('check')).toHaveTextContent(`Check — ${perItem.length} notes left`);
+    expect(getByTestId('check').props.accessibilityState?.disabled).toBe(true);
+  });
+
+  test('a some-right-some-wrong response shows the amber partial sheet with a Fix action, not the plain incorrect sheet', () => {
+    const { getByTestId, queryByTestId } = render(<ExerciseLoop instance={transpositionInstance} onResult={jest.fn()} />);
+    placeOneWrongRestCorrect(getByTestId);
+    fireEvent.press(getByTestId('check'));
+
+    expect(getByTestId('feedback-sheet-partial')).toBeTruthy();
+    expect(queryByTestId('feedback-sheet-incorrect')).toBeNull();
+    expect(getByTestId('feedback-sheet-secondary')).toBeTruthy();
+  });
+
+  test('an all-wrong response routes to the plain incorrect sheet, not the amber partial register (D5)', () => {
+    const { getByTestId, queryByTestId } = render(<ExerciseLoop instance={transpositionInstance} onResult={jest.fn()} />);
+    placeAllWrong(getByTestId);
+    fireEvent.press(getByTestId('check'));
+
+    expect(getByTestId('feedback-sheet-incorrect')).toBeTruthy();
+    expect(queryByTestId('feedback-sheet-partial')).toBeNull();
+  });
+
+  // The load-bearing invariant (D6): this MUST fail if fix-mode is ever changed
+  // to award a clean pass on a repaired attempt.
+  test('check fails -> Fix -> re-check passes: Continue still reports correct: false (no-grade-laundering)', () => {
+    const onResult = jest.fn();
+    const { getByTestId } = render(<ExerciseLoop instance={transpositionInstance} onResult={onResult} />);
+
+    placeOneWrongRestCorrect(getByTestId);
+    fireEvent.press(getByTestId('check'));
+    expect(getByTestId('feedback-sheet-partial')).toBeTruthy();
+
+    fireEvent.press(getByTestId('feedback-sheet-secondary')); // "Fix note 1"
+    fireEvent.press(getByTestId(`transposition-pitch-${correctNaturalFor(0)}`));
+    fireEvent.press(getByTestId('check'));
+    expect(getByTestId('feedback-sheet-correct')).toBeTruthy();
+
+    fireEvent.press(getByTestId('feedback-sheet-continue'));
+    expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
   });
 });
