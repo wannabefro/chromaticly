@@ -23,7 +23,7 @@ export type SurfaceCommand =
 /** WebView → RN events, including instrumentation timings (ms). */
 export type SurfaceEvent =
   | { type: 'ready' }
-  | { type: 'rendered'; ms: number }
+  | { type: 'rendered'; ms: number; height?: number }
   | { type: 'primed'; ms: number }
   | { type: 'played'; latencyMs: number }
   | { type: 'finished' }

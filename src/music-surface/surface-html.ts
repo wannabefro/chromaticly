@@ -21,10 +21,17 @@ export interface SurfaceHtmlOptions {
   inkColor?: string;
 }
 
-// abcjs render options tuned so the stave reads as the hero (A9): a wide staff that
-// fills the card, notes at a legible scale, and near-zero padding so the paper isn't
-// mostly empty. `responsive:'resize'` fits the SVG to the card width.
-const RENDER_OPTS = { responsive: 'resize', add_classes: true, staffwidth: 140, scale: 1.5, stretchlast: true, paddingtop: 0, paddingbottom: 0, paddingleft: 0, paddingright: 0 };
+// Universal notation layout (design A9 "stave is the hero", 9a "scroll inside the
+// card, never crop"): ONE rule set for every stimulus, no per-density magic.
+// - Fixed `scale` → note size and line spacing are CONSTANT (a lone note and a
+//   note in an 8-note scale render identically sized).
+// - `wrap` breaks a run of bars too wide for one line into stacked systems.
+// - NO `responsive:'resize'` and NO `stretchlast`: content keeps its NATURAL
+//   width, so the page can centre short content and horizontally-scroll a single
+//   system too wide to wrap — instead of stretching one note across the card or
+//   shrinking a dense bar. `staffwidth` is the wrap threshold (the card width),
+//   fed from RN so wrap decisions match the real card.
+const RENDER_OPTS = { add_classes: true, scale: 2.2, wrap: { minSpacing: 1.8, maxSpacing: 3.0, preferredMeasuresPerLine: 2 }, staffwidth: 330, paddingtop: 6, paddingbottom: 6, paddingleft: 0, paddingright: 0 };
 
 /** Pure: assembles the full HTML document string. */
 export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
@@ -56,19 +63,29 @@ export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
     padding: 10px 14px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* Centre content that fits; horizontally scroll a single system too wide to
+       wrap (design 9a "scroll inside the card, never crop"). margin:auto on the
+       flex child centres when it fits and collapses to 0 when it overflows, which
+       — unlike justify-content:center — keeps the left edge reachable while
+       scrolling in WebKit. */
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     /* A long-press to hear a bar (design 4c) must not raise the iOS text callout /
        selection menu, which would swallow the gesture. */
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
   }
-  #paper svg { display: block; width: 100%; height: auto; }
+  #inner { margin: auto; }
+  /* Natural width at the fixed scale — NOT width:100% (that stretched one note
+     across the card and coupled note size to density). */
+  #paper svg { display: block; height: auto; }
 </style>
 </head>
 <body>
 ${playButton}
-<div id="paper"></div>
+<div id="paper"><div id="inner"></div></div>
 <!-- D9 "hear yours": a hidden container abcjs can render an answer-so-far
      melody into for audio only — never painted, so it can never repaint
      the visible score above. -->
@@ -104,8 +121,13 @@ ${playButton}
       // scales that DOWN to the card, instead of squeezing them into the narrow baked
       // width and scaling the crowding UP. Absent for sparse stimuli (baked default).
       if (typeof staffwidth === 'number') opts.staffwidth = staffwidth;
-      visualObj = ABCJS.renderAbc('paper', abc, opts)[0];
-      emit({ type: 'rendered', ms: Math.round(performance.now() - t) });
+      visualObj = ABCJS.renderAbc('inner', abc, opts)[0];
+      // Report the rendered natural height so RN can size the card to the content
+      // (design 9a: a wrapped multi-system passage must NOT be cropped; a single
+      // note keeps the card compact). CSS px, measured after layout.
+      var svgNode = document.querySelector('#inner svg');
+      var renderedHeight = svgNode ? Math.ceil(svgNode.getBoundingClientRect().height) : 0;
+      emit({ type: 'rendered', ms: Math.round(performance.now() - t), height: renderedHeight });
     } catch (e) {
       emit({ type: 'error', message: 'render: ' + (e && e.message || e) });
     }

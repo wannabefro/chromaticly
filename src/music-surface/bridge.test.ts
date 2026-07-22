@@ -20,6 +20,7 @@ describe('bridge protocol round-trips', () => {
   const events: SurfaceEvent[] = [
     { type: 'ready' },
     { type: 'rendered', ms: 12 },
+    { type: 'rendered', ms: 12, height: 240 },
     { type: 'primed', ms: 340 },
     { type: 'played', latencyMs: 5 },
     { type: 'finished' },

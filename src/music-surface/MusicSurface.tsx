@@ -60,6 +60,10 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   // behind the (transparent) WebView until the first `rendered` lands, so the wait
   // reads as a stave arriving, not as empty paper.
   const [painted, setPainted] = useState(false);
+  // Content-driven height (design 9a "never crop"): abcjs reports the rendered
+  // natural height and the card grows to fit a wrapped multi-system passage. The
+  // `height` prop is the minimum floor, so a single note stays compact and centred.
+  const [contentHeight, setContentHeight] = useState<number | null>(null);
 
   const abc = useMemo(() => musicToAbc(music), [music]);
   // Density-aware layout width (design A9 "stave is the hero"): the baked staffwidth
@@ -69,18 +73,10 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   // events (notes, rests, AND barlines: a 2-bar melody needs room per bar, not just
   // per note) and widen so abcjs spaces them out and the fit-to-card scales DOWN
   // instead. Sparse single-bar stimuli send nothing → baked default.
-  const staffwidth = useMemo(() => {
-    const units = Math.max(
-      0,
-      ...music.voices.map(
-        (v) =>
-          v.events.filter(
-            (e) => e.type === 'note' || e.type === 'chord' || e.type === 'rest' || e.type === 'barline',
-          ).length,
-      ),
-    );
-    return units > 4 ? Math.round(units * 35) : undefined;
-  }, [music]);
+  // Universal layout: the page owns sizing (fixed scale + wrap + natural width),
+  // so RN no longer computes a density-dependent staffwidth. (Iteration 2 will
+  // feed the measured card width as the wrap threshold.)
+  const staffwidth = undefined;
   // HTML is stable (abcjs is 500KB — don't rebuild per note); ABC arrives via a render command.
   const html = useMemo(
     () => buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE, soundFontUrl, paperColor: colors.paper, inkColor: colors.paperInk }),
@@ -103,6 +99,14 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     [send],
   );
 
+  // The surface is persistent (reused across exercises via new render commands),
+  // so drop the previous stimulus's measured height when the music changes: fall
+  // back to the floor until the new render reports its height, otherwise a tall
+  // wrapped passage would leave the next (short) stimulus's card stuck tall.
+  useEffect(() => {
+    setContentHeight(null);
+  }, [abc]);
+
   // Render the current stimulus once the surface is ready and whenever it (or the
   // notation scale) changes. A scale change re-renders in place — the HTML is stable.
   useEffect(() => {
@@ -113,7 +117,10 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     (e: WebViewMessageEvent) => {
       const ev = dispatchMessage(e.nativeEvent.data, onEvent);
       if (ev?.type === 'ready') setReady(true);
-      if (ev?.type === 'rendered') setPainted(true);
+      if (ev?.type === 'rendered') {
+        setPainted(true);
+        if (typeof ev.height === 'number' && ev.height > 0) setContentHeight(ev.height);
+      }
     },
     [onEvent],
   );
@@ -122,8 +129,11 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   // own style `height` in every parent layout (it collapsed to 0 inside a plain
   // flex column), but a View with an explicit height always lays out, and the
   // WebView fills it via flex.
+  // Grow to the content but never below the caller's height floor (a small extra
+  // pad keeps the stave off the card edges).
+  const viewHeight = contentHeight != null ? Math.max(height, contentHeight + 20) : height;
   return (
-    <View style={{ height }}>
+    <View style={{ height: viewHeight }} testID="notation-surface">
       {!painted && <StaveSkeleton />}
       <WebView
         ref={webRef}

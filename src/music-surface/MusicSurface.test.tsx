@@ -63,4 +63,46 @@ describe('MusicSurface', () => {
 
     expect(queryByTestId('notation-skeleton')).toBeNull();
   });
+
+  // Content-driven height (design 9a "never crop"): a wrapped multi-system passage
+  // reports a natural height taller than the floor, and the card grows to it — but
+  // a short stimulus keeps the caller's height floor rather than shrinking below it.
+  function heightOf(getByTestId: (id: string) => { props: Record<string, unknown> }): number {
+    return (getByTestId('notation-surface').props.style as { height: number }).height;
+  }
+
+  test('the card grows to a reported content height taller than the floor', () => {
+    const { getByTestId } = render(<MusicSurface music={MUSIC} height={160} />);
+    expect(heightOf(getByTestId)).toBe(160); // floor before any render
+
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'rendered', ms: 8, height: 300 }) } }));
+
+    expect(heightOf(getByTestId)).toBe(320); // 300 content + 20 pad, above the 160 floor
+  });
+
+  test('a reported content height below the floor keeps the caller floor (short stimulus stays compact)', () => {
+    const { getByTestId } = render(<MusicSurface music={MUSIC} height={160} />);
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'rendered', ms: 8, height: 90 }) } }));
+
+    expect(heightOf(getByTestId)).toBe(160); // max(160 floor, 90 + 20) → floor wins
+  });
+
+  // The surface is persistent (reused across exercises). A tall wrapped passage must
+  // not leave the next, shorter stimulus's card stuck tall — the measured height is
+  // dropped to the floor when the music changes, until the new render reports.
+  test('changing the stimulus resets the height to the floor until the new render reports', () => {
+    const tall: Music = {
+      ...MUSIC,
+      voices: [{ events: [{ type: 'note', pitch: 'C4', dur: 'crotchet' }, { type: 'barline', style: 'single' }] }],
+    };
+    const { getByTestId, rerender } = render(<MusicSurface music={MUSIC} height={160} />);
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'rendered', ms: 8, height: 400 }) } }));
+    expect(heightOf(getByTestId)).toBe(420);
+
+    rerender(<MusicSurface music={tall} height={160} />);
+    expect(heightOf(getByTestId)).toBe(160); // stale tall height dropped on stimulus change
+  });
 });

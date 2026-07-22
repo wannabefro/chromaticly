@@ -16,7 +16,9 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('color: #123123');
     // The surface fills its host and centres the stave rather than drawing a nested card.
     expect(html).toContain('height: 100%');
-    expect(html).toContain('justify-content: center');
+    // Centring is via margin:auto on the inner wrapper (keeps the left edge
+    // reachable when a wide system overflows and scrolls; design 9a).
+    expect(html).toContain('#inner { margin: auto; }');
   });
 
   test('embeds the initial ABC as a safe JS string literal', () => {
@@ -74,12 +76,32 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('renderAbc(cmd.abc, cmd.scale, cmd.staffwidth)');
   });
 
-  // Density-aware layout width: a render command may carry a wider staffwidth for
-  // note-dense stimuli so abcjs doesn't squeeze them into the narrow baked width.
+  // A render command may carry a staffwidth (the wrap threshold) over the baked default.
   test('applies a per-render staffwidth over the baked default', () => {
     const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
     expect(html).toContain("typeof staffwidth === 'number'");
     expect(html).toContain('opts.staffwidth = staffwidth');
+  });
+
+  // Universal layout invariants: constant note size (fixed scale, no responsive
+  // resize / stretchlast that would couple size to density) + wrap for long content,
+  // and the rendered natural height reported back so the card sizes to content.
+  test('renders at a fixed scale with wrap, not responsive-resize/stretchlast', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain('"scale":2.2');
+    expect(html).toContain('"wrap"');
+    // JSON-key forms so the RENDER_OPTS object is what's asserted, not prose mentions.
+    expect(html).not.toContain('"responsive"');
+    expect(html).not.toContain('"stretchlast"');
+  });
+
+  test('reports the rendered natural height so the card can size to content (design 9a)', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    // the visible render targets the centred inner wrapper, and emits its height
+    expect(html).toContain("ABCJS.renderAbc('inner', abc");
+    expect(html).toContain('getBoundingClientRect().height');
+    expect(html).toContain("type: 'rendered', ms:");
+    expect(html).toContain('height: renderedHeight');
   });
 
   // Design 4c: long-press a bar to hear just it. A press-duration flag splits a hold from
@@ -115,7 +137,7 @@ describe('buildSurfaceHtml', () => {
       expect(end).toBeGreaterThan(start);
       const body = html.slice(start, end);
 
-      expect(body).not.toContain("renderAbc('paper'");
+      expect(body).not.toContain("renderAbc('inner'"); // never the visible score
       expect(body).not.toContain("type: 'rendered'");
       expect(body).toContain("renderAbc('hidden-paper'");
     });
