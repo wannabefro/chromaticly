@@ -13,7 +13,7 @@ import grade1Raw from '../../curriculum/grade1-lessons.json';
 import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
-import { CHORD_NUMERALS, CONTEXT_KINDS, DIRECTIONS, INSTRUMENTS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
+import { CHORD_NUMERALS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
@@ -220,6 +220,13 @@ export function assertAtomResolves(atom: string, grade: number): void {
       const [term] = parts;
       if (grade < 4 || !(DIRECTIONS as readonly string[]).includes(term)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} direction term`);
+      }
+      return;
+    }
+    case 'enharmonic': {
+      const [note] = parts;
+      if (grade < 4 || !(ENHARMONIC_NOTES as readonly string[]).includes(note)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} enharmonic note spelling`);
       }
       return;
     }

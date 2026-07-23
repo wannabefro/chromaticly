@@ -151,6 +151,17 @@ export function directionAtom(term: string): string {
   return `direction:${term}`;
 }
 
+/** Grade-4 enharmonic-equivalent note spellings (enharmonic_recognition, KB
+ *  pitch_knowledge "enharmonic equivalents"). The five black-key pairs, both
+ *  spellings — each atom names one note whose enharmonic partner is the answer.
+ *  Mirrors ENHARMONIC_PARTNER in enharmonic-recognition.ts, guarded by its test. */
+export const ENHARMONIC_NOTES = ['C#', 'Db', 'D#', 'Eb', 'F#', 'Gb', 'G#', 'Ab', 'A#', 'Bb'] as const;
+
+/** e.g. enharmonicAtom('F#') -> "enharmonic:F#". */
+export function enharmonicAtom(note: string): string {
+  return `enharmonic:${note}`;
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

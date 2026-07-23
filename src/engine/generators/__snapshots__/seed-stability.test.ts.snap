@@ -96293,6 +96293,691 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte enharmonic_recognition (enharmonics-4, pre-lesson pin, chromaticly-xbu) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A♭",
+    },
+    "distractors": [
+      "G",
+      "A",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — G♯ and A♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as G♯?",
+    "srs_tags": [
+      "enharmonic:G#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "G",
+      "F",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — G♭ and F♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as G♭?",
+    "srs_tags": [
+      "enharmonic:Gb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "G",
+      "F",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — G♭ and F♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as G♭?",
+    "srs_tags": [
+      "enharmonic:Gb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C♯",
+    },
+    "distractors": [
+      "D",
+      "C",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — D♭ and C♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as D♭?",
+    "srs_tags": [
+      "enharmonic:Db",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A♭",
+    },
+    "distractors": [
+      "G",
+      "A",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — G♯ and A♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as G♯?",
+    "srs_tags": [
+      "enharmonic:G#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "E",
+      "D",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — E♭ and D♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as E♭?",
+    "srs_tags": [
+      "enharmonic:Eb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "E",
+      "D",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — E♭ and D♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as E♭?",
+    "srs_tags": [
+      "enharmonic:Eb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G♭",
+    },
+    "distractors": [
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — F♯ and G♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as F♯?",
+    "srs_tags": [
+      "enharmonic:F#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G♭",
+    },
+    "distractors": [
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — F♯ and G♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as F♯?",
+    "srs_tags": [
+      "enharmonic:F#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A♯",
+    },
+    "distractors": [
+      "B",
+      "A",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — B♭ and A♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as B♭?",
+    "srs_tags": [
+      "enharmonic:Bb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A♯",
+    },
+    "distractors": [
+      "B",
+      "A",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — B♭ and A♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as B♭?",
+    "srs_tags": [
+      "enharmonic:Bb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A♭",
+    },
+    "distractors": [
+      "G",
+      "A",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — G♯ and A♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as G♯?",
+    "srs_tags": [
+      "enharmonic:G#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E♭",
+    },
+    "distractors": [
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — D♯ and E♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as D♯?",
+    "srs_tags": [
+      "enharmonic:D#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "E",
+      "D",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — E♭ and D♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as E♭?",
+    "srs_tags": [
+      "enharmonic:Eb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E♭",
+    },
+    "distractors": [
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — D♯ and E♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as D♯?",
+    "srs_tags": [
+      "enharmonic:D#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G♯",
+    },
+    "distractors": [
+      "A",
+      "G",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — A♭ and G♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as A♭?",
+    "srs_tags": [
+      "enharmonic:Ab",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G♯",
+    },
+    "distractors": [
+      "A",
+      "G",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — A♭ and G♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as A♭?",
+    "srs_tags": [
+      "enharmonic:Ab",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "E",
+      "D",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — E♭ and D♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as E♭?",
+    "srs_tags": [
+      "enharmonic:Eb",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C♯",
+    },
+    "distractors": [
+      "D",
+      "C",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — D♭ and C♯ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as D♭?",
+    "srs_tags": [
+      "enharmonic:Db",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G♭",
+    },
+    "distractors": [
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — F♯ and G♭ are the same pitch spelled two ways.",
+    },
+    "grade": 4,
+    "hints": [
+      "The same key on a keyboard can be spelled two ways — one with a sharp, one with a flat. Keep the pitch, change the letter.",
+    ],
+    "id": "enharmonic_recognition:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note is the same pitch as F♯?",
+    "srs_tags": [
+      "enharmonic:F#",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "enharmonic_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte instrument_knowledge (instruments-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

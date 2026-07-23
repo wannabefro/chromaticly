@@ -6,6 +6,7 @@ import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { chordRecognition } from './chord-recognition';
 import { dupletRecognition } from './duplet-recognition';
+import { enharmonicRecognition } from './enharmonic-recognition';
 import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
 import { findTheBar } from './find-the-bar';
@@ -46,6 +47,7 @@ export const GENERATORS: Record<string, Generator> = {
   chord_recognition: chordRecognition,
   ornament_recognition: ornamentRecognition,
   instrument_knowledge: instrumentKnowledge,
+  enharmonic_recognition: enharmonicRecognition,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

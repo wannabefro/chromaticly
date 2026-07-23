@@ -141,6 +141,9 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // dimension read from scopeForGrade — "Grade 4" is a curriculum-layer-only
       // gate (assertAtomResolves), same shape as ornament_recognition above.
       'instrument_knowledge',
+      // enharmonic_recognition (chromaticly-xbu) — strand pitch, text-only, no
+      // grade-scoped dimension — "Grade 4" is a curriculum-layer-only gate.
+      'enharmonic_recognition',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

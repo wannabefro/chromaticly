@@ -21,7 +21,8 @@ import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } fro
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
 import { naturalPitchStepsAbove } from './generators/pitch-math';
-import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel } from './interval-quality';
+import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel, pitchSemitone } from './interval-quality';
+import { displayNote, ENHARMONIC_PARTNER } from './generators/enharmonic-recognition';
 import { classifyMetre, isCompoundTimeSignature } from './metre';
 import { musicEventUnits } from './music-event-units';
 import { comfortablePitchRange, pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
@@ -1271,6 +1272,46 @@ function instrumentKnowledgeHook(inst: ExerciseInstance): string[] {
   return [`instrument_knowledge: unexpected interaction.type "${inst.interaction.type}"`];
 }
 
+// enharmonicRecognitionHook (grade-4 enharmonic-equivalents slice, chromaticly-xbu)
+// — reads the enharmonic:<note> atom from srs_tags and recomputes the answer's
+// validity from PITCH SEMITONES (not the ENHARMONIC_PARTNER table): the canonical
+// must be the same pitch class and a different letter, and the distractors must be
+// exactly the two pair-member natural letters.
+function enharmonicRecognitionHook(inst: ExerciseInstance): string[] {
+  if (inst.interaction.type !== 'mcq') {
+    return [`enharmonic_recognition: unexpected interaction.type "${inst.interaction.type}"`];
+  }
+  if (inst.srs_tags.length !== 1) {
+    return ['enharmonic_recognition: srs_tags must name exactly one atom'];
+  }
+  const { kind, parts } = parseAtom(inst.srs_tags[0]);
+  const [note] = parts;
+  if (kind !== 'enharmonic' || !(note in ENHARMONIC_PARTNER)) {
+    return [`enharmonic_recognition: srs_tag "${inst.srs_tags[0]}" does not name a known enharmonic note`];
+  }
+
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string') {
+    return ['enharmonic_recognition: mcq canonical must be a string'];
+  }
+
+  const errors: string[] = [];
+  const answerAscii = canonical.replace('♯', '#').replace('♭', 'b');
+  const pitchClass = (n: string) => (((pitchSemitone(`${n}4`) % 12) + 12) % 12);
+  if (pitchClass(answerAscii) !== pitchClass(note)) {
+    errors.push(`enharmonic_recognition: canonical "${canonical}" is not the same pitch as "${displayNote(note)}"`);
+  }
+  if (answerAscii[0] === note[0]) {
+    errors.push(`enharmonic_recognition: canonical "${canonical}" must be spelled with a different letter from "${displayNote(note)}"`);
+  }
+
+  const expectedDistractors = [displayNote(note[0]), displayNote(ENHARMONIC_PARTNER[note][0])];
+  if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expectedDistractors].sort())) {
+    errors.push('enharmonic_recognition: distractors must be exactly the two pair-member natural letters');
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
@@ -1291,4 +1332,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   chord_recognition: chordRecognitionHook,
   ornament_recognition: ornamentRecognitionHook,
   instrument_knowledge: instrumentKnowledgeHook,
+  enharmonic_recognition: enharmonicRecognitionHook,
 };

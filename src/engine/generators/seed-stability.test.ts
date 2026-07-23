@@ -66,6 +66,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   chord_recognition: 4,
   ornament_recognition: 4,
   instrument_knowledge: 4,
+  enharmonic_recognition: 4,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -440,6 +441,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
       'metre:9/16',
       'metre:12/16',
     ],
+  },
+  {
+    label: 'enharmonic_recognition (enharmonics-4, pre-lesson pin, chromaticly-xbu)',
+    templateId: 'enharmonic_recognition',
+    atoms: ['enharmonic:C#', 'enharmonic:Db', 'enharmonic:D#', 'enharmonic:Eb', 'enharmonic:F#', 'enharmonic:Gb', 'enharmonic:G#', 'enharmonic:Ab', 'enharmonic:A#', 'enharmonic:Bb'],
   },
 ];
 

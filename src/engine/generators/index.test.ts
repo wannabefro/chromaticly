@@ -53,6 +53,9 @@ const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition
 // instrument_knowledge joins them too, same shape: strand terms_signs,
 // text-only, no grade-scoped dimension read from scopeForGrade — "Grade 4" is
 // a curriculum-layer-only gate (assertAtomResolves), not a generator one.
+// enharmonic_recognition (chromaticly-xbu) joins them too, same shape: strand
+// pitch, text-only, no grade-scoped dimension — "Grade 4" is a curriculum-layer
+// gate (assertAtomResolves) only.
 const ATOM_REQUIRED_TEMPLATE_IDS = [
   'anacrusis_recognition',
   'chromatic_scale',
@@ -61,6 +64,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'chord_recognition',
   'ornament_recognition',
   'instrument_knowledge',
+  'enharmonic_recognition',
 ];
 
 describe('GENERATORS registry', () => {
