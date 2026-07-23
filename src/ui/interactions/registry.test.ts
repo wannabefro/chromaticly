@@ -107,7 +107,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
   });
 
   test('throws for every schema-enum value with no registered entry', () => {
-    const unsupported = ['multi_select', 'tap_placement', 'grid_fill', 'roman_numeral_boxes'] as const;
+    const unsupported = ['multi_select', 'tap_placement', 'grid_fill'] as const;
     for (const type of unsupported) {
       expect(() => lookupInteraction(type)).toThrow();
     }
@@ -118,6 +118,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
       'find_the_bar',
       'flashcard',
       'mcq',
+      'roman_numeral_boxes',
       'stave_input',
       'text_input',
       'transposition_input',
@@ -208,6 +209,51 @@ describe('registry — transposition_input (U6, octave_transposition)', () => {
     for (const { pitch } of perItem) expect(rendered).toContain(pitch);
     expect(view.props.music.clef).toBe(transpositionInstance.interaction.config.answerClef);
     expect(view.props.music.clef).not.toBe(transpositionInstance.stimulus.music.clef);
+  });
+});
+
+describe('registry — roman_numeral_boxes (fyu.10, chord_recognition)', () => {
+  const chordAtoms = ['chord:I', 'chord:IV', 'chord:V'];
+  const chordInstance = generate('chord_recognition', { grade: 4, seed: 3, atoms: chordAtoms });
+
+  test('emptyResponse resets to no numeral picked', () => {
+    expect(lookupInteraction('roman_numeral_boxes').emptyResponse(chordInstance)).toBeNull();
+  });
+
+  test('canCheck is false until a numeral is picked, true once one is', () => {
+    const spec = lookupInteraction('roman_numeral_boxes');
+    expect(spec.canCheck(null)).toBe(false);
+    expect(spec.canCheck('I')).toBe(true);
+  });
+
+  test('grade matches gradeMcq — the canonical numeral is correct, any other numeral incorrect', () => {
+    const spec = lookupInteraction('roman_numeral_boxes');
+    const canonical = chordInstance.answer.canonical as string;
+    expect(spec.grade(chordInstance, canonical)).toBe(gradeMcq(chordInstance, canonical));
+    expect(spec.grade(chordInstance, canonical)).toBe(true);
+    const wrong = ['I', 'IV', 'V'].find((n) => n !== canonical)!;
+    expect(spec.grade(chordInstance, wrong)).toBe(false);
+  });
+
+  test('submits is true — roman_numeral_boxes uses the shared Check button', () => {
+    expect(lookupInteraction('roman_numeral_boxes').submits).toBe(true);
+  });
+
+  // Rule 1/2: the missed chord is revealed on paper (a NotationCard, which carries
+  // play), captioned with its numeral and spelled triad — sourced from config.triads.
+  test('correctAnswerView renders the stimulus chord on paper, captioned with the numeral and its spelled triad', () => {
+    const spec = lookupInteraction('roman_numeral_boxes');
+    const canonical = chordInstance.answer.canonical as string;
+    const triad = (chordInstance.interaction.config.triads as Record<string, string[]>)[canonical];
+    const view = spec.correctAnswerView(chordInstance) as { type: unknown; props: { music: unknown; caption: string; play?: boolean } };
+    expect(view.type).toBe(NotationCard);
+    expect(view.props.music).toEqual(chordInstance.stimulus.music);
+    expect(view.props.caption).toContain(canonical);
+    // Each spelled letter (octave stripped) appears in the caption.
+    for (const pitch of triad) {
+      expect(view.props.caption).toContain(/^([A-G][#b]{0,2})/.exec(pitch)![1]);
+    }
+    expect(view.props.play).not.toBe(false);
   });
 });
 

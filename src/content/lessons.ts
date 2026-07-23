@@ -13,7 +13,7 @@ import grade1Raw from '../../curriculum/grade1-lessons.json';
 import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
-import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
+import { CHORD_NUMERALS, CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
@@ -181,6 +181,13 @@ export function assertAtomResolves(atom: string, grade: number): void {
       const [name] = parts;
       if (grade < 4 || !(DEGREE_ORDER as readonly string[]).includes(name)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} degree name`);
+      }
+      return;
+    }
+    case 'chord': {
+      const [numeral] = parts;
+      if (grade < 4 || !(CHORD_NUMERALS as readonly string[]).includes(numeral)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} primary-triad chord numeral`);
       }
       return;
     }

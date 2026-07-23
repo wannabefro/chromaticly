@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23e",
+  "version": "g4-lessons-2026-07-23f",
   "lessons": [
     {
       "id": "keys-4",
@@ -376,6 +376,43 @@
         },
         "smartTip": "Same letters, new octave. Moving to a higher clef (alto → treble) shifts the tune up an octave; to a lower clef (alto → bass), down an octave.",
         "didYouKnow": "Rewriting the same music in another clef and octave is how a viola line might be shared with a violinist or cellist — the clef and octave move, but the tune stays unmistakably the same."
+      },
+      "unlocks": "chords-4"
+    },
+    {
+      "id": "chords-4",
+      "title": "Primary triads: I, IV and V",
+      "strand": "chords",
+      "atoms": [
+        "chord:I",
+        "chord:IV",
+        "chord:V"
+      ],
+      "templates": [
+        "chord_recognition"
+      ],
+      "worked_example": {
+        "template_id": "chord_recognition",
+        "grade": 4,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "The three primary triads — I, IV and V — are built on the 1st, 4th and 5th degrees of a major scale",
+          "In a major key all three are major triads: a root, the note a 3rd above it, and the note a 5th above",
+          "Name a chord by finding which scale degree its lowest note — the root — sits on: tonic → I, subdominant → IV, dominant → V"
+        ],
+        "concept": {
+          "title": "Primary triads: I, IV and V",
+          "body": "A triad is a three-note chord: a root, the note a 3rd above it, and the note a 5th above. The three PRIMARY triads are built on the most important degrees of the scale — I on the tonic (1st), IV on the subdominant (4th), and V on the dominant (5th). In a major key all three are major triads. To name a chord you see, find its lowest note — the root — and work out which scale degree it lands on in the given key: root on the tonic is I, on the subdominant IV, on the dominant V. In C major that makes I = C–E–G, IV = F–A–C, and V = G–B–D.",
+          "example": {
+            "template_id": "chord_recognition",
+            "grade": 4,
+            "seed": 0
+          }
+        },
+        "smartTip": "Read the key signature, then look at the chord's lowest note. If it is the key's 1st degree the chord is I, the 4th degree IV, the 5th degree V.",
+        "didYouKnow": "I, IV and V are called the primary triads because between them they use every note of the major scale — which is why so much music can be harmonised with just these three chords."
       },
       "unlocks": null
     }

@@ -21,6 +21,7 @@ import { colors, shape, type as typo } from '../theme';
 import { FindTheBar, type FindTheBarResponse } from './FindTheBar';
 import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
+import { RomanNumeralBoxes } from './RomanNumeralBoxes';
 import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
 import { transpositionInputSpec } from './TranspositionInput';
@@ -186,6 +187,31 @@ const findTheBarSpec: InteractionSpec<FindTheBarResponse> = {
   surfaceHighlight: (response) => response,
 };
 
+/** The correct chord on paper (rule 1/2: notation on light paper, with play),
+ *  captioned with its numeral and spelled triad — the FeedbackSheet reveal for a
+ *  missed chord recognition. */
+function romanNumeralBoxesCorrectAnswerView(instance: ExerciseInstance) {
+  const music = instance.stimulus.music;
+  const numeral = String(instance.answer.canonical);
+  const triads = (instance.interaction.config as { triads?: Record<string, string[]> }).triads;
+  const spelled = triads?.[numeral]?.map((p) => /^([A-G][#b]{0,2})/.exec(p)?.[1] ?? p).join('–') ?? '';
+  const caption = spelled ? `${numeral} — ${spelled}` : numeral;
+  return music ? (
+    <NotationCard music={music} caption={caption} testID="answer-notation" />
+  ) : (
+    <Text testID="answer-label" style={styles.answerLabel}>{caption}</Text>
+  );
+}
+
+const romanNumeralBoxesSpec: InteractionSpec<string | null> = {
+  Component: RomanNumeralBoxes,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeMcq(instance, response),
+  submits: true,
+  correctAnswerView: romanNumeralBoxesCorrectAnswerView,
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -194,6 +220,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   stave_input: staveInputSpec,
   find_the_bar: findTheBarSpec,
   transposition_input: transpositionInputSpec,
+  roman_numeral_boxes: romanNumeralBoxesSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

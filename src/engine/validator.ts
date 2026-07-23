@@ -11,8 +11,10 @@
 // hand-listed or computed here; this validator only avoids ever rejecting an
 // answer that already appears in that list — it does not grade.
 
-import type { Clef, Music, MusicEvent, NoteEvent } from '../music/types';
+import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
+import { CHORD_NUMERALS } from './atoms';
+import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
@@ -1020,6 +1022,99 @@ function dupletRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+/** Asserts `pitches` is a root-position MAJOR triad (root-third a major 3rd,
+ *  third-fifth a minor 3rd) — pushed onto `errors` with the given `label`
+ *  prefix rather than thrown, so a caller checking several triads (the
+ *  stimulus chord, then each of config.triads' three entries) collects every
+ *  failure in one pass. */
+function assertMajorTriad(pitches: unknown, label: string, errors: string[]): void {
+  if (!Array.isArray(pitches) || pitches.length !== 3 || pitches.some((p) => typeof p !== 'string')) {
+    errors.push(`chord_recognition: ${label} must be exactly 3 spelled pitches`);
+    return;
+  }
+  const [root, third, fifth] = pitches as string[];
+  try {
+    const thirdNumber = diatonicIntervalNumber(root, third);
+    const thirdQuality = intervalQuality(root, third, thirdNumber);
+    if (thirdNumber !== 3 || thirdQuality !== 'major') {
+      errors.push(`chord_recognition: ${label} root-third is not a major 3rd (got number ${thirdNumber}, quality ${thirdQuality})`);
+    }
+    const fifthNumber = diatonicIntervalNumber(third, fifth);
+    const fifthQuality = intervalQuality(third, fifth, fifthNumber);
+    if (fifthNumber !== 3 || fifthQuality !== 'minor') {
+      errors.push(`chord_recognition: ${label} third-fifth is not a minor 3rd (got number ${fifthNumber}, quality ${fifthQuality})`);
+    }
+  } catch (err) {
+    errors.push(`chord_recognition: ${label}: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
+// chordRecognitionHook (fyu.10) — recompute-don't-trust: the numeral is
+// recomputed from the stimulus chord's ROOT LETTER's diatonic distance above
+// the key's tonic (CHORD_DEGREE_STEPS, shared with the generator as fixed
+// music theory — not a trust of the generator's own srs_tags/canonical pick),
+// the stimulus chord and every entry of interaction.config.triads must each
+// independently be a root-position major triad, and config.triads[canonical]
+// must be the exact stimulus chord (the UI replays a tapped chip's chord from
+// this map, so it must never disagree with what's actually notated).
+function chordRecognitionHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['chord_recognition: stimulus music is required'];
+  if (typeof music.key_sig !== 'string') return ['chord_recognition: stimulus must carry a key signature'];
+  const [tonic, mode] = music.key_sig.split('_');
+  if (mode !== 'major') return [`chord_recognition: key signature "${music.key_sig}" is not a major key`];
+
+  const chordEvents = music.voices.flatMap((v) => v.events).filter((ev): ev is ChordEvent => ev.type === 'chord');
+  if (chordEvents.length !== 1 || chordEvents[0].pitches.length !== 3) {
+    return ['chord_recognition: stimulus must contain exactly one chord event with exactly 3 pitches'];
+  }
+  const stimulusPitches = chordEvents[0].pitches;
+  const [root] = stimulusPitches;
+
+  const rootLetterMatch = /^([A-G])/.exec(root);
+  if (!rootLetterMatch) {
+    errors.push(`chord_recognition: chord root "${root}" is not a spelled pitch`);
+  } else {
+    const steps = (LETTER_ORDER.indexOf(rootLetterMatch[1] as (typeof LETTER_ORDER)[number]) -
+      LETTER_ORDER.indexOf(tonic[0] as (typeof LETTER_ORDER)[number]) +
+      7) %
+      7;
+    const recomputedNumeral = Object.entries(CHORD_DEGREE_STEPS).find(([, s]) => s === steps)?.[0];
+    if (!recomputedNumeral) {
+      errors.push(`chord_recognition: chord root "${root}" does not sit on a primary-triad degree (I/IV/V) of ${music.key_sig}`);
+    } else if (inst.answer.canonical !== recomputedNumeral) {
+      errors.push(
+        `chord_recognition: canonical "${String(inst.answer.canonical)}" does not match the numeral recomputed from the stimulus root ("${recomputedNumeral}")`,
+      );
+    }
+  }
+
+  assertMajorTriad(stimulusPitches, 'the stimulus chord', errors);
+
+  if (!(CHORD_NUMERALS as readonly string[]).includes(inst.answer.canonical as string)) {
+    errors.push(`chord_recognition: canonical "${String(inst.answer.canonical)}" is not a legal chord numeral`);
+  }
+  const expectedDistractors = CHORD_NUMERALS.filter((n) => n !== inst.answer.canonical);
+  if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expectedDistractors].sort())) {
+    errors.push('chord_recognition: distractors must be exactly the other two primary-triad numerals');
+  }
+
+  const triads = inst.interaction.config?.triads as Record<string, unknown> | undefined;
+  if (!triads || typeof triads !== 'object') {
+    errors.push('chord_recognition: interaction.config.triads is required');
+    return errors;
+  }
+  for (const numeral of CHORD_NUMERALS) {
+    assertMajorTriad(triads[numeral], `config.triads.${numeral}`, errors);
+  }
+  if (!deepEqual(triads[inst.answer.canonical as string], stimulusPitches)) {
+    errors.push('chord_recognition: config.triads[answer.canonical] does not match the stimulus chord\'s pitches');
+  }
+
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
@@ -1037,4 +1132,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   octave_transposition: octaveTranspositionHook,
   chromatic_scale: chromaticScaleHook,
   degree_name_id: degreeNameIdHook,
+  chord_recognition: chordRecognitionHook,
 };

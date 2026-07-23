@@ -95,6 +95,14 @@ export function degreeNameAtom(name: string): string {
   return `degree_name:${name}`;
 }
 
+/** Grade-4 primary-triad numerals (chord_recognition, KB.grade4Adds.chords.primary_triads_and_chords). */
+export const CHORD_NUMERALS = ['I', 'IV', 'V'] as const;
+
+/** e.g. chordAtom('IV') -> "chord:IV". */
+export function chordAtom(numeral: string): string {
+  return `chord:${numeral}`;
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

@@ -4,6 +4,7 @@ import type { ExerciseInstance } from '../schema';
 import { addTimeSignature } from './add-time-signature';
 import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
+import { chordRecognition } from './chord-recognition';
 import { dupletRecognition } from './duplet-recognition';
 import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
@@ -40,6 +41,7 @@ export const GENERATORS: Record<string, Generator> = {
   octave_transposition: octaveTransposition,
   chromatic_scale: chromaticScale,
   degree_name_id: degreeNameId,
+  chord_recognition: chordRecognition,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

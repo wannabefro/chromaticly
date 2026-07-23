@@ -71416,6 +71416,1531 @@ exports[`seed-stability — grade-3-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chord_recognition @ chords-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s0",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb2",
+                  "D3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s1",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D#3",
+            "F#3",
+          ],
+          "IV": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F#2",
+                  "A#2",
+                  "C#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s2",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s3",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+          "IV": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "V": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s4",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Ab2",
+            "C3",
+            "Eb3",
+          ],
+          "IV": [
+            "Db2",
+            "F2",
+            "Ab2",
+          ],
+          "V": [
+            "Eb2",
+            "G2",
+            "Bb2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab2",
+                  "C3",
+                  "Eb3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s5",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "IV": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s6",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Db4",
+            "F4",
+            "Ab4",
+          ],
+          "IV": [
+            "Gb4",
+            "Bb4",
+            "Db5",
+          ],
+          "V": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Gb4",
+                  "Bb4",
+                  "Db5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s7",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "IV": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s8",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+          "IV": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "V": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s9",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s10",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "IV": [
+            "Eb2",
+            "G2",
+            "Bb2",
+          ],
+          "V": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s11",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+          "IV": [
+            "A2",
+            "C#3",
+            "E3",
+          ],
+          "V": [
+            "B2",
+            "D#3",
+            "F#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "D#3",
+                  "F#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s12",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+          "IV": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+          "V": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s13",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+          "IV": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s14",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "IV": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s15",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A2",
+            "C#3",
+            "E3",
+          ],
+          "IV": [
+            "D2",
+            "F#2",
+            "A2",
+          ],
+          "V": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "G#2",
+                  "B2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s16",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+          "IV": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "V": [
+            "G2",
+            "B2",
+            "D3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s17",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "IV": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s18",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "IV": [
+            "Db4",
+            "F4",
+            "Ab4",
+          ],
+          "V": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab3",
+                  "C4",
+                  "Eb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s19",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+          "IV": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+          "V": [
+            "B3",
+            "D#4",
+            "F#4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "D#4",
+                  "F#4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chromatic_scale @ chromatic-scale-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -85376,6 +86901,1531 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "scales_keys",
     "template_id": "scale_construction",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte chord_recognition (chords-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s0",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb2",
+                  "D3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s1",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D#3",
+            "F#3",
+          ],
+          "IV": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F#2",
+                  "A#2",
+                  "C#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s2",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s3",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+          "IV": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "V": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s4",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Ab2",
+            "C3",
+            "Eb3",
+          ],
+          "IV": [
+            "Db2",
+            "F2",
+            "Ab2",
+          ],
+          "V": [
+            "Eb2",
+            "G2",
+            "Bb2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab2",
+                  "C3",
+                  "Eb3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s5",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "IV": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s6",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Db4",
+            "F4",
+            "Ab4",
+          ],
+          "IV": [
+            "Gb4",
+            "Bb4",
+            "Db5",
+          ],
+          "V": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Gb4",
+                  "Bb4",
+                  "Db5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s7",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "IV": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s8",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+          "IV": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "V": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s9",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s10",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "IV": [
+            "Eb2",
+            "G2",
+            "Bb2",
+          ],
+          "V": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s11",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+          "IV": [
+            "A2",
+            "C#3",
+            "E3",
+          ],
+          "V": [
+            "B2",
+            "D#3",
+            "F#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "D#3",
+                  "F#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s12",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+          "IV": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+          "V": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s13",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+          "IV": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s14",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "IV": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s15",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A2",
+            "C#3",
+            "E3",
+          ],
+          "IV": [
+            "D2",
+            "F#2",
+            "A2",
+          ],
+          "V": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "G#2",
+                  "B2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s16",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+          "IV": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "V": [
+            "G2",
+            "B2",
+            "D3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s17",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "IV": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s18",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "IV": [
+            "Db4",
+            "F4",
+            "Ab4",
+          ],
+          "V": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab3",
+                  "C4",
+                  "Eb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which scale degree the chord's lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.",
+    },
+    "grade": 4,
+    "hints": [
+      "I is built on the 1st degree (tonic), IV on the 4th (subdominant), V on the 5th (dominant) — check which scale degree the chord's lowest note sits on.",
+    ],
+    "id": "chord_recognition:g4:s19",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+          "IV": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+          "V": [
+            "B3",
+            "D#4",
+            "F#4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral).",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "D#4",
+                  "F#4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
   },
 ]
 `;

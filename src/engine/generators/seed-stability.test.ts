@@ -63,6 +63,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   chromatic_scale: 4,
   degree_name_id: 4,
   duplet_recognition: 4,
+  chord_recognition: 4,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -400,6 +401,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'octave_transposition alto (transposition-4-alto, pre-lesson pin)',
     templateId: 'octave_transposition',
     atoms: ['transpose:octave'],
+  },
+  {
+    label: 'chord_recognition (chords-4, pre-lesson pin)',
+    templateId: 'chord_recognition',
+    atoms: ['chord:I', 'chord:IV', 'chord:V'],
   },
 ];
 

@@ -129,6 +129,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // atom-required rhythm-device generator, grade-gated only by
       // assertAtomResolves (needs a compound duplet:<sig> atom).
       'duplet_recognition',
+      // chord_recognition (fyu.10) — same shape as chromatic_scale/
+      // degree_name_id: draws from scope.keysMajor (present at every grade),
+      // so "Grade 4" is a curriculum-layer-only gate (assertAtomResolves).
+      'chord_recognition',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });
