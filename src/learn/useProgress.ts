@@ -121,6 +121,11 @@ export interface UseProgress {
   /** Persist the onboarding profile (selected grade + completion timestamp). Birth
    *  year is no longer captured here — it's deferred to account creation (U1/KTD1). */
   completeOnboarding: (grade: number, onboardedAt: string) => Promise<void>;
+  /** Switch the working grade (free grade access, fyu.3). Replaces the profile
+   *  with a fresh object that keeps every other field (name, onboardedAt,
+   *  birthYear) and only changes `grade`; persists and mirrors to real state so
+   *  the grade pill, readiness, and level map react. No-op pre-onboarding. */
+  setGrade: (grade: number) => Promise<void>;
   /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is unlocked and
    *  ready to play, then persist. Only ever called behind a __DEV__ deep link. */
   seedTo: (targetId: string) => Promise<void>;
@@ -272,6 +277,22 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     [store, storage, lessons],
   );
 
+  const setGrade = useCallback<UseProgress['setGrade']>(
+    async (nextGrade) => {
+      if (!store) return;
+      const current = store.getProfile();
+      if (!current) return; // grade switch is a post-onboarding action
+      // Fresh object preserving every other profile field (KTD5) — never an
+      // in-place mutation of the mirrored `grade`, which would go stale on device.
+      const next: Profile = { ...current, grade: nextGrade };
+      store.setProfile(next);
+      await saveProgress(store, storage);
+      setProfileState(next);
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
   const isOnboarded = profile !== null;
   const grade = profile?.grade ?? null;
   const name = profile?.name ?? null;
@@ -299,6 +320,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       createAccount,
       markNudgeSeen,
       completeOnboarding,
+      setGrade,
       seedTo,
       recordExamResult,
     }),
@@ -323,6 +345,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       createAccount,
       markNudgeSeen,
       completeOnboarding,
+      setGrade,
       seedTo,
       recordExamResult,
     ],

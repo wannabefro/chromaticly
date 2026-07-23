@@ -1,6 +1,8 @@
-// The exam-gate seal node capping a level on the map (design 3a, KD5). Locked and
-// display-only until the level's units are mastered; once unlocked it becomes a
-// tappable entry to the practice exam (302.2) — pass `onPress` to enable it.
+// The exam-gate seal node capping a level on the map (design 3a). Free grade access
+// (fyu.3): the paper is advisory, never a lock — "take it any time" — so this node
+// carries no locked/unlocked visual split and never shows a 🔒. `hasPaper` is the
+// only thing that can withhold the tap, for grades whose paper doesn't exist yet
+// (D8) — even then it reads as "coming soon", not sealed shut.
 
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -8,49 +10,41 @@ import { colors, shape, type as typo } from '../theme';
 
 export interface ExamGateNodeProps {
   levelGrade: number;
-  /** Number of Level 1 units that must reach 3★ to unlock the exam (R3's
-   *  "unlocks at N units ★" copy — N is a unit count, not a raw star total). */
+  /** Number of the level's units — the design's "best after N units ★" is a
+   *  readiness hint, not a requirement (a unit count, not a raw star total). */
   unitsRequired: number;
-  /** False when the grade has no exam paper yet (D8) — the seal stays sealed and
-   *  press-disabled no matter how many stars are earned, and the subtitle reads
-   *  "Coming soon" rather than promising a star threshold that would never open
-   *  onto a real paper. Defaults true (every level had a paper before D8). */
+  /** False when the grade has no exam paper yet (D8) — the node reads "Coming
+   *  soon" and stays inert no matter how many stars are earned, so it never
+   *  promises a paper that doesn't exist. Defaults true. */
   hasPaper?: boolean;
-  /** Provided only when unlocked — makes the gate a tappable exam entry. Absent →
-   *  the node stays inert (locked display). */
+  /** Provided only when there is a real paper to open. */
   onPress?: () => void;
   testID?: string;
 }
 
 export function ExamGateNode({ levelGrade, unitsRequired, hasPaper = true, onPress, testID }: ExamGateNodeProps) {
-  const unlocked = onPress != null;
-  const accent = unlocked ? colors.correct : colors.hint;
   const unitsLabel = unitsRequired === 1 ? 'unit' : 'units';
-  const subtitle = unlocked
-    ? 'Ready — tap to start the practice paper'
-    : hasPaper
-      ? `Practice paper · unlocks at ${unitsRequired} ${unitsLabel} ★`
-      : 'Coming soon';
+  const subtitle = hasPaper ? `take it any time · best after ${unitsRequired} ${unitsLabel} ★` : 'Coming soon';
+  // D8 hardening: even if a caller mistakenly passes onPress for a paperless grade,
+  // the node itself refuses to open onto nothing — never a broken tap.
+  const tappable = hasPaper && onPress != null;
+
   const content = (
     <>
-      <View style={[styles.seal, { borderColor: accent }]} testID={testID ? `${testID}-seal` : undefined}>
-        <Text style={[styles.sealText, { color: accent }]}>L{levelGrade}</Text>
+      <View style={styles.seal} testID={testID ? `${testID}-seal` : undefined}>
+        <Text style={styles.sealText}>L{levelGrade}</Text>
       </View>
       <View style={styles.body}>
-        <Text style={[styles.title, { color: accent }]}>Level {levelGrade} Exam Paper</Text>
+        <Text style={styles.title}>Level {levelGrade} Exam Paper</Text>
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
-      <Text style={styles.lock}>{unlocked ? '›' : '🔒'}</Text>
+      {tappable ? <Text style={styles.chevron}>›</Text> : null}
     </>
   );
 
-  if (unlocked) {
+  if (tappable) {
     return (
-      <Pressable
-        onPress={onPress}
-        testID={testID}
-        style={[styles.container, { borderStyle: 'solid', borderColor: `${colors.correct}66` }]}
-      >
+      <Pressable onPress={onPress} testID={testID} style={styles.container}>
         {content}
       </Pressable>
     );
@@ -102,7 +96,7 @@ const styles = StyleSheet.create({
     ...typo.label,
     color: colors.textFaint,
   },
-  lock: {
+  chevron: {
     fontSize: 14,
     color: colors.textFaint,
   },

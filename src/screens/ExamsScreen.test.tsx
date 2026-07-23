@@ -1,6 +1,7 @@
 // U6 acceptance tests for the Exams tab (design 3b's paper reached directly from the
-// tab bar). Same readiness/hasPaper rules as the level map's inline gate — a paper must
-// never be quietly openable from one surface but not the other.
+// tab bar). Free grade access (fyu.3): the gate is advisory, not star-gated. Same
+// hasPaper rule as the level map's inline gate — a paper must never be quietly
+// openable from one surface but not the other.
 
 jest.mock('react-native-webview', () => {
   const React = require('react');
@@ -78,15 +79,8 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
     expect(within(gate).getByText('Coming soon')).toBeTruthy();
   });
 
-  test('the Level 1 gate is unaffected — still opens once its stars are earned', async () => {
-    const seed = seedBlob((store) => {
-      for (const lesson of LESSONS_BY_GRADE[1]) {
-        store.unlock(lesson.id);
-        store.setLesson(lesson.id, { completed: true });
-        masterAtoms(store, lesson.atoms);
-      }
-    });
-    const { findByTestId, getByTestId, queryByTestId } = renderExams(seed);
+  test('the Level 1 gate opens on a fresh store — a real paper is advisory, not star-gated (fyu.3)', async () => {
+    const { findByTestId, getByTestId, queryByTestId } = renderExams();
     await findByTestId('exams-screen');
 
     fireEvent.press(getByTestId('exam-gate-level-1'));

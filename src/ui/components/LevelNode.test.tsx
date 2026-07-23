@@ -1,16 +1,18 @@
-// U2 acceptance tests for level-path entries (design 3a).
+// U2 acceptance tests for level-path entries (design 3a). Free grade access
+// (fyu.3): nothing on the map is locked — a collapsed (content-less) level shows
+// a readiness chip, never a 🔒.
 
-import { render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import { Text } from 'react-native';
 
 import type { Level } from '../../content/levels';
 import { LevelNode } from './LevelNode';
 
-const LOCKED_LEVEL: Level = {
-  id: 'level-2',
-  grade: 2,
-  title: 'Grade 2',
-  prerequisite: 'Clear the Level 1 exam to unlock',
+const COLLAPSED_LEVEL: Level = {
+  id: 'level-4',
+  grade: 4,
+  title: 'Grade 4',
+  prerequisite: 'Clear the Level 3 exam to unlock',
   unitIds: [],
   examGate: { unlockAtStars: 0 },
 };
@@ -24,16 +26,16 @@ const UNLOCKED_LEVEL: Level = {
 };
 
 describe('LevelNode', () => {
-  // R1/R4: locked levels (2-5) show the prerequisite reason and no unit content.
-  test('a locked level shows its title and prerequisite copy, with no children rendered', () => {
+  test('a collapsed (content-less) level shows its title and a readiness chip, no lock, and no children', () => {
     const { getByText, queryByText } = render(
-      <LevelNode level={LOCKED_LEVEL} expanded={false} testID="level-node">
+      <LevelNode level={COLLAPSED_LEVEL} expanded={false} readinessNote="builds on L3" testID="level-node">
         <Text>should never render</Text>
       </LevelNode>,
     );
 
-    expect(getByText('Grade 2')).toBeTruthy();
-    expect(getByText('Clear the Level 1 exam to unlock')).toBeTruthy();
+    expect(getByText('Grade 4')).toBeTruthy();
+    expect(getByText('builds on L3')).toBeTruthy();
+    expect(queryByText('🔒')).toBeNull();
     expect(queryByText('should never render')).toBeNull();
   });
 
@@ -52,5 +54,36 @@ describe('LevelNode', () => {
     expect(getByText('Grade 1')).toBeTruthy();
     expect(getByText('1 of 2 units · in progress')).toBeTruthy();
     expect(getByText('unit rows go here')).toBeTruthy();
+  });
+
+  // Design 3a: "tapping [a level] starts it, which is also how you switch grades" —
+  // the header is a level-wide start affordance when `onStart` is given.
+  test('an expanded level with onStart makes the header a tappable start affordance', () => {
+    const onStart = jest.fn();
+    const { getByTestId } = render(
+      <LevelNode
+        level={UNLOCKED_LEVEL}
+        expanded
+        onStart={onStart}
+        startTestID="level-tap-1"
+        testID="level-node"
+      >
+        <Text>unit rows go here</Text>
+      </LevelNode>,
+    );
+
+    fireEvent.press(getByTestId('level-tap-1'));
+    expect(onStart).toHaveBeenCalledTimes(1);
+  });
+
+  test('an expanded level without onStart keeps the header inert', () => {
+    const { getByTestId } = render(
+      <LevelNode level={UNLOCKED_LEVEL} expanded testID="level-node">
+        <Text>unit rows go here</Text>
+      </LevelNode>,
+    );
+
+    const header = getByTestId('level-node-header');
+    expect(header.props.onPress).toBeUndefined();
   });
 });

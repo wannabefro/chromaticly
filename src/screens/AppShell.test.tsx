@@ -66,7 +66,11 @@ describe('AppShell — the tab shell (302.7)', () => {
     const { getByTestId, queryByTestId } = renderShell();
     await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
 
-    act(() => fireEvent.press(getByTestId('unit-row-treble-notes')));
+    // fyu.3: the tap now also switches the working grade (setGrade), so the
+    // handler is async — await it inside act() rather than firing bare.
+    await act(async () => {
+      fireEvent.press(getByTestId('unit-row-treble-notes'));
+    });
 
     await waitFor(() => expect(getByTestId('set-runner')).toBeTruthy());
     expect(queryByTestId('tab-bar')).toBeNull();

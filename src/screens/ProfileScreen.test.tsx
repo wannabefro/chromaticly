@@ -8,7 +8,7 @@ jest.mock('react-native-webview', () => {
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
-import { render, waitFor, within } from '@testing-library/react-native';
+import { act, fireEvent, render, waitFor, within } from '@testing-library/react-native';
 
 import { LESSONS_BY_GRADE } from '../content/lessons';
 import { LEVELS } from '../content/levels';
@@ -50,6 +50,16 @@ function renderProfile(blob: string | null) {
       <ProfileScreen />
     </ProgressProvider>,
   );
+}
+
+function renderProfileCapturingStorage(blob: string | null) {
+  const storage = memoryStorage(blob);
+  const utils = render(
+    <ProgressProvider storage={storage}>
+      <ProfileScreen />
+    </ProgressProvider>,
+  );
+  return { ...utils, storage };
 }
 
 const LEVEL1 = LEVELS.find((l) => l.grade === 1)!; // Level 1 is unconditionally unlocked (D5)
@@ -140,16 +150,53 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByText('Guest')).toBeTruthy());
   });
 
-  // Only Grade 1 has content, so the profile says so rather than offering a switch that
-  // would land the learner in an empty grade.
-  test('grades without content are shown locked, not offered', async () => {
+  // fyu.3: content-less grades (4-5) read as dim/"coming soon", never as locked —
+  // reachable grades (1-3) are shown as a free choice, not a gated climb.
+  test('grades without content still render, dimmed and named as coming soon, not locked', async () => {
     const { getByTestId } = renderProfile(seeded([]));
     await waitFor(() => expect(getByTestId('profile-grade-1')).toBeTruthy());
 
-    expect(getByTestId('profile-grade-note')).toHaveTextContent('Only Grade 1 has content so far — Grades 2–5 are coming.');
-    // A fresh store has no exam cleared, so every level but Grade 1 is locked (D5).
+    expect(getByTestId('profile-grade-note')).toHaveTextContent(
+      'Grades 4 and 5 unlock as their content ships — everything else is open now.',
+    );
     for (const level of LEVELS.filter((l) => l.grade !== 1)) {
       expect(getByTestId(`profile-grade-${level.grade}`)).toBeTruthy();
     }
+  });
+});
+
+// fyu.3: the "Working grade" settings row (design 5c) is the profile-side switch —
+// same `setGrade` the level map's taps use, so this is never a second rule.
+describe('ProfileScreen — Working grade switch (design 5c, fyu.3)', () => {
+  test('tapping the working-grade row opens a picker of startable grades', async () => {
+    const { getByTestId, findByTestId, queryByTestId } = renderProfile(seeded([]));
+    await findByTestId('profile-screen');
+
+    expect(getByTestId('profile-working-grade')).toHaveTextContent('Grade 1', { exact: false });
+    expect(queryByTestId('profile-working-grade-picker')).toBeNull();
+
+    fireEvent.press(getByTestId('profile-working-grade'));
+    expect(getByTestId('profile-working-grade-picker')).toBeTruthy();
+    expect(getByTestId('profile-working-grade-option-2')).toBeTruthy();
+    expect(getByTestId('profile-working-grade-option-3')).toBeTruthy();
+  });
+
+  test('choosing a grade from the picker switches the working grade and persists it', async () => {
+    const { getByTestId, findByTestId, storage } = renderProfileCapturingStorage(seeded([]));
+    await findByTestId('profile-screen');
+
+    fireEvent.press(getByTestId('profile-working-grade'));
+    await act(async () => {
+      fireEvent.press(getByTestId('profile-working-grade-option-2'));
+    });
+
+    await waitFor(() => expect(getByTestId('profile-working-grade')).toHaveTextContent('Grade 2', { exact: false }));
+    await waitFor(() => {
+      expect(storage.blob).not.toBeNull();
+      expect(JSON.parse(storage.blob!).profile.grade).toBe(2);
+    });
+    // Everything else — the readiness card, the grade-1 pill — reads the new
+    // working grade too, not a second, disagreeing source of truth.
+    expect(getByTestId('profile-grade-2')).toBeTruthy();
   });
 });

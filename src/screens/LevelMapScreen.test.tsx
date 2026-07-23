@@ -5,7 +5,7 @@ jest.mock('react-native-webview', () => {
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
-import { act, fireEvent, render, within } from '@testing-library/react-native';
+import { act, fireEvent, render, waitFor, within } from '@testing-library/react-native';
 
 import { LESSONS, LESSONS_BY_GRADE, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
@@ -50,6 +50,16 @@ function renderMap(seed: string | null = null) {
   );
 }
 
+function renderMapCapturingStorage(seed: string | null = null) {
+  const storage = memoryStorage(seed);
+  const utils = render(
+    <ProgressProvider storage={storage}>
+      <LevelMapScreen />
+    </ProgressProvider>,
+  );
+  return { ...utils, storage };
+}
+
 describe('LevelMapScreen — the grade home (R1)', () => {
   test('renders one UnitRow per Level 1 unit with the correct strand glyph + label', async () => {
     const { getByTestId, findByTestId } = renderMap();
@@ -89,35 +99,42 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(partialRow.getByTestId('unit-row-' + second.id + '-stars-star-2-empty')).toBeTruthy();
   });
 
-  test('the exam-gate node renders locked with its unlock condition and does nothing on tap (AE2)', async () => {
+  // fyu.3: the exam-gate seal is advisory, not star-gated — Grade 1 has a real
+  // paper, so it opens on tap regardless of readiness (never a lock).
+  test('the exam-gate node is advisory and opens the paper on tap regardless of stars (AE2, fyu.3)', async () => {
     const { getByTestId, getByText, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
     const level1 = LEVELS[0];
     const gate = getByTestId(`exam-gate-${level1.id}`);
-    expect(getByText(`Practice paper · unlocks at ${level1.unitIds.length} units ★`)).toBeTruthy();
-    expect(gate.props.onPress).toBeUndefined();
+    expect(getByText(`take it any time · best after ${level1.unitIds.length} units ★`)).toBeTruthy();
+    expect(within(gate).queryByText('🔒')).toBeNull();
 
     await act(async () => {
       fireEvent.press(gate);
     });
-    // Still on the map — no exam/lesson screen took over.
-    expect(getByTestId('level-map-screen')).toBeTruthy();
+    expect(getByTestId('exam-start')).toBeTruthy();
   });
 
-  // fyu.2: only content-less Levels 4-5 stay locked/collapsed now — Levels 2-3
-  // are reachable on a fresh store (content presence is the only gate) and
-  // render expanded, covered by the "Level 2 is dynamically unlocked" describe
-  // block below and the Level-3-parity assertions here.
-  test('content-less Levels 4-5 render locked with their OWN prerequisite copy and no unit content', async () => {
+  // fyu.2: only content-less Levels 4-5 stay collapsed now — Levels 2-3 are
+  // reachable on a fresh store (content presence is the only gate) and render
+  // expanded, covered by the "Level 2 is dynamically unlocked" describe block
+  // below and the Level-3-parity assertions here.
+  //
+  // fyu.3: collapsed levels show a readiness chip, never a lock (design 3a).
+  test('content-less Levels 4-5 render collapsed with a readiness chip, no lock, and no unit content', async () => {
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
-    for (const level of LEVELS.slice(3)) {
-      const node = within(getByTestId(`level-node-${level.id}`));
-      expect(node.getByText(level.title)).toBeTruthy();
-      expect(node.getByText(level.prerequisite!)).toBeTruthy();
-    }
+    const level4 = within(getByTestId('level-node-level-4'));
+    expect(level4.getByText('Grade 4')).toBeTruthy();
+    expect(level4.getByText('builds on L3')).toBeTruthy();
+    expect(level4.queryByText('🔒')).toBeNull();
+
+    const level5 = within(getByTestId('level-node-level-5'));
+    expect(level5.getByText('Grade 5')).toBeTruthy();
+    expect(level5.getByText('assumes L1–4')).toBeTruthy();
+    expect(level5.queryByText('🔒')).toBeNull();
   });
 
   test('Levels 2 and 3 render expanded on a fresh store — reachable by content presence, not an exam gate', async () => {
@@ -151,6 +168,19 @@ describe('LevelMapScreen — the grade home (R1)', () => {
 
     await act(async () => {
       fireEvent.press(getByTestId(`unit-row-${LESSONS[0].id}`));
+    });
+
+    expect(getByTestId('set-runner')).toBeTruthy();
+  });
+
+  // Design 3a: "tapping [a level] starts it, which is also how you switch grades" —
+  // the level header carries the same start-and-switch affordance as its unit rows.
+  test('tapping a level\'s header (level-tap-<grade>) starts its frontier unit', async () => {
+    const { getByTestId, findByTestId } = renderMap();
+    await findByTestId('level-map-screen');
+
+    await act(async () => {
+      fireEvent.press(getByTestId('level-tap-1'));
     });
 
     expect(getByTestId('set-runner')).toBeTruthy();
@@ -211,5 +241,23 @@ describe('LevelMapScreen — Level 2 is reachable by content presence (fyu.2)', 
     });
 
     expect(getByTestId('teach-phase')).toBeTruthy();
+  });
+
+  // fyu.3: "tapping [a level] starts it, which is also how you switch grades" —
+  // tapping a unit in a level that ISN'T the working grade switches to it.
+  test('tapping a Level-2 unit row switches the working grade to 2, even though the working grade started at 1', async () => {
+    const seed = seedBlob((store) => store.setProfile({ grade: 1, onboardedAt: '2026-07-13T00:00:00.000Z' }));
+    const { getByTestId, findByTestId, storage } = renderMapCapturingStorage(seed);
+    await findByTestId('level-map-screen');
+    expect(getByTestId('grade-pill')).toHaveTextContent('Grade 1');
+
+    await act(async () => {
+      fireEvent.press(getByTestId('unit-row-key-signatures-2'));
+    });
+
+    await waitFor(() => {
+      expect(storage.blob).not.toBeNull();
+      expect(JSON.parse(storage.blob!).profile.grade).toBe(2);
+    });
   });
 });

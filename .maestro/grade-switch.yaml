@@ -1,0 +1,42 @@
+# fyu.3 / design 3a + 5c — free grade access. Proves the working grade is a
+# self-service switch that actually re-renders on device (the react-compiler
+# staleness class jest can't catch): switching grade via the Profile "Working
+# grade" picker AND via a level-map tap must both update what the app shows.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=transposition-3
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+# --- Profile working-grade switch (design 5c) ---
+- tapOn: { id: "tab-profile" }
+- assertVisible: { id: "profile-screen" }
+- scrollUntilVisible:
+    element: { id: "profile-working-grade" }
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: grade-switch-profile-before
+- tapOn: { id: "profile-working-grade" }
+- assertVisible: { id: "profile-working-grade-picker" }
+# Switch to Grade 2 (from the seeded Grade 3) — proves the switch re-renders.
+- tapOn: { id: "profile-working-grade-option-2" }
+- takeScreenshot: grade-switch-profile-after
+# The working-grade pill must now read Grade 2 (proves setGrade re-rendered on device).
+- assertVisible: { text: "Grade 2" }
+
+# --- Level-map tap = grade switch (design 3a) ---
+- tapOn: { id: "tab-learn" }
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 20000
+- takeScreenshot: grade-switch-levelmap

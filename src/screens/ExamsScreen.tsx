@@ -2,16 +2,16 @@
 // exam gate inline; this is the same gate reached directly, so a learner who wants the
 // paper does not have to scroll the whole map to find it.
 //
-// Readiness is the same rule as the map's gate: the level's stars must reach its
-// unlockAtStars. Locked reads as locked — the paper is never quietly openable early.
+// Free grade access (fyu.3): the gate is advisory, not star-gated — a paper opens any
+// time it exists (hasExamPaper), the same rule as the map's inline gate, so a paper is
+// never quietly openable from one surface but not the other.
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { hasExamPaper } from '../learn/exam';
-import { isLevelUnlocked, unitStates } from '../learn/mastery-rollup';
+import { isLevelUnlocked } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { ExamGateNode } from '../ui/components/ExamGateNode';
 import { ExamRunner } from '../ui/exam/ExamRunner';
@@ -24,27 +24,12 @@ export interface ExamsScreenProps {
 }
 
 export default function ExamsScreen({ onImmersive }: ExamsScreenProps = {}) {
-  const { ready, store, revision } = useProgressContext();
+  const { ready, store } = useProgressContext();
   const [examGrade, setExamGrade] = useState<number | null>(null);
 
   useEffect(() => {
     onImmersive?.(examGrade !== null);
   }, [onImmersive, examGrade]);
-
-  const starsByLevel = useMemo(() => {
-    const map = new Map<string, number>();
-    if (!store) return map;
-    for (const level of LEVELS) {
-      if (!isLevelUnlocked(level, store)) continue;
-      const rows = unitStates(level.unitIds, store, (id) => lessonById(id)?.atoms ?? []);
-      map.set(
-        level.id,
-        rows.reduce((sum, r) => sum + r.stars, 0),
-      );
-    }
-    return map;
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
-  }, [store, revision]);
 
   if (!ready || !store) {
     return (
@@ -70,11 +55,7 @@ export default function ExamsScreen({ onImmersive }: ExamsScreenProps = {}) {
             levelGrade={level.grade}
             unitsRequired={level.unitIds.length}
             hasPaper={hasExamPaper(level.grade)}
-            onPress={
-              hasExamPaper(level.grade) && (starsByLevel.get(level.id) ?? 0) >= level.examGate.unlockAtStars
-                ? () => setExamGrade(level.grade)
-                : undefined
-            }
+            onPress={hasExamPaper(level.grade) ? () => setExamGrade(level.grade) : undefined}
             testID={`exam-gate-${level.id}`}
           />
         ))}

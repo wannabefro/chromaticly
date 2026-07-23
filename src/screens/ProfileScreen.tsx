@@ -14,20 +14,21 @@
 //    dependency, and a toggle that flips and changes nothing is a lie. Filed as
 //    follow-ups off 302.36.
 //
-// Grade switching is here, but only Grade 1 has content, so 2-5 read as locked —
-// the same rule GradeSelectScreen applies during onboarding, not a second one.
+// Free grade access (fyu.3): grade is a self-service choice, not an exam-gated
+// climb — the "Working grade" row (design 5c) is the settings-side switch, using
+// the same `setGrade` every level-map tap uses, so this is never a second rule.
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { lessonById, type Lesson } from '../content/lessons';
-import { LEVELS } from '../content/levels';
+import { isStartableGrade, LEVELS } from '../content/levels';
 import { currentLevel, examReadiness, isLevelUnlocked, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { Screen } from '../ui/Screen';
 import { SettingsBlock } from '../ui/components/SettingsBlock';
 import { StrandRadar } from '../ui/components/StrandRadar';
-import { colors, shape, strandDef, type as typo, type Strand } from '../ui/theme';
+import { ACCENT, colors, shape, strandDef, type as typo, type Strand } from '../ui/theme';
 
 export interface ProfileScreenProps {
   /** "Exam readiness ›" takes the learner to the paper it is talking about. */
@@ -38,7 +39,8 @@ export interface ProfileScreenProps {
 }
 
 export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScreenProps = {}) {
-  const { ready, store, revision, grade, name } = useProgressContext();
+  const { ready, store, revision, grade, name, setGrade } = useProgressContext();
+  const [gradePickerOpen, setGradePickerOpen] = useState(false);
 
   const level = store ? currentLevel(LEVELS, store) : LEVELS[0];
 
@@ -151,7 +153,7 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
                 <View
                   key={lvl.id}
                   testID={`profile-grade-${lvl.grade}`}
-                  style={[styles.gradePill, isCurrent && styles.gradePillCurrent, !isLevelUnlocked(lvl, store) && styles.gradePillLocked]}
+                  style={[styles.gradePill, isCurrent && styles.gradePillCurrent, !isLevelUnlocked(lvl, store) && styles.gradePillUnreachable]}
                 >
                   <Text style={[styles.gradeLabel, isCurrent && styles.gradeLabelCurrent]}>{lvl.grade}</Text>
                 </View>
@@ -159,8 +161,51 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
             })}
           </View>
           <Text style={styles.cardNote} testID="profile-grade-note">
-            Only Grade 1 has content so far — Grades 2–5 are coming.
+            Grades 4 and 5 unlock as their content ships — everything else is open now.
           </Text>
+        </View>
+
+        {/* Working grade (design 5c): the settings-side grade switch — "switching
+            keeps all progress" — sitting above the settings block the way 5c's row
+            sits above Terminology. Tapping expands the startable-grade picker. */}
+        <View style={styles.card}>
+          <Pressable
+            style={styles.workingGradeRow}
+            testID="profile-working-grade"
+            onPress={() => setGradePickerOpen((open) => !open)}
+          >
+            <View style={styles.labelCol}>
+              <Text style={styles.settingLabel}>Working grade</Text>
+              <Text style={styles.settingHint}>switching keeps all progress</Text>
+            </View>
+            <View style={styles.workingGradePill}>
+              <View style={styles.workingGradeBadge}>
+                <Text style={styles.workingGradeBadgeText}>{grade ?? 1}</Text>
+              </View>
+              <Text style={styles.workingGradePillText}>Grade {grade ?? 1}</Text>
+              <Text style={styles.workingGradeChevron}>›</Text>
+            </View>
+          </Pressable>
+          {gradePickerOpen ? (
+            <View style={styles.gradePicker} testID="profile-working-grade-picker">
+              {LEVELS.filter((lvl) => isStartableGrade(lvl.grade)).map((lvl) => {
+                const isCurrent = (grade ?? 1) === lvl.grade;
+                return (
+                  <Pressable
+                    key={lvl.id}
+                    testID={`profile-working-grade-option-${lvl.grade}`}
+                    style={[styles.gradeOption, isCurrent && styles.gradeOptionCurrent]}
+                    onPress={async () => {
+                      await setGrade(lvl.grade);
+                      setGradePickerOpen(false);
+                    }}
+                  >
+                    <Text style={[styles.gradeOptionText, isCurrent && styles.gradeOptionTextCurrent]}>Grade {lvl.grade}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          ) : null}
         </View>
 
         <SettingsBlock />
@@ -218,7 +263,51 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   gradePillCurrent: { borderColor: colors.correct, backgroundColor: colors.correctSurface },
-  gradePillLocked: { opacity: 0.4 },
+  // Content-less grades (4-5) read as dim, not locked — the readiness-chip
+  // treatment the level map uses (design 3a: nothing here is a lock).
+  gradePillUnreachable: { opacity: 0.55 },
   gradeLabel: { ...typo.cardTitle, color: colors.textMuted },
   gradeLabelCurrent: { color: colors.text },
+
+  workingGradeRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: shape.spaceInline },
+  labelCol: { flex: 1, gap: 2 },
+  settingLabel: { ...typo.body, color: colors.text },
+  settingHint: { ...typo.label, color: colors.textFaint },
+  workingGradePill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: colors.bg,
+    borderWidth: shape.borderW,
+    borderColor: colors.borderStrong,
+    borderRadius: shape.radiusControl,
+    paddingHorizontal: shape.spaceInline,
+    paddingVertical: 7,
+  },
+  workingGradeBadge: {
+    width: 20,
+    height: 20,
+    borderRadius: shape.radiusSwatch * 2,
+    backgroundColor: ACCENT,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  workingGradeBadgeText: { ...typo.label, fontSize: 12, fontFamily: typo.cardTitle.fontFamily, color: colors.bg },
+  workingGradePillText: { ...typo.label, fontSize: 12, fontFamily: typo.cardTitle.fontFamily, color: colors.text },
+  workingGradeChevron: { fontSize: 12, color: colors.textFaint },
+
+  gradePicker: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline, paddingTop: 2 },
+  gradeOption: {
+    minHeight: shape.tapMin,
+    minWidth: 72,
+    borderRadius: shape.radiusControl,
+    borderWidth: shape.borderWActive,
+    borderColor: colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: shape.spaceInline,
+  },
+  gradeOptionCurrent: { borderColor: colors.correct, backgroundColor: colors.correctSurface },
+  gradeOptionText: { ...typo.cardTitle, fontSize: 14, color: colors.textMuted },
+  gradeOptionTextCurrent: { color: colors.text },
 });

@@ -16,6 +16,15 @@ describe('PlanScreen — sets the mental model, then funnels to the warm-up (R3)
     expect(getByText('Note values warm-up')).toBeTruthy();
   });
 
+  // fyu.3: free grade access removed the exam-clear requirement, so the exam card
+  // must read as advisory (design 7c's exact copy), never as gated.
+  test('the exam card is advisory (design 7c), not the old "unlocks as you master" gated copy', () => {
+    const { getByText, queryByText } = render(<PlanScreen grade={1} onStartWarmUp={jest.fn()} />);
+
+    expect(getByText("Sit it whenever you like — we'll tell you when you look ready.")).toBeTruthy();
+    expect(queryByText(/unlocks as you master/i)).toBeNull();
+  });
+
   test('"Try your first question" starts the warm-up', () => {
     const onStartWarmUp = jest.fn();
     const { getByTestId } = render(<PlanScreen grade={1} onStartWarmUp={onStartWarmUp} />);

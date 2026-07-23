@@ -1,11 +1,13 @@
 // Level map (U2, design 3a): the grade home (R1/KD1 — "grade" and "level" are
-// the same axis). A vertical path of levels; Level 1 (the only unlocked level)
-// renders expanded with its units + a locked exam-gate seal (R2/R3); Levels
-// 2-5 render locked with their prerequisite (R4). Tapping an unlocked unit
-// launches its set — the level map is now the only way into a lesson, so this
-// keeps existing exercise-loop behavior reachable (previously DashboardScreen's
-// "Begin" hero); the design's "continue ›" cue on the active unit implies the
-// same tap-to-enter affordance.
+// the same axis). Free grade access (fyu.3): nothing is locked. Content-ful
+// levels (1-3) render expanded with their units + an always-advisory exam-gate
+// seal; content-less levels (4-5, until their epics) render collapsed with a
+// readiness chip instead of a lock — the only levels that hide/lock are the
+// ones with no content to show. Tapping any unit (or a level's header) switches
+// the working grade to that level's AND launches its set — the level map is the
+// only way into a lesson, so this keeps existing exercise-loop behavior
+// reachable (previously DashboardScreen's "Begin" hero); the design's
+// "continue ›" cue on the active unit implies the same tap-to-enter affordance.
 //
 // AD6: star/state derivation reads the mutable ProgressStore, so it's recomputed
 // in a useMemo keyed explicitly on `revision` (not just `store`, whose identity
@@ -16,7 +18,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, lessonById } from '../content/lessons';
-import { LEVELS } from '../content/levels';
+import { LEVELS, type Level } from '../content/levels';
 import { hasExamPaper } from '../learn/exam';
 import { currentLevel, isLevelUnlocked, unitStates } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
@@ -41,6 +43,21 @@ function accentHueFor(rows: UnitRows): string {
   return lesson ? strandDef(lesson.strand as Strand).hue : ACCENT;
 }
 
+/** The unit a level-wide "start" tap should open: the active unit, or the first
+ *  unlocked-but-not-done one — never a locked unit (never route onto nothing). */
+function frontierUnitId(rows: UnitRows): string | undefined {
+  return (rows.find((r) => r.state === 'active') ?? rows.find((r) => r.state !== 'locked'))?.unitId;
+}
+
+/** Readiness chip for a content-less level (design 3a: "builds on L3" / "assumes
+ *  L1-4" replace the old lock). The topmost level "assumes" the whole chain
+ *  behind it; every other content-less level just "builds on" its immediate
+ *  predecessor. */
+function readinessNoteFor(level: Level, levels: Level[]): string {
+  const isTopmost = levels[levels.length - 1]?.id === level.id && levels.length > 2;
+  return isTopmost ? `assumes L1–${level.grade - 1}` : `builds on L${level.grade - 1}`;
+}
+
 export interface LevelMapScreenProps {
   /** Told when a lesson or an exam takes over the screen, so the shell can drop its
    *  tab bar — an exercise is immersive, and an exam paper must not offer a tab out of
@@ -49,7 +66,7 @@ export interface LevelMapScreenProps {
 }
 
 export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}) {
-  const { ready, store, revision, markNudgeSeen } = useProgressContext();
+  const { ready, store, revision, markNudgeSeen, setGrade } = useProgressContext();
   const [activeLessonId, setActiveLessonId] = useState<string | null>(null);
   const [examGrade, setExamGrade] = useState<number | null>(null);
   // The account nudge (design 6c) routed here from SetRunner (KTD6); this screen owns the
@@ -124,11 +141,28 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
       <ScrollView contentContainerStyle={styles.list}>
         {LEVELS.map((level) => {
           if (!isLevelUnlocked(level, store)) {
-            return <LevelNode key={level.id} level={level} expanded={false} testID={`level-node-${level.id}`} />;
+            return (
+              <LevelNode
+                key={level.id}
+                level={level}
+                expanded={false}
+                readinessNote={readinessNoteFor(level, LEVELS)}
+                testID={`level-node-${level.id}`}
+              />
+            );
           }
 
           const rows = statesByLevel.get(level.id) ?? [];
           const doneCount = rows.filter((r) => r.state === 'done').length;
+
+          // Design 3a: "tapping [a level] starts it, which is also how you switch
+          // grades" — every entry point into a level's content sets it as the
+          // working grade first, then routes as it did before (fyu.3).
+          const startLevel = (unitId: string) => async () => {
+            await setGrade(level.grade);
+            setActiveLessonId(unitId);
+          };
+          const frontier = frontierUnitId(rows);
 
           return (
             <LevelNode
@@ -137,6 +171,8 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
               expanded
               summary={{ doneCount, total: rows.length }}
               accentHue={accentHueFor(rows)}
+              onStart={frontier ? startLevel(frontier) : undefined}
+              startTestID={`level-tap-${level.grade}`}
               testID={`level-node-${level.id}`}
             >
               {rows.map((row) => {
@@ -151,7 +187,7 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
                     stars={row.stars}
                     state={row.state}
                     prerequisiteTitle={locked ? prerequisiteTitleFor(row.unitId) : undefined}
-                    onPress={locked ? undefined : () => setActiveLessonId(row.unitId)}
+                    onPress={locked ? undefined : startLevel(row.unitId)}
                     testID={`unit-row-${row.unitId}`}
                   />
                 );
@@ -160,11 +196,7 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
                 levelGrade={level.grade}
                 unitsRequired={level.unitIds.length}
                 hasPaper={hasExamPaper(level.grade)}
-                onPress={
-                  hasExamPaper(level.grade) && rows.reduce((sum, r) => sum + r.stars, 0) >= level.examGate.unlockAtStars
-                    ? () => setExamGrade(level.grade)
-                    : undefined
-                }
+                onPress={hasExamPaper(level.grade) ? () => setExamGrade(level.grade) : undefined}
                 testID={`exam-gate-${level.id}`}
               />
             </LevelNode>

@@ -1,6 +1,10 @@
-// Your plan (design screen 3, "step 3 · your plan"): sets the mental model in
+// Your plan (design screen 7c, "step 3 · your plan"): sets the mental model in
 // three cards (lesson → exercise → exam), then funnels into the 2-min coached
 // warm-up — NOT a full lesson (R3). The CTA promises one question, not a course.
+//
+// fyu.3: the exam card is advisory, not gated — "sit it whenever you like" is the
+// design's exact copy (7c), replacing the old "it unlocks as you master topics"
+// framing that free grade access made false (there is no exam-clear requirement).
 
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -15,7 +19,7 @@ export interface PlanScreenProps {
 const PLAN_CARDS = [
   { title: 'Short lessons', body: 'Read a little, hear a lot — every example plays.' },
   { title: 'Quick exercises', body: 'One question per screen. Wrong answers explain why.' },
-  { title: 'A real practice exam', body: "When you're ready — it unlocks as you master topics." },
+  { title: 'A real practice exam', body: "Sit it whenever you like — we'll tell you when you look ready." },
 ] as const;
 
 export function PlanScreen({ grade, onStartWarmUp }: PlanScreenProps) {

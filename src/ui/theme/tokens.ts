@@ -44,6 +44,12 @@ export const colors = {
   incorrectSurface: '#231619',
   hint: '#f0c489',
   hintSurface: '#241f12',
+
+  // readiness chip (design 3a) — muted tan, distinct from the brighter amber
+  // `hint` pair used for stars/exam accents. "builds on L3" / "assumes L1-4".
+  readinessText: '#7a6a52',
+  readinessSurface: '#1e1a13',
+  readinessBorder: '#3a3226',
 } as const;
 
 /** Exam register (assessment mode ONLY, never-violate rule 4). Warm paper, serif

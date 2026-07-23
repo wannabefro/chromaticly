@@ -1,64 +1,78 @@
-// U2 acceptance tests for the exam-gate seal node (design 3a, KD5/AE2).
+// Acceptance tests for the exam-gate seal node (design 3a). Free grade access
+// (fyu.3): the node is advisory, not locked — no 🔒 ever, and tappability is
+// gated on `hasPaper`, not on star readiness.
 
 import { fireEvent, render } from '@testing-library/react-native';
 
 import { ExamGateNode } from './ExamGateNode';
 
 describe('ExamGateNode', () => {
-  // R3: the node names its unlock condition.
-  test('renders the level exam title and unlock condition', () => {
-    const { getByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} />);
+  test('renders the level exam title and advisory readiness copy, never "unlocks at"', () => {
+    const { getByText, queryByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} />);
 
     expect(getByText('Level 1 Exam Paper')).toBeTruthy();
-    expect(getByText('Practice paper · unlocks at 7 units ★')).toBeTruthy();
+    expect(getByText('take it any time · best after 7 units ★')).toBeTruthy();
+    expect(queryByText(/unlocks at/i)).toBeNull();
   });
 
-  // Locked (no onPress): inert display, shows the lock and the unlock condition.
-  test('is inert while locked — no onPress, lock shown', () => {
-    const { getByTestId, getByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} testID="exam-gate" />);
+  // The seal is advisory, never a lock — no 🔒 in any state (design 3a).
+  test('without onPress it is display-only but shows no lock and no chevron', () => {
+    const { getByTestId, queryByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} testID="exam-gate" />);
 
     const node = getByTestId('exam-gate');
     expect(node.props.onPress).toBeUndefined();
-    expect(getByText('🔒')).toBeTruthy();
+    expect(queryByText('🔒')).toBeNull();
+    expect(queryByText('›')).toBeNull();
     expect(() => fireEvent.press(node)).not.toThrow();
   });
 
-  // Unlocked (onPress provided, 302.2): tappable exam entry, no lock, ready copy.
-  test('is a tappable exam entry once unlocked', () => {
+  test('is a tappable exam entry any time a paper exists, with the same advisory copy', () => {
     const onPress = jest.fn();
     const { getByTestId, getByText } = render(
       <ExamGateNode levelGrade={1} unitsRequired={7} onPress={onPress} testID="exam-gate" />,
     );
 
-    expect(getByText('Ready — tap to start the practice paper')).toBeTruthy();
+    expect(getByText('take it any time · best after 7 units ★')).toBeTruthy();
+    expect(getByText('›')).toBeTruthy();
     fireEvent.press(getByTestId('exam-gate'));
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
-  // D9: a 1-unit level ("unlocks at 1 units ★") reads as bad grammar — singular must fix.
   test('a single required unit renders "unit" singular, not "units"', () => {
     const { getByText, queryByText } = render(<ExamGateNode levelGrade={2} unitsRequired={1} />);
 
-    expect(getByText('Practice paper · unlocks at 1 unit ★')).toBeTruthy();
-    expect(queryByText('Practice paper · unlocks at 1 units ★')).toBeNull();
+    expect(getByText('take it any time · best after 1 unit ★')).toBeTruthy();
+    expect(queryByText('take it any time · best after 1 units ★')).toBeNull();
   });
 
-  // D8: a grade with no exam paper yet (hasPaper=false) must never promise a star
-  // threshold that would open onto a paper that doesn't exist — even at full stars,
-  // the gate stays sealed and reads "Coming soon" instead.
+  // D8: a grade with no exam paper yet (hasPaper=false) must never promise a paper
+  // that doesn't exist — it reads "Coming soon" instead of the advisory copy.
   describe('hasPaper=false (D8 — no exam paper yet)', () => {
-    test('renders "Coming soon" and stays inert, not the star-threshold copy', () => {
+    test('renders "Coming soon", no lock, no chevron, and stays inert', () => {
       const { getByTestId, getByText, queryByText } = render(
         <ExamGateNode levelGrade={2} unitsRequired={1} hasPaper={false} testID="exam-gate" />,
       );
 
       expect(getByText('Coming soon')).toBeTruthy();
-      expect(queryByText('Practice paper · unlocks at 1 unit ★')).toBeNull();
+      expect(queryByText(/take it any time/i)).toBeNull();
+      expect(queryByText('🔒')).toBeNull();
+      expect(queryByText('›')).toBeNull();
       expect(getByTestId('exam-gate').props.onPress).toBeUndefined();
-      expect(getByText('🔒')).toBeTruthy();
     });
 
-    test('hasPaper defaults to true — omitting it keeps the existing star-threshold behavior', () => {
+    // D8 hardening: even a caller mistake (passing onPress with no real paper)
+    // must never open onto nothing — the rendered node itself carries no press
+    // handler, so a real tap on the physical screen has nothing to fire.
+    test('a caller-supplied onPress is never wired to the rendered node when there is no paper', () => {
+      const onPress = jest.fn();
+      const { getByTestId } = render(
+        <ExamGateNode levelGrade={2} unitsRequired={1} hasPaper={false} onPress={onPress} testID="exam-gate" />,
+      );
+
+      expect(getByTestId('exam-gate').props.onPress).toBeUndefined();
+    });
+
+    test('hasPaper defaults to true — omitting it keeps the advisory-copy behavior', () => {
       const { queryByText } = render(<ExamGateNode levelGrade={1} unitsRequired={7} />);
       expect(queryByText('Coming soon')).toBeNull();
     });
