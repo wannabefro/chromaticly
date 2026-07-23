@@ -83,19 +83,32 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     expect(getByTestId('readiness-note')).not.toHaveTextContent('The practice paper is open.');
   });
 
-  test('the fact collection counts what has actually been collected', async () => {
+  // fyu.2: reachability is content presence (`isLevelUnlocked`), not the working
+  // grade — Levels 1-3 are ALL reachable on a fresh store, so the fact-card
+  // denominator spans every content-ful grade's lessons from the start.
+  test('the fact collection counts what has actually been collected, across every content-ful grade (1-3), not just the working grade', async () => {
     const { getByTestId } = renderProfile(seeded([]));
-    await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length}`));
+    const totalContentfulLessons = LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length;
+    await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
   });
 
-  // D13 phase 2 — the zero-movement invariant's other half: grade-2 joins the
-  // fact-card denominator and the strand radar exactly at unlock, not before.
-  test('grade-2 joins the fact-card total and the strand radar only once grade 1\'s exam is cleared', async () => {
-    const beforeUnlock = renderProfile(seeded(['key-signatures']));
-    await waitFor(() => expect(beforeUnlock.getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length}`));
-    // scales_keys is 100% pre-unlock: all 4 grade-1 key-signature atoms mastered, grade-2's
-    // 3 new-key atoms not yet in scope.
-    await waitFor(() => expect(within(beforeUnlock.getByTestId('radar-legend-scales_keys')).getByText('100%')).toBeTruthy());
+  // fyu.2 supersedes D13 phase 2's exam-gated variant: grade-2 and grade-3 join
+  // the fact-card total and strand radar ALREADY on a fresh store — content
+  // presence is the only gate now, so recording an exam clear moves nothing.
+  test('grade-2 and grade-3 already join the fact-card total and strand radar on a fresh store; recording the grade-1 exam changes nothing', async () => {
+    const totalContentfulLessons = LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length;
+    const fresh = renderProfile(seeded(['key-signatures']));
+    await waitFor(() => expect(fresh.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
+
+    // scales_keys already spans all three grades (4 grade-1 + 9 grade-2 + 21 grade-3
+    // atoms) — the 4 mastered grade-1 atoms read as a fraction of that full scope.
+    const scalesKeysAtoms = [1, 2, 3]
+      .flatMap((g) => LESSONS_BY_GRADE[g].filter((l) => l.strand === 'scales_keys'))
+      .reduce((sum, l) => sum + l.atoms.length, 0);
+    const expectedPct = Math.round((4 / scalesKeysAtoms) * 100);
+    await waitFor(() =>
+      expect(within(fresh.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
+    );
 
     const store = new ProgressStore();
     store.setProfile({ grade: 1, onboardedAt: '2026-07-14T00:00:00.000Z' });
@@ -106,18 +119,10 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
       for (const atom of lesson.atoms) store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });
     }
     store.recordExamCleared(1);
-    const afterUnlock = renderProfile(JSON.stringify(store.toSnapshot()));
+    const afterExam = renderProfile(JSON.stringify(store.toSnapshot()));
+    await waitFor(() => expect(afterExam.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
     await waitFor(() =>
-      expect(afterUnlock.getByTestId('profile-facts')).toHaveTextContent(`0 of ${LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length}`),
-    );
-    // Same 4 mastered atoms, now over the strand's full grade-2 atom set (all three
-    // grade-2 lessons are scales_keys — key-signatures-2's 3 plus minor-keys-2's and
-    // minor-scales-2's 6 unmastered new atoms joined) — the radar deflates exactly
-    // because it widened.
-    const grade2Atoms = LESSONS_BY_GRADE[2].filter((l) => l.strand === 'scales_keys').reduce((sum, l) => sum + l.atoms.length, 0);
-    const expectedPct = Math.round((4 / (4 + grade2Atoms)) * 100);
-    await waitFor(() =>
-      expect(within(afterUnlock.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
+      expect(within(afterExam.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
     );
   });
 

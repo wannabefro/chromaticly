@@ -105,15 +105,32 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(getByTestId('level-map-screen')).toBeTruthy();
   });
 
-  test('Levels 2-5 render locked with prerequisite copy and no unit content', async () => {
+  // fyu.2: only content-less Levels 4-5 stay locked/collapsed now — Levels 2-3
+  // are reachable on a fresh store (content presence is the only gate) and
+  // render expanded, covered by the "Level 2 is dynamically unlocked" describe
+  // block below and the Level-3-parity assertions here.
+  test('content-less Levels 4-5 render locked with their OWN prerequisite copy and no unit content', async () => {
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
-    for (const level of LEVELS.slice(1)) {
+    for (const level of LEVELS.slice(3)) {
       const node = within(getByTestId(`level-node-${level.id}`));
       expect(node.getByText(level.title)).toBeTruthy();
       expect(node.getByText(level.prerequisite!)).toBeTruthy();
     }
+  });
+
+  test('Levels 2 and 3 render expanded on a fresh store — reachable by content presence, not an exam gate', async () => {
+    const { getByTestId, findByTestId, queryByText } = renderMap();
+    await findByTestId('level-map-screen');
+
+    for (const level of [LEVELS[1], LEVELS[2]]) {
+      const node = within(getByTestId(`level-node-${level.id}`));
+      expect(node.getByText(level.title)).toBeTruthy();
+      // A locked node would show its prerequisite copy; an expanded one never does.
+      expect(queryByText(level.prerequisite!)).toBeNull();
+    }
+    expect(getByTestId('unit-row-key-signatures-2')).toBeTruthy();
   });
 
   // Rule 3 / test scenario 5: one accent hue per screen — the active strand's.
@@ -140,50 +157,48 @@ describe('LevelMapScreen — the grade home (R1)', () => {
   });
 });
 
-// U6: Level 2's visibility is driven by the persisted exam-clear, not a static flag —
-// the slice's headline user-visible behavior.
-describe('LevelMapScreen — Level 2 is dynamically unlocked (D5, U6)', () => {
-  test('on a fresh store Level 2 renders collapsed/locked with "Clear the Level 1 exam to unlock"', async () => {
+// fyu.2: Level 2's visibility is driven by content presence, not a persisted
+// exam-clear — the free-grade-access headline user-visible behavior.
+describe('LevelMapScreen — Level 2 is reachable by content presence (fyu.2)', () => {
+  test('on a fresh store Level 2 renders expanded with its unit row present and tappable, no exam required', async () => {
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
     const level2 = LEVELS[1];
     const node = within(getByTestId(`level-node-${level2.id}`));
-    expect(node.getByText('Clear the Level 1 exam to unlock')).toBeTruthy();
-    expect(() => getByTestId('unit-row-key-signatures-2')).toThrow();
-  });
-
-  test('once grade 1\'s exam is cleared, Level 2 renders expanded with its unit row tappable', async () => {
-    const seed = seedBlob((store) => store.recordExamCleared(1));
-    const { getByTestId, findByTestId } = renderMap(seed);
-    await findByTestId('level-map-screen');
-
+    expect(node.queryByText('Clear the Level 1 exam to unlock')).toBeNull();
     expect(getByTestId('unit-row-key-signatures-2')).toBeTruthy();
   });
 
-  test('the grade pill reads the highest unlocked grade, not always Level 1', async () => {
-    const seed = seedBlob((store) => store.recordExamCleared(1));
+  test('the grade pill reads the profile\'s working grade, not the highest reachable level (Level 3 is also reachable but the pill still reads Grade 2)', async () => {
+    const seed = seedBlob((store) => store.setProfile({ grade: 2, onboardedAt: '2026-07-13T00:00:00.000Z' }));
     const { getByTestId, findByTestId } = renderMap(seed);
     await findByTestId('level-map-screen');
 
     expect(getByTestId('grade-pill')).toHaveTextContent('Grade 2');
   });
 
+  test('the grade pill defaults to Grade 1 on a fresh store, even though Levels 2 and 3 are also reachable', async () => {
+    const { getByTestId, findByTestId } = renderMap();
+    await findByTestId('level-map-screen');
+
+    expect(getByTestId('grade-pill')).toHaveTextContent('Grade 1');
+  });
+
   // D8: Grade 2 has no exam paper this slice — the gate must never open onto a
-  // paper that doesn't exist, even at full stars.
+  // paper that doesn't exist, even at full stars, independent of any exam-clear state.
   test('the Level-2 exam gate stays sealed "Coming soon" even at full stars', async () => {
     const seed = seedBlob((store) => {
-      store.recordExamCleared(1);
       store.unlock('key-signatures-2');
       masterAtoms(store, lessonById('key-signatures-2')!.atoms);
       store.setLesson('key-signatures-2', { completed: true });
     });
-    const { getByTestId, getByText, findByTestId } = renderMap(seed);
+    const { getByTestId, findByTestId } = renderMap(seed);
     await findByTestId('level-map-screen');
 
     const gate = getByTestId('exam-gate-level-2');
     expect(gate.props.onPress).toBeUndefined();
-    expect(getByText('Coming soon')).toBeTruthy();
+    expect(within(gate).getByText('Coming soon')).toBeTruthy();
   });
 
   test('tapping the Level-2 unit row launches SetRunner on the teach phase', async () => {

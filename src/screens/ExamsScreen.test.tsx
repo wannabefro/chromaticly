@@ -7,7 +7,7 @@ jest.mock('react-native-webview', () => {
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent, render, within } from '@testing-library/react-native';
 
 import { LESSONS_BY_GRADE, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
@@ -50,27 +50,32 @@ function renderExams(seed: string | null = null) {
 }
 
 describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-parity)', () => {
-  test('a fresh store lists only the Level 1 gate', async () => {
+  // fyu.2: reachability is content presence, not an exam gate — a fresh store
+  // already has Levels 1-3 reachable (each has content), so all three gates
+  // list immediately; content-less Levels 4-5 still never get a gate.
+  test('a fresh store lists a gate for every content-ful level (1, 2, 3), and nothing for content-less Levels 4-5', async () => {
     const { findByTestId, queryByTestId } = renderExams();
     await findByTestId('exams-screen');
 
     expect(queryByTestId('exam-gate-level-1')).toBeTruthy();
-    expect(queryByTestId('exam-gate-level-2')).toBeNull();
+    expect(queryByTestId('exam-gate-level-2')).toBeTruthy();
+    expect(queryByTestId('exam-gate-level-3')).toBeTruthy();
+    expect(queryByTestId('exam-gate-level-4')).toBeNull();
+    expect(queryByTestId('exam-gate-level-5')).toBeNull();
   });
 
-  test('once grade 1\'s exam is cleared, the Level-2 gate appears, disabled per hasExamPaper (D8)', async () => {
+  test('the Level-2 gate is sealed "Coming soon" on a fresh store — no grade-2 exam paper exists yet (D8), independent of any exam-clear state', async () => {
     const seed = seedBlob((store) => {
-      store.recordExamCleared(1);
       store.unlock('key-signatures-2');
       masterAtoms(store, lessonById('key-signatures-2')!.atoms);
       store.setLesson('key-signatures-2', { completed: true });
     });
-    const { findByTestId, getByTestId, getByText } = renderExams(seed);
+    const { findByTestId, getByTestId } = renderExams(seed);
     await findByTestId('exams-screen');
 
     const gate = getByTestId('exam-gate-level-2');
     expect(gate.props.onPress).toBeUndefined();
-    expect(getByText('Coming soon')).toBeTruthy();
+    expect(within(gate).getByText('Coming soon')).toBeTruthy();
   });
 
   test('the Level 1 gate is unaffected — still opens once its stars are earned', async () => {

@@ -49,17 +49,19 @@ describe('progression — ensureLevelRootsUnlocked (D6, U5)', () => {
     expect(store.isUnlocked('b')).toBe(false);
   });
 
-  test('on a fresh store only the grade-1 root unlocks — the grade-2 chain must not leak open before the exam', () => {
+  // fyu.2: free grade access unlocks EVERY grade's root by content presence —
+  // the isExamCleared(grade-1) gate is gone, so the grade-2 chain root opens
+  // on a fresh store right alongside grade-1's.
+  test('on a fresh store every grade\'s root unlocks — no exam gate blocks the grade-2 chain', () => {
     const store = new ProgressStore();
     ensureLevelRootsUnlocked(store, [lessonA, lessonB, lessonG2]);
     expect(store.isUnlocked('a')).toBe(true);
-    expect(store.isUnlocked('g2a')).toBe(false);
+    expect(store.isUnlocked('g2a')).toBe(true);
   });
 
-  test('a restored snapshot with grade-1 cleared but the grade-2 root not yet unlocked self-heals on the next run', () => {
+  test('a restored snapshot missing the grade-2 root self-heals on the next run, independent of exam state', () => {
     const store = new ProgressStore();
-    store.recordExamCleared(1); // the persisted fact, e.g. from a prior session
-    expect(store.isUnlocked('g2a')).toBe(false); // not yet re-derived
+    expect(store.isUnlocked('g2a')).toBe(false); // not yet re-derived, no exam recorded either
 
     ensureLevelRootsUnlocked(store, [lessonA, lessonB, lessonG2]);
     expect(store.isUnlocked('g2a')).toBe(true);
@@ -219,15 +221,20 @@ describe('useProgress — recordExamResult (D7, U5)', () => {
     },
   );
 
-  test('a below band clears nothing — the exam stays uncleared and Level 2 stays locked', async () => {
+  // fyu.2: exam recording is now independent of content reachability — a
+  // below-band result still clears nothing, but it no longer has any lock to
+  // guard, since ensureLevelRootsUnlocked already opened 'g2a' by content
+  // presence at load, before recordExamResult ever ran.
+  test('a below band clears nothing — exam state stays uncleared, independent of the already-content-unlocked grade-2 root', async () => {
     const storage = memoryStorage();
     const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
     await waitFor(() => expect(result.current.ready).toBe(true));
+    expect((result.current.store as ProgressStore).isUnlocked('g2a')).toBe(true); // unlocked by content presence at load, pre-exam
 
     await result.current.recordExamResult(1, 'below');
 
     const store = result.current.store as ProgressStore;
     expect(store.isExamCleared(1)).toBe(false);
-    expect(store.isUnlocked('g2a')).toBe(false);
+    expect(store.isUnlocked('g2a')).toBe(true); // unaffected either way — reachability never depended on the exam
   });
 });

@@ -43,12 +43,11 @@ describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U
     expect(level2.examGate.unlockAtStars).toBe(level2.unitIds.length * 3);
   });
 
-  // U6: unlock is a derivation over the store, not a field — locked on a fresh
-  // store, unlocked the moment Level 1's exam is recorded cleared (D5).
-  test('Level 2 is locked on a fresh store and unlocks once Level 1\'s exam is cleared', () => {
+  // fyu.2: unlock is a derivation over the store, not a field — but under free
+  // grade access it no longer gates on the previous grade's exam, only on
+  // content presence, so Level 2 is reachable on a fresh store.
+  test('Level 2 is reachable on a fresh store — content presence is the only gate, no exam required', () => {
     const store = new ProgressStore();
-    expect(isLevelUnlocked(level2, store)).toBe(false);
-    store.recordExamCleared(1);
     expect(isLevelUnlocked(level2, store)).toBe(true);
   });
 });
@@ -70,25 +69,24 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
     expect(level3.examGate.unlockAtStars).toBe(27);
   });
 
-  // The unlock gate is the PREVIOUS grade's exam (Grade 2's) — and no Grade 2
-  // exam paper exists yet (hasExamPaper(2) is false), so the seed seam
-  // (recordExamCleared) is the only current path to a cleared Level 3.
-  test('Level 3 is locked on a fresh store and with only the grade-1 exam cleared; unlocks once the grade-2 exam is recorded cleared', () => {
+  // fyu.2: reachability is content presence only — Level 3 is reachable on a
+  // fresh store, and exam state (cleared or not, any grade) doesn't move it.
+  test('Level 3 is reachable on a fresh store — content presence is the only gate, independent of any exam state', () => {
     const fresh = new ProgressStore();
-    expect(isLevelUnlocked(level3, fresh)).toBe(false);
+    expect(isLevelUnlocked(level3, fresh)).toBe(true);
 
     const grade1Cleared = new ProgressStore();
     grade1Cleared.recordExamCleared(1);
-    expect(isLevelUnlocked(level3, grade1Cleared)).toBe(false);
+    expect(isLevelUnlocked(level3, grade1Cleared)).toBe(true);
 
     const grade2Cleared = new ProgressStore();
     grade2Cleared.recordExamCleared(2);
     expect(isLevelUnlocked(level3, grade2Cleared)).toBe(true);
   });
 
-  // No stub Grade-3 (or Grade-2) exam paper exists — the exam gate must render
-  // "no paper" exactly as Grade 2's does, keeping Level 3 locked for real
-  // learners this slice (D9).
+  // No stub Grade-3 (or Grade-2) exam paper exists — exam recording is a
+  // separate concern from content reachability, and this trip-wire guards that
+  // no stub paper silently appears for a grade that shouldn't have one yet.
   test('hasExamPaper(3) is false — no stub Grade-3 exam paper', () => {
     expect(hasExamPaper(3)).toBe(false);
   });
@@ -115,10 +113,12 @@ describe('levels — Levels 4-5 are locked placeholders (R1, R4)', () => {
   });
 });
 
+// fyu.2: grade is a self-service choice now — any grade with content is
+// startable, no exam gate and no store needed (onboarding runs pre-profile).
 describe('levels — isStartableGrade is a static content concept, decoupled from progression unlock (D14)', () => {
-  test('only Grade 1 is startable, even with every exam cleared', () => {
-    expect(isStartableGrade(1)).toBe(true);
-    for (const grade of [2, 3, 4, 5]) expect(isStartableGrade(grade)).toBe(false);
+  test('grades with content (1, 2, 3) are startable; content-less grades (4, 5) are not', () => {
+    for (const grade of [1, 2, 3]) expect(isStartableGrade(grade)).toBe(true);
+    for (const grade of [4, 5]) expect(isStartableGrade(grade)).toBe(false);
   });
 });
 

@@ -211,12 +211,12 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
   });
 });
 
-// D5: a level unlocks by clearing the PREVIOUS level's exam, and only levels
-// with content can unlock — the guard that keeps content-less Levels 4-5
-// locked even after a future Grade-3 exam clear. (U6/D9: Level 3 became
-// content-ful and is exercised in src/content/levels.test.ts instead — it's
-// no longer a content-less exemplar, so Level 4 takes over that role here.)
-describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, U5)', () => {
+// fyu.2: free grade access removed the exam gate on reachability — a level is
+// reachable iff it has content (Grade 1 always; Grade 2/3 by virtue of their
+// authored units). Content-less levels (Grade 4/5, no units yet) stay
+// unreachable regardless of exam state — the guard that keeps a level from
+// ever "opening" onto nothing.
+describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)', () => {
   const [level1, level2, , level4] = LEVELS;
 
   test('Level 1 is always unlocked, even on a fresh store', () => {
@@ -224,15 +224,13 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, U5)', 
     expect(isLevelUnlocked(level1, store)).toBe(true);
   });
 
-  test('Level 2 is locked on a fresh store, unlocked once the grade-1 exam clears', () => {
+  test('Level 2 is reachable on a fresh store — it has content, so no exam gate blocks it', () => {
     const store = new ProgressStore();
-    expect(isLevelUnlocked(level2, store)).toBe(false);
-
-    store.recordExamCleared(1);
+    expect(level2.unitIds.length).toBeGreaterThan(0); // guards the premise: content-ful
     expect(isLevelUnlocked(level2, store)).toBe(true);
   });
 
-  test('Level 4 stays locked even with grade-3 cleared — it has no units (content-less levels never unlock)', () => {
+  test('Level 4 stays locked even with every exam cleared — it has no units (content-less levels never unlock)', () => {
     const store = new ProgressStore();
     store.recordExamCleared(1);
     store.recordExamCleared(2);
@@ -241,11 +239,14 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, U5)', 
     expect(isLevelUnlocked(level4, store)).toBe(false);
   });
 
-  test('currentLevel is the highest unlocked level — the learner\'s frontier', () => {
+  test('currentLevel follows the working grade (Profile.grade), not the highest reachable level', () => {
     const store = new ProgressStore();
-    expect(currentLevel(LEVELS, store)).toBe(level1);
+    expect(currentLevel(LEVELS, store)).toBe(level1); // fresh store, no profile → grade 1 default
 
-    store.recordExamCleared(1);
+    store.setProfile({ grade: 2, onboardedAt: '2026-07-13T00:00:00.000Z' });
+    // Level 3 is also reachable (has content) at this point, but currentLevel
+    // must still report Level 2 — the learner's chosen working grade.
+    expect(isLevelUnlocked(LEVELS[2], store)).toBe(true);
     expect(currentLevel(LEVELS, store)).toBe(level2);
   });
 });

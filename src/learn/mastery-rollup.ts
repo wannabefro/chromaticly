@@ -139,18 +139,24 @@ export function examReadiness(
   };
 }
 
-/** Whether a level is reachable (D5): Level 1 always is; any other level
- *  unlocks once its PREVIOUS grade's exam is cleared — AND only if the level
- *  actually has content. The `unitIds.length > 0` guard keeps content-less
- *  Levels 3-5 locked even after a future Grade-2 exam clear, so a level can
- *  never "open" onto nothing. */
-export function isLevelUnlocked(level: Level, store: ProgressStore): boolean {
-  return level.grade === 1 || (level.unitIds.length > 0 && store.isExamCleared(level.grade - 1));
+/** Whether a level is REACHABLE. Under free grade access (fyu.2) grade is a
+ *  self-service choice, not an exam-gated climb, so a level is reachable iff it
+ *  has content — the exam clear is no longer a gate. Grade 1 is always
+ *  reachable; a content-less level (e.g. Grade 5 before its epic) stays
+ *  unreachable, so a level never "opens" onto nothing and the not-ready grades
+ *  hide rather than showing empty (R1, R6). `store` is retained in the
+ *  signature for call-site stability but no longer consulted. */
+export function isLevelUnlocked(level: Level, _store?: ProgressStore): boolean {
+  return level.grade === 1 || level.unitIds.length > 0;
 }
 
-/** The learner's frontier: the highest unlocked level (design grade pill,
- *  ProfileScreen readiness card). Levels are assumed grade-ordered, so the
- *  last unlocked one in list order is the highest. */
+/** The learner's CURRENT position — their working grade (fyu.2, KTD8). Under
+ *  free grade access this is the grade the learner has chosen (Profile.grade),
+ *  NOT the highest reachable level: with the exam gate gone every content level
+ *  is reachable, so "highest reachable" would always jump to the top grade and
+ *  misreport where the learner actually is. Drives the grade pill, the Profile
+ *  readiness card, and the level-map active highlight. Falls back to Level 1. */
 export function currentLevel(levels: Level[], store: ProgressStore): Level {
-  return levels.filter((l) => isLevelUnlocked(l, store)).at(-1) ?? levels[0];
+  const workingGrade = store.getGrade() ?? 1;
+  return levels.find((l) => l.grade === workingGrade) ?? levels[0];
 }

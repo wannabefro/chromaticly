@@ -78,11 +78,13 @@ function level3(): Level {
 
 export const LEVELS: Level[] = [level1(), level2(), level3(), ...[4, 5].map(lockedLevel)];
 
-/** Whether a grade can be picked as an onboarding start grade (D14). This is
- *  deliberately a static content concept, NOT `isLevelUnlocked` — onboarding
- *  runs pre-profile (no store to read) and must not let a device where a
- *  later grade's exam was cleared offer that grade to a brand-new learner.
- *  Grade 1 only, until onboarding into higher grades is designed. */
+/** Whether a grade can be picked as a start grade (free grade access, fyu.2).
+ *  Grade is a self-service choice now, so any grade that HAS content is
+ *  startable — no exam gate, no store needed (onboarding runs pre-profile). A
+ *  content-less grade (Grade 5 before its epic) is not startable, so the picker
+ *  never offers an empty grade. Grade 4 becomes startable once level4() carries
+ *  content (fyu.13). */
 export function isStartableGrade(grade: number): boolean {
-  return grade === 1;
+  const level = LEVELS.find((l) => l.grade === grade);
+  return level != null && level.unitIds.length > 0;
 }

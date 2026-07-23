@@ -14,16 +14,14 @@ import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
 import { seedExamReady, seedProgressToUnit } from './seed';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
-/** Ensure every grade's chain root is reachable, given what's persisted so
- *  far (D6). Grade 1's root is always unlocked; a higher grade's root
- *  unlocks only once the previous grade's exam is cleared. Generalizes the
- *  old single-chain `ensureRootUnlocked` to N per-grade chains — run on load
- *  (self-heals a restored snapshot) and again inside `recordExamResult`, so
- *  the next grade's root opens the moment its gate clears. */
+/** Ensure every grade's chain root is reachable, given what's persisted so far.
+ *  Under free grade access (fyu.2) grade is a self-service choice, so every
+ *  grade's root unlocks by content presence — no exam gate. Run on load
+ *  (self-heals a restored snapshot); a learner can switch to any grade and find
+ *  its root already reachable. */
 export function ensureLevelRootsUnlocked(store: ProgressStore, lessons: Lesson[]): void {
   const grades = new Set(lessons.map((l) => l.grade));
   for (const grade of grades) {
-    if (grade !== 1 && !store.isExamCleared(grade - 1)) continue;
     const gradeLessons = lessons.filter((l) => l.grade === grade);
     const unlockedTargets = new Set(gradeLessons.map((l) => l.unlocks).filter((id): id is string => id !== null));
     const root = gradeLessons.find((l) => !unlockedTargets.has(l.id));
