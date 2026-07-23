@@ -601,7 +601,7 @@ function rhythmSumHook(inst: ExerciseInstance): string[] {
 
   if (typeof canonical === 'string') {
     const words = canonical.trim().toLowerCase().split(/\s+/);
-    const durWord = words[0] === 'dotted' ? words[1] : words[0];
+    const durWord = words[0] === 'dotted' || words[0] === 'double-dotted' ? words[1] : words[0];
     if (!durWord || !(scope.noteValues as readonly string[]).includes(durWord)) {
       return [`rhythm_sum: canonical value "${canonical}" is not a single G1 note value`];
     }

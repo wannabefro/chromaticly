@@ -74,7 +74,19 @@ export function buildBarDurations<T extends SimpleDuration>(
  *  duration in `pool` maps to a distinct unit count (UNITS is bijective over
  *  the simple-duration domain), so this is guaranteed to change the bar's
  *  total — the bar is corrupted by construction, never by luck. R2:
- *  call-for-call identical to the pre-extraction implementation. */
+ *  call-for-call identical to the pre-extraction implementation.
+ *
+ *  The `UNITS[d] !== undefined` guard is new (Grade 4 defensive fix): `pool`
+ *  is typed `SimpleDuration` by callers but, at Grade 4, `scope.noteValues`
+ *  widens to also carry `breve` at runtime (64 units in bar-math's own
+ *  scale — exceeds every bar total), which has no `UNITS` entry. Without this
+ *  guard, `breve` could be drawn as a corruption replacement in a bar far too
+ *  small to hold it. `buildBarDurations` already can never draw `breve` as an
+ *  original duration (its own `UNITS[d] <= remaining` filter excludes any
+ *  value with no `UNITS` entry, since `undefined <= n` is always false), so
+ *  this guard alone closes the gap without needing a size bound — every
+ *  pre-Grade-4 pool value already has a defined `UNITS` entry, so this is a
+ *  no-op filter for grades 1-3. */
 export function corruptBarDurations<T extends SimpleDuration>(
   rng: () => number,
   durations: T[],
@@ -82,7 +94,7 @@ export function corruptBarDurations<T extends SimpleDuration>(
 ): T[] {
   const index = Math.floor(rng() * durations.length);
   const original = durations[index];
-  const alternatives = pool.filter((d) => d !== original);
+  const alternatives = pool.filter((d) => d !== original && UNITS[d] !== undefined);
   const replacement = pick(rng, alternatives);
   return durations.map((d, i) => (i === index ? replacement : d));
 }

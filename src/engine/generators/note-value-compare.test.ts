@@ -140,3 +140,41 @@ describe('noteValueCompare — D9 hardening: grade-3 scope (with demisemiquaver)
     expect(sawDemisemiquaver).toBe(true);
   });
 });
+
+describe('noteValueCompare — Grade 4 breve: never exceeds bar-filling scope, and always the strictly-longer note', () => {
+  test('seeds 0..99 at grade 4 all produce a passing, well-formed instance', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = noteValueCompare({ grade: 4, seed, atoms: ['note_value_compare'] });
+      expect(() => durationOf(instance.answer.canonical)).not.toThrow();
+      expect(() => durationOf(instance.distractors[0])).not.toThrow();
+      const result = validate(instance);
+      expect(result).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  test('breve is reachable as a compared duration at grade 4 and is always the longer note (breve exceeds every bar, so it can only ever be the "longer" side of a comparison)', () => {
+    let sawBreve = false;
+    for (let seed = 0; seed < 200; seed++) {
+      const instance = noteValueCompare({ grade: 4, seed, atoms: ['note_value_compare'] });
+      const longer = durationOf(instance.answer.canonical);
+      const shorter = durationOf(instance.distractors[0]);
+      if (longer === 'breve' || shorter === 'breve') {
+        sawBreve = true;
+        expect(longer).toBe('breve');
+      }
+    }
+    expect(sawBreve).toBe(true);
+  });
+
+  test('breve is never drawn at grades 1-3 (it is outside their scope)', () => {
+    for (const grade of [1, 2, 3] as const) {
+      for (let seed = 0; seed < 100; seed++) {
+        const instance = noteValueCompare({ grade, seed, atoms: ['note_value_compare'] });
+        const longer = durationOf(instance.answer.canonical);
+        const shorter = durationOf(instance.distractors[0]);
+        expect(longer).not.toBe('breve');
+        expect(shorter).not.toBe('breve');
+      }
+    }
+  });
+});

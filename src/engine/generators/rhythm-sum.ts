@@ -20,7 +20,7 @@ import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-type Dots = 0 | 1;
+type Dots = 0 | 1 | 2;
 
 interface ValueEntry {
   dur: Duration;
@@ -28,9 +28,11 @@ interface ValueEntry {
   units: number; // sixteenths of a crotchet — kept integer for exact-match arithmetic
 }
 
+const DOT_MULTIPLIER: Record<Dots, number> = { 0: 1, 1: 1.5, 2: 1.75 };
+
 function unitsFor(dur: Duration, dots: Dots): number {
   const beats = KB.noteValues[dur].beats_in_crotchets;
-  return Math.round(beats * 16 * (dots === 1 ? 1.5 : 1));
+  return Math.round(beats * 16 * DOT_MULTIPLIER[dots]);
 }
 
 // The note values ABRSM Grade 1 uses in rhythm sums: no semiquavers, and the
@@ -52,6 +54,19 @@ const VALUE_TABLE: ValueEntry[] = RHYTHM_SUM_VALUES.map(({ dur, dots }) => ({
   units: unitsFor(dur, dots),
 }));
 
+// Grade 4 (GRADE_4_SCOPE.rhythmDevices adds 'double_dot'): the double-dotted
+// minim, opened alongside the existing dotted minim. Kept in a separate table
+// from RHYTHM_SUM_VALUES/VALUE_TABLE (below) rather than appended to it, so
+// grades 1-3 keep computing DECOMPOSITIONS_BY_TARGET/DECOMPOSABLE_TARGETS over
+// the exact original 5-value table — byte-identical output (the seed-stability
+// snapshot proves it) — while grade 4 gets its own wider decomposition table.
+const DOUBLE_DOT_VALUES: ReadonlyArray<{ dur: Duration; dots: Dots }> = [{ dur: 'minim', dots: 2 }];
+
+const GRADE4_VALUE_TABLE: ValueEntry[] = [
+  ...VALUE_TABLE,
+  ...DOUBLE_DOT_VALUES.map(({ dur, dots }) => ({ dur, dots, units: unitsFor(dur, dots) })),
+];
+
 interface Decomposition {
   operands: ValueEntry[];
 }
@@ -60,12 +75,12 @@ function targetKey(entry: ValueEntry): string {
   return `${entry.dur}:${entry.dots}`;
 }
 
-function findDecompositions(target: ValueEntry): Decomposition[] {
+function findDecompositions(target: ValueEntry, table: readonly ValueEntry[]): Decomposition[] {
   const decomps: Decomposition[] = [];
-  for (const a of VALUE_TABLE) {
-    for (const b of VALUE_TABLE) {
+  for (const a of table) {
+    for (const b of table) {
       if (a.units + b.units === target.units) decomps.push({ operands: [a, b] });
-      for (const c of VALUE_TABLE) {
+      for (const c of table) {
         if (a.units + b.units + c.units === target.units) {
           decomps.push({ operands: [a, b, c] });
         }
@@ -75,21 +90,30 @@ function findDecompositions(target: ValueEntry): Decomposition[] {
   return decomps;
 }
 
-const DECOMPOSITIONS_BY_TARGET = new Map<string, Decomposition[]>(
-  VALUE_TABLE.map((target) => [targetKey(target), findDecompositions(target)]),
-);
+function decomposableTargetsOver(
+  table: readonly ValueEntry[],
+): { decompositionsByTarget: Map<string, Decomposition[]>; decomposableTargets: ValueEntry[] } {
+  const decompositionsByTarget = new Map<string, Decomposition[]>(
+    table.map((target) => [targetKey(target), findDecompositions(target, table)]),
+  );
+  // Addition-only leaves the smallest values (e.g. a lone semiquaver) with no
+  // two-or-three-note sum, so only targets that decompose are eligible.
+  const decomposableTargets = table.filter((target) => (decompositionsByTarget.get(targetKey(target))?.length ?? 0) > 0);
+  return { decompositionsByTarget, decomposableTargets };
+}
 
-// Addition-only leaves the smallest values (e.g. a lone semiquaver) with no
-// two-or-three-note sum, so only targets that decompose are eligible.
-const DECOMPOSABLE_TARGETS: ValueEntry[] = VALUE_TABLE.filter(
-  (target) => (DECOMPOSITIONS_BY_TARGET.get(targetKey(target))?.length ?? 0) > 0,
-);
+const { decompositionsByTarget: DECOMPOSITIONS_BY_TARGET, decomposableTargets: DECOMPOSABLE_TARGETS } =
+  decomposableTargetsOver(VALUE_TABLE);
+
+const { decompositionsByTarget: GRADE4_DECOMPOSITIONS_BY_TARGET, decomposableTargets: GRADE4_DECOMPOSABLE_TARGETS } =
+  decomposableTargetsOver(GRADE4_VALUE_TABLE);
 
 function toAnswerValue(entry: ValueEntry): { dur: Duration; dots: Dots } {
   return { dur: entry.dur, dots: entry.dots };
 }
 
 function formatValue(entry: ValueEntry): string {
+  if (entry.dots === 2) return `double-dotted ${entry.dur}`;
   return entry.dots === 1 ? `dotted ${entry.dur}` : entry.dur;
 }
 
@@ -103,19 +127,19 @@ function sameValue(a: ValueEntry, b: ValueEntry): boolean {
 
 // Distractor rule: the un-dotted version of a dotted answer (the classic
 // "forgot the dot" error), then fill to two slots with the nearest values by
-// duration — all drawn from RHYTHM_SUM_VALUES, so every option stays in Grade 1
-// scope and near-miss diagnostic rather than obviously wrong.
-function buildDistractors(target: ValueEntry): ValueEntry[] {
+// duration — all drawn from the same grade-scoped value table, so every
+// option stays in scope and near-miss diagnostic rather than obviously wrong.
+function buildDistractors(target: ValueEntry, valueTable: readonly ValueEntry[]): ValueEntry[] {
   const distractors: ValueEntry[] = [];
 
   if (target.dots === 1) {
-    const undotted = VALUE_TABLE.find((v) => v.dur === target.dur && v.dots === 0);
+    const undotted = valueTable.find((v) => v.dur === target.dur && v.dots === 0);
     if (undotted) distractors.push(undotted);
   }
 
-  const byNearness = VALUE_TABLE.filter(
-    (v) => !sameValue(v, target) && !distractors.some((d) => sameValue(d, v)),
-  ).sort((a, b) => Math.abs(a.units - target.units) - Math.abs(b.units - target.units));
+  const byNearness = valueTable
+    .filter((v) => !sameValue(v, target) && !distractors.some((d) => sameValue(d, v)))
+    .sort((a, b) => Math.abs(a.units - target.units) - Math.abs(b.units - target.units));
 
   while (distractors.length < 2 && byNearness.length > 0) {
     distractors.push(byNearness.shift()!);
@@ -126,10 +150,17 @@ function buildDistractors(target: ValueEntry): ValueEntry[] {
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const target = pick(rng, DECOMPOSABLE_TARGETS);
-  const decomps = DECOMPOSITIONS_BY_TARGET.get(targetKey(target))!;
+  // Grade 4 (GRADE_4_SCOPE.rhythmDevices: 'double_dot') opens the wider value
+  // table; grades 1-3 stay on the original VALUE_TABLE/DECOMPOSABLE_TARGETS —
+  // the exact same objects/computation as before this generator gained
+  // double-dot support — so their output is byte-identical.
+  const valueTable = grade >= 4 ? GRADE4_VALUE_TABLE : VALUE_TABLE;
+  const decomposableTargets = grade >= 4 ? GRADE4_DECOMPOSABLE_TARGETS : DECOMPOSABLE_TARGETS;
+  const decompositionsByTarget = grade >= 4 ? GRADE4_DECOMPOSITIONS_BY_TARGET : DECOMPOSITIONS_BY_TARGET;
+  const target = pick(rng, decomposableTargets);
+  const decomps = decompositionsByTarget.get(targetKey(target))!;
   const decomposition = pick(rng, decomps);
-  const distractorEntries = buildDistractors(target);
+  const distractorEntries = buildDistractors(target, valueTable);
 
   // The instruction lives in `prompt`; the sum itself is the stimulus so the UI
   // renders it once (as the large notation-card line), never twice.

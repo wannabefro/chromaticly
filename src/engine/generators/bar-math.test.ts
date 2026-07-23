@@ -10,6 +10,7 @@ import {
   buildCompoundBarDurations,
   corruptBarDurations,
   type BarDuration,
+  type SimpleDuration,
 } from './bar-math';
 
 type G1Duration = 'semiquaver' | 'quaver' | 'crotchet' | 'minim' | 'semibreve';
@@ -187,6 +188,19 @@ describe('bar-math — buildCompoundBarDurations: per-beat pattern fill (D4)', (
   test('throws for a non-compound (or unknown) signature — fail loud, no silent simple-time fallback', () => {
     expect(() => buildCompoundBarDurations(mulberry32(0), '4/4')).toThrow();
     expect(() => buildCompoundBarDurations(mulberry32(0), '5/8')).toThrow();
+  });
+});
+
+describe('bar-math — corruptBarDurations never injects breve (Grade 4 defensive fix)', () => {
+  test('breve is never a corruption alternative, even though scope.noteValues includes it at grade 4', () => {
+    const pool = scopeForGrade(4).noteValues as readonly SimpleDuration[];
+    for (const sig of ['2/4', '3/4', '4/4'] as const) {
+      for (let seed = 0; seed < 100; seed++) {
+        const original = buildBarDurations(mulberry32(seed), barUnitsFor(sig), pool);
+        const corrupted = corruptBarDurations(mulberry32(seed + 1000), [...original], pool);
+        expect(corrupted).not.toContain('breve');
+      }
+    }
   });
 });
 

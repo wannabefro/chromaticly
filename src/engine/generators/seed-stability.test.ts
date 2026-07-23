@@ -370,6 +370,16 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     templateId: 'degree_name_id',
     atoms: ['degree_name:tonic', 'degree_name:dominant', 'degree_name:leading_note'],
   },
+  {
+    label: 'note_value_compare breve (rhythm-4, pre-lesson pin)',
+    templateId: 'note_value_compare',
+    atoms: [],
+  },
+  {
+    label: 'rhythm_sum double-dot (rhythm-4, pre-lesson pin)',
+    templateId: 'rhythm_sum',
+    atoms: ['rhythm_sum'],
+  },
 ];
 
 if (GRADE_4_EXTRA_CASES.length > 0) {

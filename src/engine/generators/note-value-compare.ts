@@ -14,13 +14,16 @@ import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-type G1Duration = 'semiquaver' | 'quaver' | 'crotchet' | 'minim' | 'semibreve' | 'demisemiquaver';
+type G1Duration = 'semiquaver' | 'quaver' | 'crotchet' | 'minim' | 'semibreve' | 'demisemiquaver' | 'breve';
 
 // Units = sixteenths of a crotchet (mirrors bar-validity's pre-rescale UNITS
 // table) — every duration maps to a distinct positive value, so "strictly
-// longer" is a plain comparison with no ties possible among the six values.
-// demisemiquaver (D9 hardening) keeps this table's own scale rather than
-// bar-math's rescaled one — this is a note-comparison table, not bar math.
+// longer" is a plain comparison with no ties possible among the seven values.
+// demisemiquaver (D9 hardening) and breve (Grade 4) keep this table's own
+// scale rather than bar-math's rescaled one — this is a note-comparison
+// table, not bar math. breve = 2 semibreves = 32 (this file's own scale, not
+// bar-math.ts's demisemiquaver=1 scale, where breve = 64 — that table is
+// deliberately independent, per the demisemiquaver comment above).
 export const UNITS: Record<G1Duration, number> = {
   semiquaver: 1,
   quaver: 2,
@@ -28,6 +31,7 @@ export const UNITS: Record<G1Duration, number> = {
   minim: 8,
   semibreve: 16,
   demisemiquaver: 0.5,
+  breve: 32,
 };
 
 // Plain-language option voice (design step 4: "The open one (minim)" / "The
@@ -41,6 +45,7 @@ export const NOTE_VALUE_LABELS: Record<G1Duration, string> = {
   quaver: 'The filled one with a flag (quaver)',
   semiquaver: 'The filled one with two flags (semiquaver)',
   demisemiquaver: 'The filled one with three flags (demisemiquaver)',
+  breve: 'The open one with a line either side (breve)',
 };
 
 // Plain beat lengths (crotchet = 1 beat) for the coached "why" — mirrors the
@@ -52,6 +57,7 @@ const BEAT_LABEL: Record<G1Duration, string> = {
   quaver: 'half a beat',
   semiquaver: 'a quarter-beat',
   demisemiquaver: 'an eighth-beat',
+  breve: '8 beats',
 };
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {

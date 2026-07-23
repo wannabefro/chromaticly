@@ -146,3 +146,61 @@ describe('rhythmSum — fuzz gate: 100 generated items are all validator-clean',
     }
   });
 });
+
+describe('rhythmSum — Grade 4 double-dot: opens at grade 4, sums at ×1.75, grades 1-3 stay byte-identical', () => {
+  test('grades 1, 2, 3 (seeds 0..19) never produce a double-dotted value — byte-identical to pre-double-dot output', () => {
+    for (const grade of [1, 2, 3] as const) {
+      for (let seed = 0; seed < 20; seed++) {
+        const instance = rhythmSum({ grade, seed, atoms: [] });
+        const canonical = instance.answer.canonical as { dur: string; dots: number };
+        expect(canonical.dots).not.toBe(2);
+        for (const d of instance.distractors as { dur: string; dots: number }[]) {
+          expect(d.dots).not.toBe(2);
+        }
+        expect(instance.stimulus.text).not.toMatch(/double-dotted/);
+      }
+    }
+  });
+
+  test('a double-dotted value is reachable at grade 4 (seeds 0..99), formats as "double-dotted <dur>", and sums correctly at ×1.75 beats', () => {
+    const BEATS: Record<string, number> = { semibreve: 4, minim: 2, crotchet: 1, quaver: 0.5, semiquaver: 0.25 };
+    function valueBeats(dur: string, dots: number): number {
+      const multiplier = dots === 2 ? 1.75 : dots === 1 ? 1.5 : 1;
+      return BEATS[dur] * multiplier;
+    }
+    function tokenBeats(token: string): number {
+      if (token.startsWith('double-dotted ')) return valueBeats(token.slice('double-dotted '.length), 2);
+      if (token.startsWith('dotted ')) return valueBeats(token.slice('dotted '.length), 1);
+      return valueBeats(token, 0);
+    }
+
+    let sawDoubleDot = false;
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = rhythmSum({ grade: 4, seed, atoms: [] });
+      const canonical = instance.answer.canonical as { dur: string; dots: number };
+      const text = instance.stimulus.text as string;
+
+      if (canonical.dots === 2 || text.includes('double-dotted')) {
+        sawDoubleDot = true;
+
+        const expr = text.replace(/\s*=\s*\?$/, '');
+        const total = expr.split(' + ').reduce((sum, token) => sum + tokenBeats(token.trim()), 0);
+        const canonicalBeats = valueBeats(canonical.dur, canonical.dots);
+        expect(total).toBeCloseTo(canonicalBeats, 6);
+
+        if (canonical.dots === 2) {
+          expect(text).not.toContain('double-dotted');
+        }
+      }
+    }
+    expect(sawDoubleDot).toBe(true);
+  });
+
+  test('every grade-4 item still validates (seeds 0..99)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = rhythmSum({ grade: 4, seed, atoms: [] });
+      const result = validate(instance);
+      expect(result).toEqual({ ok: true, errors: [] });
+    }
+  });
+});

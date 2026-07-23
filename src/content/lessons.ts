@@ -86,6 +86,9 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'rhythm_sum':
       if (parts.length !== 0) throw new Error(`lessons: malformed rhythm_sum atom "${atom}"`);
       return;
+    case 'note_value_compare':
+      if (parts.length !== 0) throw new Error(`lessons: malformed note_value_compare atom "${atom}"`);
+      return;
     case 'bar_validity':
       if (parts.length !== 0) throw new Error(`lessons: malformed bar_validity atom "${atom}"`);
       return;
