@@ -18,15 +18,13 @@ describe('GradeSelectScreen — only content-ful grades are selectable; content-
     expect(getByText('You can switch grades any time in Profile.')).toBeTruthy();
   });
 
-  test('Grades 1-3 (content-ful) are enabled while Grades 4-5 (content-less) are disabled ("coming soon")', () => {
+  test('Grades 1-4 (content-ful) are enabled while Grade 5 (content-less) is disabled ("coming soon")', () => {
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
 
-    for (const g of [1, 2, 3]) {
+    for (const g of [1, 2, 3, 4]) {
       expect(getByTestId(`grade-pill-${g}`).props.accessibilityState?.disabled).toBeFalsy();
     }
-    for (const g of [4, 5]) {
-      expect(getByTestId(`grade-pill-${g}`).props.accessibilityState?.disabled).toBe(true);
-    }
+    expect(getByTestId('grade-pill-5').props.accessibilityState?.disabled).toBe(true);
   });
 
   test('the placement-quiz affordance is present but disabled (deferred)', () => {
@@ -47,8 +45,8 @@ describe('GradeSelectScreen — only content-ful grades are selectable; content-
     const onSelectGrade = jest.fn();
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={onSelectGrade} />);
 
-    // Disabled pills don't fire onPress; the CTA must still start Grade 1, never 4.
-    fireEvent.press(getByTestId('grade-pill-4'));
+    // Disabled pills don't fire onPress; the CTA must still start Grade 1, never 5.
+    fireEvent.press(getByTestId('grade-pill-5'));
     fireEvent.press(getByTestId('start-grade'));
     expect(onSelectGrade).toHaveBeenCalledTimes(1);
     expect(onSelectGrade).toHaveBeenCalledWith(1);
@@ -72,18 +70,19 @@ describe('GradeSelectScreen — only content-ful grades are selectable; content-
   // selectability never moves with exam/store state, only with content presence.
   // Level 4 stays locked even on a store where every exam is recorded cleared, and
   // the default selection stays Grade 1 rather than jumping to a later startable grade.
-  test('selectability is unaffected by any store/exam state; Grade 4 stays locked and Grade 1 stays the default even with every exam cleared', () => {
+  test('selectability is unaffected by any store/exam state; Grade 5 stays locked and Grade 1 stays the default even with every exam cleared', () => {
     const store = new ProgressStore();
     store.recordExamCleared(1);
     store.recordExamCleared(2);
     store.recordExamCleared(3);
-    expect(isLevelUnlocked(LEVELS[3], store)).toBe(false); // Level 4 stays content-less-unreachable regardless
+    store.recordExamCleared(4);
+    expect(isLevelUnlocked(LEVELS[4], store)).toBe(false); // Level 5 stays content-less-unreachable regardless
 
     // ...and GradeSelectScreen never reads the store at all, so its selectability is unaffected either way.
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
     expect(getByTestId('grade-pill-1').props.accessibilityState?.disabled).toBeFalsy();
     expect(getByTestId('grade-pill-2').props.accessibilityState?.disabled).toBeFalsy();
-    expect(getByTestId('grade-pill-4').props.accessibilityState?.disabled).toBe(true);
+    expect(getByTestId('grade-pill-5').props.accessibilityState?.disabled).toBe(true);
     expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
   });
 });

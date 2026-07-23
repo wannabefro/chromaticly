@@ -116,25 +116,24 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(getByTestId('exam-start')).toBeTruthy();
   });
 
-  // fyu.2: only content-less Levels 4-5 stay collapsed now — Levels 2-3 are
+  // fyu.13: only the content-less Grade 5 stays collapsed now — Levels 2-4 are
   // reachable on a fresh store (content presence is the only gate) and render
-  // expanded, covered by the "Level 2 is dynamically unlocked" describe block
-  // below and the Level-3-parity assertions here.
-  //
-  // fyu.3: collapsed levels show a readiness chip, never a lock (design 3a).
-  test('content-less Levels 4-5 render collapsed with a readiness chip, no lock, and no unit content', async () => {
+  // expanded. The collapsed level shows a readiness chip, never a lock (design 3a).
+  test('the content-less Level 5 renders collapsed with a readiness chip, no lock, and no unit content', async () => {
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
-
-    const level4 = within(getByTestId('level-node-level-4'));
-    expect(level4.getByText('Grade 4')).toBeTruthy();
-    expect(level4.getByText('builds on L3')).toBeTruthy();
-    expect(level4.queryByText('🔒')).toBeNull();
 
     const level5 = within(getByTestId('level-node-level-5'));
     expect(level5.getByText('Grade 5')).toBeTruthy();
     expect(level5.getByText('assumes L1–4')).toBeTruthy();
     expect(level5.queryByText('🔒')).toBeNull();
+    // Content-less: no unit rows inside the Grade 5 node.
+    expect(level5.queryByTestId('unit-row-keys-4')).toBeNull();
+
+    // Grade 4 is now content-ful, so it renders EXPANDED with its unit rows
+    // (the first grade-4 lesson, keys-4), not as a collapsed readiness node.
+    const level4 = within(getByTestId('level-node-level-4'));
+    expect(level4.getByTestId('unit-row-keys-4')).toBeTruthy();
   });
 
   test('Levels 2 and 3 render expanded on a fresh store — reachable by content presence, not an exam gate', async () => {

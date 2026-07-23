@@ -92,33 +92,51 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
   });
 });
 
-describe('levels — Levels 4-5 are locked placeholders (R1, R4)', () => {
-  const higherLevels = LEVELS.slice(3);
+// fyu.13: Level 4 is now real — same anti-drift derivation as Level 1-3.
+describe('levels — Level 4 derives dynamically from LESSONS_BY_GRADE[4] (fyu.13)', () => {
+  const level4 = LEVELS[3];
 
-  test('there are exactly two locked levels, grades 4 through 5', () => {
-    expect(higherLevels.map((l) => l.grade)).toEqual([4, 5]);
+  test('Level 4 has one unit id per grade-4 lesson, in lesson order', () => {
+    expect(level4.id).toBe('level-4');
+    expect(level4.grade).toBe(4);
+    expect(level4.unitIds).toEqual(LESSONS_BY_GRADE[4].map((l) => l.id));
   });
 
-  // D5: content-less levels stay locked even after their previous grade's exam clears
-  // — a level can never "open" onto no units. Also names its OWN previous-grade
-  // prerequisite (fixes the hardcoded "Level 1" bug).
-  test('each stays locked even with every previous exam cleared, has no units, and names its OWN previous-grade prerequisite', () => {
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1-3', () => {
+    expect(level4.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[4].length * 3);
+  });
+
+  test('Level 4 is reachable on a fresh store — content presence is the only gate (free access)', () => {
+    expect(isLevelUnlocked(level4, new ProgressStore())).toBe(true);
+  });
+});
+
+describe('levels — Grade 5 is the sole content-less "coming soon" placeholder (R1, R4, fyu.13)', () => {
+  const level5 = LEVELS[4];
+
+  test('Grade 5 is the only remaining locked level', () => {
+    expect(LEVELS.map((l) => l.grade)).toEqual([1, 2, 3, 4, 5]);
+    expect(LEVELS.filter((l) => l.unitIds.length === 0).map((l) => l.grade)).toEqual([5]);
+  });
+
+  // Content-less: stays unreachable even with every exam cleared (a level can
+  // never open onto no units), and — under free access — carries NO stale
+  // exam-prerequisite copy (Codex P2): the "coming soon" pill conveys the state.
+  test('Grade 5 stays unreachable with every exam cleared, has no units, and carries no exam-prerequisite copy', () => {
     const store = new ProgressStore();
     for (let grade = 1; grade < 5; grade++) store.recordExamCleared(grade);
-    for (const level of higherLevels) {
-      expect(isLevelUnlocked(level, store)).toBe(false);
-      expect(level.unitIds).toEqual([]);
-      expect(level.prerequisite).toBe(`Clear the Level ${level.grade - 1} exam to unlock`);
-    }
+    expect(isLevelUnlocked(level5, store)).toBe(false);
+    expect(level5.unitIds).toEqual([]);
+    expect(level5.prerequisite).toBeUndefined();
   });
 });
 
 // fyu.2: grade is a self-service choice now — any grade with content is
 // startable, no exam gate and no store needed (onboarding runs pre-profile).
 describe('levels — isStartableGrade is a static content concept, decoupled from progression unlock (D14)', () => {
-  test('grades with content (1, 2, 3) are startable; content-less grades (4, 5) are not', () => {
-    for (const grade of [1, 2, 3]) expect(isStartableGrade(grade)).toBe(true);
-    for (const grade of [4, 5]) expect(isStartableGrade(grade)).toBe(false);
+  test('grades with content (1, 2, 3, 4) are startable; the content-less grade (5) is not', () => {
+    for (const grade of [1, 2, 3, 4]) expect(isStartableGrade(grade)).toBe(true);
+    expect(isStartableGrade(5)).toBe(false);
   });
 });
 

@@ -217,7 +217,7 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
 // unreachable regardless of exam state — the guard that keeps a level from
 // ever "opening" onto nothing.
 describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)', () => {
-  const [level1, level2, , level4] = LEVELS;
+  const [level1, level2, , , level5] = LEVELS;
 
   test('Level 1 is always unlocked, even on a fresh store', () => {
     const store = new ProgressStore();
@@ -230,13 +230,14 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)
     expect(isLevelUnlocked(level2, store)).toBe(true);
   });
 
-  test('Level 4 stays locked even with every exam cleared — it has no units (content-less levels never unlock)', () => {
+  test('Level 5 stays locked even with every exam cleared — it has no units (content-less levels never unlock)', () => {
     const store = new ProgressStore();
     store.recordExamCleared(1);
     store.recordExamCleared(2);
     store.recordExamCleared(3);
-    expect(level4.unitIds).toEqual([]); // guards the premise: still content-less
-    expect(isLevelUnlocked(level4, store)).toBe(false);
+    store.recordExamCleared(4);
+    expect(level5.unitIds).toEqual([]); // guards the premise: still content-less
+    expect(isLevelUnlocked(level5, store)).toBe(false);
   });
 
   test('currentLevel follows the working grade (Profile.grade), not the highest reachable level', () => {

@@ -54,14 +54,14 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
   // fyu.2: reachability is content presence, not an exam gate — a fresh store
   // already has Levels 1-3 reachable (each has content), so all three gates
   // list immediately; content-less Levels 4-5 still never get a gate.
-  test('a fresh store lists a gate for every content-ful level (1, 2, 3), and nothing for content-less Levels 4-5', async () => {
+  test('a fresh store lists a gate for every content-ful level (1-4), and nothing for the content-less Level 5', async () => {
     const { findByTestId, queryByTestId } = renderExams();
     await findByTestId('exams-screen');
 
     expect(queryByTestId('exam-gate-level-1')).toBeTruthy();
     expect(queryByTestId('exam-gate-level-2')).toBeTruthy();
     expect(queryByTestId('exam-gate-level-3')).toBeTruthy();
-    expect(queryByTestId('exam-gate-level-4')).toBeNull();
+    expect(queryByTestId('exam-gate-level-4')).toBeTruthy();
     expect(queryByTestId('exam-gate-level-5')).toBeNull();
   });
 

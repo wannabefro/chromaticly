@@ -161,7 +161,7 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
             })}
           </View>
           <Text style={styles.cardNote} testID="profile-grade-note">
-            Grades 4 and 5 unlock as their content ships — everything else is open now.
+            Grade 5 unlocks as its content ships — everything else is open now.
           </Text>
         </View>
 

@@ -94,25 +94,27 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
   });
 
   // fyu.2: reachability is content presence (`isLevelUnlocked`), not the working
-  // grade — Levels 1-3 are ALL reachable on a fresh store, so the fact-card
+  // grade — Levels 1-4 are ALL reachable on a fresh store, so the fact-card
   // denominator spans every content-ful grade's lessons from the start.
-  test('the fact collection counts what has actually been collected, across every content-ful grade (1-3), not just the working grade', async () => {
+  test('the fact collection counts what has actually been collected, across every content-ful grade (1-4), not just the working grade', async () => {
     const { getByTestId } = renderProfile(seeded([]));
-    const totalContentfulLessons = LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length;
+    const totalContentfulLessons =
+      LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length + LESSONS_BY_GRADE[4].length;
     await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
   });
 
   // fyu.2 supersedes D13 phase 2's exam-gated variant: grade-2 and grade-3 join
   // the fact-card total and strand radar ALREADY on a fresh store — content
   // presence is the only gate now, so recording an exam clear moves nothing.
-  test('grade-2 and grade-3 already join the fact-card total and strand radar on a fresh store; recording the grade-1 exam changes nothing', async () => {
-    const totalContentfulLessons = LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length;
+  test('grades 2-4 already join the fact-card total and strand radar on a fresh store; recording the grade-1 exam changes nothing', async () => {
+    const totalContentfulLessons =
+      LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length + LESSONS_BY_GRADE[4].length;
     const fresh = renderProfile(seeded(['key-signatures']));
     await waitFor(() => expect(fresh.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
 
-    // scales_keys already spans all three grades (4 grade-1 + 9 grade-2 + 21 grade-3
-    // atoms) — the 4 mastered grade-1 atoms read as a fraction of that full scope.
-    const scalesKeysAtoms = [1, 2, 3]
+    // scales_keys spans all four content-ful grades now — the 4 mastered grade-1
+    // atoms read as a fraction of that full scope.
+    const scalesKeysAtoms = [1, 2, 3, 4]
       .flatMap((g) => LESSONS_BY_GRADE[g].filter((l) => l.strand === 'scales_keys'))
       .reduce((sum, l) => sum + l.atoms.length, 0);
     const expectedPct = Math.round((4 / scalesKeysAtoms) * 100);
@@ -157,7 +159,7 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByTestId('profile-grade-1')).toBeTruthy());
 
     expect(getByTestId('profile-grade-note')).toHaveTextContent(
-      'Grades 4 and 5 unlock as their content ships — everything else is open now.',
+      'Grade 5 unlocks as its content ships — everything else is open now.',
     );
     for (const level of LEVELS.filter((l) => l.grade !== 1)) {
       expect(getByTestId(`profile-grade-${level.grade}`)).toBeTruthy();

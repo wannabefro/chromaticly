@@ -20,15 +20,18 @@ export interface Level {
   examGate: { unlockAtStars: number };
 }
 
-function lockedLevel(grade: number): Level {
+// A grade whose content epic hasn't shipped yet (Grade 5 today). Shown as a
+// "coming soon" preview in the grade chooser (design 5b/5c) and a non-tappable
+// readiness node on the level map, never startable and never opening onto units.
+// Under free grade access (fyu.2) it carries NO exam-prerequisite copy — content
+// existence is the only gate, so the old "Clear the Level N exam to unlock"
+// string is gone (it was stale under free access and, per Codex P2, must not
+// resurface as a dead-end); the "coming soon" pill and readiness chip convey it.
+function comingSoonLevel(grade: number): Level {
   return {
     id: `level-${grade}`,
     grade,
     title: `Grade ${grade}`,
-    // D5: per-level, not the old shared "Clear the Level 1 exam to unlock" —
-    // fixes the latent Level-3-5 copy bug (every level's gate is its OWN
-    // previous grade's exam, not always Level 1).
-    prerequisite: `Clear the Level ${grade - 1} exam to unlock`,
     unitIds: [],
     examGate: { unlockAtStars: 0 },
   };
@@ -76,7 +79,24 @@ function level3(): Level {
   };
 }
 
-export const LEVELS: Level[] = [level1(), level2(), level3(), ...[4, 5].map(lockedLevel)];
+// fyu.13: Grade 4 is now real — unitIds and the exam-gate threshold derive from
+// the grade-4 doc, same anti-drift rule as level1()–level3(). This is what makes
+// Grade 4 startable (isStartableGrade), reachable (isLevelUnlocked), and walkable
+// end-to-end for a real learner. Grade 5 remains a content-less "coming soon"
+// preview until its own epic ships.
+function level4(): Level {
+  const unitIds = LESSONS_BY_GRADE[4].map((l) => l.id);
+  return {
+    id: 'level-4',
+    grade: 4,
+    title: 'Grade 4',
+    prerequisite: 'Clear the Level 3 exam to unlock',
+    unitIds,
+    examGate: { unlockAtStars: unitIds.length * 3 },
+  };
+}
+
+export const LEVELS: Level[] = [level1(), level2(), level3(), level4(), comingSoonLevel(5)];
 
 /** Whether a grade can be picked as a start grade (free grade access, fyu.2).
  *  Grade is a self-service choice now, so any grade that HAS content is

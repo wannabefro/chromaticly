@@ -1,0 +1,68 @@
+# fyu.13 — the Grade 4 end-to-end journey (DoD): a REAL learner (no dev seed, no
+# cleared exam) picks Grade 4 at onboarding, walks the outer loop, lands on the
+# Grade 4 home, and enters the first real Grade 4 unit. This proves level4() is
+# real and Grade 4 is reachable without the ?seed= dev seam — the invariant the
+# per-strand grade4-*.yaml flows (which DO use the seam) can't prove.
+#
+# The 3-item coached warm-up is deliberately grade-1 (note_value_compare seeds
+# 0..2, CoachedWarmUp D11) regardless of the picked grade, so the correct option
+# indices stay 0, 1, 1 exactly as in onboarding-first-set.yaml.
+#
+# Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
+#   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/grade4-journey.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}
+- tapOn: { text: "Open", optional: true }
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+- extendedWaitUntil:
+    visible: { id: "welcome-screen" }
+    timeout: 60000
+
+# Welcome → grade select
+- tapOn: { id: "start-learning" }
+- assertVisible: { id: "grade-select-screen" }
+
+# Pick Grade 4 (now selectable — level4() is real) → start
+- tapOn: { id: "grade-pill-4" }
+- assertVisible: { text: "Start Grade 4" }
+- tapOn: { id: "start-grade" }
+- assertVisible: { id: "plan-screen" }
+
+# Your plan → coached warm-up (grade-1 items; indices 0, 1, 1)
+- tapOn: { id: "plan-start-warmup" }
+- assertVisible: { id: "warm-up-screen" }
+- tapOn: { id: "option-0" }
+- tapOn: { id: "check" }
+- tapOn: { id: "feedback-sheet-continue" }
+- tapOn: { id: "option-1" }
+- tapOn: { id: "check" }
+- tapOn: { id: "feedback-sheet-continue" }
+- tapOn: { id: "option-1" }
+- tapOn: { id: "check" }
+- tapOn: { id: "feedback-sheet-continue" }
+
+# Landed → the Grade 4 home
+- extendedWaitUntil:
+    visible: { id: "landed-screen" }
+    timeout: 15000
+- tapOn: { id: "landed-continue" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 15000
+# The working grade is Grade 4 — the grade pill proves it.
+- assertVisible:
+    id: "grade-pill"
+    text: "Grade 4"
+
+# The first real Grade 4 unit (keys-4) is live and enters its set.
+- scrollUntilVisible:
+    element: { id: "unit-row-keys-4" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-keys-4" }
+- assertVisible: { id: "set-runner" }
+- takeScreenshot: g4-journey-set
