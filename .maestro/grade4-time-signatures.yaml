@@ -1,0 +1,49 @@
+# 570.U5 — Grade 4 new time signatures (simple /8, compound /4 and /16). Seed
+# ?seed=time-signatures-4 (metre_classification over the nine new metres).
+# Reaching unit-row-time-signatures-4 proves the grade-4 chain extends through
+# the time-signatures lesson; the exercise renders a printed-signature bar on the
+# paper card (metre_classification) and asks the six-way Simple/Compound ×
+# duple/triple/quadruple label. The load-bearing check for this slice: the new
+# metres — especially a /16 and a /4-compound bar — must actually DRAW in abcjs
+# (the risk KTD2 exists to manage; jest's layout-free renderer can't catch a
+# broken bar). Runs on the "Chromaticly Dogfood" sim over Expo Go.
+#   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade4-time-signatures.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=time-signatures-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-time-signatures-4" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-time-signatures-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-time-signatures-teach
+- tapOn: { id: "teach-start" }
+
+# The metre_classification exercise: a printed-signature bar on the paper card
+# plus the six-way label MCQ. stimulus-music visible == the new-metre bar drew.
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g4-time-signatures-exercise
