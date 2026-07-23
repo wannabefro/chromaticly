@@ -83321,6 +83321,1097 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte ornament_recognition @ ornaments-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s0",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Appoggiatura",
+    },
+    "distractors": [
+      "Turn",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s1",
+    "interaction": {
+      "config": {
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "appoggiatura",
+                  "pitch": "D4",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Trill",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s2",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Turn",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s3",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s4",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "A2",
+                },
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s5",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Appoggiatura",
+    },
+    "distractors": [
+      "Turn",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s6",
+    "interaction": {
+      "config": {
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "appoggiatura",
+                  "pitch": "D5",
+                },
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s7",
+    "interaction": {
+      "config": {
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "lower_mordent",
+                },
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Trill",
+      "Turn",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s8",
+    "interaction": {
+      "config": {
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "lower_mordent",
+                },
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s9",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s10",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Trill",
+      "Upper mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s11",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "D4",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s12",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Trill",
+    },
+    "distractors": [
+      "Appoggiatura",
+      "Upper mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s13",
+    "interaction": {
+      "config": {
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "trill",
+                },
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s14",
+    "interaction": {
+      "config": {
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "lower_mordent",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s15",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Trill",
+    },
+    "distractors": [
+      "Acciaccatura",
+      "Lower mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s16",
+    "interaction": {
+      "config": {
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "trill",
+                },
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s17",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Turn",
+      "Lower mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s18",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "E4",
+                },
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s19",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "B5",
+                },
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte rhythm_sum @ rhythm-doubledot-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -98806,6 +99897,1097 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "pitch",
     "template_id": "octave_transposition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte ornament_recognition (ornaments-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s0",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Appoggiatura",
+    },
+    "distractors": [
+      "Turn",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s1",
+    "interaction": {
+      "config": {
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "appoggiatura",
+                  "pitch": "D4",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Trill",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s2",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Turn",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s3",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s4",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "A2",
+                },
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s5",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Appoggiatura",
+    },
+    "distractors": [
+      "Turn",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s6",
+    "interaction": {
+      "config": {
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "appoggiatura",
+                  "pitch": "D5",
+                },
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s7",
+    "interaction": {
+      "config": {
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "lower_mordent",
+                },
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Trill",
+      "Turn",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s8",
+    "interaction": {
+      "config": {
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "lower_mordent",
+                },
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s9",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s10",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Trill",
+      "Upper mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s11",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "D4",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s12",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Trill",
+    },
+    "distractors": [
+      "Appoggiatura",
+      "Upper mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s13",
+    "interaction": {
+      "config": {
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "trill",
+                },
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s14",
+    "interaction": {
+      "config": {
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "lower_mordent",
+                },
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s15",
+    "interaction": {
+      "config": {
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "upper_mordent",
+                },
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Trill",
+    },
+    "distractors": [
+      "Acciaccatura",
+      "Lower mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s16",
+    "interaction": {
+      "config": {
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "trill",
+                },
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s17",
+    "interaction": {
+      "config": {
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "turn",
+                },
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Turn",
+      "Lower mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s18",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "E4",
+                },
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.",
+    },
+    "grade": 4,
+    "hints": [
+      "Trill and turn are printed above the note; mordents flick quickly to a neighbour note and back; acciaccatura and appoggiatura are small grace notes played just before it.",
+    ],
+    "id": "ornament_recognition:g4:s19",
+    "interaction": {
+      "config": {
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this ornament.",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "ornament": {
+                  "kind": "acciaccatura",
+                  "pitch": "B5",
+                },
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
   },
 ]
 `;

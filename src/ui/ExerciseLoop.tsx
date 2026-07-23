@@ -17,6 +17,7 @@ import type { SurfaceEvent } from '../music-surface/bridge';
 import type { Music } from '../music/types';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
+import { OrnamentCard } from './components/OrnamentCard';
 import { StrandChip } from './components/StrandChip';
 import { Button } from './components/Button';
 import { type AttemptResult, toResult } from './grading';
@@ -131,6 +132,10 @@ export function ExerciseLoop({
   }, []);
 
   const music = instance.stimulus.music;
+  // An ornament stimulus carries `interaction.config.ornament` (the kind) and
+  // renders the split enlarged-symbol card (design 10b) instead of the plain
+  // NotationCard — its sign needs the hero + in-context presentation.
+  const isOrnament = instance.interaction.config?.ornament != null;
   // The amber partial sheet is only for some-right-some-wrong (D5) — an all-wrong
   // attempt still routes to the plain incorrect sheet below.
   const partialSummary = graded === false ? (spec.partialFeedback?.(instance, response) ?? null) : null;
@@ -145,7 +150,11 @@ export function ExerciseLoop({
 
         {music ? (
           <View testID="stimulus-music">
-            <NotationCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />
+            {isOrnament ? (
+              <OrnamentCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />
+            ) : (
+              <NotationCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />
+            )}
           </View>
         ) : (
           instance.stimulus.text != null && (

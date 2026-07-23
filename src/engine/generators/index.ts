@@ -16,6 +16,7 @@ import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
+import { ornamentRecognition } from './ornament-recognition';
 import { rhythmSum } from './rhythm-sum';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
@@ -42,6 +43,7 @@ export const GENERATORS: Record<string, Generator> = {
   chromatic_scale: chromaticScale,
   degree_name_id: degreeNameId,
   chord_recognition: chordRecognition,
+  ornament_recognition: ornamentRecognition,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

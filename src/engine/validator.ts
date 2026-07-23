@@ -11,10 +11,11 @@
 // hand-listed or computed here; this validator only avoids ever rejecting an
 // answer that already appears in that list — it does not grade.
 
-import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent } from '../music/types';
+import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
-import { CHORD_NUMERALS } from './atoms';
+import { CHORD_NUMERALS, ORNAMENT_KINDS } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
+import { ORNAMENT_NAMES } from './generators/ornament-recognition';
 import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
@@ -1115,6 +1116,69 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// ornamentRecognitionHook (fyu.11) — recompute-don't-trust: reads
+// interaction.config.ornament (the kind), asserts exactly one stimulus note
+// carries an ornament matching that kind, asserts canonical/distractors
+// against ORNAMENT_NAMES (never trusting the generator's own picks), and
+// asserts grace kinds (acciaccatura/appoggiatura) carry a grace pitch while
+// decoration kinds (trill/turn/mordents) do not.
+function ornamentRecognitionHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const config = inst.interaction.config as { ornament?: unknown } | undefined;
+  const kind = config?.ornament;
+  if (typeof kind !== 'string' || !(ORNAMENT_KINDS as readonly string[]).includes(kind)) {
+    return [`ornament_recognition: interaction.config.ornament "${String(kind)}" is not a legal ornament kind`];
+  }
+
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['ornament_recognition: stimulus music is required'];
+  const ornamentedNotes = music.voices
+    .flatMap((v) => v.events)
+    .filter((ev): ev is NoteEvent => ev.type === 'note' && ev.ornament !== undefined);
+  if (ornamentedNotes.length !== 1) {
+    return [
+      `ornament_recognition: stimulus must contain exactly one note carrying an ornament (found ${ornamentedNotes.length})`,
+    ];
+  }
+  const ornament = ornamentedNotes[0].ornament!;
+  if (ornament.kind !== kind) {
+    errors.push(
+      `ornament_recognition: stimulus ornament kind "${ornament.kind}" does not match config.ornament "${kind}"`,
+    );
+  }
+
+  const isGrace = kind === 'acciaccatura' || kind === 'appoggiatura';
+  if (isGrace && ornament.pitch === undefined) {
+    errors.push(`ornament_recognition: grace ornament "${kind}" must carry a grace pitch`);
+  }
+  if (!isGrace && ornament.pitch !== undefined) {
+    errors.push(`ornament_recognition: decoration ornament "${kind}" must not carry a grace pitch`);
+  }
+
+  const expectedCanonical = ORNAMENT_NAMES[kind as OrnamentKind];
+  if (inst.answer.canonical !== expectedCanonical) {
+    errors.push(
+      `ornament_recognition: canonical "${String(inst.answer.canonical)}" does not match "${expectedCanonical}" for kind "${kind}"`,
+    );
+  }
+
+  const nameSet = new Set(Object.values(ORNAMENT_NAMES));
+  const seen = new Set<string>([expectedCanonical]);
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !nameSet.has(d)) {
+      errors.push(`ornament_recognition: distractor "${String(d)}" is not a legal ornament name`);
+      continue;
+    }
+    if (seen.has(d)) {
+      errors.push(`ornament_recognition: distractor "${d}" duplicates the canonical answer or another distractor`);
+      continue;
+    }
+    seen.add(d);
+  }
+
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
@@ -1133,4 +1197,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   chromatic_scale: chromaticScaleHook,
   degree_name_id: degreeNameIdHook,
   chord_recognition: chordRecognitionHook,
+  ornament_recognition: ornamentRecognitionHook,
 };

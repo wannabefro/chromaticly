@@ -13,6 +13,8 @@ import type {
   KeySig,
   Music,
   NoteEvent,
+  Ornament,
+  OrnamentKind,
   RestEvent,
   Voice,
 } from './types';
@@ -143,8 +145,29 @@ function clefTag(clef: Clef): string {
   return `clef=${clef}`;
 }
 
+/** ABC decoration token for the decoration ornaments — grace ornaments render
+ *  structurally (a `{...}` grace note) instead, handled in noteToAbc. */
+const ORNAMENT_DECORATION: Partial<Record<OrnamentKind, string>> = {
+  trill: '!trill!',
+  turn: '!turn!',
+  upper_mordent: '!uppermordent!',
+  lower_mordent: '!lowermordent!',
+};
+
+/** The ABC prefix that carries an ornament onto its note: a `!name!` decoration
+ *  for trill/turn/mordents, or a grace note (`{/g}` slashed acciaccatura,
+ *  `{g}` appoggiatura) that abcjs prints small before the principal. */
+function ornamentPrefix(orn: Ornament, keyAcc: Record<string, Accidental>): string {
+  const decoration = ORNAMENT_DECORATION[orn.kind];
+  if (decoration) return decoration;
+  if (!orn.pitch) throw new Error(`Ornament "${orn.kind}" is a grace note and needs a pitch`);
+  const grace = pitchToAbc(orn.pitch, keyAcc);
+  return orn.kind === 'acciaccatura' ? `{/${grace}}` : `{${grace}}`;
+}
+
 function noteToAbc(ev: NoteEvent, keyAcc: Record<string, Accidental>): string {
-  return pitchToAbc(ev.pitch, keyAcc) + durationToAbc(ev.dur, ev.dots ?? 0);
+  const prefix = ev.ornament ? ornamentPrefix(ev.ornament, keyAcc) : '';
+  return prefix + pitchToAbc(ev.pitch, keyAcc) + durationToAbc(ev.dur, ev.dots ?? 0);
 }
 
 function chordToAbc(ev: ChordEvent, keyAcc: Record<string, Accidental>): string {

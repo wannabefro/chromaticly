@@ -1,0 +1,40 @@
+# fyu.11 — Grade 4 ornaments (first ornament content). Seed ?seed=ornaments-4
+# (recognition of the six ornament signs). Reaching unit-row-ornaments-4 proves
+# the grade-4 chain extends through the ornaments lesson; the exercise renders the
+# enlarged-symbol OrnamentCard (design 10b: abcjs-rendered hero + in-context inset)
+# with a text MCQ naming the sign. Runs once at U13, once Level 4 is reachable
+# (level4() real) — see the fyu.13 notes on on-device gate consolidation.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=ornaments-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-ornaments-4" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-ornaments-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-ornaments-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "ornament-card" }
+- takeScreenshot: g4-ornaments-exercise

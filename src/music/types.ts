@@ -27,6 +27,29 @@ export interface TupletMark {
   start?: boolean;
 }
 
+/** The six ornament signs recognised at Grade 4 (KB `ornaments_recognize`).
+ *  trill/turn/mordents are ABC decorations printed above the note; acciaccatura
+ *  and appoggiatura are grace notes printed before it. */
+export type OrnamentKind =
+  | 'trill'
+  | 'turn'
+  | 'upper_mordent'
+  | 'lower_mordent'
+  | 'acciaccatura'
+  | 'appoggiatura';
+
+/** An ornament carried by the note it decorates (like TupletMark, a per-note
+ *  marker, not a separate event). Decoration kinds (trill/turn/mordents) render
+ *  as an ABC `!name!` above the note; grace kinds (acciaccatura/appoggiatura)
+ *  render as a small grace note before it, so those carry the grace `pitch`. The
+ *  ornament never changes the note's metric value — grace notes are decorative,
+ *  so bar-math and beaming ignore it entirely. */
+export interface Ornament {
+  kind: OrnamentKind;
+  /** Required for the grace kinds (acciaccatura/appoggiatura); unread otherwise. */
+  pitch?: Pitch;
+}
+
 /** Scientific pitch notation, e.g. "C4" (middle C), "Eb3", "F#5". */
 export type Pitch = string;
 
@@ -39,6 +62,7 @@ export interface NoteEvent {
   dur: Duration;
   dots?: Dots;
   tuplet?: TupletMark;
+  ornament?: Ornament;
 }
 
 /** Simultaneous pitches — a harmonic interval or a triad (rendered as an ABC chord). */

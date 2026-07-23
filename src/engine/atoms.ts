@@ -103,6 +103,14 @@ export function chordAtom(numeral: string): string {
   return `chord:${numeral}`;
 }
 
+/** Grade-4 ornament kinds (ornament_recognition, KB `ornaments_recognize`). */
+export const ORNAMENT_KINDS = ['trill', 'turn', 'upper_mordent', 'lower_mordent', 'acciaccatura', 'appoggiatura'] as const;
+
+/** e.g. ornamentAtom('trill') -> "ornament:trill". */
+export function ornamentAtom(kind: string): string {
+  return `ornament:${kind}`;
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

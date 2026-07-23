@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23f",
+  "version": "g4-lessons-2026-07-23g",
   "lessons": [
     {
       "id": "keys-4",
@@ -413,6 +413,46 @@
         },
         "smartTip": "Read the key signature, then look at the chord's lowest note. If it is the key's 1st degree the chord is I, the 4th degree IV, the 5th degree V.",
         "didYouKnow": "I, IV and V are called the primary triads because between them they use every note of the major scale — which is why so much music can be harmonised with just these three chords."
+      },
+      "unlocks": "ornaments-4"
+    },
+    {
+      "id": "ornaments-4",
+      "title": "Ornaments",
+      "strand": "terms_signs",
+      "atoms": [
+        "ornament:trill",
+        "ornament:turn",
+        "ornament:upper_mordent",
+        "ornament:lower_mordent",
+        "ornament:acciaccatura",
+        "ornament:appoggiatura"
+      ],
+      "templates": [
+        "ornament_recognition"
+      ],
+      "worked_example": {
+        "template_id": "ornament_recognition",
+        "grade": 4,
+        "seed": 2
+      },
+      "teach": {
+        "objectives": [
+          "Ornaments are small signs that decorate a note with extra, quicker notes",
+          "Six to recognise: trill, turn, upper mordent, lower mordent, acciaccatura, appoggiatura",
+          "A trill shakes rapidly with the note above; a mordent flicks once; a turn curls around the note; grace notes (acciaccatura, appoggiatura) are tiny notes printed before the main one"
+        ],
+        "concept": {
+          "title": "Ornaments",
+          "body": "Ornaments decorate a note with extra, faster notes, written as small signs. A TRILL (tr) shakes rapidly between the written note and the one above it. A TURN curls around the note — the note above, the note, the note below, and back. An UPPER MORDENT flicks quickly up to the note above and back; a LOWER MORDENT flicks down to the note below and back. Two are grace notes, printed small just before the main note: an ACCIACCATURA (with a slash through its stem) is crushed in as fast as possible, while an APPOGGIATURA (no slash) leans on the beat and borrows time from the main note.",
+          "example": {
+            "template_id": "ornament_recognition",
+            "grade": 4,
+            "seed": 0
+          }
+        },
+        "smartTip": "A mordent flicks once (up = upper, down = lower); a turn curls both ways around the note; a trill shakes on and on. The two grace notes sit before the main note — the slashed acciaccatura is the quicker.",
+        "didYouKnow": "‘Acciaccatura’ comes from the Italian acciaccare, ‘to crush’ — it is crushed against the main note so fast the two almost sound at once, then instantly released."
       },
       "unlocks": null
     }
