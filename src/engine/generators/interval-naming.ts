@@ -141,20 +141,25 @@ function nearestNumbers(n: number, count: number): number[] {
   return candidates.slice(0, count);
 }
 
-/** D6: exactly 2 well-formed grade-3 labels, both computed (not hardcoded)
- *  from the same tonic/key so a distractor never carries an impossible label
- *  for its number. Perfect numbers (no in-vocabulary quality flip) get the
- *  two nearest-number distractors; major/minor numbers get one quality-flip
- *  plus the nearest-number distractor. */
+/** D6 (widened at fyu.8 for grade-4 aug/dim): exactly 2 well-formed labels,
+ *  both computed (not hardcoded) from the same lower pitch — via `spell`, so
+ *  a distractor never carries an impossible label for its number. Perfect
+ *  numbers (no in-vocabulary quality flip) get the two nearest-number
+ *  distractors; major/minor numbers get one quality-flip plus the
+ *  nearest-number distractor; augmented/diminished (grade-4 between-any-notes
+ *  only) get the "un-altered" perfect flip plus the nearest-number
+ *  distractor — the same shape as the major/minor case. `spell` carries the
+ *  key-signature spelling for the grade-3 tonic-anchored path, or is the
+ *  identity function for grade-4's key_sig-less natural-pitch path. */
 function buildQualityDistractors(
   lowerPitch: string,
   lowerDisplay: string,
-  keySig: string,
+  spell: (naturalPitch: string) => string,
   number: number,
   quality: IntervalQuality,
 ): string[] {
   const neighbourLabel = (m: number): string => {
-    const upper = spellInKeySig(naturalPitchStepsAbove(lowerPitch, m - 1), keySig);
+    const upper = spell(naturalPitchStepsAbove(lowerPitch, m - 1));
     return intervalLabel(intervalQuality(lowerDisplay, upper, m), m);
   };
 
@@ -162,9 +167,14 @@ function buildQualityDistractors(
     return nearestNumbers(number, 2).map(neighbourLabel);
   }
 
-  const flipped: IntervalQuality = quality === 'major' ? 'minor' : 'major';
+  if (quality === 'major' || quality === 'minor') {
+    const flipped: IntervalQuality = quality === 'major' ? 'minor' : 'major';
+    const [nearest] = nearestNumbers(number, 1);
+    return [intervalLabel(flipped, number), neighbourLabel(nearest)];
+  }
+
   const [nearest] = nearestNumbers(number, 1);
-  return [intervalLabel(flipped, number), neighbourLabel(nearest)];
+  return [intervalLabel('perfect', number), neighbourLabel(nearest)];
 }
 
 function buildNumberAndType(
@@ -175,6 +185,14 @@ function buildNumberAndType(
   idSeed: number,
   atoms: string[],
 ): ExerciseInstance {
+  // Grade 4 (fyu.8): the interval domain opens beyond the tonic — between any
+  // two natural pitches, key_sig: null. Its own draw sequence, branched
+  // BEFORE any tonic-anchored draw below, so grades 1-3 (aboveTonicOnly:
+  // true) take the untouched byte-identical path.
+  if (!scope.intervalRule.aboveTonicOnly) {
+    return buildBetweenAnyNotes(rng, scope, clef, grade, idSeed, atoms);
+  }
+
   const keySigPool = [...scope.keysMajor.map((k) => `${k}_major`), ...scope.keysMinor.map((k) => `${k}_minor`)];
   const keySig = pick(rng, keySigPool);
   const tonic = keySig.split('_')[0];
@@ -210,7 +228,13 @@ function buildNumberAndType(
   const upper = spellInKeySig(naturalPitchStepsAbove(lowerPitch, steps), keySig);
   const quality = intervalQuality(lowerDisplay, upper, number);
   const canonical = intervalLabel(quality, number);
-  const distractors = buildQualityDistractors(lowerPitch, lowerDisplay, keySig, number, quality);
+  const distractors = buildQualityDistractors(
+    lowerPitch,
+    lowerDisplay,
+    (p) => spellInKeySig(p, keySig),
+    number,
+    quality,
+  );
 
   return {
     id: makeInstanceId('interval_naming', grade, idSeed),
@@ -237,6 +261,96 @@ function buildNumberAndType(
       correct: 'Correct!',
       incorrect:
         'Not quite — recount the letter names for the number, then compare the upper note to the key signature to check major, minor, or perfect.',
+    },
+    srs_tags: [intervalTypeAtom(number)],
+    kb_version: KB_VERSION,
+  };
+}
+
+// --- Grade-4 between-any-notes branch (fyu.8) ------------------------------
+// KB.grade4Adds.intervals ("between any two diatonic notes... incl.
+// augmented, diminished, minor 2nd") — LOCKED to natural pitches only
+// (key_sig: null), no key-signature accidentals or minor-key raised degrees.
+// In the natural (C-major) pitch set this reaches exactly: perfect
+// unison/4th/5th/octave, major/minor 2nd/3rd/6th/7th, the augmented 4th
+// (F-B), the diminished 5th (B-F), and the minor 2nds (E-F, B-C) — the full
+// grade-4 aug/dim + between-any-notes scope without form-aware chromatic
+// qualities (deferred) or compound intervals (grade 5, out of scope).
+
+/** Every (lower, upper) natural-pitch pair in `pitches` (ascending, i<j)
+ *  spanning exactly `steps` diatonic letter-steps — the pool `pick` draws the
+ *  stimulus chord from, so every reachable quality for that NUMBER (including
+ *  the lone augmented 4th / diminished 5th / minor-2nd exceptions) stays in
+ *  play rather than only ever landing on the majority perfect/major pairs. */
+function naturalPitchPairsSpanning(pitches: string[], steps: number): [string, string][] {
+  const ordinals = pitches.map(scientificPitchOrdinal);
+  const pairs: [string, string][] = [];
+  for (let i = 0; i < pitches.length; i++) {
+    for (let j = i + 1; j < pitches.length; j++) {
+      if (ordinals[j] - ordinals[i] === steps) pairs.push([pitches[i], pitches[j]]);
+    }
+  }
+  return pairs;
+}
+
+function buildBetweenAnyNotes(
+  rng: () => number,
+  scope: GradeScope,
+  clef: Clef,
+  grade: number,
+  idSeed: number,
+  atoms: string[],
+): ExerciseInstance {
+  // Same comfortable (grade-2) range as the tonic-anchored branch — this
+  // exercise tests interval quality, not ledger reading. Already
+  // naturals-only (diatonicPitchesInComfortableRange), matching the locked
+  // natural-pitch-only domain.
+  const pitches = diatonicPitchesInComfortableRange(clef, grade);
+
+  const targets = intervalTypeTargets(atoms);
+  const numberPool = targets.length > 0 ? targets : [2, 3, 4, 5, 6, 7, 8];
+
+  const number = pick(rng, numberPool);
+  const steps = number - 1;
+  if (steps > scope.intervalRule.maxOctaves * 7) {
+    throw new Error(`interval_naming: number ${number} exceeds maxOctaves for the between-any-notes domain`);
+  }
+
+  const pairs = naturalPitchPairsSpanning(pitches, steps);
+  if (pairs.length === 0) {
+    throw new Error(`interval_naming: no natural pitch pair spans a ${number} within range for clef ${clef}`);
+  }
+  const [lower, upper] = pick(rng, pairs);
+
+  const quality = intervalQuality(lower, upper, number);
+  const canonical = intervalLabel(quality, number);
+  const distractors = buildQualityDistractors(lower, lower, (p) => p, number, quality);
+
+  return {
+    id: makeInstanceId('interval_naming', grade, idSeed),
+    template_id: 'interval_naming',
+    grade,
+    strand: 'intervals',
+    prompt: 'Name this interval (number and type).',
+    stimulus: {
+      music: {
+        clef,
+        key_sig: null,
+        time_sig: null,
+        voices: [{ events: [{ type: 'chord', pitches: [lower, upper], dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical, accepted_alternatives: [] },
+    distractors,
+    hints: [
+      'Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect:
+        'Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.',
     },
     srs_tags: [intervalTypeAtom(number)],
     kb_version: KB_VERSION,

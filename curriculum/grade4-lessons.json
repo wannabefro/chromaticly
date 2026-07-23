@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23c",
+  "version": "g4-lessons-2026-07-23d",
   "lessons": [
     {
       "id": "keys-4",
@@ -259,6 +259,47 @@
         },
         "smartTip": "A duplet is a triplet turned inside out: two-in-the-time-of-three in compound time, where a triplet is three-in-the-time-of-two in simple time.",
         "didYouKnow": "A duplet lets a composer slip a momentary ‘simple-time’ feel into a compound-time bar — two even beats where the metre expects a lilting three — without changing the time signature."
+      },
+      "unlocks": "intervals-4"
+    },
+    {
+      "id": "intervals-4",
+      "title": "Augmented and diminished intervals",
+      "strand": "intervals",
+      "atoms": [
+        "interval_type:2",
+        "interval_type:3",
+        "interval_type:4",
+        "interval_type:5",
+        "interval_type:6",
+        "interval_type:7",
+        "interval_type:8"
+      ],
+      "templates": [
+        "interval_naming"
+      ],
+      "worked_example": {
+        "template_id": "interval_naming",
+        "grade": 4,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "Name the interval between ANY two notes now, not only above the tonic",
+          "A perfect or major interval made a semitone wider is augmented; a perfect or minor interval made a semitone narrower is diminished",
+          "The augmented 4th (e.g. F up to B) and diminished 5th (B up to F) are the classic examples — both span six semitones"
+        ],
+        "concept": {
+          "title": "Augmented and diminished intervals",
+          "body": "Two new qualities join perfect, major and minor. Widen a perfect or major interval by a semitone and it becomes AUGMENTED; narrow a perfect or minor interval by a semitone and it becomes DIMINISHED. Find the number first by counting letter names (F–G–A–B is a 4th), then the quality by the semitones. The most common examples are the augmented 4th (F up to B, six semitones) and the diminished 5th (B up to F, also six semitones) — the same distance on the keyboard, named differently by how the notes are spelled. You can now name intervals between any two notes, not just from the key's tonic.",
+          "example": {
+            "template_id": "interval_naming",
+            "grade": 4,
+            "seed": 74
+          }
+        },
+        "smartTip": "Number first (count letter names), quality second (count semitones). Bigger than perfect/major = augmented; smaller than perfect/minor = diminished.",
+        "didYouKnow": "The augmented 4th and diminished 5th — the ‘tritone’ — was once nicknamed diabolus in musica, ‘the devil in music’, for its restless sound that seems to demand resolution."
       },
       "unlocks": null
     }

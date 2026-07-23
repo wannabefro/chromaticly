@@ -1,0 +1,39 @@
+# fyu.8 — Grade 4 interval qualities. Seeds ?seed=intervals-4 (augmented and
+# diminished intervals between any two notes). Reaching unit-row-intervals-4
+# proves the grade-4 chain extends through the intervals lesson; the exercise
+# renders a two-note interval on the paper card with an MCQ naming its quality
+# (augmented/diminished included). Runs once at U13, once Level 4 is reachable
+# (level4() real) — see the fyu.13 notes on on-device gate consolidation.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=intervals-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-intervals-4" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-intervals-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-intervals-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+- takeScreenshot: g4-intervals-exercise

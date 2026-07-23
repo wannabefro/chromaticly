@@ -75797,6 +75797,1051 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte interval_naming @ intervals-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "diminished 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect octave",
+    },
+    "distractors": [
+      "minor 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "G2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "augmented 4th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 7th",
+    },
+    "distractors": [
+      "minor 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 3rd",
+    },
+    "distractors": [
+      "minor 3rd",
+      "major 2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect octave",
+    },
+    "distractors": [
+      "major 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C5",
+                  "G5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "G2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G3",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 6th",
+    },
+    "distractors": [
+      "minor 6th",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "major 3rd",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G5",
+                  "C6",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 2nd",
+    },
+    "distractors": [
+      "major 2nd",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B5",
+                  "C6",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 6th",
+    },
+    "distractors": [
+      "major 6th",
+      "diminished 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "augmented 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F3",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "minor 2nd",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "B2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "major 3rd",
+      "minor 2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 7th",
+    },
+    "distractors": [
+      "minor 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 6th",
+    },
+    "distractors": [
+      "minor 6th",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D5",
+                  "B5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte mode_swap @ keys-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -85468,6 +86513,1051 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "duplet_recognition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte interval_naming aug/dim + between-any-notes (intervals-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "diminished 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect octave",
+    },
+    "distractors": [
+      "minor 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "G2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "augmented 4th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 7th",
+    },
+    "distractors": [
+      "minor 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 3rd",
+    },
+    "distractors": [
+      "minor 3rd",
+      "major 2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect octave",
+    },
+    "distractors": [
+      "major 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C5",
+                  "G5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "G2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G3",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 6th",
+    },
+    "distractors": [
+      "minor 6th",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "major 3rd",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G5",
+                  "C6",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 2nd",
+    },
+    "distractors": [
+      "major 2nd",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B5",
+                  "C6",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 6th",
+    },
+    "distractors": [
+      "major 6th",
+      "diminished 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "augmented 4th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F3",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "minor 2nd",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "B2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "major 3rd",
+      "minor 2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 7th",
+    },
+    "distractors": [
+      "minor 7th",
+      "major 6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 6th",
+    },
+    "distractors": [
+      "minor 6th",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.",
+    ],
+    "id": "interval_naming:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_type:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D5",
+                  "B5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
   },
 ]
 `;

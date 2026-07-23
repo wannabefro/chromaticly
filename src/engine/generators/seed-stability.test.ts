@@ -386,6 +386,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     templateId: 'duplet_recognition',
     atoms: ['duplet:6/8', 'duplet:9/8', 'duplet:12/8'],
   },
+  {
+    label: 'interval_naming aug/dim + between-any-notes (intervals-4, pre-lesson pin)',
+    templateId: 'interval_naming',
+    atoms: ['interval_type:2', 'interval_type:3', 'interval_type:4', 'interval_type:5', 'interval_type:6', 'interval_type:7', 'interval_type:8'],
+  },
 ];
 
 if (GRADE_4_EXTRA_CASES.length > 0) {

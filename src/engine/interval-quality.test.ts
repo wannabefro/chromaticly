@@ -69,9 +69,41 @@ describe('intervalQuality — sharp-tonic spelling reads the accidental, not the
   });
 });
 
-describe('intervalQuality — fails loud on a diff outside grade-3 vocabulary (no dim/aug in scope)', () => {
-  test('C4 -> Gb4 as a 5th (6 semitones, a diminished 5th) throws rather than inventing a label', () => {
-    expect(() => intervalQuality('C4', 'Gb4', 5)).toThrow();
+describe('intervalQuality — grade-4 (fyu.8): augmented/diminished from the standard modification rules', () => {
+  test("F4 -> B4 (the tritone, 6 semitones) as a 4th is augmented", () => {
+    expect(intervalQuality('F4', 'B4', 4)).toBe('augmented');
+    expect(intervalLabel(intervalQuality('F4', 'B4', 4), 4)).toBe('augmented 4th');
+  });
+
+  test('B3 -> F4 (the tritone, 6 semitones) as a 5th is diminished', () => {
+    expect(intervalQuality('B3', 'F4', 5)).toBe('diminished');
+    expect(intervalLabel(intervalQuality('B3', 'F4', 5), 5)).toBe('diminished 5th');
+  });
+
+  test('E4 -> F4 is a minor 2nd; C4 -> D4 is a major 2nd', () => {
+    expect(intervalQuality('E4', 'F4', 2)).toBe('minor');
+    expect(intervalQuality('C4', 'D4', 2)).toBe('major');
+  });
+
+  test('D4 -> F4 is a minor 3rd; C4 -> E4 is a major 3rd', () => {
+    expect(intervalQuality('D4', 'F4', 3)).toBe('minor');
+    expect(intervalQuality('C4', 'E4', 3)).toBe('major');
+  });
+
+  test('C4 -> F4 (4th), C4 -> G4 (5th), and C4 -> C5 (octave) all stay perfect', () => {
+    expect(intervalQuality('C4', 'F4', 4)).toBe('perfect');
+    expect(intervalQuality('C4', 'G4', 5)).toBe('perfect');
+    expect(intervalQuality('C4', 'C5', 8)).toBe('perfect');
+  });
+});
+
+describe('intervalQuality — fails loud on a diff outside the widened vocabulary (no doubly-altered intervals in scope)', () => {
+  test('C4 -> D4 claimed as a 4th (2 semitones, nowhere near perfect/augmented/diminished) throws rather than inventing a label', () => {
+    expect(() => intervalQuality('C4', 'D4', 4)).toThrow();
+  });
+
+  test('C4 -> F4 claimed as a 2nd (5 semitones, nowhere near major/minor/augmented/diminished) throws rather than inventing a label', () => {
+    expect(() => intervalQuality('C4', 'F4', 2)).toThrow();
   });
 
   test('an out-of-vocabulary number (9, a compound interval) throws — neither perfect nor major/minor covers it', () => {
@@ -90,6 +122,8 @@ describe('intervalLabel / parseIntervalLabel — the single serialization the ge
     ['minor', 3, 'minor 3rd'],
     ['perfect', 5, 'perfect 5th'],
     ['perfect', 8, 'perfect octave'],
+    ['augmented', 4, 'augmented 4th'],
+    ['diminished', 5, 'diminished 5th'],
   ] as const)('intervalLabel(%s, %i) round-trips through parseIntervalLabel', (quality, number, expectedLabel) => {
     const label = intervalLabel(quality, number);
     expect(label).toBe(expectedLabel);
@@ -111,11 +145,12 @@ describe('parseIntervalLabel — rejects malformed / out-of-vocabulary labels (t
     expect(() => parseIntervalLabel('major 5th')).toThrow();
   });
 
-  test('"diminished 4th" rejects — diminished is out of the grade-3 quality vocabulary entirely', () => {
-    expect(() => parseIntervalLabel('diminished 4th')).toThrow();
-  });
-
   test('"perfect 3rd" rejects — 3 is a major/minor-only number, perfect is an illegal quality for it', () => {
     expect(() => parseIntervalLabel('perfect 3rd')).toThrow();
+  });
+
+  test('"diminished 4th" and "augmented 3rd" are well-formed (aug/dim apply to any classifiable number)', () => {
+    expect(() => parseIntervalLabel('diminished 4th')).not.toThrow();
+    expect(() => parseIntervalLabel('augmented 3rd')).not.toThrow();
   });
 });

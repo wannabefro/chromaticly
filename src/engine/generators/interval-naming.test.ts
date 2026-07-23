@@ -406,3 +406,104 @@ describe('intervalNaming — grade 3, fuzz gate: 100 generated items are all val
     }
   });
 });
+
+// fyu.8 — grade-4 aug/dim + between-any-notes. Domain LOCKED to natural
+// pitches only (key_sig: null): grades 1-3 stay untouched (byte-identity
+// fixture above), so this suite covers only the new aboveTonicOnly:false
+// branch.
+
+describe('intervalNaming — grade 4, fyu.8: between-any-notes, natural pitches only, key_sig: null', () => {
+  test('seeds 0..40: every instance validates clean, both stimulus pitches are natural, and the interval is <= an octave', () => {
+    for (let seed = 0; seed <= 40; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: [] });
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+
+      const music = instance.stimulus.music as Music;
+      expect(music.key_sig).toBeNull();
+
+      const [lower, upper] = chordPitches(instance);
+      expect(lower).toMatch(/^[A-G]-?\d+$/);
+      expect(upper).toMatch(/^[A-G]-?\d+$/);
+
+      const number = diatonicIntervalNumber(lower, upper);
+      expect(number).toBeGreaterThanOrEqual(2);
+      expect(number).toBeLessThanOrEqual(8);
+    }
+  });
+
+  test('every canonical is exactly the label recomputed from its own stimulus (seeds 0..99)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: [] });
+      const [lower, upper] = chordPitches(instance);
+      const number = diatonicIntervalNumber(lower, upper);
+      const quality = intervalQuality(lower, upper, number);
+      expect(instance.answer.canonical).toBe(intervalLabel(quality, number));
+    }
+  });
+
+  // The domain-lock invariant (fyu.8 spec): aug/dim must be REACHABLE, not
+  // merely theoretically supported — a sampler that only ever lands on the
+  // majority perfect 4ths/5ths would pass every other check here while
+  // silently never exercising the tritone pairs.
+  test('the augmented 4th (F-B) and diminished 5th (B-F) are reachable, not just theoretically supported (seeds 0..150, bare draw)', () => {
+    const qualitiesSeen = new Set<string>();
+    for (let seed = 0; seed < 150; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: [] });
+      qualitiesSeen.add(parseIntervalLabel(instance.answer.canonical as string).quality);
+    }
+    expect(qualitiesSeen).toContain('augmented');
+    expect(qualitiesSeen).toContain('diminished');
+  });
+
+  test('atom-scoped interval_type:4 reaches both perfect and augmented 4ths (seeds 0..40)', () => {
+    const qualitiesSeen = new Set<string>();
+    for (let seed = 0; seed <= 40; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: ['interval_type:4'] });
+      qualitiesSeen.add(parseIntervalLabel(instance.answer.canonical as string).quality);
+    }
+    expect(qualitiesSeen).toEqual(new Set(['perfect', 'augmented']));
+  });
+
+  test('atom-scoped interval_type:5 reaches both perfect and diminished 5ths (seeds 0..40)', () => {
+    const qualitiesSeen = new Set<string>();
+    for (let seed = 0; seed <= 40; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: ['interval_type:5'] });
+      qualitiesSeen.add(parseIntervalLabel(instance.answer.canonical as string).quality);
+    }
+    expect(qualitiesSeen).toEqual(new Set(['perfect', 'diminished']));
+  });
+
+  test('the minor 2nds (E-F, B-C) are reachable, not just the majority major 2nds (seeds 0..40, atom-scoped)', () => {
+    const qualitiesSeen = new Set<string>();
+    for (let seed = 0; seed <= 40; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: ['interval_type:2'] });
+      qualitiesSeen.add(parseIntervalLabel(instance.answer.canonical as string).quality);
+    }
+    expect(qualitiesSeen).toEqual(new Set(['major', 'minor']));
+  });
+
+  test('every instance has exactly 2 well-formed, distinct distractors, neither equal to the canonical (seeds 0..99)', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: [] });
+      expect(instance.distractors).toHaveLength(2);
+      const [d1, d2] = instance.distractors as string[];
+      expect(() => parseIntervalLabel(d1)).not.toThrow();
+      expect(() => parseIntervalLabel(d2)).not.toThrow();
+      expect(d1).not.toBe(d2);
+      expect(d1).not.toBe(instance.answer.canonical);
+      expect(d2).not.toBe(instance.answer.canonical);
+    }
+  });
+
+  test('an augmented/diminished canonical carries a "perfect" same-number distractor (the un-altered misconception)', () => {
+    let seen = 0;
+    for (let seed = 0; seed < 150; seed++) {
+      const instance = intervalNaming({ grade: 4, seed, atoms: [] });
+      const { quality, number } = parseIntervalLabel(instance.answer.canonical as string);
+      if (quality !== 'augmented' && quality !== 'diminished') continue;
+      seen++;
+      expect(instance.distractors).toContain(intervalLabel('perfect', number));
+    }
+    expect(seen).toBeGreaterThan(0);
+  });
+});
