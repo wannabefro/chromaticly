@@ -9,6 +9,7 @@ import { dupletRecognition } from './duplet-recognition';
 import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
 import { findTheBar } from './find-the-bar';
+import { instrumentKnowledge } from './instrument-knowledge';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { metreClassification } from './metre-classification';
@@ -44,6 +45,7 @@ export const GENERATORS: Record<string, Generator> = {
   degree_name_id: degreeNameId,
   chord_recognition: chordRecognition,
   ornament_recognition: ornamentRecognition,
+  instrument_knowledge: instrumentKnowledge,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

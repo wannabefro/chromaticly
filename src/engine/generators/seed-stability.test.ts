@@ -65,6 +65,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   duplet_recognition: 4,
   chord_recognition: 4,
   ornament_recognition: 4,
+  instrument_knowledge: 4,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -419,6 +420,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
       'ornament:acciaccatura',
       'ornament:appoggiatura',
     ],
+  },
+  {
+    label: 'instrument_knowledge (instruments-4, pre-lesson pin)',
+    templateId: 'instrument_knowledge',
+    atoms: ['instrument_family:trumpet', 'instrument_clef:viola', 'direction:arco', 'direction:pizzicato', 'direction:con sordino'],
   },
 ];
 

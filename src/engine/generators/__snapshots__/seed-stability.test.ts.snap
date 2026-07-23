@@ -77322,6 +77322,787 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte instrument_knowledge @ instruments-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble",
+    },
+    "distractors": [
+      "Alto",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the violin usually reads the treble clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the violin usually read?",
+    "srs_tags": [
+      "instrument_clef:violin",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the cello usually reads the bass clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the cello usually read?",
+    "srs_tags": [
+      "instrument_clef:cello",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble",
+    },
+    "distractors": [
+      "Alto",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the violin usually reads the treble clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the violin usually read?",
+    "srs_tags": [
+      "instrument_clef:violin",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Woodwind",
+    },
+    "distractors": [
+      "Strings",
+      "Brass",
+      "Percussion",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the flute is a woodwind instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the flute belong to?",
+    "srs_tags": [
+      "instrument_family:flute",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+        "senza sordino": "without the mute",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s4",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+          "senza sordino",
+        ],
+        "right": [
+          "plucked",
+          "with the mute",
+          "with the bow",
+          "without the mute",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+      "direction:senza sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Percussion",
+    },
+    "distractors": [
+      "Strings",
+      "Woodwind",
+      "Brass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the timpani is a percussion instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the timpani belong to?",
+    "srs_tags": [
+      "instrument_family:timpani",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the cello usually reads the bass clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the cello usually read?",
+    "srs_tags": [
+      "instrument_clef:cello",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+        "senza sordino": "without the mute",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s9",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+          "senza sordino",
+        ],
+        "right": [
+          "with the mute",
+          "without the mute",
+          "with the bow",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+      "direction:senza sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+        "senza sordino": "without the mute",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s10",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+          "senza sordino",
+        ],
+        "right": [
+          "without the mute",
+          "with the bow",
+          "with the mute",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+      "direction:senza sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble",
+    },
+    "distractors": [
+      "Alto",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the violin usually reads the treble clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the violin usually read?",
+    "srs_tags": [
+      "instrument_clef:violin",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Brass",
+    },
+    "distractors": [
+      "Strings",
+      "Woodwind",
+      "Percussion",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trumpet is a brass instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the trumpet belong to?",
+    "srs_tags": [
+      "instrument_family:trumpet",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Brass",
+    },
+    "distractors": [
+      "Strings",
+      "Woodwind",
+      "Percussion",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trumpet is a brass instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the trumpet belong to?",
+    "srs_tags": [
+      "instrument_family:trumpet",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+        "senza sordino": "without the mute",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s15",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+          "senza sordino",
+        ],
+        "right": [
+          "without the mute",
+          "with the bow",
+          "with the mute",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+      "direction:senza sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+        "senza sordino": "without the mute",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s16",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+          "senza sordino",
+        ],
+        "right": [
+          "without the mute",
+          "with the mute",
+          "plucked",
+          "with the bow",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+      "direction:senza sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Percussion",
+    },
+    "distractors": [
+      "Strings",
+      "Woodwind",
+      "Brass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the timpani is a percussion instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the timpani belong to?",
+    "srs_tags": [
+      "instrument_family:timpani",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Woodwind",
+    },
+    "distractors": [
+      "Strings",
+      "Brass",
+      "Percussion",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the flute is a woodwind instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the flute belong to?",
+    "srs_tags": [
+      "instrument_family:flute",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte interval_naming @ intervals-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -93898,6 +94679,861 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "duplet_recognition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte instrument_knowledge (instruments-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s0",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the mute",
+          "with the bow",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s1",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the bow",
+          "plucked",
+          "with the mute",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s2",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "plucked",
+          "with the mute",
+          "with the bow",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Brass",
+    },
+    "distractors": [
+      "Strings",
+      "Woodwind",
+      "Percussion",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trumpet is a brass instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the trumpet belong to?",
+    "srs_tags": [
+      "instrument_family:trumpet",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s4",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "plucked",
+          "with the bow",
+          "with the mute",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s7",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the bow",
+          "with the mute",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s8",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the mute",
+          "with the bow",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s9",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the mute",
+          "with the bow",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s10",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the bow",
+          "with the mute",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s11",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the bow",
+          "plucked",
+          "with the mute",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s15",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the bow",
+          "with the mute",
+          "plucked",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s16",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "plucked",
+          "with the mute",
+          "with the bow",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Alto",
+    },
+    "distractors": [
+      "Treble",
+      "Bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the viola usually reads the alto clef.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about the instrument's usual pitch range.",
+    ],
+    "id": "instrument_knowledge:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which clef does the viola usually read?",
+    "srs_tags": [
+      "instrument_clef:viola",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Brass",
+    },
+    "distractors": [
+      "Strings",
+      "Woodwind",
+      "Percussion",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trumpet is a brass instrument.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about how the sound is produced — bowed or plucked strings, blown reeds/air, brass tubing, or struck.",
+    ],
+    "id": "instrument_knowledge:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which family does the trumpet belong to?",
+    "srs_tags": [
+      "instrument_family:trumpet",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "arco": "with the bow",
+        "con sordino": "with the mute",
+        "pizzicato": "plucked",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check each direction against its meaning and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Arco/pizzicato and con sordino/senza sordino are opposite pairs — start there.",
+    ],
+    "id": "instrument_knowledge:g4:s19",
+    "interaction": {
+      "config": {
+        "left": [
+          "arco",
+          "pizzicato",
+          "con sordino",
+        ],
+        "right": [
+          "with the bow",
+          "plucked",
+          "with the mute",
+        ],
+      },
+      "type": "drag_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Match each direction to its meaning.",
+    "srs_tags": [
+      "direction:arco",
+      "direction:pizzicato",
+      "direction:con sordino",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
   },
 ]
 `;

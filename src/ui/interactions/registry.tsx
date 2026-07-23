@@ -16,8 +16,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import type { ExerciseInstance, InteractionType } from '../../engine/schema';
 import type { Duration, Music } from '../../music/types';
 import { NotationCard } from '../components/NotationCard';
-import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel } from '../grading';
+import { assembleOptions, gradeDragMatch, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel } from '../grading';
 import { colors, shape, type as typo } from '../theme';
+import { DragMatch, type DragMatchResponse } from './DragMatch';
 import { FindTheBar, type FindTheBarResponse } from './FindTheBar';
 import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
@@ -212,6 +213,36 @@ const romanNumeralBoxesSpec: InteractionSpec<string | null> = {
   correctAnswerView: romanNumeralBoxesCorrectAnswerView,
 };
 
+/** The wrong pairing is corrected by listing every term with its canonical
+ *  meaning (design 5f is text term↔meaning — there is no notation to render). */
+function dragMatchCorrectAnswerView(instance: ExerciseInstance) {
+  const answer = instance.answer.canonical as Record<string, string>;
+  return (
+    <View testID="drag-match-correct-answer">
+      {Object.entries(answer).map(([term, meaning]) => (
+        <Text key={term} style={styles.dragMatchAnswerRow}>{`${term} — ${meaning}`}</Text>
+      ))}
+    </View>
+  );
+}
+
+const dragMatchSpec: InteractionSpec<DragMatchResponse> = {
+  Component: DragMatch,
+  emptyResponse: (instance) => {
+    const { left } = instance.interaction.config as unknown as { left: string[] };
+    return Object.fromEntries(left.map((term) => [term, null]));
+  },
+  // Every term paired; the reserved '' key (the pool pick held for placement) is
+  // not a term, so it never counts toward completeness.
+  canCheck: (response) => {
+    const terms = Object.keys(response).filter((k) => k !== '');
+    return terms.length > 0 && terms.every((k) => response[k] != null);
+  },
+  grade: (instance, response) => gradeDragMatch(instance, response),
+  submits: true,
+  correctAnswerView: dragMatchCorrectAnswerView,
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -221,6 +252,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   find_the_bar: findTheBarSpec,
   transposition_input: transpositionInputSpec,
   roman_numeral_boxes: romanNumeralBoxesSpec,
+  drag_match: dragMatchSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather
@@ -239,4 +271,5 @@ const styles = StyleSheet.create({
   answerLabel: { ...typo.title, color: colors.text },
   trueFalseAnswer: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline },
   trueFalseAnswerBar: { ...typo.label },
+  dragMatchAnswerRow: { ...typo.label, color: colors.text },
 });

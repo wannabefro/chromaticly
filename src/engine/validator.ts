@@ -13,8 +13,9 @@
 
 import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
-import { CHORD_NUMERALS, ORNAMENT_KINDS } from './atoms';
+import { CHORD_NUMERALS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
+import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
 import { ORNAMENT_NAMES } from './generators/ornament-recognition';
 import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
@@ -1179,6 +1180,97 @@ function ornamentRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// instrumentKnowledgeHook (grade-4 instrument-knowledge slice) —
+// recompute-don't-trust: derives the instrument from the mcq's own srs_tag
+// and recomputes canonical/distractors against INSTRUMENT_TABLE/FAMILIES/
+// CLEFS_DISPLAY, or (drag_match) recomputes each direction's meaning against
+// DIRECTION_TABLE — never trusting the generator's own picks.
+function instrumentKnowledgeHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+
+  if (inst.interaction.type === 'mcq') {
+    if (inst.srs_tags.length !== 1) {
+      return ['instrument_knowledge: mcq srs_tags must name exactly one atom'];
+    }
+    const tag = inst.srs_tags[0];
+    const { kind, parts } = parseAtom(tag);
+    const [instrument] = parts;
+    if (!(instrument in INSTRUMENT_TABLE)) {
+      return [`instrument_knowledge: srs_tag "${tag}" names an unknown instrument`];
+    }
+
+    if (kind === 'instrument_family') {
+      const family = INSTRUMENT_TABLE[instrument].family;
+      if (inst.answer.canonical !== family) {
+        errors.push(
+          `instrument_knowledge: canonical "${String(inst.answer.canonical)}" does not match ${instrument}'s family "${family}"`,
+        );
+      }
+      const expectedDistractors = FAMILIES.filter((f) => f !== family);
+      if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expectedDistractors].sort())) {
+        errors.push('instrument_knowledge: family distractors must be exactly the other three families');
+      }
+    } else if (kind === 'instrument_clef') {
+      const clef = INSTRUMENT_TABLE[instrument].clef;
+      if (inst.answer.canonical !== clef) {
+        errors.push(
+          `instrument_knowledge: canonical "${String(inst.answer.canonical)}" does not match ${instrument}'s clef "${clef}"`,
+        );
+      }
+      const expectedDistractors = CLEFS_DISPLAY.filter((c) => c !== clef);
+      if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expectedDistractors].sort())) {
+        errors.push('instrument_knowledge: clef distractors must be exactly the other two clefs');
+      }
+    } else {
+      errors.push(`instrument_knowledge: mcq srs_tag "${tag}" has an unexpected kind "${kind}"`);
+    }
+    return errors;
+  }
+
+  if (inst.interaction.type === 'drag_match') {
+    const config = inst.interaction.config as { left?: unknown; right?: unknown } | undefined;
+    const left = config?.left;
+    if (!Array.isArray(left) || left.length === 0 || left.some((t) => typeof t !== 'string')) {
+      return ['instrument_knowledge: drag_match config.left must be a non-empty array of direction terms'];
+    }
+    for (const term of left as string[]) {
+      if (!(term in DIRECTION_TABLE)) {
+        errors.push(`instrument_knowledge: config.left term "${term}" is not a known direction`);
+      }
+    }
+
+    const right = config?.right;
+    if (!Array.isArray(right) || right.length !== left.length) {
+      errors.push('instrument_knowledge: drag_match config.right must be the same length as config.left');
+    } else {
+      const expectedMeanings = (left as string[]).map((t) => DIRECTION_TABLE[t]);
+      if (JSON.stringify([...right].sort()) !== JSON.stringify([...expectedMeanings].sort())) {
+        errors.push("instrument_knowledge: config.right is not a permutation of config.left's meanings");
+      }
+    }
+
+    const canonical = inst.answer.canonical;
+    if (!canonical || typeof canonical !== 'object' || Array.isArray(canonical)) {
+      errors.push('instrument_knowledge: drag_match canonical must be a {term: meaning} object');
+    } else {
+      for (const term of left as string[]) {
+        const expected = DIRECTION_TABLE[term];
+        if ((canonical as Record<string, unknown>)[term] !== expected) {
+          errors.push(`instrument_knowledge: canonical["${term}"] does not match "${expected}"`);
+        }
+      }
+    }
+
+    const expectedTags = (left as string[]).map((t) => `direction:${t}`);
+    if (JSON.stringify([...inst.srs_tags].sort()) !== JSON.stringify([...expectedTags].sort())) {
+      errors.push('instrument_knowledge: srs_tags must cover exactly the direction terms in the match, no more and no fewer');
+    }
+    return errors;
+  }
+
+  return [`instrument_knowledge: unexpected interaction.type "${inst.interaction.type}"`];
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
@@ -1198,4 +1290,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   degree_name_id: degreeNameIdHook,
   chord_recognition: chordRecognitionHook,
   ornament_recognition: ornamentRecognitionHook,
+  instrument_knowledge: instrumentKnowledgeHook,
 };

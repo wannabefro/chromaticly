@@ -50,6 +50,9 @@ const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition
 // ornament_recognition (fyu.11) joins them for the same reason: strand
 // terms_signs, no grade-scoped dimension read from scopeForGrade — "Grade 4"
 // is a curriculum-layer-only gate (assertAtomResolves), not a generator one.
+// instrument_knowledge joins them too, same shape: strand terms_signs,
+// text-only, no grade-scoped dimension read from scopeForGrade — "Grade 4" is
+// a curriculum-layer-only gate (assertAtomResolves), not a generator one.
 const ATOM_REQUIRED_TEMPLATE_IDS = [
   'anacrusis_recognition',
   'chromatic_scale',
@@ -57,6 +60,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'duplet_recognition',
   'chord_recognition',
   'ornament_recognition',
+  'instrument_knowledge',
 ];
 
 describe('GENERATORS registry', () => {

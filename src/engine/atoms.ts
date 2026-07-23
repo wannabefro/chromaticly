@@ -111,6 +111,46 @@ export function ornamentAtom(kind: string): string {
   return `ornament:${kind}`;
 }
 
+/** Grade-4 instrument-knowledge instruments (instrument_knowledge, KB
+ *  instrument families/clefs). Mirrors INSTRUMENT_TABLE's keys in
+ *  instrument-knowledge.ts — kept in sync by hand (like CHORD_NUMERALS/
+ *  CHORD_DEGREE_STEPS), guarded by instrument-knowledge.test.ts. */
+export const INSTRUMENTS = [
+  'violin',
+  'viola',
+  'cello',
+  'double bass',
+  'flute',
+  'oboe',
+  'clarinet',
+  'bassoon',
+  'trumpet',
+  'horn',
+  'trombone',
+  'tuba',
+  'timpani',
+] as const;
+
+/** e.g. instrumentFamilyAtom('viola') -> "instrument_family:viola". */
+export function instrumentFamilyAtom(inst: string): string {
+  return `instrument_family:${inst}`;
+}
+
+/** e.g. instrumentClefAtom('viola') -> "instrument_clef:viola". */
+export function instrumentClefAtom(inst: string): string {
+  return `instrument_clef:${inst}`;
+}
+
+/** Grade-4 instrument-knowledge playing directions (instrument_knowledge, KB
+ *  directions). Mirrors DIRECTION_TABLE's keys in instrument-knowledge.ts —
+ *  kept in sync by hand, guarded by instrument-knowledge.test.ts. */
+export const DIRECTIONS = ['arco', 'pizzicato', 'con sordino', 'senza sordino', 'col legno', 'tremolo'] as const;
+
+/** e.g. directionAtom('arco') -> "direction:arco". */
+export function directionAtom(term: string): string {
+  return `direction:${term}`;
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

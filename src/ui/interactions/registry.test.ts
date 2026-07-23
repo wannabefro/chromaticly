@@ -103,7 +103,7 @@ describe('registry — text_input characterization (zero behavior change)', () =
 
 describe('registry — lookupInteraction fails loud on unsupported types (AD1: never a silent Mcq fallback)', () => {
   test('throws a clear error for a schema-only-unsupported type', () => {
-    expect(() => lookupInteraction('drag_match')).toThrow(/drag_match/);
+    expect(() => lookupInteraction('multi_select')).toThrow(/multi_select/);
   });
 
   test('throws for every schema-enum value with no registered entry', () => {
@@ -115,6 +115,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
 
   test('the registry is partial — only the built interaction types are registered', () => {
     expect(Object.keys(INTERACTIONS).sort()).toEqual([
+      'drag_match',
       'find_the_bar',
       'flashcard',
       'mcq',
@@ -209,6 +210,55 @@ describe('registry — transposition_input (U6, octave_transposition)', () => {
     for (const { pitch } of perItem) expect(rendered).toContain(pitch);
     expect(view.props.music.clef).toBe(transpositionInstance.interaction.config.answerClef);
     expect(view.props.music.clef).not.toBe(transpositionInstance.stimulus.music.clef);
+  });
+});
+
+describe('registry — drag_match (fyu.12, term ↔ meaning; design 5f)', () => {
+  const dragInstance: ExerciseInstance = {
+    id: 'drag-1',
+    template_id: 'instrument_knowledge',
+    grade: 4,
+    strand: 'terms_signs',
+    prompt: 'Match each direction to its meaning.',
+    stimulus: { music: null, text: null },
+    interaction: { type: 'drag_match', config: { left: ['arco', 'pizzicato'], right: ['plucked', 'with the bow'] } },
+    answer: { canonical: { arco: 'with the bow', pizzicato: 'plucked' }, accepted_alternatives: [] },
+    distractors: [],
+    hints: [],
+    feedback: { correct: 'c', incorrect: 'i' },
+    srs_tags: ['direction:arco', 'direction:pizzicato'],
+    kb_version: 'test',
+  };
+
+  test('emptyResponse seeds every left term to null, and nothing else', () => {
+    expect(lookupInteraction('drag_match').emptyResponse(dragInstance)).toEqual({ arco: null, pizzicato: null });
+  });
+
+  test('canCheck is false until every term is paired; the reserved held-pick key never counts', () => {
+    const spec = lookupInteraction('drag_match');
+    expect(spec.canCheck({ arco: null, pizzicato: null })).toBe(false);
+    expect(spec.canCheck({ arco: 'with the bow', pizzicato: null })).toBe(false);
+    // A held pool pick (reserved '' key) is not a term — a fully-paired set with one still checks true.
+    expect(spec.canCheck({ arco: 'with the bow', pizzicato: 'plucked', '': 'x' })).toBe(true);
+    expect(spec.canCheck({ arco: 'with the bow', pizzicato: 'plucked' })).toBe(true);
+  });
+
+  test('grade is true only when every pair matches the canonical map — one wrong pair fails the whole item', () => {
+    const spec = lookupInteraction('drag_match');
+    expect(spec.grade(dragInstance, { arco: 'with the bow', pizzicato: 'plucked' })).toBe(true);
+    expect(spec.grade(dragInstance, { arco: 'plucked', pizzicato: 'with the bow' })).toBe(false);
+    expect(spec.grade(dragInstance, { arco: 'with the bow', pizzicato: null })).toBe(false);
+  });
+
+  test('submits is true — drag_match uses the shared Check button', () => {
+    expect(lookupInteraction('drag_match').submits).toBe(true);
+  });
+
+  test('correctAnswerView lists every term with its canonical meaning', () => {
+    const view = lookupInteraction('drag_match').correctAnswerView(dragInstance);
+    const rendered = JSON.stringify(view);
+    expect(rendered).toContain('arco — with the bow');
+    expect(rendered).toContain('pizzicato — plucked');
   });
 });
 

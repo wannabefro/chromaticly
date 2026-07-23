@@ -121,6 +121,17 @@ export function gradeStaveInput(instance: ExerciseInstance, response: { pitch: s
   return response.pitch === canonical.pitch && response.dur === canonical.dur;
 }
 
+/** A term↔meaning match (design 5f) is correct only when EVERY left term is
+ *  paired with its canonical meaning — one wrong pair fails the whole item, no
+ *  partial credit (mirrors gradeTrueFalse). `answer.canonical` is the correct
+ *  `left -> right` map; the response is the learner's current pairing. */
+export function gradeDragMatch(instance: ExerciseInstance, response: Record<string, string | null>): boolean {
+  const answer = instance.answer.canonical as Record<string, string>;
+  const leftKeys = Object.keys(answer);
+  if (leftKeys.length === 0) return false;
+  return leftKeys.every((k) => response[k] === answer[k]);
+}
+
 function normalize(text: string): string {
   return text.trim().toLowerCase().replace(/\s+/g, ' ');
 }

@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23g",
+  "version": "g4-lessons-2026-07-23h",
   "lessons": [
     {
       "id": "keys-4",
@@ -453,6 +453,51 @@
         },
         "smartTip": "A mordent flicks once (up = upper, down = lower); a turn curls both ways around the note; a trill shakes on and on. The two grace notes sit before the main note — the slashed acciaccatura is the quicker.",
         "didYouKnow": "‘Acciaccatura’ comes from the Italian acciaccare, ‘to crush’ — it is crushed against the main note so fast the two almost sound at once, then instantly released."
+      },
+      "unlocks": "instruments-4"
+    },
+    {
+      "id": "instruments-4",
+      "title": "Instruments of the orchestra",
+      "strand": "terms_signs",
+      "atoms": [
+        "instrument_family:violin",
+        "instrument_family:flute",
+        "instrument_family:trumpet",
+        "instrument_family:timpani",
+        "instrument_clef:viola",
+        "instrument_clef:cello",
+        "instrument_clef:violin",
+        "direction:arco",
+        "direction:pizzicato",
+        "direction:con sordino",
+        "direction:senza sordino"
+      ],
+      "templates": [
+        "instrument_knowledge"
+      ],
+      "worked_example": {
+        "template_id": "instrument_knowledge",
+        "grade": 4,
+        "seed": 6
+      },
+      "teach": {
+        "objectives": [
+          "The orchestra is grouped into four families: strings, woodwind, brass, and percussion",
+          "Instruments read the clef that fits their range — the viola reads the alto clef you just learned",
+          "Playing directions tell the player how to play: arco (with the bow), pizzicato (plucked), con sordino (with the mute)"
+        ],
+        "concept": {
+          "title": "Instruments of the orchestra",
+          "body": "Orchestral instruments fall into four families. STRINGS (violin, viola, cello, double bass) are bowed or plucked. WOODWIND (flute, oboe, clarinet, bassoon) are blown. BRASS (trumpet, horn, trombone, tuba) are blown through a cupped mouthpiece. PERCUSSION (such as the timpani) are struck. Each instrument reads the clef that best fits its range: the violin and flute read treble, the cello and double bass read bass, and the viola reads the alto clef — which is why you learned it. Composers also write playing directions telling the player how to sound a note: arco means 'with the bow', pizzicato 'plucked', and con sordino 'with the mute'.",
+          "example": {
+            "template_id": "instrument_knowledge",
+            "grade": 4,
+            "seed": 4
+          }
+        },
+        "smartTip": "Four families: strings, woodwind, brass, percussion. The viola is the string instrument that reads the alto clef — that is exactly why the alto clef was worth learning.",
+        "didYouKnow": "‘Pizzicato’ is Italian for ‘pinched’ — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
       },
       "unlocks": null
     }
