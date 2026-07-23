@@ -21,6 +21,13 @@ export interface GradeScope {
   pitchRanges: Record<Clef, { low: Pitch; high: Pitch }>;
 }
 
+// Alto (viola) clef reading range — Grade 4 only. Middle line is C4; the stave
+// spans F3 (bottom line) to G4 (top line). Resolved to ~3 ledger lines each way
+// (G2..F5), matching the grade-3 treble/bass 3-ledger philosophy. Provisional
+// pending curriculum sign-off in the alto content slice (fyu.9), a one-line edit
+// if that review disagrees. Grades 1-3 never read it (their clefs exclude alto).
+const ALTO_RANGE: { low: Pitch; high: Pitch } = { low: 'G2', high: 'F5' };
+
 const GRADE_1_SCOPE: GradeScope = {
   clefs: ['treble', 'bass'],
   noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
@@ -48,6 +55,12 @@ const GRADE_1_SCOPE: GradeScope = {
   pitchRanges: {
     treble: { low: 'C4', high: 'A5' },
     bass: { low: 'E2', high: 'D4' },
+    // Alto is a Grade-4-only clef (grades 1-3 clefs exclude it), so this entry
+    // exists only to satisfy the exhaustive Record<Clef> and is never read at
+    // this grade. The alto reading range is defined once at grade 3 (inherited
+    // by grade 4); see there. Kept identical across grades to avoid inventing
+    // per-grade alto ledger bounds nothing reads.
+    alto: ALTO_RANGE,
   },
 };
 
@@ -78,6 +91,7 @@ const GRADE_2_SCOPE: GradeScope = {
   pitchRanges: {
     treble: { low: 'A3', high: 'C6' },
     bass: { low: 'C2', high: 'E4' },
+    alto: ALTO_RANGE,
   },
 };
 
@@ -120,6 +134,9 @@ const GRADE_3_SCOPE: GradeScope = {
   pitchRanges: {
     treble: { low: 'F3', high: 'E6' },
     bass: { low: 'A1', high: 'G4' },
+    // The alto reading range, inherited by grade 4 (GRADE_4_SCOPE.pitchRanges
+    // references this object). See ALTO_RANGE.
+    alto: ALTO_RANGE,
   },
 };
 

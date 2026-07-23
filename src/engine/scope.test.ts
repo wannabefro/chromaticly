@@ -302,7 +302,13 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
       timeSignatures: ['2/4', '3/4', '4/4'],
       rhythmDevices: ['tie', 'single_dot'],
       intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
-      pitchRanges: { treble: { low: 'C4', high: 'A5' }, bass: { low: 'E2', high: 'D4' } },
+      pitchRanges: {
+        treble: { low: 'C4', high: 'A5' },
+        bass: { low: 'E2', high: 'D4' },
+        // alto is the grade-4 clef (fyu.5); required by the exhaustive
+        // Record<Clef> but never read at grade 1 (clefs excludes it).
+        alto: { low: 'G2', high: 'F5' },
+      },
     });
     expect(scopeForGrade(2)).toEqual({
       clefs: ['treble', 'bass'],
@@ -313,7 +319,11 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
       timeSignatures: ['2/4', '3/4', '4/4', '2/2', '3/2', '4/2'],
       rhythmDevices: ['tie', 'single_dot', 'triplet', 'triplet_with_rests', 'dotted_rests'],
       intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
-      pitchRanges: { treble: { low: 'A3', high: 'C6' }, bass: { low: 'C2', high: 'E4' } },
+      pitchRanges: {
+        treble: { low: 'A3', high: 'C6' },
+        bass: { low: 'C2', high: 'E4' },
+        alto: { low: 'G2', high: 'F5' },
+      },
     });
   });
 });
@@ -328,9 +338,14 @@ describe('scopeForGrade(3).pitchRanges — ledger-lines-3 widening (chromaticly-
     expect(GRADE_SCOPES[3].pitchRanges.bass).toEqual({ low: 'A1', high: 'G4' });
   });
 
-  test('grade-1 and grade-2 pitchRanges are unchanged by the grade-3 widening', () => {
-    expect(GRADE_SCOPES[1].pitchRanges).toEqual({ treble: { low: 'C4', high: 'A5' }, bass: { low: 'E2', high: 'D4' } });
-    expect(GRADE_SCOPES[2].pitchRanges).toEqual({ treble: { low: 'A3', high: 'C6' }, bass: { low: 'C2', high: 'E4' } });
+  test('grade-1 and grade-2 treble/bass pitchRanges are unchanged by the grade-3 widening', () => {
+    // Asserts treble/bass specifically (not the whole object) — the alto key
+    // added for Grade 4 (fyu.5) is a grade-4-only clef and must not be read as
+    // a change to the grade-1/2 treble/bass reading bounds this guards.
+    expect(GRADE_SCOPES[1].pitchRanges.treble).toEqual({ low: 'C4', high: 'A5' });
+    expect(GRADE_SCOPES[1].pitchRanges.bass).toEqual({ low: 'E2', high: 'D4' });
+    expect(GRADE_SCOPES[2].pitchRanges.treble).toEqual({ low: 'A3', high: 'C6' });
+    expect(GRADE_SCOPES[2].pitchRanges.bass).toEqual({ low: 'C2', high: 'E4' });
   });
 
   test('the grade-3 range is strictly wider than grade 2 — every grade-2 diatonic pitch is also in range at grade 3', () => {

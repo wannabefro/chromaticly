@@ -71,10 +71,23 @@ function safeDistractorAccidental(letter: Letter, accidental: Accidental): Accid
 const CLEF_BOTTOM_LINE: Record<Clef, { letter: Letter; octave: number }> = {
   treble: { letter: 'E', octave: 4 },
   bass: { letter: 'G', octave: 2 },
+  // Alto (viola) clef: middle line is C4, so the bottom line is F3.
+  alto: { letter: 'F', octave: 3 },
+};
+
+// The clef-confusion distractor reads the same staff position on a DIFFERENT
+// clef. An explicit map, not a `treble ? bass : treble` ternary: with three
+// clefs that ternary would silently map alto->treble (a wrong-but-not-a-compile-
+// error bug). treble<->bass stay paired; alto's confusion partner is treble
+// (violists commonly also read treble).
+const CLEF_CONFUSION_PARTNER: Record<Clef, Clef> = {
+  treble: 'bass',
+  bass: 'treble',
+  alto: 'treble',
 };
 
 function otherClef(clef: Clef): Clef {
-  return clef === 'treble' ? 'bass' : 'treble';
+  return CLEF_CONFUSION_PARTNER[clef];
 }
 
 function parseLetterOctave(pitch: string): { letter: Letter; octave: number } {

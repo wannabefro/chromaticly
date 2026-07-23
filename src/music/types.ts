@@ -1,7 +1,7 @@
 // Canonical Music object (spec §2, Grade 1 MVP subset). This JSON model is the
 // source of truth; the ABC emitter projects it for rendering and audio (KTD3).
 
-export type Clef = 'treble' | 'bass';
+export type Clef = 'treble' | 'bass' | 'alto';
 
 export type Duration =
   | 'breve'

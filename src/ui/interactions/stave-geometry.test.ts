@@ -13,7 +13,11 @@ const STEP = LINE_GAP / 2;
 const LINE_TOP = 26;
 const STAVE_LINES = 5;
 const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-const MIDDLE_LINE_PITCH: Record<'treble' | 'bass', string> = { treble: 'B4', bass: 'D3' };
+const MIDDLE_LINE_PITCH: Record<'treble' | 'bass' | 'alto', string> = {
+  treble: 'B4',
+  bass: 'D3',
+  alto: 'C4',
+};
 
 function ordinal(pitch: string): number {
   const letter = pitch[0];
@@ -21,7 +25,7 @@ function ordinal(pitch: string): number {
   return octave * 7 + LETTERS.indexOf(letter);
 }
 
-function frozenNoteY(clef: 'treble' | 'bass', pitch: string): number {
+function frozenNoteY(clef: 'treble' | 'bass' | 'alto', pitch: string): number {
   const middleLineY = LINE_TOP + STEP * (STAVE_LINES - 1);
   const refOrd = ordinal(MIDDLE_LINE_PITCH[clef]);
   const ord = ordinal(pitch.replace(/[#b]/g, ''));
@@ -41,7 +45,7 @@ function frozenLedgerLineYs(y: number): number[] {
 }
 
 describe('noteY — pure move: matches an independent frozen copy of the pre-extraction formula', () => {
-  const CASES: Array<['treble' | 'bass', string]> = [
+  const CASES: Array<['treble' | 'bass' | 'alto', string]> = [
     ['treble', 'B4'],
     ['treble', 'C4'],
     ['treble', 'A5'],
@@ -54,10 +58,24 @@ describe('noteY — pure move: matches an independent frozen copy of the pre-ext
     ['bass', 'A3'],
     ['bass', 'A1'],
     ['bass', 'G4'],
+    // Alto (fyu.5): middle line is C4; F3 is the bottom line, G4 the top line.
+    ['alto', 'C4'],
+    ['alto', 'F3'],
+    ['alto', 'G4'],
+    ['alto', 'B3'],
+    ['alto', 'D4'],
   ];
 
   test.each(CASES)('noteY(%s, %s) matches the frozen formula', (clef, pitch) => {
     expect(noteY(clef, pitch)).toBe(frozenNoteY(clef, pitch));
+  });
+
+  test('alto C4 sits on the middle line, F3 on the bottom line, G4 on the top line', () => {
+    const middleLineY = LINE_TOP + STEP * (STAVE_LINES - 1);
+    const bottomLineY = LINE_TOP + STEP * 2 * (STAVE_LINES - 1);
+    expect(noteY('alto', 'C4')).toBe(middleLineY);
+    expect(noteY('alto', 'F3')).toBe(bottomLineY);
+    expect(noteY('alto', 'G4')).toBe(LINE_TOP);
   });
 
   test('an accidented pitch is measured by its natural letter/octave, ignoring the accidental', () => {
