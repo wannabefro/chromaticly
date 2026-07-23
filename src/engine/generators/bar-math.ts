@@ -40,6 +40,17 @@ export const BAR_UNITS: Record<string, number> = {
   '6/8': 24,
   '9/8': 36,
   '12/8': 48,
+  // Grade 4 (chromaticly-570): simple /8, compound /4, compound /16.
+  // Units are demisemiquaver-scale (crotchet = 8): num × (32/den).
+  '2/8': 8,
+  '3/8': 12,
+  '4/8': 16,
+  '6/4': 48,
+  '9/4': 72,
+  '12/4': 96,
+  '6/16': 12,
+  '9/16': 18,
+  '12/16': 24,
 };
 
 export function barUnitsFor(timeSig: string): number {
@@ -111,11 +122,21 @@ export function barDurationUnits(d: BarDuration): number {
   return UNITS[d.dur] * (d.dots === 1 ? 1.5 : 1);
 }
 
-// A dotted-crotchet beat (compound time's beat unit) = 12 32nd-units
-// (crotchet=8, dot adds half=4). Every pattern below sums to exactly 12, so
-// filling a bar one beat at a time can never straddle a beat boundary —
+// A compound beat is a dotted note worth three of the denominator's note:
+// dotted crotchet (12 units) in /8, dotted minim (24) in /4, dotted quaver
+// (6) in /16. In demisemiquaver-scale, the denominator note is 32/den units,
+// so the beat is 3 × (32/den). Every pattern (below) sums to exactly one such
+// beat, so filling a bar one beat at a time can never straddle a boundary —
 // grouping is guaranteed by construction (D4), not by generic recursive fill.
-const COMPOUND_BEAT_UNITS = 12;
+function denOf(sig: string): number {
+  const den = Number(sig.split('/')[1]);
+  if (!Number.isInteger(den) || den <= 0) throw new Error(`bar-math: malformed time signature "${sig}"`);
+  return den;
+}
+
+function compoundBeatUnits(sig: string): number {
+  return 3 * (32 / denOf(sig));
+}
 
 /** Authored per-beat fill patterns (D4), each summing to exactly one
  *  dotted-crotchet beat (12 units). Must include: the whole beat as a single
@@ -133,19 +154,65 @@ export const COMPOUND_PATTERNS: readonly BarDuration[][] = [
   [{ dur: 'quaver' }, { dur: 'quaver' }, { dur: 'semiquaver' }, { dur: 'demisemiquaver' }, { dur: 'demisemiquaver' }],
 ];
 
-/** Fills a compound bar (6/8, 9/8, 12/8) one dotted-crotchet beat at a time,
- *  each beat independently filled with a weighted pick from
- *  `COMPOUND_PATTERNS`. No event can cross a beat boundary — the pattern
+// The COMPOUND_PATTERNS above are authored at the /8 scale (dotted-crotchet
+// beat). The same shapes at a different denominator are a note-value rescale by
+// 8/den: ×2 for /4 (quaver→crotchet …), ÷2 for /16 (quaver→semiquaver …). A
+// pattern whose smallest note would fall below a demisemiquaver under the /16
+// rescale is DROPPED (Grade-4 chromaticly-570) rather than emitting an
+// unsupported hemidemisemiquaver — the drop fires exactly once (the
+// demisemiquaver-bearing pattern), leaving five valid /16 patterns.
+const UNIT_TO_DURATION: Record<number, SimpleDuration> = {
+  1: 'demisemiquaver',
+  2: 'semiquaver',
+  4: 'quaver',
+  8: 'crotchet',
+  16: 'minim',
+  32: 'semibreve',
+};
+
+function scaleDuration(dur: SimpleDuration, factor: number): SimpleDuration | null {
+  return UNIT_TO_DURATION[UNITS[dur] * factor] ?? null;
+}
+
+/** Rescales one /8 pattern by `factor`; returns null (dropping the pattern) if
+ *  any note has no supported duration at the target scale. */
+function scalePattern(pattern: readonly BarDuration[], factor: number): BarDuration[] | null {
+  const out: BarDuration[] = [];
+  for (const d of pattern) {
+    const scaled = scaleDuration(d.dur, factor);
+    if (scaled === null) return null;
+    out.push(d.dots === 1 ? { dur: scaled, dots: 1 } : { dur: scaled });
+  }
+  return out;
+}
+
+function scaleAll(patterns: readonly BarDuration[][], factor: number): BarDuration[][] {
+  return patterns.map((p) => scalePattern(p, factor)).filter((p): p is BarDuration[] => p !== null);
+}
+
+// Per-denominator pattern sets. /8 is the original table verbatim (factor 1,
+// no allocation) so 6/8, 9/8, 12/8 stay byte-identical.
+export const COMPOUND_PATTERNS_BY_DEN: Record<number, readonly BarDuration[][]> = {
+  4: scaleAll(COMPOUND_PATTERNS, 2),
+  8: COMPOUND_PATTERNS,
+  16: scaleAll(COMPOUND_PATTERNS, 0.5),
+};
+
+/** Fills a compound bar (6/8, 9/8, 12/8 and the Grade-4 /4 and /16 metres) one
+ *  beat at a time, each beat independently filled with a weighted pick from the
+ *  denominator's pattern set. No event can cross a beat boundary — the pattern
  *  table guarantees ABRSM-conventional grouping by construction. */
 export function buildCompoundBarDurations(rng: () => number, sig: string): BarDuration[] {
   const totalUnits = barUnitsFor(sig);
-  if (totalUnits % COMPOUND_BEAT_UNITS !== 0) {
-    throw new Error(`bar-math: "${sig}" is not a compound (dotted-crotchet-beat) time signature`);
+  const beatUnits = compoundBeatUnits(sig);
+  const patterns = COMPOUND_PATTERNS_BY_DEN[denOf(sig)];
+  if (!patterns || totalUnits % beatUnits !== 0) {
+    throw new Error(`bar-math: "${sig}" is not a supported compound (dotted-beat) time signature`);
   }
-  const beatCount = totalUnits / COMPOUND_BEAT_UNITS;
+  const beatCount = totalUnits / beatUnits;
   const events: BarDuration[] = [];
   for (let beat = 0; beat < beatCount; beat++) {
-    const pattern = weighted(rng, COMPOUND_PATTERNS.map((p) => ({ value: p, weight: 1 })));
+    const pattern = weighted(rng, patterns.map((p) => ({ value: p, weight: 1 })));
     events.push(...pattern);
   }
   return events;

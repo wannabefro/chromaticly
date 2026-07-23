@@ -208,6 +208,40 @@ describe('musicToAbc — time_sig_hidden (D5): hide the glyph, keep the true bea
   });
 });
 
+describe('musicToAbc — Grade 4 metres beam by the generalized beatUnit (chromaticly-570)', () => {
+  type Ev = import('./types').MusicEvent;
+  const semis = (pitches: string[]): Ev[] => pitches.map((pitch) => ({ type: 'note', pitch, dur: 'semiquaver' }));
+  const quavers = (pitches: string[]): Ev[] => pitches.map((pitch) => ({ type: 'note', pitch, dur: 'quaver' }));
+  const emit = (events: Ev[], time_sig: string) =>
+    musicToAbc({ clef: 'treble', key_sig: null, time_sig, voices: [{ events }] });
+  const headerOf = (abc: string) => abc.split('\n').find((l) => l.startsWith('M:'));
+  const bodyOf = (abc: string) => abc.split('\n').filter((l) => l && !/^[XLMK]:/.test(l))[0];
+  const groups = (abc: string) => bodyOf(abc).split(' ');
+
+  test('2/8 (simple duple): four semiquavers beam two-by-two — a quaver beat', () => {
+    const abc = emit(semis(['C4', 'D4', 'E4', 'F4']), '2/8');
+    expect(headerOf(abc)).toBe('M:2/8');
+    expect(bodyOf(abc)).toBe('C2D2 E2F2');
+  });
+
+  test('3/8 (simple triple): six semiquavers beam in three quaver beats', () => {
+    const abc = emit(semis(['C4', 'D4', 'E4', 'F4', 'G4', 'A4']), '3/8');
+    expect(groups(abc)).toHaveLength(3);
+  });
+
+  test('6/16 (compound duple): six semiquavers beam in two groups of three — a dotted-quaver beat', () => {
+    const abc = emit(semis(['C4', 'D4', 'E4', 'F4', 'G4', 'A4']), '6/16');
+    expect(headerOf(abc)).toBe('M:6/16');
+    expect(bodyOf(abc)).toBe('C2D2E2 F2G2A2');
+  });
+
+  test('6/4 (compound duple): twelve quavers beam in two dotted-minim beats of six', () => {
+    const abc = emit(quavers(['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5']), '6/4');
+    expect(headerOf(abc)).toBe('M:6/4');
+    expect(groups(abc)).toHaveLength(2);
+  });
+});
+
 describe('musicToAbc — time_sig_hidden absent: characterization, additive field, zero blast radius', () => {
   test('a simple-metre bar renders unchanged', () => {
     const music: Music = {

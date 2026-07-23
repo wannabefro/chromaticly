@@ -195,13 +195,18 @@ function beatsOf(dur: Duration, dots: Dots = 0): number {
   return DURATION_BEATS[dur] * DOT_MULTIPLIER[dots];
 }
 
-/** The beat the notation groups by: a crotchet in simple time, a dotted crotchet in
- *  compound time (x/8 with a multiple-of-three numerator) — 6/8 beams in threes, not
- *  sixes. This is what "beat" means for beaming, not the notated bottom number. */
+/** The beat the notation groups by, in crotchet-beats: the denominator note in simple
+ *  time (a quaver in /8, a crotchet in /4), a dotted note three times that in compound
+ *  time (numerator a multiple of three greater than three) — 6/8 beams by dotted
+ *  crotchet, 6/4 by dotted minim, 6/16 by dotted quaver. Byte-identical to the former
+ *  rule for every metre grades 1-3 use. This is what "beat" means for beaming, not the
+ *  notated bottom number. */
 function beatUnit(timeSig: string | null | undefined): number {
   if (!timeSig) return 1;
   const [num, den] = timeSig.split('/').map(Number);
-  return den === 8 && num % 3 === 0 ? 1.5 : 1;
+  const unit = 4 / den;
+  const compound = num % 3 === 0 && num > 3;
+  return compound ? unit * 3 : unit;
 }
 
 /** Emit a voice, beaming sub-crotchet notes that share a beat. In ABC, adjacent notes

@@ -3,6 +3,7 @@ import { scopeForGrade } from '../scope';
 import {
   BAR_UNITS,
   COMPOUND_PATTERNS,
+  COMPOUND_PATTERNS_BY_DEN,
   UNITS,
   barDurationUnits,
   barUnitsFor,
@@ -102,8 +103,18 @@ describe('bar-math — BAR_UNITS: integer bar totals for every renderable signat
     expect(BAR_UNITS['9/8']).toBe(36);
   });
 
-  test('BAR_UNITS matches the plan D3 table exactly', () => {
-    expect(BAR_UNITS).toEqual({ '2/4': 16, '3/4': 24, '4/4': 32, '6/8': 24, '9/8': 36, '12/8': 48 });
+  test('BAR_UNITS matches the D3 table plus the Grade-4 metres exactly', () => {
+    expect(BAR_UNITS).toEqual({
+      '2/4': 16, '3/4': 24, '4/4': 32, '6/8': 24, '9/8': 36, '12/8': 48,
+      '2/8': 8, '3/8': 12, '4/8': 16, '6/4': 48, '9/4': 72, '12/4': 96,
+      '6/16': 12, '9/16': 18, '12/16': 24,
+    });
+  });
+
+  test('each new metre total = num × (32/den)', () => {
+    expect(BAR_UNITS['2/8']).toBe(2 * 4);
+    expect(BAR_UNITS['6/4']).toBe(6 * 8);
+    expect(BAR_UNITS['12/16']).toBe(12 * 2);
   });
 });
 
@@ -188,6 +199,91 @@ describe('bar-math — buildCompoundBarDurations: per-beat pattern fill (D4)', (
   test('throws for a non-compound (or unknown) signature — fail loud, no silent simple-time fallback', () => {
     expect(() => buildCompoundBarDurations(mulberry32(0), '4/4')).toThrow();
     expect(() => buildCompoundBarDurations(mulberry32(0), '5/8')).toThrow();
+  });
+});
+
+// Denominator-general beat splitter — throws if any event straddles a beat of
+// `beatUnits`, or if the bar ends mid-beat.
+function splitIntoBeatsOf(events: readonly BarDuration[], beatUnits: number): BarDuration[][] {
+  const beats: BarDuration[][] = [];
+  let current: BarDuration[] = [];
+  let posInBeat = 0;
+  for (const ev of events) {
+    const units = barDurationUnits(ev);
+    if (posInBeat + units > beatUnits) throw new Error('event crosses a beat boundary');
+    current.push(ev);
+    posInBeat += units;
+    if (posInBeat === beatUnits) {
+      beats.push(current);
+      current = [];
+      posInBeat = 0;
+    }
+  }
+  if (current.length > 0) throw new Error('trailing partial beat');
+  return beats;
+}
+
+describe('bar-math — Grade 4 compound metres (/4 and /16)', () => {
+  const CASES = [
+    { sig: '6/4', beatUnits: 24, beats: 2 },
+    { sig: '9/4', beatUnits: 24, beats: 3 },
+    { sig: '12/4', beatUnits: 24, beats: 4 },
+    { sig: '6/16', beatUnits: 6, beats: 2 },
+    { sig: '9/16', beatUnits: 6, beats: 3 },
+    { sig: '12/16', beatUnits: 6, beats: 4 },
+  ] as const;
+
+  test.each(CASES)('$sig bars over seeds 0..99 sum exactly to BAR_UNITS and never straddle a beat', ({ sig, beatUnits, beats }) => {
+    for (let seed = 0; seed < 100; seed++) {
+      const events = buildCompoundBarDurations(mulberry32(seed), sig);
+      const total = events.reduce((sum, ev) => sum + barDurationUnits(ev), 0);
+      expect(total).toBe(BAR_UNITS[sig]);
+      expect(splitIntoBeatsOf(events, beatUnits)).toHaveLength(beats);
+    }
+  });
+
+  test('/16 bars never emit a note below a demisemiquaver', () => {
+    for (const sig of ['6/16', '9/16', '12/16'] as const) {
+      for (let seed = 0; seed < 100; seed++) {
+        for (const ev of buildCompoundBarDurations(mulberry32(seed), sig)) {
+          expect(UNITS[ev.dur]).toBeGreaterThanOrEqual(UNITS.demisemiquaver);
+        }
+      }
+    }
+  });
+});
+
+describe('bar-math — COMPOUND_PATTERNS_BY_DEN: materialized pattern tables (Codex C3)', () => {
+  test('/8 set is the original COMPOUND_PATTERNS (byte-identity)', () => {
+    expect(COMPOUND_PATTERNS_BY_DEN[8]).toBe(COMPOUND_PATTERNS);
+  });
+
+  test('/4 set keeps all six patterns (scale-up never underflows)', () => {
+    expect(COMPOUND_PATTERNS_BY_DEN[4]).toHaveLength(6);
+  });
+
+  test('/16 set drops exactly the demisemiquaver-bearing pattern → five patterns', () => {
+    expect(COMPOUND_PATTERNS_BY_DEN[16]).toHaveLength(5);
+  });
+
+  test.each([
+    [4, 24],
+    [8, 12],
+    [16, 6],
+  ])('every /%i pattern sums to one beat (%i units) and uses only supported durations', (den, beatUnits) => {
+    for (const pattern of COMPOUND_PATTERNS_BY_DEN[den]) {
+      const total = pattern.reduce((sum, d) => sum + barDurationUnits(d), 0);
+      expect(total).toBe(beatUnits);
+      for (const d of pattern) expect(UNITS[d.dur]).toBeGreaterThanOrEqual(UNITS.demisemiquaver);
+    }
+  });
+
+  test('every denominator retains the headline single-dotted-beat pattern and at least one split', () => {
+    for (const den of [4, 8, 16]) {
+      const patterns = COMPOUND_PATTERNS_BY_DEN[den];
+      expect(patterns.some((p) => p.length === 1 && p[0].dots === 1)).toBe(true); // headline dotted beat
+      expect(patterns.some((p) => p.length > 1)).toBe(true); // at least one multi-note split
+    }
   });
 });
 
