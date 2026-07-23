@@ -1,5 +1,6 @@
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
+import { musicToAbc } from '../music/abc-emitter';
 import { SET_SIZE } from '../learn/exercise-set';
 import {
   assertAtomResolves,
@@ -477,6 +478,86 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
 
   test('a malformed anacrusis atom (extra colon-part) throws', () => {
     expect(() => assertAtomResolves('anacrusis:3/4:x', 3)).toThrow();
+  });
+});
+
+// chromaticly-fm9 — major-keys-4: B major (5 sharps) and D♭ major (5 flats)
+// become named, ASSESSED major keys, reusing the existing key_signature_id
+// template. keys-4 teach copy already names them; this lesson is the first to
+// ask them as the answer to a key-signature MCQ. Contrast keys E major (4#) and
+// A♭ major (4b) sit in the pool so telling the keys apart requires counting the
+// signature, not just reading sharps-vs-flats.
+describe('major-keys-4 lesson (chromaticly-fm9)', () => {
+  const lesson = () => lessonById('major-keys-4')!;
+
+  test('exists, strand scales_keys, single template key_signature_id', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(4);
+    expect(lesson().strand).toBe('scales_keys');
+    expect(lesson().templates).toEqual(['key_signature_id']);
+  });
+
+  test('the chain rethreads keys-4 -> major-keys-4 -> minor-scales-4', () => {
+    expect(lessonById('keys-4')!.unlocks).toBe('major-keys-4');
+    expect(lesson().unlocks).toBe('minor-scales-4');
+  });
+
+  test('every atom resolves at grade 4; the new major keys throw at grade 3', () => {
+    for (const atom of lesson().atoms) {
+      expect(() => assertAtomResolves(atom, 4)).not.toThrow();
+    }
+    expect(() => assertAtomResolves('key_sig:B_major', 3)).toThrow();
+    expect(() => assertAtomResolves('key_sig:Db_major', 3)).toThrow();
+  });
+
+  // C2 — THE invariant the atom ORDER is chosen to satisfy. key_signature_id
+  // picks the asked key with one rng draw per item (key-signature-id.ts:69);
+  // over the deterministic per-set seed range (0..SET_SIZE-1, SetRunner.tsx:70)
+  // the draw never lands the pool's index-0 key, so both focus keys must sit on
+  // drawn indices. If a future edit reorders atoms and drops a focus key from
+  // the set, this fails loud — the learner would complete the set never seeing
+  // one of the two keys the lesson exists to teach.
+  test('both B major and D♭ major are asked within one set (seeds 0..SET_SIZE-1)', () => {
+    const asked = Array.from({ length: SET_SIZE }, (_, seed) =>
+      generate('key_signature_id', { grade: 4, seed, atoms: lesson().atoms }).answer.canonical,
+    );
+    expect(asked).toContain('B major');
+    expect(asked).toContain('Db major');
+  });
+
+  // C3 — the generator's canonical answer is ASCII ("Db major"), even though
+  // teach copy renders it "D♭ major". Grading is a plain string equal, so the
+  // canonical must stay ASCII or every D♭ item would grade as wrong.
+  test('the D♭ canonical answer is ASCII "Db major", not "D♭ major"', () => {
+    const asked = Array.from({ length: SET_SIZE }, (_, seed) =>
+      generate('key_signature_id', { grade: 4, seed, atoms: lesson().atoms }).answer.canonical,
+    );
+    const db = asked.filter((k) => k.startsWith('D'));
+    expect(db.length).toBeGreaterThan(0);
+    for (const k of db) expect(k).toBe('Db major');
+  });
+
+  // C4 (R-alto) — grade 4 opens the alto clef, so a 5-accidental signature can
+  // render on it. Prove the emitter handles alto + 5 sharps: the ABC K-line must
+  // carry both the key and clef=alto. abcjs's on-device render is the U2 gate;
+  // this pins that the ABC we hand it is well-formed.
+  test('a 5-sharp signature emits valid alto-clef ABC (K:B clef=alto)', () => {
+    const abc = musicToAbc({
+      clef: 'alto',
+      key_sig: 'B_major',
+      time_sig: null,
+      voices: [{ events: [{ type: 'note', pitch: 'B3', dur: 'semibreve' }] }],
+    });
+    expect(abc).toContain('K:B clef=alto');
+  });
+
+  // C5 — a Practice due-path can scope a single atom; key_signature_id needs >=2
+  // key atoms for a closed MCQ and throws below that (key-signature-id.ts:37).
+  // Adding B/D♭ atoms widens the set that can hit this PRE-EXISTING boundary
+  // (mirrors practice-plan.test.ts:134). Pinned here so the throw stays loud and
+  // is not mistaken for a regression this slice introduced.
+  test('a single-atom scope throws (pre-existing closed-MCQ boundary, not new debt)', () => {
+    expect(() => generate('key_signature_id', { grade: 4, seed: 0, atoms: ['key_sig:B_major'] })).toThrow();
   });
 });
 

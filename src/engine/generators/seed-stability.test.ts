@@ -447,6 +447,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     templateId: 'enharmonic_recognition',
     atoms: ['enharmonic:C#', 'enharmonic:Db', 'enharmonic:D#', 'enharmonic:Eb', 'enharmonic:F#', 'enharmonic:Gb', 'enharmonic:G#', 'enharmonic:Ab', 'enharmonic:A#', 'enharmonic:Bb'],
   },
+  {
+    label: 'key_signature_id B/Db major (major-keys-4, pre-lesson pin, chromaticly-fm9)',
+    templateId: 'key_signature_id',
+    atoms: ['key_sig:E_major', 'key_sig:B_major', 'key_sig:Ab_major', 'key_sig:Db_major'],
+  },
 ];
 
 if (GRADE_4_EXTRA_CASES.length > 0) {

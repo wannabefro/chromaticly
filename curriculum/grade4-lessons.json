@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23j",
+  "version": "g4-lessons-2026-07-23k",
   "lessons": [
     {
       "id": "keys-4",
@@ -35,6 +35,44 @@
         },
         "smartTip": "Count three semitones — a minor 3rd — down from the major tonic to find the relative minor: B down to G♯, D♭ down to B♭.",
         "didYouKnow": "B major and D♭ major sit right next to each other on the piano — B major's tonic and C♭ (D♭ major's leading note) are the same key — yet their key signatures are opposites: five sharps versus five flats."
+      },
+      "unlocks": "major-keys-4"
+    },
+    {
+      "id": "major-keys-4",
+      "title": "Naming major keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:E_major",
+        "key_sig:B_major",
+        "key_sig:Ab_major",
+        "key_sig:Db_major"
+      ],
+      "templates": [
+        "key_signature_id"
+      ],
+      "worked_example": {
+        "template_id": "key_signature_id",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name a major key by counting the sharps or flats in its signature",
+          "B major has five sharps; D♭ major has five flats — one more than their four-accidental neighbours E major and A♭ major",
+          "The count, not just sharps-versus-flats, is what tells the keys apart"
+        ],
+        "concept": {
+          "title": "Counting the signature",
+          "body": "To name a major key, count the accidentals in its key signature. B major has five sharps, one more than E major's four; D♭ major has five flats, one more than A♭ major's four. Telling sharps from flats is only half the job — you have to count them exactly, because a single sharp or flat is the whole difference between B major and E major, or between D♭ major and A♭ major.",
+          "example": {
+            "template_id": "key_signature_id",
+            "grade": 4,
+            "seed": 1
+          }
+        },
+        "smartTip": "Count first, then decide: five sharps is B major, four is E major; five flats is D♭ major, four is A♭ major.",
+        "didYouKnow": "The order the sharps appear in is always the same — F♯ C♯ G♯ D♯ A♯ — so B major's fifth sharp is A♯, and reading that last sharp is a quick way to confirm the key."
       },
       "unlocks": "minor-scales-4"
     },

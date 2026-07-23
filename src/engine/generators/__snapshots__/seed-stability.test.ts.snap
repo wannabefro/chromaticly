@@ -79833,6 +79833,2351 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte key_signature_id @ major-keys-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s0",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s1",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s2",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s3",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s4",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s5",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
+      "B major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
+      "B major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
+      "B major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte metre_classification @ time-signatures-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -99559,6 +101904,2351 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "intervals",
     "template_id": "interval_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte key_signature_id B/Db major (major-keys-4, pre-lesson pin, chromaticly-fm9) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s0",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s1",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s2",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s3",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s4",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s5",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
+      "B major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B major",
+    },
+    "distractors": [
+      "E major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:B_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
+      "B major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "alto",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "alto",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "alto",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "alto",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
+      "B major",
+      "Ab major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Db major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Db_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+      "B major",
+      "Db major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g4:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "B major": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "B1",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Db major": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Db2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
   },
 ]
 `;
