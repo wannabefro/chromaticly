@@ -1,0 +1,47 @@
+# chromaticly-fm9 — Grade 4 major keys: B major (5 sharps) and D♭ major (5 flats)
+# become named, ASSESSED keys via the existing key_signature_id template. Seed
+# ?seed=major-keys-4 fast-forwards to the lesson. Unlike enharmonics-4 (text-only),
+# this exercise renders a key-signature stave on the paper card — so the stimulus
+# zone SHOWS notation and carries a play affordance. Reaching unit-row-major-keys-4
+# proves the chain rethreads keys-4 -> major-keys-4 -> minor-scales-4.
+#   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade4-major-keys.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=major-keys-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-major-keys-4" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-major-keys-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-major-keys-teach
+- tapOn: { id: "teach-start" }
+
+# Notation exercise: the key signature renders on the paper card, so the
+# stimulus-music zone is present (unlike the text-only enharmonics flow).
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+- assertVisible: { id: "prompt" }
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g4-major-keys-exercise
