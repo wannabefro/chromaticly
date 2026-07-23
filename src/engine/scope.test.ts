@@ -178,22 +178,47 @@ describe('grade-2 pitch ranges (D3 judgment call)', () => {
 });
 
 describe('scopeForGrade — unsupported grades fail loud', () => {
-  test.each([0, 4, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
+  test.each([0, 5, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
     expect(() => scopeForGrade(grade)).toThrow(String(grade));
   });
 });
 
-describe('keyAccidentals round-trip — every grade-1/grade-2/grade-3 tonic is emitter-safe (invariant: no scope key can reach the emitter and explode)', () => {
-  test('every keysMajor tonic at grade 1, grade 2, and grade 3 resolves without throwing', () => {
-    for (const grade of [1, 2, 3] as const) {
+describe('scopeForGrade(4) — Grade 4 scope is wired (fyu.4)', () => {
+  test('grade 4 is supported and carries the additive keys, note value, rhythm devices, and time signatures', () => {
+    const g4 = scopeForGrade(4);
+    // keys widen over grade 3 with B/Db major + Bb/G# minor
+    expect(g4.keysMajor).toEqual(expect.arrayContaining(['B', 'Db']));
+    expect(g4.keysMinor).toEqual(expect.arrayContaining(['Bb', 'G#']));
+    // breve joins the note values; double_dot + duplet join the rhythm devices
+    expect(g4.noteValues).toContain('breve');
+    expect(g4.rhythmDevices).toEqual(expect.arrayContaining(['double_dot', 'duplet']));
+    // the resolved (VERIFY-flag) time-signature set is added on top of grade 3's
+    expect(g4.timeSignatures).toEqual(
+      expect.arrayContaining(['2/8', '3/8', '4/8', '6/4', '9/4', '12/4', '6/16', '9/16', '12/16']),
+    );
+    // intervals open beyond the tonic (aug/dim + between-any-notes naming lands in fyu.8)
+    expect(g4.intervalRule.aboveTonicOnly).toBe(false);
+  });
+
+  test('grade 4 is a superset of grade 3 keys (additive, not replacement)', () => {
+    const g3 = scopeForGrade(3);
+    const g4 = scopeForGrade(4);
+    for (const k of g3.keysMajor) expect(g4.keysMajor).toContain(k);
+    for (const k of g3.keysMinor) expect(g4.keysMinor).toContain(k);
+  });
+});
+
+describe('keyAccidentals round-trip — every grade-1..4 tonic is emitter-safe (invariant: no scope key can reach the emitter and explode)', () => {
+  test('every keysMajor tonic at grades 1–4 resolves without throwing — including the 5-flat/5-sharp G4 keys B/Db', () => {
+    for (const grade of [1, 2, 3, 4] as const) {
       for (const tonic of scopeForGrade(grade).keysMajor) {
         expect(() => keyAccidentals(`${tonic}_major`)).not.toThrow();
       }
     }
   });
 
-  test('every keysMinor tonic at grade 2 and grade 3 resolves without throwing — including the sharp tonics F#/C# (D5)', () => {
-    for (const grade of [2, 3] as const) {
+  test('every keysMinor tonic at grades 2–4 resolves without throwing — including F#/C# (D5) and the G4 keys Bb/G#', () => {
+    for (const grade of [2, 3, 4] as const) {
       for (const tonic of scopeForGrade(grade).keysMinor) {
         expect(() => keyAccidentals(`${tonic}_minor`)).not.toThrow();
       }

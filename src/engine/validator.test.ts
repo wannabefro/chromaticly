@@ -515,12 +515,12 @@ describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
     expect(result.errors.some((e) => e.includes('note value'))).toBe(true);
   });
 
-  test('an unsupported grade (4 — grade 3 is now supported, D1) fails validation cleanly instead of throwing', () => {
+  test('an unsupported grade (5 — grade 4 is now supported, fyu.4) fails validation cleanly instead of throwing', () => {
     const instance = validNoteNamingInstance();
-    instance.grade = 4;
+    instance.grade = 5;
 
     expect(() => validate(instance)).not.toThrow();
-    expect(validate(instance)).toEqual({ ok: false, errors: ['scope: grade 4 is not supported'] });
+    expect(validate(instance)).toEqual({ ok: false, errors: ['scope: grade 5 is not supported'] });
   });
 
   test('a Cb-spelled pitch (spells a natural) is still rejected at G2', () => {

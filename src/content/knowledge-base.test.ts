@@ -102,6 +102,59 @@ describe('knowledge-base.ts — grade_scopes["3"].adds is reachable', () => {
   });
 });
 
+describe('knowledge-base.ts — grade_scopes["4"].adds is reachable (fyu.4)', () => {
+  // Grade 4 adds keys no earlier grade has. zod strips unknown object keys by
+  // default, so a schema that only "mirrored grade 3" would silently drop
+  // clefs/accidentals/chords/ornaments_recognize/instruments — the exact data
+  // the later content units read. This asserts all 14 keys survive parsing.
+  test('KB.grade4Adds retains all 14 keys through zod parsing (no silent strip)', () => {
+    expect(Object.keys(KB.grade4Adds).sort()).toEqual(
+      [
+        'accidentals',
+        'chords',
+        'clefs',
+        'instruments',
+        'intervals',
+        'keys_major',
+        'keys_minor',
+        'note_values',
+        'ornaments_recognize',
+        'pitch_knowledge',
+        'rests',
+        'rhythm_devices',
+        'scale_knowledge',
+        'time_signatures',
+      ].sort(),
+    );
+  });
+
+  test('grade-4 adds carry the additive scope data the wiring and content slices consume', () => {
+    expect(KB.grade4Adds.keys_major).toEqual(['B', 'Db']);
+    expect(KB.grade4Adds.keys_minor).toEqual(['Bb', 'G#']);
+    expect(KB.grade4Adds.note_values).toEqual(['breve']);
+    expect(KB.grade4Adds.rhythm_devices).toEqual(['double_dot', 'duplet']);
+    expect(KB.grade4Adds.clefs).toEqual(['alto']);
+    expect(KB.grade4Adds.accidentals).toEqual(['double_sharp', 'double_flat']);
+    // the VERIFY-flag time-signature prose was resolved to the enumerated set
+    expect(KB.grade4Adds.time_signatures).toEqual([
+      '2/8',
+      '3/8',
+      '4/8',
+      '6/4',
+      '9/4',
+      '12/4',
+      '6/16',
+      '9/16',
+      '12/16',
+    ]);
+    // the new-domain data the chords/ornaments/instruments units depend on
+    expect(KB.grade4Adds.chords.primary_triads_and_chords).toEqual(['I', 'IV', 'V']);
+    expect(KB.grade4Adds.ornaments_recognize).toContain('trill');
+    expect(typeof KB.grade4Adds.instruments).toBe('string');
+    expect(KB.grade4Adds.intervals.above_tonic_only).toBe(false);
+  });
+});
+
 describe('knowledge-base.ts — theory_data.interval_qualities is parsed (U1)', () => {
   // The later quality classifier (U2's interval-quality.ts) keys off these
   // number sets — they must be the KB's, not a code duplicate a theory edit

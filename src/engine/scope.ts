@@ -123,10 +123,40 @@ const GRADE_3_SCOPE: GradeScope = {
   },
 };
 
-export const GRADE_SCOPES: { 1: GradeScope; 2: GradeScope; 3: GradeScope } = {
+// Grade 4 (fyu.4): keys widen to B/Db major + Bb/G# minor; noteValues adds the
+// breve; rhythmDevices adds double_dot + duplet; timeSignatures adds the simple
+// /8 (2/8, 3/8, 4/8) and compound /4 and /16 (6/4 9/4 12/4, 6/16 9/16 12/16) —
+// the KB's prose "VERIFY exact set" placeholder was resolved to that enumerated
+// set (its own examples, matching ABRSM Grade 4). intervalRule opens beyond the
+// tonic (aboveTonicOnly false) for between-any-notes naming (the aug/dim quality
+// logic lands in the interval-qualities slice fyu.8). alto clef and its
+// pitchRange land in the alto-clef slice fyu.5, which widens the Clef union;
+// until then GRADE_4_SCOPE carries the treble/bass clefs and grade-3 reading
+// range (Grade 4 adds no new ledger lines — no pitch_range key in the KB adds).
+// renderableTimeSignatures stays at the grade-3 renderable subset here: bar-math
+// support for the new /8, /4-compound and /16 denominators lands in the rhythm
+// slice fyu.7, which widens what can actually be drawn.
+const GRADE_4_SCOPE: GradeScope = {
+  clefs: GRADE_3_SCOPE.clefs,
+  noteValues: [...GRADE_3_SCOPE.noteValues, ...(KB.grade4Adds.note_values as Duration[])],
+  keysMajor: [...GRADE_3_SCOPE.keysMajor, ...KB.grade4Adds.keys_major],
+  keysMinor: [...GRADE_3_SCOPE.keysMinor, ...KB.grade4Adds.keys_minor],
+  minorForms: GRADE_3_SCOPE.minorForms,
+  timeSignatures: [...GRADE_3_SCOPE.timeSignatures, ...KB.grade4Adds.time_signatures],
+  rhythmDevices: [...GRADE_3_SCOPE.rhythmDevices, ...KB.grade4Adds.rhythm_devices],
+  intervalRule: {
+    aboveTonicOnly: KB.grade4Adds.intervals.above_tonic_only,
+    namingStyle: 'number_and_type',
+    maxOctaves: 1,
+  },
+  pitchRanges: GRADE_3_SCOPE.pitchRanges,
+};
+
+export const GRADE_SCOPES: { 1: GradeScope; 2: GradeScope; 3: GradeScope; 4: GradeScope } = {
   1: GRADE_1_SCOPE,
   2: GRADE_2_SCOPE,
   3: GRADE_3_SCOPE,
+  4: GRADE_4_SCOPE,
 };
 
 export function scopeForGrade(grade: number): GradeScope {

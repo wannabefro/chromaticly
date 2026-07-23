@@ -82,6 +82,37 @@ const Grade3AddsSchema = z.object({
   }),
 });
 
+// Grade 4 adds fields no earlier grade has (clefs, accidentals, pitch_knowledge,
+// scale_knowledge, chords, ornaments_recognize, instruments). zod strips unknown
+// object keys by default, so this schema models EVERY key of grade_scopes["4"].adds
+// explicitly — a narrower "mirror grade 3" schema would silently drop the data the
+// chords/ornaments/instruments content units depend on.
+const Grade4AddsSchema = z.object({
+  time_signatures: z.array(z.string()),
+  note_values: z.array(z.string()),
+  rests: z.array(z.string()),
+  rhythm_devices: z.array(z.string()),
+  clefs: z.array(z.string()),
+  accidentals: z.array(z.string()),
+  pitch_knowledge: z.array(z.string()),
+  keys_major: z.array(z.string()),
+  keys_minor: z.array(z.string()),
+  scale_knowledge: z.array(z.string()),
+  intervals: z.object({
+    above_tonic_only: z.boolean(),
+    between: z.string(),
+    naming: z.string(),
+    max: z.string(),
+  }),
+  chords: z.object({
+    primary_triads_and_chords: z.array(z.string()),
+    position: z.string(),
+    minor_basis: z.string(),
+  }),
+  ornaments_recognize: z.array(z.string()),
+  instruments: z.string(),
+});
+
 const KnowledgeBaseSchema = z.object({
   theory_data: z.object({
     note_values: z.record(z.string(), NoteValueEntrySchema),
@@ -97,6 +128,9 @@ const KnowledgeBaseSchema = z.object({
     '3': z.object({
       adds: Grade3AddsSchema,
     }),
+    '4': z.object({
+      adds: Grade4AddsSchema,
+    }),
   }),
 });
 
@@ -110,8 +144,12 @@ export const KB = {
   grade1: parsed.grade_scopes['1'],
   grade2Adds: parsed.grade_scopes['2'].adds,
   grade3Adds: parsed.grade_scopes['3'].adds,
+  grade4Adds: parsed.grade_scopes['4'].adds,
 };
 
 // knowledge-base.json carries no version field; this constant is the app's
 // content-versioning anchor per KTD4/KTD9 (reproducibility across content updates).
+// It is stamped into every pinned seed-stability instance, so additive grade
+// content (grades 2, 3, 4) deliberately does NOT bump it — a bump would churn
+// every existing snapshot for no change in existing generator output.
 export const KB_VERSION = 'g1-2026-07-10';
