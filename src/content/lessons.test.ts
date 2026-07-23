@@ -262,7 +262,13 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
         'transposition-3',
       ]),
     );
-    expect(LESSONS[LESSONS.length - 1].id).toBe('transposition-3');
+    // The merged list ends on the highest registered grade's terminal lesson.
+    // Grade 4 now appends after grade 3, so the tail is grade 4's terminal
+    // (unlocks: null) — asserted structurally, not by a hardcoded id that would
+    // churn as grade-4 slices extend the chain.
+    const last = LESSONS[LESSONS.length - 1];
+    expect(last.grade).toBe(4);
+    expect(last.unlocks).toBeNull();
   });
 });
 

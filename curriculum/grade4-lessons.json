@@ -1,0 +1,80 @@
+{
+  "grade": 4,
+  "version": "g4-lessons-2026-07-23a",
+  "lessons": [
+    {
+      "id": "keys-4",
+      "title": "New keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:G#_minor",
+        "key_sig:Bb_minor"
+      ],
+      "templates": [
+        "mode_swap"
+      ],
+      "worked_example": {
+        "template_id": "mode_swap",
+        "grade": 4,
+        "seed": 2
+      },
+      "teach": {
+        "objectives": [
+          "Two new relative pairs: B major with G♯ minor, and D♭ major with B♭ minor",
+          "B major has five sharps (F♯, C♯, G♯, D♯, A♯); D♭ major has five flats (B♭, E♭, A♭, D♭, G♭)",
+          "G♯ minor completes the sharp minor keys and B♭ minor the flat minor keys at this grade"
+        ],
+        "concept": {
+          "title": "Grade 4 keys",
+          "body": "Two more major keys arrive, each with five accidentals, and each brings its relative minor. B major has five sharps (F♯, C♯, G♯, D♯, A♯) and pairs with G♯ minor; D♭ major has five flats (B♭, E♭, A♭, D♭, G♭) and pairs with B♭ minor. The relative minor's tonic still sits a minor 3rd below its major partner — count down from B to G♯, and from D♭ to B♭.",
+          "example": {
+            "template_id": "mode_swap",
+            "grade": 4,
+            "seed": 5
+          }
+        },
+        "smartTip": "Count three semitones — a minor 3rd — down from the major tonic to find the relative minor: B down to G♯, D♭ down to B♭.",
+        "didYouKnow": "B major and D♭ major sit right next to each other on the piano — B major's tonic and C♭ (D♭ major's leading note) are the same key — yet their key signatures are opposites: five sharps versus five flats."
+      },
+      "unlocks": "minor-scales-4"
+    },
+    {
+      "id": "minor-scales-4",
+      "title": "Harmonic and melodic minor in the new keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "scale:G#_minor_harmonic",
+        "scale:Bb_minor_harmonic",
+        "scale:G#_minor_melodic",
+        "scale:Bb_minor_melodic"
+      ],
+      "templates": [
+        "scale_construction"
+      ],
+      "worked_example": {
+        "template_id": "scale_construction",
+        "grade": 4,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "The harmonic and melodic minor rules you know now apply to G♯ minor and B♭ minor",
+          "G♯ harmonic minor's raised 7th is F𝄪 (F double-sharp) — the first double-sharp in the course",
+          "B♭ harmonic minor's raised 7th is A♮ — raising a flatted 7th can land back on a natural"
+        ],
+        "concept": {
+          "title": "Harmonic and melodic minor in the new keys",
+          "body": "The same rules apply: harmonic minor raises the natural minor's 7th a semitone; melodic minor raises the 6th and 7th going up and reverts coming down. Spelling the raised 7th on the 7th letter forces a double-sharp in G♯ minor — its natural 7th is F♯, so raising it a semitone gives F double-sharp (F𝄪), written with the 𝄪 sign, never G natural. B♭ minor is gentler: its natural 7th is A♭, so the raised 7th is simply A♮.",
+          "example": {
+            "template_id": "scale_construction",
+            "grade": 4,
+            "seed": 4
+          }
+        },
+        "smartTip": "Always raise on the same letter. G♯ minor's 7th letter is F, so its raised 7th must stay an F — an F♯ raised a semitone is F double-sharp, not G.",
+        "didYouKnow": "A double-sharp (𝄪) raises a note by two semitones — a whole tone — from its natural pitch, so F𝄪 sounds the same as G, but naming it F keeps every letter of the G♯ minor scale distinct."
+      },
+      "unlocks": null
+    }
+  ]
+}

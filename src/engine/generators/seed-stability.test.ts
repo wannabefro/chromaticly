@@ -54,7 +54,7 @@ const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 // it here routes its coverage requirement to the matching *_EXTRA_CASES pool
 // instead. metre_classification registers as grade 3 in U6 — the first entry
 // this map needs beyond grade 2.
-const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3> = {
+const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   mode_swap: 2,
   scale_construction: 2,
   metre_classification: 3,
@@ -63,7 +63,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3> = {
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
-function introducedAtGrade(templateId: string): 1 | 2 | 3 {
+function introducedAtGrade(templateId: string): 1 | 2 | 3 | 4 {
   return TEMPLATE_INTRODUCED_AT[templateId] ?? 1;
 }
 
@@ -82,20 +82,20 @@ const GRADE_2_EXTRA_CASES: Case[] = [
   },
 ];
 
-type CoverageByGrade = Partial<Record<1 | 2 | 3, Set<string>>>;
+type CoverageByGrade = Partial<Record<1 | 2 | 3 | 4, Set<string>>>;
 
 /** A template is covered only by a pin block at the grade it's introduced at. */
-function isTemplateCovered(templateId: string, introducedAt: 1 | 2 | 3, coverageByGrade: CoverageByGrade): boolean {
+function isTemplateCovered(templateId: string, introducedAt: 1 | 2 | 3 | 4, coverageByGrade: CoverageByGrade): boolean {
   return coverageByGrade[introducedAt]?.has(templateId) ?? false;
 }
 
 /** A template pinned below the grade it's introduced at would pin a throw or an invalid instance — always a defect. */
 function templateLeaksBelowIntroduction(
   templateId: string,
-  introducedAt: 1 | 2 | 3,
+  introducedAt: 1 | 2 | 3 | 4,
   coverageByGrade: CoverageByGrade,
 ): boolean {
-  return ([1, 2, 3] as const).filter((g) => g < introducedAt).some((g) => coverageByGrade[g]?.has(templateId));
+  return ([1, 2, 3, 4] as const).filter((g) => g < introducedAt).some((g) => coverageByGrade[g]?.has(templateId));
 }
 
 describe('seed-stability — grade-1 generator output is pinned byte-for-byte', () => {
@@ -104,6 +104,7 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
       1: new Set(CASES.map((c) => c.templateId)),
       2: new Set(GRADE_2_EXTRA_CASES.map((c) => c.templateId)),
       3: new Set(GRADE_3_EXTRA_CASES.map((c) => c.templateId)),
+      4: new Set(GRADE_4_EXTRA_CASES.map((c) => c.templateId)),
     };
     for (const templateId of Object.keys(GENERATORS)) {
       // Invariant: an unpinned generator would let a refactor change its output
@@ -117,6 +118,7 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
       1: new Set(CASES.map((c) => c.templateId)),
       2: new Set(GRADE_2_EXTRA_CASES.map((c) => c.templateId)),
       3: new Set(GRADE_3_EXTRA_CASES.map((c) => c.templateId)),
+      4: new Set(GRADE_4_EXTRA_CASES.map((c) => c.templateId)),
     };
     const leaks = Object.keys(GENERATORS).filter((templateId) =>
       templateLeaksBelowIntroduction(templateId, introducedAtGrade(templateId), coverageByGrade),
@@ -329,6 +331,60 @@ describe('seed-stability — grade-3 lesson-derived generator output is pinned b
   describe.each(GRADE_3_CASES)('$label', ({ templateId, atoms }) => {
     test('instances are a pure function of (template, grade, seed, atoms)', () => {
       const instances = SEEDS.map((seed) => generate(templateId, { grade: 3, seed, atoms }));
+      expect(instances).toMatchSnapshot();
+    });
+  });
+});
+
+// U6 (fyu.6) — grade-4-only pins, additive and separate from every lower-grade
+// block above: new snapshot keys only. Pinned pre-lesson (mirroring
+// GRADE_3_EXTRA_CASES) so generator-level grade-4 output — including the first
+// double-sharp in the course, G# harmonic minor's F𝄪 raised 7th — is
+// characterized independently of the lesson-derived pins. Later grade-4 slices
+// append their own cases (new generators) to this same array.
+const GRADE_4_EXTRA_CASES: Case[] = [
+  {
+    label: 'mode_swap (keys-4, pre-lesson pin)',
+    templateId: 'mode_swap',
+    atoms: ['key_sig:G#_minor', 'key_sig:Bb_minor'],
+  },
+  {
+    label: 'scale_construction harmonic (minor-scales-4, pre-lesson pin)',
+    templateId: 'scale_construction',
+    atoms: ['scale:G#_minor_harmonic', 'scale:Bb_minor_harmonic'],
+  },
+  {
+    label: 'scale_construction melodic (minor-scales-4, pre-lesson pin)',
+    templateId: 'scale_construction',
+    atoms: ['scale:G#_minor_melodic', 'scale:Bb_minor_melodic'],
+  },
+];
+
+if (GRADE_4_EXTRA_CASES.length > 0) {
+  describe('seed-stability — grade-4-only generator extras are pinned byte-for-byte', () => {
+    describe.each(GRADE_4_EXTRA_CASES)('$label', ({ templateId, atoms }) => {
+      test('instances are a pure function of (template, grade, seed, atoms)', () => {
+        const instances = SEEDS.map((seed) => generate(templateId, { grade: 4, seed, atoms }));
+        expect(instances).toMatchSnapshot();
+      });
+    });
+  });
+}
+
+// U6 (fyu.6) — lesson-derived grade-4 cases, mirroring GRADE_3_CASES: new
+// snapshot keys only, additive alongside the pre-lesson GRADE_4_EXTRA_CASES pins.
+const GRADE_4_CASES: Case[] = LESSONS_BY_GRADE[4].flatMap((lesson) =>
+  lesson.templates.map((templateId) => ({
+    label: `${templateId} @ ${lesson.id}`,
+    templateId,
+    atoms: lesson.atoms,
+  })),
+);
+
+describe('seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte', () => {
+  describe.each(GRADE_4_CASES)('$label', ({ templateId, atoms }) => {
+    test('instances are a pure function of (template, grade, seed, atoms)', () => {
+      const instances = SEEDS.map((seed) => generate(templateId, { grade: 4, seed, atoms }));
       expect(instances).toMatchSnapshot();
     });
   });
