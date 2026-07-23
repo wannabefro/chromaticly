@@ -150,9 +150,11 @@ const GRADE_3_SCOPE: GradeScope = {
 // KB.grade4Adds.clefs (['alto']) on top of the grade-3 clefs; its reading
 // range is ALTO_RANGE, already carried at every grade via pitchRanges (Grade 4
 // adds no new ledger lines — no pitch_range key in the KB adds).
-// renderableTimeSignatures stays at the grade-3 renderable subset here: bar-math
-// support for the new /8, /4-compound and /16 denominators lands in the rhythm
-// slice fyu.7, which widens what can actually be drawn.
+// The new metres render via metreRenderableTimeSignatures (chromaticly-570):
+// bar-math + beaming support for the /8, /4-compound and /16 denominators is
+// live, exposed only to the metre_classification template. The GLOBAL
+// renderableTimeSignatures deliberately stays at the grade-3 subset — see its
+// comment below.
 const GRADE_4_SCOPE: GradeScope = {
   clefs: [...GRADE_3_SCOPE.clefs, ...(KB.grade4Adds.clefs as Clef[])],
   noteValues: [...GRADE_3_SCOPE.noteValues, ...(KB.grade4Adds.note_values as Duration[])],
@@ -192,13 +194,39 @@ const GRADE_3_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
   '12/8',
 ];
 
-// grade-2 /2 meters need minim-beat bar math; until the time-signatures
-// slice, only /4 renders correctly — see plan D6. Grades 1/2 stay the frozen
-// /4 subset (byte-identity); grade 3 opens the compound trio alongside it
-// (D2) — the /2 meters stay non-renderable at every grade, that axis is
-// still the deferred time-signatures slice.
+// grade-2 /2 meters need minim-beat bar math; only /4 renders correctly here —
+// see plan D6. Grades 1/2 stay the frozen /4 subset (byte-identity); grade 3
+// opens the compound trio alongside it (D2). This is the GLOBAL renderable set
+// consumed by add_time_signature, context-passage, find-the-bar, bar_validity,
+// and the anacrusis/duplet atom gates — all of which assume a crotchet-beat or
+// fixed-family model. It deliberately does NOT carry the Grade-4 metres: those
+// are exposed only to metre_classification via metreRenderableTimeSignatures
+// below (chromaticly-570), so widening one template never leaks the new metres
+// into consumers that cannot render them.
 export function renderableTimeSignatures(grade: number): readonly string[] {
   return grade >= 3 ? GRADE_3_RENDERABLE_TIME_SIGNATURES : SIMPLE_RENDERABLE_TIME_SIGNATURES;
+}
+
+const GRADE_4_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
+  ...GRADE_3_RENDERABLE_TIME_SIGNATURES,
+  '2/8',
+  '3/8',
+  '4/8',
+  '6/4',
+  '9/4',
+  '12/4',
+  '6/16',
+  '9/16',
+  '12/16',
+];
+
+// Metre-scoped renderable set (chromaticly-570). Used ONLY by the metre:<sig>
+// atom gate (assertAtomResolves), the one template made denominator-aware by
+// the time-signatures slice. Grades 1-3 defer to the global set (byte-identical);
+// grade 4 adds the nine new metres. Keeping this separate from the global
+// renderableTimeSignatures is what confines the new metres to metre_classification.
+export function metreRenderableTimeSignatures(grade: number): readonly string[] {
+  return grade >= 4 ? GRADE_4_RENDERABLE_TIME_SIGNATURES : renderableTimeSignatures(grade);
 }
 
 export function pitchRange(clef: Clef, grade: number): { low: Pitch; high: Pitch } {

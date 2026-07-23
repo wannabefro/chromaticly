@@ -20,7 +20,7 @@ import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
 import { isCompoundTimeSignature } from '../engine/metre';
-import { diatonicPitchesInRange, renderableTimeSignatures, scopeForGrade } from '../engine/scope';
+import { diatonicPitchesInRange, metreRenderableTimeSignatures, renderableTimeSignatures, scopeForGrade } from '../engine/scope';
 import type { Clef } from '../music/types';
 import { assertRhythmFillsBars } from './teach-rhythm';
 
@@ -104,7 +104,11 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'metre': {
       if (parts.length !== 1) throw new Error(`lessons: malformed metre atom "${atom}"`);
       const [sig] = parts;
-      if (!scopeForGrade(grade).timeSignatures.includes(sig) || !renderableTimeSignatures(grade).includes(sig)) {
+      // Metre-scoped renderable set (chromaticly-570): metre_classification is
+      // the only template made denominator-aware, so it uses the wider grade-4
+      // set here rather than the global renderableTimeSignatures the other
+      // templates (duplet/anacrusis/add_time_signature) still gate on.
+      if (!scopeForGrade(grade).timeSignatures.includes(sig) || !metreRenderableTimeSignatures(grade).includes(sig)) {
         throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} time signature`);
       }
       return;

@@ -4,10 +4,35 @@ import {
   comfortablePitchRange,
   diatonicPitchesInRange,
   GRADE_SCOPES,
+  metreRenderableTimeSignatures,
   pitchRange,
   renderableTimeSignatures,
   scopeForGrade,
 } from './scope';
+
+describe('metreRenderableTimeSignatures — metre-scoped path, global set untouched (chromaticly-570)', () => {
+  const NEW_METRES = ['2/8', '3/8', '4/8', '6/4', '9/4', '12/4', '6/16', '9/16', '12/16'];
+
+  test('grade 4 exposes the nine new metres plus the grade-3 set', () => {
+    for (const sig of [...NEW_METRES, '2/4', '3/4', '4/4', '6/8', '9/8', '12/8']) {
+      expect(metreRenderableTimeSignatures(4)).toContain(sig);
+    }
+  });
+
+  test('grades 1-3 match the global renderable set exactly (byte-identity)', () => {
+    for (const grade of [1, 2, 3]) {
+      expect(metreRenderableTimeSignatures(grade)).toEqual(renderableTimeSignatures(grade));
+    }
+  });
+
+  test('the GLOBAL renderableTimeSignatures never carries the new metres — even at grade 4', () => {
+    for (const grade of [1, 2, 3, 4]) {
+      for (const sig of NEW_METRES) {
+        expect(renderableTimeSignatures(grade)).not.toContain(sig);
+      }
+    }
+  });
+});
 
 // --- Ported invariants (were G1_* module-level constants; now scopeForGrade(1)) ---
 

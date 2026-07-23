@@ -152,6 +152,25 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
     expect(() => assertAtomResolves('transpose:octave', 2)).toThrow();
     expect(() => assertAtomResolves('transpose:octave', 5)).toThrow();
   });
+
+  // 570.U3 — the metre gate accepts the nine new metres at grade 4 (metre-scoped
+  // renderable path); grade 3 still rejects them.
+  test.each(['metre:2/8', 'metre:6/16', 'metre:6/4', 'metre:12/16'])(
+    '%s resolves at grade 4 but not grade 3',
+    (atom) => {
+      expect(() => assertAtomResolves(atom, 4)).not.toThrow();
+      expect(() => assertAtomResolves(atom, 3)).toThrow();
+    },
+  );
+
+  // 570.U3 (Codex C2/C9) — the metre-scoped path must NOT leak the new metres
+  // into the duplet/anacrusis gates, which still check the global renderable set.
+  test('the new metres stay OUT of the duplet and anacrusis gates at grade 4', () => {
+    expect(() => assertAtomResolves('duplet:6/16', 4)).toThrow();
+    expect(() => assertAtomResolves('duplet:6/4', 4)).toThrow();
+    expect(() => assertAtomResolves('anacrusis:2/8', 4)).toThrow();
+    expect(() => assertAtomResolves('anacrusis:3/8', 4)).toThrow();
+  });
 });
 
 describe('lessons — a lesson id reused across two grade docs fails loud at load time', () => {
