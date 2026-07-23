@@ -8,7 +8,7 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=instruments-4
+- openLink: ${DEV_URL}/--/?seed=instruments-4
 
 - extendedWaitUntil:
     visible: { text: "Continue" }
@@ -24,7 +24,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "unit-row-instruments-4" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
 - tapOn: { id: "unit-row-instruments-4" }
 
 - extendedWaitUntil:

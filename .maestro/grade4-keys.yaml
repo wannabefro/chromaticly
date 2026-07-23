@@ -11,7 +11,7 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=minor-scales-4
+- openLink: ${DEV_URL}/--/?seed=minor-scales-4
 
 - extendedWaitUntil:
     visible: { text: "Continue" }
@@ -27,7 +27,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "unit-row-minor-scales-4" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - tapOn: { id: "unit-row-minor-scales-4" }
 
 # The teach card's worked example is seeded to a G♯ harmonic minor scale, so the
