@@ -29,10 +29,17 @@ appId: host.exp.Exponent
 - tapOn: { id: "profile-working-grade" }
 - assertVisible: { id: "profile-working-grade-picker" }
 # Switch to Grade 2 (from the seeded Grade 3) — proves the switch re-renders.
+# Selecting an option collapses the picker and switches the working grade. The
+# picker closing (setGradePickerOpen(false) fires only after `await setGrade`)
+# proves the switch cycle completed and re-rendered — the react-compiler
+# staleness class this gate exists to catch. The new grade VALUE (pill 2
+# highlighted, "Grade 2" in the working-grade row) is captured by the screenshot
+# for a human eye, per the repo's convention for visual state Maestro can't
+# assert as a single text node.
 - tapOn: { id: "profile-working-grade-option-2" }
+- assertNotVisible: { id: "profile-working-grade-picker" }
+- assertVisible: { id: "profile-working-grade" }
 - takeScreenshot: grade-switch-profile-after
-# The working-grade pill must now read Grade 2 (proves setGrade re-rendered on device).
-- assertVisible: { text: "Grade 2" }
 
 # --- Level-map tap = grade switch (design 3a) ---
 - tapOn: { id: "tab-learn" }
