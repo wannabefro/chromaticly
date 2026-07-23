@@ -1,9 +1,11 @@
-// Grade 3 octave_transposition generator (D1/D3/D4/D8) — the learner rewrites
-// a given melody one octave away, in the OPPOSITE clef (D1, user decision
-// 2026-07-22): given treble -> answer bass, one octave LOWER; given bass ->
-// answer treble, one octave HIGHER. Direction is fixed per clef pair for MVP
-// determinism (D8) — both directions are eventually in scope, but this slice
-// only needs one per pair to teach the octave-not-7th rule.
+// Grade 3/4 octave_transposition generator (D1/D3/D4/D8, widened to alto by
+// fyu.5) — the learner rewrites a given melody one octave away, in a
+// DIFFERENT clef (D1, user decision 2026-07-22): direction is derived from
+// CLEF_RANK (pitch height), fixed per clef pair for MVP determinism (D8) —
+// both directions are eventually in scope, but this slice only needs one per
+// pair to teach the octave-not-7th rule. Grade 3 stays treble<->bass exactly
+// as before (byte-identical); grade 4 always pairs alto with another clef,
+// since alto transposition is the new skill that grade introduces.
 //
 // Rhythm copies note-for-note, dur AND dots (Codex finding 1): `Music` stores
 // dots separately from dur (types.ts:23; emitter reads
@@ -76,9 +78,14 @@ interface SourceNote {
 /** The natural-pitch ordinal band a source note may occupy: within the given
  *  clef's comfortable range AND whose octave-transposed target also fits the
  *  answer clef's comfortable range (D8's "both endpoints" clamp). */
-function sourceOrdinalRange(givenClef: Clef, answerClef: Clef, direction: Direction): { low: number; high: number } {
-  const given = comfortablePitchRange(givenClef, GENERATOR_GRADE);
-  const answer = comfortablePitchRange(answerClef, GENERATOR_GRADE);
+function sourceOrdinalRange(
+  givenClef: Clef,
+  answerClef: Clef,
+  direction: Direction,
+  grade: number,
+): { low: number; high: number } {
+  const given = comfortablePitchRange(givenClef, grade);
+  const answer = comfortablePitchRange(answerClef, grade);
   const delta = direction === 'down' ? -7 : 7;
   const givenLow = scientificPitchOrdinal(given.low);
   const givenHigh = scientificPitchOrdinal(given.high);
@@ -87,26 +94,55 @@ function sourceOrdinalRange(givenClef: Clef, answerClef: Clef, direction: Direct
   return { low: Math.max(givenLow, answerLow), high: Math.min(givenHigh, answerHigh) };
 }
 
-// D8 samples content from the grade-3 scope specifically (scopeForGrade(3),
-// comfortablePitchRange(clef, 3)) rather than the generic opts.grade every
-// other generator reads — this template's KB fact (transposition,
-// treble<->bass, knowledge-base.json:99) only exists at grade 3, and grades
-// 4/5 reuse the transposition_input INTERACTION, not this generator (a
-// different template, interval_transposition, per the plan's "out of scope").
-// The instance's own `grade` field still carries the caller's opts.grade
-// (schema-required, and what makeInstanceId keys off).
-const GENERATOR_GRADE = 3;
+// D8 originally sampled content from the grade-3 scope specifically
+// (scopeForGrade(3), comfortablePitchRange(clef, 3)) rather than the generic
+// opts.grade every other generator reads, since this template's KB fact
+// (transposition, treble<->bass, knowledge-base.json:99) only existed at
+// grade 3. The alto-clef slice (fyu.5) widens this to grade 4 too — grade 4's
+// pair always includes alto (the new skill), grade 3 stays treble<->bass.
+// Only grades 3 and 4 are supported; the instance's own `grade` field still
+// carries the caller's opts.grade (schema-required, and what makeInstanceId
+// keys off).
+//
+// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest) so the
+// up/down direction of an octave transposition is a lookup, not a ternary —
+// this must stay in sync with validator.ts's independent copy (recompute-
+// don't-trust: the validator never imports this map, it re-derives the same
+// ranks so a generator/validator disagreement fails loud instead of silently
+// agreeing with itself).
+const CLEF_RANK: Record<Clef, number> = { treble: 2, alto: 1, bass: 0 };
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
-  const scope = scopeForGrade(GENERATOR_GRADE);
+  if (grade !== 3 && grade !== 4) {
+    throw new Error(`octave_transposition: grade ${grade} is not supported (only 3 and 4)`);
+  }
+  const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
 
   const key = pick(rng, [...scope.keysMajor]);
   const keySig = `${key}_major`;
 
-  const givenClef = pick(rng, [...scope.clefs]);
-  const answerClef: Clef = givenClef === 'treble' ? 'bass' : 'treble';
-  const direction: Direction = givenClef === 'treble' ? 'down' : 'up';
+  let givenClef: Clef;
+  let answerClef: Clef;
+  if (scope.clefs.includes('alto')) {
+    // Grade 4: alto transposition is the new skill this template teaches at
+    // this grade, so alto is forced into every pair rather than competing on
+    // equal odds with treble/bass (which would make most instances not
+    // exercise alto at all).
+    const other = pick(rng, scope.clefs.filter((c) => c !== 'alto'));
+    const pairs: [Clef, Clef][] = [
+      ['alto', other],
+      [other, 'alto'],
+    ];
+    [givenClef, answerClef] = pick(rng, pairs);
+  } else {
+    // Grade 3: preserve the exact original RNG draw sequence (a single pick
+    // call) for byte-identical seed-stability output — the answer clef is
+    // derived from the scope's other clef, not drawn with a second rng call.
+    givenClef = pick(rng, [...scope.clefs]);
+    answerClef = scope.clefs.find((c) => c !== givenClef)!;
+  }
+  const direction: Direction = CLEF_RANK[answerClef] < CLEF_RANK[givenClef] ? 'down' : 'up';
   const delta = direction === 'down' ? -7 : 7;
 
   const timeSig = pick(rng, [...TIME_SIGS]);
@@ -121,7 +157,7 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
     throw new Error(`octave_transposition: ${barNotes.length} notes is outside the 3-6 range`);
   }
 
-  const { low, high } = sourceOrdinalRange(givenClef, answerClef, direction);
+  const { low, high } = sourceOrdinalRange(givenClef, answerClef, direction, grade);
   if (low > high) {
     throw new Error(`octave_transposition: no source pitch fits both ${givenClef} and ${answerClef} comfortable ranges`);
   }

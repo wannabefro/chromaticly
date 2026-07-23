@@ -223,14 +223,17 @@ export function assertAtomResolves(atom: string, grade: number): void {
       return;
     }
     case 'transpose': {
-      // octave_transposition (D1/D10) is hardcoded to GENERATOR_GRADE = 3
-      // (octave-transposition.ts:98) — it has no scope flag of its own, so
-      // grade 3 is the gate directly, mirroring that generator's own lock.
+      // octave_transposition (D1/D10, widened to alto by fyu.5) supports
+      // grades 3 and 4 (octave-transposition.ts's build() gate) — it has no
+      // scope flag of its own, so this atom's grade gate mirrors that
+      // generator's own lock directly. Grade 3 is treble<->bass; grade 4
+      // always involves alto (the new skill) — same bare atom either way,
+      // since alto transposition is the same skill as treble<->bass.
       if (parts.length !== 1 || parts[0] !== 'octave') {
         throw new Error(`lessons: malformed transpose atom "${atom}"`);
       }
-      if (grade !== 3) {
-        throw new Error(`lessons: atom "${atom}" only resolves at grade 3`);
+      if (grade !== 3 && grade !== 4) {
+        throw new Error(`lessons: atom "${atom}" only resolves at grade 3 or 4`);
       }
       return;
     }

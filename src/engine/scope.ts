@@ -146,15 +146,15 @@ const GRADE_3_SCOPE: GradeScope = {
 // the KB's prose "VERIFY exact set" placeholder was resolved to that enumerated
 // set (its own examples, matching ABRSM Grade 4). intervalRule opens beyond the
 // tonic (aboveTonicOnly false) for between-any-notes naming (the aug/dim quality
-// logic lands in the interval-qualities slice fyu.8). alto clef and its
-// pitchRange land in the alto-clef slice fyu.5, which widens the Clef union;
-// until then GRADE_4_SCOPE carries the treble/bass clefs and grade-3 reading
-// range (Grade 4 adds no new ledger lines — no pitch_range key in the KB adds).
+// logic lands in the interval-qualities slice fyu.8). alto clef (fyu.5) adds
+// KB.grade4Adds.clefs (['alto']) on top of the grade-3 clefs; its reading
+// range is ALTO_RANGE, already carried at every grade via pitchRanges (Grade 4
+// adds no new ledger lines — no pitch_range key in the KB adds).
 // renderableTimeSignatures stays at the grade-3 renderable subset here: bar-math
 // support for the new /8, /4-compound and /16 denominators lands in the rhythm
 // slice fyu.7, which widens what can actually be drawn.
 const GRADE_4_SCOPE: GradeScope = {
-  clefs: GRADE_3_SCOPE.clefs,
+  clefs: [...GRADE_3_SCOPE.clefs, ...(KB.grade4Adds.clefs as Clef[])],
   noteValues: [...GRADE_3_SCOPE.noteValues, ...(KB.grade4Adds.note_values as Duration[])],
   keysMajor: [...GRADE_3_SCOPE.keysMajor, ...KB.grade4Adds.keys_major],
   keysMinor: [...GRADE_3_SCOPE.keysMinor, ...KB.grade4Adds.keys_minor],

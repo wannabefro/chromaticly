@@ -391,6 +391,16 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     templateId: 'interval_naming',
     atoms: ['interval_type:2', 'interval_type:3', 'interval_type:4', 'interval_type:5', 'interval_type:6', 'interval_type:7', 'interval_type:8'],
   },
+  {
+    label: 'note_naming alto (alto-reading-4, pre-lesson pin)',
+    templateId: 'note_naming',
+    atoms: ['note_read:alto:C4', 'note_read:alto:F3', 'note_read:alto:A3', 'note_read:alto:E4', 'note_read:alto:G4'],
+  },
+  {
+    label: 'octave_transposition alto (transposition-4-alto, pre-lesson pin)',
+    templateId: 'octave_transposition',
+    atoms: ['transpose:octave'],
+  },
 ];
 
 if (GRADE_4_EXTRA_CASES.length > 0) {

@@ -143,3 +143,19 @@ describe('noteNaming — fuzz gate: every generated item is validator-clean', ()
     }
   });
 });
+
+// fyu.5 — alto clef reading opens at grade 4. optsFor hardcodes grade 1, so
+// this builds GenerateOptions inline; the atom scope mirrors the
+// seed-stability pre-lesson pin (curriculum/grade4-lessons.json's own alto
+// lesson atoms are the orchestrator's, not authored here).
+const ALTO_G4_ATOMS = ['note_read:alto:C4', 'note_read:alto:F3', 'note_read:alto:A3', 'note_read:alto:E4', 'note_read:alto:G4'];
+
+describe('noteNaming — alto clef at grade 4 (fyu.5)', () => {
+  test('seeds 0..20 produce a passing, alto-clef instance', () => {
+    for (let seed = 0; seed <= 20; seed++) {
+      const instance = noteNaming({ grade: 4, seed, atoms: ALTO_G4_ATOMS });
+      expect(stimulus(instance).clef).toBe('alto');
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+    }
+  });
+});

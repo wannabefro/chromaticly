@@ -11,7 +11,7 @@
 // hand-listed or computed here; this validator only avoids ever rejecting an
 // answer that already appears in that list — it does not grade.
 
-import type { Music, MusicEvent, NoteEvent } from '../music/types';
+import type { Clef, Music, MusicEvent, NoteEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
 import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
@@ -843,16 +843,24 @@ function naturalLetterOf(pitch: string): string {
   return m ? `${m[1]}${m[3]}` : pitch;
 }
 
-// octaveTranspositionHook (D1/D4/D8, Codex findings 1/2) — independently
-// RECOMPUTES each per_item target from the stimulus, never trusting the
-// generator's own per_item array (the intervalNamingQualityErrors/
-// metreClassificationHook recompute-don't-trust discipline): target pitch =
-// spellInKeySig(naturalPitchStepsAbove(natural(source), direction === 'down'
-// ? -7 : +7), music.key_sig) — NOT spellInKey(natural, tonic), which would
-// double-append "_major" onto the already-full-form key_sig (Codex finding
-// 2). Target (dur, dots) must equal the source's exactly (Codex finding 1:
-// dots live apart from dur on NoteEvent, so a {pitch,dur}-only recompute
-// would silently pass a dropped dot).
+// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest) so the
+// expected up/down direction is a lookup, not a ternary. Deliberately NOT
+// imported from octave-transposition.ts — this is an independent recompute,
+// so a generator/validator disagreement fails loud instead of silently
+// agreeing with itself (must be kept in sync by hand).
+const CLEF_RANK: Record<Clef, number> = { treble: 2, alto: 1, bass: 0 };
+
+// octaveTranspositionHook (D1/D4/D8, Codex findings 1/2, widened to alto by
+// fyu.5) — independently RECOMPUTES each per_item target from the stimulus,
+// never trusting the generator's own per_item array (the
+// intervalNamingQualityErrors/metreClassificationHook recompute-don't-trust
+// discipline): target pitch = spellInKeySig(naturalPitchStepsAbove(natural
+// (source), direction === 'down' ? -7 : +7), music.key_sig) — NOT
+// spellInKey(natural, tonic), which would double-append "_major" onto the
+// already-full-form key_sig (Codex finding 2). Target (dur, dots) must equal
+// the source's exactly (Codex finding 1: dots live apart from dur on
+// NoteEvent, so a {pitch,dur}-only recompute would silently pass a dropped
+// dot).
 function octaveTranspositionHook(inst: ExerciseInstance): string[] {
   const music = inst.stimulus.music as Music | null;
   if (!music) return ['octave_transposition: stimulus.music is required'];
@@ -861,24 +869,28 @@ function octaveTranspositionHook(inst: ExerciseInstance): string[] {
   const config = inst.interaction.config as { answerClef?: unknown; direction?: unknown } | undefined;
   const answerClef = config?.answerClef;
   const direction = config?.direction;
-  if (answerClef !== 'treble' && answerClef !== 'bass') {
-    return ['octave_transposition: interaction.config.answerClef must be "treble" or "bass"'];
+  if (answerClef !== 'treble' && answerClef !== 'bass' && answerClef !== 'alto') {
+    return ['octave_transposition: interaction.config.answerClef must be "treble", "bass", or "alto"'];
   }
   if (direction !== 'up' && direction !== 'down') {
     return ['octave_transposition: interaction.config.direction must be "up" or "down"'];
   }
+  const givenClef = music.clef;
+  if (givenClef !== 'treble' && givenClef !== 'bass' && givenClef !== 'alto') {
+    return [`octave_transposition: stimulus.music.clef "${String(givenClef)}" is not a recognized clef`];
+  }
 
   const errors: string[] = [];
 
-  // D1: the answer stave is the OPPOSITE clef, and direction is coupled to
+  // D1: the answer stave is a DIFFERENT clef, and direction is coupled to
   // the clef pair — same-clef octave is explicitly NOT this template.
-  if (answerClef === music.clef) {
-    errors.push('octave_transposition: answerClef must be the OPPOSITE of the given clef');
+  if (answerClef === givenClef) {
+    errors.push('octave_transposition: answerClef must be different from the given clef');
   }
-  const expectedDirection: 'up' | 'down' = music.clef === 'treble' ? 'down' : 'up';
+  const expectedDirection: 'up' | 'down' = CLEF_RANK[answerClef] < CLEF_RANK[givenClef] ? 'down' : 'up';
   if (direction !== expectedDirection) {
     errors.push(
-      `octave_transposition: direction "${String(direction)}" does not match the given clef "${music.clef}" (expected "${expectedDirection}")`,
+      `octave_transposition: direction "${String(direction)}" does not match the given clef "${givenClef}" (expected "${expectedDirection}")`,
     );
   }
 
@@ -895,12 +907,12 @@ function octaveTranspositionHook(inst: ExerciseInstance): string[] {
     return errors;
   }
 
-  // Hardcoded to grade 3 (not inst.grade), mirroring the generator
-  // (octave-transposition.ts's GENERATOR_GRADE) — this template's content is
-  // always sampled from the grade-3 scope, independent of what `grade` field
-  // the instance happens to carry.
-  const givenRange = comfortablePitchRange(music.clef, 3);
-  const answerRange = comfortablePitchRange(answerClef, 3);
+  // inst.grade, mirroring the generator (octave-transposition.ts's build()) —
+  // grade 3 samples treble<->bass, grade 4 always includes alto; the
+  // generator now samples content from inst.grade's own scope directly (no
+  // fixed GENERATOR_GRADE constant), so the validator must match.
+  const givenRange = comfortablePitchRange(givenClef, inst.grade);
+  const answerRange = comfortablePitchRange(answerClef, inst.grade);
   const delta = direction === 'down' ? -7 : 7;
 
   sourceNotes.forEach((source, i) => {

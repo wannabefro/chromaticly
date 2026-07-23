@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23d",
+  "version": "g4-lessons-2026-07-23e",
   "lessons": [
     {
       "id": "keys-4",
@@ -300,6 +300,82 @@
         },
         "smartTip": "Number first (count letter names), quality second (count semitones). Bigger than perfect/major = augmented; smaller than perfect/minor = diminished.",
         "didYouKnow": "The augmented 4th and diminished 5th — the ‘tritone’ — was once nicknamed diabolus in musica, ‘the devil in music’, for its restless sound that seems to demand resolution."
+      },
+      "unlocks": "alto-reading-4"
+    },
+    {
+      "id": "alto-reading-4",
+      "title": "The alto clef",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:alto:C4",
+        "note_read:alto:F3",
+        "note_read:alto:A3",
+        "note_read:alto:E4",
+        "note_read:alto:G4",
+        "note_read:alto:B3",
+        "note_read:alto:D4"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The alto (C) clef is a third clef, alongside treble and bass",
+          "Its middle line is middle C (C4) — everything else is read from there",
+          "It is the viola's everyday clef, keeping that instrument's music on the staff"
+        ],
+        "concept": {
+          "title": "The alto clef",
+          "body": "The alto clef — also called the C clef — centres on middle C: its middle line IS middle C (C4). It is the viola's everyday clef, keeping that instrument's music on the staff without a forest of ledger lines. Read it like any clef: find middle C on the centre line, then count lines and spaces up or down. The bottom line is F3 and the top line is G4.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 4,
+            "seed": 1
+          }
+        },
+        "smartTip": "The two curved arms of the alto clef point straight at the middle line — and that line is middle C. Count every other note from there.",
+        "didYouKnow": "The alto clef is a movable ‘C clef’: the same symbol shifted up one line becomes the tenor clef (for high cello and bassoon). Sitting on the middle line, it is the alto clef the viola reads."
+      },
+      "unlocks": "alto-transposition-4"
+    },
+    {
+      "id": "alto-transposition-4",
+      "title": "Octave transposition to and from the alto clef",
+      "strand": "pitch",
+      "atoms": [
+        "transpose:octave"
+      ],
+      "templates": [
+        "octave_transposition"
+      ],
+      "worked_example": {
+        "template_id": "octave_transposition",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Rewrite a melody an octave higher or lower, moving between clefs so it stays on the staff",
+          "Every letter name stays the same — only the octave (and the clef) changes",
+          "Moving to a higher clef writes the melody up an octave; to a lower clef, down an octave"
+        ],
+        "concept": {
+          "title": "Octave transposition to and from the alto clef",
+          "body": "Octave transposition rewrites a melody an octave away while keeping every letter name the same — only the octave changes. Choosing a different clef lets the rewritten melody stay comfortably on the staff: a melody in the alto clef can be written an octave higher in the treble, or an octave lower in the bass. The notes look different on the page, but they are the same letters, just an octave apart.",
+          "example": {
+            "template_id": "octave_transposition",
+            "grade": 4,
+            "seed": 4
+          }
+        },
+        "smartTip": "Same letters, new octave. Moving to a higher clef (alto → treble) shifts the tune up an octave; to a lower clef (alto → bass), down an octave.",
+        "didYouKnow": "Rewriting the same music in another clef and octave is how a viola line might be shared with a violinist or cellist — the clef and octave move, but the tune stays unmistakably the same."
       },
       "unlocks": null
     }

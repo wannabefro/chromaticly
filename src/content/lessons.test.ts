@@ -133,6 +133,25 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
   test('scale:A_minor_melodic rejects a form not yet in grade 2 scope, even for an in-scope tonic', () => {
     expect(() => assertAtomResolves('scale:A_minor_melodic', 2)).toThrow();
   });
+
+  // fyu.5 — alto clef opens at grade 4 only; grades 1-3 must keep rejecting it
+  // (grade 1's rejection is already covered above by the malformed-atom table).
+  test('note_read:alto:C4 resolves at grade 4 but not grades 1-3', () => {
+    expect(() => assertAtomResolves('note_read:alto:C4', 4)).not.toThrow();
+    expect(() => assertAtomResolves('note_read:alto:C4', 1)).toThrow();
+    expect(() => assertAtomResolves('note_read:alto:C4', 2)).toThrow();
+    expect(() => assertAtomResolves('note_read:alto:C4', 3)).toThrow();
+  });
+
+  // fyu.5 — octave_transposition widens from grade-3-only to grades 3 and 4
+  // (grade 4 always involves alto); grades 1/2 and 5 must still reject it.
+  test('transpose:octave resolves at grade 3 and grade 4, but not grade 1, 2, or 5', () => {
+    expect(() => assertAtomResolves('transpose:octave', 3)).not.toThrow();
+    expect(() => assertAtomResolves('transpose:octave', 4)).not.toThrow();
+    expect(() => assertAtomResolves('transpose:octave', 1)).toThrow();
+    expect(() => assertAtomResolves('transpose:octave', 2)).toThrow();
+    expect(() => assertAtomResolves('transpose:octave', 5)).toThrow();
+  });
 });
 
 describe('lessons — a lesson id reused across two grade docs fails loud at load time', () => {
@@ -324,8 +343,9 @@ describe('anacrusis-3 lesson (chromaticly-1v5.3)', () => {
 
 // U8 (octave-transposition slice, D10): the new grade-3 terminal lesson —
 // single-template discipline (mirrors anacrusis-3/intervals-3, D7) and the
-// transpose:octave atom, which resolves ONLY at grade 3 (the generator's own
-// GENERATOR_GRADE lock, octave-transposition.ts:98).
+// transpose:octave atom, which resolves at grades 3 and 4 (the generator's
+// own grade gate, octave-transposition.ts's build()) — grade 4 is exercised
+// separately above (assertAtomResolves scoping describe block).
 describe('transposition-3 lesson (U8)', () => {
   test('strand is pitch and it carries the single template octave_transposition, unlocking nothing (the new grade-3 terminal)', () => {
     const lesson = lessonById('transposition-3');

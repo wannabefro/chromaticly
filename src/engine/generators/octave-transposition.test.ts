@@ -280,7 +280,7 @@ describe('octaveTransposition — validator hook rejects a corrupted per_item', 
 
     const result = validate(instance);
     expect(result.ok).toBe(false);
-    expect(result.errors.some((e) => e.includes('OPPOSITE'))).toBe(true);
+    expect(result.errors.some((e) => e.includes('different from the given clef'))).toBe(true);
   });
 
   test('rejects a direction that does not match the given clef (D1: coupled, not free)', () => {
@@ -290,5 +290,67 @@ describe('octaveTransposition — validator hook rejects a corrupted per_item', 
 
     const result = validate(instance);
     expect(result.ok).toBe(false);
+  });
+});
+
+// fyu.5 — grade 4 always pairs alto (the new skill) with treble or bass;
+// grade 3 stays treble<->bass exactly as before (proven byte-identical by
+// the seed-stability pin, not re-asserted here).
+const GRADE4_SEEDS = Array.from({ length: 80 }, (_, i) => i);
+
+function opts4(seed: number) {
+  return { grade: 4, seed, atoms: ATOMS };
+}
+
+const CLEF_RANK: Record<string, number> = { treble: 2, alto: 1, bass: 0 };
+
+describe('octaveTransposition — grade 4 always pairs alto with another clef (fyu.5)', () => {
+  test.each(GRADE4_SEEDS)('seed %i: the clef pair always includes alto', (seed) => {
+    const instance = generate('octave_transposition', opts4(seed));
+    const music = instance.stimulus.music as Music;
+    const config = instance.interaction.config as { answerClef: string };
+    expect([music.clef, config.answerClef]).toContain('alto');
+  });
+
+  test.each(GRADE4_SEEDS)('seed %i: direction follows the CLEF_RANK (pitch-height) rule, not a treble/bass binary', (seed) => {
+    const instance = generate('octave_transposition', opts4(seed));
+    const music = instance.stimulus.music as Music;
+    const config = instance.interaction.config as { answerClef: string; direction: string };
+    const expectedDirection = CLEF_RANK[config.answerClef] < CLEF_RANK[music.clef] ? 'down' : 'up';
+    expect(config.direction).toBe(expectedDirection);
+  });
+
+  test('every clef pair direction (treble->alto down, alto->bass down, alto->treble up, bass->alto up) is exercised across the seed sweep', () => {
+    const seen: Record<string, boolean> = {};
+    for (const seed of GRADE4_SEEDS) {
+      const instance = generate('octave_transposition', opts4(seed));
+      const music = instance.stimulus.music as Music;
+      const config = instance.interaction.config as { answerClef: string; direction: string };
+      const key = `${music.clef}->${config.answerClef}`;
+      seen[key] = true;
+      if (key === 'treble->alto' || key === 'alto->bass') expect(config.direction).toBe('down');
+      if (key === 'alto->treble' || key === 'bass->alto') expect(config.direction).toBe('up');
+    }
+    expect(seen['treble->alto']).toBe(true);
+    expect(seen['alto->bass']).toBe(true);
+    expect(seen['alto->treble']).toBe(true);
+    expect(seen['bass->alto']).toBe(true);
+  });
+
+  test('seeds 0..99 all produce a validator-clean instance at grade 4', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = generate('octave_transposition', opts4(seed));
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+    }
+  });
+});
+
+describe('octaveTransposition — grade 3 is unaffected by the grade-4 alto widening', () => {
+  test.each(SEEDS)('seed %i: grade 3 never draws alto for either clef', (seed) => {
+    const instance = generate('octave_transposition', opts(seed));
+    const music = instance.stimulus.music as Music;
+    const config = instance.interaction.config as { answerClef: string };
+    expect(music.clef).not.toBe('alto');
+    expect(config.answerClef).not.toBe('alto');
   });
 });
