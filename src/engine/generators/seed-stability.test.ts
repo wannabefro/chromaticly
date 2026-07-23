@@ -60,6 +60,8 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   metre_classification: 3,
   anacrusis_recognition: 3,
   octave_transposition: 3,
+  chromatic_scale: 4,
+  degree_name_id: 4,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -357,6 +359,16 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'scale_construction melodic (minor-scales-4, pre-lesson pin)',
     templateId: 'scale_construction',
     atoms: ['scale:G#_minor_melodic', 'scale:Bb_minor_melodic'],
+  },
+  {
+    label: 'chromatic_scale (chromatic-scale-4, pre-lesson pin)',
+    templateId: 'chromatic_scale',
+    atoms: ['scale:C_chromatic', 'scale:G_chromatic'],
+  },
+  {
+    label: 'degree_name_id (degree-names-4, pre-lesson pin)',
+    templateId: 'degree_name_id',
+    atoms: ['degree_name:tonic', 'degree_name:dominant', 'degree_name:leading_note'],
   },
 ];
 

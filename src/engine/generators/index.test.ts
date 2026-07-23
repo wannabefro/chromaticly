@@ -38,7 +38,13 @@ const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition
 // "Grade 3 device" is enforced solely by assertAtomResolves reading
 // rhythmDevices at the curriculum layer (lessons.ts), so it gets its own
 // bucket rather than either grade-tier one above.
-const ATOM_REQUIRED_TEMPLATE_IDS = ['anacrusis_recognition'];
+//
+// chromatic_scale and degree_name_id (fyu.6) join it for the same reason:
+// neither reads a grade-scoped dimension from scopeForGrade (a chromatic
+// scale carries no key_sig, and a degree name has no notation at all), so
+// both produce a valid instance at every grade 1-4 — "Grade 4" is enforced
+// solely by assertAtomResolves at the curriculum layer (lessons.ts), not here.
+const ATOM_REQUIRED_TEMPLATE_IDS = ['anacrusis_recognition', 'chromatic_scale', 'degree_name_id'];
 
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {
@@ -108,6 +114,26 @@ describe('generate() — anacrusis_recognition (requires an explicit anacrusis:<
     const instance = generate('anacrusis_recognition', { grade: 3, seed: 1, atoms });
     expect(instance.template_id).toBe('anacrusis_recognition');
     expect(validate(instance).ok).toBe(true);
+  });
+});
+
+describe('generate() — chromatic_scale and degree_name_id (curriculum-gated, not generator-gated; fyu.6)', () => {
+  test('chromatic_scale produces a valid instance at grade 1 and grade 4', () => {
+    const atoms = ['scale:C_chromatic'];
+    for (const grade of [1, 4]) {
+      const instance = generate('chromatic_scale', { grade, seed: 1, atoms });
+      expect(instance.template_id).toBe('chromatic_scale');
+      expect(validate(instance).ok).toBe(true);
+    }
+  });
+
+  test('degree_name_id produces a valid instance at grade 1 and grade 4', () => {
+    const atoms = ['degree_name:dominant'];
+    for (const grade of [1, 4]) {
+      const instance = generate('degree_name_id', { grade, seed: 1, atoms });
+      expect(instance.template_id).toBe('degree_name_id');
+      expect(validate(instance).ok).toBe(true);
+    }
   });
 });
 

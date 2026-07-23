@@ -71416,6 +71416,2876 @@ exports[`seed-stability — grade-3-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chromatic_scale @ chromatic-scale-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "4th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 6th note should be G4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "11th note",
+    },
+    "distractors": [
+      "5th note",
+      "12th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 11th note should be C5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "2nd note",
+      "11th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be E4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "8th note",
+      "5th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 6th note should be F4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th note should be F#4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "6th note",
+      "12th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be A4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8th note",
+    },
+    "distractors": [
+      "4th note",
+      "12th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 8th note should be D5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9th note",
+    },
+    "distractors": [
+      "6th note",
+      "7th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 9th note should be D#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "3rd note",
+      "4th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note should be C#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "8th note",
+      "2nd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be G4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:F_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "5th note",
+      "10th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be E5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:F_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "3rd note",
+      "7th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be C#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "6th note",
+      "9th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be F#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "11th note",
+      "5th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be F#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "7th note",
+      "4th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be A4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "10th note",
+    },
+    "distractors": [
+      "5th note",
+      "2nd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 10th note should be B4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th note",
+    },
+    "distractors": [
+      "10th note",
+      "8th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th note should be A4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:F_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th note",
+    },
+    "distractors": [
+      "6th note",
+      "10th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th note should be B4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4th note",
+    },
+    "distractors": [
+      "6th note",
+      "10th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 4th note should be D#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "9th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be F#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte degree_name_id @ degree-names-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th",
+    },
+    "distractors": [
+      "3rd",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The dominant is the 5th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the dominant?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the dominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "subdominant",
+    },
+    "distractors": [
+      "leading note",
+      "supertonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 4th degree of the scale is called the subdominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 4th degree of a scale?",
+    "srs_tags": [
+      "degree_name:subdominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 4th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4th",
+    },
+    "distractors": [
+      "1st",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The subdominant is the 4th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the subdominant?",
+    "srs_tags": [
+      "degree_name:subdominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the subdominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2nd",
+    },
+    "distractors": [
+      "4th",
+      "5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The supertonic is the 2nd degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the supertonic?",
+    "srs_tags": [
+      "degree_name:supertonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the supertonic",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "supertonic",
+      "mediant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd",
+    },
+    "distractors": [
+      "2nd",
+      "4th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The mediant is the 3rd degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the mediant?",
+    "srs_tags": [
+      "degree_name:mediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the mediant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "mediant",
+    },
+    "distractors": [
+      "dominant",
+      "supertonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd degree of the scale is called the mediant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 3rd degree of a scale?",
+    "srs_tags": [
+      "degree_name:mediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 3rd degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "subdominant",
+    },
+    "distractors": [
+      "submediant",
+      "mediant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 4th degree of the scale is called the subdominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 4th degree of a scale?",
+    "srs_tags": [
+      "degree_name:subdominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 4th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "subdominant",
+    },
+    "distractors": [
+      "mediant",
+      "tonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 4th degree of the scale is called the subdominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 4th degree of a scale?",
+    "srs_tags": [
+      "degree_name:subdominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 4th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th",
+    },
+    "distractors": [
+      "1st",
+      "4th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The leading note is the 7th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the leading note?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the leading note",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th",
+    },
+    "distractors": [
+      "6th",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The leading note is the 7th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the leading note?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the leading note",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "leading note",
+      "tonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2nd",
+    },
+    "distractors": [
+      "7th",
+      "4th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The supertonic is the 2nd degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the supertonic?",
+    "srs_tags": [
+      "degree_name:supertonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the supertonic",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd",
+    },
+    "distractors": [
+      "7th",
+      "6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The mediant is the 3rd degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the mediant?",
+    "srs_tags": [
+      "degree_name:mediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the mediant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "supertonic",
+    },
+    "distractors": [
+      "tonic",
+      "dominant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 2nd degree of the scale is called the supertonic.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 2nd degree of a scale?",
+    "srs_tags": [
+      "degree_name:supertonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 2nd degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th",
+    },
+    "distractors": [
+      "5th",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The submediant is the 6th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the submediant?",
+    "srs_tags": [
+      "degree_name:submediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the submediant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th",
+    },
+    "distractors": [
+      "3rd",
+      "5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The submediant is the 6th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the submediant?",
+    "srs_tags": [
+      "degree_name:submediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the submediant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd",
+    },
+    "distractors": [
+      "2nd",
+      "4th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The mediant is the 3rd degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the mediant?",
+    "srs_tags": [
+      "degree_name:mediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the mediant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "supertonic",
+    },
+    "distractors": [
+      "mediant",
+      "subdominant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 2nd degree of the scale is called the supertonic.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 2nd degree of a scale?",
+    "srs_tags": [
+      "degree_name:supertonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 2nd degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "mediant",
+    },
+    "distractors": [
+      "leading note",
+      "dominant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd degree of the scale is called the mediant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 3rd degree of a scale?",
+    "srs_tags": [
+      "degree_name:mediant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 3rd degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte mode_swap @ keys-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -74816,6 +77686,2876 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "scales_keys",
     "template_id": "scale_construction",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte chromatic_scale (chromatic-scale-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "4th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 6th note should be C5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "11th note",
+    },
+    "distractors": [
+      "5th note",
+      "12th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 11th note should be F5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "2nd note",
+      "11th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be A4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "8th note",
+      "5th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 6th note should be F4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th note",
+    },
+    "distractors": [
+      "6th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th note should be B4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "6th note",
+      "12th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be D4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8th note",
+    },
+    "distractors": [
+      "4th note",
+      "12th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 8th note should be G5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "9th note",
+    },
+    "distractors": [
+      "6th note",
+      "7th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 9th note should be G#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th note",
+    },
+    "distractors": [
+      "3rd note",
+      "4th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th note should be F#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "8th note",
+      "2nd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be A4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "5th note",
+      "10th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be F#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "3rd note",
+      "7th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be F#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "6th note",
+      "9th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be B4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "11th note",
+      "5th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be B4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "7th note",
+      "4th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note should be D5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "10th note",
+    },
+    "distractors": [
+      "5th note",
+      "2nd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 10th note should be E5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th note",
+    },
+    "distractors": [
+      "10th note",
+      "8th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th note should be B4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th note",
+    },
+    "distractors": [
+      "6th note",
+      "10th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th note should be E4 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4th note",
+    },
+    "distractors": [
+      "6th note",
+      "10th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 4th note should be D#5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "12th note",
+    },
+    "distractors": [
+      "9th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 12th note should be B5 — a chromatic scale moves in semitones the whole way up.",
+    },
+    "grade": 4,
+    "hints": [
+      "Every note of a chromatic scale is a semitone above the last — compare each note to its neighbour.",
+    ],
+    "id": "chromatic_scale:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is wrong — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte degree_name_id (degree-names-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th",
+    },
+    "distractors": [
+      "3rd",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The dominant is the 5th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the dominant?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the dominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "leading note",
+      "supertonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th",
+    },
+    "distractors": [
+      "1st",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The dominant is the 5th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the dominant?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the dominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1st",
+    },
+    "distractors": [
+      "4th",
+      "5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The tonic is the 1st degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the tonic?",
+    "srs_tags": [
+      "degree_name:tonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the tonic",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "leading note",
+    },
+    "distractors": [
+      "supertonic",
+      "mediant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 7th degree of the scale is called the leading note.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 7th degree of a scale?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 7th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th",
+    },
+    "distractors": [
+      "2nd",
+      "3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The dominant is the 5th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the dominant?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the dominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "subdominant",
+      "supertonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "submediant",
+      "mediant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "mediant",
+      "tonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th",
+    },
+    "distractors": [
+      "1st",
+      "4th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The leading note is the 7th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the leading note?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the leading note",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th",
+    },
+    "distractors": [
+      "6th",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The leading note is the 7th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the leading note?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the leading note",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "leading note",
+      "tonic",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1st",
+    },
+    "distractors": [
+      "7th",
+      "4th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The tonic is the 1st degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the tonic?",
+    "srs_tags": [
+      "degree_name:tonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the tonic",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th",
+    },
+    "distractors": [
+      "7th",
+      "6th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The dominant is the 5th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the dominant?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the dominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "tonic",
+    },
+    "distractors": [
+      "supertonic",
+      "dominant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 1st degree of the scale is called the tonic.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 1st degree of a scale?",
+    "srs_tags": [
+      "degree_name:tonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 1st degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th",
+    },
+    "distractors": [
+      "5th",
+      "2nd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The leading note is the 7th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the leading note?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the leading note",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th",
+    },
+    "distractors": [
+      "3rd",
+      "5th",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The leading note is the 7th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the leading note?",
+    "srs_tags": [
+      "degree_name:leading_note",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the leading note",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "5th",
+    },
+    "distractors": [
+      "2nd",
+      "3rd",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The dominant is the 5th degree of the scale.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which degree of a scale is the dominant?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Degree of the dominant",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "tonic",
+    },
+    "distractors": [
+      "mediant",
+      "subdominant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 1st degree of the scale is called the tonic.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 1st degree of a scale?",
+    "srs_tags": [
+      "degree_name:tonic",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 1st degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dominant",
+    },
+    "distractors": [
+      "leading note",
+      "subdominant",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 5th degree of the scale is called the dominant.",
+    },
+    "grade": 4,
+    "hints": [
+      "The 7 scale degrees each have a technical name, from tonic (1st) to leading note (7th).",
+    ],
+    "id": "degree_name_id:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the technical name for the 5th degree of a scale?",
+    "srs_tags": [
+      "degree_name:dominant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Name of the 5th degree",
+    },
+    "strand": "scales_keys",
+    "template_id": "degree_name_id",
   },
 ]
 `;

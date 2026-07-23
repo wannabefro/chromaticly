@@ -13,6 +13,8 @@
 
 import type { Music, MusicEvent, NoteEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
+import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
+import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
 import { naturalPitchStepsAbove } from './generators/pitch-math';
 import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel } from './interval-quality';
@@ -466,6 +468,123 @@ function scaleConstructionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// chromaticScaleHook (fyu.4): recomputes the true 13-note chromatic scale
+// from the srs_tag's tonic and the stimulus's own first note (never
+// corrupted — tonic is always an interior-degree-only corruption target), so
+// this never trusts the generator's own canonical/distractor picks.
+function chromaticScaleHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+
+  const tag = inst.srs_tags.find((t) => t.startsWith('scale:') && t.endsWith('_chromatic'));
+  if (!tag) {
+    errors.push('chromatic_scale: missing a scale:*_chromatic srs_tag');
+    return errors;
+  }
+  const tonic = tag.slice('scale:'.length, tag.length - '_chromatic'.length);
+  if (!CHROMATIC_TONICS.includes(tonic)) {
+    errors.push(`chromatic_scale: tonic "${tonic}" is not an allowed chromatic tonic`);
+    return errors;
+  }
+
+  const music = inst.stimulus.music as Music | null;
+  if (!music) {
+    errors.push('chromatic_scale: stimulus music is required');
+    return errors;
+  }
+  const notes = music.voices
+    .flatMap((v) => v.events)
+    .filter((ev): ev is NoteEvent => ev.type === 'note')
+    .map((ev) => ev.pitch);
+  if (notes.length !== 13) {
+    errors.push(`chromatic_scale: stimulus must have exactly 13 note events (found ${notes.length})`);
+    return errors;
+  }
+
+  let trueScale: string[];
+  try {
+    trueScale = chromaticScaleAscending(notes[0]);
+  } catch (err) {
+    errors.push(`chromatic_scale: ${err instanceof Error ? err.message : String(err)}`);
+    return errors;
+  }
+
+  const diffIndices = notes.reduce<number[]>((acc, note, i) => {
+    if (note !== trueScale[i]) acc.push(i);
+    return acc;
+  }, []);
+  if (diffIndices.length !== 1) {
+    errors.push(`chromatic_scale: expected exactly one wrong note against the tonic-${tonic} true scale, found ${diffIndices.length}`);
+    return errors;
+  }
+
+  const expectedCanonical = chromaticPositionLabel(diffIndices[0]);
+  if (inst.answer.canonical !== expectedCanonical) {
+    errors.push(
+      `chromatic_scale: canonical "${String(inst.answer.canonical)}" does not name the actual wrong note "${expectedCanonical}"`,
+    );
+  }
+
+  return errors;
+}
+
+// degreeNameIdHook (fyu.4): the prompt names the QUESTION direction
+// unambiguously (name->ordinal vs ordinal->name), so the hook parses it back
+// out and recomputes the expected canonical/distractor shape from the shared
+// DEGREE_ORDER/ORDINALS/DISPLAY_NAMES map — never trusting the generator's
+// own picks.
+const NAME_TO_ORDINAL_PROMPT_RE = /^Which degree of a scale is the (.+)\?$/;
+const ORDINAL_TO_NAME_PROMPT_RE = /^What is the technical name for the (\d+(?:st|nd|rd|th)) degree of a scale\?$/;
+
+function degreeNameIdHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string') {
+    errors.push('degree_name_id: canonical answer must be a string');
+    return errors;
+  }
+
+  const nameMatch = NAME_TO_ORDINAL_PROMPT_RE.exec(inst.prompt);
+  const ordinalMatch = ORDINAL_TO_NAME_PROMPT_RE.exec(inst.prompt);
+
+  if (nameMatch) {
+    const displayName = nameMatch[1];
+    const name = nameFromDisplay(displayName);
+    if (!name) {
+      errors.push(`degree_name_id: prompt names an unknown degree "${displayName}"`);
+      return errors;
+    }
+    const expectedOrdinal = ordinalOf(name);
+    if (canonical !== expectedOrdinal) {
+      errors.push(`degree_name_id: canonical "${canonical}" does not match the expected ordinal "${expectedOrdinal}"`);
+    }
+    for (const d of inst.distractors) {
+      if (typeof d !== 'string' || !(ORDINALS as readonly string[]).includes(d)) {
+        errors.push(`degree_name_id: distractor "${String(d)}" is not a valid ordinal`);
+      }
+    }
+  } else if (ordinalMatch) {
+    const ordinal = ordinalMatch[1];
+    const name = nameFromOrdinal(ordinal);
+    if (!name) {
+      errors.push(`degree_name_id: prompt names an unknown ordinal "${ordinal}"`);
+      return errors;
+    }
+    const expectedName = DISPLAY_NAMES[name];
+    if (canonical !== expectedName) {
+      errors.push(`degree_name_id: canonical "${canonical}" does not match the expected name "${expectedName}"`);
+    }
+    for (const d of inst.distractors) {
+      if (typeof d !== 'string' || !DEGREE_ORDER.some((n) => DISPLAY_NAMES[n] === d)) {
+        errors.push(`degree_name_id: distractor "${String(d)}" is not a valid degree name`);
+      }
+    }
+  } else {
+    errors.push('degree_name_id: prompt does not match either question direction');
+  }
+
+  return errors;
+}
+
 function rhythmSumHook(inst: ExerciseInstance): string[] {
   // Grade is guaranteed valid here — validate() already rejected unsupported
   // grades before any hook runs.
@@ -866,4 +985,6 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   metre_classification: metreClassificationHook,
   anacrusis_recognition: anacrusisRecognitionHook,
   octave_transposition: octaveTranspositionHook,
+  chromatic_scale: chromaticScaleHook,
+  degree_name_id: degreeNameIdHook,
 };

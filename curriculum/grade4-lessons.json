@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23a",
+  "version": "g4-lessons-2026-07-23b",
   "lessons": [
     {
       "id": "keys-4",
@@ -54,7 +54,7 @@
       "worked_example": {
         "template_id": "scale_construction",
         "grade": 4,
-        "seed": 3
+        "seed": 60
       },
       "teach": {
         "objectives": [
@@ -68,11 +68,90 @@
           "example": {
             "template_id": "scale_construction",
             "grade": 4,
-            "seed": 4
+            "seed": 18
           }
         },
         "smartTip": "Always raise on the same letter. G♯ minor's 7th letter is F, so its raised 7th must stay an F — an F♯ raised a semitone is F double-sharp, not G.",
         "didYouKnow": "A double-sharp (𝄪) raises a note by two semitones — a whole tone — from its natural pitch, so F𝄪 sounds the same as G, but naming it F keeps every letter of the G♯ minor scale distinct."
+      },
+      "unlocks": "chromatic-scale-4"
+    },
+    {
+      "id": "chromatic-scale-4",
+      "title": "The chromatic scale",
+      "strand": "scales_keys",
+      "atoms": [
+        "scale:C_chromatic",
+        "scale:G_chromatic",
+        "scale:D_chromatic",
+        "scale:F_chromatic"
+      ],
+      "templates": [
+        "chromatic_scale"
+      ],
+      "worked_example": {
+        "template_id": "chromatic_scale",
+        "grade": 4,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "A chromatic scale moves entirely in semitones, using every pitch between its tonic and the octave",
+          "That is twelve semitone steps — thirteen notes counting both the tonic and its octave",
+          "Ascending, it is spelled with sharps: a sharpened letter fills each whole-tone gap, and none is added where letters are already a semitone apart (E–F, B–C)"
+        ],
+        "concept": {
+          "title": "The chromatic scale",
+          "body": "A chromatic scale climbs entirely by semitones, touching every note between the tonic and its octave — twelve steps, thirteen notes. Ascending, it is written with sharps: between two letters a whole tone apart you insert the lower letter sharpened (C, C♯, D, D♯, E …), and where two letters are already only a semitone apart — E to F, and B to C — you add nothing. The key signature plays no part: a chromatic scale carries no key of its own.",
+          "example": {
+            "template_id": "chromatic_scale",
+            "grade": 4,
+            "seed": 0
+          }
+        },
+        "smartTip": "Going up, reach for sharps. Every whole-tone gap gets a sharpened note wedged in; the two natural semitones, E–F and B–C, are left alone.",
+        "didYouKnow": "‘Chromatic’ comes from the Greek chroma, meaning colour — the extra notes between the scale steps were heard as adding colour to the plain diatonic scale."
+      },
+      "unlocks": "degree-names-4"
+    },
+    {
+      "id": "degree-names-4",
+      "title": "Technical names of scale degrees",
+      "strand": "scales_keys",
+      "atoms": [
+        "degree_name:tonic",
+        "degree_name:supertonic",
+        "degree_name:mediant",
+        "degree_name:subdominant",
+        "degree_name:dominant",
+        "degree_name:submediant",
+        "degree_name:leading_note"
+      ],
+      "templates": [
+        "degree_name_id"
+      ],
+      "worked_example": {
+        "template_id": "degree_name_id",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Every degree of a scale has a technical name, not just a number",
+          "In order: tonic (1st), supertonic (2nd), mediant (3rd), subdominant (4th), dominant (5th), submediant (6th), leading note (7th)",
+          "The tonic and dominant are the two strongest degrees; the leading note sits a semitone below the tonic and pulls up to it"
+        ],
+        "concept": {
+          "title": "Technical names of scale degrees",
+          "body": "Each note of a scale has a technical name describing its role. Counting up from the tonic: tonic (1st), supertonic (2nd), mediant (3rd), subdominant (4th), dominant (5th), submediant (6th), and leading note (7th). The tonic is home and the dominant — a 5th above — is its strongest relation. ‘Mediant’ sits midway between tonic and dominant; ‘subdominant’ is a 5th below the tonic (the ‘sub’ mirroring the dominant below rather than above), and ‘submediant’ midway between tonic and subdominant going down. The leading note lies a semitone under the tonic and leads the ear back up to it.",
+          "example": {
+            "template_id": "degree_name_id",
+            "grade": 4,
+            "seed": 3
+          }
+        },
+        "smartTip": "Anchor on tonic (1) and dominant (5). Subdominant is the 4th — think of it as the dominant measured a 5th *below* the tonic instead of above.",
+        "didYouKnow": "The leading note earns its name from its pull: sitting just a semitone below the tonic, it sounds unfinished until it steps up to resolve — which is exactly why the harmonic minor raises it."
       },
       "unlocks": null
     }

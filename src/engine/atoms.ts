@@ -86,6 +86,12 @@ export function transposeAtom(): string {
   return 'transpose:octave';
 }
 
+/** Grade-4 technical degree name atom (fyu.4 degree-names slice), e.g.
+ *  degreeNameAtom('dominant') -> "degree_name:dominant". */
+export function degreeNameAtom(name: string): string {
+  return `degree_name:${name}`;
+}
+
 export function parseAtom(id: string): { kind: string; parts: string[] } {
   const [kind, ...parts] = id.split(':');
   return { kind, parts };

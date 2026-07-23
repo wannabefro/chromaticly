@@ -117,6 +117,14 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // a different template, interval_transposition). Listed here so the
       // ledger accounts for it; exercised for real by its own grade-3 tests.
       'octave_transposition',
+      // chromatic_scale and degree_name_id (fyu.6) are Grade-4 curriculum
+      // content but, like anacrusis_recognition, read no grade-scoped
+      // dimension in the generator itself — "Grade 4" is enforced solely by
+      // assertAtomResolves (lessons.ts). Listed here so the ledger accounts
+      // for them; exercised for real by their own unit tests and
+      // seed-stability.test.ts's grade-4 pins.
+      'chromatic_scale',
+      'degree_name_id',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

@@ -15,6 +15,8 @@ import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import { CONTEXT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
+import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
+import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
 import { isCompoundTimeSignature } from '../engine/metre';
@@ -145,10 +147,23 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'scale': {
       const [spec] = parts;
       const [tonic, mode, ...formParts] = (spec ?? '').split('_');
-      const form = formParts.join('_');
       const scope = scopeForGrade(grade);
+      if (mode === 'chromatic') {
+        if (grade < 4 || !CHROMATIC_TONICS.includes(tonic)) {
+          throw new Error(`lessons: atom "${atom}" is not a G${grade} chromatic scale`);
+        }
+        return;
+      }
+      const form = formParts.join('_');
       if (mode !== 'minor' || !scope.keysMinor.includes(tonic) || !scope.minorForms.includes(form)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} scale`);
+      }
+      return;
+    }
+    case 'degree_name': {
+      const [name] = parts;
+      if (grade < 4 || !(DEGREE_ORDER as readonly string[]).includes(name)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} degree name`);
       }
       return;
     }
