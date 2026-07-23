@@ -426,6 +426,21 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     templateId: 'instrument_knowledge',
     atoms: ['instrument_family:trumpet', 'instrument_clef:viola', 'direction:arco', 'direction:pizzicato', 'direction:con sordino'],
   },
+  {
+    label: 'metre_classification new metres (time-signatures-4, pre-lesson pin, 570.U4)',
+    templateId: 'metre_classification',
+    atoms: [
+      'metre:2/8',
+      'metre:3/8',
+      'metre:4/8',
+      'metre:6/4',
+      'metre:9/4',
+      'metre:12/4',
+      'metre:6/16',
+      'metre:9/16',
+      'metre:12/16',
+    ],
+  },
 ];
 
 if (GRADE_4_EXTRA_CASES.length > 0) {

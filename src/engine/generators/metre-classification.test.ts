@@ -217,3 +217,44 @@ describe('metreClassification — fuzz gate: validator-clean across the retry bu
     }
   });
 });
+
+// 570.U4 — the nine new Grade-4 metres (simple /8, compound /4 and /16).
+describe('metreClassification — Grade 4 new metres (chromaticly-570)', () => {
+  const NEW_ATOMS = ['2/8', '3/8', '4/8', '6/4', '9/4', '12/4', '6/16', '9/16', '12/16'].map((s) => `metre:${s}`);
+  const g4 = (atoms: string[], seed: number) => ({ grade: 4, seed, atoms });
+
+  test('canonical === label(classifyMetre(rendered sig)) across seeds, for each new atom', () => {
+    for (const atom of NEW_ATOMS) {
+      for (let seed = 0; seed < 60; seed++) {
+        const instance = generate('metre_classification', g4([atom], seed));
+        const music = instance.stimulus.music as Music;
+        expect(instance.answer.canonical).toBe(label(music.time_sig as string));
+      }
+    }
+  });
+
+  test('each rendered bar sums exactly to its signature total', () => {
+    for (const atom of NEW_ATOMS) {
+      const sig = atom.split(':')[1];
+      for (let seed = 0; seed < 40; seed++) {
+        const music = generate('metre_classification', g4([atom], seed)).stimulus.music as Music;
+        expect(barTotal(music)).toBe(barUnitsFor(sig));
+      }
+    }
+  });
+
+  test('validator recomputes the label from the stimulus — a 6/4 bar mislabelled "Simple duple" is rejected', () => {
+    const instance = generate('metre_classification', g4(['metre:6/4'], 0));
+    expect(instance.answer.canonical).toBe('Compound duple'); // 6/4 is compound duple
+    const tampered = { ...instance, answer: { ...instance.answer, canonical: 'Simple duple' } };
+    const result = validate(tampered);
+    expect(result.ok).toBe(false);
+  });
+
+  test('fuzz gate: seeds 0..99 over the new-metre scope all validate clean', () => {
+    for (let seed = 0; seed < 100; seed++) {
+      const instance = generate('metre_classification', g4(NEW_ATOMS, seed));
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+    }
+  });
+});

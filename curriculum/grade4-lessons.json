@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23h",
+  "version": "g4-lessons-2026-07-23i",
   "lessons": [
     {
       "id": "keys-4",
@@ -259,6 +259,49 @@
         },
         "smartTip": "A duplet is a triplet turned inside out: two-in-the-time-of-three in compound time, where a triplet is three-in-the-time-of-two in simple time.",
         "didYouKnow": "A duplet lets a composer slip a momentary ‘simple-time’ feel into a compound-time bar — two even beats where the metre expects a lilting three — without changing the time signature."
+      },
+      "unlocks": "time-signatures-4"
+    },
+    {
+      "id": "time-signatures-4",
+      "title": "New time signatures",
+      "strand": "rhythm",
+      "atoms": [
+        "metre:2/8",
+        "metre:3/8",
+        "metre:4/8",
+        "metre:6/4",
+        "metre:9/4",
+        "metre:12/4",
+        "metre:6/16",
+        "metre:9/16",
+        "metre:12/16"
+      ],
+      "templates": [
+        "metre_classification"
+      ],
+      "worked_example": {
+        "template_id": "metre_classification",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The top number names the beats; the bottom number names the note that gets one beat",
+          "6, 9 and 12 on top mean compound time — group the beats in threes",
+          "The bottom number never decides simple versus compound: 6/4, 6/8 and 6/16 are all compound duple"
+        ],
+        "concept": {
+          "title": "Reading any time signature",
+          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is TWO dotted-crotchet beats, not six. The bottom number only says which note gets the beat: 8 the quaver, 4 the crotchet, 16 the semiquaver. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values.",
+          "example": {
+            "template_id": "metre_classification",
+            "grade": 4,
+            "seed": 2
+          }
+        },
+        "smartTip": "Top number first: 2/3/4 is simple, 6/9/12 is compound (divide by three for the beat count). The bottom number is only which note gets the beat.",
+        "didYouKnow": "Fast movements are sometimes written in 6/16 so the page looks less crowded, while slow, broad music may use 6/4 — but both are still a lilting compound duple, exactly like 6/8."
       },
       "unlocks": "intervals-4"
     },
