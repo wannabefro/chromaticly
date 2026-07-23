@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23i",
+  "version": "g4-lessons-2026-07-23j",
   "lessons": [
     {
       "id": "keys-4",
@@ -541,6 +541,50 @@
         },
         "smartTip": "Four families: strings, woodwind, brass, percussion. The viola is the string instrument that reads the alto clef — that is exactly why the alto clef was worth learning.",
         "didYouKnow": "‘Pizzicato’ is Italian for ‘pinched’ — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
+      },
+      "unlocks": "enharmonics-4"
+    },
+    {
+      "id": "enharmonics-4",
+      "title": "Enharmonic equivalents",
+      "strand": "pitch",
+      "atoms": [
+        "enharmonic:C#",
+        "enharmonic:Db",
+        "enharmonic:D#",
+        "enharmonic:Eb",
+        "enharmonic:F#",
+        "enharmonic:Gb",
+        "enharmonic:G#",
+        "enharmonic:Ab",
+        "enharmonic:A#",
+        "enharmonic:Bb"
+      ],
+      "templates": [
+        "enharmonic_recognition"
+      ],
+      "worked_example": {
+        "template_id": "enharmonic_recognition",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Two notes are enharmonic when they sound the same pitch but are spelled with different letters",
+          "Every black key on the keyboard has two names — one sharp, one flat",
+          "F♯ and G♭ are the same sound written two ways; so are C♯/D♭, D♯/E♭, G♯/A♭ and A♯/B♭"
+        ],
+        "concept": {
+          "title": "The same pitch, two spellings",
+          "body": "On a keyboard the black key between F and G can be called F♯ (a semitone above F) or G♭ (a semitone below G). Same key, same sound — two names. Notes related this way are called enharmonic equivalents. Which spelling you use depends on the key you are in: sharp keys prefer sharps, flat keys prefer flats. The five black keys give the five common pairs: C♯/D♭, D♯/E♭, F♯/G♭, G♯/A♭ and A♯/B♭.",
+          "example": {
+            "template_id": "enharmonic_recognition",
+            "grade": 4,
+            "seed": 1
+          }
+        },
+        "smartTip": "Keep the pitch, change the letter: an enharmonic equivalent always uses the neighbouring letter name — F♯ becomes G♭, never F♭.",
+        "didYouKnow": "On a piano the two spellings are the exact same key, but a string or voice can bend them apart a hair — many musicians play a G♭ a touch lower than an F♯, so the two names carry a subtly different feel."
       },
       "unlocks": null
     }
