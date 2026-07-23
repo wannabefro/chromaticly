@@ -43,7 +43,7 @@ Sources: product brief pasted in project chat (graded music-theory curriculum & 
 
 ## Index
 - `styles.css` → `tokens/colors.css`, `tokens/typography.css`, `tokens/shape.css`
-- `components/core/` — Button, AnswerOption, NotationCard, PlayButton, StrandChip, ProgressSegments, MasteryGems, FeedbackSheet (+ .d.ts, .prompt.md each)
+- `components/core/` — Button, AnswerOption, NotationCard, PlayButton, StrandChip, ProgressSegments, MasteryGems, FeedbackSheet, RomanNumeralBoxes (+ .d.ts, .prompt.md each)
 - `guidelines/` — foundation specimen cards (@dsCard)
 - `Chromaticly Core Flows.dc.html` — all screens: exercise loop (2a–2f), SRS (2g–2h), level map + exam (3a–3d), lessons + context + light mode (4a–4e), onboarding/profile/interaction states (5a–…)
 - `SKILL.md` — agent skill entry point
