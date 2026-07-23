@@ -1,0 +1,46 @@
+# chromaticly-xbu — Grade 4 enharmonic equivalents (final Grade-4 content).
+# Seed ?seed=enharmonics-4 (recognition of same-pitch note spellings, the five
+# black-key pairs). Reaching unit-row-enharmonics-4 proves the grade-4 chain
+# extends through the last lesson; the exercise is a text-only MCQ ("Which note
+# is the same pitch as F♯?") — no paper card, no play, the stimulus zone
+# collapses (same shape as instruments-4). Runs on the "Chromaticly Dogfood" sim.
+#   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade4-enharmonics.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=enharmonics-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-enharmonics-4" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-enharmonics-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-enharmonics-teach
+- tapOn: { id: "teach-start" }
+
+# Text-only question: the prompt carries it, no stimulus-music card is shown.
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+- assertVisible: { id: "prompt" }
+- assertNotVisible: { id: "stimulus-music" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g4-enharmonics-exercise
