@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23b",
+  "version": "g4-lessons-2026-07-23c",
   "lessons": [
     {
       "id": "keys-4",
@@ -152,6 +152,113 @@
         },
         "smartTip": "Anchor on tonic (1) and dominant (5). Subdominant is the 4th — think of it as the dominant measured a 5th *below* the tonic instead of above.",
         "didYouKnow": "The leading note earns its name from its pull: sitting just a semitone below the tonic, it sounds unfinished until it steps up to resolve — which is exactly why the harmonic minor raises it."
+      },
+      "unlocks": "rhythm-breve-4"
+    },
+    {
+      "id": "rhythm-breve-4",
+      "title": "The breve",
+      "strand": "rhythm",
+      "atoms": [
+        "note_value_compare"
+      ],
+      "templates": [
+        "note_value_compare"
+      ],
+      "worked_example": {
+        "template_id": "note_value_compare",
+        "grade": 4,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "The breve is the longest note value at this grade — worth two semibreves, or eight crotchet beats",
+          "It is drawn as an open notehead with a short vertical line on each side (or a square notehead)",
+          "You meet it in broad, slow passages; it is rare but worth recognising"
+        ],
+        "concept": {
+          "title": "The breve",
+          "body": "The breve is the longest note value you'll meet — worth two semibreves, or eight crotchet beats. It is drawn as an open (hollow) notehead flanked by a short vertical line on each side, sometimes as a square notehead instead. Because it lasts so long, it only fits bars with room for it — you'll see it in slow, broad music rather than busy passages.",
+          "example": {
+            "template_id": "note_value_compare",
+            "grade": 4,
+            "seed": 2
+          }
+        },
+        "smartTip": "A breve is two semibreves joined — eight crotchet beats in all, twice the length of a semibreve.",
+        "didYouKnow": "‘Breve’ comes from the Latin brevis, ‘short’ — it was once one of the shortest notes in medieval music, before quicker values pushed it all the way to the long end of the scale."
+      },
+      "unlocks": "rhythm-doubledot-4"
+    },
+    {
+      "id": "rhythm-doubledot-4",
+      "title": "Double-dotted notes",
+      "strand": "rhythm",
+      "atoms": [
+        "rhythm_sum"
+      ],
+      "templates": [
+        "rhythm_sum"
+      ],
+      "worked_example": {
+        "template_id": "rhythm_sum",
+        "grade": 4,
+        "seed": 22
+      },
+      "teach": {
+        "objectives": [
+          "A first dot adds half the note's value; a second dot adds half again — half of the first dot",
+          "A double-dotted note therefore lasts one and three-quarter times its plain value",
+          "Example: a double-dotted minim = minim + crotchet + quaver = three and a half crotchet beats"
+        ],
+        "concept": {
+          "title": "Double-dotted notes",
+          "body": "A single dot adds half the note's value. A second dot adds half again — but half of the FIRST dot, not the note. So a double-dotted note lasts one and three-quarter times its plain value. A double-dotted minim is minim + crotchet + quaver (2 + 1 + ½ = 3½ crotchet beats); a double-dotted crotchet is crotchet + quaver + semiquaver. Each dot is worth half of whatever sits immediately to its left.",
+          "example": {
+            "template_id": "rhythm_sum",
+            "grade": 4,
+            "seed": 22
+          }
+        },
+        "smartTip": "First dot = half the note; second dot = half the first dot (a quarter of the note). Add them up: 1 + ½ + ¼ = 1¾ of the plain value.",
+        "didYouKnow": "Double dots make a dotted rhythm crisper — the following short note becomes even shorter and snappier. Baroque overtures and marches lean on this for their dignified, pointed feel."
+      },
+      "unlocks": "rhythm-duplet-4"
+    },
+    {
+      "id": "rhythm-duplet-4",
+      "title": "Duplets",
+      "strand": "rhythm",
+      "atoms": [
+        "duplet:6/8",
+        "duplet:9/8",
+        "duplet:12/8"
+      ],
+      "templates": [
+        "duplet_recognition"
+      ],
+      "worked_example": {
+        "template_id": "duplet_recognition",
+        "grade": 4,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "A duplet is two notes played in the time of three of the same value",
+          "It belongs to compound time, where the beat normally divides into three",
+          "A duplet fills one compound beat (a dotted crotchet) with two equal notes instead of three"
+        ],
+        "concept": {
+          "title": "Duplets",
+          "body": "In compound time the beat divides into three. A duplet borrows one beat for TWO equal notes instead — two played in the time of three. It is written with a bracket and a small ‘2’ over the group. So in 6/8, a duplet fills one dotted-crotchet beat with two notes where three quavers would normally go. It is the mirror image of the triplet you'd meet in simple time.",
+          "example": {
+            "template_id": "duplet_recognition",
+            "grade": 4,
+            "seed": 0
+          }
+        },
+        "smartTip": "A duplet is a triplet turned inside out: two-in-the-time-of-three in compound time, where a triplet is three-in-the-time-of-two in simple time.",
+        "didYouKnow": "A duplet lets a composer slip a momentary ‘simple-time’ feel into a compound-time bar — two even beats where the metre expects a lilting three — without changing the time signature."
       },
       "unlocks": null
     }

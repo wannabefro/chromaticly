@@ -4,6 +4,7 @@ import type { ExerciseInstance } from '../schema';
 import { addTimeSignature } from './add-time-signature';
 import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
+import { dupletRecognition } from './duplet-recognition';
 import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
 import { findTheBar } from './find-the-bar';
@@ -33,6 +34,7 @@ export const GENERATORS: Record<string, Generator> = {
   add_time_signature: addTimeSignature,
   metre_classification: metreClassification,
   anacrusis_recognition: anacrusisRecognition,
+  duplet_recognition: dupletRecognition,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
   octave_transposition: octaveTransposition,

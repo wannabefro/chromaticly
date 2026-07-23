@@ -971,6 +971,43 @@ function termMeaningHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// dupletRecognitionHook (fyu.7) — recompute-don't-trust: the stimulus must
+// carry exactly one duplet (two tuplet-marked notes, size 2, start on the
+// first), sit in a compound signature, sum to a whole number of compound
+// beats, and its canonical/distractors must match the two legal question
+// variants ("three" / "one").
+function dupletRecognitionHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['duplet_recognition: stimulus music is required'];
+  if (!music.time_sig || !isCompoundTimeSignature(music.time_sig)) {
+    return [`duplet_recognition: "${String(music.time_sig)}" is not a compound time signature`];
+  }
+
+  const events = music.voices.flatMap((v) => v.events);
+  const tupletNotes = events.filter((ev): ev is NoteEvent => ev.type === 'note' && ev.tuplet !== undefined);
+  if (tupletNotes.length !== 2 || tupletNotes.some((n) => n.tuplet!.size !== 2 || n.tuplet!.inTimeOf !== 3)) {
+    errors.push('duplet_recognition: stimulus must contain exactly one duplet (two 2-in-3 notes)');
+  } else if (!tupletNotes[0].tuplet!.start || tupletNotes[1].tuplet!.start) {
+    errors.push('duplet_recognition: the duplet must mark its first note as the group start');
+  }
+
+  const total = events.reduce((sum, ev: MusicEvent) => sum + musicEventUnits(ev), 0);
+  if (total !== barUnitsFor(music.time_sig)) {
+    errors.push(`duplet_recognition: bar sums to ${total}, not a full ${music.time_sig} bar`);
+  }
+
+  const canonical = inst.answer.canonical;
+  const legal: Record<string, string[]> = { three: ['two', 'four'], one: ['two', 'three'] };
+  if (typeof canonical !== 'string' || !(canonical in legal)) {
+    errors.push(`duplet_recognition: canonical "${String(canonical)}" is not a legal duplet answer`);
+  } else if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...legal[canonical]].sort())) {
+    errors.push(`duplet_recognition: distractors do not match the "${canonical}" variant`);
+  }
+
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
@@ -984,6 +1021,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   add_time_signature: addTimeSignatureHook,
   metre_classification: metreClassificationHook,
   anacrusis_recognition: anacrusisRecognitionHook,
+  duplet_recognition: dupletRecognitionHook,
   octave_transposition: octaveTranspositionHook,
   chromatic_scale: chromaticScaleHook,
   degree_name_id: degreeNameIdHook,

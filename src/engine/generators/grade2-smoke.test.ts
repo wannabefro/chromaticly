@@ -125,6 +125,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // seed-stability.test.ts's grade-4 pins.
       'chromatic_scale',
       'degree_name_id',
+      // duplet_recognition (fyu.7) — same as anacrusis_recognition: an
+      // atom-required rhythm-device generator, grade-gated only by
+      // assertAtomResolves (needs a compound duplet:<sig> atom).
+      'duplet_recognition',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

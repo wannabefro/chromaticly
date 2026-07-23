@@ -14,6 +14,19 @@ export type Duration =
 
 export type Dots = 0 | 1 | 2;
 
+/** A tuplet grouping marker carried by each note in the group (not a separate
+ *  event, so every `type === 'note'` consumer still sees the notes). `size`
+ *  notes play in the time of `inTimeOf` of the same written value — a duplet is
+ *  `{ size: 2, inTimeOf: 3 }` (two in the time of three, used in compound time),
+ *  a triplet `{ size: 3, inTimeOf: 2 }`. `start` marks the group's first note,
+ *  where the emitter writes the ABC `(p:q:r` bracket. Notes are written at their
+ *  face value; the tuplet does the metric scaling. */
+export interface TupletMark {
+  size: number;
+  inTimeOf: number;
+  start?: boolean;
+}
+
 /** Scientific pitch notation, e.g. "C4" (middle C), "Eb3", "F#5". */
 export type Pitch = string;
 
@@ -25,6 +38,7 @@ export interface NoteEvent {
   pitch: Pitch;
   dur: Duration;
   dots?: Dots;
+  tuplet?: TupletMark;
 }
 
 /** Simultaneous pitches — a harmonic interval or a triad (rendered as an ABC chord). */

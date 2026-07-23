@@ -74286,6 +74286,1517 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte duplet_recognition @ rhythm-duplet-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte mode_swap @ keys-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -74967,6 +76478,1896 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "scales_keys",
     "template_id": "mode_swap",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_value_compare @ rhythm-breve-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one with a flag (quaver)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a quaver lasts half a beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with a line either side (breve)",
+    },
+    "distractors": [
+      "The filled one (crotchet)",
+    ],
+    "feedback": {
+      "correct": "A breve lasts 8 beats; a crotchet lasts 1 beat — so the breve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with no stem (semibreve)",
+    },
+    "distractors": [
+      "The open one (minim)",
+    ],
+    "feedback": {
+      "correct": "A semibreve lasts 4 beats; a minim lasts 2 beats — so the semibreve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The filled one (crotchet)",
+    },
+    "distractors": [
+      "The filled one with two flags (semiquaver)",
+    ],
+    "feedback": {
+      "correct": "A crotchet lasts 1 beat; a semiquaver lasts a quarter-beat — so the crotchet lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The filled one (crotchet)",
+    },
+    "distractors": [
+      "The filled one with a flag (quaver)",
+    ],
+    "feedback": {
+      "correct": "A crotchet lasts 1 beat; a quaver lasts half a beat — so the crotchet lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one (crotchet)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a crotchet lasts 1 beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one with two flags (semiquaver)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a semiquaver lasts a quarter-beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The filled one (crotchet)",
+    },
+    "distractors": [
+      "The filled one with three flags (demisemiquaver)",
+    ],
+    "feedback": {
+      "correct": "A crotchet lasts 1 beat; a demisemiquaver lasts an eighth-beat — so the crotchet lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one with a flag (quaver)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a quaver lasts half a beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with no stem (semibreve)",
+    },
+    "distractors": [
+      "The filled one with two flags (semiquaver)",
+    ],
+    "feedback": {
+      "correct": "A semibreve lasts 4 beats; a semiquaver lasts a quarter-beat — so the semibreve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with a line either side (breve)",
+    },
+    "distractors": [
+      "The filled one (crotchet)",
+    ],
+    "feedback": {
+      "correct": "A breve lasts 8 beats; a crotchet lasts 1 beat — so the breve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with a line either side (breve)",
+    },
+    "distractors": [
+      "The open one with no stem (semibreve)",
+    ],
+    "feedback": {
+      "correct": "A breve lasts 8 beats; a semibreve lasts 4 beats — so the breve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with a line either side (breve)",
+    },
+    "distractors": [
+      "The filled one (crotchet)",
+    ],
+    "feedback": {
+      "correct": "A breve lasts 8 beats; a crotchet lasts 1 beat — so the breve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with a line either side (breve)",
+    },
+    "distractors": [
+      "The filled one with three flags (demisemiquaver)",
+    ],
+    "feedback": {
+      "correct": "A breve lasts 8 beats; a demisemiquaver lasts an eighth-beat — so the breve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one with a flag (quaver)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a quaver lasts half a beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The filled one (crotchet)",
+    },
+    "distractors": [
+      "The filled one with three flags (demisemiquaver)",
+    ],
+    "feedback": {
+      "correct": "A crotchet lasts 1 beat; a demisemiquaver lasts an eighth-beat — so the crotchet lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The filled one (crotchet)",
+    },
+    "distractors": [
+      "The filled one with three flags (demisemiquaver)",
+    ],
+    "feedback": {
+      "correct": "A crotchet lasts 1 beat; a demisemiquaver lasts an eighth-beat — so the crotchet lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A1",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "A1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one with a flag (quaver)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a quaver lasts half a beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one (minim)",
+    },
+    "distractors": [
+      "The filled one (crotchet)",
+    ],
+    "feedback": {
+      "correct": "A minim lasts 2 beats; a crotchet lasts 1 beat — so the minim lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The open one with a line either side (breve)",
+    },
+    "distractors": [
+      "The filled one with two flags (semiquaver)",
+    ],
+    "feedback": {
+      "correct": "A breve lasts 8 beats; a semiquaver lasts a quarter-beat — so the breve lasts longer.",
+      "incorrect": "Not quite — compare how long each note is held, not how it looks on the page.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "note_value_compare:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which note lasts longer?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_compare",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte rhythm_sum @ rhythm-doubledot-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "quaver",
+      },
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+      {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver + crotchet = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+      {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet + quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "semibreve",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet + dotted minim = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "quaver",
+      },
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 1,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim + quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 1,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver + minim = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+      {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + crotchet + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+      {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + crotchet + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 2,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "semibreve",
+      },
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim + quaver + crotchet = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 2,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "semibreve",
+      },
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet + minim + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "quaver",
+      },
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 1,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim + quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 1,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim + crotchet = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 1,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet + crotchet + crotchet = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "quaver",
+      },
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "quaver",
+      },
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 1,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 0,
+        "dur": "minim",
+      },
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim + quaver + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "semibreve",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 2,
+        "dur": "minim",
+      },
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + quaver + dotted minim = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dots": 0,
+        "dur": "minim",
+      },
+    },
+    "distractors": [
+      {
+        "dots": 1,
+        "dur": "minim",
+      },
+      {
+        "dots": 0,
+        "dur": "crotchet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the note tree and re-add the values carefully, including any dots.",
+    },
+    "grade": 4,
+    "hints": [
+      "Use the note tree: break each value down into the smallest shared unit, then add.",
+    ],
+    "id": "rhythm_sum:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Answer this musical sum with one note:",
+    "srs_tags": [
+      "rhythm_sum",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver + crotchet + quaver = ?",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum",
   },
 ]
 `;
@@ -80556,6 +83957,1517 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "scales_keys",
     "template_id": "degree_name_id",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte duplet_recognition (duplet-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:12/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "12/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "three",
+    },
+    "distractors": [
+      "two",
+      "four",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a duplet. Two notes are played in the time of how many?",
+    "srs_tags": [
+      "duplet:6/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "A duplet plays two notes in the time of three, filling one compound beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A duplet squeezes two equal notes into a beat that normally holds three of that value.",
+    ],
+    "id": "duplet_recognition:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed duplet fill?",
+    "srs_tags": [
+      "duplet:9/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "9/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 3,
+                  "size": 2,
+                },
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "duplet_recognition",
   },
 ]
 `;

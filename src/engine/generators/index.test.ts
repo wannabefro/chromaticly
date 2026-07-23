@@ -44,7 +44,7 @@ const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition
 // scale carries no key_sig, and a degree name has no notation at all), so
 // both produce a valid instance at every grade 1-4 — "Grade 4" is enforced
 // solely by assertAtomResolves at the curriculum layer (lessons.ts), not here.
-const ATOM_REQUIRED_TEMPLATE_IDS = ['anacrusis_recognition', 'chromatic_scale', 'degree_name_id'];
+const ATOM_REQUIRED_TEMPLATE_IDS = ['anacrusis_recognition', 'chromatic_scale', 'degree_name_id', 'duplet_recognition'];
 
 describe('GENERATORS registry', () => {
   test('every expected template_id resolves to a generator function', () => {

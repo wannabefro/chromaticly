@@ -73,6 +73,9 @@ export function metreAtom(sig: string): string {
 export function anacrusisAtom(sig: string): string {
   return `anacrusis:${sig}`;
 }
+export function dupletAtom(sig: string): string {
+  return `duplet:${sig}`;
+}
 
 export function findBarAtom(property: string): string {
   return `find_bar:${property}`;

@@ -211,11 +211,20 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, unit: numb
       continue;
     }
 
-    const d = beatsOf(ev.dur, ev.dots ?? 0);
+    // A tuplet note occupies its written value scaled by inTimeOf/size — the
+    // metric truth the bar/beam grid must track, even though the note is
+    // WRITTEN at face value (abcjs applies the scaling from the `(p:q:r`
+    // bracket the start note carries). beatsOf is the written value; `d` is the
+    // sounded span.
+    const tuplet = ev.type === 'note' ? ev.tuplet : undefined;
+    const written = beatsOf(ev.dur, ev.dots ?? 0);
+    const d = tuplet ? (written * tuplet.inTimeOf) / tuplet.size : written;
     const beat = Math.floor((beatPos + EPS) / unit);
     const isPitched = ev.type === 'note' || ev.type === 'chord';
-    const beamable = isPitched && d <= 0.5; // quaver or shorter carries a beam
-    const body = ev.type === 'note' ? noteToAbc(ev, keyAcc) : ev.type === 'chord' ? chordToAbc(ev, keyAcc) : restToAbc(ev);
+    const beamable = isPitched && written <= 0.5; // quaver or shorter carries a beam
+    const tupletPrefix = tuplet?.start ? `(${tuplet.size}:${tuplet.inTimeOf}:${tuplet.size}` : '';
+    const body =
+      tupletPrefix + (ev.type === 'note' ? noteToAbc(ev, keyAcc) : ev.type === 'chord' ? chordToAbc(ev, keyAcc) : restToAbc(ev));
 
     // Glue to the previous token only when both are beam-carrying notes in the same beat,
     // and no dynamic sits between them (a marking starts a fresh group).

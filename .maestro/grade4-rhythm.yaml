@@ -1,0 +1,42 @@
+# fyu.7 — Grade 4 rhythm. Seeds ?seed=rhythm-duplet-4 (the compound-time
+# duplet lesson). The on-device proof jest can't give: that abcjs renders the
+# TUPLET BRACKET — the engine emits `(2:3:2` before the two duplet quavers
+# (proven in jest), but only a device screenshot confirms abcjs draws the
+# bracket + "2" over the group. Reaching unit-row-rhythm-duplet-4 also proves
+# the grade-4 chain extends through the rhythm lessons (breve, double-dot,
+# duplet). Runs once at U13, once Level 4 is reachable (level4() real) — see
+# the fyu.13 notes on on-device gate consolidation.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=rhythm-duplet-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-rhythm-duplet-4" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-rhythm-duplet-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-rhythm-duplet-teach
+- tapOn: { id: "teach-start" }
+
+# The exercise notation renders the duplet bar with its (2 tuplet bracket.
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 20000
+- assertVisible: { id: "stimulus-music" }
+- takeScreenshot: g4-rhythm-duplet-exercise

@@ -62,6 +62,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   octave_transposition: 3,
   chromatic_scale: 4,
   degree_name_id: 4,
+  duplet_recognition: 4,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -379,6 +380,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'rhythm_sum double-dot (rhythm-4, pre-lesson pin)',
     templateId: 'rhythm_sum',
     atoms: ['rhythm_sum'],
+  },
+  {
+    label: 'duplet_recognition (duplet-4, pre-lesson pin)',
+    templateId: 'duplet_recognition',
+    atoms: ['duplet:6/8', 'duplet:9/8', 'duplet:12/8'],
   },
 ];
 

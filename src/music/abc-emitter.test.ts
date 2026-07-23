@@ -342,3 +342,50 @@ describe('musicToAbc — dynamics (302.32)', () => {
     expect(() => musicToAbc(music)).toThrow(/no following note/);
   });
 });
+
+describe('musicToAbc — tuplets (fyu.7)', () => {
+  const body = (music: Music) => musicToAbc(music).trim().split('\n').pop();
+
+  test('a duplet in 6/8 emits the (2:3:2 bracket on the group start, notes at face value, beat grid honest', () => {
+    // Two quaver-duplet notes fill one dotted-crotchet beat; the dotted crotchet
+    // that follows must sit on beat 2 (scaled beatPos), not be pulled early.
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '6/8',
+      voices: [
+        {
+          events: [
+            { type: 'note', pitch: 'G4', dur: 'quaver', tuplet: { size: 2, inTimeOf: 3, start: true } },
+            { type: 'note', pitch: 'A4', dur: 'quaver', tuplet: { size: 2, inTimeOf: 3 } },
+            { type: 'note', pitch: 'B4', dur: 'crotchet', dots: 1 },
+          ],
+        },
+      ],
+    };
+    // (2:3:2 prefixes the duplet; G4/A4 are quavers (dur suffix 4) beamed together;
+    // B12 is the dotted crotchet on the next beat (space-separated, own beam group).
+    expect(body(music)).toBe('(2:3:2G4A4 B12');
+  });
+
+  test('the (2 marker only appears on the note flagged start', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '2/4',
+      voices: [
+        {
+          events: [
+            { type: 'note', pitch: 'C5', dur: 'quaver', tuplet: { size: 3, inTimeOf: 2, start: true } },
+            { type: 'note', pitch: 'D5', dur: 'quaver', tuplet: { size: 3, inTimeOf: 2 } },
+            { type: 'note', pitch: 'E5', dur: 'quaver', tuplet: { size: 3, inTimeOf: 2 } },
+            { type: 'note', pitch: 'F5', dur: 'crotchet' },
+          ],
+        },
+      ],
+    };
+    // Exactly one bracket, on the first note of the triplet.
+    expect((body(music)!.match(/\(3:2:3/g) ?? []).length).toBe(1);
+    expect(body(music)).toBe('(3:2:3c4d4e4 f8');
+  });
+});
