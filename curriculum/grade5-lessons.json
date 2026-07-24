@@ -117,6 +117,37 @@
         "smartTip": "Count the notes and their shape. Three notes flicking to a neighbour = a mordent; five notes winding above AND below = a turn; a long even wobble = a trill; one small note leaning in = a grace note (slashed = acciaccatura, half-value = appoggiatura).",
         "didYouKnow": "Baroque composers often left ornaments as signs precisely because the exact notes were a matter of taste — the same trill sign could be played a dozen ways depending on the player and the tempo."
       },
+      "unlocks": "metre-rewrite-5"
+    },
+    {
+      "id": "metre-rewrite-5",
+      "title": "Rewriting between simple and compound time",
+      "strand": "rhythm",
+      "atoms": ["rewrite:simple_compound"],
+      "templates": ["metre_rewrite"],
+      "worked_example": {
+        "template_id": "metre_rewrite",
+        "grade": 5,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Simple and compound time have the same number of beats — 2/4 and 6/8 are both two-beat (duple) metres",
+          "To rewrite from simple into compound, each beat's note values grow by half: a crotchet beat becomes a dotted-crotchet beat, and every note inside gains a dot",
+          "To rewrite from compound back into simple, take the dot off every note — the values shrink by a third"
+        ],
+        "concept": {
+          "title": "Same beats, re-valued notes",
+          "body": "Simple and compound time can describe the SAME number of beats — 2/4 and 6/8 are both duple. The difference is how the beat divides (in two for simple, in three for compound) and how the beat is written: a simple beat is a plain crotchet, a compound beat is a DOTTED crotchet. To rewrite a bar from simple into compound time you scale every note value by a half — add a dot to each note, so a crotchet becomes a dotted crotchet and a quaver becomes a dotted quaver. Going the other way, you take the dot off. The pitches never change — a metre rewrite re-values the rhythm, it does not re-pitch the melody. The note values you write in the two metres are DIFFERENT, even though the beats line up.",
+          "example": {
+            "template_id": "metre_rewrite",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Same pitches, same order — just re-value. Into compound: add a dot to every note. Back to simple: take every dot off. The beats stay lined up.",
+        "didYouKnow": "6/8 and 3/4 use the exact same six quavers per bar, but group them differently — 6/8 as two dotted-crotchet beats, 3/4 as three crotchet beats. The time signature tells the player how to FEEL the bar, not just how to count it."
+      },
       "unlocks": null
     }
   ]

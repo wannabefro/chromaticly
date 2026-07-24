@@ -15,6 +15,7 @@ import { instrumentKnowledge } from './instrument-knowledge';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { metreClassification } from './metre-classification';
+import { metreRewrite } from './metre-rewrite';
 import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
@@ -54,6 +55,7 @@ export const GENERATORS: Record<string, Generator> = {
   rest_completion: restCompletion,
   clef_equivalence: clefEquivalence,
   transposing_instrument: transposingInstrument,
+  metre_rewrite: metreRewrite,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

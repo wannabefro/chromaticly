@@ -327,3 +327,60 @@ export function transpositionCheckLabel(instance: ExerciseInstance, response: Tr
   const remaining = total - response.placements.filter((p) => p !== null).length;
   return remaining <= 0 ? 'Check' : `Check — ${remaining} note${remaining === 1 ? '' : 's'} left`;
 }
+
+// --- note_value_palette (G5-2 metre rewrite, chromaticly-4ak) -----------------
+// The pitch of each slot is FIXED (given); the learner picks a note VALUE
+// (dur + dots) per slot from the palette. Grading compares only the values —
+// the pitches are never in question.
+
+export interface NoteValueChoice {
+  dur: Duration;
+  dots?: Dots;
+}
+export interface NoteValueResponse {
+  placements: (NoteValueChoice | null)[];
+}
+
+export interface NoteValueTarget {
+  pitch: string;
+  dur: Duration;
+  dots?: Dots;
+}
+
+export function noteValueTargets(instance: ExerciseInstance): NoteValueTarget[] {
+  const perItem = instance.answer.per_item;
+  if (!Array.isArray(perItem)) throw new Error('note_value_palette: instance has no per_item target');
+  return perItem as NoteValueTarget[];
+}
+
+function sameValue(a: NoteValueChoice | null, b: NoteValueTarget): boolean {
+  return a != null && a.dur === b.dur && (a.dots ?? 0) === (b.dots ?? 0);
+}
+
+export function noteValueEmptyResponse(instance: ExerciseInstance): NoteValueResponse {
+  return { placements: Array.from({ length: noteValueTargets(instance).length }, () => null) };
+}
+
+export function noteValueCanCheck(response: NoteValueResponse): boolean {
+  return response.placements.length > 0 && response.placements.every((p) => p !== null);
+}
+
+/** Per-slot verdicts, in slot order — the chosen value must match the scaled
+ *  target value exactly (dots included). */
+export function noteValueVerdicts(instance: ExerciseInstance, response: NoteValueResponse): boolean[] {
+  const targets = noteValueTargets(instance);
+  if (response.placements.length !== targets.length) return [];
+  return response.placements.map((p, i) => sameValue(p, targets[i]));
+}
+
+export function gradeNoteValuePalette(instance: ExerciseInstance, response: NoteValueResponse): boolean {
+  const targets = noteValueTargets(instance);
+  if (response.placements.length !== targets.length) return false;
+  return response.placements.every((p, i) => sameValue(p, targets[i]));
+}
+
+export function noteValueCheckLabel(instance: ExerciseInstance, response: NoteValueResponse): string {
+  const total = noteValueTargets(instance).length;
+  const remaining = total - response.placements.filter((p) => p !== null).length;
+  return remaining <= 0 ? 'Check' : `Check — ${remaining} note${remaining === 1 ? '' : 's'} left`;
+}

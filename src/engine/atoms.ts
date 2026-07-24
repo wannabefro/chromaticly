@@ -200,6 +200,14 @@ export function transposeInstrumentAtom(instrument: string): string {
   return `transpose_instrument:${instrument}`;
 }
 
+/** Grade-5 simple<->compound metre-rewrite (G5-2, chromaticly-4ak). One bare
+ *  atom for the whole skill (like transposeAtom): the specific direction and
+ *  metre pair are drawn by the generator, not encoded per atom — the skill is
+ *  "rewrite a bar between simple and compound time", not any one direction. */
+export function metreRewriteAtom(): string {
+  return 'rewrite:simple_compound';
+}
+
 /** Grade-4 ornament kinds (ornament_recognition, KB `ornaments_recognize`). */
 export const ORNAMENT_KINDS = ['trill', 'turn', 'upper_mordent', 'lower_mordent', 'acciaccatura', 'appoggiatura'] as const;
 

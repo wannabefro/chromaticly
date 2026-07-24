@@ -119,6 +119,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
       'find_the_bar',
       'flashcard',
       'mcq',
+      'note_value_palette',
       'roman_numeral_boxes',
       'stave_input',
       'text_input',

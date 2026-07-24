@@ -76,6 +76,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   enharmonic_recognition: 4,
   clef_equivalence: 4,
   transposing_instrument: 5,
+  metre_rewrite: 5,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -490,6 +491,11 @@ const GRADE_5_EXTRA_CASES: Case[] = [
     label: 'transposing_instrument (transposing-instruments-5, pre-lesson pin, chromaticly-wz1)',
     templateId: 'transposing_instrument',
     atoms: ['transpose_instrument:bb', 'transpose_instrument:a', 'transpose_instrument:f'],
+  },
+  {
+    label: 'metre_rewrite (metre-rewrite-5, pre-lesson pin, chromaticly-4ak)',
+    templateId: 'metre_rewrite',
+    atoms: ['rewrite:simple_compound'],
   },
 ];
 

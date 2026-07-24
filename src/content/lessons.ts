@@ -324,6 +324,17 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'rewrite': {
+      // metre_rewrite (G5-2, chromaticly-4ak) is a Grade-5-only skill. One bare
+      // atom for the whole simple<->compound skill, like transpose:octave.
+      if (parts.length !== 1 || parts[0] !== 'simple_compound') {
+        throw new Error(`lessons: malformed rewrite atom "${atom}"`);
+      }
+      if (grade !== 5) {
+        throw new Error(`lessons: atom "${atom}" only resolves at grade 5`);
+      }
+      return;
+    }
     case 'transpose_instrument': {
       // transposing_instrument (G5-4, chromaticly-wz1) is a Grade-5-only skill
       // (the KB scopes transposing instruments at grade 5). One atom per

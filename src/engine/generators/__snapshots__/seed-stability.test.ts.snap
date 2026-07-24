@@ -142775,6 +142775,2793 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte metre_rewrite @ metre-rewrite-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s0",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s1",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s2",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s3",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s4",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s5",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s6",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s7",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s8",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s9",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s10",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s11",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s12",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s13",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s14",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s15",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s16",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C6",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s17",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s18",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s19",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte ornament_recognition @ ornaments-to-sign-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -146582,6 +149369,2793 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     },
     "strand": "pitch",
     "template_id": "transposing_instrument",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte metre_rewrite (metre-rewrite-5, pre-lesson pin, chromaticly-4ak) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s0",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s1",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s2",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s3",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s4",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s5",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s6",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s7",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C6",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s8",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s9",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s10",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s11",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s12",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s13",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "B4",
+        },
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s14",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "quaver",
+          "pitch": "G4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "C4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "C5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s15",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "D5",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "B5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from compound time (6/8) to simple time (2/4), every note loses a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One compound beat (a dotted crotchet) becomes one simple beat (a crotchet). Take the dot off every note — its value shrinks by a third.",
+    ],
+    "id": "metre_rewrite:g5:s16",
+    "interaction": {
+      "config": {
+        "direction": "to_simple",
+        "givenTimeSig": "6/8",
+        "palette": [
+          {
+            "dur": "minim",
+          },
+          {
+            "dur": "crotchet",
+          },
+          {
+            "dur": "quaver",
+          },
+          {
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "2/4",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in simple time (2/4) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "6/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C6",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "C6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s17",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s18",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "quaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "semiquaver",
+          "pitch": "F4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — from simple time (2/4) to compound time (6/8), every note gains a dot. Keep the same pitches and order.",
+    },
+    "grade": 5,
+    "hints": [
+      "One simple beat (a crotchet) becomes one compound beat (a dotted crotchet). Give every note a dot — its value grows by half.",
+    ],
+    "id": "metre_rewrite:g5:s19",
+    "interaction": {
+      "config": {
+        "direction": "to_compound",
+        "givenTimeSig": "2/4",
+        "palette": [
+          {
+            "dots": 1,
+            "dur": "minim",
+          },
+          {
+            "dots": 1,
+            "dur": "crotchet",
+          },
+          {
+            "dots": 1,
+            "dur": "quaver",
+          },
+          {
+            "dots": 1,
+            "dur": "semiquaver",
+          },
+        ],
+        "targetTimeSig": "6/8",
+      },
+      "type": "note_value_palette",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this bar in compound time (6/8) so it keeps the same beats — same notes, re-valued rhythm.",
+    "srs_tags": [
+      "rewrite:simple_compound",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_rewrite",
   },
 ]
 `;

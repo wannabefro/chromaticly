@@ -27,6 +27,7 @@ import { RomanNumeralBoxes, type RnbResponse } from './RomanNumeralBoxes';
 import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
 import { transpositionInputSpec } from './TranspositionInput';
+import { noteValuePaletteSpec } from './NoteValuePalette';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
 
@@ -278,6 +279,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   stave_input: staveInputSpec,
   find_the_bar: findTheBarSpec,
   transposition_input: transpositionInputSpec,
+  note_value_palette: noteValuePaletteSpec,
   roman_numeral_boxes: romanNumeralBoxesSpec,
   drag_match: dragMatchSpec,
 };

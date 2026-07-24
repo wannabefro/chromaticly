@@ -19,6 +19,7 @@ import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
 import { ORNAMENT_NAMES, realizeOrnament } from './generators/ornament-recognition';
 import { ORNAMENT_WRITTEN_TO_SIGN } from './atoms';
+import { METRE_REWRITE_PAIR, rescaleDots, type RewriteDirection } from './generators/metre-rewrite';
 import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
@@ -1089,6 +1090,87 @@ function transposingInstrumentHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// metreRewriteHook (G5-2, chromaticly-4ak) — recompute-don't-trust for the
+// simple<->compound rewrite. The answer bar is the given bar with every note's
+// dot toggled (x3/2 scaling), same pitches and order; the given bar must sum to
+// its metre and the answer bar to the paired metre. A per_item that changed a
+// pitch, dropped/added the wrong dot, or broke the bar total fails.
+function metreRewriteHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['metre_rewrite: stimulus.music is required'];
+
+  const config = inst.interaction.config as
+    | { direction?: unknown; givenTimeSig?: unknown; targetTimeSig?: unknown }
+    | undefined;
+  const direction = config?.direction;
+  if (direction !== 'to_compound' && direction !== 'to_simple') {
+    return ['metre_rewrite: interaction.config.direction must be "to_compound" or "to_simple"'];
+  }
+  const dir = direction as RewriteDirection;
+  const expectedGiven = dir === 'to_compound' ? METRE_REWRITE_PAIR.simple : METRE_REWRITE_PAIR.compound;
+  const expectedTarget = dir === 'to_compound' ? METRE_REWRITE_PAIR.compound : METRE_REWRITE_PAIR.simple;
+
+  const errors: string[] = [];
+  if (music.time_sig !== expectedGiven) {
+    errors.push(`metre_rewrite: given time signature "${String(music.time_sig)}" must be "${expectedGiven}" for direction ${dir}`);
+  }
+  if (config?.givenTimeSig !== expectedGiven || config?.targetTimeSig !== expectedTarget) {
+    errors.push(`metre_rewrite: config metres must be given=${expectedGiven}, target=${expectedTarget} for direction ${dir}`);
+  }
+
+  const givenNotes = music.voices.flatMap((v) => v.events).filter((ev): ev is NoteEvent => ev.type === 'note');
+  const perItem = inst.answer.per_item;
+  if (!Array.isArray(perItem)) {
+    errors.push('metre_rewrite: answer.per_item must be an array');
+    return errors;
+  }
+  if (perItem.length !== givenNotes.length) {
+    errors.push(`metre_rewrite: per_item length (${perItem.length}) does not match the given note count (${givenNotes.length})`);
+    return errors;
+  }
+
+  givenNotes.forEach((given, i) => {
+    const item = perItem[i] as { pitch?: unknown; dur?: unknown; dots?: unknown } | null;
+    if (!item || typeof item.pitch !== 'string' || typeof item.dur !== 'string') {
+      errors.push(`metre_rewrite: per_item[${i}] must be a {pitch, dur} object`);
+      return;
+    }
+    if (item.pitch !== given.pitch) {
+      errors.push(`metre_rewrite: per_item[${i}].pitch "${item.pitch}" does not match the given pitch "${given.pitch}" (a rewrite re-values rhythm, never re-pitches)`);
+    }
+    if (item.dur !== given.dur) {
+      errors.push(`metre_rewrite: per_item[${i}].dur "${String(item.dur)}" does not match the given note value "${given.dur}"`);
+    }
+    let expectedDots: number;
+    try {
+      expectedDots = rescaleDots((given.dots ?? 0) as 0 | 1 | 2, dir);
+    } catch (err) {
+      errors.push(`metre_rewrite: given note ${i} is not in the expected form for ${dir}: ${err instanceof Error ? err.message : String(err)}`);
+      return;
+    }
+    const itemDots = typeof item.dots === 'number' ? item.dots : 0;
+    if (itemDots !== expectedDots) {
+      errors.push(`metre_rewrite: per_item[${i}].dots (${itemDots}) is not the x3/2-scaled value (expected ${expectedDots}) for direction ${dir}`);
+    }
+  });
+
+  // Bar totals: the given bar fills its metre, the answer bar fills the paired metre.
+  const givenUnits = givenNotes.reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+  if (music.time_sig === expectedGiven && givenUnits !== barUnitsFor(expectedGiven)) {
+    errors.push(`metre_rewrite: given bar sums to ${givenUnits} units, not a full bar of ${expectedGiven}`);
+  }
+  const answerUnits = perItem.reduce((sum: number, it) => {
+    const item = it as { dur?: string; dots?: number };
+    if (!item || typeof item.dur !== 'string') return sum;
+    return sum + musicEventUnits({ type: 'note', pitch: 'C4', dur: item.dur as NoteEvent['dur'], dots: item.dots as NoteEvent['dots'] });
+  }, 0);
+  if (answerUnits !== barUnitsFor(expectedTarget)) {
+    errors.push(`metre_rewrite: answer bar sums to ${answerUnits} units, not a full bar of ${expectedTarget}`);
+  }
+
+  return errors;
+}
+
 // clefEquivalenceHook (chromaticly-ra3) — the same-octave sibling of
 // octaveTranspositionHook. The answer stave is a DIFFERENT clef, but the octave
 // delta is 0, so each recomputed target is the SOURCE pitch itself, re-spelled
@@ -1724,6 +1806,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   duplet_recognition: dupletRecognitionHook,
   octave_transposition: octaveTranspositionHook,
   transposing_instrument: transposingInstrumentHook,
+  metre_rewrite: metreRewriteHook,
   clef_equivalence: clefEquivalenceHook,
   chromatic_scale: chromaticScaleHook,
   degree_name_id: degreeNameIdHook,

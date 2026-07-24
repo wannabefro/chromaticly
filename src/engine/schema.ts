@@ -19,6 +19,7 @@ export const InteractionTypeSchema = z.enum([
   'flashcard',
   'find_the_bar',
   'transposition_input',
+  'note_value_palette',
 ]);
 
 export type InteractionType = z.infer<typeof InteractionTypeSchema>;
