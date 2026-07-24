@@ -20,6 +20,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ProgressProvider } from '../learn/ProgressContext';
 import { SettingsProvider } from '../learn/SettingsContext';
+import { SvgRenderProvider } from '../music-surface/SvgRenderService';
 import { settingsStorage, sqliteStorage } from '../platform/sqlite-storage';
 import { colors } from '../ui/theme';
 
@@ -52,7 +53,11 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <SettingsProvider storage={settingsStorage}>
         <ProgressProvider storage={sqliteStorage}>
-          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.surface } }} />
+          {/* One offscreen abcjs surface pre-renders static MCQ option staves so options
+              don't each boot their own WebView (chromaticly-9lb). Warm by first exercise. */}
+          <SvgRenderProvider>
+            <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: colors.surface } }} />
+          </SvgRenderProvider>
         </ProgressProvider>
       </SettingsProvider>
     </SafeAreaProvider>

@@ -104,6 +104,22 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('height: renderedHeight');
   });
 
+  // chromaticly-9lb: one shared surface pre-renders static option staves offscreen so
+  // each MCQ option doesn't boot its own abcjs WebView.
+  test('wires offscreen renderToSvg that trims the SVG and strips the scale style attr', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain('function renderToSvg(abc, scale, reqId)');
+    expect(html).toContain("renderToSvg(cmd.abc, cmd.scale, cmd.reqId)");
+    // renders offscreen (hidden container), never the visible #inner score
+    expect(html).toContain("ABCJS.renderAbc('hidden-paper', abc, opts)");
+    // returns trimmed markup via the svgRendered event
+    expect(html).toContain("type: 'svgRendered'");
+    expect(html).toContain('svg.outerHTML');
+    // strips abcjs's root scale transform (react-native-svg rejects "scale(1.5, 1.5)")
+    expect(html).toContain("svg.removeAttribute('style')");
+    expect(html).toContain("svg.setAttribute('viewBox'");
+  });
+
   // Design 4c: long-press a bar to hear just it. A press-duration flag splits a hold from
   // a tap, and playBar seeks the synth to that one bar.
   test('wires long-press-to-hear a single bar', () => {

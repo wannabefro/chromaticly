@@ -16,6 +16,8 @@ describe('bridge protocol round-trips', () => {
     { type: 'highlightBar', bar: 2, color: '#cb7ad4' },
     { type: 'highlightBar', bar: null },
     { type: 'playAbc', abc: 'X:1\nK:C\nC' },
+    { type: 'renderToSvg', abc: 'X:1\nK:E\nx4', reqId: 7 },
+    { type: 'renderToSvg', abc: 'X:1\nK:E\nx4', scale: 1.5, reqId: 8 },
   ];
   const events: SurfaceEvent[] = [
     { type: 'ready' },
@@ -29,6 +31,8 @@ describe('bridge protocol round-trips', () => {
     { type: 'log', message: 'hi' },
     { type: 'barTapped', bar: 3 },
     { type: 'barHeld', bar: 2 },
+    { type: 'svgRendered', reqId: 7, svg: '<svg></svg>', width: 173, height: 62 },
+    { type: 'svgRendered', reqId: 8, svg: '', width: 0, height: 0 },
   ];
 
   test.each(commands)('command %j survives encode -> decode', (cmd) => {

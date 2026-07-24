@@ -8,6 +8,11 @@ export type SurfaceCommand =
    *  density-aware layout width — wider for note-dense stimuli so they aren't squeezed
    *  into the narrow baked width; absent for sparse stimuli (keeps the baked default). */
   | { type: 'render'; abc: string; scale?: number; staffwidth?: number }
+  /** Render `abc` OFFSCREEN (never touches the visible score) and post its trimmed
+   *  SVG markup back as `svgRendered` for `reqId`. Lets one shared surface pre-render
+   *  static option staves instead of every MCQ option booting its own abcjs WebView
+   *  (chromaticly-9lb). */
+  | { type: 'renderToSvg'; abc: string; scale?: number; reqId: number }
   | { type: 'play' }
   | { type: 'stop' }
   /** Tint the selected bar in the rendered score (design 4c), or clear it with
@@ -24,6 +29,10 @@ export type SurfaceCommand =
 export type SurfaceEvent =
   | { type: 'ready' }
   | { type: 'rendered'; ms: number; height?: number }
+  /** Reply to `renderToSvg`: the offscreen-rendered stave as standalone SVG markup,
+   *  already trimmed to its content box (viewBox set, width/height = content). `svg`
+   *  is empty on a render failure. */
+  | { type: 'svgRendered'; reqId: number; svg: string; width: number; height: number }
   | { type: 'primed'; ms: number }
   | { type: 'played'; latencyMs: number }
   | { type: 'finished' }

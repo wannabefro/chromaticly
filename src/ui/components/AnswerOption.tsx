@@ -1,15 +1,15 @@
 // U3/U4: MCQ option card (design/components/core/AnswerOption.prompt.md). Selected
 // uses the current strand hue; correct/incorrect swap the letter badge for ✓/×.
 // For notation answers (e.g. key signatures) pass `music` — rendered as a mini,
-// play-disabled NotationCard in place of the text label (rule 9: play is omitted
-// only inside answer options). `children` remains available as a raw override.
+// play-disabled static stave (StaticNotation) in place of the text label (rule 9: play
+// is omitted only inside answer options). `children` remains available as a raw override.
 
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Music } from '../../music/types';
 import { ACCENT, colors, shape, strandDef, type, type Strand } from '../theme';
-import { NotationCard } from './NotationCard';
+import { StaticNotation } from './StaticNotation';
 
 export type AnswerOptionState = 'default' | 'selected' | 'correct' | 'incorrect';
 
@@ -85,7 +85,7 @@ export function AnswerOption({
       </View>
       <View style={styles.body}>
         {children ?? (music ? (
-          <NotationCard music={music} play={false} height={100} testID={testID ? `${testID}-notation` : undefined} />
+          <StaticNotation music={music} height={100} testID={testID ? `${testID}-notation` : undefined} />
         ) : (
           <Text style={styles.label}>{label}</Text>
         ))}

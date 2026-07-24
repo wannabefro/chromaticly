@@ -238,6 +238,52 @@ ${playButton}
     });
   }
 
+  // Offscreen render -> trimmed SVG string (chromaticly-9lb). Renders the abc into the
+  // hidden container (never touches the visible #inner score), tightens the SVG to its
+  // content box so a static option card has no loose right-hand whitespace, and posts
+  // the standalone markup back for the request id. The one shared surface pre-renders
+  // every MCQ option this way instead of each option booting its own 500KB abcjs WebView.
+  function renderToSvg(abc, scale, reqId) {
+    try {
+      var opts = Object.assign({}, ${renderOpts});
+      if (typeof scale === 'number') opts.scale = scale;
+      ABCJS.renderAbc('hidden-paper', abc, opts);
+      var svg = document.querySelector('#hidden-paper svg');
+      if (!svg) { emit({ type: 'svgRendered', reqId: reqId, svg: '', width: 0, height: 0 }); return; }
+      // Union the geometry of every drawn path for a tight content box: abcjs lays the
+      // stave out on a loose 740px-wide canvas with the notes packed at the left, so the
+      // raw width attribute would leave a static card mostly empty.
+      var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      Array.prototype.forEach.call(svg.querySelectorAll('path'), function (p) {
+        var b; try { b = p.getBBox(); } catch (e) { return; }
+        if (!b || (b.width === 0 && b.height === 0)) return;
+        minX = Math.min(minX, b.x); minY = Math.min(minY, b.y);
+        maxX = Math.max(maxX, b.x + b.width); maxY = Math.max(maxY, b.y + b.height);
+      });
+      var pad = 2;
+      if (!isFinite(minX)) { minX = 0; minY = 0; maxX = parseFloat(svg.getAttribute('width')) || 0; maxY = parseFloat(svg.getAttribute('height')) || 0; }
+      var w = (maxX - minX) + pad * 2;
+      var h = (maxY - minY) + pad * 2;
+      svg.setAttribute('viewBox', (minX - pad) + ' ' + (minY - pad) + ' ' + w + ' ' + h);
+      svg.setAttribute('width', w);
+      svg.setAttribute('height', h);
+      // abcjs applies the notation scale as a CSS transform on the ROOT svg
+      // (style="transform: scale(1.5, 1.5)"). react-native-svg's parser rejects that
+      // two-value scale ("Transform with key of scale must be a number"), and it is
+      // redundant here anyway: the viewBox above is the scale-invariant path geometry,
+      // so SvgXml scales the content to the card itself. Drop the style attribute.
+      svg.removeAttribute('style');
+      // The in-SVG <style> element only scopes user-select on drag (irrelevant to a
+      // static render) and react-native-svg ignores CSS blocks anyway — drop it too.
+      var styleEl = svg.querySelector('style');
+      if (styleEl) styleEl.parentNode.removeChild(styleEl);
+      emit({ type: 'svgRendered', reqId: reqId, svg: svg.outerHTML, width: w, height: h });
+    } catch (e) {
+      emit({ type: 'svgRendered', reqId: reqId, svg: '', width: 0, height: 0 });
+      emit({ type: 'error', message: 'renderToSvg: ' + (e && e.message || e) });
+    }
+  }
+
   /** D9 "hear yours": parse abc into the HIDDEN container and play it, never touching
    *  #paper (the visible score) — no renderAbc('paper', ...) call and no 'rendered'
    *  event, so the given melody on screen is never repainted. */
@@ -304,6 +350,7 @@ ${playButton}
   function handle(cmd) {
     if (!cmd || !cmd.type) return;
     if (cmd.type === 'render') renderAbc(cmd.abc, cmd.scale, cmd.staffwidth);
+    else if (cmd.type === 'renderToSvg') renderToSvg(cmd.abc, cmd.scale, cmd.reqId);
     else if (cmd.type === 'play') play();
     else if (cmd.type === 'stop') { if (synth) synth.stop(); }
     else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);
