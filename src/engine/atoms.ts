@@ -121,6 +121,24 @@ export function chordAtom(numeral: string): string {
   return `chord:${numeral}`;
 }
 
+/** Grade-5 chord numerals (chromaticly-ehp / plan U2): the grade-4 primary
+ *  triads plus II (the supertonic — minor in a major key; its quality falls out
+ *  of diatonic spelling, not a separate flag). A distinct const from
+ *  CHORD_NUMERALS so grade-4 chord_recognition output stays byte-identical. */
+export const CHORD_NUMERALS_G5 = ['I', 'II', 'IV', 'V'] as const;
+
+/** Chord positions (Grade 5 inversions): a = root, b = 1st inversion (3rd in
+ *  bass), c = 2nd inversion (5th in bass). ABRSM figuring. */
+export const CHORD_POSITIONS = ['a', 'b', 'c'] as const;
+
+/** Grade-5 position-qualified chord atom, e.g. chordPositionAtom('IV','b') ->
+ *  "chord:IV:b". The 3-part shape (vs the bare 2-part `chord:<numeral>`) is what
+ *  gates the generator into inversions mode, leaving the grade-4 root-position
+ *  path untouched. */
+export function chordPositionAtom(numeral: string, position: string): string {
+  return `chord:${numeral}:${position}`;
+}
+
 /** Grade-4 ornament kinds (ornament_recognition, KB `ornaments_recognize`). */
 export const ORNAMENT_KINDS = ['trill', 'turn', 'upper_mordent', 'lower_mordent', 'acciaccatura', 'appoggiatura'] as const;
 

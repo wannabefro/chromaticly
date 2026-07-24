@@ -14,7 +14,7 @@
 import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
 import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
-import { CHORD_NUMERALS, ORNAMENT_KINDS, parseAtom } from './atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
 import { ORNAMENT_NAMES } from './generators/ornament-recognition';
@@ -1154,6 +1154,78 @@ function assertMajorTriad(pitches: unknown, label: string, errors: string[]): vo
   }
 }
 
+/** Recompute a triad's root LETTER and its position (a/b/c) from spelled
+ *  pitches, without trusting the generator (chromaticly-ehp). The root is the
+ *  letter whose diatonic 3rd (+2) and 5th (+4) are the other two letters; the
+ *  position is which member is in the bass (index 0 — pitches are ascending).
+ *  Returns null when the three letters do not form a tertian triad. */
+function recomputeTriad(pitches: string[]): { rootLetter: string; position: string } | null {
+  if (pitches.length !== 3) return null;
+  const letters = pitches.map((p) => /^([A-G])/.exec(p)?.[1]).filter((l): l is string => Boolean(l));
+  if (letters.length !== 3) return null;
+  const idx = (l: string) => LETTER_ORDER.indexOf(l as (typeof LETTER_ORDER)[number]);
+  const set = new Set(letters);
+  if (set.size !== 3) return null;
+  let rootLetter: string | null = null;
+  for (const l of set) {
+    const third = LETTER_ORDER[(idx(l) + 2) % 7];
+    const fifth = LETTER_ORDER[(idx(l) + 4) % 7];
+    if (set.has(third) && set.has(fifth)) {
+      rootLetter = l;
+      break;
+    }
+  }
+  if (!rootLetter) return null;
+  const bassLetter = letters[0];
+  const third = LETTER_ORDER[(idx(rootLetter) + 2) % 7];
+  const fifth = LETTER_ORDER[(idx(rootLetter) + 4) % 7];
+  const position = bassLetter === rootLetter ? 'a' : bassLetter === third ? 'b' : bassLetter === fifth ? 'c' : null;
+  if (!position) return null;
+  return { rootLetter, position };
+}
+
+// chordInversionErrors (chromaticly-ehp / plan U2) — the Grade-5 branch of the
+// chord hook: recompute-don't-trust for a { numeral, position } answer. The root
+// is found by tertian stacking (not positionally), the numeral from the root's
+// degree above the tonic (CHORD_DEGREE_STEPS incl. II), and the position from
+// which chord member is in the bass. Both axes of the canonical must match.
+function chordInversionErrors(inst: ExerciseInstance, tonic: string, stimulusPitches: string[]): string[] {
+  const errors: string[] = [];
+  const canonical = inst.answer.canonical as { numeral?: unknown; position?: unknown };
+  const recomputed = recomputeTriad(stimulusPitches);
+  if (!recomputed) {
+    return ['chord_recognition: stimulus chord is not a recognizable tertian triad'];
+  }
+  const idx = (l: string) => LETTER_ORDER.indexOf(l as (typeof LETTER_ORDER)[number]);
+  const steps = (idx(recomputed.rootLetter) - idx(tonic[0]) + 7) % 7;
+  const recomputedNumeral = Object.entries(CHORD_DEGREE_STEPS).find(([, s]) => s === steps)?.[0];
+  if (!recomputedNumeral || !(CHORD_NUMERALS_G5 as readonly string[]).includes(recomputedNumeral)) {
+    errors.push(
+      `chord_recognition: chord root "${recomputed.rootLetter}" does not sit on a Grade-5 chord degree (I/II/IV/V)`,
+    );
+  } else if (canonical.numeral !== recomputedNumeral) {
+    errors.push(
+      `chord_recognition: canonical numeral "${String(canonical.numeral)}" does not match the numeral recomputed from the stimulus ("${recomputedNumeral}")`,
+    );
+  }
+  if (typeof canonical.position !== 'string' || !(CHORD_POSITIONS as readonly string[]).includes(canonical.position)) {
+    errors.push(`chord_recognition: canonical position "${String(canonical.position)}" is not a legal position (a/b/c)`);
+  } else if (canonical.position !== recomputed.position) {
+    errors.push(
+      `chord_recognition: canonical position "${String(canonical.position)}" does not match the bass-note position recomputed from the stimulus ("${recomputed.position}")`,
+    );
+  }
+  const numerals = inst.interaction.config?.numerals as unknown;
+  const positions = inst.interaction.config?.positions as unknown;
+  if (JSON.stringify(numerals) !== JSON.stringify([...CHORD_NUMERALS_G5])) {
+    errors.push('chord_recognition: interaction.config.numerals must be the Grade-5 numeral set (I/II/IV/V)');
+  }
+  if (JSON.stringify(positions) !== JSON.stringify([...CHORD_POSITIONS])) {
+    errors.push('chord_recognition: interaction.config.positions must be a/b/c');
+  }
+  return errors;
+}
+
 // chordRecognitionHook (fyu.10) — recompute-don't-trust: the numeral is
 // recomputed from the stimulus chord's ROOT LETTER's diatonic distance above
 // the key's tonic (CHORD_DEGREE_STEPS, shared with the generator as fixed
@@ -1175,6 +1247,14 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
     return ['chord_recognition: stimulus must contain exactly one chord event with exactly 3 pitches'];
   }
   const stimulusPitches = chordEvents[0].pitches;
+
+  // Grade-5 inversions path (chromaticly-ehp): canonical is a structured
+  // { numeral, position } pair rather than a bare numeral string. Validated by
+  // its own recompute — the root is NOT positionally first once inverted.
+  if (inst.answer.canonical && typeof inst.answer.canonical === 'object') {
+    return chordInversionErrors(inst, tonic, stimulusPitches);
+  }
+
   const [root] = stimulusPitches;
 
   const rootLetterMatch = /^([A-G])/.exec(root);

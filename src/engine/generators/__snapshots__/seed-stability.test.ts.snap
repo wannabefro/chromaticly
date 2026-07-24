@@ -140129,3 +140129,2648 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   },
 ]
 `;
+
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte chord_recognition @ chord-inversions-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s0",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "II": [
+            "G2",
+            "Bb2",
+            "D3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:II:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "G3",
+                  "Bb3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s1",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D#3",
+            "F#3",
+          ],
+          "II": [
+            "C#2",
+            "E2",
+            "G#2",
+          ],
+          "IV": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A#2",
+                  "C#3",
+                  "F#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s2",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "II": [
+            "G2",
+            "Bb2",
+            "D3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:I:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "C3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s3",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+          "II": [
+            "B3",
+            "D4",
+            "F#4",
+          ],
+          "IV": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "V": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:II:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "a",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s4",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Ab2",
+            "C3",
+            "Eb3",
+          ],
+          "II": [
+            "Bb2",
+            "Db3",
+            "F3",
+          ],
+          "IV": [
+            "Db2",
+            "F2",
+            "Ab2",
+          ],
+          "V": [
+            "Eb2",
+            "G2",
+            "Bb2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:II:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb2",
+                  "Db3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s5",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "II": [
+            "E4",
+            "G4",
+            "B4",
+          ],
+          "IV": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:I:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A4",
+                  "D5",
+                  "F#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "IV",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s6",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Db4",
+            "F4",
+            "Ab4",
+          ],
+          "II": [
+            "Eb4",
+            "Gb4",
+            "Bb4",
+          ],
+          "IV": [
+            "Gb4",
+            "Bb4",
+            "Db5",
+          ],
+          "V": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:IV:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb4",
+                  "Db5",
+                  "Gb5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "IV",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s7",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "II": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "IV": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:IV:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "Ab4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s8",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+          "II": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "IV": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "V": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:II:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "C5",
+                  "Eb5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s9",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "II": [
+            "G2",
+            "Bb2",
+            "D3",
+          ],
+          "IV": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:I:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "C3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s10",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Bb2",
+            "D3",
+            "F3",
+          ],
+          "II": [
+            "C2",
+            "Eb2",
+            "G2",
+          ],
+          "IV": [
+            "Eb2",
+            "G2",
+            "Bb2",
+          ],
+          "V": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C3",
+                  "F3",
+                  "A3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s11",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+          "II": [
+            "F#2",
+            "A2",
+            "C#3",
+          ],
+          "IV": [
+            "A2",
+            "C#3",
+            "E3",
+          ],
+          "V": [
+            "B2",
+            "D#3",
+            "F#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F#3",
+                  "B3",
+                  "D#4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s12",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+          "II": [
+            "G4",
+            "Bb4",
+            "D5",
+          ],
+          "IV": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+          "V": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "C5",
+                  "E5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s13",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+          "II": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "IV": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D5",
+                  "G5",
+                  "B5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s14",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+          "II": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "IV": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:I:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "Bb4",
+                  "Eb5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "a",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s15",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "A2",
+            "C#3",
+            "E3",
+          ],
+          "II": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "IV": [
+            "D2",
+            "F#2",
+            "A2",
+          ],
+          "V": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "G#2",
+                  "B2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s16",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+          "II": [
+            "D2",
+            "F2",
+            "A2",
+          ],
+          "IV": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+          "V": [
+            "G2",
+            "B2",
+            "D3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:II:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "a",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s17",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+          "II": [
+            "E4",
+            "G4",
+            "B4",
+          ],
+          "IV": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:II:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s18",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Ab3",
+            "C4",
+            "Eb4",
+          ],
+          "II": [
+            "Bb3",
+            "Db4",
+            "F4",
+          ],
+          "IV": [
+            "Db4",
+            "F4",
+            "Ab4",
+          ],
+          "V": [
+            "Eb4",
+            "G4",
+            "Bb4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:I:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "Ab4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s19",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+          "II": [
+            "F#4",
+            "A4",
+            "C#5",
+          ],
+          "IV": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+          "V": [
+            "B3",
+            "D#4",
+            "F#4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord:V:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D#4",
+                  "F#4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+]
+`;

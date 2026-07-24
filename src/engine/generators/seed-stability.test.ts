@@ -496,3 +496,24 @@ describe('seed-stability — grade-4 lesson-derived generator output is pinned b
     });
   });
 });
+
+// Grade-5 lesson-derived cases (chromaticly-ehp). chord_recognition is already
+// introduced at grade 4, so these are new snapshot keys only (additive) — grade
+// 1-4 keys are untouched. The inversions atoms (chord:<numeral>:<pos>) route the
+// generator into its Grade-5 inversions path.
+const GRADE_5_CASES: Case[] = LESSONS_BY_GRADE[5].flatMap((lesson) =>
+  lesson.templates.map((templateId) => ({
+    label: `${templateId} @ ${lesson.id}`,
+    templateId,
+    atoms: lesson.atoms,
+  })),
+);
+
+describe('seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte', () => {
+  describe.each(GRADE_5_CASES)('$label', ({ templateId, atoms }) => {
+    test('instances are a pure function of (template, grade, seed, atoms)', () => {
+      const instances = SEEDS.map((seed) => generate(templateId, { grade: 5, seed, atoms }));
+      expect(instances).toMatchSnapshot();
+    });
+  });
+});

@@ -13,7 +13,8 @@ import grade1Raw from '../../curriculum/grade1-lessons.json';
 import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
-import { CHORD_NUMERALS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
+import grade5Raw from '../../curriculum/grade5-lessons.json';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
@@ -205,7 +206,20 @@ export function assertAtomResolves(atom: string, grade: number): void {
       return;
     }
     case 'chord': {
-      const [numeral] = parts;
+      const [numeral, position] = parts;
+      // Grade-5 inversion atom: chord:<numeral>:<pos> (chromaticly-ehp). The
+      // 3-part shape adds II and the a/b/c position axis; the bare 2-part atom
+      // stays the Grade-4 primary-triad path.
+      if (position !== undefined) {
+        if (
+          grade < 5 ||
+          !(CHORD_NUMERALS_G5 as readonly string[]).includes(numeral) ||
+          !(CHORD_POSITIONS as readonly string[]).includes(position)
+        ) {
+          throw new Error(`lessons: atom "${atom}" is not a G${grade} chord inversion`);
+        }
+        return;
+      }
       if (grade < 4 || !(CHORD_NUMERALS as readonly string[]).includes(numeral)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} primary-triad chord numeral`);
       }
@@ -393,7 +407,13 @@ export function assertNoCrossDocDuplicateIds(docs: readonly LessonsDoc[]): void 
 
 // Grade-1 first — order matters for the interim single-root-per-grade unlock
 // behavior (see U2 of the grade2-new-major-keys plan).
-const GRADE_DOCS: readonly LessonsDoc[] = [loadDoc(grade1Raw), loadDoc(grade2Raw), loadDoc(grade3Raw), loadDoc(grade4Raw)];
+const GRADE_DOCS: readonly LessonsDoc[] = [
+  loadDoc(grade1Raw),
+  loadDoc(grade2Raw),
+  loadDoc(grade3Raw),
+  loadDoc(grade4Raw),
+  loadDoc(grade5Raw),
+];
 
 assertNoCrossDocDuplicateIds(GRADE_DOCS);
 

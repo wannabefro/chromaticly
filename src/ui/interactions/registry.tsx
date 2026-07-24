@@ -22,7 +22,7 @@ import { DragMatch, type DragMatchResponse } from './DragMatch';
 import { FindTheBar, type FindTheBarResponse } from './FindTheBar';
 import { Flashcard, type FlashcardResponse } from './Flashcard';
 import { Mcq } from './Mcq';
-import { RomanNumeralBoxes } from './RomanNumeralBoxes';
+import { RomanNumeralBoxes, type RnbResponse } from './RomanNumeralBoxes';
 import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
 import { transpositionInputSpec } from './TranspositionInput';
@@ -189,14 +189,24 @@ const findTheBarSpec: InteractionSpec<FindTheBarResponse> = {
 };
 
 /** The correct chord on paper (rule 1/2: notation on light paper, with play),
- *  captioned with its numeral and spelled triad — the FeedbackSheet reveal for a
+ *  captioned with its numeral (+ spelled triad for Grade 4, or the "reads as
+ *  IVb" position figure for Grade-5 inversions) — the FeedbackSheet reveal for a
  *  missed chord recognition. */
 function romanNumeralBoxesCorrectAnswerView(instance: ExerciseInstance) {
   const music = instance.stimulus.music;
-  const numeral = String(instance.answer.canonical);
-  const triads = (instance.interaction.config as { triads?: Record<string, string[]> }).triads;
-  const spelled = triads?.[numeral]?.map((p) => /^([A-G][#b]{0,2})/.exec(p)?.[1] ?? p).join('–') ?? '';
-  const caption = spelled ? `${numeral} — ${spelled}` : numeral;
+  const canonical = instance.answer.canonical;
+
+  let caption: string;
+  if (canonical && typeof canonical === 'object') {
+    const { numeral, position } = canonical as { numeral: string; position: string };
+    caption = `reads as ${numeral}${position}`;
+  } else {
+    const numeral = String(canonical);
+    const triads = (instance.interaction.config as { triads?: Record<string, string[]> }).triads;
+    const spelled = triads?.[numeral]?.map((p) => /^([A-G][#b]{0,2})/.exec(p)?.[1] ?? p).join('–') ?? '';
+    caption = spelled ? `${numeral} — ${spelled}` : numeral;
+  }
+
   return music ? (
     <NotationCard music={music} caption={caption} testID="answer-notation" />
   ) : (
@@ -204,10 +214,17 @@ function romanNumeralBoxesCorrectAnswerView(instance: ExerciseInstance) {
   );
 }
 
-const romanNumeralBoxesSpec: InteractionSpec<string | null> = {
+const romanNumeralBoxesSpec: InteractionSpec<RnbResponse> = {
   Component: RomanNumeralBoxes,
-  emptyResponse: () => null,
-  canCheck: (response) => response !== null,
+  // Grade-5 inversions carry a two-axis { numeral, position } response; Grade 4
+  // stays a single nullable numeral string.
+  emptyResponse: (instance) =>
+    (instance.interaction.config as { positions?: unknown }).positions ? { numeral: null, position: null } : null,
+  canCheck: (response) => {
+    if (response === null) return false;
+    if (typeof response === 'object') return response.numeral !== null && response.position !== null;
+    return true;
+  },
   grade: (instance, response) => gradeMcq(instance, response),
   submits: true,
   correctAnswerView: romanNumeralBoxesCorrectAnswerView,

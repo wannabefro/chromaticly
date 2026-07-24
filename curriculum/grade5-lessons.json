@@ -1,0 +1,50 @@
+{
+  "grade": 5,
+  "version": "g5-lessons-2026-07-24a",
+  "lessons": [
+    {
+      "id": "chord-inversions-5",
+      "title": "Chord inversions: a, b and c",
+      "strand": "chords",
+      "atoms": [
+        "chord:I:a",
+        "chord:I:b",
+        "chord:I:c",
+        "chord:II:a",
+        "chord:II:b",
+        "chord:II:c",
+        "chord:IV:a",
+        "chord:IV:b",
+        "chord:IV:c",
+        "chord:V:a",
+        "chord:V:b",
+        "chord:V:c"
+      ],
+      "templates": ["chord_recognition"],
+      "worked_example": {
+        "template_id": "chord_recognition",
+        "grade": 5,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "A triad can be arranged with any of its three notes in the bass — this is its position, or inversion",
+          "Root position (a) has the root in the bass; 1st inversion (b) has the 3rd in the bass; 2nd inversion (c) has the 5th in the bass",
+          "Name a chord in two steps: work out the triad (I, II, IV or V) by finding its root, then read the bass note to name the position — so a IV chord with its 3rd in the bass is IVb"
+        ],
+        "concept": {
+          "title": "Chord inversions: a, b and c",
+          "body": "The same triad can be built up from any of its three notes. When the root is the lowest note the chord is in ROOT POSITION (a). When the 3rd is the lowest note it is in 1ST INVERSION (b). When the 5th is the lowest note it is in 2ND INVERSION (c). The notes are the same — only which one sits at the bottom changes. To name an inverted chord, first find the root by stacking the notes in 3rds, name the triad from the key (I, II, IV or V — remember II is minor in a major key), then look at the lowest note to name the position. A IV chord with its 3rd in the bass reads as IVb.",
+          "example": {
+            "template_id": "chord_recognition",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "The lowest note names the position, not the numeral. Find the root by stacking the notes in 3rds first, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+        "didYouKnow": "The little letters a, b and c are the ABRSM way of writing inversions. Elsewhere you may meet figured bass instead — IVb is the same chord a musician of Bach's day would have marked with a small 6 under the bass note."
+      },
+      "unlocks": null
+    }
+  ]
+}

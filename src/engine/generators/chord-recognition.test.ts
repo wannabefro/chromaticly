@@ -142,3 +142,122 @@ describe('chord_recognition — reproducibility (KTD4: pure function of seed + a
     expect(generate('chord_recognition', opts(9))).toEqual(generate('chord_recognition', opts(9)));
   });
 });
+
+// --- Grade-5 inversions (chromaticly-ehp / plan U2) ---
+
+const INVERSION_ATOMS = [
+  'chord:I:a', 'chord:I:b', 'chord:I:c',
+  'chord:II:a', 'chord:II:b', 'chord:II:c',
+  'chord:IV:a', 'chord:IV:b', 'chord:IV:c',
+  'chord:V:a', 'chord:V:b', 'chord:V:c',
+];
+
+function invOpts(seed: number, atoms: string[] = INVERSION_ATOMS) {
+  return { grade: 5, seed, atoms };
+}
+
+const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+
+describe('chord_recognition inversions — every instance validates clean across seeds', () => {
+  test('seeds 0..60 all produce a passing Grade-5 inversion instance', () => {
+    for (let seed = 0; seed <= 60; seed++) {
+      const inst = generate('chord_recognition', invOpts(seed));
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+    }
+  });
+});
+
+describe('chord_recognition inversions — the answer is a structured { numeral, position } pair', () => {
+  test('canonical carries a legal numeral (I/II/IV/V) and position (a/b/c); srs_tag is chord:<numeral>:<pos>', () => {
+    for (let seed = 0; seed <= 40; seed++) {
+      const inst = generate('chord_recognition', invOpts(seed));
+      const { numeral, position } = inst.answer.canonical as { numeral: string; position: string };
+      expect(['I', 'II', 'IV', 'V']).toContain(numeral);
+      expect(['a', 'b', 'c']).toContain(position);
+      expect(inst.srs_tags).toEqual([`chord:${numeral}:${position}`]);
+    }
+  });
+});
+
+describe('chord_recognition inversions — the position is exactly which chord member sits in the bass', () => {
+  test('recomputing position from the bass note (root=a, 3rd=b, 5th=c) always matches canonical.position', () => {
+    for (let seed = 0; seed <= 60; seed++) {
+      const inst = generate('chord_recognition', invOpts(seed));
+      const { numeral, position } = inst.answer.canonical as { numeral: string; position: string };
+      const config = inst.interaction.config as { triads: Record<string, string[]> };
+      const [rootP, thirdP, fifthP] = config.triads[numeral]; // root-position reference
+      const music = inst.stimulus.music as { voices: { events: { pitches?: string[] }[] }[] };
+      const bassLetter = music.voices[0].events[0].pitches![0][0];
+      const expected = bassLetter === rootP[0] ? 'a' : bassLetter === thirdP[0] ? 'b' : bassLetter === fifthP[0] ? 'c' : '?';
+      expect(position).toBe(expected);
+    }
+  });
+});
+
+describe('chord_recognition inversions — II is a MINOR triad in a major key (diatonic quality, not forced major)', () => {
+  test('config.triads.II is minor (minor 3rd + major 3rd); I/IV/V stay major', () => {
+    let sawII = false;
+    for (let seed = 0; seed <= 40; seed++) {
+      const inst = generate('chord_recognition', invOpts(seed));
+      const config = inst.interaction.config as { triads: Record<string, string[]> };
+      const [r2, t2, f2] = config.triads.II;
+      const n1 = diatonicIntervalNumber(r2, t2);
+      expect(n1).toBe(3);
+      expect(intervalQuality(r2, t2, n1)).toBe('minor'); // II root-third is a MINOR 3rd
+      const n2 = diatonicIntervalNumber(t2, f2);
+      expect(intervalQuality(t2, f2, n2)).toBe('major');
+      sawII = true;
+      for (const major of ['I', 'IV', 'V']) {
+        const [r, t] = config.triads[major];
+        expect(intervalQuality(r, t, diatonicIntervalNumber(r, t))).toBe('major');
+      }
+    }
+    expect(sawII).toBe(true);
+  });
+});
+
+describe('chord_recognition inversions — every numeral and position is reachable', () => {
+  test('all of I/II/IV/V and all of a/b/c appear as the canonical across seeds', () => {
+    const numerals = new Set<string>();
+    const positions = new Set<string>();
+    for (let seed = 0; seed <= 120; seed++) {
+      const { numeral, position } = generate('chord_recognition', invOpts(seed)).answer.canonical as {
+        numeral: string;
+        position: string;
+      };
+      numerals.add(numeral);
+      positions.add(position);
+    }
+    expect(numerals).toEqual(new Set(['I', 'II', 'IV', 'V']));
+    expect(positions).toEqual(new Set(['a', 'b', 'c']));
+  });
+});
+
+describe('chord_recognition inversions — config surfaces both selection axes', () => {
+  test('config.numerals is I/II/IV/V and config.positions is a/b/c', () => {
+    const inst = generate('chord_recognition', invOpts(0));
+    const config = inst.interaction.config as { numerals: string[]; positions: string[] };
+    expect(config.numerals).toEqual(['I', 'II', 'IV', 'V']);
+    expect(config.positions).toEqual(['a', 'b', 'c']);
+  });
+});
+
+describe('chord_recognition inversions — a single position atom pins both axes', () => {
+  test('chord:IV:b always yields { numeral: IV, position: b } (1st inversion, 3rd in bass)', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const inst = generate('chord_recognition', invOpts(seed, ['chord:IV:b']));
+      expect(inst.answer.canonical).toEqual({ numeral: 'IV', position: 'b' });
+      const config = inst.interaction.config as { triads: Record<string, string[]> };
+      const music = inst.stimulus.music as { voices: { events: { pitches?: string[] }[] }[] };
+      // 1st inversion: the 3rd of IV is the bass note.
+      expect(music.voices[0].events[0].pitches![0][0]).toBe(config.triads.IV[1][0]);
+    }
+  });
+});
+
+describe('chord_recognition — the Grade-4 bare-atom path is untouched (still a string numeral)', () => {
+  test('bare chord:* atoms still produce a string canonical, not a { numeral, position } object', () => {
+    const inst = generate('chord_recognition', opts(0));
+    expect(typeof inst.answer.canonical).toBe('string');
+  });
+});
