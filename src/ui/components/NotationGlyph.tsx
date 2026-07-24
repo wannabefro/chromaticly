@@ -10,6 +10,12 @@ import { SvgXml } from 'react-native-svg';
 
 import { useSettingsContext } from '../../learn/SettingsContext';
 import { NOTATION_SCALES } from '../../learn/settings';
+
+// Pixels per abcjs base unit for a rhythm glyph at the medium notation size. abcjs draws
+// note VALUES at consistent proportions (a stemmed note ~31 units tall, a stemless
+// semibreve ~8), so rendering at a fixed px/unit keeps every value's notehead the same
+// size — a semibreve stays a small oval instead of stretching to fill a fixed height.
+const RHYTHM_PX_PER_UNIT = 1.4;
 import { musicToAbc } from '../../music/abc-emitter';
 import { MusicSurface } from '../../music-surface/MusicSurface';
 import { useSvgRenderer, type SvgRender } from '../../music-surface/SvgRenderService';
@@ -49,6 +55,22 @@ export function NotationGlyph({ music, height = 100, width, testID = 'notation-g
   }
 
   if (!render) return <View style={{ height }} testID={`${testID}-pending`} />;
+
+  // A rhythm glyph (musical sums) renders at its NATURAL note proportions — every value
+  // scaled by the same px/unit so noteheads match and a semibreve is a small oval, not a
+  // stretched-to-height blob (chromaticly-f9k). Scales with the notation-size setting.
+  if (music.rhythmStaff) {
+    const k = RHYTHM_PX_PER_UNIT * (scale / NOTATION_SCALES.medium);
+    return (
+      <SvgXml
+        xml={render.svg}
+        width={render.width * k}
+        height={render.height * k}
+        color={colors.paperInk}
+        testID={`${testID}-svg`}
+      />
+    );
+  }
 
   // Natural width = the trimmed viewBox aspect ratio at `height`, so a glyph in a row
   // takes only the space its notes need instead of stretching.

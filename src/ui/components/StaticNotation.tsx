@@ -17,6 +17,17 @@ export interface StaticNotationProps {
 }
 
 export function StaticNotation({ music, height = 100, testID = 'static-notation' }: StaticNotationProps) {
+  // A rhythm glyph (musical-sum option) renders at its natural note size, so centre it in
+  // a fixed-height box — every option card stays the same height whether its value is a
+  // small semibreve or a tall stemmed note (chromaticly-f9k). Other notation (key sigs)
+  // fills the card width as before.
+  if (music.rhythmStaff) {
+    return (
+      <View style={[styles.card, styles.rhythmBox]} testID={testID}>
+        <NotationGlyph music={music} testID={`${testID}-glyph`} />
+      </View>
+    );
+  }
   return (
     <View style={styles.card} testID={testID}>
       <NotationGlyph music={music} height={height} width="100%" testID={`${testID}-glyph`} />
@@ -30,5 +41,10 @@ const styles = StyleSheet.create({
     borderRadius: shape.radiusPaper,
     padding: shape.spaceCard,
     ...elevation.paper,
+  },
+  rhythmBox: {
+    height: 72,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
