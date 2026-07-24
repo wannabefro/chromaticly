@@ -120,7 +120,7 @@
       "template_id": "rest_completion",
       "grades": [1, 2, 3, 4, 5],
       "strand": "rhythm",
-      "interaction": "stave_input",
+      "interaction": "mcq (rendered rest options) — implemented as MCQ, not a stave editor (chromaticly-gni KTD1)",
       "generation_rules": [
         "Generate a bar missing rest(s) at a marked position; required silence = signature total minus sounding values",
         "Compound time (G3+): rests must show each dotted-crotchet beat correctly; G4+ may require double-dotted rests"

@@ -19,6 +19,7 @@ import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
 import { ornamentRecognition } from './ornament-recognition';
+import { restCompletion } from './rest-completion';
 import { rhythmSum } from './rhythm-sum';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
@@ -48,6 +49,7 @@ export const GENERATORS: Record<string, Generator> = {
   ornament_recognition: ornamentRecognition,
   instrument_knowledge: instrumentKnowledge,
   enharmonic_recognition: enharmonicRecognition,
+  rest_completion: restCompletion,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

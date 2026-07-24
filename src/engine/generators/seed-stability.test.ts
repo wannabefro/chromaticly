@@ -42,6 +42,13 @@ const LESSON_CASES: Case[] = LESSONS_BY_GRADE[1].flatMap((lesson) =>
 const EXTRA_CASES: Case[] = [
   { label: 'note_value_compare (rotation)', templateId: 'note_value_compare', atoms: [] },
   { label: 'term_meaning (rotation)', templateId: 'term_meaning', atoms: atomsForLesson('terms-and-signs') },
+  // chromaticly-gni — rest_completion is introduced at grade 1; pinned pre-lesson
+  // (before rests-1 exists) so registration is covered by the net at introduction.
+  {
+    label: 'rest_completion (rests-1, pre-lesson pin, chromaticly-gni)',
+    templateId: 'rest_completion',
+    atoms: ['rest:semibreve', 'rest:minim', 'rest:crotchet', 'rest:quaver', 'rest:semiquaver'],
+  },
 ];
 
 const CASES = [...LESSON_CASES, ...EXTRA_CASES];

@@ -144,6 +144,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // enharmonic_recognition (chromaticly-xbu) — strand pitch, text-only, no
       // grade-scoped dimension — "Grade 4" is a curriculum-layer-only gate.
       'enharmonic_recognition',
+      // rest_completion (chromaticly-gni) — needs a rest:<dur> atom (throws
+      // without one), so it isn't exercised by this atom-free grade-2 sweep;
+      // which rest values are in scope is a curriculum-layer gate.
+      'rest_completion',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

@@ -13,6 +13,7 @@
 
 import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
+import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
 import { CHORD_NUMERALS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
@@ -1312,6 +1313,33 @@ function enharmonicRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// restCompletionHook (chromaticly-gni) — self-consistency: the answer rest's
+// length must exactly fill the gap the sounding notes leave in the stimulus bar.
+// Independently RECOMPUTES from the rendered stimulus rather than trusting the
+// canonical label (the metreClassification/anacrusis discipline).
+function restCompletionHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const music = inst.stimulus.music as Music | null;
+  if (!music || typeof music.time_sig !== 'string') {
+    return ['rest_completion: stimulus must carry a time signature'];
+  }
+  const answerDur = durationFromRestLabel(String(inst.answer.canonical));
+  if (!answerDur) {
+    return [`rest_completion: canonical "${String(inst.answer.canonical)}" is not a rest label`];
+  }
+  const soundingUnits = (music.voices[0]?.events ?? []).reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+  const barUnits = barUnitsFor(music.time_sig);
+  if (soundingUnits + REST_UNITS[answerDur] !== barUnits) {
+    errors.push(
+      `rest_completion: sounding (${soundingUnits}) + answer rest (${REST_UNITS[answerDur]}) != bar (${barUnits}) for ${music.time_sig}`,
+    );
+  }
+  if (inst.srs_tags[0] !== `rest:${answerDur}`) {
+    errors.push(`rest_completion: srs_tag "${inst.srs_tags[0]}" must name the answer rest "rest:${answerDur}"`);
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   interval_naming: intervalNamingHook,
@@ -1333,4 +1361,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   ornament_recognition: ornamentRecognitionHook,
   instrument_knowledge: instrumentKnowledgeHook,
   enharmonic_recognition: enharmonicRecognitionHook,
+  rest_completion: restCompletionHook,
 };
