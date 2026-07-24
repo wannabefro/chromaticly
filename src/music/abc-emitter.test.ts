@@ -86,6 +86,21 @@ describe('musicToAbc', () => {
     expect(bass).toContain('C32');
   });
 
+  // chromaticly-f9k: a rhythm-staff note is a bare symbol (no clef, no staff line) for
+  // the musical-sum worksheet — pitch is meaningless, only the value reads.
+  test('rhythmStaff drops the clef and all staff lines (clef=none stafflines=0)', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: null,
+      rhythmStaff: true,
+      voices: [{ events: [{ type: 'note', pitch: 'B4', dur: 'minim', dots: 1 }] }],
+    };
+    const abc = musicToAbc(music);
+    expect(abc).toContain('clef=none stafflines=0');
+    expect(abc).not.toContain('clef=treble');
+  });
+
   test('a tonic triad renders as an ABC chord', () => {
     const music: Music = {
       clef: 'treble',

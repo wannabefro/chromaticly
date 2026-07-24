@@ -276,7 +276,10 @@ export function musicToAbc(music: Music): string {
     'X:1',
     `L:${UNIT_NOTE_LENGTH}`,
     `M:${music.time_sig_hidden ? 'none' : music.time_sig ?? 'none'}`,
-    `K:${keyName(music.key_sig)} ${clefTag(music.clef)}`,
+    // A rhythm-staff stimulus (musical sums) is a bare note SYMBOL — no clef and no
+    // staff line at all (stafflines=0), the ABRSM worksheet convention. Pitch carries
+    // no meaning; only the note VALUE reads (chromaticly-f9k).
+    `K:${keyName(music.key_sig)} ${music.rhythmStaff ? 'clef=none stafflines=0' : clefTag(music.clef)}`,
   ].join('\n');
 
   const unit = beatUnit(music.time_sig);

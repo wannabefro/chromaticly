@@ -17,6 +17,7 @@ import type { SurfaceEvent } from '../music-surface/bridge';
 import type { Music } from '../music/types';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
+import { RhythmSumStimulus } from './components/RhythmSumStimulus';
 import { OrnamentCard } from './components/OrnamentCard';
 import { StrandChip } from './components/StrandChip';
 import { Button } from './components/Button';
@@ -132,6 +133,9 @@ export function ExerciseLoop({
   }, []);
 
   const music = instance.stimulus.music;
+  // Musical sums render the operands as rhythm glyphs with +/= operators
+  // (chromaticly-f9k), not a single stave — a dedicated worksheet stimulus.
+  const sumOperands = instance.interaction.config?.sum_operands as Music[] | undefined;
   // An ornament stimulus carries `interaction.config.ornament` (the kind) and
   // renders the split enlarged-symbol card (design 10b) instead of the plain
   // NotationCard — its sign needs the hero + in-context presentation.
@@ -148,7 +152,11 @@ export function ExerciseLoop({
           {instance.prompt}
         </Text>
 
-        {music ? (
+        {sumOperands ? (
+          <View testID="stimulus-music">
+            <RhythmSumStimulus operands={sumOperands} strand={strand} label={instance.stimulus.text ?? undefined} />
+          </View>
+        ) : music ? (
           <View testID="stimulus-music">
             {isOrnament ? (
               <OrnamentCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />

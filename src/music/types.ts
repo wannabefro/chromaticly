@@ -117,5 +117,10 @@ export interface Music {
    *  short first bar in the event stream), so this flag cannot change
    *  emitted abc — it only lets the generator/validator declare intent. */
   anacrusis?: boolean;
+  /** When true, render on a single-line staff with no clef (`clef=none
+   *  stafflines=1`) — a "pure rhythm" glyph where pitch is irrelevant, used for
+   *  the musical-sum operands and their note-value answer options (chromaticly-f9k).
+   *  Only the emitter's clef tag reads this; every note token is unchanged. */
+  rhythmStaff?: boolean;
   voices: Voice[];
 }

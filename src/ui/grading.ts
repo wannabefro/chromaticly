@@ -71,11 +71,23 @@ function seedFromId(id: string): number {
 /** A generator's optional per-value render payload (AD5), e.g. key_signature_id's
  *  `interaction.config.option_music: Record<string, Music>` keyed by the same
  *  semantic string used as `answer.canonical`/each distractor. */
+function optionMusicKey(value: unknown): string | undefined {
+  if (typeof value === 'string') return value;
+  // A rhythm {dur,dots} answer (rhythm_sum, chromaticly-f9k) has no string form —
+  // key its option_music by "dur:dots" so a note-value option can carry a glyph too.
+  if (value && typeof value === 'object' && typeof (value as { dur?: unknown }).dur === 'string') {
+    const v = value as { dur: string; dots?: number };
+    return `${v.dur}:${v.dots ?? 0}`;
+  }
+  return undefined;
+}
+
 function optionMusicFor(instance: ExerciseInstance, value: unknown): Music | undefined {
-  if (typeof value !== 'string') return undefined;
+  const key = optionMusicKey(value);
+  if (key == null) return undefined;
   const map = instance.interaction.config?.option_music;
   if (!map || typeof map !== 'object') return undefined;
-  return (map as Record<string, Music>)[value];
+  return (map as Record<string, Music>)[key];
 }
 
 /** A notation option's label is never shown (its NotationCard renders instead),

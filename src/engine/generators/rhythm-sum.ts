@@ -13,7 +13,7 @@
 // on generateValidated's reject-retry loop.
 
 import { KB, KB_VERSION } from '../../content/knowledge-base';
-import type { Duration } from '../../music/types';
+import type { Duration, Music } from '../../music/types';
 import { RHYTHM_SUM_DOUBLE_DOT_ATOM, rhythmSumAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import type { ExerciseInstance } from '../schema';
@@ -121,6 +121,24 @@ function formatPrompt(operands: ValueEntry[]): string {
   return `${operands.map(formatValue).join(' + ')} = ?`;
 }
 
+// A single note value as a "pure rhythm" glyph — one note on a clefless single line
+// (chromaticly-f9k). Pitch is meaningless here, so every value sits on the same line;
+// only the note VALUE (head/stem/flags/dots) reads. Drives both the sum's operand
+// glyphs and the note-value answer options.
+function glyphMusic(entry: { dur: Duration; dots: Dots }): Music {
+  return {
+    clef: 'treble',
+    key_sig: null,
+    time_sig: null,
+    rhythmStaff: true,
+    voices: [{ events: [{ type: 'note', pitch: 'B4', dur: entry.dur, dots: entry.dots }] }],
+  };
+}
+
+function valueKey(entry: { dur: Duration; dots: Dots }): string {
+  return `${entry.dur}:${entry.dots}`;
+}
+
 function sameValue(a: ValueEntry, b: ValueEntry): boolean {
   return a.dur === b.dur && a.dots === b.dots;
 }
@@ -169,9 +187,16 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const decomposition = pick(rng, decomps);
   const distractorEntries = buildDistractors(target, valueTable);
 
-  // The instruction lives in `prompt`; the sum itself is the stimulus so the UI
-  // renders it once (as the large notation-card line), never twice.
+  // The instruction lives in `prompt`; the sum itself is the stimulus. `text` is the
+  // spoken-word form ("minim + crotchet = ?") kept for screen-readers and E2E, while
+  // the visible worksheet is rendered from `sum_operands` glyphs (chromaticly-f9k).
   const sumPrompt = formatPrompt(decomposition.operands);
+
+  // Each operand and each note-value option rendered as a rhythm glyph, so the sum
+  // reads as notes not words (matches note_value_compare). option_music is keyed by
+  // "dur:dots" to match the {dur,dots} option values (grading.optionMusicKey).
+  const optionMusic: Record<string, Music> = {};
+  for (const entry of [target, ...distractorEntries]) optionMusic[valueKey(entry)] = glyphMusic(entry);
 
   return {
     id: makeInstanceId('rhythm_sum', grade, idSeed),
@@ -180,7 +205,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     strand: 'rhythm',
     prompt: 'Answer this musical sum with one note:',
     stimulus: { music: null, text: sumPrompt },
-    interaction: { type: 'mcq', config: {} },
+    interaction: {
+      type: 'mcq',
+      config: { sum_operands: decomposition.operands.map(glyphMusic), option_music: optionMusic },
+    },
     answer: { canonical: toAnswerValue(target), accepted_alternatives: [] },
     distractors: distractorEntries.map(toAnswerValue),
     hints: ['Use the note tree: break each value down into the smallest shared unit, then add.'],

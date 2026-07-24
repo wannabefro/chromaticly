@@ -78,10 +78,21 @@ describe('assembleOptions — notation-answer render payload (U4/AD5)', () => {
   });
 
   test('a text-only template (no option_music) keeps formatted labels and no music field', () => {
-    const instance = generate('rhythm_sum', { grade: 1, seed: 5, atoms: [] });
+    const instance = generate('note_naming', { grade: 1, seed: 5, atoms: atomsForTemplate('note_naming') });
     for (const option of assembleOptions(instance)) {
       expect(option.music).toBeUndefined();
       expect(option.label.length).toBeGreaterThan(0);
+    }
+  });
+
+  // chromaticly-f9k: rhythm_sum answers are {dur,dots} objects, not strings, so
+  // option_music is keyed by "dur:dots" — every note-value option renders a glyph.
+  test('rhythm_sum options render note-value glyphs addressed by {dur,dots}', () => {
+    const instance = generate('rhythm_sum', { grade: 1, seed: 5, atoms: [] });
+    for (const option of assembleOptions(instance)) {
+      expect(option.music).toBeDefined();
+      expect(option.label).toBe('');
+      expect((option.music as { rhythmStaff?: boolean }).rhythmStaff).toBe(true);
     }
   });
 });
