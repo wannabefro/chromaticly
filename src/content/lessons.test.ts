@@ -172,6 +172,32 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
     expect(() => assertAtomResolves('anacrusis:2/8', 4)).toThrow();
     expect(() => assertAtomResolves('anacrusis:3/8', 4)).toThrow();
   });
+
+  // chromaticly-gni — rest:<duration> atoms are grade-gated on scope.rests,
+  // cumulative like note values: basic rests at grade 1, demisemiquaver at
+  // grade 3, breve at grade 4.
+  test('rest:crotchet resolves at grade 1; rest:demisemiquaver and rest:breve do not', () => {
+    expect(() => assertAtomResolves('rest:crotchet', 1)).not.toThrow();
+    expect(() => assertAtomResolves('rest:semibreve', 1)).not.toThrow();
+    expect(() => assertAtomResolves('rest:demisemiquaver', 1)).toThrow();
+    expect(() => assertAtomResolves('rest:breve', 1)).toThrow();
+  });
+
+  test('rest:demisemiquaver resolves at grade 3 but not grade 2; rest:breve still throws at grade 3', () => {
+    expect(() => assertAtomResolves('rest:demisemiquaver', 3)).not.toThrow();
+    expect(() => assertAtomResolves('rest:demisemiquaver', 2)).toThrow();
+    expect(() => assertAtomResolves('rest:breve', 3)).toThrow();
+  });
+
+  test('rest:breve resolves at grade 4 only', () => {
+    expect(() => assertAtomResolves('rest:breve', 4)).not.toThrow();
+    expect(() => assertAtomResolves('rest:breve', 3)).toThrow();
+  });
+
+  test('a malformed rest atom (unknown or missing duration) throws', () => {
+    expect(() => assertAtomResolves('rest:wibble', 4)).toThrow();
+    expect(() => assertAtomResolves('rest:crotchet:x', 4)).toThrow();
+  });
 });
 
 describe('lessons — a lesson id reused across two grade docs fails loud at load time', () => {

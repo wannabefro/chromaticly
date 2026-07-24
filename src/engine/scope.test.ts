@@ -54,6 +54,32 @@ describe('scopeForGrade(1).timeSignatures — scope is law', () => {
   });
 });
 
+// chromaticly-gni — rest values in scope widen with the grades, mirroring the
+// KB's per-grade `rests` arrays (whole_bar excluded: it is not a Duration; the
+// semibreve rest serves as the whole-bar rest).
+describe('scopeForGrade(N).rests — rests mirror note values, cumulative per grade', () => {
+  test('grade 1 exposes the five basic rest values (no whole_bar token)', () => {
+    expect(scopeForGrade(1).rests).toEqual(['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver']);
+    expect(scopeForGrade(1).rests).not.toContain('whole_bar');
+    expect(scopeForGrade(1).rests).not.toContain('demisemiquaver');
+    expect(scopeForGrade(1).rests).not.toContain('breve');
+  });
+
+  test('grade 2 adds no rests (same as grade 1)', () => {
+    expect(scopeForGrade(2).rests).toEqual(scopeForGrade(1).rests);
+  });
+
+  test('grade 3 adds the demisemiquaver rest', () => {
+    expect(scopeForGrade(3).rests).toContain('demisemiquaver');
+    expect(scopeForGrade(3).rests).not.toContain('breve');
+  });
+
+  test('grade 4 adds the breve rest and is cumulative over grade 3', () => {
+    expect(scopeForGrade(4).rests).toContain('breve');
+    for (const r of scopeForGrade(3).rests) expect(scopeForGrade(4).rests).toContain(r);
+  });
+});
+
 describe('scopeForGrade(1).noteValues — scope is law', () => {
   test('excludes demisemiquaver, which is introduced at grade 3', () => {
     expect(scopeForGrade(1).noteValues).not.toContain('demisemiquaver');
@@ -321,6 +347,7 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(scopeForGrade(1)).toEqual({
       clefs: ['treble', 'bass'],
       noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
+      rests: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
       keysMajor: ['C', 'G', 'D', 'F'],
       keysMinor: [],
       minorForms: [],
@@ -338,6 +365,7 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     expect(scopeForGrade(2)).toEqual({
       clefs: ['treble', 'bass'],
       noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
+      rests: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
       keysMajor: ['C', 'G', 'D', 'F', 'A', 'Bb', 'Eb'],
       keysMinor: ['A', 'E', 'D'],
       minorForms: ['harmonic'],

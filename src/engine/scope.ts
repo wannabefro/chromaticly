@@ -8,6 +8,11 @@ import type { Clef, Duration, Pitch } from '../music/types';
 export interface GradeScope {
   clefs: readonly Clef[];
   noteValues: readonly Duration[];
+  // Rest values in scope at this grade (chromaticly-gni). Mirrors noteValues 1:1
+  // per the KB. KB's grade-1 `rests` also lists `whole_bar`, which is not a
+  // `Duration` — the semibreve rest IS the whole-bar rest (drawn identically at
+  // any metre), so it is excluded here and the semibreve rest covers that case.
+  rests: readonly Duration[];
   keysMajor: readonly string[];
   keysMinor: readonly string[];
   minorForms: readonly string[];
@@ -31,6 +36,7 @@ const ALTO_RANGE: { low: Pitch; high: Pitch } = { low: 'G2', high: 'F5' };
 const GRADE_1_SCOPE: GradeScope = {
   clefs: ['treble', 'bass'],
   noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
+  rests: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
   keysMajor: ['C', 'G', 'D', 'F'],
   keysMinor: [],
   minorForms: [],
@@ -67,6 +73,7 @@ const GRADE_1_SCOPE: GradeScope = {
 const GRADE_2_SCOPE: GradeScope = {
   clefs: ['treble', 'bass'],
   noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
+  rests: GRADE_1_SCOPE.rests,
   keysMajor: [...GRADE_1_SCOPE.keysMajor, 'A', 'Bb', 'Eb'],
   keysMinor: ['A', 'E', 'D'],
   minorForms: ['harmonic'],
@@ -107,6 +114,7 @@ const GRADE_2_SCOPE: GradeScope = {
 const GRADE_3_SCOPE: GradeScope = {
   clefs: GRADE_2_SCOPE.clefs,
   noteValues: [...GRADE_2_SCOPE.noteValues, ...(KB.grade3Adds.note_values as Duration[])],
+  rests: [...GRADE_2_SCOPE.rests, ...(KB.grade3Adds.rests as Duration[])],
   keysMajor: [...GRADE_2_SCOPE.keysMajor, ...KB.grade3Adds.keys_major],
   keysMinor: [...GRADE_2_SCOPE.keysMinor, ...KB.grade3Adds.keys_minor],
   minorForms: [...GRADE_2_SCOPE.minorForms, ...KB.grade3Adds.minor_forms],
@@ -158,6 +166,7 @@ const GRADE_3_SCOPE: GradeScope = {
 const GRADE_4_SCOPE: GradeScope = {
   clefs: [...GRADE_3_SCOPE.clefs, ...(KB.grade4Adds.clefs as Clef[])],
   noteValues: [...GRADE_3_SCOPE.noteValues, ...(KB.grade4Adds.note_values as Duration[])],
+  rests: [...GRADE_3_SCOPE.rests, ...(KB.grade4Adds.rests as Duration[])],
   keysMajor: [...GRADE_3_SCOPE.keysMajor, ...KB.grade4Adds.keys_major],
   keysMinor: [...GRADE_3_SCOPE.keysMinor, ...KB.grade4Adds.keys_minor],
   minorForms: GRADE_3_SCOPE.minorForms,

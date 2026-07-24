@@ -21,7 +21,7 @@ import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
 import { isCompoundTimeSignature } from '../engine/metre';
 import { diatonicPitchesInRange, metreRenderableTimeSignatures, renderableTimeSignatures, scopeForGrade } from '../engine/scope';
-import type { Clef } from '../music/types';
+import type { Clef, Duration } from '../music/types';
 import { assertRhythmFillsBars } from './teach-rhythm';
 
 const WorkedExampleSchema = z.object({
@@ -92,6 +92,16 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'bar_validity':
       if (parts.length !== 0) throw new Error(`lessons: malformed bar_validity atom "${atom}"`);
       return;
+    case 'rest': {
+      // chromaticly-gni: rest:<duration> resolves iff the duration is a rest
+      // value in scope at this grade (scope.rests mirrors noteValues per the KB).
+      if (parts.length !== 1) throw new Error(`lessons: malformed rest atom "${atom}"`);
+      const [dur] = parts;
+      if (!scopeForGrade(grade).rests.includes(dur as Duration)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} rest value`);
+      }
+      return;
+    }
     case 'add_time_signature': {
       if (parts.length === 0) return; // legacy bare atom (grade 1)
       if (parts.length !== 1) throw new Error(`lessons: malformed add_time_signature atom "${atom}"`);
