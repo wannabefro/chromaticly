@@ -978,6 +978,103 @@ function octaveTranspositionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// clefEquivalenceHook (chromaticly-ra3) — the same-octave sibling of
+// octaveTranspositionHook. The answer stave is a DIFFERENT clef, but the octave
+// delta is 0, so each recomputed target is the SOURCE pitch itself, re-spelled
+// for the key signature (spellInKeySig(natural, key_sig)); a per_item that has
+// shifted the octave — the exact misconception this template must reject — fails
+// the recompute. There is no up/down direction (a same-pitch rewrite has none),
+// so config carries only answerClef.
+function clefEquivalenceHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['clef_equivalence: stimulus.music is required'];
+  if (typeof music.key_sig !== 'string') return ['clef_equivalence: stimulus.music.key_sig is required'];
+
+  const config = inst.interaction.config as { answerClef?: unknown } | undefined;
+  const answerClef = config?.answerClef;
+  if (answerClef !== 'treble' && answerClef !== 'bass' && answerClef !== 'alto') {
+    return ['clef_equivalence: interaction.config.answerClef must be "treble", "bass", or "alto"'];
+  }
+  const givenClef = music.clef;
+  if (givenClef !== 'treble' && givenClef !== 'bass' && givenClef !== 'alto') {
+    return [`clef_equivalence: stimulus.music.clef "${String(givenClef)}" is not a recognized clef`];
+  }
+
+  const errors: string[] = [];
+  if (answerClef === givenClef) {
+    errors.push('clef_equivalence: answerClef must be different from the given clef');
+  }
+
+  const sourceNotes = music.voices.flatMap((v) => v.events).filter((ev): ev is NoteEvent => ev.type === 'note');
+  const perItem = inst.answer.per_item;
+  if (!Array.isArray(perItem)) {
+    errors.push('clef_equivalence: answer.per_item must be an array');
+    return errors;
+  }
+  if (perItem.length !== sourceNotes.length) {
+    errors.push(
+      `clef_equivalence: per_item length (${perItem.length}) does not match the stimulus note count (${sourceNotes.length})`,
+    );
+    return errors;
+  }
+
+  const givenRange = comfortablePitchRange(givenClef, inst.grade);
+  const answerRange = comfortablePitchRange(answerClef, inst.grade);
+
+  sourceNotes.forEach((source, i) => {
+    const item = perItem[i] as { pitch?: unknown; dur?: unknown; dots?: unknown } | null;
+    if (!item || typeof item.pitch !== 'string' || typeof item.dur !== 'string') {
+      errors.push(`clef_equivalence: per_item[${i}] must be a {pitch, dur} object`);
+      return;
+    }
+
+    const natural = naturalLetterOf(source.pitch);
+    // delta 0: the target is the SAME sounding pitch, re-spelled for the key.
+    const expectedTarget = spellInKeySig(naturalPitchStepsAbove(natural, 0), music.key_sig as string);
+    if (item.pitch !== expectedTarget) {
+      errors.push(
+        `clef_equivalence: per_item[${i}].pitch "${item.pitch}" does not match the recomputed same-pitch target ` +
+          `"${expectedTarget}" (an octave shift is the exact misconception this rejects)`,
+      );
+    }
+    if (item.dur !== source.dur) {
+      errors.push(
+        `clef_equivalence: per_item[${i}].dur "${String(item.dur)}" does not match the source rhythm "${source.dur}"`,
+      );
+    }
+    const sourceDots = source.dots ?? 0;
+    const itemDots = typeof item.dots === 'number' ? item.dots : 0;
+    if (itemDots !== sourceDots) {
+      errors.push(
+        `clef_equivalence: per_item[${i}].dots (${itemDots}) does not match the source rhythm's dots (${sourceDots})`,
+      );
+    }
+
+    checkPitchScope(source.pitch, givenRange, inst.grade, errors);
+    checkPitchScope(item.pitch, answerRange, inst.grade, errors);
+  });
+
+  if (typeof music.time_sig !== 'string') {
+    errors.push('clef_equivalence: stimulus must carry a time signature');
+    return errors;
+  }
+  const barUnits = barUnitsFor(music.time_sig);
+  const groups = splitIntoBarGroups(music.voices[0]?.events ?? []).filter((g) => g.length > 0);
+  if (groups.length !== 2) {
+    errors.push(`clef_equivalence: stimulus must render exactly 2 bars (found ${groups.length})`);
+  }
+  for (const group of groups) {
+    const units = group.reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+    if (units !== barUnits) {
+      errors.push(
+        `clef_equivalence: a bar sums to ${units} units, not a full bar of ${music.time_sig} (${barUnits} units)`,
+      );
+    }
+  }
+
+  return errors;
+}
+
 function termMeaningHook(inst: ExerciseInstance): string[] {
   const category = inst.interaction.config?.category;
   if (category === undefined) return []; // no category info carried — skip gracefully
@@ -1359,6 +1456,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   anacrusis_recognition: anacrusisRecognitionHook,
   duplet_recognition: dupletRecognitionHook,
   octave_transposition: octaveTranspositionHook,
+  clef_equivalence: clefEquivalenceHook,
   chromatic_scale: chromaticScaleHook,
   degree_name_id: degreeNameIdHook,
   chord_recognition: chordRecognitionHook,

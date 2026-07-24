@@ -94,6 +94,14 @@ export function transposeAtom(): string {
   return 'transpose:octave';
 }
 
+/** Cross-clef same-pitch equivalence (Grade 4, chromaticly-ra3) — one atom for
+ *  the whole skill, like transposeAtom(): the specific clef pair is drawn by
+ *  the generator, not encoded per atom (the skill is "the same pitch reads
+ *  across treble/alto/bass", not any one pair). */
+export function clefEquivAtom(): string {
+  return 'clef_equiv:cross';
+}
+
 /** Grade-4 technical degree name atom (fyu.4 degree-names slice), e.g.
  *  degreeNameAtom('dominant') -> "degree_name:dominant". */
 export function degreeNameAtom(name: string): string {

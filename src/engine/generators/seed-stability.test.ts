@@ -74,6 +74,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   ornament_recognition: 4,
   instrument_knowledge: 4,
   enharmonic_recognition: 4,
+  clef_equivalence: 4,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -411,6 +412,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'octave_transposition alto (transposition-4-alto, pre-lesson pin)',
     templateId: 'octave_transposition',
     atoms: ['transpose:octave'],
+  },
+  {
+    label: 'clef_equivalence (clef-equivalence-4, pre-lesson pin, chromaticly-ra3)',
+    templateId: 'clef_equivalence',
+    atoms: ['clef_equiv:cross'],
   },
   {
     label: 'chord_recognition (chords-4, pre-lesson pin)',

@@ -148,6 +148,9 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // without one), so it isn't exercised by this atom-free grade-2 sweep;
       // which rest values are in scope is a curriculum-layer gate.
       'rest_completion',
+      // clef_equivalence (chromaticly-ra3) — throws below grade 4 (build gate),
+      // so a grade-2 sweep can't generate it; it's a generator-level grade-4 gate.
+      'clef_equivalence',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

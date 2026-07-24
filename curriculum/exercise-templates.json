@@ -1,6 +1,5 @@
 {
   "$schema_note": "Each template defines: which grades it applies to, parameters sampled at generation time, generation constraints, distractor rules (for choice-based interactions), grading rules, and hint policy. 'pool:' references point into knowledge-base.json grade_scopes (cumulative). One worked example instance is embedded per core template.",
-
   "exercise_instance_schema": {
     "id": "string (uuid)",
     "template_id": "string",
@@ -8,57 +7,125 @@
     "strand": "rhythm|pitch|scales_keys|intervals|chords|terms_signs|context",
     "unit": "string e.g. 3.2",
     "prompt": "string (localizable)",
-    "stimulus": {"music": "Music object (see spec doc) | null", "text": "string | null"},
-    "interaction": {"type": "mcq|multi_select|true_false|text_input|stave_input|tap_placement|drag_match|grid_fill|roman_numeral_boxes|flashcard", "config": {}},
-    "answer": {"canonical": "any", "accepted_alternatives": [], "per_item": []},
+    "stimulus": {
+      "music": "Music object (see spec doc) | null",
+      "text": "string | null"
+    },
+    "interaction": {
+      "type": "mcq|multi_select|true_false|text_input|stave_input|tap_placement|drag_match|grid_fill|roman_numeral_boxes|flashcard",
+      "config": {}
+    },
+    "answer": {
+      "canonical": "any",
+      "accepted_alternatives": [],
+      "per_item": []
+    },
     "distractors": [],
-    "hints": ["smart-tip style strings, revealed progressively"],
-    "feedback": {"correct": "string", "incorrect": "string with explanation"},
-    "srs_tags": ["skill atoms for spaced repetition, e.g. key_sig:Eb_major, note_read:bass:ledger_below"]
+    "hints": [
+      "smart-tip style strings, revealed progressively"
+    ],
+    "feedback": {
+      "correct": "string",
+      "incorrect": "string with explanation"
+    },
+    "srs_tags": [
+      "skill atoms for spaced repetition, e.g. key_sig:Eb_major, note_read:bass:ledger_below"
+    ]
   },
-
   "templates": [
     {
       "template_id": "note_naming",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "pitch",
       "interaction": "text_input | mcq | piano_key_tap",
-      "parameters": {"clef": "pool:clefs", "pitch": "pool:pitch_range", "accidental": "pool:accidentals (weight 30% from G1)"},
+      "parameters": {
+        "clef": "pool:clefs",
+        "pitch": "pool:pitch_range",
+        "accidental": "pool:accidentals (weight 30% from G1)"
+      },
       "generation_rules": [
         "Sample pitch uniformly over the grade's range; from G2 boost ledger-line pitches to 40% weight (they are the new material)",
         "From G4, alto-clef items get 50% weight while the clef is new; from G5 same for tenor",
         "Render as a semibreve unless testing duration too"
       ],
-      "distractor_rules": ["adjacent line/space names (+/-1 step)", "the name the note would have in the 'other' clef (clef-confusion distractor)"],
+      "distractor_rules": [
+        "adjacent line/space names (+/-1 step)",
+        "the name the note would have in the 'other' clef (clef-confusion distractor)"
+      ],
       "grading": "case-insensitive letter name; accidental must be included if present",
       "example": {
         "prompt": "Write the name of this note.",
-        "stimulus": {"music": {"clef": "bass", "events": [{"pitch": "Eb3", "dur": "semibreve"}], "key_sig": null}},
-        "answer": {"canonical": "E flat", "accepted_alternatives": ["Eb", "E♭"]}
+        "stimulus": {
+          "music": {
+            "clef": "bass",
+            "events": [
+              {
+                "pitch": "Eb3",
+                "dur": "semibreve"
+              }
+            ],
+            "key_sig": null
+          }
+        },
+        "answer": {
+          "canonical": "E flat",
+          "accepted_alternatives": [
+            "Eb",
+            "E♭"
+          ]
+        }
       }
     },
     {
       "template_id": "rhythm_sum",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "rhythm",
       "interaction": "mcq | note_token_input",
-      "parameters": {"operands": "2-3 values from pool:note_values (+dots per grade)", "operation": "add | subtract"},
+      "parameters": {
+        "operands": "2-3 values from pool:note_values (+dots per grade)",
+        "operation": "add | subtract"
+      },
       "generation_rules": [
         "Total must equal exactly one legal note value (possibly dotted) in the grade scope",
         "Subtraction allowed from G1; double-dot operands from G4; triplet-value questions from G2",
         "Reject trivial identities (x + 0), duplicates of recent items"
       ],
-      "distractor_rules": ["value one step longer/shorter on the note tree", "the un-dotted version of the correct dotted answer"],
+      "distractor_rules": [
+        "value one step longer/shorter on the note tree",
+        "the un-dotted version of the correct dotted answer"
+      ],
       "grading": "exact value match",
       "example": {
         "prompt": "Answer this musical sum with one note: crotchet + quaver = ?",
-        "answer": {"canonical": "dotted crotchet"},
-        "hints": ["Use the note tree: a crotchet is worth two quavers."]
+        "answer": {
+          "canonical": "dotted crotchet"
+        },
+        "hints": [
+          "Use the note tree: a crotchet is worth two quavers."
+        ]
       }
     },
     {
       "template_id": "bar_validity",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "rhythm",
       "interaction": "true_false per bar (tick/cross)",
       "generation_rules": [
@@ -69,56 +136,101 @@
     },
     {
       "template_id": "add_barlines",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "rhythm",
       "interaction": "tap_placement",
-      "parameters": {"time_signature": "pool:time_signatures", "length_bars": "4", "anacrusis": "false (G1-2) | 30% true (G3+)"},
+      "parameters": {
+        "time_signature": "pool:time_signatures",
+        "length_bars": "4",
+        "anacrusis": "false (G1-2) | 30% true (G3+)"
+      },
       "generation_rules": [
         "Generate melody via melody_generator (see spec doc §4) so every bar sums exactly; strip internal barlines",
         "If anacrusis: first partial bar + final bar must sum to one whole bar",
         "Beaming must already be correct so grouping is a usable clue (books rely on this)"
       ],
       "grading": "set-equality of barline positions",
-      "hints": ["Look at how the notes are grouped - beams show you where the beats are."]
+      "hints": [
+        "Look at how the notes are grouped - beams show you where the beats are."
+      ]
     },
     {
       "template_id": "add_time_signature",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "rhythm",
       "interaction": "mcq | text_input",
       "generation_rules": [
         "Generate 1-2 bars with unambiguous grouping; ensure exactly one grade-scope signature fits (e.g. avoid a bar readable as both 3/4 and 6/8 unless beaming disambiguates - the 6/8 vs 3/4 contrast IS the intended G3 difficulty)"
       ],
-      "distractor_rules": ["same total, different beat unit (3/4 vs 6/8 vs 3/2)", "off-by-one numerator"]
+      "distractor_rules": [
+        "same total, different beat unit (3/4 vs 6/8 vs 3/2)",
+        "off-by-one numerator"
+      ]
     },
     {
       "template_id": "anacrusis_recognition",
-      "grades": [3],
+      "grades": [
+        3
+      ],
       "strand": "rhythm",
       "interaction": "mcq",
-      "parameters": {"time_signature": "pool: simple time (2/4, 3/4, 4/4)", "pickup": "whole beats, 1..beats-1"},
+      "parameters": {
+        "time_signature": "pool: simple time (2/4, 3/4, 4/4)",
+        "pickup": "whole beats, 1..beats-1"
+      },
       "generation_rules": [
         "Render a melody whose first bar is a partial (upbeat) bar and whose last bar is the complementary partial bar, so first + last bar sum to exactly one whole bar",
         "The pickup is a whole number of beats (no fractional-beat pickups this slice)"
       ],
-      "distractor_rules": ["the full-bar beat count (not noticing the first bar is partial)", "one rng-picked value from {complement, pickup-1, pickup+1, 0} distinct from the canonical and the full-bar distractor"],
+      "distractor_rules": [
+        "the full-bar beat count (not noticing the first bar is partial)",
+        "one rng-picked value from {complement, pickup-1, pickup+1, 0} distinct from the canonical and the full-bar distractor"
+      ],
       "grading": "exact beat-count match",
       "example": {
         "prompt": "How many beats are in the upbeat (anacrusis)?",
-        "answer": {"canonical": "1 beat"}
+        "answer": {
+          "canonical": "1 beat"
+        }
       }
     },
     {
       "template_id": "regroup_rebeam",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "rhythm",
       "interaction": "stave_input (beaming editor)",
-      "generation_rules": ["Generate a correctly-summing rhythm written with wrong/no beaming; learner regroups per beaming_rules_by_time_signature"],
+      "generation_rules": [
+        "Generate a correctly-summing rhythm written with wrong/no beaming; learner regroups per beaming_rules_by_time_signature"
+      ],
       "grading": "accept any beaming listed as legal for that signature in knowledge-base (e.g. 4/4 quavers in 2s or beat-pair 4s); reject beams across the middle of a 4/4 bar"
     },
     {
       "template_id": "rest_completion",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "rhythm",
       "interaction": "mcq (rendered rest options) — implemented as MCQ, not a stave editor (chromaticly-gni KTD1)",
       "generation_rules": [
@@ -129,10 +241,19 @@
     },
     {
       "template_id": "key_signature_id",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "scales_keys",
       "interaction": "mcq (rendered key signatures) | text_input (name the key)",
-      "parameters": {"key": "pool:keys_major + keys_minor", "clef": "pool:clefs"},
+      "parameters": {
+        "key": "pool:keys_major + keys_minor",
+        "clef": "pool:clefs"
+      },
       "distractor_rules": [
         "correct accidentals, wrong stave positions (the books' favourite trap)",
         "wrong count by one",
@@ -142,15 +263,30 @@
       "grading": "for name-the-key with a bare key signature, require the melody/tonic context OR accept both relative answers and teach the distinction in feedback",
       "example": {
         "prompt": "Tick the correctly written key signature of E flat major.",
-        "distractors": ["Bb Eb Ab with Ab misplaced an octave", "Bb Eb only", "Bb Ab Eb (wrong order)"]
+        "distractors": [
+          "Bb Eb Ab with Ab misplaced an octave",
+          "Bb Eb only",
+          "Bb Ab Eb (wrong order)"
+        ]
       }
     },
     {
       "template_id": "scale_construction",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "scales_keys",
       "interaction": "stave_input | mcq (spot the wrong note) | multi_select (mark semitone pairs)",
-      "parameters": {"key+form": "pool: majors; harmonic minor G2+; melodic asc/desc G3+; chromatic G4+", "direction": "asc|desc", "clef": "pool:clefs", "notation_mode": "with key signature | with accidentals"},
+      "parameters": {
+        "key+form": "pool: majors; harmonic minor G2+; melodic asc/desc G3+; chromatic G4+",
+        "direction": "asc|desc",
+        "clef": "pool:clefs",
+        "notation_mode": "with key signature | with accidentals"
+      },
       "generation_rules": [
         "Build from scale_patterns in knowledge-base; corrupt exactly one note for spot-the-error variants",
         "Melodic minor items must state direction; descending uses natural form",
@@ -160,56 +296,132 @@
     },
     {
       "template_id": "degree_identification",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "scales_keys",
       "interaction": "mcq | text_input",
-      "generation_rules": ["G1-3: answer by number. G4+: technical names from knowledge-base degree_names; include raised-7th context in minors"],
-      "distractor_rules": ["adjacent degree", "the degree the note would be in the relative key"]
+      "generation_rules": [
+        "G1-3: answer by number. G4+: technical names from knowledge-base degree_names; include raised-7th context in minors"
+      ],
+      "distractor_rules": [
+        "adjacent degree",
+        "the degree the note would be in the relative key"
+      ]
     },
     {
       "template_id": "interval_naming",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "intervals",
       "interaction": "mcq | text_input | stave_input (write a note to form the interval)",
-      "parameters": {"per_grade_scope": "G1-2 number only above tonic; G3 +type above tonic; G4 any two diatonic notes, +aug/dim; G5 any notes, +compound, any clef, with/without key signature"},
+      "parameters": {
+        "per_grade_scope": "G1-2 number only above tonic; G3 +type above tonic; G4 any two diatonic notes, +aug/dim; G5 any notes, +compound, any clef, with/without key signature"
+      },
       "generation_rules": [
         "Sample lower note per scope; upper note within scope's max span",
         "For write-the-note variants, specify 'higher than the given note' (as the books do) to make the answer unique",
         "G5: 20% of items compound; 20% in alto/tenor clefs"
       ],
-      "distractor_rules": ["+/-1 number, same quality", "same number, adjacent quality (major<->minor, perfect<->augmented)", "simple name for a compound interval"],
+      "distractor_rules": [
+        "+/-1 number, same quality",
+        "same number, adjacent quality (major<->minor, perfect<->augmented)",
+        "simple name for a compound interval"
+      ],
       "example": {
         "prompt": "Name this interval (number and type).",
-        "stimulus": {"music": {"clef": "treble", "key_sig": "D_major", "events": [{"pitch": "F#4"}, {"pitch": "C#5"}]}},
-        "answer": {"canonical": "perfect 5th"}
+        "stimulus": {
+          "music": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "events": [
+              {
+                "pitch": "F#4"
+              },
+              {
+                "pitch": "C#5"
+              }
+            ]
+          }
+        },
+        "answer": {
+          "canonical": "perfect 5th"
+        }
       }
     },
     {
       "template_id": "triad_chord_tasks",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "chords",
       "interaction": "mcq | stave_input | grid_fill",
-      "parameters": {"chord": "G1-3 tonic triad; G4 I/IV/V root; G5 I/II/IV/V + inversions", "notation": "with key signature | with accidentals", "clef": "all in scope"},
+      "parameters": {
+        "chord": "G1-3 tonic triad; G4 I/IV/V root; G5 I/II/IV/V + inversions",
+        "notation": "with key signature | with accidentals",
+        "clef": "all in scope"
+      },
       "generation_rules": [
         "Build triads by stacking 3rds from the scale (harmonic form in minors)",
         "G5 inversion items: label with number+letter (e.g. IIb); offer the book's grid method as a hint scaffold"
       ],
-      "distractor_rules": ["triad of the dominant/subdominant instead of tonic", "correct notes, wrong key named", "right chord, wrong inversion letter"]
+      "distractor_rules": [
+        "triad of the dominant/subdominant instead of tonic",
+        "correct notes, wrong key named",
+        "right chord, wrong inversion letter"
+      ]
     },
     {
       "template_id": "octave_transposition",
-      "grades": [3, 4, 5],
+      "grades": [
+        3,
+        4,
+        5
+      ],
       "strand": "pitch",
       "interaction": "stave_input",
-      "generation_rules": ["Generate 1-2 bar melody; require rewrite one octave up/down into a specified clef (treble<->bass G3; +alto G4; any pair G5)"],
+      "generation_rules": [
+        "Generate 1-2 bar melody; require rewrite one octave up/down into a specified clef (treble<->bass G3; +alto G4; any pair G5)"
+      ],
       "grading": "every note must match target pitch exactly; rhythm must be preserved; key signature must be rewritten for the new clef"
     },
     {
+      "template_id": "clef_equivalence",
+      "grades": [
+        4
+      ],
+      "strand": "pitch",
+      "interaction": "transposition_input",
+      "generation_rules": [
+        "Generate a 2-bar melody in one clef; require rewrite of the SAME pitches (same octave) into a different clef (any pair among treble/alto/bass). Source pitches are clamped to the intersection of both clefs comfortable ranges so every note is legible on both staves (chromaticly-ra3)."
+      ],
+      "grading": "every note must match the same sounding pitch exactly in the answer clef; an octave shift is the rejected misconception; rhythm (dur and dots) must be preserved"
+    },
+    {
       "template_id": "interval_transposition",
-      "grades": [5],
+      "grades": [
+        5
+      ],
       "strand": "pitch",
       "interaction": "stave_input | tick_cross_per_bar",
-      "parameters": {"interval": "major 2nd | minor 3rd | perfect 5th", "direction": "up | down", "context": "abstract melody | transposing instrument (Bb/A/F) to/from concert pitch"},
+      "parameters": {
+        "interval": "major 2nd | minor 3rd | perfect 5th",
+        "direction": "up | down",
+        "context": "abstract melody | transposing instrument (Bb/A/F) to/from concert pitch"
+      },
       "generation_rules": [
         "Source melody 1-2 bars, may include accidentals outside the key (the G5 book drills this)",
         "Grading checks: new key signature correct, every note correct, accidentals correctly respelled",
@@ -218,20 +430,33 @@
     },
     {
       "template_id": "cadence_and_chord_choice",
-      "grades": [5],
+      "grades": [
+        5
+      ],
       "strand": "chords",
       "interaction": "roman_numeral_boxes + mcq (name the cadence)",
-      "parameters": {"key": "C|G|D|F major", "cadence_type": "perfect|plagal|imperfect"},
+      "parameters": {
+        "key": "C|G|D|F major",
+        "cadence_type": "perfect|plagal|imperfect"
+      },
       "generation_rules": [
         "Generate a 2-4 bar melody whose final two melody notes are chord tones of the target cadence pair (V-I perfect, IV-I plagal, ?-V imperfect)",
         "Every boxed melody note must belong to at least one chord from {I, II, IV, V}; ensure the intended answer is unambiguous at the final pair"
       ],
       "grading": "each box: accept any chord from {I,II,IV,V} containing the melody note UNLESS it breaks the named cadence at the final pair; cadence name graded strictly",
-      "hints": ["Check which chords contain the melody note, then choose the pair that makes the required cadence."]
+      "hints": [
+        "Check which chords contain the melody note, then choose the pair that makes the required cadence."
+      ]
     },
     {
       "template_id": "term_meaning",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "terms_signs",
       "interaction": "mcq | drag_match | flashcard(SRS)",
       "generation_rules": [
@@ -243,7 +468,10 @@
     },
     {
       "template_id": "ornament_tasks",
-      "grades": [4, 5],
+      "grades": [
+        4,
+        5
+      ],
       "strand": "terms_signs",
       "interaction": "mcq (name the sign) | drag_match | sign_placement (G5)",
       "generation_rules": [
@@ -253,14 +481,25 @@
     },
     {
       "template_id": "instrument_knowledge",
-      "grades": [4, 5],
+      "grades": [
+        4,
+        5
+      ],
       "strand": "terms_signs",
       "interaction": "mcq | drag_match (instrument->family, instrument->clef)",
-      "generation_rules": ["Facts pool: families (strings/woodwind/brass/percussion + voice types at G5), clefs used, sound production, standard directions; transposing status feeds interval_transposition items"]
+      "generation_rules": [
+        "Facts pool: families (strings/woodwind/brass/percussion + voice types at G5), clefs used, sound production, standard directions; transposing status feeds interval_transposition items"
+      ]
     },
     {
       "template_id": "music_in_context",
-      "grades": [1, 2, 3, 4, 5],
+      "grades": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "strand": "context",
       "interaction": "multi-question flow over one score",
       "generation_rules": [

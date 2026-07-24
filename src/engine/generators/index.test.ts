@@ -31,6 +31,10 @@ const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction'];
 // the same way.
 const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition'];
 
+// clef_equivalence (chromaticly-ra3) throws below grade 4 (build() gate) — the
+// "same pitch across treble/alto/bass" skill the KB scopes only at grade 4.
+const GRADE_4_ONLY_TEMPLATE_IDS = ['clef_equivalence'];
+
 // anacrusis_recognition (anacrusis slice, D5) needs an explicit anacrusis:<sig>
 // atom (no legacy bare-atom fallback, unlike add_time_signature) but — unlike
 // metre_classification — is NOT grade-gated in the generator/validator: its
@@ -77,6 +81,7 @@ describe('GENERATORS registry', () => {
       ...TEMPLATE_IDS,
       ...GRADE_2_ONLY_TEMPLATE_IDS,
       ...GRADE_3_ONLY_TEMPLATE_IDS,
+      ...GRADE_4_ONLY_TEMPLATE_IDS,
       ...ATOM_REQUIRED_TEMPLATE_IDS,
     ]) {
       expect(typeof GENERATORS[templateId]).toBe('function');
@@ -89,6 +94,7 @@ describe('GENERATORS registry', () => {
         ...TEMPLATE_IDS,
         ...GRADE_2_ONLY_TEMPLATE_IDS,
         ...GRADE_3_ONLY_TEMPLATE_IDS,
+        ...GRADE_4_ONLY_TEMPLATE_IDS,
         ...ATOM_REQUIRED_TEMPLATE_IDS,
       ].sort(),
     );
@@ -123,6 +129,15 @@ describe('generate() — grade-3-only templates', () => {
     const instance = generate('octave_transposition', { grade: 3, seed: 1, atoms: ['transpose:octave'] });
     expect(instance.template_id).toBe('octave_transposition');
     expect(validate(instance).ok).toBe(true);
+  });
+});
+
+describe('generate() — grade-4-only templates', () => {
+  test('clef_equivalence produces a valid grade-4 instance (throws below grade 4)', () => {
+    const instance = generate('clef_equivalence', { grade: 4, seed: 1, atoms: ['clef_equiv:cross'] });
+    expect(instance.template_id).toBe('clef_equivalence');
+    expect(validate(instance).ok).toBe(true);
+    expect(() => generate('clef_equivalence', { grade: 3, seed: 1, atoms: ['clef_equiv:cross'] })).toThrow();
   });
 });
 

@@ -5,6 +5,7 @@ import { addTimeSignature } from './add-time-signature';
 import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { chordRecognition } from './chord-recognition';
+import { clefEquivalence } from './clef-equivalence';
 import { dupletRecognition } from './duplet-recognition';
 import { enharmonicRecognition } from './enharmonic-recognition';
 import { chromaticScale } from './chromatic-scale';
@@ -50,6 +51,7 @@ export const GENERATORS: Record<string, Generator> = {
   instrument_knowledge: instrumentKnowledge,
   enharmonic_recognition: enharmonicRecognition,
   rest_completion: restCompletion,
+  clef_equivalence: clefEquivalence,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

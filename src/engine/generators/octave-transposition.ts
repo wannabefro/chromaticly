@@ -31,68 +31,15 @@ import { KB_VERSION } from '../../content/knowledge-base';
 import type { Clef, Dots, Duration, Music, MusicEvent, NoteEvent } from '../../music/types';
 import { transposeAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
-import { comfortablePitchRange, scopeForGrade } from '../scope';
+import { scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { spellInKeySig } from './key-spelling';
-import { naturalPitchAtOrdinal, naturalPitchStepsAbove, scientificPitchOrdinal } from './pitch-math';
+import { naturalPitchAtOrdinal, naturalPitchStepsAbove } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
+import { CLEF_RANK, PATTERNS, type SourceNote, sourceOrdinalRange, TIME_SIGS } from './transposition-core';
 import type { GenerateOptions, Generator } from './types';
 
-type TimeSig = '3/4' | '4/4';
 type Direction = 'up' | 'down';
-
-interface BarNote {
-  dur: Duration;
-  dots?: Dots;
-}
-
-// Full-bar patterns, unbeamed durations only (D8) — each entry sums exactly
-// to its time signature's bar total (checked independently by
-// octaveTranspositionHook), so "bars are metrically full" holds by
-// construction, not by luck.
-const PATTERNS: Record<TimeSig, readonly BarNote[][]> = {
-  '3/4': [
-    [{ dur: 'minim', dots: 1 }],
-    [{ dur: 'minim' }, { dur: 'crotchet' }],
-    [{ dur: 'crotchet' }, { dur: 'minim' }],
-    [{ dur: 'crotchet' }, { dur: 'crotchet' }, { dur: 'crotchet' }],
-  ],
-  '4/4': [
-    [{ dur: 'semibreve' }],
-    [{ dur: 'minim' }, { dur: 'minim' }],
-    [{ dur: 'minim' }, { dur: 'crotchet' }, { dur: 'crotchet' }],
-    [{ dur: 'crotchet' }, { dur: 'crotchet' }, { dur: 'minim' }],
-    [{ dur: 'minim', dots: 1 }, { dur: 'crotchet' }],
-    [{ dur: 'crotchet' }, { dur: 'minim', dots: 1 }],
-  ],
-};
-
-const TIME_SIGS: readonly TimeSig[] = ['3/4', '4/4'];
-
-interface SourceNote {
-  natural: string; // natural-letter scientific pitch, e.g. "F3" — spelled in key at emission time
-  dur: Duration;
-  dots?: Dots;
-}
-
-/** The natural-pitch ordinal band a source note may occupy: within the given
- *  clef's comfortable range AND whose octave-transposed target also fits the
- *  answer clef's comfortable range (D8's "both endpoints" clamp). */
-function sourceOrdinalRange(
-  givenClef: Clef,
-  answerClef: Clef,
-  direction: Direction,
-  grade: number,
-): { low: number; high: number } {
-  const given = comfortablePitchRange(givenClef, grade);
-  const answer = comfortablePitchRange(answerClef, grade);
-  const delta = direction === 'down' ? -7 : 7;
-  const givenLow = scientificPitchOrdinal(given.low);
-  const givenHigh = scientificPitchOrdinal(given.high);
-  const answerLow = scientificPitchOrdinal(answer.low) - delta;
-  const answerHigh = scientificPitchOrdinal(answer.high) - delta;
-  return { low: Math.max(givenLow, answerLow), high: Math.min(givenHigh, answerHigh) };
-}
 
 // D8 originally sampled content from the grade-3 scope specifically
 // (scopeForGrade(3), comfortablePitchRange(clef, 3)) rather than the generic
@@ -102,15 +49,8 @@ function sourceOrdinalRange(
 // pair always includes alto (the new skill), grade 3 stays treble<->bass.
 // Only grades 3 and 4 are supported; the instance's own `grade` field still
 // carries the caller's opts.grade (schema-required, and what makeInstanceId
-// keys off).
-//
-// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest) so the
-// up/down direction of an octave transposition is a lookup, not a ternary —
-// this must stay in sync with validator.ts's independent copy (recompute-
-// don't-trust: the validator never imports this map, it re-derives the same
-// ranks so a generator/validator disagreement fails loud instead of silently
-// agreeing with itself).
-const CLEF_RANK: Record<Clef, number> = { treble: 2, alto: 1, bass: 0 };
+// keys off). CLEF_RANK (pitch-height clef ordering, kept in sync by hand with
+// validator.ts's independent copy) now lives in transposition-core.ts.
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
   if (grade !== 3 && grade !== 4) {
@@ -157,7 +97,7 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
     throw new Error(`octave_transposition: ${barNotes.length} notes is outside the 3-6 range`);
   }
 
-  const { low, high } = sourceOrdinalRange(givenClef, answerClef, direction, grade);
+  const { low, high } = sourceOrdinalRange(givenClef, answerClef, delta, grade);
   if (low > high) {
     throw new Error(`octave_transposition: no source pitch fits both ${givenClef} and ${answerClef} comfortable ranges`);
   }

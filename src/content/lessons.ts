@@ -293,6 +293,18 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'clef_equiv': {
+      // clef_equivalence (chromaticly-ra3) is a Grade-4-only skill (the KB
+      // scopes "same pitch across treble/alto/bass" at grade 4). One bare atom
+      // for the whole skill, like transpose:octave.
+      if (parts.length !== 1 || parts[0] !== 'cross') {
+        throw new Error(`lessons: malformed clef_equiv atom "${atom}"`);
+      }
+      if (grade !== 4) {
+        throw new Error(`lessons: atom "${atom}" only resolves at grade 4`);
+      }
+      return;
+    }
     default:
       throw new Error(`lessons: atom "${atom}" has unknown kind "${kind}"`);
   }
