@@ -635,6 +635,48 @@ describe('rests-4 lesson (chromaticly-gni)', () => {
   });
 });
 
+// chromaticly-9ig — double-accidentals-4: naming F𝄪 / B𝄫 head-on, reusing
+// note_naming. Inserted as the new Grade-4 tail after enharmonics-4. The
+// double-accidental scope gate lives in the validator, so the atoms resolve at
+// the loader for every grade but only GENERATE clean at grade 4.
+describe('double-accidentals-4 lesson (chromaticly-9ig)', () => {
+  const lesson = () => lessonById('double-accidentals-4')!;
+
+  test('exists, strand pitch, single template note_naming, is the chain tail', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(4);
+    expect(lesson().strand).toBe('pitch');
+    expect(lesson().templates).toEqual(['note_naming']);
+    expect(lessonById('enharmonics-4')!.unlocks).toBe('double-accidentals-4');
+    expect(lesson().unlocks).toBeNull();
+  });
+
+  test('atoms are double-accidental note_read pitches, resolving at the loader', () => {
+    expect(lesson().atoms).toEqual([
+      'note_read:treble:F##4',
+      'note_read:treble:G##4',
+      'note_read:bass:Bbb3',
+      'note_read:bass:Ebb3',
+    ]);
+    for (const atom of lesson().atoms) expect(() => assertAtomResolves(atom, 4)).not.toThrow();
+  });
+
+  // The double accidental is in scope only at Grade 4 — a below-grade generate
+  // must throw (the validator gate, not atom resolution, is what enforces it).
+  test('names spell out the accidental, validate clean, and are grade-4-gated', () => {
+    const canon = new Set<string>();
+    for (let seed = 0; seed < SET_SIZE; seed++) {
+      const inst = generate('note_naming', { grade: 4, seed, atoms: lesson().atoms });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect(inst.answer.canonical).toMatch(/^[A-G] double (sharp|flat)$/);
+      canon.add(inst.answer.canonical);
+    }
+    expect([...canon].some((c) => c.endsWith('double sharp'))).toBe(true);
+    expect([...canon].some((c) => c.endsWith('double flat'))).toBe(true);
+    expect(() => generate('note_naming', { grade: 3, seed: 0, atoms: ['note_read:treble:F##4'] })).toThrow();
+  });
+});
+
 // chromaticly-fm9 — major-keys-4: B major (5 sharps) and D♭ major (5 flats)
 // become named, ASSESSED major keys, reusing the existing key_signature_id
 // template. keys-4 teach copy already names them; this lesson is the first to

@@ -1,0 +1,42 @@
+# chromaticly-9ig — Grade 4 double sharps / double flats. Seed ?seed=double-accidentals-4
+# fast-forwards to the new tail lesson (enharmonics-4 -> double-accidentals-4).
+# note_naming renders F𝄪 / B𝄫 on the notation card (^^ / __ in ABC).
+#   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade4-double-accidentals.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=double-accidentals-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-double-accidentals-4" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-double-accidentals-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-double-accidentals-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+- assertVisible: { id: "prompt" }
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g4-double-accidentals-exercise

@@ -92827,6 +92827,1062 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_naming @ double-accidentals-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bbb",
+        "B𝄫",
+      ],
+      "canonical": "B double flat",
+    },
+    "distractors": [
+      "C",
+      "G double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bbb",
+        "B𝄫",
+      ],
+      "canonical": "B double flat",
+    },
+    "distractors": [
+      "A",
+      "G double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bbb",
+        "B𝄫",
+      ],
+      "canonical": "B double flat",
+    },
+    "distractors": [
+      "C",
+      "G double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "F##",
+        "Fx",
+        "F𝄪",
+      ],
+      "canonical": "F double sharp",
+    },
+    "distractors": [
+      "G",
+      "A double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:F##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bbb",
+        "B𝄫",
+      ],
+      "canonical": "B double flat",
+    },
+    "distractors": [
+      "A",
+      "G double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "A",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "F",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "F",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "F",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Ebb",
+        "E𝄫",
+      ],
+      "canonical": "E double flat",
+    },
+    "distractors": [
+      "F",
+      "C double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Ebb",
+        "E𝄫",
+      ],
+      "canonical": "E double flat",
+    },
+    "distractors": [
+      "F",
+      "C double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bbb",
+        "B𝄫",
+      ],
+      "canonical": "B double flat",
+    },
+    "distractors": [
+      "A",
+      "G double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "A",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "A",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "F",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bbb",
+        "B𝄫",
+      ],
+      "canonical": "B double flat",
+    },
+    "distractors": [
+      "C",
+      "G double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Ebb",
+        "E𝄫",
+      ],
+      "canonical": "E double flat",
+    },
+    "distractors": [
+      "F",
+      "C double flat",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "A",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "F##",
+        "Fx",
+        "F𝄪",
+      ],
+      "canonical": "F double sharp",
+    },
+    "distractors": [
+      "E",
+      "A double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:F##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G##",
+        "Gx",
+        "G𝄪",
+      ],
+      "canonical": "G double sharp",
+    },
+    "distractors": [
+      "F",
+      "B double sharp",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_value_compare @ rhythm-breve-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

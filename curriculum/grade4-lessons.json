@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-24",
+  "version": "g4-lessons-2026-07-24b",
   "lessons": [
     {
       "id": "keys-4",
@@ -659,6 +659,44 @@
         },
         "smartTip": "Keep the pitch, change the letter: an enharmonic equivalent always uses the neighbouring letter name — F♯ becomes G♭, never F♭.",
         "didYouKnow": "On a piano the two spellings are the exact same key, but a string or voice can bend them apart a hair — many musicians play a G♭ a touch lower than an F♯, so the two names carry a subtly different feel."
+      },
+      "unlocks": "double-accidentals-4"
+    },
+    {
+      "id": "double-accidentals-4",
+      "title": "Double sharps and double flats",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:treble:F##4",
+        "note_read:treble:G##4",
+        "note_read:bass:Bbb3",
+        "note_read:bass:Ebb3"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 4,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "A double sharp (𝄪) raises a note by two semitones — a whole tone above the natural",
+          "A double flat (𝄫) lowers a note by two semitones — a whole tone below the natural",
+          "Name one by its letter plus “double sharp” or “double flat”: F𝄪 is “F double sharp”, not G"
+        ],
+        "concept": {
+          "title": "Raising and lowering by a whole tone",
+          "body": "You already met a double sharp inside a scale: the raised 7th of G♯ harmonic minor is F𝄪. A double sharp (written 𝄪, sometimes an ×) raises the letter by two semitones — F𝄪 sounds the same as G, but it is still spelled as an F because the key needs it that way. A double flat (written 𝄫) lowers by two semitones, so B𝄫 sounds like A. Keep the letter, name the accidental: F𝄪 is “F double sharp”, never “G”.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 4,
+            "seed": 0
+          }
+        },
+        "smartTip": "Keep the letter name and add the words: a double sharp on F is still an F — “F double sharp” — even though it sounds like G.",
+        "didYouKnow": "Double sharps appear whenever a key already full of sharps needs to raise a note further — like the F𝄪 leading note of G♯ minor. Composers keep the letter so the note still reads as the seventh degree of the scale, not a stray G."
       },
       "unlocks": null
     }
