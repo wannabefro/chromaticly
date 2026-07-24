@@ -229,8 +229,48 @@ describe('grade-2 pitch ranges (D3 judgment call)', () => {
 });
 
 describe('scopeForGrade — unsupported grades fail loud', () => {
-  test.each([0, 5, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
+  // Grade 5 is now supported (chromaticly-ehp); 6 is the first unsupported grade.
+  test.each([0, 6, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
     expect(() => scopeForGrade(grade)).toThrow(String(grade));
+  });
+});
+
+// Grade 5 foundation (chromaticly-ehp / plan U1). Grade 5 exists so its four
+// extension slices (chord inversions, transposing instrument, ornament→sign,
+// simple↔compound rewrite) can attach content; those slices add their dimensions
+// via atoms + generator grade-gates, NOT via GradeScope fields (GradeScope has no
+// chord/ornament/instrument axis). So the invariant here is: grade 5 resolves and
+// currently scopes exactly grade 4's dimensions — the deferred KB adds (tenor
+// clef, 5/4 7/4 5/8 7/8, F#/Gb major, D#/Eb minor, etc.) are NOT pulled in.
+describe('scopeForGrade(5) — Grade 5 foundation is wired, mirrors grade 4 (deferred adds excluded)', () => {
+  test('grade 5 is supported and does not throw', () => {
+    expect(() => scopeForGrade(5)).not.toThrow();
+  });
+
+  test('every grade-5 dimension deep-equals grade 4 (no deferred adds leaked in)', () => {
+    expect(scopeForGrade(5)).toEqual(scopeForGrade(4));
+  });
+
+  test('tenor clef is NOT in scope — it rides with the deferred SATB slice', () => {
+    expect(scopeForGrade(5).clefs).not.toContain('tenor');
+    expect(scopeForGrade(5).clefs).toEqual(scopeForGrade(4).clefs);
+  });
+
+  test('deferred keys/metres are NOT pulled from KB.grade_scopes["5"].adds', () => {
+    expect(scopeForGrade(5).keysMajor).not.toEqual(expect.arrayContaining(['F#', 'Gb']));
+    expect(scopeForGrade(5).keysMinor).not.toEqual(expect.arrayContaining(['D#', 'Eb']));
+    for (const sig of ['5/4', '7/4', '5/8', '7/8']) {
+      expect(scopeForGrade(5).timeSignatures).not.toContain(sig);
+    }
+  });
+
+  test("the rewrite slice's 2/4↔6/8 are already renderable at grade 5 (no new metre entry needed)", () => {
+    expect(renderableTimeSignatures(5)).toEqual(expect.arrayContaining(['2/4', '6/8']));
+  });
+
+  test('grades 1-4 scope objects are unchanged by adding grade 5 (additive-only)', () => {
+    expect(scopeForGrade(4).keysMajor).toEqual(expect.arrayContaining(['B', 'Db']));
+    expect(scopeForGrade(1).timeSignatures).toEqual(['2/4', '3/4', '4/4']);
   });
 });
 

@@ -515,12 +515,18 @@ describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
     expect(result.errors.some((e) => e.includes('note value'))).toBe(true);
   });
 
-  test('an unsupported grade (5 — grade 4 is now supported, fyu.4) fails validation cleanly instead of throwing', () => {
+  test('a grade above the supported ceiling (6 — grade 5 is now the max, chromaticly-ehp) fails validation cleanly instead of throwing', () => {
+    // Grade 5 is now both schema-valid and scope-supported, so the old
+    // "schema-valid but scope-unsupported" gap no longer exists. Grade 6 is now
+    // rejected at the schema layer (max grade 5) — the invariant that matters is
+    // that an out-of-range grade fails cleanly rather than throwing.
     const instance = validNoteNamingInstance();
-    instance.grade = 5;
+    instance.grade = 6;
 
     expect(() => validate(instance)).not.toThrow();
-    expect(validate(instance)).toEqual({ ok: false, errors: ['scope: grade 5 is not supported'] });
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('grade') && e.includes('5'))).toBe(true);
   });
 
   test('a Cb-spelled pitch (spells a natural) is still rejected at G2', () => {

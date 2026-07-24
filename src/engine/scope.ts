@@ -180,11 +180,44 @@ const GRADE_4_SCOPE: GradeScope = {
   pitchRanges: GRADE_3_SCOPE.pitchRanges,
 };
 
-export const GRADE_SCOPES: { 1: GradeScope; 2: GradeScope; 3: GradeScope; 4: GradeScope } = {
+// Grade 5 (chromaticly-ehp): foundation for the four extension slices — chord
+// inversions, transposing instrument, ornament written-out→sign, and
+// simple↔compound rewrite. Those slices add their dimensions via atoms +
+// generator grade-gates, NOT via GradeScope fields: GradeScope carries no
+// chord / ornament / instrument axis, so at grade 5 the scope is exactly grade
+// 4's. The remaining KB grade_scopes["5"].adds dimensions (tenor clef; 5/4 7/4
+// 5/8 7/8; F#/Gb major; D#/Eb minor; compound intervals; irregular tuplets;
+// German terms; SATB voices; harp) are deliberately deferred — see
+// docs/plans/2026-07-24-001-feat-grade5-content-slice-plan.md. In particular
+// 'tenor' is NOT added to clefs: it is not in the Clef union yet and rides with
+// the deferred SATB slice. renderableTimeSignatures / metreRenderable already
+// cover grade 5 via their `>= 3` / `>= 4` branches, so the rewrite slice's
+// 2/4↔6/8 need no new entry here.
+const GRADE_5_SCOPE: GradeScope = {
+  clefs: GRADE_4_SCOPE.clefs,
+  noteValues: GRADE_4_SCOPE.noteValues,
+  rests: GRADE_4_SCOPE.rests,
+  keysMajor: GRADE_4_SCOPE.keysMajor,
+  keysMinor: GRADE_4_SCOPE.keysMinor,
+  minorForms: GRADE_4_SCOPE.minorForms,
+  timeSignatures: GRADE_4_SCOPE.timeSignatures,
+  rhythmDevices: GRADE_4_SCOPE.rhythmDevices,
+  intervalRule: GRADE_4_SCOPE.intervalRule,
+  pitchRanges: GRADE_4_SCOPE.pitchRanges,
+};
+
+export const GRADE_SCOPES: {
+  1: GradeScope;
+  2: GradeScope;
+  3: GradeScope;
+  4: GradeScope;
+  5: GradeScope;
+} = {
   1: GRADE_1_SCOPE,
   2: GRADE_2_SCOPE,
   3: GRADE_3_SCOPE,
   4: GRADE_4_SCOPE,
+  5: GRADE_5_SCOPE,
 };
 
 export function scopeForGrade(grade: number): GradeScope {
