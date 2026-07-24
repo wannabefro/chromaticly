@@ -6,7 +6,7 @@
 import { scientificPitchOrdinal } from '../engine/generators/pitch-math';
 import { mulberry32 } from '../engine/rng';
 import type { ExerciseInstance } from '../engine/schema';
-import type { Dots, Duration, Music } from '../music/types';
+import type { Dots, Duration, Music, OrnamentKind } from '../music/types';
 
 export interface Option {
   label: string;
@@ -16,6 +16,10 @@ export interface Option {
    *  (e.g. a key signature). Never participates in grading — `value` stays
    *  the semantic answer compared by `gradeMcq`. */
   music?: Music;
+  /** Render-only payload (G5-5): an ornament sign to draw in place of the text
+   *  label. `value`/`label` stay the ornament NAME (graded + announced); this is
+   *  only which sign the OrnamentSign component draws. */
+  sign?: OrnamentKind;
 }
 
 export interface AttemptResult {
@@ -90,10 +94,22 @@ function optionMusicFor(instance: ExerciseInstance, value: unknown): Music | und
   return (map as Record<string, Music>)[key];
 }
 
+/** G5-5 written->sign: the ornament sign to draw for an option, keyed by the
+ *  option's NAME (the same string used as answer.canonical/each distractor). */
+function optionSignFor(instance: ExerciseInstance, value: unknown): OrnamentKind | undefined {
+  if (typeof value !== 'string') return undefined;
+  const map = instance.interaction.config?.option_sign;
+  if (!map || typeof map !== 'object') return undefined;
+  return (map as Record<string, OrnamentKind>)[value];
+}
+
 /** A notation option's label is never shown (its NotationCard renders instead),
  *  so `optionLabel` — which formats rhythm/term shapes into display text — is
- *  skipped entirely rather than computed and discarded. */
-function buildOption(value: unknown, correct: boolean, music: Music | undefined): Option {
+ *  skipped entirely rather than computed and discarded. An ornament-SIGN option
+ *  keeps its text label (the ornament name) so it's still announced/E2E-matched,
+ *  and carries the sign the OrnamentSign component draws over it. */
+function buildOption(value: unknown, correct: boolean, music: Music | undefined, sign: OrnamentKind | undefined): Option {
+  if (sign) return { label: optionLabel(value), value, correct, sign };
   return music ? { label: '', value, correct, music } : { label: optionLabel(value), value, correct };
 }
 
@@ -102,8 +118,8 @@ function buildOption(value: unknown, correct: boolean, music: Music | undefined)
  *  the same way (KTD4 reproducibility carries into presentation). */
 export function assembleOptions(instance: ExerciseInstance): Option[] {
   const options: Option[] = [
-    buildOption(instance.answer.canonical, true, optionMusicFor(instance, instance.answer.canonical)),
-    ...instance.distractors.map((d) => buildOption(d, false, optionMusicFor(instance, d))),
+    buildOption(instance.answer.canonical, true, optionMusicFor(instance, instance.answer.canonical), optionSignFor(instance, instance.answer.canonical)),
+    ...instance.distractors.map((d) => buildOption(d, false, optionMusicFor(instance, d), optionSignFor(instance, d))),
   ];
   const rng = mulberry32(seedFromId(instance.id));
   for (let i = options.length - 1; i > 0; i--) {

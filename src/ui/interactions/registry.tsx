@@ -16,6 +16,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import type { ExerciseInstance, InteractionType } from '../../engine/schema';
 import type { Duration, Music } from '../../music/types';
 import { NotationCard } from '../components/NotationCard';
+import { OrnamentSign } from '../components/OrnamentSign';
 import { assembleOptions, gradeDragMatch, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel } from '../grading';
 import { colors, shape, type as typo } from '../theme';
 import { DragMatch, type DragMatchResponse } from './DragMatch';
@@ -63,6 +64,15 @@ function mcqCorrectAnswerView(instance: ExerciseInstance) {
   const correctOption = assembleOptions(instance).find((o) => o.correct);
   if (correctOption?.music) {
     return <NotationCard music={correctOption.music} caption={optionLabel(correctOption.value)} testID="answer-notation" />;
+  }
+  // G5-5: the correct answer is a sign — draw it, captioned with its name.
+  if (correctOption?.sign) {
+    return (
+      <View style={styles.signAnswer} testID="answer-sign">
+        <OrnamentSign kind={correctOption.sign} color={colors.text} testID="answer-sign-glyph" />
+        <Text style={styles.answerLabel}>{optionLabel(correctOption.value)}</Text>
+      </View>
+    );
   }
   return defaultCorrectAnswerView(instance);
 }
@@ -286,6 +296,7 @@ export function lookupInteraction(type: InteractionType): InteractionSpec {
 
 const styles = StyleSheet.create({
   answerLabel: { ...typo.title, color: colors.text },
+  signAnswer: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
   trueFalseAnswer: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline },
   trueFalseAnswerBar: { ...typo.label },
   dragMatchAnswerRow: { ...typo.label, color: colors.text },

@@ -17,7 +17,8 @@ import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
-import { ORNAMENT_NAMES } from './generators/ornament-recognition';
+import { ORNAMENT_NAMES, realizeOrnament } from './generators/ornament-recognition';
+import { ORNAMENT_WRITTEN_TO_SIGN } from './atoms';
 import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } from './generators/chromatic-scale';
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
@@ -1410,6 +1411,74 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// ornamentWrittenToSignErrors (G5-5, chromaticly-cke) — the reverse-direction
+// branch: the stimulus is the ornament written out as plain notes (no ornament
+// decoration), and the answer options are the signs (canonical stays the NAME).
+// Recompute-don't-trust: the stimulus notes must equal realizeOrnament(kind,
+// principal) — the same fixed expansion the generator draws — so a mis-realized
+// or transposed pattern fails. The principal is the note the ornament resolves
+// on: index 0 for decoration kinds, index 1 (after the grace) for grace kinds.
+function ornamentWrittenToSignErrors(inst: ExerciseInstance, music: Music, kind: OrnamentKind): string[] {
+  const errors: string[] = [];
+  const notes = music.voices.flatMap((v) => v.events).filter((ev): ev is NoteEvent => ev.type === 'note');
+  if (notes.some((n) => n.ornament !== undefined)) {
+    errors.push('ornament_recognition: written->sign stimulus must render the ornament as plain notes, not a decoration');
+  }
+
+  const isGrace = kind === 'acciaccatura' || kind === 'appoggiatura';
+  const principal = isGrace ? notes[1]?.pitch : notes[0]?.pitch;
+  if (principal === undefined) {
+    errors.push(`ornament_recognition: written->sign stimulus has too few notes for a "${kind}" realization`);
+  } else {
+    const expected = realizeOrnament(kind, principal);
+    const mismatch =
+      notes.length !== expected.length ||
+      notes.some((n, i) => n.pitch !== expected[i].pitch || n.dur !== expected[i].dur || (n.dots ?? 0) !== (expected[i].dots ?? 0));
+    if (mismatch) {
+      errors.push(
+        `ornament_recognition: written->sign stimulus notes do not match the canonical "${kind}" realization`,
+      );
+    }
+  }
+
+  // Shared with sign->name: canonical is the ornament NAME, distractors are
+  // other legal names, no duplicates.
+  const expectedCanonical = ORNAMENT_NAMES[kind];
+  if (inst.answer.canonical !== expectedCanonical) {
+    errors.push(
+      `ornament_recognition: canonical "${String(inst.answer.canonical)}" does not match "${expectedCanonical}" for kind "${kind}"`,
+    );
+  }
+  const nameSet = new Set(Object.values(ORNAMENT_NAMES));
+  const seen = new Set<string>([expectedCanonical]);
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !nameSet.has(d)) {
+      errors.push(`ornament_recognition: distractor "${String(d)}" is not a legal ornament name`);
+      continue;
+    }
+    if (seen.has(d)) {
+      errors.push(`ornament_recognition: distractor "${d}" duplicates the canonical answer or another distractor`);
+      continue;
+    }
+    seen.add(d);
+  }
+
+  // option_sign must map every option name (canonical + distractors) to its kind,
+  // so the UI can draw each sign.
+  const optionSign = inst.interaction.config?.option_sign as Record<string, unknown> | undefined;
+  if (!optionSign || typeof optionSign !== 'object') {
+    errors.push('ornament_recognition: written->sign requires interaction.config.option_sign');
+  } else {
+    for (const name of [expectedCanonical, ...inst.distractors.filter((d): d is string => typeof d === 'string')]) {
+      if (!(name in optionSign)) {
+        errors.push(`ornament_recognition: option_sign is missing the sign for option "${name}"`);
+      }
+    }
+  }
+
+  return errors;
+}
+
 // ornamentRecognitionHook (fyu.11) — recompute-don't-trust: reads
 // interaction.config.ornament (the kind), asserts exactly one stimulus note
 // carries an ornament matching that kind, asserts canonical/distractors
@@ -1418,7 +1487,7 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
 // decoration kinds (trill/turn/mordents) do not.
 function ornamentRecognitionHook(inst: ExerciseInstance): string[] {
   const errors: string[] = [];
-  const config = inst.interaction.config as { ornament?: unknown } | undefined;
+  const config = inst.interaction.config as { ornament?: unknown; direction?: unknown } | undefined;
   const kind = config?.ornament;
   if (typeof kind !== 'string' || !(ORNAMENT_KINDS as readonly string[]).includes(kind)) {
     return [`ornament_recognition: interaction.config.ornament "${String(kind)}" is not a legal ornament kind`];
@@ -1426,6 +1495,14 @@ function ornamentRecognitionHook(inst: ExerciseInstance): string[] {
 
   const music = inst.stimulus.music as Music | null;
   if (!music) return ['ornament_recognition: stimulus music is required'];
+
+  // G5-5 written->sign: the stimulus is the realization as plain notes and the
+  // options are the signs. Separate stimulus shape, so it dispatches to its own
+  // check; the Grade-4 sign->name path below stays byte-identical.
+  if (config?.direction === ORNAMENT_WRITTEN_TO_SIGN) {
+    return ornamentWrittenToSignErrors(inst, music, kind as OrnamentKind);
+  }
+
   const ornamentedNotes = music.voices
     .flatMap((v) => v.events)
     .filter((ev): ev is NoteEvent => ev.type === 'note' && ev.ornament !== undefined);

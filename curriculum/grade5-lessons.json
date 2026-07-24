@@ -79,6 +79,44 @@
         "smartTip": "Sounds lower → write higher. B♭ clarinet up a major 2nd, A clarinet up a minor 3rd, horn in F up a perfect 5th. Change the key signature to the transposed key and let it spell the notes.",
         "didYouKnow": "Composers write for transposing instruments so a clarinettist can switch between the B♭ and A clarinet reading the SAME fingerings — the part is rewritten, but the hands do not have to relearn a thing."
       },
+      "unlocks": "ornaments-to-sign-5"
+    },
+    {
+      "id": "ornaments-to-sign-5",
+      "title": "Ornaments: written out to sign",
+      "strand": "terms_signs",
+      "atoms": [
+        "ornament:trill:written_to_sign",
+        "ornament:turn:written_to_sign",
+        "ornament:upper_mordent:written_to_sign",
+        "ornament:lower_mordent:written_to_sign",
+        "ornament:acciaccatura:written_to_sign",
+        "ornament:appoggiatura:written_to_sign"
+      ],
+      "templates": ["ornament_recognition"],
+      "worked_example": {
+        "template_id": "ornament_recognition",
+        "grade": 5,
+        "seed": 2
+      },
+      "teach": {
+        "objectives": [
+          "An ornament sign is shorthand for a fixed pattern of notes — read the written-out pattern and you can name the sign that stands for it",
+          "A mordent is a single quick flick to a neighbour and back; a turn wraps above and below the note; a trill is a longer measured wobble with the note above",
+          "A grace note leaning into the main note is an acciaccatura (crushed, very short) or an appoggiatura (on the beat, taking half the note's value)"
+        ],
+        "concept": {
+          "title": "From the notes to the sign",
+          "body": "Every ornament sign is just a shorthand for notes a composer could have written out in full. An UPPER MORDENT is the note, the note above, and back — a single quick flick; a LOWER MORDENT flicks to the note below instead. A TURN winds around the note: up to the note above, back to the note, down to the note below, and back again. A TRILL is a longer, measured alternation between the note and the note above it. Grace notes lean into the main note: an ACCIACCATURA is crushed in as fast as possible (written as a tiny slashed note), while an APPOGGIATURA leans on the beat and takes half the main note's value. Read the written-out pattern, work out which of these it is, and pick its sign.",
+          "example": {
+            "template_id": "ornament_recognition",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Count the notes and their shape. Three notes flicking to a neighbour = a mordent; five notes winding above AND below = a turn; a long even wobble = a trill; one small note leaning in = a grace note (slashed = acciaccatura, half-value = appoggiatura).",
+        "didYouKnow": "Baroque composers often left ornaments as signs precisely because the exact notes were a matter of taste — the same trill sign could be played a dozen ways depending on the player and the tempo."
+      },
       "unlocks": null
     }
   ]

@@ -142775,6 +142775,1391 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte ornament_recognition @ ornaments-to-sign-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s0",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Trill": "trill",
+          "Turn": "turn",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Appoggiatura",
+    },
+    "distractors": [
+      "Turn",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s1",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Appoggiatura": "appoggiatura",
+          "Turn": "turn",
+        },
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Trill",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s2",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Appoggiatura": "appoggiatura",
+          "Trill": "trill",
+          "Turn": "turn",
+        },
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Turn",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s3",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Lower mordent": "lower_mordent",
+          "Turn": "turn",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s4",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Trill": "trill",
+          "Turn": "turn",
+        },
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s5",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Appoggiatura": "appoggiatura",
+          "Turn": "turn",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Appoggiatura",
+    },
+    "distractors": [
+      "Turn",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s6",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Appoggiatura": "appoggiatura",
+          "Turn": "turn",
+        },
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s7",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Lower mordent": "lower_mordent",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Trill",
+      "Turn",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s8",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Lower mordent": "lower_mordent",
+          "Trill": "trill",
+          "Turn": "turn",
+        },
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s9",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Lower mordent": "lower_mordent",
+          "Trill": "trill",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s10",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Appoggiatura": "appoggiatura",
+          "Turn": "turn",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Trill",
+      "Upper mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s11",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Trill": "trill",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Appoggiatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s12",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Appoggiatura": "appoggiatura",
+          "Lower mordent": "lower_mordent",
+          "Turn": "turn",
+        },
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Trill",
+    },
+    "distractors": [
+      "Appoggiatura",
+      "Upper mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s13",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Appoggiatura": "appoggiatura",
+          "Trill": "trill",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Lower mordent",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s14",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Lower mordent": "lower_mordent",
+          "Trill": "trill",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Upper mordent",
+    },
+    "distractors": [
+      "Turn",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s15",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Trill": "trill",
+          "Turn": "turn",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Trill",
+    },
+    "distractors": [
+      "Acciaccatura",
+      "Lower mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s16",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Lower mordent": "lower_mordent",
+          "Trill": "trill",
+        },
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Turn",
+    },
+    "distractors": [
+      "Upper mordent",
+      "Acciaccatura",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s17",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Turn": "turn",
+          "Upper mordent": "upper_mordent",
+        },
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Turn",
+      "Lower mordent",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s18",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Lower mordent": "lower_mordent",
+          "Turn": "turn",
+        },
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Acciaccatura",
+    },
+    "distractors": [
+      "Lower mordent",
+      "Trill",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — trace the written notes: which sign is the shorthand for that exact pattern?",
+    },
+    "grade": 5,
+    "hints": [
+      "Look at the pattern: a quick flick up and back is a mordent; up-and-down around the note is a turn; a longer wobble is a trill; a single small note leaning in is a grace note.",
+    ],
+    "id": "ornament_recognition:g5:s19",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "option_sign": {
+          "Acciaccatura": "acciaccatura",
+          "Lower mordent": "lower_mordent",
+          "Trill": "trill",
+        },
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This ornament is written out in full. Which sign means the same?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte transposing_instrument @ transposing-instruments-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

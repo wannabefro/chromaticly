@@ -7,8 +7,9 @@
 import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { Music } from '../../music/types';
+import type { Music, OrnamentKind } from '../../music/types';
 import { ACCENT, colors, shape, strandDef, type, type Strand } from '../theme';
+import { OrnamentSign } from './OrnamentSign';
 import { StaticNotation } from './StaticNotation';
 
 export type AnswerOptionState = 'default' | 'selected' | 'correct' | 'incorrect';
@@ -22,6 +23,9 @@ export interface AnswerOptionProps {
   /** A notation-answer's rendered stave (AD5). Takes precedence over `label`
    *  when set; play is disabled (rule 9 — play omitted inside options). */
   music?: Music;
+  /** G5-5: an ornament sign drawn (via OrnamentSign) beside the label text —
+   *  the label stays for accessibility, the sign is the visible answer. */
+  sign?: OrnamentKind;
   onPress?: () => void;
   testID?: string;
   children?: ReactNode;
@@ -39,6 +43,7 @@ export function AnswerOption({
   strand,
   meta,
   music,
+  sign,
   onPress,
   testID,
   children,
@@ -84,7 +89,9 @@ export function AnswerOption({
         <Text style={badgeTextStyle}>{badgeContent}</Text>
       </View>
       <View style={styles.body}>
-        {children ?? (music ? (
+        {children ?? (sign ? (
+          <OrnamentSign kind={sign} color={colors.text} testID={testID ? `${testID}-sign` : undefined} />
+        ) : music ? (
           <StaticNotation music={music} height={100} testID={testID ? `${testID}-notation` : undefined} />
         ) : (
           <Text style={styles.label}>{label}</Text>

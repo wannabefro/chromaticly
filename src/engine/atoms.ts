@@ -208,6 +208,17 @@ export function ornamentAtom(kind: string): string {
   return `ornament:${kind}`;
 }
 
+/** Grade-5 ornament direction suffix (G5-5, chromaticly-cke): the 3-part atom
+ *  ornament:<kind>:written_to_sign gates the REVERSE direction — the ornament is
+ *  written out as ordinary notes and the learner picks the sign. The bare 2-part
+ *  ornament:<kind> stays the Grade-4 sign->name path (byte-identical). */
+export const ORNAMENT_WRITTEN_TO_SIGN = 'written_to_sign';
+
+/** e.g. ornamentSignAtom('turn') -> "ornament:turn:written_to_sign". */
+export function ornamentSignAtom(kind: string): string {
+  return `ornament:${kind}:${ORNAMENT_WRITTEN_TO_SIGN}`;
+}
+
 /** Grade-4 instrument-knowledge instruments (instrument_knowledge, KB
  *  instrument families/clefs). Mirrors INSTRUMENT_TABLE's keys in
  *  instrument-knowledge.ts — kept in sync by hand (like CHORD_NUMERALS/

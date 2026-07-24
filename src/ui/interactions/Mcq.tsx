@@ -39,6 +39,7 @@ export function Mcq({ options, selectedIndex, graded, strand, onSelectIndex }: M
             state={state}
             strand={strand}
             music={option.music}
+            sign={option.sign}
             meta={graded !== null && index === selectedIndex && !option.correct ? 'your pick' : undefined}
             onPress={graded === null ? () => onSelectIndex(index) : undefined}
           />

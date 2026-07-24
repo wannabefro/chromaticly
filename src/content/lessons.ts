@@ -14,7 +14,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
@@ -226,8 +226,19 @@ export function assertAtomResolves(atom: string, grade: number): void {
       return;
     }
     case 'ornament': {
-      const [kind] = parts;
-      if (grade < 4 || !(ORNAMENT_KINDS as readonly string[]).includes(kind)) {
+      const [kind, direction] = parts;
+      if (!(ORNAMENT_KINDS as readonly string[]).includes(kind)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} ornament kind`);
+      }
+      // 3-part ornament:<kind>:written_to_sign is the Grade-5 reverse direction
+      // (G5-5, chromaticly-cke); bare 2-part ornament:<kind> stays Grade-4 up.
+      if (direction !== undefined) {
+        if (direction !== ORNAMENT_WRITTEN_TO_SIGN || grade < 5) {
+          throw new Error(`lessons: atom "${atom}" is not a G${grade} ornament direction`);
+        }
+        return;
+      }
+      if (grade < 4) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} ornament kind`);
       }
       return;
