@@ -142774,3 +142774,4855 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   },
 ]
 `;
+
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte transposing_instrument @ transposing-instruments-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C6",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s0",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s1",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Bb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Bb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s2",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Bb major",
+        "answerClef": "treble",
+        "answerKeySig": "Bb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in C major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in C major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s3",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in C major",
+        "answerClef": "treble",
+        "answerKeySig": "C_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in D major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in D major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s4",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in D major",
+        "answerClef": "treble",
+        "answerKeySig": "D_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Bb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Bb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s5",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Bb major",
+        "answerClef": "treble",
+        "answerKeySig": "Bb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s6",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Db5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Db5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Ab major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Ab major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s7",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Ab major",
+        "answerClef": "treble",
+        "answerKeySig": "Ab_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in D major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in D major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s8",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in D major",
+        "answerClef": "treble",
+        "answerKeySig": "D_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s9",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s10",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semibreve",
+          "pitch": "F5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semibreve",
+          "pitch": "F5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in C major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in C major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s11",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in C major",
+        "answerClef": "treble",
+        "answerKeySig": "C_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s12",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Eb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Eb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s13",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Eb major",
+        "answerClef": "treble",
+        "answerKeySig": "Eb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C#6",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C#6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in A major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in A major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s14",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in A major",
+        "answerClef": "treble",
+        "answerKeySig": "A_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s15",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F#5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F#5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s16",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C6",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C6",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Bb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Bb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s17",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Bb major",
+        "answerClef": "treble",
+        "answerKeySig": "Bb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s18",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in C major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in C major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s19",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in C major",
+        "answerClef": "treble",
+        "answerKeySig": "C_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte transposing_instrument (transposing-instruments-5, pre-lesson pin, chromaticly-wz1) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C6",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s0",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s1",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Bb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Bb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s2",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Bb major",
+        "answerClef": "treble",
+        "answerKeySig": "Bb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in C major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in C major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s3",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in C major",
+        "answerClef": "treble",
+        "answerKeySig": "C_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in D major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in D major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s4",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in D major",
+        "answerClef": "treble",
+        "answerKeySig": "D_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Bb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Bb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s5",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Bb major",
+        "answerClef": "treble",
+        "answerKeySig": "Bb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s6",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Db5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Db5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Ab major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Ab major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s7",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Ab major",
+        "answerClef": "treble",
+        "answerKeySig": "Ab_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in D major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in D major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s8",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in D major",
+        "answerClef": "treble",
+        "answerKeySig": "D_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s9",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s10",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semibreve",
+          "pitch": "F5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semibreve",
+          "pitch": "F5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in C major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in C major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s11",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in C major",
+        "answerClef": "treble",
+        "answerKeySig": "C_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s12",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "D5",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Eb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Eb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s13",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Eb major",
+        "answerClef": "treble",
+        "answerKeySig": "Eb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C#6",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C#5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C#6",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in A major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in A major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s14",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in A major",
+        "answerClef": "treble",
+        "answerKeySig": "A_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s15",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F#5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F#5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a perfect 5th from the concert line, written in G major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The horn in F sounds a perfect 5th lower than written, so write every note a perfect 5th HIGHER than concert pitch — in G major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s16",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a perfect 5th — in G major",
+        "answerClef": "treble",
+        "answerKeySig": "G_major",
+        "banner": {
+          "instrument": "horn in F",
+          "interval": "↑ P5",
+          "intervalName": "perfect 5th",
+          "sounds": "Sounds a perfect 5th lower than written",
+          "write": "Write the part up a perfect 5th",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the horn in F so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:f",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "C6",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "C6",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in Bb major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in Bb major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s17",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in Bb major",
+        "answerClef": "treble",
+        "answerKeySig": "Bb_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C5",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a major 2nd from the concert line, written in F major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The B♭ clarinet sounds a major 2nd lower than written, so write every note a major 2nd HIGHER than concert pitch — in F major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s18",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a major 2nd — in F major",
+        "answerClef": "treble",
+        "answerKeySig": "F_major",
+        "banner": {
+          "instrument": "B♭ clarinet",
+          "interval": "↑ M2",
+          "intervalName": "major 2nd",
+          "sounds": "Sounds a major 2nd lower than written",
+          "write": "Write the part up a major 2nd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the B♭ clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:bb",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "F5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note goes UP a minor 3rd from the concert line, written in C major.",
+    },
+    "grade": 5,
+    "hints": [
+      "The A clarinet sounds a minor 3rd lower than written, so write every note a minor 3rd HIGHER than concert pitch — in C major, its key signature does the spelling.",
+    ],
+    "id": "transposing_instrument:g5:s19",
+    "interaction": {
+      "config": {
+        "answerCaption": "Written up a minor 3rd — in C major",
+        "answerClef": "treble",
+        "answerKeySig": "C_major",
+        "banner": {
+          "instrument": "A clarinet",
+          "interval": "↑ m3",
+          "intervalName": "minor 3rd",
+          "sounds": "Sounds a minor 3rd lower than written",
+          "write": "Write the part up a minor 3rd",
+        },
+        "direction": "up",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write this line for the A clarinet so it sounds at concert pitch.",
+    "srs_tags": [
+      "transpose_instrument:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "transposing_instrument",
+  },
+]
+`;

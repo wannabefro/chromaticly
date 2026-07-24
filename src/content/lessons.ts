@@ -14,7 +14,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
@@ -310,6 +310,18 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       if (grade !== 3 && grade !== 4) {
         throw new Error(`lessons: atom "${atom}" only resolves at grade 3 or 4`);
+      }
+      return;
+    }
+    case 'transpose_instrument': {
+      // transposing_instrument (G5-4, chromaticly-wz1) is a Grade-5-only skill
+      // (the KB scopes transposing instruments at grade 5). One atom per
+      // instrument code (bb/a/f), each pinning the interval to write.
+      if (parts.length !== 1 || !(parts[0] in INSTRUMENT_TRANSPOSITIONS)) {
+        throw new Error(`lessons: atom "${atom}" names an unknown transposing instrument`);
+      }
+      if (grade !== 5) {
+        throw new Error(`lessons: atom "${atom}" only resolves at grade 5`);
       }
       return;
     }

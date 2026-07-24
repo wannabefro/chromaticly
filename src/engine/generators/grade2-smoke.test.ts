@@ -151,6 +151,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // clef_equivalence (chromaticly-ra3) — throws below grade 4 (build gate),
       // so a grade-2 sweep can't generate it; it's a generator-level grade-4 gate.
       'clef_equivalence',
+      // transposing_instrument (G5-4, chromaticly-wz1) — throws below grade 5
+      // (build gate), so a grade-2 sweep can't generate it; generator-level
+      // grade-5 gate, exercised by its own grade-5 tests.
+      'transposing_instrument',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

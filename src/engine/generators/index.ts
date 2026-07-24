@@ -24,6 +24,7 @@ import { restCompletion } from './rest-completion';
 import { rhythmSum } from './rhythm-sum';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
+import { transposingInstrument } from './transposing-instrument';
 import type { GenerateOptions, Generator } from './types';
 
 export const GENERATORS: Record<string, Generator> = {
@@ -52,6 +53,7 @@ export const GENERATORS: Record<string, Generator> = {
   enharmonic_recognition: enharmonicRecognition,
   rest_completion: restCompletion,
   clef_equivalence: clefEquivalence,
+  transposing_instrument: transposingInstrument,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

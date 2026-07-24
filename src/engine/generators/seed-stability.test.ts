@@ -61,7 +61,7 @@ const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 // it here routes its coverage requirement to the matching *_EXTRA_CASES pool
 // instead. metre_classification registers as grade 3 in U6 — the first entry
 // this map needs beyond grade 2.
-const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
+const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   mode_swap: 2,
   scale_construction: 2,
   metre_classification: 3,
@@ -75,10 +75,11 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4> = {
   instrument_knowledge: 4,
   enharmonic_recognition: 4,
   clef_equivalence: 4,
+  transposing_instrument: 5,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
-function introducedAtGrade(templateId: string): 1 | 2 | 3 | 4 {
+function introducedAtGrade(templateId: string): 1 | 2 | 3 | 4 | 5 {
   return TEMPLATE_INTRODUCED_AT[templateId] ?? 1;
 }
 
@@ -97,20 +98,20 @@ const GRADE_2_EXTRA_CASES: Case[] = [
   },
 ];
 
-type CoverageByGrade = Partial<Record<1 | 2 | 3 | 4, Set<string>>>;
+type CoverageByGrade = Partial<Record<1 | 2 | 3 | 4 | 5, Set<string>>>;
 
 /** A template is covered only by a pin block at the grade it's introduced at. */
-function isTemplateCovered(templateId: string, introducedAt: 1 | 2 | 3 | 4, coverageByGrade: CoverageByGrade): boolean {
+function isTemplateCovered(templateId: string, introducedAt: 1 | 2 | 3 | 4 | 5, coverageByGrade: CoverageByGrade): boolean {
   return coverageByGrade[introducedAt]?.has(templateId) ?? false;
 }
 
 /** A template pinned below the grade it's introduced at would pin a throw or an invalid instance — always a defect. */
 function templateLeaksBelowIntroduction(
   templateId: string,
-  introducedAt: 1 | 2 | 3 | 4,
+  introducedAt: 1 | 2 | 3 | 4 | 5,
   coverageByGrade: CoverageByGrade,
 ): boolean {
-  return ([1, 2, 3, 4] as const).filter((g) => g < introducedAt).some((g) => coverageByGrade[g]?.has(templateId));
+  return ([1, 2, 3, 4, 5] as const).filter((g) => g < introducedAt).some((g) => coverageByGrade[g]?.has(templateId));
 }
 
 describe('seed-stability — grade-1 generator output is pinned byte-for-byte', () => {
@@ -120,6 +121,7 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
       2: new Set(GRADE_2_EXTRA_CASES.map((c) => c.templateId)),
       3: new Set(GRADE_3_EXTRA_CASES.map((c) => c.templateId)),
       4: new Set(GRADE_4_EXTRA_CASES.map((c) => c.templateId)),
+      5: new Set(GRADE_5_EXTRA_CASES.map((c) => c.templateId)),
     };
     for (const templateId of Object.keys(GENERATORS)) {
       // Invariant: an unpinned generator would let a refactor change its output
@@ -134,6 +136,7 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
       2: new Set(GRADE_2_EXTRA_CASES.map((c) => c.templateId)),
       3: new Set(GRADE_3_EXTRA_CASES.map((c) => c.templateId)),
       4: new Set(GRADE_4_EXTRA_CASES.map((c) => c.templateId)),
+      5: new Set(GRADE_5_EXTRA_CASES.map((c) => c.templateId)),
     };
     const leaks = Object.keys(GENERATORS).filter((templateId) =>
       templateLeaksBelowIntroduction(templateId, introducedAtGrade(templateId), coverageByGrade),
@@ -472,6 +475,29 @@ if (GRADE_4_EXTRA_CASES.length > 0) {
     describe.each(GRADE_4_EXTRA_CASES)('$label', ({ templateId, atoms }) => {
       test('instances are a pure function of (template, grade, seed, atoms)', () => {
         const instances = SEEDS.map((seed) => generate(templateId, { grade: 4, seed, atoms }));
+        expect(instances).toMatchSnapshot();
+      });
+    });
+  });
+}
+
+// Grade-5-only generators, pinned directly at grade 5 (mirrors the grade-4
+// extras): transposing_instrument (G5-4, chromaticly-wz1) is net-new at grade 5
+// — no lower grade has any valid instance — so it carries its own pre-lesson
+// pin independent of the transposing-instruments-5 lesson.
+const GRADE_5_EXTRA_CASES: Case[] = [
+  {
+    label: 'transposing_instrument (transposing-instruments-5, pre-lesson pin, chromaticly-wz1)',
+    templateId: 'transposing_instrument',
+    atoms: ['transpose_instrument:bb', 'transpose_instrument:a', 'transpose_instrument:f'],
+  },
+];
+
+if (GRADE_5_EXTRA_CASES.length > 0) {
+  describe('seed-stability — grade-5-only generator extras are pinned byte-for-byte', () => {
+    describe.each(GRADE_5_EXTRA_CASES)('$label', ({ templateId, atoms }) => {
+      test('instances are a pure function of (template, grade, seed, atoms)', () => {
+        const instances = SEEDS.map((seed) => generate(templateId, { grade: 5, seed, atoms }));
         expect(instances).toMatchSnapshot();
       });
     });

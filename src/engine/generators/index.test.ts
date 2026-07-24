@@ -35,6 +35,11 @@ const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition
 // "same pitch across treble/alto/bass" skill the KB scopes only at grade 4.
 const GRADE_4_ONLY_TEMPLATE_IDS = ['clef_equivalence'];
 
+// transposing_instrument (G5-4, chromaticly-wz1) throws below grade 5 (build()
+// gate) — the transposing-instrument skill the KB scopes only at grade 5. Same
+// shape as clef_equivalence one tier out.
+const GRADE_5_ONLY_TEMPLATE_IDS = ['transposing_instrument'];
+
 // anacrusis_recognition (anacrusis slice, D5) needs an explicit anacrusis:<sig>
 // atom (no legacy bare-atom fallback, unlike add_time_signature) but — unlike
 // metre_classification — is NOT grade-gated in the generator/validator: its
@@ -82,6 +87,7 @@ describe('GENERATORS registry', () => {
       ...GRADE_2_ONLY_TEMPLATE_IDS,
       ...GRADE_3_ONLY_TEMPLATE_IDS,
       ...GRADE_4_ONLY_TEMPLATE_IDS,
+      ...GRADE_5_ONLY_TEMPLATE_IDS,
       ...ATOM_REQUIRED_TEMPLATE_IDS,
     ]) {
       expect(typeof GENERATORS[templateId]).toBe('function');
@@ -95,6 +101,7 @@ describe('GENERATORS registry', () => {
         ...GRADE_2_ONLY_TEMPLATE_IDS,
         ...GRADE_3_ONLY_TEMPLATE_IDS,
         ...GRADE_4_ONLY_TEMPLATE_IDS,
+        ...GRADE_5_ONLY_TEMPLATE_IDS,
         ...ATOM_REQUIRED_TEMPLATE_IDS,
       ].sort(),
     );

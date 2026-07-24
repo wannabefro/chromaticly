@@ -44,6 +44,41 @@
         "smartTip": "The lowest note names the position, not the numeral. Find the root by stacking the notes in 3rds first, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
         "didYouKnow": "The little letters a, b and c are the ABRSM way of writing inversions. Elsewhere you may meet figured bass instead — IVb is the same chord a musician of Bach's day would have marked with a small 6 under the bass note."
       },
+      "unlocks": "transposing-instruments-5"
+    },
+    {
+      "id": "transposing-instruments-5",
+      "title": "Transposing instruments",
+      "strand": "pitch",
+      "atoms": [
+        "transpose_instrument:bb",
+        "transpose_instrument:a",
+        "transpose_instrument:f"
+      ],
+      "templates": ["transposing_instrument"],
+      "worked_example": {
+        "template_id": "transposing_instrument",
+        "grade": 5,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "A transposing instrument sounds at a different pitch from the note it reads — a B♭ clarinet, A clarinet and horn in F all SOUND LOWER than they are written",
+          "To make the instrument sound at concert pitch, write its part HIGHER than the concert note — up a major 2nd for a B♭ clarinet, a minor 3rd for an A clarinet, a perfect 5th for a horn in F",
+          "The written part takes the key signature of its transposed key, so the spelling comes from that key — not accidentals added against the concert key"
+        ],
+        "concept": {
+          "title": "Transposing instruments",
+          "body": "Some instruments do not sound the note they read. A B♭ clarinet reads a written C but SOUNDS the B♭ a tone (major 2nd) below it; an A clarinet sounds a minor 3rd below; a horn in F sounds a perfect 5th below. Because the instrument sounds LOWER than written, you must write its part HIGHER than concert pitch by that same interval — so a concert-pitch line for a B♭ clarinet is written up a major 2nd. The written part sits in a new key, a major 2nd (or minor 3rd, or perfect 5th) higher than the concert key, and you notate it with THAT key's signature — the accidentals come from the key signature, not from marking each note. Concert C major written for a B♭ clarinet becomes D major.",
+          "example": {
+            "template_id": "transposing_instrument",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Sounds lower → write higher. B♭ clarinet up a major 2nd, A clarinet up a minor 3rd, horn in F up a perfect 5th. Change the key signature to the transposed key and let it spell the notes.",
+        "didYouKnow": "Composers write for transposing instruments so a clarinettist can switch between the B♭ and A clarinet reading the SAME fingerings — the part is rewritten, but the hands do not have to relearn a thing."
+      },
       "unlocks": null
     }
   ]

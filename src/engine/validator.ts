@@ -14,7 +14,7 @@
 import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
 import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
 import { ORNAMENT_NAMES } from './generators/ornament-recognition';
@@ -978,6 +978,116 @@ function octaveTranspositionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// transposingInstrumentHook (G5-4, chromaticly-wz1) — the interval-transposition
+// sibling of octaveTranspositionHook. The written line is notated in the
+// TRANSPOSED key (config.answerKeySig), so each recomputed target is the concert
+// natural advanced by the instrument's interval letter-span and spelled in the
+// WRITTEN key sig. Recomputes the written key from the instrument code
+// (srs_tags) + the concert key (recompute-don't-trust config.answerKeySig), so a
+// per_item written at concert pitch — the core "forgot to transpose"
+// misconception — fails. Both staves are treble; direction is always up.
+function transposingInstrumentHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['transposing_instrument: stimulus.music is required'];
+  if (typeof music.key_sig !== 'string') return ['transposing_instrument: stimulus.music.key_sig is required'];
+
+  const tag = inst.srs_tags.find((t) => t.startsWith('transpose_instrument:'));
+  if (!tag) return ['transposing_instrument: a transpose_instrument:* srs_tag is required'];
+  const code = tag.split(':')[1];
+  if (!(code in INSTRUMENT_TRANSPOSITIONS)) {
+    return [`transposing_instrument: srs_tag "${tag}" names an unknown instrument`];
+  }
+  const spec = INSTRUMENT_TRANSPOSITIONS[code as keyof typeof INSTRUMENT_TRANSPOSITIONS];
+
+  const concert = music.key_sig.replace(/_major$/, '');
+  const pair = spec.keys.find((k) => k.concert === concert);
+  if (!pair) {
+    return [`transposing_instrument: concert key "${music.key_sig}" is not a valid concert key for ${code}`];
+  }
+  const writtenKeySig = `${pair.written}_major`;
+
+  const config = inst.interaction.config as { answerClef?: unknown; direction?: unknown; answerKeySig?: unknown } | undefined;
+  const errors: string[] = [];
+  if (config?.answerClef !== 'treble') {
+    errors.push('transposing_instrument: interaction.config.answerClef must be "treble"');
+  }
+  if (config?.direction !== 'up') {
+    errors.push('transposing_instrument: interaction.config.direction must be "up"');
+  }
+  if (config?.answerKeySig !== writtenKeySig) {
+    errors.push(
+      `transposing_instrument: interaction.config.answerKeySig "${String(config?.answerKeySig)}" is not the transposed key "${writtenKeySig}" ` +
+        `(the written part is notated in the instrument's key, not accidentals against ${music.key_sig})`,
+    );
+  }
+
+  const sourceNotes = music.voices.flatMap((v) => v.events).filter((ev): ev is NoteEvent => ev.type === 'note');
+  const perItem = inst.answer.per_item;
+  if (!Array.isArray(perItem)) {
+    errors.push('transposing_instrument: answer.per_item must be an array');
+    return errors;
+  }
+  if (perItem.length !== sourceNotes.length) {
+    errors.push(
+      `transposing_instrument: per_item length (${perItem.length}) does not match the stimulus note count (${sourceNotes.length})`,
+    );
+    return errors;
+  }
+
+  const givenRange = comfortablePitchRange('treble', inst.grade);
+  const answerRange = comfortablePitchRange('treble', inst.grade);
+
+  sourceNotes.forEach((source, i) => {
+    const item = perItem[i] as { pitch?: unknown; dur?: unknown; dots?: unknown } | null;
+    if (!item || typeof item.pitch !== 'string' || typeof item.dur !== 'string') {
+      errors.push(`transposing_instrument: per_item[${i}] must be a {pitch, dur} object`);
+      return;
+    }
+    const natural = naturalLetterOf(source.pitch);
+    const expectedTarget = spellInKeySig(naturalPitchStepsAbove(natural, spec.letterSteps), writtenKeySig);
+    if (item.pitch !== expectedTarget) {
+      errors.push(
+        `transposing_instrument: per_item[${i}].pitch "${item.pitch}" does not match the recomputed written target ` +
+          `"${expectedTarget}" (up a ${spec.intervalName}, spelled in ${writtenKeySig} — writing concert pitch is the exact misconception this rejects)`,
+      );
+    }
+    if (item.dur !== source.dur) {
+      errors.push(
+        `transposing_instrument: per_item[${i}].dur "${String(item.dur)}" does not match the source rhythm "${source.dur}"`,
+      );
+    }
+    const sourceDots = source.dots ?? 0;
+    const itemDots = typeof item.dots === 'number' ? item.dots : 0;
+    if (itemDots !== sourceDots) {
+      errors.push(
+        `transposing_instrument: per_item[${i}].dots (${itemDots}) does not match the source rhythm's dots (${sourceDots})`,
+      );
+    }
+    checkPitchScope(source.pitch, givenRange, inst.grade, errors);
+    checkPitchScope(item.pitch, answerRange, inst.grade, errors);
+  });
+
+  if (typeof music.time_sig !== 'string') {
+    errors.push('transposing_instrument: stimulus must carry a time signature');
+    return errors;
+  }
+  const barUnits = barUnitsFor(music.time_sig);
+  const groups = splitIntoBarGroups(music.voices[0]?.events ?? []).filter((g) => g.length > 0);
+  if (groups.length !== 2) {
+    errors.push(`transposing_instrument: stimulus must render exactly 2 bars (found ${groups.length})`);
+  }
+  for (const group of groups) {
+    const units = group.reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+    if (units !== barUnits) {
+      errors.push(
+        `transposing_instrument: a bar sums to ${units} units, not a full bar of ${music.time_sig} (${barUnits} units)`,
+      );
+    }
+  }
+
+  return errors;
+}
+
 // clefEquivalenceHook (chromaticly-ra3) — the same-octave sibling of
 // octaveTranspositionHook. The answer stave is a DIFFERENT clef, but the octave
 // delta is 0, so each recomputed target is the SOURCE pitch itself, re-spelled
@@ -1536,6 +1646,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   anacrusis_recognition: anacrusisRecognitionHook,
   duplet_recognition: dupletRecognitionHook,
   octave_transposition: octaveTranspositionHook,
+  transposing_instrument: transposingInstrumentHook,
   clef_equivalence: clefEquivalenceHook,
   chromatic_scale: chromaticScaleHook,
   degree_name_id: degreeNameIdHook,

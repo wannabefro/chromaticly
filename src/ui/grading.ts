@@ -245,9 +245,17 @@ function transpositionMisconceptionMessage(
   noteIndex: number,
   placed: string | null,
   targetPitch: string,
+  intervalName?: string,
 ): string {
   const noteNumber = noteIndex + 1;
   if (placed == null) return `Note ${noteNumber} hasn't been placed yet.`;
+
+  // Transposing-instrument mode (G5-4): the written line moves by a real
+  // interval, not an octave, so the "7th vs octave" near-miss copy does not
+  // apply. The classic error is writing the concert pitch (no transposition).
+  if (intervalName) {
+    return `Note ${noteNumber} isn't up a ${intervalName} from the concert line — writing it at concert pitch is the trap. The dashed green circle shows where it goes. Hear both to compare.`;
+  }
 
   const diff = diatonicOrdinal(placed) - diatonicOrdinal(targetPitch);
   if (direction === 'down' && diff === 1) {
@@ -273,8 +281,9 @@ export function transpositionSummary(instance: ExerciseInstance, response: Trans
 
   const wrongIndices = verdicts.reduce<number[]>((acc, ok, i) => (ok ? acc : [...acc, i]), []);
   const direction = (instance.interaction.config?.direction as 'up' | 'down' | undefined) ?? 'down';
+  const intervalName = (instance.interaction.config?.banner as { intervalName?: string } | undefined)?.intervalName;
   const firstWrong = wrongIndices[0];
-  const message = transpositionMisconceptionMessage(direction, firstWrong, response.placements[firstWrong], perItem[firstWrong].pitch);
+  const message = transpositionMisconceptionMessage(direction, firstWrong, response.placements[firstWrong], perItem[firstWrong].pitch, intervalName);
   const fixLabel = wrongIndices.length === 1 ? `Fix note ${firstWrong + 1}` : `Fix ${wrongIndices.length} notes`;
 
   return { correct, total, message, fixLabel };

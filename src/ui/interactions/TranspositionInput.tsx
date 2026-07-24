@@ -63,6 +63,29 @@ function answerClefOf(instance: ExerciseInstance): Clef {
   return (instance.interaction.config?.answerClef as Clef | undefined) ?? 'treble';
 }
 
+/** The key signature the ANSWER stave is drawn and spelled in. For octave
+ *  transposition the written line shares the concert key, so this falls back to
+ *  the stimulus key_sig (byte-identical to the original behaviour). For a
+ *  transposing instrument (G5-4) the written line is notated in the transposed
+ *  key, which the generator supplies as `config.answerKeySig` — the answer stave
+ *  must render and spell tapped notes in THAT key, not the concert key. */
+function answerKeySigOf(instance: ExerciseInstance): KeySig {
+  const override = instance.interaction.config?.answerKeySig as KeySig | undefined;
+  if (override !== undefined) return override;
+  return (instance.stimulus.music as Music | null)?.key_sig ?? null;
+}
+
+interface InstrumentBanner {
+  instrument: string;
+  sounds: string;
+  write: string;
+  interval: string;
+}
+
+function bannerOf(instance: ExerciseInstance): InstrumentBanner | null {
+  return (instance.interaction.config?.banner as InstrumentBanner | undefined) ?? null;
+}
+
 /** First slot with no placement yet — locked (fix-mode-correct) slots always
  *  carry a placement, so they're skipped by construction, never targeted. */
 function activeSlotIndex(response: TranspositionResponse): number {
@@ -107,7 +130,7 @@ function answerSoFarMusic(instance: ExerciseInstance, response: TranspositionRes
     events.push(item.dots ? { type: 'note', pitch: placed, dur: item.dur, dots: item.dots } : { type: 'note', pitch: placed, dur: item.dur });
   }
   if (events.length === 0) return null;
-  return { clef, key_sig: stimulusMusic?.key_sig ?? null, time_sig: stimulusMusic?.time_sig ?? null, voices: [{ events }] };
+  return { clef, key_sig: answerKeySigOf(instance), time_sig: stimulusMusic?.time_sig ?? null, voices: [{ events }] };
 }
 
 const SLOT_MARGIN_LEFT = 60;
@@ -142,11 +165,12 @@ export function transpositionCorrectAnswerView(instance: ExerciseInstance) {
   });
   const targetMusic: Music = {
     clef: answerClef,
-    key_sig: stimulusMusic?.key_sig ?? null,
+    key_sig: answerKeySigOf(instance),
     time_sig: stimulusMusic?.time_sig ?? null,
     voices: [{ events }],
   };
-  return <NotationCard music={targetMusic} caption="One octave away, same rhythm" testID="answer-notation" />;
+  const caption = (instance.interaction.config?.answerCaption as string | undefined) ?? 'One octave away, same rhythm';
+  return <NotationCard music={targetMusic} caption={caption} testID="answer-notation" />;
 }
 
 // --- Component --------------------------------------------------------
@@ -160,7 +184,8 @@ export function TranspositionInput({
   onPlayMusic,
 }: InteractionComponentProps<TranspositionInputResponse>) {
   const clef = answerClefOf(instance);
-  const keySig: KeySig = (instance.stimulus.music as Music | null)?.key_sig ?? null;
+  const keySig: KeySig = answerKeySigOf(instance);
+  const banner = bannerOf(instance);
   const items = targets(instance);
   const n = items.length;
   const [cardWidth, setCardWidth] = useState(0);
@@ -222,6 +247,22 @@ export function TranspositionInput({
 
   return (
     <View style={styles.container} testID="transposition-input">
+      {banner && (
+        <View style={[styles.banner, { borderColor: hue }]} testID="transposition-banner">
+          <View style={styles.bannerHead}>
+            <Text style={styles.bannerInstrument} testID="transposition-banner-instrument">
+              {banner.instrument}
+            </Text>
+            <View style={[styles.bannerPill, { backgroundColor: `${hue}22`, borderColor: hue }]}>
+              <Text style={[styles.bannerPillText, { color: hue }]} testID="transposition-banner-interval">
+                {banner.interval}
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.bannerSounds}>{banner.sounds}</Text>
+          <Text style={[styles.bannerWrite, { color: hue }]}>{banner.write}</Text>
+        </View>
+      )}
       <View
         style={[styles.staveCard, { height: staveHeight + PAPER_INSET * 2 }]}
         onLayout={(e) => setCardWidth(e.nativeEvent.layout.width)}
@@ -353,6 +394,24 @@ export const transpositionInputSpec: InteractionSpec<TranspositionInputResponse>
 
 const styles = StyleSheet.create({
   container: { gap: shape.spaceStack },
+  banner: {
+    borderWidth: shape.borderWActive,
+    borderRadius: shape.radiusControl,
+    backgroundColor: colors.surfaceCard,
+    padding: shape.spaceCard,
+    gap: shape.spaceInline,
+  },
+  bannerHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  bannerInstrument: { ...typo.cardTitle, color: colors.text },
+  bannerPill: {
+    borderWidth: shape.borderWActive,
+    borderRadius: shape.radiusChip,
+    paddingHorizontal: shape.spaceInline,
+    paddingVertical: 2,
+  },
+  bannerPillText: { ...typo.label },
+  bannerSounds: { ...typo.body, color: colors.textMuted },
+  bannerWrite: { ...typo.label },
   staveCard: {
     backgroundColor: colors.paper,
     borderRadius: shape.radiusPaper,

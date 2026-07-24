@@ -139,6 +139,67 @@ export function chordPositionAtom(numeral: string, position: string): string {
   return `chord:${numeral}:${position}`;
 }
 
+/** Grade-5 transposing instruments (transposing_instrument, KB grade5Adds
+ *  transposition). The learner writes the part each must READ to sound at
+ *  concert pitch — the instrument sounds LOWER than written, so the written
+ *  part is written UP by the interval. `letterSteps` is the interval's diatonic
+ *  span (a M2 = 1 step, m3 = 2, P5 = 4); `keys` pins concert->written major-key
+ *  pairs (both in the supported key set, written spelling clean) so the written
+ *  line is notated in the transposed key, not accidentals against the concert
+ *  key. Shared reference data — the validator imports this to recompute the
+ *  written line (recompute-don't-trust), like CHORD_DEGREE_STEPS. */
+export const INSTRUMENT_TRANSPOSITIONS = {
+  bb: {
+    name: 'B♭ clarinet',
+    intervalName: 'major 2nd',
+    intervalPill: '↑ M2',
+    letterSteps: 1,
+    keys: [
+      { concert: 'C', written: 'D' },
+      { concert: 'F', written: 'G' },
+      { concert: 'Bb', written: 'C' },
+      { concert: 'G', written: 'A' },
+      { concert: 'Eb', written: 'F' },
+      { concert: 'D', written: 'E' },
+    ],
+  },
+  a: {
+    name: 'A clarinet',
+    intervalName: 'minor 3rd',
+    intervalPill: '↑ m3',
+    letterSteps: 2,
+    keys: [
+      { concert: 'C', written: 'Eb' },
+      { concert: 'G', written: 'Bb' },
+      { concert: 'D', written: 'F' },
+      { concert: 'F', written: 'Ab' },
+      { concert: 'A', written: 'C' },
+      { concert: 'E', written: 'G' },
+    ],
+  },
+  f: {
+    name: 'horn in F',
+    intervalName: 'perfect 5th',
+    intervalPill: '↑ P5',
+    letterSteps: 4,
+    keys: [
+      { concert: 'C', written: 'G' },
+      { concert: 'F', written: 'C' },
+      { concert: 'Bb', written: 'F' },
+      { concert: 'Eb', written: 'Bb' },
+      { concert: 'G', written: 'D' },
+      { concert: 'D', written: 'A' },
+    ],
+  },
+} as const;
+
+export type TransposingInstrument = keyof typeof INSTRUMENT_TRANSPOSITIONS;
+
+/** e.g. transposeInstrumentAtom('bb') -> "transpose_instrument:bb". */
+export function transposeInstrumentAtom(instrument: string): string {
+  return `transpose_instrument:${instrument}`;
+}
+
 /** Grade-4 ornament kinds (ornament_recognition, KB `ornaments_recognize`). */
 export const ORNAMENT_KINDS = ['trill', 'turn', 'upper_mordent', 'lower_mordent', 'acciaccatura', 'appoggiatura'] as const;
 
