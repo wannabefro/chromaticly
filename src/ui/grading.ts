@@ -48,7 +48,10 @@ export function optionLabel(value: unknown): string {
     if (typeof obj.dur === 'string') {
       const dots = typeof obj.dots === 'number' ? obj.dots : 0;
       if (dots === 1) return `dotted ${obj.dur}`;
-      if (dots > 1) return `${dots}-dotted ${obj.dur}`;
+      // "double-dotted", matching the generator's own formatValue (rhythm-sum.ts)
+      // and standard notation terminology — not the generic "2-dotted".
+      if (dots === 2) return `double-dotted ${obj.dur}`;
+      if (dots > 2) return `${dots}-dotted ${obj.dur}`;
       return obj.dur;
     }
     if (typeof obj.value === 'string') return obj.value;

@@ -14,7 +14,7 @@
 
 import { KB, KB_VERSION } from '../../content/knowledge-base';
 import type { Duration } from '../../music/types';
-import { rhythmSumAtom } from '../atoms';
+import { RHYTHM_SUM_DOUBLE_DOT_ATOM, rhythmSumAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
@@ -148,15 +148,22 @@ function buildDistractors(target: ValueEntry, valueTable: readonly ValueEntry[])
   return distractors;
 }
 
-function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
   // Grade 4 (GRADE_4_SCOPE.rhythmDevices: 'double_dot') opens the wider value
   // table; grades 1-3 stay on the original VALUE_TABLE/DECOMPOSABLE_TARGETS —
   // the exact same objects/computation as before this generator gained
   // double-dot support — so their output is byte-identical.
   const valueTable = grade >= 4 ? GRADE4_VALUE_TABLE : VALUE_TABLE;
-  const decomposableTargets = grade >= 4 ? GRADE4_DECOMPOSABLE_TARGETS : DECOMPOSABLE_TARGETS;
   const decompositionsByTarget = grade >= 4 ? GRADE4_DECOMPOSITIONS_BY_TARGET : DECOMPOSITIONS_BY_TARGET;
+  // The double-dot lesson (rhythm-doubledot-4) scopes to the double-dotted
+  // target so its headline skill is ACTUALLY assessed (chromaticly-2fc):
+  // uniform target selection left the deterministic 8-item set with zero
+  // double-dotted items. A bare `rhythm_sum` atom stays unconstrained, so
+  // grade-1 note-values and the pre-lesson grade-4 pin are byte-identical.
+  const doubleDotOnly = atoms.includes(RHYTHM_SUM_DOUBLE_DOT_ATOM);
+  const allTargets = grade >= 4 ? GRADE4_DECOMPOSABLE_TARGETS : DECOMPOSABLE_TARGETS;
+  const decomposableTargets = doubleDotOnly ? allTargets.filter((t) => t.dots === 2) : allTargets;
   const target = pick(rng, decomposableTargets);
   const decomps = decompositionsByTarget.get(targetKey(target))!;
   const decomposition = pick(rng, decomps);
@@ -181,10 +188,10 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
       correct: 'Correct!',
       incorrect: 'Not quite — check the note tree and re-add the values carefully, including any dots.',
     },
-    srs_tags: [rhythmSumAtom()],
+    srs_tags: [doubleDotOnly ? RHYTHM_SUM_DOUBLE_DOT_ATOM : rhythmSumAtom()],
     kb_version: KB_VERSION,
   };
 }
 
 export const rhythmSum: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));

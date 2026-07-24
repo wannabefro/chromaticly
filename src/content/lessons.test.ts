@@ -635,6 +635,32 @@ describe('rests-4 lesson (chromaticly-gni)', () => {
   });
 });
 
+// chromaticly-2fc — rhythm-doubledot-4 must actually ASSESS double-dotted
+// rhythms. Uniform target selection left the deterministic 8-item set with zero
+// double-dotted items; the lesson now scopes rhythm_sum via a `double_dot` atom.
+describe('rhythm-doubledot-4 lesson (chromaticly-2fc)', () => {
+  const lesson = () => lessonById('rhythm-doubledot-4')!;
+
+  test('scopes rhythm_sum to the double-dot atom (grade-4 only)', () => {
+    expect(lesson().atoms).toEqual(['rhythm_sum:double_dot']);
+    expect(() => assertAtomResolves('rhythm_sum:double_dot', 4)).not.toThrow();
+    expect(() => assertAtomResolves('rhythm_sum:double_dot', 3)).toThrow();
+    // A bare rhythm_sum atom still resolves at every grade (grade-1 note-values).
+    expect(() => assertAtomResolves('rhythm_sum', 1)).not.toThrow();
+  });
+
+  // The whole point of the lesson: EVERY item in the real per-set seed range
+  // targets a double-dotted value — the regression this fixes was zero of them.
+  test('every item in the deterministic set targets a double-dotted rhythm', () => {
+    for (let seed = 0; seed < SET_SIZE; seed++) {
+      const inst = generate('rhythm_sum', { grade: 4, seed, atoms: lesson().atoms });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect((inst.answer.canonical as { dots: number }).dots).toBe(2);
+      expect(inst.srs_tags[0]).toBe('rhythm_sum:double_dot');
+    }
+  });
+});
+
 // chromaticly-ra3 — clef-equivalence-4: the same sounding pitch reads at a
 // different staff position in each clef. Spliced after alto-transposition-4,
 // reusing the new clef_equivalence generator (delta-0 clef rewrite).

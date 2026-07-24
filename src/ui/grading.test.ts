@@ -32,6 +32,9 @@ describe('optionLabel — every G1 answer shape gets a readable label', () => {
   test('rhythm value renders with the dotted prefix only when dotted', () => {
     expect(optionLabel({ dur: 'crotchet', dots: 0 })).toBe('crotchet');
     expect(optionLabel({ dur: 'crotchet', dots: 1 })).toBe('dotted crotchet');
+    // chromaticly-2fc: a double dot reads "double-dotted", the standard term
+    // (and matching rhythm-sum.ts's own prompt), not the generic "2-dotted".
+    expect(optionLabel({ dur: 'minim', dots: 2 })).toBe('double-dotted minim');
   });
 
   test('term value renders its value, not the category', () => {

@@ -84,8 +84,14 @@ export function assertAtomResolves(atom: string, grade: number): void {
   const { kind, parts } = parseAtom(atom);
   switch (kind) {
     case 'rhythm_sum':
-      if (parts.length !== 0) throw new Error(`lessons: malformed rhythm_sum atom "${atom}"`);
-      return;
+      // Bare `rhythm_sum` resolves at any grade; the `double_dot` scope
+      // (chromaticly-2fc) is a Grade-4 device (GRADE_4_SCOPE.rhythmDevices).
+      if (parts.length === 0) return;
+      if (parts.length === 1 && parts[0] === 'double_dot') {
+        if (grade !== 4) throw new Error(`lessons: atom "${atom}" only resolves at grade 4`);
+        return;
+      }
+      throw new Error(`lessons: malformed rhythm_sum atom "${atom}"`);
     case 'note_value_compare':
       if (parts.length !== 0) throw new Error(`lessons: malformed note_value_compare atom "${atom}"`);
       return;

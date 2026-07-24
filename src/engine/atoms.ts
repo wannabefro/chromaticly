@@ -47,6 +47,11 @@ export function rhythmSumAtom(): string {
   return 'rhythm_sum';
 }
 
+/** Grade-4-only scoping atom: pins rhythm_sum's target to the double-dotted
+ *  value so the double-dotted-rhythms lesson actually assesses it
+ *  (chromaticly-2fc). A bare `rhythm_sum` atom stays unconstrained. */
+export const RHYTHM_SUM_DOUBLE_DOT_ATOM = 'rhythm_sum:double_dot';
+
 export function barValidityAtom(): string {
   return 'bar_validity';
 }
