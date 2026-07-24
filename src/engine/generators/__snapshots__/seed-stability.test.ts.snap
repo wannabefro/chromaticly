@@ -29266,17 +29266,22 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte res
       "music": {
         "clef": "bass",
         "key_sig": null,
-        "time_sig": "3/4",
+        "time_sig": "4/4",
         "voices": [
           {
             "events": [
               {
-                "dur": "quaver",
+                "dur": "crotchet",
                 "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
                 "pitch": "E3",
                 "type": "note",
               },
@@ -29881,10 +29886,16 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte res
       "music": {
         "clef": "treble",
         "key_sig": null,
-        "time_sig": "2/4",
+        "time_sig": "3/4",
         "voices": [
           {
-            "events": [],
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
           },
         ],
       },
@@ -30726,10 +30737,2413 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte res
       "music": {
         "clef": "treble",
         "key_sig": null,
-        "time_sig": "2/4",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "quaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
         "voices": [
           {
             "events": [],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "minim rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semiquaver rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "crotchet rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte rest_completion @ rests-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semibreve rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s0",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s1",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s2",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s3",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s4",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s5",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semibreve rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "minim rest",
+      "semibreve rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "quaver rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "minim rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "semibreve rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "minim rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semibreve rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_completion",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "crotchet rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the beats already used, then subtract from the bar to find the missing rest.",
+    },
+    "grade": 1,
+    "hints": [
+      "Add up the notes already in the bar, then find the rest that fills what is left.",
+    ],
+    "id": "rest_completion:g1:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "crotchet rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "crotchet",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "minim rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "minim",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "quaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+          "semiquaver rest": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semiquaver",
+                    "type": "rest",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest completes this bar?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
           },
         ],
       },

@@ -1,6 +1,6 @@
 {
   "grade": 1,
-  "version": "g1-lessons-2026-07-11",
+  "version": "g1-lessons-2026-07-24",
   "lessons": [
     {
       "id": "treble-notes",
@@ -184,6 +184,45 @@
             "crotchet"
           ]
         }
+      },
+      "unlocks": "rests-1"
+    },
+    {
+      "id": "rests-1",
+      "title": "Rests",
+      "strand": "rhythm",
+      "atoms": [
+        "rest:semibreve",
+        "rest:minim",
+        "rest:crotchet",
+        "rest:quaver",
+        "rest:semiquaver"
+      ],
+      "templates": [
+        "rest_completion"
+      ],
+      "worked_example": {
+        "template_id": "rest_completion",
+        "grade": 1,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Every note value has a matching rest — a silence that lasts exactly as long as the note",
+          "A rest fills time in a bar just like a note, so a bar's notes and rests together add up to the full bar",
+          "A whole silent bar is written as a semibreve rest, whatever the time signature"
+        ],
+        "concept": {
+          "title": "Silence has a length too",
+          "body": "A rest is a silence, and every note value has a rest that lasts the same time: a crotchet rest lasts one beat, a minim rest two, a semibreve rest a whole bar. To complete a bar, add up the notes already there, see how many beats are missing, and choose the rest that fills exactly that gap.",
+          "example": {
+            "template_id": "rest_completion",
+            "grade": 1,
+            "seed": 1
+          }
+        },
+        "smartTip": "Count the beats already used, take that from the bar, and the rest you need is the silence of whatever is left.",
+        "didYouKnow": "The semibreve rest hangs down from a line, the minim rest sits on top of one — a tiny difference worth a second look, since they are easy to mix up."
       },
       "unlocks": "key-signatures"
     },

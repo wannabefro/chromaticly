@@ -507,6 +507,46 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
   });
 });
 
+// chromaticly-gni — rests-1: rests are introduced at Grade 1 via rest_completion
+// ("which rest completes this bar?"), inserted between note-values and
+// key-signatures. First rest content in the course.
+describe('rests-1 lesson (chromaticly-gni)', () => {
+  const lesson = () => lessonById('rests-1')!;
+
+  test('exists, strand rhythm, single template rest_completion', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(1);
+    expect(lesson().strand).toBe('rhythm');
+    expect(lesson().templates).toEqual(['rest_completion']);
+  });
+
+  test('the chain splices note-values -> rests-1 -> key-signatures', () => {
+    expect(lessonById('note-values')!.unlocks).toBe('rests-1');
+    expect(lesson().unlocks).toBe('key-signatures');
+  });
+
+  test('every atom resolves at grade 1; the later-grade rests are not present', () => {
+    for (const atom of lesson().atoms) {
+      expect(() => assertAtomResolves(atom, 1)).not.toThrow();
+    }
+    expect(lesson().atoms).not.toContain('rest:demisemiquaver');
+    expect(lesson().atoms).not.toContain('rest:breve');
+  });
+
+  // Every generated item in a set is validator-clean and asks a rest from the
+  // lesson's own atoms; the set is non-degenerate (several distinct rests asked).
+  test('a set is validator-clean, tags only this lesson\'s rests, and shows variety', () => {
+    const asked = new Set<string>();
+    for (let seed = 0; seed < SET_SIZE; seed++) {
+      const inst = generate('rest_completion', { grade: 1, seed, atoms: lesson().atoms });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect(lesson().atoms).toContain(inst.srs_tags[0]);
+      asked.add(inst.answer.canonical);
+    }
+    expect(asked.size).toBeGreaterThanOrEqual(3);
+  });
+});
+
 // chromaticly-fm9 — major-keys-4: B major (5 sharps) and D♭ major (5 flats)
 // become named, ASSESSED major keys, reusing the existing key_signature_id
 // template. keys-4 teach copy already names them; this lesson is the first to

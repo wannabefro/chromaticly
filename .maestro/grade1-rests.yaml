@@ -1,0 +1,43 @@
+# chromaticly-gni — Grade 1 rests: rest_completion ("which rest completes this
+# bar?"), the first rest content in the course. Seed ?seed=rests-1 fast-forwards
+# to the lesson (inserted note-values -> rests-1 -> key-signatures). The exercise
+# renders an incomplete bar on the paper card and offers rendered rest options.
+#   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade1-rests.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=rests-1
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-rests-1" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-rests-1" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g1-rests-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+- assertVisible: { id: "prompt" }
+- assertVisible: { id: "stimulus-music" }
+- assertVisible: { id: "option-0" }
+- takeScreenshot: g1-rests-exercise

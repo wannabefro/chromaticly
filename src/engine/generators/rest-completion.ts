@@ -69,9 +69,13 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     OPTION_COUNT - 1,
   );
 
-  // Pick a bar large enough to host the answer rest, then fill the remainder
-  // with sounding notes so the gap is exactly the answer rest's length.
-  const sig = pick(rng, hostableTimeSigs(grade, REST_UNITS[answer]));
+  // Prefer a bar STRICTLY larger than the answer rest so the stimulus always
+  // has at least one sounding note (an empty bar reads as "nothing here" to a
+  // beginner). Fall back to an exactly-equal bar only when none is larger — that
+  // is the whole-bar rest itself (e.g. the semibreve rest in 4/4), which is
+  // legitimately a silent whole bar.
+  const larger = hostableTimeSigs(grade, REST_UNITS[answer] + 1);
+  const sig = pick(rng, larger.length > 0 ? larger : hostableTimeSigs(grade, REST_UNITS[answer]));
   const fillUnits = barUnitsFor(sig) - REST_UNITS[answer];
   const soundingPool = scope.noteValues.filter(
     (d): d is SimpleDuration => UNITS[d as SimpleDuration] !== undefined && UNITS[d as SimpleDuration] <= fillUnits,

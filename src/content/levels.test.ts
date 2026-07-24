@@ -150,9 +150,13 @@ describe('levels — isStartableGrade is a static content concept, decoupled fro
 describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 zero-movement invariant)', () => {
   const level1 = LEVELS[0];
 
-  test('Level 1 unit count and exam-gate threshold stay at the grade-1 doc values (8 units / 24 stars)', () => {
-    expect(level1.unitIds).toHaveLength(8);
-    expect(level1.examGate.unlockAtStars).toBe(24);
+  // chromaticly-gni: grade 1 grew from 8 to 9 units when rests-1 was inserted
+  // (note-values -> rests-1 -> key-signatures) — intentional grade-local growth,
+  // not later-grade leakage. The zero-movement intent (grade-2 registration
+  // doesn't disturb grade 1) still holds via the LESSONS_BY_GRADE[1] / *3 checks.
+  test('Level 1 unit count and exam-gate threshold match the grade-1 doc values (9 units / 27 stars)', () => {
+    expect(level1.unitIds).toHaveLength(9);
+    expect(level1.examGate.unlockAtStars).toBe(27);
     // Same numbers whether read from Level 1 or straight off the grade-1 doc.
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
     expect(level1.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[1].length * 3);
@@ -166,8 +170,8 @@ describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 ze
     expect(overMerged).toEqual(overGrade1Only);
   });
 
-  test('the Profile fact denominator source (lessonsForGrade(1).length) is 8', () => {
-    expect(lessonsForGrade(1)).toHaveLength(8);
+  test('the Profile fact denominator source (lessonsForGrade(1).length) is 9', () => {
+    expect(lessonsForGrade(1)).toHaveLength(9);
   });
 });
 
@@ -181,9 +185,9 @@ describe('registering grade-3 content moves ZERO grade-1/2-visible numbers (D9/U
   const level1 = LEVELS[0];
   const level2 = LEVELS[1];
 
-  test('Level 1 shape (unit count, star gate, id list) is unchanged', () => {
-    expect(level1.unitIds).toHaveLength(8);
-    expect(level1.examGate.unlockAtStars).toBe(24);
+  test('Level 1 shape (unit count, star gate, id list) is unchanged by grade-3 registration', () => {
+    expect(level1.unitIds).toHaveLength(9);
+    expect(level1.examGate.unlockAtStars).toBe(27);
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 
