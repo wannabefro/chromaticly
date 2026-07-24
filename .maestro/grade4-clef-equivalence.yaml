@@ -1,0 +1,52 @@
+# chromaticly-ra3 — Grade 4 clef equivalence (same pitch, different clef).
+# Seed ?seed=clef-equivalence-4 fast-forwards to the lesson, spliced after
+# alto-transposition-4 (alto-transposition-4 -> clef-equivalence-4 -> chords-4).
+# Two surfaces: the given melody on the abcjs paper card (one clef) above the
+# bespoke transposition_input answer stave (a DIFFERENT clef) — the same skill
+# as octave transposition, minus the octave shift.
+#   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade4-clef-equivalence.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=clef-equivalence-4
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-clef-equivalence-4" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-clef-equivalence-4" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: g4-clef-equivalence-teach
+- tapOn: { id: "teach-start" }
+
+# The given melody (abcjs, on paper) and the bespoke answer stave both render.
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 20000
+- assertVisible: { id: "transposition-input" }
+- assertVisible: { id: "transposition-stave" }
+- assertVisible: { id: "transposition-slot-0-ghost" }
+- takeScreenshot: g4-clef-equivalence-exercise-empty
+
+# Touch dogfood: a tap on the answer stave places a note into the active slot,
+# replacing its ghost — on-glass proof the tap surface is reachable.
+- tapOn: { id: "transposition-tap-surface" }
+- assertNotVisible: { id: "transposition-slot-0-ghost" }
+- takeScreenshot: g4-clef-equivalence-note-placed

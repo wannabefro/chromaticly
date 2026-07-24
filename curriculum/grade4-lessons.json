@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-24b",
+  "version": "g4-lessons-2026-07-24c",
   "lessons": [
     {
       "id": "keys-4",
@@ -493,6 +493,41 @@
         },
         "smartTip": "Same letters, new octave. Moving to a higher clef (alto → treble) shifts the tune up an octave; to a lower clef (alto → bass), down an octave.",
         "didYouKnow": "Rewriting the same music in another clef and octave is how a viola line might be shared with a violinist or cellist — the clef and octave move, but the tune stays unmistakably the same."
+      },
+      "unlocks": "clef-equivalence-4"
+    },
+    {
+      "id": "clef-equivalence-4",
+      "title": "The same pitch in different clefs",
+      "strand": "pitch",
+      "atoms": [
+        "clef_equiv:cross"
+      ],
+      "templates": [
+        "clef_equivalence"
+      ],
+      "worked_example": {
+        "template_id": "clef_equivalence",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "One sounding pitch is written at a different line or space in each clef",
+          "Middle C sits below the treble staff, above the bass staff, and on the middle line of the alto clef — three positions, one note",
+          "To rewrite a note in another clef, keep the pitch exactly and find where it lives on the new staff"
+        ],
+        "concept": {
+          "title": "One pitch, three staves",
+          "body": "A clef fixes which pitch each line and space stands for, so the SAME sounding note lands in a different place depending on the clef. Middle C is the clearest case: it hangs on a ledger line just below the treble staff, on a ledger line just above the bass staff, and squarely on the middle line of the alto clef — one pitch, three positions. Rewriting a melody from one clef to another does not change a single sound; you keep every pitch and rhythm exactly, and only re-read where each note sits on the new staff.",
+          "example": {
+            "template_id": "clef_equivalence",
+            "grade": 4,
+            "seed": 1
+          }
+        },
+        "smartTip": "The note does not move — you do. Keep the exact pitch and ask “where does this sound live on the new clef?”",
+        "didYouKnow": "This is why an orchestral score stacks different clefs: a cellist reading bass clef and a violist reading alto clef can play the very same note, each written where it sits most cleanly on their own staff."
       },
       "unlocks": "chords-4"
     },

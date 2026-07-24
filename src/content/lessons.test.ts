@@ -635,6 +635,44 @@ describe('rests-4 lesson (chromaticly-gni)', () => {
   });
 });
 
+// chromaticly-ra3 — clef-equivalence-4: the same sounding pitch reads at a
+// different staff position in each clef. Spliced after alto-transposition-4,
+// reusing the new clef_equivalence generator (delta-0 clef rewrite).
+describe('clef-equivalence-4 lesson (chromaticly-ra3)', () => {
+  const lesson = () => lessonById('clef-equivalence-4')!;
+
+  test('exists, strand pitch, single template clef_equivalence', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(4);
+    expect(lesson().strand).toBe('pitch');
+    expect(lesson().templates).toEqual(['clef_equivalence']);
+  });
+
+  test('the chain splices alto-transposition-4 -> clef-equivalence-4 -> chords-4', () => {
+    expect(lessonById('alto-transposition-4')!.unlocks).toBe('clef-equivalence-4');
+    expect(lesson().unlocks).toBe('chords-4');
+  });
+
+  test('atom clef_equiv:cross resolves at grade 4 only', () => {
+    expect(lesson().atoms).toEqual(['clef_equiv:cross']);
+    expect(() => assertAtomResolves('clef_equiv:cross', 4)).not.toThrow();
+    expect(() => assertAtomResolves('clef_equiv:cross', 3)).toThrow();
+  });
+
+  // The generated set stays a valid, same-octave clef rewrite: answer pitches
+  // match the source pitches note-for-note, on a different clef.
+  test('every set item is a validator-clean, same-pitch rewrite on a different clef', () => {
+    for (let seed = 0; seed < SET_SIZE; seed++) {
+      const inst = generate('clef_equivalence', { grade: 4, seed, atoms: lesson().atoms });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      const music = inst.stimulus.music as { clef: string };
+      const answerClef = (inst.interaction.config as { answerClef: string }).answerClef;
+      expect(answerClef).not.toBe(music.clef);
+      expect(inst.srs_tags[0]).toBe('clef_equiv:cross');
+    }
+  });
+});
+
 // chromaticly-9ig — double-accidentals-4: naming F𝄪 / B𝄫 head-on, reusing
 // note_naming. Inserted as the new Grade-4 tail after enharmonics-4. The
 // double-accidental scope gate lives in the validator, so the atoms resolve at

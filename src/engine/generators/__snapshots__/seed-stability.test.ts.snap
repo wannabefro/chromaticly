@@ -82495,6 +82495,2245 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte clef_equivalence @ clef-equivalence-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s0",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A2",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb2",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A2",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb2",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s1",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s2",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s3",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D#5",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "D#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D#5",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s4",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "E_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s5",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "G#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "G#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s6",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "A_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s7",
+    "interaction": {
+      "config": {
+        "answerClef": "alto",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the alto clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Bb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s8",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "semibreve",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "semibreve",
+          "pitch": "C4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s9",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Db_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "Db3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "Db3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s10",
+    "interaction": {
+      "config": {
+        "answerClef": "alto",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the alto clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Db_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Db3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb2",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "Eb3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb2",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s11",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Eb_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s12",
+    "interaction": {
+      "config": {
+        "answerClef": "alto",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the alto clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G#4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "F#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "G#4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s13",
+    "interaction": {
+      "config": {
+        "answerClef": "alto",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the alto clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C#4",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "B3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "E4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C#4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s14",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db3",
+        },
+      ],
+      "per_item": [
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Bb2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Ab2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s15",
+    "interaction": {
+      "config": {
+        "answerClef": "alto",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the alto clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Ab_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Ab2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Db3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "Db4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "Ab3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s16",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Db4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Db4",
+                "type": "note",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s17",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A4",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s18",
+    "interaction": {
+      "config": {
+        "answerClef": "treble",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the treble clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "G_major",
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        {
+          "dur": "minim",
+          "pitch": "B3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+      ],
+      "per_item": [
+        {
+          "dur": "minim",
+          "pitch": "B3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dots": 1,
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — every note keeps its exact pitch; only the clef changes, so each note sits on a different line or space. Place each at the same sounding pitch.",
+    },
+    "grade": 4,
+    "hints": [
+      "The pitch never changes — only the clef. Each note keeps its exact sound, so it lands on a different line or space in the new clef.",
+    ],
+    "id": "clef_equivalence:g4:s19",
+    "interaction": {
+      "config": {
+        "answerClef": "bass",
+      },
+      "type": "transposition_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Rewrite this melody in the bass clef — the same notes, at the same pitch, with the same rhythm.",
+    "srs_tags": [
+      "clef_equiv:cross",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "A_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "clef_equivalence",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte degree_name_id @ degree-names-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
