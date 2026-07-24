@@ -136,10 +136,15 @@ export function ExerciseLoop({
   // Musical sums render the operands as rhythm glyphs with +/= operators
   // (chromaticly-f9k), not a single stave — a dedicated worksheet stimulus.
   const sumOperands = instance.interaction.config?.sum_operands as Music[] | undefined;
-  // An ornament stimulus carries `interaction.config.ornament` (the kind) and
-  // renders the split enlarged-symbol card (design 10b) instead of the plain
-  // NotationCard — its sign needs the hero + in-context presentation.
-  const isOrnament = instance.interaction.config?.ornament != null;
+  // A sign→name ornament stimulus is a single note carrying an ornament
+  // DECORATION, rendered as the split enlarged-symbol hero card (design 10b).
+  // The Grade-5 written→sign direction (G5-2) also sets config.ornament (for the
+  // validator/grader) but its stimulus is the ornament written OUT as plain notes
+  // — that must render on the ordinary NotationCard, so gate on whether the
+  // stimulus actually carries a decoration, not on config.ornament alone.
+  const isOrnament =
+    instance.interaction.config?.ornament != null &&
+    ((music as Music | null)?.voices.some((v) => v.events.some((e) => e.type === 'note' && e.ornament != null)) ?? false);
   // The amber partial sheet is only for some-right-some-wrong (D5) — an all-wrong
   // attempt still routes to the plain incorrect sheet below.
   const partialSummary = graded === false ? (spec.partialFeedback?.(instance, response) ?? null) : null;

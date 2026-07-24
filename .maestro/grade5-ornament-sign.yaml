@@ -1,0 +1,48 @@
+# Grade 5 ornament written-out -> sign (U4, chromaticly-cke). Seed
+# ?seed=ornaments-to-sign-5. The stimulus is the ornament realized as ORDINARY
+# notes on the abcjs paper card (stimulus-music); the MCQ options are the drawn
+# SIGNS (OrnamentSign SVGs), so option-0-sign renders a react-native-svg glyph in
+# place of a text label — abcjs realization + SVG sign rendering no jest can verify.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=ornaments-to-sign-5
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-ornaments-to-sign-5" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    timeout: 60000
+- tapOn: { id: "unit-row-ornaments-to-sign-5" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 60000
+- takeScreenshot: g5-ornament-sign-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 60000
+- assertVisible: { id: "mcq" }
+- assertVisible: { id: "option-0" }
+# The options render drawn ornament signs, not text labels.
+- assertVisible: { id: "option-0-sign" }
+- takeScreenshot: g5-ornament-sign-exercise
+
+# Options are selectable (select -> Check -> feedback is the loop; here just prove
+# selection is honoured on device).
+- tapOn: { id: "option-0" }
+- takeScreenshot: g5-ornament-sign-selected

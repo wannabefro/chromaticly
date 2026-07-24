@@ -51,10 +51,10 @@ function renderExams(seed: string | null = null) {
 }
 
 describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-parity)', () => {
-  // fyu.2: reachability is content presence, not an exam gate — a fresh store
-  // already has Levels 1-3 reachable (each has content), so all three gates
-  // list immediately; content-less Levels 4-5 still never get a gate.
-  test('a fresh store lists a gate for every content-ful level (1-4), and nothing for the content-less Level 5', async () => {
+  // fyu.2/chromaticly-ehp: reachability is content presence, not an exam gate
+  // — every grade 1-5 has content now (Grade 5 shipped its slice), so all five
+  // gates list immediately. There is no content-less level left to omit.
+  test('a fresh store lists a gate for every content-ful level (1-5) — no content-less level is left to omit', async () => {
     const { findByTestId, queryByTestId } = renderExams();
     await findByTestId('exams-screen');
 
@@ -62,7 +62,7 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
     expect(queryByTestId('exam-gate-level-2')).toBeTruthy();
     expect(queryByTestId('exam-gate-level-3')).toBeTruthy();
     expect(queryByTestId('exam-gate-level-4')).toBeTruthy();
-    expect(queryByTestId('exam-gate-level-5')).toBeNull();
+    expect(queryByTestId('exam-gate-level-5')).toBeTruthy();
   });
 
   test('the Level-2 gate is sealed "Coming soon" on a fresh store — no grade-2 exam paper exists yet (D8), independent of any exam-clear state', async () => {
@@ -85,6 +85,19 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
 
     fireEvent.press(getByTestId('exam-gate-level-1'));
     expect(queryByTestId('exam-start')).toBeTruthy();
+  });
+
+  // chromaticly-ehp: Grade 5 shipping content gets it a gate row like every
+  // other level, but no Grade-5 exam paper exists yet (hasExamPaper(5) is
+  // false) — same sealed "Coming soon" state as the Level-2/3/4 gates, not
+  // the old "no gate row at all" behavior a content-less grade had.
+  test('the Level-5 gate is sealed "Coming soon" on a fresh store — no grade-5 exam paper exists yet', async () => {
+    const { findByTestId, getByTestId } = renderExams();
+    await findByTestId('exams-screen');
+
+    const gate = getByTestId('exam-gate-level-5');
+    expect(gate.props.onPress).toBeUndefined();
+    expect(within(gate).getByText('Coming soon')).toBeTruthy();
   });
 });
 

@@ -112,32 +112,45 @@ describe('levels — Level 4 derives dynamically from LESSONS_BY_GRADE[4] (fyu.1
   });
 });
 
-describe('levels — Grade 5 is the sole content-less "coming soon" placeholder (R1, R4, fyu.13)', () => {
+// chromaticly-ehp: Level 5 derives dynamically from LESSONS_BY_GRADE[5], same
+// anti-drift rule as level1()-level4() — no content-less levels remain.
+describe('levels — Level 5 derives dynamically from LESSONS_BY_GRADE[5] (chromaticly-ehp)', () => {
   const level5 = LEVELS[4];
 
-  test('Grade 5 is the only remaining locked level', () => {
-    expect(LEVELS.map((l) => l.grade)).toEqual([1, 2, 3, 4, 5]);
-    expect(LEVELS.filter((l) => l.unitIds.length === 0).map((l) => l.grade)).toEqual([5]);
+  test('Level 5 has one unit id per grade-5 lesson, in lesson order', () => {
+    expect(level5.id).toBe('level-5');
+    expect(level5.grade).toBe(5);
+    expect(level5.unitIds).toEqual(LESSONS_BY_GRADE[5].map((l) => l.id));
   });
 
-  // Content-less: stays unreachable even with every exam cleared (a level can
-  // never open onto no units), and — under free access — carries NO stale
-  // exam-prerequisite copy (Codex P2): the "coming soon" pill conveys the state.
-  test('Grade 5 stays unreachable with every exam cleared, has no units, and carries no exam-prerequisite copy', () => {
-    const store = new ProgressStore();
-    for (let grade = 1; grade < 5; grade++) store.recordExamCleared(grade);
-    expect(isLevelUnlocked(level5, store)).toBe(false);
-    expect(level5.unitIds).toEqual([]);
-    expect(level5.prerequisite).toBeUndefined();
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1-4', () => {
+    expect(level5.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[5].length * 3);
+  });
+
+  test('Level 5 is reachable on a fresh store — content presence is the only gate (free access)', () => {
+    expect(isLevelUnlocked(level5, new ProgressStore())).toBe(true);
+  });
+
+  // No stub Grade-5 exam paper exists — content reachability and exam-paper
+  // availability are separate concerns; the gate stays sealed regardless.
+  test('hasExamPaper(5) is false — no stub Grade-5 exam paper', () => {
+    expect(hasExamPaper(5)).toBe(false);
   });
 });
 
-// fyu.2: grade is a self-service choice now — any grade with content is
-// startable, no exam gate and no store needed (onboarding runs pre-profile).
+describe('levels — no content-less levels remain; every grade 1-5 has real content (R1, R4, chromaticly-ehp)', () => {
+  test('all five levels carry at least one unit — there is no "coming soon" placeholder left', () => {
+    expect(LEVELS.map((l) => l.grade)).toEqual([1, 2, 3, 4, 5]);
+    expect(LEVELS.filter((l) => l.unitIds.length === 0)).toEqual([]);
+  });
+});
+
+// fyu.2/chromaticly-ehp: grade is a self-service choice now — any grade with
+// content is startable, no exam gate and no store needed (onboarding runs
+// pre-profile). Grade 5 shipping content means every grade 1-5 is startable.
 describe('levels — isStartableGrade is a static content concept, decoupled from progression unlock (D14)', () => {
-  test('grades with content (1, 2, 3, 4) are startable; the content-less grade (5) is not', () => {
-    for (const grade of [1, 2, 3, 4]) expect(isStartableGrade(grade)).toBe(true);
-    expect(isStartableGrade(5)).toBe(false);
+  test('every grade with content (1-5) is startable — no content-less grade remains', () => {
+    for (const grade of [1, 2, 3, 4, 5]) expect(isStartableGrade(grade)).toBe(true);
   });
 });
 

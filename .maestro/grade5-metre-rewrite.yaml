@@ -1,0 +1,50 @@
+# Grade 5 simple<->compound metre rewrite, note_value_palette (U5, chromaticly-4ak).
+# Seed ?seed=metre-rewrite-5 (the Grade-5 chain tail). The given bar renders on the
+# abcjs paper card (stimulus-music); the NEW note-value palette lets the learner
+# assign a re-valued duration to each fixed-pitch slot. Touch dogfood: tapping a
+# palette chip fills the active slot (ghost -> notehead) — a new interaction no
+# jest test exercises on glass.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=metre-rewrite-5
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-metre-rewrite-5" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    timeout: 60000
+- tapOn: { id: "unit-row-metre-rewrite-5" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 60000
+- takeScreenshot: g5-metre-rewrite-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 60000
+- assertVisible: { id: "note-value-palette" }
+- assertVisible: { id: "note-value-stave" }
+- assertVisible: { id: "note-value-palette-row" }
+- assertVisible: { id: "palette-0" }
+- takeScreenshot: g5-metre-rewrite-exercise
+
+# Slot 0 shows its ghost; tapping a palette chip fills it (ghost -> notehead).
+- assertVisible: { id: "note-value-slot-0-ghost" }
+- tapOn: { id: "palette-0" }
+- assertNotVisible: { id: "note-value-slot-0-ghost" }
+- takeScreenshot: g5-metre-rewrite-note-placed

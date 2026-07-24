@@ -1,0 +1,47 @@
+# Grade 5 chord inversions, RomanNumeralBoxes two-axis input (U2, chromaticly-ehp).
+# Seed ?seed=chord-inversions-5 (masters grades 1-4, records their exams cleared,
+# opens Level 5). Reaching unit-row-chord-inversions-5 is the Level-5 unlock proof.
+# The exercise renders an inverted triad on the paper card; the learner names the
+# numeral AND the position (a/b/c) — the two-row inversion variant of
+# RomanNumeralBoxes, with the "reads as IVb" readout.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=chord-inversions-5
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-chord-inversions-5" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    timeout: 60000
+- tapOn: { id: "unit-row-chord-inversions-5" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 60000
+- takeScreenshot: g5-inversions-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 60000
+- assertVisible: { id: "roman-numeral-boxes" }
+- assertVisible: { id: "chord-readout" }
+- takeScreenshot: g5-inversions-exercise
+
+# Both axes are tappable: pick a numeral and a position, and the readout updates.
+- tapOn: { id: "roman-numeral-I" }
+- tapOn: { id: "chord-position-a" }
+- takeScreenshot: g5-inversions-answered

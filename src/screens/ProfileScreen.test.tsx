@@ -93,28 +93,37 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     expect(getByTestId('readiness-note')).not.toHaveTextContent('The practice paper is open.');
   });
 
-  // fyu.2: reachability is content presence (`isLevelUnlocked`), not the working
-  // grade — Levels 1-4 are ALL reachable on a fresh store, so the fact-card
-  // denominator spans every content-ful grade's lessons from the start.
-  test('the fact collection counts what has actually been collected, across every content-ful grade (1-4), not just the working grade', async () => {
+  // fyu.2/chromaticly-ehp: reachability is content presence (`isLevelUnlocked`),
+  // not the working grade — every grade 1-5 is reachable on a fresh store now
+  // that Grade 5 shipped its content, so the fact-card denominator spans every
+  // content-ful grade's lessons from the start.
+  test('the fact collection counts what has actually been collected, across every content-ful grade (1-5), not just the working grade', async () => {
     const { getByTestId } = renderProfile(seeded([]));
     const totalContentfulLessons =
-      LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length + LESSONS_BY_GRADE[4].length;
+      LESSONS_BY_GRADE[1].length +
+      LESSONS_BY_GRADE[2].length +
+      LESSONS_BY_GRADE[3].length +
+      LESSONS_BY_GRADE[4].length +
+      LESSONS_BY_GRADE[5].length;
     await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
   });
 
-  // fyu.2 supersedes D13 phase 2's exam-gated variant: grade-2 and grade-3 join
-  // the fact-card total and strand radar ALREADY on a fresh store — content
-  // presence is the only gate now, so recording an exam clear moves nothing.
-  test('grades 2-4 already join the fact-card total and strand radar on a fresh store; recording the grade-1 exam changes nothing', async () => {
+  // fyu.2 supersedes D13 phase 2's exam-gated variant: grade-2 through grade-5
+  // join the fact-card total and strand radar ALREADY on a fresh store —
+  // content presence is the only gate now, so recording an exam clear moves nothing.
+  test('grades 2-5 already join the fact-card total and strand radar on a fresh store; recording the grade-1 exam changes nothing', async () => {
     const totalContentfulLessons =
-      LESSONS_BY_GRADE[1].length + LESSONS_BY_GRADE[2].length + LESSONS_BY_GRADE[3].length + LESSONS_BY_GRADE[4].length;
+      LESSONS_BY_GRADE[1].length +
+      LESSONS_BY_GRADE[2].length +
+      LESSONS_BY_GRADE[3].length +
+      LESSONS_BY_GRADE[4].length +
+      LESSONS_BY_GRADE[5].length;
     const fresh = renderProfile(seeded(['key-signatures']));
     await waitFor(() => expect(fresh.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
 
-    // scales_keys spans all four content-ful grades now — the 4 mastered grade-1
+    // scales_keys spans every content-ful grade now — the 4 mastered grade-1
     // atoms read as a fraction of that full scope.
-    const scalesKeysAtoms = [1, 2, 3, 4]
+    const scalesKeysAtoms = [1, 2, 3, 4, 5]
       .flatMap((g) => LESSONS_BY_GRADE[g].filter((l) => l.strand === 'scales_keys'))
       .reduce((sum, l) => sum + l.atoms.length, 0);
     const expectedPct = Math.round((4 / scalesKeysAtoms) * 100);
@@ -152,14 +161,14 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByText('Guest')).toBeTruthy());
   });
 
-  // fyu.3: content-less grades (4-5) read as dim/"coming soon", never as locked —
-  // reachable grades (1-3) are shown as a free choice, not a gated climb.
-  test('grades without content still render, dimmed and named as coming soon, not locked', async () => {
+  // fyu.3 / chromaticly-ehp: every grade (1-5) now has content and is a free
+  // choice, not a gated climb — the note says all grades are open, no lock.
+  test('every grade renders as a free, open choice — no locked/coming-soon grade', async () => {
     const { getByTestId } = renderProfile(seeded([]));
     await waitFor(() => expect(getByTestId('profile-grade-1')).toBeTruthy());
 
     expect(getByTestId('profile-grade-note')).toHaveTextContent(
-      'Grade 5 unlocks as its content ships — everything else is open now.',
+      'All five grades are open — switch any time, and your progress is kept.',
     );
     for (const level of LEVELS.filter((l) => l.grade !== 1)) {
       expect(getByTestId(`profile-grade-${level.grade}`)).toBeTruthy();

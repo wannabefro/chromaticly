@@ -211,11 +211,10 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
   });
 });
 
-// fyu.2: free grade access removed the exam gate on reachability — a level is
-// reachable iff it has content (Grade 1 always; Grade 2/3 by virtue of their
-// authored units). Content-less levels (Grade 4/5, no units yet) stay
-// unreachable regardless of exam state — the guard that keeps a level from
-// ever "opening" onto nothing.
+// fyu.2/chromaticly-ehp: free grade access removed the exam gate on
+// reachability — a level is reachable iff it has content (every grade 1-5
+// now, since Grade 5 shipped its slice). There are no content-less levels
+// left, so nothing ever fails to "open" onto units.
 describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)', () => {
   const [level1, level2, , , level5] = LEVELS;
 
@@ -230,14 +229,17 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)
     expect(isLevelUnlocked(level2, store)).toBe(true);
   });
 
-  test('Level 5 stays locked even with every exam cleared — it has no units (content-less levels never unlock)', () => {
-    const store = new ProgressStore();
-    store.recordExamCleared(1);
-    store.recordExamCleared(2);
-    store.recordExamCleared(3);
-    store.recordExamCleared(4);
-    expect(level5.unitIds).toEqual([]); // guards the premise: still content-less
-    expect(isLevelUnlocked(level5, store)).toBe(false);
+  test('Level 5 is reachable regardless of exam state — content presence is the only gate, same rule as every other level', () => {
+    const fresh = new ProgressStore();
+    expect(level5.unitIds.length).toBeGreaterThan(0); // guards the premise: content-ful
+    expect(isLevelUnlocked(level5, fresh)).toBe(true);
+
+    const everyExamCleared = new ProgressStore();
+    everyExamCleared.recordExamCleared(1);
+    everyExamCleared.recordExamCleared(2);
+    everyExamCleared.recordExamCleared(3);
+    everyExamCleared.recordExamCleared(4);
+    expect(isLevelUnlocked(level5, everyExamCleared)).toBe(true);
   });
 
   test('currentLevel follows the working grade (Profile.grade), not the highest reachable level', () => {

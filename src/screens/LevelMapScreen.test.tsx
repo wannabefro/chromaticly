@@ -116,21 +116,21 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(getByTestId('exam-start')).toBeTruthy();
   });
 
-  // fyu.13: only the content-less Grade 5 stays collapsed now — Levels 2-4 are
-  // reachable on a fresh store (content presence is the only gate) and render
-  // expanded. The collapsed level shows a readiness chip, never a lock (design 3a).
-  test('the content-less Level 5 renders collapsed with a readiness chip, no lock, and no unit content', async () => {
+  // chromaticly-ehp: Grade 5 shipped its content slice, so no level renders
+  // collapsed anymore — every level (1-5) is reachable on a fresh store
+  // (content presence is the only gate) and renders expanded with real units.
+  test('Level 5 renders expanded with its unit content, not collapsed behind a readiness chip', async () => {
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
     const level5 = within(getByTestId('level-node-level-5'));
     expect(level5.getByText('Grade 5')).toBeTruthy();
-    expect(level5.getByText('assumes L1–4')).toBeTruthy();
-    expect(level5.queryByText('🔒')).toBeNull();
-    // Content-less: no unit rows inside the Grade 5 node.
-    expect(level5.queryByTestId('unit-row-keys-4')).toBeNull();
+    // A locked node would show its prerequisite copy; an expanded one never does.
+    expect(level5.queryByText(LEVELS[4].prerequisite!)).toBeNull();
+    // Content-ful: Grade 5's first unit (chord-inversions-5) renders inside the node.
+    expect(level5.getByTestId('unit-row-chord-inversions-5')).toBeTruthy();
 
-    // Grade 4 is now content-ful, so it renders EXPANDED with its unit rows
+    // Grade 4 is likewise content-ful, so it renders EXPANDED with its unit rows
     // (the first grade-4 lesson, keys-4), not as a collapsed readiness node.
     const level4 = within(getByTestId('level-node-level-4'));
     expect(level4.getByTestId('unit-row-keys-4')).toBeTruthy();

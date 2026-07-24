@@ -61,6 +61,7 @@
     "e2e:stave-input": "bash scripts/e2e.sh .maestro/intervals-stave-input.yaml",
     "prepare": "node scripts/bundle-abcjs.js",
     "e2e:exam": "bash scripts/e2e.sh .maestro/exam-paper.yaml",
+    "e2e:grade5": "bash scripts/e2e.sh .maestro/grade5-chord-inversions.yaml .maestro/grade5-transposing-instrument.yaml .maestro/grade5-ornament-sign.yaml .maestro/grade5-metre-rewrite.yaml",
     "e2e:context": "bash scripts/e2e.sh .maestro/music-in-context.yaml",
     "e2e:shell": "bash scripts/e2e.sh .maestro/tab-shell.yaml"
   },

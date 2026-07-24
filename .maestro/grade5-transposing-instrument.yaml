@@ -1,0 +1,52 @@
+# Grade 5 transposing instrument, transposition_input + context banner (U3,
+# chromaticly-wz1). Seed ?seed=transposing-instruments-5. The concert-pitch line
+# renders on the abcjs paper card (stimulus-music) above the answer placer; the
+# NEW instrument context banner (name, sounding direction, signed interval pill)
+# sits over it, and the answer stave renders in the TRANSPOSED key. The touch
+# dogfood: a tap on the answer stave drops a note (ghost -> notehead).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=transposing-instruments-5
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-transposing-instruments-5" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    timeout: 60000
+- tapOn: { id: "unit-row-transposing-instruments-5" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 60000
+- takeScreenshot: g5-transposing-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 60000
+- assertVisible: { id: "transposition-input" }
+- assertVisible: { id: "transposition-stave" }
+# The instrument context banner (the U3 design decision) renders over the placer.
+- assertVisible: { id: "transposition-banner" }
+- assertVisible: { id: "transposition-banner-instrument" }
+- assertVisible: { id: "transposition-banner-interval" }
+- takeScreenshot: g5-transposing-exercise
+
+# Nothing placed yet -> slot 0 shows its ghost; a tap on the stave places a note.
+- assertVisible: { id: "transposition-slot-0-ghost" }
+- tapOn: { id: "transposition-tap-surface" }
+- assertNotVisible: { id: "transposition-slot-0-ghost" }
+- takeScreenshot: g5-transposing-note-placed

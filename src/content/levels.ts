@@ -2,9 +2,10 @@
 // LESSONS_BY_GRADE[1] rather than a frozen id literal, so a later content
 // restructure (U9) can't silently invalidate this file — one row per grade-1
 // lesson, always, and a later grade-2 doc registering can never inflate it.
-// Level 2 (U5) derives the same way from LESSONS_BY_GRADE[2]. Levels 3-5 are
-// still locked placeholders: no content, no unlock path yet (RD1/R1/R4).
-// Whether a level is reachable is NOT a field here — it is a derivation over
+// Level 2 (U5) derives the same way from LESSONS_BY_GRADE[2]. Levels 3-5 now all
+// carry real content and derive their unit lists the same way (Grade 5 shipped
+// its slice, chromaticly-ehp), so there are no content-less placeholder levels
+// left. Whether a level is reachable is NOT a field here — it is a derivation over
 // the store (`isLevelUnlocked`, `src/learn/mastery-rollup.ts`, D5), so it can
 // never drift out of sync with the persisted exam-clear record. This module
 // must stay RN/expo-free (core-boundary test).
@@ -18,23 +19,6 @@ export interface Level {
   prerequisite?: string;
   unitIds: string[];
   examGate: { unlockAtStars: number };
-}
-
-// A grade whose content epic hasn't shipped yet (Grade 5 today). Shown as a
-// "coming soon" preview in the grade chooser (design 5b/5c) and a non-tappable
-// readiness node on the level map, never startable and never opening onto units.
-// Under free grade access (fyu.2) it carries NO exam-prerequisite copy — content
-// existence is the only gate, so the old "Clear the Level N exam to unlock"
-// string is gone (it was stale under free access and, per Codex P2, must not
-// resurface as a dead-end); the "coming soon" pill and readiness chip convey it.
-function comingSoonLevel(grade: number): Level {
-  return {
-    id: `level-${grade}`,
-    grade,
-    title: `Grade ${grade}`,
-    unitIds: [],
-    examGate: { unlockAtStars: 0 },
-  };
 }
 
 function level1(): Level {
@@ -82,8 +66,7 @@ function level3(): Level {
 // fyu.13: Grade 4 is now real — unitIds and the exam-gate threshold derive from
 // the grade-4 doc, same anti-drift rule as level1()–level3(). This is what makes
 // Grade 4 startable (isStartableGrade), reachable (isLevelUnlocked), and walkable
-// end-to-end for a real learner. Grade 5 remains a content-less "coming soon"
-// preview until its own epic ships.
+// end-to-end for a real learner.
 function level4(): Level {
   const unitIds = LESSONS_BY_GRADE[4].map((l) => l.id);
   return {
@@ -96,7 +79,25 @@ function level4(): Level {
   };
 }
 
-export const LEVELS: Level[] = [level1(), level2(), level3(), level4(), comingSoonLevel(5)];
+// chromaticly-ehp: Grade 5 is now real — its content slice (chord inversions,
+// transposing instruments, ornament→sign, metre rewrite) shipped, so unitIds
+// derive from the grade-5 doc like every level above. This is what surfaces the
+// Grade-5 lessons on the level map / grade picker; without it the content exists
+// in the engine but renders as a collapsed content-less preview (the gap the
+// on-device gate caught).
+function level5(): Level {
+  const unitIds = LESSONS_BY_GRADE[5].map((l) => l.id);
+  return {
+    id: 'level-5',
+    grade: 5,
+    title: 'Grade 5',
+    prerequisite: 'Clear the Level 4 exam to unlock',
+    unitIds,
+    examGate: { unlockAtStars: unitIds.length * 3 },
+  };
+}
+
+export const LEVELS: Level[] = [level1(), level2(), level3(), level4(), level5()];
 
 /** Whether a grade can be picked as a start grade (free grade access, fyu.2).
  *  Grade is a self-service choice now, so any grade that HAS content is
