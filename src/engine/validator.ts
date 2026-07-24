@@ -110,8 +110,10 @@ function checkPitchScope(
     errors.push(`scope: "${pitch}" is not a valid pitch`);
     return;
   }
-  if (parsed.accidental === '##' || parsed.accidental === 'bb') {
-    errors.push(`scope: pitch "${pitch}" uses a double accidental, outside G1 scope`);
+  // Double accidentals enter scope at Grade 4 (KB grade_scopes["4"].adds.accidentals
+  // = [double_sharp, double_flat]; chromaticly-9ig) — rejected below Grade 4.
+  if ((parsed.accidental === '##' || parsed.accidental === 'bb') && grade < 4) {
+    errors.push(`scope: pitch "${pitch}" uses a double accidental, outside G${grade} scope`);
   }
   // The four accidental spellings that name a natural (Cb=B, Fb=E, B#=C, E#=F)
   // are never taught at Grade 1. Reject them as defence-in-depth so any generator
@@ -229,7 +231,9 @@ function checkClosedItemDistractors(inst: ExerciseInstance, errors: string[]): v
 
 type TemplateHook = (instance: ExerciseInstance) => string[];
 
-const NOTE_NAME_RE = /^[A-G]\s*(flat|sharp|#|b|♭|♯)?$/i;
+// chromaticly-9ig: also accept double-accidental note names — canonical
+// "F double sharp" plus the accepted alternatives F##, Fx, F𝄪, Bbb, B𝄫.
+const NOTE_NAME_RE = /^[A-G]\s*(double\s+(sharp|flat)|##|bb|𝄪|𝄫|x|flat|sharp|#|b|♭|♯)?$/i;
 
 function noteNamingHook(inst: ExerciseInstance): string[] {
   const errors: string[] = [];

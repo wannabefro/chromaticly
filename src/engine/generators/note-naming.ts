@@ -19,7 +19,7 @@ import { naturalPitchAtOrdinal, pitchOrdinal, type Letter } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-type Accidental = 'sharp' | 'flat' | null;
+type Accidental = 'sharp' | 'flat' | 'double_sharp' | 'double_flat' | null;
 
 const LETTER_ORDER: readonly Letter[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
@@ -36,10 +36,10 @@ interface NoteCandidate {
 }
 
 function parseNotePitch(pitch: string): { letter: Letter; accidental: Accidental; octave: number } {
-  const m = /^([A-G])(#|b)?(-?\d+)$/.exec(pitch);
+  const m = /^([A-G])(##|#|bb|b)?(-?\d+)$/.exec(pitch);
   if (!m) throw new Error(`note_naming: unexpected pitch "${pitch}"`);
-  const accidental: Accidental = m[2] === '#' ? 'sharp' : m[2] === 'b' ? 'flat' : null;
-  return { letter: m[1] as Letter, accidental, octave: Number(m[3]) };
+  const ACC: Record<string, Accidental> = { '#': 'sharp', b: 'flat', '##': 'double_sharp', bb: 'double_flat' };
+  return { letter: m[1] as Letter, accidental: m[2] ? ACC[m[2]] : null, octave: Number(m[3]) };
 }
 
 /** The lesson's `note_read:*` atoms as renderable candidates. Throws if the
@@ -91,7 +91,7 @@ function otherClef(clef: Clef): Clef {
 }
 
 function parseLetterOctave(pitch: string): { letter: Letter; octave: number } {
-  const match = /^([A-G])(?:#|b)?(-?\d+)$/.exec(pitch);
+  const match = /^([A-G])(?:##|#|bb|b)?(-?\d+)$/.exec(pitch);
   if (!match) throw new Error(`unexpected pitch shape: ${pitch}`);
   return { letter: match[1] as Letter, octave: Number(match[2]) };
 }
@@ -113,12 +113,15 @@ function adjacentLetter(letter: Letter, direction: 1 | -1): Letter {
 }
 
 function formatNoteName(letter: Letter, accidental: Accidental): string {
-  return accidental ? `${letter} ${accidental}` : letter;
+  // 'double_sharp' -> "double sharp" so the canonical reads "F double sharp".
+  return accidental ? `${letter} ${accidental.replace('_', ' ')}` : letter;
 }
 
 function acceptedAlternatives(letter: Letter, accidental: Accidental): string[] {
   if (accidental === 'sharp') return [`${letter}#`, `${letter}♯`];
   if (accidental === 'flat') return [`${letter}b`, `${letter}♭`];
+  if (accidental === 'double_sharp') return [`${letter}##`, `${letter}x`, `${letter}𝄪`];
+  if (accidental === 'double_flat') return [`${letter}bb`, `${letter}𝄫`];
   return [];
 }
 

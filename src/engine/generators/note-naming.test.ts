@@ -159,3 +159,28 @@ describe('noteNaming — alto clef at grade 4 (fyu.5)', () => {
     }
   });
 });
+
+// chromaticly-9ig — double accidentals (double-sharp / double-flat) become
+// nameable at grade 4. The canonical is spelled "F double sharp"; the accepted
+// alternatives carry the shorthand (F##, Fx, F𝄪). Grade-gated in the validator.
+const DOUBLE_ACC_G4_ATOMS = ['note_read:treble:F##4', 'note_read:bass:Bbb3'];
+
+describe('noteNaming — double accidentals at grade 4 (chromaticly-9ig)', () => {
+  test('seeds 0..20 produce a passing double-accidental instance', () => {
+    for (let seed = 0; seed <= 20; seed++) {
+      const instance = noteNaming({ grade: 4, seed, atoms: DOUBLE_ACC_G4_ATOMS });
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+      expect(instance.answer.canonical).toMatch(/^[A-G] double (sharp|flat)$/);
+    }
+  });
+
+  test('the canonical spells out the accidental; alternatives carry ## / x / 𝄪', () => {
+    const fSharp = noteNaming({ grade: 4, seed: 3, atoms: ['note_read:treble:F##4'] });
+    expect(fSharp.answer.canonical).toBe('F double sharp');
+    expect(fSharp.answer.accepted_alternatives).toEqual(expect.arrayContaining(['F##', 'Fx', 'F𝄪']));
+  });
+
+  test('double accidentals are grade-gated in the validator — generation throws below grade 4', () => {
+    expect(() => noteNaming({ grade: 3, seed: 3, atoms: ['note_read:treble:F##4'] })).toThrow();
+  });
+});

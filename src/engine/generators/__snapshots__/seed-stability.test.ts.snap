@@ -100567,20 +100567,157 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3rd note",
+      "canonical": "6th note",
     },
     "distractors": [
-      "2nd note",
+      "7th note",
+      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 6th too on the way down — keeping the raised 6th here borrows from the ascending form.",
+      "incorrect": "The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the G# melodic minor scale, descending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s0",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "G#_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F##3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
+    "srs_tags": [
+      "scale:G#_minor_melodic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd note",
+    },
+    "distractors": [
+      "6th note",
+      "7th note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.",
+    },
+    "grade": 4,
+    "hints": [
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
+    ],
+    "id": "scale_construction:g4:s1",
     "interaction": {
       "config": {
         "answer_music": {
@@ -100597,37 +100734,37 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F#3",
+                  "pitch": "A#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "E3",
+                  "pitch": "B3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "D#3",
+                  "pitch": "C#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C#3",
+                  "pitch": "D#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "B2",
+                  "pitch": "E#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A#2",
+                  "pitch": "F##4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G#2",
+                  "pitch": "G#4",
                   "type": "note",
                 },
               ],
@@ -100638,7 +100775,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this G# melodic minor scale, descending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
       "scale:G#_minor_melodic",
     ],
@@ -100657,37 +100794,37 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
               },
               {
                 "dur": "crotchet",
-                "pitch": "F#3",
+                "pitch": "A#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "E#3",
+                "pitch": "B#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D#3",
+                "pitch": "C#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C#3",
+                "pitch": "D#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "B2",
+                "pitch": "E#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A#2",
+                "pitch": "F##4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "G#2",
+                "pitch": "G#4",
                 "type": "note",
               },
             ],
@@ -100702,21 +100839,293 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7th note",
+      "canonical": "3rd note",
     },
     "distractors": [
       "6th note",
-      "3rd note",
+      "7th note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 7th note must also be raised going up in melodic minor — a natural 7th belongs to the descent, not the ascent.",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.",
     },
     "grade": 4,
     "hints": [
       "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
-    "id": "scale_construction:g4:s1",
+    "id": "scale_construction:g4:s2",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "treble",
+          "key_sig": "G#_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F##5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
+    "srs_tags": [
+      "scale:G#_minor_melodic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F##5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Compare each note against the G# harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g4:s3",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "G#_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F##3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this G# harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G#_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.",
+    },
+    "grade": 4,
+    "hints": [
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
+    ],
+    "id": "scale_construction:g4:s4",
     "interaction": {
       "config": {
         "answer_music": {
@@ -100813,423 +101222,17 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
               },
               {
                 "dur": "crotchet",
-                "pitch": "E#3",
+                "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F#3",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
                 "pitch": "G#3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_construction",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "2nd note",
-    },
-    "distractors": [
-      "3rd note",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
-    },
-    "grade": 4,
-    "hints": [
-      "Compare each note against the Bb melodic minor scale, descending, — only one note is wrong.",
-    ],
-    "id": "scale_construction:g4:s2",
-    "interaction": {
-      "config": {
-        "answer_music": {
-          "clef": "bass",
-          "key_sig": "Bb_minor",
-          "time_sig": null,
-          "voices": [
-            {
-              "events": [
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Ab3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Gb3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "F3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Eb3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Db3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "C3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb2",
-                  "type": "note",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, descending, is wrong — which one?",
-    "srs_tags": [
-      "scale:Bb_minor_melodic",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": "Bb_minor",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "crotchet",
-                "pitch": "Bb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "A3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Gb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "F3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Eb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Db3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Bb2",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_construction",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "6th note",
-    },
-    "distractors": [
-      "7th note",
-      "3rd note",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.",
-    },
-    "grade": 4,
-    "hints": [
-      "Compare each note against the Bb melodic minor scale, ascending, — only one note is wrong.",
-    ],
-    "id": "scale_construction:g4:s3",
-    "interaction": {
-      "config": {
-        "answer_music": {
-          "clef": "bass",
-          "key_sig": "Bb_minor",
-          "time_sig": null,
-          "voices": [
-            {
-              "events": [
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb2",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "C3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Db3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Eb3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "F3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "G3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "A3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb3",
-                  "type": "note",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, ascending, is wrong — which one?",
-    "srs_tags": [
-      "scale:Bb_minor_melodic",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": "Bb_minor",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "crotchet",
-                "pitch": "Bb2",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Db3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Eb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "F3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Gb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "A3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Bb3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_construction",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "2nd note",
-    },
-    "distractors": [
-      "3rd note",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
-    },
-    "grade": 4,
-    "hints": [
-      "Compare each note against the Bb melodic minor scale, descending, — only one note is wrong.",
-    ],
-    "id": "scale_construction:g4:s4",
-    "interaction": {
-      "config": {
-        "answer_music": {
-          "clef": "treble",
-          "key_sig": "Bb_minor",
-          "time_sig": null,
-          "voices": [
-            {
-              "events": [
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Ab5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Gb5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "F5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Eb5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Db5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "C5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb4",
-                  "type": "note",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, descending, is wrong — which one?",
-    "srs_tags": [
-      "scale:Bb_minor_melodic",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "Bb_minor",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "crotchet",
-                "pitch": "Bb5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "A5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Gb5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "F5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Eb5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Db5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "C5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Bb4",
                 "type": "note",
               },
             ],
@@ -102603,24 +102606,25 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3rd note",
+      "canonical": "6th note",
     },
     "distractors": [
-      "2nd note",
+      "7th note",
+      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 6th too on the way down — keeping the raised 6th here borrows from the ascending form.",
+      "incorrect": "The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the G# melodic minor scale, descending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s15",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "alto",
+          "clef": "bass",
           "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
@@ -102628,37 +102632,37 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "G#4",
+                  "pitch": "G#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F#4",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "E4",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "D#4",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C#4",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "B3",
+                  "pitch": "E#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A#3",
+                  "pitch": "F##3",
                   "type": "note",
                 },
                 {
@@ -102674,13 +102678,13 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this G# melodic minor scale, descending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
       "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "alto",
+        "clef": "bass",
         "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
@@ -102688,37 +102692,37 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "G#4",
+                "pitch": "G#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F#4",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "E#4",
+                "pitch": "B2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D#4",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C#4",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "B3",
+                "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A#3",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
@@ -123050,68 +123054,68 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7th note",
+      "canonical": "6th note",
     },
     "distractors": [
-      "6th note",
+      "7th note",
       "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb harmonic minor scale — only one note is wrong.",
+      "Compare each note against the G# harmonic minor scale — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s3",
     "interaction": {
       "config": {
         "answer_music": {
           "clef": "bass",
-          "key_sig": "Bb_minor",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb2",
+                  "pitch": "G#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C3",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db3",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb3",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F3",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Gb3",
+                  "pitch": "E3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A3",
+                  "pitch": "F##3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#3",
                   "type": "note",
                 },
               ],
@@ -123122,56 +123126,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb harmonic minor scale is wrong — which one?",
+    "prompt": "One note of this G# harmonic minor scale is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_harmonic",
+      "scale:G#_minor_harmonic",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "Bb_minor",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb2",
+                "pitch": "G#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C3",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db3",
+                "pitch": "B2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb3",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F3",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb3",
+                "pitch": "E#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Ab3",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#3",
                 "type": "note",
               },
             ],
@@ -123594,68 +123598,68 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3rd note",
+      "canonical": "6th note",
     },
     "distractors": [
       "7th note",
-      "6th note",
+      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb harmonic minor scale — only one note is wrong.",
+      "Compare each note against the G# harmonic minor scale — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s7",
     "interaction": {
       "config": {
         "answer_music": {
           "clef": "bass",
-          "key_sig": "Bb_minor",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb2",
+                  "pitch": "G#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C3",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db3",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb3",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F3",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Gb3",
+                  "pitch": "E3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A3",
+                  "pitch": "F##3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#3",
                   "type": "note",
                 },
               ],
@@ -123666,56 +123670,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb harmonic minor scale is wrong — which one?",
+    "prompt": "One note of this G# harmonic minor scale is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_harmonic",
+      "scale:G#_minor_harmonic",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "Bb_minor",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb2",
+                "pitch": "G#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C3",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D3",
+                "pitch": "B2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb3",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F3",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb3",
+                "pitch": "E#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A3",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#3",
                 "type": "note",
               },
             ],
@@ -124274,157 +124278,21 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3rd note",
+      "canonical": "6th note",
     },
     "distractors": [
       "7th note",
-      "6th note",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
-    },
-    "grade": 4,
-    "hints": [
-      "Compare each note against the Bb harmonic minor scale — only one note is wrong.",
-    ],
-    "id": "scale_construction:g4:s12",
-    "interaction": {
-      "config": {
-        "answer_music": {
-          "clef": "alto",
-          "key_sig": "Bb_minor",
-          "time_sig": null,
-          "voices": [
-            {
-              "events": [
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb2",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "C3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Db3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Eb3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "F3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Gb3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "A3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "Bb3",
-                  "type": "note",
-                },
-              ],
-            },
-          ],
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb harmonic minor scale is wrong — which one?",
-    "srs_tags": [
-      "scale:Bb_minor_harmonic",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "alto",
-        "key_sig": "Bb_minor",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "crotchet",
-                "pitch": "Bb2",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "D3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Eb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "F3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Gb3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "A3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "Bb3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_construction",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "7th note",
-    },
-    "distractors": [
-      "6th note",
       "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
     },
     "grade": 4,
     "hints": [
       "Compare each note against the G# harmonic minor scale — only one note is wrong.",
     ],
-    "id": "scale_construction:g4:s13",
+    "id": "scale_construction:g4:s12",
     "interaction": {
       "config": {
         "answer_music": {
@@ -124521,12 +124389,12 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
               },
               {
                 "dur": "crotchet",
-                "pitch": "E5",
+                "pitch": "E#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F#5",
+                "pitch": "F##5",
                 "type": "note",
               },
               {
@@ -124546,68 +124414,68 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7th note",
+      "canonical": "3rd note",
     },
     "distractors": [
+      "7th note",
       "6th note",
-      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb harmonic minor scale — only one note is wrong.",
+      "Compare each note against the G# harmonic minor scale — only one note is wrong.",
     ],
-    "id": "scale_construction:g4:s14",
+    "id": "scale_construction:g4:s13",
     "interaction": {
       "config": {
         "answer_music": {
           "clef": "treble",
-          "key_sig": "Bb_minor",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C4",
+                  "pitch": "A#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db4",
+                  "pitch": "B4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb4",
+                  "pitch": "C#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F4",
+                  "pitch": "D#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Gb4",
+                  "pitch": "E5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A4",
+                  "pitch": "F##5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb4",
+                  "pitch": "G#5",
                   "type": "note",
                 },
               ],
@@ -124618,56 +124486,192 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb harmonic minor scale is wrong — which one?",
+    "prompt": "One note of this G# harmonic minor scale is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_harmonic",
+      "scale:G#_minor_harmonic",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
-        "key_sig": "Bb_minor",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C4",
+                "pitch": "A#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db4",
+                "pitch": "B#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb4",
+                "pitch": "C#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F4",
+                "pitch": "D#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb4",
+                "pitch": "E5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Ab4",
+                "pitch": "F##5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb4",
+                "pitch": "G#5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_construction",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6th note",
+    },
+    "distractors": [
+      "7th note",
+      "3rd note",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Compare each note against the G# harmonic minor scale — only one note is wrong.",
+    ],
+    "id": "scale_construction:g4:s14",
+    "interaction": {
+      "config": {
+        "answer_music": {
+          "clef": "bass",
+          "key_sig": "G#_minor",
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A#2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B2",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F##3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this G# harmonic minor scale is wrong — which one?",
+    "srs_tags": [
+      "scale:G#_minor_harmonic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#3",
                 "type": "note",
               },
             ],
@@ -124954,68 +124958,68 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7th note",
+      "canonical": "6th note",
     },
     "distractors": [
-      "6th note",
+      "7th note",
       "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+      "incorrect": "Only the 7th note is raised in harmonic minor — the 6th stays as the key signature has it.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb harmonic minor scale — only one note is wrong.",
+      "Compare each note against the G# harmonic minor scale — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s17",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "bass",
-          "key_sig": "Bb_minor",
+          "clef": "treble",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb2",
+                  "pitch": "G#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C3",
+                  "pitch": "A#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db3",
+                  "pitch": "B4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb3",
+                  "pitch": "C#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F3",
+                  "pitch": "D#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Gb3",
+                  "pitch": "E5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A3",
+                  "pitch": "F##5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#5",
                   "type": "note",
                 },
               ],
@@ -125026,56 +125030,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb harmonic minor scale is wrong — which one?",
+    "prompt": "One note of this G# harmonic minor scale is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_harmonic",
+      "scale:G#_minor_harmonic",
     ],
     "stimulus": {
       "music": {
-        "clef": "bass",
-        "key_sig": "Bb_minor",
+        "clef": "treble",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb2",
+                "pitch": "G#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C3",
+                "pitch": "A#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db3",
+                "pitch": "B4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb3",
+                "pitch": "C#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F3",
+                "pitch": "D#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb3",
+                "pitch": "E#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Ab3",
+                "pitch": "F##5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#5",
                 "type": "note",
               },
             ],
@@ -125226,15 +125230,15 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7th note",
+      "canonical": "3rd note",
     },
     "distractors": [
+      "7th note",
       "6th note",
-      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not harmonic minor.",
     },
     "grade": 4,
     "hints": [
@@ -125244,7 +125248,7 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "bass",
+          "clef": "alto",
           "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
@@ -125252,42 +125256,42 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "G#2",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "A#2",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "B2",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "C#3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "D#3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "E3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "F##3",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
                   "pitch": "G#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A#3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F##4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#4",
                   "type": "note",
                 },
               ],
@@ -125304,7 +125308,7 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     ],
     "stimulus": {
       "music": {
-        "clef": "bass",
+        "clef": "alto",
         "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
@@ -125312,42 +125316,42 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "G#2",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "A#2",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "B2",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "C#3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "D#3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "E3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "F#3",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
                 "pitch": "G#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
                 "type": "note",
               },
             ],
@@ -125775,68 +125779,67 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "6th note",
+      "canonical": "2nd note",
     },
     "distractors": [
-      "7th note",
       "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.",
+      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, ascending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, descending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s3",
     "interaction": {
       "config": {
         "answer_music": {
           "clef": "bass",
-          "key_sig": "Bb_minor",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb2",
+                  "pitch": "G#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C3",
+                  "pitch": "F#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db3",
+                  "pitch": "E3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb3",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F3",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G3",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A3",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#2",
                   "type": "note",
                 },
               ],
@@ -125847,56 +125850,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, ascending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, descending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "Bb_minor",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb2",
+                "pitch": "G#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C3",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db3",
+                "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb3",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F3",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb3",
+                "pitch": "B2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A3",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#2",
                 "type": "note",
               },
             ],
@@ -126050,15 +126053,16 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "canonical": "3rd note",
     },
     "distractors": [
-      "2nd note",
+      "6th note",
+      "7th note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 6th too on the way down — keeping the raised 6th here borrows from the ascending form.",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the G# melodic minor scale, descending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s5",
     "interaction": {
@@ -126072,32 +126076,7 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "G#5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "F#5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "E5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "D#5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "C#5",
-                  "type": "note",
-                },
-                {
-                  "dur": "crotchet",
-                  "pitch": "B4",
+                  "pitch": "G#4",
                   "type": "note",
                 },
                 {
@@ -126107,7 +126086,32 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G#4",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E#5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F##5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G#5",
                   "type": "note",
                 },
               ],
@@ -126118,7 +126122,7 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this G# melodic minor scale, descending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
       "scale:G#_minor_melodic",
     ],
@@ -126132,32 +126136,7 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "G#5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "F#5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "E#5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "D#5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "C#5",
-                "type": "note",
-              },
-              {
-                "dur": "crotchet",
-                "pitch": "B4",
+                "pitch": "G#4",
                 "type": "note",
               },
               {
@@ -126167,7 +126146,32 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
               },
               {
                 "dur": "crotchet",
-                "pitch": "G#4",
+                "pitch": "B#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F##5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
                 "type": "note",
               },
             ],
@@ -126185,21 +126189,22 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "canonical": "3rd note",
     },
     "distractors": [
-      "2nd note",
+      "6th note",
+      "7th note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 6th too on the way down — keeping the raised 6th here borrows from the ascending form.",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the G# melodic minor scale, descending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s6",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "treble",
+          "clef": "alto",
           "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
@@ -126207,37 +126212,37 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "G#5",
+                  "pitch": "G#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F#5",
+                  "pitch": "A#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "E5",
+                  "pitch": "B3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "D#5",
+                  "pitch": "C#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C#5",
+                  "pitch": "D#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "B4",
+                  "pitch": "E#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A#4",
+                  "pitch": "F##4",
                   "type": "note",
                 },
                 {
@@ -126253,13 +126258,13 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this G# melodic minor scale, descending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
       "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
+        "clef": "alto",
         "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
@@ -126267,37 +126272,37 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "G#5",
+                "pitch": "G#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F#5",
+                "pitch": "A#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "E#5",
+                "pitch": "B#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D#5",
+                "pitch": "C#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C#5",
+                "pitch": "D#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "B4",
+                "pitch": "E#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A#4",
+                "pitch": "F##4",
                 "type": "note",
               },
               {
@@ -126453,67 +126458,68 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "2nd note",
+      "canonical": "6th note",
     },
     "distractors": [
+      "7th note",
       "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
+      "incorrect": "The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, descending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s8",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "alto",
-          "key_sig": "Bb_minor",
+          "clef": "bass",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb4",
+                  "pitch": "G#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Ab4",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Gb4",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F4",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb4",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db4",
+                  "pitch": "E#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C4",
+                  "pitch": "F##3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#3",
                   "type": "note",
                 },
               ],
@@ -126524,56 +126530,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, descending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "alto",
-        "key_sig": "Bb_minor",
+        "clef": "bass",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb4",
+                "pitch": "G#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A4",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb4",
+                "pitch": "B2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F4",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb4",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db4",
+                "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C4",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#3",
                 "type": "note",
               },
             ],
@@ -126995,67 +127001,68 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "2nd note",
+      "canonical": "3rd note",
     },
     "distractors": [
-      "3rd note",
+      "6th note",
+      "7th note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
+      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, descending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s12",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "alto",
-          "key_sig": "Bb_minor",
+          "clef": "treble",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Ab3",
+                  "pitch": "A#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Gb3",
+                  "pitch": "B4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F3",
+                  "pitch": "C#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb3",
+                  "pitch": "D#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db3",
+                  "pitch": "E#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C3",
+                  "pitch": "F##5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb2",
+                  "pitch": "G#5",
                   "type": "note",
                 },
               ],
@@ -127066,56 +127073,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, descending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "alto",
-        "key_sig": "Bb_minor",
+        "clef": "treble",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A3",
+                "pitch": "A#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb3",
+                "pitch": "B#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F3",
+                "pitch": "C#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb3",
+                "pitch": "D#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db3",
+                "pitch": "E#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C3",
+                "pitch": "F##5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb2",
+                "pitch": "G#5",
                 "type": "note",
               },
             ],
@@ -127130,68 +127137,67 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3rd note",
+      "canonical": "2nd note",
     },
     "distractors": [
-      "6th note",
-      "7th note",
+      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "The 3rd note keeps the minor 3rd — raising it borrows from the major scale, not melodic minor.",
+      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, ascending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, descending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s13",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "alto",
-          "key_sig": "Bb_minor",
+          "clef": "treble",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C4",
+                  "pitch": "F#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db4",
+                  "pitch": "E5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb4",
+                  "pitch": "D#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F4",
+                  "pitch": "C#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G4",
+                  "pitch": "B4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A4",
+                  "pitch": "A#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb4",
+                  "pitch": "G#4",
                   "type": "note",
                 },
               ],
@@ -127202,56 +127208,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, ascending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, descending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "alto",
-        "key_sig": "Bb_minor",
+        "clef": "treble",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C4",
+                "pitch": "F##5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D4",
+                "pitch": "E5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb4",
+                "pitch": "D#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F4",
+                "pitch": "C#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "G4",
+                "pitch": "B4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A4",
+                "pitch": "A#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb4",
+                "pitch": "G#4",
                 "type": "note",
               },
             ],
@@ -127278,56 +127284,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, ascending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s14",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "treble",
-          "key_sig": "Bb_minor",
+          "clef": "bass",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C4",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db4",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb4",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F4",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G4",
+                  "pitch": "E#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A4",
+                  "pitch": "F##3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb4",
+                  "pitch": "G#3",
                   "type": "note",
                 },
               ],
@@ -127338,56 +127344,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, ascending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
-        "key_sig": "Bb_minor",
+        "clef": "bass",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C4",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Db4",
+                "pitch": "B2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb4",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F4",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Gb4",
+                "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A4",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb4",
+                "pitch": "G#3",
                 "type": "note",
               },
             ],
@@ -127685,56 +127691,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, ascending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s17",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "bass",
-          "key_sig": "Bb_minor",
+          "clef": "treble",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb2",
+                  "pitch": "G#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C3",
+                  "pitch": "A#4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db3",
+                  "pitch": "B4",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb3",
+                  "pitch": "C#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F3",
+                  "pitch": "D#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G3",
+                  "pitch": "E#5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A3",
+                  "pitch": "F##5",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#5",
                   "type": "note",
                 },
               ],
@@ -127745,56 +127751,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, ascending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "bass",
-        "key_sig": "Bb_minor",
+        "clef": "treble",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb2",
+                "pitch": "G#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C3",
+                "pitch": "A#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D3",
+                "pitch": "B#4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb3",
+                "pitch": "C#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F3",
+                "pitch": "D#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "G3",
+                "pitch": "E#5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A3",
+                "pitch": "F##5",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#5",
                 "type": "note",
               },
             ],
@@ -127821,56 +127827,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "grade": 4,
     "hints": [
-      "Compare each note against the Bb melodic minor scale, ascending, — only one note is wrong.",
+      "Compare each note against the G# melodic minor scale, ascending, — only one note is wrong.",
     ],
     "id": "scale_construction:g4:s18",
     "interaction": {
       "config": {
         "answer_music": {
-          "clef": "treble",
-          "key_sig": "Bb_minor",
+          "clef": "alto",
+          "key_sig": "G#_minor",
           "time_sig": null,
           "voices": [
             {
               "events": [
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb3",
+                  "pitch": "G#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "C4",
+                  "pitch": "A#2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Db4",
+                  "pitch": "B2",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Eb4",
+                  "pitch": "C#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "F4",
+                  "pitch": "D#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "G4",
+                  "pitch": "E#3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "A4",
+                  "pitch": "F##3",
                   "type": "note",
                 },
                 {
                   "dur": "crotchet",
-                  "pitch": "Bb4",
+                  "pitch": "G#3",
                   "type": "note",
                 },
               ],
@@ -127881,56 +127887,56 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "One note of this Bb melodic minor scale, ascending, is wrong — which one?",
+    "prompt": "One note of this G# melodic minor scale, ascending, is wrong — which one?",
     "srs_tags": [
-      "scale:Bb_minor_melodic",
+      "scale:G#_minor_melodic",
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
-        "key_sig": "Bb_minor",
+        "clef": "alto",
+        "key_sig": "G#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "crotchet",
-                "pitch": "Bb3",
+                "pitch": "G#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "C4",
+                "pitch": "A#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "D4",
+                "pitch": "B#2",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Eb4",
+                "pitch": "C#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "F4",
+                "pitch": "D#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "G4",
+                "pitch": "E#3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "A4",
+                "pitch": "F##3",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "Bb4",
+                "pitch": "G#3",
                 "type": "note",
               },
             ],
@@ -127945,14 +127951,14 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3rd note",
+      "canonical": "2nd note",
     },
     "distractors": [
-      "2nd note",
+      "3rd note",
     ],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Melodic minor lowers the 6th too on the way down — keeping the raised 6th here borrows from the ascending form.",
+      "incorrect": "Melodic minor lowers the 7th and 6th on the way down — keeping the raised 7th here borrows from the ascending form.",
     },
     "grade": 4,
     "hints": [
@@ -128035,12 +128041,12 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
               },
               {
                 "dur": "crotchet",
-                "pitch": "F#4",
+                "pitch": "F##4",
                 "type": "note",
               },
               {
                 "dur": "crotchet",
-                "pitch": "E#4",
+                "pitch": "E4",
                 "type": "note",
               },
               {

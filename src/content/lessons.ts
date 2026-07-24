@@ -152,7 +152,7 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'note_read': {
       const [clef, pitch] = parts;
       if (!scopeForGrade(grade).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G${grade} scope`);
-      const natural = (pitch ?? '').replace(/[#b]/, '');
+      const natural = (pitch ?? '').replace(/[#b]/g, '');
       if (!diatonicPitchesInRange(clef as Clef, grade).includes(natural)) {
         throw new Error(`lessons: atom "${atom}" pitch is outside the ${clef} G${grade} range`);
       }

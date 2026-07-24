@@ -173,6 +173,17 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
     expect(() => assertAtomResolves('anacrusis:3/8', 4)).toThrow();
   });
 
+  // chromaticly-9ig — a double-accidental note_read atom RESOLVES at the loader
+  // (its accidental strip is now global, so F##4 reduces to natural F, which is
+  // in range). The grade-4-only gate for double accidentals lives in the
+  // validator, not atom-resolution — proven in note-naming.test.ts.
+  test('double-accidental note_read atoms resolve (loader strips both accidentals)', () => {
+    expect(() => assertAtomResolves('note_read:treble:F##4', 4)).not.toThrow();
+    expect(() => assertAtomResolves('note_read:bass:Bbb3', 4)).not.toThrow();
+    // A single-accidental atom still resolves identically (no regression).
+    expect(() => assertAtomResolves('note_read:treble:F#4', 4)).not.toThrow();
+  });
+
   // chromaticly-gni — rest:<duration> atoms are grade-gated on scope.rests,
   // cumulative like note values: basic rests at grade 1, demisemiquaver at
   // grade 3, breve at grade 4.
