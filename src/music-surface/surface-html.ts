@@ -124,9 +124,18 @@ ${playButton}
       visualObj = ABCJS.renderAbc('inner', abc, opts)[0];
       // Report the rendered natural height so RN can size the card to the content
       // (design 9a: a wrapped multi-system passage must NOT be cropped; a single
-      // note keeps the card compact). CSS px, measured after layout.
+      // note keeps the card compact). Use the SVG's own height ATTRIBUTE, not
+      // getBoundingClientRect(): abcjs bakes the scale option into the height
+      // attribute AND also applies a CSS transform:scale, so the bounding rect
+      // double-counts scale (returns natural height x scale^2). At the ornament
+      // hero's 3.15x
+      // scale that inflates a ~385px stave to ~1212px, producing a screen-filling
+      // blank card (chromaticly-9c8). The attribute is the intended rendered size.
       var svgNode = document.querySelector('#inner svg');
-      var renderedHeight = svgNode ? Math.ceil(svgNode.getBoundingClientRect().height) : 0;
+      var attrHeight = svgNode ? parseFloat(svgNode.getAttribute('height')) : 0;
+      var renderedHeight = attrHeight > 0
+        ? Math.ceil(attrHeight)
+        : (svgNode ? Math.ceil(svgNode.getBoundingClientRect().height) : 0);
       emit({ type: 'rendered', ms: Math.round(performance.now() - t), height: renderedHeight });
     } catch (e) {
       emit({ type: 'error', message: 'render: ' + (e && e.message || e) });
