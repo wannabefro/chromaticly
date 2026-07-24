@@ -1,6 +1,6 @@
 {
   "grade": 3,
-  "version": "g3-lessons-2026-07-20e",
+  "version": "g3-lessons-2026-07-24",
   "lessons": [
     {
       "id": "minor-keys-3",
@@ -213,6 +213,43 @@
         },
         "smartTip": "Count the dotted-crotchet beats, not the quavers — three beats means 9/8, four means 12/8.",
         "didYouKnow": "Demisemiquavers are rare outside fast, decorative passages — composers reach for them to write a flourish, not a steady pulse."
+      },
+      "unlocks": "rests-3"
+    },
+    {
+      "id": "rests-3",
+      "title": "Smaller rests",
+      "strand": "rhythm",
+      "atoms": [
+        "rest:quaver",
+        "rest:semiquaver",
+        "rest:demisemiquaver"
+      ],
+      "templates": [
+        "rest_completion"
+      ],
+      "worked_example": {
+        "template_id": "rest_completion",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The quaver, semiquaver and demisemiquaver rests match the quaver, semiquaver and demisemiquaver notes",
+          "Each smaller rest is written with one more hook than the one above it, just as each smaller note gains a tail",
+          "Fill a gap by matching its exact length — a shorter silence needs a shorter rest"
+        ],
+        "concept": {
+          "title": "The shorter rests",
+          "body": "The smaller note values each have a matching rest. A quaver rest lasts half a beat, a semiquaver rest a quarter, a demisemiquaver rest an eighth. Their symbols echo the notes: as the note gains a tail, the rest gains a hook — one for the quaver rest, two for the semiquaver, three for the demisemiquaver. To complete a bar, find how much time is missing and pick the rest of exactly that length.",
+          "example": {
+            "template_id": "rest_completion",
+            "grade": 3,
+            "seed": 1
+          }
+        },
+        "smartTip": "Count the hooks: one hook is a quaver rest, two a semiquaver, three a demisemiquaver — the same order as the notes' tails.",
+        "didYouKnow": "The demisemiquaver rest packs three hooks onto a tiny symbol — beyond it lie the hemidemisemiquaver rest and its four hooks, rarely seen outside virtuoso flourishes."
       },
       "unlocks": "intervals-3"
     },

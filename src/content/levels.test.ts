@@ -63,10 +63,11 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
     expect(level3.unitIds).toEqual(LESSONS_BY_GRADE[3].map((l) => l.id));
   });
 
-  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (27 stars for 9 grade-3 units)', () => {
+  // chromaticly-gni: rests-3 grew grade 3 from 9 to 10 units (30-star gate).
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (30 stars for 10 grade-3 units)', () => {
     expect(level3.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
-    expect(level3.unitIds).toHaveLength(9);
-    expect(level3.examGate.unlockAtStars).toBe(27);
+    expect(level3.unitIds).toHaveLength(10);
+    expect(level3.examGate.unlockAtStars).toBe(30);
   });
 
   // fyu.2: reachability is content presence only — Level 3 is reachable on a

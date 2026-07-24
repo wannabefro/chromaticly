@@ -293,13 +293,14 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] has the single linear minor-keys-3 -> minor-scales-3 -> melodic-minor-3 -> compound-time-3 -> compound-bars-3 -> intervals-3 -> ledger-lines-3 -> anacrusis-3 -> transposition-3 chain', () => {
+  test('LESSONS_BY_GRADE[3] chain: ... compound-bars-3 -> rests-3 -> intervals-3 ... (rests-3 inserted, chromaticly-gni)', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'minor-keys-3',
       'minor-scales-3',
       'melodic-minor-3',
       'compound-time-3',
       'compound-bars-3',
+      'rests-3',
       'intervals-3',
       'ledger-lines-3',
       'anacrusis-3',
@@ -544,6 +545,38 @@ describe('rests-1 lesson (chromaticly-gni)', () => {
       asked.add(inst.answer.canonical);
     }
     expect(asked.size).toBeGreaterThanOrEqual(3);
+  });
+});
+
+// chromaticly-gni — rests-3: the smaller rests (demisemiquaver added at G3),
+// inserted after compound-bars-3.
+describe('rests-3 lesson (chromaticly-gni)', () => {
+  const lesson = () => lessonById('rests-3')!;
+
+  test('exists, strand rhythm, single template rest_completion', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(3);
+    expect(lesson().strand).toBe('rhythm');
+    expect(lesson().templates).toEqual(['rest_completion']);
+  });
+
+  test('the chain splices compound-bars-3 -> rests-3 -> intervals-3', () => {
+    expect(lessonById('compound-bars-3')!.unlocks).toBe('rests-3');
+    expect(lesson().unlocks).toBe('intervals-3');
+  });
+
+  test('the demisemiquaver rest resolves at grade 3 but not grade 2', () => {
+    expect(lesson().atoms).toContain('rest:demisemiquaver');
+    for (const atom of lesson().atoms) expect(() => assertAtomResolves(atom, 3)).not.toThrow();
+    expect(() => assertAtomResolves('rest:demisemiquaver', 2)).toThrow();
+  });
+
+  test('a set is validator-clean and tags only this lesson\'s rests', () => {
+    for (let seed = 0; seed < SET_SIZE; seed++) {
+      const inst = generate('rest_completion', { grade: 3, seed, atoms: lesson().atoms });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect(lesson().atoms).toContain(inst.srs_tags[0]);
+    }
   });
 });
 

@@ -323,7 +323,12 @@ describe('practice-plan — locked grade-3 lessons contribute no rotation picks 
     const picks = fullRotationCycle(upToGrade2, unlockedPairCount(upToGrade2));
 
     expect(picks.every((p) => p.grade <= 2)).toBe(true);
-    const grade3Atoms = new Set(LESSONS_BY_GRADE[3].flatMap((l) => l.atoms));
+    // Grade-3-EXCLUSIVE atoms only: a grade-3 lesson may legitimately reuse a
+    // lower-grade atom (chromaticly-gni — rests-3 shares rest:quaver/rest:semiquaver
+    // with the grade-1 rests-1), so "atom appears in a grade-3 lesson" is not the
+    // same as "grade-3 content leaked". Subtract the grade-1/2 atoms first.
+    const lowerAtoms = new Set([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2]].flatMap((l) => l.atoms));
+    const grade3Atoms = new Set(LESSONS_BY_GRADE[3].flatMap((l) => l.atoms).filter((a) => !lowerAtoms.has(a)));
     expect(picks.some((p) => p.atoms.some((a) => grade3Atoms.has(a)))).toBe(false);
   });
 });
