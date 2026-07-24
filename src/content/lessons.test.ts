@@ -580,6 +580,50 @@ describe('rests-3 lesson (chromaticly-gni)', () => {
   });
 });
 
+// chromaticly-gni — rests-4: the breve rest, the Grade-4 capstone of the rests
+// arc, inserted after rhythm-breve-4 (the breve note).
+describe('rests-4 lesson (chromaticly-gni)', () => {
+  const lesson = () => lessonById('rests-4')!;
+
+  test('exists, strand rhythm, single template rest_completion', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(4);
+    expect(lesson().strand).toBe('rhythm');
+    expect(lesson().templates).toEqual(['rest_completion']);
+  });
+
+  test('the chain splices rhythm-breve-4 -> rests-4 -> rhythm-doubledot-4', () => {
+    expect(lessonById('rhythm-breve-4')!.unlocks).toBe('rests-4');
+    expect(lesson().unlocks).toBe('rhythm-doubledot-4');
+  });
+
+  test('rest:breve resolves at grade 4 only', () => {
+    expect(lesson().atoms).toContain('rest:breve');
+    for (const atom of lesson().atoms) expect(() => assertAtomResolves(atom, 4)).not.toThrow();
+    expect(() => assertAtomResolves('rest:breve', 3)).toThrow();
+  });
+
+  // The breve rest (8 beats) must be reachable in a set and validator-clean — it
+  // is hostable only in the generator's big bars (9/4, 12/4), so this exercises
+  // the KTD7 units table + time-signature policy end to end.
+  test('the breve rest is asked within a set, in a big bar, validator-clean', () => {
+    const asked = new Set<string>();
+    let sawBreveBar = false;
+    for (let seed = 0; seed < SET_SIZE; seed++) {
+      const inst = generate('rest_completion', { grade: 4, seed, atoms: lesson().atoms });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect(lesson().atoms).toContain(inst.srs_tags[0]);
+      asked.add(inst.answer.canonical);
+      if (inst.answer.canonical === 'breve rest') {
+        sawBreveBar = true;
+        expect(['9/4', '12/4']).toContain((inst.stimulus.music as { time_sig: string }).time_sig);
+      }
+    }
+    expect(asked.has('breve rest')).toBe(true);
+    expect(sawBreveBar).toBe(true);
+  });
+});
+
 // chromaticly-fm9 — major-keys-4: B major (5 sharps) and D♭ major (5 flats)
 // become named, ASSESSED major keys, reusing the existing key_signature_id
 // template. keys-4 teach copy already names them; this lesson is the first to

@@ -47,10 +47,14 @@ function sample(rng: () => number, pool: Duration[], n: number): Duration[] {
 }
 
 function restOptionMusic(clef: Clef, dur: Duration): Music {
+  // abcjs cannot lay out a lone breve rest (64 units) in free meter (M:none) —
+  // it needs a bar to hang the block in. Give the breve rest option a 4/2 bar
+  // (exactly one breve) so it renders; the shorter rests are fine bare.
+  const time_sig = dur === 'breve' ? '4/2' : null;
   return {
     clef,
     key_sig: null,
-    time_sig: null,
+    time_sig,
     voices: [{ events: [{ type: 'rest', dur }] }],
   };
 }

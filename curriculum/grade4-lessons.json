@@ -1,6 +1,6 @@
 {
   "grade": 4,
-  "version": "g4-lessons-2026-07-23k",
+  "version": "g4-lessons-2026-07-24",
   "lessons": [
     {
       "id": "keys-4",
@@ -225,6 +225,42 @@
         },
         "smartTip": "A breve is two semibreves joined — eight crotchet beats in all, twice the length of a semibreve.",
         "didYouKnow": "‘Breve’ comes from the Latin brevis, ‘short’ — it was once one of the shortest notes in medieval music, before quicker values pushed it all the way to the long end of the scale."
+      },
+      "unlocks": "rests-4"
+    },
+    {
+      "id": "rests-4",
+      "title": "The breve rest",
+      "strand": "rhythm",
+      "atoms": [
+        "rest:breve",
+        "rest:semibreve"
+      ],
+      "templates": [
+        "rest_completion"
+      ],
+      "worked_example": {
+        "template_id": "rest_completion",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The breve rest is the longest rest — a silence lasting eight beats, as long as the breve note",
+          "It is drawn as a solid block filling the space between the middle two lines of the stave",
+          "A breve rest lasts twice as long as a semibreve rest, just as a breve lasts twice a semibreve"
+        ],
+        "concept": {
+          "title": "The longest silence",
+          "body": "Just as the breve is the longest note, the breve rest is the longest rest — eight crotchet beats, twice the four of a semibreve rest. It sits as a solid block between the middle two lines of the stave, filling the whole space rather than hanging from a line like the semibreve rest. To complete a long bar, count the beats already used and match the gap: a full eight-beat gap calls for the breve rest.",
+          "example": {
+            "template_id": "rest_completion",
+            "grade": 4,
+            "seed": 1
+          }
+        },
+        "smartTip": "Two semibreve rests make a breve rest — eight beats of silence. The block fills the middle space; the semibreve rest only hangs beneath a line.",
+        "didYouKnow": "The breve rest is so rare that many musicians go years without writing one — it turns up mostly in slow music with very long bars."
       },
       "unlocks": "rhythm-doubledot-4"
     },
