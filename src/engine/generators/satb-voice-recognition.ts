@@ -111,7 +111,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     id: makeInstanceId('satb_voice_recognition', grade, idSeed),
     template_id: 'satb_voice_recognition',
     grade,
-    strand: 'chords',
+    // 'pitch' (not 'chords'): design G5-1 is the amber "Pitch & Notation ·
+    // voices" strand — reading a voice off the staff, not naming a harmony.
+    strand: 'pitch',
     prompt: 'Which voice sings the highlighted note?',
     stimulus: { music, text: null },
     interaction: {
