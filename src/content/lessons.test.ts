@@ -821,6 +821,50 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
   });
 });
 
+// U6 (SATB "name the voice" plan, chromaticly-0iy) — the new Grade-5 terminal
+// lesson: reuses the U4 satb_voice_recognition generator + U5 voice_options
+// interaction, atoms gated by the new 'satb_voice' case in assertAtomResolves.
+describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
+  const lesson = () => lessonById('satb-voice-5')!;
+
+  test('exists, strand pitch, single template satb_voice_recognition, is the new chain tail', () => {
+    expect(lesson()).toBeTruthy();
+    expect(lesson().grade).toBe(5);
+    expect(lesson().strand).toBe('pitch');
+    expect(lesson().templates).toEqual(['satb_voice_recognition']);
+    expect(lessonById('metre-rewrite-5')!.unlocks).toBe('satb-voice-5');
+    expect(lesson().unlocks).toBeNull();
+  });
+
+  test('carries the four satb_voice:* atoms, resolving at grade 5 only', () => {
+    expect(lesson().atoms).toEqual(['satb_voice:soprano', 'satb_voice:alto', 'satb_voice:tenor', 'satb_voice:bass']);
+    for (const atom of lesson().atoms) {
+      expect(() => assertAtomResolves(atom, 5)).not.toThrow();
+      expect(() => assertAtomResolves(atom, 4)).toThrow();
+    }
+  });
+
+  // The atom<->generator mismatch guard (per the plan's Execution note): scope
+  // generation to ONE atom at a time so the generator is forced to target that
+  // exact voice — if any of the four voice atoms didn't resolve into a
+  // generator-servable exercise, this is where it would surface, not just "some
+  // atom in the set generates something."
+  test('each of the four satb_voice:* atoms alone resolves to a servable, validator-clean exercise naming that voice', () => {
+    for (const atom of lesson().atoms) {
+      const voice = atom.split(':')[1];
+      const inst = generate('satb_voice_recognition', { grade: 5, seed: 0, atoms: [atom] });
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect(inst.answer.canonical).toBe(voice);
+      expect(inst.strand).toBe('pitch');
+    }
+  });
+
+  test('the lesson is reachable from the G5 entry via the unlock chain', () => {
+    expect(() => assertUnlockGraph(LESSONS_BY_GRADE[5])).not.toThrow();
+    expect(LESSONS_BY_GRADE[5].map((l) => l.id)).toContain('satb-voice-5');
+  });
+});
+
 // Playability sweep, generalized over every grade the map can open (D7 note:
 // prefer generalizing this block over duplicating it per grade). SetRunner
 // seeds each of a set's SET_SIZE items with itemIndex (0..SET_SIZE-1,

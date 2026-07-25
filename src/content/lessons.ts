@@ -14,7 +14,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom } from '../engine/atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
@@ -356,6 +356,18 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       if (grade !== 4) {
         throw new Error(`lessons: atom "${atom}" only resolves at grade 4`);
+      }
+      return;
+    }
+    case 'satb_voice': {
+      // satb_voice_recognition (G5-1, chromaticly-0iy) is a Grade-5-only skill
+      // (the KB adds "voices": [soprano, alto, tenor, bass] at grade 5). One
+      // atom per voice name, mirroring transpose_instrument's one-atom-per-code shape.
+      if (parts.length !== 1 || !(SATB_VOICES as readonly string[]).includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" names an unknown SATB voice`);
+      }
+      if (grade !== 5) {
+        throw new Error(`lessons: atom "${atom}" only resolves at grade 5`);
       }
       return;
     }

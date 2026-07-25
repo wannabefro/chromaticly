@@ -157,6 +157,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'transposing_instrument',
       // metre_rewrite (G5-2, chromaticly-4ak) — same, throws below grade 5.
       'metre_rewrite',
+      // satb_voice_recognition (G5-1, chromaticly-0iy) — throws below grade 5
+      // (build gate), so a grade-2 sweep can't generate it; exercised by its
+      // own grade-5 tests.
+      'satb_voice_recognition',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

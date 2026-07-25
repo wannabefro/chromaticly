@@ -1,6 +1,6 @@
 {
   "grade": 5,
-  "version": "g5-lessons-2026-07-24a",
+  "version": "g5-lessons-2026-07-25a",
   "lessons": [
     {
       "id": "chord-inversions-5",
@@ -147,6 +147,37 @@
         },
         "smartTip": "Same pitches, same order — just re-value. Into compound: add a dot to every note. Back to simple: take every dot off. The beats stay lined up.",
         "didYouKnow": "6/8 and 3/4 use the exact same six quavers per bar, but group them differently — 6/8 as two dotted-crotchet beats, 3/4 as three crotchet beats. The time signature tells the player how to FEEL the bar, not just how to count it."
+      },
+      "unlocks": "satb-voice-5"
+    },
+    {
+      "id": "satb-voice-5",
+      "title": "SATB: name the voice",
+      "strand": "pitch",
+      "atoms": ["satb_voice:soprano", "satb_voice:alto", "satb_voice:tenor", "satb_voice:bass"],
+      "templates": ["satb_voice_recognition"],
+      "worked_example": {
+        "template_id": "satb_voice_recognition",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Four-part (SATB) writing splits into Soprano, Alto, Tenor and Bass, braced together on a grand staff of treble and bass staves",
+          "The treble staff carries the two upper voices (Soprano stem up, Alto stem down); the bass staff carries the two lower voices (Tenor stem up, Bass stem down)",
+          "Stem direction tells you which voice you are reading even when two voices share a staff — up-stems are the higher voice of the pair, down-stems the lower"
+        ],
+        "concept": {
+          "title": "Four voices, one grand staff",
+          "body": "Choral and keyboard writing in four parts is named for its voices from top to bottom: SOPRANO, ALTO, TENOR, BASS. All four are braced together on a GRAND STAFF — the treble staff above, the bass staff below. Each staff carries two voices, told apart by stem direction: on the treble staff, Soprano's stems point UP and Alto's point DOWN; on the bass staff, Tenor's stems point UP and Bass's point DOWN. So the staff tells you treble pair or bass pair, and the stem tells you which of that pair — the higher voice always stems up, the lower voice always stems down. The lowest-SOUNDING voice overall is always the Bass, on the bass staff with its stem pointing down.",
+          "example": {
+            "template_id": "satb_voice_recognition",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Staff first, then stem: treble staff = Soprano or Alto, bass staff = Tenor or Bass. Stem up = the higher voice of that pair (Soprano, Tenor); stem down = the lower voice (Alto, Bass).",
+        "didYouKnow": "SATB writing comes from choral music, where the four voice types sit in that same top-to-bottom order — but the same layout works just as well for four-part keyboard harmony with no singers at all."
       },
       "unlocks": null
     }
