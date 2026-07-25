@@ -63,6 +63,9 @@ export interface NoteEvent {
   dots?: Dots;
   tuplet?: TupletMark;
   ornament?: Ornament;
+  /** Marks the single target note for a "name the voice" exercise (SATB
+   *  recognition, G5-1). The core locates it; the surface draws the ring. */
+  highlight?: boolean;
 }
 
 /** Simultaneous pitches — a harmonic interval or a triad (rendered as an ABC chord). */
@@ -71,6 +74,9 @@ export interface ChordEvent {
   pitches: Pitch[];
   dur: Duration;
   dots?: Dots;
+  /** Marks the single target chord for a "name the voice" exercise (SATB
+   *  recognition, G5-1). The core locates it; the surface draws the ring. */
+  highlight?: boolean;
 }
 
 export interface RestEvent {
@@ -99,14 +105,28 @@ export interface DynamicEvent {
 
 export type MusicEvent = NoteEvent | ChordEvent | RestEvent | BarlineEvent | DynamicEvent;
 
+/** SATB voice names (recognition-first slice, G5-1). Tenor sits on the bass
+ *  staff, stem up — no tenor clef (deliberately deferred, see the G5-1 plan). */
+export type VoiceName = 'soprano' | 'alto' | 'tenor' | 'bass';
+
 export interface Voice {
   events: MusicEvent[];
+  /** Grand-staff routing: which entry of `Music.staves` this voice renders on
+   *  (0 = top/treble, 1 = bottom/bass). Unset on the single-voice path. */
+  staff?: number;
+  stem?: 'up' | 'down';
+  name?: VoiceName;
 }
 
 export interface Music {
   clef: Clef;
   key_sig: KeySig;
   time_sig?: string | null;
+  /** Per-staff clefs for a braced grand staff (e.g. `['treble','bass']` for
+   *  SATB). When present, this declares grand-staff mode and each `Voice`
+   *  routes to a staff via `Voice.staff`; when absent, the single `clef`
+   *  above is authoritative and behavior is unchanged (single-voice path). */
+  staves?: Clef[];
   /** When true, the emitter hides the printed time signature (`M:none`) but still
    *  beams by the true `time_sig` — used for "guess the signature" stimuli where the
    *  grouping must remain honest even though the glyph is hidden. */
