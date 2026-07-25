@@ -18,6 +18,11 @@ export type SurfaceCommand =
   /** Tint the selected bar in the rendered score (design 4c), or clear it with
    *  `bar: null`. `color` is the strand hue the RN side owns. */
   | { type: 'highlightBar'; bar: number | null; color?: string }
+  /** Ring the note-granularity target (G5-1 SATB "name the voice") — the
+   *  note-index sibling of `highlightBar`, since abcjs has no in-ABC note
+   *  colour. Clear it with `locator: null`. `color` overrides the default
+   *  amber ring token. */
+  | { type: 'highlightNote'; locator: { staff: number; voice: number; noteIndex: number } | null; color?: string }
   /** "Hear yours" (D9): parse+play `abc` in a HIDDEN in-page container, without
    *  touching or repainting the visible score. Used by an answer card (e.g.
    *  transposition_input) whose Music is built from the learner's own response,

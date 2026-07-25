@@ -3,14 +3,22 @@
 // WebView is mocked and mounts are counted to prove the notation surface persists
 // across items rather than remounting (the perf refactor's invariant).
 
-const mockSurface = { mounts: 0 };
+// `posted` captures every command the surface's persistent ref sends via
+// postMessage (encoded SurfaceCommand JSON) — the wiring guard for U3's
+// highlightNote needs to see the command was actually issued, not just defined.
+const mockSurface = { mounts: 0, posted: [] as string[] };
 jest.mock('react-native-webview', () => {
   const React = require('react');
   return {
-    WebView: React.forwardRef((_props: Record<string, unknown>, _ref: unknown) => {
+    WebView: React.forwardRef((_props: Record<string, unknown>, ref: unknown) => {
       React.useEffect(() => {
         mockSurface.mounts += 1;
       }, []);
+      React.useImperativeHandle(ref, () => ({
+        postMessage: (data: string) => {
+          mockSurface.posted.push(data);
+        },
+      }));
       return null;
     }),
   };
@@ -22,6 +30,8 @@ import { generate } from '../engine/generators';
 import { spellInKeySig } from '../engine/generators/key-spelling';
 import type { ExerciseInstance } from '../engine/schema';
 import { diatonicPitchesInRange } from '../engine/scope';
+import { highlightLocator } from '../music/abc-emitter';
+import type { Music } from '../music/types';
 import { noteY, PAPER_INSET } from './interactions/stave-geometry';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
@@ -179,6 +189,66 @@ describe('ExerciseLoop — stimulus + surface persistence', () => {
     expect(queryByTestId('feedback-sheet-correct')).toBeNull();
     expect(getByTestId('check')).toBeTruthy();
     expect(mockSurface.mounts).toBe(1);
+  });
+});
+
+// U3: the highlightNote command exists (surface-html.test.ts) but must also be
+// CALLED — without this wiring the ring is defined and never issued. Mirrors the
+// existing highlightBar wiring (response -> surfaceHighlight), but keyed off the
+// stimulus's own locator instead of the response.
+describe('ExerciseLoop — SATB stimulus wiring (U3): highlightNote is actually issued', () => {
+  const satbMusic: Music = {
+    clef: 'treble',
+    key_sig: 'C_major',
+    time_sig: '4/4',
+    staves: ['treble', 'bass'],
+    voices: [
+      { name: 'soprano', staff: 0, stem: 'up', events: [{ type: 'note', pitch: 'G4', dur: 'semibreve' }] },
+      { name: 'alto', staff: 0, stem: 'down', events: [{ type: 'note', pitch: 'E4', dur: 'semibreve' }] },
+      { name: 'tenor', staff: 1, stem: 'up', events: [{ type: 'note', pitch: 'C4', dur: 'semibreve', highlight: true }] },
+      { name: 'bass', staff: 1, stem: 'down', events: [{ type: 'note', pitch: 'C3', dur: 'semibreve' }] },
+    ],
+  };
+  const satbInstance: ExerciseInstance = {
+    ...mcqInstance,
+    id: 'test-satb-1',
+    stimulus: { music: satbMusic, text: null },
+  };
+
+  function postedCommands(): Array<Record<string, unknown>> {
+    return mockSurface.posted.map((s) => JSON.parse(s));
+  }
+
+  test('rendering a highlighted SATB stimulus issues highlightNote with the stimulus locator (tenor, not a neighbouring voice)', () => {
+    mockSurface.posted = [];
+    render(<ExerciseLoop instance={satbInstance} onResult={jest.fn()} />);
+
+    // The invariant that matters: the wiring must carry the SAME locator the
+    // core computes — a hand-typed locator here would drift from the real one.
+    const expectedLocator = highlightLocator(satbMusic);
+    expect(expectedLocator).toEqual({ staff: 1, voice: 2, noteIndex: 0 }); // tenor
+
+    const highlightNoteCmds = postedCommands().filter((c) => c.type === 'highlightNote');
+    expect(highlightNoteCmds.length).toBeGreaterThan(0);
+    expect(highlightNoteCmds[highlightNoteCmds.length - 1]).toEqual(
+      expect.objectContaining({ type: 'highlightNote', locator: expectedLocator }),
+    );
+  });
+
+  test('a music stimulus with no highlighted note issues highlightNote with a null locator (clears any stale ring)', () => {
+    mockSurface.posted = [];
+    const noHighlight: ExerciseInstance = {
+      ...mcqInstance,
+      id: 'test-no-highlight-1',
+      stimulus: { music: { ...satbMusic, voices: satbMusic.voices.map((v) => ({ ...v, events: [{ type: 'note', pitch: 'G4', dur: 'semibreve' }] })) }, text: null },
+    };
+    render(<ExerciseLoop instance={noHighlight} onResult={jest.fn()} />);
+
+    const highlightNoteCmds = postedCommands().filter((c) => c.type === 'highlightNote');
+    expect(highlightNoteCmds.length).toBeGreaterThan(0);
+    expect(highlightNoteCmds[highlightNoteCmds.length - 1]).toEqual(
+      expect.objectContaining({ type: 'highlightNote', locator: null }),
+    );
   });
 });
 

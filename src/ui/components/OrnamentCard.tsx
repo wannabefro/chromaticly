@@ -51,6 +51,7 @@ export const OrnamentCard = forwardRef<NotationCardHandle, OrnamentCardProps>(fu
     play: playRealised,
     stop: () => heroRef.current?.stop(),
     highlightBar: (bar: number | null, color?: string) => heroRef.current?.highlightBar(bar, color),
+    highlightNote: (locator, color) => heroRef.current?.highlightNote(locator, color),
     playAbc: (abc: string) => heroRef.current?.playAbc(abc),
     playMusic: (m: Music) => heroRef.current?.playMusic(m),
   }));

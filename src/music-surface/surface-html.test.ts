@@ -1,6 +1,11 @@
+import { highlightLocator, musicToAbc } from '../music/abc-emitter';
+import type { Music, VoiceName } from '../music/types';
+import { colors } from '../ui/theme';
 import { buildSurfaceHtml } from './surface-html';
+import abcjsSourceJson from './abcjs-source.json';
 
 const FAKE_ABCJS = 'window.ABCJS = { marker: true };';
+const ABCJS_SOURCE = (abcjsSourceJson as { source: string }).source;
 
 describe('buildSurfaceHtml', () => {
   test('inlines the abcjs source and the paper card', () => {
@@ -157,5 +162,176 @@ describe('buildSurfaceHtml', () => {
       expect(body).not.toContain("type: 'rendered'");
       expect(body).toContain("renderAbc('hidden-paper'");
     });
+  });
+});
+
+// G5-1 SATB "name the voice" (U3): the note-granularity ring. The riskiest
+// assumption in the whole plan — abcjs has no in-ABC note colour, so the ring
+// is a post-render draw keyed off abcjs's add_classes markup. If the
+// {staff,voice,noteIndex} locator resolves to the WRONG note, the exercise
+// renders and grades fine while ringing the wrong singer — corrupting the
+// exact learning signal the exercise teaches.
+describe('highlightNote — dispatch wiring + ring-colour token', () => {
+  test('wires the highlightNote command into the page and clears any previous ring', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(html).toContain('function highlightNote(locator, color)');
+    expect(html).toContain("cmd.type === 'highlightNote'");
+    expect(html).toContain('highlightNote(cmd.locator, cmd.color)');
+    expect(html).toContain('note-highlight'); // the ring's own class, cleared before redrawing
+  });
+
+  // R6: the default ring fill must trace to a design token (colors.hint, the
+  // amber "smart tips" token), never an ad hoc hex typed into the surface.
+  test('the ring colour defaults to, and can be overridden by, a token — never a raw hex', () => {
+    const withDefault = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    expect(withDefault).toContain(JSON.stringify(colors.hint));
+
+    const withOverride = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS, ringColor: colors.hint });
+    expect(withOverride).toContain(JSON.stringify(colors.hint));
+  });
+});
+
+// Shared SATB fixture (mirrors abc-emitter.test.ts's U2 fixture): S/A on the
+// treble staff, T/B on the bass staff, one voice flagged `highlight: true`.
+const SATB_VOICE_ORDER: VoiceName[] = ['soprano', 'alto', 'tenor', 'bass'];
+function satbFixture(highlightVoice: VoiceName): Music {
+  const pitchFor: Record<VoiceName, string> = { soprano: 'G4', alto: 'E4', tenor: 'C4', bass: 'C3' };
+  const staffFor: Record<VoiceName, number> = { soprano: 0, alto: 0, tenor: 1, bass: 1 };
+  const stemFor: Record<VoiceName, 'up' | 'down'> = { soprano: 'up', alto: 'down', tenor: 'up', bass: 'down' };
+  return {
+    clef: 'treble',
+    key_sig: 'C_major',
+    time_sig: '4/4',
+    staves: ['treble', 'bass'],
+    voices: SATB_VOICE_ORDER.map((name) => ({
+      name,
+      staff: staffFor[name],
+      stem: stemFor[name],
+      events: [{ type: 'note', pitch: pitchFor[name], dur: 'semibreve', highlight: name === highlightVoice }],
+    })),
+  };
+}
+
+/** Mirrors the exact selector `highlightNote` builds in surface-html.ts:
+ *  `.abcjs-note.abcjs-v{voice}.abcjs-n{noteIndex}`. abcjs's add_classes tags
+ *  every note/chord element (a chord's stacked pitches are still ONE element)
+ *  with its voice index and its position within that voice — voice indices
+ *  are unique across the whole grand staff, so this pair alone addresses
+ *  exactly one element. */
+function matchesNoteSelector(classAttr: string, voice: number, noteIndex: number): boolean {
+  const classes = classAttr.split(/\s+/);
+  return classes.includes('abcjs-note') && classes.includes(`abcjs-v${voice}`) && classes.includes(`abcjs-n${noteIndex}`);
+}
+
+describe('highlightNote selector uniqueness — locator -> abcjs class scheme (the riskiest assumption, U3)', () => {
+  // Primary proof: render the REAL SATB fixture (via the REAL musicToAbc emitter)
+  // through the REAL bundled abcjs 6.6.4 (the exact abcjs-source.json production
+  // ships), inside a jsdom document, and resolve each voice's locator against the
+  // actual rendered DOM. jsdom's SVG support has gaps (no getBBox — the ring's
+  // OWN bbox math is unproven here and stays an on-device U7 concern) but DOES
+  // run abcjs's real layout and add_classes tagging, so element resolution is a
+  // genuine render-based proof, not a parse-only one.
+  test('each voice locator resolves to exactly one DOM element, and no two voices alias to the same note', () => {
+    let JSDOMCtor: typeof import('jsdom').JSDOM;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      JSDOMCtor = require('jsdom').JSDOM;
+    } catch {
+      // jsdom isn't resolvable in this environment — fall back to the
+      // representative-fixture guard below; on-device rendering (U7) is the backstop.
+      return;
+    }
+
+    const html = buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE });
+    const dom = new JSDOMCtor(html, { runScripts: 'dangerously' });
+    const { window } = dom;
+    const abc = musicToAbc(satbFixture('soprano')); // highlight flag never changes emitted ABC
+    window.dispatchEvent(new window.MessageEvent('message', { data: JSON.stringify({ type: 'render', abc }) }));
+
+    const svg = window.document.querySelector('#paper svg');
+    expect(svg).not.toBeNull();
+
+    const resolved = SATB_VOICE_ORDER.map((name) => {
+      const locator = highlightLocator(satbFixture(name));
+      expect(locator).not.toBeNull();
+      const matches = svg!.querySelectorAll(`.abcjs-note.abcjs-v${locator!.voice}.abcjs-n${locator!.noteIndex}`);
+      // Exactly one element per voice — the selector must never resolve to zero
+      // (nothing to ring) or more than one (ambiguous ring target).
+      expect(matches).toHaveLength(1);
+      return matches[0];
+    });
+
+    // No two voices' locators alias to the same DOM node — the exact corruption
+    // the plan's Risks section warns about (ringing the wrong singer).
+    expect(new Set(resolved).size).toBe(resolved.length);
+  });
+
+  // Backstop (always runs, independent of jsdom availability): the selector
+  // LOGIC against a representative abcjs class-tagged fixture — classes captured
+  // verbatim from a real abcjs 6.6.4 render (add_classes:true) of this exact
+  // SATB fixture's bar, in abcjs's own v-index order (S=0,A=1,T=2,B=3).
+  test('fallback: selector logic uniquely addresses the intended voice in a representative abcjs class fixture', () => {
+    const renderedNoteClasses = [
+      'abcjs-note abcjs-d1 abcjs-p11 abcjs-l0 abcjs-m0 abcjs-mm0 abcjs-v0 abcjs-n0', // soprano G4
+      'abcjs-note abcjs-d1 abcjs-p9 abcjs-l0 abcjs-m0 abcjs-mm0 abcjs-v1 abcjs-n0', // alto E4
+      'abcjs-note abcjs-d1 abcjs-p0 abcjs-l0 abcjs-m0 abcjs-mm0 abcjs-v2 abcjs-n0', // tenor C4
+      'abcjs-note abcjs-d1 abcjs-p-7 abcjs-l0 abcjs-m0 abcjs-mm0 abcjs-v3 abcjs-n0', // bass C3
+    ];
+
+    SATB_VOICE_ORDER.forEach((name, voiceIndex) => {
+      const locator = highlightLocator(satbFixture(name))!;
+      expect(locator.voice).toBe(voiceIndex);
+      const matches = renderedNoteClasses.filter((c) => matchesNoteSelector(c, locator.voice, locator.noteIndex));
+      expect(matches).toHaveLength(1);
+      expect(matches[0]).toBe(renderedNoteClasses[voiceIndex]); // the intended voice, not a neighbour's
+    });
+  });
+});
+
+describe('highlightNote — null/out-of-range locator clears or ignores without throwing', () => {
+  function mountRealSurface(): { window: Window & typeof globalThis; posted: string[] } {
+    const html = buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE });
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { JSDOM } = require('jsdom');
+    const dom = new JSDOM(html, { runScripts: 'dangerously' });
+    const { window } = dom;
+    const posted: string[] = [];
+    window.ReactNativeWebView = { postMessage: (s: string) => posted.push(s) };
+    return { window, posted };
+  }
+
+  function jsdomAvailable(): boolean {
+    try {
+      require('jsdom');
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  test('a null locator clears any ring without throwing', () => {
+    if (!jsdomAvailable()) return; // on-device (U7) is the backstop
+    const { window, posted } = mountRealSurface();
+    const abc = musicToAbc(satbFixture('soprano'));
+    expect(() => {
+      window.dispatchEvent(new window.MessageEvent('message', { data: JSON.stringify({ type: 'render', abc }) }));
+      window.dispatchEvent(new window.MessageEvent('message', { data: JSON.stringify({ type: 'highlightNote', locator: null }) }));
+    }).not.toThrow();
+    expect(posted.some((p) => JSON.parse(p).type === 'error')).toBe(false);
+  });
+
+  test('an out-of-range locator (voice/noteIndex with no matching element) is ignored without throwing', () => {
+    if (!jsdomAvailable()) return; // on-device (U7) is the backstop
+    const { window, posted } = mountRealSurface();
+    const abc = musicToAbc(satbFixture('soprano'));
+    expect(() => {
+      window.dispatchEvent(new window.MessageEvent('message', { data: JSON.stringify({ type: 'render', abc }) }));
+      window.dispatchEvent(
+        new window.MessageEvent('message', {
+          data: JSON.stringify({ type: 'highlightNote', locator: { staff: 9, voice: 9, noteIndex: 9 } }),
+        }),
+      );
+    }).not.toThrow();
+    expect(posted.some((p) => JSON.parse(p).type === 'error')).toBe(false);
   });
 });

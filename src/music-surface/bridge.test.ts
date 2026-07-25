@@ -15,6 +15,8 @@ describe('bridge protocol round-trips', () => {
     { type: 'stop' },
     { type: 'highlightBar', bar: 2, color: '#cb7ad4' },
     { type: 'highlightBar', bar: null },
+    { type: 'highlightNote', locator: { staff: 1, voice: 2, noteIndex: 0 }, color: '#f0c489' },
+    { type: 'highlightNote', locator: null },
     { type: 'playAbc', abc: 'X:1\nK:C\nC' },
     { type: 'renderToSvg', abc: 'X:1\nK:E\nx4', reqId: 7 },
     { type: 'renderToSvg', abc: 'X:1\nK:E\nx4', scale: 1.5, reqId: 8 },

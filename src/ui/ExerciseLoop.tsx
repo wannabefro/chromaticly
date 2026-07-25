@@ -14,6 +14,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { ExerciseInstance } from '../engine/schema';
 import type { SrsGrade } from '../learn/srs';
 import type { SurfaceEvent } from '../music-surface/bridge';
+import { highlightLocator } from '../music/abc-emitter';
 import type { Music } from '../music/types';
 import { FeedbackSheet } from './components/FeedbackSheet';
 import { NotationCard, type NotationCardHandle } from './components/NotationCard';
@@ -133,6 +134,15 @@ export function ExerciseLoop({
   }, []);
 
   const music = instance.stimulus.music;
+
+  // G5-1 SATB "name the voice": ring the stimulus's marked target note. Without
+  // this effect the highlightNote command exists but is never issued — mirrors
+  // the highlightBar wiring above, but keyed off the stimulus rather than the
+  // response, and off the amber default rather than the strand hue.
+  useEffect(() => {
+    surfaceRef.current?.highlightNote(music ? highlightLocator(music) : null);
+  }, [music]);
+
   // Musical sums render the operands as rhythm glyphs with +/= operators
   // (chromaticly-f9k), not a single stave — a dedicated worksheet stimulus.
   const sumOperands = instance.interaction.config?.sum_operands as Music[] | undefined;

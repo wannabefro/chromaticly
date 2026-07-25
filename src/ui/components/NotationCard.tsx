@@ -39,6 +39,7 @@ export const NotationCard = forwardRef<NotationCardHandle, NotationCardProps>(fu
     play: () => surfaceRef.current?.play(),
     stop: () => surfaceRef.current?.stop(),
     highlightBar: (bar: number | null, color?: string) => surfaceRef.current?.highlightBar(bar, color),
+    highlightNote: (locator, color) => surfaceRef.current?.highlightNote(locator, color),
     playAbc: (abc: string) => surfaceRef.current?.playAbc(abc),
     playMusic: (music: Music) => surfaceRef.current?.playMusic(music),
   }));

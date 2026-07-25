@@ -19,6 +19,10 @@ export interface SurfaceHtmlOptions {
   paperColor?: string;
   /** Notation ink on the paper (colors.paperInk). */
   inkColor?: string;
+  /** Default fill for the note-granularity ring (G5-1 SATB, colors.hint — the
+   *  amber "smart tips" token, R6). A `highlightNote` command's own `color`
+   *  overrides this per-call. */
+  ringColor?: string;
 }
 
 // Universal notation layout (design A9 "stave is the hero", 9a "scroll inside the
@@ -40,6 +44,7 @@ export function buildSurfaceHtml(opts: SurfaceHtmlOptions): string {
   const autorun = opts.autorun ? 'true' : 'false';
   const paper = opts.paperColor ?? '#f6f4ee';
   const ink = opts.inkColor ?? '#12100c';
+  const ring = JSON.stringify(opts.ringColor ?? '#f0c489');
   const renderOpts = JSON.stringify(RENDER_OPTS);
   const playButton = opts.playButton
     ? '<button id="surface-play" style="margin:8px">Play</button>'
@@ -96,6 +101,7 @@ ${playButton}
   var SOUNDFONT = ${soundFont};
   var INITIAL_ABC = ${initialAbc};
   var AUTORUN = ${autorun};
+  var RING_COLOR = ${ring};
   var visualObj = null;
   var synth = null;
   var pressStart = 0; // touchstart time — lets onNoteClick tell a long-press from a tap
@@ -347,6 +353,36 @@ ${playButton}
     svg.insertBefore(rect, svg.firstChild);
   }
 
+  /** Ring the note-granularity target (G5-1 SATB "name the voice", U3) — the
+   *  note-index sibling of highlightBar, since abcjs has no in-ABC note colour.
+   *  abcjs's add_classes (RENDER_OPTS) tags every note/chord element with its
+   *  voice index (abcjs-vN) and its position within that voice (abcjs-nN, a
+   *  chord's stack of pitches is still ONE element). music.voices indices are
+   *  unique across the whole grand staff and abcjs numbers its v0.. voices in
+   *  the same V: declaration order the emitter writes them in, so the
+   *  {voice, noteIndex} pair alone addresses exactly one element; "staff" is
+   *  carried by the locator for the caller's own bookkeeping, not the selector. */
+  function highlightNote(locator, color) {
+    var svg = svgEl();
+    if (!svg) return;
+    var old = svg.querySelector('.note-highlight');
+    if (old) old.parentNode.removeChild(old);
+    if (!locator) return;
+    var el = svg.querySelector('.abcjs-note.abcjs-v' + locator.voice + '.abcjs-n' + locator.noteIndex);
+    if (!el) return;
+    var bb;
+    try { bb = el.getBBox(); } catch (e) { return; }
+    if (!bb || (bb.width === 0 && bb.height === 0)) return;
+    var ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    ring.setAttribute('class', 'note-highlight');
+    ring.setAttribute('cx', bb.x + bb.width / 2);
+    ring.setAttribute('cy', bb.y + bb.height / 2);
+    ring.setAttribute('r', Math.max(bb.width, bb.height) / 2 + 6);
+    ring.setAttribute('fill', color || RING_COLOR);
+    ring.setAttribute('fill-opacity', '0.32');
+    svg.insertBefore(ring, svg.firstChild);
+  }
+
   function handle(cmd) {
     if (!cmd || !cmd.type) return;
     if (cmd.type === 'render') renderAbc(cmd.abc, cmd.scale, cmd.staffwidth);
@@ -354,6 +390,7 @@ ${playButton}
     else if (cmd.type === 'play') play();
     else if (cmd.type === 'stop') { if (synth) synth.stop(); }
     else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);
+    else if (cmd.type === 'highlightNote') highlightNote(cmd.locator, cmd.color);
     else if (cmd.type === 'playAbc') playAbc(cmd.abc);
   }
 

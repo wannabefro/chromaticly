@@ -16,6 +16,9 @@ export interface MusicSurfaceHandle {
   stop(): void;
   /** Tint the selected bar in the score (design 4c), or clear with `null`. */
   highlightBar(bar: number | null, color?: string): void;
+  /** Ring the note-granularity target (G5-1 SATB "name the voice"), or clear
+   *  with a `null` locator. */
+  highlightNote(locator: { staff: number; voice: number; noteIndex: number } | null, color?: string): void;
   /** D9 "hear yours": play raw abc in the page's hidden container — never
    *  touches or repaints the visible score. */
   playAbc(abc: string): void;
@@ -79,7 +82,14 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   const staffwidth = undefined;
   // HTML is stable (abcjs is 500KB — don't rebuild per note); ABC arrives via a render command.
   const html = useMemo(
-    () => buildSurfaceHtml({ abcjsSource: ABCJS_SOURCE, soundFontUrl, paperColor: colors.paper, inkColor: colors.paperInk }),
+    () =>
+      buildSurfaceHtml({
+        abcjsSource: ABCJS_SOURCE,
+        soundFontUrl,
+        paperColor: colors.paper,
+        inkColor: colors.paperInk,
+        ringColor: colors.hint,
+      }),
     [soundFontUrl],
   );
 
@@ -93,6 +103,7 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
       play: () => send({ type: 'play' }),
       stop: () => send({ type: 'stop' }),
       highlightBar: (bar: number | null, color?: string) => send({ type: 'highlightBar', bar, color }),
+      highlightNote: (locator, color) => send({ type: 'highlightNote', locator, color }),
       playAbc: (abc: string) => send({ type: 'playAbc', abc }),
       playMusic: (music: Music) => send({ type: 'playAbc', abc: musicToAbc(music) }),
     }),
