@@ -152160,6 +152160,2351 @@ exports[`seed-stability — grade-5-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte satb_voice_recognition (satb-5, pre-lesson pin, chromaticly-g5-1) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "alto",
+    },
+    "distractors": [
+      "soprano",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s0",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab4",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s1",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "F2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "soprano",
+    },
+    "distractors": [
+      "alto",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s2",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "Eb5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "alto",
+    },
+    "distractors": [
+      "soprano",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s3",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "alto",
+    },
+    "distractors": [
+      "soprano",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s4",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "D#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F#3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "soprano",
+    },
+    "distractors": [
+      "alto",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s5",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "tenor",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s6",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "tenor",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s7",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "Bb2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "alto",
+    },
+    "distractors": [
+      "soprano",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s8",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "F#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "soprano",
+    },
+    "distractors": [
+      "alto",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s9",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "Gb5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Gb2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s10",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Db_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Gb5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "Gb2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s11",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "Bb2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s12",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s13",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "soprano",
+    },
+    "distractors": [
+      "alto",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s14",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s15",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "alto",
+    },
+    "distractors": [
+      "soprano",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s16",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab4",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "alto",
+    },
+    "distractors": [
+      "soprano",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s17",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "soprano",
+    },
+    "distractors": [
+      "alto",
+      "tenor",
+      "bass",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s18",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "soprano",
+      "alto",
+      "tenor",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).",
+    },
+    "grade": 5,
+    "hints": [
+      "Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).",
+    ],
+    "id": "satb_voice_recognition:g5:s19",
+    "interaction": {
+      "config": {
+        "options": [
+          {
+            "cue": "treble, stem up",
+            "label": "Soprano",
+            "voice": "soprano",
+          },
+          {
+            "cue": "treble, stem down",
+            "label": "Alto",
+            "voice": "alto",
+          },
+          {
+            "cue": "bass, stem up",
+            "label": "Tenor",
+            "voice": "tenor",
+          },
+          {
+            "cue": "bass, stem down",
+            "label": "Bass",
+            "voice": "bass",
+          },
+        ],
+      },
+      "type": "voice_options",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which voice sings the highlighted note?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G#4",
+                "type": "note",
+              },
+            ],
+            "name": "alto",
+            "staff": 0,
+            "stem": "down",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+            "name": "tenor",
+            "staff": 1,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "highlight": true,
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "satb_voice_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte transposing_instrument (transposing-instruments-5, pre-lesson pin, chromaticly-wz1) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

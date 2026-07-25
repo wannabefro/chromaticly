@@ -23,6 +23,7 @@ import { octaveTransposition } from './octave-transposition';
 import { ornamentRecognition } from './ornament-recognition';
 import { restCompletion } from './rest-completion';
 import { rhythmSum } from './rhythm-sum';
+import { satbVoiceRecognition } from './satb-voice-recognition';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
 import { transposingInstrument } from './transposing-instrument';
@@ -56,6 +57,7 @@ export const GENERATORS: Record<string, Generator> = {
   clef_equivalence: clefEquivalence,
   transposing_instrument: transposingInstrument,
   metre_rewrite: metreRewrite,
+  satb_voice_recognition: satbVoiceRecognition,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

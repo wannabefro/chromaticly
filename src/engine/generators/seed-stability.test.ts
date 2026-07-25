@@ -77,6 +77,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   clef_equivalence: 4,
   transposing_instrument: 5,
   metre_rewrite: 5,
+  satb_voice_recognition: 5,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -496,6 +497,11 @@ const GRADE_5_EXTRA_CASES: Case[] = [
     label: 'metre_rewrite (metre-rewrite-5, pre-lesson pin, chromaticly-4ak)',
     templateId: 'metre_rewrite',
     atoms: ['rewrite:simple_compound'],
+  },
+  {
+    label: 'satb_voice_recognition (satb-5, pre-lesson pin, chromaticly-g5-1)',
+    templateId: 'satb_voice_recognition',
+    atoms: ['satb_voice:soprano', 'satb_voice:alto', 'satb_voice:tenor', 'satb_voice:bass'],
   },
 ];
 

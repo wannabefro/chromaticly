@@ -48,7 +48,7 @@ export const CHORD_DEGREE_STEPS: Record<string, number> = { I: 0, II: 1, IV: 3, 
  *    c = 2nd inversion     → [fifth, root↑8, third↑8] (5th in bass)
  *  Octave-raise preserves any key-signature accidental (naturalPitchStepsAbove
  *  would strip it), so it only bumps the trailing octave digit. */
-function raiseOctave(pitch: string): string {
+export function raiseOctave(pitch: string): string {
   return pitch.replace(/(-?\d+)$/, (m) => String(Number(m) + 1));
 }
 
@@ -111,8 +111,10 @@ function numeralsFromAtoms(atoms: string[]): string[] {
  *  given numeral — an in-range occurrence of the root's natural letter is
  *  chosen so the third (root+2 diatonic steps) and fifth (root+4) both stay
  *  within comfortablePitchRange (readability, mirroring the incidental-pitch
- *  convention other generators use for non-reading-subject notation). */
-function buildTriad(
+ *  convention other generators use for non-reading-subject notation). Exported
+ *  for reuse by satb-voice-recognition.ts (G5-1), which calls it once per
+ *  staff to place its own root-position triad, alongside raiseOctave above. */
+export function buildTriad(
   clef: Clef,
   grade: number,
   key: string,

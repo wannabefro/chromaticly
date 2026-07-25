@@ -2,7 +2,7 @@
 // "note_read:treble:C4", "key_sig:G_major", "interval:5", "term:cantabile",
 // "rhythm_sum".
 
-import type { Clef, Duration } from '../music/types';
+import type { Clef, Duration, VoiceName } from '../music/types';
 
 /** pitch is a free-form label — either scientific notation ("C4") or a named
  * position ("middle_c") — so it stays `string`, not the stricter Pitch type. */
@@ -289,4 +289,14 @@ export const CONTEXT_KINDS: readonly string[] = ['highest_note', 'time_sig', 'dy
 
 export function contextAtom(kind: string): string {
   return `context:${kind}`;
+}
+
+/** Grade-5 SATB voice names (satb_voice_recognition, G5-1), in the design's
+ *  S/A/T/B order — matches VOICE_NAME_TO_ID's order in abc-emitter.ts and the
+ *  answer-option order the voice_options interaction renders. */
+export const SATB_VOICES: readonly VoiceName[] = ['soprano', 'alto', 'tenor', 'bass'];
+
+/** e.g. satbVoiceAtom('tenor') -> "satb_voice:tenor". */
+export function satbVoiceAtom(voice: VoiceName): string {
+  return `satb_voice:${voice}`;
 }
