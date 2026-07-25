@@ -125,6 +125,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
       'text_input',
       'transposition_input',
       'true_false',
+      'voice_options',
     ]);
   });
 });

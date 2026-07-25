@@ -30,6 +30,7 @@ import { transpositionInputSpec } from './TranspositionInput';
 import { noteValuePaletteSpec } from './NoteValuePalette';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
+import { VoiceOptions, type VoiceOptionsResponse } from './VoiceOptions';
 
 /** The correct-answer render shared by mcq/text_input today: the canonical
  *  answer's label, or — when the stimulus carries notation — that notation on
@@ -271,6 +272,30 @@ const dragMatchSpec: InteractionSpec<DragMatchResponse> = {
   correctAnswerView: dragMatchCorrectAnswerView,
 };
 
+/** The stimulus IS the marked target (rule 1/2: notation on paper, with play) —
+ *  the FeedbackSheet reveal just captions it with the correct voice's name
+ *  (config.options' label, not the raw canonical atom string). */
+function voiceOptionsCorrectAnswerView(instance: ExerciseInstance) {
+  const music = instance.stimulus.music;
+  const canonical = instance.answer.canonical as string;
+  const config = instance.interaction.config as unknown as { options: { voice: string; label: string }[] };
+  const label = config.options.find((o) => o.voice === canonical)?.label ?? canonical;
+  return music ? (
+    <NotationCard music={music} caption={label} testID="answer-notation" />
+  ) : (
+    <Text testID="answer-label" style={styles.answerLabel}>{label}</Text>
+  );
+}
+
+const voiceOptionsSpec: InteractionSpec<VoiceOptionsResponse> = {
+  Component: VoiceOptions,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeMcq(instance, response),
+  submits: true,
+  correctAnswerView: voiceOptionsCorrectAnswerView,
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -282,6 +307,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   note_value_palette: noteValuePaletteSpec,
   roman_numeral_boxes: romanNumeralBoxesSpec,
   drag_match: dragMatchSpec,
+  voice_options: voiceOptionsSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather
