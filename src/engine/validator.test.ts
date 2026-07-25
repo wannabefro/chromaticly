@@ -1,4 +1,5 @@
 import type { ExerciseInstance } from './schema';
+import { ExerciseInstanceSchema } from './schema';
 import { validate } from './validator';
 
 function validNoteNamingInstance(): ExerciseInstance {
@@ -991,5 +992,117 @@ describe('validate — per-template hook: anacrusis_recognition (U3, D7: recompu
     instance.distractors = ['1 beat', '0 beats'];
     const result = validate(instance);
     expect(result.ok).toBe(false);
+  });
+});
+
+// U8 (chromaticly-*, G5-1 SATB): a grand-staff fixture matching the
+// types.test.ts SATB shape (staves + four voices carrying staff/stem/name),
+// with grade-5-in-range pitches for each voice's own staff (soprano/alto on
+// treble F3..E6, tenor/bass on bass A1..G4 — see scope.ts GRADE_5_SCOPE,
+// which mirrors GRADE_3_SCOPE.pitchRanges).
+function validSatbGrandStaffInstance(): ExerciseInstance {
+  return {
+    id: 'e5f6a7b8-0000-0000-0000-000000000000',
+    template_id: 'satb_voice_recognition',
+    grade: 5,
+    strand: 'pitch',
+    prompt: 'Which voice is highlighted?',
+    stimulus: {
+      music: {
+        clef: 'treble',
+        key_sig: 'C_major',
+        time_sig: '4/4',
+        staves: ['treble', 'bass'],
+        voices: [
+          { name: 'soprano', staff: 0, stem: 'up', events: [{ type: 'note', pitch: 'C5', dur: 'crotchet', highlight: true }] },
+          { name: 'alto', staff: 0, stem: 'down', events: [{ type: 'note', pitch: 'G4', dur: 'crotchet' }] },
+          { name: 'tenor', staff: 1, stem: 'up', events: [{ type: 'note', pitch: 'E3', dur: 'crotchet' }] },
+          { name: 'bass', staff: 1, stem: 'down', events: [{ type: 'note', pitch: 'C3', dur: 'crotchet' }] },
+        ],
+      },
+      text: null,
+    },
+    interaction: {
+      type: 'voice_options',
+      config: {
+        options: [
+          { name: 'soprano', label: 'Soprano · treble, stem up' },
+          { name: 'alto', label: 'Alto · treble, stem down' },
+          { name: 'tenor', label: 'Tenor · bass, stem up' },
+          { name: 'bass', label: 'Bass · bass, stem down' },
+        ],
+      },
+    },
+    answer: { canonical: 'soprano', accepted_alternatives: [] },
+    distractors: ['alto', 'tenor', 'bass'],
+    hints: ['The highlighted note sits on the treble staff, stem up.'],
+    feedback: {
+      correct: 'Correct — that is the soprano.',
+      incorrect: 'Not quite — check the stave and stem direction of the highlighted note.',
+    },
+    srs_tags: ['voice:soprano'],
+    kb_version: 'g5-2026-07-25',
+  };
+}
+
+describe('ExerciseInstanceSchema — voice_options (U8: schema gate for G5-1 SATB)', () => {
+  test('an instance carrying interaction.type "voice_options" parses, not rejected at the schema gate', () => {
+    const result = ExerciseInstanceSchema.safeParse(validSatbGrandStaffInstance());
+    expect(result.success).toBe(true);
+  });
+});
+
+describe('validate — multi-staff scope (U8: each SATB voice checked against its OWN staff clef)', () => {
+  test('a valid SATB grand-staff instance (treble S/A, bass T/B, all in range for their own staff) passes clean', () => {
+    expect(validate(validSatbGrandStaffInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('single-clef Music (no staves) still validates byte-identically to today — no new errors on an existing G1 fixture', () => {
+    // Guards R7: the no-staves branch of checkScope must be untouched by the
+    // U8 staves-aware rewrite.
+    expect(validate(validNoteNamingInstance())).toEqual({ ok: true, errors: [] });
+  });
+
+  test('a bass-staff pitch out of the BASS range is flagged, even though the same pitch is in range for treble', () => {
+    // A4 is above the bass range ceiling (G4) but well inside the treble
+    // range (F3..E6) — this is the case a single shared-clef check would
+    // miss: it proves the bass voice is resolved against ITS OWN staff
+    // (staves[1] = bass), not against music.clef ('treble').
+    const instance = validSatbGrandStaffInstance();
+    (instance.stimulus.music as any).voices[3].events[0].pitch = 'A4';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('scope') && e.includes('"A4"'))).toBe(true);
+  });
+
+  test('that same out-of-bass-range pitch is NOT flagged when the voice instead routes to the treble staff', () => {
+    // Proves per-voice clef resolution rather than a single Music-wide
+    // rejection: moving the identical A4 pitch to a treble-routed voice
+    // (staff: 0) must clear the scope error.
+    const instance = validSatbGrandStaffInstance();
+    const bassVoice = (instance.stimulus.music as any).voices[3];
+    bassVoice.staff = 0;
+    bassVoice.events[0].pitch = 'A4';
+    const result = validate(instance);
+    expect(result.errors.some((e) => e.includes('scope') && e.includes('"A4"'))).toBe(false);
+  });
+
+  test('a voice with no staff field defaults to staff 0 (the top/treble stave)', () => {
+    const instance = validSatbGrandStaffInstance();
+    const sopranoVoice = (instance.stimulus.music as any).voices[0];
+    delete sopranoVoice.staff;
+    // C5 is in range for treble (staff 0, the default) but would be flagged
+    // against bass (staff 1) — passing here proves the ?? 0 fallback.
+    expect(validate(instance)).toEqual({ ok: true, errors: [] });
+  });
+});
+
+describe('validate — voice_options CLOSED-set distractor integrity (U8 decision: joins CLOSED_INTERACTION_TYPES)', () => {
+  test('a voice_options distractor equal to the canonical answer is rejected, same as mcq', () => {
+    const instance = validSatbGrandStaffInstance();
+    instance.distractors = ['soprano', 'tenor', 'bass'];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('not exactly one defensible answer'))).toBe(true);
   });
 });

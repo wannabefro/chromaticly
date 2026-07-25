@@ -165,7 +165,26 @@ function checkScope(inst: ExerciseInstance, scope: GradeScope, errors: string[])
     errors.push(`scope: time signature "${music.time_sig}" is outside G1 scope`);
   }
 
+  // Grand-staff (G5-1 SATB, U8): each voice routes to a staff via `voice.staff`
+  // and must be range-checked against THAT staff's clef, not the single
+  // `music.clef` above — resolved once per staff index (not per voice) so a
+  // clef shared by multiple voices isn't flagged twice. When `music.staves`
+  // is absent this map stays null and every voice falls back to `range`,
+  // which is the exact pre-U8 single-clef path (R7: byte-identical).
+  const staveRanges: Map<number, { low: string; high: string } | null> | null = music.staves
+    ? new Map(
+        music.staves.map((staveClef, i): [number, { low: string; high: string } | null] => {
+          const staveClefInScope = scope.clefs.includes(staveClef);
+          if (!staveClefInScope) {
+            errors.push(`scope: clef "${staveClef}" (staff ${i}) is outside grade ${inst.grade} scope`);
+          }
+          return [i, staveClefInScope ? scope.pitchRanges[staveClef] : null];
+        }),
+      )
+    : null;
+
   for (const voice of music.voices) {
+    const voiceRange = staveRanges ? staveRanges.get(voice.staff ?? 0) ?? null : range;
     for (const ev of voice.events) {
       if (ev.type === 'note' || ev.type === 'chord' || ev.type === 'rest') {
         if (!scope.noteValues.includes(ev.dur)) {
@@ -173,7 +192,7 @@ function checkScope(inst: ExerciseInstance, scope: GradeScope, errors: string[])
         }
       }
       for (const pitch of eventPitches(ev)) {
-        checkPitchScope(pitch, range, inst.grade, errors);
+        checkPitchScope(pitch, voiceRange, inst.grade, errors);
       }
     }
   }
@@ -181,7 +200,13 @@ function checkScope(inst: ExerciseInstance, scope: GradeScope, errors: string[])
 
 // --- Shared check: commandments 3/4 (diagnostic distractors, one answer) --
 
-const CLOSED_INTERACTION_TYPES = new Set(['mcq', 'multi_select', 'true_false']);
+// voice_options (G5-1 SATB, U8) joins the closed set: per the U4 generator
+// contract, answer.canonical is the target voice's name and distractors are
+// the other three voice names — the same "one canonical + a distractor pool,
+// no per_item" shape mcq/multi_select/true_false already have, so the
+// integrity checks below (no distractor duplicates the canonical, no
+// duplicate distractors) apply unmodified.
+const CLOSED_INTERACTION_TYPES = new Set(['mcq', 'multi_select', 'true_false', 'voice_options']);
 
 function deepEqual(a: unknown, b: unknown): boolean {
   if (a === b) return true;

@@ -20,6 +20,7 @@ export const InteractionTypeSchema = z.enum([
   'find_the_bar',
   'transposition_input',
   'note_value_palette',
+  'voice_options',
 ]);
 
 export type InteractionType = z.infer<typeof InteractionTypeSchema>;
