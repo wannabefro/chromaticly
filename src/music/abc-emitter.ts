@@ -17,6 +17,7 @@ import type {
   OrnamentKind,
   RestEvent,
   Voice,
+  VoiceName,
 } from './types';
 
 type Accidental = 'sharp' | 'flat' | 'natural' | 'double_sharp' | 'double_flat';
@@ -145,6 +146,20 @@ function clefTag(clef: Clef): string {
   return `clef=${clef}`;
 }
 
+/** SATB voice → stable ABC voice ID (G5-1 invariant table). The same ID must
+ *  appear in the `%%score` directive and the voice's `V:` declaration — a
+ *  mismatch makes abcjs silently mis-render. */
+const VOICE_NAME_TO_ID: Record<VoiceName, string> = {
+  soprano: 'S',
+  alto: 'A',
+  tenor: 'T',
+  bass: 'B',
+};
+
+function voiceId(voice: Voice, index: number): string {
+  return voice.name ? VOICE_NAME_TO_ID[voice.name] : `V${index + 1}`;
+}
+
 /** ABC decoration token for the decoration ornaments — grace ornaments render
  *  structurally (a `{...}` grace note) instead, handled in noteToAbc. */
 const ORNAMENT_DECORATION: Partial<Record<OrnamentKind, string>> = {
@@ -269,9 +284,44 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, unit: numb
   return out;
 }
 
+/** Grand-staff header + body: one `%%score` brace directive plus one `V:<id>
+ *  clef=... stem=...` declaration (and its voice body) per voice, all keyed
+ *  off the same voice IDs (KTD2, U2). Every voice must declare its `staff` —
+ *  a missing one fails loud rather than silently dropping the voice from the
+ *  score. */
+function grandStaffAbc(music: Music, staves: Clef[], keyAcc: Record<string, Accidental>, unit: number): string {
+  const ids = music.voices.map((voice, i) => voiceId(voice, i));
+  const staffGroups: string[][] = staves.map(() => []);
+  music.voices.forEach((voice, i) => {
+    if (voice.staff === undefined) {
+      throw new Error('Grand-staff Music requires every voice to declare a staff');
+    }
+    staffGroups[voice.staff].push(ids[i]);
+  });
+  const scoreDirective = `%%score {${staffGroups
+    .filter((group) => group.length > 0)
+    .map((group) => `(${group.join(' ')})`)
+    .join(' ')}}`;
+
+  const header = ['X:1', `L:${UNIT_NOTE_LENGTH}`, `M:${music.time_sig_hidden ? 'none' : music.time_sig ?? 'none'}`, `K:${keyName(music.key_sig)}`, scoreDirective].join('\n');
+
+  const voiceBlocks = music.voices.map((voice, i) => {
+    const clef = staves[voice.staff!];
+    return `V:${ids[i]} clef=${clef} stem=${voice.stem}\n${voiceToAbc(voice, keyAcc, unit)}`;
+  });
+
+  return `${header}\n${voiceBlocks.join('\n')}\n`;
+}
+
 /** Project a Music object to a complete, renderable ABC tune string. */
 export function musicToAbc(music: Music): string {
   const keyAcc = keyAccidentals(music.key_sig);
+  const unit = beatUnit(music.time_sig);
+
+  if (music.staves) {
+    return grandStaffAbc(music, music.staves, keyAcc, unit);
+  }
+
   const header = [
     'X:1',
     `L:${UNIT_NOTE_LENGTH}`,
@@ -282,8 +332,27 @@ export function musicToAbc(music: Music): string {
     `K:${keyName(music.key_sig)} ${music.rhythmStaff ? 'clef=none stafflines=0' : clefTag(music.clef)}`,
   ].join('\n');
 
-  const unit = beatUnit(music.time_sig);
   const body = music.voices.map((voice) => voiceToAbc(voice, keyAcc, unit)).join('\n');
 
   return `${header}\n${body}\n`;
+}
+
+/** Locate the single `highlight:true` event for a "name the voice" exercise
+ *  (SATB recognition, G5-1) — a pure locator, kept separate from the ABC
+ *  string so the surface can consume it independently (KTD3). `noteIndex` is
+ *  the event's position among pitch-bearing (note/chord) events within its
+ *  voice; `staff` defaults to 0 for a single-voice Music with no `staff` set. */
+export function highlightLocator(music: Music): { staff: number; voice: number; noteIndex: number } | null {
+  for (let voiceIndex = 0; voiceIndex < music.voices.length; voiceIndex++) {
+    const voice = music.voices[voiceIndex];
+    let noteIndex = 0;
+    for (const ev of voice.events) {
+      if (ev.type !== 'note' && ev.type !== 'chord') continue;
+      if (ev.highlight) {
+        return { staff: voice.staff ?? 0, voice: voiceIndex, noteIndex };
+      }
+      noteIndex++;
+    }
+  }
+  return null;
 }

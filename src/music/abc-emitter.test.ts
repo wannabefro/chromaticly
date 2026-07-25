@@ -1,4 +1,4 @@
-import { durationToAbc, keyAccidentals, musicToAbc, pitchToAbc } from './abc-emitter';
+import { durationToAbc, highlightLocator, keyAccidentals, musicToAbc, pitchToAbc } from './abc-emitter';
 import type { Music } from './types';
 
 const NO_KEY = {};
@@ -436,5 +436,128 @@ describe('musicToAbc — tuplets (fyu.7)', () => {
     // Exactly one bracket, on the first note of the triplet.
     expect((body(music)!.match(/\(3:2:3/g) ?? []).length).toBe(1);
     expect(body(music)).toBe('(3:2:3c4d4e4 f8');
+  });
+});
+
+// G5-1 SATB: S/A share the treble staff (stem up/down), T/B share the bass staff
+// (stem up/down) — no tenor clef (deliberately deferred, see the G5-1 plan).
+describe('musicToAbc — grand-staff SATB emission (G5-1, U2)', () => {
+  function satbFixture(): Music {
+    return {
+      clef: 'treble',
+      key_sig: 'C_major',
+      time_sig: '4/4',
+      staves: ['treble', 'bass'],
+      voices: [
+        {
+          name: 'soprano',
+          staff: 0,
+          stem: 'up',
+          events: [{ type: 'note', pitch: 'G4', dur: 'semibreve', highlight: true }],
+        },
+        { name: 'alto', staff: 0, stem: 'down', events: [{ type: 'note', pitch: 'E4', dur: 'semibreve' }] },
+        { name: 'tenor', staff: 1, stem: 'up', events: [{ type: 'note', pitch: 'C4', dur: 'semibreve' }] },
+        { name: 'bass', staff: 1, stem: 'down', events: [{ type: 'note', pitch: 'C3', dur: 'semibreve' }] },
+      ],
+    };
+  }
+
+  test('emits the exact %%score directive bracing (S A) on treble and (T B) on bass', () => {
+    expect(musicToAbc(satbFixture())).toContain('%%score {(S A) (T B)}');
+  });
+
+  test('emits one V: declaration per voice with the invariant clef+stem pairing', () => {
+    const abc = musicToAbc(satbFixture());
+    expect(abc).toContain('V:S clef=treble stem=up');
+    expect(abc).toContain('V:A clef=treble stem=down');
+    expect(abc).toContain('V:T clef=bass stem=up');
+    expect(abc).toContain('V:B clef=bass stem=down');
+  });
+
+  // The silent-misrender guard (KTD2): a mismatch between the %%score IDs and the
+  // V: declaration IDs makes abcjs silently mis-render or mis-group with no error.
+  test('the ID set in %%score exactly matches the ID set of the V: declarations', () => {
+    const abc = musicToAbc(satbFixture());
+    const scoreMatch = /%%score \{(.+)\}/.exec(abc);
+    expect(scoreMatch).not.toBeNull();
+    const scoreIds = scoreMatch![1].match(/[A-Za-z0-9]+/g) ?? [];
+    const declIds = [...abc.matchAll(/^V:(\S+)/gm)].map((m) => m[1]);
+    expect(new Set(scoreIds)).toEqual(new Set(declIds));
+    expect(scoreIds).toHaveLength(4);
+  });
+
+  test('a voice missing `staff` throws rather than silently dropping it from the score', () => {
+    const music = satbFixture();
+    delete (music.voices[2] as { staff?: number }).staff;
+    expect(() => musicToAbc(music)).toThrow(/staff/);
+  });
+
+  test('the SATB fixture parses in bundled abcjs into two staves grouped by one brace', () => {
+    let abcjs: typeof import('abcjs');
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      abcjs = require('abcjs');
+    } catch {
+      // abcjs can't load in this test environment — visual/parse fidelity is proven
+      // on-device in U7; skip rather than fail the unit.
+      return;
+    }
+    const tunes = abcjs.parseOnly(musicToAbc(satbFixture()));
+    expect(tunes).toHaveLength(1);
+    const staffLine = tunes[0].lines.find((line) => Array.isArray(line.staff));
+    expect(staffLine).toBeDefined();
+    expect(staffLine!.staff).toHaveLength(2);
+  });
+});
+
+describe('highlightLocator (U2, KTD3)', () => {
+  function satbFixture(highlightVoice: 'soprano' | 'tenor' | null): Music {
+    const mk = (name: 'soprano' | 'alto' | 'tenor' | 'bass', staff: number, stem: 'up' | 'down', pitch: string) => ({
+      name,
+      staff,
+      stem,
+      events: [{ type: 'note' as const, pitch, dur: 'semibreve' as const, highlight: name === highlightVoice }],
+    });
+    return {
+      clef: 'treble',
+      key_sig: 'C_major',
+      time_sig: '4/4',
+      staves: ['treble', 'bass'],
+      voices: [mk('soprano', 0, 'up', 'G4'), mk('alto', 0, 'down', 'E4'), mk('tenor', 1, 'up', 'C4'), mk('bass', 1, 'down', 'C3')],
+    };
+  }
+
+  test('locates the highlighted event by its staff, voice index, and pitch-bearing-event index', () => {
+    expect(highlightLocator(satbFixture('soprano'))).toEqual({ staff: 0, voice: 0, noteIndex: 0 });
+    expect(highlightLocator(satbFixture('tenor'))).toEqual({ staff: 1, voice: 2, noteIndex: 0 });
+  });
+
+  test('a rest before the highlighted note does not shift its noteIndex (only note/chord events count)', () => {
+    const music: Music = {
+      clef: 'treble',
+      key_sig: null,
+      time_sig: '4/4',
+      staves: ['treble', 'bass'],
+      voices: [
+        {
+          name: 'soprano',
+          staff: 0,
+          stem: 'up',
+          events: [
+            { type: 'rest', dur: 'crotchet' },
+            { type: 'note', pitch: 'C4', dur: 'crotchet' },
+            { type: 'note', pitch: 'D4', dur: 'crotchet', highlight: true },
+          ],
+        },
+        { name: 'alto', staff: 0, stem: 'down', events: [{ type: 'note', pitch: 'E4', dur: 'semibreve' }] },
+        { name: 'tenor', staff: 1, stem: 'up', events: [{ type: 'note', pitch: 'C4', dur: 'semibreve' }] },
+        { name: 'bass', staff: 1, stem: 'down', events: [{ type: 'note', pitch: 'C3', dur: 'semibreve' }] },
+      ],
+    };
+    expect(highlightLocator(music)).toEqual({ staff: 0, voice: 0, noteIndex: 1 });
+  });
+
+  test('returns null when nothing is marked', () => {
+    expect(highlightLocator(satbFixture(null))).toBeNull();
   });
 });
