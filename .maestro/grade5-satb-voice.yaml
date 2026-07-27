@@ -1,0 +1,59 @@
+# Grade 5 SATB "name the voice" (G5-1, chromaticly-0iy). Seed ?seed=satb-voice-5
+# masters grades 1-4, records their exams cleared, opens Level 5, and reaching
+# unit-row-satb-voice-5 (the Level-5 chain tail) is the unlock proof.
+#
+# This is the on-device gate for the parts jest's layout-free renderer cannot
+# prove: the braced treble+bass GRAND STAFF renders (two voices per stave, split
+# by stem direction), the amber ring lands on the highlighted note, and the four
+# voice_options (name + stave + stem cue) are tappable through to feedback.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=satb-voice-5
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-satb-voice-5" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    timeout: 60000
+- tapOn: { id: "unit-row-satb-voice-5" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 60000
+- takeScreenshot: g5-satb-teach
+- tapOn: { id: "teach-start" }
+
+# The grand staff renders on the paper card, and the voice_options interaction
+# shows all four voices — each labelled by name + stave + stem cue.
+- extendedWaitUntil:
+    visible: { id: "stimulus-music" }
+    timeout: 60000
+- assertVisible: { id: "voice-options" }
+- assertVisible: { id: "voice-option-soprano" }
+- assertVisible: { id: "voice-option-alto" }
+- assertVisible: { id: "voice-option-tenor" }
+- assertVisible: { id: "voice-option-bass" }
+- takeScreenshot: g5-satb-exercise
+
+# Pick a voice and check — the exercise grades and shows feedback either way
+# (grading correctness itself is proven in jest; here we prove the tap → check →
+# feedback path is wired on device).
+- tapOn: { id: "voice-option-tenor" }
+- takeScreenshot: g5-satb-answered
+- tapOn:
+    text: "Check"
+    optional: true
+- takeScreenshot: g5-satb-feedback

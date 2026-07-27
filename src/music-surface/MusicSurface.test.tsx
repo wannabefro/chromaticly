@@ -1,21 +1,32 @@
+import { createRef } from 'react';
 import { act, render } from '@testing-library/react-native';
 
 import type { Music } from '../music/types';
-import type { SurfaceEvent } from './bridge';
+import type { SurfaceCommand, SurfaceEvent } from './bridge';
 
 let capturedProps: Record<string, unknown> | null = null;
+// Commands the component posts INTO the WebView. The real WebView drops a
+// postMessage that lands before its page has booted, so the mock only records
+// what MusicSurface actually sends via webRef — letting a test prove the
+// readiness gating rather than assume the command reached the page.
+const mockPosted: string[] = [];
 jest.mock('react-native-webview', () => {
   const React = require('react');
   return {
-    WebView: React.forwardRef((props: Record<string, unknown>, _ref: unknown) => {
+    WebView: React.forwardRef((props: Record<string, unknown>, ref: unknown) => {
       capturedProps = props;
+      React.useImperativeHandle(ref, () => ({ postMessage: (s: string) => mockPosted.push(s) }));
       return null;
     }),
   };
 });
 
 // Imported after the mock so the component picks it up.
-import { MusicSurface, dispatchMessage } from './MusicSurface';
+import { MusicSurface, dispatchMessage, type MusicSurfaceHandle } from './MusicSurface';
+
+function postedCommands(): SurfaceCommand[] {
+  return mockPosted.map((s) => JSON.parse(s) as SurfaceCommand);
+}
 
 const MUSIC: Music = {
   clef: 'treble',
@@ -40,6 +51,10 @@ describe('dispatchMessage', () => {
 });
 
 describe('MusicSurface', () => {
+  beforeEach(() => {
+    mockPosted.length = 0;
+  });
+
   test('renders a WebView whose HTML inlines abcjs and wires the bridge', () => {
     render(<MusicSurface music={MUSIC} />);
     expect(capturedProps).not.toBeNull();
@@ -104,5 +119,46 @@ describe('MusicSurface', () => {
 
     rerender(<MusicSurface music={tall} height={160} />);
     expect(heightOf(getByTestId)).toBe(160); // stale tall height dropped on stimulus change
+  });
+
+  // G5-1 SATB regression: the note ring never appeared on device because
+  // ExerciseLoop issues highlightNote from a mount effect — BEFORE the WebView has
+  // booted its message listener — and a real WebView silently drops a postMessage
+  // that lands too early (unlike `render`, which is already gated on `ready`). The
+  // WebView's own post-render replay can't rescue it, because that replay only fires
+  // for a command that actually executed once. So a highlightNote requested before
+  // `ready` must be held and (re-)sent when the surface reports ready.
+  test('a highlightNote requested before ready is deferred, then flushed once the surface is ready', () => {
+    const ref = createRef<MusicSurfaceHandle>();
+    render(<MusicSurface ref={ref} music={MUSIC} />);
+
+    // Requested before the surface has reported 'ready' — must NOT be posted yet
+    // (a real WebView would drop it).
+    const locator = { staff: 0, voice: 1, noteIndex: 0 };
+    act(() => ref.current!.highlightNote(locator));
+    expect(postedCommands().filter((c) => c.type === 'highlightNote')).toHaveLength(0);
+
+    // Surface boots → the held highlight is flushed with the requested locator.
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'ready' }) } }));
+
+    const highlights = postedCommands().filter((c) => c.type === 'highlightNote');
+    expect(highlights).toHaveLength(1);
+    expect(highlights[0]).toEqual({ type: 'highlightNote', locator, color: undefined });
+  });
+
+  test('a highlightNote requested after ready is sent immediately', () => {
+    const ref = createRef<MusicSurfaceHandle>();
+    render(<MusicSurface ref={ref} music={MUSIC} />);
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'ready' }) } }));
+    mockPosted.length = 0; // ignore the render the ready-transition triggers
+
+    const locator = { staff: 1, voice: 2, noteIndex: 0 };
+    act(() => ref.current!.highlightNote(locator));
+
+    expect(postedCommands().filter((c) => c.type === 'highlightNote')).toEqual([
+      { type: 'highlightNote', locator, color: undefined },
+    ]);
   });
 });

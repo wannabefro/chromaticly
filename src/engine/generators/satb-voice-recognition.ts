@@ -91,7 +91,11 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     const note: NoteEvent = {
       type: 'note',
       pitch: pitchByVoice[name],
-      dur: 'semibreve',
+      // minim, not semibreve: the exercise is answered by stem direction
+      // (soprano/tenor up, alto/bass down), and only stemmed note values draw
+      // a stem — a stemless whole note makes the two voices on a stave
+      // indistinguishable (design G5-1).
+      dur: 'minim',
       ...(name === targetVoice ? { highlight: true } : {}),
     };
     return { events: [note], staff: VOICE_META[name].staff, stem: VOICE_META[name].stem, name };

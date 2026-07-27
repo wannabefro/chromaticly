@@ -11,6 +11,9 @@ import { buildSurfaceHtml } from './surface-html';
 
 const ABCJS_SOURCE = (abcjsSource as { source: string }).source;
 
+/** Note-granularity ring target: which staff/voice/note-in-voice to ring. */
+export type NoteLocator = { staff: number; voice: number; noteIndex: number };
+
 export interface MusicSurfaceHandle {
   play(): void;
   stop(): void;
@@ -18,7 +21,7 @@ export interface MusicSurfaceHandle {
   highlightBar(bar: number | null, color?: string): void;
   /** Ring the note-granularity target (G5-1 SATB "name the voice"), or clear
    *  with a `null` locator. */
-  highlightNote(locator: { staff: number; voice: number; noteIndex: number } | null, color?: string): void;
+  highlightNote(locator: NoteLocator | null, color?: string): void;
   /** D9 "hear yours": play raw abc in the page's hidden container — never
    *  touches or repaints the visible score. */
   playAbc(abc: string): void;
@@ -97,18 +100,43 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     webRef.current?.postMessage(encodeCommand(cmd));
   }, []);
 
+  // A highlightNote requested before the WebView has booted its message listener
+  // would be dropped (unlike `render`, which is gated on `ready` below): its
+  // postMessage lands before the page can receive it, and the WebView's own
+  // post-render replay can't rescue it because that replay only fires for a
+  // command that actually executed. So hold the latest requested note highlight
+  // and (re-)send it once ready. `readyRef` mirrors `ready` so the imperative
+  // method can send immediately when the surface is already up. `null` locator is
+  // a real request (clear the ring); `undefined` means nothing has been asked.
+  const readyRef = useRef(false);
+  const pendingHighlight = useRef<{ locator: NoteLocator | null; color?: string } | undefined>(undefined);
+  const sendHighlight = useCallback(
+    (h: { locator: NoteLocator | null; color?: string }) => {
+      send({ type: 'highlightNote', locator: h.locator, color: h.color });
+    },
+    [send],
+  );
+
   useImperativeHandle(
     ref,
     () => ({
       play: () => send({ type: 'play' }),
       stop: () => send({ type: 'stop' }),
       highlightBar: (bar: number | null, color?: string) => send({ type: 'highlightBar', bar, color }),
-      highlightNote: (locator, color) => send({ type: 'highlightNote', locator, color }),
+      highlightNote: (locator, color) => {
+        pendingHighlight.current = { locator, color };
+        if (readyRef.current) sendHighlight(pendingHighlight.current);
+      },
       playAbc: (abc: string) => send({ type: 'playAbc', abc }),
       playMusic: (music: Music) => send({ type: 'playAbc', abc: musicToAbc(music) }),
     }),
-    [send],
+    [send, sendHighlight],
   );
+
+  // Flush a highlight requested before boot, once the surface is ready.
+  useEffect(() => {
+    if (ready && pendingHighlight.current !== undefined) sendHighlight(pendingHighlight.current);
+  }, [ready, sendHighlight]);
 
   // The surface is persistent (reused across exercises via new render commands),
   // so drop the previous stimulus's measured height when the music changes: fall
@@ -127,7 +155,10 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
   const handleMessage = useCallback(
     (e: WebViewMessageEvent) => {
       const ev = dispatchMessage(e.nativeEvent.data, onEvent);
-      if (ev?.type === 'ready') setReady(true);
+      if (ev?.type === 'ready') {
+        readyRef.current = true;
+        setReady(true);
+      }
       if (ev?.type === 'rendered') {
         setPainted(true);
         if (typeof ev.height === 'number' && ev.height > 0) setContentHeight(ev.height);

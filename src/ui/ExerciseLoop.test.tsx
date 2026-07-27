@@ -10,9 +10,17 @@ const mockSurface = { mounts: 0, posted: [] as string[] };
 jest.mock('react-native-webview', () => {
   const React = require('react');
   return {
-    WebView: React.forwardRef((_props: Record<string, unknown>, ref: unknown) => {
+    WebView: React.forwardRef((props: Record<string, unknown>, ref: unknown) => {
       React.useEffect(() => {
         mockSurface.mounts += 1;
+        // A real surface boots and reports 'ready' shortly after mount; the
+        // component gates commands (render, and the note ring) on that signal —
+        // a postMessage sent before boot is dropped by a real WebView. Emit it
+        // once per mount so wiring tests observe the surface's steady ready state.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const onMessage = props.onMessage as any;
+        onMessage?.({ nativeEvent: { data: JSON.stringify({ type: 'ready' }) } });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
       React.useImperativeHandle(ref, () => ({
         postMessage: (data: string) => {

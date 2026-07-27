@@ -143,6 +143,10 @@ ${playButton}
         ? Math.ceil(attrHeight)
         : (svgNode ? Math.ceil(svgNode.getBoundingClientRect().height) : 0);
       emit({ type: 'rendered', ms: Math.round(performance.now() - t), height: renderedHeight });
+      // Re-apply a pending note ring now that the notes exist in the DOM (see
+      // lastNoteHighlight): the stimulus's highlightNote command routinely
+      // arrives before this render completes.
+      if (lastNoteHighlight) highlightNote(lastNoteHighlight.locator, lastNoteHighlight.color);
     } catch (e) {
       emit({ type: 'error', message: 'render: ' + (e && e.message || e) });
     }
@@ -362,7 +366,14 @@ ${playButton}
    *  the same V: declaration order the emitter writes them in, so the
    *  {voice, noteIndex} pair alone addresses exactly one element; "staff" is
    *  carried by the locator for the caller's own bookkeeping, not the selector. */
+  // Remembered so a ring survives (and is re-applied after) the next render:
+  // ExerciseLoop issues highlightNote on stimulus change, which races the render
+  // of that same stimulus — if the command lands before abcjs has drawn the
+  // notes, the selector finds nothing. renderAbc replays this after it finishes.
+  var lastNoteHighlight = null;
+
   function highlightNote(locator, color) {
+    lastNoteHighlight = locator ? { locator: locator, color: color } : null;
     var svg = svgEl();
     if (!svg) return;
     var old = svg.querySelector('.note-highlight');
@@ -370,17 +381,24 @@ ${playButton}
     if (!locator) return;
     var el = svg.querySelector('.abcjs-note.abcjs-v' + locator.voice + '.abcjs-n' + locator.noteIndex);
     if (!el) return;
+    // Ring the notehead, not the whole note group (which spans the stem), and
+    // append the ring INSIDE el so it inherits el's coordinate space — abcjs
+    // wraps the score in a scale group at render scale, so a ring placed at the
+    // svg root with el's local getBBox coords lands off-note. As a child of el,
+    // the same getBBox coords position it correctly and it tracks every ancestor
+    // transform. First child → painted behind the black notehead (a halo).
+    var head = el.querySelector('.abcjs-notehead') || el;
     var bb;
-    try { bb = el.getBBox(); } catch (e) { return; }
+    try { bb = head.getBBox(); } catch (e) { return; }
     if (!bb || (bb.width === 0 && bb.height === 0)) return;
     var ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     ring.setAttribute('class', 'note-highlight');
     ring.setAttribute('cx', bb.x + bb.width / 2);
     ring.setAttribute('cy', bb.y + bb.height / 2);
-    ring.setAttribute('r', Math.max(bb.width, bb.height) / 2 + 6);
+    ring.setAttribute('r', Math.max(bb.width, bb.height) / 2 + 5);
     ring.setAttribute('fill', color || RING_COLOR);
     ring.setAttribute('fill-opacity', '0.32');
-    svg.insertBefore(ring, svg.firstChild);
+    el.insertBefore(ring, el.firstChild);
   }
 
   function handle(cmd) {
