@@ -23,4 +23,20 @@ fi
 # never touch another app's sim (rules/ios-simulators.md).
 xcrun simctl boot "$UDID" 2>/dev/null || true
 
+# Maestro hangs FOREVER at startup on any machine with Flutter installed: building its
+# analytics payload calls EnvUtils.getFlutterVersionAndChannel, which shells out to
+# `flutter --version` and blocks reading its pipe. It happens before the CLI parses
+# argv, so even `maestro --version` produces nothing — no output, no error, no timeout.
+# It reads as a broken simulator or a wedged E2E setup; it is neither, and the analytics
+# opt-out env vars do not help (the probe runs before they are read). Verified by jstack
+# on the stuck JVM (maestro 2.6.1). Shadow flutter with a no-op just for this run — the
+# stub dir is stable rather than mktemp'd because `exec` below discards any EXIT trap.
+if command -v flutter >/dev/null 2>&1; then
+  STUB_DIR="${TMPDIR:-/tmp}/chromaticly-maestro-stub"
+  mkdir -p "$STUB_DIR"
+  printf '#!/bin/sh\nexit 0\n' > "$STUB_DIR/flutter"
+  chmod +x "$STUB_DIR/flutter"
+  export PATH="$STUB_DIR:$PATH"
+fi
+
 exec maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "$@"
