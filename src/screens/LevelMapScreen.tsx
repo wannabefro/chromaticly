@@ -33,20 +33,16 @@ import { ACCENT, colors, shape, strandDef, type as typo, type Strand } from '../
 
 type UnitRows = ReturnType<typeof unitStates>;
 
-function prerequisiteTitleFor(unitId: string): string | undefined {
-  return LESSONS.find((l) => l.unlocks === unitId)?.title;
-}
-
 function accentHueFor(rows: UnitRows): string {
   const frontier = rows.find((r) => r.state === 'active' || r.state === 'started');
   const lesson = frontier ? lessonById(frontier.unitId) : undefined;
   return lesson ? strandDef(lesson.strand as Strand).hue : ACCENT;
 }
 
-/** The unit a level-wide "start" tap should open: the active unit, or the first
- *  unlocked-but-not-done one — never a locked unit (never route onto nothing). */
+/** The unit a level-wide "start" tap should open: the active unit, else the first
+ *  row. Nothing is locked since G6 U3, so there is no unreachable row to skip. */
 function frontierUnitId(rows: UnitRows): string | undefined {
-  return (rows.find((r) => r.state === 'active') ?? rows.find((r) => r.state !== 'locked'))?.unitId;
+  return (rows.find((r) => r.state === 'active') ?? rows[0])?.unitId;
 }
 
 /** Readiness chip for a content-less level (design 3a: "builds on L3" / "assumes
@@ -178,7 +174,6 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
               {rows.map((row) => {
                 const lesson = lessonById(row.unitId);
                 if (!lesson) return null;
-                const locked = row.state === 'locked';
                 return (
                   <UnitRow
                     key={row.unitId}
@@ -186,8 +181,7 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
                     title={lesson.title}
                     stars={row.stars}
                     state={row.state}
-                    prerequisiteTitle={locked ? prerequisiteTitleFor(row.unitId) : undefined}
-                    onPress={locked ? undefined : startLevel(row.unitId)}
+                    onPress={startLevel(row.unitId)}
                     testID={`unit-row-${row.unitId}`}
                   />
                 );

@@ -22,7 +22,6 @@ function seeded(masteredLessons: string[]): string {
   const store = new ProgressStore();
   store.setProfile({ grade: 1, onboardedAt: '2026-07-14T00:00:00.000Z' });
   for (const lesson of LESSONS_BY_GRADE[1]) {
-    store.unlock(lesson.id);
     if (!masteredLessons.includes(lesson.id)) continue;
     store.setLesson(lesson.id, { completed: true });
     for (const atom of lesson.atoms) {
@@ -134,7 +133,6 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     const store = new ProgressStore();
     store.setProfile({ grade: 1, onboardedAt: '2026-07-14T00:00:00.000Z' });
     for (const lesson of LESSONS_BY_GRADE[1]) {
-      store.unlock(lesson.id);
       if (lesson.id !== 'key-signatures') continue;
       store.setLesson(lesson.id, { completed: true });
       for (const atom of lesson.atoms) store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });

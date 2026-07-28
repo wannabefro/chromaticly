@@ -3,7 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react-native';
 import type { Lesson } from '../content/lessons';
 import { selectDue } from './srs';
 import { ProgressStore, type SnapshotStorage } from './store';
-import { applyAttempt, ensureLevelRootsUnlocked, recordAtomFlashcardGrade, useProgress } from './useProgress';
+import { applyAttempt, recordAtomFlashcardGrade, useProgress } from './useProgress';
 
 /** In-memory SnapshotStorage, mirroring store.test.ts's fake. */
 function memoryStorage(): SnapshotStorage & { blob: string | null } {
@@ -41,46 +41,16 @@ function masterAtom(store: ProgressStore, lesson: Lesson, atom: string, startTic
   return now;
 }
 
-describe('progression — ensureLevelRootsUnlocked (D6, U5)', () => {
-  test('unlocks the single entry lesson and nothing downstream', () => {
+describe('progression — a lesson completes only when all its atoms are mastered', () => {
+  test('mastering every atom marks the lesson done', () => {
     const store = new ProgressStore();
-    ensureLevelRootsUnlocked(store, [lessonA, lessonB]);
-    expect(store.isUnlocked('a')).toBe(true);
-    expect(store.isUnlocked('b')).toBe(false);
-  });
 
-  // fyu.2: free grade access unlocks EVERY grade's root by content presence —
-  // the isExamCleared(grade-1) gate is gone, so the grade-2 chain root opens
-  // on a fresh store right alongside grade-1's.
-  test('on a fresh store every grade\'s root unlocks — no exam gate blocks the grade-2 chain', () => {
-    const store = new ProgressStore();
-    ensureLevelRootsUnlocked(store, [lessonA, lessonB, lessonG2]);
-    expect(store.isUnlocked('a')).toBe(true);
-    expect(store.isUnlocked('g2a')).toBe(true);
-  });
-
-  test('a restored snapshot missing the grade-2 root self-heals on the next run, independent of exam state', () => {
-    const store = new ProgressStore();
-    expect(store.isUnlocked('g2a')).toBe(false); // not yet re-derived, no exam recorded either
-
-    ensureLevelRootsUnlocked(store, [lessonA, lessonB, lessonG2]);
-    expect(store.isUnlocked('g2a')).toBe(true);
-  });
-});
-
-describe('progression — a lesson completes only when all its atoms are mastered, then unlocks the next', () => {
-  test('mastering every atom marks the lesson done and unlocks its target', () => {
-    const store = new ProgressStore();
-    ensureLevelRootsUnlocked(store, [lessonA, lessonB]);
-
-    let now = masterAtom(store, lessonA, 'x', 0);
-    // Only one of two atoms mastered → not complete, next still locked.
+    const now = masterAtom(store, lessonA, 'x', 0);
+    // Only one of two atoms mastered → not complete.
     expect(store.getLesson('a').completed).toBe(false);
-    expect(store.isUnlocked('b')).toBe(false);
 
     masterAtom(store, lessonA, 'y', now);
     expect(store.getLesson('a').completed).toBe(true);
-    expect(store.isUnlocked('b')).toBe(true);
   });
 
   test('the completion transition fires exactly once', () => {
@@ -93,21 +63,23 @@ describe('progression — a lesson completes only when all its atoms are mastere
   });
 });
 
-describe('progression — Practice eligibility respects lesson unlock state', () => {
-  test('selectDue over unlocked-lesson atoms never serves an atom from a locked lesson', () => {
+// R4 (G6 U3): eligibility is per-ATOM. The store only ever holds atoms the learner
+// has attempted, so `atomEntries()` IS the eligibility set — there is no unlock
+// predicate to consult, and an atom met inside a lesson that was never "reached"
+// under the old linear chain is reviewed like any other.
+describe('progression — Practice eligibility is per-atom (R4)', () => {
+  test('selectDue serves every attempted atom, whatever lesson it came from, and nothing else', () => {
     const store = new ProgressStore();
-    ensureLevelRootsUnlocked(store, [lessonA, lessonB]);
-    // Touch atoms from both lessons so they have SRS state and are due.
+    // Touch atoms from both lessons so they have SRS state and are due; 'b' would
+    // have been locked before U3 — its atom is served all the same.
     applyAttempt(store, lessonA, 'x', { correct: false, hintsUsed: 0 }, 0);
     applyAttempt(store, lessonB, 'z', { correct: false, hintsUsed: 0 }, 0);
 
-    const unlockedAtoms = new Set(
-      [lessonA, lessonB].filter((l) => store.isUnlocked(l.id)).flatMap((l) => l.atoms),
-    );
-    const served = selectDue(store.atomEntries(), 0, (atom) => unlockedAtoms.has(atom));
+    const served = selectDue(store.atomEntries(), 0);
 
-    expect(served).toContain('x'); // from unlocked lesson A
-    expect(served).not.toContain('z'); // from still-locked lesson B
+    expect(served).toContain('x');
+    expect(served).toContain('z');
+    expect(served).not.toContain('y'); // never attempted → never served
   });
 });
 
@@ -201,10 +173,10 @@ describe('useProgress — account name + nudge-seen (design 6b/6c, 302.9/302.13)
   });
 });
 
-// D7: "cleared" means band ≥ pass — a failed paper must not open Level 2.
+// D7: "cleared" means band ≥ pass — a failed paper must not record a clear.
 describe('useProgress — recordExamResult (D7, U5)', () => {
   test.each(['pass', 'merit', 'distinction'] as const)(
-    'a %s band clears the exam and unlocks the next grade\'s root, persisted',
+    'a %s band records the exam as cleared, persisted',
     async (band) => {
       const storage = memoryStorage();
       const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
@@ -214,27 +186,21 @@ describe('useProgress — recordExamResult (D7, U5)', () => {
 
       const store = result.current.store as ProgressStore;
       expect(store.isExamCleared(1)).toBe(true);
-      expect(store.isUnlocked('g2a')).toBe(true);
       // Persisted, not just in-memory.
       const reloaded = new ProgressStore(JSON.parse(storage.blob as string));
       expect(reloaded.isExamCleared(1)).toBe(true);
     },
   );
 
-  // fyu.2: exam recording is now independent of content reachability — a
-  // below-band result still clears nothing, but it no longer has any lock to
-  // guard, since ensureLevelRootsUnlocked already opened 'g2a' by content
-  // presence at load, before recordExamResult ever ran.
-  test('a below band clears nothing — exam state stays uncleared, independent of the already-content-unlocked grade-2 root', async () => {
+  // Since G6 U3 the exam record has no reachability consequence at all (R2) —
+  // what a below band must not do is fabricate a clear.
+  test('a below band clears nothing — exam state stays uncleared', async () => {
     const storage = memoryStorage();
     const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
     await waitFor(() => expect(result.current.ready).toBe(true));
-    expect((result.current.store as ProgressStore).isUnlocked('g2a')).toBe(true); // unlocked by content presence at load, pre-exam
 
     await result.current.recordExamResult(1, 'below');
 
-    const store = result.current.store as ProgressStore;
-    expect(store.isExamCleared(1)).toBe(false);
-    expect(store.isUnlocked('g2a')).toBe(true); // unaffected either way — reachability never depended on the exam
+    expect((result.current.store as ProgressStore).isExamCleared(1)).toBe(false);
   });
 });

@@ -1,6 +1,8 @@
-// 302.5: the seeding seam unlocks a target unit without completing it, so an E2E
+// 302.5: the seeding seam readies a target unit without completing it, so an E2E
 // can jump straight to a deep interaction. Guards the invariant the Maestro
-// coverage (302.6) relies on: target unlocked + playable, predecessors complete.
+// coverage (302.6) relies on: the target is the frontier — playable and not done —
+// with its predecessors complete. Since G6 U3 nothing is hard-locked, so what the
+// seed fabricates is EVIDENCE (completion + mastery), never reachability.
 
 import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
@@ -20,13 +22,12 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     expect(Object.values(store.toSnapshot().lessons).filter((l) => l.completed)).toHaveLength(0);
   });
 
-  test('onboards and unlocks the target (intervals) without completing it', () => {
+  test('onboards and leaves the target (intervals) ready to play, not completed', () => {
     const store = new ProgressStore();
     seedProgressToUnit(store, LESSONS, 'intervals', AT);
 
     expect(store.isOnboarded()).toBe(true);
     expect(store.getGrade()).toBe(1);
-    expect(store.isUnlocked('intervals')).toBe(true);
     expect(store.getLesson('intervals').completed).toBe(false); // ready to play, not done
   });
 
@@ -43,7 +44,7 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     expect(store.getLesson('intervals').completed).toBe(false);
   });
 
-  test('seedExamReady masters every unit so the Level 1 exam gate unlocks', () => {
+  test('seedExamReady masters every unit so the Level 1 exam gate opens', () => {
     const store = new ProgressStore();
     seedExamReady(store, LESSONS, AT);
 
@@ -51,37 +52,36 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     const rows = unitStates(level1.unitIds, store, (id) => lessonById(id)?.atoms ?? []);
     const earned = rows.reduce((sum, r) => sum + r.stars, 0);
 
-    // The gate unlocks when earned stars reach the level's threshold.
+    // The gate opens when earned stars reach the level's threshold.
     expect(earned).toBeGreaterThanOrEqual(level1.examGate.unlockAtStars);
     expect(store.isOnboarded()).toBe(true);
   });
 
-  test('seeding to the root unit unlocks it and completes nothing', () => {
+  test('seeding to the root unit completes nothing', () => {
     const store = new ProgressStore();
     const root = LESSONS.find((l) => !LESSONS.some((o) => o.unlocks === l.id))!;
     seedProgressToUnit(store, LESSONS, root.id, AT);
 
-    expect(store.isUnlocked(root.id)).toBe(true);
     expect(store.getLesson(root.id).completed).toBe(false);
     expect(Object.values(store.toSnapshot().lessons).filter((l) => l.completed)).toHaveLength(0);
   });
 
   // Grade-1 seeding must stay byte-for-byte today's state: existing .maestro flows
   // (e.g. `?seed=key-signatures`) depend on this exact shape, not just "similar".
-  test('seeding to a grade-1 unit records no exam clear and unlocks nothing in grade 2', () => {
+  test('seeding to a grade-1 unit records no exam clear and completes nothing in grade 2', () => {
     const store = new ProgressStore();
     seedProgressToUnit(store, LESSONS, 'key-signatures', AT);
 
     expect(store.isExamCleared(1)).toBe(false);
     for (const lesson of LESSONS.filter((l) => l.grade === 2)) {
-      expect(store.isUnlocked(lesson.id)).toBe(false);
+      expect(store.getLesson(lesson.id).completed).toBe(false);
     }
   });
 
-  // The seam must produce a state reachable by honest play (exam cleared → level
-  // open), so an E2E targeting a grade-2 unit exercises the real unlock path
-  // (D6's ensureLevelRootsUnlocked gate) rather than a fabricated one.
-  test('seeding to a grade-2 unit masters grade 1, records its exam cleared, and leaves the target unlocked but not complete', () => {
+  // The seam must produce a state reachable by honest play (grade 1 mastered, its
+  // exam cleared), so an E2E targeting a grade-2 unit starts from a history a real
+  // learner could have, not a fabricated one.
+  test('seeding to a grade-2 unit masters grade 1, records its exam cleared, and leaves the target not complete', () => {
     const store = new ProgressStore();
     seedProgressToUnit(store, LESSONS, 'key-signatures-2', AT);
 
@@ -89,18 +89,16 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     for (const lesson of LESSONS.filter((l) => l.grade === 1)) {
       expect(store.getLesson(lesson.id).completed).toBe(true);
     }
-    expect(store.isUnlocked('key-signatures-2')).toBe(true);
     expect(store.getLesson('key-signatures-2').completed).toBe(false);
   });
 
   // 'exam' means "the gate is open, the paper isn't taken yet" — it must not
-  // fabricate a cleared exam or reach past the Level 1 gate into grade 2.
-  test('seedExamReady masters only grade-1 lessons and does not unlock grade 2 or record an exam clear', () => {
+  // fabricate a cleared exam or master anything past the Level 1 gate.
+  test('seedExamReady masters only grade-1 lessons and records no exam clear', () => {
     const store = new ProgressStore();
     seedExamReady(store, LESSONS, AT);
 
     expect(store.isExamCleared(1)).toBe(false);
-    expect(store.isUnlocked('key-signatures-2')).toBe(false);
     for (const lesson of LESSONS.filter((l) => l.grade === 2)) {
       expect(store.getLesson(lesson.id).completed).toBe(false);
     }

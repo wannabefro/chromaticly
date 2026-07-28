@@ -118,11 +118,11 @@ describe('ExamRunner — silent Grade-1 paper, objectively banded (302.2)', () =
   });
 });
 
-// D7: the exam-clear fact is written the moment the paper reaches results —
-// this is the unlock signal Level 2 depends on (D6's ensureLevelRootsUnlocked
-// runs inside recordExamResult).
+// D7: the exam-clear fact is written the moment the paper reaches results. Since
+// G6 U3 it no longer unlocks anything — nothing is hard-locked (R2) — so what is
+// under test is the cleared-exam record itself, written exactly once.
 describe('ExamRunner — records the exam result on entering results (D7, U5)', () => {
-  test('a passing tally clears the exam and unlocks the grade-2 root, exactly once', async () => {
+  test('a passing tally records the exam as cleared, exactly once', async () => {
     const { getByTestId, queryByTestId, storage } = await renderExam();
     act(() => fireEvent.press(getByTestId('exam-begin')));
     answerPaper(getByTestId, queryByTestId, true);
@@ -134,10 +134,9 @@ describe('ExamRunner — records the exam result on entering results (D7, U5)', 
 
     const store = new ProgressStore(JSON.parse(storage.blob as string));
     expect(store.isExamCleared(1)).toBe(true);
-    expect(store.isUnlocked('key-signatures-2')).toBe(true);
   });
 
-  test('a below-pass tally records nothing — the exam stays uncleared and Level 2 stays locked', async () => {
+  test('a below-pass tally records nothing — the exam stays uncleared', async () => {
     const { getByTestId, queryByTestId, storage } = await renderExam();
     act(() => fireEvent.press(getByTestId('exam-begin')));
     answerPaper(getByTestId, queryByTestId, false);

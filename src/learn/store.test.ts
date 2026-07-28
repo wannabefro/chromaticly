@@ -17,7 +17,7 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
 }
 
 describe('store — state survives a restart (why: KTD6 local persistence)', () => {
-  test('atom mastery/SRS and lesson unlock written before restart are read back after', async () => {
+  test('atom mastery/SRS and lesson completion written before restart are read back after', async () => {
     const storage = memoryStorage();
 
     const store = new ProgressStore();
@@ -27,7 +27,6 @@ describe('store — state survives a restart (why: KTD6 local persistence)', () 
       srs: reviewSrs(a.srs, true, 0),
     });
     store.setLesson('treble-notes', { completed: true });
-    store.unlock('bass-notes');
     await saveProgress(store, storage);
 
     const reloaded = await loadProgress(storage); // simulate app kill + reopen
@@ -35,7 +34,6 @@ describe('store — state survives a restart (why: KTD6 local persistence)', () 
     expect(reloaded.getAtom('note_read:treble:C4').mastery.streak).toBe(1);
     expect(reloaded.getAtom('note_read:treble:C4').srs.box).toBe(1);
     expect(reloaded.getLesson('treble-notes').completed).toBe(true);
-    expect(reloaded.isUnlocked('bass-notes')).toBe(true);
   });
 
   test('an unseen atom reads back as fresh, not undefined', async () => {
@@ -78,7 +76,6 @@ describe('store — profile (KTD4 onboarding persistence)', () => {
         version: STORE_VERSION,
         atoms: {},
         lessons: {},
-        unlocked: [],
         profile: { birthYear: 2000, onboardedAt: '2026-01-01T00:00:00.000Z' },
       }),
     );
@@ -91,13 +88,12 @@ describe('store — profile (KTD4 onboarding persistence)', () => {
   test('adding profile to an old v1 blob with no profile key never wipes existing progress (A1)', () => {
     // Simulates a snapshot persisted before `profile` existed on ProgressSnapshot —
     // the shallow-merge migrate() must load this as profile=null without dropping
-    // atoms/lessons/unlocked, and setting a profile afterwards must not disturb them.
+    // atoms/lessons, and setting a profile afterwards must not disturb them.
     const oldShapeBlob = JSON.parse(
       JSON.stringify({
         version: STORE_VERSION,
         atoms: { 'note_read:treble:C4': { mastery: { streak: 2, mastered: false }, srs: { box: 1, lastReviewed: 0, nextDue: 2 } } },
         lessons: { 'treble-notes': { completed: true } },
-        unlocked: ['treble-notes', 'bass-notes'],
         // no `profile` key — mirrors a real pre-U8 persisted blob.
       }),
     );
@@ -106,14 +102,12 @@ describe('store — profile (KTD4 onboarding persistence)', () => {
     expect(store.getProfile()).toBeNull();
     expect(store.getAtom('note_read:treble:C4').mastery.streak).toBe(2);
     expect(store.getLesson('treble-notes').completed).toBe(true);
-    expect(store.isUnlocked('bass-notes')).toBe(true);
 
     store.setProfile({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
     const snapshot = store.toSnapshot();
     expect(snapshot.profile).toEqual({ grade: 1, onboardedAt: '2026-07-12T00:00:00.000Z' });
     expect(snapshot.atoms['note_read:treble:C4'].mastery.streak).toBe(2);
     expect(snapshot.lessons['treble-notes'].completed).toBe(true);
-    expect(snapshot.unlocked).toContain('bass-notes');
   });
 });
 
@@ -138,18 +132,16 @@ describe('store — fact-card collection (302.3.4)', () => {
         version: STORE_VERSION,
         atoms: {},
         lessons: {},
-        unlocked: ['treble-notes'],
         profile: { grade: 1, onboardedAt: '2026-01-01T00:00:00.000Z' },
       }),
     );
     const store = new ProgressStore(preCollectionBlob);
     expect(store.isFactCollected('treble-notes')).toBe(false);
-    expect(store.isUnlocked('treble-notes')).toBe(true); // nothing else discarded
   });
 });
 
 describe('store — U6 additive `ease` migration is non-destructive (AD4)', () => {
-  test('an old snapshot with no `ease` on any SrsState loads intact — onboarding/profile/unlocks/mastery all survive — and a default ease is filled', () => {
+  test('an old snapshot with no `ease` on any SrsState loads intact — onboarding/profile/mastery all survive — and a default ease is filled', () => {
     // Mirrors a real pre-U6 persisted blob: same STORE_VERSION, srs objects
     // shaped without the (then-nonexistent) `ease` field.
     const preU6Blob = JSON.parse(
@@ -160,7 +152,6 @@ describe('store — U6 additive `ease` migration is non-destructive (AD4)', () =
           'term:staccato': { mastery: { streak: 3, mastered: true }, srs: { box: 3, lastReviewed: 5, nextDue: 13 } },
         },
         lessons: { 'treble-notes': { completed: true } },
-        unlocked: ['treble-notes', 'bass-notes'],
         profile: { birthYear: 2014, onboardedAt: '2026-01-01T00:00:00.000Z' },
       }),
     );
@@ -171,8 +162,6 @@ describe('store — U6 additive `ease` migration is non-destructive (AD4)', () =
     // grade-less legacy profile is back-filled to Grade 1 (U1) but otherwise intact.
     expect(store.getProfile()).toEqual({ grade: 1, birthYear: 2014, onboardedAt: '2026-01-01T00:00:00.000Z' });
     expect(store.getLesson('treble-notes').completed).toBe(true);
-    expect(store.isUnlocked('treble-notes')).toBe(true);
-    expect(store.isUnlocked('bass-notes')).toBe(true);
     expect(store.getAtom('note_read:treble:C4').mastery).toEqual({ streak: 2, mastered: false });
     expect(store.getAtom('term:staccato').mastery).toEqual({ streak: 3, mastered: true });
 
@@ -193,7 +182,6 @@ describe('store — U6 additive `ease` migration is non-destructive (AD4)', () =
         version: STORE_VERSION,
         atoms: { 'term:legato': { mastery: { streak: 1, mastered: false }, srs: { box: 2, lastReviewed: 0, nextDue: 4, ease: 3.1 } } },
         lessons: {},
-        unlocked: [],
         profile: null,
       }),
     );
@@ -215,12 +203,10 @@ describe('store — resilience', () => {
       version: STORE_VERSION + 1,
       atoms: { stale: { mastery: { streak: 9, mastered: true }, srs: { box: 4, lastReviewed: 0, nextDue: 8 } } },
       lessons: {},
-      unlocked: ['everything'],
       collectedFacts: [],
       profile: null,
     });
     expect(store.toSnapshot().atoms).toEqual({});
-    expect(store.isUnlocked('everything')).toBe(false);
   });
 });
 
@@ -272,7 +258,6 @@ describe('store — account name + nudge-seen (design 6b/6c, 302.9/302.13)', () 
       version: STORE_VERSION,
       atoms: {},
       lessons: { l1: { completed: true } },
-      unlocked: ['l1'],
       collectedFacts: [],
       profile: { grade: 1, onboardedAt: 'then' },
       // no name, no accountNudgeSeen
@@ -290,7 +275,6 @@ describe('store — account name + nudge-seen (design 6b/6c, 302.9/302.13)', () 
       version: STORE_VERSION,
       atoms: {},
       lessons: { a: { completed: true }, b: { completed: true }, c: { completed: true } },
-      unlocked: [],
       collectedFacts: [],
       profile: { grade: 1, onboardedAt: 't' },
     });
@@ -305,7 +289,6 @@ describe('store — account name + nudge-seen (design 6b/6c, 302.9/302.13)', () 
       version: STORE_VERSION,
       atoms: {},
       lessons: {},
-      unlocked: [],
       collectedFacts: [],
       profile: { grade: 1, birthYear: 2000, onboardedAt: 't' },
     });
@@ -338,7 +321,6 @@ describe('store — exam-clear persistence (D4, 003 U4)', () => {
         version: STORE_VERSION,
         atoms: { 'note_read:treble:C4': { mastery: { streak: 2, mastered: false }, srs: { box: 1, lastReviewed: 0, nextDue: 2 } } },
         lessons: { 'treble-notes': { completed: true } },
-        unlocked: ['treble-notes', 'bass-notes'],
         collectedFacts: ['treble-notes'],
         profile: { grade: 1, onboardedAt: 't' },
         // no clearedExams key — mirrors a real pre-U4 persisted blob.
@@ -351,7 +333,6 @@ describe('store — exam-clear persistence (D4, 003 U4)', () => {
     // nothing else discarded
     expect(store.getAtom('note_read:treble:C4').mastery.streak).toBe(2);
     expect(store.getLesson('treble-notes').completed).toBe(true);
-    expect(store.isUnlocked('bass-notes')).toBe(true);
     expect(store.isFactCollected('treble-notes')).toBe(true);
     expect(store.getGrade()).toBe(1);
   });
@@ -391,7 +372,6 @@ function v1Snapshot(atoms: Record<string, { box: number; lastReviewed: number; n
       ]),
     ),
     lessons: { 'treble-notes': { completed: true } },
-    unlocked: ['treble-notes', 'bass-notes'],
     collectedFacts: ['treble-notes'],
     profile: { grade: 2, onboardedAt: '2026-01-01T00:00:00.000Z', name: 'Maya' },
     accountNudgeSeen: true,
@@ -448,7 +428,6 @@ describe('store v1→v2 migration — ticks become days without losing progress'
     const store = await loadProgress(storage, MIGRATION_DAY);
 
     expect(store.getLesson('treble-notes').completed).toBe(true);
-    expect(store.isUnlocked('bass-notes')).toBe(true);
     expect(store.isFactCollected('treble-notes')).toBe(true);
     expect(store.getProfile()?.grade).toBe(2);
     expect(store.getProfile()?.name).toBe('Maya');
@@ -487,6 +466,28 @@ describe('store v1→v2 migration — ticks become days without losing progress'
     await saveProgress(twice, storage);
 
     expect(storage.blob).toEqual(settled);
+  });
+
+  // G6 U3 retired the `unlocked` array along with the gate that read it. A store
+  // written before that unit is still v2 — the shape did not break, a dead field
+  // simply stopped being carried — so it must load with everything else intact
+  // rather than being discarded, and must not drag the dead field back out on save.
+  test('a v2 snapshot still carrying the retired `unlocked` array loads without loss, and drops it on save', async () => {
+    const storage = memoryStorage();
+    const pre = new ProgressStore();
+    pre.setLesson('treble-notes', { completed: true });
+    pre.setProfile({ grade: 2, onboardedAt: '2026-01-01T00:00:00.000Z' });
+    pre.collectFact('treble-notes');
+    storage.blob = JSON.stringify({ ...pre.toSnapshot(), unlocked: ['treble-notes', 'bass-notes'] });
+
+    const store = await loadProgress(storage, MIGRATION_DAY);
+
+    expect(store.getLesson('treble-notes').completed).toBe(true);
+    expect(store.isFactCollected('treble-notes')).toBe(true);
+    expect(store.getProfile()?.grade).toBe(2);
+
+    await saveProgress(store, storage);
+    expect(JSON.parse(storage.blob!)).not.toHaveProperty('unlocked');
   });
 });
 

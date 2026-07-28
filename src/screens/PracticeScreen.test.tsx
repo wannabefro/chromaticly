@@ -8,13 +8,25 @@ jest.mock('react-native-webview', () => {
 
 import { act, render } from '@testing-library/react-native';
 
+import { LESSONS } from '../content/lessons';
 import { ProgressProvider } from '../learn/ProgressContext';
-import type { SnapshotStorage } from '../learn/store';
+import { initialSrs } from '../learn/srs';
+import { ProgressStore, type SnapshotStorage } from '../learn/store';
 import PracticeScreen from './PracticeScreen';
+
+/** Practice draws only from ATTEMPTED atoms since G6 U3, so a fresh store renders
+ *  the empty state. Seed one attempt so the route mounts a real exercise. */
+function attemptedBlob(): string {
+  const store = new ProgressStore();
+  for (const atom of LESSONS[0].atoms) {
+    store.setAtom(atom, { mastery: { streak: 1, mastered: false }, srs: initialSrs(0) });
+  }
+  return JSON.stringify(store.toSnapshot());
+}
 
 function memoryStorage(): SnapshotStorage & { blob: string | null } {
   return {
-    blob: null as string | null,
+    blob: attemptedBlob() as string | null,
     async load() {
       return this.blob;
     },

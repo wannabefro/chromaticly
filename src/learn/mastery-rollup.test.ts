@@ -137,46 +137,35 @@ describe('unitStates — per-unit state for the level map', () => {
     active: ['active:a', 'active:b'],
     second: ['second:a', 'second:b'],
     partial: ['partial:a', 'partial:b', 'partial:c'],
-    locked: ['locked:a'],
   };
   const lessonAtoms = (id: string): string[] => atomsById[id] ?? [];
 
-  test('a unit whose lesson is not unlocked is "locked", regardless of mastery', () => {
-    const store = new ProgressStore();
-    masterAtoms(store, atomsById.locked); // mastered, but never unlocked
-    const [row] = unitStates(['locked'], store, lessonAtoms);
-    expect(row.state).toBe('locked');
-  });
-
+  // R2 (G6 U3): there is no 'locked' state left to assert — every unit is
+  // enterable, so a unit's state is decided by its own mastery and its position
+  // among the not-done units, never by a gate.
   test('a unit with every atom mastered is "done"', () => {
     const store = new ProgressStore();
-    store.unlock('done');
     masterAtoms(store, atomsById.done);
     const [row] = unitStates(['done'], store, lessonAtoms);
     expect(row).toEqual({ unitId: 'done', stars: 3, state: 'done' });
   });
 
-  test('the first unlocked, not-done unit is "active"; a later unlocked 0-star unit is "started", not active', () => {
+  test('the first not-done unit is "active"; a later 0-star unit is "started", not active', () => {
     const store = new ProgressStore();
-    store.unlock('active');
-    store.unlock('second');
     const rows = unitStates(['active', 'second'], store, lessonAtoms);
     expect(rows[0]).toEqual({ unitId: 'active', stars: 0, state: 'active' });
     expect(rows[1]).toEqual({ unitId: 'second', stars: 0, state: 'started' });
   });
 
-  test('a partially mastered unlocked unit is "started" even if it is first in list order', () => {
+  test('a partially mastered unit is "started" even if it is first in list order', () => {
     const store = new ProgressStore();
-    store.unlock('partial');
     masterAtoms(store, ['partial:a']); // 1 of 3 -> 1 star, below "done"
     const [row] = unitStates(['partial'], store, lessonAtoms);
     expect(row).toEqual({ unitId: 'partial', stars: 1, state: 'started' });
   });
 
-  test('a done unit ahead of an unlocked 0-star unit does not block the later unit from being active', () => {
+  test('a done unit ahead of a 0-star unit does not block the later unit from being active', () => {
     const store = new ProgressStore();
-    store.unlock('done');
-    store.unlock('active');
     masterAtoms(store, atomsById.done);
     const rows = unitStates(['done', 'active'], store, lessonAtoms);
     expect(rows[0].state).toBe('done');
@@ -189,7 +178,6 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
     const store = new ProgressStore();
     const [l1, l2] = LESSONS;
     for (const l of [l1, l2]) {
-      store.unlock(l.id);
       store.setLesson(l.id, { completed: true });
       masterAtoms(store, l.atoms);
     }
@@ -198,16 +186,17 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
     expect(stats.stars).toBe(6); // two fully-mastered lessons → 3★ each; every other lesson 0
   });
 
-  // Why: the review-queue count must mirror Practice eligibility — a due atom in a still-locked
-  // lesson is not actually reviewable, so it must not inflate the nudge's number.
-  test('dueCount counts due atoms from UNLOCKED lessons only', () => {
+  // Why: the review-queue count must mirror Practice eligibility, which since G6 U3
+  // is per-ATOM — every attempted-and-due atom counts, and nothing else. An atom the
+  // learner has never touched must not inflate the nudge's number.
+  test('dueCount counts every attempted-and-due atom, and no untouched one', () => {
     const store = new ProgressStore();
     const [l1, l2] = LESSONS;
-    store.unlock(l1.id); // l1 unlocked
-    masterAtoms(store, l1.atoms); // due at now 0 (initialSrs)
-    masterAtoms(store, l2.atoms); // l2 touched but NOT unlocked
+    masterAtoms(store, l1.atoms); // attempted → due at now 0 (initialSrs)
+    const untouched = LESSONS[LESSONS.length - 1].atoms;
     const stats = accountNudgeStats(store, LESSONS, 0);
-    expect(stats.dueCount).toBe(l1.atoms.length); // l2's atoms excluded (locked)
+    expect(stats.dueCount).toBe(l1.atoms.length);
+    expect(l2.atoms.concat(untouched).some((a) => a in store.toSnapshot().atoms)).toBe(false);
   });
 });
 

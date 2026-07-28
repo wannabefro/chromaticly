@@ -1,5 +1,5 @@
 // Progress persistence (U11, KTD6). Per-atom mastery + SRS state and per-lesson
-// completion/unlock, held in memory and serialized to a versioned snapshot. The
+// completion, held in memory and serialized to a versioned snapshot. The
 // platform storage (expo-sqlite / MMKV) is hidden behind the tiny async
 // SnapshotStorage port, so all the store logic — versioning, migration,
 // read-back-after-restart — is testable with an in-memory port and only the
@@ -52,7 +52,6 @@ export interface ProgressSnapshot {
   version: number;
   atoms: Record<string, AtomProgress>;
   lessons: Record<string, LessonProgress>;
-  unlocked: string[];
   /** Lesson ids whose "did you know?" fact card (design 4b) the learner has
    *  collected — the fact-card collection. Additive/optional (302.3.4). */
   collectedFacts: string[];
@@ -84,7 +83,7 @@ export interface SnapshotStorage {
 }
 
 function emptySnapshot(): ProgressSnapshot {
-  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null, accountNudgeSeen: false, clearedExams: [], writeSeq: 0, seededDepths: {} };
+  return { version: STORE_VERSION, atoms: {}, lessons: {}, collectedFacts: [], profile: null, accountNudgeSeen: false, clearedExams: [], writeSeq: 0, seededDepths: {} };
 }
 
 /** `SrsState.ease` (U6) is additive and optional, so a snapshot written before
@@ -128,6 +127,17 @@ function rebaseToDays(progress: AtomProgress, now: number): AtomProgress {
   };
 }
 
+/** Drop fields the current shape no longer carries. `unlocked` (G6 U3) is the
+ *  first: nothing is hard-locked any more, so the array is dead weight that would
+ *  otherwise ride along on every save through migrate's `{...snapshot}` spread.
+ *  Dropping it is lossless *because* nothing reads it — the retirement of the
+ *  gate and of its persisted state are the same change. */
+function dropRetired(snapshot: ProgressSnapshot): ProgressSnapshot {
+  const { unlocked, ...rest } = snapshot as ProgressSnapshot & { unlocked?: string[] };
+  void unlocked;
+  return rest;
+}
+
 /** Bring any persisted snapshot up to the current shape. A version we can't
  *  migrate is discarded (start fresh) rather than trusted — fail safe. Only a
  *  genuinely breaking shape change justifies that; additive optional fields
@@ -137,7 +147,7 @@ function rebaseToDays(progress: AtomProgress, now: number): AtomProgress {
  *  day the migration runs; there is no correct answer without it. */
 function migrate(snapshot: ProgressSnapshot, now: number): ProgressSnapshot {
   if (snapshot.version === 1) {
-    const merged = { ...emptySnapshot(), ...snapshot, version: STORE_VERSION };
+    const merged = { ...emptySnapshot(), ...dropRetired(snapshot), version: STORE_VERSION };
     const atoms = Object.fromEntries(
       Object.entries(merged.atoms).map(([id, progress]) => [id, rebaseToDays(withDefaultEase(progress), now)]),
     );
@@ -146,7 +156,7 @@ function migrate(snapshot: ProgressSnapshot, now: number): ProgressSnapshot {
     return { ...merged, atoms, profile: withDefaultGrade(merged.profile), writeSeq: 1, seededDepths: {} };
   }
   if (snapshot.version !== STORE_VERSION) return emptySnapshot();
-  const merged = { ...emptySnapshot(), ...snapshot };
+  const merged = { ...emptySnapshot(), ...dropRetired(snapshot) };
   const atoms = Object.fromEntries(Object.entries(merged.atoms).map(([id, progress]) => [id, withDefaultEase(progress)]));
   return { ...merged, atoms, profile: withDefaultGrade(merged.profile) };
 }
@@ -154,7 +164,6 @@ function migrate(snapshot: ProgressSnapshot, now: number): ProgressSnapshot {
 export class ProgressStore {
   private atoms: Record<string, AtomProgress>;
   private lessons: Record<string, LessonProgress>;
-  private unlocked: Set<string>;
   private collected: Set<string>;
   private profile: Profile | null;
   private nudgeSeen: boolean;
@@ -174,7 +183,6 @@ export class ProgressStore {
     this.migrated = snapshot.version !== STORE_VERSION;
     this.atoms = { ...s.atoms };
     this.lessons = { ...s.lessons };
-    this.unlocked = new Set(s.unlocked);
     this.collected = new Set(s.collectedFacts);
     this.profile = s.profile;
     this.nudgeSeen = s.accountNudgeSeen ?? false;
@@ -246,14 +254,6 @@ export class ProgressStore {
     this.lessons[id] = progress;
   }
 
-  isUnlocked(id: string): boolean {
-    return this.unlocked.has(id);
-  }
-
-  unlock(id: string): void {
-    this.unlocked.add(id);
-  }
-
   getProfile(): Profile | null {
     return this.profile;
   }
@@ -319,7 +319,6 @@ export class ProgressStore {
       version: STORE_VERSION,
       atoms: { ...this.atoms },
       lessons: { ...this.lessons },
-      unlocked: [...this.unlocked],
       collectedFacts: [...this.collected],
       profile: this.profile,
       accountNudgeSeen: this.nudgeSeen,

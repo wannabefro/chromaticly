@@ -1,7 +1,7 @@
 // Learn-path progression (U11): ties mastery + SRS + persistence to the lesson
 // graph. `applyAttempt` is the pure reducer — record an attempt, update the
 // atom's mastery/SRS, and when every atom in the lesson is mastered mark it
-// complete and unlock its `unlocks` target. `useProgress` is the thin React hook
+// complete. `useProgress` is the thin React hook
 // that loads the store, runs the reducer, and persists after each attempt.
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -14,21 +14,6 @@ import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
 import { seedExamReady, seedProgressToUnit } from './seed';
 import { defaultClock, type Clock } from './clock';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
-
-/** Ensure every grade's chain root is reachable, given what's persisted so far.
- *  Under free grade access (fyu.2) grade is a self-service choice, so every
- *  grade's root unlocks by content presence — no exam gate. Run on load
- *  (self-heals a restored snapshot); a learner can switch to any grade and find
- *  its root already reachable. */
-export function ensureLevelRootsUnlocked(store: ProgressStore, lessons: Lesson[]): void {
-  const grades = new Set(lessons.map((l) => l.grade));
-  for (const grade of grades) {
-    const gradeLessons = lessons.filter((l) => l.grade === grade);
-    const unlockedTargets = new Set(gradeLessons.map((l) => l.unlocks).filter((id): id is string => id !== null));
-    const root = gradeLessons.find((l) => !unlockedTargets.has(l.id));
-    if (root && !store.isUnlocked(root.id)) store.unlock(root.id);
-  }
-}
 
 /** Fold one graded attempt on `atom` into the store's mastery + SRS state at
  *  logical time `now`. Lesson-agnostic — Practice records atoms with no lesson. */
@@ -57,12 +42,13 @@ export function recordAtomFlashcardGrade(store: ProgressStore, atom: string, gra
   });
 }
 
-/** Mark a lesson complete and unlock its target. Idempotent — returns true only
- *  on the transition, so callers can fire an unlock reaction exactly once. */
+/** Mark a lesson complete. Idempotent — returns true only on the transition, so
+ *  callers can fire a completion reaction exactly once. Since G6 U3 it no longer
+ *  writes an unlock: nothing is hard-locked (R2), and `lesson.unlocks` survives
+ *  only as the authored ordering the level map reads. */
 export function completeLesson(store: ProgressStore, lesson: Lesson): boolean {
   if (store.getLesson(lesson.id).completed) return false;
   store.setLesson(lesson.id, { completed: true });
-  if (lesson.unlocks) store.unlock(lesson.unlocks);
   return true;
 }
 
@@ -94,9 +80,8 @@ export interface UseProgress {
   /** Record one self-graded flashcard review (Again/Hard/Good/Easy) on an atom
    *  and persist — the flashcard counterpart to `recordAtom` (AD4b). */
   recordFlashcardGrade: (atom: string, grade: SrsGrade, now: number) => Promise<void>;
-  /** Mark a lesson complete + unlock its target and persist; true on transition. */
+  /** Mark a lesson complete and persist; true on transition. */
   complete: (lesson: Lesson) => Promise<boolean>;
-  isUnlocked: (lessonId: string) => boolean;
   isLessonComplete: (lessonId: string) => boolean;
   /** Whether the lesson's did-you-know fact card (design 4b) has been collected. */
   isFactCollected: (lessonId: string) => boolean;
@@ -131,12 +116,12 @@ export interface UseProgress {
    *  `clock.now()` for the SRS `now` argument instead of the per-screen tick
    *  counters they used to keep, so scheduling survives an app restart. */
   clock: Clock;
-  /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is unlocked and
+  /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is reachable and
    *  ready to play, then persist. Only ever called behind a __DEV__ deep link. */
   seedTo: (targetId: string) => Promise<void>;
   /** Record a practice-exam result for `grade` (D7). A band ≥ pass clears the
-   *  exam (`store.isExamCleared(grade)`) and unlocks the next grade's chain
-   *  root; `'below'` records nothing. Idempotent by set semantics — a
+   *  exam (`store.isExamCleared(grade)`); `'below'` records nothing. Idempotent
+   *  by set semantics — a
    *  replayed or double-fired result is harmless. */
   recordExamResult: (grade: number, band: Band) => Promise<void>;
 }
@@ -159,7 +144,6 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
     let live = true;
     loadProgress(storage, clock.now()).then((loaded) => {
       if (!live) return;
-      ensureLevelRootsUnlocked(loaded, lessons);
       setStore(loaded);
       setProfileState(loaded.getProfile());
       setNudgeSeen(loaded.isNudgeSeen());
@@ -209,7 +193,6 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
   // re-reads fresh; the in-session slice paths never depend on their reactivity.
   // The onboarding/set flows use real state (`profile`) and local component state
   // instead — see completeOnboarding below and SetRunner.
-  const isUnlocked = useCallback((lessonId: string) => store?.isUnlocked(lessonId) ?? false, [store, revision]);
   const isLessonComplete = useCallback((lessonId: string) => store?.getLesson(lessonId).completed ?? false, [store, revision]);
   const isFactCollected = useCallback((lessonId: string) => store?.isFactCollected(lessonId) ?? false, [store, revision]);
 
@@ -275,7 +258,6 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
     async (grade, band) => {
       if (!store || band === 'below') return;
       store.recordExamCleared(grade);
-      ensureLevelRootsUnlocked(store, lessons);
       await saveProgress(store, storage);
       setRevision((r) => r + 1);
     },
@@ -311,7 +293,6 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       recordAtom,
       recordFlashcardGrade: recordFlashcardGradeCb,
       complete,
-      isUnlocked,
       isLessonComplete,
       isFactCollected,
       collectFact,
@@ -337,7 +318,6 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       recordAtom,
       recordFlashcardGradeCb,
       complete,
-      isUnlocked,
       isLessonComplete,
       isFactCollected,
       collectFact,

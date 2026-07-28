@@ -90,11 +90,14 @@ export function duePriority(state: SrsState, now: number): number {
 }
 
 /** The atoms Practice should serve now, most-due-and-weakest first, restricted
- *  to `eligible` (e.g. atoms from unlocked lessons only). */
+ *  to `eligible` (e.g. one strand's atoms only). */
 export function selectDue(
   entries: { atom: string; srs: SrsState }[],
   now: number,
-  eligible: (atom: string) => boolean,
+  /** Optional narrowing. Since G6 U3 the *entries* are already the eligibility
+   *  set — the store only holds atoms the learner has attempted — so callers pass
+   *  this only to narrow further (e.g. Practice's per-lane filter, R9). */
+  eligible: (atom: string) => boolean = () => true,
 ): string[] {
   return entries
     .filter((e) => eligible(e.atom))

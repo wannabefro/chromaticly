@@ -1,59 +1,75 @@
-import { LESSONS, LESSONS_BY_GRADE, lessonById } from '../content/lessons';
+import { LESSONS, LESSONS_BY_GRADE, lessonById, type Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
-import { nextPracticeTemplate, unlockedAtomSet, unlockedTemplates, type PracticePick } from './practice-plan';
+import { attemptedAtomSet, attemptedTemplates, nextPracticeTemplate, type PracticePick } from './practice-plan';
+import { ProgressStore } from './store';
 import { initialSrs, reviewSrs, type SrsState } from './srs';
 
-const onlyFirst = (id: string) => id === LESSONS[0].id;
 const firstLesson = LESSONS[0];
 const grade2Lesson = LESSONS_BY_GRADE[2][0];
-const onlyGrade2 = (id: string) => id === grade2Lesson.id;
 
-// D12's rotation unit is the (unlocked lesson, template) pair, one per template a
-// lesson lists — computed independently here (not by reaching into practice-plan's
-// private pair builder) so a full cycle can be walked and asserted on as a black box.
-const unlockedPairCount = (isUnlocked: (id: string) => boolean): number =>
-  LESSONS.filter((l) => isUnlocked(l.id)).reduce((sum, l) => sum + l.templates.length, 0);
+/** Every atom of `lessons`, attempted and NOT due — so selection falls through to
+ *  the rotation path, which is what these fixtures are exercising. Since G6 U3 the
+ *  entries ARE the eligibility set: there is no unlock predicate to pass. */
+const attempted = (lessons: Lesson[], now = 0): { atom: string; srs: SrsState }[] => {
+  const seen = new Set<string>();
+  const entries: { atom: string; srs: SrsState }[] = [];
+  for (const lesson of lessons) {
+    for (const atom of lesson.atoms) {
+      if (seen.has(atom)) continue; // an atom shared across lessons is one attempt, not two
+      seen.add(atom);
+      entries.push({ atom, srs: reviewSrs(initialSrs(now), true, now) }); // box 1 → due tomorrow
+    }
+  }
+  return entries;
+};
 
-const fullRotationCycle = (isUnlocked: (id: string) => boolean, size: number): PracticePick[] => {
+// D12's rotation unit is the (lesson, template) pair — one per template a lesson
+// with an attempted atom lists. Computed independently here (not by reaching into
+// practice-plan's private pair builder) so a full cycle can be walked as a black box.
+const pairCount = (entries: { atom: string }[]): number => {
+  const set = attemptedAtomSet(entries);
+  return LESSONS.filter((l) => l.atoms.some((a) => set.has(a))).reduce((sum, l) => sum + l.templates.length, 0);
+};
+
+const fullRotationCycle = (entries: { atom: string; srs: SrsState }[]): PracticePick[] => {
   const picks: PracticePick[] = [];
-  for (let step = 0; step < size; step++) {
-    const pick = nextPracticeTemplate([], 0, isUnlocked, step);
+  for (let step = 0; step < pairCount(entries); step++) {
+    const pick = nextPracticeTemplate(entries, 0, step);
     if (pick) picks.push(pick);
   }
   return picks;
 };
 
-describe('practice-plan — eligibility follows unlock state', () => {
-  test('unlockedTemplates and unlockedAtomSet only include unlocked lessons', () => {
-    const templates = unlockedTemplates(onlyFirst);
-    expect(templates).toEqual(firstLesson.templates);
-    const atoms = unlockedAtomSet(onlyFirst);
+describe('practice-plan — eligibility is per-atom, not per-lesson (R4)', () => {
+  test('attemptedTemplates and attemptedAtomSet follow what has been attempted', () => {
+    const entries = attempted([firstLesson]);
+    expect(attemptedTemplates(attemptedAtomSet(entries))).toEqual(firstLesson.templates);
+    const atoms = attemptedAtomSet(entries);
     expect(atoms.has(firstLesson.atoms[0])).toBe(true);
-    // an atom from a later, locked lesson is excluded
-    const laterAtom = LESSONS[LESSONS.length - 1].atoms[0];
-    expect(atoms.has(laterAtom)).toBe(false);
+    // an atom from a lesson the learner has never touched is excluded
+    const untouched = LESSONS[LESSONS.length - 1].atoms[0];
+    expect(atoms.has(untouched)).toBe(false);
   });
 });
 
 describe('practice-plan — nextPracticeTemplate', () => {
-  test('returns null when nothing is unlocked', () => {
-    expect(nextPracticeTemplate([], 0, () => false, 0)).toBeNull();
+  test('returns null when nothing has been attempted — Practice is retention, and there is nothing to retain', () => {
+    expect(nextPracticeTemplate([], 0, 0)).toBeNull();
   });
 
-  test('falls back to a rotating unlocked template, scoped to its owning lesson atoms', () => {
-    const pick = nextPracticeTemplate([], 0, onlyFirst, 0);
+  test('falls back to a rotating template, scoped to the ATTEMPTED atoms of its owning lesson', () => {
+    const pick = nextPracticeTemplate(attempted([firstLesson]), 0, 0);
     expect(pick).not.toBeNull();
     expect(firstLesson.templates).toContain(pick!.template);
-    // rotation scope is the owning lesson's atoms, never empty or grade-wide
     expect(pick!.atoms.length).toBeGreaterThan(0);
     expect(pick!.atoms).toEqual(firstLesson.atoms);
   });
 
-  test('serves a due unlocked atom scoped to exactly that atom (per-atom review)', () => {
+  test('serves a due atom scoped to exactly that atom (per-atom review)', () => {
     const dueAtom = firstLesson.atoms[0];
-    const missed: SrsState = reviewSrs(initialSrs(0), false, 5); // due at tick 5
-    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, onlyFirst, 0);
+    const missed: SrsState = reviewSrs(initialSrs(0), false, 5); // due on day 5
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).not.toBeNull();
     expect(pick!.template).toBe(firstLesson.templates[0]);
     expect(pick!.atoms).toEqual([dueAtom]);
@@ -61,42 +77,143 @@ describe('practice-plan — nextPracticeTemplate', () => {
     expect(pick!.grade).toBe(1);
   });
 
-  test('ignores a due atom from a locked lesson', () => {
-    const lockedAtom = LESSONS[LESSONS.length - 1].atoms[0];
+  // R4/R2: an atom attempted inside a lesson that would once have been LOCKED is
+  // served like any other. Nothing is gated, so "have you met this atom" is the
+  // whole eligibility question.
+  test('an atom attempted in a never-completed later-grade lesson is served when due', () => {
+    const deep = LESSONS_BY_GRADE[4][LESSONS_BY_GRADE[4].length - 1];
+    const dueAtom = deep.atoms[0];
     const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
-    // Only the first lesson is unlocked, so the locked atom must not drive selection;
-    // it falls back to the unlocked rotation (owning-lesson scope) instead.
-    const pick = nextPracticeTemplate([{ atom: lockedAtom, srs: missed }], 5, onlyFirst, 0);
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).not.toBeNull();
-    expect(firstLesson.templates).toContain(pick!.template);
-    expect(pick!.atoms).toEqual(firstLesson.atoms);
+    expect(pick!.atoms).toEqual([dueAtom]);
+  });
+
+  // The invariant, stated once: the learner is never shown material they have not
+  // met. `store.atomEntries()` only ever holds attempted atoms, so this holds for
+  // both pick paths — but only because rotation intersects rather than takes the
+  // whole lesson (see the F5a regression below).
+  test('no pick, on either path, ever carries an atom outside the attempted set', () => {
+    const store = new ProgressStore();
+    const met = firstLesson.atoms[0];
+    store.setAtom(met, { mastery: { streak: 1, mastered: false }, srs: initialSrs(0) });
+
+    for (const now of [0, 1, 9]) {
+      for (let step = 0; step < 12; step++) {
+        const pick = nextPracticeTemplate(store.atomEntries(), now, step);
+        expect(pick!.atoms).toEqual([met]);
+      }
+    }
+  });
+});
+
+// F5a, the trap this unit exists to avoid: 11 atom ids appear in two grades of one
+// strand. `rest:semibreve` is in both the grade-1 rests lesson and the grade-4 one.
+// A "lessons with an attempted atom" scope would make the grade-4 lesson eligible
+// off a grade-1 answer, and rotation would then generate its UNATTEMPTED grade-4
+// siblings — material the learner has never seen. The pair's atoms are therefore
+// the intersection of the lesson's atoms with the attempted set.
+describe('practice-plan — REGRESSION: a shared atom does not drag its unattempted siblings in (F5a)', () => {
+  const SHARED = 'rest:semibreve';
+
+  test('the fixture is real: rest:semibreve is listed by both a grade-1 and a grade-4 lesson', () => {
+    const owners = LESSONS.filter((l) => l.atoms.includes(SHARED));
+    expect(owners.map((l) => l.grade)).toEqual(expect.arrayContaining([1, 4]));
+  });
+
+  test('attempting only the grade-1 shared atom never emits a grade-4 sibling atom', () => {
+    const entries = [{ atom: SHARED, srs: reviewSrs(initialSrs(0), true, 0) }];
+    const grade4Owner = LESSONS.find((l) => l.grade === 4 && l.atoms.includes(SHARED))!;
+    const siblings = grade4Owner.atoms.filter((a) => a !== SHARED);
+    expect(siblings.length).toBeGreaterThan(0); // otherwise this test proves nothing
+
+    for (let step = 0; step < 12; step++) {
+      const pick = nextPracticeTemplate(entries, 0, step);
+      expect(pick).not.toBeNull();
+      expect(pick!.atoms).toEqual([SHARED]);
+      for (const sibling of siblings) expect(pick!.atoms).not.toContain(sibling);
+    }
+  });
+
+  // The other half of the F5a fix: intersecting with the attempted set alone would
+  // still let the grade-4 owner emit a pair for the SHARED atom at grade 4, so a
+  // learner who has only met it at grade 1 gets a grade-4 stimulus around it.
+  // Rotation therefore scopes to the atoms a lesson OWNS (first-owner, the same rule
+  // the due path uses), so a shared atom is always reviewed at the grade that taught it.
+  test('a shared atom is only ever rotated by its FIRST owner, at that owner’s grade', () => {
+    const entries = [{ atom: SHARED, srs: reviewSrs(initialSrs(0), true, 0) }];
+    for (let step = 0; step < 12; step++) {
+      expect(nextPracticeTemplate(entries, 0, step)!.grade).toBe(1);
+    }
+  });
+
+  test('fallback scoping: every emitted pair is a subset of the attempted set', () => {
+    const entries = attempted([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2]]);
+    const set = attemptedAtomSet(entries);
+    const picks = fullRotationCycle(entries);
+    expect(picks.length).toBeGreaterThan(0);
+    for (const pick of picks) {
+      expect(pick.atoms.length).toBeGreaterThan(0); // an empty intersection is not emitted at all
+      for (const atom of pick.atoms) expect(set.has(atom)).toBe(true);
+    }
+  });
+});
+
+// R9: Practice can narrow to one lane. Cross-lane stays the DEFAULT, because
+// interleaving strands is the retention benefit — the filter is a deliberate act.
+describe('practice-plan — per-lane filter (R9)', () => {
+  const everything = attempted([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2]]);
+  const strandOf = (atom: string) => LESSONS.find((l) => l.atoms.includes(atom))!.strand;
+
+  test('with a strand set, every pick belongs to that lane', () => {
+    for (let step = 0; step < 12; step++) {
+      const pick = nextPracticeTemplate(everything, 0, step, 'rhythm');
+      expect(pick).not.toBeNull();
+      for (const atom of pick!.atoms) expect(strandOf(atom)).toBe('rhythm');
+    }
+  });
+
+  test('the due path honours the filter — an overdue atom in another lane is skipped', () => {
+    const rhythmAtom = LESSONS.find((l) => l.strand === 'rhythm')!.atoms[0];
+    const pitchAtom = LESSONS.find((l) => l.strand === 'pitch')!.atoms[0];
+    const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
+    const entries = [
+      { atom: pitchAtom, srs: missed },
+      { atom: rhythmAtom, srs: reviewSrs(initialSrs(5), true, 5) }, // attempted, not due
+    ];
+
+    const pick = nextPracticeTemplate(entries, 5, 0, 'rhythm');
+    expect(pick).not.toBeNull();
+    expect(pick!.atoms).not.toContain(pitchAtom);
+  });
+
+  test('without a strand, picks span more than one lane', () => {
+    const strands = new Set<string>();
+    for (let step = 0; step < pairCount(everything); step++) {
+      const pick = nextPracticeTemplate(everything, 0, step);
+      if (pick) for (const atom of pick.atoms) strands.add(strandOf(atom));
+    }
+    expect(strands.size).toBeGreaterThan(1);
   });
 });
 
 // U3/D10: practice must generate a review under the same grade scope the atom was
 // taught in, or generation fails validation on device (a grade-2-only key like
 // B♭ major is out of scope at grade 1). Covers both pick paths.
-describe('practice-plan — nextPracticeTemplate threads the owning lesson\'s grade (U3/D10)', () => {
+describe("practice-plan — nextPracticeTemplate threads the owning lesson's grade (U3/D10)", () => {
   test('due-path pick for a grade-2-only atom (key_sig:Bb_major) carries grade: 2', () => {
     const dueAtom = 'key_sig:Bb_major';
     expect(grade2Lesson.atoms).toContain(dueAtom); // owned only by the grade-2 unit
     const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
-    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, onlyGrade2, 0);
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).not.toBeNull();
     expect(pick!.atoms).toEqual([dueAtom]);
     expect(pick!.grade).toBe(2);
   });
 
-  // Pre-U7 this scenario could not be exercised against the real curriculum —
-  // the grade-2 unit's only template (`key_signature_id`) is also used by the
-  // grade-1 "key-signatures" lesson, and the old rotation resolved a shared
-  // template to its FIRST owner globally regardless of unlock state, so the
-  // grade-2 owner's { atoms, grade } was never reachable. D12/U7 replaced that
-  // global first-owner map with per-unlocked-lesson rotation pairs, so the real
-  // collision is now covered directly (see the "rotation surfaces every unlocked
-  // owner of a shared template" describe block below, incl. bd chromaticly-elb.4).
-  // This isolated fixture stays as a minimal, collision-free proof that the grade
-  // threading itself (pick carries { atoms, grade } from its owning lesson) works.
+  // An isolated, collision-free fixture proving the grade threading itself (a pick
+  // carries { atoms, grade } from its owning lesson). The real cross-grade template
+  // collision is covered directly by the shared-template describe blocks below.
   test('rotation-path pick for a template owned only by a grade-2 lesson carries grade: 2', () => {
     jest.isolateModules(() => {
       jest.doMock('../content/lessons', () => ({
@@ -125,7 +242,8 @@ describe('practice-plan — nextPracticeTemplate threads the owning lesson\'s gr
       }));
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const isolated = require('./practice-plan');
-      const pick = isolated.nextPracticeTemplate([], 0, (id: string) => id === 'g2-fixture-lesson', 0);
+      const entries = [{ atom: 'g2-fixture-atom', srs: reviewSrs(initialSrs(0), true, 0) }];
+      const pick = isolated.nextPracticeTemplate(entries, 0, 0);
       expect(pick).toEqual({ template: 'fixture_template_g2', atoms: ['g2-fixture-atom'], grade: 2 });
     });
   });
@@ -143,10 +261,9 @@ describe('practice-plan — grade-2 minor picks are generatable (U7)', () => {
     const dueAtom = 'key_sig:E_minor';
     const minorKeysLesson = lessonById('minor-keys-2')!;
     expect(minorKeysLesson.atoms).toContain(dueAtom);
-    const isUnlocked = (id: string) => id === minorKeysLesson.id;
     const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
 
-    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, isUnlocked, 0);
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).toEqual({ template: 'mode_swap', atoms: [dueAtom], grade: 2 });
 
     const inst = generate(pick!.template, { grade: pick!.grade, seed: 7, atoms: pick!.atoms });
@@ -157,84 +274,77 @@ describe('practice-plan — grade-2 minor picks are generatable (U7)', () => {
     const dueAtom = 'scale:D_minor_harmonic';
     const minorScalesLesson = lessonById('minor-scales-2')!;
     expect(minorScalesLesson.atoms).toContain(dueAtom);
-    const isUnlocked = (id: string) => id === minorScalesLesson.id;
     const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
 
-    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, isUnlocked, 0);
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).toEqual({ template: 'scale_construction', atoms: [dueAtom], grade: 2 });
 
     const inst = generate(pick!.template, { grade: pick!.grade, seed: 11, atoms: pick!.atoms });
     expect(validate(inst)).toEqual({ ok: true, errors: [] });
   });
 
-  test('rotation path with only the minor lessons unlocked serves both new templates scoped to their owning lesson', () => {
+  test('rotation with only the minor lessons attempted serves both new templates scoped to their owning lesson', () => {
     const minorKeysLesson = lessonById('minor-keys-2')!;
     const minorScalesLesson = lessonById('minor-scales-2')!;
-    const isUnlocked = (id: string) => id === minorKeysLesson.id || id === minorScalesLesson.id;
+    const entries = attempted([minorKeysLesson, minorScalesLesson]);
 
-    const templates = unlockedTemplates(isUnlocked);
+    const templates = attemptedTemplates(attemptedAtomSet(entries));
     expect(new Set(templates)).toEqual(new Set(['mode_swap', 'scale_construction']));
 
     // walk every rotation step so both templates are actually reached, not just present
-    const picksByTemplate = new Map<string, ReturnType<typeof nextPracticeTemplate>>();
-    for (let step = 0; step < templates.length; step++) {
-      const pick = nextPracticeTemplate([], 0, isUnlocked, step);
-      expect(pick).not.toBeNull();
-      picksByTemplate.set(pick!.template, pick);
-    }
+    const picksByTemplate = new Map<string, PracticePick>();
+    for (const pick of fullRotationCycle(entries)) picksByTemplate.set(pick.template, pick);
     expect(new Set(picksByTemplate.keys())).toEqual(new Set(['mode_swap', 'scale_construction']));
 
-    const modeSwapPick = picksByTemplate.get('mode_swap')!;
-    expect(modeSwapPick!.atoms).toEqual(minorKeysLesson.atoms);
-    expect(modeSwapPick!.grade).toBe(2);
-
-    const scaleConstructionPick = picksByTemplate.get('scale_construction')!;
-    expect(scaleConstructionPick!.atoms).toEqual(minorScalesLesson.atoms);
-    expect(scaleConstructionPick!.grade).toBe(2);
+    expect(picksByTemplate.get('mode_swap')!.atoms).toEqual(minorKeysLesson.atoms);
+    expect(picksByTemplate.get('mode_swap')!.grade).toBe(2);
+    expect(picksByTemplate.get('scale_construction')!.atoms).toEqual(minorScalesLesson.atoms);
+    expect(picksByTemplate.get('scale_construction')!.grade).toBe(2);
   });
 });
 
 // U7/D12 (review finding 1, subsumes bd chromaticly-elb.4): before this fix the
 // rotation fallback resolved a shared template to its FIRST owner lesson GLOBALLY
 // (grade-1/2 docs load first), so a Level-3 learner's rotation never reached grade-3
-// scale_construction/mode_swap content, and a Level-2 learner's rotation never
-// reached the grade-2 key_signature_id owner either. The fix: the rotation unit is
-// the ordered list of (unlocked lesson, template) pairs, one per template each
-// unlocked lesson lists, each scoped to that lesson's own atoms/grade — so every
-// unlocked owner of a shared template rotates in, not just the first one.
-describe('practice-plan — REGRESSION: rotation reaches every unlocked owner of a shared template, not just the first (review finding 1 / D12)', () => {
-  test('grades 1-3 unlocked: scale_construction rotates through minor-scales-3 AND melodic-minor-3 (Level-3 rotation must not starve on grade-2 content)', () => {
-    const allUnlocked = () => true;
-    const picks = fullRotationCycle(allUnlocked, unlockedPairCount(allUnlocked));
+// scale_construction/mode_swap content. The fix: the rotation unit is the ordered
+// list of (lesson, template) pairs, one per template each ELIGIBLE lesson lists,
+// each scoped to that lesson's own attempted atoms and grade.
+describe('practice-plan — REGRESSION: rotation reaches every owner of a shared template, not just the first (review finding 1 / D12)', () => {
+  test('grades 1-3 attempted: scale_construction rotates through minor-scales-3 AND melodic-minor-3', () => {
+    const entries = attempted([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2], ...LESSONS_BY_GRADE[3]]);
+    const picks = fullRotationCycle(entries);
 
     const minorScales3 = lessonById('minor-scales-3')!;
     const melodicMinor3 = lessonById('melodic-minor-3')!;
 
-    // Pre-fix, TEMPLATE_LESSON_ATOMS resolved scale_construction to its first owner
-    // anywhere in LESSONS (minor-scales-2, grade 2) — this pick was unreachable.
     expect(picks).toContainEqual({ template: 'scale_construction', atoms: melodicMinor3.atoms, grade: 3 });
     expect(picks).toContainEqual({ template: 'scale_construction', atoms: minorScales3.atoms, grade: 3 });
   });
 });
 
-describe('practice-plan — rotation surfaces every unlocked owner of a shared template (bd chromaticly-elb.4)', () => {
-  test('grades 1-2 unlocked: key_signature_id rotates through BOTH the grade-1 and grade-2 owner, neither starves', () => {
-    const upToGrade2 = (id: string) => (LESSONS.find((l) => l.id === id)?.grade ?? Infinity) <= 2;
-    const picks = fullRotationCycle(upToGrade2, unlockedPairCount(upToGrade2));
+describe('practice-plan — rotation surfaces every owner of a shared template (bd chromaticly-elb.4)', () => {
+  test('grades 1-2 attempted: key_signature_id rotates through BOTH the grade-1 and grade-2 owner, neither starves', () => {
+    const entries = attempted([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2]]);
+    const picks = fullRotationCycle(entries);
 
-    const keySignatures1 = lessonById('key-signatures')!;
-    const keySignatures2 = lessonById('key-signatures-2')!;
-
-    expect(picks).toContainEqual({ template: 'key_signature_id', atoms: keySignatures1.atoms, grade: 1 });
-    expect(picks).toContainEqual({ template: 'key_signature_id', atoms: keySignatures2.atoms, grade: 2 });
+    expect(picks).toContainEqual({
+      template: 'key_signature_id',
+      atoms: lessonById('key-signatures')!.atoms,
+      grade: 1,
+    });
+    expect(picks).toContainEqual({
+      template: 'key_signature_id',
+      atoms: lessonById('key-signatures-2')!.atoms,
+      grade: 2,
+    });
   });
 });
 
 describe('practice-plan — grade-1-only rotation (U7 blast radius)', () => {
-  const onlyGrade1 = (id: string) => LESSONS.find((l) => l.id === id)?.grade === 1;
+  const grade1 = () => attempted(LESSONS_BY_GRADE[1]);
 
   test('every grade-1 template with a single owner: rotation picks are unchanged from the pre-D12 first-owner behavior', () => {
-    const picks = fullRotationCycle(onlyGrade1, unlockedPairCount(onlyGrade1));
+    const picks = fullRotationCycle(grade1());
 
     // note_naming is the one grade-1 template with more than one owner (treble-notes/
     // bass-notes/accidentals); every other grade-1 template has exactly one owning
@@ -247,37 +357,18 @@ describe('practice-plan — grade-1-only rotation (U7 blast radius)', () => {
     }
   });
 
-  // NOTE (discovered while implementing U7, flagged for the plan's author): the plan's
-  // "single-grade learner: rotation is invisible" scenario assumes atom-scope parity
-  // with today's behavior for every grade-1 template. That assumption does not hold for
-  // note_naming, which is shared WITHIN grade 1 (treble-notes/bass-notes/accidentals),
-  // not just across grades. D12's fix mechanism is unconditional ("each unlocked lesson
-  // contributes one pair per template it lists") — it is not scoped to cross-grade
-  // sharing — so it also closes this pre-existing gap: pre-fix, a grade-1-only learner's
-  // rotation could only ever reach treble-notes' atoms via note_naming (global
-  // first-owner-wins); bass-notes'/accidentals' atoms were reachable only via the SRS
-  // due path, never via rotation. Post-fix all three are reachable. This is judged an
-  // in-scope, desirable side effect of the general reachability fix (consistent with
-  // D12's stated goal, "makes every unlocked lesson's content reachable via rotation"),
-  // not a regression — but it does mean the fix is not fully "invisible" to a
-  // single-grade learner as the plan's test-scenario prose claims.
-  test('note_naming (shared by three grade-1 lessons) now rotates through every unlocked owner, not just treble-notes', () => {
-    const picks = fullRotationCycle(onlyGrade1, unlockedPairCount(onlyGrade1));
+  test('note_naming (shared by three grade-1 lessons) rotates through every owner, not just treble-notes', () => {
+    const picks = fullRotationCycle(grade1());
 
-    const trebleNotes = lessonById('treble-notes')!;
-    const bassNotes = lessonById('bass-notes')!;
-    const accidentals = lessonById('accidentals')!;
-
-    expect(picks).toContainEqual({ template: 'note_naming', atoms: trebleNotes.atoms, grade: 1 });
-    expect(picks).toContainEqual({ template: 'note_naming', atoms: bassNotes.atoms, grade: 1 });
-    expect(picks).toContainEqual({ template: 'note_naming', atoms: accidentals.atoms, grade: 1 });
+    for (const id of ['treble-notes', 'bass-notes', 'accidentals']) {
+      expect(picks).toContainEqual({ template: 'note_naming', atoms: lessonById(id)!.atoms, grade: 1 });
+    }
   });
 });
 
 describe('practice-plan — every rotation pick is generatable, not merely well-shaped (U7)', () => {
-  test('grades 1-3 unlocked: every pick in a full rotation cycle generates and validates', () => {
-    const allUnlocked = () => true;
-    const picks = fullRotationCycle(allUnlocked, unlockedPairCount(allUnlocked));
+  test('grades 1-3 attempted: every pick in a full rotation cycle generates and validates', () => {
+    const picks = fullRotationCycle(attempted([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2], ...LESSONS_BY_GRADE[3]]));
     expect(picks.length).toBeGreaterThan(0);
 
     for (const pick of picks) {
@@ -290,12 +381,10 @@ describe('practice-plan — every rotation pick is generatable, not merely well-
 describe('practice-plan — grade-3 minor picks are generatable (U7)', () => {
   test('due-path pick for key_sig:F#_minor is mode_swap/grade 3 scoped to that atom, and generates', () => {
     const dueAtom = 'key_sig:F#_minor';
-    const minorKeys3 = lessonById('minor-keys-3')!;
-    expect(minorKeys3.atoms).toContain(dueAtom);
-    const isUnlocked = (id: string) => id === minorKeys3.id;
+    expect(lessonById('minor-keys-3')!.atoms).toContain(dueAtom);
     const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
 
-    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, isUnlocked, 0);
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).toEqual({ template: 'mode_swap', atoms: [dueAtom], grade: 3 });
 
     const inst = generate(pick!.template, { grade: pick!.grade, seed: 13, atoms: pick!.atoms });
@@ -304,12 +393,10 @@ describe('practice-plan — grade-3 minor picks are generatable (U7)', () => {
 
   test('due-path pick for scale:C#_minor_melodic is scale_construction/grade 3 scoped to that atom, and generates', () => {
     const dueAtom = 'scale:C#_minor_melodic';
-    const melodicMinor3 = lessonById('melodic-minor-3')!;
-    expect(melodicMinor3.atoms).toContain(dueAtom);
-    const isUnlocked = (id: string) => id === melodicMinor3.id;
+    expect(lessonById('melodic-minor-3')!.atoms).toContain(dueAtom);
     const missed: SrsState = reviewSrs(initialSrs(0), false, 5);
 
-    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, isUnlocked, 0);
+    const pick = nextPracticeTemplate([{ atom: dueAtom, srs: missed }], 5, 0);
     expect(pick).toEqual({ template: 'scale_construction', atoms: [dueAtom], grade: 3 });
 
     const inst = generate(pick!.template, { grade: pick!.grade, seed: 17, atoms: pick!.atoms });
@@ -317,10 +404,10 @@ describe('practice-plan — grade-3 minor picks are generatable (U7)', () => {
   });
 });
 
-describe('practice-plan — locked grade-3 lessons contribute no rotation picks (U7)', () => {
-  test('fresh store, grades 1-2 unlocked: the rotation cycle carries no grade-3 pick or atom', () => {
-    const upToGrade2 = (id: string) => (LESSONS.find((l) => l.id === id)?.grade ?? Infinity) <= 2;
-    const picks = fullRotationCycle(upToGrade2, unlockedPairCount(upToGrade2));
+describe('practice-plan — unattempted grade-3 lessons contribute no rotation picks', () => {
+  test('grades 1-2 attempted: the rotation cycle carries no grade-3 pick or atom', () => {
+    const entries = attempted([...LESSONS_BY_GRADE[1], ...LESSONS_BY_GRADE[2]]);
+    const picks = fullRotationCycle(entries);
 
     expect(picks.every((p) => p.grade <= 2)).toBe(true);
     // Grade-3-EXCLUSIVE atoms only: a grade-3 lesson may legitimately reuse a

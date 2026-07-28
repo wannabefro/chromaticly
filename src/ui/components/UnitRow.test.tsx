@@ -51,34 +51,22 @@ describe('UnitRow', () => {
     expect(queryByTestId('unit-row-stars-star-1-filled')).toBeNull();
   });
 
-  // R2: locked units name the prerequisite that unlocks them.
-  test('a locked unit names its prerequisite and does not fire onPress', () => {
-    const onPress = jest.fn();
-    const { getByText, getByTestId } = render(
-      <UnitRow
-        strand="terms_signs"
-        title="Musical terms and signs"
-        stars={0}
-        state="locked"
-        prerequisiteTitle="Naming intervals above the tonic"
-        onPress={onPress}
-        testID="unit-row"
-      />,
-    );
+  // R2 (G6 U3): there is no locked variant left. Every row is enterable, and none
+  // carries a 🔒 or a "finish X to unlock" note — the advisory prerequisite chip
+  // that replaces that affordance is a separate component (PrereqChip).
+  test('every state fires onPress when tapped, and none renders a lock affordance', () => {
+    for (const state of ['active', 'started', 'done'] as const) {
+      const onPress = jest.fn();
+      const { getByTestId, queryByText, unmount } = render(
+        <UnitRow strand="rhythm" title="Rhythm" stars={0} state={state} onPress={onPress} testID="unit-row" />,
+      );
 
-    expect(getByText('Finish Naming intervals above the tonic to unlock')).toBeTruthy();
+      expect(queryByText('🔒')).toBeNull();
+      expect(queryByText(/to unlock$/)).toBeNull();
 
-    fireEvent.press(getByTestId('unit-row'));
-    expect(onPress).not.toHaveBeenCalled();
-  });
-
-  test('an unlocked unit fires onPress when tapped', () => {
-    const onPress = jest.fn();
-    const { getByTestId } = render(
-      <UnitRow strand="rhythm" title="Rhythm" stars={0} state="active" onPress={onPress} testID="unit-row" />,
-    );
-
-    fireEvent.press(getByTestId('unit-row'));
-    expect(onPress).toHaveBeenCalledTimes(1);
+      fireEvent.press(getByTestId('unit-row'));
+      expect(onPress).toHaveBeenCalledTimes(1);
+      unmount();
+    }
   });
 });

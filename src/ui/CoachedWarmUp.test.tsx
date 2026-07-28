@@ -1,6 +1,6 @@
 // Coached warm-up (design steps 4–5): the 3-question on-ramp. Invariants guarded:
 // it draws a REAL first Rhythm mastery point (records the note_value_compare atom),
-// it NEVER completes/unlocks a lesson (KTD3), retry-until-correct always ends 3/3
+// it NEVER completes a lesson (KTD3), retry-until-correct always ends 3/3
 // (KTD3b), onComplete fires only after the 3rd correct, and all gamification +
 // hints are suppressed (R4).
 
@@ -132,7 +132,7 @@ describe('CoachedWarmUp — a 3-question coached on-ramp (R4, R5, KTD3)', () => 
     expect(getByTestId('warmup-count').props.children).toEqual([2, '/', 3]);
   });
 
-  test('draws a real Rhythm mastery point (records the atom) and never completes or unlocks a lesson (KTD3)', async () => {
+  test('draws a real Rhythm mastery point (records the atom) and never completes a lesson (KTD3)', async () => {
     const { getByTestId, storage } = renderWarmUp();
     await act(async () => {});
 
@@ -141,12 +141,12 @@ describe('CoachedWarmUp — a 3-question coached on-ramp (R4, R5, KTD3)', () => 
     await answer(getByTestId, correctIndexFor(2));
 
     // The standalone atom was recorded and mastered (3 in a row). Crucially, the
-    // warm-up completed NO lesson and unlocked nothing beyond the always-on root —
-    // in particular it did not complete/unlock the note-values lesson (KTD3).
+    // warm-up completed NO lesson — in particular not the note-values lesson,
+    // whose atoms it deliberately does not draw from (KTD3).
     const snapshot = JSON.parse(storage.blob as string);
     expect(snapshot.atoms[WARM_UP_ATOM]).toBeDefined();
     expect(snapshot.atoms[WARM_UP_ATOM].mastery.mastered).toBe(true);
     expect(snapshot.lessons).toEqual({}); // no lesson marked complete
-    expect(snapshot.unlocked).not.toContain('note-values');
+    expect(Object.keys(snapshot.atoms)).toEqual([WARM_UP_ATOM]); // nothing else touched
   });
 });

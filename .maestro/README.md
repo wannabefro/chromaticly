@@ -82,17 +82,19 @@ maestro --device <udid> test -e DEV_URL=exp://127.0.0.1:8090 .maestro/<flow>.yam
 
 ## DEV seeding seam (302.5)
 
-Interactions deep in the unlock chain are impractical to reach from a fresh
+Interactions deep in the curriculum are impractical to reach from a fresh
 install (you'd grind every prior unit). A `__DEV__`-only deep link fast-forwards
-progress instead:
+progress instead. Since G6 U3 nothing is hard-locked, so what the seed fabricates
+is *evidence* — completion and mastery — never reachability, which every unit now
+has by default:
 
 ```bash
 openLink: exp://127.0.0.1:8090/--/?seed=<unitId>   # e.g. ?seed=intervals
 ```
 
 `<unitId>` may also be `exam` — that masters every unit (3★) so the Level 1 exam
-gate unlocks, letting a flow reach the practice exam. It onboards (Grade 1) and
-unlocks `<unitId>` (marking predecessors complete but NOT the target), landing
+gate opens, letting a flow reach the practice exam. It onboards (Grade 1) and makes
+`<unitId>` the frontier (marking predecessors complete but NOT the target), landing
 straight on the level map — no Welcome/onboarding. The
 seed rides as a **query param on the root route**, not a path (`/--/seed` would
 hit expo-router's Unmatched Route). Unit ids: `treble-notes`, `bass-notes`,

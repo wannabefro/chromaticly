@@ -22,15 +22,15 @@ export function deriveStars(atomIds: string[], store: ProgressStore): 0 | 1 | 2 
 /** Real, backed stats for the account nudge's stat card (design 6c) — no invented
  *  numbers. Lessons = completed count; stars = total 0-3 stars summed over every
  *  lesson (the same derivation the app shows elsewhere); dueCount = review-queue size
- *  at logical time `now`, over UNLOCKED atoms only (mirrors Practice eligibility). */
+ *  at logical time `now`, over ATTEMPTED atoms only — which is Practice eligibility
+ *  since G6 U3 (nothing is locked; review reaches what the learner has met). */
 export function accountNudgeStats(
   store: ProgressStore,
   lessons: Lesson[],
   now: number,
 ): { lessons: number; stars: number; dueCount: number } {
   const stars = lessons.reduce((sum, l) => sum + deriveStars(l.atoms, store), 0);
-  const unlockedAtoms = new Set(lessons.filter((l) => store.isUnlocked(l.id)).flatMap((l) => l.atoms));
-  const dueCount = selectDue(store.atomEntries(), now, (atom) => unlockedAtoms.has(atom)).length;
+  const dueCount = selectDue(store.atomEntries(), now).length;
   return { lessons: store.completedLessonCount(), stars, dueCount };
 }
 
@@ -65,12 +65,14 @@ export function strandMastery(
   return out;
 }
 
-export type UnitState = 'locked' | 'active' | 'started' | 'done';
+/** G6 U3 retired `'locked'`: under non-linear progression nothing is gated, so a
+ *  row can no longer be in that state. The union survives (minus that member)
+ *  until U12 deletes this derivation with the level map. */
+export type UnitState = 'active' | 'started' | 'done';
 
-/** Per-unit state for the level map. In a linear unlock chain only one
- *  unlocked, not-yet-started unit can be the frontier — the first such unit
- *  in list order is marked `active`; any other unlocked, non-done unit
- *  (partial stars, or a later 0-star unit) is `started`. */
+/** Per-unit state for the level map. Only one not-yet-started unit can be the
+ *  frontier — the first such unit in list order is marked `active`; any other
+ *  non-done unit (partial stars, or a later 0-star unit) is `started`. */
 export function unitStates(
   unitIds: string[],
   store: ProgressStore,
@@ -79,8 +81,6 @@ export function unitStates(
   let activeAssigned = false;
 
   return unitIds.map((unitId) => {
-    if (!store.isUnlocked(unitId)) return { unitId, stars: 0 as const, state: 'locked' as const };
-
     const stars = deriveStars(lessonAtoms(unitId), store);
     if (stars === 3) return { unitId, stars, state: 'done' as const };
     if (stars === 0 && !activeAssigned) {

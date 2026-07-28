@@ -78,8 +78,6 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     const first = LESSONS[0];
     const second = LESSONS[1];
     const seed = seedBlob((store) => {
-      store.unlock(first.id);
-      store.unlock(second.id);
       masterAtoms(store, first.atoms);
       store.setLesson(first.id, { completed: true });
       masterAtoms(store, second.atoms.slice(0, 1)); // 1 of N -> 1 star (below 2/3)
@@ -218,7 +216,6 @@ describe('LevelMapScreen — Level 2 is reachable by content presence (fyu.2)', 
   // paper that doesn't exist, even at full stars, independent of any exam-clear state.
   test('the Level-2 exam gate stays sealed "Coming soon" even at full stars', async () => {
     const seed = seedBlob((store) => {
-      store.unlock('key-signatures-2');
       masterAtoms(store, lessonById('key-signatures-2')!.atoms);
       store.setLesson('key-signatures-2', { completed: true });
     });

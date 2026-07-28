@@ -1,12 +1,16 @@
-# Lesson completion → next-unit unlock on the level map (design 3a). The other
-# flows either jump past the unlock chain (?seed=<unit>) or stop at set-complete;
-# this proves the map's progression reacts on device: a finished set unlocks the
-# next unit. Reactivity here is a React Compiler hazard — the level map derives
-# unlock state from the in-place-mutated store — so only an on-device run confirms
-# the locked→enterable transition (jest's layout-free renderer can't).
+# Nothing is hard-locked (G6 U3, R2): every unit is reachable regardless of what
+# came before it. This flow used to assert the opposite — that bass-notes rendered
+# locked until treble-notes was finished — so it is rewritten rather than retired:
+# it now guards the behaviour that REPLACED the gate.
 #
-# Seeds to treble-notes (the chain root): finishing it is completion #1, safely
-# below the 3-lesson account-nudge threshold, so no nudge overlays set-complete.
+# Why on device rather than in jest: the level map derives its rows from the
+# in-place-mutated store, which is a React Compiler staleness hazard, and jest's
+# layout-free renderer will happily find a row that is invisible or unreachable on
+# a real screen. Only an on-device run proves a learner can actually get there.
+#
+# Seeds to treble-notes (the chain root) purely to skip onboarding: it completes
+# NOTHING, so every unit after it — including every grade-2 unit — has an unfinished
+# predecessor chain. That is exactly the state the old gate would have blocked.
 #
 # Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
 appId: host.exp.Exponent
@@ -25,42 +29,41 @@ appId: host.exp.Exponent
     visible: { id: "level-map-screen" }
     timeout: 90000
 
-# Baseline: bass-notes is locked, naming treble-notes as its prerequisite (R2).
-- assertVisible: { id: "unit-row-bass-notes-prerequisite" }
+# No locked affordance anywhere on the map: no padlock, and no row telling the
+# learner to finish something else first.
+- assertNotVisible: { text: "🔒" }
+- assertNotVisible: { text: "to unlock" }
+- takeScreenshot: nothing-locked-map
 
-# Finish the treble-notes set (8 note_naming MCQs). Answers need not be correct —
-# the set completes after 8 items, and completion is what unlocks the next unit.
-- tapOn: { id: "unit-row-treble-notes" }
+# A unit several steps down the grade-1 chain, with every predecessor unfinished,
+# is enterable — a locked row was disabled and would never reach its teach phase.
+- scrollUntilVisible:
+    element: { id: "unit-row-intervals" }
+    direction: DOWN
+    timeout: 15000
+- tapOn: { id: "unit-row-intervals" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }
     timeout: 20000
-- tapOn: { id: "teach-start" }
-- repeat:
-    times: 8
-    commands:
-      - extendedWaitUntil:
-          visible: { id: "mcq" }
-          timeout: 20000
-      - tapOn: { id: "option-0" }
-      - tapOn: { id: "check" }
-      - extendedWaitUntil:
-          visible: { id: "feedback-sheet" }
-          timeout: 10000
-      - tapOn: { id: "feedback-sheet-continue" }
+- takeScreenshot: mid-chain-unit-open
+- back
 
-- extendedWaitUntil:
-    visible: { id: "set-complete" }
-    timeout: 20000
-- tapOn: { id: "set-next" }
-
-# Back on the map: bass-notes has unlocked. Prove it by entering it — a locked row
-# is disabled and would never reach its teach phase.
+# The stronger claim: a LATER-GRADE unit is reachable too, with grade 1 neither
+# mastered nor its exam cleared. Under the old rules Level 2 rendered collapsed
+# with no unit row at all, so reaching this teach phase is the proof.
 - extendedWaitUntil:
     visible: { id: "level-map-screen" }
     timeout: 20000
-- assertNotVisible: { id: "unit-row-bass-notes-prerequisite" }
-- takeScreenshot: unlock-map
-- tapOn: { id: "unit-row-bass-notes" }
+- scrollUntilVisible:
+    element: { id: "level-node-level-2" }
+    direction: DOWN
+    timeout: 15000
+- scrollUntilVisible:
+    element: { id: "unit-row-key-signatures-2" }
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: later-grade-reachable
+- tapOn: { id: "unit-row-key-signatures-2" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }
     timeout: 20000

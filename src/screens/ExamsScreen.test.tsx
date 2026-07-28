@@ -67,7 +67,6 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
 
   test('the Level-2 gate is sealed "Coming soon" on a fresh store — no grade-2 exam paper exists yet (D8), independent of any exam-clear state', async () => {
     const seed = seedBlob((store) => {
-      store.unlock('key-signatures-2');
       masterAtoms(store, lessonById('key-signatures-2')!.atoms);
       store.setLesson('key-signatures-2', { completed: true });
     });
