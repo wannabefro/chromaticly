@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "_comment": "Cross-lane ADVISORY prerequisites (G6 R10). Authored, never derived from `unlocks` — `unlocks` is within-lane ordering, this is what one lane leans on in another. Nothing here blocks entry: an edge renders a chip that names the skill, says where the learner is in it, and taps straight there. A lesson with no edge shows no chip. `why` is learner-facing copy and completes the clause \"leans on <strand> — <why>\".",
+  "edges": [
+    {
+      "lesson": "transposing-instruments-5",
+      "requiresStrand": "intervals",
+      "requiresGrade": 3,
+      "why": "major 2nds and perfect 5ths"
+    },
+    {
+      "lesson": "transposing-instruments-5",
+      "requiresStrand": "scales_keys",
+      "requiresGrade": 4,
+      "why": "the transposed key signature"
+    },
+    {
+      "lesson": "chord-inversions-5",
+      "requiresStrand": "scales_keys",
+      "requiresGrade": 4,
+      "why": "which notes the key allows"
+    }
+  ]
+}
