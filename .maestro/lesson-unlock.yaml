@@ -46,7 +46,9 @@ appId: host.exp.Exponent
     visible: { id: "teach-phase" }
     timeout: 20000
 - takeScreenshot: mid-chain-unit-open
-- back
+# `teach-close`, not a `back` gesture: the teach phase is a screen-level view
+# inside the map, not a pushed route, so a swipe-back finds nothing to pop.
+- tapOn: { id: "teach-close" }
 
 # The stronger claim: a LATER-GRADE unit is reachable too, with grade 1 neither
 # mastered nor its exam cleared. Under the old rules Level 2 rendered collapsed
@@ -54,14 +56,15 @@ appId: host.exp.Exponent
 - extendedWaitUntil:
     visible: { id: "level-map-screen" }
     timeout: 20000
-- scrollUntilVisible:
-    element: { id: "level-node-level-2" }
-    direction: DOWN
-    timeout: 15000
+# Straight to the grade-2 unit row. Not via `level-node-level-2`: with grade 2
+# fully authored that node is taller than the viewport, so it can never satisfy
+# the default 100% visibility and the scroll times out on an element that is
+# plainly on screen.
 - scrollUntilVisible:
     element: { id: "unit-row-key-signatures-2" }
     direction: DOWN
-    timeout: 15000
+    timeout: 30000
+    visibilityPercentage: 60
 - takeScreenshot: later-grade-reachable
 - tapOn: { id: "unit-row-key-signatures-2" }
 - extendedWaitUntil:
