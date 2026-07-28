@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:wght@500;600;700&family=Noto+Music&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{background:#0b0c0f;}
+  body{margin:0;background:#0b0c0f;-webkit-font-smoothing:antialiased;}
+  button{all:unset;cursor:pointer;box-sizing:border-box;}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .glyph{font-family:'Noto Music',serif;line-height:1;}
+  .serif{font-family:'Source Serif 4',Georgia,serif;}
+
+  .ph{width:384px;height:834px;background:#111318;border-radius:46px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 80px -24px rgba(0,0,0,0.7),0 0 0 10px #16181d;}
+  .ph.paper{background:#f2efe8;color:#23201a;}
+  .sb{flex:0 0 auto;height:52px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 8px;font-size:14px;font-weight:600;}
+  .batt{width:24px;height:12px;border:1.5px solid currentColor;border-radius:3px;padding:1.5px;}
+  .batt>i{display:block;width:72%;height:100%;background:currentColor;border-radius:1px;}
+
+  .tabbar{flex:0 0 auto;height:80px;border-top:1px solid #20242c;background:#131519;display:flex;align-items:flex-start;justify-content:space-around;padding:12px 8px 0;}
+  .tabitem{display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .tablbl{font-size:10px;color:#6b7280;}
+
+  .cap{width:384px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b7280;line-height:1.5;}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#0b0c0f;padding:4px 12px;border-radius:999px;}
+  .scr{display:flex;flex-direction:column;gap:20px;scroll-margin:90px;}
+  .scrH{display:flex;align-items:baseline;gap:13px;}
+  .scrT{font-size:19px;font-weight:700;}
+
+  .ovl{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;}
+
+  .lane{display:flex;align-items:center;gap:12px;background:#1a1d24;border:1px solid #23272f;border-radius:18px;padding:11px 14px;}
+  .gl{width:34px;height:34px;flex:0 0 auto;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;}
+  .laneName{font-size:14.5px;font-weight:700;line-height:1.2;}
+  .segs{display:flex;gap:3px;margin-top:7px;align-items:center;}
+  .seg{width:20px;height:5px;border-radius:999px;background:#2a2f39;flex:0 0 auto;}
+  .chev{font-family:'IBM Plex Mono',monospace;font-size:17px;color:#565d69;flex:0 0 auto;}
+  .depth{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6b7280;margin-left:6px;white-space:nowrap;}
+
+  .unit{display:flex;align-items:center;gap:12px;background:#1a1d24;border:1px solid #23272f;border-radius:16px;padding:12px 13px;}
+  .unitT{font-size:14px;font-weight:700;line-height:1.25;}
+  .unitS{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b7280;margin-top:4px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:5px 10px;border-radius:999px;background:#241f12;border:1px solid #4a3f1f;color:#f0c489;margin-top:8px;}
+  .gem{width:11px;height:11px;transform:rotate(45deg);border-radius:2px;}
+
+  .btnP{width:100%;text-align:center;font-weight:700;font-size:16px;padding:15px;border-radius:15px;}
+  .btnS{width:100%;text-align:center;font-weight:600;font-size:14px;padding:13px;border-radius:13px;background:#1a1d24;border:1.5px solid #2a2f39;color:#f3f4f6;}
+  .txtS{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b7280;}
+
+  .exCard{background:#fbfaf6;border:1px solid #e2dccc;border-radius:16px;}
+  .exRow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #ece6d8;}
+  .exSw{width:9px;height:9px;border-radius:3px;flex:0 0 auto;}
+
+  /* 7c seed rows — narrower segments so the skill name never wraps */
+  .seedRow{display:flex;align-items:center;gap:9px;padding:9px 12px;background:#1a1d24;border:1px solid #23272f;border-radius:14px;}
+  .seedName{flex:1;min-width:0;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .segS{width:16px;height:5px;border-radius:999px;background:#2a2f39;flex:0 0 auto;}
+</style>
+</helmet>
+
+<section id="screensc" data-screen-label="Progression screens C" style="min-width:max-content;padding:88px 96px 100px;background:#0b0c0f;font-family:'Figtree',system-ui,sans-serif;color:#f3f4f6;">
+
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+    <div style="font-size:22px;font-weight:800;letter-spacing:-0.01em;">Non-linear progression &middot; screens</div>
+    <span class="mono" style="font-size:12px;color:#6b7280;align-self:flex-end;padding-bottom:3px;">spine C &middot; seven parallel depths &middot; 7a&ndash;7e</span>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:26px;">
+    <span class="mono" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#6b7280;">The strand is the unit of progression &mdash; grade returns only at the gate</span>
+    <span style="height:1px;flex:1;background:#20242c;"></span>
+  </div>
+
+  <div style="display:flex;gap:60px;flex-wrap:wrap;">
+
+    <!-- ================= 7a LEARN TAB - SEVEN LANES ================= -->
+    <div id="7a" class="scr">
+      <div class="scrH">
+        <span class="tag" style="background:#f3f4f6;">7a</span>
+        <span class="scrT">Learn &middot; seven lanes</span>
+      </div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+
+        <div style="flex:1 1 auto;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:12px;">
+          <div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-0.01em;line-height:1.15;">Where to today, Maya?</div>
+            <div style="font-size:13px;color:#969ba7;line-height:1.55;margin-top:6px;">Seven skills, each at its own depth. Deepen a strong one or repair a short one &mdash; nothing is locked.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:7px;">
+
+            <div class="lane">
+              <div class="gl" style="background:rgba(240,102,111,0.12);color:#f0666f;"><span class="glyph">&#119135;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Rhythm &amp; metre</div>
+                <div class="segs">
+                  <span class="seg" style="background:#f0666f;"></span><span class="seg" style="background:#f0666f;"></span><span class="seg" style="background:#f0666f;"></span><span class="seg" style="background:#f0666f;"></span><span class="seg"></span>
+                  <span class="depth">grade 4</span>
+                </div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="lane">
+              <div class="gl" style="background:rgba(240,169,79,0.12);color:#f0a94f;"><span class="glyph">&#119070;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Pitch &amp; notation</div>
+                <div class="segs">
+                  <span class="seg" style="background:#f0a94f;"></span><span class="seg" style="background:#f0a94f;"></span><span class="seg" style="background:#f0a94f;"></span><span class="seg"></span><span class="seg"></span>
+                  <span class="depth">grade 3</span>
+                </div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="lane">
+              <div class="gl" style="background:rgba(87,207,135,0.12);color:#57cf87;"><span class="glyph">&#9839;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Keys &amp; scales</div>
+                <div class="segs">
+                  <span class="seg" style="background:#57cf87;"></span><span class="seg" style="background:#57cf87;"></span><span class="seg" style="background:#57cf87;"></span><span class="seg"></span><span class="seg"></span>
+                  <span class="depth">grade 3</span>
+                </div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="lane">
+              <div class="gl" style="background:rgba(47,191,174,0.12);color:#2fbfae;"><span class="glyph">&#10231;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Intervals</div>
+                <div class="segs">
+                  <span class="seg" style="background:#2fbfae;"></span><span class="seg" style="background:#2fbfae;"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+                  <span class="depth">grade 2</span>
+                </div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="lane" style="border:1.5px solid #46b0e6;background:rgba(70,176,230,0.12);">
+              <div class="gl" style="background:rgba(70,176,230,0.18);color:#46b0e6;"><span class="glyph">&#8801;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Chords &amp; harmony</div>
+                <div class="segs">
+                  <span class="seg" style="background:#46b0e6;"></span><span class="seg" style="background:#46b0e6;"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+                  <span class="depth" style="color:#8fd0f2;">grade 2 &middot; your shortest</span>
+                </div>
+              </div>
+              <span class="chev" style="color:#46b0e6;">&rsaquo;</span>
+            </div>
+
+            <div class="lane">
+              <div class="gl" style="background:rgba(139,142,242,0.12);color:#8b8ef2;"><span class="glyph">&#119185;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Terms &amp; signs</div>
+                <div class="segs">
+                  <span class="seg" style="background:#8b8ef2;"></span><span class="seg" style="background:#8b8ef2;"></span><span class="seg" style="background:#8b8ef2;"></span><span class="seg"></span><span class="seg"></span>
+                  <span class="depth">grade 3</span>
+                </div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="lane">
+              <div class="gl" style="background:rgba(203,122,212,0.12);color:#cb7ad4;"><span class="glyph">&#119066;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Music in context</div>
+                <div class="segs">
+                  <span class="seg" style="background:#cb7ad4;"></span><span class="seg" style="background:#cb7ad4;"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+                  <span class="depth">grade 2</span>
+                </div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="flex:0 0 auto;padding:10px 20px 12px;">
+          <button class="btnS">Choose for me</button>
+        </div>
+
+        <div class="tabbar">
+          <div class="tabitem"><div style="width:22px;height:22px;border-radius:7px;background:#f3f4f6;"></div><span class="tablbl" style="color:#f3f4f6;font-weight:700;">Learn</span></div>
+          <div class="tabitem"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="9" fill="none" stroke="#6b7280" stroke-width="2"/><polygon points="8,7 16,11 8,15" fill="#6b7280"/></svg><span class="tablbl">Practice</span></div>
+          <div class="tabitem"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M4 3 h14 v13 l-7 3 -7 -3 z" fill="none" stroke="#6b7280" stroke-width="2" stroke-linejoin="round"/></svg><span class="tablbl">Exams</span></div>
+          <div class="tabitem"><svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="8" r="4" fill="none" stroke="#6b7280" stroke-width="2"/><path d="M4 20 a7 7 0 0 1 14 0" fill="none" stroke="#6b7280" stroke-width="2"/></svg><span class="tablbl">Profile</span></div>
+        </div>
+      </div>
+      <div class="cap">The radar, unrolled and made enterable. Seven hues on one screen is the deliberate exception to one-accent-per-screen &mdash; this IS the strand radar, which the design system already renders 7-hue. The screen&rsquo;s own accent stays neutral white, so no strand reads as &ldquo;current&rdquo;. Every hue is paired with its glyph and name. Approved 2026-07-28; recorded in design/README.md.</div>
+    </div>
+
+    <!-- ================= 7b LANE OPENED ================= -->
+    <div id="7b" class="scr">
+      <div class="scrH">
+        <span class="tag" style="background:#f0a94f;">7b</span>
+        <span class="scrT">Lane opened &middot; advisory prerequisite</span>
+      </div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+
+        <div style="flex:0 0 auto;padding:6px 20px 0;"><span class="mono" style="font-size:22px;color:#6b7280;">&lsaquo;</span></div>
+
+        <div style="flex:1 1 auto;overflow:hidden;padding:10px 20px 0;display:flex;flex-direction:column;gap:13px;">
+          <div>
+            <div class="ovl" style="color:#f0a94f;">Pitch &amp; notation</div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;margin-top:6px;">You&rsquo;re at grade 3 here</div>
+            <div style="font-size:13px;color:#969ba7;line-height:1.55;margin-top:6px;">Ahead is open &mdash; look further up whenever you like.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;overflow:hidden;">
+
+            <div class="ovl" style="color:#6b7280;">Grade 3 &middot; where you are</div>
+
+            <div class="unit" style="border:1.5px solid #f0a94f;background:rgba(240,169,79,0.12);">
+              <div style="flex:1;min-width:0;">
+                <div class="unitT">The alto clef</div>
+                <div class="unitS">next up &middot; 3 of 8 exercises</div>
+              </div>
+              <span style="display:flex;gap:4px;flex:0 0 auto;">
+                <span class="gem" style="background:#f0a94f;"></span><span class="gem" style="background:#f0a94f;"></span><span class="gem" style="background:#f0a94f;"></span><span class="gem" style="border:1.5px solid #4a4231;"></span>
+              </span>
+              <span class="chev" style="color:#f0a94f;">&rsaquo;</span>
+            </div>
+
+            <div class="unit">
+              <div style="flex:1;min-width:0;">
+                <div class="unitT">Double sharps and flats</div>
+                <div class="unitS">not started</div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="ovl" style="color:#6b7280;margin-top:5px;">Grade 4</div>
+
+            <div class="unit">
+              <div style="flex:1;min-width:0;">
+                <div class="unitT">Ornaments and their signs</div>
+                <div class="unitS">not started</div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+            <div class="ovl" style="color:#6b7280;margin-top:5px;">Grade 5</div>
+
+            <div class="unit" style="align-items:flex-start;">
+              <div style="flex:1;min-width:0;">
+                <div class="unitT">Transposing instruments</div>
+                <div class="unitS">not started</div>
+                <div class="chip"><span style="width:7px;height:7px;border-radius:2px;background:#2fbfae;flex:0 0 auto;"></span>leans on intervals &middot; you&rsquo;re at grade 2 &rsaquo;</div>
+              </div>
+              <span class="chev" style="padding-top:2px;">&rsaquo;</span>
+            </div>
+
+            <div class="unit">
+              <div style="flex:1;min-width:0;">
+                <div class="unitT">Naming the voices &middot; SATB</div>
+                <div class="unitS">not started</div>
+              </div>
+              <span class="chev">&rsaquo;</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="flex:0 0 auto;padding:12px 20px 30px;">
+          <button class="btnP" style="background:#f0a94f;color:#3a2a10;">Continue &middot; the alto clef</button>
+        </div>
+      </div>
+      <div class="cap">One lane at its own depth &mdash; grade 3 pitch, not grade 3 everything. Nothing ahead is locked (R2): grades 4 and 5 are listed plainly and are enterable. The grade-5 unit carries the advisory chip &mdash; it names the skill it leans on, says where you are in it, and taps straight there. It never blocks entry.</div>
+    </div>
+
+    <!-- ================= 7c PLACEMENT RESULT ================= -->
+    <div id="7c" class="scr">
+      <div class="scrH">
+        <span class="tag" style="background:#57cf87;">7c</span>
+        <span class="scrT">Placement result &middot; honestly uneven</span>
+      </div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+
+        <div style="flex:1 1 auto;overflow:hidden;padding:14px 20px 0;display:flex;flex-direction:column;gap:15px;">
+          <div>
+            <div class="ovl" style="color:#6b7280;">Placement &middot; 8 questions</div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;margin-top:7px;">Here&rsquo;s where you are, Maya</div>
+            <div style="font-size:13px;color:#969ba7;line-height:1.55;margin-top:7px;">Uneven is normal &mdash; most people are. Think one&rsquo;s wrong? Tap it and we&rsquo;ll ask four more.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#f0666f;width:19px;text-align:center;flex:0 0 auto;">&#119135;</span>
+              <span class="seedName">Rhythm &amp; metre</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#f0666f;"></span><span class="segS" style="background:#f0666f;"></span><span class="segS" style="background:#f0666f;"></span><span class="segS" style="background:#f0666f;"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">4</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#f0a94f;width:19px;text-align:center;flex:0 0 auto;">&#119070;</span>
+              <span class="seedName">Pitch &amp; notation</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#f0a94f;"></span><span class="segS" style="background:#f0a94f;"></span><span class="segS" style="background:#f0a94f;"></span><span class="segS"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">3</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#57cf87;width:19px;text-align:center;flex:0 0 auto;">&#9839;</span>
+              <span class="seedName">Keys &amp; scales</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#57cf87;"></span><span class="segS" style="background:#57cf87;"></span><span class="segS" style="background:#57cf87;"></span><span class="segS"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">3</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#2fbfae;width:19px;text-align:center;flex:0 0 auto;">&#10231;</span>
+              <span class="seedName">Intervals</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#2fbfae;"></span><span class="segS" style="background:#2fbfae;"></span><span class="segS"></span><span class="segS"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">2</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#46b0e6;width:19px;text-align:center;flex:0 0 auto;">&#8801;</span>
+              <span class="seedName">Chords &amp; harmony</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#46b0e6;"></span><span class="segS" style="background:#46b0e6;"></span><span class="segS"></span><span class="segS"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">2</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#8b8ef2;width:19px;text-align:center;flex:0 0 auto;">&#119185;</span>
+              <span class="seedName">Terms &amp; signs</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#8b8ef2;"></span><span class="segS" style="background:#8b8ef2;"></span><span class="segS" style="background:#8b8ef2;"></span><span class="segS"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">3</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="seedRow">
+              <span class="glyph" style="font-size:15px;color:#cb7ad4;width:19px;text-align:center;flex:0 0 auto;">&#119066;</span>
+              <span class="seedName">Music in context</span>
+              <span style="display:flex;gap:3px;flex:0 0 auto;"><span class="segS" style="background:#cb7ad4;"></span><span class="segS" style="background:#cb7ad4;"></span><span class="segS"></span><span class="segS"></span><span class="segS"></span></span>
+              <span class="mono" style="font-size:11px;color:#f3f4f6;width:11px;text-align:right;flex:0 0 auto;">2</span>
+              <svg width="15" height="15" viewBox="0 0 16 16" style="flex:0 0 auto;"><path d="M13.5 8 a5.5 5.5 0 1 1 -1.7 -4" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round"/><path d="M12.4 1 v3.2 h-3.2" fill="none" stroke="#565d69" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <div style="background:#141619;border:1px solid #23272f;border-radius:16px;padding:13px 15px;display:flex;gap:11px;">
+            <span style="flex:0 0 auto;font-size:15px;">&#128161;</span>
+            <div style="font-size:12.5px;color:#969ba7;line-height:1.55;">We only tested a little of each. These move as you go &mdash; and a skill you leave alone will quietly slide back down.</div>
+          </div>
+        </div>
+
+        <div style="flex:0 0 auto;padding:12px 20px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP" style="background:#f3f4f6;color:#111318;">Looks about right</button>
+          <div class="txtS">a re-test is 4 questions on that skill alone</div>
+        </div>
+      </div>
+      <div class="cap">Placement seeds seven depths, not one grade (R7). Shown uneven rather than averaged into a headline grade, and the copy pre-warns that skills drift down (R5) so a later drop reads as honesty. Disagreeing with a seed opens a four-question re-test on that skill alone &mdash; the adaptive ladder from placement shape B &mdash; never a self-assessment slider. The same surface serves every later &ldquo;have I actually moved?&rdquo; moment.</div>
+    </div>
+
+    <!-- ================= 7d EXAM READINESS ================= -->
+    <div id="7d" class="scr">
+      <div class="scrH">
+        <span class="tag" style="background:#8b8ef2;">7d</span>
+        <span class="scrT">Exam readiness &middot; advisory, never blocking</span>
+      </div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+
+        <div style="flex:1 1 auto;overflow:hidden;padding:14px 20px 0;display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <div class="ovl" style="color:#6b7280;">Grade 5 &middot; practice exam paper</div>
+            <div style="font-size:24px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;margin-top:7px;">Five of seven skills are there</div>
+            <div style="font-size:13px;color:#969ba7;line-height:1.55;margin-top:7px;">You can sit the paper whenever you like. Here&rsquo;s what it&rsquo;ll ask of you that isn&rsquo;t ready yet.</div>
+          </div>
+
+          <div style="background:#141619;border:1px solid #23272f;border-radius:16px;padding:13px 15px;display:flex;flex-direction:column;gap:10px;">
+            <div class="ovl" style="color:#57cf87;">At grade 5 or above</div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;">
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px;border-radius:999px;background:#1a1d24;border:1px solid #23272f;"><span class="glyph" style="font-size:12px;color:#f0666f;">&#119135;</span>Rhythm</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px;border-radius:999px;background:#1a1d24;border:1px solid #23272f;"><span class="glyph" style="font-size:12px;color:#f0a94f;">&#119070;</span>Pitch</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px;border-radius:999px;background:#1a1d24;border:1px solid #23272f;"><span class="glyph" style="font-size:12px;color:#57cf87;">&#9839;</span>Scales</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px;border-radius:999px;background:#1a1d24;border:1px solid #23272f;"><span class="glyph" style="font-size:12px;color:#8b8ef2;">&#119185;</span>Terms</span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px;border-radius:999px;background:#1a1d24;border:1px solid #23272f;"><span class="glyph" style="font-size:12px;color:#cb7ad4;">&#119066;</span>Context</span>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div class="ovl" style="color:#f0c489;">Two skills are short &middot; 22 marks</div>
+
+            <div class="lane" style="align-items:flex-start;">
+              <div class="gl" style="background:rgba(47,191,174,0.12);color:#2fbfae;"><span class="glyph">&#10231;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Intervals</div>
+                <div class="segs">
+                  <span class="seg" style="background:#2fbfae;"></span><span class="seg" style="background:#2fbfae;"></span><span class="seg" style="border:1px dashed #3a4150;background:transparent;"></span><span class="seg" style="border:1px dashed #3a4150;background:transparent;"></span><span class="seg" style="border:1px dashed #3a4150;background:transparent;"></span>
+                  <span class="depth">grade 2 &middot; needs 5</span>
+                </div>
+                <div class="unitS" style="margin-top:7px;">section 4 &middot; 10 marks &mdash; compound intervals, inversion</div>
+              </div>
+              <span class="chev" style="padding-top:2px;">&rsaquo;</span>
+            </div>
+
+            <div class="lane" style="align-items:flex-start;">
+              <div class="gl" style="background:rgba(70,176,230,0.12);color:#46b0e6;"><span class="glyph">&#8801;</span></div>
+              <div style="flex:1;min-width:0;">
+                <div class="laneName">Chords &amp; harmony</div>
+                <div class="segs">
+                  <span class="seg" style="background:#46b0e6;"></span><span class="seg" style="background:#46b0e6;"></span><span class="seg" style="border:1px dashed #3a4150;background:transparent;"></span><span class="seg" style="border:1px dashed #3a4150;background:transparent;"></span><span class="seg" style="border:1px dashed #3a4150;background:transparent;"></span>
+                  <span class="depth">grade 2 &middot; needs 5</span>
+                </div>
+                <div class="unitS" style="margin-top:7px;">section 5 &middot; 12 marks &mdash; inversions, cadences</div>
+              </div>
+              <span class="chev" style="padding-top:2px;">&rsaquo;</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex:0 0 auto;padding:12px 20px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP" style="background:#f3f4f6;color:#111318;">Work on intervals first</button>
+          <button class="btnS">Sit the paper anyway</button>
+        </div>
+      </div>
+      <div class="cap">Grade returns in exactly one place (R6). Readiness reads the whole vector, names the short skills with the marks they cost, and taps into either &mdash; but &ldquo;Sit the paper anyway&rdquo; is always present and never buried. Still the app register: the exam register begins at the paper itself.</div>
+    </div>
+
+    <!-- ================= 7e EXAM RESULT PER LANE ================= -->
+    <div id="7e" class="scr">
+      <div class="scrH">
+        <span class="tag" style="background:#e8e2d4;">7e</span>
+        <span class="scrT">Result &middot; per skill</span>
+      </div>
+      <div class="ph paper">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+
+        <div style="flex:1 1 auto;overflow:hidden;padding:14px 26px 0;display:flex;flex-direction:column;gap:14px;">
+          <div class="ovl" style="color:#a0977f;letter-spacing:0.18em;">Assessment mode &middot; complete</div>
+
+          <div>
+            <div class="serif" style="font-size:15px;font-weight:600;color:#8a8272;">Grade 5 &middot; practice exam paper</div>
+            <div class="serif" style="font-size:29px;font-weight:700;letter-spacing:-0.01em;line-height:1.1;margin-top:2px;">Your result</div>
+          </div>
+
+          <div class="exCard" style="padding:16px;display:flex;align-items:center;gap:18px;">
+            <div>
+              <div class="serif" style="font-size:36px;font-weight:700;line-height:1;">42<span style="font-size:20px;color:#8a8272;">/75</span></div>
+              <div class="mono" style="font-size:10px;color:#a0977f;letter-spacing:0.05em;margin-top:6px;">56% &middot; MARKS</div>
+            </div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:50%;background:#b8ab8c;"></span><span class="serif" style="font-size:17px;font-weight:700;">Pass</span></div>
+              <div class="mono" style="font-size:10.5px;color:#8a8272;line-height:1.6;margin-top:6px;">merit at 45 &middot; 3 marks away</div>
+            </div>
+          </div>
+
+          <div class="exCard" style="padding:6px 14px;">
+            <div class="exRow"><span style="display:flex;align-items:center;gap:9px;font-size:13px;"><span class="exSw" style="background:#f0666f;"></span>1 &middot; Rhythm &amp; Metre</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">11</b>/12</span></div>
+            <div class="exRow"><span style="display:flex;align-items:center;gap:9px;font-size:13px;"><span class="exSw" style="background:#f0a94f;"></span>2 &middot; Pitch &amp; Notation</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">8</b>/11</span></div>
+            <div class="exRow"><span style="display:flex;align-items:center;gap:9px;font-size:13px;"><span class="exSw" style="background:#57cf87;"></span>3 &middot; Keys &amp; Scales</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">9</b>/12</span></div>
+            <div class="exRow" style="background:#f4eee0;margin:0 -14px;padding-left:14px;padding-right:14px;"><span style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;"><span class="exSw" style="background:#2fbfae;"></span>4 &middot; Intervals</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">2</b>/10</span></div>
+            <div class="exRow" style="background:#f4eee0;margin:0 -14px;padding-left:14px;padding-right:14px;"><span style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:700;"><span class="exSw" style="background:#46b0e6;"></span>5 &middot; Chords &amp; Harmony</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">3</b>/10</span></div>
+            <div class="exRow"><span style="display:flex;align-items:center;gap:9px;font-size:13px;"><span class="exSw" style="background:#8b8ef2;"></span>6 &middot; Terms &amp; Signs</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">5</b>/10</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;"><span style="display:flex;align-items:center;gap:9px;font-size:13px;"><span class="exSw" style="background:#cb7ad4;"></span>7 &middot; Music in Context</span><span class="mono" style="font-size:12px;color:#8a8272;"><b style="color:#23201a;">4</b>/10</span></div>
+          </div>
+
+          <div class="serif" style="font-size:14px;color:#23201a;line-height:1.6;">The two shaded sections cost 15 of the 33 marks you dropped. They are the same two skills readiness flagged before you began.</div>
+        </div>
+
+        <div style="flex:0 0 auto;padding:12px 26px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP serif" style="background:#23201a;color:#f2efe8;">Back into intervals &amp; chords</button>
+          <button class="btnP serif" style="background:transparent;border:1px solid #d8d0bd;color:#23201a;font-size:14px;padding:12px;">Review the paper</button>
+        </div>
+      </div>
+      <div class="cap">Exam register held throughout &mdash; paper surfaces, Source Serif 4 headings, no XP, no streak, no celebration. The result reports per skill, and the two shaded rows ARE the next session&rsquo;s plan: the primary action returns to those two skills.</div>
+    </div>
+
+  </div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{}'>
+  class Component extends DCLogic {
+    renderVals() { return {}; }
+  }
+</script>
+</body>
+</html>

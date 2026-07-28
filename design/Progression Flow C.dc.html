@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:wght@600&family=Noto+Music&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{background:#0b0c0f;}
+  body{margin:0;background:#0b0c0f;-webkit-font-smoothing:antialiased;}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace;}
+  .glyph{font-family:'Noto Music',serif;font-size:15px;line-height:1;width:17px;text-align:center;flex:0 0 auto;}
+  .band{display:flex;align-items:stretch;gap:0;margin-bottom:30px;}
+  .bandTag{width:132px;flex:0 0 auto;padding-top:4px;}
+  .bandTagT{font-size:15px;font-weight:800;line-height:1.25;color:#f3f4f6;}
+  .bandTagS{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b7280;line-height:1.5;margin-top:5px;}
+  .track{flex:1;display:flex;align-items:center;gap:0;flex-wrap:nowrap;}
+  .n{background:#1a1d24;border:1px solid #23272f;border-radius:13px;padding:11px 14px;width:186px;flex:0 0 auto;}
+  .nT{font-size:13px;font-weight:700;line-height:1.32;}
+  .nS{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8b919c;line-height:1.5;margin-top:5px;}
+  .arr{flex:0 0 auto;width:32px;display:flex;align-items:center;justify-content:center;}
+  .arrL{width:100%;height:1.5px;background:#3a4150;position:relative;}
+  .arrH{position:absolute;right:0;top:-3px;width:7px;height:7px;border-right:1.5px solid #3a4150;border-top:1.5px solid #3a4150;transform:rotate(45deg);}
+  .lane{display:flex;align-items:center;gap:8px;padding:5px 9px;border-radius:8px;background:#15181e;border:1px solid #23272f;}
+  .laneName{font-size:11.5px;font-weight:600;flex:1;}
+  .bar{height:4px;border-radius:999px;background:#2a2f39;overflow:hidden;width:64px;flex:0 0 auto;}
+  .barFill{height:100%;border-radius:999px;}
+  .note{background:#131519;border:1px solid #23272f;border-radius:13px;padding:13px 16px;}
+  .noteH{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px;}
+  .noteL{font-size:12.5px;color:#c3c8d0;line-height:1.6;}
+  .tab{flex:1;text-align:center;padding:7px 4px;border-radius:9px;font-size:11px;font-weight:600;background:#15181e;border:1px solid #23272f;}
+  .unitRow{display:flex;align-items:center;gap:11px;padding:11px 13px;background:#1a1d24;border:1px solid #23272f;border-radius:12px;}
+  .chip{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 10px;border-radius:999px;background:#241f12;border:1px solid #4a3f1f;color:#f0c489;white-space:nowrap;}
+</style>
+</helmet>
+
+<section id="flowc" data-screen-label="Progression flow C" style="min-width:max-content;padding:80px 90px 96px;background:#0b0c0f;font-family:'Figtree',system-ui,sans-serif;color:#f3f4f6;">
+
+  <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px;">
+    <div style="font-size:23px;font-weight:800;letter-spacing:-0.01em;">Overall flow &middot; seven parallel depths</div>
+    <span class="mono" style="font-size:12px;color:#f0c489;">spine C</span>
+  </div>
+  <div style="font-size:13.5px;color:#969ba7;line-height:1.6;max-width:1120px;margin-bottom:34px;">A learner has seven depths, not one grade. Every path below either <em>reads</em> that vector or <em>moves</em> one lane of it. Grade re-appears in exactly one place &mdash; the exam. Only the strand rows carry hue here; band labels are deliberately neutral so no diagram chrome reads as a strand colour.</div>
+
+  <div class="band">
+    <div class="bandTag">
+      <div class="bandTagT">First run</div>
+      <div class="bandTagS">once &middot; seeds the vector</div>
+    </div>
+    <div class="track">
+      <div class="n">
+        <div class="nT">Welcome</div>
+        <div class="nS">what you&rsquo;ll learn &middot; it sounds</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-color:#2a2f39;background:#1e222a;">
+        <div class="nT">Placement &mdash; a short listen-and-answer</div>
+        <div class="nS">~8 items, widest strand spread &middot; stops early per lane</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">Seven depths seeded</div>
+        <div class="nS">not one grade &middot; confident lanes start deep</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">&ldquo;Here&rsquo;s where you are&rdquo;</div>
+        <div class="nS">the lanes, honestly uneven &middot; editable &middot; screen 7c</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-style:dashed;border-color:#3a4150;">
+        <div class="nT">Skip placement</div>
+        <div class="nS">all lanes at 1 &middot; the map fills in as you go</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="bandTag">
+      <div class="bandTagT">Learn tab</div>
+      <div class="bandTagS">lane-scoped &middot; moves one lane</div>
+    </div>
+    <div class="track">
+
+      <div style="width:238px;flex:0 0 auto;display:flex;flex-direction:column;gap:5px;padding:11px;background:#1a1d24;border:1px solid #2a2f39;border-radius:13px;">
+        <div class="nT" style="margin-bottom:4px;">Learn &mdash; seven lanes &middot; screen 7a</div>
+        <div class="lane">
+          <span class="glyph" style="color:#f0666f;font-size:13px;">&#119135;</span>
+          <span class="laneName">Rhythm</span>
+          <div class="bar"><div class="barFill" style="width:80%;background:#f0666f;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8b919c;">4</span>
+        </div>
+        <div class="lane">
+          <span class="glyph" style="color:#f0a94f;font-size:13px;">&#119070;</span>
+          <span class="laneName">Pitch</span>
+          <div class="bar"><div class="barFill" style="width:60%;background:#f0a94f;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8b919c;">3</span>
+        </div>
+        <div class="lane">
+          <span class="glyph" style="color:#57cf87;font-size:13px;">&#9839;</span>
+          <span class="laneName">Scales</span>
+          <div class="bar"><div class="barFill" style="width:60%;background:#57cf87;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8b919c;">3</span>
+        </div>
+        <div class="lane">
+          <span class="glyph" style="color:#2fbfae;font-size:13px;">&#10231;</span>
+          <span class="laneName">Intervals</span>
+          <div class="bar"><div class="barFill" style="width:40%;background:#2fbfae;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8b919c;">2</span>
+        </div>
+        <div class="lane" style="border:1.5px solid #46b0e6;background:rgba(70,176,230,0.12);">
+          <span class="glyph" style="color:#46b0e6;font-size:13px;">&#8801;</span>
+          <span class="laneName">Chords</span>
+          <div class="bar"><div class="barFill" style="width:40%;background:#46b0e6;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8fd0f2;">2</span>
+        </div>
+        <div class="lane">
+          <span class="glyph" style="color:#8b8ef2;font-size:13px;">&#119185;</span>
+          <span class="laneName">Terms &amp; signs</span>
+          <div class="bar"><div class="barFill" style="width:60%;background:#8b8ef2;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8b919c;">3</span>
+        </div>
+        <div class="lane">
+          <span class="glyph" style="color:#cb7ad4;font-size:13px;">&#119066;</span>
+          <span class="laneName">Context</span>
+          <div class="bar"><div class="barFill" style="width:40%;background:#cb7ad4;"></div></div>
+          <span class="mono" style="font-size:10px;color:#8b919c;">2</span>
+        </div>
+      </div>
+
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+
+      <div style="width:200px;flex:0 0 auto;display:flex;flex-direction:column;gap:8px;">
+        <div class="n" style="width:100%;border-color:#2a2f39;background:#1e222a;">
+          <div class="nT">Pick a lane</div>
+          <div class="nS">deepen a strong one, or repair the short one</div>
+        </div>
+        <div class="n" style="width:100%;">
+          <div class="nT">Choose for me</div>
+          <div class="nS">the B affordance, living inside C</div>
+        </div>
+      </div>
+
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+
+      <div class="n">
+        <div class="nT">Lane at its own depth</div>
+        <div class="nS">chords opens at grade 2 &mdash; not grade 2 everything &middot; screen 7b</div>
+      </div>
+
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+
+      <div class="n">
+        <div class="nT">Exercise set</div>
+        <div class="nS">unchanged loop &middot; teach &rarr; items &rarr; feedback sheet</div>
+      </div>
+
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+
+      <div class="n" style="border-color:#2a4a36;">
+        <div class="nT">That lane deepens</div>
+        <div class="nS">atom mastery &rarr; lane depth &rarr; SRS schedule &middot; nothing else moves</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="bandTag">
+      <div class="bandTagT">Practice tab</div>
+      <div class="bandTagS">cross-lane &middot; retention</div>
+    </div>
+    <div class="track">
+      <div class="n" style="border-color:#2a4a36;">
+        <div class="nT">Review due &middot; 6</div>
+        <div class="nS">its own destination &mdash; a different intent from learning</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">Spans every lane touched</div>
+        <div class="nS">the one surface that is not lane-scoped (R4)</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">Interleaves by design</div>
+        <div class="nS">mixing strands IS the retention benefit</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-style:dashed;border-color:#3a4150;">
+        <div class="nT">Optional: narrow to one lane</div>
+        <div class="nS">a filter, not the default</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-color:#2a4a36;">
+        <div class="nT">Grades feed the same depths</div>
+        <div class="nS">review moves lanes too &middot; one state, two doors</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="bandTag">
+      <div class="bandTagT">Drift</div>
+      <div class="bandTagS">time passes &middot; lanes fall</div>
+    </div>
+    <div class="track">
+      <div class="n" style="border-color:#4a2d31;">
+        <div class="nT">A lane goes quiet</div>
+        <div class="nS">SRS intervals lapse &middot; mastery decays</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">Its depth reads honestly lower</div>
+        <div class="nS">the lane shortens &mdash; no scolding, no streak-break</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">Repair is just entering that lane</div>
+        <div class="nS">no separate remedial mode</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-style:dashed;border-color:#3a4150;">
+        <div class="nT">Returning after months</div>
+        <div class="nS">lanes are already the right shape &mdash; nothing to reset</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band" style="margin-bottom:38px;">
+    <div class="bandTag">
+      <div class="bandTagT">The gate</div>
+      <div class="bandTagS">where grade returns</div>
+    </div>
+    <div class="track">
+      <div class="n">
+        <div class="nT">Readiness for grade N</div>
+        <div class="nS">every lane &ge; N? advisory, never blocking &middot; screen 7d</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-color:#3a3c5c;">
+        <div class="nT">&ldquo;Two lanes are short&rdquo;</div>
+        <div class="nS">names them &middot; taps straight into either</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="background:#f2efe8;border-color:#e2dccc;">
+        <div class="nT" style="color:#23201a;font-family:'Source Serif 4',Georgia,serif;">Exam paper</div>
+        <div class="nS" style="color:#8a8272;">exam register &middot; no hints, no streaks, no gamification</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n">
+        <div class="nT">Result, per lane</div>
+        <div class="nS">42/75 &middot; and which lanes cost the marks &middot; screen 7e</div>
+      </div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-color:#4a3f1f;">
+        <div class="nT">Back into those lanes</div>
+        <div class="nS">the result IS the next session&rsquo;s plan</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#131519;border:1px solid #23272f;border-left:3px solid #f0c489;border-radius:0 14px 14px 0;padding:17px 20px;margin-bottom:28px;max-width:1500px;">
+    <div class="noteH" style="color:#f0c489;">When a lane leans on another &mdash; advisory, never blocking</div>
+    <div style="display:flex;gap:26px;align-items:flex-start;">
+      <div style="width:420px;flex:0 0 auto;display:flex;flex-direction:column;gap:8px;">
+        <div class="unitRow">
+          <span class="glyph" style="color:#f0a94f;">&#119070;</span>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">Transposing instruments</div>
+            <div class="mono" style="font-size:10px;color:#8b919c;margin-top:3px;">pitch &middot; grade 5</div>
+          </div>
+          <span class="chip">leans on intervals &middot; you&rsquo;re at 2 &rsaquo;</span>
+        </div>
+        <div class="unitRow" style="opacity:0.6;">
+          <span class="glyph" style="color:#f0a94f;">&#119070;</span>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;">Naming the voices</div>
+            <div class="mono" style="font-size:10px;color:#8b919c;margin-top:3px;">pitch &middot; grade 5 &middot; no outside dependency</div>
+          </div>
+        </div>
+        <div class="mono" style="font-size:10px;color:#6b7280;line-height:1.55;padding-left:2px;">the chip names the lane and the gap, and taps into it &mdash; the unit stays enterable</div>
+      </div>
+      <div style="flex:1;">
+        <div class="noteL" style="margin-bottom:10px;"><strong>Two kinds, and only one is new.</strong> <em>Within-lane</em> prerequisites are pervasive and already free &mdash; <span class="mono" style="color:#969ba7;">chord-inversions-5</span> tells you to find the triad first, which is just chords at grade 4, i.e. the lane&rsquo;s own depth order. <em>Cross-lane</em> prerequisites are real but sparse and cluster at grade 5: <span class="mono" style="color:#969ba7;">transposing-instruments-5</span> is filed under pitch yet needs major 2nds and perfect 5ths (intervals) and the transposed key signature (scales).</div>
+        <div class="noteL"><strong>The graph must be authored, not derived.</strong> Today&rsquo;s <span class="mono" style="color:#969ba7;">unlocks</span> chain is a serpentine tour, not a dependency: all 20 of its cross-strand edges stay inside one grade and none cross a grade boundary. Converting it would import false dependencies like <span class="mono" style="color:#969ba7;">chords-4 &rarr; ornaments-4</span>. Estimated real cross-lane edges: 8&ndash;12, grades 3&ndash;5.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:28px;align-items:stretch;max-width:1500px;">
+    <div class="note" style="flex:1;border-left:3px solid #57cf87;border-radius:0 13px 13px 0;">
+      <div class="noteH" style="color:#57cf87;">The shell holds &mdash; four tabs</div>
+      <div style="display:flex;gap:6px;margin-bottom:10px;">
+        <div class="tab" style="border-color:#3a4150;color:#f3f4f6;">Learn</div>
+        <div class="tab" style="border-color:#3a4150;color:#f3f4f6;">Practice</div>
+        <div class="tab">Exams</div>
+        <div class="tab">Profile</div>
+      </div>
+      <div class="noteL">Practice stays top level. Under C it is the <em>only</em> surface that is not lane-scoped, so nesting it inside the lane-structured tab would be the wrong shape &mdash; and the shell exists precisely because Practice was once unreachable. Each tab keeps a distinct job: Learn is lane-scoped forward motion, Practice is cross-lane retention, Exams is the gate, Profile is identity and settings.</div>
+    </div>
+    <div class="note" style="flex:1;border-left:3px solid #f0a94f;border-radius:0 13px 13px 0;">
+      <div class="noteH" style="color:#f0c489;">What DOES merge &mdash; the radar</div>
+      <div class="noteL">The lanes and the profile&rsquo;s 7-strand radar are one object seen twice: lanes are the radar, unrolled. Learn owns the interactive version you enter; Profile keeps a compact read-only summary next to identity and settings. They must never disagree &mdash; today the radar counts locked lessons, so an unreached strand reads empty; under C that rollup has to change or the two views will tell different stories.</div>
+    </div>
+    <div class="note" style="flex:1;border-left:3px solid #6b7280;border-radius:0 13px 13px 0;">
+      <div class="noteH" style="color:#969ba7;">Still open</div>
+      <div class="noteL">1 &mdash; Does the goal layer (&ldquo;grade 5 by March&rdquo;) ship with this or after? 2 &mdash; Is placement per-lane adaptive, or one short quiz that seeds all seven? 3 &mdash; Who authors the 8&ndash;12 cross-lane edges, and does a missing edge count as a content bug?</div>
+    </div>
+  </div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{}'>
+  class Component extends DCLogic {
+    renderVals() { return {}; }
+  }
+</script>
+</body>
+</html>

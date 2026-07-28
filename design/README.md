@@ -24,7 +24,7 @@ Sources: product brief pasted in project chat (graded music-theory curriculum & 
 
 ## VISUAL FOUNDATIONS
 - **Modes:** dark is primary; light mode = warm paper surfaces + ink text. A third register, **exam** (`--exam-*`), is warmer paper + `Source Serif 4` headings, used only in assessment mode.
-- **Color:** near-black blue-grey surfaces (`#0b0c0f/#111318/#1a1d24`), 7-strand chromatic accents (see tokens/colors.css). One accent per screen — the current strand's hue drives the progress bar, selected states, and primary button. Strand color is ALWAYS paired with a glyph or label (colour-vision safety).
+- **Color:** near-black blue-grey surfaces (`#0b0c0f/#111318/#1a1d24`), 7-strand chromatic accents (see tokens/colors.css). One accent per screen — the current strand's hue drives the progress bar, selected states, and primary button. Strand color is ALWAYS paired with a glyph or label (colour-vision safety). **Exception (approved 2026-07-28): the strand radar and any surface that IS the radar** — notably the lane-based Learn tab under non-linear progression — carries all seven hues at once, because no single strand is "current" there. Such a screen keeps its own accent neutral (`--text`) so nothing reads as the current strand, and every hue still carries its glyph and name. This exception does not extend to exercise, lesson, or exam screens, which always have exactly one current strand.
 - **Notation paper:** notation never inverts. It always sits on `--paper #f6f4ee` with near-black ink, both modes. Paper cards get the only drop shadows in the dark UI.
 - **Backgrounds:** flat surfaces + 1px borders; no gradients except (a) the 7-hue brand gradient in the logo/score rings, (b) very subtle dark duotones on hero cards. Signature motif: **faint horizontal staff-line texture** on hero/flashcards via `repeating-linear-gradient(0deg, transparent 0 11px, <strand tint ~10%> 11px 12px)`.
 - **Cards:** radius 16–22px, 1px border, no shadow (dark). Selected/interactive: 1.5px border in strand hue + 12–16% tint fill. Locked: dashed border, 0.55–0.65 opacity.
@@ -46,6 +46,9 @@ Sources: product brief pasted in project chat (graded music-theory curriculum & 
 - `components/core/` — Button, AnswerOption, NotationCard, PlayButton, StrandChip, ProgressSegments, MasteryGems, FeedbackSheet, RomanNumeralBoxes (+ .d.ts, .prompt.md each)
 - `guidelines/` — foundation specimen cards (@dsCard)
 - `Chromaticly Core Flows.dc.html` — all screens: exercise loop (2a–2f), SRS (2g–2h), level map + exam (3a–3d), lessons + context + light mode (4a–4e), onboarding/profile/interaction states (5a–…)
+- `Progression Flow C.dc.html` — non-linear progression, spine C: the seven-lane model end to end, and the advisory cross-lane prerequisite band
+- `Progression Screens C.dc.html` — **the normative layouts for spine C**, screens 7a–7e: Learn as seven lanes (7a), one lane opened with the advisory prereq chip (7b), the placement result shown honestly uneven (7c), exam readiness read off the whole vector (7d), and the per-skill exam result (7e)
+- `Placement A vs B.dc.html` — the two placement shapes, screens A1–A2 and B1–B3, with the comparison that settled it: ship A's one mixed pass, keep B's ladder as the per-skill re-test
 - `SKILL.md` — agent skill entry point
 
 ## Intentional additions

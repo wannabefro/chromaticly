@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:wght@600;700&family=Noto+Music&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{background:#0b0c0f;}
+  body{margin:0;background:#0b0c0f;-webkit-font-smoothing:antialiased;}
+  button{all:unset;cursor:pointer;box-sizing:border-box;}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .glyph{font-family:'Noto Music',serif;line-height:1;}
+
+  .ph{width:384px;height:834px;background:#111318;border-radius:46px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 80px -24px rgba(0,0,0,0.7),0 0 0 10px #16181d;}
+  .sb{flex:0 0 auto;height:52px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 8px;font-size:14px;font-weight:600;}
+  .batt{width:24px;height:12px;border:1.5px solid currentColor;border-radius:3px;padding:1.5px;}
+  .batt>i{display:block;width:72%;height:100%;background:currentColor;border-radius:1px;}
+
+  .cap{width:384px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b7280;line-height:1.5;}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#0b0c0f;padding:4px 12px;border-radius:999px;}
+  .scr{display:flex;flex-direction:column;gap:20px;scroll-margin:90px;}
+  .scrH{display:flex;align-items:baseline;gap:13px;}
+  .scrT{font-size:19px;font-weight:700;}
+  .ovl{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;}
+
+  /* progress segments */
+  .psegs{display:flex;gap:4px;}
+  .pseg{flex:1;height:4px;border-radius:999px;background:#2a2f39;}
+
+  /* notation paper card */
+  .paper{background:#f6f4ee;border-radius:16px;padding:16px 18px;box-shadow:0 6px 20px -8px rgba(0,0,0,0.5);display:flex;align-items:center;gap:14px;}
+  .staveWrap{flex:1;min-width:0;}
+  .playBtn{width:38px;height:38px;flex:0 0 auto;border-radius:999px;border:1.5px solid #d8d3c4;display:flex;align-items:center;justify-content:center;}
+
+  /* answer options */
+  .opt{min-height:56px;display:flex;align-items:center;gap:12px;padding:0 16px;background:#1a1d24;border:1px solid #23272f;border-radius:15px;font-size:16px;font-weight:600;}
+
+  .btnP{width:100%;text-align:center;font-weight:700;font-size:16px;padding:15px;border-radius:15px;}
+  .btnS{width:100%;text-align:center;font-weight:600;font-size:14px;padding:13px;border-radius:13px;background:#1a1d24;border:1.5px solid #2a2f39;color:#f3f4f6;}
+  .txtS{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b7280;}
+
+  /* lane rows */
+  .lane{display:flex;align-items:center;gap:12px;background:#1a1d24;border:1px solid #23272f;border-radius:16px;padding:11px 13px;}
+  .gl{width:32px;height:32px;flex:0 0 auto;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .laneName{font-size:14px;font-weight:700;line-height:1.2;}
+  .laneS{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b7280;margin-top:4px;}
+
+  /* flow strip */
+  .band{display:flex;align-items:stretch;margin-bottom:26px;}
+  .bandTag{width:120px;flex:0 0 auto;padding-top:4px;}
+  .bandTagT{font-size:15px;font-weight:800;line-height:1.25;color:#f3f4f6;}
+  .bandTagS{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b7280;line-height:1.5;margin-top:5px;}
+  .track{flex:1;display:flex;align-items:center;flex-wrap:nowrap;}
+  .n{background:#1a1d24;border:1px solid #23272f;border-radius:13px;padding:11px 14px;width:176px;flex:0 0 auto;}
+  .nT{font-size:13px;font-weight:700;line-height:1.32;}
+  .nS{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8b919c;line-height:1.5;margin-top:5px;}
+  .arr{flex:0 0 auto;width:30px;display:flex;align-items:center;justify-content:center;}
+  .arrL{width:100%;height:1.5px;background:#3a4150;position:relative;}
+  .arrH{position:absolute;right:0;top:-3px;width:7px;height:7px;border-right:1.5px solid #3a4150;border-top:1.5px solid #3a4150;transform:rotate(45deg);}
+
+  /* comparison table */
+  .cmp{width:100%;border-collapse:collapse;}
+  .cmp th,.cmp td{text-align:left;padding:11px 14px;border-bottom:1px solid #23272f;vertical-align:top;}
+  .cmp th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#6b7280;font-weight:500;}
+  .cmp td{font-size:12.5px;color:#c3c8d0;line-height:1.55;}
+  .cmp td.k{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#969ba7;width:150px;}
+  .note{background:#131519;border:1px solid #23272f;border-radius:13px;padding:15px 18px;}
+  .noteH{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px;}
+  .noteL{font-size:12.5px;color:#c3c8d0;line-height:1.6;}
+</style>
+</helmet>
+
+<section id="placement" data-screen-label="Placement A vs B" style="min-width:max-content;padding:80px 90px 96px;background:#0b0c0f;font-family:'Figtree',system-ui,sans-serif;color:#f3f4f6;">
+
+  <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:10px;">
+    <div style="font-size:23px;font-weight:800;letter-spacing:-0.01em;">Placement &mdash; two shapes</div>
+    <span class="mono" style="font-size:12px;color:#f0c489;">seeds the seven depths (R7)</span>
+  </div>
+  <div style="font-size:13.5px;color:#969ba7;line-height:1.6;max-width:1080px;margin-bottom:34px;">Both end at the same screen &mdash; 7c, seven depths shown honestly uneven and editable. They differ in how much they ask first, and therefore in how much the seeded vector is worth.</div>
+
+  <!-- ============ FLOW STRIPS ============ -->
+  <div class="band">
+    <div class="bandTag">
+      <div class="bandTagT">Shape A</div>
+      <div class="bandTagS">one mixed pass &middot; ~2 min</div>
+    </div>
+    <div class="track">
+      <div class="n"><div class="nT">&ldquo;8 quick questions&rdquo;</div><div class="nS">one screen of expectation-setting</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n"><div class="nT">8 items, interleaved</div><div class="nS">roughly one per strand &middot; strand named on each</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n"><div class="nT">Coarse seed</div><div class="nS">right &rarr; that lane starts at 3, wrong &rarr; at 1</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-color:#2a4a36;"><div class="nT">Screen 7c</div><div class="nS">uneven &middot; editable &middot; &ldquo;these move as you go&rdquo;</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n"><div class="nT">First lesson</div><div class="nS">~2 min after opening the app</div></div>
+    </div>
+  </div>
+
+  <div class="band" style="margin-bottom:38px;">
+    <div class="bandTag">
+      <div class="bandTagT">Shape B</div>
+      <div class="bandTagS">seven ladders &middot; ~7 min</div>
+    </div>
+    <div class="track">
+      <div class="n"><div class="nT">The seven-skill board</div><div class="nS">pick any order &middot; skip any skill</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n"><div class="nT">Enter one skill</div><div class="nS">starts at grade 3, climbs or drops</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n"><div class="nT">3&ndash;4 items, adaptive</div><div class="nS">stops as soon as the depth is settled</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n" style="border-color:#2a4a36;"><div class="nT">That skill settles</div><div class="nS">back to the board &middot; 6 to go, or stop here</div></div>
+      <div class="arr"><div class="arrL"><div class="arrH"></div></div></div>
+      <div class="n"><div class="nT">Screen 7c</div><div class="nS">unfinished skills read &ldquo;not yet tested&rdquo;</div></div>
+    </div>
+  </div>
+
+  <!-- ============ SCREENS ============ -->
+  <div style="display:flex;gap:56px;flex-wrap:wrap;margin-bottom:44px;">
+
+    <!-- ---------- A1 ---------- -->
+    <div id="a1" class="scr">
+      <div class="scrH"><span class="tag" style="background:#f3f4f6;">A1</span><span class="scrT">A &middot; the ask</span></div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+        <div style="flex:1 1 auto;overflow:hidden;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center;">
+          <div style="display:flex;justify-content:center;gap:5px;align-items:flex-end;height:34px;">
+            <span style="width:8px;height:45%;border-radius:3px;background:#f0666f;"></span><span style="width:8px;height:75%;border-radius:3px;background:#f0a94f;"></span><span style="width:8px;height:100%;border-radius:3px;background:#57cf87;"></span><span style="width:8px;height:60%;border-radius:3px;background:#2fbfae;"></span><span style="width:8px;height:85%;border-radius:3px;background:#46b0e6;"></span><span style="width:8px;height:50%;border-radius:3px;background:#8b8ef2;"></span><span style="width:8px;height:70%;border-radius:3px;background:#cb7ad4;"></span>
+          </div>
+          <div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;">Eight quick questions</div>
+            <div style="font-size:14px;color:#969ba7;line-height:1.6;margin-top:10px;">About two minutes. They cover all seven skills, so we can start you in roughly the right place in each &mdash; not one grade for everything.</div>
+          </div>
+          <div style="background:#141619;border:1px solid #23272f;border-radius:16px;padding:14px 16px;text-align:left;display:flex;gap:11px;">
+            <span style="flex:0 0 auto;font-size:15px;">&#128161;</span>
+            <div style="font-size:12.5px;color:#969ba7;line-height:1.55;">A rough start is fine. Nothing gets locked, and every answer you give from here on keeps moving it.</div>
+          </div>
+        </div>
+        <div style="flex:0 0 auto;padding:12px 20px 30px;display:flex;flex-direction:column;gap:10px;">
+          <button class="btnP" style="background:#f3f4f6;color:#111318;">Start</button>
+          <button class="btnS">Skip &mdash; start everything at grade 1</button>
+        </div>
+      </div>
+      <div class="cap">Sets the expectation that the output is seven numbers, not one grade &mdash; and that a rough seed is deliberate. Skip is a peer, not buried.</div>
+    </div>
+
+    <!-- ---------- A2 ---------- -->
+    <div id="a2" class="scr">
+      <div class="scrH"><span class="tag" style="background:#f3f4f6;">A2</span><span class="scrT">A &middot; item 4 of 8</span></div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+        <div style="flex:1 1 auto;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:16px;">
+
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="mono" style="font-size:20px;color:#6b7280;">&times;</span>
+            <div class="psegs" style="flex:1;">
+              <span class="pseg" style="background:#f3f4f6;"></span><span class="pseg" style="background:#f3f4f6;"></span><span class="pseg" style="background:#f3f4f6;"></span><span class="pseg" style="background:#f3f4f6;"></span><span class="pseg"></span><span class="pseg"></span><span class="pseg"></span><span class="pseg"></span>
+            </div>
+            <span class="mono" style="font-size:11px;color:#6b7280;">4/8</span>
+          </div>
+
+          <div>
+            <div class="ovl" style="color:#2fbfae;display:flex;align-items:center;gap:7px;"><span class="glyph" style="font-size:13px;">&#10231;</span>Intervals</div>
+            <div style="font-size:20px;font-weight:700;line-height:1.35;margin-top:9px;">What interval is this?</div>
+          </div>
+
+          <div class="paper">
+            <div class="staveWrap">
+              <svg width="100%" height="78" viewBox="0 0 240 78" preserveAspectRatio="xMidYMid meet">
+                <g stroke="#2b2b2b" stroke-width="1">
+                  <line x1="6" y1="22" x2="234" y2="22"/><line x1="6" y1="32" x2="234" y2="32"/><line x1="6" y1="42" x2="234" y2="42"/><line x1="6" y1="52" x2="234" y2="52"/><line x1="6" y1="62" x2="234" y2="62"/>
+                </g>
+                <text x="14" y="58" font-family="Noto Music" font-size="44" fill="#1a1a1a">&#119070;</text>
+                <ellipse cx="112" cy="57" rx="7" ry="5" fill="#1a1a1a" transform="rotate(-18 112 57)"/>
+                <rect x="118" y="27" width="1.8" height="30" fill="#1a1a1a"/>
+                <ellipse cx="112" cy="37" rx="7" ry="5" fill="#1a1a1a" transform="rotate(-18 112 37)"/>
+              </svg>
+            </div>
+            <div class="playBtn"><svg width="13" height="14" viewBox="0 0 13 14"><polygon points="1,0 13,7 1,14" fill="#1a1a1a"/></svg></div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="opt">A third</div>
+            <div class="opt" style="border:1.5px solid #2fbfae;background:rgba(47,191,174,0.12);">A fifth</div>
+            <div class="opt">A sixth</div>
+            <div class="opt">An octave</div>
+          </div>
+        </div>
+        <div style="flex:0 0 auto;padding:12px 20px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP" style="background:#2fbfae;color:#062a26;">Check</button>
+          <div class="txtS">not sure? skip it &mdash; that&rsquo;s an answer too</div>
+        </div>
+      </div>
+      <div class="cap">Ordinary exercise-loop furniture, one accent per screen &mdash; the item&rsquo;s own strand. Notation on paper with a play affordance (laws 1&ndash;2). Strands interleave, so the accent changes item to item; naming the strand on every item is what teaches the seven-lane model.</div>
+    </div>
+
+    <!-- ---------- B1 ---------- -->
+    <div id="b1" class="scr">
+      <div class="scrH"><span class="tag" style="background:#46b0e6;">B1</span><span class="scrT">B &middot; the seven-skill board</span></div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+        <div style="flex:1 1 auto;overflow:hidden;padding:12px 20px 0;display:flex;flex-direction:column;gap:13px;">
+          <div>
+            <div class="ovl" style="color:#6b7280;">Placement &middot; 2 of 7 done</div>
+            <div style="font-size:23px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;margin-top:7px;">A few questions per skill</div>
+            <div style="font-size:13px;color:#969ba7;line-height:1.55;margin-top:6px;">Any order you like, and you can stop whenever &mdash; anything untested just starts at grade 1.</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div class="lane" style="opacity:0.72;">
+              <div class="gl" style="background:rgba(240,102,111,0.12);color:#f0666f;"><span class="glyph">&#119135;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Rhythm &amp; metre</div><div class="laneS">settled at grade 4 &middot; 4 questions</div></div>
+              <svg width="17" height="17" viewBox="0 0 17 17"><path d="M3 9 l4 4 l7 -9" fill="none" stroke="#57cf87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="lane" style="opacity:0.72;">
+              <div class="gl" style="background:rgba(240,169,79,0.12);color:#f0a94f;"><span class="glyph">&#119070;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Pitch &amp; notation</div><div class="laneS">settled at grade 3 &middot; 3 questions</div></div>
+              <svg width="17" height="17" viewBox="0 0 17 17"><path d="M3 9 l4 4 l7 -9" fill="none" stroke="#57cf87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="lane" style="border:1.5px solid #57cf87;background:rgba(87,207,135,0.10);">
+              <div class="gl" style="background:rgba(87,207,135,0.18);color:#57cf87;"><span class="glyph">&#9839;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Keys &amp; scales</div><div class="laneS" style="color:#8fd8a8;">next &middot; about 4 questions</div></div>
+              <span class="mono" style="font-size:17px;color:#57cf87;">&rsaquo;</span>
+            </div>
+            <div class="lane">
+              <div class="gl" style="background:rgba(47,191,174,0.12);color:#2fbfae;"><span class="glyph">&#10231;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Intervals</div><div class="laneS">not yet tested</div></div>
+              <span class="mono" style="font-size:17px;color:#565d69;">&rsaquo;</span>
+            </div>
+            <div class="lane">
+              <div class="gl" style="background:rgba(70,176,230,0.12);color:#46b0e6;"><span class="glyph">&#8801;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Chords &amp; harmony</div><div class="laneS">not yet tested</div></div>
+              <span class="mono" style="font-size:17px;color:#565d69;">&rsaquo;</span>
+            </div>
+            <div class="lane">
+              <div class="gl" style="background:rgba(139,142,242,0.12);color:#8b8ef2;"><span class="glyph">&#119185;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Terms &amp; signs</div><div class="laneS">not yet tested</div></div>
+              <span class="mono" style="font-size:17px;color:#565d69;">&rsaquo;</span>
+            </div>
+            <div class="lane">
+              <div class="gl" style="background:rgba(203,122,212,0.12);color:#cb7ad4;"><span class="glyph">&#119066;</span></div>
+              <div style="flex:1;min-width:0;"><div class="laneName">Music in context</div><div class="laneS">not yet tested</div></div>
+              <span class="mono" style="font-size:17px;color:#565d69;">&rsaquo;</span>
+            </div>
+          </div>
+        </div>
+        <div style="flex:0 0 auto;padding:10px 20px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP" style="background:#57cf87;color:#08351d;">Next &middot; keys &amp; scales</button>
+          <button class="btnS">Stop here &mdash; I&rsquo;ll do the rest later</button>
+        </div>
+      </div>
+      <div class="cap">The board is the strongest thing about B: it teaches the seven-lane model before the learner ever reaches 7a, and it is resumable &mdash; three skills now, four next week. It is also a seven-step commitment shown up front, on the screen where drop-off is most expensive.</div>
+    </div>
+
+    <!-- ---------- B2 ---------- -->
+    <div id="b2" class="scr">
+      <div class="scrH"><span class="tag" style="background:#57cf87;">B2</span><span class="scrT">B &middot; climbing one ladder</span></div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+        <div style="flex:1 1 auto;overflow:hidden;padding:8px 20px 0;display:flex;flex-direction:column;gap:15px;">
+
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span class="mono" style="font-size:20px;color:#6b7280;">&times;</span>
+            <span class="ovl" style="color:#57cf87;flex:1;display:flex;align-items:center;gap:7px;"><span class="glyph" style="font-size:13px;">&#9839;</span>Keys &amp; scales</span>
+            <span class="mono" style="font-size:11px;color:#6b7280;">3 of ~4</span>
+          </div>
+
+          <!-- ladder -->
+          <div style="background:#141619;border:1px solid #23272f;border-radius:14px;padding:11px 13px;display:flex;align-items:center;gap:6px;">
+            <span class="mono" style="font-size:9.5px;color:#6b7280;letter-spacing:0.08em;margin-right:2px;">GRADE</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:#1a1d24;border:1px solid #23272f;color:#565d69;">1</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:#1a1d24;border:1px solid #23272f;color:#565d69;">2</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(87,207,135,0.14);border:1px solid #2a4a36;color:#8fd8a8;">3 &#10003;</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(87,207,135,0.18);border:1.5px solid #57cf87;color:#f3f4f6;font-weight:600;">4</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:#1a1d24;border:1px dashed #3a4150;color:#565d69;">5</span>
+          </div>
+
+          <div style="font-size:20px;font-weight:700;line-height:1.35;">Which key has four sharps?</div>
+
+          <div class="paper">
+            <div class="staveWrap">
+              <svg width="100%" height="78" viewBox="0 0 240 78" preserveAspectRatio="xMidYMid meet">
+                <g stroke="#2b2b2b" stroke-width="1">
+                  <line x1="6" y1="22" x2="234" y2="22"/><line x1="6" y1="32" x2="234" y2="32"/><line x1="6" y1="42" x2="234" y2="42"/><line x1="6" y1="52" x2="234" y2="52"/><line x1="6" y1="62" x2="234" y2="62"/>
+                </g>
+                <text x="14" y="58" font-family="Noto Music" font-size="44" fill="#1a1a1a">&#119070;</text>
+                <text x="70" y="36" font-family="Noto Music" font-size="26" fill="#1a1a1a">&#9839;</text>
+                <text x="86" y="46" font-family="Noto Music" font-size="26" fill="#1a1a1a">&#9839;</text>
+                <text x="102" y="31" font-family="Noto Music" font-size="26" fill="#1a1a1a">&#9839;</text>
+                <text x="118" y="41" font-family="Noto Music" font-size="26" fill="#1a1a1a">&#9839;</text>
+              </svg>
+            </div>
+            <div class="playBtn"><svg width="13" height="14" viewBox="0 0 13 14"><polygon points="1,0 13,7 1,14" fill="#1a1a1a"/></svg></div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div class="opt">A major</div>
+            <div class="opt" style="border:1.5px solid #57cf87;background:rgba(87,207,135,0.12);">E major</div>
+            <div class="opt">B major</div>
+            <div class="opt">F&#9839; major</div>
+          </div>
+        </div>
+        <div style="flex:0 0 auto;padding:12px 20px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP" style="background:#57cf87;color:#08351d;">Check</button>
+          <div class="txtS">get this and we&rsquo;ll try grade 5; miss it and we&rsquo;ll settle at 3</div>
+        </div>
+      </div>
+      <div class="cap">The ladder is visible, so the adaptive jump never feels arbitrary &mdash; and the footer says what each outcome means before you answer. This transparency is B&rsquo;s real advantage: the learner can see the estimate being formed rather than being handed a number.</div>
+    </div>
+
+    <!-- ---------- B3 ---------- -->
+    <div id="b3" class="scr">
+      <div class="scrH"><span class="tag" style="background:#57cf87;">B3</span><span class="scrT">B &middot; a skill settles</span></div>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><div style="display:flex;align-items:center;gap:7px;"><span class="mono" style="font-size:11px;">LTE</span><div class="batt"><i></i></div></div></div>
+        <div style="flex:1 1 auto;overflow:hidden;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:20px;text-align:center;">
+          <div style="display:flex;justify-content:center;">
+            <div style="width:64px;height:64px;border-radius:19px;background:rgba(87,207,135,0.14);border:1.5px solid #2a4a36;display:flex;align-items:center;justify-content:center;">
+              <span class="glyph" style="font-size:30px;color:#57cf87;">&#9839;</span>
+            </div>
+          </div>
+          <div>
+            <div class="ovl" style="color:#57cf87;">Keys &amp; scales</div>
+            <div style="font-size:26px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;margin-top:8px;">Starting you at grade 4</div>
+            <div style="font-size:13.5px;color:#969ba7;line-height:1.6;margin-top:9px;">Four sharps was solid; the grade-5 question wasn&rsquo;t. That&rsquo;s a good place to pick up.</div>
+          </div>
+
+          <div style="background:#141619;border:1px solid #23272f;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:6px;justify-content:center;">
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:#1a1d24;border:1px solid #23272f;color:#565d69;">1</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:#1a1d24;border:1px solid #23272f;color:#565d69;">2</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(87,207,135,0.14);border:1px solid #2a4a36;color:#8fd8a8;">3</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:rgba(87,207,135,0.22);border:1.5px solid #57cf87;color:#f3f4f6;font-weight:700;">4</span>
+            <span class="mono" style="font-size:11px;padding:4px 9px;border-radius:7px;background:#1a1d24;border:1px dashed #3a4150;color:#565d69;">5</span>
+          </div>
+
+          <div class="mono" style="font-size:11px;color:#6b7280;line-height:1.6;">4 skills to go &middot; about 4 minutes</div>
+        </div>
+        <div style="flex:0 0 auto;padding:12px 20px 30px;display:flex;flex-direction:column;gap:9px;">
+          <button class="btnP" style="background:#57cf87;color:#08351d;">Next &middot; intervals</button>
+          <button class="btnS">Back to the board</button>
+        </div>
+      </div>
+      <div class="cap">Per-skill closure &mdash; and the reason for the number is stated in the learner&rsquo;s own terms, not as a score. Seven of these is also seven small commitments: good for confidence, costly for time-to-first-lesson.</div>
+    </div>
+
+  </div>
+
+  <!-- ============ COMPARISON ============ -->
+  <div style="max-width:1360px;margin-bottom:26px;">
+    <div class="ovl" style="color:#6b7280;margin-bottom:12px;">Where they actually differ</div>
+    <div style="background:#131519;border:1px solid #23272f;border-radius:14px;overflow:hidden;">
+      <table class="cmp">
+        <tr><th style="width:150px;"></th><th>A &mdash; one mixed pass</th><th>B &mdash; seven adaptive ladders</th></tr>
+        <tr><td class="k">Items</td><td>8, fixed</td><td>21&ndash;28, adaptive (3&ndash;4 per skill)</td></tr>
+        <tr><td class="k">Time to first lesson</td><td>~2 min</td><td>~7 min, or ~1 min per skill if resumed</td></tr>
+        <tr><td class="k">Seed quality</td><td>One item per skill &mdash; a coin-flip either way. Realistically a right/wrong split: grade 3 or grade 1.</td><td>Brackets each skill to within a grade. This is a genuine estimate.</td></tr>
+        <tr><td class="k">Drop-off risk</td><td>Low. Two minutes is inside anyone&rsquo;s patience.</td><td>Real. Seven steps shown up front, before any value has been delivered.</td></tr>
+        <tr><td class="k">Teaches the model</td><td>Implicitly &mdash; the strand overline changes each item.</td><td>Explicitly &mdash; the board IS the seven-lane model, met before 7a.</td></tr>
+        <tr><td class="k">Resumable</td><td>No &mdash; 8 items or nothing.</td><td>Yes &mdash; per skill, and untested skills read honestly as untested.</td></tr>
+        <tr><td class="k">Cost of being wrong</td><td colspan="2">The same, and low. Nothing is locked (R2), depths move with every answer, and 7c already tells the learner they drift. A bad seed self-corrects within a session or two.</td></tr>
+        <tr><td class="k">Build cost</td><td>Item bank + a fixed script.</td><td>Item bank + a per-strand ladder with stop rules, and a resumable partial-placement state.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:26px;align-items:stretch;max-width:1360px;">
+    <div class="note" style="flex:1.35;border-left:3px solid #57cf87;border-radius:0 13px 13px 0;">
+      <div class="noteH" style="color:#57cf87;">Recommendation &mdash; A now, B as a per-skill re-test</div>
+      <div class="noteL" style="margin-bottom:10px;">Ship <strong>A</strong>. Under spine C the seed is cheap to be wrong about &mdash; that is the whole point of the model &mdash; so paying seven minutes up front buys precision the system does not need, at the one moment where the learner has the least patience and the least reason to trust us.</div>
+      <div class="noteL">But <strong>keep B&rsquo;s ladder</strong> and attach it where it is worth its cost: 7c currently says &ldquo;tap a skill to nudge it up or down&rdquo;, which is self-assessment. Make that tap open B&rsquo;s ladder for that one skill instead &mdash; four questions, that skill only. The learner who disagrees with their seed gets a real answer rather than a slider, and B&rsquo;s machinery earns its build cost by also serving every later &ldquo;have I actually moved?&rdquo; moment, not just onboarding.</div>
+    </div>
+    <div class="note" style="flex:1;border-left:3px solid #6b7280;border-radius:0 13px 13px 0;">
+      <div class="noteH" style="color:#969ba7;">If you&rsquo;d rather ship B</div>
+      <div class="noteL">It is the better product if the audience arrives motivated &mdash; an adult revising for a specific grade will happily spend seven minutes to be placed properly, and the board teaches the model for free. The case against is entirely about first-run patience. Two things would change the call: evidence that the audience is goal-driven rather than casual, or making B&rsquo;s first skill deliver a lesson before asking for the other six.</div>
+    </div>
+  </div>
+
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{}'>
+  class Component extends DCLogic {
+    renderVals() { return {}; }
+  }
+</script>
+</body>
+</html>
