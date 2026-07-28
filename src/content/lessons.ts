@@ -78,6 +78,13 @@ export type Teach = z.infer<typeof TeachSchema>;
 // `grade` is stamped onto every lesson at load time from its doc's grade — it
 // is not part of the authored JSON or the zod schema (see loadDoc).
 export type Lesson = z.infer<typeof LessonSchema> & { grade: number };
+
+/** The seven strands, derived from the authoring schema above so the enum has one
+ *  definition rather than two that can drift. The domain core imports this; the UI
+ *  layer keeps its own presentation table (hue/glyph/label) keyed by the same
+ *  union. Content is the right owner: a strand exists because lessons are authored
+ *  into it, not because it has a colour. */
+export type Strand = Lesson['strand'];
 export type LessonsDoc = Omit<z.infer<typeof LessonsDocSchema>, 'lessons'> & { lessons: Lesson[] };
 
 /** Throws if an SRS-atom id does not resolve to something a generator can emit at `grade`. */
