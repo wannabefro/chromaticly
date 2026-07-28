@@ -113,8 +113,14 @@ ${playButton}
     console.log('[surface] ' + s);
   }
 
+  // The last render request, and the body width it painted into. Together they let the
+  // surface (a) report a host that gave it no width and (b) repaint once it gets one.
+  var lastRender = null;
+  var lastPaintedWidth = 0;
+
   function renderAbc(abc, scale, staffwidth) {
     try {
+      lastRender = { abc: abc, scale: scale, staffwidth: staffwidth };
       var t = performance.now();
       // clickListener is how the bar-tap (design 4c) is detected: abcjs already hit-tests
       // the tap to a note and calls back with that note's measure class. dragging stays
@@ -143,6 +149,21 @@ ${playButton}
         ? Math.ceil(attrHeight)
         : (svgNode ? Math.ceil(svgNode.getBoundingClientRect().height) : 0);
       emit({ type: 'rendered', ms: Math.round(performance.now() - t), height: renderedHeight });
+      // A zero-width host is a SILENT blank card (chromaticly-9c8): abcjs lays out to
+      // staffwidth regardless of the viewport, so it renders happily and reports a
+      // sane height — RN dismisses the stave skeleton — while #paper (width:100% of a
+      // 0px body, overflow-x:auto) clips every glyph. Nothing throws, so the only way
+      // this surfaces is to say it. The cause is always the RN side: a host View that
+      // gives the WebView no cross-axis width (alignItems:'center' or a bare
+      // flexShrink around MusicSurface, whose wrapper declares only a height).
+      // Gated on the svg having real geometry as well, so this fires for a genuinely
+      // zero-width HOST and not for a layout-free environment (jsdom reports 0 for
+      // everything, and the surface-html tests mount this very page there).
+      lastPaintedWidth = document.body.clientWidth;
+      var drawnWidth = svgNode ? svgNode.getBoundingClientRect().width : 0;
+      if (lastPaintedWidth === 0 && drawnWidth > 0) {
+        emit({ type: 'error', message: 'zero-width surface: the host View gave the WebView no width, so the notation cannot paint — check the RN flex parent' });
+      }
       // Re-apply a pending note ring now that the notes exist in the DOM (see
       // lastNoteHighlight): the stimulus's highlightNote command routinely
       // arrives before this render completes.
@@ -430,6 +451,17 @@ ${playButton}
     // DOM listener — abcjs owns the note layout and hit-testing. We only track when a
     // press began, so onNoteClick can tell a long-press (hear the bar) from a tap.
     document.addEventListener('touchstart', function () { pressStart = Date.now(); }, { passive: true });
+    // Repaint if the host only gives the surface a width later — a render into a
+    // zero-width body draws nothing and abcjs never re-runs on its own, so without
+    // this the card stays blank for good. Guarded on the 0 -> non-zero transition
+    // only: the card's own height growth also fires resize, and re-rendering on that
+    // would loop (render -> RN resizes -> resize -> render).
+    window.addEventListener('resize', function () {
+      var w = document.body.clientWidth;
+      if (lastRender && lastPaintedWidth === 0 && w > 0) {
+        renderAbc(lastRender.abc, lastRender.scale, lastRender.staffwidth);
+      }
+    });
     if (AUTORUN) play();
   }
   if (document.readyState === 'loading') {

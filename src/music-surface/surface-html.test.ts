@@ -109,6 +109,24 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('height: renderedHeight');
   });
 
+  // chromaticly-9c8. The invariant: a render the learner CANNOT SEE must not look like a
+  // successful one. abcjs lays out to `staffwidth` whatever the viewport is, so a host
+  // View that gives the WebView no width still produces a clean render and a sane
+  // height — RN then hides the stave skeleton and the card reads blank with nothing
+  // logged. That is exactly how the ornament card shipped broken. The page must notice
+  // it painted into a zero-width body and say so.
+  test('a render into a zero-width host reports an error instead of a silent blank card', () => {
+    const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+    // reported only when the drawing has real geometry but the body has no width —
+    // never in a layout-free environment, where both are 0
+    expect(html).toContain('lastPaintedWidth === 0 && drawnWidth > 0');
+    expect(html).toContain('zero-width surface');
+    // and the surface repaints if the host only grants a width later, since abcjs
+    // never re-runs on its own and the card would otherwise stay blank for good
+    expect(html).toContain("window.addEventListener('resize'");
+    expect(html).toContain('lastRender && lastPaintedWidth === 0 && w > 0');
+  });
+
   // chromaticly-9lb: one shared surface pre-renders static option staves offscreen so
   // each MCQ option doesn't boot its own abcjs WebView.
   test('wires offscreen renderToSvg that trims the SVG and strips the scale style attr', () => {

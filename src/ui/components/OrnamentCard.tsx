@@ -81,7 +81,13 @@ const styles = StyleSheet.create({
     ...elevation.paper,
   },
   hero: {
-    alignItems: 'center',
+    // alignItems must NOT be 'center' here (chromaticly-9c8): MusicSurface's wrapper
+    // declares only a height, and its WebView has no intrinsic width, so a centred
+    // cross-axis sizes it to its content — i.e. 0 wide. The page then paints into a
+    // zero-width body and the card reads blank, while abcjs still renders happily and
+    // reports a height, so nothing errors. 'stretch' gives the surface the card width;
+    // the page centres the stave itself (#paper's flex + #inner's margin:auto).
+    alignItems: 'stretch',
     justifyContent: 'center',
     paddingTop: 22,
     paddingBottom: 12,
@@ -99,11 +105,15 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   insetStave: {
-    flexShrink: 1,
+    // Same zero-width trap as `hero`: flexShrink alone leaves the stave content-sized,
+    // and the surface has no intrinsic width, so it collapsed to 0. Taking the row's
+    // slack instead gives it a real width AND keeps the play button on the right edge
+    // (which is why the label must not also flex — it would split the slack and wrap
+    // "in context · bar 1" onto two lines).
+    flex: 1,
   },
   insetLabel: {
     ...type.label,
-    flex: 1,
     color: colors.paperMuted,
   },
 });

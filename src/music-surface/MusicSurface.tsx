@@ -50,6 +50,10 @@ export function dispatchMessage(data: string, onEvent?: (ev: SurfaceEvent) => vo
   } catch {
     return null;
   }
+  // A render failure inside the WebView is otherwise invisible to RN — the surface
+  // catches it, emits an `error` event, and nothing listens, so a blank notation card
+  // ships silently (chromaticly-9c8). Surface it in dev.
+  if (__DEV__ && ev.type === 'error') console.warn('[surface]', ev.message);
   onEvent?.(ev);
   return ev;
 }
