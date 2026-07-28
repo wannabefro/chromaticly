@@ -12,7 +12,7 @@
 // AD6: the current item + progress are real component state (index/attempt), never
 // derived in render from the mutable store, so the loop stays reactive on device.
 
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { generate } from '../engine/generators';
@@ -32,12 +32,11 @@ export interface CoachedWarmUpProps {
 }
 
 export function CoachedWarmUp({ onComplete, onClose }: CoachedWarmUpProps) {
-  const { recordAtom } = useProgressContext();
+  const { recordAtom, clock } = useProgressContext();
   const [index, setIndex] = useState(0);
   // Bumped on an incorrect answer to regenerate the same-seed item with a fresh
   // object identity, so ExerciseLoop resets and re-presents it (retry, KTD3b).
   const [attempt, setAttempt] = useState(0);
-  const tickRef = useRef(0);
 
   const instance = useMemo(
     // Deliberately grade: 1, not lesson.grade (D11): the warm-up runs pre-onboarding,
@@ -49,7 +48,7 @@ export function CoachedWarmUp({ onComplete, onClose }: CoachedWarmUpProps) {
   );
 
   async function handleResult(result: AttemptResult) {
-    await recordAtom(WARM_UP_ATOM, result, tickRef.current++);
+    await recordAtom(WARM_UP_ATOM, result, clock.now());
     if (!result.correct) {
       setAttempt((a) => a + 1); // re-present the same question; do not advance
       return;

@@ -7,6 +7,7 @@
 import { createContext, useContext, type ReactNode } from 'react';
 
 import { LESSONS } from '../content/lessons';
+import type { Clock } from './clock';
 import type { SnapshotStorage } from './store';
 import { useProgress, type UseProgress } from './useProgress';
 
@@ -15,11 +16,15 @@ const ProgressContext = createContext<UseProgress | null>(null);
 export function ProgressProvider({
   children,
   storage,
+  clock,
 }: {
   children: ReactNode;
   storage: SnapshotStorage;
+  /** Injected at the platform edge (`systemClock`); tests pass a fake they advance
+   *  by hand. Omitted, the core falls back to its own `Date.now()`-backed clock. */
+  clock?: Clock;
 }) {
-  const progress = useProgress(storage, LESSONS);
+  const progress = useProgress(storage, LESSONS, clock);
   return <ProgressContext.Provider value={progress}>{children}</ProgressContext.Provider>;
 }
 

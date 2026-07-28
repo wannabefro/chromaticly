@@ -118,24 +118,28 @@ describe('Flashcard — revealed (design 2h): term -> meaning, no shared Check b
   });
 });
 
-describe('Flashcard — interval preview is computed from the engine (AD4), never a hardcoded calendar-day label', () => {
-  test('every grade button shows a tick-based interval, and Again < Hard < Good < Easy (strict monotonic, AE4)', () => {
+describe('Flashcard — interval preview is computed from the engine (AD4), in real days', () => {
+  // Before G6 U1 the engine's time unit was a per-session tick, so this label read
+  // "3 ticks" and the test asserted the ABSENCE of a day label — the honest thing
+  // to render given what the engine then knew. U1 made the unit whole days, so the
+  // design mock's calendar wording is now correct rather than aspirational.
+  test('every grade button shows a day-based interval, and Again < Hard < Good < Easy (strict monotonic, AE4)', () => {
     const { getByTestId } = renderFlashcard(baseInstance, { revealed: true, picked: null });
     const text = (testId: string) => getByTestId(testId).props.children as string;
-    const parseTicks = (label: string) => (label === 'now' ? 0 : parseInt(label, 10));
+    const parseDays = (label: string) => (label === 'now' ? 0 : label === 'tomorrow' ? 1 : parseInt(label, 10));
 
-    const again = parseTicks(text('grade-again-interval'));
-    const hard = parseTicks(text('grade-hard-interval'));
-    const good = parseTicks(text('grade-good-interval'));
-    const easy = parseTicks(text('grade-easy-interval'));
+    const again = parseDays(text('grade-again-interval'));
+    const hard = parseDays(text('grade-hard-interval'));
+    const good = parseDays(text('grade-good-interval'));
+    const easy = parseDays(text('grade-easy-interval'));
 
     expect(again).toBeLessThan(hard);
     expect(hard).toBeLessThan(good);
     expect(good).toBeLessThan(easy);
 
-    // None of the design mock's literal calendar-day strings ("<1m", "2 days", ...)
-    // are rendered — the tick unit is honest about what the engine actually produces.
-    expect(text('grade-hard-interval')).not.toMatch(/day|min|hour|week/i);
+    // The unit is named, and it is days — never the old tick label.
+    expect(text('grade-easy-interval')).toMatch(/^(now|tomorrow|\d+ days)$/);
+    expect(text('grade-hard-interval')).not.toMatch(/tick/i);
   });
 });
 

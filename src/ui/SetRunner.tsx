@@ -6,7 +6,7 @@
 // the per-item mastery gem. On the 8th it marks the lesson complete once (A2) and
 // shows SetComplete. The notation surface persists across items (perf refactor).
 
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, type Lesson } from '../content/lessons';
@@ -38,7 +38,7 @@ export interface SetRunnerProps {
 }
 
 export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
-  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, markNudgeSeen } = useProgressContext();
+  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, markNudgeSeen, clock } = useProgressContext();
   // Lessons with teach content open on the teach/read phase (design 4a/4b); the
   // sticky "Start exercises" CTA advances into the set. Lessons without teach
   // content drop straight into exercises, unchanged.
@@ -51,7 +51,6 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   // state — NEVER read off the store in render, where React Compiler would memoize the
   // count on the stable store identity and miss the 2→3 completion transition on device.
   const [nudgeStats, setNudgeStats] = useState<{ lessons: number; stars: number; dueCount: number } | null>(null);
-  const tickRef = useRef(0);
   const strand = lesson.strand as Strand;
 
   const templateId = lesson.templates[itemIndex % lesson.templates.length];
@@ -91,7 +90,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
           !store.isNudgeSeen() &&
           store.completedLessonCount() >= NUDGE_AFTER_LESSONS
         ) {
-          setNudgeStats(accountNudgeStats(store, LESSONS, tickRef.current));
+          setNudgeStats(accountNudgeStats(store, LESSONS, clock.now()));
         }
       } else {
         setItemIndex((i) => i + 1);
@@ -108,10 +107,10 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
     async (result: AttemptResult) => {
       const atom = instance?.srs_tags[0];
       if (atom === undefined) return;
-      await recordAtom(atom, result, tickRef.current++); // A2: record the atom once, here
+      await recordAtom(atom, result, clock.now()); // A2: record the atom once, here
       await advance(recordItem(setState, result));
     },
-    [instance, recordAtom, setState, advance],
+    [instance, recordAtom, setState, advance, clock],
   );
 
   // A passage's sub-questions each carry their own atom, so mastery moves per
@@ -120,9 +119,9 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   // music.
   const handleSubResult = useCallback(
     async (result: AttemptResult) => {
-      if (result.atom !== null) await recordAtom(result.atom, result, tickRef.current++);
+      if (result.atom !== null) await recordAtom(result.atom, result, clock.now());
     },
-    [recordAtom],
+    [recordAtom, clock],
   );
 
   const handlePassageDone = useCallback(
@@ -144,10 +143,10 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
     async (grade: SrsGrade) => {
       const atom = instance?.srs_tags[0];
       if (atom === undefined) return;
-      await recordFlashcardGrade(atom, grade, tickRef.current++);
+      await recordFlashcardGrade(atom, grade, clock.now());
       await advance(recordItem(setState, { correct: grade !== 'again', hintsUsed: grade === 'hard' ? 1 : 0 }));
     },
-    [instance, recordFlashcardGrade, setState, advance],
+    [instance, recordFlashcardGrade, setState, advance, clock],
   );
 
   if (phase === 'teach' && lesson.teach) {

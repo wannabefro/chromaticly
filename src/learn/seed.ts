@@ -18,13 +18,16 @@ function rootLesson(lessons: Lesson[]): Lesson | undefined {
  *  shared per-grade mastery body. Used both to ready a grade's exam gate
  *  (`seedExamReady`) and to fast-forward an already-cleared prerequisite grade en
  *  route to a later grade's target (`seedProgressToUnit`). */
-function masterGrade(store: ProgressStore, gradeLessons: Lesson[]): void {
+function masterGrade(store: ProgressStore, gradeLessons: Lesson[], now: number): void {
   for (const lesson of gradeLessons) {
     store.unlock(lesson.id);
     store.setLesson(lesson.id, { completed: true });
     if (lesson.unlocks) store.unlock(lesson.unlocks);
     for (const atom of lesson.atoms) {
-      store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });
+      // `now` (whole days since the epoch, G6 U1) rather than the old implicit 0:
+      // a seeded atom must land on the same time base as a genuinely reviewed one,
+      // or the E2E fixture is ~20,000 days overdue the moment lane-depth reads it.
+      store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs(now) });
     }
   }
 }
@@ -47,6 +50,7 @@ export function seedProgressToUnit(
   lessons: Lesson[],
   targetId: string,
   onboardedAt: string,
+  now = 0,
 ): void {
   const target = lessons.find((l) => l.id === targetId);
   if (!target) {
@@ -56,7 +60,7 @@ export function seedProgressToUnit(
   store.setProfile({ grade: 1, onboardedAt });
 
   for (let grade = 1; grade < target.grade; grade++) {
-    masterGrade(store, lessons.filter((l) => l.grade === grade));
+    masterGrade(store, lessons.filter((l) => l.grade === grade), now);
     store.recordExamCleared(grade);
   }
 
@@ -76,7 +80,7 @@ export function seedProgressToUnit(
  *  what `lessons` contains: 'exam' means "the gate is open, the paper isn't taken
  *  yet", so it must not master grade-2 content or unlock/clear anything past the
  *  Level 1 gate — that would fabricate a cleared exam this seed never runs. */
-export function seedExamReady(store: ProgressStore, lessons: Lesson[], onboardedAt: string): void {
+export function seedExamReady(store: ProgressStore, lessons: Lesson[], onboardedAt: string, now = 0): void {
   store.setProfile({ grade: 1, onboardedAt });
-  masterGrade(store, lessons.filter((l) => l.grade === 1));
+  masterGrade(store, lessons.filter((l) => l.grade === 1), now);
 }

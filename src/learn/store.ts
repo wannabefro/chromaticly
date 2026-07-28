@@ -8,7 +8,13 @@
 import { initialMastery, type MasteryState } from './mastery';
 import { DEFAULT_EASE, initialSrs, type SrsState } from './srs';
 
-export const STORE_VERSION = 1;
+/** v2 (G6 U1): SRS time moved from per-session ticks to whole days since the
+ *  epoch, which is a *semantic* change to already-persisted `nextDue`/`lastReviewed`
+ *  values rather than a shape change — hence a version bump and a real migration,
+ *  not an additive back-fill. Reading a legacy tick as an epoch day would leave
+ *  every atom ~20,000 days overdue, which lane-depth decay turns into "all your
+ *  skills reset". */
+export const STORE_VERSION = 2;
 
 export interface AtomProgress {
   mastery: MasteryState;
@@ -17,6 +23,16 @@ export interface AtomProgress {
 
 export interface LessonProgress {
   completed: boolean;
+}
+
+/** One strand's placement/re-test claim (G6 U1 declares it, U2 derives from it).
+ *  Two independent fields doing two jobs: `day` measures how stale the claim has
+ *  become, `seq` decides whether it or a recorded attempt is the more recent
+ *  evidence. */
+export interface SeededDepth {
+  depth: number;
+  day: number;
+  seq: number;
 }
 
 export interface Profile {
@@ -48,6 +64,16 @@ export interface ProgressSnapshot {
    *  unlock record for "Clear the Level N exam to unlock" (D4). Additive/optional;
    *  back-filled [] in migrate(). */
   clearedExams?: number[];
+  /** Monotonic write counter (G6 U1, KTD1). Advanced once per recorded attempt
+   *  and once per placement-seed reservation; stamped onto `SrsState.seq` and,
+   *  later, onto each seeded depth. It exists because whole-day timestamps cannot
+   *  order a seed against an attempt made the same day, and the per-skill re-test
+   *  is exactly that comparison. Additive/optional; back-filled in migrate(). */
+  writeSeq?: number;
+  /** Placement/re-test seeded depths per strand (G6 U2). Declared here at v2 —
+   *  even though nothing writes it until U2 — so a snapshot persisted between the
+   *  two units is not a v2 missing a v2 field. Additive/optional; defaults {}. */
+  seededDepths?: Record<string, SeededDepth>;
 }
 
 /** Async persistence port — implemented by expo-sqlite/MMKV on device and by an
@@ -58,7 +84,7 @@ export interface SnapshotStorage {
 }
 
 function emptySnapshot(): ProgressSnapshot {
-  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null, accountNudgeSeen: false, clearedExams: [] };
+  return { version: STORE_VERSION, atoms: {}, lessons: {}, unlocked: [], collectedFacts: [], profile: null, accountNudgeSeen: false, clearedExams: [], writeSeq: 0, seededDepths: {} };
 }
 
 /** `SrsState.ease` (U6) is additive and optional, so a snapshot written before
@@ -79,11 +105,46 @@ function withDefaultGrade(profile: Profile | null): Profile | null {
   return { ...profile, grade: 1 };
 }
 
-/** Bring any persisted snapshot up to the current shape. A version mismatch we
- *  can't migrate is discarded (start fresh) rather than trusted — fail safe.
- *  Only a genuinely breaking shape change justifies that; additive optional
- *  fields (like `ease`) are back-filled in place instead (AD4). */
-function migrate(snapshot: ProgressSnapshot): ProgressSnapshot {
+/** v1 → v2 (G6 U1): re-base one atom's schedule from session ticks onto real days.
+ *
+ *  Keep everything the learner earned — `box`, `ease`, `mastery` — and move only
+ *  the schedule, so they resume at the strength they had with a sane next-due
+ *  date. Two details are load-bearing:
+ *
+ *  • The interval comes from the atom's own `nextDue - lastReviewed`, never from
+ *    `BOX_INTERVALS[box]`. The graded (flashcard) path computes an ease-scaled
+ *    interval independent of the box table, so a box-table rebase would silently
+ *    shorten an "Easy" card's schedule and make it stale early.
+ *  • The floor is 0, not 1. `BOX_INTERVALS[0] === 0` and `isDue` is `now >= nextDue`,
+ *    so a box-0 (or last-graded-Again) atom is *meant* to be due immediately;
+ *    flooring at 1 would postpone every failed atom in every existing store by a
+ *    day. The `max(1, …)` floor belongs to staleness arithmetic, where a zero
+ *    window would make everything instantly stale — a different quantity. */
+function rebaseToDays(progress: AtomProgress, now: number): AtomProgress {
+  const interval = Math.max(0, progress.srs.nextDue - progress.srs.lastReviewed);
+  return {
+    ...progress,
+    srs: { ...progress.srs, lastReviewed: now, nextDue: now + interval, seq: 0 },
+  };
+}
+
+/** Bring any persisted snapshot up to the current shape. A version we can't
+ *  migrate is discarded (start fresh) rather than trusted — fail safe. Only a
+ *  genuinely breaking shape change justifies that; additive optional fields
+ *  (like `ease`) are back-filled in place instead (AD4).
+ *
+ *  `now` is required because the v1 → v2 step re-bases every schedule onto the
+ *  day the migration runs; there is no correct answer without it. */
+function migrate(snapshot: ProgressSnapshot, now: number): ProgressSnapshot {
+  if (snapshot.version === 1) {
+    const merged = { ...emptySnapshot(), ...snapshot, version: STORE_VERSION };
+    const atoms = Object.fromEntries(
+      Object.entries(merged.atoms).map(([id, progress]) => [id, rebaseToDays(withDefaultEase(progress), now)]),
+    );
+    // writeSeq starts at 1 rather than 0 so every seed or attempt recorded after
+    // the migration out-ranks the back-filled `seq: 0` on migrated atoms.
+    return { ...merged, atoms, profile: withDefaultGrade(merged.profile), writeSeq: 1, seededDepths: {} };
+  }
   if (snapshot.version !== STORE_VERSION) return emptySnapshot();
   const merged = { ...emptySnapshot(), ...snapshot };
   const atoms = Object.fromEntries(Object.entries(merged.atoms).map(([id, progress]) => [id, withDefaultEase(progress)]));
@@ -98,9 +159,19 @@ export class ProgressStore {
   private profile: Profile | null;
   private nudgeSeen: boolean;
   private clearedExams: Set<number>;
+  private writeSeq: number;
+  private seededDepths: Record<string, SeededDepth>;
+  /** True when the constructor actually changed the persisted shape, so
+   *  `loadProgress` knows it must write the result back. See its comment. */
+  readonly migrated: boolean;
 
-  constructor(snapshot: ProgressSnapshot = emptySnapshot()) {
-    const s = migrate(snapshot);
+  /** `now` (whole days since the epoch) is only consulted when a v1 snapshot has
+   *  to be re-based; a fresh store or an already-v2 snapshot ignores it. It is
+   *  still required rather than optional for a snapshot-bearing construction —
+   *  making it optional is how a caller silently re-bases to day 0. */
+  constructor(snapshot: ProgressSnapshot = emptySnapshot(), now = 0) {
+    const s = migrate(snapshot, now);
+    this.migrated = snapshot.version !== STORE_VERSION;
     this.atoms = { ...s.atoms };
     this.lessons = { ...s.lessons };
     this.unlocked = new Set(s.unlocked);
@@ -108,6 +179,36 @@ export class ProgressStore {
     this.profile = s.profile;
     this.nudgeSeen = s.accountNudgeSeen ?? false;
     this.clearedExams = new Set(s.clearedExams ?? []);
+    this.writeSeq = s.writeSeq ?? 0;
+    this.seededDepths = { ...(s.seededDepths ?? {}) };
+  }
+
+  /** Take the next write sequence number without persisting anything (KTD1/KTD6).
+   *  Placement stamps a seed with this the moment its measurement resolves, so the
+   *  ordering is fixed then rather than at the later commit — otherwise an attempt
+   *  recorded in between would be wrongly out-ranked by the older measurement. */
+  reserveSeq(): number {
+    this.writeSeq += 1;
+    return this.writeSeq;
+  }
+
+  /** The current counter, for tests and for stamping an attempt. */
+  currentSeq(): number {
+    return this.writeSeq;
+  }
+
+  seededDepthFor(strand: string): SeededDepth | undefined {
+    return this.seededDepths[strand];
+  }
+
+  allSeededDepths(): Record<string, SeededDepth> {
+    return { ...this.seededDepths };
+  }
+
+  /** Write one already-stamped seed. The caller reserved its `seq` when the
+   *  measurement resolved; this never allocates one. */
+  setSeededDepth(strand: string, seed: SeededDepth): void {
+    this.seededDepths[strand] = seed;
   }
 
   /** How many lessons the learner has completed — the "three lessons in" trigger for the
@@ -120,8 +221,13 @@ export class ProgressStore {
     return this.atoms[atom] ?? { mastery: initialMastery(), srs: initialSrs() };
   }
 
+  /** Write one atom's progress, stamping it with the next write sequence number
+   *  (G6 U1). Every recorded attempt goes through here — binary, passage
+   *  sub-result and flashcard grade alike — so `srs.seq` is the single ordering
+   *  fact lane-depth compares a placement seed against. */
   setAtom(atom: string, progress: AtomProgress): void {
-    this.atoms[atom] = progress;
+    this.writeSeq += 1;
+    this.atoms[atom] = { ...progress, srs: { ...progress.srs, seq: this.writeSeq } };
   }
 
   atomEntries(): { atom: string; srs: SrsState }[] {
@@ -218,18 +324,29 @@ export class ProgressStore {
       profile: this.profile,
       accountNudgeSeen: this.nudgeSeen,
       clearedExams: [...this.clearedExams],
+      writeSeq: this.writeSeq,
+      seededDepths: { ...this.seededDepths },
     };
   }
 }
 
-export async function loadProgress(storage: SnapshotStorage): Promise<ProgressStore> {
+/** Load, migrating if needed — and **persist the migration before returning**.
+ *
+ *  The v1 → v2 step re-bases every schedule onto "today". If that result is never
+ *  written back, the next launch re-bases the same v1 blob onto a *later* today,
+ *  walking every due date forward indefinitely: nothing is ever due, and no
+ *  single-load test can see it. `now` is whole days since the epoch. */
+export async function loadProgress(storage: SnapshotStorage, now = 0): Promise<ProgressStore> {
   const raw = await storage.load();
-  if (!raw) return new ProgressStore();
+  if (!raw) return new ProgressStore(emptySnapshot(), now);
+  let store: ProgressStore;
   try {
-    return new ProgressStore(JSON.parse(raw) as ProgressSnapshot);
+    store = new ProgressStore(JSON.parse(raw) as ProgressSnapshot, now);
   } catch {
-    return new ProgressStore(); // corrupt blob → start fresh rather than crash
+    return new ProgressStore(emptySnapshot(), now); // corrupt blob → start fresh rather than crash
   }
+  if (store.migrated) await saveProgress(store, storage);
+  return store;
 }
 
 export async function saveProgress(store: ProgressStore, storage: SnapshotStorage): Promise<void> {

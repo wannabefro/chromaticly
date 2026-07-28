@@ -49,14 +49,17 @@ const GRADE_COLOR: Record<SrsGrade, { text: string; border: string; background: 
 
 /** `now=0` is a safe stand-in for a PREVIEW: reviewSrsGraded's resulting
  *  interval (nextDue - now) never depends on `now`'s actual value, only on the
- *  current ease/box — so nextDue at now=0 IS the interval, in ticks. */
-function previewTicks(currentSrs: ReturnType<typeof initialSrs>, grade: SrsGrade): number {
+ *  current ease/box — so nextDue at now=0 IS the interval. Since G6 U1 the engine's
+ *  time unit is whole days since the epoch, so that interval is a number of DAYS
+ *  and the label finally says what the design mock always specified. */
+function previewDays(currentSrs: ReturnType<typeof initialSrs>, grade: SrsGrade): number {
   return reviewSrsGraded(currentSrs, grade, 0).nextDue;
 }
 
-function formatInterval(ticks: number): string {
-  if (ticks <= 0) return 'now';
-  return `${ticks} tick${ticks === 1 ? '' : 's'}`;
+function formatInterval(days: number): string {
+  if (days <= 0) return 'now';
+  if (days === 1) return 'tomorrow';
+  return `${days} days`;
 }
 
 export function Flashcard({ instance, response, strand, onResponseChange, onSelfGrade }: InteractionComponentProps<FlashcardResponse>) {
@@ -144,7 +147,7 @@ export function Flashcard({ instance, response, strand, onResponseChange, onSelf
             >
               <Text style={[styles.gradeLabel, { color: c.text }]}>{GRADE_LABEL[grade]}</Text>
               <Text testID={`grade-${grade}-interval`} style={[styles.gradeInterval, { color: c.text }]}>
-                {formatInterval(previewTicks(currentSrs, grade))}
+                {formatInterval(previewDays(currentSrs, grade))}
               </Text>
             </Pressable>
           );

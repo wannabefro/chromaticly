@@ -39,4 +39,22 @@ if command -v flutter >/dev/null 2>&1; then
   export PATH="$STUB_DIR:$PATH"
 fi
 
+# Expand a bare `.maestro` argument to the TRACKED flows only (G6 U1). `maestro
+# test .maestro` runs whatever the directory happens to contain, and a working
+# tree can hold untracked `_capture-*.yaml` capture harnesses that require -e
+# variables the suite never sets. Those are scratch tooling, not tests: leaving
+# them in the sweep makes "the full E2E gate is green" a statement that depends on
+# who last ran a screenshot capture. Explicit paths are passed through untouched.
+if [ "$#" -eq 1 ] && [ -d "$1" ]; then
+  DIR="${1%/}"
+  # shellcheck disable=SC2207  # flow paths never contain whitespace
+  FLOWS=($(git ls-files "$DIR/*.yaml" | grep -v "/_"))
+  if [ "${#FLOWS[@]}" -eq 0 ]; then
+    echo "e2e: no tracked flows under $DIR" >&2
+    exit 1
+  fi
+  echo "e2e: ${#FLOWS[@]} tracked flows"
+  exec maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "${FLOWS[@]}"
+fi
+
 exec maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "$@"

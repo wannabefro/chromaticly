@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { ProgressProvider } from '../learn/ProgressContext';
+import { systemClock } from '../platform/system-clock';
 import { SettingsProvider } from '../learn/SettingsContext';
 import { SvgRenderProvider } from '../music-surface/SvgRenderService';
 import { settingsStorage, sqliteStorage } from '../platform/sqlite-storage';
@@ -52,7 +53,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <SettingsProvider storage={settingsStorage}>
-        <ProgressProvider storage={sqliteStorage}>
+        <ProgressProvider storage={sqliteStorage} clock={systemClock}>
           {/* One offscreen abcjs surface pre-renders static MCQ option staves so options
               don't each boot their own WebView (chromaticly-9lb). Warm by first exercise. */}
           <SvgRenderProvider>

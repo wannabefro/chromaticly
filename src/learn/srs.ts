@@ -17,6 +17,12 @@ export interface SrsState {
    *  persisted before U6. `reviewSrsGraded` defaults it; the binary path never
    *  reads or writes it. */
   ease?: number;
+  /** The store's `writeSeq` at the moment this atom was last reviewed (G6 U1).
+   *  Additive/optional — back-filled to 0 by the v2 migration. Nothing in `srs.ts`
+   *  reads it: it exists so lane-depth can order a placement seed against an
+   *  attempt made *the same day*, which `lastReviewed` cannot do. Days measure
+   *  staleness; `seq` decides authority. */
+  seq?: number;
 }
 
 export function initialSrs(now = 0): SrsState {

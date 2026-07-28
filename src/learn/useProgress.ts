@@ -12,6 +12,7 @@ import type { Band } from './exam';
 import { lessonComplete, recordAttempt, recordFlashcardGrade } from './mastery';
 import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
 import { seedExamReady, seedProgressToUnit } from './seed';
+import { defaultClock, type Clock } from './clock';
 import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
 
 /** Ensure every grade's chain root is reachable, given what's persisted so far.
@@ -126,6 +127,10 @@ export interface UseProgress {
    *  birthYear) and only changes `grade`; persists and mirrors to real state so
    *  the grade pill, readiness, and level map react. No-op pre-onboarding. */
   setGrade: (grade: number) => Promise<void>;
+  /** The shared learning clock (G6 U1) — whole days since the epoch. Screens read
+   *  `clock.now()` for the SRS `now` argument instead of the per-screen tick
+   *  counters they used to keep, so scheduling survives an app restart. */
+  clock: Clock;
   /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is unlocked and
    *  ready to play, then persist. Only ever called behind a __DEV__ deep link. */
   seedTo: (targetId: string) => Promise<void>;
@@ -136,7 +141,7 @@ export interface UseProgress {
   recordExamResult: (grade: number, band: Band) => Promise<void>;
 }
 
-export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UseProgress {
+export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: Clock = defaultClock): UseProgress {
   const [store, setStore] = useState<ProgressStore | null>(null);
   const [ready, setReady] = useState(false);
   const [revision, setRevision] = useState(0);
@@ -152,7 +157,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
 
   useEffect(() => {
     let live = true;
-    loadProgress(storage).then((loaded) => {
+    loadProgress(storage, clock.now()).then((loaded) => {
       if (!live) return;
       ensureLevelRootsUnlocked(loaded, lessons);
       setStore(loaded);
@@ -163,7 +168,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     return () => {
       live = false;
     };
-  }, [storage, lessons]);
+  }, [storage, lessons, clock]);
 
   const recordAtom = useCallback<UseProgress['recordAtom']>(
     async (atom, attempt, now) => {
@@ -257,13 +262,13 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
     async (targetId) => {
       if (!store) return;
       const at = new Date().toISOString();
-      if (targetId === 'exam') seedExamReady(store, lessons, at);
-      else seedProgressToUnit(store, lessons, targetId, at);
+      if (targetId === 'exam') seedExamReady(store, lessons, at, clock.now());
+      else seedProgressToUnit(store, lessons, targetId, at, clock.now());
       await saveProgress(store, storage);
       setProfileState(store.getProfile()); // real state → onboarded flips (KTD5)
       setRevision((r) => r + 1);
     },
-    [store, storage, lessons],
+    [store, storage, lessons, clock],
   );
 
   const recordExamResult = useCallback<UseProgress['recordExamResult']>(
@@ -274,7 +279,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       await saveProgress(store, storage);
       setRevision((r) => r + 1);
     },
-    [store, storage, lessons],
+    [store, storage, lessons, clock],
   );
 
   const setGrade = useCallback<UseProgress['setGrade']>(
@@ -316,6 +321,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       name,
       isNamed,
       nudgeSeen,
+      clock,
       completedLessonCount,
       createAccount,
       markNudgeSeen,
@@ -341,6 +347,7 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[]): UsePro
       name,
       isNamed,
       nudgeSeen,
+      clock,
       completedLessonCount,
       createAccount,
       markNudgeSeen,

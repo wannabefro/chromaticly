@@ -2,7 +2,7 @@
 // practice-plan for the weakest-due unlocked template (falling back to a
 // rotation once nothing is due) and generates fresh from it.
 
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { generate } from '../engine/generators';
@@ -12,15 +12,12 @@ import { ExerciseLoop } from './ExerciseLoop';
 import type { AttemptResult } from './grading';
 
 export function Practice() {
-  const { store, recordAtom, isUnlocked } = useProgressContext();
+  const { store, recordAtom, isUnlocked, clock } = useProgressContext();
   const [step, setStep] = useState(0);
-  // Session-local monotonic clock driving SRS `now`; resets on app restart —
-  // cross-session SRS precision is out of MVP scope.
-  const tickRef = useRef(0);
 
   const pick = useMemo(
-    () => (store ? nextPracticeTemplate(store.atomEntries(), tickRef.current, isUnlocked, step) : null),
-    [store, isUnlocked, step],
+    () => (store ? nextPracticeTemplate(store.atomEntries(), clock.now(), isUnlocked, step) : null),
+    [store, isUnlocked, step, clock],
   );
 
   const instance = useMemo(
@@ -33,10 +30,10 @@ export function Practice() {
     async (result: AttemptResult) => {
       if (!instance) return;
       const atom = instance.srs_tags[0];
-      await recordAtom(atom, result, tickRef.current++);
+      await recordAtom(atom, result, clock.now());
       setStep((s) => s + 1);
     },
-    [instance, recordAtom],
+    [instance, recordAtom, clock],
   );
 
   if (!instance) {
