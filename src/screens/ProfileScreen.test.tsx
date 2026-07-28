@@ -120,12 +120,10 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     const fresh = renderProfile(seeded(['key-signatures']));
     await waitFor(() => expect(fresh.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
 
-    // scales_keys spans every content-ful grade now — the 4 mastered grade-1
-    // atoms read as a fraction of that full scope.
-    const scalesKeysAtoms = [1, 2, 3, 4, 5]
-      .flatMap((g) => LESSONS_BY_GRADE[g].filter((l) => l.strand === 'scales_keys'))
-      .reduce((sum, l) => sum + l.atoms.length, 0);
-    const expectedPct = Math.round((4 / scalesKeysAtoms) * 100);
+    // Since G6 U4 the radar is a projection of `laneDepths` (R3), so its unit is
+    // the GRADE CELL, not the atom: one lesson of a multi-lesson grade-1 cell does
+    // not hold that cell, and the lane reads 0% until it does.
+    const expectedPct = 0;
     await waitFor(() =>
       expect(within(fresh.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
     );

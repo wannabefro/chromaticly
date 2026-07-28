@@ -6,6 +6,7 @@
 
 import type { Lesson } from '../content/lessons';
 import type { Level } from '../content/levels';
+import { laneDepths } from './lane-depth';
 import { selectDue } from './srs';
 import type { ProgressStore } from './store';
 
@@ -35,32 +36,39 @@ export function accountNudgeStats(
 }
 
 export interface StrandMastery {
+  /** Content-bearing grades currently HELD in this strand. */
   mastered: number;
+  /** Content-bearing grades this strand teaches at all. */
   total: number;
-  /** 0..1 — mastered atoms over the strand's total atoms in the grade. */
+  /** 0..1 — held grades over content-bearing grades. */
   value: number;
 }
 
-/** Whole-profile mastery per strand (design 6d radar). A pure derivation over the
- *  per-atom MasteryState: value is the fraction of the strand's atoms mastered across
- *  ALL its lessons (locked included), so a not-yet-reached strand reads as empty.
- *  Keyed by strand string — the canonical 7-strand order lives in the UI layer, which
- *  the core must not import (core-boundary). */
-export function strandMastery(
-  lessons: { strand: string; atoms: string[] }[],
-  store: ProgressStore,
-): Record<string, StrandMastery> {
-  const acc: Record<string, { mastered: number; total: number }> = {};
-  for (const lesson of lessons) {
-    const bucket = (acc[lesson.strand] ??= { mastered: 0, total: 0 });
-    for (const atom of lesson.atoms) {
-      bucket.total += 1;
-      if (store.masteryOf(atom)?.mastered === true) bucket.mastered += 1;
-    }
-  }
+/** Whole-profile mastery per strand (design 6d radar), as a PROJECTION of the one
+ *  lane-depth derivation (G6 U4, R3).
+ *
+ *  R3 says the Learn tab, the radar, exam readiness and the placement result must
+ *  never disagree. That is made structural rather than conventional: they all read
+ *  `laneDepths`, and this function only reshapes it into the `{ mastered, total,
+ *  value }` StrandRadar already consumes. Two consequences worth stating:
+ *
+ *  • The ratio is `heldGrades.length / contentGrades.length`, NOT `depth / 5` and
+ *    not `depth / highestContentGrade`. Four of the seven strands are sparse today
+ *    — chords has nothing below grade 4 — so a denominator of 5 would permanently
+ *    cap chords at 0.4 for a learner who holds everything that exists.
+ *  • It counts `heldGrades`, not `depth`. Under a sparse matrix a learner can hold
+ *    G4 while G3 is unheld; `depth` reads 1 there by design (it is contiguous
+ *    progress), but the radar answers "how much of this do you know", so it counts
+ *    the holds (KTD5/KTD10). Reading `depth` alone would silently under-report.
+ *
+ *  Keyed by strand string — the canonical 7-strand order lives in the UI layer,
+ *  which the core must not import (core-boundary). */
+export function strandMastery(store: ProgressStore, now: number): Record<string, StrandMastery> {
   const out: Record<string, StrandMastery> = {};
-  for (const [strand, b] of Object.entries(acc)) {
-    out[strand] = { ...b, value: b.total === 0 ? 0 : b.mastered / b.total };
+  for (const [strand, lane] of Object.entries(laneDepths(store, now))) {
+    const total = lane.contentGrades.length;
+    const mastered = lane.heldGrades.length;
+    out[strand] = { mastered, total, value: total === 0 ? 0 : mastered / total };
   }
   return out;
 }

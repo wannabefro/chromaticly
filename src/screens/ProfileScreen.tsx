@@ -21,9 +21,9 @@
 import { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { lessonById, type Lesson } from '../content/lessons';
+import { LESSONS, lessonById } from '../content/lessons';
 import { isStartableGrade, LEVELS } from '../content/levels';
-import { currentLevel, examReadiness, isLevelUnlocked, strandMastery } from '../learn/mastery-rollup';
+import { currentLevel, examReadiness, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { Screen } from '../ui/Screen';
 import { SettingsBlock } from '../ui/components/SettingsBlock';
@@ -39,7 +39,7 @@ export interface ProfileScreenProps {
 }
 
 export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScreenProps = {}) {
-  const { ready, store, revision, grade, name, setGrade } = useProgressContext();
+  const { ready, store, revision, grade, name, setGrade, clock } = useProgressContext();
   const [gradePickerOpen, setGradePickerOpen] = useState(false);
 
   const level = store ? currentLevel(LEVELS, store) : LEVELS[0];
@@ -58,29 +58,21 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
   }, [store, revision, level]);
 
-  // D13 phase 2: widened from grade-1-only (U1) to the lessons of every UNLOCKED
-  // level, so a grade's lessons join these numbers exactly when its level unlocks —
-  // never before (the zero-movement invariant) and never after.
-  const unlockedLessons = useMemo(() => {
-    if (!store) return [] as Lesson[];
-    return LEVELS.filter((lvl) => isLevelUnlocked(lvl, store))
-      .flatMap((lvl) => lvl.unitIds)
-      .map((id) => lessonById(id))
-      .filter((l): l is Lesson => l != null);
+  // Every authored lesson, since G6 U3: nothing is gated, so there is no
+  // "reachable subset" left to compute — the collection is the whole curriculum.
+  const collected = useMemo(() => {
+    if (!store) return 0;
+    return LESSONS.filter((lesson) => store.isFactCollected(lesson.id)).length;
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
   }, [store, revision]);
 
-  const collected = useMemo(() => {
-    if (!store) return 0;
-    return unlockedLessons.filter((lesson) => store.isFactCollected(lesson.id)).length;
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
-  }, [store, revision, unlockedLessons]);
-
+  // R3: the radar is a PROJECTION of the same `laneDepths` the Learn tab, exam
+  // readiness and the placement result read — never a second derivation.
   const mastery = useMemo(() => {
     if (!store) return {};
-    return strandMastery(unlockedLessons, store);
+    return strandMastery(store, clock.now());
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
-  }, [store, revision, unlockedLessons]);
+  }, [store, revision, clock]);
 
   if (!ready || !store || !readiness) {
     return (
@@ -137,7 +129,7 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
           <View style={styles.rowBetween}>
             <Text style={styles.cardTitle}>Fact-card collection</Text>
             <Text style={styles.value} testID="profile-facts">
-              {collected} of {unlockedLessons.length}
+              {collected} of {LESSONS.length}
             </Text>
           </View>
           <Text style={styles.cardNote}>One to find in every lesson’s teach phase.</Text>
@@ -153,7 +145,7 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
                 <View
                   key={lvl.id}
                   testID={`profile-grade-${lvl.grade}`}
-                  style={[styles.gradePill, isCurrent && styles.gradePillCurrent, !isLevelUnlocked(lvl, store) && styles.gradePillUnreachable]}
+                  style={[styles.gradePill, isCurrent && styles.gradePillCurrent, !isStartableGrade(lvl.grade) && styles.gradePillUnreachable]}
                 >
                   <Text style={[styles.gradeLabel, isCurrent && styles.gradeLabelCurrent]}>{lvl.grade}</Text>
                 </View>

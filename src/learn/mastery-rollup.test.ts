@@ -1,5 +1,6 @@
 import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
+import { atomsFor, contentGradesFor, laneDepths, SLACK_FACTOR } from './lane-depth';
 import { MASTERY_THRESHOLD } from './mastery';
 import { accountNudgeStats, currentLevel, deriveStars, isLevelUnlocked, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
@@ -14,39 +15,111 @@ function masterAtoms(store: ProgressStore, atoms: string[]): void {
   }
 }
 
-describe('strandMastery — whole-profile per-strand fraction (design 6d radar)', () => {
-  test('a fresh profile is 0 across every strand it has lessons for', () => {
-    const store = new ProgressStore();
-    const m = strandMastery(LESSONS, store);
-    for (const { value, mastered } of Object.values(m)) {
+// R3 made structural (G6 U4): the radar is a PROJECTION of `laneDepths`, not a
+// second derivation, so the Learn tab, the radar, exam readiness and the placement
+// result cannot drift apart. What the projection must get right is the RATIO —
+// held content-bearing grades over content-bearing grades — under a matrix that is
+// deliberately sparse.
+const DAY = 20_600;
+
+/** Master every atom of (strand, grade), reviewed on `day` — the same fixture
+ *  lane-depth.test.ts uses, since this reads the same derivation. */
+function masterCell(store: ProgressStore, strand: Parameters<typeof atomsFor>[0], grade: number, day = DAY, box = 2) {
+  for (const atom of atomsFor(strand, grade)) {
+    store.setAtom(atom, {
+      mastery: { streak: MASTERY_THRESHOLD, mastered: true },
+      srs: { box, lastReviewed: day, nextDue: day + box },
+    });
+  }
+}
+
+describe('strandMastery — a projection of laneDepths, not a second derivation (R3, KTD10)', () => {
+  test('a fresh profile is 0 across every strand, with a NON-ZERO total — an empty that is distinguishable from an absent strand', () => {
+    const m = strandMastery(new ProgressStore(), DAY);
+    for (const [strand, { value, mastered, total }] of Object.entries(m)) {
       expect(value).toBe(0);
       expect(mastered).toBe(0);
+      expect(total).toBe(contentGradesFor(strand as Parameters<typeof atomsFor>[0]).length);
+      expect(total).toBeGreaterThan(0);
     }
   });
 
-  test('mastering every atom of a strand takes that strand to 1', () => {
+  test('the denominator is CONTENT grades, not 5: chords holds G4 of its two content grades and reads exactly 0.5', () => {
+    // chords has content only at grades 4-5. depth/5 would read 0.8 and
+    // depth/highestGrade 1.0; both would be wrong about a half-known strand.
+    expect(contentGradesFor('chords')).toEqual([4, 5]);
     const store = new ProgressStore();
-    const rhythm = LESSONS.filter((l) => l.strand === 'rhythm');
-    masterAtoms(store, rhythm.flatMap((l) => l.atoms));
+    masterCell(store, 'chords', 4);
 
-    const m = strandMastery(LESSONS, store);
-    expect(m.rhythm.value).toBe(1);
-    expect(m.rhythm.mastered).toBe(m.rhythm.total);
-    // Untouched strands stay at 0 — mastery is per-strand, not shared.
-    for (const [strand, { value }] of Object.entries(m)) {
-      if (strand !== 'rhythm') expect(value).toBe(0);
+    const { mastered, total, value } = strandMastery(store, DAY).chords;
+    expect(mastered).toBe(1);
+    expect(total).toBe(2);
+    expect(value).toBe(0.5);
+  });
+
+  test('it counts heldGrades, not depth: a strand holding G1 and G4 but not G3 reads 2/n, which depth alone would under-report', () => {
+    // The KTD5 guard. `depth` is contiguous progress — holding G4 over an unheld
+    // G3 reads depth 1 by design — but the radar answers "how much do you know".
+    const store = new ProgressStore();
+    masterCell(store, 'rhythm', 1);
+    masterCell(store, 'rhythm', 4);
+
+    const content = contentGradesFor('rhythm');
+    expect(content).toContain(3); // otherwise the sparse case is not exercised
+    const { mastered, total, value } = strandMastery(store, DAY).rhythm;
+    expect(mastered).toBe(2);
+    expect(total).toBe(content.length);
+    expect(value).toBe(2 / content.length);
+  });
+
+  test('a fully-held strand reads 1.0', () => {
+    const store = new ProgressStore();
+    for (const grade of contentGradesFor('context')) masterCell(store, 'context', grade);
+    expect(strandMastery(store, DAY).context.value).toBe(1);
+  });
+
+  test('a strand decayed out of its top cell drops below 1.0 — the radar tracks retention, not a high-water mark', () => {
+    const store = new ProgressStore();
+    const content = contentGradesFor('rhythm');
+    for (const grade of content) masterCell(store, 'rhythm', grade);
+    expect(strandMastery(store, DAY).rhythm.value).toBe(1);
+
+    // Re-review the top cell long ago, so `now` is past its slack window while
+    // every other cell stays fresh.
+    const top = content[content.length - 1];
+    masterCell(store, 'rhythm', top, DAY - 500);
+
+    const decayed = strandMastery(store, DAY).rhythm;
+    expect(DAY).toBeGreaterThan(DAY - 500 + 2 + SLACK_FACTOR * 2); // the fixture really is stale
+    expect(decayed.value).toBeLessThan(1);
+    expect(decayed.mastered).toBe(content.length - 1);
+  });
+
+  // The structural guarantee, asserted directly: if someone ever re-derives the
+  // radar from atoms instead of reading the lanes, this fails — which is the only
+  // way R3 can regress back into two derivations that quietly disagree.
+  test('every strand equals the laneDepths projection exactly, on a mixed store', () => {
+    const store = new ProgressStore();
+    masterCell(store, 'rhythm', 1);
+    masterCell(store, 'rhythm', 4);
+    masterCell(store, 'chords', 4);
+    masterCell(store, 'context', 1);
+    masterCell(store, 'pitch', 1, DAY - 500); // stale enough to have decayed
+
+    const lanes = laneDepths(store, DAY);
+    const radar = strandMastery(store, DAY);
+    for (const [strand, lane] of Object.entries(lanes)) {
+      expect(radar[strand].mastered).toBe(lane.heldGrades.length);
+      expect(radar[strand].total).toBe(lane.contentGrades.length);
     }
   });
 
-  test('partial mastery reads as a fraction between 0 and 1', () => {
+  test('mastered never exceeds total, on any strand, in any state', () => {
     const store = new ProgressStore();
-    const rhythm = LESSONS.filter((l) => l.strand === 'rhythm');
-    // Master exactly one atom of the strand.
-    masterAtoms(store, [rhythm.flatMap((l) => l.atoms)[0]]);
-
-    const { value } = strandMastery(LESSONS, store).rhythm;
-    expect(value).toBeGreaterThan(0);
-    expect(value).toBeLessThan(1);
+    for (const lesson of LESSONS) masterCell(store, lesson.strand, lesson.grade);
+    for (const { mastered, total } of Object.values(strandMastery(store, DAY))) {
+      expect(mastered).toBeLessThanOrEqual(total);
+    }
   });
 });
 
