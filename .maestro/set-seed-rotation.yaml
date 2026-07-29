@@ -1,0 +1,66 @@
+# Replaying a lesson must NOT give the same eight questions (pedagogy audit,
+# 2026-07-29). Set seeds are `itemIndex + SET_SIZE * plays`, and `plays` is read
+# through a useMemo over the mutable ProgressStore — the React Compiler staleness
+# class that jest's layout-free renderer cannot catch. A stale read pins every
+# learner to offset 0 forever and looks completely fine in the suite.
+#
+# The proof is two screenshots of item 1: once on a fresh store, once after the
+# set has been completed. They must differ. Correctness of the answers is not the
+# point here and is Jest-covered, so the flow taps option-0 blindly.
+#
+# Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=treble-notes
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 90000
+- tapOn: { id: "unit-row-treble-notes" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+# First play, item 1 — seed 0.
+- extendedWaitUntil:
+    visible: { id: "set-count" }
+    timeout: 20000
+- takeScreenshot: seed-play1-item1
+
+# Walk the whole set. Right or wrong does not matter; finishing is what advances
+# `plays`, and only a FINISHED set counts.
+- repeat:
+    times: 8
+    commands:
+      - tapOn: { id: "option-0" }
+      - tapOn: { id: "check" }
+      - tapOn: { id: "feedback-sheet-continue" }
+
+- extendedWaitUntil:
+    visible: { id: "set-complete" }
+    timeout: 20000
+- takeScreenshot: seed-set-complete
+- tapOn: { id: "set-next" }
+
+# Second play, item 1 — must now be seed 8, i.e. a DIFFERENT question.
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 20000
+- tapOn: { id: "unit-row-treble-notes" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+- extendedWaitUntil:
+    visible: { id: "set-count" }
+    timeout: 20000
+- takeScreenshot: seed-play2-item1
