@@ -1,7 +1,18 @@
 // SetRunner (U7/U9): drives a fixed 8-item set for a lesson (design 2b header →
-// items → 2f). Cycles the lesson's templates (itemIndex % templates.length, seeds
-// 0..7) so a multi-template lesson varies its interaction across the set — a
-// single-template lesson is unaffected (i % 1 === 0 always picks templates[0]).
+// items → 2f). Cycles the lesson's templates (itemIndex % templates.length) so a
+// multi-template lesson varies its interaction across the set — a single-template
+// lesson is unaffected (i % 1 === 0 always picks templates[0]).
+//
+// SEEDS ROTATE PER PLAY. They used to be 0..7 every time, which made a lesson the
+// same eight questions forever: replaying changed nothing, and any atom those
+// eight seeds did not select could never be asked. Measured before the fix, that
+// was 88 of the curriculum's 262 atoms — 34% — and review could not recover them
+// either, because Practice only selects atoms the learner has ATTEMPTED.
+//
+// So the seed is `itemIndex + SET_SIZE * plays`. The first play is still 0..7, so
+// a set is deterministic and every pinned generator snapshot and Maestro flow is
+// byte-identical; the second play is 8..15, and so on. Measured after the fix,
+// 22 of the 25 short lessons reach every atom within 2-4 plays.
 // Feeds ExerciseLoop, and on each Continue records the atom exactly once (A2) and
 // the per-item mastery gem. On the 8th it marks the lesson complete once (A2) and
 // shows SetComplete. The notation surface persists across items (perf refactor).
@@ -38,12 +49,28 @@ export interface SetRunnerProps {
 }
 
 export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
-  const { recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, markNudgeSeen, clock } = useProgressContext();
+  const { ready, recordAtom, recordFlashcardGrade, complete, isFactCollected, collectFact, store, markNudgeSeen, clock } =
+    useProgressContext();
   // Lessons with teach content open on the teach/read phase (design 4a/4b); the
   // sticky "Start exercises" CTA advances into the set. Lessons without teach
   // content drop straight into exercises, unchanged.
   const [phase, setPhase] = useState<'teach' | 'set'>(lesson.teach ? 'teach' : 'set');
   const [itemIndex, setItemIndex] = useState(0);
+  // The play offset, held stable for the whole set: the count advances when THIS
+  // set completes, and a seed that shifted mid-set would rebuild the question the
+  // learner is looking at.
+  //
+  // `ready` is a dependency and `revision` deliberately is not. A lazy `useState`
+  // initializer looks right here and is wrong: it runs on the first render, which
+  // can be before the snapshot has loaded, and would pin every learner to offset 0
+  // forever. Keying on `ready` recomputes exactly once, when the store arrives and
+  // before any item can be answered. Keying on `revision` would instead re-read it
+  // at the end of the set, when `complete()` bumps the count.
+  const seedBase = useMemo(
+    () => (store?.getLesson(lesson.id).plays ?? 0) * SET_SIZE,
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is excluded on purpose; see above
+    [store, ready, lesson.id],
+  );
   const [setState, setSetState] = useState(emptySet());
   const [done, setDone] = useState(false);
   // Whether to overlay the account nudge (design 6c), and its stats. The gate is decided
@@ -61,13 +88,13 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   const isPassage = templateId === 'music_in_context';
 
   const passage = useMemo(
-    () => (isPassage ? buildContextPassage({ grade: lesson.grade, seed: itemIndex, atoms: lesson.atoms }) : null),
-    [isPassage, itemIndex, lesson.atoms, lesson.grade],
+    () => (isPassage ? buildContextPassage({ grade: lesson.grade, seed: seedBase + itemIndex, atoms: lesson.atoms }) : null),
+    [isPassage, seedBase, itemIndex, lesson.atoms, lesson.grade],
   );
 
   const instance = useMemo(
-    () => (isPassage ? null : generate(templateId, { grade: lesson.grade, seed: itemIndex, atoms: lesson.atoms })),
-    [isPassage, templateId, itemIndex, lesson.atoms, lesson.grade],
+    () => (isPassage ? null : generate(templateId, { grade: lesson.grade, seed: seedBase + itemIndex, atoms: lesson.atoms })),
+    [isPassage, templateId, seedBase, itemIndex, lesson.atoms, lesson.grade],
   );
 
   // Shared by both the checked (handleResult) and self-graded (handleSelfGrade)

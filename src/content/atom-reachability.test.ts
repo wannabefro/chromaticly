@@ -1,0 +1,136 @@
+// Every atom a lesson claims to teach must be one its own questions can credit.
+//
+// This exists because of a bug that nothing else could catch. `ornaments-to-sign-5`
+// declared six atoms suffixed `:written_to_sign`; its generator emitted the bare
+// form. Both halves were individually correct and individually tested — the lesson
+// JSON validated, the generator's own suite passed, the pinned seed-stability
+// snapshot was green — and the product was a lesson that could never be completed:
+// a flawless set scored 0 stars, and the Terms & Signs lane could never hold grade
+// 5. The defect lived in the SEAM, so the test has to sit in the seam too.
+//
+// Two directions, and they fail for different reasons:
+//
+//   • An emitted tag the lesson does not declare is credit going nowhere. Stars,
+//     lesson completion and lane depth are all computed over the DECLARED list, so
+//     a stray tag is work the learner did that the app will not count.
+//   • A declared atom nothing emits is the reverse: a mastery requirement no
+//     question can ever satisfy.
+//
+// Seed window: `SEEDS_PER_ATOM` sets per atom, which is far more than a learner
+// would play but is the point — it asks "is this atom reachable AT ALL", not "is it
+// reachable soon". Coverage within a realistic number of plays is a separate
+// question, owned by SetRunner's seed rotation.
+
+import { LESSONS, type Lesson } from './lessons';
+import { generate } from '../engine/generators';
+import { buildContextPassage } from '../engine/generators/context-passage';
+
+const SET_SIZE = 8;
+const SEEDS_PER_ATOM = 40;
+
+function tagsOf(instance: unknown): string[] {
+  const o = instance as { srs_tags?: string[]; questions?: { srs_tags?: string[] }[] };
+  return [...(o.srs_tags ?? []), ...(o.questions ?? []).flatMap((q) => q.srs_tags ?? [])];
+}
+
+/** Every tag the lesson's own templates emit across a wide seed sweep. A seed that
+ *  throws is skipped, not failed: generators legitimately reject a seed whose draw
+ *  cannot make a valid instance, and `generateValidated` already retries. */
+function emittedBy(lesson: Lesson): Set<string> {
+  const emitted = new Set<string>();
+  const seeds = Math.max(SET_SIZE, lesson.atoms.length * SEEDS_PER_ATOM);
+  for (let seed = 0; seed < seeds; seed++) {
+    const templateId = lesson.templates[seed % lesson.templates.length];
+    const opts = { grade: lesson.grade, seed, atoms: lesson.atoms };
+    try {
+      const instance = templateId === 'music_in_context' ? buildContextPassage(opts) : generate(templateId, opts);
+      for (const tag of tagsOf(instance)) emitted.add(tag);
+    } catch {
+      continue;
+    }
+  }
+  return emitted;
+}
+
+const EMITTED = new Map(LESSONS.map((lesson) => [lesson.id, emittedBy(lesson)]));
+
+describe('every lesson can credit the atoms it declares', () => {
+  test.each(LESSONS.map((l) => [l.id, l] as const))(
+    '%s emits every atom it declares',
+    (_id, lesson) => {
+      const emitted = EMITTED.get(lesson.id)!;
+      expect(lesson.atoms.filter((atom) => !emitted.has(atom))).toEqual([]);
+    },
+  );
+
+  test.each(LESSONS.map((l) => [l.id, l] as const))(
+    '%s declares every atom it emits',
+    (_id, lesson) => {
+      const declared = new Set(lesson.atoms);
+      expect([...EMITTED.get(lesson.id)!].filter((atom) => !declared.has(atom))).toEqual([]);
+    },
+  );
+});
+
+// The specific regression, named. The generic sweep above would catch it, but a
+// named test says WHICH lesson broke and why anyone should care.
+describe('ornaments keep their direction in the atom id', () => {
+  test('the Grade 5 written->sign lesson credits the suffixed atoms, not the Grade 4 bare ones', () => {
+    const emitted = EMITTED.get('ornaments-to-sign-5')!;
+    for (const atom of emitted) expect(atom).toMatch(/:written_to_sign$/);
+  });
+
+  test('the Grade 4 sign->name lesson credits the BARE atoms — the two are different skills', () => {
+    const emitted = EMITTED.get('ornaments-4')!;
+    for (const atom of emitted) expect(atom).not.toMatch(/:written_to_sign$/);
+  });
+
+  test('the two lessons share no atom, so mastering one never masters the other', () => {
+    const g5 = EMITTED.get('ornaments-to-sign-5')!;
+    const g4 = EMITTED.get('ornaments-4')!;
+    expect([...g5].filter((atom) => g4.has(atom))).toEqual([]);
+  });
+});
+
+// Reachable "at all" is the weak claim. This is the strong one: a learner who
+// replays a lesson a handful of times should actually meet everything it teaches.
+//
+// Before the seed rotation the answer was "never" — a lesson was the same eight
+// questions forever, so 34% of the curriculum was unreachable by any amount of
+// play. With the rotation it is 69% after one play, 96% after four.
+describe('a lesson becomes exhaustive as it is replayed', () => {
+  const PLAYS = 6;
+
+  /** The one lesson that cannot converge, and the reason is its size, not the
+   *  rotation: 31 atoms drawn 8 at a time by an unbiased sampler will keep
+   *  re-drawing. It is the lesson the pedagogy audit says to split into dynamics,
+   *  tempo and signs — when that lands, this allowance goes with it. */
+  const OVERSIZED = 'terms-and-signs';
+
+  test.each(LESSONS.filter((l) => l.id !== OVERSIZED).map((l) => [l.id, l] as const))(
+    '%s asks every atom it teaches within six plays',
+    (_id, lesson) => {
+      const hit = new Set<string>();
+      for (let seed = 0; seed < PLAYS * SET_SIZE; seed++) {
+        const templateId = lesson.templates[seed % SET_SIZE % lesson.templates.length];
+        const opts = { grade: lesson.grade, seed, atoms: lesson.atoms };
+        try {
+          const instance = templateId === 'music_in_context' ? buildContextPassage(opts) : generate(templateId, opts);
+          for (const tag of tagsOf(instance)) hit.add(tag);
+        } catch {
+          continue;
+        }
+      }
+      expect(lesson.atoms.filter((atom) => !hit.has(atom))).toEqual([]);
+    },
+  );
+
+  test(`${OVERSIZED} is the known exception, and it is oversized rather than broken`, () => {
+    const lesson = LESSONS.find((l) => l.id === OVERSIZED)!;
+    // 31 atoms is roughly four sets' worth of distinct content in one lesson —
+    // four times the next largest. The number is asserted so that splitting the
+    // lesson forces this allowance to be revisited rather than quietly inherited.
+    expect(lesson.atoms.length).toBe(31);
+    expect(Math.max(...LESSONS.filter((l) => l.id !== OVERSIZED).map((l) => l.atoms.length))).toBeLessThan(15);
+  });
+});

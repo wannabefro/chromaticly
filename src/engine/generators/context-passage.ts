@@ -279,6 +279,13 @@ export function buildContextPassage(opts: GenerateOptions): ContextPassage {
 
     // Sub-question order follows design 8d: find-the-bar, highest/lowest, term-in-context,
     // true/false, find-the-bar (second target).
+    //
+    // The SECOND find-the-bar alternates by seed. It used to be `longest` every
+    // time, which left `find_bar:lowest` declared by the lesson, validated for
+    // right here (a passage is rejected unless its lowest bar is unique), and then
+    // never asked — so the atom existed, gated passage selection, and could never
+    // be credited. Alternating costs nothing: both targets are already computed.
+    const secondTarget = opts.seed % 2 === 0 ? 'longest' : 'lowest';
     return {
       music,
       questions: [
@@ -286,7 +293,7 @@ export function buildContextPassage(opts: GenerateOptions): ContextPassage {
         highestNoteQuestion(base, highestNote, notes, 2),
         termQuestion(base, termMark, termBar, 3),
         timeSigQuestion(base, timeSig, rng, 4),
-        barQuestion(base, 'longest', longestBar, 5),
+        barQuestion(base, secondTarget, secondTarget === 'longest' ? longestBar : lowestBar, 5),
       ],
     };
   }

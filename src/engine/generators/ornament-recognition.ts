@@ -12,7 +12,7 @@
 
 import type { Clef, Duration, NoteEvent, OrnamentKind } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, ornamentAtom, parseAtom } from '../atoms';
+import { ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, ornamentAtom, ornamentSignAtom, parseAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
 import { diatonicPitchesInComfortableRange } from '../scope';
 import type { ExerciseInstance } from '../schema';
@@ -229,7 +229,14 @@ function buildWrittenToSign(
       correct: 'Correct!',
       incorrect: 'Not quite — trace the written notes: which sign is the shorthand for that exact pattern?',
     },
-    srs_tags: [ornamentAtom(kind)],
+    // The DIRECTION belongs in the tag. This branch is written->sign, so it must
+    // credit `ornament:<kind>:written_to_sign`, not the bare sign->name atom the
+    // Grade 4 branch writes. Emitting the bare form here meant ornaments-to-sign-5
+    // declared six atoms none of its own questions could ever credit: a flawless
+    // set scored 0 stars, and the Terms & Signs lane could never hold grade 5.
+    // Recognising a trill sign and reconstructing one from written notes are two
+    // different skills, so they stay two different atoms.
+    srs_tags: [ornamentSignAtom(kind)],
     kb_version: KB_VERSION,
   };
 }

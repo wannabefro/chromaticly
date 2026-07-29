@@ -29,6 +29,15 @@ const PROPERTY_LABEL: Record<BarProperty, string> = {
   longest: 'longest note',
 };
 
+/** How the feedback describes the bars that did NOT win. One shared clause read
+ *  wrong for two of the three properties ("the others all stay inside it" is only
+ *  true of a peak); it went unnoticed because `lowest` was never actually asked. */
+const PROPERTY_MISS: Record<BarProperty, string> = {
+  highest: 'every other bar stays below it',
+  lowest: 'every other bar stays above it',
+  longest: 'every other bar holds it for less time',
+};
+
 const BARS = 4;
 
 function beatsOf(dur: Duration): number {
@@ -125,7 +134,7 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
     hints: [`Take the bars one at a time — and use play to hear the passage.`],
     feedback: {
       correct: 'Correct!',
-      incorrect: `Not quite — compare the bars one by one. Only one bar holds the ${label}; the others all stay inside it.`,
+      incorrect: `Not quite — compare the bars one by one. Only one bar holds the ${label}; ${PROPERTY_MISS[property]}.`,
     },
     srs_tags: [findBarAtom(property)],
     kb_version: KB_VERSION,

@@ -64,11 +64,16 @@ describe('music in context — one passage, several questions (8d)', () => {
         scientificPitchOrdinal(a.pitch) >= scientificPitchOrdinal(b.pitch) ? a : b,
       ).bar;
       const longestBar = notes.reduce((a, b) => (a.beats >= b.beats ? a : b)).bar;
+      const lowestBar = notes.reduce((a, b) =>
+        scientificPitchOrdinal(a.pitch) <= scientificPitchOrdinal(b.pitch) ? a : b,
+      ).bar;
 
-      const q1 = passage.questions[0]; // find-the-bar: highest
-      const q5 = passage.questions[4]; // find-the-bar: longest (second target)
+      const q1 = passage.questions[0]; // find-the-bar: highest, always
+      // The second find-the-bar alternates by seed so `find_bar:lowest` is
+      // reachable at all — it was declared and validated for but never asked.
+      const q5 = passage.questions[4];
       expect(q1.answer.canonical).toBe(highestBar);
-      expect(q5.answer.canonical).toBe(longestBar);
+      expect(q5.answer.canonical).toBe(seed % 2 === 0 ? longestBar : lowestBar);
       expect(q1.distractors).not.toContain(highestBar);
     }
   });
@@ -120,8 +125,18 @@ describe('music in context — one passage, several questions (8d)', () => {
       'context:highest_note',
       'context:dynamic_term',
       'context:time_sig',
-      'find_bar:longest',
+      'find_bar:lowest', // odd seed; an even seed asks `longest` — see below
     ]);
+  });
+
+  // All three find-the-bar atoms have to be askable. `lowest` used to be neither:
+  // the lesson declared it and the passage builder REJECTED any passage whose
+  // lowest bar was not unique, so it gated generation without ever being asked.
+  test('both find-the-bar targets are reachable across a set of eight', () => {
+    const targets = new Set(
+      Array.from({ length: 8 }, (_, seed) => buildContextPassage(opts(seed)).questions[4].srs_tags[0]),
+    );
+    expect(targets).toEqual(new Set(['find_bar:longest', 'find_bar:lowest']));
   });
 
   // Term-in-context (Q3): the passage carries exactly one dynamic, and the question is

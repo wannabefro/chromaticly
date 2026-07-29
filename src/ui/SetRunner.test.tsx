@@ -149,8 +149,11 @@ describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
     }
 
     expect(getByTestId('set-complete')).toBeTruthy();
-    // The lesson was marked complete in the persisted snapshot.
-    expect(storage.blob).toContain(`"${lesson.id}":{"completed":true}`);
+    // The lesson was marked complete in the persisted snapshot, and the play was
+    // counted — `plays` is what the NEXT set seeds from, so it has to persist with
+    // the completion rather than being derived at read time.
+    const saved = JSON.parse(storage.blob!).lessons[lesson.id];
+    expect(saved).toEqual({ completed: true, plays: 1 });
   });
 });
 
@@ -356,5 +359,91 @@ describe('SetRunner — account nudge gating (design 6c, 302.9)', () => {
     await completeTheSet(getByTestId);
     expect(getByTestId('set-complete')).toBeTruthy();
     expect(queryByTestId('account-nudge-sheet')).toBeNull();
+  });
+});
+
+// The fix for the single worst finding of the 2026-07-29 pedagogy audit: seeds
+// were `itemIndex` alone, so a lesson was the SAME eight questions forever. 88 of
+// the curriculum's 262 atoms (34%) could never be asked, and Practice could not
+// reach them either — it only selects atoms the learner has ATTEMPTED, so an atom
+// never asked never enters review.
+//
+// The invariant is two-sided, and both sides matter. A FIRST play must still be
+// seeds 0..7, or every pinned generator snapshot and every Maestro flow shifts
+// underneath us. A SECOND play must not be.
+describe('SetRunner — set seeds rotate per play, so a lesson is not the same eight questions forever', () => {
+  const target = LESSONS_BY_GRADE[2][0]; // single-template, no teach gate in the way
+
+  function snapshotWith(plays: number): string {
+    const snapshot: ProgressSnapshot = {
+      version: STORE_VERSION,
+      atoms: {},
+      lessons: { [target.id]: { completed: plays > 0, plays } },
+      collectedFacts: [],
+      profile: { grade: 2, onboardedAt: '2026-07-14T00:00:00.000Z' },
+      accountNudgeSeen: false,
+      clearedExams: [],
+      writeSeq: 1,
+      seededDepths: {},
+    };
+    return JSON.stringify(snapshot);
+  }
+
+  /** Every seed `generate` was asked for on mount. Two of them belong to the teach
+   *  phase's own examples, at seeds the lesson JSON authors — and this lesson
+   *  authors seed 0, so item seeds are asserted by presence rather than by
+   *  position. */
+  async function seedsAfter(plays: number): Promise<{ seeds: number[]; authored: number[] }> {
+    const authored = new Set(
+      [target.worked_example?.seed, target.teach?.concept?.example?.seed].filter((n): n is number => n !== undefined),
+    );
+    const spy = jest.spyOn(generators, 'generate');
+    const storage = memoryStorage();
+    storage.blob = snapshotWith(plays);
+    render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={target} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    const seeds = spy.mock.calls.map((c) => (c[1] as { seed: number }).seed);
+    spy.mockRestore();
+    return { seeds, authored: [...authored] };
+  }
+
+  test('a learner who has never played this lesson still asks seed 0 — snapshots and E2E flows are unmoved', async () => {
+    const { seeds, authored } = await seedsAfter(0);
+    expect(seeds).toContain(0);
+    // and nothing from a later play has leaked in
+    expect(seeds.filter((n) => !authored.includes(n) && n !== 0)).toEqual([]);
+  });
+
+  test('a second play asks seed 8, so it reaches questions the first play could not', async () => {
+    expect((await seedsAfter(1)).seeds).toContain(8);
+  });
+
+  test('the fifth play asks seed 32 — the offset is plays x SET_SIZE, never a wrap', async () => {
+    expect((await seedsAfter(4)).seeds).toContain(32);
+  });
+
+  // The bug this test exists for: reading `plays` in a lazy useState initializer
+  // runs on the FIRST render, which can precede the snapshot load — pinning every
+  // learner to offset 0 forever, silently, on device only.
+  test('the offset survives a store that is still loading at first render', async () => {
+    const spy = jest.spyOn(generators, 'generate');
+    const storage = memoryStorage();
+    storage.blob = snapshotWith(3);
+    let release!: (v: string | null) => void;
+    const slow = { ...storage, load: () => new Promise<string | null>((r) => { release = r; }) };
+    render(
+      <ProgressProvider storage={slow as unknown as SnapshotStorage}>
+        <SetRunner lesson={target} />
+      </ProgressProvider>,
+    );
+    await act(async () => {}); // first render happens with no store at all
+    await act(async () => { release(storage.blob); });
+
+    expect(spy.mock.calls.map((c) => (c[1] as { seed: number }).seed)).toContain(24);
+    spy.mockRestore();
   });
 });

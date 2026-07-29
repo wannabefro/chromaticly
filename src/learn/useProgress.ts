@@ -42,14 +42,21 @@ export function recordAtomFlashcardGrade(store: ProgressStore, atom: string, gra
   });
 }
 
-/** Mark a lesson complete. Idempotent — returns true only on the transition, so
- *  callers can fire a completion reaction exactly once. Since G6 U3 it no longer
- *  writes an unlock: nothing is hard-locked (R2), and `lesson.unlocks` survives
- *  only as the authored ordering the level map reads. */
+/** Mark a lesson complete and count the play. Returns true only on the FIRST
+ *  completion, so callers can fire a completion reaction exactly once.
+ *
+ *  The two halves behave differently on purpose. `completed` is a one-way latch;
+ *  `plays` increments every time, including on a replay of a finished lesson,
+ *  because it is the seed offset the next set is built from. An early return on
+ *  `completed` — which is what this did before — is exactly what froze every
+ *  lesson at the same eight questions.
+ *
+ *  Since G6 U3 it no longer writes an unlock: nothing is hard-locked (R2), and
+ *  `lesson.unlocks` survives only as the authored ordering. */
 export function completeLesson(store: ProgressStore, lesson: Lesson): boolean {
-  if (store.getLesson(lesson.id).completed) return false;
-  store.setLesson(lesson.id, { completed: true });
-  return true;
+  const before = store.getLesson(lesson.id);
+  store.setLesson(lesson.id, { completed: true, plays: (before.plays ?? 0) + 1 });
+  return !before.completed;
 }
 
 /** Fold one graded attempt on `atom` (belonging to `lesson`) into the store, at

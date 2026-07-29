@@ -23,6 +23,16 @@ export interface AtomProgress {
 
 export interface LessonProgress {
   completed: boolean;
+  /** How many 8-item sets of this lesson the learner has finished.
+   *
+   *  This is the seed offset the set runner rotates on, and it is the whole fix
+   *  for a lesson only ever asking the same eight questions. Optional and read
+   *  through `?? 0`, so a snapshot written before it existed needs no migration
+   *  and simply starts its next set where it always did.
+   *
+   *  Distinct from `completed`, which is a one-way latch: a learner who replays a
+   *  finished lesson still advances this. */
+  plays?: number;
 }
 
 /** One strand's placement/re-test claim (G6 U1 declares it, U2 derives from it).
