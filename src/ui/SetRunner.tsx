@@ -14,15 +14,35 @@
 // byte-identical; the second play is 8..15, and so on. Measured after the fix,
 // 22 of the 25 short lessons reach every atom within 2-4 plays.
 // Feeds ExerciseLoop, and on each Continue records the atom exactly once (A2) and
-// the per-item mastery gem. On the 8th it marks the lesson complete once (A2) and
+// the per-item mastery gem. On the last it marks the lesson complete once (A2) and
 // shows SetComplete. The notation surface persists across items (perf refactor).
+//
+// ITEM 1 IS A TRY, NOT A TEST (chromaticly-inr). A lesson used to run one worked
+// example on the teach card straight into eight scored questions. The first item
+// is now a warm-up: same generator, same shell, smart tip already open, and no
+// gem. Eight items are still presented — the seed window per play is unchanged —
+// and seven are scored. The warm-up records nothing at all — no gem, no mastery,
+// no SRS review. It cannot be evidence of mastery (its tip is open before the
+// question is read), and recording it as hint-assisted would RESET the atom's
+// streak (mastery.ts recordAttempt), charging the learner for taking the on-ramp.
 
 import { useCallback, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, type Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
-import { emptySet, gems, isComplete, recordItem, score, segmentStates, SET_SIZE, type ExerciseSetState } from '../learn/exercise-set';
+import {
+  emptySet,
+  gems,
+  isComplete,
+  recordItem,
+  score,
+  SCORED_SIZE,
+  segmentStates,
+  SET_SIZE,
+  WARM_UP_ITEMS,
+  type ExerciseSetState,
+} from '../learn/exercise-set';
 import { accountNudgeStats } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import type { SrsGrade } from '../learn/srs';
@@ -82,6 +102,8 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
 
   const templateId = lesson.templates[itemIndex % lesson.templates.length];
 
+  const isWarmUp = itemIndex < WARM_UP_ITEMS;
+
   // Music in Context is a passage, not a question (8d): one score with several
   // sub-questions asked over it. It is still ONE item in the set — the gem is the
   // passage as a whole — but each sub-question is its own mark and its own atom.
@@ -102,9 +124,12 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   // lesson exactly once (A2) — the only thing that differs between them is how
   // the atom itself gets recorded (recordAtom vs recordFlashcardGrade, AD4b).
   const advance = useCallback(
-    async (nextState: ExerciseSetState) => {
+    async (nextState: ExerciseSetState, unscored = false) => {
       setSetState(nextState);
-      if (isComplete(nextState)) {
+      // An unscored item never completes the set — `isComplete` reads the gem
+      // count, which the warm-up leaves untouched, but saying so here keeps the
+      // two ideas from having to agree by accident.
+      if (!unscored && isComplete(nextState)) {
         const transitioned = await complete(lesson); // A2: complete the lesson exactly once
         setDone(true);
         // Decide the nudge HERE, imperatively — `transitioned` is true only on the first
@@ -134,10 +159,20 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
     async (result: AttemptResult) => {
       const atom = instance?.srs_tags[0];
       if (atom === undefined) return;
+      // The warm-up records NOTHING — not the gem, not mastery, not the SRS
+      // review. "This one doesn't count" has to mean it in both directions: the
+      // tip is open before the question is read, so a correct answer is not
+      // evidence of mastery, and `recordAttempt` resets the atom's streak on any
+      // hint-assisted attempt — so recording it would actively cost the learner
+      // progress for taking the on-ramp the lesson offers them.
+      if (isWarmUp) {
+        await advance(setState, true);
+        return;
+      }
       await recordAtom(atom, result, clock.now()); // A2: record the atom once, here
       await advance(recordItem(setState, result));
     },
-    [instance, recordAtom, setState, advance, clock],
+    [instance, isWarmUp, recordAtom, setState, advance, clock],
   );
 
   // A passage's sub-questions each carry their own atom, so mastery moves per
@@ -146,13 +181,24 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   // music.
   const handleSubResult = useCallback(
     async (result: AttemptResult) => {
+      // Same rule as the whole-passage handler: a warm-up records nothing, and
+      // that has to hold per SUB-question too — the passage's four sub-answers
+      // are recorded here, not in handlePassageDone.
+      if (isWarmUp) return;
       if (result.atom !== null) await recordAtom(result.atom, result, clock.now());
     },
-    [recordAtom, clock],
+    [isWarmUp, recordAtom, clock],
   );
 
   const handlePassageDone = useCallback(
     async (results: AttemptResult[]) => {
+      // A passage is one item of the set, so the warm-up rule applies to it the
+      // same way: presented, then dropped. Without this the first passage would
+      // land a gem and the set would end an item early.
+      if (isWarmUp) {
+        await advance(setState, true);
+        return;
+      }
       await advance(
         recordItem(setState, {
           correct: results.every((r) => r.correct),
@@ -160,7 +206,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
         }),
       );
     },
-    [setState, advance],
+    [isWarmUp, setState, advance],
   );
 
   // U7/AD4b: a flashcard has no correct/incorrect verdict, so it never reaches
@@ -170,10 +216,15 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
     async (grade: SrsGrade) => {
       const atom = instance?.srs_tags[0];
       if (atom === undefined) return;
+      // Same rule as handleResult: the warm-up is presented and dropped.
+      if (isWarmUp) {
+        await advance(setState, true);
+        return;
+      }
       await recordFlashcardGrade(atom, grade, clock.now());
       await advance(recordItem(setState, { correct: grade !== 'again', hintsUsed: grade === 'hard' ? 1 : 0 }));
     },
-    [instance, recordFlashcardGrade, setState, advance, clock],
+    [instance, isWarmUp, recordFlashcardGrade, setState, advance, clock],
   );
 
   if (phase === 'teach' && lesson.teach) {
@@ -195,7 +246,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
     // decided in `advance` (nudgeStats set ⇒ show); render reads only that real state.
     return (
       <Screen>
-        <SetComplete gems={gems(setState)} score={score(setState)} total={SET_SIZE} strand={strand} onNext={() => onDone?.()} />
+        <SetComplete gems={gems(setState)} score={score(setState)} total={SCORED_SIZE} strand={strand} onNext={() => onDone?.()} />
         {nudgeStats && (
           <AccountNudgeSheet
             lessons={nudgeStats.lessons}
@@ -219,16 +270,16 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
           <Text style={styles.close}>×</Text>
         </Pressable>
         <View style={styles.segments}>
-          <ProgressSegments states={segmentStates(setState)} strand={strand} />
+          <ProgressSegments states={segmentStates(setState, itemIndex)} strand={strand} />
         </View>
         <Text style={styles.count} testID="set-count">
-          {itemIndex + 1}/{SET_SIZE}
+          {isWarmUp ? 'try' : `${itemIndex - WARM_UP_ITEMS + 1}/${SCORED_SIZE}`}
         </Text>
       </View>
       {passage ? (
-        <ContextRunner passage={passage} onSubResult={handleSubResult} onDone={handlePassageDone} />
+        <ContextRunner passage={passage} onSubResult={handleSubResult} onDone={handlePassageDone} warmUp={isWarmUp} />
       ) : (
-        <ExerciseLoop instance={instance!} onResult={handleResult} onSelfGrade={handleSelfGrade} />
+        <ExerciseLoop instance={instance!} onResult={handleResult} onSelfGrade={handleSelfGrade} warmUp={isWarmUp} />
       )}
     </Screen>
   );

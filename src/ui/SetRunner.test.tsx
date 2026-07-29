@@ -12,6 +12,7 @@ import type { Lesson } from '../content/lessons';
 import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
 import * as generators from '../engine/generators';
 import { generate } from '../engine/generators';
+import { SCORED_SIZE, SET_SIZE } from '../learn/exercise-set';
 import { ProgressProvider } from '../learn/ProgressContext';
 import { STORE_VERSION, type ProgressSnapshot, type SnapshotStorage } from '../learn/store';
 import { assembleOptions } from './grading';
@@ -53,6 +54,92 @@ async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
     fireEvent.press(getByTestId('feedback-sheet-continue'));
   });
 }
+
+// chromaticly-inr — the first item of a set is a TRY, not a test. It is presented
+// like any other item and then dropped entirely: no gem, no mastery, no SRS
+// review. Recording it as hint-assisted would be worse than not recording it,
+// because mastery.ts resets an atom's streak on any hinted attempt — the learner
+// would pay for taking the on-ramp the lesson opens with.
+describe('SetRunner — the warm-up item is presented and then dropped', () => {
+  test('its smart tip is already open, so the method is shown before the question is asked', async () => {
+    const { getByTestId } = render(
+      <ProgressProvider storage={memoryStorage()}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(getByTestId);
+
+    expect(getByTestId('set-count')).toHaveTextContent('try');
+    expect(getByTestId('hint-0')).toBeTruthy();
+    expect(getByTestId('warmup-caption')).toBeTruthy();
+  });
+
+  test('the next item closes its hints again — the reveal does not carry over', async () => {
+    const { getByTestId, queryByTestId } = render(
+      <ProgressProvider storage={memoryStorage()}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(getByTestId);
+    await answerCorrect(getByTestId, 0);
+
+    expect(queryByTestId('hint-0')).toBeNull();
+    expect(queryByTestId('warmup-caption')).toBeNull();
+    expect(getByTestId('set-count')).toHaveTextContent(`1/${SCORED_SIZE}`);
+  });
+
+  test('answering it records no mastery — the store is untouched by the try', async () => {
+    const storage = memoryStorage();
+    const { getByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(getByTestId);
+    const before = storage.blob;
+    await answerCorrect(getByTestId, 0);
+
+    // The snapshot is written on every real record; an unchanged blob is the
+    // evidence that nothing was recorded, not merely that nothing was mastered.
+    expect(storage.blob).toBe(before);
+  });
+
+  // A passage is ONE item of the set with four sub-answers, and the sub-answers
+  // are recorded on a different path from the whole-passage result. Guarding only
+  // the outer path would leave the warm-up passage recording four atoms while
+  // reporting that it counted for nothing.
+  test('a warm-up PASSAGE records nothing either — not the item, not its sub-questions', async () => {
+    const passageLesson = LESSONS.find((l) => l.templates.includes('music_in_context'))!;
+    const storage = memoryStorage();
+    const { getByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={passageLesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(getByTestId);
+
+    expect(getByTestId('context-runner')).toBeTruthy();
+    expect(getByTestId('warmup-caption')).toBeTruthy();
+    expect(storage.blob).toBeNull();
+  });
+
+  test('a set still ends after eight items — the try is one of the eight, not a ninth', async () => {
+    const { getByTestId } = render(
+      <ProgressProvider storage={memoryStorage()}>
+        <SetRunner lesson={lesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(getByTestId);
+    for (let seed = 0; seed < SET_SIZE; seed++) await answerCorrect(getByTestId, seed);
+
+    expect(getByTestId('set-complete')).toBeTruthy();
+  });
+});
 
 // 302.3: a lesson with teach content must open on the teach/read phase (design
 // 4a/4b), never drop straight into exercises — "Start exercises" is the gate.
@@ -111,7 +198,7 @@ describe('SetRunner — generates at the lesson\'s own grade, not a global const
 });
 
 describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
-  test('answering all 8 correctly reaches SetComplete with 8/8 and all clean gems', async () => {
+  test('answering all 8 correctly reaches SetComplete with 7/7 and all clean gems — the warm-up is presented, not scored', async () => {
     const storage = memoryStorage();
     const { getByTestId, getByText } = render(
       <ProgressProvider storage={storage}>
@@ -128,9 +215,10 @@ describe('SetRunner — 8-item set to the mastery-gems payoff', () => {
       await answerCorrect(getByTestId, seed);
     }
 
-    // 2f payoff: score ring shows 8/8, gems row present.
+    // 2f payoff: the ring counts SCORED items (chromaticly-inr), so eight answers
+    // land seven gems and the eighth question never appears — the first was the try.
     expect(getByTestId('set-complete')).toBeTruthy();
-    expect(getByText('8/8')).toBeTruthy();
+    expect(getByText(`${SCORED_SIZE}/${SCORED_SIZE}`)).toBeTruthy();
     expect(getByTestId('set-gems')).toBeTruthy();
   });
 
@@ -209,15 +297,33 @@ describe('SetRunner — flashcard (U7): self-graded items route through recordFl
     );
     await act(async () => {});
 
-    const grades = ['good', 'easy', 'hard', 'again', 'good', 'good', 'good', 'good'];
+    // The FIRST grade is the warm-up and lands no gem (chromaticly-inr), so the
+    // gems below are offset by one from this list on purpose — that offset is
+    // the thing being asserted as much as the grade mapping itself.
+    const grades = ['again', 'good', 'easy', 'hard', 'again', 'good', 'good', 'good'];
     for (const grade of grades) {
       await gradeFlashcard(getByTestId, grade);
     }
 
-    expect(getByTestId('gem-0-clean')).toBeTruthy();
-    expect(getByTestId('gem-1-clean')).toBeTruthy();
-    expect(getByTestId('gem-2-hinted')).toBeTruthy();
-    expect(getByTestId('gem-3-missed')).toBeTruthy();
+    expect(getByTestId('gem-0-clean')).toBeTruthy(); // good
+    expect(getByTestId('gem-1-clean')).toBeTruthy(); // easy
+    expect(getByTestId('gem-2-hinted')).toBeTruthy(); // hard
+    expect(getByTestId('gem-3-missed')).toBeTruthy(); // again
+  });
+
+  test("the warm-up's own grade lands no gem — a set is seven gems however the first item went", async () => {
+    const storage = memoryStorage();
+    const { getByTestId, queryByTestId } = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={flashcardLesson} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+
+    for (let i = 0; i < 8; i++) await gradeFlashcard(getByTestId, 'good');
+
+    expect(getByTestId(`gem-${SCORED_SIZE - 1}-clean`)).toBeTruthy();
+    expect(queryByTestId(`gem-${SCORED_SIZE}-clean`)).toBeNull();
   });
 });
 

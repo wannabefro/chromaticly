@@ -25,7 +25,7 @@ import { Button } from './components/Button';
 import { type AttemptResult, misconceptionFor, toResult } from './grading';
 import { Hints } from './Hints';
 import { lookupInteraction } from './interactions/registry';
-import { colors, shape, strandDef, type as typo, type Strand } from './theme';
+import { colors, fonts, shape, strandDef, type as typo, type Strand } from './theme';
 
 export interface ExerciseLoopProps {
   instance: ExerciseInstance;
@@ -42,6 +42,12 @@ export interface ExerciseLoopProps {
    *  normal exercise look, so existing callers are unaffected. */
   showStrandChip?: boolean;
   showHints?: boolean;
+  /** The warm-up item (chromaticly-inr): the first smart tip opens with the
+   *  question, and a caption says the item does not count. Both belong to the
+   *  same idea — an open tip with no caption reads as an ordinary hinted item,
+   *  and a caption with no tip is a promise the screen does not keep — so this
+   *  is one flag, not two. */
+  warmUp?: boolean;
   /** Rendered directly under the notation stimulus (the warm-up's play coach mark). */
   coachMark?: ReactNode;
   /** Override the FeedbackSheet message per outcome (warm-up coached copy). When a
@@ -55,6 +61,7 @@ export function ExerciseLoop({
   onSelfGrade,
   showStrandChip = true,
   showHints = true,
+  warmUp = false,
   coachMark,
   feedbackMessage,
 }: ExerciseLoopProps) {
@@ -199,7 +206,20 @@ export function ExerciseLoop({
           onPlayMusic={music ? handlePlayMusic : undefined}
         />
 
-        {showHints && <Hints hints={instance.hints} onHintUsed={handleHintUsed} />}
+        {/* Keyed on the instance so the reveal count resets with the item. Nothing
+            remounts between items (the WebView must survive), and `hintsUsedRef`
+            is reset by hand above — without this key Hints keeps its own
+            `revealed`, so item 2 opens with item 1's hints showing while the
+            loop reports zero hints used. */}
+        {showHints && (
+          <Hints key={instance.id} hints={instance.hints} revealFirst={warmUp} onHintUsed={handleHintUsed} />
+        )}
+
+        {warmUp && (
+          <Text style={styles.warmUpCaption} testID="warmup-caption">
+            this one doesn&apos;t count — the tip stays open
+          </Text>
+        )}
       </ScrollView>
 
       {/* Sticky, so it stays reachable however tall the options grow (notation
@@ -251,6 +271,9 @@ export function ExerciseLoop({
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
+  // Mono + ghost, the register the design reserves for "this is chrome, not
+  // content" — the same voice as the warm-up's "no streaks or timers yet".
+  warmUpCaption: { ...typo.label, fontFamily: fonts.mono, color: colors.textGhost, textAlign: 'center' },
   body: { gap: shape.spaceCard, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceCard },
   footer: {
     paddingHorizontal: shape.spaceScreenX,

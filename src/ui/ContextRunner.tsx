@@ -20,7 +20,7 @@ import { NotationCard, type NotationCardHandle } from './components/NotationCard
 import { StrandChip } from './components/StrandChip';
 import { type AttemptResult, toResult } from './grading';
 import { lookupInteraction } from './interactions/registry';
-import { colors, shape, strandDef, type as typo, type Strand } from './theme';
+import { colors, fonts, shape, strandDef, type as typo, type Strand } from './theme';
 
 export interface ContextRunnerProps {
   passage: ContextPassage;
@@ -28,9 +28,15 @@ export interface ContextRunnerProps {
   onSubResult: (result: AttemptResult) => void;
   /** Fired when the last sub-question is done; the passage is one item in the set. */
   onDone: (results: AttemptResult[]) => void;
+  /** The warm-up item (chromaticly-inr). A passage is one item of the set like
+   *  any other, so the first passage of a set is the try. Only the caption is
+   *  carried across — the sub-questions keep their own hints, because a passage
+   *  already asks four graded things and pre-opening one tip would speak for
+   *  only one of them. */
+  warmUp?: boolean;
 }
 
-export function ContextRunner({ passage, onSubResult, onDone }: ContextRunnerProps) {
+export function ContextRunner({ passage, onSubResult, onDone, warmUp = false }: ContextRunnerProps) {
   const [qIndex, setQIndex] = useState(0);
   const instance = passage.questions[qIndex];
   const spec = useMemo(() => lookupInteraction(instance.interaction.type), [instance.interaction.type]);
@@ -91,6 +97,11 @@ export function ContextRunner({ passage, onSubResult, onDone }: ContextRunnerPro
           <Text testID="context-count" style={styles.count}>
             Q{qIndex + 1} · {passage.questions.length}
           </Text>
+          {warmUp && (
+            <Text style={styles.warmUpCaption} testID="warmup-caption">
+              this one doesn&apos;t count
+            </Text>
+          )}
         </View>
         <View testID="stimulus-music">
           <NotationCard ref={surfaceRef} music={passage.music} onEvent={handleSurfaceEvent} />
@@ -140,6 +151,7 @@ const styles = StyleSheet.create({
   score: { paddingHorizontal: shape.spaceScreenX, paddingTop: shape.spaceInline, gap: shape.spaceInline },
   scoreHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   count: { ...typo.label, color: colors.textMuted },
+  warmUpCaption: { ...typo.label, fontFamily: fonts.mono, color: colors.textGhost },
   question: { padding: shape.spaceScreenX, gap: shape.spaceCard },
   prompt: { ...typo.prompt, color: colors.text },
   footer: {

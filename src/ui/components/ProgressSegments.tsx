@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { ACCENT, colors, shape, strandDef, type Strand } from '../theme';
 
-export type SegmentState = 'done' | 'incorrect' | 'current' | 'todo';
+export type SegmentState = 'warmup' | 'done' | 'incorrect' | 'current' | 'todo';
 
 export interface ProgressSegmentsProps {
   states: SegmentState[];
@@ -31,6 +31,11 @@ export function ProgressSegments({ states, strand, testID }: ProgressSegmentsPro
 
 function segmentStyle(state: SegmentState, hue: string) {
   switch (state) {
+    // The warm-up lead-in: dashed and unfilled, the same visual grammar the lane
+    // bar uses for a grade that teaches nothing — a slot with nothing to earn,
+    // not an empty slot the learner has yet to reach.
+    case 'warmup':
+      return { backgroundColor: 'transparent', borderWidth: 1, borderStyle: 'dashed' as const, borderColor: colors.textGhost };
     case 'done':
       return { backgroundColor: hue };
     case 'incorrect':

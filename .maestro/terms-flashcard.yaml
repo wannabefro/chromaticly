@@ -39,8 +39,12 @@ appId: host.exp.Exponent
 - assertVisible: { id: "grade-good" }
 - tapOn: { id: "grade-good" }
 
-# Grading advances the set straight to the next card — no FeedbackSheet in between.
+# Grading advances the set straight to the next item — no FeedbackSheet in
+# between. dynamics-1 alternates recall and recognition (chromaticly-inr), so
+# item 2 is the mcq direction of the same deck: "which term means X?". Asserting
+# the SWITCH is what proves the pairing is live, not just declared in the JSON.
 - extendedWaitUntil:
-    visible: { id: "flashcard" }
+    visible: { id: "mcq" }
     timeout: 10000
+- assertNotVisible: { id: "flashcard" }
 - assertVisible: { id: "set-count" }
