@@ -53,3 +53,29 @@ Sources: product brief pasted in project chat (graded music-theory curriculum & 
 
 ## Intentional additions
 - `NotationCard` — placeholder contract for the real abcjs/VexFlow renderer (required by brief §6).
+
+## Approved divergences from a prototype
+
+A prototype is the source of truth until a divergence is approved **here**, with its reason. Anything
+not listed below is drift, not a decision.
+
+### Lane detail (7b) — one grade at a time, quietly navigable · approved 2026-07-29
+
+`Progression Screens C.dc.html` draws 7b as one scroll listing grade 3, then 4, then 5, headed
+"You're at grade 3 here". Three changes, all approved:
+
+1. **One grade at a time.** The screen shows a single grade's units. A grade is not quick to study
+   for, and listing five of them implies a pace nobody works at.
+2. **The other grades are reachable, not advertised.** No ladder, no chip row — one muted "Other
+   grades" line opens a picker, which is the only place the five are ever listed. That picker is also
+   where a sparse strand gets an honest answer ("Grade 2 · nothing here yet") instead of an empty
+   screen. **R2 is unchanged**: every grade is one tap away and nothing refuses entry. Going above
+   your depth says so and offers the way back as the primary action.
+3. **The strand is the heading; the grade is the section label.** "You're at grade 3 here" is retired.
+   It used one headline slot for two different jobs — a status claim at your depth, a location label
+   above it — and it stated a *rank*, when depth is a derived reading that decays (R5). A lane that
+   slides back down would make an earned-sounding sentence into a lie. The "where you are" marker
+   moves to the section label, where it is a position in a list rather than a claim about the learner.
+
+The depth readout is not repeated here: the lane list (7a) carries it, and every visit passes through
+it.
