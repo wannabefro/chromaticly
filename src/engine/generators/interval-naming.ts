@@ -77,6 +77,20 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     (n) => n >= 1 && n <= 8 && n !== intervalNumber,
   );
 
+  // The two off-by-one distractors are opposite counting errors, not one vague
+  // "recount" (rule 5). One below means the learner counted the STEPS between
+  // the notes; one above means they counted a letter that is not there. Built
+  // from the FILTERED list: at an octave the +1 neighbour is out of range and
+  // never offered, so writing copy for it would leave a key nothing can pick.
+  const byDistractor = Object.fromEntries(
+    distractors.map((n) => [
+      String(n),
+      n < intervalNumber
+        ? `That is the number of steps between the notes. An interval counts both notes themselves, so this one is ${article(intervalNumber)} ${intervalNumber}, not ${article(n)} ${n}.`
+        : `That is one too many. Count the letter names from the lower note to the upper note and you get ${intervalNumber}, not ${n}.`,
+    ]),
+  );
+
   return {
     id: makeInstanceId('interval_naming', grade, idSeed),
     template_id: 'interval_naming',
@@ -99,6 +113,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: 'Not quite — recount inclusively from the lower note to the upper note, counting both ends.',
+      by_distractor: byDistractor,
     },
     srs_tags: [intervalAtom(intervalNumber)],
     kb_version: KB_VERSION,
@@ -175,6 +190,28 @@ function buildQualityDistractors(
 
   const [nearest] = nearestNumbers(number, 1);
   return [intervalLabel('perfect', number), neighbourLabel(nearest)];
+}
+
+/** Which mistake each number+type distractor represents (rule 5). Derived from
+ *  the label rather than threaded out of `buildQualityDistractors`, which keeps
+ *  its single job of producing well-formed labels: a label is
+ *  "<quality> <ordinal>", so a distractor sharing the answer's ordinal is a
+ *  quality error and any other is a counting error.
+ *
+ *  The counting copy never claims the quality was right, because a neighbouring
+ *  number usually carries a different quality too — it corrects the number only,
+ *  which is the mistake that is certain. */
+function qualityDistractorReasons(canonical: string, distractors: string[]): Record<string, string> {
+  const ordinalOf = (label: string): string => label.slice(label.indexOf(' ') + 1);
+  const answerOrdinal = ordinalOf(canonical);
+  const reasons: Record<string, string> = {};
+  for (const label of distractors) {
+    reasons[label] =
+      ordinalOf(label) === answerOrdinal
+        ? `The number is right — it is a ${answerOrdinal}. The size is not: this one is a ${canonical}.`
+        : `That is a ${ordinalOf(label)}. Count the letter names from the lower note to the upper note, both ends included, and this interval is a ${answerOrdinal}.`;
+  }
+  return reasons;
 }
 
 function buildNumberAndType(
@@ -261,6 +298,7 @@ function buildNumberAndType(
       correct: 'Correct!',
       incorrect:
         'Not quite — recount the letter names for the number, then compare the upper note to the key signature to check major, minor, or perfect.',
+      by_distractor: qualityDistractorReasons(canonical, distractors),
     },
     srs_tags: [intervalTypeAtom(number)],
     kb_version: KB_VERSION,
@@ -351,6 +389,7 @@ function buildBetweenAnyNotes(
       correct: 'Correct!',
       incorrect:
         'Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.',
+      by_distractor: qualityDistractorReasons(canonical, distractors),
     },
     srs_tags: [intervalTypeAtom(number)],
     kb_version: KB_VERSION,

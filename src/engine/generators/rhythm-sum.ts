@@ -194,7 +194,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
   // Each operand and each note-value option rendered as a rhythm glyph, so the sum
   // reads as notes not words (matches note_value_compare). option_music is keyed by
-  // "dur:dots" to match the {dur,dots} option values (grading.optionMusicKey).
+  // "dur:dots" to match the {dur,dots} option values (grading.optionKey).
   const optionMusic: Record<string, Music> = {};
   for (const entry of [target, ...distractorEntries]) optionMusic[valueKey(entry)] = glyphMusic(entry);
 

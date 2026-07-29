@@ -86,6 +86,7 @@ const mcqSpec: InteractionSpec<number | null> = {
   grade: (instance, response) => gradeMcq(instance, assembleOptions(instance)[response ?? 0].value),
   submits: true,
   correctAnswerView: mcqCorrectAnswerView,
+  selectedValue: (instance, response) => (response === null ? undefined : assembleOptions(instance)[response]?.value),
 };
 
 const textInputSpec: InteractionSpec<string> = {

@@ -50,6 +50,14 @@ export const ExerciseInstanceSchema = z.object({
   feedback: z.object({
     correct: z.string(),
     incorrect: z.string(),
+    /** Per-distractor misconception copy (never-violate rule 5: feedback names
+     *  the mistake that was actually made). Keyed by the same option key
+     *  `option_music`/`option_sign` use — the distractor's string form. A
+     *  generator that builds its distractors deliberately (note_naming's
+     *  clef-confusion vs off-by-one, interval_naming's counted-the-gaps) names
+     *  each one here; `incorrect` stays as the fallback for every template that
+     *  does not, and for a wrong answer typed rather than picked. */
+    by_distractor: z.record(z.string(), z.string()).optional(),
   }),
   srs_tags: z.array(z.string()).default([]),
   kb_version: z.string(),

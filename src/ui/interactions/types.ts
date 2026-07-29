@@ -76,6 +76,18 @@ export interface InteractionSpec<Response = unknown> {
   /** Overrides the shared Check button's label (e.g. "Check — 2 notes left").
    *  Falls back to "Check" when absent. */
   checkLabel?(instance: ExerciseInstance, response: Response): string;
+  /** The ANSWER VALUE the response stands for, when the response is not itself
+   *  the answer — mcq's response is an option index, not the picked note name.
+   *  Only `feedback.by_distractor` consumes it (chromaticly-7tb), to name which
+   *  mistake was made.
+   *
+   *  This must not be inferred at the call site. An mcq index and an
+   *  interval_naming answer are both numbers, so passing a raw index into the
+   *  lookup would let index 2 read the copy written for "a 2nd" — right shape,
+   *  wrong meaning, and nothing would fail. Absent means the response IS the
+   *  answer (text_input) or there is no single answer to diagnose (true_false,
+   *  transposition_input). */
+  selectedValue?(instance: ExerciseInstance, response: Response): unknown;
   /** Re-entry into fix mode (D6): "Fix note k" clears the wrong item(s) back to
    *  unanswered and locks the right ones, returning the new response. The loop
    *  resets `graded` to null after calling this but never launders the verdict —

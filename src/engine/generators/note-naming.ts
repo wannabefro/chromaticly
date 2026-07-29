@@ -90,6 +90,12 @@ function otherClef(clef: Clef): Clef {
   return CLEF_CONFUSION_PARTNER[clef];
 }
 
+/** "an alto clef", but "a treble clef" — misconception copy names a clef in
+ *  running prose, and "a alto clef" reads as broken English on device. */
+function clefPhrase(clef: Clef): string {
+  return `${clef === 'alto' ? 'an' : 'a'} ${clef} clef`;
+}
+
 function parseLetterOctave(pitch: string): { letter: Letter; octave: number } {
   const match = /^([A-G])(?:##|#|bb|b)?(-?\d+)$/.exec(pitch);
   if (!match) throw new Error(`unexpected pitch shape: ${pitch}`);
@@ -134,10 +140,23 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const clefConfusion = clefConfusionLetter(clef, pitch);
 
   const canonical = formatNoteName(letter, accidental);
-  const distractors = [
-    formatNoteName(adjacent, null),
-    formatNoteName(clefConfusion, safeDistractorAccidental(clefConfusion, accidental)),
-  ];
+  const offByOne = formatNoteName(adjacent, null);
+  const wrongClef = formatNoteName(clefConfusion, safeDistractorAccidental(clefConfusion, accidental));
+  const distractors = [offByOne, wrongClef];
+
+  // The two distractors are the two named misconceptions, so each one can say
+  // which mistake it is (never-violate rule 5). The instance-wide `incorrect`
+  // below used to hedge across both — "the other clef, OR miscounting by one" —
+  // which told a learner who did one of them to check the other as well.
+  //
+  // The two collide when the off-by-one letter and the wrong-clef letter are the
+  // same. `distractors` de-duplicates to a single option, and the map would too;
+  // the off-by-one reading is written last so it wins, because it is the mistake
+  // a learner reading the RIGHT clef would make.
+  const byDistractor: Record<string, string> = {
+    [wrongClef]: `That is ${wrongClef} — but only in the ${otherClef(clef)} clef. This stave carries ${clefPhrase(clef)}, so the same line or space is a different note.`,
+    [offByOne]: `That is one line or space out. ${offByOne} is the next step ${direction === 1 ? 'up' : 'down'} from ${canonical} — count again from a clef landmark you are sure of.`,
+  };
 
   return {
     id: makeInstanceId('note_naming', grade, idSeed),
@@ -162,6 +181,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       correct: 'Correct!',
       incorrect:
         'Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.',
+      by_distractor: byDistractor,
     },
     srs_tags: [noteReadAtom(clef, pitch)],
     kb_version: KB_VERSION,

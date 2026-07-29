@@ -103,6 +103,73 @@ describe('ExerciseLoop — MCQ select → Check → feedback', () => {
   });
 });
 
+// chromaticly-7tb / never-violate rule 5. The sheet must name the mistake that
+// was made, so the copy has to be chosen from the RESPONSE, not the instance —
+// two learners picking two different wrong options must read two different
+// sheets. These render through ExerciseLoop rather than calling
+// `misconceptionFor` directly, because the defect being guarded is a wiring one:
+// the lookup can be correct while the sheet still shows the instance-wide string.
+describe('ExerciseLoop — the incorrect sheet names WHICH mistake was made', () => {
+  const diagnosed: ExerciseInstance = {
+    ...mcqInstance,
+    id: 'test-mcq-diagnosed',
+    feedback: {
+      correct: 'Nice!',
+      incorrect: 'Not quite — try again.',
+      by_distractor: { D: 'That is the next line up.', E: 'That is the note on the other clef.' },
+    },
+  };
+
+  test.each([
+    ['D', 'That is the next line up.'],
+    ['E', 'That is the note on the other clef.'],
+  ])('picking %s shows its own copy, not the instance-wide string', (value, expected) => {
+    const options = assembleOptions(diagnosed);
+    const index = options.findIndex((o) => o.value === value);
+    const { getByTestId, getByText, queryByText } = render(<ExerciseLoop instance={diagnosed} onResult={jest.fn()} />);
+
+    fireEvent.press(getByTestId(`option-${index}`));
+    fireEvent.press(getByTestId('check'));
+
+    expect(getByText(expected)).toBeTruthy();
+    expect(queryByText(diagnosed.feedback.incorrect)).toBeNull();
+  });
+
+  // The near-miss this guards: an mcq response is an option INDEX, and
+  // interval_naming's answers are interval NUMBERS. Both are numbers, so a
+  // lookup on the raw response would read the copy for "a 2nd" when the learner
+  // happened to tap the option at index 2. Nothing would throw and nothing would
+  // look wrong — the sheet would simply explain a different mistake.
+  test('an index is never mistaken for a numeric answer — the copy follows the option, not its position', () => {
+    const numeric: ExerciseInstance = {
+      ...mcqInstance,
+      id: 'test-mcq-numeric',
+      answer: { canonical: 5, accepted_alternatives: [] },
+      distractors: [4, 6],
+      feedback: {
+        correct: 'Nice!',
+        incorrect: 'Not quite.',
+        by_distractor: { '4': 'copy for the interval 4', '6': 'copy for the interval 6' },
+      },
+    };
+    const options = assembleOptions(numeric);
+    const index = options.findIndex((o) => o.value === 4);
+    const { getByTestId, getByText } = render(<ExerciseLoop instance={numeric} onResult={jest.fn()} />);
+
+    fireEvent.press(getByTestId(`option-${index}`));
+    fireEvent.press(getByTestId('check'));
+
+    expect(getByText('copy for the interval 4')).toBeTruthy();
+  });
+
+  test('an instance with no per-distractor copy still shows its own incorrect string — the fallback is not dropped', () => {
+    const { getByTestId, getByText } = render(<ExerciseLoop instance={mcqInstance} onResult={jest.fn()} />);
+    fireEvent.press(getByTestId(`option-${optionIndex(mcqInstance, false)}`));
+    fireEvent.press(getByTestId('check'));
+    expect(getByText(mcqInstance.feedback.incorrect)).toBeTruthy();
+  });
+});
+
 describe('ExerciseLoop — text_input grading', () => {
   const textInstance: ExerciseInstance = {
     ...mcqInstance,

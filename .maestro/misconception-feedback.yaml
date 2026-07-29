@@ -1,0 +1,47 @@
+# chromaticly-7tb / never-violate rule 5 — the incorrect sheet names the mistake
+# the learner actually made, not the two it might have been.
+#
+# The item is pinned, not guessed: a cleared install replays treble-notes at seed
+# offset 0, so question 1 is always "D" on the treble stave with distractors "F"
+# (the bass-clef reading of the same line) and "E" (one line up). The flow taps
+# "F" and asserts the sheet explains THE CLEF, and that the old hedged copy —
+# "the other clef, OR miscounting by one" — is gone.
+#
+# Jest proves the lookup; only a device proves the wiring, because the sheet can
+# render the instance-wide string while every unit test still passes.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=treble-notes
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 90000
+- tapOn: { id: "unit-row-treble-notes" }
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "mcq" }
+    timeout: 20000
+
+# The clef-confusion distractor, by its label rather than its index — the option
+# order is shuffled per instance and index would pin the shuffle, not the answer.
+- tapOn: { text: "F" }
+- tapOn: { id: "check" }
+
+- extendedWaitUntil:
+    visible: { id: "feedback-sheet-incorrect" }
+    timeout: 10000
+- assertVisible: { text: ".*only in the bass clef.*" }
+- assertNotVisible: { text: ".*miscounting the line or space by one.*" }
+- takeScreenshot: misconception-feedback

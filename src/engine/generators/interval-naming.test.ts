@@ -221,11 +221,30 @@ describe('intervalNamingStaveInput — fuzz gate: 100 generated items are all va
 // grade-3 behavior.
 
 describe('intervalNaming — grade-1 byte-identity (U3 hard core): the else-branch and untouched sampleInterval move nothing', () => {
+  /** `feedback.by_distractor` (chromaticly-7tb) is an ADDITIVE field: it names
+   *  which of the two off-by-one distractors the learner picked, and is derived
+   *  from `intervalNumber`, which the fixture already pins. Stripping it before
+   *  the comparison keeps the fixture genuinely pre-U3 — regenerating it would
+   *  make the file post-change and quietly retire the guarantee it exists for,
+   *  which is that the grade-1 SAMPLING sequence never moved. */
+  function withoutMisconceptions(instances: ReturnType<typeof intervalNaming>[]) {
+    return instances.map(({ feedback: { by_distractor: _dropped, ...feedback }, ...rest }) => ({ ...rest, feedback }));
+  }
+
   test('seeds 0..19 deep-equal the pre-U3 fixture, both templates — independent of the seed-stability .snap net', () => {
     const mcqNow = Array.from({ length: 20 }, (_, seed) => intervalNaming({ grade: 1, seed, atoms: [] }));
     const staveNow = Array.from({ length: 20 }, (_, seed) => intervalNamingStaveInput({ grade: 1, seed, atoms: [] }));
-    expect(mcqNow).toEqual(preChangeGrade1Fixture.mcq);
-    expect(staveNow).toEqual(preChangeGrade1Fixture.stave);
+    expect(withoutMisconceptions(mcqNow)).toEqual(preChangeGrade1Fixture.mcq);
+    expect(withoutMisconceptions(staveNow)).toEqual(preChangeGrade1Fixture.stave);
+  });
+
+  test('the stripped field is the only difference — the fixture still pins everything else about grade 1', () => {
+    const mcqNow = Array.from({ length: 20 }, (_, seed) => intervalNaming({ grade: 1, seed, atoms: [] }));
+    for (const instance of mcqNow) {
+      expect(Object.keys(instance.feedback.by_distractor ?? {}).sort()).toEqual(
+        (instance.distractors as number[]).map(String).sort(),
+      );
+    }
   });
 });
 

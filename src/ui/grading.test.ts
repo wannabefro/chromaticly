@@ -8,6 +8,7 @@ import {
   gradeText,
   gradeTransposition,
   gradeTrueFalse,
+  misconceptionFor,
   optionLabel,
   toResult,
   transpositionBeginFix,
@@ -55,6 +56,45 @@ describe('assembleOptions — answer + distractors, deterministic order', () => 
     const a = assembleOptions(instance).map((o) => o.label);
     const b = assembleOptions(instance).map((o) => o.label);
     expect(a).toEqual(b);
+  });
+});
+
+// Never-violate rule 5: the sheet names the mistake that was made. The lookup
+// has to survive three shapes of "no answer to diagnose" without ever showing a
+// blank sheet, so each fallback is asserted on its own rather than as one chain.
+describe('misconceptionFor — per-distractor feedback, and every way it falls back', () => {
+  const TREBLE = ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'];
+
+  test('a picked distractor gets the copy the generator wrote for that distractor', () => {
+    const instance = generate('note_naming', { grade: 1, seed: 4, atoms: TREBLE });
+    for (const distractor of instance.distractors as string[]) {
+      expect(misconceptionFor(instance, distractor)).toBeDefined();
+    }
+  });
+
+  test('the two note_naming distractors get DIFFERENT copy — the point is which mistake, not that there was one', () => {
+    const instance = generate('note_naming', { grade: 1, seed: 4, atoms: TREBLE });
+    const [a, b] = (instance.distractors as string[]).map((d) => misconceptionFor(instance, d));
+    expect(a).not.toBe(b);
+  });
+
+  test('an interval number is looked up too — a numeric answer still has a key', () => {
+    const instance = generate('interval_naming', { grade: 1, seed: 4, atoms: [] });
+    const distractor = instance.distractors[0] as number;
+    expect(typeof distractor).toBe('number');
+    expect(misconceptionFor(instance, distractor)).toBeDefined();
+  });
+
+  test('a template that names no misconceptions returns undefined, so the sheet keeps its own copy', () => {
+    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: atomsForTemplate('key_signature_id') });
+    expect(instance.feedback.by_distractor).toBeUndefined();
+    expect(misconceptionFor(instance, instance.distractors[0])).toBeUndefined();
+  });
+
+  test('a wrong answer that is not a listed distractor returns undefined — typed and placed answers have nothing to look up', () => {
+    const instance = generate('note_naming', { grade: 1, seed: 4, atoms: TREBLE });
+    expect(misconceptionFor(instance, 'Z')).toBeUndefined();
+    expect(misconceptionFor(instance, { pitch: 'C4', dur: 'crotchet' })).toBeUndefined();
   });
 });
 

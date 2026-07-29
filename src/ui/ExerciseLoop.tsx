@@ -22,7 +22,7 @@ import { RhythmSumStimulus } from './components/RhythmSumStimulus';
 import { OrnamentCard } from './components/OrnamentCard';
 import { StrandChip } from './components/StrandChip';
 import { Button } from './components/Button';
-import { type AttemptResult, toResult } from './grading';
+import { type AttemptResult, misconceptionFor, toResult } from './grading';
 import { Hints } from './Hints';
 import { lookupInteraction } from './interactions/registry';
 import { colors, shape, strandDef, type as typo, type Strand } from './theme';
@@ -228,7 +228,18 @@ export function ExerciseLoop({
         graded !== null && (
           <FeedbackSheet
             kind={graded ? 'correct' : 'incorrect'}
-            message={feedbackMessage?.(graded) ?? (graded ? instance.feedback.correct : instance.feedback.incorrect)}
+            message={
+              feedbackMessage?.(graded) ??
+              (graded
+                ? instance.feedback.correct
+                : // Rule 5: name the mistake that was made, not the two it might
+                  // have been. The interaction converts its response into the
+                  // answer VALUE (an mcq response is an option index, not the
+                  // picked answer); falls back to the instance-wide string when
+                  // the template does not diagnose its distractors.
+                  (misconceptionFor(instance, spec.selectedValue?.(instance, response)) ??
+                  instance.feedback.incorrect))
+            }
             correctAnswer={graded ? undefined : spec.correctAnswerView(instance, response)}
             onContinue={handleContinue}
           />

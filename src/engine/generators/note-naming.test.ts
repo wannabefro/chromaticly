@@ -184,3 +184,44 @@ describe('noteNaming — double accidentals at grade 4 (chromaticly-9ig)', () =>
     expect(() => noteNaming({ grade: 3, seed: 3, atoms: ['note_read:treble:F##4'] })).toThrow();
   });
 });
+
+// chromaticly-7tb — the two distractors ARE the two named misconceptions, so
+// each says which one it is. The hedged "the other clef, or miscounting by one"
+// string stays as the fallback for a wrong answer that was typed rather than
+// picked; it is no longer what a picked distractor shows.
+describe('noteNaming — each distractor names its own misconception (never-violate rule 5)', () => {
+  const CLEFS = [
+    ['treble', ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4']],
+    ['bass', ['note_read:bass:G2', 'note_read:bass:B2', 'note_read:bass:D3']],
+  ] as const;
+
+  test.each(CLEFS)('every %s distractor is diagnosed, and no key is unreachable', (_clef, atoms) => {
+    for (let seed = 0; seed < 30; seed++) {
+      const instance = noteNaming({ grade: 1, seed, atoms: [...atoms] });
+      const keys = Object.keys(instance.feedback.by_distractor ?? {}).sort();
+      // Equality both ways: no distractor without copy (a hedged sheet), and no
+      // copy without a distractor (dead text nothing can ever show).
+      expect(keys).toEqual([...new Set(instance.distractors as string[])].sort());
+    }
+  });
+
+  test('the clef-confusion copy names the OTHER clef, and the off-by-one copy does not mention a clef at all', () => {
+    const instance = noteNaming({ grade: 1, seed: 4, atoms: ['note_read:treble:C4', 'note_read:treble:E4', 'note_read:treble:G4'] });
+    const copies = Object.values(instance.feedback.by_distractor!);
+    expect(copies.some((c) => c.includes('bass clef'))).toBe(true);
+    expect(copies.some((c) => c.includes('one line or space out'))).toBe(true);
+  });
+
+  // Copy is read aloud in the head; "a alto clef" reads as broken English on
+  // device the same way "a 8th" did in the interval prompt.
+  test('the article agrees with the clef name at every clef, including alto', () => {
+    for (const atoms of [['note_read:treble:C4'], ['note_read:bass:G2'], ['note_read:alto:C4']]) {
+      for (let seed = 0; seed < 10; seed++) {
+        const instance = noteNaming({ grade: 4, seed, atoms });
+        for (const copy of Object.values(instance.feedback.by_distractor ?? {})) {
+          expect(copy).not.toMatch(/\ba (alto|8)\b/);
+        }
+      }
+    }
+  });
+});

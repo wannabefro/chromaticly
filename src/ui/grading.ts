@@ -74,9 +74,14 @@ function seedFromId(id: string): number {
 
 /** A generator's optional per-value render payload (AD5), e.g. key_signature_id's
  *  `interaction.config.option_music: Record<string, Music>` keyed by the same
- *  semantic string used as `answer.canonical`/each distractor. */
-function optionMusicKey(value: unknown): string | undefined {
+ *  semantic string used as `answer.canonical`/each distractor. The same key
+ *  addresses `feedback.by_distractor`, so an option's misconception copy and its
+ *  rendered stave are looked up the same way. */
+export function optionKey(value: unknown): string | undefined {
   if (typeof value === 'string') return value;
+  // interval_naming's answer is the interval NUMBER (5, not "5th"), so a numeric
+  // option needs a key too or its misconception copy can never be looked up.
+  if (typeof value === 'number') return String(value);
   // A rhythm {dur,dots} answer (rhythm_sum, chromaticly-f9k) has no string form —
   // key its option_music by "dur:dots" so a note-value option can carry a glyph too.
   if (value && typeof value === 'object' && typeof (value as { dur?: unknown }).dur === 'string') {
@@ -87,7 +92,7 @@ function optionMusicKey(value: unknown): string | undefined {
 }
 
 function optionMusicFor(instance: ExerciseInstance, value: unknown): Music | undefined {
-  const key = optionMusicKey(value);
+  const key = optionKey(value);
   if (key == null) return undefined;
   const map = instance.interaction.config?.option_music;
   if (!map || typeof map !== 'object') return undefined;
@@ -127,6 +132,23 @@ export function assembleOptions(instance: ExerciseInstance): Option[] {
     [options[i], options[j]] = [options[j], options[i]];
   }
   return options;
+}
+
+/** The misconception copy for the wrong answer the learner actually gave, or
+ *  `undefined` when the generator named none for it (never-violate rule 5).
+ *
+ *  Two ways this legitimately returns `undefined`, and both fall back to the
+ *  instance's single `incorrect` string rather than showing nothing:
+ *
+ *   • The template does not diagnose its distractors. Most do not yet.
+ *   • The learner did not PICK a listed distractor — a typed answer, a stave
+ *     placement, a partly-right multi-select. There is no distractor to look up.
+ */
+export function misconceptionFor(instance: ExerciseInstance, selected: unknown): string | undefined {
+  const map = instance.feedback.by_distractor;
+  if (!map) return undefined;
+  const key = optionKey(selected);
+  return key == null ? undefined : map[key];
 }
 
 /** An MCQ pick is correct iff it deep-equals the canonical answer. */
