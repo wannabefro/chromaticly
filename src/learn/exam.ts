@@ -35,7 +35,7 @@ export const GRADE1_EXAM_SECTIONS: ExamSection[] = [
   { strand: 'pitch', title: 'Pitch & Notation', templates: ['note_naming'], atoms: atomsOf('treble-notes', 'bass-notes', 'accidentals') },
   { strand: 'scales_keys', title: 'Keys & Scales', templates: ['key_signature_id'], atoms: atomsOf('key-signatures') },
   { strand: 'intervals', title: 'Intervals', templates: ['interval_naming'], atoms: atomsOf('intervals') },
-  { strand: 'terms_signs', title: 'Terms & Signs', templates: ['term_meaning'], atoms: atomsOf('terms-and-signs') },
+  { strand: 'terms_signs', title: 'Terms & Signs', templates: ['term_meaning'], atoms: atomsOf('dynamics-1', 'tempo-1', 'signs-1') },
 ];
 
 export const QUESTIONS_PER_SECTION = 4;

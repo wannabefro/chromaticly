@@ -33,6 +33,23 @@ function slugify(text: string): string {
  *  for cross-checking `term:<slug>` references (e.g. lesson data). */
 export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(TERMS_DECK_G1.map((e) => slugify(label(e))));
 
+/** The lesson's slice of the deck. Grade 1 used to teach the whole 31-entry deck
+ *  in one lesson, so sampling the deck and sampling the lesson were the same
+ *  thing and `opts.atoms` could be ignored. The pedagogy split (dynamics /
+ *  tempo / signs) makes them different: an unscoped draw hands a dynamics
+ *  lesson `allegro`, and the credit lands on an atom that lesson never declared
+ *  — work the learner did that the app will not count.
+ *
+ *  An empty intersection falls back to the whole deck rather than throwing:
+ *  callers outside the lesson loop (SRS review, the exam paper) pass atom lists
+ *  that are not term atoms at all, and the deck-wide draw is right for them. */
+function deckFor(atoms: string[]): TermsDeckEntry[] {
+  const wanted = new Set(atoms.filter((atom) => atom.startsWith('term:')).map((atom) => atom.slice(5)));
+  if (wanted.size === 0) return TERMS_DECK_G1;
+  const scoped = TERMS_DECK_G1.filter((entry) => wanted.has(slugify(label(entry))));
+  return scoped.length > 0 ? scoped : TERMS_DECK_G1;
+}
+
 function sampleDistinct<T>(rng: () => number, items: T[], n: number): T[] {
   const pool = [...items];
   const result: T[] = [];
@@ -44,11 +61,14 @@ function sampleDistinct<T>(rng: () => number, items: T[], n: number): T[] {
   return result;
 }
 
-function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDeckEntry[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const entry = pick(rng, TERMS_DECK_G1);
+  const entry = pick(rng, deck);
   const direction = pick<Direction>(rng, ['term_to_meaning', 'meaning_to_term']);
 
+  // Distractors come from the WHOLE deck, not the lesson's slice: the template's
+  // diagnostic rule needs three same-category wrong answers, and a nine-atom
+  // lesson cannot always supply them from within itself.
   const pool = TERMS_DECK_G1.filter((e) => e.category === entry.category && e !== entry);
   const distractorEntries = sampleDistinct(rng, pool, 3);
 
@@ -89,7 +109,7 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 }
 
 export const termMeaning: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, deckFor(opts.atoms)));
 
 // --- Flashcard variant (U7/AD2): term recall as a self-graded flashcard —
 // front = term, revealed = meaning + an optional notated exemplar, no
@@ -110,9 +130,9 @@ function exemplarFor(_entry: TermsDeckEntry): Music | undefined {
   return undefined;
 }
 
-function buildFlashcard(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+function buildFlashcard(contentSeed: number, grade: number, idSeed: number, deck: TermsDeckEntry[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const entry = pick(rng, TERMS_DECK_G1);
+  const entry = pick(rng, deck);
   const termLabel = label(entry);
   const categoryLabel = entry.category.replace('_', ' ');
 
@@ -141,4 +161,6 @@ function buildFlashcard(contentSeed: number, grade: number, idSeed: number): Exe
 }
 
 export const termMeaningFlashcard: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => buildFlashcard(candidateSeed, opts.grade, opts.seed));
+  generateValidated(opts.seed, (candidateSeed) =>
+    buildFlashcard(candidateSeed, opts.grade, opts.seed, deckFor(opts.atoms)),
+  );

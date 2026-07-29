@@ -10,6 +10,7 @@ import {
   LESSONS,
   LESSONS_BY_GRADE,
   lessonById,
+  lessonsForGrade,
   type Lesson,
 } from './lessons';
 import { assertRhythmFillsBars, beatGrid } from './teach-rhythm';
@@ -532,9 +533,20 @@ describe('rests-1 lesson (chromaticly-gni)', () => {
     expect(lesson().templates).toEqual(['rest_completion']);
   });
 
-  test('the chain splices note-values -> rests-1 -> key-signatures', () => {
-    expect(lessonById('note-values')!.unlocks).toBe('rests-1');
-    expect(lesson().unlocks).toBe('key-signatures');
+  // The Grade 1 chain was INTERLEAVED by strand (pedagogy audit, 2026-07-29): a
+  // learner used to meet 24 note-naming questions before a single note value. The
+  // invariant that survives the reorder is not a fixed pair of neighbours, it is
+  // that rests-1 comes after the lesson that teaches note values — you cannot
+  // complete a bar you cannot count.
+  test('rests-1 comes after note-values, the lesson it depends on', () => {
+    const order = lessonsForGrade(1).map((l) => l.id);
+    expect(order.indexOf('rests-1')).toBeGreaterThan(order.indexOf('note-values'));
+  });
+
+  test('no two consecutive Grade 1 lessons share a strand', () => {
+    const strands = lessonsForGrade(1).map((l) => l.strand);
+    const runs = strands.filter((s, i) => i > 0 && s === strands[i - 1]);
+    expect(runs).toEqual([]);
   });
 
   test('every atom resolves at grade 1; the later-grade rests are not present', () => {

@@ -37,7 +37,7 @@
         ],
         "concept": {
           "title": "Reading the treble stave",
-          "body": "The five lines spell E, G, B, D, F from the bottom up, and the four spaces spell F, A, C, E. The treble clef curls around the second line to mark it as G, so every other note follows from there.",
+          "body": "The treble clef curls around the second line up, which fixes that line as G — everything else is counted from there. The five LINES, bottom to top, spell E, G, B, D, F: Every Good Boy Deserves Football. The four SPACES, bottom to top, spell F, A, C, E, which is just the word face. Notes step through the alphabet as they climb, line, space, line, space, and after G it starts again at A. To name a note you do not recognise, find the nearest landmark you do know and count up or down from it one step at a time.",
           "example": {
             "template_id": "note_naming",
             "grade": 1,
@@ -46,6 +46,57 @@
         },
         "smartTip": "The four spaces spell the word FACE from the bottom up — the quickest notes to recall.",
         "didYouKnow": "The treble clef is a stylised letter G — its curl loops right around the G line."
+      },
+      "unlocks": "note-values"
+    },
+    {
+      "id": "note-values",
+      "title": "Note values and rhythm sums",
+      "strand": "rhythm",
+      "atoms": [
+        "rhythm_sum",
+        "bar_validity",
+        "add_time_signature"
+      ],
+      "templates": [
+        "rhythm_sum",
+        "bar_validity",
+        "add_time_signature"
+      ],
+      "worked_example": {
+        "template_id": "rhythm_sum",
+        "grade": 1,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "How many crotchet beats each note lasts",
+          "How note values add up to fill a bar",
+          "How a dot adds half a note's value again"
+        ],
+        "concept": {
+          "title": "How long each note lasts",
+          "body": "Each note value lasts twice as long as the next one down, so the whole family halves step by step: a semibreve is four crotchet beats, a minim two, a crotchet one, and a quaver half a beat. A dot placed after a note adds HALF of that note again — a dotted minim is two beats plus one, so three. The crotchet is the beat here because Grade 1 counts in crotchets; in other time signatures a different note takes the beat, which is why the values are described as ratios rather than as seconds.",
+          "example": {
+            "template_id": "bar_validity",
+            "grade": 1,
+            "seed": 5
+          }
+        },
+        "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver.",
+        "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
+        "theoryInSound": {
+          "prompt": "Play the rhythm and tap each strong beat you hear — the beat that feels accented.",
+          "timeSignature": "3/4",
+          "notes": [
+            "crotchet",
+            "quaver",
+            "quaver",
+            "crotchet",
+            "minim",
+            "crotchet"
+          ]
+        }
       },
       "unlocks": "bass-notes"
     },
@@ -85,7 +136,7 @@
         ],
         "concept": {
           "title": "Reading the bass stave",
-          "body": "The five lines spell G, B, D, F, A from the bottom up, and the four spaces spell A, C, E, G. The bass clef's two dots sit either side of the fourth line to mark it as F.",
+          "body": "The bass clef is the F clef: its two dots sit either side of the fourth line up, which fixes that line as F. The five LINES, bottom to top, spell G, B, D, F, A — Good Boys Deserve Football Always. The four SPACES spell A, C, E, G — All Cows Eat Grass. The letters climb through the alphabet exactly as they do in the treble, so the method is the same: find a landmark and count. The lines and spaces sit LOWER than the treble ones, which is the point of a second clef — it saves writing ledger lines for every low note.",
           "example": {
             "template_id": "note_naming",
             "grade": 1,
@@ -94,96 +145,6 @@
         },
         "smartTip": "The bass clef is the F clef — its two dots hug the F line, top and bottom.",
         "didYouKnow": "Middle C sits just above the bass stave and just below the treble — one note shared between the two clefs."
-      },
-      "unlocks": "accidentals"
-    },
-    {
-      "id": "accidentals",
-      "title": "Sharps and flats",
-      "strand": "pitch",
-      "atoms": [
-        "note_read:treble:F#5",
-        "note_read:treble:C#5",
-        "note_read:treble:Bb4",
-        "note_read:bass:F#3",
-        "note_read:bass:Bb2"
-      ],
-      "templates": [
-        "note_naming"
-      ],
-      "worked_example": {
-        "template_id": "note_naming",
-        "grade": 1,
-        "seed": 3
-      },
-      "teach": {
-        "objectives": [
-          "What a sharp, a flat and a natural each do",
-          "That a sharp raises and a flat lowers a note by a semitone",
-          "How an accidental lasts to the end of its bar"
-        ],
-        "concept": {
-          "title": "Sharps, flats and naturals",
-          "body": "A sharp (♯) raises a note by a semitone; a flat (♭) lowers it by a semitone; a natural (♮) cancels either one. An accidental holds for the rest of the bar it appears in, then the bar-line clears it.",
-          "example": {
-            "template_id": "note_naming",
-            "grade": 1,
-            "seed": 2
-          }
-        },
-        "smartTip": "An accidental only lasts to the next bar-line — the bar-line wipes the slate clean.",
-        "didYouKnow": "On a keyboard a sharp and the flat above it can be the same key — C♯ and D♭ are one black note."
-      },
-      "unlocks": "note-values"
-    },
-    {
-      "id": "note-values",
-      "title": "Note values and rhythm sums",
-      "strand": "rhythm",
-      "atoms": [
-        "rhythm_sum",
-        "bar_validity",
-        "add_time_signature"
-      ],
-      "templates": [
-        "rhythm_sum",
-        "bar_validity",
-        "add_time_signature"
-      ],
-      "worked_example": {
-        "template_id": "rhythm_sum",
-        "grade": 1,
-        "seed": 1
-      },
-      "teach": {
-        "objectives": [
-          "How many crotchet beats each note lasts",
-          "How note values add up to fill a bar",
-          "How a dot adds half a note's value again"
-        ],
-        "concept": {
-          "title": "How long each note lasts",
-          "body": "A semibreve lasts four crotchet beats, a minim two, a crotchet one, and a quaver half a beat. A dot after a note adds half its value again, so a dotted minim lasts three beats.",
-          "example": {
-            "template_id": "bar_validity",
-            "grade": 1,
-            "seed": 5
-          }
-        },
-        "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver.",
-        "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
-        "theoryInSound": {
-          "prompt": "Play the rhythm and tap each strong beat you hear — the beat that feels accented.",
-          "timeSignature": "3/4",
-          "notes": [
-            "crotchet",
-            "quaver",
-            "quaver",
-            "crotchet",
-            "minim",
-            "crotchet"
-          ]
-        }
       },
       "unlocks": "rests-1"
     },
@@ -214,7 +175,7 @@
         ],
         "concept": {
           "title": "Silence has a length too",
-          "body": "A rest is a silence, and every note value has a rest that lasts the same time: a crotchet rest lasts one beat, a minim rest two, a semibreve rest a whole bar. To complete a bar, add up the notes already there, see how many beats are missing, and choose the rest that fills exactly that gap.",
+          "body": "A rest is a measured silence, and every note value has a matching rest of the same length: a semibreve rest, a minim rest, a crotchet rest, a quaver rest. Silence is counted, not skipped — the bar still has to add up. To find the rest that completes a bar, do it in three steps. Add up the beats already written. Take that away from the number of beats the time signature asks for. Then choose the rest worth exactly the beats left over.",
           "example": {
             "template_id": "rest_completion",
             "grade": 1,
@@ -223,6 +184,88 @@
         },
         "smartTip": "Count the beats already used, take that from the bar, and the rest you need is the silence of whatever is left.",
         "didYouKnow": "The semibreve rest hangs down from a line, the minim rest sits on top of one — a tiny difference worth a second look, since they are easy to mix up."
+      },
+      "unlocks": "accidentals"
+    },
+    {
+      "id": "accidentals",
+      "title": "Sharps and flats",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:treble:F#5",
+        "note_read:treble:C#5",
+        "note_read:treble:Bb4",
+        "note_read:bass:F#3",
+        "note_read:bass:Bb2"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 1,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "What a sharp, a flat and a natural each do",
+          "That a sharp raises and a flat lowers a note by a semitone",
+          "How an accidental lasts to the end of its bar"
+        ],
+        "concept": {
+          "title": "Sharps, flats and naturals",
+          "body": "An accidental changes a note by a semitone, the smallest step in Western music. A sharp raises the note by a semitone, a flat lowers it by a semitone, and a natural cancels either one and returns the note to its plain letter. The sign is always written BEFORE the note it changes, even though you say it after — you write the sharp then the F, but you call it F sharp. An accidental lasts for the rest of the bar and applies only to that line or space; the next bar-line clears it.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 1,
+            "seed": 2
+          }
+        },
+        "smartTip": "An accidental only lasts to the next bar-line — the bar-line wipes the slate clean.",
+        "didYouKnow": "On a keyboard a sharp and the flat above it can be the same key — C♯ and D♭ are one black note."
+      },
+      "unlocks": "dynamics-1"
+    },
+    {
+      "id": "dynamics-1",
+      "title": "How loud: dynamics",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:pianissimo",
+        "term:piano",
+        "term:mezzo_piano",
+        "term:mezzo_forte",
+        "term:forte",
+        "term:fortissimo",
+        "term:crescendo",
+        "term:diminuendo",
+        "term:decrescendo"
+      ],
+      "templates": [
+        "term_meaning_flashcard"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning_flashcard",
+        "grade": 1,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "The six volume levels, from pianissimo to fortissimo",
+          "That mezzo means \"half\", so it softens the word it sits with",
+          "The words and hairpins that ask for a GRADUAL change"
+        ],
+        "concept": {
+          "title": "How loud to play",
+          "body": "Dynamics are the words that say how loud. Six of them form one scale, quietest to loudest: pianissimo (pp) very quiet, piano (p) quiet, mezzo piano (mp) moderately quiet, mezzo forte (mf) moderately loud, forte (f) loud, fortissimo (ff) very loud. Only two Italian words are really at work there — piano and forte — and mezzo means \"half\", so it pulls whichever word it sits with back toward the middle. Three more ask for a gradual change rather than a level: crescendo gets gradually louder, while diminuendo and decrescendo both mean gradually quieter.",
+          "example": {
+            "template_id": "term_meaning_flashcard",
+            "grade": 1,
+            "seed": 0
+          }
+        },
+        "smartTip": "Read the letters, not the words: one p or f is loud or quiet, two is very, and an m in front halves it.",
+        "didYouKnow": "The instrument is named after the dynamics — the \"pianoforte\" was the first keyboard that could play both soft and loud depending on how hard you pressed."
       },
       "unlocks": "key-signatures"
     },
@@ -252,7 +295,7 @@
         ],
         "concept": {
           "title": "Grade 1 key signatures",
-          "body": "C major has no sharps or flats. G major has one sharp, F♯; D major has two, F♯ and C♯; F major has one flat, B♭. The key signature sits just after the clef and applies to every bar that follows.",
+          "body": "A key signature is the group of sharps or flats printed just after the clef, and it applies to every bar that follows until the music says otherwise — you do not have to keep writing the accidental in. Grade 1 asks for four keys. C major has nothing at all. G major has one sharp, F sharp. D major has two sharps, F sharp and C sharp. F major has one flat, B flat. Count the symbols first, then decide: one sharp is G major, two sharps is D major, one flat is F major, and none is C major.",
           "example": {
             "template_id": "key_signature_id",
             "grade": 1,
@@ -261,6 +304,50 @@
         },
         "smartTip": "One sharp is G major and one flat is F major — the two quickest to name at a glance.",
         "didYouKnow": "Sharps are always written in the same order — F, C, G, D — each a fifth above the last."
+      },
+      "unlocks": "tempo-1"
+    },
+    {
+      "id": "tempo-1",
+      "title": "How fast: tempo",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:adagio",
+        "term:andante",
+        "term:moderato",
+        "term:allegretto",
+        "term:allegro",
+        "term:accelerando",
+        "term:rallentando",
+        "term:ritardando",
+        "term:a_tempo",
+        "term:metronome_mark"
+      ],
+      "templates": [
+        "term_meaning_flashcard"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning_flashcard",
+        "grade": 1,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "The five speed words in order, from adagio to allegro",
+          "The words that change the speed rather than set it",
+          "How a metronome mark states a speed as a number"
+        ],
+        "concept": {
+          "title": "How fast to play",
+          "body": "Tempo is the speed. Five words set it, and they belong in order from slowest to fastest: adagio slow, andante at a walking pace, moderato at a moderate speed, allegretto fairly quick, allegro quick and lively. Three more change a speed already running: accelerando gets gradually faster, while rallentando and ritardando both mean gradually slower. After either of those, a tempo says go back to the original speed. A metronome mark states the speed exactly instead of describing it — a crotchet followed by = 120 means 120 crotchet beats a minute.",
+          "example": {
+            "template_id": "term_meaning_flashcard",
+            "grade": 1,
+            "seed": 0
+          }
+        },
+        "smartTip": "Andante is a walking pace — if you can walk to it, that is roughly the speed.",
+        "didYouKnow": "Allegro literally means \"cheerful\" in Italian rather than \"fast\" — the speed came from the mood, not the other way round."
       },
       "unlocks": "intervals"
     },
@@ -294,7 +381,7 @@
         ],
         "concept": {
           "title": "Counting intervals",
-          "body": "An interval is the distance between two notes. Count every letter name from the lower note to the upper, including both ends — C up to G is a 5th (C, D, E, F, G). The same note twice is a unison; eight letters apart is an octave.",
+          "body": "An interval is the distance between two notes, and at Grade 1 it is named by a number alone. Count the LETTER NAMES from the lower note to the upper, and count both ends. C up to G is C, D, E, F, G — five letters, so a 5th. The commonest mistake is counting the gaps instead of the notes, which gives an answer one too small. Two names are special: the same note twice is a unison, and eight letters apart, where the letter comes round again, is an octave. Accidentals do not change the number — only the letters count.",
           "example": {
             "template_id": "interval_naming",
             "grade": 1,
@@ -304,43 +391,24 @@
         "smartTip": "Count the lower note as ‘one’ — intervals include both ends, not just the gaps between.",
         "didYouKnow": "An octave spans eight notes because the eighth note repeats the first — the letter names come back around."
       },
-      "unlocks": "terms-and-signs"
+      "unlocks": "signs-1"
     },
     {
-      "id": "terms-and-signs",
-      "title": "Musical terms and signs",
+      "id": "signs-1",
+      "title": "Marks on the page",
       "strand": "terms_signs",
       "atoms": [
-        "term:fortissimo",
-        "term:forte",
-        "term:mezzo_forte",
-        "term:mezzo_piano",
-        "term:piano",
-        "term:pianissimo",
-        "term:crescendo",
-        "term:decrescendo",
-        "term:diminuendo",
-        "term:allegro",
-        "term:allegretto",
-        "term:moderato",
-        "term:andante",
-        "term:adagio",
-        "term:accelerando",
-        "term:rallentando",
-        "term:ritardando",
-        "term:a_tempo",
-        "term:cantabile",
-        "term:da_capo",
-        "term:dolce",
-        "term:fine",
         "term:legato",
-        "term:staccato",
-        "term:accent",
         "term:slur",
         "term:tie",
+        "term:staccato",
         "term:staccato_dot",
+        "term:accent",
         "term:pause",
-        "term:metronome_mark",
+        "term:cantabile",
+        "term:dolce",
+        "term:da_capo",
+        "term:fine",
         "term:repeat_marks"
       ],
       "templates": [
@@ -353,16 +421,21 @@
       },
       "teach": {
         "objectives": [
-          "The common Italian terms for speed and volume",
-          "What each sign looks like on the page",
-          "How loud or how fast each term asks you to play"
+          "The marks that change how a note is played — legato, staccato, accent",
+          "The difference between a slur and a tie, which look identical",
+          "The marks that tell you where to go — repeats, D.C. and Fine"
         ],
         "concept": {
-          "title": "Musical terms and signs",
-          "body": "Grade 1 uses Italian words for how music is played — forte means loud, piano means soft, and allegro means fast. Signs such as the tie, the slur and the pause carry their own instructions."
+          "title": "The marks on the page",
+          "body": "Some marks change how a note sounds. Legato means smoothly, and a slur — a curved line over notes of DIFFERENT pitch — asks for exactly that. Staccato means short and detached, written as a dot above or below the notehead. An accent is a small wedge asking for extra emphasis. Cantabile means in a singing style and dolce means sweetly. A tie looks exactly like a slur but joins two notes of the SAME pitch, and it makes one longer note rather than two. A pause holds a note longer than written. Repeat marks send you back; D.C. (da capo) means go back to the beginning, and Fine marks where to stop.",
+          "example": {
+            "template_id": "term_meaning_flashcard",
+            "grade": 1,
+            "seed": 0
+          }
         },
-        "smartTip": "The piano is named after ‘piano e forte’ — soft and loud — because it could play both.",
-        "didYouKnow": "Most speed and volume terms are Italian because Italy led European music printing in the 1600s."
+        "smartTip": "Slur or tie? Look at the two noteheads. Same pitch is a tie and you play one note; different pitches is a slur and you play them all, smoothly.",
+        "didYouKnow": "Fine is Italian for \"end\" and is said FEE-nay — nothing to do with the English word."
       },
       "unlocks": "music-in-context"
     },
@@ -394,7 +467,7 @@
         ],
         "concept": {
           "title": "Reading a passage bar by bar",
-          "body": "Real music is read a bar at a time. Bars are numbered from the start, and questions often ask you to find one of them — the bar with the highest note, the lowest note, or the longest note. Look along the stave and compare the bars against each other.",
+          "body": "A passage is read a bar at a time. Bars are numbered from the first full bar, and questions point at one of them: which bar holds the highest note, the lowest note, or the longest note. Work along the stave and compare the bars against each other rather than trying to judge one on its own. Highest and lowest mean position on the stave, not volume — a quiet note high up is still the highest. Longest means the note held for the most beats, which is a question about note VALUE, not about pitch.",
           "example": {
             "template_id": "music_in_context",
             "grade": 1,

@@ -101,13 +101,7 @@ describe('ornaments keep their direction in the atom id', () => {
 describe('a lesson becomes exhaustive as it is replayed', () => {
   const PLAYS = 6;
 
-  /** The one lesson that cannot converge, and the reason is its size, not the
-   *  rotation: 31 atoms drawn 8 at a time by an unbiased sampler will keep
-   *  re-drawing. It is the lesson the pedagogy audit says to split into dynamics,
-   *  tempo and signs — when that lands, this allowance goes with it. */
-  const OVERSIZED = 'terms-and-signs';
-
-  test.each(LESSONS.filter((l) => l.id !== OVERSIZED).map((l) => [l.id, l] as const))(
+  test.each(LESSONS.map((l) => [l.id, l] as const))(
     '%s asks every atom it teaches within six plays',
     (_id, lesson) => {
       const hit = new Set<string>();
@@ -125,12 +119,13 @@ describe('a lesson becomes exhaustive as it is replayed', () => {
     },
   );
 
-  test(`${OVERSIZED} is the known exception, and it is oversized rather than broken`, () => {
-    const lesson = LESSONS.find((l) => l.id === OVERSIZED)!;
-    // 31 atoms is roughly four sets' worth of distinct content in one lesson —
-    // four times the next largest. The number is asserted so that splitting the
-    // lesson forces this allowance to be revisited rather than quietly inherited.
-    expect(lesson.atoms.length).toBe(31);
-    expect(Math.max(...LESSONS.filter((l) => l.id !== OVERSIZED).map((l) => l.atoms.length))).toBeLessThan(15);
+  // There used to be an allowance here for `terms-and-signs`, which declared 31
+  // atoms — roughly four sets' worth of distinct content in one lesson, and four
+  // times the next largest. An unbiased sampler drawing 8 at a time kept
+  // re-drawing, so the lesson never converged however often it was replayed. The
+  // pedagogy split into dynamics-1 / tempo-1 / signs-1 removed the allowance, and
+  // this ceiling is what stops a future lesson from re-creating the problem.
+  test('no lesson is large enough to need an exhaustion allowance', () => {
+    expect(Math.max(...LESSONS.map((l) => l.atoms.length))).toBeLessThan(15);
   });
 });

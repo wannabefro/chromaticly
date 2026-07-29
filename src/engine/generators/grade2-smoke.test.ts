@@ -245,16 +245,18 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
 
   // TERMS_DECK_G1 is a grade-1-only vocabulary — the grade-2 terms slice adds
   // a grade-aware deck; these cases only prove grade: 2 tagging is harmless.
-  test('term_meaning @ grade 2: validator-clean (grade-1-only deck, scope-independent)', () => {
-    const atoms = atomsForLesson('terms-and-signs');
+  // The atoms come from a real grade-1 terms lesson because the generator now
+  // samples within them (see `deckFor`), so an empty list would prove nothing.
+  test('term_meaning @ grade 2: validator-clean on a grade-1 lesson scope', () => {
+    const atoms = atomsForLesson('signs-1');
     for (const seed of SEEDS) {
       const instance = generate('term_meaning', { grade: 2, seed, atoms });
       assertValidatorClean(instance);
     }
   });
 
-  test('term_meaning_flashcard @ grade 2: validator-clean (grade-1-only deck, scope-independent)', () => {
-    const atoms = atomsForLesson('terms-and-signs');
+  test('term_meaning_flashcard @ grade 2: validator-clean on a grade-1 lesson scope', () => {
+    const atoms = atomsForLesson('signs-1');
     for (const seed of SEEDS) {
       const instance = generate('term_meaning_flashcard', { grade: 2, seed, atoms });
       assertValidatorClean(instance);

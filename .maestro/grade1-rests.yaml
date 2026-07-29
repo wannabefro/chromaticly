@@ -1,6 +1,6 @@
 # chromaticly-gni — Grade 1 rests: rest_completion ("which rest completes this
 # bar?"), the first rest content in the course. Seed ?seed=rests-1 fast-forwards
-# to the lesson (inserted note-values -> rests-1 -> key-signatures). The exercise
+# to the lesson (unit 4, after note-values, the lesson it depends on). The exercise
 # renders an incomplete bar on the paper card and offers rendered rest options.
 #   maestro test -e DEV_URL=exp://127.0.0.1:8092 .maestro/grade1-rests.yaml
 appId: host.exp.Exponent

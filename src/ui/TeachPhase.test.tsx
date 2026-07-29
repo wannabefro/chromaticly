@@ -15,7 +15,7 @@ import { lessonById } from '../content/lessons';
 import { TeachPhase } from './TeachPhase';
 
 const trebleNotes = lessonById('treble-notes')!;
-const terms = lessonById('terms-and-signs')!;
+const terms = lessonById('dynamics-1')!;
 
 describe('TeachPhase — teach/read cards before the set (302.3)', () => {
   test('renders objectives, concept, and smart tip from the lesson teach content', () => {

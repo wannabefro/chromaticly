@@ -1,11 +1,11 @@
-# 2g/2h — the SRS flashcard (terms-and-signs). A flashcard is self-graded: there is
+# 2g/2h — the SRS flashcard (dynamics-1). A flashcard is self-graded: there is
 # no Check button and no correct/incorrect FeedbackSheet. Tapping the card reveals
 # the meaning, and the Again/Hard/Good/Easy buttons both grade it and advance the
 # set — this flow proves that path works on a device.
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=terms-and-signs
+- openLink: exp://127.0.0.1:8090/--/?seed=dynamics-1
 
 - extendedWaitUntil:
     visible: { text: "Continue" }
@@ -18,10 +18,10 @@ appId: host.exp.Exponent
     visible: { id: "lane-screen" }
     timeout: 90000
 - scrollUntilVisible:
-    element: { id: "unit-row-terms-and-signs" }
+    element: { id: "unit-row-dynamics-1" }
     direction: DOWN
     timeout: 15000
-- tapOn: { id: "unit-row-terms-and-signs" }
+- tapOn: { id: "unit-row-dynamics-1" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }
     timeout: 20000
