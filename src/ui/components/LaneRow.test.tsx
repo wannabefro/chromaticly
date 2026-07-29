@@ -45,7 +45,8 @@ describe('LaneRow — one strand at its own depth (design 7a)', () => {
     for (const grade of [1, 2, 3]) expect(getByTestId(`lane-row-seg-${grade}-filled`)).toBeTruthy();
     expect(getByTestId('lane-row-seg-4-empty')).toBeTruthy();
     expect(getByTestId('lane-row-seg-5-gap')).toBeTruthy(); // scales_keys teaches nothing at 5
-    expect(getByTestId('lane-row-depth').props.children).toEqual(['grade 3', '']);
+    // Design 1e removed the written depth; it survives where the bar cannot be seen.
+    expect(getByTestId('lane-row').props.accessibilityLabel).toBe('Scales & Keys, grade 3');
   });
 
   // The trap the "N filled of 5" reading falls into: pitch teaches nothing at
@@ -86,15 +87,21 @@ describe('LaneRow — one strand at its own depth (design 7a)', () => {
       <LaneRow strand="intervals" depth={lane('intervals', 0)} testID="lane-row" />,
     );
 
-    expect(getByTestId('lane-row-depth').props.children).toEqual(['not started', '']);
+    expect(getByTestId('lane-row').props.accessibilityLabel).toBe('Intervals, not started');
     for (const grade of [1, 2, 3, 4, 5]) expect(queryByTestId(`lane-row-seg-${grade}-filled`)).toBeNull();
   });
 
-  test('a suggested row states WHY it is suggested, beside its depth', () => {
-    const { getByTestId } = render(
-      <LaneRow strand="chords" depth={lane('chords', 4)} note="your shortest" testID="lane-row" />,
+  // Design 1e: the row carries a tag only when it is the suggested one, and it is
+  // the only place the row says anything beyond its own name.
+  test('a suggested row wears its tag; an ordinary row wears nothing', () => {
+    const tagged = render(
+      <LaneRow strand="chords" depth={lane('chords', 4)} note="start here" testID="lane-row" />,
     );
-    expect(getByTestId('lane-row-depth').props.children).toEqual(['grade 4', ' · your shortest']);
+    expect(tagged.getByTestId('lane-row-note').props.children).toBe('start here');
+    tagged.unmount();
+
+    const plain = render(<LaneRow strand="chords" depth={lane('chords', 4)} testID="lane-row" />);
+    expect(plain.queryByTestId('lane-row-note')).toBeNull();
   });
 
   test('tapping the row fires onPress', () => {

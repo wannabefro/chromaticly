@@ -1,9 +1,14 @@
 // LanesScreen (design 7a) — the Learn tab as seven lanes.
 //
 // Two invariants beyond "it renders": R1 (no single current grade is asserted
-// anywhere on this screen) and the "Choose for me" rule, which decides where a
-// learner who does not want to decide is sent. That rule repairs before it deepens,
-// and the tests below are what stop it quietly inverting.
+// anywhere on this screen) and the `chooseLane` rule, which decides where a learner
+// who does not want to decide is sent. That rule repairs before it deepens, and the
+// tests below are what stop it quietly inverting.
+//
+// Since design 1e the rule surfaces as a two-word tag on one row rather than a
+// button. That makes the tag's WORDING load-bearing in a way a neutral "Choose for
+// me" never was: "due" is a factual claim, so it may only appear when something is
+// actually overdue.
 
 jest.mock('react-native-webview', () => {
   const React = require('react');
@@ -93,12 +98,35 @@ describe('LanesScreen — seven lanes, each at its own depth (7a)', () => {
     expect(queryByText(/^Grade \d$/)).toBeNull();
   });
 
+  // R7: depth 0 is a real value, not a floor at 1. Design 1e stopped WRITING it —
+  // the bar draws it — so the claim is now made twice over: no segment is filled,
+  // and the accessibility label still says it for anyone who cannot see the bar.
   test('a fresh learner sees every lane at "not started", not at grade 1', async () => {
-    const { findByTestId, getByTestId } = renderLanes();
+    const { findByTestId, getByTestId, queryByTestId } = renderLanes();
     await findByTestId('lanes-screen');
 
     for (const strand of STRAND_ORDER) {
-      expect(getByTestId(`lane-row-${strand}-depth`).props.children[0]).toBe('not started');
+      expect(getByTestId(`lane-row-${strand}`).props.accessibilityLabel).toContain('not started');
+      for (const grade of [1, 2, 3, 4, 5]) {
+        expect(queryByTestId(`lane-row-${strand}-seg-${grade}-filled`)).toBeNull();
+      }
+    }
+  });
+
+  // 1e: four things came off this screen, and each was already being said by
+  // something that stayed. This is the guard against any of them creeping back.
+  test('carries no greeting, no explainer, no per-row depth text and no chooser button', async () => {
+    const store = new ProgressStore();
+    overdue(store, 'terms_signs', 3);
+    const { findByTestId, queryByTestId, queryByText, getByText } = renderLanes(store);
+    await findByTestId('lanes-screen');
+
+    expect(getByText('Learn')).toBeTruthy();
+    expect(queryByText(/Where to today/)).toBeNull();
+    expect(queryByText(/nothing is locked/)).toBeNull();
+    expect(queryByTestId('lanes-choose-for-me')).toBeNull();
+    for (const strand of STRAND_ORDER) {
+      expect(queryByTestId(`lane-row-${strand}-depth`)).toBeNull();
     }
   });
 
@@ -113,21 +141,37 @@ describe('LanesScreen — seven lanes, each at its own depth (7a)', () => {
     expect(onOpenLane).toHaveBeenCalledWith('intervals');
   });
 
-  test('the suggested lane is highlighted with the reason, and "Choose for me" opens it', async () => {
+  // Exactly one row wears the tag. Two would be two recommendations, which is none.
+  test('the suggested lane, and only that lane, carries the tag — and it opens', async () => {
     const store = new ProgressStore();
     overdue(store, 'terms_signs', 3);
     const onOpenLane = jest.fn();
-    const { findByTestId, getByTestId } = renderLanes(store, onOpenLane);
+    const { findByTestId, getByTestId, queryByTestId } = renderLanes(store, onOpenLane);
     await findByTestId('lanes-screen');
 
-    await waitFor(() =>
-      expect(getByTestId('lane-row-terms_signs-depth').props.children[1]).toBe(' · most overdue'),
-    );
+    await waitFor(() => expect(getByTestId('lane-row-terms_signs-note').props.children).toBe('due'));
+    for (const strand of STRAND_ORDER.filter((s) => s !== 'terms_signs')) {
+      expect(queryByTestId(`lane-row-${strand}-note`)).toBeNull();
+    }
 
     await act(async () => {
-      fireEvent.press(getByTestId('lanes-choose-for-me'));
+      fireEvent.press(getByTestId('lane-row-terms_signs'));
     });
     expect(onOpenLane).toHaveBeenCalledWith('terms_signs');
+  });
+
+  // The tag is a claim, not a label. A lane picked for being SHALLOW has nothing
+  // overdue in it, so calling it "due" would be false on the one row the screen
+  // emphasises — the exact place a false claim costs most.
+  test('a lane suggested for being shallow says "start here", never "due"', async () => {
+    const store = new ProgressStore();
+    for (const grade of contentGradesFor('context')) masterCell(store, 'context', grade);
+    masterCell(store, 'rhythm', 1);
+    const { findByTestId, getByTestId } = renderLanes(store);
+    await findByTestId('lanes-screen');
+
+    const picked = chooseLane(store, DAY)!;
+    await waitFor(() => expect(getByTestId(`lane-row-${picked.strand}-note`).props.children).toBe('start here'));
   });
 });
 
@@ -140,7 +184,7 @@ describe('chooseLane — repair first, then the shallowest lane (R2/R5)', () => 
     overdue(store, 'rhythm', 1);
     overdue(store, 'terms_signs', 3);
 
-    expect(chooseLane(store, DAY)).toEqual({ strand: 'terms_signs', why: 'most overdue' });
+    expect(chooseLane(store, DAY)).toEqual({ strand: 'terms_signs', tag: 'due' });
   });
 
   test('a tie on overdue count goes to the SHALLOWER lane — repair, never deepen', () => {
@@ -155,7 +199,7 @@ describe('chooseLane — repair first, then the shallowest lane (R2/R5)', () => 
 
     const picked = chooseLane(store, DAY);
     expect(picked?.strand).toBe('context');
-    expect(picked?.why).toBe('most overdue');
+    expect(picked?.tag).toBe('due');
   });
 
   test('with nothing overdue it falls to the shallowest lane that still has content ahead', () => {
@@ -165,7 +209,7 @@ describe('chooseLane — repair first, then the shallowest lane (R2/R5)', () => 
     masterCell(store, 'rhythm', 1);
 
     const picked = chooseLane(store, DAY);
-    expect(picked?.why).toBe('your shortest');
+    expect(picked?.tag).toBe('start here');
     // context is fully held, so it can never be the suggestion despite being depth-1
     expect(picked?.strand).not.toBe('context');
   });
@@ -177,20 +221,21 @@ describe('chooseLane — repair first, then the shallowest lane (R2/R5)', () => 
     expect(chooseLane(store, DAY)?.strand).not.toBe('context');
   });
 
-  test('every lane at its ceiling with nothing overdue returns null, and the control says so', async () => {
+  // Nothing to recommend now says nothing, rather than saying so in a disabled
+  // control. Seven fully-held lanes are self-evidently a free choice.
+  test('every lane at its ceiling with nothing overdue returns null, and no row is tagged', async () => {
     const store = new ProgressStore();
     for (const strand of STRAND_ORDER) {
       for (const grade of contentGradesFor(strand)) masterCell(store, strand, grade);
     }
     expect(chooseLane(store, DAY)).toBeNull();
 
-    const onOpenLane = jest.fn();
-    const { findByTestId, getByTestId, getByText } = renderLanes(store, onOpenLane);
+    const { findByTestId, queryByTestId } = renderLanes(store);
     await findByTestId('lanes-screen');
 
-    await waitFor(() => expect(getByText('Nothing due — pick any skill')).toBeTruthy());
-    fireEvent.press(getByTestId('lanes-choose-for-me'));
-    expect(onOpenLane).not.toHaveBeenCalled();
+    for (const strand of STRAND_ORDER) {
+      expect(queryByTestId(`lane-row-${strand}-note`)).toBeNull();
+    }
   });
 
   test('the same store always yields the same suggestion — ordering is deterministic', () => {

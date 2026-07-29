@@ -11,7 +11,13 @@
 // R1: nothing here asserts a single current grade. There is no grade pill, because
 // under this model "what grade are you?" has seven answers.
 //
-// Not wired into the shell yet — U7 performs the swap once lane detail exists.
+// STRIPPED TO 1e (approved 2026-07-29, recorded in design/README.md). The greeting,
+// the two-line explanation and the "Choose for me" button are gone, and so is the
+// mono depth beside every bar. Each of the four said something the screen was
+// already showing: the bar draws the depth, the seven rows ARE "seven skills at
+// their own depths", and the recommendation is now a two-word tag on the one row it
+// applies to rather than a full-width button that needed a sentence to explain
+// itself. 62 words to 1.
 
 import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -29,12 +35,16 @@ export interface LanesScreenProps {
   onOpenLane?: (strand: Strand) => void;
 }
 
-/** What "Choose for me" picks, and why. The `why` is learner-facing copy shown on
- *  the suggested row, so the highlight always explains itself rather than being an
- *  unexplained emphasis. */
+/** The one lane the screen nudges toward, and the tag it wears.
+ *
+ *  `tag` is learner-facing and deliberately tiny — it is the whole of what used to
+ *  be a button plus a sentence. It must stay TRUE to the rule that fired: "due"
+ *  claims something is actually overdue, so a lane picked for being shallow says
+ *  "start here" instead. Getting that backwards would put a false claim on the one
+ *  row the screen emphasises. */
 export interface LaneSuggestion {
   strand: Strand;
-  why: string;
+  tag: string;
 }
 
 /** The atoms each strand teaches, across every grade — built once, same shape and
@@ -75,7 +85,7 @@ export function chooseLane(store: ProgressStore, now: number): LaneSuggestion | 
       best = { strand, count, depth };
     }
   }
-  if (best) return { strand: best.strand, why: 'most overdue' };
+  if (best) return { strand: best.strand, tag: 'due' };
 
   let shallowest: { strand: Strand; depth: number } | null = null;
   for (const strand of STRAND_ORDER) {
@@ -83,7 +93,7 @@ export function chooseLane(store: ProgressStore, now: number): LaneSuggestion | 
     if (!hasContentAhead(lane)) continue;
     if (!shallowest || lane.depth < shallowest.depth) shallowest = { strand, depth: lane.depth };
   }
-  return shallowest ? { strand: shallowest.strand, why: 'your shortest' } : null;
+  return shallowest ? { strand: shallowest.strand, tag: 'start here' } : null;
 }
 
 /** Whether the lane teaches anything the learner has not yet held. A lane at its
@@ -93,7 +103,7 @@ function hasContentAhead(lane: LaneDepth): boolean {
 }
 
 export default function LanesScreen({ onOpenLane }: LanesScreenProps = {}) {
-  const { ready, store, revision, name, clock } = useProgressContext();
+  const { ready, store, revision, clock } = useProgressContext();
 
   const depths = useMemo(() => {
     if (!store) return null;
@@ -118,12 +128,7 @@ export default function LanesScreen({ onOpenLane }: LanesScreenProps = {}) {
   return (
     <Screen testID="lanes-screen">
       <ScrollView contentContainerStyle={styles.body} showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <Text style={styles.title}>{name ? `Where to today, ${name}?` : 'Where to today?'}</Text>
-          <Text style={styles.sub}>
-            Seven skills, each at its own depth. Deepen a strong one or repair a short one — nothing is locked.
-          </Text>
-        </View>
+        <Text style={styles.title}>Learn</Text>
 
         <View style={styles.lanes}>
           {STRAND_ORDER.map((strand) => (
@@ -131,23 +136,12 @@ export default function LanesScreen({ onOpenLane }: LanesScreenProps = {}) {
               key={strand}
               strand={strand}
               depth={depths[strand]}
-              note={suggestion?.strand === strand ? suggestion.why : undefined}
+              note={suggestion?.strand === strand ? suggestion.tag : undefined}
               onPress={() => onOpenLane?.(strand)}
               testID={`lane-row-${strand}`}
             />
           ))}
         </View>
-
-        <Pressable
-          testID="lanes-choose-for-me"
-          disabled={suggestion === null}
-          onPress={() => suggestion && onOpenLane?.(suggestion.strand)}
-          style={[styles.choose, suggestion === null && styles.chooseDisabled]}
-        >
-          <Text style={[styles.chooseLabel, suggestion === null && styles.chooseLabelDisabled]}>
-            {suggestion === null ? 'Nothing due — pick any skill' : 'Choose for me'}
-          </Text>
-        </Pressable>
       </ScrollView>
     </Screen>
   );
@@ -161,41 +155,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: shape.spaceScreenX,
     paddingBottom: shape.spaceStack,
   },
-  header: {
-    gap: 6,
-  },
   title: {
     ...typo.title,
     color: colors.text,
   },
-  sub: {
-    ...typo.body,
-    color: colors.textMuted,
-  },
   lanes: {
     gap: 7,
-  },
-  choose: {
-    alignItems: 'center',
-    paddingVertical: 13,
-    borderRadius: shape.radiusControl,
-    borderWidth: shape.borderWActive,
-    borderColor: colors.borderStrong,
-    backgroundColor: colors.surfaceCard,
-    minHeight: shape.tapMin,
-    justifyContent: 'center',
-  },
-  chooseDisabled: {
-    backgroundColor: 'transparent',
-    borderColor: colors.border,
-  },
-  chooseLabel: {
-    ...typo.option,
-    fontSize: 14,
-    color: colors.text,
-  },
-  chooseLabelDisabled: {
-    color: colors.textFaint,
   },
   muted: {
     ...typo.body,

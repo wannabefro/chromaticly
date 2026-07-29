@@ -12,6 +12,9 @@
 //    empty bar, never a filled first segment.
 //  • Colour is never the only signal (never-violate rule 3): the hue always rides
 //    with the strand's glyph and its full name.
+//  • The depth is DRAWN, not written (design 1e). The mono "grade 3" / "not started"
+//    that used to sit beside the bar said what the bar already says, seven times
+//    over. It survives in the accessibility label, where the bar cannot be read.
 //
 // The row does not decide anything — `laneDepths` is the single derivation behind
 // this, the radar, exam readiness and the placement result (R3).
@@ -72,13 +75,16 @@ export function LaneRow({ strand, depth, note, onPress, testID }: LaneRowProps) 
               />
             );
           })}
-          <Text style={[styles.depth, suggested && { color: def.hue }]} testID={testID ? `${testID}-depth` : undefined}>
-            {depthLabel(depth.depth)}
-            {note ? ` · ${note}` : ''}
-          </Text>
         </View>
       </View>
 
+      {/* The one tag on the one suggested lane. It replaces a full-width button
+          that needed its own sentence to explain what it would do. */}
+      {note ? (
+        <Text style={[styles.note, { color: def.hue }]} testID={testID ? `${testID}-note` : undefined}>
+          {note}
+        </Text>
+      ) : null}
       <Text style={[styles.chev, suggested && { color: def.hue }]}>›</Text>
     </Pressable>
   );
@@ -150,11 +156,9 @@ const styles = StyleSheet.create({
     borderStyle: 'dashed',
     borderColor: colors.textGhost,
   },
-  depth: {
+  note: {
     ...typo.label,
-    fontSize: 10.5,
-    color: colors.textFaint,
-    marginLeft: 6,
+    flexShrink: 0,
   },
   chev: {
     ...typo.label,

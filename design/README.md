@@ -79,3 +79,21 @@ not listed below is drift, not a decision.
 
 The depth readout is not repeated here: the lane list (7a) carries it, and every visit passes through
 it.
+
+### Lane list (7a) — stripped · approved 2026-07-29
+
+Chosen from six options (`Progression Simplify.dc.html`, option 1e) after the built screen was judged
+to over-explain itself. Four things come off, and each was already being said by something that stays:
+
+| removed | what still says it |
+|---|---|
+| "Where to today, Maya?" | the tab, now titled **Learn** |
+| "Seven skills, each at its own depth. Deepen a strong one or repair a short one — nothing is locked." | seven rows, each with a depth bar |
+| the mono depth beside every bar ("grade 3", "not started") ×7 | the bar itself — and `accessibilityLabel`, which keeps the words for anyone who cannot see it |
+| the full-width "Choose for me" button and its disabled copy | a two-word tag on the one suggested row |
+
+62 words to 1. **The tag is a claim, not a label**: `due` may only appear when the overdue rule fired.
+A lane suggested for being shallow says `start here`. With nothing to recommend, no row is tagged and
+the screen says nothing rather than saying so in a disabled control.
+
+The lane detail's own copy diet (options 1a–1d) is **not decided** and 7b stands as built.
