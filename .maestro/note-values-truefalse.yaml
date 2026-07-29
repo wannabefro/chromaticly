@@ -16,7 +16,7 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 - tapOn: { id: "unit-row-note-values" }
 - extendedWaitUntil:

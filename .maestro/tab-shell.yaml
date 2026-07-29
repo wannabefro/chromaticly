@@ -13,12 +13,12 @@ appId: host.exp.Exponent
 - tapOn: { text: "Continue", optional: true }
 - tapOn: { point: "90%,48%" }
 
-# The shell opens on Learn, with the level map inside it.
+# The shell opens on Learn, which is the seven-lane list (7a) since G6 U7.
 - extendedWaitUntil:
     visible: { id: "app-shell" }
     timeout: 90000
 - assertVisible: { id: "tab-bar" }
-- assertVisible: { id: "level-map-screen" }
+- assertVisible: { id: "lanes-screen" }
 - takeScreenshot: shell-learn
 
 # Every tab reaches its own screen.

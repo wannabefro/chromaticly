@@ -17,13 +17,18 @@ appId: host.exp.Exponent
 - tapOn: { text: "Continue", optional: true }
 - tapOn: { point: "90%,48%" }
 
+# G6 U7: the exam gate no longer sits at the bottom of a scroll on the Learn tab
+# — the Learn tab is seven lanes now, and a paper belongs to no single lane. The
+# Exams tab is the one route to it. `?seed=exam` names no lesson, so the shell
+# opens on the lane LIST rather than a lane.
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "app-shell" }
     timeout: 90000
-- scrollUntilVisible:
-    element: { id: "exam-gate-level-1" }
-    direction: DOWN
-    timeout: 15000
+- assertVisible: { id: "lanes-screen" }
+- tapOn: { id: "tab-exams" }
+- extendedWaitUntil:
+    visible: { id: "exams-screen" }
+    timeout: 20000
 - tapOn: { id: "exam-gate-level-1" }
 
 # 3b — start. The paper states its own terms: minutes, marks, sections.

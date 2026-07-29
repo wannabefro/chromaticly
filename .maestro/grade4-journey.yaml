@@ -50,22 +50,45 @@ appId: host.exp.Exponent
     timeout: 15000
 - tapOn: { id: "landed-continue" }
 
+# G6 U7: onboarding lands on the seven-lane Learn tab (7a), not the level map.
+# U11 rewrites the onboarding half of this flow against placement; U7 owns only
+# this tail.
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lanes-screen" }
     timeout: 15000
-# The working grade is Grade 4 — the grade pill proves it.
-- assertVisible:
-    id: "grade-pill"
-    text: "Grade 4"
 
-# The first real Grade 4 unit (keys-4) is live and enters its set.
+# The working grade is Grade 4. The grade pill went with the level map, so the
+# claim is made where the grade still lives — Profile's working-grade row.
+- tapOn: { id: "tab-profile" }
 - scrollUntilVisible:
-    element: { id: "unit-row-keys-4" }
+    element: { id: "profile-working-grade" }
     direction: DOWN
-    visibilityPercentage: 20
-    centerElement: true
-    waitToSettleTimeoutMs: 500
-    timeout: 20000
+    timeout: 15000
+# The value is a descendant Text of the row, not the row's own label, so the
+# claim is two asserts: the row is there, and "Grade 4" is on screen.
+- assertVisible: { id: "profile-working-grade" }
+- assertVisible: { text: "Grade 4" }
+- tapOn: { id: "tab-learn" }
+
+# keys-4 is a SCALES & KEYS unit at grade 4. Onboarding asserts a grade but
+# produces no evidence, so the lane opens at its first content-bearing grade and
+# grade 4 is chosen explicitly — which is the honest reading under R1: a selected
+# grade is not a held one. Nothing refuses entry (R2).
+- extendedWaitUntil:
+    visible: { id: "lanes-screen" }
+    timeout: 15000
+- tapOn: { id: "lane-row-scales_keys" }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 15000
+- tapOn: { id: "lane-other-grades" }
+- extendedWaitUntil:
+    visible: { id: "lane-grade-picker" }
+    timeout: 10000
+- tapOn: { id: "lane-grade-option-4" }
+- extendedWaitUntil:
+    visible: { id: "unit-row-keys-4" }
+    timeout: 15000
 - tapOn: { id: "unit-row-keys-4" }
 - assertVisible: { id: "set-runner" }
 - takeScreenshot: g4-journey-set

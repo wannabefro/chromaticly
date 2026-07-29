@@ -21,13 +21,9 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
-- scrollUntilVisible:
-    element: { id: "level-node-level-2" }
-    direction: DOWN
-    timeout: 15000
 - scrollUntilVisible:
     element: { id: "unit-row-minor-scales-2" }
     direction: DOWN

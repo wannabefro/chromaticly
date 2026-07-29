@@ -156,6 +156,9 @@ export default function LanesScreen({ onOpenLane }: LanesScreenProps = {}) {
 const styles = StyleSheet.create({
   body: {
     gap: shape.spaceStack,
+    // See LaneScreen: `Screen` insets the top edge only, so the screen gutter is
+    // the scroll content's own job.
+    paddingHorizontal: shape.spaceScreenX,
     paddingBottom: shape.spaceStack,
   },
   header: {

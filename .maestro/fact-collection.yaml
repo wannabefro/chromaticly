@@ -20,7 +20,7 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
 # Baseline: nothing collected yet.
@@ -28,7 +28,7 @@ appId: host.exp.Exponent
 - assertVisible: { id: "profile-screen" }
 - assertVisible:
     id: "profile-facts"
-    text: "0 of 8"
+    text: "0 of 46"
 - takeScreenshot: facts-before
 
 # Viewing a lesson's teach phase collects its fact (no manual button — it's the act
@@ -42,10 +42,10 @@ appId: host.exp.Exponent
 
 # Profile now reflects the newly-collected fact.
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 20000
 - tapOn: { id: "tab-profile" }
 - assertVisible:
     id: "profile-facts"
-    text: "1 of 8"
+    text: "1 of 46"
 - takeScreenshot: facts-after

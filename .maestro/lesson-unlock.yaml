@@ -3,14 +3,19 @@
 # locked until treble-notes was finished — so it is rewritten rather than retired:
 # it now guards the behaviour that REPLACED the gate.
 #
-# Why on device rather than in jest: the level map derives its rows from the
+# G6 U7 re-navigates it. The level map is gone, so "scroll down the one big list"
+# becomes "open a lane, and for a grade you have not reached, choose it" — which is
+# the same claim in the new shape: nothing refuses entry, at any depth, in any lane.
+#
+# Why on device rather than in jest: the lane screen derives its rows from the
 # in-place-mutated store, which is a React Compiler staleness hazard, and jest's
 # layout-free renderer will happily find a row that is invisible or unreachable on
 # a real screen. Only an on-device run proves a learner can actually get there.
 #
 # Seeds to treble-notes (the chain root) purely to skip onboarding: it completes
-# NOTHING, so every unit after it — including every grade-2 unit — has an unfinished
-# predecessor chain. That is exactly the state the old gate would have blocked.
+# NOTHING and masters NOTHING, so every lane reads depth 0 and every unit after it
+# — including every grade-2 unit — has an unfinished predecessor chain. That is
+# exactly the state the old gate would have blocked.
 #
 # Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
 appId: host.exp.Exponent
@@ -25,46 +30,60 @@ appId: host.exp.Exponent
 - tapOn: { text: "Continue", optional: true }
 - tapOn: { point: "90%,48%" }
 
+# The seed names a pitch lesson, so the deep link lands on the pitch lane.
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
-# No locked affordance anywhere on the map: no padlock, and no row telling the
-# learner to finish something else first.
+# No locked affordance: no padlock, and no row telling the learner to finish
+# something else first.
 - assertNotVisible: { text: "🔒" }
 - assertNotVisible: { text: "to unlock" }
-- takeScreenshot: nothing-locked-map
+- takeScreenshot: nothing-locked-lane
 
-# A unit several steps down the grade-1 chain, with every predecessor unfinished,
-# is enterable — a locked row was disabled and would never reach its teach phase.
-- scrollUntilVisible:
-    element: { id: "unit-row-intervals" }
-    direction: DOWN
-    timeout: 15000
+# A DIFFERENT lane, with nothing done in it at all, is enterable — under the old
+# rules its units sat behind an unfinished grade-1 chain.
+- tapOn: { id: "lane-back" }
+- extendedWaitUntil:
+    visible: { id: "lanes-screen" }
+    timeout: 20000
+- tapOn: { id: "lane-row-intervals" }
+- extendedWaitUntil:
+    visible: { id: "unit-row-intervals" }
+    timeout: 20000
 - tapOn: { id: "unit-row-intervals" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }
     timeout: 20000
-- takeScreenshot: mid-chain-unit-open
-# `teach-close`, not a `back` gesture: the teach phase is a screen-level view
-# inside the map, not a pushed route, so a swipe-back finds nothing to pop.
+- takeScreenshot: other-lane-unit-open
+# `teach-close`, not a `back` gesture: the teach phase is a screen-level view, not
+# a pushed route, so a swipe-back finds nothing to pop.
 - tapOn: { id: "teach-close" }
 
 # The stronger claim: a LATER-GRADE unit is reachable too, with grade 1 neither
-# mastered nor its exam cleared. Under the old rules Level 2 rendered collapsed
-# with no unit row at all, so reaching this teach phase is the proof.
+# mastered nor its exam cleared. The picker is the whole of that navigation — it
+# lists every grade, and choosing one above your depth is never refused (R2).
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 20000
-# Straight to the grade-2 unit row. Not via `level-node-level-2`: with grade 2
-# fully authored that node is taller than the viewport, so it can never satisfy
-# the default 100% visibility and the scroll times out on an element that is
-# plainly on screen.
-- scrollUntilVisible:
-    element: { id: "unit-row-key-signatures-2" }
-    direction: DOWN
-    timeout: 30000
-    visibilityPercentage: 60
+- tapOn: { id: "lane-back" }
+- tapOn: { id: "lane-row-scales_keys" }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 20000
+- tapOn: { id: "lane-other-grades" }
+- extendedWaitUntil:
+    visible: { id: "lane-grade-picker" }
+    timeout: 10000
+- takeScreenshot: grade-picker-open
+- tapOn: { id: "lane-grade-option-2" }
+
+# Above your depth the screen says so and offers the way back — it does not
+# withdraw entry.
+- extendedWaitUntil:
+    visible: { id: "lane-ahead-note" }
+    timeout: 15000
+- assertVisible: { id: "lane-return" }
 - takeScreenshot: later-grade-reachable
 - tapOn: { id: "unit-row-key-signatures-2" }
 - extendedWaitUntil:

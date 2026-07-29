@@ -1,0 +1,46 @@
+# Timed capture harness (chromaticly-9lb perf gate). Same nav as _capture-lesson.yaml
+# but shoots the exercise at a SHORT settle to measure how fast option staves paint.
+# Captures at ~300ms and ~1500ms after the prompt appears.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=${LESSON}
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-${LESSON}" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-${LESSON}" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+- extendedWaitUntil:
+    visible: { id: "__never__" }
+    timeout: 300
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-t300
+- extendedWaitUntil:
+    visible: { id: "__never__" }
+    timeout: 1200
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-t1500

@@ -8,7 +8,7 @@ They exercise the real app on a simulator/device — the layer the Jest tests mo
 
 | Flow | What it proves |
 |---|---|
-| `onboarding-first-set.yaml` | The first-run journey end to end: a fresh guest goes Welcome → **grade select** (Grade 1) → your plan → a **3-question coached warm-up** (deterministic correct-option indices 0,1,1) → the "You're in. 3 for 3." landing → **level map (3a)**, then taps the first unit (`treble-notes`) to prove the set launches. There is **no age gate** on this path (it moved to account creation), so no under-13 pass. Starts with `clearState` so onboarding fires fresh. |
+| `onboarding-first-set.yaml` | The first-run journey end to end: a fresh guest goes Welcome → **grade select** (Grade 1) → your plan → a **3-question coached warm-up** (deterministic correct-option indices 0,1,1) → the "You're in. 3 for 3." landing → **the seven-lane Learn tab (7a)**, then opens the pitch lane and taps the first unit (`treble-notes`) to prove the set launches. There is **no age gate** on this path (it moved to account creation), so no under-13 pass. Starts with `clearState` so onboarding fires fresh. |
 | `key-signatures-mcq.yaml` | **AE3** — the notation-answer MCQ. Its options are rendered staves rather than text, so this proves a notation option is tappable and gradeable on a real device (Jest mocks the WebView and cannot). |
 | `note-values-truefalse.yaml` | **AE4** — the per-bar true/false (`bar_validity`) and `add_time_signature`. The lesson attaches three templates and SetRunner cycles them by item index, so the flow walks items 1–3 to reach the true/false input, and answers every bar (Check stays disabled until all bars have a verdict — no partial credit). |
 | `terms-flashcard.yaml` | **2g/2h** — the SRS flashcard. Self-graded: asserts **no** Check button and no FeedbackSheet ever render, that tapping the card reveals the meaning, and that a grade (Good) advances the set on its own. |
@@ -95,7 +95,10 @@ openLink: exp://127.0.0.1:8090/--/?seed=<unitId>   # e.g. ?seed=intervals
 `<unitId>` may also be `exam` — that masters every unit (3★) so the Level 1 exam
 gate opens, letting a flow reach the practice exam. It onboards (Grade 1) and makes
 `<unitId>` the frontier (marking predecessors complete but NOT the target), landing
-straight on the level map — no Welcome/onboarding. The
+straight on the seeded unit’s LANE (7b) — no Welcome/onboarding. Since G6 U7 the
+seed also decides *which* lane opens: the seeded unit's own strand, at the grade it
+lives in. `?seed=exam` names no unit, so it lands on the lane **list** (7a) and a
+flow reaches the paper via the Exams tab. The
 seed rides as a **query param on the root route**, not a path (`/--/seed` would
 hit expo-router's Unmatched Route). Unit ids: `treble-notes`, `bass-notes`,
 `accidentals`, `note-values`, `key-signatures`, `intervals`, `terms-and-signs`.

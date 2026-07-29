@@ -17,7 +17,7 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
 # Seeding auto-scrolls the map to the target (last) unit, so unit-row-intervals-3

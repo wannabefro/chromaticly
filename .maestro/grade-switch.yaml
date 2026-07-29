@@ -1,7 +1,8 @@
-# fyu.3 / design 3a + 5c — free grade access. Proves the working grade is a
+# fyu.3 / design 5c — free grade access. Proves the working grade is a
 # self-service switch that actually re-renders on device (the react-compiler
-# staleness class jest can't catch): switching grade via the Profile "Working
-# grade" picker AND via a level-map tap must both update what the app shows.
+# staleness class jest can't catch). G6 U7 re-navigated it: the level-map half of
+# the claim now returns to the lane the seed opened. U8 removes the picker steps
+# with the picker itself.
 appId: host.exp.Exponent
 ---
 - clearState
@@ -15,7 +16,7 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
 # --- Profile working-grade switch (design 5c) ---
@@ -41,9 +42,9 @@ appId: host.exp.Exponent
 - assertVisible: { id: "profile-working-grade" }
 - takeScreenshot: grade-switch-profile-after
 
-# --- Level-map tap = grade switch (design 3a) ---
+# --- Learn is still there and still on its lane after the switch ---
 - tapOn: { id: "tab-learn" }
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 20000
-- takeScreenshot: grade-switch-levelmap
+- takeScreenshot: grade-switch-lane

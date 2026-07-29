@@ -1,6 +1,6 @@
 # First-run journey, end to end (design "First-run journey"): a fresh guest goes
 # Welcome → grade select → your plan → 3-question coached warm-up → landed →
-# the grade home (level map), then taps into the first real unit. This is the
+# the seven-lane Learn tab (7a), then taps into the first real unit. This is the
 # DoD's outer loop — the layer the Jest tests mock (persistence, WebView
 # notation, navigation). There is NO age gate on this path (it moved to account
 # creation), so the old under-13 soft-block pass is gone.
@@ -77,7 +77,7 @@ appId: host.exp.Exponent
 - tapOn:
     id: "feedback-sheet-continue"
 
-# ── Step 6: landed → the grade home ──────────────────────────────────────────
+# ── Step 6: landed → the Learn tab ───────────────────────────────────────────
 - extendedWaitUntil:
     visible:
       id: "landed-screen"
@@ -87,19 +87,26 @@ appId: host.exp.Exponent
 - tapOn:
     id: "landed-continue"
 
-# The onboarding persisted → we fall through to the level map (3a), the grade home.
+# The onboarding persisted → we fall through to the seven-lane Learn tab (7a).
+# U11 rewrites the onboarding half of this flow against placement; U7 owns only
+# this tail.
 - extendedWaitUntil:
     visible:
-      id: "level-map-screen"
+      id: "lanes-screen"
+    timeout: 15000
+
+# treble-notes is a PITCH unit, so it lives one tap down, in the pitch lane. With
+# nothing mastered the lane opens at its first content-bearing grade, which is
+# where treble-notes is.
+- tapOn:
+    id: "lane-row-pitch"
+- extendedWaitUntil:
+    visible:
+      id: "lane-screen"
     timeout: 15000
 
 # The first real unit is live and enters its set — "the full lesson picks up
 # right here". Prove the hand-off, then stop (the 8-item set is Jest-covered).
-- scrollUntilVisible:
-    element:
-      id: "unit-row-treble-notes"
-    direction: UP
-    timeout: 15000
 - tapOn:
     id: "unit-row-treble-notes"
 - assertVisible:

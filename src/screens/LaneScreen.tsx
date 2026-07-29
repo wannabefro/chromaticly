@@ -284,6 +284,10 @@ export default function LaneScreen({ strand, onBack, onOpenLane, onOpenLesson }:
 const styles = StyleSheet.create({
   body: {
     gap: shape.spaceInline,
+    // `Screen` insets the top edge only, so the screen gutter is the scroll
+    // content's own job — without it every row runs to the bezel (caught
+    // dogfooding, not by jest: the layout-free renderer finds the row either way).
+    paddingHorizontal: shape.spaceScreenX,
     paddingBottom: shape.spaceStack,
   },
   back: {

@@ -19,22 +19,14 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
-# Level 2 is unlocked and expanded (the slice's headline user-visible behavior).
-# It sits below Level 1's eight units, so scroll it into view rather than asserting
-# at the top of the map. A locked Level 2 would render collapsed with no unit row,
-# so reaching unit-row-key-signatures-2 is itself the unlock proof.
-- scrollUntilVisible:
-    element: { id: "level-node-level-2" }
-    direction: DOWN
-    timeout: 15000
 - scrollUntilVisible:
     element: { id: "unit-row-key-signatures-2" }
     direction: DOWN
     timeout: 15000
-- takeScreenshot: g2-level-map
+- takeScreenshot: g2-lane
 - tapOn: { id: "unit-row-key-signatures-2" }
 
 # Every lesson opens on the teach phase (302.3); the CTA starts the set.

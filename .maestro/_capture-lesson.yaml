@@ -1,0 +1,48 @@
+# Generic per-lesson capture flow (not a test — a screenshot harness). Deep-links
+# to ?seed=${LESSON}, opens the lesson, and captures the teach screen then the
+# exercise screen. Parameterised by LESSON and OUT:
+#   DEV_URL=exp://127.0.0.1:8092 bash scripts/e2e.sh \
+#     -e LESSON=treble-notes -e OUT=/abs/dir .maestro/_capture-lesson.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}/--/?seed=${LESSON}
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "level-map-screen" }
+    timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "unit-row-${LESSON}" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-${LESSON}" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- takeScreenshot: ${OUT}/${LESSON}-1-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+    optional: true
+# The notation surfaces (stimulus + any option staves) each render via their own
+# abcjs WebView; give them time to paint before the shot (a fast capture catches
+# them blank — an artifact, not an app bug).
+- extendedWaitUntil:
+    visible: { id: "__settle_never__" }
+    timeout: 4500
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-2-exercise

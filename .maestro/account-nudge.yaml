@@ -19,7 +19,7 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 - tapOn: { id: "unit-row-key-signatures" }
 - extendedWaitUntil:
@@ -61,10 +61,10 @@ appId: host.exp.Exponent
 # submits via onSubmitEditing, so press Enter instead of fighting the keyboard.
 - pressKey: Enter
 
-# Back on the level map; the account now exists. Profile must reflect the name — the device
+# Back on the lane; the account now exists. Profile must reflect the name — the device
 # reactivity gate (real state, not a stale store-identity memo).
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 20000
 - tapOn: { id: "tab-profile" }
 - assertVisible: { id: "profile-screen" }
