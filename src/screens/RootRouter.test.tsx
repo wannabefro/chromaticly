@@ -1,7 +1,7 @@
 // First-run routing (U7) — the DoD's outer loop for the new journey:
 //   new user   → Welcome → grade select → your plan → 3-question warm-up →
-//                landed → Continue → level map
-//   returning  → straight to the level map, Welcome never shown
+//                landed → Continue → lane list
+//   returning  → straight to the lane list, Welcome never shown
 // Invariants guarded: the age gate never appears on the primary path (it moved to
 // account creation), and BOTH Landing CTAs mark the guest onboarded.
 
@@ -57,7 +57,7 @@ async function walkToLanding(getByTestId: (id: string) => any, findByTestId: (id
 }
 
 describe('RootRouter — new first-run journey (A7, no age gate)', () => {
-  test('new user walks Welcome → grade → plan → warm-up → landed → Continue → level map', async () => {
+  test('new user walks Welcome → grade → plan → warm-up → landed → Continue → lane list', async () => {
     const storage = memoryStorage();
     const { getByTestId, findByTestId, queryByTestId } = render(
       <ProgressProvider storage={storage}>
@@ -73,7 +73,7 @@ describe('RootRouter — new first-run journey (A7, no age gate)', () => {
 
     await act(async () => fireEvent.press(getByTestId('landed-continue')));
 
-    expect(await findByTestId('level-map-screen')).toBeTruthy();
+    expect(await findByTestId('lanes-screen')).toBeTruthy();
     // Onboarding persisted the selected grade, not a birth year.
     expect(storage.blob).toContain('"grade":1');
     expect(storage.blob).not.toContain('birthYear');
@@ -90,11 +90,11 @@ describe('RootRouter — new first-run journey (A7, no age gate)', () => {
     await walkToLanding(getByTestId, findByTestId);
     await act(async () => fireEvent.press(getByTestId('landed-explore')));
 
-    expect(await findByTestId('level-map-screen')).toBeTruthy();
+    expect(await findByTestId('lanes-screen')).toBeTruthy();
     expect(storage.blob).toContain('"grade":1');
   });
 
-  test('returning user skips onboarding and lands on the level map', async () => {
+  test('returning user skips onboarding and lands on the lane list', async () => {
     // Seed the blob a completed onboarding leaves behind, then reload from it.
     const seedStorage = memoryStorage();
     const seed = render(
@@ -104,7 +104,7 @@ describe('RootRouter — new first-run journey (A7, no age gate)', () => {
     );
     await walkToLanding(seed.getByTestId, seed.findByTestId);
     await act(async () => fireEvent.press(seed.getByTestId('landed-continue')));
-    await seed.findByTestId('level-map-screen');
+    await seed.findByTestId('lanes-screen');
     const seededBlob = seedStorage.blob;
     seed.unmount();
 
@@ -114,7 +114,7 @@ describe('RootRouter — new first-run journey (A7, no age gate)', () => {
       </ProgressProvider>,
     );
 
-    expect(await findByTestId('level-map-screen')).toBeTruthy();
+    expect(await findByTestId('lanes-screen')).toBeTruthy();
     expect(queryByTestId('welcome-screen')).toBeNull();
   });
 });

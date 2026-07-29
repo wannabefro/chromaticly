@@ -12,8 +12,10 @@
 import * as Linking from 'expo-linking';
 import { useEffect, useState } from 'react';
 
+import { lessonById } from '../content/lessons';
 import { useProgressContext } from '../learn/ProgressContext';
 import { CoachedWarmUp } from '../ui/CoachedWarmUp';
+import type { Strand } from '../ui/theme';
 import { GradeSelectScreen } from './onboarding/GradeSelectScreen';
 import { LandedScreen } from './onboarding/LandedScreen';
 import { PlanScreen } from './onboarding/PlanScreen';
@@ -32,13 +34,22 @@ export default function RootRouter() {
   // rides as a query param on the ROOT route (not a path) — expo-router owns path
   // routing and would send `/seed` to an Unmatched Route, never mounting this
   // screen. Never active in a release build. Hooks run before the early return.
+  //
+  // Since G6 U7 the Learn tab is seven lanes, so the seed also decides which lane
+  // the shell opens on: the seeded unit's own strand. Without that, `?seed=rests-4`
+  // would land on the lane LIST and every flow that taps `unit-row-rests-4` would
+  // need a lane tap inserted — the whole Maestro fleet rests on this one hop.
   const url = Linking.useURL();
   const [seeded, setSeeded] = useState(false);
+  const [seedLane, setSeedLane] = useState<Strand | null>(null);
   useEffect(() => {
     if (!__DEV__ || !ready || seeded || !url) return;
     const to = Linking.parse(url).queryParams?.seed;
     if (typeof to === 'string' && to) {
       setSeeded(true);
+      // `?seed=exam` names no lesson, so it resolves to no lane and the shell opens
+      // on the list — which is where an exam flow wants to be anyway.
+      setSeedLane((lessonById(to)?.strand as Strand | undefined) ?? null);
       void seedTo(to);
     }
   }, [url, ready, seeded, seedTo]);
@@ -71,6 +82,8 @@ export default function RootRouter() {
     }
   }
 
-  // Onboarded: the app proper — the tab shell (2a), whose Learn tab is the level map.
-  return <AppShell />;
+  // Onboarded: the app proper — the tab shell (2a), whose Learn tab is the seven
+  // lanes (7a). Keyed on the seed lane so a deep link that resolves AFTER the shell
+  // has mounted still opens the right lane rather than being ignored.
+  return <AppShell key={seedLane ?? 'root'} initialLane={seedLane ?? undefined} />;
 }

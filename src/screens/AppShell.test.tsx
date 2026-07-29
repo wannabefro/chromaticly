@@ -57,8 +57,28 @@ describe('AppShell — the tab shell (302.7)', () => {
     await waitFor(() => expect(getByTestId('profile-screen')).toBeTruthy());
 
     act(() => fireEvent.press(getByTestId('tab-learn')));
-    await waitFor(() => expect(getByTestId('level-map-screen')).toBeTruthy());
+    await waitFor(() => expect(getByTestId('lanes-screen')).toBeTruthy());
   });
+
+  // G6 U7: the Learn pane is a two-level navigator — the lane list, then one lane's
+  // detail — with the shell holding which lane is open, so switching tabs and coming
+  // back does not throw the learner out of the lane they were reading.
+  test('the Learn pane opens a lane and keeps it open across a tab round-trip', async () => {
+    const { getByTestId } = renderShell();
+    await waitFor(() => expect(getByTestId('lanes-screen')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('lane-row-pitch')));
+    await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
+    expect(getByTestId('lane-heading').props.children).toBe('Pitch & Notation');
+
+    act(() => fireEvent.press(getByTestId('tab-practice')));
+    act(() => fireEvent.press(getByTestId('tab-learn')));
+    await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('lane-back')));
+    await waitFor(() => expect(getByTestId('lanes-screen')).toBeTruthy());
+  });
+
 
   // An exercise is immersive, and an exam paper especially so: a tab bar over a timed
   // paper is a way to walk out of it mid-question. The bar gets out of the way.
@@ -66,8 +86,11 @@ describe('AppShell — the tab shell (302.7)', () => {
     const { getByTestId, queryByTestId } = renderShell();
     await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
 
-    // fyu.3: the tap now also switches the working grade (setGrade), so the
-    // handler is async — await it inside act() rather than firing bare.
+    // G6 U7: lessons are entered from a lane, so the tap goes through the lane
+    // list first. fyu.3: the tap still switches the working grade (setGrade), so
+    // the handler is async — await it inside act() rather than firing bare.
+    act(() => fireEvent.press(getByTestId('lane-row-pitch')));
+    await waitFor(() => expect(getByTestId('unit-row-treble-notes')).toBeTruthy());
     await act(async () => {
       fireEvent.press(getByTestId('unit-row-treble-notes'));
     });

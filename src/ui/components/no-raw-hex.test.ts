@@ -41,6 +41,7 @@ const SLICE_FILES = [
   'screens/ExamsScreen.tsx',
   'screens/ProfileScreen.tsx',
   'screens/LanesScreen.tsx',
+  'screens/LaneScreen.tsx',
 ];
 
 function componentFiles(dir: string): string[] {
