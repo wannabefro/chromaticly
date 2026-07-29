@@ -38315,6 +38315,2961 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte term_meaning @ dynamics-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "very quiet",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "moderately quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately loud",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s0",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "pianissimo" mean?",
+    "srs_tags": [
+      "term:pianissimo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "pianissimo",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "piano",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "diminuendo",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo forte",
+      },
+      {
+        "category": "dynamics",
+        "value": "decrescendo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s1",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "quiet"?",
+    "srs_tags": [
+      "term:piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "very quiet",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "very loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s2",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "pianissimo" mean?",
+    "srs_tags": [
+      "term:pianissimo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "pianissimo",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "loud",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting louder",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately quiet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s3",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "forte" mean?",
+    "srs_tags": [
+      "term:forte",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "forte",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "crescendo",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "mezzo forte",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+      {
+        "category": "dynamics",
+        "value": "fortissimo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s4",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "gradually getting louder"?",
+    "srs_tags": [
+      "term:crescendo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "gradually getting louder",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "moderately quiet",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s5",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "mezzo piano" mean?",
+    "srs_tags": [
+      "term:mezzo_piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "mezzo piano",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "pianissimo",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo forte",
+      },
+      {
+        "category": "dynamics",
+        "value": "diminuendo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s6",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "moderately quiet"?",
+    "srs_tags": [
+      "term:mezzo_piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "moderately quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "piano",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "crescendo",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+      {
+        "category": "dynamics",
+        "value": "pianissimo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s7",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "quiet"?",
+    "srs_tags": [
+      "term:piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "piano",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+      {
+        "category": "dynamics",
+        "value": "forte",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo forte",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s8",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "quiet"?",
+    "srs_tags": [
+      "term:piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "very loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "loud",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s9",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "diminuendo" mean?",
+    "srs_tags": [
+      "term:diminuendo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "diminuendo",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "pianissimo",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "fortissimo",
+      },
+      {
+        "category": "dynamics",
+        "value": "decrescendo",
+      },
+      {
+        "category": "dynamics",
+        "value": "forte",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s10",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "very quiet"?",
+    "srs_tags": [
+      "term:pianissimo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "very quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "pianissimo",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "diminuendo",
+      },
+      {
+        "category": "dynamics",
+        "value": "fortissimo",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s11",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "very quiet"?",
+    "srs_tags": [
+      "term:pianissimo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "very quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "moderately loud",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting louder",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s12",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "mezzo forte" mean?",
+    "srs_tags": [
+      "term:mezzo_forte",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "mezzo forte",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "moderately loud",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s13",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "mezzo forte" mean?",
+    "srs_tags": [
+      "term:mezzo_forte",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "mezzo forte",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "mezzo forte",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "forte",
+      },
+      {
+        "category": "dynamics",
+        "value": "pianissimo",
+      },
+      {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s14",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "moderately loud"?",
+    "srs_tags": [
+      "term:mezzo_forte",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "moderately loud",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "gradually getting louder",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "very loud",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s15",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "crescendo" mean?",
+    "srs_tags": [
+      "term:crescendo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crescendo",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "gradually getting louder",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "moderately loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+      {
+        "category": "dynamics",
+        "value": "quiet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s16",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "crescendo" mean?",
+    "srs_tags": [
+      "term:crescendo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crescendo",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "moderately quiet",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "moderately loud",
+      },
+      {
+        "category": "dynamics",
+        "value": "quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting quieter",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s17",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "mezzo piano" mean?",
+    "srs_tags": [
+      "term:mezzo_piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "mezzo piano",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "forte",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "mezzo forte",
+      },
+      {
+        "category": "dynamics",
+        "value": "piano",
+      },
+      {
+        "category": "dynamics",
+        "value": "decrescendo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s18",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "loud"?",
+    "srs_tags": [
+      "term:forte",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "loud",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "dynamics",
+        "value": "mezzo piano",
+      },
+    },
+    "distractors": [
+      {
+        "category": "dynamics",
+        "value": "diminuendo",
+      },
+      {
+        "category": "dynamics",
+        "value": "crescendo",
+      },
+      {
+        "category": "dynamics",
+        "value": "forte",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different dynamics term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which dynamics terms you already know.",
+    ],
+    "id": "term_meaning:g1:s19",
+    "interaction": {
+      "config": {
+        "category": "dynamics",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "moderately quiet"?",
+    "srs_tags": [
+      "term:mezzo_piano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "moderately quiet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte term_meaning @ signs-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "detached",
+      },
+      {
+        "category": "signs",
+        "value": "hold for the value of both notes",
+      },
+      {
+        "category": "signs",
+        "value": "accent the note (play with emphasis)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s0",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "slur" mean?",
+    "srs_tags": [
+      "term:slur",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "slur",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "accent",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "repeat_marks",
+      },
+      {
+        "category": "signs",
+        "value": "tie",
+      },
+      {
+        "category": "signs",
+        "value": "metronome_mark",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s1",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "accent the note (play with emphasis)"?",
+    "srs_tags": [
+      "term:accent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "accent the note (play with emphasis)",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "accent the note (play with emphasis)",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+      {
+        "category": "signs",
+        "value": "hold for the value of both notes",
+      },
+      {
+        "category": "signs",
+        "value": "repeat the section between the two signs (if the first sign is missing, repeat from the beginning)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s2",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "accent" mean?",
+    "srs_tags": [
+      "term:accent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "accent",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "repeat from the beginning",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+      {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+      {
+        "category": "other_terms",
+        "value": "the end (al fine = up to the end)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s3",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "da capo" mean?",
+    "srs_tags": [
+      "term:da_capo",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "da capo",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "tie",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "slur",
+      },
+      {
+        "category": "signs",
+        "value": "staccato_dot",
+      },
+      {
+        "category": "signs",
+        "value": "accent",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s4",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "hold for the value of both notes"?",
+    "srs_tags": [
+      "term:tie",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "hold for the value of both notes",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "in a singing style",
+      },
+      {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+      {
+        "category": "other_terms",
+        "value": "detached",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s5",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "legato" mean?",
+    "srs_tags": [
+      "term:legato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "legato",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "legato",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "dolce",
+      },
+      {
+        "category": "other_terms",
+        "value": "da capo",
+      },
+      {
+        "category": "other_terms",
+        "value": "staccato",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s6",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "smoothly"?",
+    "srs_tags": [
+      "term:legato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "smoothly",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "staccato",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "fine",
+      },
+      {
+        "category": "other_terms",
+        "value": "da capo",
+      },
+      {
+        "category": "other_terms",
+        "value": "dolce",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s7",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "detached"?",
+    "srs_tags": [
+      "term:staccato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "detached",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "staccato",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "dolce",
+      },
+      {
+        "category": "other_terms",
+        "value": "cantabile",
+      },
+      {
+        "category": "other_terms",
+        "value": "da capo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s8",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "detached"?",
+    "srs_tags": [
+      "term:staccato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "detached",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "repeat the section between the two signs (if the first sign is missing, repeat from the beginning)",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "accent the note (play with emphasis)",
+      },
+      {
+        "category": "signs",
+        "value": "detached",
+      },
+      {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s9",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "repeat_marks" mean?",
+    "srs_tags": [
+      "term:repeat_marks",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "repeat_marks",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "repeat the section between the two signs (if the first sign is missing, repeat from the beginning)",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "e.g. crotchet = 60: play at 60 crotchet beats per minute",
+      },
+      {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+      {
+        "category": "signs",
+        "value": "pause on the note or rest",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s10",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "repeat_marks" mean?",
+    "srs_tags": [
+      "term:repeat_marks",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "repeat_marks",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "slur",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "repeat_marks",
+      },
+      {
+        "category": "signs",
+        "value": "accent",
+      },
+      {
+        "category": "signs",
+        "value": "staccato_dot",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s11",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "perform smoothly"?",
+    "srs_tags": [
+      "term:slur",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "perform smoothly",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "the end (al fine = up to the end)",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "detached",
+      },
+      {
+        "category": "other_terms",
+        "value": "repeat from the beginning",
+      },
+      {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s12",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "fine" mean?",
+    "srs_tags": [
+      "term:fine",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "fine",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "detached",
+      },
+      {
+        "category": "other_terms",
+        "value": "the end (al fine = up to the end)",
+      },
+      {
+        "category": "other_terms",
+        "value": "repeat from the beginning",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s13",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "legato" mean?",
+    "srs_tags": [
+      "term:legato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "legato",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "fine",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "cantabile",
+      },
+      {
+        "category": "other_terms",
+        "value": "dolce",
+      },
+      {
+        "category": "other_terms",
+        "value": "da capo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s14",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "the end (al fine = up to the end)"?",
+    "srs_tags": [
+      "term:fine",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "the end (al fine = up to the end)",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "hold for the value of both notes",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "e.g. crotchet = 60: play at 60 crotchet beats per minute",
+      },
+      {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+      {
+        "category": "signs",
+        "value": "accent the note (play with emphasis)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s15",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "tie" mean?",
+    "srs_tags": [
+      "term:tie",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "tie",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "detached",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "hold for the value of both notes",
+      },
+      {
+        "category": "signs",
+        "value": "e.g. crotchet = 60: play at 60 crotchet beats per minute",
+      },
+      {
+        "category": "signs",
+        "value": "pause on the note or rest",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s16",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "staccato_dot" mean?",
+    "srs_tags": [
+      "term:staccato_dot",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "staccato_dot",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "repeat from the beginning",
+      },
+      {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+      {
+        "category": "other_terms",
+        "value": "detached",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s17",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "legato" mean?",
+    "srs_tags": [
+      "term:legato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "legato",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "dolce",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "da capo",
+      },
+      {
+        "category": "other_terms",
+        "value": "fine",
+      },
+      {
+        "category": "other_terms",
+        "value": "staccato",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s18",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "sweet"?",
+    "srs_tags": [
+      "term:dolce",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "sweet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "staccato",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "legato",
+      },
+      {
+        "category": "other_terms",
+        "value": "fine",
+      },
+      {
+        "category": "other_terms",
+        "value": "cantabile",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different other terms term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which other terms terms you already know.",
+    ],
+    "id": "term_meaning:g1:s19",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "detached"?",
+    "srs_tags": [
+      "term:staccato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "detached",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte term_meaning @ tempo-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "at a medium speed",
+      },
+      {
+        "category": "tempo",
+        "value": "fairly quick",
+      },
+      {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s0",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "rallentando" mean?",
+    "srs_tags": [
+      "term:rallentando",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "rallentando",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "a tempo",
+      },
+      {
+        "category": "tempo",
+        "value": "moderato",
+      },
+      {
+        "category": "tempo",
+        "value": "ritardando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s1",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "gradually getting quicker"?",
+    "srs_tags": [
+      "term:accelerando",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "gradually getting quicker",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "gradually getting quicker",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "quick",
+      },
+      {
+        "category": "tempo",
+        "value": "fairly quick",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s2",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "accelerando" mean?",
+    "srs_tags": [
+      "term:accelerando",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "accelerando",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "fairly quick",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "slow",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+      {
+        "category": "tempo",
+        "value": "at a medium speed",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s3",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "allegretto" mean?",
+    "srs_tags": [
+      "term:allegretto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "allegretto",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "moderato",
+      },
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+      {
+        "category": "tempo",
+        "value": "allegro",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s4",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "gradually getting slower"?",
+    "srs_tags": [
+      "term:rallentando",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "gradually getting slower",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a medium speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "fairly quick",
+      },
+      {
+        "category": "tempo",
+        "value": "slow",
+      },
+      {
+        "category": "tempo",
+        "value": "in time (resume the original speed)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s5",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "andante" mean?",
+    "srs_tags": [
+      "term:andante",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "andante",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "andante",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+      {
+        "category": "tempo",
+        "value": "moderato",
+      },
+      {
+        "category": "tempo",
+        "value": "a tempo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s6",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "at a medium speed"?",
+    "srs_tags": [
+      "term:andante",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "at a medium speed",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "adagio",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+      {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s7",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "slow"?",
+    "srs_tags": [
+      "term:adagio",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "slow",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "adagio",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+      {
+        "category": "tempo",
+        "value": "allegretto",
+      },
+      {
+        "category": "tempo",
+        "value": "moderato",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s8",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "slow"?",
+    "srs_tags": [
+      "term:adagio",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "slow",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "e.g. crotchet = 60: play at 60 crotchet beats per minute",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "accent the note (play with emphasis)",
+      },
+      {
+        "category": "signs",
+        "value": "detached",
+      },
+      {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s9",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "metronome_mark" mean?",
+    "srs_tags": [
+      "term:metronome_mark",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "metronome_mark",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "signs",
+        "value": "e.g. crotchet = 60: play at 60 crotchet beats per minute",
+      },
+    },
+    "distractors": [
+      {
+        "category": "signs",
+        "value": "repeat the section between the two signs (if the first sign is missing, repeat from the beginning)",
+      },
+      {
+        "category": "signs",
+        "value": "perform smoothly",
+      },
+      {
+        "category": "signs",
+        "value": "pause on the note or rest",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different signs term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which signs terms you already know.",
+    ],
+    "id": "term_meaning:g1:s10",
+    "interaction": {
+      "config": {
+        "category": "signs",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "metronome_mark" mean?",
+    "srs_tags": [
+      "term:metronome_mark",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "metronome_mark",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "a tempo",
+      },
+      {
+        "category": "tempo",
+        "value": "allegro",
+      },
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s11",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "gradually getting slower"?",
+    "srs_tags": [
+      "term:rallentando",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "gradually getting slower",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "in time (resume the original speed)",
+      },
+      {
+        "category": "tempo",
+        "value": "at a medium speed",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s12",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "moderato" mean?",
+    "srs_tags": [
+      "term:moderato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "moderato",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a medium speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "in time (resume the original speed)",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+      {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s13",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "andante" mean?",
+    "srs_tags": [
+      "term:andante",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "andante",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "moderato",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "allegretto",
+      },
+      {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s14",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "at a moderate speed"?",
+    "srs_tags": [
+      "term:moderato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "at a moderate speed",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "a tempo",
+      },
+      {
+        "category": "tempo",
+        "value": "ritardando",
+      },
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s15",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "gradually getting quicker"?",
+    "srs_tags": [
+      "term:accelerando",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "gradually getting quicker",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "moderato",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "adagio",
+      },
+      {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+      {
+        "category": "tempo",
+        "value": "ritardando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s16",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "at a moderate speed"?",
+    "srs_tags": [
+      "term:moderato",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "at a moderate speed",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a medium speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+      {
+        "category": "tempo",
+        "value": "slow",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s17",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "andante" mean?",
+    "srs_tags": [
+      "term:andante",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "andante",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "allegretto",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "moderato",
+      },
+      {
+        "category": "tempo",
+        "value": "adagio",
+      },
+      {
+        "category": "tempo",
+        "value": "ritardando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s18",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "fairly quick"?",
+    "srs_tags": [
+      "term:allegretto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "fairly quick",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "adagio",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "a tempo",
+      },
+      {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+      {
+        "category": "tempo",
+        "value": "allegretto",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term or sign. Review the category and try again.",
+    },
+    "grade": 1,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g1:s19",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "slow"?",
+    "srs_tags": [
+      "term:adagio",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "slow",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte term_meaning_flashcard @ dynamics-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
