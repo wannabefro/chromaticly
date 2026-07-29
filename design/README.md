@@ -97,3 +97,28 @@ A lane suggested for being shallow says `start here`. With nothing to recommend,
 the screen says nothing rather than saying so in a disabled control.
 
 The lane detail's own copy diet (options 1a–1d) is **not decided** and 7b stands as built.
+
+### Exercise set — item 1 is a try, not a test · approved 2026-07-29
+
+No prototype covers this. The only "just try it" copy in `Chromaticly Core Flows.dc.html` belongs to
+the onboarding coached warm-up (3 questions, once, pre-profile), and a lesson had nothing between the
+teach card's single worked example and eight scored questions. Chosen from three shapes; the two not
+taken are recorded because they remain the alternatives if this one proves too thin.
+
+| shape | why not |
+|---|---|
+| **A — item 1 is a try** *(taken)* | — |
+| C — an answer-first read-only item | needs a new read-only interaction; keep as the next step if A reads as too subtle |
+| B — a faded worked example, walked in 3 steps | strongest pedagogy, but needs authored step copy per template, and the steps differ per strand |
+
+What A renders:
+
+1. **Eight items are still presented; seven are scored.** The set length is unchanged, so the seed
+   window per play, every pinned snapshot and every Maestro flow hold.
+2. **The lead-in segment is dashed**, the same grammar the lane bar uses for a grade that teaches
+   nothing — a slot with nothing to earn, not an empty one the learner has yet to reach.
+3. **The smart tip is open before the question is read**, in the same 💡 card the teach phase uses,
+   and a mono caption says "this one doesn't count — the tip stays open". The tip and the caption are
+   one decision: an open tip alone reads as an ordinary hinted item.
+4. **It records nothing** — no gem, no mastery, no SRS review. This is a design constraint, not an
+   implementation detail: a screen that says an item does not count must not then charge for it.
