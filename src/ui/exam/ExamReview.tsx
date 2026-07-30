@@ -8,14 +8,16 @@
 // gamification, it is the point of sitting the paper.
 //
 // Wrong answers reuse the item's own misconception copy (never-violate rule 5: name
-// the misconception, show the rendered correct answer with play) rather than a second
-// explanation written for the exam.
+// the misconception, show the rendered correct answer) rather than a second
+// explanation written for the exam. The options themselves are mini play-less staves
+// (rule 9), the same as in the exercise loop — play belongs to the stimulus above them.
 
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { ExamPaper } from '../../learn/exam';
 import { NotationCard } from '../components/NotationCard';
+import { StaticNotation } from '../components/StaticNotation';
 import type { Option } from '../grading';
 import { Screen } from '../Screen';
 import { colors, examColors as x, shape, type } from '../theme';
@@ -118,8 +120,13 @@ export function ExamReview({
                   {marker}
                 </Text>
                 <View style={styles.optionBody}>
-                  {/* The correct answer is always shown RENDERED, with play (rule 2/5). */}
-                  {opt.music ? <NotationCard music={opt.music} /> : <Text style={styles.optionLabel}>{opt.label}</Text>}
+                  {/* An option's notation is a mini play-less stave, exactly as in the
+                      exercise loop (AnswerOption -> StaticNotation, rule 9: play is
+                      omitted INSIDE an option; it belongs to the stimulus and the
+                      feedback sheet). This used to be a full NotationCard, and three
+                      of them pushed the misconception copy — the whole point of the
+                      marked script — a screen and a half below the fold. */}
+                  {opt.music ? <StaticNotation music={opt.music} /> : <Text style={styles.optionLabel}>{opt.label}</Text>}
                   {note !== '' && <Text style={styles.optionNote}>{note}</Text>}
                 </View>
               </View>

@@ -11,7 +11,7 @@ jest.mock('react-native-webview', () => {
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
-import { act, fireEvent, render } from '@testing-library/react-native';
+import { act, fireEvent, render, within } from '@testing-library/react-native';
 
 import { buildExamPaper } from '../../learn/exam';
 import { ProgressProvider } from '../../learn/ProgressContext';
@@ -86,6 +86,29 @@ describe('ExamReview — reviewing the marked paper (8b)', () => {
     expect(getByTestId('exam-review-why')).toHaveTextContent(paper.questions[0].instance.feedback.incorrect);
     expect(getByText('your answer')).toBeTruthy();
     expect(getByText('correct')).toBeTruthy();
+  });
+
+  // chromaticly-kow. The marked script rendered each notation option as a full
+  // NotationCard — three ~470pt paper cards with their own play buttons — so on
+  // any notation-answer question the misconception copy sat a screen and a half
+  // below the fold. The exercise loop already had the right answer for this
+  // (AnswerOption -> StaticNotation, rule 9: play is omitted inside an option),
+  // and the two screens had drifted apart.
+  //
+  // Asserted by component identity rather than by measuring height: the defect
+  // was using the wrong component, and a height assertion would pass again the
+  // moment someone shrank the card without fixing the contradiction.
+  test('a notation option renders as a mini play-less stave, not a full play-bearing card', async () => {
+    const { getByTestId, queryAllByTestId } = await renderExam();
+    sitPaper(getByTestId, 1);
+    fireEvent.press(getByTestId('exam-review-paper'));
+
+    // Q1 of the Grade 1 paper is rhythm_sum, whose options carry `option_music`.
+    expect(queryAllByTestId('static-notation').length).toBeGreaterThan(0);
+    // The stimulus may still be a NotationCard; the OPTIONS must not be.
+    const optionCards = queryAllByTestId('exam-review-option-0');
+    expect(optionCards.length).toBe(1);
+    expect(within(optionCards[0]).queryAllByTestId('notation-card')).toEqual([]);
   });
 
   test('"Next wrong" skips the questions they got right', async () => {
