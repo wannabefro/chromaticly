@@ -94,12 +94,18 @@ export function buildExamPaper(paperSeed = 0): ExamPaper {
   return { questions, totalMarks: questions.length, sections: GRADE1_EXAM_SECTIONS };
 }
 
+/** The one grade with a real paper this slice. Named rather than repeated as a
+ *  literal, because readiness (G6 U8) and the gate now both have to agree on it —
+ *  a readiness card about a paper that does not exist is a promise the app cannot
+ *  keep. Widening the paper set is one edit here plus `hasExamPaper`. */
+export const EXAM_PAPER_GRADE = 1;
+
 /** Whether `grade` has a real exam paper (D8). Only Grade 1 does this slice —
  *  `buildExamPaper` is Grade-1-only, and a stub "Grade 2 exam" would
  *  misrepresent an exam paper. Gate `onPress` on both exam-gate call sites
  *  with this, so a gate never opens onto a paper that doesn't exist. */
 export function hasExamPaper(grade: number): boolean {
-  return grade === 1;
+  return grade === EXAM_PAPER_GRADE;
 }
 
 export function bandFor(total: number, totalMarks: number): Band {

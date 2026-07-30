@@ -111,3 +111,38 @@ describe('AppShell — the tab shell (302.7)', () => {
     await waitFor(() => expect(getByTestId('exams-screen')).toBeTruthy());
   });
 });
+
+// G6 U8. Both cross-tab drills are asserted HERE, at the shell, not only as a
+// screen callback: a callback-level test proves the tap fired, not that the strand
+// survived the tab change. The shell used to hold a bare tab key with no target
+// payload, so "route to Learn" and "route to the pitch lane" were different claims
+// and only one of them was true. An exact strand is asserted for each entry point.
+describe('AppShell — a short strand routes to its lane, not just to Learn (7d)', () => {
+  test('the Exams readiness card opens that lane in Learn', async () => {
+    const { getByTestId } = renderShell();
+    await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('tab-exams')));
+    await waitFor(() => expect(getByTestId('readiness-card-short-pitch')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('readiness-card-short-pitch')));
+    await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
+    expect(getByTestId('lane-heading').props.children).toBe('Pitch & Notation');
+  });
+
+  // The Profile entry point, via its own readiness card. The radar's drill pill is
+  // the other one, but it only renders for a strand the learner has STARTED
+  // (`value > 0 && value < 1`), so it cannot be exercised on the fresh store this
+  // shell test uses — the card's shortfall row is the same `onDrillStrand` seam.
+  test('a short skill on Profile opens that lane in Learn, and does not just switch tabs', async () => {
+    const { getByTestId } = renderShell();
+    await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('tab-profile')));
+    await waitFor(() => expect(getByTestId('profile-readiness-card-short-rhythm')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('profile-readiness-card-short-rhythm')));
+    await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
+    expect(getByTestId('lane-heading').props.children).toBe('Rhythm');
+  });
+});

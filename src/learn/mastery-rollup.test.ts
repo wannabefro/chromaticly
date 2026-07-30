@@ -2,7 +2,7 @@ import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { atomsFor, contentGradesFor, laneDepths, SLACK_FACTOR } from './lane-depth';
 import { MASTERY_THRESHOLD } from './mastery';
-import { accountNudgeStats, currentLevel, deriveStars, isLevelUnlocked, strandMastery, unitStates } from './mastery-rollup';
+import { accountNudgeStats, currentLevel, deriveStars, examReadiness, isLevelUnlocked, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
 import { ProgressStore } from './store';
 
@@ -313,5 +313,99 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)
     // must still report Level 2 — the learner's chosen working grade.
     expect(isLevelUnlocked(LEVELS[2], store)).toBe(true);
     expect(currentLevel(LEVELS, store)).toBe(level2);
+  });
+});
+
+// G6 U8 (R6 as amended). Readiness moved from a stars fraction to a vector
+// comparison, and the tests are written against the two things the fraction could
+// not do: say WHICH skill is short, and say what being short of it costs.
+describe('examReadiness — a vector comparison over the paper’s own sections (7d)', () => {
+  const SECTIONS = [
+    { strand: 'rhythm', title: 'Rhythm & Metre' },
+    { strand: 'pitch', title: 'Pitch & Notation' },
+    { strand: 'scales_keys', title: 'Keys & Scales' },
+    { strand: 'intervals', title: 'Intervals' },
+    { strand: 'terms_signs', title: 'Terms & Signs' },
+  ];
+  const MARKS = 4;
+
+  /** Depths as a plain record — readiness takes the derivation's OUTPUT, not the
+   *  store, so it can be exercised at any vector without seeding a profile. */
+  function depths(overrides: Record<string, number>): Record<string, { depth: number }> {
+    const out: Record<string, { depth: number }> = {};
+    for (const strand of ['rhythm', 'pitch', 'scales_keys', 'intervals', 'chords', 'terms_signs', 'context']) {
+      out[strand] = { depth: overrides[strand] ?? 0 };
+    }
+    return out;
+  }
+
+  const allAtOne = depths({ rhythm: 1, pitch: 1, scales_keys: 1, intervals: 1, terms_signs: 1 });
+
+  test('every examined strand at or above the grade is ready, with nothing named', () => {
+    const r = examReadiness(1, SECTIONS, allAtOne, MARKS);
+    expect(r.ready).toBe(true);
+    expect(r.shortfalls).toEqual([]);
+    expect(r.marksAtRisk).toBe(0);
+  });
+
+  test('two examined strands below the grade are both named, weakest first, with their marks', () => {
+    const r = examReadiness(2, SECTIONS, depths({ rhythm: 1, pitch: 0, scales_keys: 2, intervals: 2, terms_signs: 2 }), MARKS);
+    expect(r.shortfalls.map((s) => s.strand)).toEqual(['pitch', 'rhythm']);
+    expect(r.shortfalls.map((s) => s.marks)).toEqual([MARKS, MARKS]);
+    expect(r.marksAtRisk).toBe(2 * MARKS);
+  });
+
+  // KTD8, the false-shortfall regression this shape exists to prevent. Chords
+  // teaches nothing below grade 4 and the Grade 1 paper has no chords section, so a
+  // fresh learner at chords depth 0 is not short of anything — the old
+  // all-seven-strands derivation reported two phantom gaps to every Grade 1 learner
+  // and sent them to repair material that does not exist yet.
+  test('a strand the paper does not examine is never a shortfall, however low its depth', () => {
+    const r = examReadiness(1, SECTIONS, allAtOne, MARKS);
+    expect(r.shortfalls.map((s) => s.strand)).not.toContain('chords');
+    expect(r.shortfalls.map((s) => s.strand)).not.toContain('context');
+    expect(r.ready).toBe(true);
+  });
+
+  test('an unexamined strand is still REPORTED, so a five-section paper never reads as a seven-strand one', () => {
+    const r = examReadiness(1, SECTIONS, allAtOne, MARKS);
+    const unexamined = r.rows.filter((row) => !row.examined).map((row) => row.strand);
+    expect(unexamined).toEqual(['chords', 'context']);
+    for (const row of r.rows.filter((x) => !x.examined)) expect(row.marks).toBe(0);
+  });
+
+  // R6: readiness informs, it never gates. There is deliberately no field to
+  // consult — asserted as an absence so re-adding one has to be a decision.
+  test('there is no blocking state at any depth — readiness carries no gate', () => {
+    for (const depth of [0, 1, 2, 3]) {
+      const r = examReadiness(2, SECTIONS, depths({ rhythm: depth, pitch: depth, scales_keys: depth, intervals: depth, terms_signs: depth }), MARKS);
+      expect(r).not.toHaveProperty('gateOpen');
+      expect(r.totalMarks).toBe(SECTIONS.length * MARKS);
+    }
+  });
+
+  test('total marks come from the paper, not from the seven strands', () => {
+    expect(examReadiness(1, SECTIONS, allAtOne, MARKS).totalMarks).toBe(20);
+  });
+
+  // R3: readiness and the lane list must never disagree. Both read `laneDepths`,
+  // so a decayed lane has to surface here too — this runs the real derivation
+  // rather than the hand-built vector above, which is the point.
+  test('a strand decayed below the grade is named — readiness and lane depth agree', () => {
+    const store = new ProgressStore();
+    const stale = DAY - 400 * SLACK_FACTOR;
+    masterCell(store, 'rhythm', 1, stale, 200);
+    masterCell(store, 'pitch', 1);
+    const lanes = laneDepths(store, DAY);
+
+    const r = examReadiness(1, SECTIONS, lanes, MARKS);
+    expect(lanes.rhythm.depth).toBe(0);
+    expect(r.shortfalls.map((s) => s.strand)).toContain('rhythm');
+  });
+
+  test('depth 0 and depth 1 are different readings at grade 1 — there is no floor at 1 (R7)', () => {
+    const r = examReadiness(1, SECTIONS, depths({ pitch: 1, scales_keys: 1, intervals: 1, terms_signs: 1 }), MARKS);
+    expect(r.shortfalls.map((s) => s.strand)).toEqual(['rhythm']);
+    expect(r.rows.find((row) => row.strand === 'rhythm')!.depth).toBe(0);
   });
 });

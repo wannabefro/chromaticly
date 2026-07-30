@@ -6,7 +6,7 @@
 
 import type { Lesson } from '../content/lessons';
 import type { Level } from '../content/levels';
-import { laneDepths } from './lane-depth';
+import { laneDepths, STRAND_ORDER } from './lane-depth';
 import { selectDue } from './srs';
 import type { ProgressStore } from './store';
 
@@ -99,51 +99,80 @@ export function unitStates(
   });
 }
 
-export interface ExamReadiness {
-  stars: number;
-  maxStars: number;
-  /** 0..1 — how far through the level's stars the learner is. */
-  fraction: number;
-  /** True once the level's exam gate opens. */
-  gateOpen: boolean;
-  /** The strands holding the learner back, weakest first. Empty at full mastery. */
-  weakest: string[];
+/** One strand's standing against a paper. `examined: false` means the paper has
+ *  no section for it at this grade — a fact about the PAPER, not a gap in the
+ *  learner. */
+export interface ReadinessRow {
+  strand: string;
+  examined: boolean;
+  /** The section's title, for naming the shortfall in the learner's words. */
+  sectionTitle?: string;
+  /** Marks this section is worth. What being short of it actually costs. */
+  marks: number;
+  depth: number;
+  /** True when the strand is examined and its depth is below the paper's grade. */
+  short: boolean;
 }
 
-/** Exam readiness for a level (design 5c). Readiness is stars-earned over
- *  stars-available — the same signal the exam gate itself uses — so the ring can
- *  never disagree with whether the paper is actually open. */
+export interface ExamReadiness {
+  grade: number;
+  rows: ReadinessRow[];
+  /** Examined strands below the paper's grade, weakest first. Empty when ready. */
+  shortfalls: ReadinessRow[];
+  /** Marks at risk: the sum of the shortfalls' section marks. */
+  marksAtRisk: number;
+  totalMarks: number;
+  ready: boolean;
+}
+
+/** Exam readiness for a grade (design 7d, R6 as amended).
+ *
+ *  Readiness is a VECTOR COMPARISON — every examined strand's lane depth against
+ *  the paper's grade — not a stars fraction. The fraction could not say which
+ *  skill was short or what being short of it cost, and it moved when a strand
+ *  the paper never asks about moved.
+ *
+ *  KTD8, the false-shortfall regression this shape exists to prevent: a paper
+ *  asks about the strands it HAS SECTIONS FOR. The Grade 1 paper has five, and
+ *  chords is not among them, so a fresh learner at chords depth 0 is not short of
+ *  anything — chords is simply not examined at this grade. Deriving shortfalls
+ *  from all seven strands reported two phantom gaps to every Grade 1 learner
+ *  alive, and told them to go and fix material that does not exist below grade 4.
+ *
+ *  Readiness NEVER blocks (R6). There is no gate field to consult: the paper is
+ *  startable at any depth, and this only tells the learner what it will cost. */
 export function examReadiness(
-  unitIds: string[],
-  store: ProgressStore,
-  lesson: (id: string) => { atoms: string[]; strand: string } | undefined,
-  unlockAtStars: number,
+  grade: number,
+  sections: { strand: string; title: string }[],
+  depthByStrand: Record<string, { depth: number }>,
+  marksPerSection: number,
 ): ExamReadiness {
-  const rows = unitIds.map((id) => ({
-    stars: deriveStars(lesson(id)?.atoms ?? [], store),
-    strand: lesson(id)?.strand ?? 'unknown',
-  }));
+  const examined = new Map(sections.map((s) => [s.strand, s.title]));
 
-  const stars = rows.reduce((sum, r) => sum + r.stars, 0);
-  const maxStars = unitIds.length * 3;
+  const rows: ReadinessRow[] = STRAND_ORDER.map((strand) => {
+    const sectionTitle = examined.get(strand);
+    const depth = depthByStrand[strand]?.depth ?? 0;
+    return {
+      strand,
+      examined: sectionTitle !== undefined,
+      sectionTitle,
+      marks: sectionTitle === undefined ? 0 : marksPerSection,
+      depth,
+      short: sectionTitle !== undefined && depth < grade,
+    };
+  });
 
-  // A strand is weak while any of its units is short of full marks; the least-starred
-  // strand is the one holding the learner back.
-  const byStrand = new Map<string, number>();
-  for (const row of rows) {
-    byStrand.set(row.strand, Math.min(byStrand.get(row.strand) ?? 3, row.stars));
-  }
-  const weakest = [...byStrand.entries()]
-    .filter(([, s]) => s < 3)
-    .sort((a, b) => a[1] - b[1])
-    .map(([strand]) => strand);
+  // Weakest first, so the learner reads the biggest hole at the top. Ties break on
+  // STRAND_ORDER, which `rows` is already in — a stable sort keeps it.
+  const shortfalls = rows.filter((r) => r.short).sort((a, b) => a.depth - b.depth);
 
   return {
-    stars,
-    maxStars,
-    fraction: maxStars === 0 ? 0 : stars / maxStars,
-    gateOpen: stars >= unlockAtStars,
-    weakest,
+    grade,
+    rows,
+    shortfalls,
+    marksAtRisk: shortfalls.reduce((sum, r) => sum + r.marks, 0),
+    totalMarks: sections.length * marksPerSection,
+    ready: shortfalls.length === 0,
   };
 }
 

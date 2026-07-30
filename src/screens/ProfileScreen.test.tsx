@@ -8,24 +8,39 @@ jest.mock('react-native-webview', () => {
   return { WebView: React.forwardRef((_p: Record<string, unknown>, _r: unknown) => null) };
 });
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { act, fireEvent, render, waitFor, within } from '@testing-library/react-native';
 
 import { LESSONS_BY_GRADE } from '../content/lessons';
 import { LEVELS } from '../content/levels';
+import { daysSinceEpoch } from '../learn/clock';
 import { ProgressProvider } from '../learn/ProgressContext';
 import { initialSrs } from '../learn/srs';
 import { ProgressStore, type SnapshotStorage } from '../learn/store';
 import ProfileScreen from './ProfileScreen';
 
-/** A snapshot with every atom of `masteredLessons` mastered. */
+/** A snapshot with every atom of `masteredLessons` mastered AND reviewed today.
+ *
+ *  The review date is not decoration. Readiness reads lane depth, and a lane decays
+ *  when its atoms go stale (R5) — so an atom stamped `initialSrs()` (reviewed on day
+ *  zero) reads as years overdue against the real clock and drops its whole cell,
+ *  making a fully-mastered fixture report five shortfalls. The old star-based
+ *  readiness ignored SRS entirely and never noticed. Stamping a real review day is
+ *  what makes "mastered" mean mastered here. */
 function seeded(masteredLessons: string[]): string {
   const store = new ProgressStore();
+  const today = daysSinceEpoch(Date.now());
   store.setProfile({ grade: 1, onboardedAt: '2026-07-14T00:00:00.000Z' });
   for (const lesson of LESSONS_BY_GRADE[1]) {
     if (!masteredLessons.includes(lesson.id)) continue;
     store.setLesson(lesson.id, { completed: true });
     for (const atom of lesson.atoms) {
-      store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });
+      store.setAtom(atom, {
+        mastery: { streak: 3, mastered: true },
+        srs: { box: 2, lastReviewed: today, nextDue: today + 2 },
+      });
     }
   }
   return JSON.stringify(store.toSnapshot());
@@ -63,39 +78,54 @@ function renderProfileCapturingStorage(blob: string | null) {
 
 const LEVEL1 = LEVELS.find((l) => l.grade === 1)!; // Level 1 is unconditionally unlocked (D5)
 
-describe('ProfileScreen — where the learner stands (5c)', () => {
-  test('a fresh learner is 0% ready and is told what holds them back', async () => {
+describe('ProfileScreen — where the learner stands (5c, readiness amended by 7d)', () => {
+  // Readiness stopped being a percentage at G6 U8. The percentage answered "how far
+  // through grade 1 are you"; these answer the question a learner about to sit a
+  // paper actually has — which skills does it ask about, and where am I short.
+  test('a fresh learner is told which skills the paper asks about and what being short costs', async () => {
     const { getByTestId } = renderProfile(seeded([]));
 
-    await waitFor(() => expect(getByTestId('readiness-percent')).toHaveTextContent('0%'));
-    expect(getByTestId('readiness-note')).not.toHaveTextContent('The practice paper is open.');
+    await waitFor(() => expect(getByTestId('profile-readiness-card')).toBeTruthy());
+    expect(getByTestId('profile-readiness-card-headline')).toHaveTextContent('below grade 1', { exact: false });
+    expect(getByTestId('profile-readiness-card-headline')).toHaveTextContent('20 of 20 marks', { exact: false });
+    expect(getByTestId('profile-readiness-card-short-rhythm')).toBeTruthy();
   });
 
-  // The one thing this screen must never do: claim the paper is open when the gate is
-  // shut, or shut when it is open. Both come from the same star count.
-  test('readiness agrees with the exam gate, because it is the same star count', async () => {
-    const { getByTestId } = renderProfile(seeded(LEVEL1.unitIds));
+  test('mastering every grade-1 lesson clears every shortfall', async () => {
+    const { getByTestId, queryByTestId } = renderProfile(seeded(LEVEL1.unitIds));
 
-    await waitFor(() => expect(getByTestId('readiness-percent')).toHaveTextContent('100%'));
-    expect(getByTestId('readiness-note')).toHaveTextContent('The practice paper is open.');
+    await waitFor(() => expect(getByTestId('profile-readiness-card')).toBeTruthy());
+    expect(getByTestId('profile-readiness-card-headline')).toHaveTextContent('Every skill this paper asks about', { exact: false });
+    expect(queryByTestId('profile-readiness-card-short-rhythm')).toBeNull();
+    expect(queryByTestId('profile-readiness-card-short-pitch')).toBeNull();
   });
 
-  test('partial mastery reads as partial, not as ready', async () => {
-    const half = LEVEL1.unitIds.slice(0, Math.floor(LEVEL1.unitIds.length / 2));
-    const { getByTestId } = renderProfile(seeded(half));
+  // KTD8, the false-shortfall regression, asserted where a learner would meet it.
+  // Chords teaches nothing below grade 4 and the paper has no chords section, so a
+  // learner who has mastered all of grade 1 must not be told chords holds them back.
+  test('chords and context are named as NOT EXAMINED, never as shortfalls', async () => {
+    const { getByTestId, queryByTestId } = renderProfile(seeded(LEVEL1.unitIds));
 
-    await waitFor(() => {
-      const percent = getByTestId('readiness-percent').props.children.join('');
-      expect(Number(percent.replace('%', ''))).toBeGreaterThan(0);
-      expect(Number(percent.replace('%', ''))).toBeLessThan(100);
-    });
-    expect(getByTestId('readiness-note')).not.toHaveTextContent('The practice paper is open.');
+    await waitFor(() => expect(getByTestId('profile-readiness-card')).toBeTruthy());
+    expect(getByTestId('profile-readiness-card-not-examined')).toHaveTextContent('Chords', { exact: false });
+    expect(getByTestId('profile-readiness-card-not-examined')).toHaveTextContent('Context', { exact: false });
+    expect(queryByTestId('profile-readiness-card-short-chords')).toBeNull();
+    expect(queryByTestId('profile-readiness-card-short-context')).toBeNull();
   });
 
-  // fyu.2/chromaticly-ehp: reachability is content presence (`isLevelUnlocked`),
-  // not the working grade — every grade 1-5 is reachable on a fresh store now
-  // that Grade 5 shipped its content, so the fact-card denominator spans every
-  // content-ful grade's lessons from the start.
+  test('a short skill is one tap from the lane that repairs it', async () => {
+    const onDrillStrand = jest.fn();
+    const { getByTestId } = render(
+      <ProgressProvider storage={memoryStorage(seeded([]))}>
+        <ProfileScreen onDrillStrand={onDrillStrand} />
+      </ProgressProvider>,
+    );
+
+    await waitFor(() => expect(getByTestId('profile-readiness-card-short-rhythm')).toBeTruthy());
+    fireEvent.press(getByTestId('profile-readiness-card-short-rhythm'));
+    expect(onDrillStrand).toHaveBeenCalledWith('rhythm');
+  });
+
   test('the fact collection counts what has actually been collected, across every content-ful grade (1-5), not just the working grade', async () => {
     const { getByTestId } = renderProfile(seeded([]));
     const totalContentfulLessons =
@@ -120,10 +150,16 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     const fresh = renderProfile(seeded(['key-signatures']));
     await waitFor(() => expect(fresh.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
 
-    // Since G6 U4 the radar is a projection of `laneDepths` (R3), so its unit is
-    // the GRADE CELL, not the atom: one lesson of a multi-lesson grade-1 cell does
-    // not hold that cell, and the lane reads 0% until it does.
-    const expectedPct = 0;
+    // Since G6 U4 the radar is a projection of `laneDepths` (R3): held grades over
+    // CONTENT-BEARING grades. `key-signatures` is the whole grade-1 scales_keys
+    // cell, and scales_keys teaches at grades 1-4, so holding one of four reads 25%.
+    //
+    // This read 0% until the fixture started stamping a real review date, and it was
+    // right by accident: every atom was written with `initialSrs()` (reviewed on day
+    // zero), so the cell was held and then decayed away (R5) before the radar saw
+    // it. A fixture that says "mastered" and renders "0%" was hiding the decay rule
+    // rather than testing the ratio.
+    const expectedPct = 25;
     await waitFor(() =>
       expect(within(fresh.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
     );
@@ -133,7 +169,10 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     for (const lesson of LESSONS_BY_GRADE[1]) {
       if (lesson.id !== 'key-signatures') continue;
       store.setLesson(lesson.id, { completed: true });
-      for (const atom of lesson.atoms) store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: initialSrs() });
+      const today = daysSinceEpoch(Date.now());
+      for (const atom of lesson.atoms) {
+        store.setAtom(atom, { mastery: { streak: 3, mastered: true }, srs: { box: 2, lastReviewed: today, nextDue: today + 2 } });
+      }
     }
     store.recordExamCleared(1);
     const afterExam = renderProfile(JSON.stringify(store.toSnapshot()));
@@ -157,53 +196,31 @@ describe('ProfileScreen — where the learner stands (5c)', () => {
     await waitFor(() => expect(getByText('Guest')).toBeTruthy());
   });
 
-  // fyu.3 / chromaticly-ehp: every grade (1-5) now has content and is a free
-  // choice, not a gated climb — the note says all grades are open, no lock.
-  test('every grade renders as a free, open choice — no locked/coming-soon grade', async () => {
-    const { getByTestId } = renderProfile(seeded([]));
-    await waitFor(() => expect(getByTestId('profile-grade-1')).toBeTruthy());
+  // R1/F8: there is no single current grade any more, so nothing on this screen may
+  // assert one. Asserted as ABSENCE of the three surfaces that did — a heading, a
+  // five-pill switcher and a working-grade row — because a screen that quietly grew
+  // one back would otherwise look fine.
+  test('no grade heading, no grade pills, no working-grade row (R1)', async () => {
+    const { findByTestId, queryByTestId, queryByText } = renderProfile(seeded([]));
+    await findByTestId('profile-screen');
 
-    expect(getByTestId('profile-grade-note')).toHaveTextContent(
-      'All five grades are open — switch any time, and your progress is kept.',
-    );
-    for (const level of LEVELS.filter((l) => l.grade !== 1)) {
-      expect(getByTestId(`profile-grade-${level.grade}`)).toBeTruthy();
+    for (const grade of [1, 2, 3, 4, 5]) {
+      expect(queryByTestId(`profile-grade-${grade}`)).toBeNull();
     }
+    expect(queryByTestId('profile-grade-note')).toBeNull();
+    expect(queryByTestId('profile-working-grade')).toBeNull();
+    expect(queryByTestId('profile-working-grade-picker')).toBeNull();
+    expect(queryByText('Grade 1')).toBeNull();
   });
 });
 
-// fyu.3: the "Working grade" settings row (design 5c) is the profile-side switch —
-// same `setGrade` the level map's taps use, so this is never a second rule.
-describe('ProfileScreen — Working grade switch (design 5c, fyu.3)', () => {
-  test('tapping the working-grade row opens a picker of startable grades', async () => {
-    const { getByTestId, findByTestId, queryByTestId } = renderProfile(seeded([]));
-    await findByTestId('profile-screen');
-
-    expect(getByTestId('profile-working-grade')).toHaveTextContent('Grade 1', { exact: false });
-    expect(queryByTestId('profile-working-grade-picker')).toBeNull();
-
-    fireEvent.press(getByTestId('profile-working-grade'));
-    expect(getByTestId('profile-working-grade-picker')).toBeTruthy();
-    expect(getByTestId('profile-working-grade-option-2')).toBeTruthy();
-    expect(getByTestId('profile-working-grade-option-3')).toBeTruthy();
-  });
-
-  test('choosing a grade from the picker switches the working grade and persists it', async () => {
-    const { getByTestId, findByTestId, storage } = renderProfileCapturingStorage(seeded([]));
-    await findByTestId('profile-screen');
-
-    fireEvent.press(getByTestId('profile-working-grade'));
-    await act(async () => {
-      fireEvent.press(getByTestId('profile-working-grade-option-2'));
-    });
-
-    await waitFor(() => expect(getByTestId('profile-working-grade')).toHaveTextContent('Grade 2', { exact: false }));
-    await waitFor(() => {
-      expect(storage.blob).not.toBeNull();
-      expect(JSON.parse(storage.blob!).profile.grade).toBe(2);
-    });
-    // Everything else — the readiness card, the grade-1 pill — reads the new
-    // working grade too, not a second, disagreeing source of truth.
-    expect(getByTestId('profile-grade-2')).toBeTruthy();
+// The two derivations U12 deletes. Profile was their last non-map caller, so this
+// asserts the import is gone rather than that the screen renders — a lingering
+// import compiles fine and would silently block U12.
+describe('ProfileScreen — the level-gate derivations are unreferenced (precondition for U12)', () => {
+  test('the source imports neither currentLevel nor isLevelUnlocked', () => {
+    const source = readFileSync(join(__dirname, 'ProfileScreen.tsx'), 'utf8');
+    expect(source).not.toMatch(/\bcurrentLevel\b/);
+    expect(source).not.toMatch(/\bisLevelUnlocked\b/);
   });
 });

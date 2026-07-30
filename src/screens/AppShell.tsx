@@ -55,14 +55,19 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
   const [examImmersive, setExamImmersive] = useState(false);
 
   // The working grade still follows the unit being entered, as it did on the level
-  // map (fyu.3). R1 removes the single *current* grade from the Learn surface, but
-  // `profile.grade` is still what the Exams tab and the grade picker read — U8 owns
-  // the picker, U12 owns the field.
+  // map (fyu.3). Nothing RENDERS `profile.grade` any more — U8 took Profile's last
+  // three grade surfaces out — but onboarding still seeds it and U12 owns the field
+  // itself, so the write stays until then.
   const openLesson = async (next: Lesson) => {
     await setGrade(next.grade);
     setLesson(next);
   };
 
+  /** The one seam every cross-tab drill uses: Profile's radar, Profile's readiness
+   *  card, and the Exams tab's shortfall rows. Both halves matter — setting `lane`
+   *  without `tab` leaves the learner staring at the screen they tapped from, and
+   *  setting `tab` without `lane` drops them on the lane LIST, one tap short of the
+   *  strand they asked about. */
   const openLane = (strand: Strand) => {
     setLane(strand);
     setTab('learn');
@@ -105,7 +110,7 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
             <LaneScreen strand={lane} onBack={() => setLane(null)} onOpenLane={setLane} onOpenLesson={openLesson} />
           ))}
         {tab === 'practice' && <PracticeScreen />}
-        {tab === 'exams' && <ExamsScreen onImmersive={setExamImmersive} />}
+        {tab === 'exams' && <ExamsScreen onImmersive={setExamImmersive} onOpenLane={openLane} />}
         {tab === 'profile' && <ProfileScreen onOpenExams={() => setTab('exams')} onDrillStrand={openLane} />}
       </View>
       {!examImmersive && <TabBar active={tab} onChange={setTab} />}

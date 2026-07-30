@@ -1,5 +1,5 @@
-// Profile (design 5c): who you are, how ready you are for the paper, what you've
-// collected, and your grade.
+// Profile (design 5c, amended by 7d): who you are, how ready you are for the paper,
+// and what you've collected.
 //
 // Two parts of 5c are NOT here, deliberately:
 //
@@ -14,49 +14,44 @@
 //    dependency, and a toggle that flips and changes nothing is a lie. Filed as
 //    follow-ups off 302.36.
 //
-// Free grade access (fyu.3): grade is a self-service choice, not an exam-gated
-// climb — the "Working grade" row (design 5c) is the settings-side switch, using
-// the same `setGrade` every level-map tap uses, so this is never a second rule.
+// NO GRADE UI (G6 U8, F8/R1). The "Grade N" heading, the five-pill switcher and the
+// "Working grade" row are gone. Under the seven-lane model there is no single current
+// grade to switch: a learner holds seven depths at once, and a control that picks one
+// number would be asserting something untrue about them. `Profile.grade` survives in
+// the store as hidden onboarding/legacy state (KTD6); nothing on this screen reads it.
+// The lane list is where grade is chosen now, one lane at a time.
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { LESSONS, lessonById } from '../content/lessons';
-import { isStartableGrade, LEVELS } from '../content/levels';
-import { currentLevel, examReadiness, strandMastery } from '../learn/mastery-rollup';
+import { LESSONS } from '../content/lessons';
+import { EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, QUESTIONS_PER_SECTION } from '../learn/exam';
+import { laneDepths } from '../learn/lane-depth';
+import { examReadiness, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { Screen } from '../ui/Screen';
 import { SettingsBlock } from '../ui/components/SettingsBlock';
+import { ReadinessCard } from '../ui/components/ReadinessCard';
 import { StrandRadar } from '../ui/components/StrandRadar';
-import { ACCENT, colors, shape, strandDef, type as typo, type Strand } from '../ui/theme';
+import { colors, shape, type as typo, type Strand } from '../ui/theme';
 
 export interface ProfileScreenProps {
   /** "Exam readiness ›" takes the learner to the paper it is talking about. */
   onOpenExams?: () => void;
-  /** A tap on the mastery radar drills into a strand (design 6d) — the shell routes
-   *  it to the level map where that strand's next lesson lives. */
+  /** A tap on the mastery radar — or on a short strand in the readiness card —
+   *  drills into that strand (design 6d/7d). The shell carries the target across the
+   *  tab change into Learn's lane detail. */
   onDrillStrand?: (strand: Strand) => void;
 }
 
 export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScreenProps = {}) {
-  const { ready, store, revision, grade, name, setGrade, clock } = useProgressContext();
-  const [gradePickerOpen, setGradePickerOpen] = useState(false);
-
-  const level = store ? currentLevel(LEVELS, store) : LEVELS[0];
+  const { ready, store, revision, name, clock } = useProgressContext();
 
   const readiness = useMemo(() => {
     if (!store) return null;
-    return examReadiness(
-      level.unitIds,
-      store,
-      (id) => {
-        const lesson = lessonById(id);
-        return lesson ? { atoms: lesson.atoms, strand: lesson.strand } : undefined;
-      },
-      level.examGate.unlockAtStars,
-    );
+    return examReadiness(EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, laneDepths(store, clock.now()), QUESTIONS_PER_SECTION);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
-  }, [store, revision, level]);
+  }, [store, revision, clock]);
 
   // Every authored lesson, since G6 U3: nothing is gated, so there is no
   // "reachable subset" left to compute — the collection is the whole curriculum.
@@ -82,12 +77,6 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
     );
   }
 
-  const percent = Math.round(readiness.fraction * 100);
-  const weakestLabel = readiness.weakest
-    .slice(0, 2)
-    .map((strand) => strandDef(strand as Strand).label)
-    .join(' & ');
-
   return (
     <Screen style={styles.screen} testID="profile-screen">
       <ScrollView contentContainerStyle={styles.body}>
@@ -97,30 +86,14 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
           </View>
           <View>
             <Text style={styles.name}>{name ?? 'Guest'}</Text>
-            <Text style={styles.sub}>Grade {grade ?? 1}</Text>
           </View>
         </View>
 
-        {/* Readiness is stars-earned over stars-available — the same signal the exam
-            gate uses, so it can never disagree with whether the paper is open. */}
-        <Pressable style={styles.card} testID="profile-readiness" onPress={onOpenExams}>
-          <View style={styles.rowBetween}>
-            <Text testID="readiness-percent" style={styles.percent}>
-              {percent}%
-            </Text>
-            <Text style={styles.chevron}>›</Text>
-          </View>
-          <Text style={styles.cardTitle}>Exam readiness · Level {level.grade}</Text>
-          <View style={styles.track}>
-            <View style={[styles.fill, { width: `${percent}%` }]} />
-          </View>
-          <Text style={styles.cardNote} testID="readiness-note">
-            {readiness.gateOpen
-              ? 'The practice paper is open.'
-              : weakestLabel !== ''
-                ? `${weakestLabel} hold you back.`
-                : 'Keep going to open the practice paper.'}
-          </Text>
+        {/* The same derivation and the same card the Exams tab shows (R3): two
+            surfaces reading one `examReadiness` cannot drift apart. "Sit the paper"
+            lives on the Exams tab, so here the card routes there instead. */}
+        <Pressable testID="profile-readiness" onPress={onOpenExams}>
+          <ReadinessCard readiness={readiness} onOpenLane={onDrillStrand} testID="profile-readiness-card" />
         </Pressable>
 
         <StrandRadar mastery={mastery} onDrill={onDrillStrand} />
@@ -135,70 +108,11 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
           <Text style={styles.cardNote}>One to find in every lesson’s teach phase.</Text>
         </View>
 
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Grade</Text>
-          <Text style={styles.cardNote}>You can switch grade at any time.</Text>
-          <View style={styles.grades}>
-            {LEVELS.map((lvl) => {
-              const isCurrent = (grade ?? 1) === lvl.grade;
-              return (
-                <View
-                  key={lvl.id}
-                  testID={`profile-grade-${lvl.grade}`}
-                  style={[styles.gradePill, isCurrent && styles.gradePillCurrent, !isStartableGrade(lvl.grade) && styles.gradePillUnreachable]}
-                >
-                  <Text style={[styles.gradeLabel, isCurrent && styles.gradeLabelCurrent]}>{lvl.grade}</Text>
-                </View>
-              );
-            })}
-          </View>
-          <Text style={styles.cardNote} testID="profile-grade-note">
-            All five grades are open — switch any time, and your progress is kept.
-          </Text>
-        </View>
-
-        {/* Working grade (design 5c): the settings-side grade switch — "switching
-            keeps all progress" — sitting above the settings block the way 5c's row
-            sits above Terminology. Tapping expands the startable-grade picker. */}
-        <View style={styles.card}>
-          <Pressable
-            style={styles.workingGradeRow}
-            testID="profile-working-grade"
-            onPress={() => setGradePickerOpen((open) => !open)}
-          >
-            <View style={styles.labelCol}>
-              <Text style={styles.settingLabel}>Working grade</Text>
-              <Text style={styles.settingHint}>switching keeps all progress</Text>
-            </View>
-            <View style={styles.workingGradePill}>
-              <View style={styles.workingGradeBadge}>
-                <Text style={styles.workingGradeBadgeText}>{grade ?? 1}</Text>
-              </View>
-              <Text style={styles.workingGradePillText}>Grade {grade ?? 1}</Text>
-              <Text style={styles.workingGradeChevron}>›</Text>
-            </View>
-          </Pressable>
-          {gradePickerOpen ? (
-            <View style={styles.gradePicker} testID="profile-working-grade-picker">
-              {LEVELS.filter((lvl) => isStartableGrade(lvl.grade)).map((lvl) => {
-                const isCurrent = (grade ?? 1) === lvl.grade;
-                return (
-                  <Pressable
-                    key={lvl.id}
-                    testID={`profile-working-grade-option-${lvl.grade}`}
-                    style={[styles.gradeOption, isCurrent && styles.gradeOptionCurrent]}
-                    onPress={async () => {
-                      await setGrade(lvl.grade);
-                      setGradePickerOpen(false);
-                    }}
-                  >
-                    <Text style={[styles.gradeOptionText, isCurrent && styles.gradeOptionTextCurrent]}>Grade {lvl.grade}</Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-          ) : null}
-        </View>
+        {/* The "Grade N" heading, the five-pill switcher and the "Working grade"
+            row all came out here (G6 U8, F8/R1). There is no single current grade
+            to display: the learner has seven depths, and the lane list plus the
+            readiness card above say what those are. `Profile.grade` survives as
+            hidden onboarding/legacy state (KTD6) — nothing renders it. */}
 
         <SettingsBlock />
       </ScrollView>
@@ -238,68 +152,6 @@ const styles = StyleSheet.create({
   cardTitle: { ...typo.cardTitle, color: colors.text },
   cardNote: { ...typo.body, color: colors.textMuted },
   value: { ...typo.label, color: colors.text },
-  percent: { ...typo.title, color: colors.text },
-  chevron: { ...typo.title, color: colors.textFaint },
 
-  track: { height: 6, borderRadius: shape.radiusChip, backgroundColor: colors.surfaceCardSunken, overflow: 'hidden' },
-  fill: { height: '100%', borderRadius: shape.radiusChip, backgroundColor: colors.correct },
 
-  grades: { flexDirection: 'row', gap: shape.spaceInline },
-  gradePill: {
-    flex: 1,
-    minHeight: shape.tapMin,
-    borderRadius: shape.radiusControl,
-    borderWidth: shape.borderWActive,
-    borderColor: colors.border,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  gradePillCurrent: { borderColor: colors.correct, backgroundColor: colors.correctSurface },
-  // Content-less grades (4-5) read as dim, not locked — the readiness-chip
-  // treatment the level map uses (design 3a: nothing here is a lock).
-  gradePillUnreachable: { opacity: 0.55 },
-  gradeLabel: { ...typo.cardTitle, color: colors.textMuted },
-  gradeLabelCurrent: { color: colors.text },
-
-  workingGradeRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: shape.spaceInline },
-  labelCol: { flex: 1, gap: 2 },
-  settingLabel: { ...typo.body, color: colors.text },
-  settingHint: { ...typo.label, color: colors.textFaint },
-  workingGradePill: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    backgroundColor: colors.bg,
-    borderWidth: shape.borderW,
-    borderColor: colors.borderStrong,
-    borderRadius: shape.radiusControl,
-    paddingHorizontal: shape.spaceInline,
-    paddingVertical: 7,
-  },
-  workingGradeBadge: {
-    width: 20,
-    height: 20,
-    borderRadius: shape.radiusSwatch * 2,
-    backgroundColor: ACCENT,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  workingGradeBadgeText: { ...typo.label, fontSize: 12, fontFamily: typo.cardTitle.fontFamily, color: colors.bg },
-  workingGradePillText: { ...typo.label, fontSize: 12, fontFamily: typo.cardTitle.fontFamily, color: colors.text },
-  workingGradeChevron: { fontSize: 12, color: colors.textFaint },
-
-  gradePicker: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline, paddingTop: 2 },
-  gradeOption: {
-    minHeight: shape.tapMin,
-    minWidth: 72,
-    borderRadius: shape.radiusControl,
-    borderWidth: shape.borderWActive,
-    borderColor: colors.border,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: shape.spaceInline,
-  },
-  gradeOptionCurrent: { borderColor: colors.correct, backgroundColor: colors.correctSurface },
-  gradeOptionText: { ...typo.cardTitle, fontSize: 14, color: colors.textMuted },
-  gradeOptionTextCurrent: { color: colors.text },
 });

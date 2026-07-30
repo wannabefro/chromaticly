@@ -1,0 +1,66 @@
+# 7d / G6 U8 — exam readiness read off the whole depth vector, and the drill from a
+# named shortfall into the lane that repairs it.
+#
+# This file was `grade-switch.yaml`, which proved the working-grade picker re-rendered
+# on device. U8 removed the picker: under the seven-lane model there is no single
+# current grade to switch. The DEVICE claim worth keeping is the same class of bug —
+# a state change that jest sees and the React Compiler stales out on a real device —
+# so the flow now proves the cross-tab drill, which is the new seam carrying a payload
+# through a tab change.
+#
+# Two things only a device run can show:
+#   * the tap crosses from Exams to Learn AND lands on the named strand's lane, not
+#     on the lane list one tap short of it;
+#   * Profile shows no grade heading, no grade pills and no working-grade row.
+#
+# The seed is a GRADE 1 unit on purpose. `seedProgressToUnit` masters every lesson of
+# every grade BELOW the target, so any grade-2-or-higher seed arrives with all five
+# examined strands already at grade 1 and no shortfall left to tap. A grade-1 seed
+# marks the earlier units complete without mastering them, which is exactly the state
+# this flow needs: a real learner mid-grade, with real gaps.
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: exp://127.0.0.1:8090/--/?seed=key-signatures
+
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%" }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 90000
+
+# --- Readiness names the shortfalls and never blocks ---
+- tapOn: { id: "tab-exams" }
+- assertVisible: { id: "exams-screen" }
+- extendedWaitUntil:
+    visible: { id: "readiness-card" }
+    timeout: 20000
+- assertVisible: { id: "readiness-card-headline" }
+# R6: the paper is startable at any depth — the peer action is present, not disabled.
+- assertVisible: { id: "readiness-card-sit" }
+# KTD8: chords is not examined at grade 1, so it is stated as such and never as a gap.
+- assertVisible: { id: "readiness-card-not-examined" }
+- assertNotVisible: { id: "readiness-card-short-chords" }
+- takeScreenshot: readiness-card
+
+# --- A named shortfall drills into that lane, across the tab change ---
+- tapOn: { id: "readiness-card-short-pitch" }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 20000
+- assertVisible: { id: "lane-heading", text: "Pitch & Notation" }
+- takeScreenshot: readiness-drill-lane
+
+# --- Profile asserts no grade anywhere (R1) ---
+- tapOn: { id: "tab-profile" }
+- assertVisible: { id: "profile-screen" }
+- assertNotVisible: { id: "profile-working-grade" }
+- assertNotVisible: { id: "profile-grade-1" }
+- assertNotVisible: { id: "profile-grade-note" }
+- assertVisible: { id: "profile-readiness-card" }
+- takeScreenshot: profile-no-grade
