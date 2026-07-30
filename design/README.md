@@ -122,3 +122,32 @@ What A renders:
    one decision: an open tip alone reads as an ordinary hinted item.
 4. **It records nothing** — no gem, no mastery, no SRS review. This is a design constraint, not an
    implementation detail: a screen that says an item does not count must not then charge for it.
+
+### Lane bar — a lane that has slid back · approved 2026-07-30
+
+No prototype covers this either. `laneDepths` has produced `decayedFrom` since G6 U2 and nothing
+drew it, so a learner whose grade-3 pitch had gone stale saw an honest "grade 1" bar with no trace
+of the two grades they earned. R5 requires drift to be honest **and unpunished**, and a silent
+rewrite of history is neither.
+
+Drawn **in the bar, not as a fourth tag.** Design 1e gives the row exactly one tag slot and reserves
+it for the single suggested lane; several lanes decay at once, so a `slipped` tag would either
+compete with `start here` or appear seven times.
+
+The bar therefore has four segment states, and each one answers a different question:
+
+| state | drawn as | means |
+|---|---|---|
+| `filled` | solid strand hue | held now |
+| `slipped` | **hollow — strand hue as a 1px border, no fill** | earned before, gone stale |
+| `empty` | solid grey | real content, not yet reached |
+| `gap` | dashed ghost | the strand teaches nothing at this grade |
+
+Three constraints this carries:
+
+1. **Hollow is the shape of what was earned, minus the fill.** It is the strand's own hue, never a
+   warning colour, and no copy anywhere says "lost".
+2. **`slipped` is checked after `filled`.** A lane decayed from 4 to 2 draws 1–2 solid and 3–4
+   hollow, so the bar reads as a boundary rather than a single flat span.
+3. **The words survive in the accessibility label** — "Scales & Keys, grade 2, was grade 4" — the
+   same bargain the 1e copy diet struck for the depth itself.

@@ -204,3 +204,33 @@ describe('useProgress — recordExamResult (D7, U5)', () => {
     expect((result.current.store as ProgressStore).isExamCleared(1)).toBe(false);
   });
 });
+
+// The decay seam (R5, chromaticly-cel). Without a back-date the seed stamps every
+// atom as reviewed today, so a decayed lane is unreachable on device and the
+// slipped bar can never be looked at. These two guard the *offset*, which is the
+// whole mechanism — an ignored `staleDays` still produces a plausible screen.
+describe('useProgress — seedTo back-dates its reviews by staleDays (R5, chromaticly-cel)', () => {
+  test('a stale seed lands its reviews staleDays before the clock, so the atoms read as overdue', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    const today = result.current.clock.now();
+
+    // A grade-2 target masters every grade-1 lesson, which is what carries the SRS.
+    await result.current.seedTo('g2a', 400);
+
+    const store = result.current.store as ProgressStore;
+    expect(store.getAtom('x').srs.lastReviewed).toBe(today - 400);
+  });
+
+  test('the default seed reviews today, so nothing decays', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    const today = result.current.clock.now();
+
+    await result.current.seedTo('g2a');
+
+    expect((result.current.store as ProgressStore).getAtom('x').srs.lastReviewed).toBe(today);
+  });
+});

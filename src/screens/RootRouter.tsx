@@ -44,13 +44,18 @@ export default function RootRouter() {
   const [seedLane, setSeedLane] = useState<Strand | null>(null);
   useEffect(() => {
     if (!__DEV__ || !ready || seeded || !url) return;
-    const to = Linking.parse(url).queryParams?.seed;
+    const params = Linking.parse(url).queryParams;
+    const to = params?.seed;
     if (typeof to === 'string' && to) {
       setSeeded(true);
       // `?seed=exam` names no lesson, so it resolves to no lane and the shell opens
       // on the list — which is where an exam flow wants to be anyway.
       setSeedLane((lessonById(to)?.strand as Strand | undefined) ?? null);
-      void seedTo(to);
+      // `&stale=<days>` back-dates the seeded reviews, the only route to a decayed
+      // lane on device (R5). Non-numeric or negative reads as 0 — a typo must not
+      // silently change what the flow is looking at.
+      const stale = Number(params?.stale);
+      void seedTo(to, Number.isFinite(stale) && stale > 0 ? stale : 0);
     }
   }, [url, ready, seeded, seedTo]);
 

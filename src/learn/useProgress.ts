@@ -124,8 +124,13 @@ export interface UseProgress {
    *  counters they used to keep, so scheduling survives an app restart. */
   clock: Clock;
   /** DEV/E2E seam (302.5): fast-forward progress so `targetId` is reachable and
-   *  ready to play, then persist. Only ever called behind a __DEV__ deep link. */
-  seedTo: (targetId: string) => Promise<void>;
+   *  ready to play, then persist. Only ever called behind a __DEV__ deep link.
+   *
+   *  `staleDays` back-dates the seeded reviews by that many days, which is the
+   *  only way to reach a DECAYED lane on device (R5, chromaticly-cel): the seed
+   *  otherwise stamps every atom as reviewed today, so nothing is ever stale and
+   *  the slipped bar can never be seen. */
+  seedTo: (targetId: string, staleDays?: number) => Promise<void>;
   /** Record a practice-exam result for `grade` (D7). A band ≥ pass clears the
    *  exam (`store.isExamCleared(grade)`); `'below'` records nothing. Idempotent
    *  by set semantics — a
@@ -249,11 +254,14 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
   const completedLessonCount = useCallback(() => store?.completedLessonCount() ?? 0, [store, revision]);
 
   const seedTo = useCallback<UseProgress['seedTo']>(
-    async (targetId) => {
+    async (targetId, staleDays = 0) => {
       if (!store) return;
       const at = new Date().toISOString();
-      if (targetId === 'exam') seedExamReady(store, lessons, at, clock.now());
-      else seedProgressToUnit(store, lessons, targetId, at, clock.now());
+      // The seed writes its reviews at `reviewedAt`, and the app then reads them at
+      // `clock.now()`. Equal by default; `staleDays` apart when the flow wants decay.
+      const reviewedAt = clock.now() - staleDays;
+      if (targetId === 'exam') seedExamReady(store, lessons, at, reviewedAt);
+      else seedProgressToUnit(store, lessons, targetId, at, reviewedAt);
       await saveProgress(store, storage);
       setProfileState(store.getProfile()); // real state → onboarded flips (KTD5)
       setRevision((r) => r + 1);

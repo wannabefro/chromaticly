@@ -114,3 +114,75 @@ describe('LaneRow — one strand at its own depth (design 7a)', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 });
+
+// R5 — drift is honest and unpunished. `laneDepths` has produced `decayedFrom` since
+// G6 U2 and nothing rendered it, so a lane that slid from 4 to 2 was indistinguishable
+// from one that only ever reached 2. These tests fix the reading of the difference.
+describe('LaneRow — a lane that has slid back says so (R5, chromaticly-cel)', () => {
+  /** scales_keys teaches at 1-4, so a 4→2 slide has two slipped grades and no gaps
+   *  in the way — the clean case for reading the three marks apart. */
+  function decayed(depth: number, decayedFrom: number): LaneDepth {
+    return { ...lane('scales_keys', depth), decayedFrom };
+  }
+
+  test('grades between the current depth and the pre-decay depth are drawn slipped, not empty', () => {
+    const { getByTestId } = render(
+      <LaneRow strand="scales_keys" depth={decayed(2, 4)} testID="lane-row" />,
+    );
+
+    expect(getByTestId('lane-row-seg-1-filled')).toBeTruthy();
+    expect(getByTestId('lane-row-seg-2-filled')).toBeTruthy();
+    expect(getByTestId('lane-row-seg-3-slipped')).toBeTruthy();
+    expect(getByTestId('lane-row-seg-4-slipped')).toBeTruthy();
+  });
+
+  // The whole point of the third mark: "earned and gone stale" is a different fact
+  // from "never reached", and a learner who worked for grade 4 should see that they
+  // did. A lane at depth 2 that never decayed must look different from this one.
+  test('an undecayed lane at the same depth draws those grades empty instead', () => {
+    const { getByTestId, queryByTestId } = render(
+      <LaneRow strand="scales_keys" depth={lane('scales_keys', 2)} testID="lane-row" />,
+    );
+
+    expect(getByTestId('lane-row-seg-3-empty')).toBeTruthy();
+    expect(queryByTestId('lane-row-seg-3-slipped')).toBeNull();
+  });
+
+  test('the slipped mark is the strand’s own hue, not a warning colour — drift is unpunished', () => {
+    const { getByTestId } = render(
+      <LaneRow strand="scales_keys" depth={decayed(2, 4)} testID="lane-row" />,
+    );
+
+    expect(getByTestId('lane-row-seg-3-slipped').props.style).toEqual(
+      expect.arrayContaining([
+        expect.arrayContaining([expect.objectContaining({ borderColor: strandDef('scales_keys').hue })]),
+      ]),
+    );
+  });
+
+  test('the accessibility label carries what the bar draws — the depth now, and the depth before', () => {
+    const { getByLabelText } = render(
+      <LaneRow strand="scales_keys" depth={decayed(2, 4)} testID="lane-row" />,
+    );
+    expect(getByLabelText('Scales & Keys, grade 2, was grade 4')).toBeTruthy();
+  });
+
+  test('an undecayed lane says nothing about a previous depth', () => {
+    const { getByLabelText } = render(
+      <LaneRow strand="scales_keys" depth={lane('scales_keys', 2)} testID="lane-row" />,
+    );
+    expect(getByLabelText('Scales & Keys, grade 2')).toBeTruthy();
+  });
+
+  // A lane can decay all the way back. Depth 0 is a real value (R7), and it must not
+  // start reading as grade 1 just because something was once held above it.
+  test('a lane decayed to nothing still reads "not started", with the earned grades hollow', () => {
+    const { getByTestId, getByLabelText } = render(
+      <LaneRow strand="scales_keys" depth={decayed(0, 3)} testID="lane-row" />,
+    );
+
+    expect(getByLabelText('Scales & Keys, not started, was grade 3')).toBeTruthy();
+    expect(getByTestId('lane-row-seg-1-slipped')).toBeTruthy();
+    expect(getByTestId('lane-row-seg-4-empty')).toBeTruthy();
+  });
+});
