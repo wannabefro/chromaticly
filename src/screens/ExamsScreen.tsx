@@ -52,8 +52,14 @@ export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProp
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
   }, [store, revision, clock]);
 
+  // The cleanup is not defensive tidiness — it is the only thing that runs when the
+  // result's primary action fires. `exam-revise-worst` clears `examGrade` AND the
+  // parent's tab in one commit, so this screen UNMOUNTS in that commit and the
+  // effect body never gets to report `false`. Without the cleanup the tab bar stays
+  // hidden for the rest of the session, with no way back but an app restart.
   useEffect(() => {
     onImmersive?.(examGrade !== null);
+    return () => onImmersive?.(false);
   }, [onImmersive, examGrade]);
 
   if (!ready || !store || !readiness) {

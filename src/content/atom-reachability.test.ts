@@ -24,8 +24,8 @@
 import { LESSONS, type Lesson } from './lessons';
 import { generate } from '../engine/generators';
 import { buildContextPassage } from '../engine/generators/context-passage';
+import { SET_SIZE, WARM_UP_ITEMS } from '../learn/exercise-set';
 
-const SET_SIZE = 8;
 const SEEDS_PER_ATOM = 40;
 
 function tagsOf(instance: unknown): string[] {
@@ -99,13 +99,30 @@ describe('ornaments keep their direction in the atom id', () => {
 // questions forever, so 34% of the curriculum was unreachable by any amount of
 // play. With the rotation it is 69% after one play, 96% after four.
 describe('a lesson becomes exhaustive as it is replayed', () => {
-  const PLAYS = 6;
+  // Seven, not six. Six was calibrated when all eight items of a set counted; the
+  // warm-up (93e63b0) made item 1 uncredited, so six plays now credit 42 draws
+  // where they used to credit 48. Seven restores the budget (49) rather than
+  // quietly shrinking the property this guard tests.
+  //
+  // The alternative was to move content until `term:ritardando` — the one atom
+  // that changes verdict — landed in a scored slot inside six plays. That was
+  // rejected: `term_meaning` samples its deck unbiased, so which atom falls where
+  // is the seed sequence, and editing the curriculum to suit one sequence fits the
+  // content to the test.
+  const PLAYS = 7;
 
   test.each(LESSONS.map((l) => [l.id, l] as const))(
     '%s asks every atom it teaches within six plays',
     (_id, lesson) => {
       const hit = new Set<string>();
       for (let seed = 0; seed < PLAYS * SET_SIZE; seed++) {
+        // The warm-up slots are PRESENTED but not CREDITED — every warm-up path in
+        // SetRunner returns before `recordAtom`. Counting them made this guard
+        // measure what the learner is shown rather than what they can master, and
+        // an atom drawn only at offset 0 read as reachable while being worth
+        // nothing. `SET_SIZE`/`WARM_UP_ITEMS` are imported rather than restated so
+        // the next change to the set shape cannot leave this behind again.
+        if (seed % SET_SIZE < WARM_UP_ITEMS) continue;
         const templateId = lesson.templates[seed % SET_SIZE % lesson.templates.length];
         const opts = { grade: lesson.grade, seed, atoms: lesson.atoms };
         try {

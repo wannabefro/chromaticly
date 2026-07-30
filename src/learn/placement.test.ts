@@ -63,6 +63,23 @@ describe('placement — the ladder is built whole, then walked', () => {
     expect(PLACEMENT_SKIPS.some((s) => s.reason === 'no-instance' && s.template === 'key_signature_id')).toBe(true);
   });
 
+  // The list says what this build cannot mark. Drawing questions must not add to
+  // it: unmemoised, the probe re-ran on every draw and appended the same skip again,
+  // so a long session turned a three-line fact into an unbounded log.
+  test('drawing questions does not grow the skip list, and no cell is recorded twice', () => {
+    const before = PLACEMENT_SKIPS.length;
+    let session = startPlacement();
+    let seed = 0;
+    while (!isPlacementComplete(session)) {
+      currentItem(session, seed++);
+      session = answerPlacement(session, seed % 2 === 0);
+    }
+    expect(PLACEMENT_SKIPS).toHaveLength(before);
+
+    const keys = PLACEMENT_SKIPS.map((s) => `${s.strand}:${s.grade}:${s.template}`);
+    expect(new Set(keys).size).toBe(keys.length);
+  });
+
   // A cell whose only template is self-graded must still be dropped from the
   // ladder, not merely skipped when the item is drawn — the mid-walk filtering bug
   // this rule exists to prevent. terms_signs grade 1 no longer demonstrates it

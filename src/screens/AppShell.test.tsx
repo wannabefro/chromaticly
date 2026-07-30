@@ -169,6 +169,54 @@ describe('AppShell — a short strand routes to its lane, not just to Learn (7d)
     // A learner who scored 0/4 on a grade-1 section must not land in grade 4 because
     // their lane depth happens to be higher — the paper asked a grade-1 question.
     expect(getByTestId('lane-grade-label')).toHaveTextContent('Grade 1', { exact: false });
+
+    // The drill is the result screen's PRIMARY action, so it must not cost the
+    // learner the other three tabs. `exam-revise-worst` clears the exam grade and
+    // switches tab in one commit, which unmounts ExamsScreen before its immersive
+    // effect can report false — and the tab bar then stays hidden until the app is
+    // restarted. The other exit (`exam-back-to-learn`) never had this problem, which
+    // is why nothing caught it.
+    expect(getByTestId('tab-bar')).toBeTruthy();
+  });
+
+  // The grade pin is a second state slot beside the lane, and only the exam drill
+  // sets it. Any later lane opened from the LIST must not inherit it: pinned to
+  // grade 1, Chords renders an empty state with its return affordance hidden,
+  // because the pin sits below the working grade and `ahead` goes negative.
+  test('a lane opened from the list after an exam drill is not still pinned to the paper’s grade', async () => {
+    const { getByTestId, queryByTestId } = renderShell();
+    await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('tab-exams')));
+    await waitFor(() => expect(getByTestId('readiness-card-sit')).toBeTruthy());
+    await act(async () => {
+      fireEvent.press(getByTestId('readiness-card-sit'));
+    });
+    await waitFor(() => expect(getByTestId('exam-begin')).toBeTruthy());
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    for (let i = 0; i < examPaper.questions.length; i++) {
+      const options = assembleOptions(examPaper.questions[i].instance);
+      const wantCorrect = examPaper.questions[i].section !== 'intervals';
+      act(() => fireEvent.press(getByTestId(`exam-option-${options.findIndex((o) => o.correct === wantCorrect)}`)));
+      act(() => fireEvent.press(getByTestId('exam-next')));
+    }
+    await waitFor(() => expect(getByTestId('exam-revise-worst')).toBeTruthy());
+    await act(async () => {
+      fireEvent.press(getByTestId('exam-revise-worst'));
+    });
+    await waitFor(() => expect(getByTestId('lane-grade-label')).toHaveTextContent('Grade 1', { exact: false }));
+
+    // Back to the list, then into a DIFFERENT lane.
+    act(() => fireEvent.press(getByTestId('lane-back')));
+    await waitFor(() => expect(getByTestId('lane-row-chords')).toBeTruthy());
+    act(() => fireEvent.press(getByTestId('lane-row-chords')));
+
+    await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
+    expect(getByTestId('lane-heading').props.children).toBe('Chords');
+    // Chords teaches nothing below grade 4, so a leaked grade-1 pin shows as the
+    // empty state rather than as a wrong number.
+    expect(queryByTestId('lane-grade-label')).not.toHaveTextContent('Grade 1', { exact: false });
   });
 
   // The Profile entry point, via its own readiness card. The radar's drill pill is

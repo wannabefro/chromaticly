@@ -70,7 +70,21 @@ for (const lesson of LESSONS) {
  *   • It throws. `key_signature_id` cannot build a valid instance from the
  *     scales_keys grade-2 or grade-4 atom sets, and a generator that throws is
  *     not a question. */
+const markable: Map<string, string | undefined> = new Map();
+
 function markableTemplate(strand: Strand, grade: number): string | undefined {
+  // Memoised, and not only for speed: `walkItem` calls this on every draw, so an
+  // unmemoised version re-probed the cell and pushed a duplicate `PLACEMENT_SKIPS`
+  // entry per question asked. The list is meant to be read as "what this build
+  // cannot mark", which a growing one is not.
+  const key = `${strand}:${grade}`;
+  if (markable.has(key)) return markable.get(key);
+  const resolved = probeCell(strand, grade);
+  markable.set(key, resolved);
+  return resolved;
+}
+
+function probeCell(strand: Strand, grade: number): string | undefined {
   const atoms = atomsFor(strand, grade);
   for (const template of TEMPLATES.get(strand)?.get(grade) ?? []) {
     let instance: ExerciseInstance;

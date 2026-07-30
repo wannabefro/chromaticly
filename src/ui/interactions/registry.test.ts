@@ -21,7 +21,7 @@ jest.mock('react-native-webview', () => {
 
 import { generate } from '../../engine/generators';
 import { atomsForTemplate } from '../../engine/generators/test-helpers';
-import type { ExerciseInstance } from '../../engine/schema';
+import { SELF_GRADED_INTERACTIONS, type ExerciseInstance, type InteractionType } from '../../engine/schema';
 import { NotationCard } from '../components/NotationCard';
 import { assembleOptions, gradeMcq, gradeStaveInput, gradeText, optionLabel } from '../grading';
 import { INTERACTIONS, lookupInteraction } from './registry';
@@ -530,5 +530,32 @@ describe('registry — answer_music affordance (U5/D8)', () => {
       const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { music: unknown } };
       expect(view.props.music).toEqual(instance.stimulus.music);
     });
+  });
+});
+
+// `SELF_GRADED_INTERACTIONS` lives in engine/schema because the placement engine
+// (G6 U10) sits in the portable core and cannot import this registry to ask which
+// interactions the LEARNER marks. That makes it a hand-duplicated invariant, and
+// its own doc comment names un-registered drift as the failure it exists to catch
+// — a new self-graded interaction that nobody adds there becomes a placement
+// question the learner grades themselves. Nothing tied the two together, so the
+// drift it warns about could happen silently. This is the tie.
+describe('SELF_GRADED_INTERACTIONS agrees with the registry (council F6)', () => {
+  // `submits: false` means the spec owns its own submission rather than using the
+  // shared Check button, which today is true of exactly the self-graded one. If a
+  // future interaction submits itself AND is objectively graded, this test fails
+  // and forces the split to be made explicit rather than assumed.
+  test('every non-submitting registered interaction is declared self-graded, and no other is', () => {
+    const nonSubmitting = Object.entries(INTERACTIONS)
+      .filter(([, spec]) => spec !== undefined && spec.submits === false)
+      .map(([type]) => type as InteractionType);
+
+    expect(nonSubmitting).toEqual(['flashcard']);
+    for (const type of nonSubmitting) expect(SELF_GRADED_INTERACTIONS.has(type)).toBe(true);
+    for (const type of SELF_GRADED_INTERACTIONS) expect(nonSubmitting).toContain(type);
+  });
+
+  test('a self-graded spec returns no verdict — the property that makes it unusable for placement', () => {
+    expect(lookupInteraction('flashcard').grade({} as ExerciseInstance, null)).toBeNull();
   });
 });

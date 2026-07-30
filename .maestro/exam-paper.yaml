@@ -129,3 +129,15 @@ appId: host.exp.Exponent
 # paper never asked about, reached by failing a grade-1 section.
 - assertVisible: { id: "lane-grade-label", text: "Grade 1.*" }
 - takeScreenshot: exam-result-drill
+
+# The drill is the result screen's PRIMARY action, so it must not cost the learner
+# three of the four tabs. Clearing the exam grade and switching tab happen in one
+# commit, which unmounts the Exams screen before its immersive effect can report
+# false — and the tab bar then stays hidden until the app is restarted. Assert the
+# way out is still there, and take it.
+- assertVisible: { id: "tab-bar" }
+- tapOn: { id: "tab-practice" }
+- extendedWaitUntil:
+    visible: { id: "tab-bar" }
+    timeout: 15000
+- takeScreenshot: exam-drill-tabs-survive

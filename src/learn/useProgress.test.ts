@@ -234,3 +234,24 @@ describe('useProgress — seedTo back-dates its reviews by staleDays (R5, chroma
     expect((result.current.store as ProgressStore).getAtom('x').srs.lastReviewed).toBe(today);
   });
 });
+
+// `plays` rotates the seed window so a replayed lesson asks different questions
+// (80a8905). It is bumped on every pass but was persisted only on the first, so
+// the rotation survived in memory and reset on the next launch. The existing
+// coverage pre-seeds `plays` into a snapshot rather than earning it, which is why
+// the gap held: nothing asserted that a second play reaches storage.
+describe('useProgress — a replayed lesson persists its plays bump (council F3)', () => {
+  test('completing the same lesson twice writes plays = 2 to storage, not 1', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    expect(await result.current.complete(lessonA)).toBe(true);
+    // The replay: `complete` returns false because the lesson was already done,
+    // which is exactly the branch that used to skip the save.
+    expect(await result.current.complete(lessonA)).toBe(false);
+
+    const reloaded = new ProgressStore(JSON.parse(storage.blob as string));
+    expect(reloaded.getLesson('a').plays).toBe(2);
+  });
+});

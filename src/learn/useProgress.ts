@@ -190,10 +190,15 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
     async (lesson) => {
       if (!store) return false;
       const transitioned = completeLesson(store, lesson);
-      if (transitioned) {
-        await saveProgress(store, storage);
-        setRevision((r) => r + 1);
-      }
+      // Always persist, never only on the first completion. `completeLesson` bumps
+      // `plays` on EVERY pass, and `plays` is what rotates the seed window so a
+      // replayed lesson asks different questions (80a8905). Gating the save on
+      // `transitioned` — false on every replay — meant the bump lived in memory
+      // only, so closing the app after a replay handed the learner the identical
+      // set again. The return value still reports the first-completion transition;
+      // that is a different question from whether anything changed.
+      await saveProgress(store, storage);
+      setRevision((r) => r + 1);
       return transitioned;
     },
     [store, storage],

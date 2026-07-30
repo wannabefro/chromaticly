@@ -75,6 +75,11 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
     setLane(strand);
     setLaneGrade(grade ?? null);
     setTab('learn');
+    // Leaving the Exams tab always ends exam register. The exam runner's own
+    // unmount cleanup says the same thing, and deliberately so: this is the seam
+    // that owns every cross-tab move, so a future drill entry point cannot latch
+    // the tab bar shut by forgetting it.
+    setExamImmersive(false);
   };
 
   // Name-your-account (design 6b), reached from the nudge inside a running set.
@@ -109,13 +114,20 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
       <View style={styles.pane}>
         {tab === 'learn' &&
           (lane === null ? (
-            <LanesScreen onOpenLane={setLane} />
+            // Through `openLane`, never `setLane`: the grade pin is a second state
+            // slot, and a bare `setLane` leaves whatever grade the last exam drill
+            // pinned. That opened Chords at "Grade 1" — an empty state, with the
+            // return affordance hidden because the pin sits below the working grade.
+            <LanesScreen onOpenLane={(strand) => openLane(strand)} />
           ) : (
             <LaneScreen
               key={`${lane}:${laneGrade ?? 'working'}`}
               strand={lane}
               initialGrade={laneGrade ?? undefined}
-              onBack={() => setLane(null)}
+              onBack={() => {
+                setLane(null);
+                setLaneGrade(null);
+              }}
               onOpenLane={(next) => openLane(next)}
               onOpenLesson={openLesson}
             />
