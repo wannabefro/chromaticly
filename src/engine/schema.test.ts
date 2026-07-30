@@ -1,4 +1,4 @@
-import { ExerciseInstanceSchema } from './schema';
+import { ExerciseInstanceSchema, InteractionTypeSchema, SELF_GRADED_INTERACTIONS } from './schema';
 
 function wellFormedInstance() {
   return {
@@ -56,5 +56,21 @@ describe('ExerciseInstanceSchema — required fields reject malformed instances'
     delete instance.kb_version;
     const result = ExerciseInstanceSchema.safeParse(instance);
     expect(result.success).toBe(false);
+  });
+});
+
+// The set placement (G6 U10) reads instead of the interaction registry, which the
+// portable core cannot import. Its risk is drift: a new self-graded interaction
+// that nobody adds here becomes a placement question the learner marks themselves.
+describe('SELF_GRADED_INTERACTIONS — the marker placement reads from the core side', () => {
+  test('every member is a real interaction type', () => {
+    for (const member of SELF_GRADED_INTERACTIONS) {
+      expect(InteractionTypeSchema.options).toContain(member);
+    }
+  });
+
+  test('flashcard is self-graded and mcq is not — the two ends of the partition', () => {
+    expect(SELF_GRADED_INTERACTIONS.has('flashcard')).toBe(true);
+    expect(SELF_GRADED_INTERACTIONS.has('mcq')).toBe(false);
   });
 });

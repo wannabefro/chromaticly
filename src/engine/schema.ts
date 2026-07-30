@@ -25,6 +25,18 @@ export const InteractionTypeSchema = z.enum([
 
 export type InteractionType = z.infer<typeof InteractionTypeSchema>;
 
+/** Interaction types the LEARNER marks, not the app. A self-graded item cannot
+ *  measure anything, so placement (G6 U10) must never serve one — but
+ *  `src/learn/placement.ts` sits in the portable core and cannot import the
+ *  interaction registry to ask. The signal therefore lives here, beside the enum
+ *  it partitions, and is read off a generated instance's `interaction.type`.
+ *
+ *  `flashcard` is the only member: the learner says whether they knew it, and a
+ *  placement built on that would measure confidence. Adding a self-graded
+ *  interaction WITHOUT adding it here is the failure mode this set exists to
+ *  make visible. */
+export const SELF_GRADED_INTERACTIONS: ReadonlySet<InteractionType> = new Set<InteractionType>(['flashcard']);
+
 export const ExerciseInstanceSchema = z.object({
   id: z.string(),
   template_id: z.string(),
