@@ -50,6 +50,9 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
   const [tab, setTab] = useState<TabKey>('learn');
   /** The Learn pane: null is the lane list, a strand is that lane's detail. */
   const [lane, setLane] = useState<Strand | null>(initialLane ?? null);
+  /** The grade to open a lane at, when the caller has a reason to name one — an exam
+   *  result knows which grade its paper examined. Null means "wherever they work". */
+  const [laneGrade, setLaneGrade] = useState<number | null>(null);
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [accountFlow, setAccountFlow] = useState(false);
   const [examImmersive, setExamImmersive] = useState(false);
@@ -68,8 +71,9 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
    *  without `tab` leaves the learner staring at the screen they tapped from, and
    *  setting `tab` without `lane` drops them on the lane LIST, one tap short of the
    *  strand they asked about. */
-  const openLane = (strand: Strand) => {
+  const openLane = (strand: Strand, grade?: number) => {
     setLane(strand);
+    setLaneGrade(grade ?? null);
     setTab('learn');
   };
 
@@ -107,7 +111,14 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
           (lane === null ? (
             <LanesScreen onOpenLane={setLane} />
           ) : (
-            <LaneScreen strand={lane} onBack={() => setLane(null)} onOpenLane={setLane} onOpenLesson={openLesson} />
+            <LaneScreen
+              key={`${lane}:${laneGrade ?? 'working'}`}
+              strand={lane}
+              initialGrade={laneGrade ?? undefined}
+              onBack={() => setLane(null)}
+              onOpenLane={(next) => openLane(next)}
+              onOpenLesson={openLesson}
+            />
           ))}
         {tab === 'practice' && <PracticeScreen />}
         {tab === 'exams' && <ExamsScreen onImmersive={setExamImmersive} onOpenLane={openLane} />}

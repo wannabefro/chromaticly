@@ -11,9 +11,13 @@ jest.mock('react-native-webview', () => {
 
 import { act, fireEvent, render, waitFor } from '@testing-library/react-native';
 
+import { buildExamPaper } from '../learn/exam';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
+import { assembleOptions } from '../ui/grading';
 import AppShell from './AppShell';
+
+const examPaper = buildExamPaper(0);
 
 function memoryStorage(): SnapshotStorage & { blob: string | null } {
   return {
@@ -128,6 +132,43 @@ describe('AppShell — a short strand routes to its lane, not just to Learn (7d)
     act(() => fireEvent.press(getByTestId('readiness-card-short-pitch')));
     await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
     expect(getByTestId('lane-heading').props.children).toBe('Pitch & Notation');
+  });
+
+  // 7e/U9. The result's primary action leaves the Exams tab entirely, and the plan
+  // is explicit that this cannot be proved at the runner boundary: `ExamRunner` only
+  // fires a callback and `ExamsScreen` used to terminate it locally. Driven through
+  // the shell, end to end, with the exact strand the paper picked.
+  test('the exam result routes to the worst-scoring lane, not back to the Exams list', async () => {
+    const { getByTestId } = renderShell();
+    await waitFor(() => expect(getByTestId('tab-bar')).toBeTruthy());
+
+    act(() => fireEvent.press(getByTestId('tab-exams')));
+    await waitFor(() => expect(getByTestId('readiness-card-sit')).toBeTruthy());
+    await act(async () => {
+      fireEvent.press(getByTestId('readiness-card-sit'));
+    });
+    await waitFor(() => expect(getByTestId('exam-begin')).toBeTruthy());
+    act(() => fireEvent.press(getByTestId('exam-begin')));
+
+    // Everything right except intervals, so intervals is the paper's worst section.
+    for (let i = 0; i < examPaper.questions.length; i++) {
+      const options = assembleOptions(examPaper.questions[i].instance);
+      const wantCorrect = examPaper.questions[i].section !== 'intervals';
+      act(() => fireEvent.press(getByTestId(`exam-option-${options.findIndex((o) => o.correct === wantCorrect)}`)));
+      act(() => fireEvent.press(getByTestId('exam-next')));
+    }
+
+    await waitFor(() => expect(getByTestId('exam-revise-worst')).toBeTruthy());
+    await act(async () => {
+      fireEvent.press(getByTestId('exam-revise-worst'));
+    });
+
+    await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
+    expect(getByTestId('lane-heading').props.children).toBe('Intervals');
+    // ...and at the grade the PAPER examined, not wherever the learner is working.
+    // A learner who scored 0/4 on a grade-1 section must not land in grade 4 because
+    // their lane depth happens to be higher — the paper asked a grade-1 question.
+    expect(getByTestId('lane-grade-label')).toHaveTextContent('Grade 1', { exact: false });
   });
 
   // The Profile entry point, via its own readiness card. The radar's drill pill is

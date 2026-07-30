@@ -113,3 +113,19 @@ appId: host.exp.Exponent
 - assertVisible: { id: "exam-review-mark" }
 - tapOn: { id: "exam-review-close" }
 - assertVisible: { id: "exam-results" }
+
+# 7e / G6 U9 — the result IS the next session's plan. The paper's own worst section
+# is the primary action, and it leaves the Exams tab for that lane's detail in Learn.
+# Only a device run proves the strand survives the tab change; jest sees the callback
+# fire either way.
+- assertVisible: { id: "exam-revise-worst" }
+- tapOn: { id: "exam-revise-worst" }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 20000
+- assertVisible: { id: "lane-heading", text: "Terms & Signs" }
+# ...at the grade the PAPER examined. The seeded state has terms depth 3, so without
+# the grade being carried across this lands on grade 4 — a lane about material the
+# paper never asked about, reached by failing a grade-1 section.
+- assertVisible: { id: "lane-grade-label", text: "Grade 1.*" }
+- takeScreenshot: exam-result-drill

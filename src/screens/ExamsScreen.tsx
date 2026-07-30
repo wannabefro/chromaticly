@@ -26,13 +26,25 @@ export interface ExamsScreenProps {
   /** Told when the paper takes over: an exam must not offer a tab out of itself. */
   onImmersive?: (immersive: boolean) => void;
   /** Tapping a short strand crosses to Learn's detail for that lane — the shell
-   *  carries the target through the tab change (G6 U8). */
-  onOpenLane?: (strand: Strand) => void;
+   *  carries the target through the tab change (G6 U8). The optional grade is the
+   *  one the paper examined (7e), so a result sends the learner to the grade it
+   *  actually marked rather than to wherever they happen to be working. */
+  onOpenLane?: (strand: Strand, grade?: number) => void;
 }
 
 export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProps = {}) {
   const { ready, store, revision, clock } = useProgressContext();
   const [examGrade, setExamGrade] = useState<number | null>(null);
+  /** The shortfalls as they stood when the learner pressed "Sit the paper" — snapped
+   *  at that moment, not re-derived on the result screen. "We flagged this before the
+   *  paper" has to mean before, and a live read would silently become "we flag this
+   *  now", which is the result restating itself. */
+  const [flaggedBefore, setFlaggedBefore] = useState<string[]>([]);
+
+  const startExam = (grade: number, shortfalls: string[]) => {
+    setFlaggedBefore(shortfalls);
+    setExamGrade(grade);
+  };
 
   const readiness = useMemo(() => {
     if (!store) return null;
@@ -53,7 +65,20 @@ export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProp
   }
 
   if (examGrade != null) {
-    return <ExamRunner grade={examGrade} onExit={() => setExamGrade(null)} />;
+    return (
+      <ExamRunner
+        grade={examGrade}
+        onExit={() => setExamGrade(null)}
+        // 7e: the result's primary action leaves the Exams tab entirely. Closing the
+        // runner first matters — without it the learner returns to a still-mounted
+        // paper the next time they open this tab.
+        onOpenLane={(strand) => {
+          setExamGrade(null);
+          onOpenLane?.(strand as Strand, examGrade);
+        }}
+        flaggedBefore={flaggedBefore}
+      />
+    );
   }
 
   return (
@@ -64,7 +89,11 @@ export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProp
       <ReadinessCard
         readiness={readiness}
         onOpenLane={onOpenLane}
-        onSit={hasExamPaper(EXAM_PAPER_GRADE) ? () => setExamGrade(EXAM_PAPER_GRADE) : undefined}
+        onSit={
+          hasExamPaper(EXAM_PAPER_GRADE)
+            ? () => startExam(EXAM_PAPER_GRADE, readiness.shortfalls.map((row) => row.strand))
+            : undefined
+        }
       />
 
       {/* Every level, unfiltered: nothing is locked (R2), so the list is the whole
@@ -76,7 +105,11 @@ export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProp
             levelGrade={level.grade}
             unitsRequired={level.unitIds.length}
             hasPaper={hasExamPaper(level.grade)}
-            onPress={hasExamPaper(level.grade) ? () => setExamGrade(level.grade) : undefined}
+            onPress={
+              hasExamPaper(level.grade)
+                ? () => startExam(level.grade, readiness.shortfalls.map((row) => row.strand))
+                : undefined
+            }
             testID={`exam-gate-${level.id}`}
           />
         ))}

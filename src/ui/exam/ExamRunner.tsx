@@ -65,9 +65,21 @@ export interface ExamRunnerProps {
   onExit: () => void;
   /** Deterministic paper for tests/E2E; the gate passes a varying seed on device. */
   paperSeed?: number;
+  /** The result screen's primary action (7e/R6): go and work on the lane the paper
+   *  says is weakest. Falls back to `onExit` where no caller can route. */
+  onOpenLane?: (strand: string) => void;
+  /** Strands pre-exam readiness had already flagged, for the continuity marker
+   *  ("we flagged this before the paper").
+   *
+   *  OPTIONAL, and omission means NO MARKER — there is nothing to fall back to.
+   *  `LevelMapScreen` still renders this runner until U12 and cannot supply it.
+   *  Recomputing readiness here instead would resurrect exactly the inversion this
+   *  unit removes: a prediction of the paper standing in for the paper's own
+   *  verdict. U12 makes the prop required along with its last caller. */
+  flaggedBefore?: readonly string[];
 }
 
-export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
+export function ExamRunner({ grade, onExit, paperSeed = 0, onOpenLane, flaggedBefore }: ExamRunnerProps) {
   const { recordExamResult } = useProgressContext();
   const paper = useMemo(() => buildExamPaper(paperSeed), [paperSeed]);
   const [phase, setPhase] = useState<Phase>('start');
@@ -112,6 +124,16 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
     () => tallyExam(paper, correctByQuestion),
     [paper, correctByQuestion],
   );
+
+  /** The section the paper says to work on next: fewest marks first, ties broken by
+   *  the paper's own section order. Null when every section is at or above the pass
+   *  fraction — with nothing to revise, "Review paper" stays the primary action
+   *  rather than the screen inventing a weakness to send the learner at. */
+  const worstSection = useMemo(() => {
+    const weak = result.sections.filter((s) => s.correct < Math.ceil(EXAM_BANDS.pass * s.total));
+    if (weak.length === 0) return null;
+    return weak.reduce((worst, s) => (s.correct / s.total < worst.correct / worst.total ? s : worst));
+  }, [result.sections]);
 
   // D7: record the exam-clear fact exactly once on entering results — a
   // fired-once ref (not just the phase check) so a re-render while still on
@@ -206,13 +228,27 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
           </View>
           <Text style={styles.bandLine}>{bandLine}</Text>
 
+          {/* 7e — the result IS the next session's plan (R6). Shading and the primary
+              action below both come from what the learner got wrong TODAY, never from
+              the pre-exam prediction: readiness rides along only as a separately
+              labelled continuity marker. An earlier draft had readiness doing the
+              shading and the routing, which quietly replaced the paper's verdict with
+              a forecast of it. */}
           <View style={styles.card}>
             {result.sections.map((s) => {
               const weak = s.correct < Math.ceil(EXAM_BANDS.pass * s.total);
+              const flagged = flaggedBefore?.includes(s.strand) ?? false;
               return (
                 <View key={s.strand} style={styles.sectionRow} testID={`exam-section-${s.strand}`}>
-                  <Text style={styles.sectionName}>{s.title}</Text>
-                  <Text style={[styles.sectionMarks, weak && styles.weak]}>
+                  <View style={styles.sectionNameCol}>
+                    <Text style={styles.sectionName}>{s.title}</Text>
+                    {flagged && (
+                      <Text style={styles.flagged} testID={`exam-section-${s.strand}-flagged`}>
+                        we flagged this before the paper
+                      </Text>
+                    )}
+                  </View>
+                  <Text style={[styles.sectionMarks, weak && styles.weak]} testID={`exam-section-${s.strand}-marks`}>
                     {s.correct}/{s.total}
                     {weak ? '  · revise' : ''}
                   </Text>
@@ -223,8 +259,25 @@ export function ExamRunner({ grade, onExit, paperSeed = 0 }: ExamRunnerProps) {
         </ScrollView>
 
         <View style={styles.footer}>
-          <Pressable testID="exam-review-paper" style={styles.primary} onPress={() => setPhase('marked')}>
-            <Text style={styles.primaryLabel}>Review paper</Text>
+          {/* The new primary: the paper's own worst section, one tap away. "Review
+              paper" is demoted to a visible secondary rather than replaced — R8 keeps
+              the exam register's behaviour, `exam-paper.yaml` drives it, and it is the
+              thing a learner most wants immediately after a paper. */}
+          {worstSection && (
+            <Pressable
+              testID="exam-revise-worst"
+              style={styles.primary}
+              onPress={() => (onOpenLane ? onOpenLane(worstSection.strand) : onExit())}
+            >
+              <Text style={styles.primaryLabel}>Work on {worstSection.title}</Text>
+            </Pressable>
+          )}
+          <Pressable
+            testID="exam-review-paper"
+            style={worstSection ? styles.ghost : styles.primary}
+            onPress={() => setPhase('marked')}
+          >
+            <Text style={worstSection ? styles.ghostLabel : styles.primaryLabel}>Review paper</Text>
           </Pressable>
           <Pressable testID="exam-back-to-learn" onPress={onExit} style={styles.ghost}>
             <Text style={styles.ghostLabel}>Back to Learn</Text>
@@ -511,7 +564,11 @@ const styles = StyleSheet.create({
     padding: shape.spaceCard,
     gap: 10,
   },
-  sectionRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  sectionRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: shape.spaceInline },
+  sectionNameCol: { flex: 1, minWidth: 0 },
+  // The continuity marker sits UNDER the section name and in the muted register, so
+  // it reads as a footnote to the paper's verdict rather than competing with it.
+  flagged: { fontFamily: type.label.fontFamily, fontSize: 11, color: x.faint },
   sectionName: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, lineHeight: 21, color: x.ink },
   // Marks are numbers users scan, so they're mono (design/README.md).
   sectionMarks: { fontFamily: type.label.fontFamily, fontSize: type.body.fontSize, color: x.muted },

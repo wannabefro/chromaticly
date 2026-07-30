@@ -288,3 +288,102 @@ describe('exam conditions — the clock, the counter and flag-for-review (302.24
     expect(getByTestId('exam-band').props.children).toBe('Distinction');
   });
 });
+
+// G6 U9 (7e, R6). The result is the next session's plan: what the learner got wrong
+// TODAY drives the shading and the primary action. Pre-exam readiness rides along as
+// a separately labelled continuity marker and must never override the paper.
+describe('ExamRunner — the result per skill is the plan (7e)', () => {
+  /** Answer every question, correct in `strong` sections and wrong everywhere else —
+   *  the per-section control the all-right/all-wrong helper cannot give. */
+  function answerBySection(getByTestId: (id: string) => any, strong: string[]) {
+    for (let i = 0; i < paper.questions.length; i++) {
+      const options = assembleOptions(paper.questions[i].instance);
+      const wantCorrect = strong.includes(paper.questions[i].section);
+      const idx = options.findIndex((o) => o.correct === wantCorrect);
+      fireEvent.press(getByTestId(`exam-option-${idx}`));
+      fireEvent.press(getByTestId('exam-next'));
+    }
+  }
+
+  test('a row renders per section, with its marks, straight from tallyExam', async () => {
+    const { getByTestId } = await renderExam();
+    fireEvent.press(getByTestId('exam-begin'));
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'intervals', 'terms_signs']);
+
+    for (const section of paper.sections) {
+      expect(getByTestId(`exam-section-${section.strand}-marks`)).toHaveTextContent('4/4', { exact: false });
+    }
+  });
+
+  // THE assertion that stops the two sources being swapped again. Readiness flagged
+  // pitch; the paper says intervals is the weakest. The plan must follow the paper.
+  test('the SCORES drive the plan, not the pre-exam prediction', async () => {
+    const onOpenLane = jest.fn();
+    const { getByTestId } = await renderExam({ onOpenLane, flaggedBefore: ['pitch'] });
+    fireEvent.press(getByTestId('exam-begin'));
+    // Everything right except intervals — so intervals is the worst section, and
+    // pitch, the flagged one, scored full marks.
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'terms_signs']);
+
+    fireEvent.press(getByTestId('exam-revise-worst'));
+    expect(onOpenLane).toHaveBeenCalledWith('intervals');
+  });
+
+  test('the flagged strand carries its own marker, and it is not the shaded one', async () => {
+    const { getByTestId, queryByTestId } = await renderExam({ flaggedBefore: ['pitch'] });
+    fireEvent.press(getByTestId('exam-begin'));
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'terms_signs']);
+
+    expect(getByTestId('exam-section-pitch-flagged')).toBeTruthy();
+    // Pitch scored 4/4, so it carries no "revise" — the marker is a footnote, not a verdict.
+    expect(getByTestId('exam-section-pitch-marks')).not.toHaveTextContent('revise', { exact: false });
+    expect(getByTestId('exam-section-intervals-marks')).toHaveTextContent('revise', { exact: false });
+    expect(queryByTestId('exam-section-intervals-flagged')).toBeNull();
+  });
+
+  // The LevelMapScreen path, which cannot supply readiness until U12 deletes it.
+  test('omitting the readiness prop renders the rows unchanged, with no marker and no crash', async () => {
+    const { getByTestId, queryByTestId } = await renderExam();
+    fireEvent.press(getByTestId('exam-begin'));
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'terms_signs']);
+
+    expect(getByTestId('exam-section-intervals-marks')).toHaveTextContent('0/4', { exact: false });
+    for (const section of paper.sections) {
+      expect(queryByTestId(`exam-section-${section.strand}-flagged`)).toBeNull();
+    }
+  });
+
+  // R8: the marked script is what a learner most wants after a paper, and
+  // `exam-paper.yaml` drives it. The lane action is added BESIDE it, never instead.
+  test('"Review paper" survives as a visible secondary and still opens the marked script', async () => {
+    const { getByTestId } = await renderExam({ onOpenLane: jest.fn(), flaggedBefore: [] });
+    fireEvent.press(getByTestId('exam-begin'));
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'terms_signs']);
+
+    expect(getByTestId('exam-revise-worst')).toBeTruthy();
+    fireEvent.press(getByTestId('exam-review-paper'));
+    expect(getByTestId('exam-marked')).toBeTruthy();
+  });
+
+  // With nothing to revise the screen must not invent a weakness to send them at.
+  test('a clean sweep offers no lane action — "Review paper" is the primary again', async () => {
+    const { getByTestId, queryByTestId } = await renderExam({ onOpenLane: jest.fn() });
+    fireEvent.press(getByTestId('exam-begin'));
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'intervals', 'terms_signs']);
+
+    expect(queryByTestId('exam-revise-worst')).toBeNull();
+    expect(getByTestId('exam-review-paper')).toBeTruthy();
+  });
+
+  // Rule 4: the exam register has zero gamification, and a result screen is exactly
+  // where XP and streaks would creep back in.
+  test('no XP, streak or celebration element renders on the result', async () => {
+    const { getByTestId, queryByTestId } = await renderExam({ flaggedBefore: ['pitch'] });
+    fireEvent.press(getByTestId('exam-begin'));
+    answerBySection(getByTestId, ['rhythm', 'pitch', 'scales_keys', 'terms_signs']);
+
+    for (const id of ['xp', 'xp-total', 'streak', 'streak-chip', 'celebration', 'set-gems']) {
+      expect(queryByTestId(id)).toBeNull();
+    }
+  });
+});

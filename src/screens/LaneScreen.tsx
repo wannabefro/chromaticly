@@ -45,6 +45,12 @@ const GRADES = [1, 2, 3, 4, 5];
 
 export interface LaneScreenProps {
   strand: Strand;
+  /** Open on a specific grade rather than wherever the learner is working (7e).
+   *  An exam result sends them here about the grade the PAPER examined, so landing
+   *  on their working grade would answer a question the paper did not ask — a
+   *  learner who just scored 0/4 on the grade-1 terms section must not be dropped
+   *  into grade 4 because their lane depth happens to be 3. */
+  initialGrade?: number;
   /** Back to the lane list (7a). */
   onBack?: () => void;
   /** A prerequisite chip taps into the lane it names. */
@@ -97,12 +103,12 @@ function rowState(index: number, stars: 0 | 1 | 2 | 3, frontier: number): UnitSt
   return index === frontier ? 'current' : 'started';
 }
 
-export default function LaneScreen({ strand, onBack, onOpenLane, onOpenLesson }: LaneScreenProps) {
+export default function LaneScreen({ strand, initialGrade, onBack, onOpenLane, onOpenLesson }: LaneScreenProps) {
   const { ready, store, revision, clock } = useProgressContext();
   const [picking, setPicking] = useState(false);
   /** null = "wherever the learner is working", recomputed as the store changes.
    *  A grade chosen from the picker pins the view until they leave the screen. */
-  const [chosen, setChosen] = useState<number | null>(null);
+  const [chosen, setChosen] = useState<number | null>(initialGrade ?? null);
 
   const depths = useMemo(() => {
     if (!store) return null;
