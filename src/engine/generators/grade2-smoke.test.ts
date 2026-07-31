@@ -131,6 +131,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'duplet_recognition',
       'triplet_recognition',
       'major_scale_steps',
+      'tie_dot_value',
       // chord_recognition (fyu.10) — same shape as chromatic_scale/
       // degree_name_id: draws from scope.keysMajor (present at every grade),
       // so "Grade 4" is a curriculum-layer-only gate (assertAtomResolves).

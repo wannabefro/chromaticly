@@ -47528,6 +47528,1380 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte tie_dot_value @ ties-and-dots-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim rest is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted rest last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim note is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted note last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim note is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted note last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim rest is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted rest last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim rest is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted rest last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1 beat": "That is only the second note. The sound starts on the first and holds through both.",
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a crotchet is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D3",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1½ beats",
+    },
+    "distractors": [
+      "1 beat",
+      "2 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1 beat": "That is the crotchet on its own. The dot adds half of it again.",
+        "2 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted crotchet rest is 1 beat plus half again, which is 1½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted rest last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim note is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted note last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim rest is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted rest last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "1 beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1 beat": "That is only the second note. The sound starts on the first and holds through both.",
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a crotchet is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3 beats",
+    },
+    "distractors": [
+      "2 beats",
+      "4 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is the minim on its own. The dot adds half of it again.",
+        "4 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted minim rest is 2 beats plus half again, which is 3 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted rest last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "minim",
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1½ beats",
+    },
+    "distractors": [
+      "1 beat",
+      "2 beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1 beat": "That is the crotchet on its own. The dot adds half of it again.",
+        "2 beats": "The dot adds HALF the value again, not another whole one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A dotted crotchet note is 1 beat plus half again, which is 1½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A dot adds HALF the value again — half of the note it sits beside, not another whole one.",
+    ],
+    "id": "tie_dot_value:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How long does this dotted note last?",
+    "srs_tags": [
+      "single_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 1,
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2½ beats",
+    },
+    "distractors": [
+      "2 beats",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 beats": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a minim plus a quaver is 2½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "1½ beats",
+    },
+    "distractors": [
+      "1 beat",
+      "½ beats",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1 beat": "That is only the first note. A tie means the sound carries on into the second one.",
+        "½ beats": "That is only the second note. The sound starts on the first and holds through both.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A tie adds the values: a crotchet plus a quaver is 1½ beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tie joins two notes into one sound. Add the two values together.",
+    ],
+    "id": "tie_dot_value:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two notes are tied. How long does the sound last?",
+    "srs_tags": [
+      "tie",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "tie": true,
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tie_dot_value",
+  },
+]
+`;
+
 exports[`seed-stability — grade-2 generator output is pinned byte-for-byte add_time_signature @ time-signatures-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

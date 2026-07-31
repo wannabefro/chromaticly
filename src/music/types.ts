@@ -67,6 +67,8 @@ export interface NoteEvent {
   dots?: Dots;
   tuplet?: TupletMark;
   ornament?: Ornament;
+  /** Tied to the note that follows: one sound, the two values added. */
+  tie?: boolean;
   /** Marks the single target note for a "name the voice" exercise (SATB
    *  recognition, G5-1). The core locates it; the surface draws the ring. */
   highlight?: boolean;

@@ -10,6 +10,7 @@ import { cadenceRecognition } from './cadence-recognition';
 import { dupletRecognition } from './duplet-recognition';
 import { tripletRecognition } from './triplet-recognition';
 import { majorScaleSteps } from './major-scale-steps';
+import { tieDotValue } from './tie-dot-value';
 import { enharmonicRecognition } from './enharmonic-recognition';
 import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
@@ -53,6 +54,7 @@ export const GENERATORS: Record<string, Generator> = {
   duplet_recognition: dupletRecognition,
   triplet_recognition: tripletRecognition,
   major_scale_steps: majorScaleSteps,
+  tie_dot_value: tieDotValue,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
   octave_transposition: octaveTransposition,

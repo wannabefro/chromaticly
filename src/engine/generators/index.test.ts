@@ -89,6 +89,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'enharmonic_recognition',
   'rest_completion',
   'major_scale_steps',
+  'tie_dot_value',
 ];
 
 describe('GENERATORS registry', () => {

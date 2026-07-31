@@ -182,7 +182,7 @@ function ornamentPrefix(orn: Ornament, keyAcc: Record<string, Accidental>): stri
 
 function noteToAbc(ev: NoteEvent, keyAcc: Record<string, Accidental>): string {
   const prefix = ev.ornament ? ornamentPrefix(ev.ornament, keyAcc) : '';
-  return prefix + pitchToAbc(ev.pitch, keyAcc) + durationToAbc(ev.dur, ev.dots ?? 0);
+  return prefix + pitchToAbc(ev.pitch, keyAcc) + durationToAbc(ev.dur, ev.dots ?? 0) + (ev.tie ? '-' : '');
 }
 
 function chordToAbc(ev: ChordEvent, keyAcc: Record<string, Accidental>): string {

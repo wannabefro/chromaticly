@@ -336,6 +336,14 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (grade < 5) throw new Error(`lessons: atom "${atom}" is not a G${grade} cadence`);
       return;
     }
+    case 'tie':
+    case 'single_dot': {
+      if (parts.length !== 0) throw new Error(`lessons: malformed ${kind} atom "${atom}"`);
+      if (!scopeForGrade(grade).rhythmDevices.includes(kind)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} rhythm device`);
+      }
+      return;
+    }
     case 'major_steps': {
       if (parts.length !== 1) throw new Error(`lessons: malformed major_steps atom "${atom}"`);
       if (!scopeForGrade(grade).keysMajor.includes(parts[0])) {

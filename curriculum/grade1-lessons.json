@@ -224,6 +224,42 @@
         "smartTip": "An accidental only lasts to the next bar-line — the bar-line wipes the slate clean.",
         "didYouKnow": "On a keyboard a sharp and the flat above it can be the same key — C♯ and D♭ are one black note."
       },
+      "unlocks": "ties-and-dots-1"
+    },
+    {
+      "id": "ties-and-dots-1",
+      "title": "Ties and dots",
+      "strand": "rhythm",
+      "atoms": [
+        "tie",
+        "single_dot"
+      ],
+      "templates": [
+        "tie_dot_value"
+      ],
+      "worked_example": {
+        "template_id": "tie_dot_value",
+        "grade": 1,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "A tie joins two notes into one sound, and their values add",
+          "A dot adds half the value again to the note or rest it follows",
+          "Work out both in beats, counted against the time signature"
+        ],
+        "concept": {
+          "title": "Two ways to make a note longer",
+          "body": "Not every length has a note of its own, so there are two ways to write a longer one. A tie is a curved line joining two notes of the SAME pitch. You play the first and hold through the second, so a minim tied to a crotchet is one sound lasting three beats. Do not confuse it with a slur, which curves between DIFFERENT pitches and means play them smoothly. A dot does a similar job in less space: a dot after a note or a rest adds half of that value again. A dotted minim is two beats plus one, which is three; a dotted crotchet is one beat plus half, which is one and a half. The dot always takes its half from the note it sits beside, so a dotted quaver is worth three semiquavers, not three of anything else. Rests are dotted exactly the same way.",
+          "example": {
+            "template_id": "tie_dot_value",
+            "grade": 1,
+            "seed": 6
+          }
+        },
+        "smartTip": "A dot adds half, never double. Halve the note it follows, then add that on.",
+        "didYouKnow": "The tie exists because a bar line cannot be crossed by a single note. A sound that runs from one bar into the next has to be written as two notes tied together."
+      },
       "unlocks": "major-scales-1"
     },
     {
