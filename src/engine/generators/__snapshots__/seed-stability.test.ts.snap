@@ -146474,6 +146474,1845 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte cadence_recognition @ cadences-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in G major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A plagal cadence does not end on IV. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a plagal one. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a plagal cadence in F major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in G major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A perfect cadence does not end on IV. A perfect cadence is V to I — the dominant falling home to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a perfect one. A perfect cadence is V to I — the dominant falling home to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a perfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in F major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in G major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in F major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A plagal cadence does not end on IV. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a plagal one. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a plagal cadence in D major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in D major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in D major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A perfect cadence does not end on IV. A perfect cadence is V to I — the dominant falling home to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a perfect one. A perfect cadence is V to I — the dominant falling home to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a perfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "V to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+    ],
+    "id": "cadence_recognition:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This chord ends a plagal cadence in C major. Which chord comes before it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A perfect cadence does not end on IV. A perfect cadence is V to I — the dominant falling home to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a perfect one. A perfect cadence is V to I — the dominant falling home to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a perfect cadence in D major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "C#4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "V": "V to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+    ],
+    "id": "cadence_recognition:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This chord ends an imperfect cadence in C major. Which chord comes before it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A plagal cadence does not end on IV. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a plagal one. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a plagal cadence in C major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect",
+    },
+    "distractors": [
+      "plagal",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is V to I.",
+        "plagal": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. This one is V to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic. These chords are V then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in F major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "V to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+    ],
+    "id": "cadence_recognition:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This chord ends a plagal cadence in D major. Which chord comes before it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte chord_recognition @ chord-inversions-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -168310,6 +170149,1845 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     },
     "strand": "rhythm",
     "template_id": "tuplet_recognition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte cadence_recognition (cadences-5, chromaticly-e3z.5) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in G major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A plagal cadence does not end on IV. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a plagal one. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a plagal cadence in F major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in G major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A perfect cadence does not end on IV. A perfect cadence is V to I — the dominant falling home to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a perfect one. A perfect cadence is V to I — the dominant falling home to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a perfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in F major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in G major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in F major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A plagal cadence does not end on IV. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a plagal one. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a plagal cadence in D major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in D major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "plagal",
+    },
+    "distractors": [
+      "perfect",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is IV to I.",
+        "perfect": "A perfect cadence is V to I — the dominant falling home to the tonic. This one is IV to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. These chords are IV then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in D major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A perfect cadence does not end on IV. A perfect cadence is V to I — the dominant falling home to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a perfect one. A perfect cadence is V to I — the dominant falling home to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a perfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "V to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+    ],
+    "id": "cadence_recognition:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This chord ends a plagal cadence in C major. Which chord comes before it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A perfect cadence does not end on IV. A perfect cadence is V to I — the dominant falling home to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a perfect one. A perfect cadence is V to I — the dominant falling home to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a perfect cadence in D major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "C#4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "V": "V to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+      },
+      "correct": "Correct!",
+      "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+    },
+    "grade": 5,
+    "hints": [
+      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+    ],
+    "id": "cadence_recognition:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This chord ends an imperfect cadence in C major. Which chord comes before it?",
+    "srs_tags": [
+      "cadence:imperfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "A plagal cadence does not end on IV. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "Ending on V makes an IMPERFECT cadence, not a plagal one. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
+    ],
+    "id": "cadence_recognition:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is the start of a plagal cadence in C major. Which chord ends it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect",
+    },
+    "distractors": [
+      "plagal",
+      "imperfect",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "imperfect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished. This one is V to I.",
+        "plagal": "A plagal cadence is IV to I — the subdominant stepping up to the tonic. This one is V to I.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A perfect cadence is V to I — the dominant falling home to the tonic. These chords are V then I.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out the second chord first. Ending on the tonic means perfect or plagal, and the chord before it tells you which; ending on the dominant means imperfect.",
+    ],
+    "id": "cadence_recognition:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "These two chords are in F major. Which cadence do they make?",
+    "srs_tags": [
+      "cadence:perfect",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+        "V": "V to I is not a plagal cadence. A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A plagal cadence is IV to I — the subdominant stepping up to the tonic.",
+    },
+    "grade": 5,
+    "hints": [
+      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+    ],
+    "id": "cadence_recognition:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This chord ends a plagal cadence in D major. Which chord comes before it?",
+    "srs_tags": [
+      "cadence:plagal",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "staves": [
+          "treble",
+          "bass",
+        ],
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "soprano",
+            "staff": 0,
+            "stem": "up",
+          },
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+            "name": "bass",
+            "staff": 1,
+            "stem": "down",
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "cadence_recognition",
   },
 ]
 `;

@@ -224,6 +224,13 @@ export const INSTRUMENT_TRANSPOSITIONS = {
 
 export type TransposingInstrument = keyof typeof INSTRUMENT_TRANSPOSITIONS;
 
+/** Grade-5 cadence atom (chromaticly-e3z.5), e.g. cadenceAtom('plagal') ->
+ *  "cadence:plagal". One per cadence type: they are three separate facts, and
+ *  a learner who knows the perfect cadence has not thereby learned the plagal. */
+export function cadenceAtom(kind: string): string {
+  return `cadence:${kind}`;
+}
+
 /** e.g. transposeInstrumentAtom('bb') -> "transpose_instrument:bb". */
 export function transposeInstrumentAtom(instrument: string): string {
   return `transpose_instrument:${instrument}`;

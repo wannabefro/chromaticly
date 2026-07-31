@@ -6,6 +6,7 @@ import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { chordRecognition } from './chord-recognition';
 import { clefEquivalence } from './clef-equivalence';
+import { cadenceRecognition } from './cadence-recognition';
 import { dupletRecognition } from './duplet-recognition';
 import { enharmonicRecognition } from './enharmonic-recognition';
 import { chromaticScale } from './chromatic-scale';
@@ -44,6 +45,7 @@ export const GENERATORS: Record<string, Generator> = {
   add_time_signature: addTimeSignature,
   metre_classification: metreClassification,
   anacrusis_recognition: anacrusisRecognition,
+  cadence_recognition: cadenceRecognition,
   duplet_recognition: dupletRecognition,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,

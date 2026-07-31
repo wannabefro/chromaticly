@@ -18,6 +18,7 @@ import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRE
 import { GENERATORS } from '../engine/generators';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
+import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -310,6 +311,14 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (scopeForGrade(grade).intervalRule.aboveTonicOnly) {
         throw new Error(`lessons: atom "${atom}" needs between-any-notes intervals, which grade ${grade} does not have`);
       }
+      return;
+    }
+    case 'cadence': {
+      const [name] = parts;
+      if (!(CADENCE_KINDS as readonly string[]).includes(name)) {
+        throw new Error(`lessons: atom "${atom}" is not a cadence in scope (perfect, plagal, imperfect)`);
+      }
+      if (grade < 5) throw new Error(`lessons: atom "${atom}" is not a G${grade} cadence`);
       return;
     }
     case 'tuplet': {

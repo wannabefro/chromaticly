@@ -79,6 +79,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   metre_rewrite: 5,
   satb_voice_recognition: 5,
   tuplet_recognition: 5,
+  cadence_recognition: 5,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -508,6 +509,11 @@ const GRADE_5_EXTRA_CASES: Case[] = [
     label: 'tuplet_recognition (irregular-divisions-5, chromaticly-e3z.6)',
     templateId: 'tuplet_recognition',
     atoms: ['tuplet:5', 'tuplet:6', 'tuplet:7'],
+  },
+  {
+    label: 'cadence_recognition (cadences-5, chromaticly-e3z.5)',
+    templateId: 'cadence_recognition',
+    atoms: ['cadence:perfect', 'cadence:plagal', 'cadence:imperfect'],
   },
 ];
 

@@ -46,6 +46,7 @@ const GRADE_5_ONLY_TEMPLATE_IDS = [
   'metre_rewrite',
   'satb_voice_recognition',
   'tuplet_recognition',
+  'cadence_recognition',
 ];
 
 // anacrusis_recognition (anacrusis slice, D5) needs an explicit anacrusis:<sig>

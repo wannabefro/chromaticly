@@ -157,6 +157,8 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'transposing_instrument',
       // tuplet_recognition (chromaticly-e3z.6) — irregular divisions, grade 5 only
       'tuplet_recognition',
+      // cadence_recognition (chromaticly-e3z.5) — grade 5 only
+      'cadence_recognition',
       // metre_rewrite (G5-2, chromaticly-4ak) — same, throws below grade 5.
       'metre_rewrite',
       // satb_voice_recognition (G5-1, chromaticly-0iy) — throws below grade 5

@@ -196,6 +196,43 @@
         "smartTip": "The lowest note names the position, not the numeral. Find the root by stacking the notes in 3rds first, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
         "didYouKnow": "The little letters a, b and c are the ABRSM way of writing inversions. Elsewhere you may meet figured bass instead — IVb is the same chord a musician of Bach's day would have marked with a small 6 under the bass note."
       },
+      "unlocks": "cadences-5"
+    },
+    {
+      "id": "cadences-5",
+      "title": "Cadences: perfect, plagal, imperfect",
+      "strand": "chords",
+      "atoms": [
+        "cadence:perfect",
+        "cadence:plagal",
+        "cadence:imperfect"
+      ],
+      "templates": [
+        "cadence_recognition"
+      ],
+      "worked_example": {
+        "template_id": "cadence_recognition",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name the perfect, plagal and imperfect cadences from the two chords that make them",
+          "A cadence is named by where it ENDS and by what comes before it",
+          "Choose a suitable chord at a cadential point in C, G, D or F major"
+        ],
+        "concept": {
+          "title": "How a phrase closes",
+          "body": "A cadence is the pair of chords that closes a musical phrase, like punctuation. Three are needed at this grade. A PERFECT cadence is V to I: the dominant falls home to the tonic and the phrase sounds finished, a full stop. A PLAGAL cadence is IV to I: it also lands on the tonic but arrives from below, the 'Amen' at the end of a hymn. An IMPERFECT cadence ends on V instead, so it does not resolve — a comma, not a full stop. Notice that perfect and plagal both END on the tonic. What separates them is the chord before it, so always work out both chords, never just the last.",
+          "example": {
+            "template_id": "cadence_recognition",
+            "grade": 5,
+            "seed": 2
+          }
+        },
+        "smartTip": "Ends on V? Imperfect. Ends on I? Then look at the chord before: V makes it perfect, IV makes it plagal.",
+        "didYouKnow": "The plagal cadence is called the 'Amen cadence' because it is what generations of hymn books put under that word. Its softer arrival is why it feels like a benediction rather than a conclusion."
+      },
       "unlocks": "transposing-instruments-5"
     },
     {
