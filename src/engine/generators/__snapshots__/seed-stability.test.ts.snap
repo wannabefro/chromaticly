@@ -7886,6 +7886,1771 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte major_scale_steps @ major-scales-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd and 4th",
+    },
+    "distractors": [
+      "4th and 5th",
+      "2nd and 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2nd and 3rd": "That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.",
+        "4th and 5th": "That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look for the two places on the keyboard with no black note between the white ones.",
+    ],
+    "id": "major_scale_steps:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is D major. Which two notes have a semitone between them?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4th",
+    },
+    "distractors": [
+      "3rd",
+      "5th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3rd": "The 3rd degree is right for D major. Check the 4th against the pattern.",
+        "5th": "The 5th degree is right for D major. Check the 4th against the pattern.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The 4th degree is the one that does not fit T T S T T T S.",
+    },
+    "grade": 1,
+    "hints": [
+      "Sing or play up from D. The note that breaks the tone-tone-semitone shape is the wrong one.",
+    ],
+    "id": "major_scale_steps:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D major scale is wrong. Which degree is it?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Gb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th and 8th",
+    },
+    "distractors": [
+      "6th and 7th",
+      "5th and 6th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "5th and 6th": "That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.",
+        "6th and 7th": "That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look for the two places on the keyboard with no black note between the white ones.",
+    ],
+    "id": "major_scale_steps:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is C major. Which two notes have a semitone between them?",
+    "srs_tags": [
+      "major_steps:C",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:G",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd and 4th",
+    },
+    "distractors": [
+      "4th and 5th",
+      "2nd and 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2nd and 3rd": "That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.",
+        "4th and 5th": "That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look for the two places on the keyboard with no black note between the white ones.",
+    ],
+    "id": "major_scale_steps:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is G major. Which two notes have a semitone between them?",
+    "srs_tags": [
+      "major_steps:G",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:G",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3rd and 4th",
+    },
+    "distractors": [
+      "4th and 5th",
+      "2nd and 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2nd and 3rd": "That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.",
+        "4th and 5th": "That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look for the two places on the keyboard with no black note between the white ones.",
+    ],
+    "id": "major_scale_steps:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is G major. Which two notes have a semitone between them?",
+    "srs_tags": [
+      "major_steps:G",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:F",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:C",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:C",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:G",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4th",
+    },
+    "distractors": [
+      "3rd",
+      "5th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3rd": "The 3rd degree is right for D major. Check the 4th against the pattern.",
+        "5th": "The 5th degree is right for D major. Check the 4th against the pattern.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The 4th degree is the one that does not fit T T S T T T S.",
+    },
+    "grade": 1,
+    "hints": [
+      "Sing or play up from D. The note that breaks the tone-tone-semitone shape is the wrong one.",
+    ],
+    "id": "major_scale_steps:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this D major scale is wrong. Which degree is it?",
+    "srs_tags": [
+      "major_steps:D",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th and 8th",
+    },
+    "distractors": [
+      "6th and 7th",
+      "5th and 6th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "5th and 6th": "That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.",
+        "6th and 7th": "That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look for the two places on the keyboard with no black note between the white ones.",
+    ],
+    "id": "major_scale_steps:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is F major. Which two notes have a semitone between them?",
+    "srs_tags": [
+      "major_steps:F",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:G",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "T T S T T T S",
+    },
+    "distractors": [
+      "T S T T S T T",
+      "T T T S T T S",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "T S T T S T T": "That puts a semitone second. In a major scale the first semitone comes after two tones.",
+        "T T T S T T S": "That puts three tones first. The first semitone comes between the 3rd and 4th notes.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale is T T S T T T S — semitones between the 3rd and 4th, and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Two of the seven steps are semitones. Find where they sit, and the rest are tones.",
+    ],
+    "id": "major_scale_steps:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which pattern of tones (T) and semitones (S) builds a major scale?",
+    "srs_tags": [
+      "major_steps:C",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7th and 8th",
+    },
+    "distractors": [
+      "6th and 7th",
+      "5th and 6th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "5th and 6th": "That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.",
+        "6th and 7th": "That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look for the two places on the keyboard with no black note between the white ones.",
+    ],
+    "id": "major_scale_steps:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is C major. Which two notes have a semitone between them?",
+    "srs_tags": [
+      "major_steps:C",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "major_scale_steps",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte music_in_context @ music-in-context instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

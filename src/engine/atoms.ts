@@ -109,6 +109,11 @@ export function dupletAtom(sig: string): string {
   return `duplet:${sig}`;
 }
 
+/** Grade-1 major-scale construction (chromaticly-e3z.15), one atom per key. */
+export function majorStepsAtom(tonic: string): string {
+  return `major_steps:${tonic}`;
+}
+
 /** Grade-2 triplets (chromaticly-e3z.9). A group containing a rest is its own
  *  atom: the notes stop being countable, which is the whole difficulty. */
 export function tripletAtom(sig: string, withRest = false): string {

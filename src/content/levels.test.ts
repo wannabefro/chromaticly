@@ -165,15 +165,10 @@ describe('levels — isStartableGrade is a static content concept, decoupled fro
 describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 zero-movement invariant)', () => {
   const level1 = LEVELS[0];
 
-  // Grade 1 has grown twice by grade-LOCAL additions, which is not what this
-  // invariant guards: 8 -> 9 when rests-1 was inserted (chromaticly-gni), and
-  // 11 -> 13 when degrees-1 and tonic-triads-1 were (chromaticly-e3z.3, a
-  // syllabus requirement the course had never covered). Neither is later-grade
-  // leakage, and the zero-movement intent still holds via the
-  // LESSONS_BY_GRADE[1] / *3 checks below.
-  test('Level 1 unit count and exam-gate threshold match the grade-1 doc values (13 units / 39 stars)', () => {
-    expect(level1.unitIds).toHaveLength(13);
-    expect(level1.examGate.unlockAtStars).toBe(39);
+  // Grade-LOCAL growth is expected here. The invariant guards leakage.
+  test('Level 1 unit count and exam-gate threshold match the grade-1 doc values (14 units / 42 stars)', () => {
+    expect(level1.unitIds).toHaveLength(14);
+    expect(level1.examGate.unlockAtStars).toBe(42);
     // Same numbers whether read from Level 1 or straight off the grade-1 doc.
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
     expect(level1.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[1].length * 3);
@@ -188,7 +183,7 @@ describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 ze
   });
 
   test('the Profile fact denominator source is lessonsForGrade(1), not the merged list', () => {
-    expect(lessonsForGrade(1)).toHaveLength(13);
+    expect(lessonsForGrade(1)).toHaveLength(14);
   });
 });
 
@@ -203,8 +198,8 @@ describe('registering grade-3 content moves ZERO grade-1/2-visible numbers (D9/U
   const level2 = LEVELS[1];
 
   test('Level 1 shape (unit count, star gate, id list) is unchanged by grade-3 registration', () => {
-    expect(level1.unitIds).toHaveLength(13);
-    expect(level1.examGate.unlockAtStars).toBe(39);
+    expect(level1.unitIds).toHaveLength(14);
+    expect(level1.examGate.unlockAtStars).toBe(42);
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 

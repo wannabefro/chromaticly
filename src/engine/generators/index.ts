@@ -9,6 +9,7 @@ import { clefEquivalence } from './clef-equivalence';
 import { cadenceRecognition } from './cadence-recognition';
 import { dupletRecognition } from './duplet-recognition';
 import { tripletRecognition } from './triplet-recognition';
+import { majorScaleSteps } from './major-scale-steps';
 import { enharmonicRecognition } from './enharmonic-recognition';
 import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
@@ -51,6 +52,7 @@ export const GENERATORS: Record<string, Generator> = {
   scale_degree_id: scaleDegreeId,
   duplet_recognition: dupletRecognition,
   triplet_recognition: tripletRecognition,
+  major_scale_steps: majorScaleSteps,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
   octave_transposition: octaveTransposition,
