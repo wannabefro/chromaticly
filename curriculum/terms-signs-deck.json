@@ -315,138 +315,6 @@
       }
     ]
   },
-  "grade_5_seed": {
-    "verified": false,
-    "note": "Grade 5 introduces GERMAN terms plus piano-specific terms/signs",
-    "entries": [
-      {
-        "term": "langsam",
-        "lang": "de",
-        "meaning": "slow"
-      },
-      {
-        "term": "lebhaft",
-        "lang": "de",
-        "meaning": "lively"
-      },
-      {
-        "term": "mässig",
-        "lang": "de",
-        "meaning": "at a moderate speed"
-      },
-      {
-        "term": "mit Ausdruck",
-        "lang": "de",
-        "meaning": "with expression"
-      },
-      {
-        "term": "ruhig",
-        "lang": "de",
-        "meaning": "peaceful"
-      },
-      {
-        "term": "schnell",
-        "lang": "de",
-        "meaning": "fast"
-      },
-      {
-        "term": "traurig",
-        "lang": "de",
-        "meaning": "sad"
-      },
-      {
-        "term": "wenig",
-        "lang": "de",
-        "meaning": "little"
-      },
-      {
-        "term": "zart",
-        "lang": "de",
-        "meaning": "tender, delicate"
-      },
-      {
-        "term": "aber",
-        "lang": "de",
-        "meaning": "but"
-      },
-      {
-        "term": "bewegt",
-        "lang": "de",
-        "meaning": "with movement, agitated"
-      },
-      {
-        "term": "breit",
-        "lang": "de",
-        "meaning": "broad, expansive"
-      },
-      {
-        "term": "ein wenig",
-        "lang": "de",
-        "meaning": "a little"
-      },
-      {
-        "term": "etwas",
-        "lang": "de",
-        "meaning": "somewhat, rather"
-      },
-      {
-        "term": "immer",
-        "lang": "de",
-        "meaning": "always"
-      },
-      {
-        "term": "mit",
-        "lang": "de",
-        "meaning": "with"
-      },
-      {
-        "term": "nicht",
-        "lang": "de",
-        "meaning": "not"
-      },
-      {
-        "term": "ohne",
-        "lang": "de",
-        "meaning": "without"
-      },
-      {
-        "term": "sehr",
-        "lang": "de",
-        "meaning": "very"
-      },
-      {
-        "term": "voll",
-        "lang": "de",
-        "meaning": "full"
-      },
-      {
-        "term": "una corda",
-        "meaning": "one string: use the left (soft) pedal"
-      },
-      {
-        "term": "tre corde",
-        "meaning": "three strings: release the left pedal"
-      },
-      {
-        "term": "mano destra",
-        "abbr": "M.D.",
-        "meaning": "right hand"
-      },
-      {
-        "term": "mano sinistra",
-        "abbr": "M.S.",
-        "meaning": "left hand"
-      },
-      {
-        "sign": "ped",
-        "meaning": "depress the sustaining pedal"
-      },
-      {
-        "sign": "ped_release",
-        "meaning": "release the sustaining pedal"
-      }
-    ]
-  },
   "grade_2": {
     "verified": true,
     "tempo": [
@@ -691,6 +559,143 @@
       {
         "term": "volta (prima/seconda volta)",
         "meaning": "time (first/second time)"
+      }
+    ]
+  },
+  "grade_5": {
+    "verified": true,
+    "note": "Grade 5 introduces GERMAN terms plus piano-specific terms and signs",
+    "dynamics": [],
+    "tempo": [
+      {
+        "term": "langsam",
+        "lang": "de",
+        "meaning": "slow"
+      },
+      {
+        "term": "lebhaft",
+        "lang": "de",
+        "meaning": "lively"
+      },
+      {
+        "term": "mässig",
+        "lang": "de",
+        "meaning": "at a moderate speed"
+      },
+      {
+        "term": "schnell",
+        "lang": "de",
+        "meaning": "fast"
+      },
+      {
+        "term": "bewegt",
+        "lang": "de",
+        "meaning": "with movement, agitated"
+      },
+      {
+        "term": "breit",
+        "lang": "de",
+        "meaning": "broad, expansive"
+      }
+    ],
+    "other_terms": [
+      {
+        "term": "mit Ausdruck",
+        "lang": "de",
+        "meaning": "with expression"
+      },
+      {
+        "term": "ruhig",
+        "lang": "de",
+        "meaning": "peaceful"
+      },
+      {
+        "term": "traurig",
+        "lang": "de",
+        "meaning": "sad"
+      },
+      {
+        "term": "zart",
+        "lang": "de",
+        "meaning": "tender, delicate"
+      },
+      {
+        "term": "voll",
+        "lang": "de",
+        "meaning": "full"
+      },
+      {
+        "term": "wenig",
+        "lang": "de",
+        "meaning": "little"
+      },
+      {
+        "term": "ein wenig",
+        "lang": "de",
+        "meaning": "a little"
+      },
+      {
+        "term": "aber",
+        "lang": "de",
+        "meaning": "but"
+      },
+      {
+        "term": "etwas",
+        "lang": "de",
+        "meaning": "somewhat, rather"
+      },
+      {
+        "term": "immer",
+        "lang": "de",
+        "meaning": "always"
+      },
+      {
+        "term": "mit",
+        "lang": "de",
+        "meaning": "with"
+      },
+      {
+        "term": "nicht",
+        "lang": "de",
+        "meaning": "not"
+      },
+      {
+        "term": "ohne",
+        "lang": "de",
+        "meaning": "without"
+      },
+      {
+        "term": "sehr",
+        "lang": "de",
+        "meaning": "very"
+      }
+    ],
+    "signs": [
+      {
+        "term": "una corda",
+        "meaning": "one string: use the left (soft) pedal"
+      },
+      {
+        "term": "tre corde",
+        "meaning": "three strings: release the left pedal"
+      },
+      {
+        "term": "mano destra",
+        "abbr": "M.D.",
+        "meaning": "right hand"
+      },
+      {
+        "term": "mano sinistra",
+        "abbr": "M.S.",
+        "meaning": "left hand"
+      },
+      {
+        "sign": "ped",
+        "meaning": "depress the sustaining pedal"
+      },
+      {
+        "sign": "ped_release",
+        "meaning": "release the sustaining pedal"
       }
     ]
   }

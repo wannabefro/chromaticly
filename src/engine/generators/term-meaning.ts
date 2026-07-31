@@ -2,7 +2,14 @@
 // distractor shares the answer's category — a rule the validator re-checks.
 
 import { KB_VERSION } from '../../content/knowledge-base';
-import { termsDeckForGrade, TERMS_DECK_G1, TERMS_DECK_G2, TERMS_DECK_G3, type TermsDeckEntry } from '../../content/terms-deck';
+import {
+  termsDeckForGrade,
+  TERMS_DECK_G1,
+  TERMS_DECK_G2,
+  TERMS_DECK_G3,
+  TERMS_DECK_G5,
+  type TermsDeckEntry,
+} from '../../content/terms-deck';
 import type { Music } from '../../music/types';
 import { termAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
@@ -26,7 +33,7 @@ function slugify(text: string): string {
 /** Every term-atom slug the generator can emit — the authoritative vocabulary
  *  for cross-checking `term:<slug>` references (e.g. lesson data). */
 export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(
-  [...TERMS_DECK_G1, ...TERMS_DECK_G2, ...TERMS_DECK_G3].map((e) => slugify(label(e))),
+  [...TERMS_DECK_G1, ...TERMS_DECK_G2, ...TERMS_DECK_G3, ...TERMS_DECK_G5].map((e) => slugify(label(e))),
 );
 
 export function termAtomSlugsForGrade(grade: number): ReadonlySet<string> {
@@ -73,9 +80,12 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
 
   const termLabel = label(entry);
   const stimulusText = direction === 'term_to_meaning' ? termLabel : entry.meaning;
+  // Grade 5 mixes German with Italian, and telling them apart is the skill.
+  const LANGS: Record<string, string> = { de: 'German', fr: 'French' };
+  const langName = entry.lang ? LANGS[entry.lang] : undefined;
   const prompt =
     direction === 'term_to_meaning'
-      ? `What does "${termLabel}" mean?`
+      ? `What does ${langName ? `the ${langName} term ` : ''}"${termLabel}" mean?`
       : `Which term or sign means "${entry.meaning}"?`;
 
   const canonicalValue = direction === 'term_to_meaning' ? entry.meaning : termLabel;

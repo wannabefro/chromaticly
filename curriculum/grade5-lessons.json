@@ -233,6 +233,137 @@
         "smartTip": "Ends on V? Imperfect. Ends on I? Then look at the chord before: V makes it perfect, IV makes it plagal.",
         "didYouKnow": "The plagal cadence is called the 'Amen cadence' because it is what generations of hymn books put under that word. Its softer arrival is why it feels like a benediction rather than a conclusion."
       },
+      "unlocks": "german-tempo-5"
+    },
+    {
+      "id": "german-tempo-5",
+      "title": "German words for speed",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:langsam",
+        "term:schnell",
+        "term:m_ssig",
+        "term:lebhaft",
+        "term:bewegt",
+        "term:breit"
+      ],
+      "templates": [
+        "term_meaning",
+        "term_meaning_flashcard"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 5,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the German words for tempo that Grade 5 adds",
+          "German terms do the same job as the Italian ones you already know",
+          "Breit and bewegt describe the motion, not only the speed"
+        ],
+        "concept": {
+          "title": "The other language on the page",
+          "body": "Grade 5 is where a second language arrives. Italian became the international language of musical instruction, but German composers often wrote in German, so a score by Schumann, Brahms or Mahler gives its directions in German. The tempo words map onto the Italian you already know: LANGSAM is slow, like adagio; SCHNELL is fast, like allegro; MÄSSIG is at a moderate speed, like moderato. LEBHAFT means lively. Two of them describe how the music moves rather than how fast it goes: BEWEGT is with movement, and BREIT is broad and expansive, which usually means slower and heavier. You are not expected to speak German. You are expected to recognise about twenty words when they appear.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 5,
+            "seed": 9
+          }
+        },
+        "smartTip": "German nouns take a capital letter, so a capitalised word in a tempo marking is usually German, not emphasis.",
+        "didYouKnow": "Beethoven marked his late piano sonatas in both languages at once, giving the Italian and then the German. He was arguing, in print, that a composer should be understood at home."
+      },
+      "unlocks": "german-expression-5"
+    },
+    {
+      "id": "german-expression-5",
+      "title": "German words for mood and degree",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:mit_ausdruck",
+        "term:ruhig",
+        "term:traurig",
+        "term:zart",
+        "term:voll",
+        "term:sehr",
+        "term:wenig",
+        "term:ein_wenig",
+        "term:etwas",
+        "term:immer",
+        "term:aber",
+        "term:mit",
+        "term:ohne",
+        "term:nicht"
+      ],
+      "templates": [
+        "term_meaning",
+        "term_meaning_flashcard"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 5,
+        "seed": 5
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the German words for mood the syllabus names",
+          "The small words — sehr, wenig, nicht, ohne — modify the word beside them",
+          "A German marking is often built from two or three of these together"
+        ],
+        "concept": {
+          "title": "Small words, built up",
+          "body": "Half of the German vocabulary is moods: MIT AUSDRUCK with expression, RUHIG peaceful, TRAURIG sad, ZART tender, VOLL full. The other half is the words that join them up, and they matter more than they look. SEHR is very, WENIG is little, EIN WENIG is a little, ETWAS is somewhat, IMMER is always, ABER is but, MIT is with, OHNE is without and NICHT is not. German builds its instructions by stacking these, so a marking is read as a phrase rather than as one word: nicht zu schnell is not too fast, sehr langsam is very slow, and immer leiser und leiser is always quieter and quieter. Learn the small words and the long markings decode themselves.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 5,
+            "seed": 11
+          }
+        },
+        "smartTip": "Read a German marking from the small words out. Nicht and ohne reverse the word they attach to.",
+        "didYouKnow": "Mahler wrote some of the longest performance directions ever printed, including one asking for a passage to sound 'like a sound of nature'. Every word of it is built from this vocabulary."
+      },
+      "unlocks": "piano-directions-5"
+    },
+    {
+      "id": "piano-directions-5",
+      "title": "Directions at the keyboard",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:una_corda",
+        "term:tre_corde",
+        "term:mano_destra",
+        "term:mano_sinistra",
+        "term:ped",
+        "term:ped_release"
+      ],
+      "templates": [
+        "term_meaning",
+        "term_meaning_flashcard"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 5,
+        "seed": 7
+      },
+      "teach": {
+        "objectives": [
+          "Read the two pedal instructions and know which pedal each names",
+          "Una corda and tre corde are the soft pedal down and released",
+          "M.D. and M.S. tell you which hand plays a note"
+        ],
+        "concept": {
+          "title": "Which pedal, and which hand",
+          "body": "These are the instructions a piano score gives that no other instrument needs. Two of them are pedalling. PED marks where the sustaining pedal — the right one — goes down, and its release sign marks where it comes up. UNA CORDA means one string and asks for the left pedal, which shifts the action so the hammers strike fewer strings and the tone softens; TRE CORDE, three strings, releases it again. The other two sort out the hands. MANO DESTRA (M.D.) is the right hand and MANO SINISTRA (M.S.) is the left, and they appear when a note is written on a staff that the other hand would normally play.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 5,
+            "seed": 13
+          }
+        },
+        "smartTip": "Una corda and tre corde are the LEFT pedal. Ped and its release are the right one.",
+        "didYouKnow": "Una corda is literally true on a grand piano: the action shifts sideways so each hammer hits two of the three strings, or one on older instruments. On an upright the pedal moves the hammers closer instead, which is why the effect is weaker."
+      },
       "unlocks": "transposing-instruments-5"
     },
     {
