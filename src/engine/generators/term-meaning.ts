@@ -1,14 +1,8 @@
-// Grade 1 term_meaning generator (curriculum/exercise-templates.json,
-// template_id "term_meaning"). Samples one verified Grade 1 deck entry
-// (src/content/terms-deck.ts) and generates either direction — term->meaning
-// or meaning->term. Distractors are drawn from the SAME category as the
-// answer (the template's diagnostic rule: a tempo term's distractors are
-// tempo terms) and carry their own `category` so the validator's
-// term_meaning hook can enforce the rule, not just this generator's own
-// construction.
+// term_meaning generator, Grades 1 to 3. It asks either direction, and every
+// distractor shares the answer's category — a rule the validator re-checks.
 
 import { KB_VERSION } from '../../content/knowledge-base';
-import { TERMS_DECK_G1, type TermsDeckEntry } from '../../content/terms-deck';
+import { termsDeckForGrade, TERMS_DECK_G1, TERMS_DECK_G2, TERMS_DECK_G3, type TermsDeckEntry } from '../../content/terms-deck';
 import type { Music } from '../../music/types';
 import { termAtom } from '../atoms';
 import { int, mulberry32, pick } from '../rng';
@@ -31,7 +25,13 @@ function slugify(text: string): string {
 
 /** Every term-atom slug the generator can emit — the authoritative vocabulary
  *  for cross-checking `term:<slug>` references (e.g. lesson data). */
-export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(TERMS_DECK_G1.map((e) => slugify(label(e))));
+export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(
+  [...TERMS_DECK_G1, ...TERMS_DECK_G2, ...TERMS_DECK_G3].map((e) => slugify(label(e))),
+);
+
+export function termAtomSlugsForGrade(grade: number): ReadonlySet<string> {
+  return new Set(termsDeckForGrade(grade).map((e) => slugify(label(e))));
+}
 
 /** The lesson's slice of the deck. Grade 1 used to teach the whole 31-entry deck
  *  in one lesson, so sampling the deck and sampling the lesson were the same
@@ -43,11 +43,12 @@ export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(TERMS_DECK_G1.map((e
  *  An empty intersection falls back to the whole deck rather than throwing:
  *  callers outside the lesson loop (SRS review, the exam paper) pass atom lists
  *  that are not term atoms at all, and the deck-wide draw is right for them. */
-function deckFor(atoms: string[]): TermsDeckEntry[] {
+function deckFor(atoms: string[], grade: number): TermsDeckEntry[] {
+  const full = termsDeckForGrade(grade);
   const wanted = new Set(atoms.filter((atom) => atom.startsWith('term:')).map((atom) => atom.slice(5)));
-  if (wanted.size === 0) return TERMS_DECK_G1;
-  const scoped = TERMS_DECK_G1.filter((entry) => wanted.has(slugify(label(entry))));
-  return scoped.length > 0 ? scoped : TERMS_DECK_G1;
+  if (wanted.size === 0) return full;
+  const scoped = full.filter((entry) => wanted.has(slugify(label(entry))));
+  return scoped.length > 0 ? scoped : full;
 }
 
 function sampleDistinct<T>(rng: () => number, items: T[], n: number): T[] {
@@ -66,10 +67,8 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
   const entry = pick(rng, deck);
   const direction = pick<Direction>(rng, ['term_to_meaning', 'meaning_to_term']);
 
-  // Distractors come from the WHOLE deck, not the lesson's slice: the template's
-  // diagnostic rule needs three same-category wrong answers, and a nine-atom
-  // lesson cannot always supply them from within itself.
-  const pool = TERMS_DECK_G1.filter((e) => e.category === entry.category && e !== entry);
+  // The grade's whole deck: one lesson rarely holds three same-category wrongs.
+  const pool = termsDeckForGrade(grade).filter((e) => e.category === entry.category && e !== entry);
   const distractorEntries = sampleDistinct(rng, pool, 3);
 
   const termLabel = label(entry);
@@ -109,7 +108,7 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
 }
 
 export const termMeaning: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, deckFor(opts.atoms)));
+  generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, deckFor(opts.atoms, opts.grade)));
 
 // --- Flashcard variant (U7/AD2): term recall as a self-graded flashcard —
 // front = term, revealed = meaning + an optional notated exemplar, no
@@ -162,5 +161,5 @@ function buildFlashcard(contentSeed: number, grade: number, idSeed: number, deck
 
 export const termMeaningFlashcard: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) =>
-    buildFlashcard(candidateSeed, opts.grade, opts.seed, deckFor(opts.atoms)),
+    buildFlashcard(candidateSeed, opts.grade, opts.seed, deckFor(opts.atoms, opts.grade)),
   );

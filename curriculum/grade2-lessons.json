@@ -187,6 +187,138 @@
         "smartTip": "Keynote, skip, skip. The key signature supplies the accidentals; you supply the letters.",
         "didYouKnow": "Because the pattern is always 1-3-5, a player can find the tonic triad of an unfamiliar key without knowing a single one of its notes by name."
       },
+      "unlocks": "tempo-2"
+    },
+    {
+      "id": "tempo-2",
+      "title": "More words for speed",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:adagietto",
+        "term:andantino",
+        "term:largo",
+        "term:larghetto",
+        "term:lento",
+        "term:presto",
+        "term:vivace_vivo",
+        "term:grave",
+        "term:con_moto",
+        "term:meno_mosso",
+        "term:pi_mosso",
+        "term:ritenuto"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 2,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 2 tempo words and the words that modify a speed",
+          "The endings -etto and -ino make a word less extreme, not more",
+          "Ritenuto is an immediate change; rallentando is gradual"
+        ],
+        "concept": {
+          "title": "Filling in the speeds",
+          "body": "Grade 1 gave you a ladder from adagio to allegro. Grade 2 fills in the rungs between and beyond. LARGO and LENTO are slow, GRAVE slower and heavier still; PRESTO is fast and VIVACE is lively. Two endings do a lot of work: -ETTO makes a word gentler, so LARGHETTO is less slow than largo, and ADAGIETTO less slow than adagio. -INO does something similar to andantino. Then there are the words that change a speed rather than set one: MENO MOSSO is less movement, PIÙ MOSSO is more, CON MOTO is with movement, and RITENUTO holds back at once rather than gradually.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 2,
+            "seed": 1
+          }
+        },
+        "smartTip": "-etto and -ino soften a word. Larghetto is less slow than largo, not more.",
+        "didYouKnow": "Ritenuto and rallentando are often confused even by players. Rallentando slows gradually; ritenuto drops the speed immediately, like a handbrake rather than a gentle brake."
+      },
+      "unlocks": "expression-2"
+    },
+    {
+      "id": "expression-2",
+      "title": "Words that colour a passage",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:grazioso",
+        "term:giocoso",
+        "term:espressivo",
+        "term:poco_a_poco",
+        "term:molto",
+        "term:non_troppo",
+        "term:sempre",
+        "term:senza"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 2,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 2 words for character and degree",
+          "Poco, molto, non troppo and sempre never stand alone",
+          "Senza means without; simile means carry on the same way"
+        ],
+        "concept": {
+          "title": "How much, and in what mood",
+          "body": "Two kinds of word here, and they work together. The first names a mood for a whole passage: ESPRESSIVO expressive, GRAZIOSO graceful, GIOCOSO playful. The second says HOW MUCH of something else — POCO a little, POCO A POCO little by little, MOLTO very, NON TROPPO not too much, SEMPRE always. Those four never appear alone; they attach to another word and adjust it, so allegro non troppo is fast but not too fast, and cresc. poco a poco is a swell that arrives gradually. SENZA means without, and it works the same way: senza rit. is an instruction not to slow down.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 2,
+            "seed": 1
+          }
+        },
+        "smartTip": "Poco, molto, non troppo and sempre always modify the word next to them. Read the pair, not the word.",
+        "didYouKnow": "Non troppo exists because players kept overdoing it. Allegro non troppo is a composer saying 'yes, fast — but I have heard what you do with allegro, and not that fast.'"
+      },
+      "unlocks": "signs-2"
+    },
+    {
+      "id": "signs-2",
+      "title": "Marks and signs on the page",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:dal_segno",
+        "term:al_fine",
+        "term:simile",
+        "term:tenuto",
+        "term:8va",
+        "term:fortepiano",
+        "term:sforzando_sforzato"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 2,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 2 articulation marks and navigation signs",
+          "Tenuto, fortepiano and sforzando each shape a single note",
+          "Dal segno, al fine and 8va tell you where to go, not how to play"
+        ],
+        "concept": {
+          "title": "Shaping a note, and finding your way",
+          "body": "These do two jobs. Three of them shape a single note: TENUTO holds it for its full value, FORTEPIANO (fp) attacks it loudly then drops instantly to quiet, and SFORZANDO (sf) forces it out. The rest are navigation. DAL SEGNO (D.S.) sends you back to the sign, AL FINE says play on to the word 'fine', and 8VA moves a passage an octave from where it is written. SIMILE says carry on in the same way, so a pattern already established does not have to be re-marked on every note.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 2,
+            "seed": 1
+          }
+        },
+        "smartTip": "fp is one instruction, not two: loud then immediately quiet, on the same note.",
+        "didYouKnow": "Writing 8va above a passage saves a copyist from drawing five ledger lines on every note. It survived into print because it is genuinely easier to read."
+      },
       "unlocks": null
     }
   ]

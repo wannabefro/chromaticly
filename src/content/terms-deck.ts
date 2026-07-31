@@ -1,7 +1,5 @@
-// Typed, load-time-validated flat view of curriculum/terms-signs-deck.json's
-// grade_1 (verified) category arrays only. grade_2_seed..grade_5_seed carry
-// verified:false and a different shape (flat `entries`, not categorized) —
-// they are intentionally never read or validated against the grade_1 schema.
+// Typed, load-time-validated flat view of the verified decks in
+// curriculum/terms-signs-deck.json. The grade 4 and 5 seeds are not verified.
 
 import { z } from 'zod';
 import raw from '../../curriculum/terms-signs-deck.json';
@@ -24,7 +22,11 @@ const Grade1DeckSchema = z.object({
   signs: z.array(TermsEntrySchema),
 });
 
-const parsedGrade1 = Grade1DeckSchema.parse((raw as { grade_1: unknown }).grade_1);
+const DeckSchema = Grade1DeckSchema;
+
+const parsedGrade1 = DeckSchema.parse((raw as { grade_1: unknown }).grade_1);
+const parsedGrade2 = DeckSchema.parse((raw as { grade_2: unknown }).grade_2);
+const parsedGrade3 = DeckSchema.parse((raw as { grade_3: unknown }).grade_3);
 
 export interface TermsDeckEntry {
   term?: string;
@@ -34,6 +36,17 @@ export interface TermsDeckEntry {
   category: Category;
 }
 
-export const TERMS_DECK_G1: TermsDeckEntry[] = CATEGORIES.flatMap((category) =>
-  parsedGrade1[category].map((entry) => ({ ...entry, category }))
-);
+function flatten(parsed: z.infer<typeof Grade1DeckSchema>): TermsDeckEntry[] {
+  return CATEGORIES.flatMap((category) => parsed[category].map((entry) => ({ ...entry, category })));
+}
+
+export const TERMS_DECK_G1: TermsDeckEntry[] = flatten(parsedGrade1);
+export const TERMS_DECK_G2: TermsDeckEntry[] = flatten(parsedGrade2);
+export const TERMS_DECK_G3: TermsDeckEntry[] = flatten(parsedGrade3);
+
+/** Cumulative — the syllabus says "as in preceding grades". */
+export function termsDeckForGrade(grade: number): TermsDeckEntry[] {
+  if (grade <= 1) return TERMS_DECK_G1;
+  if (grade === 2) return [...TERMS_DECK_G1, ...TERMS_DECK_G2];
+  return [...TERMS_DECK_G1, ...TERMS_DECK_G2, ...TERMS_DECK_G3];
+}

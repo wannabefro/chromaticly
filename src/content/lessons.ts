@@ -22,7 +22,7 @@ import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
-import { TERM_ATOM_SLUGS } from '../engine/generators/term-meaning';
+import { TERM_ATOM_SLUGS, termAtomSlugsForGrade } from '../engine/generators/term-meaning';
 import { isCompoundTimeSignature } from '../engine/metre';
 import { diatonicPitchesInRange, metreRenderableTimeSignatures, renderableTimeSignatures, scopeForGrade } from '../engine/scope';
 import type { Clef, Duration } from '../music/types';
@@ -360,6 +360,10 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'term': {
       const [slug] = parts;
       if (!TERM_ATOM_SLUGS.has(slug)) throw new Error(`lessons: atom "${atom}" references an unknown term`);
+      // The deck is cumulative, so a Grade 1 lesson must not declare a Grade 3 term.
+      if (!termAtomSlugsForGrade(grade).has(slug)) {
+        throw new Error(`lessons: atom "${atom}" is not in the G${grade} terms deck`);
+      }
       return;
     }
     case 'context': {
