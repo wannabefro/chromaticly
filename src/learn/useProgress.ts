@@ -13,7 +13,7 @@ import { lessonComplete, recordAttempt, recordFlashcardGrade } from './mastery';
 import { reviewSrs, reviewSrsGraded, type SrsGrade } from './srs';
 import { seedExamReady, seedProgressToUnit } from './seed';
 import { defaultClock, type Clock } from './clock';
-import { loadProgress, ProgressStore, saveProgress, type Profile, type SnapshotStorage } from './store';
+import { loadProgress, ProgressStore, saveProgress, type Profile, type SeededDepth, type SnapshotStorage } from './store';
 
 /** Fold one graded attempt on `atom` into the store's mastery + SRS state at
  *  logical time `now`. Lesson-agnostic — Practice records atoms with no lesson. */
@@ -114,6 +114,30 @@ export interface UseProgress {
   /** Persist the onboarding profile (selected grade + completion timestamp). Birth
    *  year is no longer captured here — it's deferred to account creation (U1/KTD1). */
   completeOnboarding: (grade: number, onboardedAt: string) => Promise<void>;
+  /** Stamp one strand's measured depth the moment its walk resolves (KTD6).
+   *
+   *  This is the ONLY place the clock and the write counter meet. `placement.ts`
+   *  returns a bare number because it is pure and can reach neither; this turns
+   *  that number into a `SeededDepth` by adding `day` (measurement time, so the
+   *  seed starts ageing against SEED_INTERVAL_DAYS from when it was earned, not
+   *  from when it was saved) and `seq` (reserved NOW, so a warm-up attempt made
+   *  between here and the commit correctly out-ranks it — KTD7).
+   *
+   *  Reserving writes nothing. The returned seed is staged in React state until a
+   *  commit below persists it verbatim. */
+  stampDepth: (depth: number) => SeededDepth;
+  /** Persist a whole placement outcome plus the onboarding profile in ONE save.
+   *
+   *  Takes seeds already stamped by `stampDepth` and writes them unchanged: it
+   *  allocates nothing and recomputes nothing. If it can transform a value, the
+   *  stamping happened in the wrong place. `onboardedAt` is passed in rather than
+   *  invented here, so there is only ever one clock in the store. */
+  commitOnboarding: (staged: Record<string, SeededDepth>, onboardedAt: string) => Promise<void>;
+  /** Persist ONE already-stamped seed from a post-onboarding re-test (R7a), and
+   *  save once. It cannot reuse `commitOnboarding`, which also writes a profile
+   *  and assumes a full vector. By KTD7 the fresh `seq` takes authority back from
+   *  any attempt that preceded it — which is the whole point of a re-test. */
+  commitRetest: (strand: string, staged: SeededDepth) => Promise<void>;
   /** Switch the working grade (free grade access, fyu.3). Replaces the profile
    *  with a fresh object that keeps every other field (name, onboardedAt,
    *  birthYear) and only changes `grade`; persists and mirrors to real state so
@@ -235,6 +259,50 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
     [store, storage],
   );
 
+  // KTD6's three roles, kept apart on purpose. placement.ts MEASURES (pure, no
+  // clock, no counter). This STAMPS. The two commits below only PERSIST.
+  const stampDepth = useCallback<UseProgress['stampDepth']>(
+    (depth) => {
+      // No store yet means no counter to reserve from. seq 0 loses to every real
+      // write, which is the safe direction: a seed that cannot be ordered must not
+      // out-rank evidence. In practice `ready` gates the screens that call this.
+      if (!store) return { depth, day: clock.now(), seq: 0 };
+      return { depth, day: clock.now(), seq: store.reserveSeq() };
+    },
+    [store, clock],
+  );
+
+  const commitOnboarding = useCallback<UseProgress['commitOnboarding']>(
+    async (staged, onboardedAt) => {
+      if (!store) return;
+      for (const [strand, seed] of Object.entries(staged)) store.setSeededDepth(strand, seed);
+      // The profile grade is clamped, never derived from the vector: R1 says there
+      // is no single current grade, and this field survives only because
+      // onboarding still seeds it (U12 removes it). An all-zero placement must
+      // still write 1, never 0.
+      const highest = Object.values(staged).reduce((max, seed) => (seed.depth > max ? seed.depth : max), 0);
+      const next: Profile = { grade: Math.min(5, Math.max(1, highest)), onboardedAt };
+      store.setProfile(next);
+      // ONE save for the whole vector plus the profile. Saving per strand would
+      // leave a half-placed store recoverable from a crash, which is worse than
+      // none: some lanes seeded, others not, and no way to tell which.
+      await saveProgress(store, storage);
+      setProfileState(next); // real state → RootRouter reactively sees isOnboarded flip
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
+  const commitRetest = useCallback<UseProgress['commitRetest']>(
+    async (strand, staged) => {
+      if (!store) return;
+      store.setSeededDepth(strand, staged);
+      await saveProgress(store, storage);
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
   const createAccount = useCallback<UseProgress['createAccount']>(
     async (name) => {
       if (!store) return;
@@ -327,6 +395,9 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       createAccount,
       markNudgeSeen,
       completeOnboarding,
+      stampDepth,
+      commitOnboarding,
+      commitRetest,
       setGrade,
       seedTo,
       recordExamResult,
@@ -352,6 +423,9 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       createAccount,
       markNudgeSeen,
       completeOnboarding,
+      stampDepth,
+      commitOnboarding,
+      commitRetest,
       setGrade,
       seedTo,
       recordExamResult,

@@ -255,3 +255,134 @@ describe('useProgress — a replayed lesson persists its plays bump (council F3)
     expect(reloaded.getLesson('a').plays).toBe(2);
   });
 });
+
+// G6 U11's commit layer. KTD6 splits one job into three roles — placement.ts
+// MEASURES (pure), stampDepth STAMPS, the commits PERSIST — and every test here
+// exists because collapsing any two of them produces a plausible screen and a
+// wrong store.
+describe('useProgress — stamping and committing a placement (G6 U11)', () => {
+  function fakeClock(day: number) {
+    let d = day;
+    return { now: () => d, set: (next: number) => { d = next; } };
+  }
+
+  test('stamping reserves an increasing seq per strand and writes nothing', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    const first = result.current.stampDepth(3);
+    const second = result.current.stampDepth(1);
+
+    expect(second.seq).toBeGreaterThan(first.seq);
+    // A reservation is not a write. If it persisted, a placement abandoned halfway
+    // would leave seeds behind that the learner never confirmed.
+    expect(storage.blob).toBeNull();
+  });
+
+  test('committing writes every seed and the profile in ONE save', async () => {
+    const storage = memoryStorage();
+    let saves = 0;
+    const counting = { ...storage, async save(s: string) { saves += 1; storage.blob = s; } };
+    const { result } = renderHook(() => useProgress(counting, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    const staged = { pitch: result.current.stampDepth(3), rhythm: result.current.stampDepth(2) };
+    await result.current.commitOnboarding(staged, '2026-07-31T00:00:00.000Z');
+
+    // A per-strand save would leave a crash recoverable as "some lanes seeded,
+    // others not", with no way to tell which.
+    expect(saves).toBe(1);
+    const reloaded = new ProgressStore(JSON.parse(storage.blob as string));
+    expect(reloaded.seededDepthFor('pitch')?.depth).toBe(3);
+    expect(reloaded.seededDepthFor('rhythm')?.depth).toBe(2);
+    expect(reloaded.getProfile()?.onboardedAt).toBe('2026-07-31T00:00:00.000Z');
+  });
+
+  test('`day` is measurement time, not commit time', async () => {
+    const storage = memoryStorage();
+    const clock = fakeClock(10);
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2], clock));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    const staged = { pitch: result.current.stampDepth(4) };
+    clock.set(40); // thirty days pass between measuring and landing on the last screen
+    await result.current.commitOnboarding(staged, '2026-07-31T00:00:00.000Z');
+
+    // Stamping at commit time would hand the seed thirty free days of freshness
+    // against SEED_INTERVAL_DAYS — it would read as measured today when it wasn't.
+    expect((result.current.store as ProgressStore).seededDepthFor('pitch')?.day).toBe(10);
+  });
+
+  test('an all-zero placement still commits grade 1, never 0', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.commitOnboarding({ pitch: result.current.stampDepth(0) }, '2026-07-31T00:00:00.000Z');
+
+    // Read the store, not `result.current.profile`: the hook's mirrored state has
+    // not re-rendered here, so a React-state read is undefined and any toBe()
+    // against it would pass or fail for the wrong reason.
+    expect((result.current.store as ProgressStore).getProfile()?.grade).toBe(1);
+  });
+
+  test('skipping placement commits no seeds at all, and the lanes stay underived', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.commitOnboarding({}, '2026-07-31T00:00:00.000Z');
+
+    const store = result.current.store as ProgressStore;
+    expect(store.allSeededDepths()).toEqual({});
+    expect(store.getProfile()?.grade).toBe(1);
+  });
+
+  test('a re-test writes one seed and leaves the profile and other strands untouched', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    await result.current.commitOnboarding(
+      { pitch: result.current.stampDepth(3), rhythm: result.current.stampDepth(2) },
+      '2026-07-31T00:00:00.000Z',
+    );
+    const store = result.current.store as ProgressStore;
+    const profileBefore = JSON.stringify(store.getProfile());
+    expect(profileBefore).not.toBe('null'); // or the comparison below proves nothing
+
+    await result.current.commitRetest('pitch', result.current.stampDepth(5));
+
+    expect(store.seededDepthFor('pitch')?.depth).toBe(5);
+    expect(store.seededDepthFor('rhythm')?.depth).toBe(2);
+    expect(JSON.stringify(store.getProfile())).toBe(profileBefore);
+  });
+
+  // KTD7, and the reason seq is reserved at measurement rather than at commit.
+  test('an attempt made after the measurement out-ranks the seed, even committed later', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    const staged = { pitch: result.current.stampDepth(3) }; // measured first
+    await result.current.recordAtom('x', { correct: true, hintsUsed: 0 } as never, 5); // then practised
+    await result.current.commitOnboarding(staged, '2026-07-31T00:00:00.000Z'); // committed last
+
+    const store = result.current.store as ProgressStore;
+    // Allocating seq inside the commit passes every other test here and fails this
+    // one: the older measurement would out-rank the newer attempt.
+    expect(store.getAtom('x').srs.seq ?? 0).toBeGreaterThan(store.seededDepthFor('pitch')!.seq);
+  });
+
+  test('a re-test stamped after an attempt takes authority back from it', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.recordAtom('x', { correct: true, hintsUsed: 0 } as never, 5);
+    await result.current.commitRetest('pitch', result.current.stampDepth(4));
+
+    const store = result.current.store as ProgressStore;
+    expect(store.seededDepthFor('pitch')!.seq).toBeGreaterThan(store.getAtom('x').srs.seq ?? 0);
+  });
+});
