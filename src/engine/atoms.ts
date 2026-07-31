@@ -136,6 +136,19 @@ export function clefEquivAtom(): string {
   return 'clef_equiv:cross';
 }
 
+/** Scale degree by NUMBER (Grades 1-3, chromaticly-e3z.3), e.g.
+ *  degreeNumberAtom(5) -> "degree:5". Distinct from degree_name:<name>, which
+ *  is the Grade-4 technical name for the same position: answering "5th" and
+ *  answering "dominant" are different facts. */
+export function degreeNumberAtom(degree: number): string {
+  return `degree:${degree}`;
+}
+
+/** The tonic triad in root position (Grades 1-3). One bare atom: the skill is
+ *  "build the triad on the 1st degree", and the key it is built in is drawn by
+ *  the generator from the grade's own key set. */
+export const TONIC_TRIAD_ATOM = 'tonic_triad';
+
 /** Grade-4 technical degree name atom (fyu.4 degree-names slice), e.g.
  *  degreeNameAtom('dominant') -> "degree_name:dominant". */
 export function degreeNameAtom(name: string): string {

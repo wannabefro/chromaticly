@@ -111,6 +111,82 @@
         "smartTip": "The 7th is raised with an accidental, written note by note — it is never written in the key signature.",
         "didYouKnow": "The augmented-2nd gap between the 6th and 7th notes is what gives harmonic minor its distinctive, almost exotic sound."
       },
+      "unlocks": "degrees-2"
+    },
+    {
+      "id": "degrees-2",
+      "title": "Degrees in the new keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "degree:1",
+        "degree:2",
+        "degree:3",
+        "degree:4",
+        "degree:5",
+        "degree:6",
+        "degree:7"
+      ],
+      "templates": [
+        "scale_degree_id"
+      ],
+      "worked_example": {
+        "template_id": "scale_degree_id",
+        "grade": 2,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name any note of a major scale by its degree number",
+          "The keynote is the 1st degree, so the count starts at one, not zero",
+          "The rule is the same in A, B♭ and E♭"
+        ],
+        "concept": {
+          "title": "Counting from the keynote",
+          "body": "The rule you learned at Grade 1 does not change with the key. The keynote is the 1st degree and the numbers count up the letter names from it. What changes is which notes those numbers land on. In B♭ major the 1st degree is B♭, the 2nd is C, the 3rd is D. In A major the 1st is A and the 3rd is C♯. Read the key signature first, decide the keynote, then count. Minor keys number the same way from their own keynote.",
+          "example": {
+            "template_id": "scale_degree_id",
+            "grade": 2,
+            "seed": 1
+          }
+        },
+        "smartTip": "Read the key signature, find the keynote, then count letter names up from it.",
+        "didYouKnow": "This is why a singer can be told 'you are flat on the 3rd' without anyone naming a note. The degree number is the same instruction in every key."
+      },
+      "unlocks": "tonic-triads-2"
+    },
+    {
+      "id": "tonic-triads-2",
+      "title": "Tonic triads in the new keys",
+      "strand": "scales_keys",
+      "atoms": [
+        "tonic_triad"
+      ],
+      "templates": [
+        "scale_degree_id"
+      ],
+      "worked_example": {
+        "template_id": "scale_degree_id",
+        "grade": 2,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Build the tonic triad of a major key in root position",
+          "The tonic triad is the 1st, 3rd and 5th degrees stacked",
+          "Root position means the keynote is the lowest note"
+        ],
+        "concept": {
+          "title": "Three notes that fix the key",
+          "body": "The tonic triad is still the 1st, 3rd and 5th degrees stacked, whatever the key. In B♭ major that gives B♭, D and F; in E♭ major, E♭, G and B♭. The key signature supplies any flat or sharp, so you rarely need to write an accidental — build the triad from the letter names and let the signature do the rest. A minor key's tonic triad works the same way from its own keynote.",
+          "example": {
+            "template_id": "scale_degree_id",
+            "grade": 2,
+            "seed": 2
+          }
+        },
+        "smartTip": "Keynote, skip, skip. The key signature supplies the accidentals; you supply the letters.",
+        "didYouKnow": "Because the pattern is always 1-3-5, a player can find the tonic triad of an unfamiliar key without knowing a single one of its notes by name."
+      },
       "unlocks": null
     }
   ]

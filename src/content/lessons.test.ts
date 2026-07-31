@@ -286,8 +286,8 @@ describe('grade1 lessons — lessonById', () => {
 // lessons.ts); grade-2 content validates against grade-2 scope, the same
 // teeth grade-1 content already goes through above.
 describe('grade2 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[2] has the single linear key-signatures-2 -> minor-keys-2 -> minor-scales-2 chain', () => {
-    expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual(['key-signatures-2', 'minor-keys-2', 'minor-scales-2']);
+  test('LESSONS_BY_GRADE[2] has the single linear key-signatures-2 -> ... -> tonic-triads-2 chain', () => {
+    expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual(['key-signatures-2', 'minor-keys-2', 'minor-scales-2', 'degrees-2', 'tonic-triads-2']);
   });
 
   test('lessonById resolves the grade-2 lesson stamped grade 2', () => {
@@ -297,7 +297,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
   });
 
   test('the grade-2 units are in the merged LESSONS list, after grade-1', () => {
-    expect(LESSONS.map((l) => l.id)).toEqual(expect.arrayContaining(['key-signatures-2', 'minor-keys-2', 'minor-scales-2']));
+    expect(LESSONS.map((l) => l.id)).toEqual(expect.arrayContaining(['key-signatures-2', 'minor-keys-2', 'minor-scales-2', 'degrees-2', 'tonic-triads-2']));
   });
 });
 
@@ -315,6 +315,8 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'major-keys-3',
       'minor-keys-3',
+      'degrees-3',
+      'tonic-triads-3',
       'minor-scales-3',
       'melodic-minor-3',
       'compound-time-3',

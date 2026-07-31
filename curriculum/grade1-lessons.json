@@ -351,6 +351,47 @@
         "smartTip": "Andante is a walking pace — if you can walk to it, that is roughly the speed.",
         "didYouKnow": "Allegro literally means \"cheerful\" in Italian rather than \"fast\" — the speed came from the mood, not the other way round."
       },
+      "unlocks": "degrees-1"
+    },
+    {
+      "id": "degrees-1",
+      "title": "Degrees of the scale",
+      "strand": "scales_keys",
+      "atoms": [
+        "degree:1",
+        "degree:2",
+        "degree:3",
+        "degree:4",
+        "degree:5",
+        "degree:6",
+        "degree:7"
+      ],
+      "templates": [
+        "scale_degree_id"
+      ],
+      "worked_example": {
+        "template_id": "scale_degree_id",
+        "grade": 1,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name any note of a major scale by its degree number",
+          "The keynote is the 1st degree, so the count starts at one, not zero",
+          "The rule is the same in C, G, D and F"
+        ],
+        "concept": {
+          "title": "Counting from the keynote",
+          "body": "Every note of a scale has a number. The keynote is the 1ST DEGREE, the note above it the 2nd, and so on up to the 7th. Count letter names, and always start the count on the keynote itself — that is the mistake to avoid, because the keynote is 1, not 0. In C major, C is the 1st degree, D the 2nd, E the 3rd. Change key and the numbers stay put: in G major, G is now the 1st degree and A the 2nd. The number describes a note's POSITION in its scale, not its letter, which is why the same note is a different degree in a different key.",
+          "example": {
+            "template_id": "scale_degree_id",
+            "grade": 1,
+            "seed": 1
+          }
+        },
+        "smartTip": "The keynote is the 1st degree, not the 0th. Count letter names from it, including it.",
+        "didYouKnow": "Numbering degrees instead of naming notes is what lets a tune be described once and played in any key. A folk musician calling a phrase '1-3-5' has said something true in every key at once."
+      },
       "unlocks": "intervals"
     },
     {
@@ -392,6 +433,41 @@
         },
         "smartTip": "Count the lower note as ‘one’ — intervals include both ends, not just the gaps between.",
         "didYouKnow": "An octave spans eight notes because the eighth note repeats the first — the letter names come back around."
+      },
+      "unlocks": "tonic-triads-1"
+    },
+    {
+      "id": "tonic-triads-1",
+      "title": "The tonic triad",
+      "strand": "scales_keys",
+      "atoms": [
+        "tonic_triad"
+      ],
+      "templates": [
+        "scale_degree_id"
+      ],
+      "worked_example": {
+        "template_id": "scale_degree_id",
+        "grade": 1,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Build the tonic triad of a major key in root position",
+          "The tonic triad is the 1st, 3rd and 5th degrees stacked",
+          "Root position means the keynote is the lowest note"
+        ],
+        "concept": {
+          "title": "Three notes that fix the key",
+          "body": "A TRIAD is three notes stacked in 3rds. The TONIC TRIAD is the one built on the 1st degree, the keynote. Take the keynote, skip a letter, take the next, skip again, take the next: in C major that is C, E and G — the 1st, 3rd and 5th degrees. It is called root position when the keynote is at the bottom. Every major key has one, and it is the chord a piece in that key most often begins and ends on, which is why it sounds settled.",
+          "example": {
+            "template_id": "scale_degree_id",
+            "grade": 1,
+            "seed": 2
+          }
+        },
+        "smartTip": "Stack the 1st, 3rd and 5th degrees. Skip a letter each time, starting on the keynote.",
+        "didYouKnow": "The tonic triad is why a piece can 'sound like' its key within a bar. Three notes are enough to fix it, which is what a composer relies on when a piece opens with a chord rather than a tune."
       },
       "unlocks": "signs-1"
     },

@@ -313,6 +313,21 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'degree': {
+      const n = Number(parts[0]);
+      if (!Number.isInteger(n) || n < 1 || n > 7) {
+        throw new Error(`lessons: atom "${atom}" is not a scale degree (1-7)`);
+      }
+      // Degrees by number run grades 1-3; grade 4 replaces the requirement with
+      // the technical names (degree_name:*), which is a different fact.
+      if (grade > 3) throw new Error(`lessons: atom "${atom}" is superseded by degree_name at G${grade}`);
+      return;
+    }
+    case 'tonic_triad': {
+      if (parts.length !== 0) throw new Error(`lessons: malformed tonic_triad atom "${atom}"`);
+      if (grade > 3) throw new Error(`lessons: atom "${atom}" is superseded by chord_recognition at G${grade}`);
+      return;
+    }
     case 'cadence': {
       const [name] = parts;
       if (!(CADENCE_KINDS as readonly string[]).includes(name)) {

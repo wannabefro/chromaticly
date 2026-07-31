@@ -65,10 +65,10 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
 
   // chromaticly-gni grew grade 3 from 9 to 10 units; chromaticly-e3z.1 added
   // major-keys-3 for the syllabus's "all keys to four sharps and flats", making 11.
-  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (33 stars for 11 grade-3 units)', () => {
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (39 stars for 13 grade-3 units)', () => {
     expect(level3.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
-    expect(level3.unitIds).toHaveLength(11);
-    expect(level3.examGate.unlockAtStars).toBe(33);
+    expect(level3.unitIds).toHaveLength(13);
+    expect(level3.examGate.unlockAtStars).toBe(39);
   });
 
   // fyu.2: reachability is content presence only — Level 3 is reachable on a
@@ -165,13 +165,15 @@ describe('levels — isStartableGrade is a static content concept, decoupled fro
 describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 zero-movement invariant)', () => {
   const level1 = LEVELS[0];
 
-  // chromaticly-gni: grade 1 grew from 8 to 9 units when rests-1 was inserted
-  // (note-values -> rests-1 -> key-signatures) — intentional grade-local growth,
-  // not later-grade leakage. The zero-movement intent (grade-2 registration
-  // doesn't disturb grade 1) still holds via the LESSONS_BY_GRADE[1] / *3 checks.
-  test('Level 1 unit count and exam-gate threshold match the grade-1 doc values (11 units / 33 stars)', () => {
-    expect(level1.unitIds).toHaveLength(11);
-    expect(level1.examGate.unlockAtStars).toBe(33);
+  // Grade 1 has grown twice by grade-LOCAL additions, which is not what this
+  // invariant guards: 8 -> 9 when rests-1 was inserted (chromaticly-gni), and
+  // 11 -> 13 when degrees-1 and tonic-triads-1 were (chromaticly-e3z.3, a
+  // syllabus requirement the course had never covered). Neither is later-grade
+  // leakage, and the zero-movement intent still holds via the
+  // LESSONS_BY_GRADE[1] / *3 checks below.
+  test('Level 1 unit count and exam-gate threshold match the grade-1 doc values (13 units / 39 stars)', () => {
+    expect(level1.unitIds).toHaveLength(13);
+    expect(level1.examGate.unlockAtStars).toBe(39);
     // Same numbers whether read from Level 1 or straight off the grade-1 doc.
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
     expect(level1.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[1].length * 3);
@@ -185,8 +187,8 @@ describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 ze
     expect(overMerged).toEqual(overGrade1Only);
   });
 
-  test('the Profile fact denominator source (lessonsForGrade(1).length) is 9', () => {
-    expect(lessonsForGrade(1)).toHaveLength(11);
+  test('the Profile fact denominator source is lessonsForGrade(1), not the merged list', () => {
+    expect(lessonsForGrade(1)).toHaveLength(13);
   });
 });
 
@@ -201,8 +203,8 @@ describe('registering grade-3 content moves ZERO grade-1/2-visible numbers (D9/U
   const level2 = LEVELS[1];
 
   test('Level 1 shape (unit count, star gate, id list) is unchanged by grade-3 registration', () => {
-    expect(level1.unitIds).toHaveLength(11);
-    expect(level1.examGate.unlockAtStars).toBe(33);
+    expect(level1.unitIds).toHaveLength(13);
+    expect(level1.examGate.unlockAtStars).toBe(39);
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 

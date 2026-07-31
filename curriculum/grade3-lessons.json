@@ -76,6 +76,82 @@
         "smartTip": "Count three semitones — a minor 3rd — down from the major tonic and you'll land on the relative minor, two letter-names lower: D down to B, B♭ down to G, A down to F♯, E♭ down to C, E down to C♯, A♭ down to F.",
         "didYouKnow": "C♯ minor and F♯ minor are this course's first minor keys with a sharp in their own name — their key signatures still work exactly the same way as any other minor key."
       },
+      "unlocks": "degrees-3"
+    },
+    {
+      "id": "degrees-3",
+      "title": "Degrees up to four sharps and flats",
+      "strand": "scales_keys",
+      "atoms": [
+        "degree:1",
+        "degree:2",
+        "degree:3",
+        "degree:4",
+        "degree:5",
+        "degree:6",
+        "degree:7"
+      ],
+      "templates": [
+        "scale_degree_id"
+      ],
+      "worked_example": {
+        "template_id": "scale_degree_id",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name any note of a major scale by its degree number",
+          "The keynote is the 1st degree, so the count starts at one, not zero",
+          "The rule is the same in every key up to four accidentals"
+        ],
+        "concept": {
+          "title": "Counting from the keynote",
+          "body": "Nothing new happens to the rule. The keynote is the 1st degree, and the numbers count letter names up from it in whatever key the signature names. With four sharps and flats now in scope the keynote may be E, A♭, F♯ or C♯, and the degrees follow it exactly as they followed C at Grade 1. Grade 3 also asks for intervals above the tonic by number AND type, and those two ideas fit together: the interval from the 1st degree to the 5th is a 5th, so the degree number and the interval number are the same count.",
+          "example": {
+            "template_id": "scale_degree_id",
+            "grade": 3,
+            "seed": 1
+          }
+        },
+        "smartTip": "The degree number and the interval above the keynote are the same count. Find the keynote and count letters.",
+        "didYouKnow": "Degrees are the reason a chord chart written in Roman numerals transposes for free. The numbers are positions, so they survive a key change untouched."
+      },
+      "unlocks": "tonic-triads-3"
+    },
+    {
+      "id": "tonic-triads-3",
+      "title": "Tonic triads up to four accidentals",
+      "strand": "scales_keys",
+      "atoms": [
+        "tonic_triad"
+      ],
+      "templates": [
+        "scale_degree_id"
+      ],
+      "worked_example": {
+        "template_id": "scale_degree_id",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Build the tonic triad of a major key in root position",
+          "The tonic triad is the 1st, 3rd and 5th degrees stacked",
+          "Root position means the keynote is the lowest note"
+        ],
+        "concept": {
+          "title": "Three notes that fix the key",
+          "body": "The tonic triad is the 1st, 3rd and 5th degrees, and that holds in E major and A♭ major exactly as it held in C. The signature supplies the accidentals: E major's triad is E, G♯ and B, and every one of those sharps is already in the signature, so nothing is written on the note. Build from the letters, check the signature, and only add an accidental if the key does not already give it to you.",
+          "example": {
+            "template_id": "scale_degree_id",
+            "grade": 3,
+            "seed": 2
+          }
+        },
+        "smartTip": "Letters first, signature second. E-G-B in E major reads as E, G♯, B without writing a single accidental.",
+        "didYouKnow": "This is why a key signature is worth having at all. Without one, E major's tonic triad would need a sharp written on the G every time it appeared."
+      },
       "unlocks": "minor-scales-3"
     },
     {
