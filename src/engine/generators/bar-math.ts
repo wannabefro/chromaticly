@@ -38,13 +38,17 @@ export const BAR_UNITS: Record<string, number> = {
   '2/4': 16,
   '3/4': 24,
   '4/4': 32,
+  // Grade 2 (chromaticly-e3z.9): the minim-beat metres.
+  '2/2': 32,
+  '3/2': 48,
+  '4/2': 64,
   '6/8': 24,
   '9/8': 36,
   '12/8': 48,
   // Grade 4 (chromaticly-570): simple /8, compound /4, compound /16.
   // Units are demisemiquaver-scale (crotchet = 8): num × (32/den).
   '2/8': 8,
-  '3/8': 12,
+  '3/8': 12, // Grade 2, not Grade 4 (chromaticly-e3z.9).
   '4/8': 16,
   '6/4': 48,
   '9/4': 72,

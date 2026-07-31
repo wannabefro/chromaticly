@@ -11,10 +11,11 @@ import {
 } from './scope';
 
 describe('metreRenderableTimeSignatures — metre-scoped path, global set untouched (chromaticly-570)', () => {
-  const NEW_METRES = ['2/8', '3/8', '4/8', '6/4', '9/4', '12/4', '6/16', '9/16', '12/16'];
+  // 3/8 left this list at chromaticly-e3z.9: it is a Grade 2 metre.
+  const NEW_METRES = ['2/8', '4/8', '6/4', '9/4', '12/4', '6/16', '9/16', '12/16'];
 
   test('grade 4 exposes the nine new metres plus the grade-3 set', () => {
-    for (const sig of [...NEW_METRES, '2/4', '3/4', '4/4', '6/8', '9/8', '12/8']) {
+    for (const sig of [...NEW_METRES, '3/8', '2/4', '3/4', '4/4', '6/8', '9/8', '12/8']) {
       expect(metreRenderableTimeSignatures(4)).toContain(sig);
     }
   });
@@ -172,7 +173,7 @@ describe('scopeForGrade(2) — exact contents per the D2 table, order-sensitive'
     expect(g2.keysMajor).toEqual(['C', 'G', 'D', 'F', 'A', 'Bb', 'Eb']);
     expect(g2.keysMinor).toEqual(['A', 'E', 'D']);
     expect(g2.minorForms).toEqual(['harmonic']);
-    expect(g2.timeSignatures).toEqual(['2/4', '3/4', '4/4', '2/2', '3/2', '4/2']);
+    expect(g2.timeSignatures).toEqual(['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '3/8']);
     expect(g2.rhythmDevices).toEqual(['tie', 'single_dot', 'triplet', 'triplet_with_rests', 'dotted_rests']);
     expect(g2.intervalRule).toEqual({ aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 });
   });
@@ -420,13 +421,14 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
     const g2 = scopeForGrade(2);
     const g3 = scopeForGrade(3);
     expect(g3.timeSignatures).toEqual([...g2.timeSignatures, ...KB.grade3Adds.time_signatures]);
-    expect(g3.timeSignatures).toEqual(['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '6/8', '9/8', '12/8']);
+    expect(g3.timeSignatures).toEqual(['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '3/8', '6/8', '9/8', '12/8']);
   });
 
-  test('renderableTimeSignatures(1) and (2) are the frozen /4 set; renderableTimeSignatures(3) opens exactly the compound trio alongside it, no /2 leak (D2/U2)', () => {
+  // Grade 2 opens the minim-beat metres and 3/8; grade 3 adds the compound trio.
+  test('renderableTimeSignatures widens at grade 2, then again at grade 3', () => {
     expect(renderableTimeSignatures(1)).toEqual(['2/4', '3/4', '4/4']);
-    expect(renderableTimeSignatures(2)).toEqual(['2/4', '3/4', '4/4']);
-    expect(renderableTimeSignatures(3)).toEqual(['2/4', '3/4', '4/4', '6/8', '9/8', '12/8']);
+    expect(renderableTimeSignatures(2)).toEqual(['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '3/8']);
+    expect(renderableTimeSignatures(3)).toEqual([...['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '3/8'], '6/8', '9/8', '12/8']);
   });
 
   test('grade-1 and grade-2 scope objects are byte-identical to their pre-grade-3 values (additive-only)', () => {
@@ -457,7 +459,7 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
       keysMajor: ['C', 'G', 'D', 'F', 'A', 'Bb', 'Eb'],
       keysMinor: ['A', 'E', 'D'],
       minorForms: ['harmonic'],
-      timeSignatures: ['2/4', '3/4', '4/4', '2/2', '3/2', '4/2'],
+      timeSignatures: ['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '3/8'],
       rhythmDevices: ['tie', 'single_dot', 'triplet', 'triplet_with_rests', 'dotted_rests'],
       intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
       pitchRanges: {

@@ -55,12 +55,23 @@ function timeSignaturesFromAtoms(atoms: string[], grade: number): string[] {
   return sigs;
 }
 
-/** D6: the other renderable signatures of the SAME family (simple/compound)
- *  as `timeSig` — always exactly 2 at every grade, since each family has
- *  exactly 3 members across the renderable set. */
+/** D6: two same-family signatures, nearest first — same denominator, then same
+ *  numerator. A wrong answer for 3/2 is 2/2, and for 3/8 it is 3/4. */
 function distractorsForFamily(timeSig: string, grade: number): string[] {
   const family = classifyMetre(timeSig).division;
-  return renderableTimeSignatures(grade).filter((t) => t !== timeSig && classifyMetre(t).division === family);
+  const [num, den] = timeSig.split('/').map(Number);
+  const siblings = renderableTimeSignatures(grade).filter(
+    (t) => t !== timeSig && classifyMetre(t).division === family,
+  );
+  const rank = (t: string): number => {
+    const [n, d] = t.split('/').map(Number);
+    return (d === den ? 0 : 2) + (n === num ? 0 : 1);
+  };
+  return siblings
+    .map((t, i) => ({ t, i }))
+    .sort((a, b) => rank(a.t) - rank(b.t) || a.i - b.i)
+    .slice(0, 2)
+    .map((x) => x.t);
 }
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {

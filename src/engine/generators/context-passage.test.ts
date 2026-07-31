@@ -2,6 +2,7 @@
 // sub-question is ANSWERABLE: the passage is built at random and then checked, so a
 // tie (two bars both holding the highest note) must never reach a learner.
 
+import { isCompoundTimeSignature } from '../metre';
 import { KB } from '../../content/knowledge-base';
 import { musicToAbc } from '../../music/abc-emitter';
 import type { NoteEvent } from '../../music/types';
@@ -108,12 +109,12 @@ describe('music in context — one passage, several questions (8d)', () => {
   test('D13 guard: grade-3 generation never emits a compound signature, in EITHER the passage draw OR the music_in_context_time_sig claim option (compound support for this template is a deferred slice)', () => {
     for (let seed = 0; seed < 20; seed++) {
       const passage = buildContextPassage({ grade: 3, seed, atoms: [] });
-      expect((passage.music.time_sig as string).endsWith('/8')).toBe(false);
+      expect(isCompoundTimeSignature(passage.music.time_sig as string)).toBe(false);
 
       const timeSigQuestion = passage.questions[3];
       const claimed = /in (\d+\/\d+)/.exec(timeSigQuestion.prompt)?.[1];
       expect(claimed).toBeDefined();
-      expect(claimed!.endsWith('/8')).toBe(false);
+      expect(isCompoundTimeSignature(claimed!)).toBe(false);
     }
   });
 

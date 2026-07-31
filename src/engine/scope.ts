@@ -84,7 +84,7 @@ const GRADE_2_SCOPE: GradeScope = {
   keysMajor: [...GRADE_1_SCOPE.keysMajor, 'A', 'Bb', 'Eb'],
   keysMinor: ['A', 'E', 'D'],
   minorForms: ['harmonic'],
-  timeSignatures: ['2/4', '3/4', '4/4', '2/2', '3/2', '4/2'],
+  timeSignatures: ['2/4', '3/4', '4/4', '2/2', '3/2', '4/2', '3/8'],
   rhythmDevices: [...GRADE_1_SCOPE.rhythmDevices, 'triplet', 'triplet_with_rests', 'dotted_rests'],
   intervalRule: {
     aboveTonicOnly: true,
@@ -247,24 +247,26 @@ export function scopeForGrade(grade: number): GradeScope {
 }
 
 const SIMPLE_RENDERABLE_TIME_SIGNATURES: readonly string[] = ['2/4', '3/4', '4/4'];
-const GRADE_3_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
+
+// Grade 2 (chromaticly-e3z.9) opens the minim-beat metres and 3/8.
+const GRADE_2_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
   ...SIMPLE_RENDERABLE_TIME_SIGNATURES,
+  '2/2',
+  '3/2',
+  '4/2',
+  '3/8',
+];
+const GRADE_3_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
+  ...GRADE_2_RENDERABLE_TIME_SIGNATURES,
   '6/8',
   '9/8',
   '12/8',
 ];
 
-// grade-2 /2 meters need minim-beat bar math; only /4 renders correctly here —
-// see plan D6. Grades 1/2 stay the frozen /4 subset (byte-identity); grade 3
-// opens the compound trio alongside it (D2). This is the GLOBAL renderable set
-// consumed by add_time_signature, context-passage, find-the-bar, bar_validity,
-// and the anacrusis/duplet atom gates — all of which assume a crotchet-beat or
-// fixed-family model. It deliberately does NOT carry the Grade-4 metres: those
-// are exposed only to metre_classification via metreRenderableTimeSignatures
-// below (chromaticly-570), so widening one template never leaks the new metres
-// into consumers that cannot render them.
+// The GLOBAL renderable set. Grade-4 metres reach metre_classification alone.
 export function renderableTimeSignatures(grade: number): readonly string[] {
-  return grade >= 3 ? GRADE_3_RENDERABLE_TIME_SIGNATURES : SIMPLE_RENDERABLE_TIME_SIGNATURES;
+  if (grade >= 3) return GRADE_3_RENDERABLE_TIME_SIGNATURES;
+  return grade >= 2 ? GRADE_2_RENDERABLE_TIME_SIGNATURES : SIMPLE_RENDERABLE_TIME_SIGNATURES;
 }
 
 const GRADE_4_RENDERABLE_TIME_SIGNATURES: readonly string[] = [

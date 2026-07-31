@@ -106,7 +106,8 @@ describe('bar-math — BAR_UNITS: integer bar totals for every renderable signat
 
   test('BAR_UNITS matches the D3 table plus the Grade-4 and Grade-5 metres exactly', () => {
     expect(BAR_UNITS).toEqual({
-      '2/4': 16, '3/4': 24, '4/4': 32, '6/8': 24, '9/8': 36, '12/8': 48,
+      '2/4': 16, '3/4': 24, '4/4': 32, '2/2': 32, '3/2': 48, '4/2': 64,
+      '6/8': 24, '9/8': 36, '12/8': 48,
       '2/8': 8, '3/8': 12, '4/8': 16, '6/4': 48, '9/4': 72, '12/4': 96,
       '6/16': 12, '9/16': 18, '12/16': 24,
       '5/4': 40, '7/4': 56, '5/8': 20, '7/8': 28,
@@ -119,6 +120,7 @@ describe('bar-math — BAR_UNITS: integer bar totals for every renderable signat
     expect(BAR_UNITS['12/16']).toBe(12 * 2);
     expect(BAR_UNITS['5/4']).toBe(5 * 8);
     expect(BAR_UNITS['7/8']).toBe(7 * 4);
+    expect(BAR_UNITS['3/2']).toBe(3 * 16);
   });
 });
 

@@ -47,7 +47,7 @@ describe('knowledge-base.ts — grade_scopes["2"].adds is reachable (Codex findi
     expect(KB.grade2Adds.keys_major).toEqual(['A', 'Bb', 'Eb']);
     expect(KB.grade2Adds.keys_minor).toEqual(['A', 'E', 'D']);
     expect(KB.grade2Adds.minor_forms).toEqual(['harmonic']);
-    expect(KB.grade2Adds.time_signatures).toEqual(['2/2', '3/2', '4/2']);
+    expect(KB.grade2Adds.time_signatures).toEqual(['2/2', '3/2', '4/2', '3/8']);
     expect(KB.grade2Adds.rhythm_devices).toEqual(['triplet', 'triplet_with_rests', 'dotted_rests']);
   });
 });
@@ -138,7 +138,6 @@ describe('knowledge-base.ts — grade_scopes["4"].adds is reachable (fyu.4)', ()
     // the VERIFY-flag time-signature prose was resolved to the enumerated set
     expect(KB.grade4Adds.time_signatures).toEqual([
       '2/8',
-      '3/8',
       '4/8',
       '6/4',
       '9/4',

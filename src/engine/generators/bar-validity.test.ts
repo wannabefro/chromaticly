@@ -1,3 +1,4 @@
+import { isCompoundTimeSignature } from '../metre';
 import type { Music, MusicEvent } from '../../music/types';
 import { scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
@@ -149,7 +150,7 @@ describe('barValidity — D13 guard: grade-3 generation never emits a compound s
     for (let seed = 0; seed < 20; seed++) {
       const instance = barValidity({ grade: 3, seed, atoms: [] });
       const timeSig = instance.stimulus.music!.time_sig as string;
-      expect(timeSig.endsWith('/8')).toBe(false);
+      expect(isCompoundTimeSignature(timeSig)).toBe(false);
     }
   });
 });

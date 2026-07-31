@@ -3,6 +3,7 @@
 // these tests re-derive the answer from the notes themselves. A tie would make the
 // question unanswerable, so uniqueness of the winning bar is the core invariant.
 
+import { isCompoundTimeSignature } from '../metre';
 import type { MusicEvent, NoteEvent } from '../../music/types';
 import { validate } from '../validator';
 import { BAR_PROPERTIES, findTheBar, type BarProperty } from './find-the-bar';
@@ -80,7 +81,7 @@ describe('findTheBar — the passage is well formed', () => {
     for (let seed = 0; seed < 20; seed++) {
       const instance = findTheBar({ grade: 3, seed, atoms: [`find_bar:highest`] });
       const timeSig = instance.stimulus.music!.time_sig as string;
-      expect(timeSig.endsWith('/8')).toBe(false);
+      expect(isCompoundTimeSignature(timeSig)).toBe(false);
     }
   });
 

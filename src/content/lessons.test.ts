@@ -172,7 +172,7 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
     expect(() => assertAtomResolves('duplet:6/16', 4)).toThrow();
     expect(() => assertAtomResolves('duplet:6/4', 4)).toThrow();
     expect(() => assertAtomResolves('anacrusis:2/8', 4)).toThrow();
-    expect(() => assertAtomResolves('anacrusis:3/8', 4)).toThrow();
+    expect(() => assertAtomResolves('anacrusis:4/8', 4)).toThrow();
   });
 
   // chromaticly-9ig — a double-accidental note_read atom RESOLVES at the loader
@@ -491,8 +491,13 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
 
   // 2/2 is in scope from grade 2 (GRADE_2_SCOPE.timeSignatures) but never
   // renderable at any grade (D2) — scope membership alone isn't enough.
-  test('add_time_signature:2/2 throws at grade 3 — in scope but not renderable', () => {
-    expect(() => assertAtomResolves('add_time_signature:2/2', 3)).toThrow();
+  // The minim-beat metres and 3/8 are renderable from grade 2 up (e3z.9).
+  test('add_time_signature:2/2 resolves at grade 2 and 3, and 2/8 still throws', () => {
+    expect(() => assertAtomResolves('add_time_signature:2/2', 2)).not.toThrow();
+    expect(() => assertAtomResolves('add_time_signature:2/2', 3)).not.toThrow();
+    expect(() => assertAtomResolves('add_time_signature:3/8', 2)).not.toThrow();
+    expect(() => assertAtomResolves('add_time_signature:2/2', 1)).toThrow();
+    expect(() => assertAtomResolves('add_time_signature:2/8', 3)).toThrow();
   });
 
   test('the bare add_time_signature atom still resolves at grade 1 (the legacy grammar untouched)', () => {
@@ -507,8 +512,11 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
     expect(() => assertAtomResolves('metre:6/8', 2)).toThrow();
   });
 
-  test('metre:2/2 throws at grade 3 — in scope but not renderable', () => {
-    expect(() => assertAtomResolves('metre:2/2', 3)).toThrow();
+  test('metre:2/2 resolves at grade 2 and 3, and the grade-4 metres still throw', () => {
+    expect(() => assertAtomResolves('metre:2/2', 2)).not.toThrow();
+    expect(() => assertAtomResolves('metre:2/2', 3)).not.toThrow();
+    expect(() => assertAtomResolves('metre:2/2', 1)).toThrow();
+    expect(() => assertAtomResolves('metre:6/16', 3)).toThrow();
   });
 
   // U3 (plan 2026-07-20-002), D4: the number+type interval atom is gated on
