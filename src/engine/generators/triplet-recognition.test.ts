@@ -104,12 +104,27 @@ describe('triplet_recognition — what the exercise asks', () => {
     }
   });
 
-  test('the rest form asks how many notes SOUND, and the answer is two', () => {
+  test('the sounding variant answers two — the rest place does not sound', () => {
     for (const seed of SEEDS) {
       const inst = instanceAt(seed, WITH_REST);
-      expect(inst.prompt).toContain('How many notes sound');
+      if (!inst.prompt.includes('How many notes sound')) continue;
       expect(inst.answer.canonical).toBe('two');
     }
+  });
+
+  // A learner who thinks a rest costs no time gets the first right, this wrong.
+  test('both rest-form variants appear, and the duration one answers one beat', () => {
+    const seen = new Set<string>();
+    for (const seed of SEEDS) {
+      const inst = instanceAt(seed, WITH_REST);
+      if (inst.prompt.includes('How long')) {
+        seen.add('places');
+        expect(inst.answer.canonical).toMatch(/^one (minim|crotchet|quaver)$/);
+      } else {
+        seen.add('sounding');
+      }
+    }
+    expect([...seen].sort()).toEqual(['places', 'sounding']);
   });
 
   test('both plain variants appear, so neither question goes unasked', () => {

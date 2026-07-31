@@ -14,15 +14,13 @@ const TermsEntrySchema = z.object({
   meaning: z.string(),
 });
 
-const Grade1DeckSchema = z.object({
+const DeckSchema = z.object({
   verified: z.literal(true),
   dynamics: z.array(TermsEntrySchema),
   tempo: z.array(TermsEntrySchema),
   other_terms: z.array(TermsEntrySchema),
   signs: z.array(TermsEntrySchema),
 });
-
-const DeckSchema = Grade1DeckSchema;
 
 const parsedGrade1 = DeckSchema.parse((raw as { grade_1: unknown }).grade_1);
 const parsedGrade2 = DeckSchema.parse((raw as { grade_2: unknown }).grade_2);
@@ -36,7 +34,7 @@ export interface TermsDeckEntry {
   category: Category;
 }
 
-function flatten(parsed: z.infer<typeof Grade1DeckSchema>): TermsDeckEntry[] {
+function flatten(parsed: z.infer<typeof DeckSchema>): TermsDeckEntry[] {
   return CATEGORIES.flatMap((category) => parsed[category].map((entry) => ({ ...entry, category })));
 }
 

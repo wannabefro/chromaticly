@@ -105,7 +105,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const noteName = NAMES[shape.note];
   const beatName = NAMES[shape.beat];
 
-  const variant = withRest ? 'sounding' : pick(rng, ['ratio', 'beat'] as const);
+  const variant = withRest ? pick(rng, ['sounding', 'places'] as const) : pick(rng, ['ratio', 'beat'] as const);
 
   if (variant === 'ratio') {
     return {
@@ -153,6 +153,31 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
         },
       },
       srs_tags: [tripletAtom(sig, false)],
+      kb_version: KB_VERSION,
+    };
+  }
+
+  if (variant === 'places') {
+    return {
+      id: makeInstanceId('triplet_recognition', grade, idSeed),
+      template_id: 'triplet_recognition',
+      grade,
+      strand: 'rhythm',
+      prompt: 'A rest sits inside this triplet. How long does the whole bracketed group last?',
+      stimulus: { music, text: null },
+      interaction: { type: 'mcq', config: {} },
+      answer: { canonical: `one ${beatName}`, accepted_alternatives: [] },
+      distractors: [`two ${noteName}s`, `two ${beatName}s`],
+      hints: ['A rest takes up time exactly as a note does. The group is still a triplet.'],
+      feedback: {
+        correct: 'Correct!',
+        incorrect: `The rest fills its place in the group, so the triplet still lasts one ${beatName}.`,
+        by_distractor: {
+          [`two ${noteName}s`]: `That is what two of the three places last. The third one counts too, rest or not.`,
+          [`two ${beatName}s`]: `A triplet fills one beat, not two. The rest does not add time, it fills a place.`,
+        },
+      },
+      srs_tags: [tripletAtom(sig, true)],
       kb_version: KB_VERSION,
     };
   }

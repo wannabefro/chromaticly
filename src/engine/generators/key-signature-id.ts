@@ -105,7 +105,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     prompt: `Which of these is the key signature of ${key} major?`,
     stimulus: { music: null, text: `${key} major` },
     interaction: { type: 'mcq', config: { option_music: optionMusic } },
-    hints: [`${key} major has ${accidentalPhrase(key)}. Count the accidentals on each stave.`],
+    hints: [`Work out how many sharps or flats ${key} major needs, then count the accidentals on each stave.`],
   };
 }
 
