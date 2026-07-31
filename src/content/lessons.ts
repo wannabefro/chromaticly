@@ -297,6 +297,19 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'interval_any': {
+      // chromaticly-6ga: the grade-4 widening. Only resolves where the scope drops
+      // `aboveTonicOnly`, which is precisely the rule that makes augmented and
+      // diminished reachable — so a grade-3 lesson can never own this atom kind.
+      const n = Number(parts[0]);
+      if (!Number.isInteger(n) || n < 2 || n > 8) {
+        throw new Error(`lessons: atom "${atom}" is not a G4 interval (2..8)`);
+      }
+      if (scopeForGrade(grade).intervalRule.aboveTonicOnly) {
+        throw new Error(`lessons: atom "${atom}" needs between-any-notes intervals, which grade ${grade} does not have`);
+      }
+      return;
+    }
     case 'term': {
       const [slug] = parts;
       if (!TERM_ATOM_SLUGS.has(slug)) throw new Error(`lessons: atom "${atom}" references an unknown term`);

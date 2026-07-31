@@ -3,6 +3,43 @@
   "version": "g3-lessons-2026-07-24",
   "lessons": [
     {
+      "id": "major-keys-3",
+      "title": "Major keys to four sharps and flats",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:A_major",
+        "key_sig:E_major",
+        "key_sig:Ab_major"
+      ],
+      "templates": [
+        "key_signature_id"
+      ],
+      "worked_example": {
+        "template_id": "key_signature_id",
+        "grade": 3,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name a major key with three or four sharps, or four flats",
+          "A major has three sharps, E major four; A♭ major has four flats",
+          "Every major key up to four accidentals is now within reach"
+        ],
+        "concept": {
+          "title": "Three and four accidentals",
+          "body": "So far the sharp keys have stopped at D major's two. A major adds a third sharp, G♯, and E major a fourth, D♯. The flat keys stopped at E♭ major's three; A♭ major adds a fourth, D♭. Nothing new is happening here — the sharps still arrive as F♯ C♯ G♯ D♯ and the flats as B♭ E♭ A♭ D♭, always in that order and never skipping one. So the count alone still names the key. Read the signature left to right, count what you see, and stop. Three sharps is A major, four is E major, four flats is A♭ major.",
+          "example": {
+            "template_id": "key_signature_id",
+            "grade": 3,
+            "seed": 1
+          }
+        },
+        "smartTip": "Count, then name: three sharps A major, four sharps E major, four flats A♭ major.",
+        "didYouKnow": "The last sharp in a signature is always the seventh note of the key, a semitone below the keynote — so E major's final D♯ sits just under E. Spotting that last sharp names the key without counting."
+      },
+      "unlocks": "minor-keys-3"
+    },
+    {
       "id": "minor-keys-3",
       "title": "New minor keys",
       "strand": "scales_keys",

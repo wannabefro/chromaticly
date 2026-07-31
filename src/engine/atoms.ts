@@ -39,6 +39,18 @@ export function intervalTypeAtom(number: number): string {
   return `interval_type:${number}`;
 }
 
+/** Grade-4 between-any-notes interval atom (chromaticly-6ga) — distinct again from
+ *  `interval_type:<n>`, for the same reason that one is distinct from `interval:<n>`.
+ *
+ *  Grade 3 names an interval ABOVE THE TONIC; grade 4 names one between any two
+ *  diatonic notes, which is what makes augmented and diminished reachable at all.
+ *  Those are different skills, and they shared an atom id until this existed — so
+ *  mastering the grade-3 lesson silently credited the grade-4 one, and lane depth
+ *  could not tell the two grades apart. */
+export function intervalAnyAtom(number: number): string {
+  return `interval_any:${number}`;
+}
+
 export function termAtom(slug: string): string {
   return `term:${slug}`;
 }

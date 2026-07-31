@@ -40,12 +40,10 @@
     },
     {
       "id": "major-keys-4",
-      "title": "Naming major keys",
+      "title": "Five sharps, five flats",
       "strand": "scales_keys",
       "atoms": [
-        "key_sig:E_major",
         "key_sig:B_major",
-        "key_sig:Ab_major",
         "key_sig:Db_major"
       ],
       "templates": [
@@ -59,12 +57,12 @@
       "teach": {
         "objectives": [
           "Name a major key by counting the sharps or flats in its signature",
-          "B major has five sharps; D♭ major has five flats — one more than their four-accidental neighbours E major and A♭ major",
-          "The count, not just sharps-versus-flats, is what tells the keys apart"
+          "B major has five sharps; D♭ major has five flats",
+          "Five is one more than the four you met at Grade 3 — the count is the whole difference"
         ],
         "concept": {
-          "title": "Counting the signature",
-          "body": "To name a major key, count the accidentals in its key signature. B major has five sharps, one more than E major's four; D♭ major has five flats, one more than A♭ major's four. Telling sharps from flats is only half the job — you have to count them exactly, because a single sharp or flat is the whole difference between B major and E major, or between D♭ major and A♭ major.",
+          "title": "Counting to five",
+          "body": "Grade 3 took you to four accidentals: E major with four sharps, A♭ major with four flats. Grade 4 adds one more of each. B major has five sharps; D♭ major has five flats. Telling sharps from flats is only half the job — you have to count them exactly, because a single accidental is the whole difference between B major and E major, or between D♭ major and A♭ major. The order never varies, so the fifth symbol is always the one that tells you which of the pair you are looking at.",
           "example": {
             "template_id": "key_signature_id",
             "grade": 4,
@@ -384,13 +382,13 @@
       "title": "Augmented and diminished intervals",
       "strand": "intervals",
       "atoms": [
-        "interval_type:2",
-        "interval_type:3",
-        "interval_type:4",
-        "interval_type:5",
-        "interval_type:6",
-        "interval_type:7",
-        "interval_type:8"
+        "interval_any:2",
+        "interval_any:3",
+        "interval_any:4",
+        "interval_any:5",
+        "interval_any:6",
+        "interval_any:7",
+        "interval_any:8"
       ],
       "templates": [
         "interval_naming"

@@ -63,11 +63,12 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
     expect(level3.unitIds).toEqual(LESSONS_BY_GRADE[3].map((l) => l.id));
   });
 
-  // chromaticly-gni: rests-3 grew grade 3 from 9 to 10 units (30-star gate).
-  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (30 stars for 10 grade-3 units)', () => {
+  // chromaticly-gni grew grade 3 from 9 to 10 units; chromaticly-e3z.1 added
+  // major-keys-3 for the syllabus's "all keys to four sharps and flats", making 11.
+  test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (33 stars for 11 grade-3 units)', () => {
     expect(level3.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
-    expect(level3.unitIds).toHaveLength(10);
-    expect(level3.examGate.unlockAtStars).toBe(30);
+    expect(level3.unitIds).toHaveLength(11);
+    expect(level3.examGate.unlockAtStars).toBe(33);
   });
 
   // fyu.2: reachability is content presence only — Level 3 is reachable on a

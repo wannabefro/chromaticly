@@ -305,8 +305,14 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
 // against grade-3 scope, the same teeth grade-1/2 content already goes
 // through above.
 describe('grade3 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[3] chain: ... compound-bars-3 -> rests-3 -> intervals-3 ... (rests-3 inserted, chromaticly-gni)', () => {
+  // major-keys-3 leads the chain (chromaticly-e3z.1): the ABRSM Grade 3 syllabus
+  // requires ALL keys to four sharps and flats, and grade 3 previously taught only
+  // minors — A major sat a grade early in grade 2, E and A♭ major a grade late in
+  // grade 4. Majors before minors, since a minor key is taught as the relative of
+  // a major one.
+  test('LESSONS_BY_GRADE[3] chain: major-keys-3 -> minor-keys-3 -> ... -> rests-3 -> intervals-3 ...', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
+      'major-keys-3',
       'minor-keys-3',
       'minor-scales-3',
       'melodic-minor-3',

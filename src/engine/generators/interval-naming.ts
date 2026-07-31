@@ -9,7 +9,7 @@
 
 import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { intervalAtom, intervalTypeAtom, parseAtom } from '../atoms';
+import { intervalAnyAtom, intervalAtom, intervalTypeAtom, parseAtom } from '../atoms';
 import { intervalLabel, intervalQuality, type IntervalQuality } from '../interval-quality';
 import { int, mulberry32, pick } from '../rng';
 import type { GradeScope } from '../scope';
@@ -391,7 +391,7 @@ function buildBetweenAnyNotes(
         'Not quite — recount the letter names for the number, then compare the semitones between the two notes to check major, minor, perfect, augmented, or diminished.',
       by_distractor: qualityDistractorReasons(canonical, distractors),
     },
-    srs_tags: [intervalTypeAtom(number)],
+    srs_tags: [intervalAnyAtom(number)],
     kb_version: KB_VERSION,
   };
 }

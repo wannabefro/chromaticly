@@ -83,19 +83,23 @@ describe('laneDepths — evidence path', () => {
     expect(rhythm.heldGrades).toEqual([1, 5]);
   });
 
-  test('intervals G3 and G4 teach the SAME atoms, so holding one holds the other', () => {
-    // Not a bug in the derivation — KTD9 says the atom id IS the skill, and these
-    // two cells list an identical set (`interval_type:2..8`). The consequence is a
-    // content fact worth knowing: depth cannot distinguish intervals 3 from 4, so
-    // the lane effectively tops out at 3 until the G4 lesson teaches something the
-    // G3 one does not. Pinned here so a future content edit that fixes it fails
-    // loudly rather than silently changing every intervals depth.
-    expect(atomsFor('intervals', 3)).toEqual(atomsFor('intervals', 4));
+  // This test previously PINNED the opposite: G3 and G4 listed an identical atom
+  // set (`interval_type:2..8`), so mastering G3 silently credited G4 and the lane
+  // jumped two grades for one lesson's work. It asked to fail loudly when the
+  // content was fixed, and chromaticly-6ga fixed it — G4 now owns `interval_any:*`,
+  // the between-any-notes widening that makes augmented and diminished reachable.
+  test('intervals G3 and G4 teach different atoms, so holding G3 does not hold G4', () => {
+    expect(atomsFor('intervals', 3)).not.toEqual(atomsFor('intervals', 4));
 
     const store = new ProgressStore();
     master(store, 'intervals', 1, DAY);
     master(store, 'intervals', 3, DAY);
 
+    expect(laneDepths(store, DAY).intervals.depth).toBe(3);
+
+    // ...and mastering G4 as well does move it, which is what proves the depth
+    // stopped at 3 for the right reason rather than because G4 became unreachable.
+    master(store, 'intervals', 4, DAY);
     expect(laneDepths(store, DAY).intervals.depth).toBe(4);
   });
 });

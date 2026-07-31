@@ -7,7 +7,6 @@
       "title": "New key signatures",
       "strand": "scales_keys",
       "atoms": [
-        "key_sig:A_major",
         "key_sig:Bb_major",
         "key_sig:Eb_major"
       ],
@@ -21,20 +20,20 @@
       },
       "teach": {
         "objectives": [
-          "The key signatures for A, B♭ and E♭ major",
-          "How to tell a sharp key from a flat key at a glance",
-          "The order flats are written in"
+          "Name a major key by counting the flats in its signature",
+          "B♭ major has two flats; E♭ major has three",
+          "The flats always arrive in the same order — B♭ first, then E♭"
         ],
         "concept": {
-          "title": "Grade 2 key signatures",
-          "body": "A major has three sharps: F♯, C♯ and G♯. B♭ major has two flats, B♭ and E♭; E♭ major has three, B♭, E♭ and A♭. Flats are always written in the same order — B, E, A — each a fourth above the last.",
+          "title": "Counting the flats",
+          "body": "Grade 1 gave you one flat key: F major, with a single B♭. Two more follow the same rule. B♭ major has two flats, B♭ and E♭. E♭ major has three: B♭, E♭ and A♭. The flats never appear in a different order and none is ever skipped, so the count alone names the key. Read the signature left to right, count what you see, and stop — two flats is B♭ major, three is E♭ major. Notice that the second flat, E♭, is also the name of the key that has three of them.",
           "example": {
             "template_id": "key_signature_id",
             "grade": 2,
             "seed": 0
           }
         },
-        "smartTip": "In any flat key, the second-to-last flat names the key — B♭ major's flats are B♭, E♭ (so B♭); E♭ major's are B♭, E♭, A♭ (so E♭).",
+        "smartTip": "Count the flats: one is F major, two is B♭ major, three is E♭ major.",
         "didYouKnow": "Flats are written in the order B, E, A, D, G, C, F — exactly the sharp order (F, C, G, D, A, E, B) reversed."
       },
       "unlocks": "minor-keys-2"
