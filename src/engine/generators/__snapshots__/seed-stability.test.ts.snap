@@ -43453,6 +43453,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Bb major",
     },
     "distractors": [
+      "A major",
       "Eb major",
     ],
     "feedback": {
@@ -43467,6 +43468,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -43536,6 +43553,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Eb major",
     },
     "distractors": [
+      "A major",
       "Bb major",
     ],
     "feedback": {
@@ -43550,6 +43568,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -43616,9 +43650,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Bb major",
+      "canonical": "A major",
     },
     "distractors": [
+      "Bb major",
       "Eb major",
     ],
     "feedback": {
@@ -43633,6 +43668,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -43672,19 +43723,19 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:Bb_major",
+      "key_sig:A_major",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "Bb_major",
+        "key_sig": "A_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "Bb2",
+                "pitch": "A2",
                 "type": "note",
               },
             ],
@@ -43702,6 +43753,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Bb major",
     },
     "distractors": [
+      "A major",
       "Eb major",
     ],
     "feedback": {
@@ -43716,6 +43768,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -43785,6 +43853,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Eb major",
     },
     "distractors": [
+      "A major",
       "Bb major",
     ],
     "feedback": {
@@ -43799,6 +43868,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -43865,9 +43950,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Bb major",
+      "canonical": "A major",
     },
     "distractors": [
+      "Bb major",
       "Eb major",
     ],
     "feedback": {
@@ -43882,6 +43968,222 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Bb major": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Bb3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Eb major": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Eb4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:A_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "A major",
+      "Bb major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g2:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Bb major": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Bb3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Eb major": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Eb4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Eb_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bb major",
+    },
+    "distractors": [
+      "A major",
+      "Eb major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g2:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -43948,176 +44250,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Eb major",
+      "canonical": "Bb major",
     },
     "distractors": [
-      "Bb major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 2,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g2:s6",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "Bb major": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Bb3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Eb major": {
-            "clef": "treble",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Eb4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:Eb_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "Eb_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "Eb4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "Eb major",
-    },
-    "distractors": [
-      "Bb major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 2,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g2:s7",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "Bb major": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Bb3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Eb major": {
-            "clef": "treble",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Eb4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:Eb_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "Eb_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "Eb4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "Eb major",
-    },
-    "distractors": [
-      "Bb major",
+      "A major",
+      "Eb major",
     ],
     "feedback": {
       "correct": "Correct!",
@@ -44131,6 +44268,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -44170,19 +44323,19 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:Eb_major",
+      "key_sig:Bb_major",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
-        "key_sig": "Eb_major",
+        "key_sig": "Bb_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "Eb4",
+                "pitch": "Bb3",
                 "type": "note",
               },
             ],
@@ -44200,6 +44353,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Bb major",
     },
     "distractors": [
+      "A major",
       "Eb major",
     ],
     "feedback": {
@@ -44214,6 +44368,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -44283,6 +44453,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Bb major",
     },
     "distractors": [
+      "A major",
       "Eb major",
     ],
     "feedback": {
@@ -44297,6 +44468,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -44366,6 +44553,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Eb major",
     },
     "distractors": [
+      "A major",
       "Bb major",
     ],
     "feedback": {
@@ -44380,6 +44568,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -44446,9 +44650,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Bb major",
+      "canonical": "A major",
     },
     "distractors": [
+      "Bb major",
       "Eb major",
     ],
     "feedback": {
@@ -44463,6 +44668,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -44502,19 +44723,19 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:Bb_major",
+      "key_sig:A_major",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
-        "key_sig": "Bb_major",
+        "key_sig": "A_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "Bb3",
+                "pitch": "A3",
                 "type": "note",
               },
             ],
@@ -44529,9 +44750,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Bb major",
+      "canonical": "A major",
     },
     "distractors": [
+      "Bb major",
       "Eb major",
     ],
     "feedback": {
@@ -44546,6 +44768,122 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Bb major": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Bb3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "Eb major": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Eb4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:A_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bb major",
+    },
+    "distractors": [
+      "A major",
+      "Eb major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g2:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -44612,92 +44950,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Eb major",
-    },
-    "distractors": [
-      "Bb major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 2,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g2:s14",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "Bb major": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Bb3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Eb major": {
-            "clef": "treble",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Eb4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:Eb_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "Eb_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "Eb4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
       "canonical": "Bb major",
     },
     "distractors": [
+      "A major",
       "Eb major",
     ],
     "feedback": {
@@ -44712,6 +44968,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -44778,9 +45050,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Bb major",
+      "canonical": "A major",
     },
     "distractors": [
+      "Bb major",
       "Eb major",
     ],
     "feedback": {
@@ -44795,6 +45068,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A2",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "bass",
             "key_sig": "Bb_major",
@@ -44834,19 +45123,19 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:Bb_major",
+      "key_sig:A_major",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "Bb_major",
+        "key_sig": "A_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "Bb2",
+                "pitch": "A2",
                 "type": "note",
               },
             ],
@@ -44861,9 +45150,10 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Bb major",
+      "canonical": "A major",
     },
     "distractors": [
+      "Bb major",
       "Eb major",
     ],
     "feedback": {
@@ -44878,6 +45168,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -44917,19 +45223,19 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:Bb_major",
+      "key_sig:A_major",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
-        "key_sig": "Bb_major",
+        "key_sig": "A_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "Bb3",
+                "pitch": "A3",
                 "type": "note",
               },
             ],
@@ -44947,6 +45253,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Eb major",
     },
     "distractors": [
+      "A major",
       "Bb major",
     ],
     "feedback": {
@@ -44961,6 +45268,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -45030,6 +45353,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
       "canonical": "Eb major",
     },
     "distractors": [
+      "A major",
       "Bb major",
     ],
     "feedback": {
@@ -45044,6 +45368,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key
     "interaction": {
       "config": {
         "option_music": {
+          "A major": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "A3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
           "Bb major": {
             "clef": "treble",
             "key_sig": "Bb_major",
@@ -57148,7 +57488,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "E major",
     },
     "distractors": [
-      "A major",
       "Ab major",
     ],
     "feedback": {
@@ -57163,22 +57502,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -57248,7 +57571,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "Ab major",
     },
     "distractors": [
-      "A major",
       "E major",
     ],
     "feedback": {
@@ -57263,22 +57585,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -57345,10 +57651,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "A major",
+      "canonical": "E major",
     },
     "distractors": [
-      "E major",
       "Ab major",
     ],
     "feedback": {
@@ -57363,22 +57668,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -57418,19 +57707,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:A_major",
+      "key_sig:E_major",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "A_major",
+        "key_sig": "E_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "A1",
+                "pitch": "E2",
                 "type": "note",
               },
             ],
@@ -57448,7 +57737,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "E major",
     },
     "distractors": [
-      "A major",
       "Ab major",
     ],
     "feedback": {
@@ -57463,22 +57751,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
@@ -57548,7 +57820,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "Ab major",
     },
     "distractors": [
-      "A major",
       "E major",
     ],
     "feedback": {
@@ -57563,22 +57834,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -57645,10 +57900,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "A major",
+      "canonical": "E major",
     },
     "distractors": [
-      "E major",
       "Ab major",
     ],
     "feedback": {
@@ -57663,22 +57917,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
@@ -57718,19 +57956,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:A_major",
+      "key_sig:E_major",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
-        "key_sig": "A_major",
+        "key_sig": "E_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "A3",
+                "pitch": "E4",
                 "type": "note",
               },
             ],
@@ -57748,7 +57986,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "Ab major",
     },
     "distractors": [
-      "A major",
       "E major",
     ],
     "feedback": {
@@ -57763,22 +58000,172 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
+          "Ab major": {
             "clef": "treble",
-            "key_sig": "A_major",
+            "key_sig": "Ab_major",
             "time_sig": null,
             "voices": [
               {
                 "events": [
                   {
                     "dur": "semibreve",
-                    "pitch": "A3",
+                    "pitch": "Ab3",
                     "type": "note",
                   },
                 ],
               },
             ],
           },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g3:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g3:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
@@ -57848,207 +58235,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "E major",
     },
     "distractors": [
-      "A major",
-      "Ab major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 3,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g3:s7",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Ab major": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Ab3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "E major": {
-            "clef": "treble",
-            "key_sig": "E_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:E_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "E_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "E4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "E major",
-    },
-    "distractors": [
-      "A major",
-      "Ab major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 3,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g3:s8",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Ab major": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Ab3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "E major": {
-            "clef": "treble",
-            "key_sig": "E_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:E_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "E_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "E4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "E major",
-    },
-    "distractors": [
-      "A major",
       "Ab major",
     ],
     "feedback": {
@@ -58063,22 +58249,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -58148,7 +58318,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "E major",
     },
     "distractors": [
-      "A major",
       "Ab major",
     ],
     "feedback": {
@@ -58163,22 +58332,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -58248,7 +58401,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "Ab major",
     },
     "distractors": [
-      "A major",
       "E major",
     ],
     "feedback": {
@@ -58263,22 +58415,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -58345,10 +58481,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "A major",
+      "canonical": "E major",
     },
     "distractors": [
-      "E major",
       "Ab major",
     ],
     "feedback": {
@@ -58363,222 +58498,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Ab major": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Ab3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "E major": {
-            "clef": "treble",
-            "key_sig": "E_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:A_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "A_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "A3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "A major",
-    },
-    "distractors": [
-      "E major",
-      "Ab major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 3,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g3:s13",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "Ab major": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "Ab3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-          "E major": {
-            "clef": "treble",
-            "key_sig": "E_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Name this key.",
-    "srs_tags": [
-      "key_sig:A_major",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": "A_major",
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "A3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "key_signature_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "E major",
-    },
-    "distractors": [
-      "A major",
-      "Ab major",
-    ],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
-    },
-    "grade": 3,
-    "hints": [
-      "Count the sharps or flats on the stave and match them to a key you know.",
-    ],
-    "id": "key_signature_id:g3:s14",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
@@ -58648,7 +58567,172 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "E major",
     },
     "distractors": [
-      "A major",
+      "Ab major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g3:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:E_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "E major",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the sharps or flats and their order on the stave.",
+    },
+    "grade": 3,
+    "hints": [
+      "Count the sharps or flats on the stave and match them to a key you know.",
+    ],
+    "id": "key_signature_id:g3:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "Ab major": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "Ab3",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+          "E major": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this key.",
+    "srs_tags": [
+      "key_sig:Ab_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ab3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "key_signature_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E major",
+    },
+    "distractors": [
       "Ab major",
     ],
     "feedback": {
@@ -58663,22 +58747,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -58745,10 +58813,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "A major",
+      "canonical": "E major",
     },
     "distractors": [
-      "E major",
       "Ab major",
     ],
     "feedback": {
@@ -58763,22 +58830,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A1",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "bass",
             "key_sig": "Ab_major",
@@ -58818,19 +58869,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:A_major",
+      "key_sig:E_major",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
-        "key_sig": "A_major",
+        "key_sig": "E_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "A1",
+                "pitch": "E2",
                 "type": "note",
               },
             ],
@@ -58845,10 +58896,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "A major",
+      "canonical": "E major",
     },
     "distractors": [
-      "E major",
       "Ab major",
     ],
     "feedback": {
@@ -58863,22 +58913,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
@@ -58918,19 +58952,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Name this key.",
     "srs_tags": [
-      "key_sig:A_major",
+      "key_sig:E_major",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
-        "key_sig": "A_major",
+        "key_sig": "E_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "A3",
+                "pitch": "E4",
                 "type": "note",
               },
             ],
@@ -58948,7 +58982,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "Ab major",
     },
     "distractors": [
-      "A major",
       "E major",
     ],
     "feedback": {
@@ -58963,22 +58996,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
@@ -59048,7 +59065,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "canonical": "Ab major",
     },
     "distractors": [
-      "A major",
       "E major",
     ],
     "feedback": {
@@ -59063,22 +59079,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "interaction": {
       "config": {
         "option_music": {
-          "A major": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitch": "A3",
-                    "type": "note",
-                  },
-                ],
-              },
-            ],
-          },
           "Ab major": {
             "clef": "treble",
             "key_sig": "Ab_major",
