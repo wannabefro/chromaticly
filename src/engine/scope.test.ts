@@ -242,7 +242,7 @@ describe('scopeForGrade — unsupported grades fail loud', () => {
 // like that: the syllabus caps grade 5 at six sharps and flats, and every
 // key-consuming generator reads keysMajor/keysMinor, so the widening has to
 // land here.
-describe('scopeForGrade(5) — keys widen to six accidentals; other adds stay deferred', () => {
+describe('scopeForGrade(5) — keys, intervals and metres widen; the tenor clef stays deferred', () => {
   test('grade 5 is supported and does not throw', () => {
     expect(() => scopeForGrade(5)).not.toThrow();
   });
@@ -276,10 +276,14 @@ describe('scopeForGrade(5) — keys widen to six accidentals; other adds stay de
     expect(scopeForGrade(4).intervalRule.maxOctaves).toBe(1);
   });
 
-  test('every dimension other than keys and intervals still deep-equals grade 4', () => {
-    const { keysMajor: _M, keysMinor: _m, intervalRule: _i, ...g5 } = scopeForGrade(5);
-    const { keysMajor: _M4, keysMinor: _m4, intervalRule: _i4, ...g4 } = scopeForGrade(4);
-    expect(g5).toEqual(g4);
+  test('the clef, note-value and rest dimensions still deep-equal grade 4', () => {
+    const g5 = scopeForGrade(5);
+    const g4 = scopeForGrade(4);
+    expect(g5.clefs).toEqual(g4.clefs);
+    expect(g5.noteValues).toEqual(g4.noteValues);
+    expect(g5.rests).toEqual(g4.rests);
+    expect(g5.minorForms).toEqual(g4.minorForms);
+    expect(g5.pitchRanges).toEqual(g4.pitchRanges);
   });
 
   test('tenor clef is NOT in scope — it rides with its own unit', () => {
@@ -287,9 +291,15 @@ describe('scopeForGrade(5) — keys widen to six accidentals; other adds stay de
     expect(scopeForGrade(5).clefs).toEqual(scopeForGrade(4).clefs);
   });
 
-  test('the irregular metres are NOT pulled from KB.grade_scopes["5"].adds yet', () => {
+  // chromaticly-e3z.6. They are confined to metre_classification exactly as the
+  // grade-4 metres are: the GLOBAL renderable set has consumers that assume a
+  // crotchet-beat or fixed-family model and cannot draw a 3+2 bar.
+  test('the irregular metres are in scope and metre-renderable, but not globally renderable', () => {
     for (const sig of ['5/4', '7/4', '5/8', '7/8']) {
-      expect(scopeForGrade(5).timeSignatures).not.toContain(sig);
+      expect(scopeForGrade(5).timeSignatures).toContain(sig);
+      expect(metreRenderableTimeSignatures(5)).toContain(sig);
+      expect(renderableTimeSignatures(5)).not.toContain(sig);
+      expect(metreRenderableTimeSignatures(4)).not.toContain(sig);
     }
   });
 

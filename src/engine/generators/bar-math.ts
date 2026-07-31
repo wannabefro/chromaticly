@@ -19,6 +19,7 @@
 // what dissolves the 9/8 = 4.5-crotchets float risk (36 32nd-units, no float
 // ever enters bar arithmetic).
 
+import { irregularGrouping } from '../../music/abc-emitter';
 import type { Dots } from '../../music/types';
 import { pick, weighted } from '../rng';
 
@@ -51,6 +52,11 @@ export const BAR_UNITS: Record<string, number> = {
   '6/16': 12,
   '9/16': 18,
   '12/16': 24,
+  // Grade 5 (chromaticly-e3z.6): the irregular metres, same num x (32/den).
+  '5/4': 40,
+  '7/4': 56,
+  '5/8': 20,
+  '7/8': 28,
 };
 
 export function barUnitsFor(timeSig: string): number {
@@ -65,6 +71,25 @@ export function barUnitsFor(timeSig: string): number {
  *  always divides any positive remainder, so remaining reaches exactly 0.
  *  R2: call-for-call identical to the pre-extraction implementation — only
  *  the UNITS table it reads has moved and been rescaled. */
+/** Fills an irregular bar (5/4, 7/4, 5/8, 7/8) one GROUP at a time, so no note
+ *  ever crosses a group boundary (chromaticly-e3z.6).
+ *
+ *  This is not a cosmetic preference. The syllabus asks for "the grouping of
+ *  notes and rests within these times", and a bar of 5/8 filled as one run can
+ *  put a crotchet across the 3+2 join — which renders as a bar whose beaming
+ *  contradicts the answer the exercise wants. Throws for a regular metre rather
+ *  than silently behaving like buildBarDurations. */
+export function buildIrregularBarDurations<T extends SimpleDuration>(
+  rng: () => number,
+  timeSig: string,
+  pool: readonly T[],
+): T[] {
+  const groups = irregularGrouping(timeSig);
+  if (!groups) throw new Error(`bar-math: "${timeSig}" is not an irregular time signature`);
+  // irregularGrouping is in crotchet-beats; UNITS is demisemiquaver-scale.
+  return groups.flatMap((beats) => buildBarDurations(rng, beats * UNITS.crotchet, pool));
+}
+
 export function buildBarDurations<T extends SimpleDuration>(
   rng: () => number,
   targetUnits: number,

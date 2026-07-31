@@ -393,7 +393,7 @@ describe('musicToAbc — dynamics (302.32)', () => {
 });
 
 describe('musicToAbc — tuplets (fyu.7)', () => {
-  const body = (music: Music) => musicToAbc(music).trim().split('\n').pop();
+  const body = (music: Music) => musicToAbc(music).trim().trim().split('\n').pop();
 
   test('a duplet in 6/8 emits the (2:3:2 bracket on the group start, notes at face value, beat grid honest', () => {
     // Two quaver-duplet notes fill one dotted-crotchet beat; the dotted crotchet
@@ -559,5 +559,33 @@ describe('highlightLocator (U2, KTD3)', () => {
 
   test('returns null when nothing is marked', () => {
     expect(highlightLocator(satbFixture(null))).toBeNull();
+  });
+});
+
+// Irregular metres (chromaticly-e3z.6). Beaming is how a score shows the 3+2 of
+// a 5/8 bar, so a uniform beat would draw five separate quavers and misteach the
+// grouping the syllabus asks about.
+describe('musicToAbc — irregular metres beam by group, not by a uniform beat', () => {
+  const bar = (timeSig: string, count: number) =>
+    musicToAbc({
+      clef: 'treble',
+      key_sig: null,
+      time_sig: timeSig,
+      voices: [{ events: Array.from({ length: count }, () => ({ type: 'note', pitch: 'C5', dur: 'quaver' }) as never) }],
+    });
+
+  test('5/8 beams three quavers then two', () => {
+    expect(bar('5/8', 5).trim().split('\n').pop()).toBe('c4c4c4 c4c4');
+  });
+
+  test('7/8 beams three then two then two', () => {
+    expect(bar('7/8', 7).trim().split('\n').pop()).toBe('c4c4c4 c4c4 c4c4');
+  });
+
+  // The regression guard: every metre below grade 5 must beam exactly as before.
+  test('a regular metre still beams on its own uniform beat', () => {
+    expect(bar('4/4', 8).trim().split('\n').pop()).toBe('c4c4 c4c4 c4c4 c4c4');
+    expect(bar('6/8', 6).trim().split('\n').pop()).toBe('c4c4c4 c4c4c4');
+    expect(bar('3/4', 6).trim().split('\n').pop()).toBe('c4c4 c4c4 c4c4');
   });
 });

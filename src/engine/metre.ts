@@ -4,8 +4,8 @@
 // import it, and validator.ts must not import from generators/ (import
 // cycle via retry.ts → validate).
 
-export type Division = 'simple' | 'compound';
-export type Beats = 'duple' | 'triple' | 'quadruple';
+export type Division = 'simple' | 'compound' | 'irregular';
+export type Beats = 'duple' | 'triple' | 'quadruple' | 'quintuple' | 'septuple';
 
 export interface MetreClass {
   division: Division;
@@ -13,6 +13,17 @@ export interface MetreClass {
 }
 
 const BEAT_NAMES: Record<number, Beats> = { 2: 'duple', 3: 'triple', 4: 'quadruple' };
+
+// Irregular metres (Grade 5, chromaticly-e3z.6). A numerator of 5 or 7 divides
+// into neither two, three nor four equal beats, so it is neither simple nor
+// compound — it is its own division. The beat count is the numerator itself,
+// as in simple time.
+const IRREGULAR_BEAT_NAMES: Record<number, Beats> = { 5: 'quintuple', 7: 'septuple' };
+
+/** True for an irregular metre — one whose numerator is 5 or 7. */
+export function isIrregularTimeSignature(sig: string): boolean {
+  return IRREGULAR_BEAT_NAMES[parseSignature(sig).num] !== undefined;
+}
 
 /** Parses "<num>/<den>" strictly: exactly two finite positive integers.
  *  Rejects bare "4", "4/", "/4", "NaN/8", "" — a malformed signature must
@@ -49,6 +60,8 @@ export function isCompoundTimeSignature(sig: string): boolean {
  *  six-entry table for 2/4, 3/4, 4/4, 6/8, 9/8, 12/8. */
 export function classifyMetre(sig: string): MetreClass {
   const { num } = parseSignature(sig);
+  const irregular = IRREGULAR_BEAT_NAMES[num];
+  if (irregular) return { division: 'irregular', beats: irregular };
   const compound = num % 3 === 0 && num > 3;
   const beats = BEAT_NAMES[compound ? num / 3 : num];
   if (!beats) {

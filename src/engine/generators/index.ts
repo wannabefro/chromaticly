@@ -26,6 +26,7 @@ import { rhythmSum } from './rhythm-sum';
 import { satbVoiceRecognition } from './satb-voice-recognition';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
+import { tupletRecognition } from './tuplet-recognition';
 import { transposingInstrument } from './transposing-instrument';
 import type { GenerateOptions, Generator } from './types';
 
@@ -56,6 +57,7 @@ export const GENERATORS: Record<string, Generator> = {
   rest_completion: restCompletion,
   clef_equivalence: clefEquivalence,
   transposing_instrument: transposingInstrument,
+  tuplet_recognition: tupletRecognition,
   metre_rewrite: metreRewrite,
   satb_voice_recognition: satbVoiceRecognition,
 };

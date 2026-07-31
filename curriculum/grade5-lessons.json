@@ -308,6 +308,81 @@
         "smartTip": "Same pitches, same order — just re-value. Into compound: add a dot to every note. Back to simple: take every dot off. The beats stay lined up.",
         "didYouKnow": "6/8 and 3/4 use the exact same six quavers per bar, but group them differently — 6/8 as two dotted-crotchet beats, 3/4 as three crotchet beats. The time signature tells the player how to FEEL the bar, not just how to count it."
       },
+      "unlocks": "irregular-time-5"
+    },
+    {
+      "id": "irregular-time-5",
+      "title": "Irregular time signatures",
+      "strand": "rhythm",
+      "atoms": [
+        "metre:5/4",
+        "metre:7/4",
+        "metre:5/8",
+        "metre:7/8"
+      ],
+      "templates": [
+        "metre_classification"
+      ],
+      "worked_example": {
+        "template_id": "metre_classification",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Recognise 5/4, 7/4, 5/8 and 7/8 as irregular time signatures",
+          "Five and seven beats split into no equal groups, so the metre is neither simple nor compound",
+          "The beaming shows how the bar is grouped — usually 3+2 for five, 3+2+2 for seven"
+        ],
+        "concept": {
+          "title": "When the beats do not divide evenly",
+          "body": "Every metre so far has split into two, three or four equal beats. Five and seven do not. A bar of 5/8 cannot be two equal halves or three equal thirds, so it is neither simple nor compound — it is IRREGULAR. What replaces the even split is a grouping, and the beaming on the page is what shows it. Five is usually written 3+2, and seven as 3+2+2, though a composer may choose 2+3 or another order and beam it that way. So read the beams first: they tell you how the bar is meant to be felt, which no time signature on its own can.",
+          "example": {
+            "template_id": "metre_classification",
+            "grade": 5,
+            "seed": 1
+          }
+        },
+        "smartTip": "Count the beats. Five or seven means irregular — then look at the beams to see how they group.",
+        "didYouKnow": "Irregular metres are the normal case in Balkan dance music, where a 7/8 grouped 2+2+3 has been danced for centuries. Western notation only needed a name for them once composers started borrowing them."
+      },
+      "unlocks": "irregular-divisions-5"
+    },
+    {
+      "id": "irregular-divisions-5",
+      "title": "Irregular divisions: quintuplets and beyond",
+      "strand": "rhythm",
+      "atoms": [
+        "tuplet:5",
+        "tuplet:6",
+        "tuplet:7"
+      ],
+      "templates": [
+        "tuplet_recognition"
+      ],
+      "worked_example": {
+        "template_id": "tuplet_recognition",
+        "grade": 5,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Name a quintuplet, sextuplet and septuplet from the number in the bracket",
+          "Each squeezes that many equal notes into one beat",
+          "A beat that normally holds four semiquavers holds five, six or seven instead"
+        ],
+        "concept": {
+          "title": "Squeezing extra notes into a beat",
+          "body": "A triplet puts three notes where two would go. The same trick works with any number. In simple time a crotchet beat normally holds four semiquavers; write five under a bracket marked 5 and you have a QUINTUPLET, six a SEXTUPLET, seven a SEPTUPLET. The bracket number says how many notes are squeezed in. It does not say what they replace — that is always one beat, whatever the number. So a quintuplet and a septuplet both last exactly one beat; the septuplet's notes are simply faster.",
+          "example": {
+            "template_id": "tuplet_recognition",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "The bracket number is how many you play. What they replace is always one beat — here, four semiquavers.",
+        "didYouKnow": "Chopin wrote runs of eleven, thirteen and even thirty-five notes over a single beat. The bracket number stops being a rhythm to count and becomes an instruction to play the flourish in the time available."
+      },
       "unlocks": "satb-voice-5"
     },
     {

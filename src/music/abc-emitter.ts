@@ -224,12 +224,58 @@ function beatUnit(timeSig: string | null | undefined): number {
   return compound ? unit * 3 : unit;
 }
 
+// Irregular metres (Grade 5, chromaticly-e3z.6) do not beam on a uniform beat.
+// A bar of 5/8 is three quavers then two, not five separate beats, and the
+// syllabus asks for "the grouping of notes and rests within these times" — the
+// beaming IS the grouping, so getting it wrong misteaches the lesson.
+//
+// The groups below are the commonest reading of each metre. Both 5 and 7 admit
+// others (2+3, 3+4, 2+2+3), which a real score marks with its beams; a
+// generated bar has to choose one, and these are what a Grade 5 paper prints
+// when it does not say otherwise.
+const IRREGULAR_GROUPS: Record<number, readonly number[]> = {
+  5: [3, 2],
+  7: [3, 2, 2],
+};
+
+/** Group spans in crotchet-beats for an irregular metre, or null for a regular
+ *  one — which keeps every metre grades 1-4 use on the untouched uniform path.
+ *  Exported because the bar filler needs the same boundaries: a note allowed to
+ *  straddle one hides the grouping this metre is taught for. */
+export function irregularGrouping(timeSig: string | null | undefined): number[] | null {
+  if (!timeSig) return null;
+  const [num, den] = timeSig.split('/').map(Number);
+  const groups = IRREGULAR_GROUPS[num];
+  if (!groups) return null;
+  return groups.map((n) => (n * 4) / den);
+}
+
+/** Maps a position within the bar, in crotchet-beats, to the index of the beam
+ *  group it belongs to. Regular metres divide by a constant; irregular ones walk
+ *  their group spans. Past the last group the index keeps rising, so an
+ *  overfull bar never silently beams its tail into the final group. */
+function beamGrouper(timeSig: string | null | undefined): (beatPos: number) => number {
+  const groups = irregularGrouping(timeSig);
+  if (!groups) {
+    const unit = beatUnit(timeSig);
+    return (beatPos) => Math.floor((beatPos + EPS) / unit);
+  }
+  return (beatPos) => {
+    let edge = 0;
+    for (let i = 0; i < groups.length; i++) {
+      edge += groups[i];
+      if (beatPos + EPS < edge) return i;
+    }
+    return groups.length + Math.floor(beatPos - edge);
+  };
+}
+
 /** Emit a voice, beaming sub-crotchet notes that share a beat. In ABC, adjacent notes
  *  with NO space between them are beamed; a space breaks the beam. Emitting every note
  *  space-separated (the old behaviour) left quavers unbeamed — wrong for the metre. So
  *  notes shorter than a crotchet that fall in the same beat are glued; everything else
  *  (crotchet-or-longer, rests, a dynamic, a bar edge, a new beat) gets a space. */
-function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, unit: number): string {
+function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, groupAt: (beatPos: number) => number): string {
   let out = '';
   let pendingDecoration = '';
   let beatPos = 0; // crotchet-beats elapsed in the current bar
@@ -262,7 +308,7 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, unit: numb
     const tuplet = ev.type === 'note' ? ev.tuplet : undefined;
     const written = beatsOf(ev.dur, ev.dots ?? 0);
     const d = tuplet ? (written * tuplet.inTimeOf) / tuplet.size : written;
-    const beat = Math.floor((beatPos + EPS) / unit);
+    const beat = groupAt(beatPos);
     const isPitched = ev.type === 'note' || ev.type === 'chord';
     const beamable = isPitched && written <= 0.5; // quaver or shorter carries a beam
     const tupletPrefix = tuplet?.start ? `(${tuplet.size}:${tuplet.inTimeOf}:${tuplet.size}` : '';
@@ -289,7 +335,7 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, unit: numb
  *  off the same voice IDs (KTD2, U2). Every voice must declare its `staff` —
  *  a missing one fails loud rather than silently dropping the voice from the
  *  score. */
-function grandStaffAbc(music: Music, staves: Clef[], keyAcc: Record<string, Accidental>, unit: number): string {
+function grandStaffAbc(music: Music, staves: Clef[], keyAcc: Record<string, Accidental>, groupAt: (beatPos: number) => number): string {
   const ids = music.voices.map((voice, i) => voiceId(voice, i));
   const staffGroups: string[][] = staves.map(() => []);
   music.voices.forEach((voice, i) => {
@@ -307,7 +353,7 @@ function grandStaffAbc(music: Music, staves: Clef[], keyAcc: Record<string, Acci
 
   const voiceBlocks = music.voices.map((voice, i) => {
     const clef = staves[voice.staff!];
-    return `V:${ids[i]} clef=${clef} stem=${voice.stem}\n${voiceToAbc(voice, keyAcc, unit)}`;
+    return `V:${ids[i]} clef=${clef} stem=${voice.stem}\n${voiceToAbc(voice, keyAcc, groupAt)}`;
   });
 
   return `${header}\n${voiceBlocks.join('\n')}\n`;
@@ -316,10 +362,10 @@ function grandStaffAbc(music: Music, staves: Clef[], keyAcc: Record<string, Acci
 /** Project a Music object to a complete, renderable ABC tune string. */
 export function musicToAbc(music: Music): string {
   const keyAcc = keyAccidentals(music.key_sig);
-  const unit = beatUnit(music.time_sig);
+  const groupAt = beamGrouper(music.time_sig);
 
   if (music.staves) {
-    return grandStaffAbc(music, music.staves, keyAcc, unit);
+    return grandStaffAbc(music, music.staves, keyAcc, groupAt);
   }
 
   const header = [
@@ -332,7 +378,7 @@ export function musicToAbc(music: Music): string {
     `K:${keyName(music.key_sig)} ${music.rhythmStaff ? 'clef=none stafflines=0' : clefTag(music.clef)}`,
   ].join('\n');
 
-  const body = music.voices.map((voice) => voiceToAbc(voice, keyAcc, unit)).join('\n');
+  const body = music.voices.map((voice) => voiceToAbc(voice, keyAcc, groupAt)).join('\n');
 
   return `${header}\n${body}\n`;
 }

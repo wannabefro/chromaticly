@@ -17,6 +17,7 @@ import grade5Raw from '../../curriculum/grade5-lessons.json';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
+import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -309,6 +310,14 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (scopeForGrade(grade).intervalRule.aboveTonicOnly) {
         throw new Error(`lessons: atom "${atom}" needs between-any-notes intervals, which grade ${grade} does not have`);
       }
+      return;
+    }
+    case 'tuplet': {
+      const size = Number(parts[0]);
+      if (!TUPLET_SIZES.includes(size)) {
+        throw new Error(`lessons: atom "${atom}" is not an irregular division size (5, 6 or 7)`);
+      }
+      if (grade < 5) throw new Error(`lessons: atom "${atom}" is not a G${grade} rhythm device`);
       return;
     }
     case 'interval_compound': {

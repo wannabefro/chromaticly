@@ -109,6 +109,13 @@ export function dupletAtom(sig: string): string {
   return `duplet:${sig}`;
 }
 
+/** Grade-5 irregular division (chromaticly-e3z.6), e.g. tupletAtom(5) ->
+ *  "tuplet:5". One atom per size: a learner who knows the quintuplet does not
+ *  automatically know the septuplet, and the size is the fact being learned. */
+export function tupletAtom(size: number): string {
+  return `tuplet:${size}`;
+}
+
 export function findBarAtom(property: string): string {
   return `find_bar:${property}`;
 }

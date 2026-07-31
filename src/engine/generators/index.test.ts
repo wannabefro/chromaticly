@@ -41,7 +41,12 @@ const GRADE_4_ONLY_TEMPLATE_IDS = ['clef_equivalence'];
 // satb_voice_recognition (G5-1, chromaticly-0iy) throws below grade 5 (build()
 // gate) — the SATB "name the voice" grand-staff skill the KB scopes only at
 // grade 5. Same grade-5-only shape as the transposing/metre-rewrite pair.
-const GRADE_5_ONLY_TEMPLATE_IDS = ['transposing_instrument', 'metre_rewrite', 'satb_voice_recognition'];
+const GRADE_5_ONLY_TEMPLATE_IDS = [
+  'transposing_instrument',
+  'metre_rewrite',
+  'satb_voice_recognition',
+  'tuplet_recognition',
+];
 
 // anacrusis_recognition (anacrusis slice, D5) needs an explicit anacrusis:<sig>
 // atom (no legacy bare-atom fallback, unlike add_time_signature) but — unlike

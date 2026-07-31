@@ -1,4 +1,4 @@
-import { classifyMetre, isCompoundTimeSignature } from './metre';
+import { classifyMetre, isIrregularTimeSignature, isCompoundTimeSignature } from './metre';
 
 describe('classifyMetre — numerator-based, all Grade-4 metres (chromaticly-570)', () => {
   // Byte-identical to the former six-entry table.
@@ -42,8 +42,27 @@ describe('classifyMetre — numerator-based, all Grade-4 metres (chromaticly-570
     expect(classifyMetre('2/2')).toEqual({ division: 'simple', beats: 'duple' });
   });
 
-  // Throws only when the beat count falls outside {2,3,4}.
-  test.each(['5/4', '7/8', '15/8', '5/8'])('throws on beat count outside {2,3,4} "%s"', (sig) => {
+  // Irregular metres (chromaticly-e3z.6): a numerator of 5 or 7 divides into no
+  // equal beats, so it is a division of its own rather than an error.
+  test.each([
+    ['5/4', 'quintuple'],
+    ['5/8', 'quintuple'],
+    ['7/4', 'septuple'],
+    ['7/8', 'septuple'],
+  ])('%s is irregular %s', (sig, beats) => {
+    expect(classifyMetre(sig)).toEqual({ division: 'irregular', beats });
+    expect(isIrregularTimeSignature(sig)).toBe(true);
+  });
+
+  test('a regular metre is never irregular, whatever its denominator', () => {
+    for (const sig of ['2/4', '3/4', '4/4', '6/8', '9/8', '12/8', '2/2', '6/16']) {
+      expect(isIrregularTimeSignature(sig)).toBe(false);
+    }
+  });
+
+  // Still throws where no classification exists at all — 15 is neither a
+  // recognised beat count nor one of the two irregular numerators.
+  test.each(['15/8', '11/4', '13/8'])('throws on an unclassifiable numerator "%s"', (sig) => {
     expect(() => classifyMetre(sig)).toThrow(sig);
   });
 

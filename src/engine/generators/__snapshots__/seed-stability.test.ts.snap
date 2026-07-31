@@ -151949,6 +151949,1731 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte metre_classification @ irregular-time-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "5/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "5/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "5/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "5/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "5/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "7/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "7/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "5/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "5/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "7/8",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "demisemiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular quintuple",
+    },
+    "distractors": [
+      "Simple quadruple",
+      "Irregular septuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Irregular septuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has five, not seven.",
+        "Simple quadruple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has five beats, which no equal division reaches.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:5/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "5/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Irregular septuple",
+    },
+    "distractors": [
+      "Compound duple",
+      "Irregular quintuple",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Compound duple": "That is the nearest regular metre, and it is one beat out. Count again: this bar has seven beats, which no equal division reaches.",
+        "Irregular quintuple": "That is the other irregular metre. Both are irregular, but count the beats — this bar has seven, not five.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the beats in the bar. Five or seven divide into no equal groups, which is what makes a metre irregular — the beaming shows how they are grouped instead.",
+    ],
+    "id": "metre_classification:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which describes this time signature?",
+    "srs_tags": [
+      "metre:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "metre_classification",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte metre_rewrite @ metre-rewrite-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -164298,6 +166023,2297 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte tuplet_recognition @ irregular-divisions-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "five",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "five": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A septuplet fills one beat. That beat normally holds four semiquavers, so 7 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a septuplet. 7 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quintuplet",
+    },
+    "distractors": [
+      "sextuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 5.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 5, which makes it a quintuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "septuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "sextuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 7.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 7.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 7, which makes it a septuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "five",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "five": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A septuplet fills one beat. That beat normally holds four semiquavers, so 7 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a septuplet. 7 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quintuplet",
+    },
+    "distractors": [
+      "sextuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 5.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 5, which makes it a quintuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "five",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "five": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A septuplet fills one beat. That beat normally holds four semiquavers, so 7 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a septuplet. 7 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "three",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A sextuplet fills one beat. That beat normally holds four semiquavers, so 6 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a sextuplet. 6 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quintuplet",
+    },
+    "distractors": [
+      "sextuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 5.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 5, which makes it a quintuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "septuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "sextuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 7.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 7.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 7, which makes it a septuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "septuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "sextuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 7.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 7.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 7, which makes it a septuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte metre_rewrite (metre-rewrite-5, pre-lesson pin, chromaticly-4ak) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -171852,6 +175868,2297 @@ exports[`seed-stability — grade-5-only generator extras are pinned byte-for-by
     },
     "strand": "pitch",
     "template_id": "transposing_instrument",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte tuplet_recognition (irregular-divisions-5, chromaticly-e3z.6) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "five",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "five": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A septuplet fills one beat. That beat normally holds four semiquavers, so 7 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a septuplet. 7 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quintuplet",
+    },
+    "distractors": [
+      "sextuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 5.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 5, which makes it a quintuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "septuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "sextuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 7.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 7.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 7, which makes it a septuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "five",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "five": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A septuplet fills one beat. That beat normally holds four semiquavers, so 7 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a septuplet. 7 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quintuplet",
+    },
+    "distractors": [
+      "sextuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 5.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 5, which makes it a quintuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "five",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "five": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A septuplet fills one beat. That beat normally holds four semiquavers, so 7 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a septuplet. 7 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "three",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A sextuplet fills one beat. That beat normally holds four semiquavers, so 6 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a sextuplet. 6 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quintuplet",
+    },
+    "distractors": [
+      "sextuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 5.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 5, which makes it a quintuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "septuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "sextuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 7.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 7.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 7, which makes it a septuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "septuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "sextuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 7.",
+        "sextuplet": "A sextuplet has a different number of notes. Count what is under the bracket — there are 7.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 7, which makes it a septuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:7",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 7,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "four",
+    },
+    "distractors": [
+      "six",
+      "two",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "six": "That is how many notes are in the bracket, or near it. The question asks what they REPLACE — one beat of four semiquavers.",
+        "two": "Two in the time of three is the duplet, and three in the time of two is the triplet. This group replaces a whole beat of four.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quintuplet fills one beat. That beat normally holds four semiquavers, so 5 are played in the time of four.",
+    },
+    "grade": 5,
+    "hints": [
+      "The bracket says how many notes are squeezed in. What they replace is a full beat — count the notes of that value one beat normally holds.",
+    ],
+    "id": "tuplet_recognition:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a quintuplet. 5 notes are played in the time of how many?",
+    "srs_tags": [
+      "tuplet:5",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 5,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "sextuplet",
+    },
+    "distractors": [
+      "quintuplet",
+      "septuplet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quintuplet": "A quintuplet has a different number of notes. Count what is under the bracket — there are 6.",
+        "septuplet": "A septuplet has a different number of notes. Count what is under the bracket — there are 6.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Count the notes under the bracket: there are 6, which makes it a sextuplet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the notes inside the bracket. The name comes from that number, not from the beat it fills.",
+    ],
+    "id": "tuplet_recognition:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is the bracketed group called?",
+    "srs_tags": [
+      "tuplet:6",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "tuplet": {
+                  "inTimeOf": 4,
+                  "size": 6,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "tuplet_recognition",
   },
 ]
 `;

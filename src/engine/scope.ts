@@ -205,8 +205,8 @@ const GRADE_5_SCOPE: GradeScope = {
   keysMajor: [...GRADE_4_SCOPE.keysMajor, ...KB.grade5Adds.keys_major],
   keysMinor: [...GRADE_4_SCOPE.keysMinor, ...KB.grade5Adds.keys_minor],
   minorForms: GRADE_4_SCOPE.minorForms,
-  timeSignatures: GRADE_4_SCOPE.timeSignatures,
-  rhythmDevices: GRADE_4_SCOPE.rhythmDevices,
+  timeSignatures: [...GRADE_4_SCOPE.timeSignatures, ...KB.grade5Adds.time_signatures],
+  rhythmDevices: [...GRADE_4_SCOPE.rhythmDevices, ...KB.grade5Adds.rhythm_devices],
   // Two octaves of headroom (chromaticly-e3z.8): "all simple and compound
   // intervals from any note". aboveTonicOnly is already false, inherited from
   // grade 4 — the compound widening is the octave, not the domain.
@@ -275,7 +275,20 @@ const GRADE_4_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
 // the time-signatures slice. Grades 1-3 defer to the global set (byte-identical);
 // grade 4 adds the nine new metres. Keeping this separate from the global
 // renderableTimeSignatures is what confines the new metres to metre_classification.
+// Grade 5 (chromaticly-e3z.6) adds the four irregular metres. They stay out of
+// the GLOBAL renderable set for the same reason the grade-4 metres do: only
+// metre_classification is grouping-aware, and the emitter's irregular beaming
+// is the thing that makes them legible.
+const GRADE_5_RENDERABLE_TIME_SIGNATURES: readonly string[] = [
+  ...GRADE_4_RENDERABLE_TIME_SIGNATURES,
+  '5/4',
+  '7/4',
+  '5/8',
+  '7/8',
+];
+
 export function metreRenderableTimeSignatures(grade: number): readonly string[] {
+  if (grade >= 5) return GRADE_5_RENDERABLE_TIME_SIGNATURES;
   return grade >= 4 ? GRADE_4_RENDERABLE_TIME_SIGNATURES : renderableTimeSignatures(grade);
 }
 

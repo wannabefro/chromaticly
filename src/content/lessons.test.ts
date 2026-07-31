@@ -845,12 +845,12 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
 describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
   const lesson = () => lessonById('satb-voice-5')!;
 
-  test('exists, strand pitch, single template satb_voice_recognition, is the new chain tail', () => {
+  test('exists, strand pitch, single template satb_voice_recognition, is still the chain tail', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(5);
     expect(lesson().strand).toBe('pitch');
     expect(lesson().templates).toEqual(['satb_voice_recognition']);
-    expect(lessonById('metre-rewrite-5')!.unlocks).toBe('satb-voice-5');
+    expect(lessonById('irregular-divisions-5')!.unlocks).toBe('satb-voice-5');
     expect(lesson().unlocks).toBeNull();
   });
 

@@ -709,12 +709,18 @@ function addTimeSignatureHook(inst: ExerciseInstance): string[] {
   return [];
 }
 
-// metreClassificationHook (D7): canonical must be one of the six legal
-// {Simple,Compound} x {duple,triple,quadruple} labels AND must equal the
-// label classifyMetre computes for the STIMULUS's own (printed, D8) time
-// signature — the invariant that a generated instance can never mislabel the
-// bar it renders. Distractors must also be legal labels, and distinct from
-// the canonical and from each other.
+// metreClassificationHook (D7): canonical must be one of the legal
+// {Simple,Compound} x {duple,triple,quadruple} labels — plus the two Irregular
+// ones at Grade 5 (chromaticly-e3z.6) — AND must equal the label classifyMetre
+// computes for the STIMULUS's own (printed, D8) time signature, the invariant
+// that a generated instance can never mislabel the bar it renders. Distractors
+// must also be legal labels, and distinct from the canonical and from each
+// other.
+//
+// This label function is deliberately a second implementation of the
+// generator's, not a shared import: the hook's job is to recompute rather than
+// trust. Both must be widened together, and the "Compound quintuple" a
+// half-widened pair produces is what this check exists to catch.
 const LEGAL_METRE_LABELS = new Set([
   'Simple duple',
   'Simple triple',
@@ -722,10 +728,20 @@ const LEGAL_METRE_LABELS = new Set([
   'Compound duple',
   'Compound triple',
   'Compound quadruple',
+  'Irregular quintuple',
+  'Irregular septuple',
 ]);
 
+const METRE_DIVISION_WORDS: Record<string, string> = {
+  simple: 'Simple',
+  compound: 'Compound',
+  irregular: 'Irregular',
+};
+
 function metreLabel(cls: { division: string; beats: string }): string {
-  return `${cls.division === 'simple' ? 'Simple' : 'Compound'} ${cls.beats}`;
+  const division = METRE_DIVISION_WORDS[cls.division];
+  if (!division) throw new Error(`validator: unknown metre division "${cls.division}"`);
+  return `${division} ${cls.beats}`;
 }
 
 function metreClassificationHook(inst: ExerciseInstance): string[] {

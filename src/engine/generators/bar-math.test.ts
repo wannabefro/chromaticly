@@ -10,6 +10,7 @@ import {
   buildBarDurations,
   buildCompoundBarDurations,
   corruptBarDurations,
+  buildIrregularBarDurations,
   type BarDuration,
   type SimpleDuration,
 } from './bar-math';
@@ -103,11 +104,12 @@ describe('bar-math — BAR_UNITS: integer bar totals for every renderable signat
     expect(BAR_UNITS['9/8']).toBe(36);
   });
 
-  test('BAR_UNITS matches the D3 table plus the Grade-4 metres exactly', () => {
+  test('BAR_UNITS matches the D3 table plus the Grade-4 and Grade-5 metres exactly', () => {
     expect(BAR_UNITS).toEqual({
       '2/4': 16, '3/4': 24, '4/4': 32, '6/8': 24, '9/8': 36, '12/8': 48,
       '2/8': 8, '3/8': 12, '4/8': 16, '6/4': 48, '9/4': 72, '12/4': 96,
       '6/16': 12, '9/16': 18, '12/16': 24,
+      '5/4': 40, '7/4': 56, '5/8': 20, '7/8': 28,
     });
   });
 
@@ -115,6 +117,8 @@ describe('bar-math — BAR_UNITS: integer bar totals for every renderable signat
     expect(BAR_UNITS['2/8']).toBe(2 * 4);
     expect(BAR_UNITS['6/4']).toBe(6 * 8);
     expect(BAR_UNITS['12/16']).toBe(12 * 2);
+    expect(BAR_UNITS['5/4']).toBe(5 * 8);
+    expect(BAR_UNITS['7/8']).toBe(7 * 4);
   });
 });
 
@@ -300,3 +304,42 @@ describe('bar-math — corruptBarDurations never injects breve (Grade 4 defensiv
   });
 });
 
+// chromaticly-e3z.6. The invariant is not "the bar sums right" — buildBarDurations
+// already does that. It is that no note crosses a group boundary, because the
+// beaming that boundary produces IS what the metre is taught by.
+describe('buildIrregularBarDurations — no note crosses the group join', () => {
+  const POOL = ['demisemiquaver', 'semiquaver', 'quaver', 'crotchet', 'minim'] as const;
+  const CROTCHET = 8;
+  const GROUPS: Record<string, number[]> = {
+    '5/4': [3 * CROTCHET, 2 * CROTCHET],
+    '7/4': [3 * CROTCHET, 2 * CROTCHET, 2 * CROTCHET],
+    '5/8': [1.5 * CROTCHET, 1 * CROTCHET],
+    '7/8': [1.5 * CROTCHET, 1 * CROTCHET, 1 * CROTCHET],
+  };
+
+  test.each(['5/4', '7/4', '5/8', '7/8'])('every group of %s is filled exactly, over many seeds', (sig) => {
+    for (let seed = 0; seed < 40; seed++) {
+      const durations = buildIrregularBarDurations(mulberry32(seed), sig, POOL);
+      const edges = new Set<number>();
+      let cumulative = 0;
+      for (const span of GROUPS[sig]) {
+        cumulative += span;
+        edges.add(cumulative);
+      }
+      // Walk the bar; every boundary must fall ON a note edge, never inside one.
+      let pos = 0;
+      const reached = new Set<number>([0]);
+      for (const d of durations) {
+        pos += UNITS[d];
+        reached.add(pos);
+      }
+      expect(pos).toBe(barUnitsFor(sig));
+      for (const edge of edges) expect(reached.has(edge)).toBe(true);
+    }
+  });
+
+  test('a regular metre throws rather than quietly filling as one run', () => {
+    expect(() => buildIrregularBarDurations(mulberry32(0), '4/4', POOL)).toThrow('4/4');
+    expect(() => buildIrregularBarDurations(mulberry32(0), '6/8', POOL)).toThrow('6/8');
+  });
+});
