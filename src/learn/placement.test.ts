@@ -42,10 +42,10 @@ describe('placement — the ladder is built whole, then walked', () => {
 
   // The matrix is sparse by nature and these are the shapes the stepping rule has
   // to survive: a two-grade ladder, a ladder with a hole in it, a single-grade one.
-  test('the ladders are ragged — chords is [4, 5], intervals skips grade 2, context is one grade', () => {
+  test('the ladders are ragged — chords is [4, 5], intervals skips grade 2', () => {
     expect(ladderFor('chords')).toEqual([4, 5]);
     expect(ladderFor('intervals')).toEqual([1, 3, 4, 5]);
-    expect(ladderFor('context')).toEqual([1]);
+    expect(ladderFor('context')).toEqual([1, 2, 3, 4, 5]);
   });
 
   test('a strand with no markable content is never offered an item', () => {
@@ -140,8 +140,9 @@ describe('placement — the walk steps adaptively and never repeats a grade', ()
     expect(answerWalk(startWalk('intervals', LADDER_BUDGET, 1), true).pending).toBe(3);
   });
 
-  test('a single-grade strand asks one question, not four repeats of it', () => {
-    expect(run(startWalk('context', LADDER_BUDGET), [true]).asked).toEqual([1]);
+  // chords is the shortest ladder left: [4, 5]. It stops at two, not at four.
+  test('a short strand asks its ladder once, not four repeats of it', () => {
+    expect(run(startWalk('chords', LADDER_BUDGET), [true, true]).asked.length).toBeLessThanOrEqual(2);
   });
 
   // The invariant the never-revisit rule buys. A bare budget of 4 lets chords

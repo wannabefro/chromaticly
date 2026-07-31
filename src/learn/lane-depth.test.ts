@@ -28,7 +28,7 @@ function master(store: ProgressStore, strand: Parameters<typeof atomsFor>[0], gr
 describe('the content matrix — sparse, and every consumer must cope', () => {
   test('each strand reports only the grades that actually have lessons', () => {
     expect(contentGradesFor('chords')).toEqual([4, 5]);
-    expect(contentGradesFor('context')).toEqual([1]);
+    expect(contentGradesFor('context')).toEqual([1, 2, 3, 4, 5]);
     expect(contentGradesFor('intervals')).toEqual([1, 3, 4, 5]);
   });
 

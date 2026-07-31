@@ -136,7 +136,7 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
       correct: 'Correct!',
       incorrect: `Not quite — compare the bars one by one. Only one bar holds the ${label}; ${PROPERTY_MISS[property]}.`,
     },
-    srs_tags: [findBarAtom(property)],
+    srs_tags: [findBarAtom(property, grade)],
     kb_version: KB_VERSION,
   };
 }

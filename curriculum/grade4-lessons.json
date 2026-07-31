@@ -649,6 +649,46 @@
         "smartTip": "Four families: strings, woodwind, brass, percussion. The viola is the string instrument that reads the alto clef — that is exactly why the alto clef was worth learning.",
         "didYouKnow": "‘Pizzicato’ is Italian for ‘pinched’ — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
       },
+      "unlocks": "music-in-context-4"
+    },
+    {
+      "id": "music-in-context-4",
+      "title": "Reading a passage — Grade 4",
+      "strand": "context",
+      "atoms": [
+        "find_bar:highest:4",
+        "find_bar:lowest:4",
+        "find_bar:longest:4",
+        "context:highest_note:4",
+        "context:time_sig:4",
+        "context:dynamic_term:4"
+      ],
+      "templates": [
+        "music_in_context"
+      ],
+      "worked_example": {
+        "template_id": "music_in_context",
+        "grade": 4,
+        "seed": 4
+      },
+      "teach": {
+        "objectives": [
+          "Read a passage drawn from the full Grade 4 vocabulary",
+          "Keep the reading order steady when there is more on the page",
+          "Answer questions that mix pitch, rhythm and metre"
+        ],
+        "concept": {
+          "title": "More on the page, same method",
+          "body": "Grade 4 adds double dots, duplets, new metres and a wider set of keys, and a passage may use any of them. That makes the page busier rather than the questions harder, and the danger is reading in the wrong order: a learner who looks at the notes before the key signature will name the wrong pitch every time an accidental is implied. Keep the order. Clef, key signature, time signature, then notes. If a question asks about a bar, count the bars from the beginning rather than estimating — an examiner's answer is always exact, and a passage with an anacrusis does not start at bar one.",
+          "example": {
+            "template_id": "music_in_context",
+            "grade": 4,
+            "seed": 12
+          }
+        },
+        "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
+        "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
+      },
       "unlocks": "enharmonics-4"
     },
     {

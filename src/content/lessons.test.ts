@@ -286,7 +286,7 @@ describe('grade1 lessons — lessonById', () => {
 // lessons.ts); grade-2 content validates against grade-2 scope, the same
 // teeth grade-1 content already goes through above.
 describe('grade2 lessons — the bundled doc loads and cross-checks clean', () => {
-  test('LESSONS_BY_GRADE[2] has the single linear key-signatures-2 -> ... -> signs-2 chain', () => {
+  test('LESSONS_BY_GRADE[2] has the single linear key-signatures-2 -> ... -> music-in-context-2 chain', () => {
     expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual([
       'key-signatures-2',
       'minor-keys-2',
@@ -299,6 +299,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
       'tempo-2',
       'expression-2',
       'signs-2',
+      'music-in-context-2',
     ]);
   });
 
@@ -339,6 +340,7 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
       'rests-3',
       'intervals-3',
       'ledger-lines-3',
+      'music-in-context-3',
       'anacrusis-3',
       'transposition-3',
     ]);
@@ -871,13 +873,14 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
 describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
   const lesson = () => lessonById('satb-voice-5')!;
 
-  test('exists, strand pitch, single template satb_voice_recognition, is still the chain tail', () => {
+  test('exists, strand pitch, single template satb_voice_recognition, unlocks the context lesson', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(5);
     expect(lesson().strand).toBe('pitch');
     expect(lesson().templates).toEqual(['satb_voice_recognition']);
     expect(lessonById('irregular-divisions-5')!.unlocks).toBe('satb-voice-5');
-    expect(lesson().unlocks).toBeNull();
+    // music-in-context-5 is now the tail (chromaticly-e3z.13).
+    expect(lesson().unlocks).toBe('music-in-context-5');
   });
 
   test('carries the four satb_voice:* atoms, resolving at grade 5 only', () => {

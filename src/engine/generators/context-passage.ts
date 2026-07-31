@@ -127,7 +127,7 @@ function barQuestion(
       correct: 'Correct!',
       incorrect: `Not quite — compare the bars one by one. Only one bar holds the ${label}; the others all stay inside it.`,
     },
-    srs_tags: [findBarAtom(property)],
+    srs_tags: [findBarAtom(property, base.grade)],
     kb_version: KB_VERSION,
   };
 }
@@ -160,7 +160,7 @@ function highestNoteQuestion(
       correct: 'Correct!',
       incorrect: 'Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.',
     },
-    srs_tags: [contextAtom('highest_note')],
+    srs_tags: [contextAtom('highest_note', base.grade)],
     kb_version: KB_VERSION,
   };
 }
@@ -211,7 +211,7 @@ function termQuestion(
       correct: 'Correct!',
       incorrect: `Not quite — ${gloss.italian} (${mark}) means “${gloss.meaning}”.`,
     },
-    srs_tags: [contextAtom('dynamic_term')],
+    srs_tags: [contextAtom('dynamic_term', base.grade)],
     kb_version: KB_VERSION,
   };
 }
@@ -247,7 +247,7 @@ function timeSigQuestion(
       correct: 'Correct!',
       incorrect: `Not quite — count the beats in one bar. This passage is in ${timeSig}.`,
     },
-    srs_tags: [contextAtom('time_sig')],
+    srs_tags: [contextAtom('time_sig', base.grade)],
     kb_version: KB_VERSION,
   };
 }

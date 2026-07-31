@@ -127,8 +127,10 @@ export function tupletAtom(size: number): string {
   return `tuplet:${size}`;
 }
 
-export function findBarAtom(property: string): string {
-  return `find_bar:${property}`;
+/** Grade 1 owns the bare atom. Every later grade gets its own, because the
+ *  passage widens with the grade and because the SRS routes on first owner. */
+export function findBarAtom(property: string, grade = 1): string {
+  return grade <= 1 ? `find_bar:${property}` : `find_bar:${property}:${grade}`;
 }
 
 /** Octave transposition (Grade 3, treble<->bass clef-rewrite) — one atom for
@@ -347,8 +349,8 @@ export function parseAtom(id: string): { kind: string; parts: string[] } {
  *  its highest note, its metre, or a dynamic marking read in context (design 8d). */
 export const CONTEXT_KINDS: readonly string[] = ['highest_note', 'time_sig', 'dynamic_term'];
 
-export function contextAtom(kind: string): string {
-  return `context:${kind}`;
+export function contextAtom(kind: string, grade = 1): string {
+  return grade <= 1 ? `context:${kind}` : `context:${kind}:${grade}`;
 }
 
 /** Grade-5 SATB voice names (satb_voice_recognition, G5-1), in the design's

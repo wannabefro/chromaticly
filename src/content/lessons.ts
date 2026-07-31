@@ -395,17 +395,17 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
-    case 'context': {
-      const [kind] = parts;
-      if (!CONTEXT_KINDS.includes(kind)) {
+    case 'context':
+    case 'find_bar': {
+      const [name, gradePart] = parts;
+      const known = kind === 'context' ? CONTEXT_KINDS : (BAR_PROPERTIES as readonly string[]);
+      if (!known.includes(name)) {
         throw new Error(`lessons: atom "${atom}" is not a Music-in-Context sub-question`);
       }
-      return;
-    }
-    case 'find_bar': {
-      const [property] = parts;
-      if (!(BAR_PROPERTIES as readonly string[]).includes(property)) {
-        throw new Error(`lessons: atom "${atom}" is not a find-the-bar property`);
+      // Grade 1 owns the bare atom; every later grade suffixes its own.
+      const owner = gradePart === undefined ? 1 : Number(gradePart);
+      if (owner !== grade) {
+        throw new Error(`lessons: atom "${atom}" belongs to grade ${owner}, not G${grade}`);
       }
       return;
     }

@@ -665,6 +665,46 @@
         "smartTip": "Staff first, then stem: treble staff = Soprano or Alto, bass staff = Tenor or Bass. Stem up = the higher voice of that pair (Soprano, Tenor); stem down = the lower voice (Alto, Bass).",
         "didYouKnow": "SATB writing comes from choral music, where the four voice types sit in that same top-to-bottom order — but the same layout works just as well for four-part keyboard harmony with no singers at all."
       },
+      "unlocks": "music-in-context-5"
+    },
+    {
+      "id": "music-in-context-5",
+      "title": "Reading a passage — Grade 5",
+      "strand": "context",
+      "atoms": [
+        "find_bar:highest:5",
+        "find_bar:lowest:5",
+        "find_bar:longest:5",
+        "context:highest_note:5",
+        "context:time_sig:5",
+        "context:dynamic_term:5"
+      ],
+      "templates": [
+        "music_in_context"
+      ],
+      "worked_example": {
+        "template_id": "music_in_context",
+        "grade": 5,
+        "seed": 4
+      },
+      "teach": {
+        "objectives": [
+          "Read a passage using the full Grade 5 range and vocabulary",
+          "Answer general questions about a piece, as the exam paper asks",
+          "Work from the page, not from memory of the rules"
+        ],
+        "concept": {
+          "title": "The last question on the paper",
+          "body": "The general-observation question comes near the end of a Grade 5 paper and it draws on everything before it. The passage may sit in any key to six sharps or flats, in an irregular metre, on any of the four clefs, and it may carry German terms as readily as Italian ones. No single fact is beyond what you have already met. What is being tested is whether you can find the relevant one without being told which it is. Read in the fixed order, answer the question that was actually asked, and check the answer against the page rather than against what you remember the rule to be.",
+          "example": {
+            "template_id": "music_in_context",
+            "grade": 5,
+            "seed": 12
+          }
+        },
+        "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
+        "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
+      },
       "unlocks": null
     }
   ]

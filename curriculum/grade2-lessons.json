@@ -438,6 +438,46 @@
         "smartTip": "fp is one instruction, not two: loud then immediately quiet, on the same note.",
         "didYouKnow": "Writing 8va above a passage saves a copyist from drawing five ledger lines on every note. It survived into print because it is genuinely easier to read."
       },
+      "unlocks": "music-in-context-2"
+    },
+    {
+      "id": "music-in-context-2",
+      "title": "Reading a passage",
+      "strand": "context",
+      "atoms": [
+        "find_bar:highest:2",
+        "find_bar:lowest:2",
+        "find_bar:longest:2",
+        "context:highest_note:2",
+        "context:time_sig:2",
+        "context:dynamic_term:2"
+      ],
+      "templates": [
+        "music_in_context"
+      ],
+      "worked_example": {
+        "template_id": "music_in_context",
+        "grade": 2,
+        "seed": 4
+      },
+      "teach": {
+        "objectives": [
+          "Read a short passage for its highest and lowest notes",
+          "Work out the time signature from the passage itself",
+          "Find the bar that holds the longest note"
+        ],
+        "concept": {
+          "title": "Putting it together",
+          "body": "Everything in Grade 2 has been one fact at a time: a key signature, a triplet, a term. A real piece asks for all of them at once, and asks you to find the answer yourself rather than pointing at it. So a passage is put in front of you and the questions are the ones an examiner asks: which bar holds the highest note, which holds the longest, what time is it in. Nothing here is new. What is new is that nobody tells you which fact to reach for. Read the clef first, then the key signature, then the time signature, and only then look at the notes — the same order every time, so that nothing is missed under pressure.",
+          "example": {
+            "template_id": "music_in_context",
+            "grade": 2,
+            "seed": 12
+          }
+        },
+        "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
+        "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
+      },
       "unlocks": null
     }
   ]

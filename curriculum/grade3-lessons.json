@@ -578,6 +578,46 @@
         "smartTip": "Count in 3rds from a landmark you already know, not ledger line by ledger line from the stave — line to space to line gets you there in half the steps.",
         "didYouKnow": "Ledger lines have no upper limit — orchestral parts for piccolo or double bass sometimes stack five or six of them, though this course never asks for more than one beyond Grade 2's range."
       },
+      "unlocks": "music-in-context-3"
+    },
+    {
+      "id": "music-in-context-3",
+      "title": "Reading a passage — Grade 3",
+      "strand": "context",
+      "atoms": [
+        "find_bar:highest:3",
+        "find_bar:lowest:3",
+        "find_bar:longest:3",
+        "context:highest_note:3",
+        "context:time_sig:3",
+        "context:dynamic_term:3"
+      ],
+      "templates": [
+        "music_in_context"
+      ],
+      "worked_example": {
+        "template_id": "music_in_context",
+        "grade": 3,
+        "seed": 4
+      },
+      "teach": {
+        "objectives": [
+          "Read a passage that uses the wider Grade 3 range",
+          "Identify the metre when it may be compound",
+          "Answer several different questions about one passage"
+        ],
+        "concept": {
+          "title": "One passage, several questions",
+          "body": "The passage grows with the grade. At Grade 3 it can reach further above and below the stave, and it can be in compound time, so the metre question is no longer a choice between three simple signatures. The method does not change. Read the clef, then the key signature, then the time signature, and work out whether the beat divides in two or in three before you count anything. A question about the highest note is a reading question; a question about the longest note is a note-value question; a question about the metre is a counting question. Recognising which kind of question you have been asked is most of the work.",
+          "example": {
+            "template_id": "music_in_context",
+            "grade": 3,
+            "seed": 12
+          }
+        },
+        "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
+        "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
+      },
       "unlocks": "anacrusis-3"
     },
     {
