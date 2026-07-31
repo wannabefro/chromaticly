@@ -63,8 +63,8 @@ This protocol applies when ending a Beads implementation workflow. It is subordi
 ```bash
 npx jest                 # unit suite (jest-expo)
 npx tsc --noEmit         # typecheck
-npx expo start --port 8090   # dev server — 8090, NOT 8081 (8081 collides with another local Expo project)
-DEV_URL=exp://127.0.0.1:8090 npm run e2e   # Maestro E2E on a booted sim (see .maestro/README.md)
+npx expo start --port 48090   # dev server — 48090, NOT 8081 (8081 collides with another local Expo project)
+DEV_URL=exp://127.0.0.1:48090 npm run e2e   # Maestro E2E on a booted sim (see .maestro/README.md)
 ```
 
 ## Architecture Overview

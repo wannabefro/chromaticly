@@ -9,7 +9,7 @@
 set -euo pipefail
 
 SIM_NAME="${CHROMATICLY_SIM:-Chromaticly Dogfood}"
-DEV_URL="${DEV_URL:-exp://127.0.0.1:8090}"
+DEV_URL="${DEV_URL:-exp://127.0.0.1:48090}"
 
 UDID=$(xcrun simctl list devices -j | jq -r \
   --arg n "$SIM_NAME" '.devices[][] | select(.name==$n) | .udid' | head -1)

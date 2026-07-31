@@ -1,0 +1,60 @@
+# Capture harness. The deep link is opened by simctl BEFORE maestro runs — its
+# own openLink hangs against Expo Go once a project is loaded. Parameterised by
+# LESSON and OUT; see scripts/capture-lesson.sh.
+appId: host.exp.Exponent
+---
+# Expo Go raises its developer-menu sheet over the loaded app. It covers the
+# lane, so it is dismissed before anything is asserted.
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 30000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%", optional: true }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 60000
+    optional: true
+# The sheet can also arrive after the lane, so dismiss it a second time.
+- tapOn: { text: "Continue", optional: true }
+
+# The app restores whatever screen it was last on, so leave a lesson first.
+- tapOn: { id: "set-close", optional: true }
+- tapOn: { id: "teach-close", optional: true }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 60000
+
+# The lane opens on the learner's own grade, so pick the lesson's grade first.
+- tapOn: { id: "lane-other-grades", optional: true }
+- tapOn: { id: "lane-grade-option-${GRADE}", optional: true }
+- scrollUntilVisible:
+    element: { id: "unit-row-${LESSON}" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-${LESSON}" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- extendedWaitUntil:
+    visible: { id: "__settle_never__" }
+    timeout: 4500
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-1-teach
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+    optional: true
+# Each notation surface paints in its own abcjs WebView; a fast shot catches it blank.
+- extendedWaitUntil:
+    visible: { id: "__settle_never__" }
+    timeout: 4500
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-2-exercise

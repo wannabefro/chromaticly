@@ -46,7 +46,7 @@ Every lesson now opens on the **teach phase** (302.3), so each flow taps
 3. **Metro running** for this project, and Chromaticly opened once in Expo Go so
    it is the active project:
    ```bash
-   npm start                 # or: npx expo start --port 8090
+   npm start                 # or: npx expo start --port 48090
    # press i, or open exp://127.0.0.1:<port> in the simulator
    ```
 
@@ -65,20 +65,20 @@ wrapper resolves `Chromaticly Dogfood` by name (UDID is never hardcoded — it c
 when the sim is recreated), boots it if needed, and never touches another app's sim.
 
 ```bash
-npm run e2e                                          # whole suite, on our sim, port 8090
+npm run e2e                                          # whole suite, on our sim, port 48090
 npm run e2e:interactions                             # the 4 interaction flows
 npm run e2e:exam / :context / :shell / :stave-input  # one flow each
-DEV_URL=exp://127.0.0.1:8091 npm run e2e             # override the Metro port
+DEV_URL=exp://127.0.0.1:48091 npm run e2e             # override the Metro port
 CHROMATICLY_SIM="Other Sim Name" npm run e2e         # override the target sim
 ```
 
 Invoking Maestro directly works too, but then **you** own picking the sim — always
 pass `--device <udid>`, or a booted sibling app's sim will be used:
 ```bash
-maestro --device <udid> test -e DEV_URL=exp://127.0.0.1:8090 .maestro/<flow>.yaml
+maestro --device <udid> test -e DEV_URL=exp://127.0.0.1:48090 .maestro/<flow>.yaml
 ```
 
-> This repo's dev server uses **port 8090** (8081 collides with another local
+> This repo's dev server uses **port 48090** (8081 collides with another local
 > Expo project). Adjust `DEV_URL` to your Metro port.
 
 ## DEV seeding seam (302.5)
@@ -90,7 +90,7 @@ is *evidence* — completion and mastery — never reachability, which every uni
 has by default:
 
 ```bash
-openLink: exp://127.0.0.1:8090/--/?seed=<unitId>   # e.g. ?seed=intervals
+openLink: exp://127.0.0.1:48090/--/?seed=<unitId>   # e.g. ?seed=intervals
 ```
 
 `<unitId>` may also be `exam` — that masters every unit (3★) so the Level 1 exam
