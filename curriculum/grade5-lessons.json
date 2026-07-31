@@ -3,6 +3,116 @@
   "version": "g5-lessons-2026-07-25a",
   "lessons": [
     {
+      "id": "major-keys-5",
+      "title": "Six sharps, six flats",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:F#_major",
+        "key_sig:Gb_major"
+      ],
+      "templates": [
+        "key_signature_id"
+      ],
+      "worked_example": {
+        "template_id": "key_signature_id",
+        "grade": 5,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Name a major key with six sharps or six flats",
+          "F# major has six sharps; Gb major has six flats",
+          "F# and Gb are the same sounding key written two ways, so the signature is what tells them apart"
+        ],
+        "concept": {
+          "title": "The end of the road",
+          "body": "Grade 4 took the signatures as far as five. One more each way finishes the set this syllabus asks for. F# major has six sharps, adding E# after F# C# G# D# A#. Gb major has six flats, adding Cb after Bb Eb Ab Db Gb. Both look odd at first: E# is played where F sits, and Cb where B sits, but the letter has to be right or the scale would use one letter twice. Count the signature exactly as before — six sharps is F# major, six flats is Gb major.",
+          "example": {
+            "template_id": "key_signature_id",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Six sharps is F# major; six flats is Gb major. Count them — nothing else in the course has six.",
+        "didYouKnow": "Play F# major and Gb major on a piano and you press the same keys. They are ENHARMONIC: the same sounds spelled differently. Composers choose whichever spelling makes the page easier to read."
+      },
+      "unlocks": "minor-keys-5"
+    },
+    {
+      "id": "minor-keys-5",
+      "title": "Their relative minors",
+      "strand": "scales_keys",
+      "atoms": [
+        "key_sig:D#_minor",
+        "key_sig:Eb_minor"
+      ],
+      "templates": [
+        "mode_swap"
+      ],
+      "worked_example": {
+        "template_id": "mode_swap",
+        "grade": 5,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "Name the relative minor of a six-sharp or six-flat major key",
+          "D# minor shares F# major's six sharps; Eb minor shares Gb major's six flats",
+          "The relative-minor rule has not changed — count down a minor 3rd from the major tonic"
+        ],
+        "concept": {
+          "title": "Two more relatives",
+          "body": "A minor key borrows its signature from the major key a minor 3rd above it. That rule has held since Grade 2 and it still holds here. Down a minor 3rd from F# is D#, so D# minor carries the same six sharps. Down a minor 3rd from Gb is Eb, so Eb minor carries the same six flats. These two are enharmonic with each other, exactly as their relative majors are. With them the course now covers every major and minor key up to six sharps and six flats.",
+          "example": {
+            "template_id": "mode_swap",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Down a minor 3rd from the major tonic: F# major to D# minor, Gb major to Eb minor. Same signature, different home note.",
+        "didYouKnow": "Eb minor is the key of the 'Adagio for Strings' theme Barber later reworked, and of Shostakovich's most famous fugue subject. Six flats sound forbidding on paper and sit very comfortably under the hand."
+      },
+      "unlocks": "minor-scales-5"
+    },
+    {
+      "id": "minor-scales-5",
+      "title": "Harmonic and melodic minor at six accidentals",
+      "strand": "scales_keys",
+      "atoms": [
+        "scale:D#_minor_harmonic",
+        "scale:Eb_minor_harmonic",
+        "scale:D#_minor_melodic",
+        "scale:Eb_minor_melodic"
+      ],
+      "templates": [
+        "scale_construction"
+      ],
+      "worked_example": {
+        "template_id": "scale_construction",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Build the harmonic and melodic minor scales of D# minor and Eb minor",
+          "The raised 7th of D# harmonic minor is C double sharp, not D",
+          "A scale uses each letter once, which is what forces the double sharp"
+        ],
+        "concept": {
+          "title": "When a sharp is not enough",
+          "body": "Harmonic minor raises the 7th degree by a semitone. In D# minor the 7th is C#, and raising it gives C DOUBLE SHARP — written with an x. It sounds like D, but calling it D would use the letter D twice and skip C, and a scale must step through all seven letters in order. The same rule gives Eb melodic minor its C natural and D natural going up. Work the letters out first, then decide what accidental each one needs. The pattern is the one you already know; only the spelling looks unfamiliar.",
+          "example": {
+            "template_id": "scale_construction",
+            "grade": 5,
+            "seed": 1
+          }
+        },
+        "smartTip": "Write the seven letters first, in order, then add accidentals. That is what stops you writing D instead of Cx.",
+        "didYouKnow": "A double sharp exists because notation tracks LETTERS, not sounds. Cx and D sound identical on a keyboard, but a violinist reading Cx in D# minor plays it as a leading note straining up to D# — a slightly different pitch, and a very different intention."
+      },
+      "unlocks": "chord-inversions-5"
+    },
+    {
       "id": "chord-inversions-5",
       "title": "Chord inversions: a, b and c",
       "strand": "chords",
@@ -20,7 +130,9 @@
         "chord:V:b",
         "chord:V:c"
       ],
-      "templates": ["chord_recognition"],
+      "templates": [
+        "chord_recognition"
+      ],
       "worked_example": {
         "template_id": "chord_recognition",
         "grade": 5,
@@ -55,7 +167,9 @@
         "transpose_instrument:a",
         "transpose_instrument:f"
       ],
-      "templates": ["transposing_instrument"],
+      "templates": [
+        "transposing_instrument"
+      ],
       "worked_example": {
         "template_id": "transposing_instrument",
         "grade": 5,
@@ -93,7 +207,9 @@
         "ornament:acciaccatura:written_to_sign",
         "ornament:appoggiatura:written_to_sign"
       ],
-      "templates": ["ornament_recognition"],
+      "templates": [
+        "ornament_recognition"
+      ],
       "worked_example": {
         "template_id": "ornament_recognition",
         "grade": 5,
@@ -123,8 +239,12 @@
       "id": "metre-rewrite-5",
       "title": "Rewriting between simple and compound time",
       "strand": "rhythm",
-      "atoms": ["rewrite:simple_compound"],
-      "templates": ["metre_rewrite"],
+      "atoms": [
+        "rewrite:simple_compound"
+      ],
+      "templates": [
+        "metre_rewrite"
+      ],
       "worked_example": {
         "template_id": "metre_rewrite",
         "grade": 5,
@@ -154,8 +274,15 @@
       "id": "satb-voice-5",
       "title": "SATB: name the voice",
       "strand": "pitch",
-      "atoms": ["satb_voice:soprano", "satb_voice:alto", "satb_voice:tenor", "satb_voice:bass"],
-      "templates": ["satb_voice_recognition"],
+      "atoms": [
+        "satb_voice:soprano",
+        "satb_voice:alto",
+        "satb_voice:tenor",
+        "satb_voice:bass"
+      ],
+      "templates": [
+        "satb_voice_recognition"
+      ],
       "worked_example": {
         "template_id": "satb_voice_recognition",
         "grade": 5,

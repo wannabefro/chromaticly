@@ -235,30 +235,47 @@ describe('scopeForGrade — unsupported grades fail loud', () => {
   });
 });
 
-// Grade 5 foundation (chromaticly-ehp / plan U1). Grade 5 exists so its four
-// extension slices (chord inversions, transposing instrument, ornament→sign,
-// simple↔compound rewrite) can attach content; those slices add their dimensions
-// via atoms + generator grade-gates, NOT via GradeScope fields (GradeScope has no
-// chord/ornament/instrument axis). So the invariant here is: grade 5 resolves and
-// currently scopes exactly grade 4's dimensions — the deferred KB adds (tenor
-// clef, 5/4 7/4 5/8 7/8, F#/Gb major, D#/Eb minor, etc.) are NOT pulled in.
-describe('scopeForGrade(5) — Grade 5 foundation is wired, mirrors grade 4 (deferred adds excluded)', () => {
+// Grade 5 (chromaticly-ehp, then chromaticly-e3z.4). Some grade-5 dimensions
+// attach via atoms + generator grade-gates rather than GradeScope fields —
+// GradeScope has no chord/ornament/instrument axis, so chord inversions,
+// transposing instruments and ornament→sign leave it untouched. Keys are not
+// like that: the syllabus caps grade 5 at six sharps and flats, and every
+// key-consuming generator reads keysMajor/keysMinor, so the widening has to
+// land here.
+describe('scopeForGrade(5) — keys widen to six accidentals; other adds stay deferred', () => {
   test('grade 5 is supported and does not throw', () => {
     expect(() => scopeForGrade(5)).not.toThrow();
   });
 
-  test('every grade-5 dimension deep-equals grade 4 (no deferred adds leaked in)', () => {
-    expect(scopeForGrade(5)).toEqual(scopeForGrade(4));
+  // The syllabus line this encodes: "all major and minor keys up to and
+  // including six sharps and flats". Six is the cap, so a seventh appearing
+  // here would be out of scope, not merely untested.
+  test('the six-accidental keys are in scope, and nothing beyond them', () => {
+    const g5 = scopeForGrade(5);
+    expect(g5.keysMajor).toEqual(expect.arrayContaining(['F#', 'Gb']));
+    expect(g5.keysMinor).toEqual(expect.arrayContaining(['D#', 'Eb']));
+    expect(g5.keysMajor).not.toEqual(expect.arrayContaining(['C#', 'Cb']));
+    expect(g5.keysMinor).not.toEqual(expect.arrayContaining(['A#', 'Ab']));
   });
 
-  test('tenor clef is NOT in scope — it rides with the deferred SATB slice', () => {
+  test('the key widening is additive — grade 4 keeps its own five-accidental cap', () => {
+    expect(scopeForGrade(4).keysMajor).not.toEqual(expect.arrayContaining(['F#', 'Gb']));
+    expect(scopeForGrade(4).keysMinor).not.toEqual(expect.arrayContaining(['D#', 'Eb']));
+    for (const key of scopeForGrade(4).keysMajor) expect(scopeForGrade(5).keysMajor).toContain(key);
+  });
+
+  test('every non-key dimension still deep-equals grade 4', () => {
+    const { keysMajor: _M, keysMinor: _m, ...g5 } = scopeForGrade(5);
+    const { keysMajor: _M4, keysMinor: _m4, ...g4 } = scopeForGrade(4);
+    expect(g5).toEqual(g4);
+  });
+
+  test('tenor clef is NOT in scope — it rides with its own unit', () => {
     expect(scopeForGrade(5).clefs).not.toContain('tenor');
     expect(scopeForGrade(5).clefs).toEqual(scopeForGrade(4).clefs);
   });
 
-  test('deferred keys/metres are NOT pulled from KB.grade_scopes["5"].adds', () => {
-    expect(scopeForGrade(5).keysMajor).not.toEqual(expect.arrayContaining(['F#', 'Gb']));
-    expect(scopeForGrade(5).keysMinor).not.toEqual(expect.arrayContaining(['D#', 'Eb']));
+  test('the irregular metres are NOT pulled from KB.grade_scopes["5"].adds yet', () => {
     for (const sig of ['5/4', '7/4', '5/8', '7/8']) {
       expect(scopeForGrade(5).timeSignatures).not.toContain(sig);
     }

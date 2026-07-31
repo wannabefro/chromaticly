@@ -184,21 +184,26 @@ const GRADE_4_SCOPE: GradeScope = {
 // inversions, transposing instrument, ornament written-out→sign, and
 // simple↔compound rewrite. Those slices add their dimensions via atoms +
 // generator grade-gates, NOT via GradeScope fields: GradeScope carries no
-// chord / ornament / instrument axis, so at grade 5 the scope is exactly grade
-// 4's. The remaining KB grade_scopes["5"].adds dimensions (tenor clef; 5/4 7/4
-// 5/8 7/8; F#/Gb major; D#/Eb minor; compound intervals; irregular tuplets;
-// German terms; SATB voices; harp) are deliberately deferred — see
-// docs/plans/2026-07-24-001-feat-grade5-content-slice-plan.md. In particular
-// 'tenor' is NOT added to clefs: it is not in the Clef union yet and rides with
-// the deferred SATB slice. renderableTimeSignatures / metreRenderable already
-// cover grade 5 via their `>= 3` / `>= 4` branches, so the rewrite slice's
-// 2/4↔6/8 need no new entry here.
+// chord / ornament / instrument axis.
+//
+// Keys widen here (chromaticly-e3z.4) to the syllabus cap, "all major and minor
+// keys up to and including six sharps and flats" — F#/Gb major and D#/Eb minor.
+// The music layer already spelled every one of them: MAJOR_FIFTHS and
+// MINOR_FIFTHS in abc-emitter.ts run to ±6, so this is a scope widening, not a
+// notation change.
+//
+// The remaining KB grade_scopes["5"].adds dimensions (tenor clef; 5/4 7/4 5/8
+// 7/8; compound intervals; irregular tuplets; German terms; harp) are still
+// deferred to their own units. In particular 'tenor' is NOT added to clefs: it
+// is not in the Clef union yet. renderableTimeSignatures / metreRenderable
+// already cover grade 5 via their `>= 3` / `>= 4` branches, so the rewrite
+// slice's 2/4↔6/8 need no new entry here.
 const GRADE_5_SCOPE: GradeScope = {
   clefs: GRADE_4_SCOPE.clefs,
   noteValues: GRADE_4_SCOPE.noteValues,
   rests: GRADE_4_SCOPE.rests,
-  keysMajor: GRADE_4_SCOPE.keysMajor,
-  keysMinor: GRADE_4_SCOPE.keysMinor,
+  keysMajor: [...GRADE_4_SCOPE.keysMajor, ...KB.grade5Adds.keys_major],
+  keysMinor: [...GRADE_4_SCOPE.keysMinor, ...KB.grade5Adds.keys_minor],
   minorForms: GRADE_4_SCOPE.minorForms,
   timeSignatures: GRADE_4_SCOPE.timeSignatures,
   rhythmDevices: GRADE_4_SCOPE.rhythmDevices,

@@ -113,6 +113,34 @@ const Grade4AddsSchema = z.object({
   instruments: z.string(),
 });
 
+// Grade 5 adds its own dimensions again (transposition, voices, term_languages,
+// and a chords block carrying the cadence set). Modelled key by key for the same
+// reason grade 4 is: zod strips unknown keys, so a "mirror grade 4" schema would
+// silently drop the cadence and irregular-metre data the content depends on.
+const Grade5AddsSchema = z.object({
+  time_signatures: z.array(z.string()),
+  rhythm_devices: z.array(z.string()),
+  clefs: z.array(z.string()),
+  transposition: z.array(z.string()),
+  keys_major: z.array(z.string()),
+  keys_minor: z.array(z.string()),
+  intervals: z.object({
+    between: z.string(),
+    compound: z.boolean(),
+    with_or_without_key_signature: z.boolean(),
+  }),
+  chords: z.object({
+    chord_set: z.array(z.string()),
+    positions: z.array(z.string()),
+    cadence_keys: z.array(z.string()),
+    cadences: z.array(z.string()),
+  }),
+  ornaments: z.string(),
+  voices: z.array(z.string()),
+  instruments: z.string(),
+  term_languages: z.array(z.string()),
+});
+
 const KnowledgeBaseSchema = z.object({
   theory_data: z.object({
     note_values: z.record(z.string(), NoteValueEntrySchema),
@@ -131,6 +159,9 @@ const KnowledgeBaseSchema = z.object({
     '4': z.object({
       adds: Grade4AddsSchema,
     }),
+    '5': z.object({
+      adds: Grade5AddsSchema,
+    }),
   }),
 });
 
@@ -145,6 +176,7 @@ export const KB = {
   grade2Adds: parsed.grade_scopes['2'].adds,
   grade3Adds: parsed.grade_scopes['3'].adds,
   grade4Adds: parsed.grade_scopes['4'].adds,
+  grade5Adds: parsed.grade_scopes['5'].adds,
 };
 
 // knowledge-base.json carries no version field; this constant is the app's

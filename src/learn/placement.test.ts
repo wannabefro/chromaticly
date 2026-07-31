@@ -98,9 +98,13 @@ describe('placement — the ladder is built whole, then walked', () => {
 describe('placement — where a walk opens', () => {
   // An even-length ladder has no middle. On the one-item mixed pass the opening
   // grade IS the measurement, so it is pinned rather than left to rounding.
-  test('the mixed pass opens at the lower median — chords at 4, scales_keys at 2', () => {
+  // Both cases are here on purpose: chords' ladder is even (4, 5) and takes the
+  // LOWER of the two middles; scales_keys' is odd (1-5) and takes the true middle.
+  test('the mixed pass opens at the lower median — chords at 4, scales_keys at 3', () => {
+    expect(ladderFor('chords')).toEqual([4, 5]);
     expect(startWalk('chords', MIXED_PASS_BUDGET).pending).toBe(4);
-    expect(startWalk('scales_keys', MIXED_PASS_BUDGET).pending).toBe(2);
+    expect(ladderFor('scales_keys')).toEqual([1, 2, 3, 4, 5]);
+    expect(startWalk('scales_keys', MIXED_PASS_BUDGET).pending).toBe(3);
   });
 
   // Seed decay subtracts whole grades from a number never required to be a content
@@ -125,9 +129,11 @@ describe('placement — where a walk opens', () => {
 describe('placement — the walk steps adaptively and never repeats a grade', () => {
   // The assertion a four-static-question implementation fails.
   test('the second question is higher after a correct answer and lower after a wrong one', () => {
+    // scales_keys' ladder is 1-5, so a ladder walk opens at the middle, 3.
     const opened = startWalk('scales_keys', LADDER_BUDGET);
-    expect(answerWalk(opened, true).pending).toBe(3);
-    expect(answerWalk(opened, false).pending).toBe(1);
+    expect(opened.pending).toBe(3);
+    expect(answerWalk(opened, true).pending).toBe(4);
+    expect(answerWalk(opened, false).pending).toBe(2);
   });
 
   test('stepping up from intervals grade 1 lands on 3, because grade 2 does not exist', () => {
@@ -171,7 +177,9 @@ describe('placement — the walk steps adaptively and never repeats a grade', ()
 
 describe('placement — the depth a walk resolves to', () => {
   test('it is the highest grade answered correctly', () => {
-    expect(walkDepth(run(startWalk('scales_keys', LADDER_BUDGET), [true, true, false]))).toBe(3);
+    // Opens at 3, right -> 4, right -> 5, wrong. The highest CORRECT grade is 4,
+    // and the failed 5 must not raise it.
+    expect(walkDepth(run(startWalk('scales_keys', LADDER_BUDGET), [true, true, false]))).toBe(4);
   });
 
   test('all wrong resolves to 0 — a real measurement, not an absence', () => {

@@ -35,16 +35,15 @@ describe('LaneRow — one strand at its own depth (design 7a)', () => {
   });
 
   test('depth 3 fills every content grade up to 3, and the rest read empty', () => {
-    // scales_keys is the one dense lane below grade 4 (content at 1-4), so this is
-    // the case where "N filled" and "up to grade N" happen to coincide.
-    expect(contentGradesFor('scales_keys')).toEqual([1, 2, 3, 4]);
+    // scales_keys is the one lane with content at every grade, so this is the
+    // case where "N filled" and "up to grade N" happen to coincide.
+    expect(contentGradesFor('scales_keys')).toEqual([1, 2, 3, 4, 5]);
     const { getByTestId } = render(
       <LaneRow strand="scales_keys" depth={lane('scales_keys', 3)} testID="lane-row" />,
     );
 
     for (const grade of [1, 2, 3]) expect(getByTestId(`lane-row-seg-${grade}-filled`)).toBeTruthy();
-    expect(getByTestId('lane-row-seg-4-empty')).toBeTruthy();
-    expect(getByTestId('lane-row-seg-5-gap')).toBeTruthy(); // scales_keys teaches nothing at 5
+    for (const grade of [4, 5]) expect(getByTestId(`lane-row-seg-${grade}-empty`)).toBeTruthy();
     // Design 1e removed the written depth; it survives where the bar cannot be seen.
     expect(getByTestId('lane-row').props.accessibilityLabel).toBe('Scales & Keys, grade 3');
   });

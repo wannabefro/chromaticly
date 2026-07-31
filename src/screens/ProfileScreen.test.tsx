@@ -152,14 +152,14 @@ describe('ProfileScreen — where the learner stands (5c, readiness amended by 7
 
     // Since G6 U4 the radar is a projection of `laneDepths` (R3): held grades over
     // CONTENT-BEARING grades. `key-signatures` is the whole grade-1 scales_keys
-    // cell, and scales_keys teaches at grades 1-4, so holding one of four reads 25%.
+    // cell, and scales_keys now teaches at grades 1-5, so holding one of five reads 20%.
     //
     // This read 0% until the fixture started stamping a real review date, and it was
     // right by accident: every atom was written with `initialSrs()` (reviewed on day
     // zero), so the cell was held and then decayed away (R5) before the radar saw
     // it. A fixture that says "mastered" and renders "0%" was hiding the decay rule
     // rather than testing the ratio.
-    const expectedPct = 25;
+    const expectedPct = 20;
     await waitFor(() =>
       expect(within(fresh.getByTestId('radar-legend-scales_keys')).getByText(`${expectedPct}%`)).toBeTruthy(),
     );
