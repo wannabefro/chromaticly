@@ -11,7 +11,7 @@
 // hand-listed or computed here; this validator only avoids ever rejecting an
 // answer that already appears in that list — it does not grade.
 
-import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind } from '../music/types';
+import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind, RestEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
 import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
@@ -1371,6 +1371,40 @@ function dupletRecognitionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// tripletRecognitionHook (chromaticly-e3z.9) — recompute-don't-trust.
+// A triplet_rest tag cannot sit on a group that has no rest.
+function tripletRecognitionHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['triplet_recognition: stimulus music is required'];
+  if (!music.time_sig || isCompoundTimeSignature(music.time_sig)) {
+    return [`triplet_recognition: "${String(music.time_sig)}" is not a simple time signature`];
+  }
+
+  const events = music.voices.flatMap((v) => v.events);
+  const group = events.filter(
+    (ev): ev is NoteEvent | RestEvent => (ev.type === 'note' || ev.type === 'rest') && ev.tuplet !== undefined,
+  );
+  if (group.length !== 3 || group.some((ev) => ev.tuplet!.size !== 3 || ev.tuplet!.inTimeOf !== 2)) {
+    errors.push('triplet_recognition: stimulus must contain exactly one triplet (three 3-in-2 places)');
+  } else if (!group[0].tuplet!.start || group.slice(1).some((ev) => ev.tuplet!.start)) {
+    errors.push('triplet_recognition: the triplet must mark its first place as the group start');
+  }
+
+  const total = events.reduce((sum, ev: MusicEvent) => sum + musicEventUnits(ev), 0);
+  if (Math.abs(total - barUnitsFor(music.time_sig)) > 1e-9) {
+    errors.push(`triplet_recognition: bar sums to ${total}, not a full ${music.time_sig} bar`);
+  }
+
+  const rests = group.filter((ev) => ev.type === 'rest').length;
+  const claimsRest = inst.srs_tags.some((t) => t.startsWith('triplet_rest:'));
+  if (claimsRest !== rests > 0) {
+    errors.push(`triplet_recognition: the tag claims ${claimsRest ? 'a rest' : 'no rest'}, the group has ${rests}`);
+  }
+
+  return errors;
+}
+
 /** Asserts `pitches` is a root-position MAJOR triad (root-third a major 3rd,
  *  third-fifth a minor 3rd) — pushed onto `errors` with the given `label`
  *  prefix rather than thrown, so a caller checking several triads (the
@@ -1855,6 +1889,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   metre_classification: metreClassificationHook,
   anacrusis_recognition: anacrusisRecognitionHook,
   duplet_recognition: dupletRecognitionHook,
+  triplet_recognition: tripletRecognitionHook,
   octave_transposition: octaveTranspositionHook,
   transposing_instrument: transposingInstrumentHook,
   metre_rewrite: metreRewriteHook,

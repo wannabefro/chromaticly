@@ -45763,6 +45763,1266 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
 ]
 `;
 
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte add_time_signature @ time-signatures-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/8",
+    },
+    "distractors": [
+      "3/4",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/8",
+    },
+    "distractors": [
+      "3/4",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/8",
+    },
+    "distractors": [
+      "3/4",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4/2",
+    },
+    "distractors": [
+      "2/2",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:4/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4/2",
+    },
+    "distractors": [
+      "2/2",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:4/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4/2",
+    },
+    "distractors": [
+      "2/2",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:4/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2/2",
+    },
+    "distractors": [
+      "3/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4/2",
+    },
+    "distractors": [
+      "2/2",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:4/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/2",
+    },
+    "distractors": [
+      "2/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2/2",
+    },
+    "distractors": [
+      "3/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2/2",
+    },
+    "distractors": [
+      "3/2",
+      "4/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3/8",
+    },
+    "distractors": [
+      "3/4",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:3/8",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4/2",
+    },
+    "distractors": [
+      "2/2",
+      "3/2",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — recount the beats in the bar and match the total to a time signature.",
+    },
+    "grade": 2,
+    "hints": [
+      "Use the note tree to add up the bar, then match the total to a time signature.",
+    ],
+    "id": "add_time_signature:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add up the note values in this bar. Which time signature is it in?",
+    "srs_tags": [
+      "add_time_signature:4/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_time_signature",
+  },
+]
+`;
+
 exports[`seed-stability — grade-2 generator output is pinned byte-for-byte key_signature_id @ key-signatures-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -58782,6 +60042,1746 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
 ]
 `;
 
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte triplet_recognition @ triplets-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four crotchets would fill two minim beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a minim, which normally holds two crotchets.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one minim beat, and a minim normally holds two crotchets.",
+    ],
+    "id": "triplet_recognition:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three crotchets are played in the time of how many?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four crotchets would fill two minim beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a minim, which normally holds two crotchets.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one minim beat, and a minim normally holds two crotchets.",
+    ],
+    "id": "triplet_recognition:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three crotchets are played in the time of how many?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four quavers would fill two crotchet beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a crotchet, which normally holds two quavers.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one crotchet beat, and a crotchet normally holds two quavers.",
+    ],
+    "id": "triplet_recognition:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three quavers are played in the time of how many?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four quavers would fill two crotchet beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a crotchet, which normally holds two quavers.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one crotchet beat, and a crotchet normally holds two quavers.",
+    ],
+    "id": "triplet_recognition:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three quavers are played in the time of how many?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four quavers would fill two crotchet beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a crotchet, which normally holds two quavers.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one crotchet beat, and a crotchet normally holds two quavers.",
+    ],
+    "id": "triplet_recognition:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three quavers are played in the time of how many?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-2-only generator extras are pinned byte-for-byte mode_swap (minor-keys-2, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -62188,6 +65188,1696 @@ exports[`seed-stability — grade-2-only generator extras are pinned byte-for-by
     },
     "strand": "scales_keys",
     "template_id": "scale_construction",
+  },
+]
+`;
+
+exports[`seed-stability — grade-2-only generator extras are pinned byte-for-byte triplet_recognition (triplets-2, plain and with a rest) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four crotchets would fill two minim beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a minim, which normally holds two crotchets.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one minim beat, and a minim normally holds two crotchets.",
+    ],
+    "id": "triplet_recognition:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three crotchets are played in the time of how many?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four crotchets would fill two minim beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a minim, which normally holds two crotchets.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one minim beat, and a minim normally holds two crotchets.",
+    ],
+    "id": "triplet_recognition:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three crotchets are played in the time of how many?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four crotchets would fill two minim beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a minim, which normally holds two crotchets.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one minim beat, and a minim normally holds two crotchets.",
+    ],
+    "id": "triplet_recognition:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three crotchets are played in the time of how many?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four quavers would fill two crotchet beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a crotchet, which normally holds two quavers.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one crotchet beat, and a crotchet normally holds two quavers.",
+    ],
+    "id": "triplet_recognition:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three quavers are played in the time of how many?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two crotchet beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three quavers share one crotchet beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "one",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one": "Only one place in the group is a rest. The other two are notes.",
+        "three": "Three is how many places the bracket covers. One of them is silent.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The triplet still fills one crotchet beat in three places, but one of them is a rest.",
+    },
+    "grade": 2,
+    "hints": [
+      "The bracket still covers three places. Count only the ones that are not rests.",
+    ],
+    "id": "triplet_recognition:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracket holds a triplet with a rest in it. How many notes sound?",
+    "srs_tags": [
+      "triplet_rest:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "rest",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "two",
+    },
+    "distractors": [
+      "three",
+      "four",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "four": "Four quavers would fill two crotchet beats. The bracket sits inside one.",
+        "three": "Three is how many notes are in the bracket. The question asks what they REPLACE.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A triplet fills one beat. This beat is a crotchet, which normally holds two quavers.",
+    },
+    "grade": 2,
+    "hints": [
+      "The group fills one crotchet beat, and a crotchet normally holds two quavers.",
+    ],
+    "id": "triplet_recognition:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bracketed notes are a triplet. Three quavers are played in the time of how many?",
+    "srs_tags": [
+      "triplet:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one",
+    },
+    "distractors": [
+      "two",
+      "three",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "three": "Three is the number of notes in the group, not the number of beats it fills.",
+        "two": "Two minim beats would hold six of these, not three.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The three crotchets share one minim beat between them.",
+    },
+    "grade": 2,
+    "hints": [
+      "Count the beats the other notes take, then see what is left for the bracket.",
+    ],
+    "id": "triplet_recognition:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats does the bracketed triplet fill?",
+    "srs_tags": [
+      "triplet:2/2",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                  "start": true,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B3",
+                "tuplet": {
+                  "inTimeOf": 2,
+                  "size": 3,
+                },
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "triplet_recognition",
   },
 ]
 `;

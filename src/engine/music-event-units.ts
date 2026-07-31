@@ -33,6 +33,6 @@ const DOT_MULTIPLIER: Record<0 | 1 | 2, number> = { 0: 1, 1: 1.5, 2: 1.75 };
 export function musicEventUnits(ev: MusicEvent): number {
   if (ev.type !== 'note' && ev.type !== 'chord' && ev.type !== 'rest') return 0;
   const face = UNITS[ev.dur] * DOT_MULTIPLIER[ev.dots ?? 0];
-  const tuplet = ev.type === 'note' ? ev.tuplet : undefined;
+  const tuplet = ev.type === 'note' || ev.type === 'rest' ? ev.tuplet : undefined;
   return tuplet ? (face * tuplet.inTimeOf) / tuplet.size : face;
 }

@@ -305,7 +305,7 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, groupAt: (
     // WRITTEN at face value (abcjs applies the scaling from the `(p:q:r`
     // bracket the start note carries). beatsOf is the written value; `d` is the
     // sounded span.
-    const tuplet = ev.type === 'note' ? ev.tuplet : undefined;
+    const tuplet = ev.type === 'note' || ev.type === 'rest' ? ev.tuplet : undefined;
     const written = beatsOf(ev.dur, ev.dots ?? 0);
     const d = tuplet ? (written * tuplet.inTimeOf) / tuplet.size : written;
     const beat = groupAt(beatPos);

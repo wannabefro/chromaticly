@@ -126,7 +126,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
         ? 'Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.'
         : 'Not quite — recount the beats in the bar and match the total to a time signature.',
     },
-    srs_tags: [compound ? addTimeSignatureAtom(timeSig) : addTimeSignatureAtom()],
+    // The bare atom belongs to the grade-1 /4 trio. Every metre added later
+    // gets its own, or the credit misroutes to the grade-1 lesson that owns it.
+    srs_tags: [renderableTimeSignatures(1).includes(timeSig) ? addTimeSignatureAtom() : addTimeSignatureAtom(timeSig)],
     kb_version: KB_VERSION,
   };
 }

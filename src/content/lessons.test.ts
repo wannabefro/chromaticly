@@ -293,6 +293,8 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
       'minor-scales-2',
       'degrees-2',
       'tonic-triads-2',
+      'time-signatures-2',
+      'triplets-2',
       'tempo-2',
       'expression-2',
       'signs-2',

@@ -64,6 +64,7 @@ const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   mode_swap: 2,
   scale_construction: 2,
+  triplet_recognition: 2,
   metre_classification: 3,
   anacrusis_recognition: 3,
   octave_transposition: 3,
@@ -99,6 +100,11 @@ const GRADE_2_EXTRA_CASES: Case[] = [
     label: 'scale_construction (minor-scales-2, pre-lesson pin)',
     templateId: 'scale_construction',
     atoms: ['scale:A_minor_harmonic', 'scale:E_minor_harmonic', 'scale:D_minor_harmonic'],
+  },
+  {
+    label: 'triplet_recognition (triplets-2, plain and with a rest)',
+    templateId: 'triplet_recognition',
+    atoms: ['triplet:3/4', 'triplet:2/2', 'triplet_rest:4/4'],
   },
 ];
 

@@ -109,6 +109,12 @@ export function dupletAtom(sig: string): string {
   return `duplet:${sig}`;
 }
 
+/** Grade-2 triplets (chromaticly-e3z.9). A group containing a rest is its own
+ *  atom: the notes stop being countable, which is the whole difficulty. */
+export function tripletAtom(sig: string, withRest = false): string {
+  return `${withRest ? 'triplet_rest' : 'triplet'}:${sig}`;
+}
+
 /** Grade-5 irregular division (chromaticly-e3z.6), e.g. tupletAtom(5) ->
  *  "tuplet:5". One atom per size: a learner who knows the quintuplet does not
  *  automatically know the septuplet, and the size is the fact being learned. */

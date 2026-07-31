@@ -129,6 +129,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // atom-required rhythm-device generator, grade-gated only by
       // assertAtomResolves (needs a compound duplet:<sig> atom).
       'duplet_recognition',
+      'triplet_recognition',
       // chord_recognition (fyu.10) — same shape as chromatic_scale/
       // degree_name_id: draws from scope.keysMajor (present at every grade),
       // so "Grade 4" is a curriculum-layer-only gate (assertAtomResolves).
@@ -298,6 +299,16 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
     const atoms = ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'];
     for (const seed of SEEDS) {
       const instance = generate('anacrusis_recognition', { grade: 2, seed, atoms });
+      assertValidatorClean(instance);
+      assertWithinGrade2Scope(instance.stimulus.music as Music | null);
+      assertRenderableTimeSigOnly(instance.stimulus.music as Music | null);
+    }
+  });
+
+  test('triplet_recognition @ grade 2: validator- and scope-clean, plain and with a rest', () => {
+    const atoms = ['triplet:2/4', 'triplet:3/4', 'triplet:4/4', 'triplet:2/2', 'triplet_rest:3/4'];
+    for (const seed of SEEDS) {
+      const instance = generate('triplet_recognition', { grade: 2, seed, atoms });
       assertValidatorClean(instance);
       assertWithinGrade2Scope(instance.stimulus.music as Music | null);
       assertRenderableTimeSigOnly(instance.stimulus.music as Music | null);

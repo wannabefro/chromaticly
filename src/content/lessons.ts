@@ -336,6 +336,20 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (grade < 5) throw new Error(`lessons: atom "${atom}" is not a G${grade} cadence`);
       return;
     }
+    case 'triplet':
+    case 'triplet_rest': {
+      if (parts.length !== 1) throw new Error(`lessons: malformed ${kind} atom "${atom}"`);
+      const [sig] = parts;
+      const device = kind === 'triplet' ? 'triplet' : 'triplet_with_rests';
+      if (
+        isCompoundTimeSignature(sig) ||
+        !renderableTimeSignatures(grade).includes(sig) ||
+        !scopeForGrade(grade).rhythmDevices.includes(device)
+      ) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} simple-time triplet signature`);
+      }
+      return;
+    }
     case 'tuplet': {
       const size = Number(parts[0]);
       if (!TUPLET_SIZES.includes(size)) {

@@ -187,6 +187,84 @@
         "smartTip": "Keynote, skip, skip. The key signature supplies the accidentals; you supply the letters.",
         "didYouKnow": "Because the pattern is always 1-3-5, a player can find the tonic triad of an unfamiliar key without knowing a single one of its notes by name."
       },
+      "unlocks": "time-signatures-2"
+    },
+    {
+      "id": "time-signatures-2",
+      "title": "Minim beats, and 3/8",
+      "strand": "rhythm",
+      "atoms": [
+        "add_time_signature:2/2",
+        "add_time_signature:3/2",
+        "add_time_signature:4/2",
+        "add_time_signature:3/8"
+      ],
+      "templates": [
+        "add_time_signature"
+      ],
+      "worked_example": {
+        "template_id": "add_time_signature",
+        "grade": 2,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "Read a time signature whose beat is a minim, not a crotchet",
+          "The top number counts beats; the bottom number says which note is the beat",
+          "3/8 counts three quavers, and is usually felt as one beat"
+        ],
+        "concept": {
+          "title": "The bottom number chooses the beat",
+          "body": "Every signature so far had a 4 underneath, so the beat was a crotchet. The bottom number is what picks the beat, and 2 means a minim. So 3/2 is three minim beats in a bar, counted exactly like 3/4 but written in longer notes. 4/2 is four. The music does not go slower — the note values are simply larger, which is why 2/2 is often written as a C with a line through it and called cut time. 8 underneath means the beat is a quaver: 3/8 holds three of them, and at speed you feel the whole bar as one.",
+          "example": {
+            "template_id": "add_time_signature",
+            "grade": 2,
+            "seed": 11
+          }
+        },
+        "smartTip": "Read the bottom number first. It tells you what to count; the top number tells you how many.",
+        "didYouKnow": "The C used for 4/4 is not an abbreviation of 'common'. It is a broken circle: medieval scribes drew a full circle for triple time, which they thought perfect, and a broken one for duple."
+      },
+      "unlocks": "triplets-2"
+    },
+    {
+      "id": "triplets-2",
+      "title": "Triplets",
+      "strand": "rhythm",
+      "atoms": [
+        "triplet:2/4",
+        "triplet:3/4",
+        "triplet:4/4",
+        "triplet:2/2",
+        "triplet_rest:3/4",
+        "triplet_rest:4/4"
+      ],
+      "templates": [
+        "triplet_recognition"
+      ],
+      "worked_example": {
+        "template_id": "triplet_recognition",
+        "grade": 2,
+        "seed": 2
+      },
+      "teach": {
+        "objectives": [
+          "A triplet plays three notes in the time of two of the same value",
+          "The group fills exactly one beat, whatever the beat is",
+          "A rest inside the group still takes up one of its three places"
+        ],
+        "concept": {
+          "title": "Three in the time of two",
+          "body": "A beat normally splits in two. A triplet splits it in three instead, and the small 3 above the group is what tells you. The three notes together last exactly one beat, so three quavers under a triplet bracket fill a crotchet beat that would otherwise hold two quavers. Whatever the beat is, the rule is the same: three in the time of two. A triplet can also contain a rest. The bracket still covers three places and still fills one beat, but one of those places is silent, so only two notes sound.",
+          "example": {
+            "template_id": "triplet_recognition",
+            "grade": 2,
+            "seed": 7
+          }
+        },
+        "smartTip": "Count the beat, not the notes. Three triplet quavers take exactly as long as two ordinary ones.",
+        "didYouKnow": "Playing a triplet against a duplet in the other hand is called a cross-rhythm. Brahms wrote whole movements on it, and pianists still count them out loud."
+      },
       "unlocks": "tempo-2"
     },
     {

@@ -87,6 +87,9 @@ export interface RestEvent {
   type: 'rest';
   dur: Duration;
   dots?: Dots;
+  /** A rest inside a tuplet group carries the mark too — "triplet groups with
+   *  rests" is its own Grade 2 skill (chromaticly-e3z.9). */
+  tuplet?: TupletMark;
 }
 
 export interface BarlineEvent {
