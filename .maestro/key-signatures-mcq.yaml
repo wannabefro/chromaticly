@@ -1,6 +1,5 @@
-# AE3 — notation-answer MCQ (key-signatures). The options are rendered staves, not
-# text, so this is the flow that proves a notation-answer option is tappable on a
-# real device (the Jest suite mocks the WebView and can't).
+# AE3 — key-signatures MCQ. The options are staves or key names, depending on
+# the direction drawn. This flow proves the option is tappable on a device.
 #
 # Seeded straight to the unit (?seed=<unitId>) — see .maestro/README.md.
 appId: host.exp.Exponent
@@ -38,9 +37,7 @@ appId: host.exp.Exponent
 - assertVisible: { id: "set-count" }
 - assertVisible: { id: "option-0" }
 
-# Answer, grade, and land on the FeedbackSheet — the whole touch path on device.
-# Notation options are rendered staves, so the option list runs off the bottom of the
-# screen: Check must stay reachable regardless (it's a sticky footer, not in the scroll).
+# Rendered staves push the options off the bottom, so Check is a sticky footer.
 - tapOn: { id: "option-0" }
 - assertVisible: { id: "check" }
 - tapOn: { id: "check" }

@@ -455,6 +455,8 @@ describe('registry — correctAnswerView', () => {
   test('a notation-answer MCQ (key_signature_id) renders the correct option\'s music, sourced from its render payload', () => {
     for (let seed = 0; seed < 10; seed++) {
       const instance = generate('key_signature_id', { grade: 1, seed, atoms: atomsForTemplate('key_signature_id') });
+      // Only the 'choose' direction has notation options (chromaticly-e3z.18).
+      if (instance.stimulus.music !== null) continue;
       const correctOption = assembleOptions(instance).find((o) => o.correct)!;
       expect(correctOption.music).toBeDefined();
 
@@ -517,6 +519,7 @@ describe('registry — answer_music affordance (U5/D8)', () => {
       for (let seed = 0; seed < 10; seed++) {
         const instance = generate('key_signature_id', { grade: 1, seed, atoms: atomsForTemplate('key_signature_id') });
         expect(instance.interaction.config?.answer_music).toBeUndefined();
+        if (instance.stimulus.music !== null) continue;
         const correctOption = assembleOptions(instance).find((o) => o.correct)!;
         const view = lookupInteraction('mcq').correctAnswerView(instance) as { props: { music: unknown; caption: string } };
         expect(view.props.music).toEqual(correctOption.music);

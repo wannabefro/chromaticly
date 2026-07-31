@@ -1,18 +1,11 @@
-// Grade 1 key_signature_id generator (curriculum/exercise-templates.json,
-// template_id "key_signature_id"). MVP mode: name-the-key. Renders the key
-// signature (a single tonic note is enough context to place accidentals on
-// the correct lines/spaces for the sampled clef); distractors are the other
-// G1 major keys — a defensible, diagnostic pool given G1's four-key scope.
-//
-// Notation-answer MCQ (U4/AD5): answer.canonical stays the semantic key id
-// ("G major") so grading is a plain string deep-equal — it never compares a
-// Music object. Each option's rendered stave lives separately, in
-// interaction.config.option_music (keyed by that same semantic string), which
-// grading.ts's assembleOptions reads to attach a render-only `music` field to
-// the option without touching `value`/grading.
+// key_signature_id generator, two directions. `name` renders the signature and
+// offers key names as text. `choose` names the key and offers staves.
+// Before chromaticly-e3z.18 the signature was in the stimulus AND every option.
+// No key name reached the screen, so the learner matched staves.
 
 import type { Music, Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
+import { keyAccidentals } from '../../music/abc-emitter';
 import { keySigAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, scopeForGrade } from '../scope';
@@ -21,10 +14,7 @@ import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-/** The lesson's `key_sig:*` atoms as bare major-key tonics, e.g.
- *  key_sig:C_major → "C". The atom is the scope: G1 is major-only, and a
- *  name-the-key MCQ needs at least one distractor, so fewer than two keys is a
- *  data bug rather than a silent grade-wide fallback. */
+/** Bare major tonics from the atoms. Fewer than two is a data bug. */
 function keysFromAtoms(atoms: string[]): string[] {
   const keys: string[] = [];
   for (const atom of atoms) {
@@ -41,18 +31,14 @@ function keysFromAtoms(atoms: string[]): string[] {
 }
 
 function tonicPitchInRange(clef: Clef, key: string, grade: number): string {
-  // Match the tonic's natural LETTER (the enumeration is naturals-only), then
-  // spell it in the key so a flat/sharp tonic (Bb, Eb) renders under its key
-  // signature rather than as a stray natural — and never fails to match.
+  // Spelled in the key, so a flat tonic sits under its signature.
   const candidates = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(tonicLetter(key)));
   if (candidates.length === 0) throw new Error(`no in-range tonic ${key} for clef ${clef}`);
   return spellInKey(candidates[0], key);
 }
 
-/** The rendered stave for one key-signature option: the same one-tonic-note
- *  shape as the stimulus, on the sampled clef, so the only visual difference
- *  between options is the key signature itself. */
-function keyOptionMusic(clef: Clef, key: string, grade: number): Music {
+/** One tonic semibreve — enough context to place the accidentals for a clef. */
+function keyMusic(clef: Clef, key: string, grade: number): Music {
   return {
     clef,
     key_sig: `${key}_major`,
@@ -61,45 +47,65 @@ function keyOptionMusic(clef: Clef, key: string, grade: number): Music {
   };
 }
 
+/** "no sharps or flats", "two flats" — the count a learner reads off the stave. */
+function accidentalPhrase(key: string): string {
+  const map = keyAccidentals(`${key}_major`);
+  const letters = Object.keys(map);
+  if (letters.length === 0) return 'no sharps or flats';
+  const words = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+  const kind = map[letters[0]] === 'sharp' ? 'sharp' : 'flat';
+  return `${words[letters.length]} ${kind}${letters.length === 1 ? '' : 's'}`;
+}
+
+function whyWrong(wrongKey: string, key: string): string {
+  return `${wrongKey} major has ${accidentalPhrase(wrongKey)}. This signature has ${accidentalPhrase(key)}, which is ${key} major.`;
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
   const keys = keysFromAtoms(atoms);
   const clef = pick(rng, [...scope.clefs]);
   const key = pick(rng, keys);
-  const tonicPitch = tonicPitchInRange(clef, key, grade);
   const distractorKeys = keys.filter((k) => k !== key);
+  const variant = pick(rng, ['name', 'choose'] as const);
 
-  const optionMusic: Record<string, Music> = {};
-  for (const k of [key, ...distractorKeys]) {
-    optionMusic[`${k} major`] = keyOptionMusic(clef, k, grade);
-  }
-
-  return {
+  const common = {
     id: makeInstanceId('key_signature_id', grade, idSeed),
-    template_id: 'key_signature_id',
+    template_id: 'key_signature_id' as const,
     grade,
-    strand: 'scales_keys',
-    prompt: 'Name this key.',
-    stimulus: {
-      music: {
-        clef,
-        key_sig: `${key}_major`,
-        time_sig: null,
-        voices: [{ events: [{ type: 'note', pitch: tonicPitch, dur: 'semibreve' }] }],
-      },
-      text: null,
-    },
-    interaction: { type: 'mcq', config: { option_music: optionMusic } },
+    strand: 'scales_keys' as const,
     answer: { canonical: `${key} major`, accepted_alternatives: [] },
     distractors: distractorKeys.map((k) => `${k} major`),
-    hints: ['Count the sharps or flats on the stave and match them to a key you know.'],
     feedback: {
       correct: 'Correct!',
-      incorrect: 'Not quite — recount the sharps or flats and their order on the stave.',
+      incorrect: `Count the sharps or flats and their order on the stave: ${accidentalPhrase(key)} is ${key} major.`,
+      by_distractor: Object.fromEntries(distractorKeys.map((k) => [`${k} major`, whyWrong(k, key)])),
     },
     srs_tags: [keySigAtom(`${key}_major`)],
     kb_version: KB_VERSION,
+  };
+
+  if (variant === 'name') {
+    return {
+      ...common,
+      prompt: 'Name this key.',
+      stimulus: { music: keyMusic(clef, key, grade), text: null },
+      interaction: { type: 'mcq', config: {} },
+      hints: ['Count the sharps or flats on the stave and match them to a key you know.'],
+    };
+  }
+
+  const optionMusic: Record<string, Music> = {};
+  for (const k of [key, ...distractorKeys]) {
+    optionMusic[`${k} major`] = keyMusic(clef, k, grade);
+  }
+  return {
+    ...common,
+    prompt: `Which of these is the key signature of ${key} major?`,
+    stimulus: { music: null, text: `${key} major` },
+    interaction: { type: 'mcq', config: { option_music: optionMusic } },
+    hints: [`${key} major has ${accidentalPhrase(key)}. Count the accidentals on each stave.`],
   };
 }
 

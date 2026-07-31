@@ -86,7 +86,7 @@ describe('misconceptionFor — per-distractor feedback, and every way it falls b
   });
 
   test('a template that names no misconceptions returns undefined, so the sheet keeps its own copy', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: atomsForTemplate('key_signature_id') });
+    const instance = generate('rhythm_sum', { grade: 1, seed: 5, atoms: atomsForTemplate('rhythm_sum') });
     expect(instance.feedback.by_distractor).toBeUndefined();
     expect(misconceptionFor(instance, instance.distractors[0])).toBeUndefined();
   });
@@ -99,8 +99,9 @@ describe('misconceptionFor — per-distractor feedback, and every way it falls b
 });
 
 describe('assembleOptions — notation-answer render payload (U4/AD5)', () => {
+  // Seed 1 draws the 'choose' direction, the one whose OPTIONS are staves.
   test('key_signature_id options carry the generator\'s per-key stave, addressed by the semantic value', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: atomsForTemplate('key_signature_id') });
+    const instance = generate('key_signature_id', { grade: 1, seed: 1, atoms: atomsForTemplate('key_signature_id') });
     const options = assembleOptions(instance);
     for (const option of options) {
       expect(option.music).toBeDefined();
@@ -111,7 +112,7 @@ describe('assembleOptions — notation-answer render payload (U4/AD5)', () => {
   // Invariant: when an option renders notation, its text label is never computed —
   // optionLabel's dur/term formatting is irrelevant once a stave replaces the text.
   test('a notation option gets an empty label — optionLabel formatting is skipped, not just unused', () => {
-    const instance = generate('key_signature_id', { grade: 1, seed: 5, atoms: atomsForTemplate('key_signature_id') });
+    const instance = generate('key_signature_id', { grade: 1, seed: 1, atoms: atomsForTemplate('key_signature_id') });
     for (const option of assembleOptions(instance)) {
       expect(option.label).toBe('');
     }
