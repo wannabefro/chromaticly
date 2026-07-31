@@ -46,15 +46,16 @@ type Direction = 'up' | 'down';
 // opts.grade every other generator reads, since this template's KB fact
 // (transposition, treble<->bass, knowledge-base.json:99) only existed at
 // grade 3. The alto-clef slice (fyu.5) widens this to grade 4 too — grade 4's
-// pair always includes alto (the new skill), grade 3 stays treble<->bass.
-// Only grades 3 and 4 are supported; the instance's own `grade` field still
+// pair always includes alto (the new skill), grade 3 stays treble<->bass, and
+// grade 5 (chromaticly-e3z.7) always includes tenor for the same reason.
+// Only grades 3, 4 and 5 are supported; the instance's own `grade` field still
 // carries the caller's opts.grade (schema-required, and what makeInstanceId
 // keys off). CLEF_RANK (pitch-height clef ordering, kept in sync by hand with
 // validator.ts's independent copy) now lives in transposition-core.ts.
 
 function build(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
-  if (grade !== 3 && grade !== 4) {
-    throw new Error(`octave_transposition: grade ${grade} is not supported (only 3 and 4)`);
+  if (grade !== 3 && grade !== 4 && grade !== 5) {
+    throw new Error(`octave_transposition: grade ${grade} is not supported (only 3, 4 and 5)`);
   }
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
@@ -64,7 +65,18 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 
   let givenClef: Clef;
   let answerClef: Clef;
-  if (scope.clefs.includes('alto')) {
+  if (scope.clefs.includes('tenor')) {
+    // Grade 5: "transposition at the octave of a simple melody from any clef to
+    // another". Tenor is the new clef, so it is forced into every pair for the
+    // same reason alto is at grade 4 — left to compete on equal odds among four
+    // clefs, most instances would never exercise it.
+    const other = pick(rng, scope.clefs.filter((c) => c !== 'tenor'));
+    const pairs: [Clef, Clef][] = [
+      ['tenor', other],
+      [other, 'tenor'],
+    ];
+    [givenClef, answerClef] = pick(rng, pairs);
+  } else if (scope.clefs.includes('alto')) {
     // Grade 4: alto transposition is the new skill this template teaches at
     // this grade, so alto is forced into every pair rather than competing on
     // equal odds with treble/bass (which would make most instances not

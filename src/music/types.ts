@@ -1,7 +1,11 @@
 // Canonical Music object (spec §2, Grade 1 MVP subset). This JSON model is the
 // source of truth; the ABC emitter projects it for rendering and audio (KTD3).
 
-export type Clef = 'treble' | 'bass' | 'alto';
+// 'tenor' is the C clef centred on the 4th line (Grade 5, chromaticly-e3z.7).
+// abcjs takes `clef=tenor` natively, so the emitter needs no new case — but
+// every Record<Clef, ...> in the codebase does, which is the point of widening
+// the union rather than passing a string.
+export type Clef = 'treble' | 'bass' | 'alto' | 'tenor';
 
 export type Duration =
   | 'breve'

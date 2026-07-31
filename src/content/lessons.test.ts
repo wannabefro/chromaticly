@@ -147,12 +147,13 @@ describe('grade1 lessons — assertAtomResolves is scoped per grade, not hardcod
 
   // fyu.5 — octave_transposition widens from grade-3-only to grades 3 and 4
   // (grade 4 always involves alto); grades 1/2 and 5 must still reject it.
-  test('transpose:octave resolves at grade 3 and grade 4, but not grade 1, 2, or 5', () => {
-    expect(() => assertAtomResolves('transpose:octave', 3)).not.toThrow();
-    expect(() => assertAtomResolves('transpose:octave', 4)).not.toThrow();
+  // The atom's gate mirrors octave-transposition.ts's own build() lock, so both
+  // ends of the supported band are pinned: grades 1 and 2 have no clef pair to
+  // transpose between, and grade 6 does not exist.
+  test('transpose:octave resolves at grades 3 to 5, but not grade 1 or 2', () => {
+    for (const grade of [3, 4, 5]) expect(() => assertAtomResolves('transpose:octave', grade)).not.toThrow();
     expect(() => assertAtomResolves('transpose:octave', 1)).toThrow();
     expect(() => assertAtomResolves('transpose:octave', 2)).toThrow();
-    expect(() => assertAtomResolves('transpose:octave', 5)).toThrow();
   });
 
   // 570.U3 — the metre gate accepts the nine new metres at grade 4 (metre-scoped

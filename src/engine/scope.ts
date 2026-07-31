@@ -33,6 +33,12 @@ export interface GradeScope {
 // if that review disagrees. Grades 1-3 never read it (their clefs exclude alto).
 const ALTO_RANGE: { low: Pitch; high: Pitch } = { low: 'G2', high: 'F5' };
 
+// Tenor (C clef on the 4th line) reading range — Grade 5 only. C4 sits on the
+// 4th line, so the stave spans D3 (bottom line) to E4 (top). Resolved the same
+// way as ALTO_RANGE: three ledger lines each way, i.e. six diatonic steps out
+// from each outer line. Grades 1-4 never read it (their clefs exclude tenor).
+const TENOR_RANGE: { low: Pitch; high: Pitch } = { low: 'E2', high: 'D5' };
+
 const GRADE_1_SCOPE: GradeScope = {
   clefs: ['treble', 'bass'],
   noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
@@ -67,6 +73,7 @@ const GRADE_1_SCOPE: GradeScope = {
     // by grade 4); see there. Kept identical across grades to avoid inventing
     // per-grade alto ledger bounds nothing reads.
     alto: ALTO_RANGE,
+    tenor: TENOR_RANGE,
   },
 };
 
@@ -99,6 +106,7 @@ const GRADE_2_SCOPE: GradeScope = {
     treble: { low: 'A3', high: 'C6' },
     bass: { low: 'C2', high: 'E4' },
     alto: ALTO_RANGE,
+    tenor: TENOR_RANGE,
   },
 };
 
@@ -145,6 +153,7 @@ const GRADE_3_SCOPE: GradeScope = {
     // The alto reading range, inherited by grade 4 (GRADE_4_SCOPE.pitchRanges
     // references this object). See ALTO_RANGE.
     alto: ALTO_RANGE,
+    tenor: TENOR_RANGE,
   },
 };
 
@@ -192,14 +201,15 @@ const GRADE_4_SCOPE: GradeScope = {
 // MINOR_FIFTHS in abc-emitter.ts run to ±6, so this is a scope widening, not a
 // notation change.
 //
-// The remaining KB grade_scopes["5"].adds dimensions (tenor clef; 5/4 7/4 5/8
-// 7/8; compound intervals; irregular tuplets; German terms; harp) are still
-// deferred to their own units. In particular 'tenor' is NOT added to clefs: it
-// is not in the Clef union yet. renderableTimeSignatures / metreRenderable
-// already cover grade 5 via their `>= 3` / `>= 4` branches, so the rewrite
-// slice's 2/4↔6/8 need no new entry here.
+// The tenor clef arrives here too (chromaticly-e3z.7): "the identification of
+// notes in the four clefs". renderableTimeSignatures / metreRenderable already
+// cover grade 5 via their `>= 3` / `>= 4` branches, so the rewrite slice's
+// 2/4↔6/8 need no new entry.
+//
+// German terms and the extended instrument set are still deferred to their own
+// units.
 const GRADE_5_SCOPE: GradeScope = {
-  clefs: GRADE_4_SCOPE.clefs,
+  clefs: [...GRADE_4_SCOPE.clefs, ...(KB.grade5Adds.clefs as Clef[])],
   noteValues: GRADE_4_SCOPE.noteValues,
   rests: GRADE_4_SCOPE.rests,
   keysMajor: [...GRADE_4_SCOPE.keysMajor, ...KB.grade5Adds.keys_major],

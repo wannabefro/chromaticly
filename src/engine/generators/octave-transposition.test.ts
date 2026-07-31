@@ -302,7 +302,7 @@ function opts4(seed: number) {
   return { grade: 4, seed, atoms: ATOMS };
 }
 
-const CLEF_RANK: Record<string, number> = { treble: 2, alto: 1, bass: 0 };
+const CLEF_RANK: Record<string, number> = { treble: 3, alto: 2, tenor: 1, bass: 0 };
 
 describe('octaveTransposition — grade 4 always pairs alto with another clef (fyu.5)', () => {
   test.each(GRADE4_SEEDS)('seed %i: the clef pair always includes alto', (seed) => {

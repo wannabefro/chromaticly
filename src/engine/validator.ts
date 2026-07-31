@@ -896,12 +896,22 @@ function naturalLetterOf(pitch: string): string {
   return m ? `${m[1]}${m[3]}` : pitch;
 }
 
-// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest) so the
+// The readable clefs, as an independent list rather than an import from
+// music/types — this file recomputes rather than trusts, and a Clef union that
+// silently grew would otherwise widen every check here without a decision.
+const RECOGNISED_CLEFS: readonly Clef[] = ['treble', 'bass', 'alto', 'tenor'];
+
+function isRecognisedClef(clef: unknown): clef is Clef {
+  return typeof clef === 'string' && (RECOGNISED_CLEFS as readonly string[]).includes(clef);
+}
+
+// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest; tenor
+// between bass and alto) so the
 // expected up/down direction is a lookup, not a ternary. Deliberately NOT
 // imported from octave-transposition.ts — this is an independent recompute,
 // so a generator/validator disagreement fails loud instead of silently
 // agreeing with itself (must be kept in sync by hand).
-const CLEF_RANK: Record<Clef, number> = { treble: 2, alto: 1, bass: 0 };
+const CLEF_RANK: Record<Clef, number> = { treble: 3, alto: 2, tenor: 1, bass: 0 };
 
 // octaveTranspositionHook (D1/D4/D8, Codex findings 1/2, widened to alto by
 // fyu.5) — independently RECOMPUTES each per_item target from the stimulus,
@@ -922,14 +932,14 @@ function octaveTranspositionHook(inst: ExerciseInstance): string[] {
   const config = inst.interaction.config as { answerClef?: unknown; direction?: unknown } | undefined;
   const answerClef = config?.answerClef;
   const direction = config?.direction;
-  if (answerClef !== 'treble' && answerClef !== 'bass' && answerClef !== 'alto') {
-    return ['octave_transposition: interaction.config.answerClef must be "treble", "bass", or "alto"'];
+  if (!isRecognisedClef(answerClef)) {
+    return [`octave_transposition: interaction.config.answerClef must be one of ${RECOGNISED_CLEFS.join(', ')}`];
   }
   if (direction !== 'up' && direction !== 'down') {
     return ['octave_transposition: interaction.config.direction must be "up" or "down"'];
   }
   const givenClef = music.clef;
-  if (givenClef !== 'treble' && givenClef !== 'bass' && givenClef !== 'alto') {
+  if (!isRecognisedClef(givenClef)) {
     return [`octave_transposition: stimulus.music.clef "${String(givenClef)}" is not a recognized clef`];
   }
 
@@ -1226,11 +1236,11 @@ function clefEquivalenceHook(inst: ExerciseInstance): string[] {
 
   const config = inst.interaction.config as { answerClef?: unknown } | undefined;
   const answerClef = config?.answerClef;
-  if (answerClef !== 'treble' && answerClef !== 'bass' && answerClef !== 'alto') {
-    return ['clef_equivalence: interaction.config.answerClef must be "treble", "bass", or "alto"'];
+  if (!isRecognisedClef(answerClef)) {
+    return [`clef_equivalence: interaction.config.answerClef must be one of ${RECOGNISED_CLEFS.join(', ')}`];
   }
   const givenClef = music.clef;
-  if (givenClef !== 'treble' && givenClef !== 'bass' && givenClef !== 'alto') {
+  if (!isRecognisedClef(givenClef)) {
     return [`clef_equivalence: stimulus.music.clef "${String(givenClef)}" is not a recognized clef`];
   }
 

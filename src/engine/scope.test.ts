@@ -242,7 +242,7 @@ describe('scopeForGrade — unsupported grades fail loud', () => {
 // like that: the syllabus caps grade 5 at six sharps and flats, and every
 // key-consuming generator reads keysMajor/keysMinor, so the widening has to
 // land here.
-describe('scopeForGrade(5) — keys, intervals and metres widen; the tenor clef stays deferred', () => {
+describe('scopeForGrade(5) — keys, intervals, metres and the tenor clef all widen', () => {
   test('grade 5 is supported and does not throw', () => {
     expect(() => scopeForGrade(5)).not.toThrow();
   });
@@ -276,19 +276,26 @@ describe('scopeForGrade(5) — keys, intervals and metres widen; the tenor clef 
     expect(scopeForGrade(4).intervalRule.maxOctaves).toBe(1);
   });
 
-  test('the clef, note-value and rest dimensions still deep-equal grade 4', () => {
+  test('the note-value and rest dimensions still deep-equal grade 4', () => {
     const g5 = scopeForGrade(5);
     const g4 = scopeForGrade(4);
-    expect(g5.clefs).toEqual(g4.clefs);
     expect(g5.noteValues).toEqual(g4.noteValues);
     expect(g5.rests).toEqual(g4.rests);
     expect(g5.minorForms).toEqual(g4.minorForms);
     expect(g5.pitchRanges).toEqual(g4.pitchRanges);
   });
 
-  test('tenor clef is NOT in scope — it rides with its own unit', () => {
-    expect(scopeForGrade(5).clefs).not.toContain('tenor');
-    expect(scopeForGrade(5).clefs).toEqual(scopeForGrade(4).clefs);
+  // chromaticly-e3z.7: "the identification of notes in the four clefs".
+  test('all four clefs are readable at grade 5, and only three below it', () => {
+    expect(scopeForGrade(5).clefs).toEqual(['treble', 'bass', 'alto', 'tenor']);
+    expect(scopeForGrade(4).clefs).not.toContain('tenor');
+    expect(scopeForGrade(3).clefs).toEqual(['treble', 'bass']);
+  });
+
+  test('the tenor reading range is centred on the 4th-line C, not copied from alto', () => {
+    const { tenor, alto } = scopeForGrade(5).pitchRanges;
+    expect(tenor).toEqual({ low: 'E2', high: 'D5' });
+    expect(tenor).not.toEqual(alto);
   });
 
   // chromaticly-e3z.6. They are confined to metre_classification exactly as the
@@ -436,9 +443,11 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
       pitchRanges: {
         treble: { low: 'C4', high: 'A5' },
         bass: { low: 'E2', high: 'D4' },
-        // alto is the grade-4 clef (fyu.5); required by the exhaustive
-        // Record<Clef> but never read at grade 1 (clefs excludes it).
+        // alto is the grade-4 clef (fyu.5) and tenor the grade-5 one
+        // (chromaticly-e3z.7); both are required by the exhaustive Record<Clef>
+        // but neither is ever read at grade 1, whose clefs exclude them.
         alto: { low: 'G2', high: 'F5' },
+        tenor: { low: 'E2', high: 'D5' },
       },
     });
     expect(scopeForGrade(2)).toEqual({
@@ -455,6 +464,7 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
         treble: { low: 'A3', high: 'C6' },
         bass: { low: 'C2', high: 'E4' },
         alto: { low: 'G2', high: 'F5' },
+        tenor: { low: 'E2', high: 'D5' },
       },
     });
   });

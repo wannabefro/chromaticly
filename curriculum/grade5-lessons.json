@@ -310,6 +310,82 @@
         "smartTip": "Count the notes and their shape. Three notes flicking to a neighbour = a mordent; five notes winding above AND below = a turn; a long even wobble = a trill; one small note leaning in = a grace note (slashed = acciaccatura, half-value = appoggiatura).",
         "didYouKnow": "Baroque composers often left ornaments as signs precisely because the exact notes were a matter of taste — the same trill sign could be played a dozen ways depending on the player and the tempo."
       },
+      "unlocks": "tenor-reading-5"
+    },
+    {
+      "id": "tenor-reading-5",
+      "title": "The tenor clef",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:tenor:C4",
+        "note_read:tenor:D3",
+        "note_read:tenor:F3",
+        "note_read:tenor:A3",
+        "note_read:tenor:E4",
+        "note_read:tenor:G3",
+        "note_read:tenor:B3"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Read notes in the tenor clef",
+          "The tenor clef is a C clef whose middle C sits on the 4th line",
+          "It is the alto clef moved up one line, so every note reads a 3rd lower"
+        ],
+        "concept": {
+          "title": "The C clef moves up a line",
+          "body": "The tenor clef is the same C-clef symbol you met at Grade 4, printed one line higher. Its two curls point at the 4TH line, and that line is middle C. Everything follows from that. The bottom line is D3 and the top line is E4, so the whole stave sits lower than the alto clef reads. If you already know the alto clef, shift every note down a 3rd and you have the tenor. Find middle C on the 4th line first, every time, then count up or down from it. Cellists, bassoonists and trombonists all read this clef for their higher passages, which is exactly why it exists — it keeps those notes on the stave instead of stranding them on ledger lines.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 5,
+            "seed": 1
+          }
+        },
+        "smartTip": "Find the 4th line — that is middle C. Count from there, never from the bottom of the stave.",
+        "didYouKnow": "A cello part can switch bass, tenor and treble clef within a single phrase. The clef changes so the notes stay on the stave; the player is not changing instrument, only changing the ruler they are reading against."
+      },
+      "unlocks": "tenor-transposition-5"
+    },
+    {
+      "id": "tenor-transposition-5",
+      "title": "Transposing between any two clefs",
+      "strand": "pitch",
+      "atoms": [
+        "transpose:octave"
+      ],
+      "templates": [
+        "octave_transposition"
+      ],
+      "worked_example": {
+        "template_id": "octave_transposition",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Rewrite a melody at the octave from any clef into any other",
+          "The pitch letters never change — only the clef and the octave do",
+          "Work out the direction first: the new clef decides whether the notes go up or down"
+        ],
+        "concept": {
+          "title": "The same tune, a different ruler",
+          "body": "You have transposed at the octave between treble and bass, and to and from the alto clef. With the tenor clef there are four clefs and any pair of them can be asked for. Nothing new happens. Write the same letter names in the new clef, an octave above or below, and keep every note value exactly as it was. The only judgement is direction, and the clefs decide it: bass reads lowest, then tenor, then alto, then treble. Moving to a higher-reading clef means writing the notes an octave up; moving to a lower one means an octave down. Work out the first note, check it against the key signature, then let the shape of the melody carry the rest.",
+          "example": {
+            "template_id": "octave_transposition",
+            "grade": 5,
+            "seed": 2
+          }
+        },
+        "smartTip": "Order the clefs by how high they read — bass, tenor, alto, treble. Moving up the list means writing up an octave.",
+        "didYouKnow": "This is exactly what a copyist did by hand before software. Getting the direction wrong put a cello line an octave under the double basses, which is the kind of mistake that is heard immediately and fixed in the first rehearsal."
+      },
       "unlocks": "metre-rewrite-5"
     },
     {

@@ -23,10 +23,11 @@ export interface SourceNote {
   dots?: Dots;
 }
 
-// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest) so the
+// CLEF_RANK orders clefs by pitch height (bass lowest, treble highest; tenor
+// between bass and alto) so the
 // octave direction of a transposition is a lookup, not a ternary. The validator
 // keeps an INDEPENDENT copy (recompute-don't-trust); this one is the generators'.
-export const CLEF_RANK: Record<Clef, number> = { treble: 2, alto: 1, bass: 0 };
+export const CLEF_RANK: Record<Clef, number> = { treble: 3, alto: 2, tenor: 1, bass: 0 };
 
 export const TIME_SIGS: readonly TimeSig[] = ['3/4', '4/4'];
 

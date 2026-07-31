@@ -73,6 +73,9 @@ const CLEF_BOTTOM_LINE: Record<Clef, { letter: Letter; octave: number }> = {
   bass: { letter: 'G', octave: 2 },
   // Alto (viola) clef: middle line is C4, so the bottom line is F3.
   alto: { letter: 'F', octave: 3 },
+  // Tenor clef: the C clef moves up a line, putting C4 on the 4th line, so the
+  // bottom line is D3 — a 3rd below alto's.
+  tenor: { letter: 'D', octave: 3 },
 };
 
 // The clef-confusion distractor reads the same staff position on a DIFFERENT
@@ -84,6 +87,10 @@ const CLEF_CONFUSION_PARTNER: Record<Clef, Clef> = {
   treble: 'bass',
   bass: 'treble',
   alto: 'treble',
+  // Tenor's partner is bass, not alto. The mistake a reader actually makes is
+  // reading a tenor stave as the bass clef they already know; confusing it with
+  // the alto clef needs them to know the alto clef too, which is rarer.
+  tenor: 'bass',
 };
 
 function otherClef(clef: Clef): Clef {

@@ -13,7 +13,8 @@ export const LINE_GAP = 28; // px between adjacent staff lines
 export const STEP = LINE_GAP / 2; // px per diatonic (letter-name) step (a line→space is half a line→line)
 export const LINE_TOP = 26;
 export const STAVE_LINES = 5;
-export const MIDDLE_LINE_PITCH: Record<Clef, Pitch> = { treble: 'B4', bass: 'D3', alto: 'C4' };
+// Tenor puts C4 on the 4th line, so its middle (3rd) line is A3.
+export const MIDDLE_LINE_PITCH: Record<Clef, Pitch> = { treble: 'B4', bass: 'D3', alto: 'C4', tenor: 'A3' };
 
 /** Design 2d: the paper keeps this inset on all sides — the stave and the accidental
  *  picker never touch the card edge. */
@@ -52,7 +53,8 @@ export function keySigGlyphs(keySig: KeySig): string {
   return glyph.repeat(accidentals.length);
 }
 
-export const CLEF_GLYPH: Record<Clef, string> = { treble: '𝄞', bass: '𝄢', alto: '𝄡' };
+// Alto and tenor share the C-clef glyph; only its line position differs.
+export const CLEF_GLYPH: Record<Clef, string> = { treble: '𝄞', bass: '𝄢', alto: '𝄡', tenor: '𝄡' };
 
 /** Ruling A3: the duration tiles are glyph-only, so they scale 3-5 across per grade
  *  without the labels ever wrapping. The selected duration's name is echoed below. */
