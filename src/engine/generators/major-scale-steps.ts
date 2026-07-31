@@ -115,7 +115,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       stimulus: { music: scaleMusic(clef, key, pitches), text: null },
       answer: { canonical: correct, accepted_alternatives: [] },
       distractors: wrong,
-      hints: ['Look for the two places on the keyboard with no black note between the white ones.'],
+      hints: ['A semitone is the smallest step: the two notes are next to each other, with nothing in between.'],
       feedback: {
         correct: 'Correct!',
         incorrect: `A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.`,

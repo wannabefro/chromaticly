@@ -19,6 +19,30 @@ import type { GenerateOptions, Generator } from './types';
 
 type Direction = 'term_to_meaning' | 'meaning_to_term';
 
+// "signs" and "other_terms" are not adjectives, so the old `${category} terms`
+// wording produced "signs terms" and "other terms terms".
+const CATEGORY_PLURAL: Record<string, string> = {
+  tempo: 'tempo terms',
+  dynamics: 'dynamic markings',
+  signs: 'signs',
+  other_terms: 'terms',
+};
+
+const CATEGORY_SINGULAR: Record<string, string> = {
+  tempo: 'tempo term',
+  dynamics: 'dynamic marking',
+  signs: 'sign',
+  other_terms: 'term',
+};
+
+function categoryPlural(category: string): string {
+  return CATEGORY_PLURAL[category] ?? `${category.replace('_', ' ')} terms`;
+}
+
+function categorySingular(category: string): string {
+  return CATEGORY_SINGULAR[category] ?? `${category.replace('_', ' ')} term`;
+}
+
 function label(entry: TermsDeckEntry): string {
   return entry.term ?? entry.sign ?? entry.abbr ?? entry.meaning;
 }
@@ -95,8 +119,6 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
     category: d.category,
   }));
 
-  const categoryLabel = entry.category.replace('_', ' ');
-
   return {
     id: makeInstanceId('term_meaning', grade, idSeed),
     template_id: 'term_meaning',
@@ -107,10 +129,10 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
     interaction: { type: 'mcq', config: { category: entry.category } },
     answer: { canonical, accepted_alternatives: [] },
     distractors,
-    hints: [`Think about which ${categoryLabel} terms you already know.`],
+    hints: [`Think about which ${categoryPlural(entry.category)} you already know.`],
     feedback: {
       correct: 'Correct!',
-      incorrect: `Not quite — that's a different ${categoryLabel} term or sign. Review the category and try again.`,
+      incorrect: `Not quite — that's a different ${categorySingular(entry.category)}. Review the category and try again.`,
     },
     srs_tags: [termAtom(slugify(termLabel))],
     kb_version: KB_VERSION,
@@ -143,7 +165,6 @@ function buildFlashcard(contentSeed: number, grade: number, idSeed: number, deck
   const rng = mulberry32(contentSeed);
   const entry = pick(rng, deck);
   const termLabel = label(entry);
-  const categoryLabel = entry.category.replace('_', ' ');
 
   return {
     id: makeInstanceId('term_meaning_flashcard', grade, idSeed),
@@ -162,7 +183,7 @@ function buildFlashcard(contentSeed: number, grade: number, idSeed: number, deck
     hints: [],
     feedback: {
       correct: 'Correct!',
-      incorrect: `Not quite — that's a different ${categoryLabel} term or sign.`,
+      incorrect: `Not quite — that's a different ${categorySingular(entry.category)}.`,
     },
     srs_tags: [termAtom(slugify(termLabel))],
     kb_version: KB_VERSION,
