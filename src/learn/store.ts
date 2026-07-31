@@ -148,6 +148,21 @@ function dropRetired(snapshot: ProgressSnapshot): ProgressSnapshot {
   return rest;
 }
 
+/** The highest write-sequence number any persisted record carries. The counter
+ *  must never start below this, or a fresh write would be ordered before evidence
+ *  that already exists. */
+function highestSeq(atoms: Record<string, AtomProgress>, seeds: Record<string, SeededDepth>): number {
+  let max = 0;
+  for (const progress of Object.values(atoms)) {
+    const seq = progress.srs.seq ?? 0;
+    if (seq > max) max = seq;
+  }
+  for (const seed of Object.values(seeds)) {
+    if (seed.seq > max) max = seed.seq;
+  }
+  return max;
+}
+
 /** Bring any persisted snapshot up to the current shape. A version we can't
  *  migrate is discarded (start fresh) rather than trusted — fail safe. Only a
  *  genuinely breaking shape change justifies that; additive optional fields
@@ -155,8 +170,17 @@ function dropRetired(snapshot: ProgressSnapshot): ProgressSnapshot {
  *
  *  `now` is required because the v1 → v2 step re-bases every schedule onto the
  *  day the migration runs; there is no correct answer without it. */
-function migrate(snapshot: ProgressSnapshot, now: number): ProgressSnapshot {
+function migrate(snapshot: ProgressSnapshot, now?: number): ProgressSnapshot {
   if (snapshot.version === 1) {
+    // Loud, not defaulted. `now` used to default to 0, so a caller who forgot it
+    // re-based every v1 schedule onto day 0 — and `loadProgress` then PERSISTED
+    // that, making it permanent rather than a bad read. There is no correct
+    // fallback here: day 0 is roughly 20,000 days stale, and any other guess
+    // invents a review date the learner never had. The doc comments already said
+    // `now` was required; only the default made that untrue.
+    if (now === undefined) {
+      throw new Error('ProgressStore: migrating a v1 snapshot requires `now` (whole days since the epoch) — there is no correct default');
+    }
     const merged = { ...emptySnapshot(), ...dropRetired(snapshot), version: STORE_VERSION };
     const atoms = Object.fromEntries(
       Object.entries(merged.atoms).map(([id, progress]) => [id, rebaseToDays(withDefaultEase(progress), now)]),
@@ -188,7 +212,7 @@ export class ProgressStore {
    *  to be re-based; a fresh store or an already-v2 snapshot ignores it. It is
    *  still required rather than optional for a snapshot-bearing construction —
    *  making it optional is how a caller silently re-bases to day 0. */
-  constructor(snapshot: ProgressSnapshot = emptySnapshot(), now = 0) {
+  constructor(snapshot: ProgressSnapshot = emptySnapshot(), now?: number) {
     const s = migrate(snapshot, now);
     this.migrated = snapshot.version !== STORE_VERSION;
     this.atoms = { ...s.atoms };
@@ -197,8 +221,14 @@ export class ProgressStore {
     this.profile = s.profile;
     this.nudgeSeen = s.accountNudgeSeen ?? false;
     this.clearedExams = new Set(s.clearedExams ?? []);
-    this.writeSeq = s.writeSeq ?? 0;
     this.seededDepths = { ...(s.seededDepths ?? {}) };
+    // Never below the highest `seq` already banked. `writeSeq` is optional, so a
+    // truncated or hand-edited snapshot can carry atoms stamped 20 with no counter
+    // at all — and restarting at 0 hands the NEXT attempt `seq: 1`, which then
+    // loses authority to evidence recorded long before it. Deriving the floor from
+    // the data makes the counter self-healing instead of merely trusted; the stored
+    // value still wins when it is ahead, which is the normal case.
+    this.writeSeq = Math.max(s.writeSeq ?? 0, highestSeq(this.atoms, this.seededDepths));
   }
 
   /** Take the next write sequence number without persisting anything (KTD1/KTD6).
@@ -223,9 +253,20 @@ export class ProgressStore {
     return { ...this.seededDepths };
   }
 
-  /** Write one already-stamped seed. The caller reserved its `seq` when the
-   *  measurement resolved; this never allocates one. */
+  /** Write one already-stamped seed, unless a NEWER measurement is already stored.
+   *  The caller reserved its `seq` when the measurement resolved; this never
+   *  allocates one.
+   *
+   *  The `seq` guard is the whole point of reserving early. Reservation happens at
+   *  measurement time and the write happens at a later commit, so the two orders
+   *  can differ: a placement that resolves first but commits last would otherwise
+   *  overwrite a re-test that resolved after it. Assigning unconditionally threw
+   *  away the ordering `reserveSeq` exists to establish, at the one place it is
+   *  finally banked. Equal `seq` cannot happen — reservations are unique — so the
+   *  comparison is strict and a replayed identical write is a no-op. */
   setSeededDepth(strand: string, seed: SeededDepth): void {
+    const stored = this.seededDepths[strand];
+    if (stored !== undefined && stored.seq >= seed.seq) return;
     this.seededDepths[strand] = seed;
   }
 
@@ -345,7 +386,7 @@ export class ProgressStore {
  *  written back, the next launch re-bases the same v1 blob onto a *later* today,
  *  walking every due date forward indefinitely: nothing is ever due, and no
  *  single-load test can see it. `now` is whole days since the epoch. */
-export async function loadProgress(storage: SnapshotStorage, now = 0): Promise<ProgressStore> {
+export async function loadProgress(storage: SnapshotStorage, now?: number): Promise<ProgressStore> {
   const raw = await storage.load();
   if (!raw) return new ProgressStore(emptySnapshot(), now);
   let store: ProgressStore;

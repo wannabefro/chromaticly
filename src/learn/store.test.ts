@@ -539,3 +539,72 @@ describe('store writeSeq — the ordering primitive (G6 U1, KTD1/KTD7)', () => {
     expect(store.currentSeq()).toBe(3);
   });
 });
+
+// Cross-family review (Codex, 2026-07-31). Three defects on the same surface: the
+// ordering that `writeSeq` exists to establish, and the migration that can destroy
+// every schedule at once. All three were latent — no live caller triggers them —
+// and the next unit (U11 placement/re-test) is the caller that would have.
+describe('store — the write-ordering and migration guards (cross-family review)', () => {
+  test('migrating a v1 snapshot without `now` throws instead of re-basing to day 0', () => {
+    const v1 = JSON.parse(v1Snapshot({ 'note_read:treble:C4': { box: 3, lastReviewed: 0, nextDue: 4 } }));
+    // `now` used to default to 0, and loadProgress PERSISTS the migration — so a
+    // caller who forgot it wrote ~20,000 days of staleness permanently.
+    expect(() => new ProgressStore(v1)).toThrow(/requires `now`/);
+  });
+
+  test('a v2 snapshot still constructs without `now`, because nothing is re-based', () => {
+    const store = new ProgressStore();
+    store.setLesson('a', { completed: true });
+    const snapshot = JSON.parse(JSON.stringify(store.toSnapshot()));
+    expect(() => new ProgressStore(snapshot)).not.toThrow();
+  });
+
+  // Built literally rather than through setAtom, which stamps `seq` from the very
+  // counter under test. The shape being simulated is a truncated or hand-edited
+  // blob: records carry a seq, the counter that issued them is gone.
+  test('the write counter never starts behind a seq already banked in the data', () => {
+    const orphaned = {
+      version: STORE_VERSION,
+      atoms: { x: { mastery: { streak: 0, mastered: false }, srs: { box: 1, lastReviewed: 0, nextDue: 1, seq: 20 } } },
+      lessons: {},
+      collectedFacts: [],
+      profile: null,
+    };
+
+    // Restarting at 0 would hand the next attempt seq 1, which then loses
+    // authority to evidence recorded long before it.
+    expect(new ProgressStore(orphaned).reserveSeq()).toBe(21);
+  });
+
+  test('a seed’s seq counts towards the floor too, not just an atom’s', () => {
+    const orphaned = {
+      version: STORE_VERSION,
+      atoms: {},
+      lessons: {},
+      collectedFacts: [],
+      profile: null,
+      seededDepths: { pitch: { depth: 3, day: 10, seq: 42 } },
+    };
+
+    expect(new ProgressStore(orphaned).reserveSeq()).toBe(43);
+  });
+
+  test('a seed reserved earlier cannot overwrite one reserved later, whatever order they commit in', () => {
+    const store = new ProgressStore();
+    // B resolved second (seq 11) but commits first; A resolved first (seq 10) and
+    // commits late. Reserving early is pointless if the store banks them in
+    // arrival order.
+    store.setSeededDepth('pitch', { depth: 4, day: 100, seq: 11 });
+    store.setSeededDepth('pitch', { depth: 1, day: 100, seq: 10 });
+
+    expect(store.seededDepthFor('pitch')).toEqual({ depth: 4, day: 100, seq: 11 });
+  });
+
+  test('a newer seed does replace an older one — the guard is an ordering rule, not a freeze', () => {
+    const store = new ProgressStore();
+    store.setSeededDepth('pitch', { depth: 1, day: 100, seq: 10 });
+    store.setSeededDepth('pitch', { depth: 4, day: 101, seq: 11 });
+
+    expect(store.seededDepthFor('pitch')?.depth).toBe(4);
+  });
+});
