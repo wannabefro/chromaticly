@@ -187,6 +187,47 @@
         "smartTip": "Keynote, skip, skip. The key signature supplies the accidentals; you supply the letters.",
         "didYouKnow": "Because the pattern is always 1-3-5, a player can find the tonic triad of an unfamiliar key without knowing a single one of its notes by name."
       },
+      "unlocks": "ledger-lines-2"
+    },
+    {
+      "id": "ledger-lines-2",
+      "title": "A second ledger line",
+      "strand": "pitch",
+      "atoms": [
+        "note_read:treble:A3",
+        "note_read:treble:B3",
+        "note_read:treble:B5",
+        "note_read:treble:C6",
+        "note_read:bass:C2",
+        "note_read:bass:D2",
+        "note_read:bass:E4"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 2,
+        "seed": 5
+      },
+      "teach": {
+        "objectives": [
+          "Read notes on a second ledger line above and below each stave",
+          "Count outward in 3rds from a landmark rather than line by line",
+          "The new notes: A3 and B3 below the treble, B5 and C6 above it"
+        ],
+        "concept": {
+          "title": "One more line out",
+          "body": "Grade 1 allowed a single ledger line — middle C below the treble stave, middle C above the bass. Grade 2 allows a second, which reaches four more notes in each clef. The reliable way to read them is to count outward in 3rds from a landmark you already know, because a ledger line and the space beyond it alternate exactly as they do on the stave. From middle C below the treble stave, the next ledger line down is A3, and B3 is the space between them. Reading upward from the top line, the notes above the treble stave run B5 then C6 on its second ledger line. The bass stave works the same way in the other direction, down to C2 and up to E4.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 2,
+            "seed": 13
+          }
+        },
+        "smartTip": "Ledger lines keep the pattern going: line, space, line. Count in 3rds from a note you know.",
+        "didYouKnow": "Before ledger lines were invented, a scribe who ran out of stave simply drew another line onto the stave itself, making it six or seven lines deep. Ledger lines were the tidier answer, and they arrived around 1500."
+      },
       "unlocks": "time-signatures-2"
     },
     {

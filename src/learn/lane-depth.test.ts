@@ -61,14 +61,14 @@ describe('laneDepths — evidence path', () => {
     expect(chords.heldGrades).toEqual([4, 5]);
   });
 
-  // pitch has no grade-2 content. Requiring it would cap the lane at 1.
+  // intervals has no grade-2 content. Requiring it would cap the lane at 1.
   test('a grade with no content is skipped, not failed', () => {
-    expect(contentGradesFor('pitch')).not.toContain(2);
+    expect(contentGradesFor('intervals')).not.toContain(2);
     const store = new ProgressStore();
-    master(store, 'pitch', 1, DAY);
-    master(store, 'pitch', 3, DAY);
+    master(store, 'intervals', 1, DAY);
+    master(store, 'intervals', 3, DAY);
 
-    expect(laneDepths(store, DAY).pitch.depth).toBe(3);
+    expect(laneDepths(store, DAY).intervals.depth).toBe(3);
   });
 
   test('depth is contiguous, but heldGrades is not — the distinction the radar needs', () => {

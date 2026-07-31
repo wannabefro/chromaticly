@@ -53,8 +53,8 @@ describe('LaneRow — one strand at its own depth (design 7a)', () => {
   // are its grades) but only two filled slots below the gap. The bar shows what is
   // actually there, never a synthetic run.
   test('a gap INSIDE the run is drawn as a gap, not filled through', () => {
-    expect(contentGradesFor('pitch')).toEqual([1, 3, 4, 5]);
-    const { getByTestId } = render(<LaneRow strand="pitch" depth={lane('pitch', 3)} testID="lane-row" />);
+    expect(contentGradesFor('intervals')).toEqual([1, 3, 4, 5]);
+    const { getByTestId } = render(<LaneRow strand="intervals" depth={lane('intervals', 3)} testID="lane-row" />);
 
     expect(getByTestId('lane-row-seg-1-filled')).toBeTruthy();
     expect(getByTestId('lane-row-seg-2-gap')).toBeTruthy();

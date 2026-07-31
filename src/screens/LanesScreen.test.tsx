@@ -189,9 +189,10 @@ describe('chooseLane — repair first, then the shallowest lane (R2/R5)', () => 
 
   test('a tie on overdue count goes to the SHALLOWER lane — repair, never deepen', () => {
     const store = new ProgressStore();
-    // pitch is deep (grades 1 and 3 held), context is a single grade-1 lesson;
+    // pitch is deep (grades 1 to 3 held), context is a single grade-1 lesson;
     // both have exactly one atom overdue, so only depth can break the tie.
     masterCell(store, 'pitch', 1);
+    masterCell(store, 'pitch', 2);
     masterCell(store, 'pitch', 3);
     masterCell(store, 'context', 1);
     overdue(store, 'pitch', 1);
