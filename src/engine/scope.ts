@@ -207,7 +207,10 @@ const GRADE_5_SCOPE: GradeScope = {
   minorForms: GRADE_4_SCOPE.minorForms,
   timeSignatures: GRADE_4_SCOPE.timeSignatures,
   rhythmDevices: GRADE_4_SCOPE.rhythmDevices,
-  intervalRule: GRADE_4_SCOPE.intervalRule,
+  // Two octaves of headroom (chromaticly-e3z.8): "all simple and compound
+  // intervals from any note". aboveTonicOnly is already false, inherited from
+  // grade 4 — the compound widening is the octave, not the domain.
+  intervalRule: { ...GRADE_4_SCOPE.intervalRule, maxOctaves: 2 },
   pitchRanges: GRADE_4_SCOPE.pitchRanges,
 };
 

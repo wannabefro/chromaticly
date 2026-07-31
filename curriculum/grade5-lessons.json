@@ -110,6 +110,46 @@
         "smartTip": "Write the seven letters first, in order, then add accidentals. That is what stops you writing D instead of Cx.",
         "didYouKnow": "A double sharp exists because notation tracks LETTERS, not sounds. Cx and D sound identical on a keyboard, but a violinist reading Cx in D# minor plays it as a leading note straining up to D# — a slightly different pitch, and a very different intention."
       },
+      "unlocks": "compound-intervals-5"
+    },
+    {
+      "id": "compound-intervals-5",
+      "title": "Intervals wider than an octave",
+      "strand": "intervals",
+      "atoms": [
+        "interval_compound:9",
+        "interval_compound:10",
+        "interval_compound:11",
+        "interval_compound:12",
+        "interval_compound:13",
+        "interval_compound:14"
+      ],
+      "templates": [
+        "interval_naming"
+      ],
+      "worked_example": {
+        "template_id": "interval_naming",
+        "grade": 5,
+        "seed": 2
+      },
+      "teach": {
+        "objectives": [
+          "Name an interval wider than an octave",
+          "A compound interval keeps the quality of its simple form and adds 7 to the number",
+          "A major 3rd plus an octave is a major 10th, also called a compound major 3rd"
+        ],
+        "concept": {
+          "title": "Adding the octave",
+          "body": "Every interval so far has fitted inside an octave. Wider ones are called COMPOUND. Work one out in two steps. First ignore the extra octave and name the interval as if the upper note were brought down: C up to E is a major 3rd. Then put the octave back by adding 7 to the number, keeping the quality unchanged: a major 3rd becomes a MAJOR 10TH. The quality never changes, because moving a note by a whole octave does not alter how it sounds against the other note. Both names are correct — major 10th and compound major 3rd — and a Grade 5 paper prints the number form.",
+          "example": {
+            "template_id": "interval_naming",
+            "grade": 5,
+            "seed": 0
+          }
+        },
+        "smartTip": "Name it as if it fitted in an octave, then add 7 to the number. Quality stays; only the number grows.",
+        "didYouKnow": "Compound intervals are how chord symbols get their names. The 9th, 11th and 13th in a jazz chord are a 2nd, a 4th and a 6th moved up an octave — stacked above the 7th so they colour the chord rather than crowd it."
+      },
       "unlocks": "chord-inversions-5"
     },
     {

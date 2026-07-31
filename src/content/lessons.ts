@@ -16,6 +16,7 @@ import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
+import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -307,6 +308,19 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       if (scopeForGrade(grade).intervalRule.aboveTonicOnly) {
         throw new Error(`lessons: atom "${atom}" needs between-any-notes intervals, which grade ${grade} does not have`);
+      }
+      return;
+    }
+    case 'interval_compound': {
+      const n = Number(parts[0]);
+      if (!COMPOUND_NUMBERS.includes(n)) {
+        throw new Error(`lessons: atom "${atom}" is not a compound interval number (9-14)`);
+      }
+      // A compound interval needs the domain open beyond the tonic AND two
+      // octaves of headroom; both arrive together at grade 5.
+      const rule = scopeForGrade(grade).intervalRule;
+      if (rule.aboveTonicOnly || rule.maxOctaves < 2) {
+        throw new Error(`lessons: atom "${atom}" needs a grade whose intervals reach beyond one octave`);
       }
       return;
     }

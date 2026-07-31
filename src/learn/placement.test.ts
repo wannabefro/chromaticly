@@ -44,7 +44,7 @@ describe('placement — the ladder is built whole, then walked', () => {
   // to survive: a two-grade ladder, a ladder with a hole in it, a single-grade one.
   test('the ladders are ragged — chords is [4, 5], intervals skips grade 2, context is one grade', () => {
     expect(ladderFor('chords')).toEqual([4, 5]);
-    expect(ladderFor('intervals')).toEqual([1, 3, 4]);
+    expect(ladderFor('intervals')).toEqual([1, 3, 4, 5]);
     expect(ladderFor('context')).toEqual([1]);
   });
 

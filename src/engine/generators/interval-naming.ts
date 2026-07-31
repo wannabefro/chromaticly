@@ -9,8 +9,15 @@
 
 import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { intervalAnyAtom, intervalAtom, intervalTypeAtom, parseAtom } from '../atoms';
-import { intervalLabel, intervalQuality, type IntervalQuality } from '../interval-quality';
+import { intervalAnyAtom, intervalAtom, intervalCompoundAtom, intervalTypeAtom, parseAtom } from '../atoms';
+import {
+  COMPOUND_NUMBERS,
+  compoundAltLabel,
+  intervalLabel,
+  intervalQuality,
+  simpleEquivalent,
+  type IntervalQuality,
+} from '../interval-quality';
 import { int, mulberry32, pick } from '../rng';
 import type { GradeScope } from '../scope';
 import {
@@ -147,8 +154,8 @@ function intervalTypeTargets(atoms: string[]): number[] {
  *  ascending |m-n|, ties preferring the lower number (D6/ORC2) — e.g.
  *  nearestNumbers(8, 2) === [7, 6], NOT a ±1 clamp (which would drop to a
  *  single in-range neighbour for the octave). */
-function nearestNumbers(n: number, count: number): number[] {
-  const candidates = [2, 3, 4, 5, 6, 7, 8].filter((m) => m !== n);
+function nearestNumbers(n: number, count: number, pool: readonly number[] = [2, 3, 4, 5, 6, 7, 8]): number[] {
+  const candidates = pool.filter((m) => m !== n);
   candidates.sort((a, b) => {
     const diff = Math.abs(a - n) - Math.abs(b - n);
     return diff !== 0 ? diff : a - b;
@@ -227,6 +234,8 @@ function buildNumberAndType(
   // BEFORE any tonic-anchored draw below, so grades 1-3 (aboveTonicOnly:
   // true) take the untouched byte-identical path.
   if (!scope.intervalRule.aboveTonicOnly) {
+    const compound = intervalCompoundTargets(atoms);
+    if (compound.length > 0) return buildCompound(rng, scope, clef, grade, idSeed, compound);
     return buildBetweenAnyNotes(rng, scope, clef, grade, idSeed, atoms);
   }
 
@@ -329,6 +338,94 @@ function naturalPitchPairsSpanning(pitches: string[], steps: number): [string, s
     }
   }
   return pairs;
+}
+
+/** The atom-named compound numbers (interval_compound:<n>) in `atoms`, in atom
+ *  order. Empty when the lesson/due-path names none, which is what keeps the
+ *  grade-4 between-any-notes draw byte-identical. */
+function intervalCompoundTargets(atoms: string[]): number[] {
+  const numbers: number[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'interval_compound' || parts.length !== 1) continue;
+    const n = Number(parts[0]);
+    if (COMPOUND_NUMBERS.includes(n) && !numbers.includes(n)) numbers.push(n);
+  }
+  return numbers;
+}
+
+// --- Grade-5 compound branch (chromaticly-e3z.8) ---------------------------
+// "All simple and compound intervals from any note." Same natural-pitch,
+// key_sig-less domain as the grade-4 branch, one octave wider.
+//
+// The distractors are not the grade-4 shape. The mistake this exercise exists
+// to catch is answering with the SIMPLE form — calling a 10th a 3rd because the
+// octave went uncounted — so that label is always one of the two options, and
+// design rule 5 requires the feedback to name it as that mistake rather than
+// report a generic wrong answer.
+function buildCompound(
+  rng: () => number,
+  scope: GradeScope,
+  clef: Clef,
+  grade: number,
+  idSeed: number,
+  targets: number[],
+): ExerciseInstance {
+  const pitches = diatonicPitchesInComfortableRange(clef, grade);
+  const number = pick(rng, targets);
+  const steps = number - 1;
+  if (steps > scope.intervalRule.maxOctaves * 7) {
+    throw new Error(`interval_naming: number ${number} exceeds maxOctaves for the compound domain`);
+  }
+
+  const pairs = naturalPitchPairsSpanning(pitches, steps);
+  if (pairs.length === 0) {
+    throw new Error(`interval_naming: no natural pitch pair spans a ${number} within range for clef ${clef}`);
+  }
+  const [lower, upper] = pick(rng, pairs);
+
+  const quality = intervalQuality(lower, upper, number);
+  const canonical = intervalLabel(quality, number);
+  const simpleLabel = intervalLabel(quality, simpleEquivalent(number));
+  const [neighbour] = nearestNumbers(number, 1, COMPOUND_NUMBERS);
+  const neighbourUpper = naturalPitchStepsAbove(lower, neighbour - 1);
+  const neighbourLabel = intervalLabel(intervalQuality(lower, neighbourUpper, neighbour), neighbour);
+
+  return {
+    id: makeInstanceId('interval_naming', grade, idSeed),
+    template_id: 'interval_naming',
+    grade,
+    strand: 'intervals',
+    prompt: 'Name this interval (number and type).',
+    stimulus: {
+      music: {
+        clef,
+        key_sig: null,
+        time_sig: null,
+        voices: [{ events: [{ type: 'chord', pitches: [lower, upper], dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    // Both names the syllabus accepts, per KB compound_rule. The number form
+    // leads because that is what a Grade 5 paper prints.
+    answer: { canonical, accepted_alternatives: [compoundAltLabel(quality, number)] },
+    distractors: [simpleLabel, neighbourLabel],
+    hints: [
+      'This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect:
+        'Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.',
+      by_distractor: {
+        [simpleLabel]: `That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a ${simpleLabel} plus an octave is a ${canonical}.`,
+        [neighbourLabel]: `That is a ${neighbourLabel}. Recount the letter names from the lower note to the upper note, including both ends.`,
+      },
+    },
+    srs_tags: [intervalCompoundAtom(number)],
+    kb_version: KB_VERSION,
+  };
 }
 
 function buildBetweenAnyNotes(

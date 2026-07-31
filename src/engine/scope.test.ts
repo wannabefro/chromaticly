@@ -264,9 +264,21 @@ describe('scopeForGrade(5) — keys widen to six accidentals; other adds stay de
     for (const key of scopeForGrade(4).keysMajor) expect(scopeForGrade(5).keysMajor).toContain(key);
   });
 
-  test('every non-key dimension still deep-equals grade 4', () => {
-    const { keysMajor: _M, keysMinor: _m, ...g5 } = scopeForGrade(5);
-    const { keysMajor: _M4, keysMinor: _m4, ...g4 } = scopeForGrade(4);
+  // Compound intervals (chromaticly-e3z.8): "all simple and compound intervals
+  // from any note". The domain was already open beyond the tonic at grade 4, so
+  // the widening is the octave alone.
+  test('intervals reach two octaves, and the domain stays open beyond the tonic', () => {
+    expect(scopeForGrade(5).intervalRule).toEqual({
+      aboveTonicOnly: false,
+      namingStyle: 'number_and_type',
+      maxOctaves: 2,
+    });
+    expect(scopeForGrade(4).intervalRule.maxOctaves).toBe(1);
+  });
+
+  test('every dimension other than keys and intervals still deep-equals grade 4', () => {
+    const { keysMajor: _M, keysMinor: _m, intervalRule: _i, ...g5 } = scopeForGrade(5);
+    const { keysMajor: _M4, keysMinor: _m4, intervalRule: _i4, ...g4 } = scopeForGrade(4);
     expect(g5).toEqual(g4);
   });
 

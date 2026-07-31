@@ -1,4 +1,7 @@
 import {
+  COMPOUND_NUMBERS,
+  compoundAltLabel,
+  simpleEquivalent,
   diatonicIntervalNumber,
   intervalLabel,
   intervalQuality,
@@ -106,8 +109,69 @@ describe('intervalQuality — fails loud on a diff outside the widened vocabular
     expect(() => intervalQuality('C4', 'F4', 2)).toThrow();
   });
 
-  test('an out-of-vocabulary number (9, a compound interval) throws — neither perfect nor major/minor covers it', () => {
-    expect(() => intervalQuality('C4', 'D5', 9)).toThrow();
+  // 15 is the boundary the compound range deliberately stops at: it reduces to
+  // the octave, so "compound perfect octave" would be a name for two octaves.
+  test('a number above the compound range (15, a double octave) throws', () => {
+    expect(() => intervalQuality('C4', 'C6', 15)).toThrow();
+  });
+});
+
+// Compound intervals (Grade 5, chromaticly-e3z.8). The rule under test is the
+// KB's compound_rule: a compound interval's quality IS its simple equivalent's,
+// measured an octave higher.
+describe('intervalQuality — compound numbers reduce to their simple equivalent', () => {
+  test('a 10th is classified exactly as the 3rd it reduces to', () => {
+    expect(intervalQuality('C4', 'E5', 10)).toBe('major'); // C-E is a major 3rd
+    expect(intervalQuality('D4', 'F5', 10)).toBe('minor'); // D-F is a minor 3rd
+  });
+
+  test('the perfect-capable compounds stay perfect-capable', () => {
+    expect(intervalQuality('C4', 'F5', 11)).toBe('perfect');
+    expect(intervalQuality('C4', 'G5', 12)).toBe('perfect');
+  });
+
+  test('an altered compound takes the altered quality, not a reduced one', () => {
+    expect(intervalQuality('F4', 'B5', 11)).toBe('augmented'); // F-B is the augmented 4th
+    expect(intervalQuality('B3', 'F5', 12)).toBe('diminished'); // B-F is the diminished 5th
+  });
+
+  // Each end of the range on its own, not a value inside it.
+  test('both ends of the compound range classify', () => {
+    expect(intervalQuality('C4', 'D5', 9)).toBe('major');
+    expect(intervalQuality('C4', 'B5', 14)).toBe('major');
+  });
+
+  test('the same pitches read one octave apart give the same quality', () => {
+    expect(intervalQuality('C4', 'E5', 10)).toBe(intervalQuality('C4', 'E4', 3));
+    expect(intervalQuality('D4', 'F5', 10)).toBe(intervalQuality('D4', 'F4', 3));
+  });
+
+  test('simpleEquivalent maps the compound range down by 7 and leaves simple numbers alone', () => {
+    expect(COMPOUND_NUMBERS.map(simpleEquivalent)).toEqual([2, 3, 4, 5, 6, 7]);
+    for (const n of [2, 3, 4, 5, 6, 7, 8]) expect(simpleEquivalent(n)).toBe(n);
+  });
+});
+
+describe('compound interval names — both forms the syllabus accepts', () => {
+  test('the canonical name is the number form', () => {
+    expect(intervalLabel('major', 10)).toBe('major 10th');
+    expect(intervalLabel('perfect', 12)).toBe('perfect 12th');
+  });
+
+  test('the alternative is "compound <simple name>", the KB\'s own worked example', () => {
+    expect(compoundAltLabel('major', 9)).toBe('compound major 2nd');
+    expect(compoundAltLabel('major', 10)).toBe('compound major 3rd');
+  });
+
+  test('a simple number has no compound name, and asking for one throws', () => {
+    expect(() => compoundAltLabel('major', 3)).toThrow();
+  });
+
+  test('parseIntervalLabel round-trips a compound label and still rejects an impossible one', () => {
+    expect(parseIntervalLabel('major 10th')).toEqual({ quality: 'major', number: 10 });
+    expect(parseIntervalLabel('perfect 12th')).toEqual({ quality: 'perfect', number: 12 });
+    expect(() => parseIntervalLabel('major 12th')).toThrow(); // a 12th reduces to a 5th
+    expect(() => parseIntervalLabel('perfect 10th')).toThrow(); // a 10th reduces to a 3rd
   });
 });
 

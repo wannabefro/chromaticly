@@ -1,8 +1,12 @@
 # Generic per-lesson capture flow (not a test — a screenshot harness). Deep-links
-# to ?seed=${LESSON}, opens the lesson, and captures the teach screen then the
-# exercise screen. Parameterised by LESSON and OUT:
-#   DEV_URL=exp://127.0.0.1:8092 bash scripts/e2e.sh \
-#     -e LESSON=treble-notes -e OUT=/abs/dir .maestro/_capture-lesson.yaml
+# to ?seed=${LESSON}, opens the lesson through the Learn lanes, and captures the
+# teach screen then the exercise screen. Parameterised by LESSON, STRAND and OUT:
+#   DEV_URL=exp://127.0.0.1:8090 bash scripts/e2e.sh \
+#     -e LESSON=major-keys-5 -e STRAND=scales_keys -e OUT=/abs/dir \
+#     .maestro/_capture-lesson.yaml
+#
+# STRAND is needed because Learn is a lane list now, not one level map — there is
+# no single scroll that reaches every lesson.
 appId: host.exp.Exponent
 ---
 - clearState
@@ -16,8 +20,21 @@ appId: host.exp.Exponent
 - tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lanes-screen" }
     timeout: 90000
+
+- scrollUntilVisible:
+    element: { id: "lane-row-${STRAND}" }
+    direction: DOWN
+    visibilityPercentage: 40
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 30000
+- tapOn: { id: "lane-row-${STRAND}" }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 20000
 
 - scrollUntilVisible:
     element: { id: "unit-row-${LESSON}" }

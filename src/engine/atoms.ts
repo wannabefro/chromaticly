@@ -51,6 +51,16 @@ export function intervalAnyAtom(number: number): string {
   return `interval_any:${number}`;
 }
 
+/** Grade-5 compound interval atom (chromaticly-e3z.8), e.g.
+ *  intervalCompoundAtom(10) -> "interval_compound:10". Distinct from
+ *  `interval_any:<n>` for the same reason that one is distinct from
+ *  `interval_type:<n>`: naming a 10th requires seeing it as an octave plus a
+ *  3rd, which is a step beyond naming the 3rd. Sharing an atom would let
+ *  grade-4 mastery silently credit the grade-5 skill. */
+export function intervalCompoundAtom(number: number): string {
+  return `interval_compound:${number}`;
+}
+
 export function termAtom(slug: string): string {
   return `term:${slug}`;
 }

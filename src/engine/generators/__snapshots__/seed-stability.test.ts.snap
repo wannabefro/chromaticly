@@ -149119,6 +149119,1171 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte interval_naming @ compound-intervals-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound augmented 4th",
+      ],
+      "canonical": "augmented 11th",
+    },
+    "distractors": [
+      "augmented 4th",
+      "major 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "augmented 4th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a augmented 4th plus an octave is a augmented 11th.",
+        "major 10th": "That is a major 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound major 7th",
+      ],
+      "canonical": "major 14th",
+    },
+    "distractors": [
+      "major 7th",
+      "major 13th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 13th": "That is a major 13th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "major 7th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a major 7th plus an octave is a major 14th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:14",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound major 3rd",
+      ],
+      "canonical": "major 10th",
+    },
+    "distractors": [
+      "major 3rd",
+      "major 9th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 3rd": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a major 3rd plus an octave is a major 10th.",
+        "major 9th": "That is a major 9th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C2",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 4th",
+      ],
+      "canonical": "perfect 11th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 10th": "That is a major 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 4th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 4th plus an octave is a perfect 11th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound minor 6th",
+      ],
+      "canonical": "minor 13th",
+    },
+    "distractors": [
+      "minor 6th",
+      "diminished 12th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "diminished 12th": "That is a diminished 12th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "minor 6th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a minor 6th plus an octave is a minor 13th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound minor 3rd",
+      ],
+      "canonical": "minor 10th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "major 9th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is a major 9th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "minor 3rd": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a minor 3rd plus an octave is a minor 10th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound minor 7th",
+      ],
+      "canonical": "minor 14th",
+    },
+    "distractors": [
+      "minor 7th",
+      "minor 13th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 13th": "That is a minor 13th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "minor 7th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a minor 7th plus an octave is a minor 14th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:14",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 5th",
+      ],
+      "canonical": "perfect 12th",
+    },
+    "distractors": [
+      "perfect 5th",
+      "perfect 11th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "perfect 11th": "That is a perfect 11th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 5th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 5th plus an octave is a perfect 12th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:12",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 5th",
+      ],
+      "canonical": "perfect 12th",
+    },
+    "distractors": [
+      "perfect 5th",
+      "perfect 11th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "perfect 11th": "That is a perfect 11th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 5th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 5th plus an octave is a perfect 12th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:12",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 4th",
+      ],
+      "canonical": "perfect 11th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "minor 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 10th": "That is a minor 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 4th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 4th plus an octave is a perfect 11th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 4th",
+      ],
+      "canonical": "perfect 11th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "major 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 10th": "That is a major 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 4th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 4th plus an octave is a perfect 11th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound major 6th",
+      ],
+      "canonical": "major 13th",
+    },
+    "distractors": [
+      "major 6th",
+      "perfect 12th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 6th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a major 6th plus an octave is a major 13th.",
+        "perfect 12th": "That is a perfect 12th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound minor 3rd",
+      ],
+      "canonical": "minor 10th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "major 9th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is a major 9th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "minor 3rd": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a minor 3rd plus an octave is a minor 10th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A4",
+                  "C6",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound major 2nd",
+      ],
+      "canonical": "major 9th",
+    },
+    "distractors": [
+      "major 2nd",
+      "minor 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a major 2nd plus an octave is a major 9th.",
+        "minor 10th": "That is a minor 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 5th",
+      ],
+      "canonical": "perfect 12th",
+    },
+    "distractors": [
+      "perfect 5th",
+      "perfect 11th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "perfect 11th": "That is a perfect 11th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 5th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 5th plus an octave is a perfect 12th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:12",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "E5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound perfect 4th",
+      ],
+      "canonical": "perfect 11th",
+    },
+    "distractors": [
+      "perfect 4th",
+      "minor 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 10th": "That is a minor 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "perfect 4th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a perfect 4th plus an octave is a perfect 11th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound major 2nd",
+      ],
+      "canonical": "major 9th",
+    },
+    "distractors": [
+      "major 2nd",
+      "minor 10th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a major 2nd plus an octave is a major 9th.",
+        "minor 10th": "That is a minor 10th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound minor 3rd",
+      ],
+      "canonical": "minor 10th",
+    },
+    "distractors": [
+      "minor 3rd",
+      "minor 9th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a minor 3rd plus an octave is a minor 10th.",
+        "minor 9th": "That is a minor 9th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "G3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound minor 6th",
+      ],
+      "canonical": "minor 13th",
+    },
+    "distractors": [
+      "minor 6th",
+      "diminished 12th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "diminished 12th": "That is a diminished 12th. Recount the letter names from the lower note to the upper note, including both ends.",
+        "minor 6th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a minor 6th plus an octave is a minor 13th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "G5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "compound major 6th",
+      ],
+      "canonical": "major 13th",
+    },
+    "distractors": [
+      "major 6th",
+      "perfect 12th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 6th": "That is the simple form. The upper note is an octave higher than that, so add 7 to the number: a major 6th plus an octave is a major 13th.",
+        "perfect 12th": "That is a perfect 12th. Recount the letter names from the lower note to the upper note, including both ends.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — count every letter name from the lower note up to the upper note, including both. An interval wider than an octave keeps its quality but gains 7 to its number.",
+    },
+    "grade": 5,
+    "hints": [
+      "This interval is wider than an octave. Count the letter names from the lower note to the upper note with both ends included — the number will be more than 8.",
+    ],
+    "id": "interval_naming:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this interval (number and type).",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_naming",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte key_signature_id @ major-keys-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

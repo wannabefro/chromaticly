@@ -29,7 +29,7 @@ describe('the content matrix — sparse, and every consumer must cope', () => {
   test('each strand reports only the grades that actually have lessons', () => {
     expect(contentGradesFor('chords')).toEqual([4, 5]);
     expect(contentGradesFor('context')).toEqual([1]);
-    expect(contentGradesFor('intervals')).toEqual([1, 3, 4]);
+    expect(contentGradesFor('intervals')).toEqual([1, 3, 4, 5]);
   });
 
   test('chords genuinely has nothing below grade 4 — the mock\'s "Chords · grade 2" is unbuildable', () => {
