@@ -151,3 +151,37 @@ Three constraints this carries:
    hollow, so the bar reads as a boundary rather than a single flat span.
 3. **The words survive in the accessibility label** — "Scales & Keys, grade 2, was grade 4" — the
    same bargain the 1e copy diet struck for the depth itself.
+
+### Placement result (7c) — the bar, not the number · approved 2026-07-31
+
+`Progression Screens C.dc.html` draws each of the seven depths as a bare numeral. Built as the
+five-segment **`LaneRow` bar** instead — the same component the Learn tab (7a) uses, not a lookalike.
+
+The prototype's version is not wrong in isolation; it is wrong *next to 7a*. The screen the learner
+sees immediately after this one draws the identical fact as a bar, so a numeral here teaches two
+representations of one thing on consecutive screens. Reusing the component also makes R3 ("these
+surfaces must never disagree") structural rather than a convention someone has to remember.
+
+The bar carries one thing a number cannot: **the sparse matrix**. Chords teaches nothing below grade
+4 and context only exists at grade 1. Drawn as dashed gaps that reads as a skill that starts later;
+drawn as the numeral `1` it reads as three grades of failure at material that does not exist.
+
+Four consequences, none of which would justify the change alone:
+
+| | |
+|---|---|
+| **No depth text beside the bar** | 1e removed it from `LaneRow` and it stays removed. Adding it back here would recreate the disagreement the bar exists to fix. The words survive in `accessibilityLabel`. |
+| **Depth 0 reads "not started"** | R7 made 0 real with no floor at 1, so the prototype's "wrong → starts at grade 1" cannot hold. A bare `0` is meaningless. |
+| **"Not asked" is a separate line** | A strand the pass never reached is a fact about the PASS, not the learner. `PlacementOutcome` already distinguishes it from a measured 0; naming it in a footnote follows `ReadinessCard`'s "Not examined at this grade" precedent. |
+| **The count is derived** | Seven placeable strands, so "Placement · 7 questions", not the prototype's hardcoded eight. It stays true when chords gains a grade-3 lesson. |
+
+**The name goes.** 7c reads "Here's where you are, Maya", but onboarding has no name to use — a
+display name is not captured until account creation (6b).
+
+**The tip is rewritten** to say how little was measured ("one question per skill") rather than "a
+little of each". A one-item sample is what makes the re-test offer above it useful rather than
+decorative.
+
+Not changed: the title, the "Uneven is normal" body, the drift warning's job, "Looks about right",
+and the re-test-on-tap behaviour — which stays a real four-question ladder, never a self-assessment
+slider.
