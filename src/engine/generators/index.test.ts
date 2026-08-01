@@ -87,6 +87,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'duplet_recognition',
   'chord_recognition',
   'ornament_recognition',
+  'ornament_effect',
   'instrument_knowledge',
   'enharmonic_recognition',
   'rest_completion',

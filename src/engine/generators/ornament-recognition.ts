@@ -260,3 +260,42 @@ function buildWrittenToSign(
 
 export const ornamentRecognition: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Second shape (chromaticly-lgi): the ornament is named and its pattern chosen.
+
+function withArticle(name: string): string {
+  return `${/^[aeiou]/i.test(name) ? 'an' : 'a'} ${name.toLowerCase()}`;
+}
+
+function buildEffect(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const { kinds, direction } = parseOrnamentAtoms(atoms);
+  const kind = pick(rng, kinds);
+  const others = (ORNAMENT_KINDS as readonly OrnamentKind[]).filter((k) => k !== kind);
+  const distractorKinds = sampleDistinct(rng, [...others], 2);
+
+  return {
+    id: makeInstanceId('ornament_effect', grade, idSeed),
+    template_id: 'ornament_effect',
+    grade,
+    strand: 'terms_signs',
+    prompt: `What does ${withArticle(ORNAMENT_NAMES[kind])} play?`,
+    stimulus: { music: null, text: ORNAMENT_NAMES[kind] },
+    interaction: { type: 'mcq', config: { ornament: kind, direction } },
+    answer: { canonical: ORNAMENT_SHAPES[kind], accepted_alternatives: [] },
+    distractors: distractorKinds.map((k) => ORNAMENT_SHAPES[k]),
+    hints: ['Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `${ORNAMENT_NAMES[kind]} is ${ORNAMENT_SHAPES[kind]}.`,
+      by_distractor: Object.fromEntries(
+        distractorKinds.map((k) => [ORNAMENT_SHAPES[k], `That is ${ORNAMENT_NAMES[k].toLowerCase()}. ${ORNAMENT_NAMES[kind]} is ${ORNAMENT_SHAPES[kind]}.`]),
+      ),
+    },
+    srs_tags: [direction === 'written_to_sign' ? ornamentSignAtom(kind) : ornamentAtom(kind)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const ornamentEffect: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildEffect(candidateSeed, opts.grade, opts.seed, opts.atoms));

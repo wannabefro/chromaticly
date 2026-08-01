@@ -74,6 +74,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   duplet_recognition: 4,
   chord_recognition: 4,
   ornament_recognition: 4,
+  ornament_effect: 4,
   instrument_knowledge: 4,
   enharmonic_recognition: 4,
   clef_equivalence: 4,
@@ -445,6 +446,18 @@ const GRADE_4_EXTRA_CASES: Case[] = [
   {
     label: 'ornament_recognition (ornaments-4, pre-lesson pin)',
     templateId: 'ornament_recognition',
+    atoms: [
+      'ornament:trill',
+      'ornament:turn',
+      'ornament:upper_mordent',
+      'ornament:lower_mordent',
+      'ornament:acciaccatura',
+      'ornament:appoggiatura',
+    ],
+  },
+  {
+    label: 'ornament_effect (ornaments-4, chromaticly-lgi)',
+    templateId: 'ornament_effect',
     atoms: [
       'ornament:trill',
       'ornament:turn',

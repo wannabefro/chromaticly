@@ -25,7 +25,7 @@ import { modeSwap } from './mode-swap';
 import { noteNaming, noteNamingStaveInput } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
-import { ornamentRecognition } from './ornament-recognition';
+import { ornamentEffect, ornamentRecognition } from './ornament-recognition';
 import { restCompletion, restValueId } from './rest-completion';
 import { rhythmSum } from './rhythm-sum';
 import { scaleDegreeId, scaleDegreeStaveInput, tonicTriadKeyId } from './scale-degree-id';
@@ -69,6 +69,7 @@ export const GENERATORS: Record<string, Generator> = {
   degree_name_id: degreeNameId,
   chord_recognition: chordRecognition,
   ornament_recognition: ornamentRecognition,
+  ornament_effect: ornamentEffect,
   instrument_knowledge: instrumentKnowledge,
   enharmonic_recognition: enharmonicRecognition,
   rest_completion: restCompletion,

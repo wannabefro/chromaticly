@@ -187556,6 +187556,831 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte ornament_effect @ ornaments-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "one quick flick up to the note above and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
+        "one quick flick up to the note above and back": "That is upper mordent. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s0",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a small unslashed grace note leaning on the beat",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s1",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
+        "a long rapid alternation with the note above": "That is trill. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s2",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a long rapid alternation with the note above",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one quick flick down to the note below and back": "That is lower mordent. Trill is a long rapid alternation with the note above.",
+        "one quick flick up to the note above and back": "That is upper mordent. Trill is a long rapid alternation with the note above.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Trill is a long rapid alternation with the note above.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s3",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a trill play?",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Trill",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a curl through the note above, the note, and the note below",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick down to the note below and back": "That is lower mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s4",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s5",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a small unslashed grace note leaning on the beat",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s6",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s7",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a curl through the note above, the note, and the note below",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s8",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small unslashed grace note leaning on the beat",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Appoggiatura is a small unslashed grace note leaning on the beat.",
+        "a long rapid alternation with the note above": "That is trill. Appoggiatura is a small unslashed grace note leaning on the beat.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s9",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an appoggiatura play?",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Appoggiatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small unslashed grace note leaning on the beat",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Appoggiatura is a small unslashed grace note leaning on the beat.",
+        "one quick flick up to the note above and back": "That is upper mordent. Appoggiatura is a small unslashed grace note leaning on the beat.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s10",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an appoggiatura play?",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Appoggiatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s11",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Turn is a curl through the note above, the note, and the note below.",
+        "one quick flick up to the note above and back": "That is upper mordent. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s12",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s13",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s14",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s15",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "one quick flick up to the note above and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s16",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s17",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s18",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s19",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte ornament_recognition @ ornaments-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -221638,6 +222463,831 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "pitch",
     "template_id": "octave_transposition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte ornament_effect (ornaments-4, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "one quick flick up to the note above and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
+        "one quick flick up to the note above and back": "That is upper mordent. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s0",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a small unslashed grace note leaning on the beat",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s1",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
+        "a long rapid alternation with the note above": "That is trill. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s2",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a long rapid alternation with the note above",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one quick flick down to the note below and back": "That is lower mordent. Trill is a long rapid alternation with the note above.",
+        "one quick flick up to the note above and back": "That is upper mordent. Trill is a long rapid alternation with the note above.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Trill is a long rapid alternation with the note above.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s3",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a trill play?",
+    "srs_tags": [
+      "ornament:trill",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Trill",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a curl through the note above, the note, and the note below",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick down to the note below and back": "That is lower mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s4",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s5",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a small unslashed grace note leaning on the beat",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s6",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s7",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a curl through the note above, the note, and the note below",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s8",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small unslashed grace note leaning on the beat",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Appoggiatura is a small unslashed grace note leaning on the beat.",
+        "a long rapid alternation with the note above": "That is trill. Appoggiatura is a small unslashed grace note leaning on the beat.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s9",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an appoggiatura play?",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Appoggiatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small unslashed grace note leaning on the beat",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Appoggiatura is a small unslashed grace note leaning on the beat.",
+        "one quick flick up to the note above and back": "That is upper mordent. Appoggiatura is a small unslashed grace note leaning on the beat.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s10",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an appoggiatura play?",
+    "srs_tags": [
+      "ornament:appoggiatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Appoggiatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s11",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Turn is a curl through the note above, the note, and the note below.",
+        "one quick flick up to the note above and back": "That is upper mordent. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s12",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s13",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s14",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s15",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "one quick flick up to the note above and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s16",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s17",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s18",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 4,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g4:s19",
+    "interaction": {
+      "config": {
+        "direction": "sign_to_name",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
   },
 ]
 `;
@@ -257667,6 +259317,831 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     },
     "strand": "pitch",
     "template_id": "octave_transposition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte ornament_effect @ ornaments-to-sign-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "one quick flick up to the note above and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
+        "one quick flick up to the note above and back": "That is upper mordent. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s0",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a small unslashed grace note leaning on the beat",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s1",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
+        "a long rapid alternation with the note above": "That is trill. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s2",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a long rapid alternation with the note above",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "one quick flick down to the note below and back": "That is lower mordent. Trill is a long rapid alternation with the note above.",
+        "one quick flick up to the note above and back": "That is upper mordent. Trill is a long rapid alternation with the note above.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Trill is a long rapid alternation with the note above.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s3",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "trill",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a trill play?",
+    "srs_tags": [
+      "ornament:trill:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Trill",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a curl through the note above, the note, and the note below",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick down to the note below and back": "That is lower mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s4",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s5",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a small unslashed grace note leaning on the beat",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s6",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s7",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "one quick flick down to the note below and back",
+      "a curl through the note above, the note, and the note below",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s8",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small unslashed grace note leaning on the beat",
+    },
+    "distractors": [
+      "a curl through the note above, the note, and the note below",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a curl through the note above, the note, and the note below": "That is turn. Appoggiatura is a small unslashed grace note leaning on the beat.",
+        "a long rapid alternation with the note above": "That is trill. Appoggiatura is a small unslashed grace note leaning on the beat.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s9",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an appoggiatura play?",
+    "srs_tags": [
+      "ornament:appoggiatura:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Appoggiatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small unslashed grace note leaning on the beat",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small slashed grace note crushed in before the main note",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Appoggiatura is a small unslashed grace note leaning on the beat.",
+        "one quick flick up to the note above and back": "That is upper mordent. Appoggiatura is a small unslashed grace note leaning on the beat.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s10",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "appoggiatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an appoggiatura play?",
+    "srs_tags": [
+      "ornament:appoggiatura:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Appoggiatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick down to the note below and back",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s11",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "lower_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a lower mordent play?",
+    "srs_tags": [
+      "ornament:lower_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Lower mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Turn is a curl through the note above, the note, and the note below.",
+        "one quick flick up to the note above and back": "That is upper mordent. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s12",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s13",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s14",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "one quick flick up to the note above and back",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s15",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a small slashed grace note crushed in before the main note",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "one quick flick up to the note above and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Acciaccatura is a small slashed grace note crushed in before the main note.",
+        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s16",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "acciaccatura",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an acciaccatura play?",
+    "srs_tags": [
+      "ornament:acciaccatura:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Acciaccatura",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a long rapid alternation with the note above",
+      "one quick flick down to the note below and back",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
+        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s17",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a curl through the note above, the note, and the note below",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a long rapid alternation with the note above",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s18",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "turn",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does a turn play?",
+    "srs_tags": [
+      "ornament:turn:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Turn",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "one quick flick up to the note above and back",
+    },
+    "distractors": [
+      "a small slashed grace note crushed in before the main note",
+      "a small unslashed grace note leaning on the beat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
+        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
+    ],
+    "id": "ornament_effect:g5:s19",
+    "interaction": {
+      "config": {
+        "direction": "written_to_sign",
+        "ornament": "upper_mordent",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does an upper mordent play?",
+    "srs_tags": [
+      "ornament:upper_mordent:written_to_sign",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Upper mordent",
+    },
+    "strand": "terms_signs",
+    "template_id": "ornament_effect",
   },
 ]
 `;
