@@ -22,4 +22,4 @@ if command -v flutter >/dev/null 2>&1; then
   export PATH="$STUB_DIR:$PATH"
 fi
 
-maestro --device "$UDID" test -e "LESSON=${LESSON}" -e "GRADE=${GRADE}" -e "OUT=${OUT}" -e "ANSWER=${ANSWER:-option-0}" "$FLOW"
+maestro --device "$UDID" test -e "LESSON=${LESSON}" -e "GRADE=${GRADE}" -e "OUT=${OUT}" -e "ANSWER=${ANSWER:-option-0}" -e "ANSWER_B=${ANSWER_B:-__none__}" -e "ANSWER_C=${ANSWER_C:-__none__}" "$FLOW"

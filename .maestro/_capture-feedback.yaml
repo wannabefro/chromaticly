@@ -43,8 +43,11 @@ appId: host.exp.Exponent
     visible: { id: "prompt" }
     timeout: 20000
 
-# ANSWER is the option's testID. The same one every item, so one is wrong.
+# ANSWER/ANSWER_B/ANSWER_C are option testIDs. A compound interaction needs
+# several taps; an id absent on this item is a no-op.
 - tapOn: { id: "${ANSWER}", optional: true }
+- tapOn: { id: "${ANSWER_B}", optional: true }
+- tapOn: { id: "${ANSWER_C}", optional: true }
 - tapOn: { text: "Check", optional: true }
 - extendedWaitUntil: { visible: { id: "__settle_never__" }, timeout: 2500, optional: true }
 - takeScreenshot: ${OUT}/${LESSON}-feedback-1
@@ -52,6 +55,8 @@ appId: host.exp.Exponent
 - tapOn: { text: "Continue", optional: true }
 
 - tapOn: { id: "${ANSWER}", optional: true }
+- tapOn: { id: "${ANSWER_B}", optional: true }
+- tapOn: { id: "${ANSWER_C}", optional: true }
 - tapOn: { text: "Check", optional: true }
 - extendedWaitUntil: { visible: { id: "__settle_never__" }, timeout: 2500, optional: true }
 - takeScreenshot: ${OUT}/${LESSON}-feedback-2
@@ -59,6 +64,8 @@ appId: host.exp.Exponent
 - tapOn: { text: "Continue", optional: true }
 
 - tapOn: { id: "${ANSWER}", optional: true }
+- tapOn: { id: "${ANSWER_B}", optional: true }
+- tapOn: { id: "${ANSWER_C}", optional: true }
 - tapOn: { text: "Check", optional: true }
 - extendedWaitUntil: { visible: { id: "__settle_never__" }, timeout: 2500, optional: true }
 - takeScreenshot: ${OUT}/${LESSON}-feedback-3
