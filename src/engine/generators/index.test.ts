@@ -86,6 +86,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'degree_name_id',
   'duplet_recognition',
   'chord_recognition',
+  'chord_from_name',
   'ornament_recognition',
   'ornament_effect',
   'instrument_knowledge',

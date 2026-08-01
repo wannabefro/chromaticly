@@ -21,7 +21,7 @@ import {
 import { mulberry32, pick } from '../rng';
 import { comfortablePitchRange, diatonicPitchesInComfortableRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
-import type { Clef } from '../../music/types';
+import type { Clef, Music } from '../../music/types';
 import { spellInKey, tonicLetter } from './key-spelling';
 import { naturalPitchStepsAbove, parseNaturalPitch, scientificPitchOrdinal } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -294,3 +294,98 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const chordRecognition: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Second shape (chromaticly-lgi): the chord is named and its stave chosen.
+
+function buildFromNameInversion(
+  rng: () => number,
+  grade: number,
+  idSeed: number,
+  pairs: { numeral: string; position: string }[],
+): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const clef = pick(rng, [...CHORD_CLEFS]);
+  const key = pick(rng, [...scope.keysMajor]);
+  const { numeral, position } = pick(rng, pairs);
+  const triad = buildTriad(clef, grade, key, numeral, 9);
+
+  // The same chord in its other two positions: the question is the inversion.
+  const others = CHORD_POSITIONS.filter((p) => p !== position);
+  const staveFor = (p: string): Music => ({
+    clef,
+    key_sig: `${key}_major`,
+    time_sig: null,
+    voices: [{ events: [{ type: 'chord', pitches: applyInversion(triad, p), dur: 'semibreve' }] }],
+  });
+  const optionMusic: Record<string, Music> = { [position]: staveFor(position) };
+  for (const p of others) optionMusic[p] = staveFor(p);
+
+  return {
+    id: makeInstanceId('chord_from_name', grade, idSeed),
+    template_id: 'chord_from_name',
+    grade,
+    strand: 'chords',
+    prompt: `Which of these is ${numeral}${position} in ${key} major?`,
+    stimulus: { music: null, text: `${numeral}${position}` },
+    interaction: { type: 'mcq', config: { option_music: optionMusic } },
+    answer: { canonical: position, accepted_alternatives: [] },
+    distractors: [...others],
+    hints: ['The letter names the bass note: a = the root, b = the 3rd, c = the 5th.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `${numeral}${position} puts ${POSITION_BASS[position]} of the chord in the bass.`,
+      by_distractor: Object.fromEntries(
+        others.map((p) => [p, `That stave has ${POSITION_BASS[p]} in the bass, which is ${numeral}${p}.`]),
+      ),
+    },
+    srs_tags: [chordPositionAtom(numeral, position)],
+    kb_version: KB_VERSION,
+  };
+}
+
+function buildFromName(rng: () => number, grade: number, idSeed: number, numerals: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const clef = pick(rng, [...CHORD_CLEFS]);
+  const key = pick(rng, [...scope.keysMajor]);
+  const numeral = pick(rng, numerals);
+  const others = CHORD_NUMERALS.filter((n) => n !== numeral);
+
+  const staveFor = (n: string): Music => ({
+    clef,
+    key_sig: `${key}_major`,
+    time_sig: null,
+    voices: [{ events: [{ type: 'chord', pitches: buildTriad(clef, grade, key, n), dur: 'semibreve' }] }],
+  });
+  const optionMusic: Record<string, Music> = { [numeral]: staveFor(numeral) };
+  for (const n of others) optionMusic[n] = staveFor(n);
+
+  return {
+    id: makeInstanceId('chord_from_name', grade, idSeed),
+    template_id: 'chord_from_name',
+    grade,
+    strand: 'chords',
+    prompt: `Which of these is chord ${numeral} in ${key} major?`,
+    stimulus: { music: null, text: `${numeral} in ${key} major` },
+    interaction: { type: 'mcq', config: { option_music: optionMusic } },
+    answer: { canonical: numeral, accepted_alternatives: [] },
+    distractors: [...others],
+    hints: [`Count up to the ${NUMERAL_DEGREE[numeral]} degree of ${key} major, then stack the 3rd and 5th above it.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `${numeral} is built on the ${NUMERAL_DEGREE[numeral]} degree of ${key} major.`,
+      by_distractor: Object.fromEntries(
+        others.map((n) => [n, `That chord starts on the ${NUMERAL_DEGREE[n]} degree, so it is ${n}.`]),
+      ),
+    },
+    srs_tags: [chordAtom(numeral)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const chordFromName: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => {
+    const rng = mulberry32(candidateSeed);
+    const pairs = inversionPairsFromAtoms(opts.atoms);
+    if (pairs.length > 0) return buildFromNameInversion(rng, opts.grade, opts.seed, pairs);
+    return buildFromName(rng, opts.grade, opts.seed, numeralsFromAtoms(opts.atoms));
+  });

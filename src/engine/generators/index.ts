@@ -4,7 +4,7 @@ import type { ExerciseInstance } from '../schema';
 import { addTimeSignature } from './add-time-signature';
 import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
-import { chordRecognition } from './chord-recognition';
+import { chordFromName, chordRecognition } from './chord-recognition';
 import { clefEquivalence } from './clef-equivalence';
 import { cadenceRecognition } from './cadence-recognition';
 import { dupletRecognition } from './duplet-recognition';
@@ -68,6 +68,7 @@ export const GENERATORS: Record<string, Generator> = {
   chromatic_scale: chromaticScale,
   degree_name_id: degreeNameId,
   chord_recognition: chordRecognition,
+  chord_from_name: chordFromName,
   ornament_recognition: ornamentRecognition,
   ornament_effect: ornamentEffect,
   instrument_knowledge: instrumentKnowledge,

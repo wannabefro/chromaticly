@@ -156350,6 +156350,2031 @@ exports[`seed-stability — grade-3-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chord_from_name @ chords-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s0",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in F major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of B major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of B major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s1",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B2",
+                      "D#3",
+                      "F#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F#2",
+                      "A#2",
+                      "C#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in B major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in B major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s2",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in F major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of A major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of A major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s3",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in A major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in A major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of Ab major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of Ab major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s4",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab2",
+                      "C3",
+                      "Eb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db2",
+                      "F2",
+                      "Ab2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in Ab major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in Ab major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of D major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of D major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s5",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in D major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in D major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of Db major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of Db major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db4",
+                      "F4",
+                      "Ab4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Gb4",
+                      "Bb4",
+                      "Db5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in Db major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in Db major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of Eb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of Eb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in Eb major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in Eb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of Bb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of Bb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in Bb major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in Bb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in F major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of Bb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of Bb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in Bb major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in Bb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of E major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of E major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C#3",
+                      "E3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B2",
+                      "D#3",
+                      "F#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in E major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in E major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "E4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in F major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of C major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of C major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "E4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in C major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in C major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of Eb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of Eb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in Eb major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in Eb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of A major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of A major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C#3",
+                      "E3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D2",
+                      "F#2",
+                      "A2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in A major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in A major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of C major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of C major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G2",
+                      "B2",
+                      "D3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in C major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in C major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of D major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of D major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in D major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in D major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of Ab major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of Ab major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db4",
+                      "F4",
+                      "Ab4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in Ab major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in Ab major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of E major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of E major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B3",
+                      "D#4",
+                      "F#4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in E major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in E major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chord_recognition @ chords-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -202786,6 +204811,2031 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte chord_from_name (chords-4, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s0",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in F major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of B major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of B major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s1",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B2",
+                      "D#3",
+                      "F#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F#2",
+                      "A#2",
+                      "C#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in B major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in B major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s2",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in F major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of A major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of A major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s3",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in A major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in A major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of Ab major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of Ab major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s4",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab2",
+                      "C3",
+                      "Eb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db2",
+                      "F2",
+                      "Ab2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in Ab major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in Ab major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of D major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of D major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s5",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in D major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in D major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of Db major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of Db major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db4",
+                      "F4",
+                      "Ab4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Gb4",
+                      "Bb4",
+                      "Db5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in Db major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in Db major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of Eb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of Eb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in Eb major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in Eb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of Bb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of Bb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in Bb major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in Bb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in F major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of Bb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of Bb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in Bb major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in Bb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of E major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of E major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C#3",
+                      "E3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B2",
+                      "D#3",
+                      "F#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in E major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in E major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of F major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of F major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "E4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in F major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in F major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of C major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of C major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "E4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in C major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in C major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of Eb major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of Eb major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "D4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in Eb major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in Eb major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of A major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of A major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C#3",
+                      "E3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D2",
+                      "F#2",
+                      "A2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in A major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in A major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IV is built on the 4th degree of C major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 4th degree of C major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G2",
+                      "B2",
+                      "D3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord IV in C major?",
+    "srs_tags": [
+      "chord:IV",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IV in C major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of D major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of D major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in D major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in D major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+        "V": "That chord starts on the 5th degree, so it is V.",
+      },
+      "correct": "Correct!",
+      "incorrect": "I is built on the 1st degree of Ab major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 1st degree of Ab major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db4",
+                      "F4",
+                      "Ab4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord I in Ab major?",
+    "srs_tags": [
+      "chord:I",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "I in Ab major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "That chord starts on the 1st degree, so it is I.",
+        "IV": "That chord starts on the 4th degree, so it is IV.",
+      },
+      "correct": "Correct!",
+      "incorrect": "V is built on the 5th degree of E major.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count up to the 5th degree of E major, then stack the 3rd and 5th above it.",
+    ],
+    "id": "chord_from_name:g4:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B3",
+                      "D#4",
+                      "F#4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is chord V in E major?",
+    "srs_tags": [
+      "chord:V",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "V in E major",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte chord_recognition (chords-4, pre-lesson pin) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -234977,6 +239027,2031 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     },
     "strand": "chords",
     "template_id": "cadence_recognition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte chord_from_name @ chord-inversions-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is IIa.",
+        "b": "That stave has the 3rd in the bass, which is IIb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IIc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s0",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B2",
+                      "D3",
+                      "F#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D3",
+                      "F#3",
+                      "B3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F#3",
+                      "B3",
+                      "D4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IIc in A major?",
+    "srs_tags": [
+      "chord:II:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IIc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Va.",
+        "c": "That stave has the 5th in the bass, which is Vc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Vb puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s1",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "F#_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C#2",
+                      "E#2",
+                      "G#2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "F#_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E#2",
+                      "G#2",
+                      "C#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "F#_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G#2",
+                      "C#3",
+                      "E#3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Vb in F# major?",
+    "srs_tags": [
+      "chord:V:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Vb",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Ia.",
+        "c": "That stave has the 5th in the bass, which is Ic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Ib puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s2",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C3",
+                      "F3",
+                      "A3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Ib in F major?",
+    "srs_tags": [
+      "chord:I:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ib",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is IIa.",
+        "c": "That stave has the 5th in the bass, which is IIc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IIb puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s3",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "Eb4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "C5",
+                      "Eb5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IIb in Bb major?",
+    "srs_tags": [
+      "chord:II:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IIb",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a",
+    },
+    "distractors": [
+      "b",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "b": "That stave has the 3rd in the bass, which is IIb.",
+        "c": "That stave has the 5th in the bass, which is IIc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IIa puts the root of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s4",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "Gb2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Gb2",
+                      "Bb2",
+                      "Eb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "Db_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "Eb3",
+                      "Gb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IIa in Db major?",
+    "srs_tags": [
+      "chord:II:a",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IIa",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Ia.",
+        "b": "That stave has the 3rd in the bass, which is Ib.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Ic puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s5",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "A4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A4",
+                      "C5",
+                      "F5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "F_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C5",
+                      "F5",
+                      "A5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Ic in F major?",
+    "srs_tags": [
+      "chord:I:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ic",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is IVa.",
+        "c": "That stave has the 5th in the bass, which is IVc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IVb puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "Gb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Cb4",
+                      "Eb4",
+                      "Gb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "Gb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "Gb4",
+                      "Cb5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "Gb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Gb4",
+                      "Cb5",
+                      "Eb5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IVb in Gb major?",
+    "srs_tags": [
+      "chord:IV:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IVb",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is IVa.",
+        "b": "That stave has the 3rd in the bass, which is IVb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IVc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s7",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C#4",
+                      "E4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "A4",
+                      "C#5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IVc in E major?",
+    "srs_tags": [
+      "chord:IV:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IVc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is IIa.",
+        "b": "That stave has the 3rd in the bass, which is IIb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IIc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s8",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "Ab4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab4",
+                      "C5",
+                      "F5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C5",
+                      "F5",
+                      "Ab5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IIc in Eb major?",
+    "srs_tags": [
+      "chord:II:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IIc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Ia.",
+        "c": "That stave has the 5th in the bass, which is Ic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Ib puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C#3",
+                      "E3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C#3",
+                      "E3",
+                      "A3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E3",
+                      "A3",
+                      "C#4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Ib in A major?",
+    "srs_tags": [
+      "chord:I:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ib",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Va.",
+        "b": "That stave has the 3rd in the bass, which is Vb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Vc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D3",
+                      "F3",
+                      "Bb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "Eb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F3",
+                      "Bb3",
+                      "D4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Vc in Eb major?",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Vc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Va.",
+        "b": "That stave has the 3rd in the bass, which is Vb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Vc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G2",
+                      "Bb2",
+                      "Eb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "Eb3",
+                      "G3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Vc in Ab major?",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Vc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Va.",
+        "b": "That stave has the 3rd in the bass, which is Vb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Vc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G#4",
+                      "B4",
+                      "E5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B4",
+                      "E5",
+                      "G#5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Vc in A major?",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Vc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Va.",
+        "b": "That stave has the 3rd in the bass, which is Vb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Vc puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B4",
+                      "D5",
+                      "G5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D5",
+                      "G5",
+                      "B5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Vc in C major?",
+    "srs_tags": [
+      "chord:V:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Vc",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Ia.",
+        "c": "That stave has the 5th in the bass, which is Ic.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Ib puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G#4",
+                      "B4",
+                      "E5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "E_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B4",
+                      "E5",
+                      "G#5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Ib in E major?",
+    "srs_tags": [
+      "chord:I:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ib",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a",
+    },
+    "distractors": [
+      "b",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "b": "That stave has the 3rd in the bass, which is Vb.",
+        "c": "That stave has the 5th in the bass, which is Vc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Va puts the root of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "C3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C3",
+                      "F3",
+                      "A3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Va in Bb major?",
+    "srs_tags": [
+      "chord:V:a",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Va",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is IIa.",
+        "c": "That stave has the 5th in the bass, which is IIc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IIb puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D2",
+                      "F2",
+                      "A2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "D3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "bass",
+            "key_sig": "C_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IIb in C major?",
+    "srs_tags": [
+      "chord:II:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IIb",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a",
+    },
+    "distractors": [
+      "b",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "b": "That stave has the 3rd in the bass, which is IIb.",
+        "c": "That stave has the 5th in the bass, which is IIc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "IIa puts the root of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "E5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B4",
+                      "E5",
+                      "G5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is IIa in D major?",
+    "srs_tags": [
+      "chord:II:a",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "IIa",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "c",
+    },
+    "distractors": [
+      "a",
+      "b",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Ia.",
+        "b": "That stave has the 3rd in the bass, which is Ib.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Ic puts the 5th of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B3",
+                      "D#4",
+                      "F#4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D#4",
+                      "F#4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "B_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F#4",
+                      "B4",
+                      "D#5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Ic in B major?",
+    "srs_tags": [
+      "chord:I:c",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ic",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "b",
+    },
+    "distractors": [
+      "a",
+      "c",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a": "That stave has the root in the bass, which is Va.",
+        "c": "That stave has the 5th in the bass, which is Vc.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Vb puts the 3rd of the chord in the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "The letter names the bass note: a = the root, b = the 3rd, c = the 5th.",
+    ],
+    "id": "chord_from_name:g5:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "a": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "b": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "Bb4",
+                      "Eb5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "c": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb4",
+                      "Eb5",
+                      "G5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is Vb in Ab major?",
+    "srs_tags": [
+      "chord:V:b",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Vb",
+    },
+    "strand": "chords",
+    "template_id": "chord_from_name",
   },
 ]
 `;

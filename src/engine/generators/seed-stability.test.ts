@@ -73,6 +73,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   degree_name_id: 4,
   duplet_recognition: 4,
   chord_recognition: 4,
+  chord_from_name: 4,
   ornament_recognition: 4,
   ornament_effect: 4,
   instrument_knowledge: 4,
@@ -454,6 +455,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
       'ornament:acciaccatura',
       'ornament:appoggiatura',
     ],
+  },
+  {
+    label: 'chord_from_name (chords-4, chromaticly-lgi)',
+    templateId: 'chord_from_name',
+    atoms: ['chord:I', 'chord:IV', 'chord:V'],
   },
   {
     label: 'ornament_effect (ornaments-4, chromaticly-lgi)',
