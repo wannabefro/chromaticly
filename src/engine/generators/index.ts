@@ -26,7 +26,7 @@ import { noteNaming, noteNamingStaveInput } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
 import { ornamentRecognition } from './ornament-recognition';
-import { restCompletion } from './rest-completion';
+import { restCompletion, restValueId } from './rest-completion';
 import { rhythmSum } from './rhythm-sum';
 import { scaleDegreeId, scaleDegreeStaveInput, tonicTriadKeyId } from './scale-degree-id';
 import { satbVoiceRecognition } from './satb-voice-recognition';
@@ -71,6 +71,7 @@ export const GENERATORS: Record<string, Generator> = {
   instrument_knowledge: instrumentKnowledge,
   enharmonic_recognition: enharmonicRecognition,
   rest_completion: restCompletion,
+  rest_value_id: restValueId,
   clef_equivalence: clefEquivalence,
   transposing_instrument: transposingInstrument,
   tuplet_recognition: tupletRecognition,

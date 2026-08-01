@@ -136,3 +136,59 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const restCompletion: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Second shape (chromaticly-lgi): the rest is printed and named, rather than
+// worked out from what a bar is missing. Recognising the glyph and doing the
+// arithmetic are different skills.
+
+/** Length in crotchet beats, the unit every grade counts in. */
+const BEATS_LABEL: Record<Duration, string> = {
+  demisemiquaver: 'an eighth of a beat',
+  semiquaver: 'a quarter of a beat',
+  quaver: 'half a beat',
+  crotchet: '1 beat',
+  minim: '2 beats',
+  semibreve: '4 beats',
+  breve: '8 beats',
+};
+
+function buildRestValueId(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...scope.clefs]);
+  const answer = pick(rng, restsFromAtoms(atoms));
+  const distractors = sample(
+    rng,
+    scope.rests.filter((r) => r !== answer),
+    OPTION_COUNT - 1,
+  );
+  if (distractors.length < 2) throw new Error(`rest_value_id: grade ${grade} has too few rests for a closed item`);
+
+  return {
+    id: makeInstanceId('rest_value_id', grade, idSeed),
+    template_id: 'rest_value_id',
+    grade,
+    strand: 'rhythm',
+    prompt: 'Which rest is this?',
+    stimulus: { music: restOptionMusic(clef, answer), text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: restLabel(answer), accepted_alternatives: [] },
+    distractors: distractors.map(restLabel),
+    hints: ['A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `That is a ${answer} rest, so it lasts ${BEATS_LABEL[answer]}.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((d) => [
+          restLabel(d),
+          `A ${d} rest lasts ${BEATS_LABEL[d]}, ${ratioWords(d, answer)} this one.`,
+        ]),
+      ),
+    },
+    srs_tags: [restAtom(answer)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const restValueId: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildRestValueId(candidateSeed, opts.grade, opts.seed, opts.atoms));

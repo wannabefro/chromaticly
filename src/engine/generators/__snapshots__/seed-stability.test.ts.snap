@@ -43293,6 +43293,1091 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte res
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte rest_value_id @ rests-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semibreve rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a minim rest, so it lasts 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, half as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, twice as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a minim rest, so it lasts 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a minim rest, so it lasts 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, twice as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, half as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, twice as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a minim rest, so it lasts 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semibreve rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, sixteen times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, twice as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, half as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a quarter as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a crotchet rest, so it lasts 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "minim rest",
+      "semibreve rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, twice as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, half as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, four times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a crotchet rest, so it lasts 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "quaver rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a minim rest, so it lasts 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "minim rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, twice as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, half as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a quarter as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a crotchet rest, so it lasts 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "semibreve rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "crotchet rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a quarter as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a minim rest, so it lasts 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "quaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, twice as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "minim rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, twice as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, four times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a quarter as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a crotchet rest, so it lasts 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semiquaver rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "crotchet rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, twice as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte rhythm_sum @ note-values instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -120994,6 +122079,1091 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte rest_value_id @ rests-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "minim rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, sixteen times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "demisemiquaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "minim rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, sixteen times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, four times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a demisemiquaver rest, so it lasts an eighth of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:demisemiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "minim rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "quaver rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "demisemiquaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, eight times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, sixteen times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, thirty-two times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a demisemiquaver rest, so it lasts an eighth of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:demisemiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, twice as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, eight times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "demisemiquaver rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, eight times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, sixteen times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a demisemiquaver rest, so it lasts an eighth of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:demisemiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semibreve rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, sixteen times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "quaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, sixteen times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "minim rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, half as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "demisemiquaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "semibreve rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, eight times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, thirty-two times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a demisemiquaver rest, so it lasts an eighth of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:demisemiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "semiquaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "crotchet rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, four times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, sixteen times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semiquaver rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, eight times as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, twice as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, sixteen times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semiquaver rest, so it lasts a quarter of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "demisemiquaver rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, twice as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, twice as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, four times as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a quaver rest, so it lasts half a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "demisemiquaver rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, eight times as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, sixteen times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a demisemiquaver rest, so it lasts an eighth of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:demisemiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "demisemiquaver rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "quaver rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "quaver rest": "A quaver rest lasts half a beat, four times as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, thirty-two times as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, twice as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a demisemiquaver rest, so it lasts an eighth of a beat.",
+    },
+    "grade": 3,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g3:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:demisemiquaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "demisemiquaver",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+]
+`;
+
 exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte scale_construction @ melodic-minor-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -186853,6 +189023,1091 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "rhythm",
     "template_id": "rest_completion",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte rest_value_id @ rests-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "minim rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, an eighth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "breve rest",
+      "crotchet rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "breve rest": "A breve rest lasts 8 beats, twice as long as this one.",
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "minim rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a sixty-fourth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, an eighth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, an eighth as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a sixty-fourth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "crotchet rest",
+      "breve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "breve rest": "A breve rest lasts 8 beats, twice as long as this one.",
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "quaver rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a thirty-second as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "quaver rest",
+      "minim rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "semibreve rest",
+      "quaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a sixteenth as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, half as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "minim rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a sixty-fourth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "breve rest",
+      "minim rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "breve rest": "A breve rest lasts 8 beats, twice as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, half as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, an eighth as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a sixty-fourth as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "demisemiquaver rest",
+      "semiquaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a sixty-fourth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "minim rest",
+      "semiquaver rest",
+      "crotchet rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, half as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "semiquaver rest",
+      "minim rest",
+      "semibreve rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "semibreve rest": "A semibreve rest lasts 4 beats, half as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "semiquaver rest",
+      "quaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, an eighth as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, a sixteenth as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "breve rest",
+    },
+    "distractors": [
+      "minim rest",
+      "crotchet rest",
+      "semiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, an eighth as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, a quarter as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a thirty-second as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a breve rest, so it lasts 8 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:breve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/2",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "breve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "crotchet rest",
+      "quaver rest",
+      "demisemiquaver rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet rest": "A crotchet rest lasts 1 beat, a quarter as long as this one.",
+        "demisemiquaver rest": "A demisemiquaver rest lasts an eighth of a beat, a thirty-second as long as this one.",
+        "quaver rest": "A quaver rest lasts half a beat, an eighth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve rest",
+    },
+    "distractors": [
+      "breve rest",
+      "semiquaver rest",
+      "minim rest",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "breve rest": "A breve rest lasts 8 beats, twice as long as this one.",
+        "minim rest": "A minim rest lasts 2 beats, half as long as this one.",
+        "semiquaver rest": "A semiquaver rest lasts a quarter of a beat, a sixteenth as long as this one.",
+      },
+      "correct": "Correct!",
+      "incorrect": "That is a semibreve rest, so it lasts 4 beats.",
+    },
+    "grade": 4,
+    "hints": [
+      "A minim rest sits ON the middle line; a semibreve rest hangs BELOW the line above it. The tails count for the shorter ones.",
+    ],
+    "id": "rest_value_id:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which rest is this?",
+    "srs_tags": [
+      "rest:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "type": "rest",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "rest_value_id",
   },
 ]
 `;

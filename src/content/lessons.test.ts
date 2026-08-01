@@ -563,11 +563,11 @@ describe('grade3 lessons — assertAtomResolves is scoped to grade 3, not just g
 describe('rests-1 lesson (chromaticly-gni)', () => {
   const lesson = () => lessonById('rests-1')!;
 
-  test('exists, strand rhythm, single template rest_completion', () => {
+  test('exists, strand rhythm, both rest shapes (chromaticly-lgi)', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(1);
     expect(lesson().strand).toBe('rhythm');
-    expect(lesson().templates).toEqual(['rest_completion']);
+    expect(lesson().templates).toEqual(['rest_completion', 'rest_value_id']);
   });
 
   // The Grade 1 chain was INTERLEAVED by strand (pedagogy audit, 2026-07-29): a
@@ -613,11 +613,11 @@ describe('rests-1 lesson (chromaticly-gni)', () => {
 describe('rests-3 lesson (chromaticly-gni)', () => {
   const lesson = () => lessonById('rests-3')!;
 
-  test('exists, strand rhythm, single template rest_completion', () => {
+  test('exists, strand rhythm, both rest shapes (chromaticly-lgi)', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(3);
     expect(lesson().strand).toBe('rhythm');
-    expect(lesson().templates).toEqual(['rest_completion']);
+    expect(lesson().templates).toEqual(['rest_completion', 'rest_value_id']);
   });
 
   test('the chain splices compound-bars-3 -> rests-3 -> grouping-3', () => {
@@ -646,11 +646,11 @@ describe('rests-3 lesson (chromaticly-gni)', () => {
 describe('rests-4 lesson (chromaticly-gni)', () => {
   const lesson = () => lessonById('rests-4')!;
 
-  test('exists, strand rhythm, single template rest_completion', () => {
+  test('exists, strand rhythm, both rest shapes (chromaticly-lgi)', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(4);
     expect(lesson().strand).toBe('rhythm');
-    expect(lesson().templates).toEqual(['rest_completion']);
+    expect(lesson().templates).toEqual(['rest_completion', 'rest_value_id']);
   });
 
   test('the chain splices rhythm-breve-4 -> rests-4 -> rhythm-doubledot-4', () => {

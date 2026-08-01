@@ -90,6 +90,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'instrument_knowledge',
   'enharmonic_recognition',
   'rest_completion',
+  'rest_value_id',
   'major_scale_steps',
   'tie_dot_value',
   'note_grouping',
