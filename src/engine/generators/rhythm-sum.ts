@@ -243,3 +243,63 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const rhythmSum: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// --- Reverse shape (chromaticly-lgi) ---------------------------------------
+// rhythm_sum adds notes up to one note. This asks the other way round: the note
+// is given and the sum is chosen. Only the second shape makes a learner reason
+// about what a second dot is worth rather than recognising a total.
+
+function buildReverse(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const decompositionsByTarget = grade >= 4 ? GRADE4_DECOMPOSITIONS_BY_TARGET : DECOMPOSITIONS_BY_TARGET;
+  const doubleDotOnly = atoms.includes(RHYTHM_SUM_DOUBLE_DOT_ATOM);
+  const allTargets = grade >= 4 ? GRADE4_DECOMPOSABLE_TARGETS : DECOMPOSABLE_TARGETS;
+  const targets = doubleDotOnly ? allTargets.filter((t) => t.dots === 2) : allTargets;
+  const target = pick(rng, targets);
+  const decomposition = pick(rng, decompositionsByTarget.get(targetKey(target))!);
+
+  // A wrong sum has to total something ELSE, so each option is the true
+  // decomposition of a different note value.
+  const others = allTargets.filter((t) => t.units !== target.units);
+  const wrongTargets = others
+    .map((t) => ({ t, gap: Math.abs(t.units - target.units) }))
+    .sort((a, b) => a.gap - b.gap)
+    .slice(0, 2)
+    .map((x) => x.t);
+  if (wrongTargets.length < 2) {
+    throw new Error(`rhythm_sum_reverse: fewer than two rival totals beside ${formatValue(target)}`);
+  }
+
+  const sumLabel = (entry: ValueEntry): string =>
+    decompositionsByTarget.get(targetKey(entry))![0].operands.map(formatValue).join(' + ');
+  const canonical = decomposition.operands.map(formatValue).join(' + ');
+  const distractors = wrongTargets.map(sumLabel);
+
+  return {
+    id: makeInstanceId('rhythm_sum_reverse', grade, idSeed),
+    template_id: 'rhythm_sum_reverse',
+    grade,
+    strand: 'rhythm',
+    prompt: `Which sum lasts as long as a ${formatValue(target)}?`,
+    stimulus: { music: glyphMusic(target), text: formatValue(target) },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical, accepted_alternatives: [] },
+    distractors,
+    hints: [`A ${formatValue(target)} is ${BEATS_BY_UNITS[target.units]}. Add each sum up and keep the one that matches.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `A ${formatValue(target)} is ${BEATS_BY_UNITS[target.units]}. Each dot adds half of what came before it.`,
+      by_distractor: Object.fromEntries(
+        wrongTargets.map((t) => [
+          sumLabel(t),
+          `That sum comes to ${BEATS_BY_UNITS[t.units]}, which is a ${formatValue(t)}. A ${formatValue(target)} is ${BEATS_BY_UNITS[target.units]}.`,
+        ]),
+      ),
+    },
+    srs_tags: [doubleDotOnly ? RHYTHM_SUM_DOUBLE_DOT_ATOM : rhythmSumAtom()],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const rhythmSumReverse: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildReverse(candidateSeed, opts.grade, opts.seed, opts.atoms));

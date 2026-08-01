@@ -221351,6 +221351,1111 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte rhythm_sum_reverse @ rhythm-doubledot-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + crotchet + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + minim + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + crotchet + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + quaver + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + quaver + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + dotted minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dotted minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + quaver + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dotted minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + crotchet + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + minim + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + dotted minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte scale_construction @ minor-scales-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -256379,6 +257484,1111 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "rhythm_sum",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte rhythm_sum_reverse double-dot (rhythm-doubledot-4, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + crotchet + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + minim + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + crotchet + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + quaver + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + quaver + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + dotted minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + quaver + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dotted minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + quaver + minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet + minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "dotted minim + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim + crotchet + quaver",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + minim + crotchet",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver + dotted minim",
+    },
+    "distractors": [
+      "dotted minim + crotchet",
+      "minim + crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "dotted minim + crotchet": "That sum comes to undefined, which is a semibreve. A double-dotted minim is undefined.",
+        "minim + crotchet": "That sum comes to undefined, which is a dotted minim. A double-dotted minim is undefined.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double-dotted minim is undefined. Each dot adds half of what came before it.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double-dotted minim is undefined. Add each sum up and keep the one that matches.",
+    ],
+    "id": "rhythm_sum_reverse:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which sum lasts as long as a double-dotted minim?",
+    "srs_tags": [
+      "rhythm_sum:double_dot",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "rhythmStaff": true,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dots": 2,
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": "double-dotted minim",
+    },
+    "strand": "rhythm",
+    "template_id": "rhythm_sum_reverse",
   },
 ]
 `;

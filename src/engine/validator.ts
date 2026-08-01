@@ -532,6 +532,69 @@ function anacrusisFinalBarHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// Recompute, do not trust: every option label is parsed back to note values and
+// re-added, so a generator bug that mislabels a sum fails here.
+const DURATION_UNITS: Record<string, number> = {
+  demisemiquaver: 1,
+  semiquaver: 2,
+  quaver: 4,
+  crotchet: 8,
+  minim: 16,
+  semibreve: 32,
+  breve: 64,
+};
+
+function sumLabelUnits(label: string): number {
+  let total = 0;
+  for (const term of label.split(' + ')) {
+    const match = /^(double-dotted |dotted )?([a-z]+)$/.exec(term.trim());
+    if (!match) throw new Error(`"${term}" is not a note value`);
+    const base = DURATION_UNITS[match[2]];
+    if (base === undefined) throw new Error(`"${match[2]}" is not a note value`);
+    total += base * (match[1] === 'double-dotted ' ? 1.75 : match[1] === 'dotted ' ? 1.5 : 1);
+  }
+  return total;
+}
+
+function rhythmSumReverseHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const target = inst.stimulus.text;
+  if (typeof target !== 'string') {
+    return ['rhythm_sum_reverse: the stimulus text must name the note value being matched'];
+  }
+  let targetUnits: number;
+  try {
+    targetUnits = sumLabelUnits(target);
+  } catch (err) {
+    return [`rhythm_sum_reverse: ${err instanceof Error ? err.message : String(err)}`];
+  }
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string') {
+    return ['rhythm_sum_reverse: canonical answer must be a sum label string'];
+  }
+  try {
+    if (sumLabelUnits(canonical) !== targetUnits) {
+      errors.push(`rhythm_sum_reverse: canonical "${canonical}" does not add up to a ${target}`);
+    }
+  } catch (err) {
+    errors.push(`rhythm_sum_reverse: canonical: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string') {
+      errors.push(`rhythm_sum_reverse: distractor "${String(d)}" is not a sum label`);
+      continue;
+    }
+    try {
+      if (sumLabelUnits(d) === targetUnits) {
+        errors.push(`rhythm_sum_reverse: distractor "${d}" also adds up to a ${target}, so both are right`);
+      }
+    } catch (err) {
+      errors.push(`rhythm_sum_reverse: distractor "${d}": ${err instanceof Error ? err.message : String(err)}`);
+    }
+  }
+  return errors;
+}
+
 function extractKeyTonic(raw: string): string | null {
   // Capture the accidental too: a flat/sharp key's tonic is "Bb"/"Eb", not the
   // bare letter — grade-2 keysMajor holds "Bb", so dropping the "b" rejects every
@@ -2080,6 +2143,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   mode_swap: modeSwapHook,
   scale_construction: scaleConstructionHook,
   rhythm_sum: rhythmSumHook,
+  rhythm_sum_reverse: rhythmSumReverseHook,
   term_meaning: termMeaningHook,
   bar_validity: barValidityHook,
   add_time_signature: addTimeSignatureHook,

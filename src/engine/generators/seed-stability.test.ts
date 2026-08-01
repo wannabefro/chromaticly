@@ -82,6 +82,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   enharmonic_recognition: 4,
   note_sounds_as: 4,
   note_value_equivalence: 4,
+  rhythm_sum_reverse: 4,
   clef_equivalence: 4,
   transposing_instrument: 5,
   metre_rewrite: 5,
@@ -438,6 +439,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'rhythm_sum double-dot (rhythm-4, pre-lesson pin)',
     templateId: 'rhythm_sum',
     atoms: ['rhythm_sum'],
+  },
+  {
+    label: 'rhythm_sum_reverse double-dot (rhythm-doubledot-4, chromaticly-lgi)',
+    templateId: 'rhythm_sum_reverse',
+    atoms: ['rhythm_sum:double_dot'],
   },
   {
     label: 'duplet_recognition (duplet-4, pre-lesson pin)',

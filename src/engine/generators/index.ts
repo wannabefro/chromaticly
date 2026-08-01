@@ -27,7 +27,7 @@ import { noteValueCompare, noteValueEquivalence } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
 import { ornamentEffect, ornamentRecognition } from './ornament-recognition';
 import { restCompletion, restValueId } from './rest-completion';
-import { rhythmSum } from './rhythm-sum';
+import { rhythmSum, rhythmSumReverse } from './rhythm-sum';
 import { scaleDegreeId, scaleDegreeStaveInput, tonicTriadKeyId } from './scale-degree-id';
 import { satbVoiceRecognition } from './satb-voice-recognition';
 import { scaleConstruction } from './scale-construction';
@@ -44,6 +44,7 @@ export const GENERATORS: Record<string, Generator> = {
   interval_compound_reduce: intervalCompoundReduce,
   interval_naming_stave_input: intervalNamingStaveInput,
   rhythm_sum: rhythmSum,
+  rhythm_sum_reverse: rhythmSumReverse,
   key_signature_id: keySignatureId,
   mode_swap: modeSwap,
   scale_construction: scaleConstruction,

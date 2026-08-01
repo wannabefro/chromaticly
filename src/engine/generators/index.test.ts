@@ -94,6 +94,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'anacrusis_final_bar',
   'note_sounds_as',
   'note_value_equivalence',
+  'rhythm_sum_reverse',
   'instrument_knowledge',
   'enharmonic_recognition',
   'rest_completion',
