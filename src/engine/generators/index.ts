@@ -28,7 +28,7 @@ import { octaveTransposition } from './octave-transposition';
 import { ornamentRecognition } from './ornament-recognition';
 import { restCompletion } from './rest-completion';
 import { rhythmSum } from './rhythm-sum';
-import { scaleDegreeId } from './scale-degree-id';
+import { scaleDegreeId, scaleDegreeStaveInput, tonicTriadKeyId } from './scale-degree-id';
 import { satbVoiceRecognition } from './satb-voice-recognition';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
@@ -53,6 +53,8 @@ export const GENERATORS: Record<string, Generator> = {
   anacrusis_recognition: anacrusisRecognition,
   cadence_recognition: cadenceRecognition,
   scale_degree_id: scaleDegreeId,
+  scale_degree_stave_input: scaleDegreeStaveInput,
+  tonic_triad_key_id: tonicTriadKeyId,
   duplet_recognition: dupletRecognition,
   triplet_recognition: tripletRecognition,
   major_scale_steps: majorScaleSteps,

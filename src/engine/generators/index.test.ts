@@ -94,6 +94,8 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'tie_dot_value',
   'note_grouping',
   'note_naming_stave_input',
+  'scale_degree_stave_input',
+  'tonic_triad_key_id',
 ];
 
 describe('GENERATORS registry', () => {

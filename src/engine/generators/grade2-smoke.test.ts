@@ -86,6 +86,8 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
     const covered = [
       'note_naming',
       'note_naming_stave_input',
+      'scale_degree_stave_input',
+      'tonic_triad_key_id',
       'interval_naming',
       'interval_naming_stave_input',
       'rhythm_sum',

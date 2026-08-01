@@ -47841,6 +47841,816 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sca
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte scale_degree_stave_input @ degrees-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 4th degree of G major is C3.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 3, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 4th degree of G major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "E2",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of F major is E3.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find F on the stave and count up 6, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s1",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "G3",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "G2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 1st degree of G major is G2.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 0, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s2",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 1st degree of G major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of G major is B4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 2, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of G major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of F major is A2.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find F on the stave and count up 2, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of G major is A4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 1, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of G major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "C4",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 5th degree of F major is C5.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find F on the stave and count up 4, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 5th degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 6th degree of D major is B4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find D on the stave and count up 5, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 6th degree of D major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "G5",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 4th degree of D major is G4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find D on the stave and count up 3, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 4th degree of D major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 1st degree of G major is G2.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 0, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 1st degree of G major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "F#2",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of G major is F sharp3.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 6, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of G major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "C#3",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "C#4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of D major is C sharp4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find D on the stave and count up 6, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of D major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "F#4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "F#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of G major is F sharp5.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 6, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of G major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of C major is B4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find C on the stave and count up 6, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of C major as a semiquaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "E5",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of D major is E4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find D on the stave and count up 1, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of D major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "E2",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 6th degree of G major is E3.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find G on the stave and count up 5, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 6th degree of G major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "quaver",
+          "pitch": "E2",
+        },
+      ],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of C major is E3.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find C on the stave and count up 2, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of C major as a quaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of C major is D4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find C on the stave and count up 1, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of C major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "G5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of F major is G4.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find F on the stave and count up 1, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "quaver",
+          "pitch": "C#4",
+        },
+      ],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of D major is C sharp5.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find D on the stave and count up 6, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g1:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of D major as a quaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte term_meaning (rotation) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -55726,6 +56536,1151 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte tie
     },
     "strand": "rhythm",
     "template_id": "tie_dot_value",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte tonic_triad_key_id @ tonic-triads-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "B2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+        "G major": "F is not in the G major scale, so no G chord starts on it.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "B2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+        "G major": "F is not in the G major scale, so no G chord starts on it.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+        "G major": "F is not in the G major scale, so no G chord starts on it.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 2nd degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 2nd degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "B2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "B2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 2nd degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "F#3",
+                  "A3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 2nd degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "B2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C3",
+                  "E3",
+                  "G3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+        "G major": "F is not in the G major scale, so no G chord starts on it.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 2nd degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 1,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
   },
 ]
 `;
@@ -75752,6 +77707,891 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte sca
 ]
 `;
 
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte scale_degree_stave_input @ degrees-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "G3",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "G2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 4th degree of D major is G2.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find D on the stave and count up 3, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 4th degree of D major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "D2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of Eb major is D3.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find E on the stave and count up 6, then ask what Eb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s1",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of Eb major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "D3",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "D2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 1st degree of D major is D2.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find D on the stave and count up 0, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s2",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 1st degree of D major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "F#5",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "F#4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of D major is F sharp4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find D on the stave and count up 2, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of D major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "D2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of Bb major is D3.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find B on the stave and count up 2, then ask what Bb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of Bb major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of G major is A4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find G on the stave and count up 1, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of G major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 5th degree of Eb major is B flat4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find E on the stave and count up 4, then ask what Eb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 5th degree of Eb major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 6th degree of F major is D5.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find F on the stave and count up 5, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 6th degree of F major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "Bb3",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "Bb5",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 4th degree of F major is B flat4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find F on the stave and count up 3, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 4th degree of F major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "D3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 1st degree of D major is D2.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find D on the stave and count up 0, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 1st degree of D major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "E2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E4",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of F major is E3.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find F on the stave and count up 6, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "G#2",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "G#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of A major is G sharp3.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find A on the stave and count up 6, then ask what A major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of A major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#6",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of D major is C sharp5.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find D on the stave and count up 6, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of D major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "B5",
+        },
+      ],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of C major is B4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find C on the stave and count up 6, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of C major as a semiquaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "B4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "B5",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of A major is B3.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find A on the stave and count up 1, then ask what A major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of A major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "D2",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 6th degree of F major is D3.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find F on the stave and count up 5, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 6th degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "quaver",
+          "pitch": "E3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "E4",
+        },
+      ],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of C major is E2.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find C on the stave and count up 2, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of C major as a quaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "A3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "A5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of G major is A4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find G on the stave and count up 1, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of G major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "C5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "C6",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of Bb major is C4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find B on the stave and count up 1, then ask what Bb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of Bb major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "quaver",
+          "pitch": "G#5",
+        },
+      ],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "G#4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of A major is G sharp4.",
+    },
+    "grade": 2,
+    "hints": [
+      "Find A on the stave and count up 6, then ask what A major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g2:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of A major as a quaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+]
+`;
+
 exports[`seed-stability — grade-2 generator output is pinned byte-for-byte term_meaning @ expression-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -81178,6 +84018,1151 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     },
     "strand": "terms_signs",
     "template_id": "term_meaning_flashcard",
+  },
+]
+`;
+
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte tonic_triad_key_id @ tonic-triads-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F#2",
+                  "A2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+        "C major": "E flat is not in the C major scale, so no C chord starts on it.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb2",
+                  "G2",
+                  "Bb2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F#2",
+                  "A2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bb major",
+    },
+    "distractors": [
+      "F major",
+      "Eb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Eb major": "In Eb major this chord is built on the 5th degree, not the 1st.",
+        "F major": "In F major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is B flat, and a tonic triad is built on the keynote — so this is Bb major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb2",
+                  "D3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+        "C major": "E flat is not in the C major scale, so no C chord starts on it.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F#2",
+                  "A2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A major",
+    },
+    "distractors": [
+      "D major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 6th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "C#3",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A major",
+    },
+    "distractors": [
+      "D major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 6th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "C#4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C2",
+                  "E2",
+                  "G2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bb major",
+    },
+    "distractors": [
+      "F major",
+      "Eb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Eb major": "In Eb major this chord is built on the 5th degree, not the 1st.",
+        "F major": "In F major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is B flat, and a tonic triad is built on the keynote — so this is Bb major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A major",
+    },
+    "distractors": [
+      "D major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 6th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A major.",
+    },
+    "grade": 2,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "C#4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
   },
 ]
 `;
@@ -120009,6 +123994,911 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte scale_degree_stave_input @ degrees-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "Bb1",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Bb3",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "Bb2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 4th degree of F major is B flat2.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find F on the stave and count up 3, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 4th degree of F major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "G2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of Ab major is G3.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find A on the stave and count up 6, then ask what Ab major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s1",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of Ab major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "D3",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "D2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 1st degree of D major is D2.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find D on the stave and count up 0, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s2",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 1st degree of D major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "quaver",
+          "pitch": "A3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "A5",
+        },
+      ],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of F major is A4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find F on the stave and count up 2, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of F major as a quaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of Eb major is G2.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find E on the stave and count up 2, then ask what Eb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of Eb major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "E5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "E6",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of D major is E4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find D on the stave and count up 1, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of D major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "Eb5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "Eb6",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "Eb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 5th degree of Ab major is E flat4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find A on the stave and count up 4, then ask what Ab major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 5th degree of Ab major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "G3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G5",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 6th degree of Bb major is G4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find B on the stave and count up 5, then ask what Bb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 6th degree of Bb major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "D5",
+        },
+        {
+          "dur": "minim",
+          "pitch": "D6",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 4th degree of A major is D4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find A on the stave and count up 3, then ask what A major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 4th degree of A major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "quaver",
+          "pitch": "F3",
+        },
+        {
+          "dur": "quaver",
+          "pitch": "F4",
+        },
+      ],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "F2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 1st degree of F major is F2.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find F on the stave and count up 0, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 1st degree of F major as a quaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "G#2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "G#4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of A major is G sharp3.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find A on the stave and count up 6, then ask what A major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of A major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semibreve",
+          "pitch": "D2",
+        },
+        {
+          "dur": "semibreve",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of Eb major is D3.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find E on the stave and count up 6, then ask what Eb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of Eb major as a semibreve, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "C#4",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C#6",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of D major is C sharp5.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find D on the stave and count up 6, then ask what D major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of D major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "demisemiquaver",
+          "pitch": "B3",
+        },
+        {
+          "dur": "demisemiquaver",
+          "pitch": "B5",
+        },
+      ],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of C major is B4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find C on the stave and count up 6, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of C major as a demisemiquaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "C5",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "C6",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "C4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of Bb major is C4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find B on the stave and count up 1, then ask what Bb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of Bb major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "D2",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "D4",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 6th degree of F major is D3.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find F on the stave and count up 5, then ask what F major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 6th degree of F major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semiquaver",
+          "pitch": "E3",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "E4",
+        },
+      ],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "E2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 3rd degree of C major is E2.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find C on the stave and count up 2, then ask what C major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 3rd degree of C major as a semiquaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "crotchet",
+          "pitch": "A3",
+        },
+        {
+          "dur": "crotchet",
+          "pitch": "A5",
+        },
+      ],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of G major is A4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find G on the stave and count up 1, then ask what G major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of G major as a crotchet, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "minim",
+          "pitch": "F3",
+        },
+        {
+          "dur": "minim",
+          "pitch": "F5",
+        },
+      ],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 2nd degree of Eb major is F4.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find E on the stave and count up 1, then ask what Eb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 2nd degree of Eb major as a minim, with any accidental it needs.",
+    "srs_tags": [
+      "degree:2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        {
+          "dur": "semiquaver",
+          "pitch": "D4",
+        },
+        {
+          "dur": "semiquaver",
+          "pitch": "D6",
+        },
+      ],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "D5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the 7th degree of Eb major is D5.",
+    },
+    "grade": 3,
+    "hints": [
+      "Find E on the stave and count up 6, then ask what Eb major does to that letter.",
+    ],
+    "id": "scale_degree_stave_input:g3:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the 7th degree of Eb major as a semiquaver, with any accidental it needs.",
+    "srs_tags": [
+      "degree:7",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_stave_input",
+  },
+]
+`;
+
 exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte term_meaning @ character-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -125435,6 +130325,1151 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     },
     "strand": "terms_signs",
     "template_id": "term_meaning_flashcard",
+  },
+]
+`;
+
+exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte tonic_triad_key_id @ tonic-triads-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "Eb major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
+        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab2",
+                  "C3",
+                  "Eb3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F#2",
+                  "A2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "A4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "Ab major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb2",
+                  "G2",
+                  "Bb2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "Eb major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
+        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab3",
+                  "C4",
+                  "Eb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bb major",
+    },
+    "distractors": [
+      "F major",
+      "Eb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Eb major": "In Eb major this chord is built on the 5th degree, not the 1st.",
+        "F major": "In F major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is B flat, and a tonic triad is built on the keynote — so this is Bb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A major",
+    },
+    "distractors": [
+      "D major",
+      "E major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D major": "In D major this chord is built on the 5th degree, not the 1st.",
+        "E major": "In E major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "C#4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A major",
+    },
+    "distractors": [
+      "D major",
+      "E major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D major": "In D major this chord is built on the 5th degree, not the 1st.",
+        "E major": "In E major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "C#3",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "Ab major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb2",
+                  "G2",
+                  "Bb2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D major",
+    },
+    "distractors": [
+      "G major",
+      "A major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F#4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "E4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bb major",
+    },
+    "distractors": [
+      "F major",
+      "Eb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Eb major": "In Eb major this chord is built on the 5th degree, not the 1st.",
+        "F major": "In F major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is B flat, and a tonic triad is built on the keynote — so this is Bb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb3",
+                  "D4",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "C major",
+      "Bb major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "G major",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
+        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C2",
+                  "E2",
+                  "G2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "Ab major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "Ab major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
   },
 ]
 `;

@@ -173,13 +173,15 @@ export function gradeTrueFalse(instance: ExerciseInstance, response: boolean[]):
   return response.every((v, i) => v === perItem[i]);
 }
 
-/** A stave-input placement is correct only when BOTH the placed pitch and
- *  duration match answer.canonical (AE5) — a right pitch at the wrong
- *  duration, or vice versa, is incorrect, with no partial credit. */
+/** Correct only when BOTH pitch and duration match (AE5). `accepted_alternatives`
+ *  carries the answer's other octaves: a degree names a pitch class. */
 export function gradeStaveInput(instance: ExerciseInstance, response: { pitch: string; dur: string } | null): boolean {
   if (!response) return false;
-  const canonical = instance.answer.canonical as { pitch?: unknown; dur?: unknown };
-  return response.pitch === canonical.pitch && response.dur === canonical.dur;
+  const targets = [instance.answer.canonical, ...instance.answer.accepted_alternatives];
+  return targets.some((t) => {
+    const target = t as { pitch?: unknown; dur?: unknown };
+    return response.pitch === target.pitch && response.dur === target.dur;
+  });
 }
 
 /** A term↔meaning match (design 5f) is correct only when EVERY left term is

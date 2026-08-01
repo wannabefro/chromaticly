@@ -27,7 +27,7 @@ import { scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { buildTriad } from './chord-recognition';
 import { spellInKey, tonicLetter } from './key-spelling';
-import { diatonicPitchesInComfortableRange } from '../scope';
+import { diatonicPitchesInComfortableRange, diatonicPitchesInRange } from '../scope';
 import { naturalPitchStepsAbove, parseNaturalPitch } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -183,3 +183,138 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const scaleDegreeId: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Second shapes (chromaticly-lgi). Each reverses its own branch.
+
+function buildDegreeStaveInput(rng: () => number, grade: number, idSeed: number, numbers: number[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const clef = pick(rng, [...DEGREE_CLEFS]);
+  const key = pick(rng, [...scope.keysMajor]);
+  const degree = pick(rng, numbers);
+
+  const pitches = diatonicPitchesInComfortableRange(clef, grade);
+  const tonicOccurrences = pitches.filter((p) => parseNaturalPitch(p).letter === tonicLetter(key));
+  const usable = tonicOccurrences.filter((p) => pitches.includes(naturalPitchStepsAbove(p, 6)));
+  if (usable.length === 0) {
+    throw new Error(`scale_degree_stave_input: no tonic occurrence of ${key} leaves room for a 7th in ${clef}`);
+  }
+  const natural = naturalPitchStepsAbove(usable[0], degree - 1);
+  const pitch = spellInKey(natural, key);
+  // The stave input places one accidental, and only from the slot's own letter.
+  if (!/^[A-G](#|b)?-?\d+$/.test(pitch) || !diatonicPitchesInRange(clef, grade).includes(natural)) {
+    throw new Error(`scale_degree_stave_input: ${pitch} is not placeable on the ${clef} stave at grade ${grade}`);
+  }
+  const dur = pick(rng, [...scope.noteValues]);
+  const ordinal = DEGREE_ORDINALS[degree - 1];
+  // A degree is a pitch class: every octave of it is right.
+  const alternatives = diatonicPitchesInRange(clef, grade)
+    .filter((p) => p[0] === natural[0] && p !== natural)
+    .map((p) => ({ pitch: spellInKey(p, key), dur }));
+
+  return {
+    id: makeInstanceId('scale_degree_stave_input', grade, idSeed),
+    template_id: 'scale_degree_stave_input',
+    grade,
+    strand: 'scales_keys',
+    // No signature is printed, so the accidental is known, not read.
+    prompt: `Write the ${ordinal} degree of ${key} major as a ${dur}, with any accidental it needs.`,
+    stimulus: { music: null, text: null },
+    interaction: { type: 'stave_input', config: { clef } },
+    answer: { canonical: { pitch, dur }, accepted_alternatives: alternatives },
+    distractors: [],
+    hints: [`Find ${tonicLetter(key)} on the stave and count up ${degree - 1}, then ask what ${key} major does to that letter.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Not quite — the ${ordinal} degree of ${key} major is ${pitch.replace(/(#|b)/, (a) => (a === '#' ? ' sharp' : ' flat'))}.`,
+    },
+    srs_tags: [degreeNumberAtom(degree)],
+    kb_version: KB_VERSION,
+  };
+}
+
+const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+
+/** Which degree of `inKey` a root sits on, or null when it is not in that scale. */
+function degreeOfRootIn(root: string, inKey: string): number | null {
+  const natural = root.replace(/[#b]/g, '');
+  if (spellInKey(natural, inKey) !== root) return null;
+  const a = LETTERS.indexOf(natural[0]);
+  const b = LETTERS.indexOf(tonicLetter(inKey));
+  return ((a - b + 7) % 7) + 1;
+}
+
+function noteWords(pitch: string): string {
+  return pitch.replace(/\d+$/, '').replace(/#/, ' sharp').replace(/b/, ' flat');
+}
+
+function buildTonicTriadKeyId(rng: () => number, grade: number, idSeed: number): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const clef = pick(rng, [...DEGREE_CLEFS]);
+  const key = pick(rng, [...scope.keysMajor]);
+  const others = scope.keysMajor.filter((k) => k !== key);
+  const triad = buildTriad(clef, grade, key, 'I');
+  const root = triad[0];
+
+  // The keys this chord is the IV or the V of — the misread-the-degree mistake.
+  const ranked = [...others].sort((a, b) => {
+    const rank = (k: string) => {
+      const d = degreeOfRootIn(root, k);
+      return d === null ? 2 : [4, 5].includes(d) ? 0 : 1;
+    };
+    return rank(a) - rank(b) || others.indexOf(a) - others.indexOf(b);
+  });
+  const chosen = ranked.slice(0, 2);
+  const distractors = chosen.map((k) => `${k} major`);
+  if (distractors.length < 2) throw new Error(`tonic_triad_key_id: ${key} has too few sibling keys at grade ${grade}`);
+
+  // No key signature is printed — it would name the key the question asks for.
+  const music: Music = {
+    clef,
+    key_sig: null,
+    time_sig: null,
+    voices: [{ events: [{ type: 'chord', pitches: triad, dur: 'semibreve' }] }],
+  };
+
+  return {
+    id: makeInstanceId('tonic_triad_key_id', grade, idSeed),
+    template_id: 'tonic_triad_key_id',
+    grade,
+    strand: 'scales_keys',
+    prompt: 'This is a tonic triad. Which key is it in?',
+    stimulus: { music, text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: `${key} major`, accepted_alternatives: [] },
+    distractors,
+    hints: ['A tonic triad is built on the keynote, so the lowest note names the key.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `The lowest note is ${noteWords(root)}, and a tonic triad is built on the keynote — so this is ${key} major.`,
+      by_distractor: Object.fromEntries(
+        chosen.map((k) => {
+          const d = degreeOfRootIn(root, k);
+          return [
+            `${k} major`,
+            d === null
+              ? `${noteWords(root)} is not in the ${k} major scale, so no ${k} chord starts on it.`
+              : `In ${k} major this chord is built on the ${DEGREE_ORDINALS[d - 1]} degree, not the 1st.`,
+          ];
+        }),
+      ),
+    },
+    srs_tags: [TONIC_TRIAD_ATOM],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const scaleDegreeStaveInput: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => {
+    const numbers = degreeNumbersFromAtoms(opts.atoms);
+    if (numbers.length === 0) throw new Error('scale_degree_stave_input: needs at least one degree:<n> atom');
+    return buildDegreeStaveInput(mulberry32(candidateSeed), opts.grade, opts.seed, numbers);
+  });
+
+export const tonicTriadKeyId: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => {
+    if (!opts.atoms.includes(TONIC_TRIAD_ATOM)) throw new Error('tonic_triad_key_id: needs the tonic_triad atom');
+    return buildTonicTriadKeyId(mulberry32(candidateSeed), opts.grade, opts.seed);
+  });
