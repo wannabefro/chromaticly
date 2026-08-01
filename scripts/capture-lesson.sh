@@ -3,7 +3,8 @@
 #   PORT=48090 scripts/capture-lesson.sh <lesson-id> <out-dir>
 set -uo pipefail
 LESSON="$1"; OUT="$2"; PORT="${PORT:-48090}"; FLOW="${FLOW:-.maestro/_capture-open.yaml}"
-GRADE="${LESSON##*-}"
+# Most ids end in their grade; GRADE overrides for the grade-1 ones that do not.
+GRADE="${GRADE:-${LESSON##*-}}"
 UDID=$(xcrun simctl list devices | grep -i "Chromaticly Dogfood" | sed -E 's/.*\(([0-9A-F-]{36})\).*/\1/' | head -1)
 [ -n "$UDID" ] || { echo "no Chromaticly Dogfood simulator"; exit 1; }
 curl -fsS "http://127.0.0.1:${PORT}/status" -o /dev/null || { echo "metro not serving on ${PORT}"; exit 1; }
