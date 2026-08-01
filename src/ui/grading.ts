@@ -82,6 +82,14 @@ export function optionKey(value: unknown): string | undefined {
   // interval_naming's answer is the interval NUMBER (5, not "5th"), so a numeric
   // option needs a key too or its misconception copy can never be looked up.
   if (typeof value === 'number') return String(value);
+  // A { value, category } option keys on its text; a chord pick keys as "IVb".
+  if (value && typeof value === 'object' && typeof (value as { value?: unknown }).value === 'string') {
+    return (value as { value: string }).value;
+  }
+  if (value && typeof value === 'object' && typeof (value as { numeral?: unknown }).numeral === 'string') {
+    const v = value as { numeral: string; position?: string | null };
+    return v.position ? `${v.numeral}${v.position}` : v.numeral;
+  }
   // A rhythm {dur,dots} answer (rhythm_sum, chromaticly-f9k) has no string form —
   // key its option_music by "dur:dots" so a note-value option can carry a glyph too.
   if (value && typeof value === 'object' && typeof (value as { dur?: unknown }).dur === 'string') {

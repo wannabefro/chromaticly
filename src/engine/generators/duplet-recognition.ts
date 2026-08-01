@@ -72,17 +72,25 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const music: Music = { clef, key_sig: null, time_sig: sig, voices: [{ events }] };
 
   const variant = pick(rng, ['ratio', 'beat'] as const);
-  const { prompt, canonical, distractors } =
+  const { prompt, canonical, distractors, whyWrong } =
     variant === 'ratio'
       ? {
           prompt: 'The bracketed notes are a duplet. Two notes are played in the time of how many?',
           canonical: 'three',
           distractors: ['two', 'four'],
+          whyWrong: {
+            two: 'Two is how many notes the duplet holds, not how many it replaces.',
+            four: 'Four would divide the beat as simple time does. A compound beat divides into three.',
+          },
         }
       : {
           prompt: 'How many beats does the bracketed duplet fill?',
           canonical: 'one',
           distractors: ['two', 'three'],
+          whyWrong: {
+            two: 'Two is how many notes the duplet holds, not how many beats it fills.',
+            three: 'Three is what the beat normally divides into. The duplet still fills that one beat.',
+          },
         };
 
   return {
@@ -99,6 +107,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: 'A duplet plays two notes in the time of three, filling one compound beat.',
+      by_distractor: whyWrong,
     },
     srs_tags: [dupletAtom(sig)],
     kb_version: KB_VERSION,

@@ -63,6 +63,16 @@ export const SOUND_TABLE: Record<string, string> = {
   timpani: 'a struck skin',
 };
 
+/** An instrument that really uses each mechanism — the wrong answer's owner. */
+export const MECHANISM_EXAMPLE: Record<string, string> = {
+  'a bowed string': 'violin',
+  'air blown across an edge': 'flute',
+  'a single reed': 'clarinet',
+  'a double reed': 'oboe',
+  'lips buzzing into a mouthpiece': 'trumpet',
+  'a struck skin': 'timpani',
+};
+
 export const SOUND_MECHANISMS = [
   'a bowed string',
   'air blown across an edge',
@@ -164,6 +174,21 @@ function shuffle<T>(rng: () => number, items: T[]): T[] {
   return result;
 }
 
+/** How each family makes its sound, and who reads each clef — the facts a wrong
+ *  option is wrong about. */
+const FAMILY_HOW: Record<string, string> = {
+  Strings: 'bowed or plucked',
+  Woodwind: 'blown through a reed or across an edge',
+  Brass: 'blown through a cupped mouthpiece',
+  Percussion: 'struck',
+};
+
+const CLEF_READERS: Record<string, string> = {
+  Treble: 'the violin and the flute',
+  Bass: 'the cello and the double bass',
+  Alto: 'the viola',
+};
+
 function buildFamilyMcq(idSeed: number, grade: number, inst: string): ExerciseInstance {
   const family = INSTRUMENT_TABLE[inst].family;
   const distractors = FAMILIES.filter((f) => f !== family);
@@ -181,6 +206,9 @@ function buildFamilyMcq(idSeed: number, grade: number, inst: string): ExerciseIn
     feedback: {
       correct: 'Correct!',
       incorrect: `Not quite — the ${inst} is a ${family.toLowerCase()} instrument.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((f) => [f, `${f} instruments are ${FAMILY_HOW[f]}. The ${inst} is ${family.toLowerCase()}.`]),
+      ),
     },
     srs_tags: [instrumentFamilyAtom(inst)],
     kb_version: KB_VERSION,
@@ -204,6 +232,12 @@ function buildClefMcq(idSeed: number, grade: number, inst: string): ExerciseInst
     feedback: {
       correct: 'Correct!',
       incorrect: `Not quite — the ${inst} usually reads the ${clef.toLowerCase()} clef.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((c) => [
+          c,
+          `The ${c.toLowerCase()} clef suits ${CLEF_READERS[c]}. The ${inst} usually reads ${clef.toLowerCase()}.`,
+        ]),
+      ),
     },
     srs_tags: [instrumentClefAtom(inst)],
     kb_version: KB_VERSION,
@@ -254,7 +288,7 @@ function buildSoundMcq(rng: () => number, idSeed: number, grade: number, inst: s
       correct: 'Correct!',
       incorrect: `The ${inst} sounds through ${mechanism}.`,
       by_distractor: Object.fromEntries(
-        distractors.map((d) => [d, `That is how another instrument sounds. The ${inst} uses ${mechanism}.`]),
+        distractors.map((d) => [d, `That is how the ${MECHANISM_EXAMPLE[d]} sounds. The ${inst} uses ${mechanism}.`]),
       ),
     },
     srs_tags: [instrumentSoundAtom(inst)],

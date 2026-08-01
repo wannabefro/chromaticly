@@ -154,6 +154,23 @@ export function buildTriad(
 /** Grade-5 inversions path (chromaticly-ehp / plan U2): name a triad AND its
  *  position (a/b/c). Selected by 3-part `chord:<numeral>:<pos>` atoms; the
  *  answer is the structured { numeral, position } pair, graded on both axes. */
+const NUMERAL_DEGREE: Record<string, string> = { I: '1st', II: '2nd', IV: '4th', V: '5th' };
+const POSITION_BASS: Record<string, string> = { a: 'the root', b: 'the 3rd', c: 'the 5th' };
+
+/** The two-axis pick is diagnosed on whichever axis is wrong. */
+function whyWrongPair(
+  wrong: { numeral: string; position: string },
+  right: { numeral: string; position: string },
+): string {
+  if (wrong.numeral === right.numeral) {
+    return `The chord is right. ${wrong.numeral}${wrong.position} puts ${POSITION_BASS[wrong.position]} in the bass; here the bass note is ${POSITION_BASS[right.position]}.`;
+  }
+  if (wrong.position === right.position) {
+    return `The position is right. ${wrong.numeral} is built on the ${NUMERAL_DEGREE[wrong.numeral]} degree; this root is the ${NUMERAL_DEGREE[right.numeral]}.`;
+  }
+  return `${wrong.numeral}${wrong.position} is the ${NUMERAL_DEGREE[wrong.numeral]}-degree chord with ${POSITION_BASS[wrong.position]} in the bass. This one is neither.`;
+}
+
 function buildInversion(
   contentSeed: number,
   grade: number,
@@ -210,6 +227,9 @@ function buildInversion(
       correct: 'Correct!',
       incorrect:
         'Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.',
+      by_distractor: Object.fromEntries(
+        distractors.map((d) => [`${d.numeral}${d.position}`, whyWrongPair(d, { numeral, position })]),
+      ),
     },
     srs_tags: [chordPositionAtom(numeral, position)],
     kb_version: KB_VERSION,
@@ -263,6 +283,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       correct: 'Correct!',
       incorrect:
         'Not quite — check which scale degree the chord\'s lowest note (the root) sits on: I = 1st degree, IV = 4th degree, V = 5th degree.',
+      by_distractor: Object.fromEntries(
+        distractors.map((n) => [n, `${n} is built on the ${NUMERAL_DEGREE[n]} degree of ${key} major: ${triads[n].join(', ')}.`]),
+      ),
     },
     srs_tags: [chordAtom(numeral)],
     kb_version: KB_VERSION,

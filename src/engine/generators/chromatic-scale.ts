@@ -155,7 +155,8 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
   const canonical = chromaticPositionLabel(corruptDegree);
   const remainingDegrees = INTERIOR_DEGREES.filter((d) => d !== corruptDegree);
-  const distractors = sampleDistinct(rng, remainingDegrees, 2).map(chromaticPositionLabel);
+  const wrongDegrees = sampleDistinct(rng, remainingDegrees, 2);
+  const distractors = wrongDegrees.map(chromaticPositionLabel);
 
   return {
     id: makeInstanceId('chromatic_scale', grade, idSeed),
@@ -171,6 +172,13 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: `The ${canonical} should be ${trueScale[corruptDegree]} — a chromatic scale moves in semitones the whole way up.`,
+      // Every distractor names a position whose note is already correct.
+      by_distractor: Object.fromEntries(
+        wrongDegrees.map((d) => [
+          chromaticPositionLabel(d),
+          `The ${chromaticPositionLabel(d)} is ${trueScale[d]}, a semitone above the note before it. That one is right.`,
+        ]),
+      ),
     },
     srs_tags: [`scale:${tonic}_chromatic`],
     kb_version: KB_VERSION,

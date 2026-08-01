@@ -101,6 +101,9 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
     feedback: {
       correct: `A ${longer} lasts ${BEAT_LABEL[longer]}; a ${shorter} lasts ${BEAT_LABEL[shorter]} — so the ${longer} lasts longer.`,
       incorrect: 'Not quite — compare how long each note is held, not how it looks on the page.',
+      by_distractor: {
+        [NOTE_VALUE_LABELS[shorter]]: `A ${shorter} lasts ${BEAT_LABEL[shorter]}, but a ${longer} lasts ${BEAT_LABEL[longer]}.`,
+      },
     },
     srs_tags: [noteValueCompareAtom()],
     kb_version: KB_VERSION,

@@ -116,6 +116,13 @@ function minorTonicsFromAtoms(atoms: string[]): string[] {
   return tonics;
 }
 
+/** "3 sharps", "1 flat", "no sharps or flats". */
+function signatureWords(fifths: number): string {
+  if (fifths === 0) return 'no sharps or flats';
+  const n = Math.abs(fifths);
+  return `${n} ${fifths > 0 ? 'sharp' : 'flat'}${n > 1 ? 's' : ''}`;
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
@@ -162,10 +169,24 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       ? selectedTonics.map((t) => `${t} minor`)
       : selectedTonics.map((t) => `${t} major`);
 
+  const mode = direction === 'minor_of_major' ? 'minor' : 'major';
+  const originLabel = direction === 'minor_of_major' ? `${majorTonic} major` : `${minorTonic} minor`;
+  const sharedFifths = fifthsOf(canonicalTonic);
+  // The wrong-direction tonic is its own error; the rest simply have
+  // a different key signature.
+  const whyWrong = Object.fromEntries(
+    selectedTonics.map((t) => [
+      `${t} ${mode}`,
+      t === wrongDirectionTonic
+        ? `That is a minor 3rd the other way from ${originLabel}. Relative ${mode}s go ${direction === 'minor_of_major' ? 'down' : 'up'}.`
+        : `${t} ${mode} has ${signatureWords(fifthsOf(t))}; ${originLabel} has ${signatureWords(sharedFifths)}. Relatives share a signature.`,
+    ]),
+  );
+
   const feedbackIncorrect =
     direction === 'minor_of_major'
-      ? 'Count a minor 3rd *down* from the major tonic — the relative minor shares its key signature.'
-      : 'Count a minor 3rd *up* from the minor tonic — the relative major shares its key signature.';
+      ? 'Count a minor 3rd **down** from the major tonic — the relative minor shares its key signature.'
+      : 'Count a minor 3rd **up** from the minor tonic — the relative major shares its key signature.';
 
   return {
     id: makeInstanceId('mode_swap', grade, idSeed),
@@ -181,6 +202,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: feedbackIncorrect,
+      by_distractor: whyWrong,
     },
     srs_tags: [keySigAtom(`${minorTonic}_minor`)],
     kb_version: KB_VERSION,

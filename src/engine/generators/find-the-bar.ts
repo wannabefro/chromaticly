@@ -95,6 +95,8 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
   const otherMaxBeats = property === 'longest' ? 1 : beatsPerBar;
 
   const events: MusicEvent[] = [];
+  // What each bar's own best note is — the per-bar answer to the same question.
+  const barBest: Record<number, string> = {};
 
   for (let bar = 1; bar <= BARS; bar++) {
     const isTarget = bar === targetBar;
@@ -109,11 +111,20 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
     // Where the winning pitch lands inside the target bar.
     const winnerSlot = Math.floor(rng() * durs.length);
 
+    const barPitches: string[] = [];
     durs.forEach((dur, slot) => {
       const isWinner = isTarget && winnerPitch !== null && slot === winnerSlot;
       const pitch = isWinner ? winnerPitch : pick(rng, otherPitches);
+      barPitches.push(pitch);
       events.push({ type: 'note', pitch, dur });
     });
+    const byHeight = [...barPitches].sort((a, b) => pool.indexOf(a) - pool.indexOf(b));
+    barBest[bar] =
+      property === 'highest'
+        ? byHeight[byHeight.length - 1]
+        : property === 'lowest'
+          ? byHeight[0]
+          : [...durs].sort((a, b) => beatsOf(b) - beatsOf(a))[0];
 
     events.push({ type: 'barline', style: bar === BARS ? 'double' : 'single' });
   }
@@ -135,6 +146,12 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
     feedback: {
       correct: 'Correct!',
       incorrect: `Not quite — compare the bars one by one. Only one bar holds the ${label}; ${PROPERTY_MISS[property]}.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((bar) => [
+          String(bar),
+          `Bar ${bar}'s ${label} is ${barBest[bar]}. Bar ${targetBar} holds ${barBest[targetBar]}.`,
+        ]),
+      ),
     },
     srs_tags: [findBarAtom(property, grade)],
     kb_version: KB_VERSION,

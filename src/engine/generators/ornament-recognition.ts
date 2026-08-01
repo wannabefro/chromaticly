@@ -71,6 +71,21 @@ export const ORNAMENT_NAMES: Record<OrnamentKind, string> = {
   appoggiatura: 'Appoggiatura',
 };
 
+/** What each ornament actually does — the feedback for choosing it wrongly. */
+const ORNAMENT_SHAPES: Record<OrnamentKind, string> = {
+  trill: 'a long rapid alternation with the note above',
+  turn: 'a curl through the note above, the note, and the note below',
+  upper_mordent: 'one quick flick up to the note above and back',
+  lower_mordent: 'one quick flick down to the note below and back',
+  acciaccatura: 'a small slashed grace note crushed in before the main note',
+  appoggiatura: 'a small unslashed grace note leaning on the beat',
+};
+
+function whyWrong(name: string): string {
+  const kind = (ORNAMENT_KINDS as readonly OrnamentKind[]).find((k) => ORNAMENT_NAMES[k] === name)!;
+  return `${ORNAMENT_NAMES[kind]} is ${ORNAMENT_SHAPES[kind]}.`;
+}
+
 /** The `ornament:<kind>[:written_to_sign]` atoms in `atoms`, deduplicated in atom
  *  order, with their shared direction — mirrors chord-recognition.ts's
  *  numeralsFromAtoms. All atoms in one lesson share a direction (the 3-part
@@ -174,6 +189,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: 'Not quite — check whether the sign sits above the note or is a small grace note before it, then look at its shape.',
+      by_distractor: Object.fromEntries(distractors.map((name) => [name, whyWrong(name)])),
     },
     srs_tags: [ornamentAtom(kind)],
     kb_version: KB_VERSION,
@@ -228,6 +244,7 @@ function buildWrittenToSign(
     feedback: {
       correct: 'Correct!',
       incorrect: 'Not quite — trace the written notes: which sign is the shorthand for that exact pattern?',
+      by_distractor: Object.fromEntries(distractors.map((name) => [name, whyWrong(name)])),
     },
     // The DIRECTION belongs in the tag. This branch is written->sign, so it must
     // credit `ornament:<kind>:written_to_sign`, not the bare sign->name atom the

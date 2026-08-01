@@ -104,12 +104,16 @@ function buildDegree(rng: () => number, grade: number, idSeed: number, numbers: 
       correct: 'Correct!',
       incorrect: `Count up from ${key}, the 1st degree, one letter name at a time. This note is the ${canonical}.`,
       by_distractor: Object.fromEntries(
-        distractorNumbers.map((n) => [
-          DEGREE_ORDINALS[n - 1],
-          n < degree
-            ? `That is one short. Remember the tonic itself is the 1st degree, not zero — counting from ${key} gives the ${canonical}.`
-            : `That is one too far. Count the letter names from ${key} inclusive and stop on this note: it is the ${canonical}.`,
-        ]),
+        distractorNumbers.map((n) => {
+          const off = Math.abs(n - degree);
+          const names = `${off} letter name${off > 1 ? 's' : ''}`;
+          return [
+            DEGREE_ORDINALS[n - 1],
+            n < degree
+              ? `The ${DEGREE_ORDINALS[n - 1]} stops ${names} short of this note. The tonic itself is the 1st degree, so counting from ${key} gives the ${canonical}.`
+              : `The ${DEGREE_ORDINALS[n - 1]} is ${names} past this note. Count from ${key} inclusive and stop here: it is the ${canonical}.`,
+          ];
+        }),
       ),
     },
     srs_tags: [degreeNumberAtom(degree)],

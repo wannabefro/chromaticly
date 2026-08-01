@@ -166,6 +166,25 @@ function buildDistractors(target: ValueEntry, valueTable: readonly ValueEntry[])
   return distractors;
 }
 
+const BEATS_BY_UNITS: Record<number, string> = {
+  4: 'half a beat',
+  8: '1 beat',
+  16: '2 beats',
+  24: '3 beats',
+  28: '3\u00bd beats',
+  32: '4 beats',
+};
+
+/** Each wrong value is a different total, and the undotted twin is the dot
+ *  itself being dropped. */
+function whyWrong(entry: ValueEntry, target: ValueEntry): string {
+  const droppedDot = entry.dur === target.dur && entry.dots < target.dots;
+  const value = `A ${formatValue(entry)} is ${BEATS_BY_UNITS[entry.units]}`;
+  return droppedDot
+    ? `${value}. Each dot adds half again, so the answer is ${BEATS_BY_UNITS[target.units]}.`
+    : `${value}, but the sum comes to ${BEATS_BY_UNITS[target.units]}.`;
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
   // Grade 4 (GRADE_4_SCOPE.rhythmDevices: 'double_dot') opens the wider value
@@ -215,6 +234,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: 'Not quite — check the note tree and re-add the values carefully, including any dots.',
+      by_distractor: Object.fromEntries(distractorEntries.map((e) => [targetKey(e), whyWrong(e, target)])),
     },
     srs_tags: [doubleDotOnly ? RHYTHM_SUM_DOUBLE_DOT_ATOM : rhythmSumAtom()],
     kb_version: KB_VERSION,

@@ -195,6 +195,7 @@ const findTheBarSpec: InteractionSpec<FindTheBarResponse> = {
   grade: (instance, response) => gradeMcq(instance, response),
   submits: true,
   correctAnswerView: findTheBarCorrectAnswerView,
+  selectedValue: (_instance, response) => response ?? undefined,
   // Design 4c: tapping a bar in the score is the same answer as tapping the strip,
   // and the chosen bar is tinted in the notation.
   onSurfaceTap: (bar) => bar,
@@ -241,6 +242,7 @@ const romanNumeralBoxesSpec: InteractionSpec<RnbResponse> = {
   grade: (instance, response) => gradeMcq(instance, response),
   submits: true,
   correctAnswerView: romanNumeralBoxesCorrectAnswerView,
+  selectedValue: (_instance, response) => response ?? undefined,
 };
 
 /** The wrong pairing is corrected by listing every term with its canonical
@@ -295,6 +297,7 @@ const voiceOptionsSpec: InteractionSpec<VoiceOptionsResponse> = {
   grade: (instance, response) => gradeMcq(instance, response),
   submits: true,
   correctAnswerView: voiceOptionsCorrectAnswerView,
+  selectedValue: (_instance, response) => response ?? undefined,
 };
 
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {

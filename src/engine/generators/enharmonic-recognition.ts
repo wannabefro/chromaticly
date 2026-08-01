@@ -79,6 +79,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: `Not quite — ${displayNote(note)} and ${displayNote(partner)} are the same pitch spelled two ways.`,
+      by_distractor: {
+        [displayNote(note[0])]: `${displayNote(note[0])} is ${displayNote(note)} with its accidental dropped, a semitone away.`,
+        [displayNote(partner[0])]: `${displayNote(partner[0])} is the right letter, but it needs its accidental to match ${displayNote(note)}.`,
+      },
     },
     srs_tags: [enharmonicAtom(note)],
     kb_version: KB_VERSION,

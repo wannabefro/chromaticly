@@ -1,0 +1,64 @@
+# Screenshots wrong-answer FeedbackSheets, so the per-distractor copy is seen on
+# device. Same entry as _capture-open.yaml; see scripts/capture-lesson.sh.
+appId: host.exp.Exponent
+---
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 30000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { point: "90%,48%", optional: true }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 60000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+- tapOn: { id: "set-close", optional: true }
+- tapOn: { id: "teach-close", optional: true }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 60000
+
+- tapOn: { id: "lane-other-grades", optional: true }
+- extendedWaitUntil:
+    visible: { id: "lane-grade-option-${GRADE}" }
+    timeout: 10000
+    optional: true
+- tapOn: { id: "lane-grade-option-${GRADE}", optional: true }
+- scrollUntilVisible:
+    element: { id: "unit-row-${LESSON}" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-${LESSON}" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+
+# ANSWER is the option's testID. The same one every item, so one is wrong.
+- tapOn: { id: "${ANSWER}", optional: true }
+- tapOn: { text: "Check", optional: true }
+- extendedWaitUntil: { visible: { id: "__settle_never__" }, timeout: 2500, optional: true }
+- takeScreenshot: ${OUT}/${LESSON}-feedback-1
+- tapOn: { text: "Got it", optional: true }
+- tapOn: { text: "Continue", optional: true }
+
+- tapOn: { id: "${ANSWER}", optional: true }
+- tapOn: { text: "Check", optional: true }
+- extendedWaitUntil: { visible: { id: "__settle_never__" }, timeout: 2500, optional: true }
+- takeScreenshot: ${OUT}/${LESSON}-feedback-2
+- tapOn: { text: "Got it", optional: true }
+- tapOn: { text: "Continue", optional: true }
+
+- tapOn: { id: "${ANSWER}", optional: true }
+- tapOn: { text: "Check", optional: true }
+- extendedWaitUntil: { visible: { id: "__settle_never__" }, timeout: 2500, optional: true }
+- takeScreenshot: ${OUT}/${LESSON}-feedback-3

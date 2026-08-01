@@ -94,6 +94,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   let canonical: string;
   let distractors: string[];
   let feedbackIncorrect: string;
+  let whyWrong: Record<string, string>;
 
   if (direction === 'name_to_ordinal') {
     prompt = `Which degree of a scale is the ${displayName}?`;
@@ -102,6 +103,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     const otherOrdinals = ORDINALS.filter((o) => o !== ordinal);
     distractors = sampleDistinct(rng, otherOrdinals, 2);
     feedbackIncorrect = `The ${displayName} is the ${ordinal} degree of the scale.`;
+    // Name and ordinal are a bijection, so each wrong ordinal has its own name.
+    whyWrong = Object.fromEntries(
+      distractors.map((o) => [o, `The ${o} degree is the ${DISPLAY_NAMES[nameFromOrdinal(o)!]}.`]),
+    );
   } else {
     prompt = `What is the technical name for the ${ordinal} degree of a scale?`;
     stimulusText = `Name of the ${ordinal} degree`;
@@ -109,6 +114,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     const otherNames = DEGREE_ORDER.filter((n) => n !== name).map((n) => DISPLAY_NAMES[n]);
     distractors = sampleDistinct(rng, otherNames, 2);
     feedbackIncorrect = `The ${ordinal} degree of the scale is called the ${displayName}.`;
+    whyWrong = Object.fromEntries(
+      distractors.map((d) => [d, `The ${d} is the ${ordinalOf(nameFromDisplay(d)!)} degree.`]),
+    );
   }
 
   return {
@@ -125,6 +133,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: feedbackIncorrect,
+      by_distractor: whyWrong,
     },
     srs_tags: [degreeNameAtom(name)],
     kb_version: KB_VERSION,

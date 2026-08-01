@@ -74,6 +74,22 @@ function distractorsForFamily(timeSig: string, grade: number): string[] {
     .map((x) => x.t);
 }
 
+const BEAT_WORD: Record<number, string> = { 2: 'minim', 4: 'crotchet', 8: 'quaver', 16: 'semiquaver' };
+const DOTTED_BEAT_WORD: Record<number, string> = { 4: 'dotted minim', 8: 'dotted crotchet', 16: 'dotted quaver' };
+
+function beatsPhrase(sig: string): string {
+  const [num, den] = sig.split('/').map(Number);
+  const compound = isCompoundTimeSignature(sig);
+  const count = compound ? num / 3 : num;
+  const word = compound ? DOTTED_BEAT_WORD[den] : BEAT_WORD[den];
+  return `${count} ${word} beat${count === 1 ? '' : 's'}`;
+}
+
+/** Each wrong signature names a different total for the same bar. */
+function whyWrong(wrong: string, correct: string): string {
+  return `${wrong} asks for ${beatsPhrase(wrong)} in the bar. This one holds ${beatsPhrase(correct)}.`;
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const G1_DURATIONS = scope.noteValues as readonly G1Duration[];
@@ -125,6 +141,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       incorrect: compound
         ? 'Not quite — recount the dotted-crotchet beats in the bar and match the total to a compound time signature.'
         : 'Not quite — recount the beats in the bar and match the total to a time signature.',
+      by_distractor: Object.fromEntries(distractors.map((d) => [d, whyWrong(d, timeSig)])),
     },
     // The bare atom belongs to the grade-1 /4 trio. Every metre added later
     // gets its own, or the credit misroutes to the grade-1 lesson that owns it.

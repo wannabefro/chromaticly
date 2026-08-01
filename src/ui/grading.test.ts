@@ -85,8 +85,14 @@ describe('misconceptionFor — per-distractor feedback, and every way it falls b
     expect(misconceptionFor(instance, distractor)).toBeDefined();
   });
 
+  // Hand-built, not generated: every shipped template now diagnoses its
+  // distractors, so a generator fixture would pin today's coverage as the fact
+  // under test instead of the fallback.
   test('a template that names no misconceptions returns undefined, so the sheet keeps its own copy', () => {
-    const instance = generate('rhythm_sum', { grade: 1, seed: 5, atoms: atomsForTemplate('rhythm_sum') });
+    const instance: ExerciseInstance = {
+      ...generate('note_naming', { grade: 1, seed: 4, atoms: TREBLE }),
+      feedback: { correct: 'Correct!', incorrect: 'Not quite.' },
+    };
     expect(instance.feedback.by_distractor).toBeUndefined();
     expect(misconceptionFor(instance, instance.distractors[0])).toBeUndefined();
   });

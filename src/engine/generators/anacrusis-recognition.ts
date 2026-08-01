@@ -57,6 +57,14 @@ function d2Candidates(p: number, beats: number): number[] {
   return [...new Set(filtered)];
 }
 
+/** Each candidate in d2Candidates is a different miscount, so each is named. */
+function whyWrong(n: number, p: number, beats: number, sig: string): string {
+  if (n === beats) return `That is a whole bar of ${sig}. The upbeat is only what comes before the first barline.`;
+  if (n === 0) return 'There is an upbeat here — the music starts with notes before the first barline.';
+  if (n === beats - p) return 'That is the closing bar, which completes what the upbeat borrowed. Count the opening notes instead.';
+  return 'That is out by one beat. Add up the note values in the upbeat rather than counting the notes.';
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
@@ -88,8 +96,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const music: Music = { clef, key_sig: null, time_sig: sig, anacrusis: true, voices: [{ events }] };
 
   const canonical = beatsLabel(p);
-  const d1 = beatsLabel(beats); // full-bar miscount — the headline anacrusis misconception
-  const d2 = beatsLabel(pick(rng, d2Candidates(p, beats)));
+  const wrongBeats = [beats, pick(rng, d2Candidates(p, beats))]; // full-bar miscount, then one other
 
   return {
     id: makeInstanceId('anacrusis_recognition', grade, idSeed),
@@ -100,13 +107,14 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     stimulus: { music, text: null },
     interaction: { type: 'mcq', config: {} },
     answer: { canonical, accepted_alternatives: [] },
-    distractors: [d1, d2],
+    distractors: wrongBeats.map(beatsLabel),
     hints: [
       'Count backwards from the first barline to see how many beats the upbeat takes — the final bar completes what the upbeat borrowed.',
     ],
     feedback: {
       correct: 'Correct!',
       incorrect: 'Count the beats before the first barline, then check: the first and last bars together make one whole bar.',
+      by_distractor: Object.fromEntries(wrongBeats.map((n) => [beatsLabel(n), whyWrong(n, p, beats, sig)])),
     },
     srs_tags: [anacrusisAtom(sig)],
     kb_version: KB_VERSION,

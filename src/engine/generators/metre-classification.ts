@@ -54,6 +54,18 @@ function label(cls: MetreClass): string {
   return `${DIVISION_WORDS[cls.division]} ${cls.beats}`;
 }
 
+const BEATS_COUNT: Record<string, string> = { duple: 'two', triple: 'three', quadruple: 'four' };
+
+/** One option misreads the beaming, the other miscounts the groups. */
+function regularReasons(cls: MetreClass, divisionBlind: string, miscounted: string): Record<string, string> {
+  const beamedIn = cls.division === 'compound' ? 'threes' : 'twos';
+  const wrongBeats = miscounted.split(' ')[1];
+  return {
+    [divisionBlind]: `That reads the beaming the other way. These notes are beamed in ${beamedIn}, so the beat divides into ${cls.division === 'compound' ? 'three' : 'two'}.`,
+    [miscounted]: `The division is right, but that is ${BEATS_COUNT[wrongBeats]} beats. This bar has ${BEATS_COUNT[cls.beats]}.`,
+  };
+}
+
 function flipDivision(division: Division): Division {
   return division === 'simple' ? 'compound' : 'simple';
 }
@@ -151,14 +163,12 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       incorrect: irregular
         ? 'Count the beats in the bar. Five and seven cannot be split into equal beats, so the metre is irregular rather than simple or compound.'
         : 'Check two things: does each beat split into two (simple) or three (compound), and how many beats are in the bar?',
-      ...(irregular
+      by_distractor: irregular
         ? {
-            by_distractor: {
-              [divisionBlindDistractor]: `That is the nearest regular metre, and it is one beat out. Count again: this bar has ${cls.beats === 'quintuple' ? 'five' : 'seven'} beats, which no equal division reaches.`,
-              [miscountedBeatsDistractor]: `That is the other irregular metre. Both are irregular, but count the beats — this bar has ${cls.beats === 'quintuple' ? 'five, not seven' : 'seven, not five'}.`,
-            },
+            [divisionBlindDistractor]: `That is the nearest regular metre, and it is one beat out. Count again: this bar has ${cls.beats === 'quintuple' ? 'five' : 'seven'} beats, which no equal division reaches.`,
+            [miscountedBeatsDistractor]: `That is the other irregular metre. Both are irregular, but count the beats — this bar has ${cls.beats === 'quintuple' ? 'five, not seven' : 'seven, not five'}.`,
           }
-        : {}),
+        : regularReasons(cls, divisionBlindDistractor, miscountedBeatsDistractor),
     },
     srs_tags: [metreAtom(sig)],
     kb_version: KB_VERSION,

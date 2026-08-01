@@ -13,6 +13,7 @@ import type { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { colors, elevation, shape, type } from '../theme';
+import { RichText } from './RichText';
 
 export interface FeedbackSheetProps {
   kind: 'correct' | 'incorrect' | 'partial';
@@ -55,7 +56,7 @@ export function FeedbackSheet({
           <Text style={[styles.title, { color: accent }]}>{title ?? defaultTitle}</Text>
         </View>
 
-        {typeof message === 'string' ? <Text style={styles.message}>{message}</Text> : message}
+        {typeof message === 'string' ? <RichText style={styles.message}>{message}</RichText> : message}
 
         {correctAnswer != null && <View style={styles.answer}>{correctAnswer}</View>}
 

@@ -46,6 +46,21 @@ const VOICE_CUES: Record<VoiceName, string> = {
   bass: 'bass, stem down',
 };
 
+const STAFF_NAME = ['treble', 'bass'] as const;
+
+/** The pick is diagnosed on whichever of the two cues — staff, stem — is wrong. */
+function whyWrong(wrong: VoiceName, right: VoiceName): string {
+  const w = VOICE_META[wrong];
+  const r = VOICE_META[right];
+  if (w.staff === r.staff) {
+    return `The staff is right, but ${VOICE_LABELS[wrong]} stems ${w.stem}. This note's stem points ${r.stem}.`;
+  }
+  if (w.stem === r.stem) {
+    return `The stem is right, but ${VOICE_LABELS[wrong]} sings on the ${STAFF_NAME[w.staff]} staff. This note is on the ${STAFF_NAME[r.staff]} staff.`;
+  }
+  return `${VOICE_LABELS[wrong]} is the ${STAFF_NAME[w.staff]} staff with its stem ${w.stem}. This note is ${STAFF_NAME[r.staff]}, stem ${r.stem}.`;
+}
+
 /** The satb_voice:* atoms in `atoms`, in atom order — mirrors
  *  transposing-instrument.ts's instrumentsFromAtoms; an unknown voice name
  *  fails loud. */
@@ -135,6 +150,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
       correct: 'Correct!',
       incorrect:
         'Not quite — check which staff the note is on (treble = soprano/alto, bass = tenor/bass) and which way its stem points (up = soprano/tenor, down = alto/bass).',
+      by_distractor: Object.fromEntries(distractors.map((v) => [v, whyWrong(v, targetVoice)])),
     },
     srs_tags: [satbVoiceAtom(targetVoice)],
     kb_version: KB_VERSION,

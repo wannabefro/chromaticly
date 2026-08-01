@@ -23,6 +23,15 @@ import type { GenerateOptions, Generator } from './types';
 
 const OPTION_COUNT = 4; // answer + 3 distractors — a clean closed MCQ
 
+const LONGER = ['twice', 'four times', 'eight times', 'sixteen times', 'thirty-two times', 'sixty-four times'];
+const SHORTER = ['half', 'a quarter', 'an eighth', 'a sixteenth', 'a thirty-second', 'a sixty-fourth'];
+
+/** Every rest value is a power of two apart, so the gap is stated as a ratio. */
+function ratioWords(wrong: Duration, answer: Duration): string {
+  const steps = Math.round(Math.log2(REST_UNITS[wrong] / REST_UNITS[answer]));
+  return steps > 0 ? `${LONGER[steps - 1]} as long as` : `${SHORTER[-steps - 1]} as long as`;
+}
+
 /** The lesson's `rest:*` atoms as bare durations, e.g. rest:crotchet -> "crotchet". */
 function restsFromAtoms(atoms: string[]): Duration[] {
   const rests: Duration[] = [];
@@ -113,6 +122,12 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: 'Not quite — count the beats already used, then subtract from the bar to find the missing rest.',
+      by_distractor: Object.fromEntries(
+        distractors.map((d) => [
+          restLabel(d),
+          `A ${d} rest is ${ratioWords(d, answer)} the gap, so the bar would not add up.`,
+        ]),
+      ),
     },
     srs_tags: [restAtom(answer)],
     kb_version: KB_VERSION,

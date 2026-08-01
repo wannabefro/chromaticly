@@ -322,9 +322,8 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   corruptedScale[rule.degree] = shiftAccidental(trueScale[rule.degree], rule.semitones);
 
   const canonical = positionLabel(playedIndex(rule.degree, direction));
-  const distractors = corruptionRules
-    .filter((r) => r !== rule)
-    .map((r) => positionLabel(playedIndex(r.degree, direction)));
+  const wrongRules = corruptionRules.filter((r) => r !== rule);
+  const distractors = wrongRules.map((r) => positionLabel(playedIndex(r.degree, direction)));
 
   const playedTrue = direction === 'descending' ? [...trueScale].reverse() : trueScale;
   const playedCorrupted = direction === 'descending' ? [...corruptedScale].reverse() : corruptedScale;
@@ -343,6 +342,13 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: rule.feedback,
+      // Every distractor names a position the printed scale already spells right.
+      by_distractor: Object.fromEntries(
+        wrongRules.map((r) => {
+          const i = playedIndex(r.degree, direction);
+          return [positionLabel(i), `The ${positionLabel(i)} is ${playedTrue[i]}, which this scale spells correctly.`];
+        }),
+      ),
     },
     srs_tags: [`scale:${tonic}_minor_${form}`],
     kb_version: KB_VERSION,

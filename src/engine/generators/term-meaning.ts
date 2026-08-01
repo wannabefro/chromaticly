@@ -143,6 +143,15 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
     feedback: {
       correct: 'Correct!',
       incorrect: `Not quite — that's a different ${categorySingular(entry.category)}. Review the category and try again.`,
+      // Each distractor is a real deck entry, so its feedback names which one.
+      by_distractor: Object.fromEntries(
+        distractorEntries.map((d) => [
+          direction === 'term_to_meaning' ? d.meaning : label(d),
+          direction === 'term_to_meaning'
+            ? `That is what "${label(d)}" means.`
+            : `"${label(d)}" means ${d.meaning}.`,
+        ]),
+      ),
     },
     srs_tags: [termAtom(slugify(termLabel))],
     kb_version: KB_VERSION,
