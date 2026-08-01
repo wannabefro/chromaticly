@@ -16,6 +16,7 @@ import { TeachPhase } from './TeachPhase';
 
 const trebleNotes = lessonById('treble-notes')!;
 const terms = lessonById('dynamics-1')!;
+const rests = lessonById('rests-1')!;
 
 describe('TeachPhase — teach/read cards before the set (302.3)', () => {
   test('renders objectives, concept, and smart tip from the lesson teach content', () => {
@@ -37,6 +38,19 @@ describe('TeachPhase — teach/read cards before the set (302.3)', () => {
   test('the worked example is shown pre-solved with the correct option highlighted', () => {
     const { getByTestId } = render(<TeachPhase lesson={trebleNotes} onStart={jest.fn()} />);
     expect(getByTestId('teach-worked-example')).toBeTruthy();
+    expect(getByTestId('teach-worked-correct')).toBeTruthy();
+  });
+
+  // A notation-answer option carries no text label (grading.buildOption returns
+  // label: ''), so rendering only the label drew four empty boxes in 15 lessons.
+  test('a notation-answer worked example draws its option staves, not empty boxes', () => {
+    const { getAllByTestId } = render(<TeachPhase lesson={rests} onStart={jest.fn()} />);
+    expect(getAllByTestId(/^teach-worked-option-\d+$/).length).toBeGreaterThanOrEqual(2);
+  });
+
+  test('a text-answer worked example still shows its labels', () => {
+    const { getByTestId, queryAllByTestId } = render(<TeachPhase lesson={trebleNotes} onStart={jest.fn()} />);
+    expect(queryAllByTestId(/^teach-worked-option-\d+$/)).toHaveLength(0);
     expect(getByTestId('teach-worked-correct')).toBeTruthy();
   });
 

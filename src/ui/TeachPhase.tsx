@@ -13,6 +13,8 @@ import type { Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { Button } from './components/Button';
 import { NotationCard } from './components/NotationCard';
+import { OrnamentSign } from './components/OrnamentSign';
+import { StaticNotation } from './components/StaticNotation';
 import { RichText } from './components/RichText';
 import { StrandChip } from './components/StrandChip';
 import { TheoryInSound } from './TheoryInSound';
@@ -59,7 +61,10 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
     const inst = generate(we.template_id, { grade: we.grade, seed: we.seed, atoms: lesson.atoms });
     const options: Option[] = inst.interaction.type === 'flashcard' ? [] : assembleOptions(inst);
     if (options.length < 2) return null;
-    return { prompt: inst.prompt, music: inst.stimulus.music, text: inst.stimulus.text, options };
+    // A notation option carries no text label (grading.buildOption), so a row of
+    // four would be unreadably narrow. Stack those; keep the design's row for text.
+    const notated = options.some((o) => o.music);
+    return { prompt: inst.prompt, music: inst.stimulus.music, text: inst.stimulus.text, options, notated };
   }, [lesson]);
 
   if (!teach) return null; // no teach content — the caller skips straight to the set
@@ -136,17 +141,31 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
                 <NotationCard music={worked.music} testID="teach-worked-card" />
               </View>
             )}
-            <View style={styles.workedOptions}>
+            <View style={worked.notated ? styles.workedOptionsStacked : styles.workedOptions}>
               {worked.options.map((opt, i) => (
                 <View
                   key={i}
-                  style={[styles.workedOption, opt.correct && styles.workedOptionCorrect]}
+                  style={[
+                    styles.workedOption,
+                    opt.music && styles.workedOptionWide,
+                    opt.correct && styles.workedOptionCorrect,
+                  ]}
                   testID={opt.correct ? 'teach-worked-correct' : undefined}
                 >
-                  <Text style={[styles.workedOptionLabel, opt.correct && styles.workedOptionLabelCorrect]}>
-                    {opt.label}
-                    {opt.correct ? '  ✓' : ''}
-                  </Text>
+                  {opt.music ? (
+                    <>
+                      <StaticNotation music={opt.music} testID={`teach-worked-option-${i}`} />
+                      {opt.correct && <Text style={styles.workedOptionTick}>✓</Text>}
+                    </>
+                  ) : (
+                    <View style={styles.workedOptionRow}>
+                      {opt.sign && <OrnamentSign kind={opt.sign} color={opt.correct ? colors.hint : colors.textMuted} />}
+                      <Text style={[styles.workedOptionLabel, opt.correct && styles.workedOptionLabelCorrect]}>
+                        {opt.label}
+                        {opt.correct ? '  ✓' : ''}
+                      </Text>
+                    </View>
+                  )}
                 </View>
               ))}
             </View>
@@ -225,6 +244,12 @@ const styles = StyleSheet.create({
   factFoot: { ...typo.label, color: colors.textFaint },
 
   workedOptions: { flexDirection: 'row', gap: 9 },
+  workedOptionsStacked: { flexDirection: 'column', gap: 9 },
+  workedOptionRow: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
+  // The box centres its text options; a stave needs the full width or it
+  // collapses to a sliver (the chromaticly-9c8 class of bug).
+  workedOptionWide: { alignItems: 'stretch' as const },
+  workedOptionTick: { ...typo.body, color: colors.hint, marginTop: 4, textAlign: 'center' as const },
   workedOption: {
     flex: 1,
     paddingVertical: 11,
