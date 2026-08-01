@@ -12,7 +12,7 @@ import { tripletRecognition } from './triplet-recognition';
 import { majorScaleSteps } from './major-scale-steps';
 import { tieDotValue } from './tie-dot-value';
 import { enharmonicRecognition } from './enharmonic-recognition';
-import { chromaticScale } from './chromatic-scale';
+import { chromaticScale, chromaticScaleMissing } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
 import { findTheBar } from './find-the-bar';
 import { instrumentKnowledge } from './instrument-knowledge';
@@ -72,6 +72,7 @@ export const GENERATORS: Record<string, Generator> = {
   music_in_context: findTheBar,
   octave_transposition: octaveTransposition,
   chromatic_scale: chromaticScale,
+  chromatic_scale_missing: chromaticScaleMissing,
   degree_name_id: degreeNameId,
   chord_recognition: chordRecognition,
   chord_from_name: chordFromName,

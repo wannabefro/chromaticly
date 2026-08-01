@@ -187,3 +187,60 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const chromaticScale: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// --- Missing-note shape (chromaticly-lgi) ----------------------------------
+// Spotting a wrong note and spotting a gap are different reading tasks: the
+// first compares a note to its neighbour, the second finds the whole tone that
+// should not be there.
+
+/** "F#4" -> "F♯". The octave carries no information once the note is named. */
+function noteName(pitch: string): string {
+  return pitch.replace(/-?\d+$/, '').replace('#', '♯');
+}
+
+function buildMissing(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const tonic = pick(rng, chromaticTonicsFromAtoms(atoms));
+
+  const starts = validScaleStartPitches(tonic, 'treble', grade);
+  if (starts.length === 0) {
+    throw new Error(`chromatic_scale: no valid start pitch for ${tonic} chromatic on treble clef at grade ${grade}`);
+  }
+  const startPitch = pick(rng, starts);
+  const trueScale = chromaticScaleAscending(startPitch);
+
+  const missingDegree = pick(rng, INTERIOR_DEGREES);
+  const shown = trueScale.filter((_, i) => i !== missingDegree);
+
+  const canonical = noteName(trueScale[missingDegree]);
+  const wrongDegrees = sampleDistinct(rng, INTERIOR_DEGREES.filter((d) => d !== missingDegree), 2);
+  const distractors = wrongDegrees.map((d) => noteName(trueScale[d]));
+
+  return {
+    id: makeInstanceId('chromatic_scale_missing', grade, idSeed),
+    template_id: 'chromatic_scale_missing',
+    grade,
+    strand: 'scales_keys',
+    prompt: 'One note of this chromatic scale is missing — which one?',
+    stimulus: { music: scaleMusic(shown), text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical, accepted_alternatives: [] },
+    distractors,
+    hints: ['Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `${canonical} is missing: the scale jumps a whole tone from ${noteName(trueScale[missingDegree - 1])} to ${noteName(trueScale[missingDegree + 1])}.`,
+      by_distractor: Object.fromEntries(
+        wrongDegrees.map((d) => [
+          noteName(trueScale[d]),
+          `${noteName(trueScale[d])} is already written, between ${noteName(trueScale[d - 1])} and ${noteName(trueScale[d + 1])}.`,
+        ]),
+      ),
+    },
+    srs_tags: [`scale:${tonic}_chromatic`],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const chromaticScaleMissing: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildMissing(candidateSeed, opts.grade, opts.seed, opts.atoms));

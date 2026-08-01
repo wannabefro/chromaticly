@@ -95,6 +95,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'note_sounds_as',
   'note_value_equivalence',
   'rhythm_sum_reverse',
+  'chromatic_scale_missing',
   'instrument_knowledge',
   'enharmonic_recognition',
   'rest_completion',

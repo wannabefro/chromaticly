@@ -182391,6 +182391,2171 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chromatic_scale_missing @ chromatic-scale-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "E is already written, between D♯ and F.",
+        "F": "F is already written, between E and F♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "G is missing: the scale jumps a whole tone from F♯ to G♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "F♯",
+      "C♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C♯": "C♯ is already written, between C and D.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "C is missing: the scale jumps a whole tone from B to C♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "D♯",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "D♯": "D♯ is already written, between D and E.",
+      },
+      "correct": "Correct!",
+      "incorrect": "E is missing: the scale jumps a whole tone from D♯ to F.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "G",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "E is already written, between D♯ and F.",
+        "G": "G is already written, between F♯ and G♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F is missing: the scale jumps a whole tone from E to F♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "G",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "E is already written, between D♯ and F.",
+        "G": "G is already written, between F♯ and G♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "C",
+      "F♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A is missing: the scale jumps a whole tone from G♯ to A♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "A♯",
+      "F♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A♯": "A♯ is already written, between A and B.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "D is missing: the scale jumps a whole tone from C♯ to D♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "C",
+      "C♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "C♯": "C♯ is already written, between C and D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "D♯ is missing: the scale jumps a whole tone from D to E.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C♯",
+    },
+    "distractors": [
+      "A",
+      "A♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "A♯": "A♯ is already written, between A and B.",
+      },
+      "correct": "Correct!",
+      "incorrect": "C♯ is missing: the scale jumps a whole tone from C to D.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "C",
+      "F♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "G is missing: the scale jumps a whole tone from F♯ to G♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:F_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "A",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "D": "D is already written, between C♯ and D♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "E is missing: the scale jumps a whole tone from D♯ to F.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:F_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C♯",
+    },
+    "distractors": [
+      "E",
+      "G♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "E is already written, between D♯ and F.",
+        "G♯": "G♯ is already written, between G and A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "C♯ is missing: the scale jumps a whole tone from C to D.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "C",
+      "D♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "D♯": "D♯ is already written, between D and E.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "F",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is already written, between A♯ and C.",
+        "F": "F is already written, between E and F♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "C♯",
+      "A♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A♯": "A♯ is already written, between A and B.",
+        "C♯": "C♯ is already written, between C and D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A is missing: the scale jumps a whole tone from G♯ to A♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "F♯",
+      "D♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D♯": "D♯ is already written, between D and E.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:D_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "D",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "D": "D is already written, between C♯ and D♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A is missing: the scale jumps a whole tone from G♯ to A♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:F_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is already written, between B and C♯.",
+        "E": "E is already written, between D♯ and F.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "F",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "F": "F is already written, between E and F♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "D♯ is missing: the scale jumps a whole tone from D to E.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "D♯",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "D♯": "D♯ is already written, between D and E.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte clef_equivalence @ clef-equivalence-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -234768,6 +236933,2171 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "scales_keys",
     "template_id": "chromatic_scale",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte chromatic_scale_missing (chromatic-scale-4, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "A♯",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "A♯": "A♯ is already written, between A and B.",
+      },
+      "correct": "Correct!",
+      "incorrect": "C is missing: the scale jumps a whole tone from B to C♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "B",
+      "F♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is already written, between A♯ and C.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F is missing: the scale jumps a whole tone from E to F♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G♯",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "F is already written, between E and F♯.",
+        "G♯": "G♯ is already written, between G and A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A is missing: the scale jumps a whole tone from G♯ to A♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "G",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "E is already written, between D♯ and F.",
+        "G": "G is already written, between F♯ and G♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F is missing: the scale jumps a whole tone from E to F♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "C": "C is already written, between B and C♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "F",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is already written, between A♯ and C.",
+        "F": "F is already written, between E and F♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "D is missing: the scale jumps a whole tone from C♯ to D♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "D♯",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is already written, between A♯ and C.",
+        "D♯": "D♯ is already written, between D and E.",
+      },
+      "correct": "Correct!",
+      "incorrect": "G is missing: the scale jumps a whole tone from F♯ to G♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G♯",
+    },
+    "distractors": [
+      "F",
+      "F♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "F is already written, between E and F♯.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "G♯ is missing: the scale jumps a whole tone from G to A.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "D",
+      "D♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "D is already written, between C♯ and D♯.",
+        "D♯": "D♯ is already written, between D and E.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "D",
+      "G♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "D is already written, between C♯ and D♯.",
+        "G♯": "G♯ is already written, between G and A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A is missing: the scale jumps a whole tone from G♯ to A♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "B",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is already written, between A♯ and C.",
+        "E": "E is already written, between D♯ and F.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F♯",
+    },
+    "distractors": [
+      "A",
+      "C♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "C♯": "C♯ is already written, between C and D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "F♯ is missing: the scale jumps a whole tone from F to G.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "F",
+      "G♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "F is already written, between E and F♯.",
+        "G♯": "G♯ is already written, between G and A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "A♯",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A♯": "A♯ is already written, between A and B.",
+        "E": "E is already written, between D♯ and F.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "F♯",
+      "D♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D♯": "D♯ is already written, between D and E.",
+        "F♯": "F♯ is already written, between F and G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "D is missing: the scale jumps a whole tone from C♯ to D♯.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "B",
+      "G♯",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is already written, between A♯ and C.",
+        "G♯": "G♯ is already written, between G and A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "E is missing: the scale jumps a whole tone from D♯ to F.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "E",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "D is already written, between C♯ and D♯.",
+        "E": "E is already written, between D♯ and F.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:G_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "F": "F is already written, between E and F♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "E is missing: the scale jumps a whole tone from D♯ to F.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D♯",
+    },
+    "distractors": [
+      "F",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is already written, between G♯ and A♯.",
+        "F": "F is already written, between E and F♯.",
+      },
+      "correct": "Correct!",
+      "incorrect": "D♯ is missing: the scale jumps a whole tone from D to E.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "G♯",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "D is already written, between C♯ and D♯.",
+        "G♯": "G♯ is already written, between G and A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "B is missing: the scale jumps a whole tone from A♯ to C.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the one place the scale jumps a whole tone instead of a semitone — the missing note sits in that gap.",
+    ],
+    "id": "chromatic_scale_missing:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "One note of this chromatic scale is missing — which one?",
+    "srs_tags": [
+      "scale:C_chromatic",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C6",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "chromatic_scale_missing",
   },
 ]
 `;

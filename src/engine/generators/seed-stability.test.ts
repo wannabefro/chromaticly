@@ -72,6 +72,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   anacrusis_final_bar: 3,
   octave_transposition: 3,
   chromatic_scale: 4,
+  chromatic_scale_missing: 4,
   degree_name_id: 4,
   duplet_recognition: 4,
   chord_recognition: 4,
@@ -418,6 +419,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
   {
     label: 'chromatic_scale (chromatic-scale-4, pre-lesson pin)',
     templateId: 'chromatic_scale',
+    atoms: ['scale:C_chromatic', 'scale:G_chromatic'],
+  },
+  {
+    label: 'chromatic_scale_missing (chromatic-scale-4, chromaticly-lgi)',
+    templateId: 'chromatic_scale_missing',
     atoms: ['scale:C_chromatic', 'scale:G_chromatic'],
   },
   {

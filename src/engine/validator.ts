@@ -595,6 +595,38 @@ function rhythmSumReverseHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// Recompute the true scale from the first rendered note, then assert exactly one
+// interior note is absent and that it is the one the canonical names.
+function chromaticScaleMissingHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  const shown = (music?.voices[0]?.events ?? []).flatMap(eventPitches);
+  if (shown.length < 2) {
+    return ['chromatic_scale_missing: the stimulus must render the scale'];
+  }
+  let trueScale: string[];
+  try {
+    trueScale = chromaticScaleAscending(shown[0]);
+  } catch (err) {
+    return [`chromatic_scale_missing: ${err instanceof Error ? err.message : String(err)}`];
+  }
+  const absent = trueScale.filter((p, i) => i > 0 && i < trueScale.length - 1 && !shown.includes(p));
+  const errors: string[] = [];
+  if (shown.length !== trueScale.length - 1 || absent.length !== 1) {
+    errors.push(`chromatic_scale_missing: the stimulus omits ${absent.length} interior notes, not exactly 1`);
+    return errors;
+  }
+  const name = (pitch: string): string => pitch.replace(/-?\d+$/, '').replace('#', '\u266f');
+  if (inst.answer.canonical !== name(absent[0])) {
+    errors.push(`chromatic_scale_missing: canonical "${String(inst.answer.canonical)}" is not the missing note ("${name(absent[0])}")`);
+  }
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !shown.some((p) => name(p) === d)) {
+      errors.push(`chromatic_scale_missing: distractor "${String(d)}" is not a note the stimulus actually shows`);
+    }
+  }
+  return errors;
+}
+
 function extractKeyTonic(raw: string): string | null {
   // Capture the accidental too: a flat/sharp key's tonic is "Bb"/"Eb", not the
   // bare letter — grade-2 keysMajor holds "Bb", so dropping the "b" rejects every
@@ -2158,6 +2190,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   metre_rewrite: metreRewriteHook,
   clef_equivalence: clefEquivalenceHook,
   chromatic_scale: chromaticScaleHook,
+  chromatic_scale_missing: chromaticScaleMissingHook,
   degree_name_id: degreeNameIdHook,
   chord_recognition: chordRecognitionHook,
   ornament_recognition: ornamentRecognitionHook,
