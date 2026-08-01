@@ -185,3 +185,27 @@ decorative.
 Not changed: the title, the "Uneven is normal" body, the drift warning's job, "Looks about right",
 and the re-test-on-tap behaviour — which stays a real four-question ladder, never a self-assessment
 slider.
+
+### Teach worked example — a notation answer stacks · approved 2026-08-01
+
+Screen 4a draws the worked example's options as a compact row of three, and every option in it is a
+short text ("3", "2 ✓", "6"). Fifteen lessons answer with **notation** instead — pick the rest, the
+key signature, the beamed bar — and those options carry no text at all, because the stave is the
+label. The prototype has no case for them.
+
+Kept in the mocked row wherever the options are text. A notated set **stacks**, full width.
+
+Two reasons, and the first is structural:
+
+1. **A stave in a quarter-width box collapses.** `StaticNotation` sizes to its container, so four
+   across gave a sliver of paper with no notation in it — the same failure as
+   `chromaticly-9c8`, where a zero-width host rendered nothing and read as an abcjs bug.
+2. **The exercise already stacks them.** `AnswerOption` draws a notation answer as a full-width
+   mini stave, and the worked example's whole job is to show what the next eight questions look
+   like. A different arrangement here would teach the wrong shape one screen before it matters.
+
+The cost is a taller card — four staves is roughly one and a half screens on a phone. Accepted:
+the teach phase is already a scroll, and an option a learner cannot read is worth no space at all.
+
+The tick stays inline (`B ✓`) beside a text label as drawn, and sits below a stave, which has no
+label to sit beside.
