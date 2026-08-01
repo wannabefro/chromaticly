@@ -172,3 +172,79 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const noteGrouping: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Second shape (chromaticly-lgi): the beams are printed, the metre is read off
+// them. The signature is hidden, not absent, so the bar beams honestly.
+
+/** How many notes of `value` fill one bar of `sig`, or null when they do not. */
+function noteCountFor(sig: string, value: 'quaver' | 'semiquaver'): number | null {
+  const count = barUnitsFor(sig) / (BEATS[value] * 8);
+  return Number.isInteger(count) ? count : null;
+}
+
+/** Nearest note count first: a same-count option cannot be answered by counting. */
+function metreDistractors(sig: string, grade: number, value: 'quaver' | 'semiquaver', count: number): string[] {
+  const correctLabel = label(correctSpans(sig).map((s) => s / BEATS[value]));
+  const others = metreRenderableTimeSignatures(grade).filter((t) => t !== sig);
+  const grouping = (t: string) => {
+    const spans = correctSpans(t).map((s) => s / BEATS[value]);
+    return spans.every(Number.isInteger) ? label(spans) : null;
+  };
+  const distance = (t: string) => Math.abs((noteCountFor(t, value) ?? Infinity) - count);
+  return others
+    .filter((t) => grouping(t) !== null && grouping(t) !== correctLabel)
+    .sort((a, b) => distance(a) - distance(b) || others.indexOf(a) - others.indexOf(b))
+    .slice(0, 2);
+}
+
+function buildMetreId(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const scope = scopeForGrade(grade);
+  const sigs = timeSignaturesFromAtoms(atoms, grade);
+  if (sigs.length === 0) throw new Error('note_grouping_metre_id: needs a renderable "grouping:<time signature>" atom');
+  const timeSig = pick(rng, sigs);
+  const clef = pick(rng, [...scope.clefs]);
+  const pitch = pick(rng, diatonicPitchesInComfortableRange(clef, grade));
+
+  const spans = correctSpans(timeSig);
+  const value = fillValue(spans);
+  const count = noteCountFor(timeSig, value);
+  const groups = spans.map((s) => s / BEATS[value]);
+  if (count === null || !groups.every(Number.isInteger)) {
+    throw new Error(`note_grouping_metre_id: ${timeSig} does not fill with ${value}s`);
+  }
+  const distractors = metreDistractors(timeSig, grade, value, count);
+  if (distractors.length < 2) throw new Error(`note_grouping_metre_id: ${timeSig} has too few sibling metres at grade ${grade}`);
+
+  const music = barFor(clef, timeSig, value, count, pitch);
+  music.time_sig_hidden = true;
+  const noun = NOTE_PLURAL[value];
+
+  return {
+    id: makeInstanceId('note_grouping_metre_id', grade, idSeed),
+    template_id: 'note_grouping_metre_id',
+    grade,
+    strand: 'rhythm',
+    prompt: 'Read the beams. Which time signature is this bar in?',
+    stimulus: { music, text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: timeSig, accepted_alternatives: [] },
+    distractors,
+    hints: [`Count the ${noun} inside each beam. The beam groups are the beats.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `These ${noun} are beamed ${label(groups)}, which is how ${timeSig} groups them.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((t) => [
+          t,
+          `${t} would beam these ${noun} as ${label(correctSpans(t).map((s) => s / BEATS[value]))}. This bar is beamed ${label(groups)}.`,
+        ]),
+      ),
+    },
+    srs_tags: [groupingAtom(timeSig)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const noteGroupingMetreId: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildMetreId(candidateSeed, opts.grade, opts.seed, opts.atoms));

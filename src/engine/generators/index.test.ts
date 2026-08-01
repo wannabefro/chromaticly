@@ -93,6 +93,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'major_scale_steps',
   'tie_dot_value',
   'note_grouping',
+  'note_grouping_metre_id',
   'note_naming_stave_input',
   'scale_degree_stave_input',
   'tonic_triad_key_id',
