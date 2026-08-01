@@ -614,32 +614,58 @@ function ordinal(n: number): string {
   }
 }
 
-function buildStaveInput(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
-  const scope = scopeForGrade(grade);
-  const rng = mulberry32(contentSeed);
-  const clef = pick(rng, [...scope.clefs]);
-  const key = pick(rng, [...scope.keysMajor]);
-  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade);
-  const targetPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
-  const targetDur = pick(rng, [...scope.noteValues]);
+/** The atom-named interval numbers (interval_any:<n>) in `atoms`, in atom
+ *  order. Empty when the lesson names none. */
+function intervalAnyTargets(atoms: string[]): number[] {
+  const numbers: number[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'interval_any' || parts.length !== 1) continue;
+    const n = Number(parts[0]);
+    if (Number.isInteger(n) && n >= 2 && n <= 8 && !numbers.includes(n)) numbers.push(n);
+  }
+  return numbers;
+}
+
+/** A key signature already sharpens or flattens the note, so a learner who taps
+ *  the slot and no accidental has written the right note. Accept both spellings. */
+function keySpelledAlternatives(pitch: string): string[] {
+  const natural = pitch.replace(/[#b]/g, '');
+  return natural === pitch ? [] : [natural];
+}
+
+interface StaveInputParts {
+  clef: Clef;
+  keySig: string | null;
+  lowerDisplay: string;
+  targetPitch: string;
+  targetDur: string;
+  intervalNumber: number;
+  keyName: string | null;
+  tag: string;
+}
+
+function staveInputInstance(grade: number, idSeed: number, parts: StaveInputParts): ExerciseInstance {
+  const { clef, keySig, lowerDisplay, targetPitch, targetDur, intervalNumber, keyName, tag } = parts;
+  const ask = `Write the note ${article(intervalNumber)} ${ordinal(intervalNumber)} higher than the given note, as a ${targetDur}.`;
 
   return {
     id: makeInstanceId('interval_naming_stave_input', grade, idSeed),
     template_id: 'interval_naming_stave_input',
     grade,
     strand: 'intervals',
-    prompt: `Write the note ${article(intervalNumber)} ${ordinal(intervalNumber)} higher than the given note, as a ${targetDur}.`,
+    prompt: keyName ? `This is ${keyName}. ${ask}` : ask,
     stimulus: {
       music: {
         clef,
-        key_sig: `${key}_major`,
+        key_sig: keySig,
         time_sig: null,
-        voices: [{ events: [{ type: 'note', pitch: spellInKey(lowerPitch, key), dur: 'semibreve' }] }],
+        voices: [{ events: [{ type: 'note', pitch: lowerDisplay, dur: 'semibreve' }] }],
       },
       text: null,
     },
     interaction: { type: 'stave_input', config: {} },
-    answer: { canonical: { pitch: targetPitch, dur: targetDur }, accepted_alternatives: [] },
+    answer: { canonical: { pitch: targetPitch, dur: targetDur }, accepted_alternatives: keySpelledAlternatives(targetPitch) },
     distractors: [],
     hints: [
       'Count the letter names from the given note up to the target note, counting both ends — then match the requested duration.',
@@ -648,10 +674,119 @@ function buildStaveInput(contentSeed: number, grade: number, idSeed: number): Ex
       correct: 'Correct!',
       incorrect: 'Not quite — recount the interval inclusively from the given note, and check you used the requested duration.',
     },
-    srs_tags: [intervalAtom(intervalNumber)],
+    srs_tags: [tag],
     kb_version: KB_VERSION,
   };
 }
 
+/** Tonic-anchored write-the-note, for the lessons whose atoms name a key
+ *  (interval_key) or a number (interval_type). `keySigs` and `numbers` are the
+ *  atom-scoped pools; either may be the grade's full pool when the atoms are
+ *  silent on it. */
+function buildAnchoredStaveInput(
+  rng: () => number,
+  scope: GradeScope,
+  clef: Clef,
+  grade: number,
+  idSeed: number,
+  keySigs: string[],
+  numbers: number[] | null,
+  tagOf: (keySig: string, intervalNumber: number) => string,
+): ExerciseInstance {
+  const keySig = pick(rng, keySigs);
+  const tonic = keySig.split('_')[0];
+  const range = comfortablePitchRange(clef, grade);
+  const occurrences = diatonicPitchesInComfortableRange(clef, grade).filter((p) => p.startsWith(tonicLetter(tonic)));
+  if (occurrences.length === 0) {
+    throw new Error(`interval_naming_stave_input: no in-range occurrence of tonic ${tonic} for clef ${clef}`);
+  }
+  const lowerPitch = occurrences[0];
+  const maxSteps = Math.min(7, scientificPitchOrdinal(range.high) - scientificPitchOrdinal(lowerPitch));
+  const feasible = (numbers ?? Array.from({ length: 7 }, (_, i) => i + 2)).filter((n) => n - 1 >= 1 && n - 1 <= maxSteps);
+  if (feasible.length === 0) {
+    throw new Error(`interval_naming_stave_input: no atom-scoped number fits above ${tonic} on the ${clef} stave`);
+  }
+  const intervalNumber = pick(rng, feasible);
+  const targetDur = pick(rng, [...scope.noteValues]);
+
+  return staveInputInstance(grade, idSeed, {
+    clef,
+    keySig,
+    lowerDisplay: spellInKeySig(lowerPitch, keySig),
+    targetPitch: spellInKeySig(naturalPitchStepsAbove(lowerPitch, intervalNumber - 1), keySig),
+    targetDur,
+    intervalNumber,
+    keyName: `${tonic} ${keySig.endsWith('_minor') ? 'minor' : 'major'}`,
+    tag: tagOf(keySig, intervalNumber),
+  });
+}
+
+/** Grade-4 write-the-note: no key signature and no tonic anchor, matching the
+ *  interval_any domain the mcq shape reads from. */
+function buildAnyNotesStaveInput(
+  rng: () => number,
+  scope: GradeScope,
+  clef: Clef,
+  grade: number,
+  idSeed: number,
+  numbers: number[],
+): ExerciseInstance {
+  const intervalNumber = pick(rng, numbers);
+  const pairs = naturalPitchPairsSpanning(diatonicPitchesInComfortableRange(clef, grade), intervalNumber - 1);
+  if (pairs.length === 0) {
+    throw new Error(`interval_naming_stave_input: no natural pair spans a ${intervalNumber} on the ${clef} stave`);
+  }
+  const [lower, upper] = pick(rng, pairs);
+  const targetDur = pick(rng, [...scope.noteValues]);
+
+  return staveInputInstance(grade, idSeed, {
+    clef,
+    keySig: null,
+    lowerDisplay: lower,
+    targetPitch: upper,
+    targetDur,
+    intervalNumber,
+    keyName: null,
+    tag: intervalAnyAtom(intervalNumber),
+  });
+}
+
+function buildStaveInput(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...scope.clefs]);
+
+  // Each branch reads the lesson's own atom family, so credit lands on the atom
+  // the lesson declares. The bare draw below is grade 1's, left byte-identical.
+  const keyTargets = intervalKeyTargets(atoms, scope);
+  if (keyTargets.length > 0) {
+    return buildAnchoredStaveInput(rng, scope, clef, grade, idSeed, keyTargets, null, (keySig) => intervalKeyAtom(keySig));
+  }
+  const anyTargets = intervalAnyTargets(atoms);
+  if (anyTargets.length > 0) {
+    return buildAnyNotesStaveInput(rng, scope, clef, grade, idSeed, anyTargets);
+  }
+  const typeTargets = intervalTypeTargets(atoms);
+  if (typeTargets.length > 0) {
+    const keySigs = [...scope.keysMajor.map((k) => `${k}_major`), ...scope.keysMinor.map((k) => `${k}_minor`)];
+    return buildAnchoredStaveInput(rng, scope, clef, grade, idSeed, keySigs, typeTargets, (_k, n) => intervalTypeAtom(n));
+  }
+
+  const key = pick(rng, [...scope.keysMajor]);
+  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade);
+  const targetDur = pick(rng, [...scope.noteValues]);
+
+  return staveInputInstance(grade, idSeed, {
+    clef,
+    keySig: `${key}_major`,
+    lowerDisplay: spellInKey(lowerPitch, key),
+    targetPitch: spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key),
+    targetDur,
+    intervalNumber,
+    keyName: null,
+    tag: intervalAtom(intervalNumber),
+  });
+}
+
 export const intervalNamingStaveInput: Generator = (opts: GenerateOptions) =>
-  generateValidated(opts.seed, (candidateSeed) => buildStaveInput(candidateSeed, opts.grade, opts.seed));
+  generateValidated(opts.seed, (candidateSeed) => buildStaveInput(candidateSeed, opts.grade, opts.seed, opts.atoms));

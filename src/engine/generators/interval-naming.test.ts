@@ -231,11 +231,29 @@ describe('intervalNaming — grade-1 byte-identity (U3 hard core): the else-bran
     return instances.map(({ feedback: { by_distractor: _dropped, ...feedback }, ...rest }) => ({ ...rest, feedback }));
   }
 
+  /** `answer.accepted_alternatives` (chromaticly-lgi) is additive for the same
+   *  reason: it is derived from the canonical pitch, which the fixture pins.
+   *  Under a key signature the accidental-free spelling is the SAME note, so
+   *  accepting it fixes a wrong rejection rather than moving the draw. */
+  function withoutAlternatives(instances: ReturnType<typeof intervalNamingStaveInput>[]) {
+    return instances.map(({ answer: { accepted_alternatives: _dropped, ...answer }, ...rest }) => ({ ...rest, answer }));
+  }
+
   test('seeds 0..19 deep-equal the pre-U3 fixture, both templates — independent of the seed-stability .snap net', () => {
     const mcqNow = Array.from({ length: 20 }, (_, seed) => intervalNaming({ grade: 1, seed, atoms: [] }));
     const staveNow = Array.from({ length: 20 }, (_, seed) => intervalNamingStaveInput({ grade: 1, seed, atoms: [] }));
     expect(withoutMisconceptions(mcqNow)).toEqual(preChangeGrade1Fixture.mcq);
-    expect(withoutMisconceptions(staveNow)).toEqual(preChangeGrade1Fixture.stave);
+    expect(withoutAlternatives(withoutMisconceptions(staveNow))).toEqual(
+      withoutAlternatives(preChangeGrade1Fixture.stave as ReturnType<typeof intervalNamingStaveInput>[]),
+    );
+  });
+
+  test('the alternative is the same note without its key-signature accidental, never a second note', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      const { answer } = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
+      const { pitch } = answer.canonical as { pitch: string };
+      expect(answer.accepted_alternatives).toEqual(/[#b]/.test(pitch) ? [pitch.replace(/[#b]/g, '')] : []);
+    }
   });
 
   test('the stripped field is the only difference — the fixture still pins everything else about grade 1', () => {

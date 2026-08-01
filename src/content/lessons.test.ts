@@ -457,11 +457,13 @@ describe('transposition-3 lesson (U8)', () => {
 // single-template discipline (D7 — the stave-input variant stays number-only
 // and is deliberately not bundled in) and grade-gated atoms (D4).
 describe('intervals-3 lesson (U4, D8)', () => {
-  test('strand is intervals and it carries the single template interval_naming (D7 single-template discipline)', () => {
+  // The write-the-note shape reads intervals-3's own interval_type atoms
+  // (chromaticly-lgi), so naming and writing an interval now alternate.
+  test('strand is intervals and it pairs naming with writing', () => {
     const lesson = lessonById('intervals-3');
     expect(lesson).toBeTruthy();
     expect(lesson!.strand).toBe('intervals');
-    expect(lesson!.templates).toEqual(['interval_naming']);
+    expect(lesson!.templates).toEqual(['interval_naming', 'interval_naming_stave_input']);
   });
 
   test('every intervals-3 atom resolves at grade 3 and throws at grade 2 (D4 namingStyle gate)', () => {
