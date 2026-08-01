@@ -296,6 +296,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
       'ledger-lines-2',
       'time-signatures-2',
       'triplets-2',
+      'grouping-2',
       'tempo-2',
       'expression-2',
       'signs-2',
@@ -338,6 +339,7 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
       'compound-time-3',
       'compound-bars-3',
       'rests-3',
+      'grouping-3',
       'intervals-3',
       'ledger-lines-3',
       'music-in-context-3',
@@ -617,9 +619,10 @@ describe('rests-3 lesson (chromaticly-gni)', () => {
     expect(lesson().templates).toEqual(['rest_completion']);
   });
 
-  test('the chain splices compound-bars-3 -> rests-3 -> intervals-3', () => {
+  test('the chain splices compound-bars-3 -> rests-3 -> grouping-3', () => {
     expect(lessonById('compound-bars-3')!.unlocks).toBe('rests-3');
-    expect(lesson().unlocks).toBe('intervals-3');
+    expect(lesson().unlocks).toBe('grouping-3');
+    expect(lessonById('grouping-3')!.unlocks).toBe('intervals-3');
   });
 
   test('the demisemiquaver rest resolves at grade 3 but not grade 2', () => {

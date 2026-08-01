@@ -590,6 +590,42 @@
         "smartTip": "Count the beats. Five or seven means irregular — then look at the beams to see how they group.",
         "didYouKnow": "Irregular metres are the normal case in Balkan dance music, where a 7/8 grouped 2+2+3 has been danced for centuries. Western notation only needed a name for them once composers started borrowing them."
       },
+      "unlocks": "grouping-5"
+    },
+    {
+      "id": "grouping-5",
+      "title": "Grouping in irregular time",
+      "strand": "rhythm",
+      "atoms": [
+        "grouping:5/8",
+        "grouping:7/8"
+      ],
+      "templates": [
+        "note_grouping"
+      ],
+      "worked_example": {
+        "template_id": "note_grouping",
+        "grade": 5,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "An irregular bar has no equal beats, so the beams define the groups",
+          "5/8 is normally grouped 3 + 2 and 7/8 as 3 + 2 + 2",
+          "Regrouping the same notes changes how the bar is felt"
+        ],
+        "concept": {
+          "title": "The beams are the metre",
+          "body": "Five and seven do not divide into equal beats, so an irregular bar has to say how it is grouped, and the beams are how it says it. A bar of 5/8 is normally written as a group of three quavers followed by a group of two, and 7/8 as three then two then two. Other readings exist, and a composer who wants 2 + 3 writes the beams that way. That is the point: in irregular time the grouping is not implied by the time signature the way it is in 3/4, so nothing but the beaming tells a player where the accents fall.",
+          "example": {
+            "template_id": "note_grouping",
+            "grade": 5,
+            "seed": 11
+          }
+        },
+        "smartTip": "Read the beams before you play. In an irregular metre they are the only thing that fixes the accents.",
+        "didYouKnow": "Bulgarian and Greek dance music is full of 7/8. Players name the groups aloud, calling them long-short-short rather than counting to seven."
+      },
       "unlocks": "irregular-divisions-5"
     },
     {

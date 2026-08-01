@@ -78,6 +78,8 @@ const GRADE_5_ONLY_TEMPLATE_IDS = [
 // rest_completion (chromaticly-gni) joins them: it needs rest:<dur> atoms (throws
 // without one) and is valid from grade 1 up; which rest values are in scope is a
 // curriculum-layer gate (assertAtomResolves reading scope.rests), not generator-level.
+// note_grouping (chromaticly-18o) joins them: it needs a grouping:<sig> atom and
+// runs at every grade, gated only by which signature the grade can render.
 const ATOM_REQUIRED_TEMPLATE_IDS = [
   'anacrusis_recognition',
   'chromatic_scale',
@@ -90,6 +92,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'rest_completion',
   'major_scale_steps',
   'tie_dot_value',
+  'note_grouping',
 ];
 
 describe('GENERATORS registry', () => {

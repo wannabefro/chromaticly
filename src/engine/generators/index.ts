@@ -20,6 +20,7 @@ import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { metreClassification } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
+import { noteGrouping } from './note-grouping';
 import { modeSwap } from './mode-swap';
 import { noteNaming } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
@@ -55,6 +56,7 @@ export const GENERATORS: Record<string, Generator> = {
   triplet_recognition: tripletRecognition,
   major_scale_steps: majorScaleSteps,
   tie_dot_value: tieDotValue,
+  note_grouping: noteGrouping,
   note_value_compare: noteValueCompare,
   music_in_context: findTheBar,
   octave_transposition: octaveTransposition,

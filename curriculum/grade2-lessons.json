@@ -306,6 +306,43 @@
         "smartTip": "Count the beat, not the notes. Three triplet quavers take exactly as long as two ordinary ones.",
         "didYouKnow": "Playing a triplet against a duplet in the other hand is called a cross-rhythm. Brahms wrote whole movements on it, and pianists still count them out loud."
       },
+      "unlocks": "grouping-2"
+    },
+    {
+      "id": "grouping-2",
+      "title": "Grouping in the new time signatures",
+      "strand": "rhythm",
+      "atoms": [
+        "grouping:2/2",
+        "grouping:3/2",
+        "grouping:3/8"
+      ],
+      "templates": [
+        "note_grouping"
+      ],
+      "worked_example": {
+        "template_id": "note_grouping",
+        "grade": 2,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "The beat, not the bottom number, decides where beams break",
+          "A minim beat holds four quavers under one beam",
+          "In 3/8 the quaver is the beat, so semiquavers beam in pairs"
+        ],
+        "concept": {
+          "title": "The beat decides the beams",
+          "body": "Grouping follows the beat, and the new time signatures move the beat. In 2/2 and 3/2 the beat is a minim, so four quavers fit inside one beat and are beamed as one group; writing them as two pairs would show a crotchet beat that is not there. In 3/8 the beat moves the other way: the quaver is the beat, so quavers are beamed in threes across the bar and semiquavers beam in pairs, two to each quaver beat. The notes on the page can be identical in two metres. Only the beams tell the reader which beat to feel.",
+          "example": {
+            "template_id": "note_grouping",
+            "grade": 2,
+            "seed": 11
+          }
+        },
+        "smartTip": "Work out the beat from the bottom number first. Then beam one beat at a time.",
+        "didYouKnow": "Copyists call a wrongly beamed bar a \"false grouping\". It is the fastest way to make a simple rhythm unreadable at sight."
+      },
       "unlocks": "tempo-2"
     },
     {

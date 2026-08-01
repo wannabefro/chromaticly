@@ -97,6 +97,11 @@ export function metreAtom(sig: string): string {
   return `metre:${sig}`;
 }
 
+/** Grouping is metre-specific, so the signature is the skill (chromaticly-18o). */
+export function groupingAtom(sig: string): string {
+  return `grouping:${sig}`;
+}
+
 /** Music in Context find-the-bar (302.4) — one atom per bar property the learner
  *  can be asked to spot, so mastery tracks "can find the highest note" separately
  *  from "can find the longest". */

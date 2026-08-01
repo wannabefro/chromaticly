@@ -375,6 +375,43 @@
         "smartTip": "Top number first: 2/3/4 is simple, 6/9/12 is compound (divide by three for the beat count). The bottom number is only which note gets the beat.",
         "didYouKnow": "Fast movements are sometimes written in 6/16 so the page looks less crowded, while slow, broad music may use 6/4 — but both are still a lilting compound duple, exactly like 6/8."
       },
+      "unlocks": "grouping-4"
+    },
+    {
+      "id": "grouping-4",
+      "title": "Grouping in the wider metres",
+      "strand": "rhythm",
+      "atoms": [
+        "grouping:2/8",
+        "grouping:4/8",
+        "grouping:6/4"
+      ],
+      "templates": [
+        "note_grouping"
+      ],
+      "worked_example": {
+        "template_id": "note_grouping",
+        "grade": 4,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "The rule never changes: one beamed group per beat",
+          "In 2/8 and 4/8 the quaver is the beat, so semiquavers beam in pairs",
+          "In 6/4 the dotted minim is the beat, so quavers beam in sixes"
+        ],
+        "concept": {
+          "title": "One rule, any denominator",
+          "body": "Grade 4 opens metres with quaver and minim beats, and the grouping rule survives all of them unchanged: one beamed group per beat. In 2/8 and 4/8 the beat is a quaver, so semiquavers beam in pairs and each pair is a beat. In 6/4 the beat is a dotted minim, three crotchets long, so a bar of quavers beams as two groups of six. The groups get longer or shorter, but a reader still counts beats by counting beams. Work out the beat from the time signature, then beam that much and break.",
+          "example": {
+            "template_id": "note_grouping",
+            "grade": 4,
+            "seed": 11
+          }
+        },
+        "smartTip": "Find the beat, then beam exactly one beat at a time. The denominator alone never tells you.",
+        "didYouKnow": "6/4 was standard in Renaissance dance music and came back through Holst and Stravinsky, who liked its long, slow-turning beat."
+      },
       "unlocks": "intervals-4"
     },
     {

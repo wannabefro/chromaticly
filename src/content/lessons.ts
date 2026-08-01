@@ -140,6 +140,15 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'grouping': {
+      if (parts.length !== 1) throw new Error(`lessons: malformed grouping atom "${atom}"`);
+      const [sig] = parts;
+      // Same wider set as `metre`: the emitter beams every metre-renderable signature.
+      if (!scopeForGrade(grade).timeSignatures.includes(sig) || !metreRenderableTimeSignatures(grade).includes(sig)) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} time signature`);
+      }
+      return;
+    }
     case 'anacrusis': {
       if (parts.length !== 1) throw new Error(`lessons: malformed anacrusis atom "${atom}"`);
       const [sig] = parts;

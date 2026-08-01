@@ -146,6 +146,9 @@ export interface Music {
    *  short first bar in the event stream), so this flag cannot change
    *  emitted abc — it only lets the generator/validator declare intent. */
   anacrusis?: boolean;
+  /** Beam-group spans in crotchet-beats, overriding the metre's own grouping.
+   *  Only note_grouping sets it, to render a deliberately wrong beaming. */
+  beam_groups?: number[];
   /** When true, render on a single-line staff with no clef (`clef=none
    *  stafflines=1`) — a "pure rhythm" glyph where pitch is irrelevant, used for
    *  the musical-sum operands and their note-value answer options (chromaticly-f9k).

@@ -132,6 +132,9 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'triplet_recognition',
       'major_scale_steps',
       'tie_dot_value',
+      // note_grouping — needs a grouping:<sig> atom, and which signatures a
+      // grade may draw is a curriculum-layer gate, same shape as the above.
+      'note_grouping',
       // chord_recognition (fyu.10) — same shape as chromatic_scale/
       // degree_name_id: draws from scope.keysMajor (present at every grade),
       // so "Grade 4" is a curriculum-layer-only gate (assertAtomResolves).

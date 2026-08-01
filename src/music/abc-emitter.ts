@@ -254,8 +254,8 @@ export function irregularGrouping(timeSig: string | null | undefined): number[] 
  *  group it belongs to. Regular metres divide by a constant; irregular ones walk
  *  their group spans. Past the last group the index keeps rising, so an
  *  overfull bar never silently beams its tail into the final group. */
-function beamGrouper(timeSig: string | null | undefined): (beatPos: number) => number {
-  const groups = irregularGrouping(timeSig);
+function beamGrouper(timeSig: string | null | undefined, override?: number[]): (beatPos: number) => number {
+  const groups = override ?? irregularGrouping(timeSig);
   if (!groups) {
     const unit = beatUnit(timeSig);
     return (beatPos) => Math.floor((beatPos + EPS) / unit);
@@ -362,7 +362,7 @@ function grandStaffAbc(music: Music, staves: Clef[], keyAcc: Record<string, Acci
 /** Project a Music object to a complete, renderable ABC tune string. */
 export function musicToAbc(music: Music): string {
   const keyAcc = keyAccidentals(music.key_sig);
-  const groupAt = beamGrouper(music.time_sig);
+  const groupAt = beamGrouper(music.time_sig, music.beam_groups);
 
   if (music.staves) {
     return grandStaffAbc(music, music.staves, keyAcc, groupAt);

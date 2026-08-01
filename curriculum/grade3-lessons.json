@@ -495,6 +495,43 @@
         "smartTip": "Count the hooks: one hook is a quaver rest, two a semiquaver, three a demisemiquaver — the same order as the notes' tails.",
         "didYouKnow": "The demisemiquaver rest packs three hooks onto a tiny symbol — beyond it lie the hemidemisemiquaver rest and its four hooks, rarely seen outside virtuoso flourishes."
       },
+      "unlocks": "grouping-3"
+    },
+    {
+      "id": "grouping-3",
+      "title": "Grouping in compound time",
+      "strand": "rhythm",
+      "atoms": [
+        "grouping:6/8",
+        "grouping:9/8",
+        "grouping:12/8"
+      ],
+      "templates": [
+        "note_grouping"
+      ],
+      "worked_example": {
+        "template_id": "note_grouping",
+        "grade": 3,
+        "seed": 3
+      },
+      "teach": {
+        "objectives": [
+          "Compound time beams its quavers in threes, one group per dotted beat",
+          "6/8 and 3/4 hold the same six quavers and differ only in the beams",
+          "The number of beams equals the number of beats"
+        ],
+        "concept": {
+          "title": "Threes, not twos",
+          "body": "A compound beat is a dotted crotchet, which divides into three quavers rather than two. So 6/8 beams its six quavers as two groups of three, 9/8 as three groups, and 12/8 as four. This is the clearest difference between 6/8 and 3/4 on the page: both bars hold six quavers and last the same time, but 3/4 beams them in twos for three crotchet beats and 6/8 in threes for two dotted beats. Nothing else in the notation distinguishes them, so the beams carry the whole meaning. Count the groups and you have counted the beats.",
+          "example": {
+            "template_id": "note_grouping",
+            "grade": 3,
+            "seed": 11
+          }
+        },
+        "smartTip": "Count the beamed groups, not the quavers. Each group is one dotted beat.",
+        "didYouKnow": "The 6/8 and 3/4 pairing is the whole joke of \"America\" in West Side Story, which alternates the two on identical notes."
+      },
       "unlocks": "intervals-3"
     },
     {
