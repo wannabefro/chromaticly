@@ -28,6 +28,10 @@ appId: host.exp.Exponent
 
 # The lane opens on the learner's own grade, so pick the lesson's grade first.
 - tapOn: { id: "lane-other-grades", optional: true }
+- extendedWaitUntil:
+    visible: { id: "lane-grade-option-${GRADE}" }
+    timeout: 10000
+    optional: true
 - tapOn: { id: "lane-grade-option-${GRADE}", optional: true }
 - scrollUntilVisible:
     element: { id: "unit-row-${LESSON}" }
