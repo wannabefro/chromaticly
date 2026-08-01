@@ -37,7 +37,7 @@ import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLa
 import { displayNote, ENHARMONIC_PARTNER } from './generators/enharmonic-recognition';
 import { classifyMetre, isCompoundTimeSignature } from './metre';
 import { musicEventUnits } from './music-event-units';
-import { comfortablePitchRange, pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
+import { comfortablePitchRange, diatonicPitchesInRange, pitchRange, renderableTimeSignatures, scopeForGrade } from './scope';
 import type { GradeScope } from './scope';
 import type { ExerciseInstance } from './schema';
 import { ExerciseInstanceSchema } from './schema';
@@ -270,6 +270,34 @@ type TemplateHook = (instance: ExerciseInstance) => string[];
 // chromaticly-9ig: also accept double-accidental note names — canonical
 // "F double sharp" plus the accepted alternatives F##, Fx, F𝄪, Bbb, B𝄫.
 const NOTE_NAME_RE = /^[A-G]\s*(double\s+(sharp|flat)|##|bb|𝄪|𝄫|x|flat|sharp|#|b|♭|♯)?$/i;
+
+/** The stave_input variant answers with the SEMANTIC target { pitch, dur }
+ *  (AD5), so it gets its own hook rather than the note-name regex above. */
+function noteNamingStaveInputHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  if (!canonical || typeof canonical !== 'object' || Array.isArray(canonical)) {
+    return ['note_naming_stave_input: canonical answer must be a {pitch, dur} object'];
+  }
+  const scope = scopeForGrade(inst.grade);
+  const { pitch, dur } = canonical as { pitch?: unknown; dur?: unknown };
+  const errors: string[] = [];
+  const clef = (inst.interaction.config as { clef?: unknown } | undefined)?.clef;
+  if (typeof clef !== 'string' || !scope.clefs.includes(clef as Clef)) {
+    errors.push('note_naming_stave_input: interaction.config.clef is missing or outside the grade');
+  }
+  if (typeof pitch !== 'string' || !/^[A-G](#|b)?-?\d+$/.test(pitch)) {
+    errors.push('note_naming_stave_input: canonical pitch is not a placeable scientific pitch');
+  } else if (typeof clef === 'string') {
+    const natural = pitch.replace(/[#b]/g, '');
+    if (!diatonicPitchesInRange(clef as Clef, inst.grade).includes(natural)) {
+      errors.push(`note_naming_stave_input: ${natural} has no slot on the ${clef} stave at grade ${inst.grade}`);
+    }
+  }
+  if (typeof dur !== 'string' || !(scope.noteValues as readonly string[]).includes(dur)) {
+    errors.push('note_naming_stave_input: canonical duration is outside the grade scope');
+  }
+  return errors;
+}
 
 function noteNamingHook(inst: ExerciseInstance): string[] {
   const errors: string[] = [];
@@ -1923,6 +1951,7 @@ function restCompletionHook(inst: ExerciseInstance): string[] {
 
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
+  note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,
   interval_naming_stave_input: intervalNamingHook,
   key_signature_id: keySignatureIdHook,

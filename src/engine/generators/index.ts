@@ -22,7 +22,7 @@ import { metreClassification } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
 import { noteGrouping } from './note-grouping';
 import { modeSwap } from './mode-swap';
-import { noteNaming } from './note-naming';
+import { noteNaming, noteNamingStaveInput } from './note-naming';
 import { noteValueCompare } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
 import { ornamentRecognition } from './ornament-recognition';
@@ -38,6 +38,7 @@ import type { GenerateOptions, Generator } from './types';
 
 export const GENERATORS: Record<string, Generator> = {
   note_naming: noteNaming,
+  note_naming_stave_input: noteNamingStaveInput,
   interval_naming: intervalNaming,
   interval_naming_stave_input: intervalNamingStaveInput,
   rhythm_sum: rhythmSum,

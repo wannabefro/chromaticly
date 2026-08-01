@@ -14,6 +14,7 @@ import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
 import { noteReadAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
+import { diatonicPitchesInRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { naturalPitchAtOrdinal, pitchOrdinal, type Letter } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -197,3 +198,43 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const noteNaming: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Stave-input variant (chromaticly-lgi): the note is named, the learner places it.
+
+function buildStaveInput(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const { clef, pitch, letter, accidental } = pick(rng, noteCandidates(atoms));
+  if (accidental === 'double_sharp' || accidental === 'double_flat') {
+    throw new Error(`note_naming_stave_input: ${pitch} needs a double accidental the stave input cannot place`);
+  }
+  const natural = pitch.replace(/[#b]/g, '');
+  if (!diatonicPitchesInRange(clef, grade).includes(natural)) {
+    throw new Error(`note_naming_stave_input: ${natural} is outside the ${clef} slot range at grade ${grade}`);
+  }
+  const dur = pick(rng, [...scopeForGrade(grade).noteValues]);
+  const canonical = formatNoteName(letter, accidental);
+
+  return {
+    id: makeInstanceId('note_naming_stave_input', grade, idSeed),
+    template_id: 'note_naming_stave_input',
+    grade,
+    strand: 'pitch',
+    prompt: `Write ${canonical} on the stave, as a ${dur}.`,
+    stimulus: { music: null, text: null },
+    interaction: { type: 'stave_input', config: { clef } },
+    answer: { canonical: { pitch, dur }, accepted_alternatives: [] },
+    distractors: [],
+    hints: [
+      'Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Not quite — count the lines and spaces to ${letter}, then add the accidental and choose the ${dur}.`,
+    },
+    srs_tags: [noteReadAtom(clef, pitch)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const noteNamingStaveInput: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildStaveInput(candidateSeed, opts.grade, opts.seed, opts.atoms));

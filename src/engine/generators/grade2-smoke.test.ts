@@ -85,6 +85,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
   test('the ledger below covers every GENERATORS entry (no template silently unpinned)', () => {
     const covered = [
       'note_naming',
+      'note_naming_stave_input',
       'interval_naming',
       'interval_naming_stave_input',
       'rhythm_sum',

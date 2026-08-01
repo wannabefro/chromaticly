@@ -30,7 +30,10 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
   };
 }
 
-const lesson = LESSONS[0];
+// These tests press MCQ options, so the fixture must be an all-mcq lesson.
+const lesson = LESSONS_BY_GRADE[1].find((l) =>
+  l.templates.every((t) => generate(t, { grade: l.grade, seed: 0, atoms: l.atoms }).interaction.type === 'mcq'),
+)!;
 
 // Real Grade 1 lessons now open on the teach phase (302.3); the set begins once
 // the learner taps "Start exercises". Synthetic lessons with no teach content
@@ -42,7 +45,9 @@ async function startExercises(getByTestId: (id: string) => any) {
 }
 
 async function answerCorrect(getByTestId: (id: string) => any, seed: number) {
-  const instance = generate(lesson.templates[0], { grade: 1, seed, atoms: lesson.atoms });
+  // SetRunner cycles the lesson's templates by item index, and `seed` is that index.
+  const templateId = lesson.templates[seed % lesson.templates.length];
+  const instance = generate(templateId, { grade: 1, seed, atoms: lesson.atoms });
   const index = assembleOptions(instance).findIndex((o) => o.correct);
   await act(async () => {
     fireEvent.press(getByTestId(`option-${index}`));

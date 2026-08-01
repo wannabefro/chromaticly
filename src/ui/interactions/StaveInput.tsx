@@ -113,7 +113,9 @@ const SLOT_MARGIN_RIGHT = 22; // room for the ledger lines the last slots overha
 
 export function StaveInput({ instance, response, graded, strand, onResponseChange }: InteractionComponentProps<StaveInputResponse>) {
   const music = instance.stimulus.music as Music | null;
-  const clef: Clef = music?.clef ?? 'treble';
+  // config.clef wins: a "write this named note" item has no stimulus notation.
+  const configClef = (instance.interaction.config as { clef?: Clef } | undefined)?.clef;
+  const clef: Clef = configClef ?? music?.clef ?? 'treble';
   const keySig: KeySig = music?.key_sig ?? null;
   const [selectedDuration, setSelectedDuration] = useState<Duration>('crotchet');
   const [cardWidth, setCardWidth] = useState(0);

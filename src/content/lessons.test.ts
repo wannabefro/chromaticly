@@ -383,11 +383,11 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
 // discipline (mirrors intervals-3, D7) and grade-gated ledger-line atoms
 // (the pitches only resolve once GRADE_3_SCOPE.pitchRanges widens past grade 2).
 describe('ledger-lines-3 lesson (chromaticly-1v5.6)', () => {
-  test('strand is pitch and it carries the single template note_naming', () => {
+  test('strand is pitch, and both note-reading shapes are served (chromaticly-lgi)', () => {
     const lesson = lessonById('ledger-lines-3');
     expect(lesson).toBeTruthy();
     expect(lesson!.strand).toBe('pitch');
-    expect(lesson!.templates).toEqual(['note_naming']);
+    expect(lesson!.templates).toEqual(['note_naming', 'note_naming_stave_input']);
   });
 
   test('every ledger-lines-3 atom resolves at grade 3', () => {

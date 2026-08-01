@@ -33364,6 +33364,2181 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte note_naming_stave_input @ accidentals instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:F#3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s1",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:Bb4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s2",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:Bb4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:F#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "F#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:F#3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C sharp on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:C#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C sharp on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:C#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:Bb4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:Bb4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "Bb2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:Bb2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "Bb2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:Bb2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "F#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:F#3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C sharp on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:C#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C sharp on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:C#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C sharp on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:C#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "F#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:F#3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "F#3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:bass:F#3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "C#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C sharp on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:C#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "F#5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F sharp on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:F#5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "Bb4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B flat on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:Bb4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte note_naming_stave_input @ bass-notes instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s1",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:bass:E3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s2",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:E3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "G2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s3",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:G2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "B2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s5",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:B2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "C3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s6",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:bass:C3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s7",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:D3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s8",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:D3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:D4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:D4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s12",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:A2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "C3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s13",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:bass:C3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "A2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s14",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:A2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:bass:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "B2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s17",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:bass:B2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "G2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s18",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:G2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s19",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:C3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte note_naming_stave_input @ treble-notes instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s0",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:D5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s1",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:B4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s2",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:C5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "D5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s4",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:D5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "B4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:B4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:A4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s9",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:A5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "A5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s10",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:A5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s11",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:C5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:F4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:A4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "F4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:F4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "E5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s15",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:E5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "F5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s16",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:F5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semibreve.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "A4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the quaver.",
+    },
+    "grade": 1,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g1:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:A4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte note_value_compare (rotation) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -66953,6 +69128,731 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     },
     "strand": "pitch",
     "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte note_naming_stave_input @ ledger-lines-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the minim.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:C2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "C6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s1",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:C6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "C6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the minim.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s2",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:C6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:C2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "B5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:B5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "B5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:B5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "C6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the crotchet.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:C6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "C6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the crotchet.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:C6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the minim.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:bass:C2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "B5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semibreve.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:B5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:D2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "D2",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the semibreve.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:bass:D2",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "B5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semibreve.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:B5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "B5",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+    },
+    "grade": 2,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g2:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:B5",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
   },
 ]
 `;
@@ -102769,6 +105669,731 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     },
     "strand": "pitch",
     "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-3 lesson-derived generator output is pinned byte-for-byte note_naming_stave_input @ ledger-lines-3 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "A1",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s0",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:A1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "A1",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s1",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:bass:A1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A1",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s2",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:bass:A1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s3",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:treble:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "B1",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s4",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:bass:B1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the minim.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s5",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:D6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "E6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s6",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:treble:E6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s7",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:E6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s8",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:E6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s9",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s10",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "A1",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s11",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:bass:A1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the minim.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s12",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:D6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "E6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the semibreve.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s13",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:treble:E6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "D6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the quaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s14",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:treble:D6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "B1",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s15",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:bass:B1",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "F4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semibreve.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s16",
+    "interaction": {
+      "config": {
+        "clef": "bass",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:bass:F4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "D6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the minim.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s17",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:treble:D6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s18",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "E6",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 3,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g3:s19",
+    "interaction": {
+      "config": {
+        "clef": "treble",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:treble:E6",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
   },
 ]
 `;
@@ -161663,6 +165288,731 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "pitch",
     "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_naming_stave_input @ alto-reading-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s0",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:alto:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "breve",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the breve.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s1",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a breve.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s2",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the crotchet.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s3",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:alto:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s4",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:alto:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s5",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "breve",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the breve.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s6",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a breve.",
+    "srs_tags": [
+      "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s7",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s8",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s9",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:alto:D4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "D4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s10",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:D4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s11",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:alto:G4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the crotchet.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s12",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:alto:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the semibreve.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s13",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s14",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:alto:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s15",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semibreve.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s16",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s17",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s18",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:alto:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s19",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
   },
 ]
 `;
@@ -228633,6 +232983,731 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     },
     "strand": "pitch",
     "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte note_naming_stave_input @ tenor-reading-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s0",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:tenor:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "breve",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the breve.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s1",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a breve.",
+    "srs_tags": [
+      "note_read:tenor:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s2",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:tenor:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s3",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:tenor:D3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s4",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:tenor:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s5",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:tenor:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "breve",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the breve.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s6",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a breve.",
+    "srs_tags": [
+      "note_read:tenor:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the quaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s7",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:tenor:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "A3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the quaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s8",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write A on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:tenor:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s9",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:tenor:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s10",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:tenor:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s11",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:tenor:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s12",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a crotchet.",
+    "srs_tags": [
+      "note_read:tenor:D3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semibreve.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s13",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:tenor:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s14",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:tenor:D3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the quaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s15",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:tenor:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semibreve.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s16",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:tenor:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s17",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:tenor:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "D3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s18",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write D on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:tenor:D3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "F3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s19",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write F on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:tenor:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
   },
 ]
 `;
