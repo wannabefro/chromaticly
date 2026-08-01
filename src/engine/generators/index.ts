@@ -2,7 +2,7 @@
 
 import type { ExerciseInstance } from '../schema';
 import { addTimeSignature, timeSignatureMatch } from './add-time-signature';
-import { anacrusisRecognition } from './anacrusis-recognition';
+import { anacrusisFinalBar, anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { chordFromName, chordRecognition } from './chord-recognition';
 import { clefEquivalence } from './clef-equivalence';
@@ -54,6 +54,7 @@ export const GENERATORS: Record<string, Generator> = {
   metre_classification: metreClassification,
   metre_from_class: metreFromClass,
   anacrusis_recognition: anacrusisRecognition,
+  anacrusis_final_bar: anacrusisFinalBar,
   cadence_recognition: cadenceRecognition,
   scale_degree_id: scaleDegreeId,
   scale_degree_stave_input: scaleDegreeStaveInput,

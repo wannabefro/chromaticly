@@ -91,6 +91,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'ornament_effect',
   'interval_compound_reduce',
   'time_signature_match',
+  'anacrusis_final_bar',
   'instrument_knowledge',
   'enharmonic_recognition',
   'rest_completion',

@@ -69,6 +69,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   metre_from_class: 3,
   time_signature_match: 2,
   anacrusis_recognition: 3,
+  anacrusis_final_bar: 3,
   octave_transposition: 3,
   chromatic_scale: 4,
   degree_name_id: 4,
@@ -342,6 +343,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
   {
     label: 'anacrusis_recognition (anacrusis-3, pre-lesson pin, U4)',
     templateId: 'anacrusis_recognition',
+    atoms: ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'],
+  },
+  {
+    label: 'anacrusis_final_bar (anacrusis-3, chromaticly-lgi)',
+    templateId: 'anacrusis_final_bar',
     atoms: ['anacrusis:2/4', 'anacrusis:3/4', 'anacrusis:4/4'],
   },
   {

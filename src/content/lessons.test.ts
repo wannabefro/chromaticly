@@ -411,11 +411,13 @@ describe('ledger-lines-3 lesson (chromaticly-1v5.6)', () => {
 // The Grade 3 anacrusis slice: single-template discipline (mirrors
 // intervals-3/ledger-lines-3, D7).
 describe('anacrusis-3 lesson (chromaticly-1v5.3)', () => {
-  test('strand is rhythm and it carries the single template anacrusis_recognition, unlocking transposition-3 (D10 merge rule)', () => {
+  // Counting the upbeat and completing the closing bar are the two halves of
+  // the same ABRSM rule (chromaticly-lgi), so the lesson now alternates them.
+  test('strand is rhythm and it pairs both halves of the anacrusis rule, unlocking transposition-3 (D10 merge rule)', () => {
     const lesson = lessonById('anacrusis-3');
     expect(lesson).toBeTruthy();
     expect(lesson!.strand).toBe('rhythm');
-    expect(lesson!.templates).toEqual(['anacrusis_recognition']);
+    expect(lesson!.templates).toEqual(['anacrusis_recognition', 'anacrusis_final_bar']);
     expect(lesson!.unlocks).toBe('transposition-3');
   });
 

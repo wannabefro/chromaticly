@@ -486,6 +486,52 @@ function timeSignatureMatchHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// The closing bar is deliberately absent here, so anacrusisRecognitionHook's
+// "first + last = one bar" check cannot apply. What this shape must guarantee
+// instead is that the answer IS that missing complement.
+function anacrusisFinalBarHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  const sig = music?.time_sig;
+  if (!music || typeof sig !== 'string') {
+    return ['anacrusis_final_bar: stimulus must carry a time signature'];
+  }
+  if (music.anacrusis !== true || music.time_sig_hidden) {
+    return ['anacrusis_final_bar: stimulus must be marked anacrusis: true with a printed time signature'];
+  }
+  if (isCompoundTimeSignature(sig) || !renderableTimeSignatures(inst.grade).includes(sig)) {
+    return [`anacrusis_final_bar: "${sig}" is not a renderable simple time signature`];
+  }
+
+  const barUnits = barUnitsFor(sig);
+  const totals = splitIntoBarGroups(music.voices[0]?.events ?? []).map(groupUnits);
+  if (totals.length < 2) {
+    return ['anacrusis_final_bar: stimulus must render a pickup bar and at least one full bar'];
+  }
+  const errors: string[] = [];
+  const pickup = totals[0];
+  if (!(pickup > 0 && pickup < barUnits && pickup % 8 === 0)) {
+    errors.push('anacrusis_final_bar: the pickup bar is not a positive whole-beat partial bar');
+  }
+  if (totals.slice(1).some((units) => units !== barUnits)) {
+    errors.push('anacrusis_final_bar: a bar after the pickup is not a full bar for the stimulus time signature');
+  }
+
+  const expected = `${(barUnits - pickup) / 8} beat${(barUnits - pickup) / 8 === 1 ? '' : 's'}`;
+  if (inst.answer.canonical !== expected) {
+    errors.push(`anacrusis_final_bar: canonical "${String(inst.answer.canonical)}" is not the pickup's complement ("${expected}")`);
+  }
+  const seen = new Set<string>([expected]);
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string' || !/^\d+ beats?$/.test(d)) {
+      errors.push(`anacrusis_final_bar: distractor "${String(d)}" is not an "N beat(s)" label`);
+      continue;
+    }
+    if (seen.has(d)) errors.push(`anacrusis_final_bar: distractor "${d}" duplicates another option`);
+    seen.add(d);
+  }
+  return errors;
+}
+
 function extractKeyTonic(raw: string): string | null {
   // Capture the accidental too: a flat/sharp key's tonic is "Bb"/"Eb", not the
   // bare letter — grade-2 keysMajor holds "Bb", so dropping the "b" rejects every
@@ -2040,6 +2086,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   time_signature_match: timeSignatureMatchHook,
   metre_classification: metreClassificationHook,
   anacrusis_recognition: anacrusisRecognitionHook,
+  anacrusis_final_bar: anacrusisFinalBarHook,
   duplet_recognition: dupletRecognitionHook,
   triplet_recognition: tripletRecognitionHook,
   octave_transposition: octaveTranspositionHook,

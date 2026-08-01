@@ -123,3 +123,80 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const anacrusisRecognition: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// --- Final-bar shape (chromaticly-lgi) --------------------------------------
+// Counting an upbeat and completing the closing bar are two halves of the same
+// ABRSM rule, but only one of them is a counting task. Here the closing bar is
+// missing, so the learner has to apply first + last = one full bar.
+
+function buildFinalBar(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const rng = mulberry32(contentSeed);
+  // A 2/4 bar leaves one upbeat length and one complement, both 1 beat, so the
+  // two wrong options would have to be the same. Those metres sit out this shape.
+  const usable = anacrusisSignaturesFromAtoms(atoms).filter((s) => barUnitsFor(s) / 8 >= 3);
+  if (usable.length === 0) {
+    throw new Error('anacrusis_final_bar: needs a metre of 3 beats or more');
+  }
+  const sig = pick(rng, usable);
+  const barUnits = barUnitsFor(sig);
+  const beats = barUnits / 8;
+  const p = pick(rng, pickupBeatChoices(beats));
+
+  const clef = pick(rng, [...scope.clefs]);
+  const pitch = pick(rng, diatonicPitchesInComfortableRange(clef, grade));
+  const pool = scope.noteValues as readonly SimpleDuration[];
+
+  const events: MusicEvent[] = [];
+  const pushBar = (units: number) => {
+    if (events.length > 0) events.push({ type: 'barline', style: 'single' });
+    for (const dur of buildBarDurations(rng, units, pool)) {
+      events.push({ type: 'note', pitch, dur: dur as Duration });
+    }
+  };
+  // No trailing barline, matching anacrusis_recognition's split discipline.
+  pushBar(p * 8);
+  pushBar(barUnits);
+  pushBar(barUnits);
+
+  const answer = beats - p;
+  const wrong = [beats, p].filter((n) => n !== answer);
+  if (wrong.length < 2) {
+    const spare = [answer + 1, answer - 1].find((n) => n > 0 && n < beats && n !== answer && !wrong.includes(n));
+    if (spare === undefined) throw new Error(`anacrusis_final_bar: no second distractor for ${sig} with a ${p}-beat upbeat`);
+    wrong.push(spare);
+  }
+
+  const why = (n: number): string =>
+    n === beats
+      ? `A whole bar of ${sig} is ${beatsLabel(beats)}. The last bar is short by whatever the upbeat borrowed.`
+      : n === p
+        ? 'That repeats the upbeat. The last bar holds what is LEFT of a bar once the upbeat is taken off.'
+        : `That is out by one. Take the ${beatsLabel(p)} of the upbeat off a whole bar of ${sig}.`;
+
+  return {
+    id: makeInstanceId('anacrusis_final_bar', grade, idSeed),
+    template_id: 'anacrusis_final_bar',
+    grade,
+    strand: 'rhythm',
+    prompt: 'This melody ends after the bar shown. How many beats must its last bar hold?',
+    stimulus: {
+      music: { clef, key_sig: null, time_sig: sig, anacrusis: true, voices: [{ events }] },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: beatsLabel(answer), accepted_alternatives: [] },
+    distractors: wrong.map(beatsLabel),
+    hints: [`The upbeat and the last bar together make one whole bar of ${sig}.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `The upbeat takes ${beatsLabel(p)}, so the last bar holds the rest of a bar of ${sig}.`,
+      by_distractor: Object.fromEntries(wrong.map((n) => [beatsLabel(n), why(n)])),
+    },
+    srs_tags: [anacrusisAtom(sig)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const anacrusisFinalBar: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildFinalBar(candidateSeed, opts.grade, opts.seed, opts.atoms));
