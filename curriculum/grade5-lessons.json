@@ -701,6 +701,52 @@
         "smartTip": "Staff first, then stem: treble staff = Soprano or Alto, bass staff = Tenor or Bass. Stem up = the higher voice of that pair (Soprano, Tenor); stem down = the lower voice (Alto, Bass).",
         "didYouKnow": "SATB writing comes from choral music, where the four voice types sit in that same top-to-bottom order — but the same layout works just as well for four-part keyboard harmony with no singers at all."
       },
+      "unlocks": "instruments-5"
+    },
+    {
+      "id": "instruments-5",
+      "title": "Voices, and how instruments sound",
+      "strand": "terms_signs",
+      "atoms": [
+        "voice_type:soprano",
+        "voice_type:mezzo-soprano",
+        "voice_type:contralto",
+        "voice_type:tenor",
+        "voice_type:baritone",
+        "voice_type:bass",
+        "instrument_sound:violin",
+        "instrument_sound:flute",
+        "instrument_sound:oboe",
+        "instrument_sound:clarinet",
+        "instrument_sound:trumpet",
+        "instrument_sound:timpani"
+      ],
+      "templates": [
+        "instrument_knowledge"
+      ],
+      "worked_example": {
+        "template_id": "instrument_knowledge",
+        "grade": 5,
+        "seed": 2
+      },
+      "teach": {
+        "objectives": [
+          "Six voice types: soprano, mezzo-soprano and contralto; tenor, baritone and bass",
+          "Every instrument sets something vibrating, and the family follows from what",
+          "A reed can be single or double, which separates clarinet from oboe"
+        ],
+        "concept": {
+          "title": "What is actually vibrating",
+          "body": "Grade 5 asks two things about performers. The first is the voice types, three to a group and named from the top down: soprano, mezzo-soprano and contralto for the higher voices, tenor, baritone and bass for the lower ones. The second is how an instrument makes its sound, which is also what puts it in a family. A string is set going by a bow or a finger. A woodwind sounds either through a reed, single on the clarinet and double on the oboe and bassoon, or through air directed across an edge, as on the flute, which is why the flute has no reed at all. Brass sounds from the player's own lips buzzing into a mouthpiece. Percussion is struck, and on the timpani what vibrates is a stretched skin.",
+          "example": {
+            "template_id": "instrument_knowledge",
+            "grade": 5,
+            "seed": 6
+          }
+        },
+        "smartTip": "Ask what vibrates. The answer names the mechanism and the family in one go.",
+        "didYouKnow": "The flute counts as woodwind although modern ones are silver. Family is decided by how the sound is made, not by what the tube is made of."
+      },
       "unlocks": "music-in-context-5"
     },
     {

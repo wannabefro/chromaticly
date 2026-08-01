@@ -16,7 +16,16 @@ import { barUnitsFor } from './generators/bar-math';
 import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
-import { CLEFS_DISPLAY, DIRECTION_TABLE, FAMILIES, INSTRUMENT_TABLE } from './generators/instrument-knowledge';
+import {
+  CLEFS_DISPLAY,
+  DIRECTION_TABLE,
+  FAMILIES,
+  INSTRUMENT_TABLE,
+  SOUND_MECHANISMS,
+  SOUND_TABLE,
+  VOICE_RANK_WORD,
+  VOICE_TABLE,
+} from './generators/instrument-knowledge';
 import { ORNAMENT_NAMES, realizeOrnament } from './generators/ornament-recognition';
 import { ORNAMENT_WRITTEN_TO_SIGN } from './atoms';
 import { METRE_REWRITE_PAIR, rescaleDots, type RewriteDirection } from './generators/metre-rewrite';
@@ -1732,8 +1741,45 @@ function instrumentKnowledgeHook(inst: ExerciseInstance): string[] {
     const tag = inst.srs_tags[0];
     const { kind, parts } = parseAtom(tag);
     const [instrument] = parts;
+
+    // Grade 5 (chromaticly-e3z.16): a voice question names no instrument.
+    if (kind === 'voice_type') {
+      if (!(instrument in VOICE_TABLE)) {
+        return [`instrument_knowledge: srs_tag "${tag}" names an unknown voice`];
+      }
+      if (inst.answer.canonical !== instrument) {
+        errors.push(`instrument_knowledge: canonical "${String(inst.answer.canonical)}" is not the tagged voice "${instrument}"`);
+      }
+      const { group, rank } = VOICE_TABLE[instrument];
+      const expected = VOICE_RANK_WORD[rank];
+      if (!inst.prompt.includes(`${expected} ${group} voice`)) {
+        errors.push(`instrument_knowledge: prompt does not ask for the ${expected} ${group} voice`);
+      }
+      const sameGroup = (inst.distractors as string[]).filter((d) => VOICE_TABLE[d]?.group === group);
+      if (sameGroup.length !== 2) {
+        errors.push('instrument_knowledge: voice distractors must include the other two voices of the same group');
+      }
+      return errors;
+    }
+
     if (!(instrument in INSTRUMENT_TABLE)) {
       return [`instrument_knowledge: srs_tag "${tag}" names an unknown instrument`];
+    }
+
+    if (kind === 'instrument_sound') {
+      const mechanism = SOUND_TABLE[instrument];
+      if (inst.answer.canonical !== mechanism) {
+        errors.push(
+          `instrument_knowledge: canonical "${String(inst.answer.canonical)}" does not match ${instrument}'s mechanism "${mechanism}"`,
+        );
+      }
+      for (const d of inst.distractors as string[]) {
+        if (!(SOUND_MECHANISMS as readonly string[]).includes(d)) {
+          errors.push(`instrument_knowledge: distractor "${d}" is not a known sound mechanism`);
+        }
+        if (d === mechanism) errors.push('instrument_knowledge: a sound distractor repeats the answer');
+      }
+      return errors;
     }
 
     if (kind === 'instrument_family') {

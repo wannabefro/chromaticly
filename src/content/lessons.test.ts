@@ -877,14 +877,15 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
 describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
   const lesson = () => lessonById('satb-voice-5')!;
 
-  test('exists, strand pitch, single template satb_voice_recognition, unlocks the context lesson', () => {
+  test('exists, strand pitch, single template satb_voice_recognition, unlocks the voices lesson', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(5);
     expect(lesson().strand).toBe('pitch');
     expect(lesson().templates).toEqual(['satb_voice_recognition']);
     expect(lessonById('irregular-divisions-5')!.unlocks).toBe('satb-voice-5');
-    // music-in-context-5 is now the tail (chromaticly-e3z.13).
-    expect(lesson().unlocks).toBe('music-in-context-5');
+    // instruments-5 sits between it and the tail (chromaticly-e3z.16).
+    expect(lesson().unlocks).toBe('instruments-5');
+    expect(lessonById('instruments-5')!.unlocks).toBe('music-in-context-5');
   });
 
   test('carries the four satb_voice:* atoms, resolving at grade 5 only', () => {

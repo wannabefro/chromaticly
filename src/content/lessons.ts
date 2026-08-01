@@ -14,7 +14,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES } from '../engine/atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, VOICE_TYPES } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
@@ -295,6 +295,20 @@ export function assertAtomResolves(atom: string, grade: number): void {
       // this curriculum currently covers, so there is no scope call here.
       const n = Number(parts[0]);
       if (!Number.isInteger(n) || n < 2 || n > 8) throw new Error(`lessons: atom "${atom}" is not a G1 interval (2..8)`);
+      return;
+    }
+    case 'instrument_sound': {
+      if (parts.length !== 1 || !(INSTRUMENTS as readonly string[]).includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" names an unknown instrument`);
+      }
+      if (grade < 5) throw new Error(`lessons: atom "${atom}" is a grade-5 question`);
+      return;
+    }
+    case 'voice_type': {
+      if (parts.length !== 1 || !(VOICE_TYPES as readonly string[]).includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" names an unknown voice`);
+      }
+      if (grade < 5) throw new Error(`lessons: atom "${atom}" is a grade-5 question`);
       return;
     }
     case 'interval_key': {

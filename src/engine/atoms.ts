@@ -334,6 +334,18 @@ export function instrumentClefAtom(inst: string): string {
  *  kept in sync by hand, guarded by instrument-knowledge.test.ts. */
 export const DIRECTIONS = ['arco', 'pizzicato', 'con sordino', 'senza sordino', 'col legno', 'tremolo'] as const;
 
+/** Grade 5 (chromaticly-e3z.16): how an instrument makes its sound. */
+export function instrumentSoundAtom(inst: string): string {
+  return `instrument_sound:${inst}`;
+}
+
+/** The six voice types Grade 5 names, high to low within each group. */
+export const VOICE_TYPES = ['soprano', 'mezzo-soprano', 'contralto', 'tenor', 'baritone', 'bass'] as const;
+
+export function voiceTypeAtom(voice: string): string {
+  return `voice_type:${voice}`;
+}
+
 /** e.g. directionAtom('arco') -> "direction:arco". */
 export function directionAtom(term: string): string {
   return `direction:${term}`;

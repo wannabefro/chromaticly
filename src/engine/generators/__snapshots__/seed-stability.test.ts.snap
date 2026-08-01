@@ -203463,6 +203463,811 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte instrument_knowledge @ instruments-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "air blown across an edge",
+    },
+    "distractors": [
+      "lips buzzing into a mouthpiece",
+      "a double reed",
+      "a bowed string",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a bowed string": "That is how another instrument sounds. The flute uses air blown across an edge.",
+        "a double reed": "That is how another instrument sounds. The flute uses air blown across an edge.",
+        "lips buzzing into a mouthpiece": "That is how another instrument sounds. The flute uses air blown across an edge.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flute sounds through air blown across an edge.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the flute produce its sound?",
+    "srs_tags": [
+      "instrument_sound:flute",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a bowed string",
+    },
+    "distractors": [
+      "air blown across an edge",
+      "a double reed",
+      "a single reed",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a double reed": "That is how another instrument sounds. The violin uses a bowed string.",
+        "a single reed": "That is how another instrument sounds. The violin uses a bowed string.",
+        "air blown across an edge": "That is how another instrument sounds. The violin uses a bowed string.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The violin sounds through a bowed string.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the violin produce its sound?",
+    "srs_tags": [
+      "instrument_sound:violin",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a bowed string",
+    },
+    "distractors": [
+      "a double reed",
+      "a struck skin",
+      "lips buzzing into a mouthpiece",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a double reed": "That is how another instrument sounds. The violin uses a bowed string.",
+        "a struck skin": "That is how another instrument sounds. The violin uses a bowed string.",
+        "lips buzzing into a mouthpiece": "That is how another instrument sounds. The violin uses a bowed string.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The violin sounds through a bowed string.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the violin produce its sound?",
+    "srs_tags": [
+      "instrument_sound:violin",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "mezzo-soprano",
+    },
+    "distractors": [
+      "soprano",
+      "contralto",
+      "baritone",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "baritone": "The baritone is a male voice, so it is in the other group.",
+        "contralto": "The contralto is the lowest female voice, not the middle.",
+        "soprano": "The soprano is the highest female voice, not the middle.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The middle female voice is the mezzo-soprano.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the middle female voice?",
+    "srs_tags": [
+      "voice_type:mezzo-soprano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a double reed",
+    },
+    "distractors": [
+      "a single reed",
+      "a bowed string",
+      "a struck skin",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a bowed string": "That is how another instrument sounds. The oboe uses a double reed.",
+        "a single reed": "That is how another instrument sounds. The oboe uses a double reed.",
+        "a struck skin": "That is how another instrument sounds. The oboe uses a double reed.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The oboe sounds through a double reed.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the oboe produce its sound?",
+    "srs_tags": [
+      "instrument_sound:oboe",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "baritone",
+    },
+    "distractors": [
+      "tenor",
+      "bass",
+      "soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "bass": "The bass is the lowest male voice, not the middle.",
+        "soprano": "The soprano is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the middle.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The middle male voice is the baritone.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the middle male voice?",
+    "srs_tags": [
+      "voice_type:baritone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "baritone",
+    },
+    "distractors": [
+      "tenor",
+      "bass",
+      "contralto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "bass": "The bass is the lowest male voice, not the middle.",
+        "contralto": "The contralto is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the middle.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The middle male voice is the baritone.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the middle male voice?",
+    "srs_tags": [
+      "voice_type:baritone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "tenor",
+      "baritone",
+      "mezzo-soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "baritone": "The baritone is the middle male voice, not the lowest.",
+        "mezzo-soprano": "The mezzo-soprano is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the lowest.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest male voice is the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the lowest male voice?",
+    "srs_tags": [
+      "voice_type:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "tenor",
+      "baritone",
+      "mezzo-soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "baritone": "The baritone is the middle male voice, not the lowest.",
+        "mezzo-soprano": "The mezzo-soprano is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the lowest.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest male voice is the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the lowest male voice?",
+    "srs_tags": [
+      "voice_type:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a struck skin",
+    },
+    "distractors": [
+      "a single reed",
+      "a double reed",
+      "lips buzzing into a mouthpiece",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a double reed": "That is how another instrument sounds. The timpani uses a struck skin.",
+        "a single reed": "That is how another instrument sounds. The timpani uses a struck skin.",
+        "lips buzzing into a mouthpiece": "That is how another instrument sounds. The timpani uses a struck skin.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The timpani sounds through a struck skin.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the timpani produce its sound?",
+    "srs_tags": [
+      "instrument_sound:timpani",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a struck skin",
+    },
+    "distractors": [
+      "a bowed string",
+      "lips buzzing into a mouthpiece",
+      "air blown across an edge",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a bowed string": "That is how another instrument sounds. The timpani uses a struck skin.",
+        "air blown across an edge": "That is how another instrument sounds. The timpani uses a struck skin.",
+        "lips buzzing into a mouthpiece": "That is how another instrument sounds. The timpani uses a struck skin.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The timpani sounds through a struck skin.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the timpani produce its sound?",
+    "srs_tags": [
+      "instrument_sound:timpani",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "air blown across an edge",
+    },
+    "distractors": [
+      "a single reed",
+      "a double reed",
+      "a bowed string",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a bowed string": "That is how another instrument sounds. The flute uses air blown across an edge.",
+        "a double reed": "That is how another instrument sounds. The flute uses air blown across an edge.",
+        "a single reed": "That is how another instrument sounds. The flute uses air blown across an edge.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flute sounds through air blown across an edge.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the flute produce its sound?",
+    "srs_tags": [
+      "instrument_sound:flute",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "tenor",
+    },
+    "distractors": [
+      "baritone",
+      "bass",
+      "soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "baritone": "The baritone is the middle male voice, not the highest.",
+        "bass": "The bass is the lowest male voice, not the highest.",
+        "soprano": "The soprano is a female voice, so it is in the other group.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The highest male voice is the tenor.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest male voice?",
+    "srs_tags": [
+      "voice_type:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "baritone",
+    },
+    "distractors": [
+      "tenor",
+      "bass",
+      "soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "bass": "The bass is the lowest male voice, not the middle.",
+        "soprano": "The soprano is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the middle.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The middle male voice is the baritone.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the middle male voice?",
+    "srs_tags": [
+      "voice_type:baritone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "tenor",
+    },
+    "distractors": [
+      "baritone",
+      "bass",
+      "mezzo-soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "baritone": "The baritone is the middle male voice, not the highest.",
+        "bass": "The bass is the lowest male voice, not the highest.",
+        "mezzo-soprano": "The mezzo-soprano is a female voice, so it is in the other group.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The highest male voice is the tenor.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest male voice?",
+    "srs_tags": [
+      "voice_type:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a double reed",
+    },
+    "distractors": [
+      "a struck skin",
+      "a bowed string",
+      "air blown across an edge",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a bowed string": "That is how another instrument sounds. The oboe uses a double reed.",
+        "a struck skin": "That is how another instrument sounds. The oboe uses a double reed.",
+        "air blown across an edge": "That is how another instrument sounds. The oboe uses a double reed.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The oboe sounds through a double reed.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the oboe produce its sound?",
+    "srs_tags": [
+      "instrument_sound:oboe",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "a single reed",
+    },
+    "distractors": [
+      "a struck skin",
+      "lips buzzing into a mouthpiece",
+      "a double reed",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "a double reed": "That is how another instrument sounds. The clarinet uses a single reed.",
+        "a struck skin": "That is how another instrument sounds. The clarinet uses a single reed.",
+        "lips buzzing into a mouthpiece": "That is how another instrument sounds. The clarinet uses a single reed.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The clarinet sounds through a single reed.",
+    },
+    "grade": 5,
+    "hints": [
+      "Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?",
+    ],
+    "id": "instrument_knowledge:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How does the clarinet produce its sound?",
+    "srs_tags": [
+      "instrument_sound:clarinet",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "baritone",
+    },
+    "distractors": [
+      "tenor",
+      "bass",
+      "soprano",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "bass": "The bass is the lowest male voice, not the middle.",
+        "soprano": "The soprano is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the middle.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The middle male voice is the baritone.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the middle male voice?",
+    "srs_tags": [
+      "voice_type:baritone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "contralto",
+    },
+    "distractors": [
+      "soprano",
+      "mezzo-soprano",
+      "bass",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "bass": "The bass is a male voice, so it is in the other group.",
+        "mezzo-soprano": "The mezzo-soprano is the middle female voice, not the lowest.",
+        "soprano": "The soprano is the highest female voice, not the lowest.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest female voice is the contralto.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the lowest female voice?",
+    "srs_tags": [
+      "voice_type:contralto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "bass",
+    },
+    "distractors": [
+      "tenor",
+      "baritone",
+      "contralto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "baritone": "The baritone is the middle male voice, not the lowest.",
+        "contralto": "The contralto is a female voice, so it is in the other group.",
+        "tenor": "The tenor is the highest male voice, not the lowest.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest male voice is the bass.",
+    },
+    "grade": 5,
+    "hints": [
+      "Each group holds three voices. Name them from the top down before you choose.",
+    ],
+    "id": "instrument_knowledge:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the lowest male voice?",
+    "srs_tags": [
+      "voice_type:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte interval_naming @ compound-intervals-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

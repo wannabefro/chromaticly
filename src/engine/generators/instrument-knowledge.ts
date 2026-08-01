@@ -11,7 +11,17 @@
 // against, never trusting the generator's own picks.
 
 import { KB_VERSION } from '../../content/knowledge-base';
-import { DIRECTIONS, directionAtom, INSTRUMENTS, instrumentClefAtom, instrumentFamilyAtom, parseAtom } from '../atoms';
+import {
+  DIRECTIONS,
+  directionAtom,
+  INSTRUMENTS,
+  instrumentClefAtom,
+  instrumentFamilyAtom,
+  instrumentSoundAtom,
+  parseAtom,
+  VOICE_TYPES,
+  voiceTypeAtom,
+} from '../atoms';
 import { int, mulberry32, pick } from '../rng';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
@@ -36,6 +46,44 @@ export const INSTRUMENT_TABLE: Record<string, { family: 'Strings' | 'Woodwind' |
 export const FAMILIES = ['Strings', 'Woodwind', 'Brass', 'Percussion'] as const;
 export const CLEFS_DISPLAY = ['Treble', 'Alto', 'Bass'] as const;
 
+// Grade 5 (chromaticly-e3z.16): "the basic way by which they produce sound".
+export const SOUND_TABLE: Record<string, string> = {
+  violin: 'a bowed string',
+  viola: 'a bowed string',
+  cello: 'a bowed string',
+  'double bass': 'a bowed string',
+  flute: 'air blown across an edge',
+  oboe: 'a double reed',
+  clarinet: 'a single reed',
+  bassoon: 'a double reed',
+  trumpet: 'lips buzzing into a mouthpiece',
+  horn: 'lips buzzing into a mouthpiece',
+  trombone: 'lips buzzing into a mouthpiece',
+  tuba: 'lips buzzing into a mouthpiece',
+  timpani: 'a struck skin',
+};
+
+export const SOUND_MECHANISMS = [
+  'a bowed string',
+  'air blown across an edge',
+  'a single reed',
+  'a double reed',
+  'lips buzzing into a mouthpiece',
+  'a struck skin',
+] as const;
+
+// Grade 5: "the types of voice". Three per group, highest first.
+export const VOICE_TABLE: Record<string, { group: 'female' | 'male'; rank: 0 | 1 | 2 }> = {
+  soprano: { group: 'female', rank: 0 },
+  'mezzo-soprano': { group: 'female', rank: 1 },
+  contralto: { group: 'female', rank: 2 },
+  tenor: { group: 'male', rank: 0 },
+  baritone: { group: 'male', rank: 1 },
+  bass: { group: 'male', rank: 2 },
+};
+
+export const VOICE_RANK_WORD = ['highest', 'middle', 'lowest'] as const;
+
 export const DIRECTION_TABLE: Record<string, string> = {
   arco: 'with the bow',
   pizzicato: 'plucked',
@@ -48,6 +96,8 @@ export const DIRECTION_TABLE: Record<string, string> = {
 type QuestionAtom =
   | { kind: 'instrument_family'; instrument: string }
   | { kind: 'instrument_clef'; instrument: string }
+  | { kind: 'instrument_sound'; instrument: string }
+  | { kind: 'voice_type'; voice: string }
   | { kind: 'direction'; term: string };
 
 /** The instrument_family:<x>, instrument_clef:<x>, and direction:<x> atoms in
@@ -57,12 +107,18 @@ function questionAtomsFrom(atoms: string[]): QuestionAtom[] {
   const result: QuestionAtom[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
-    if (kind === 'instrument_family' || kind === 'instrument_clef') {
+    if (kind === 'instrument_family' || kind === 'instrument_clef' || kind === 'instrument_sound') {
       const [inst] = parts;
       if (!(INSTRUMENTS as readonly string[]).includes(inst)) {
         throw new Error(`instrument_knowledge: atom "${atom}" names an unknown instrument`);
       }
       result.push({ kind, instrument: inst });
+    } else if (kind === 'voice_type') {
+      const [voice] = parts;
+      if (!(VOICE_TYPES as readonly string[]).includes(voice)) {
+        throw new Error(`instrument_knowledge: atom "${atom}" names an unknown voice`);
+      }
+      result.push({ kind, voice });
     } else if (kind === 'direction') {
       const [term] = parts;
       if (!(DIRECTIONS as readonly string[]).includes(term)) {
@@ -72,7 +128,9 @@ function questionAtomsFrom(atoms: string[]): QuestionAtom[] {
     }
   }
   if (result.length === 0) {
-    throw new Error('instrument_knowledge: needs at least one instrument_family:*, instrument_clef:*, or direction:* atom');
+    throw new Error(
+      'instrument_knowledge: needs at least one instrument_family:*, instrument_clef:*, instrument_sound:*, voice_type:*, or direction:* atom',
+    );
   }
   return result;
 }
@@ -177,12 +235,74 @@ function buildDirectionMatch(rng: () => number, idSeed: number, grade: number, t
   };
 }
 
+function buildSoundMcq(rng: () => number, idSeed: number, grade: number, inst: string): ExerciseInstance {
+  const mechanism = SOUND_TABLE[inst];
+  const others = SOUND_MECHANISMS.filter((m) => m !== mechanism);
+  const distractors = shuffle(rng, [...others]).slice(0, 3);
+  return {
+    id: makeInstanceId('instrument_knowledge', grade, idSeed),
+    template_id: 'instrument_knowledge',
+    grade,
+    strand: 'terms_signs',
+    prompt: `How does the ${inst} produce its sound?`,
+    stimulus: { music: null, text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: mechanism, accepted_alternatives: [] },
+    distractors,
+    hints: ['Picture the player. What is actually vibrating — a string, a reed, a column of air, the lips, or a skin?'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `The ${inst} sounds through ${mechanism}.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((d) => [d, `That is how another instrument sounds. The ${inst} uses ${mechanism}.`]),
+      ),
+    },
+    srs_tags: [instrumentSoundAtom(inst)],
+    kb_version: KB_VERSION,
+  };
+}
+
+function buildVoiceMcq(rng: () => number, idSeed: number, grade: number, voice: string): ExerciseInstance {
+  const { group, rank } = VOICE_TABLE[voice];
+  const sameGroup = VOICE_TYPES.filter((v) => v !== voice && VOICE_TABLE[v].group === group);
+  const otherGroup = VOICE_TYPES.filter((v) => VOICE_TABLE[v].group !== group);
+  const distractors = [...sameGroup, pick(rng, [...otherGroup])];
+  return {
+    id: makeInstanceId('instrument_knowledge', grade, idSeed),
+    template_id: 'instrument_knowledge',
+    grade,
+    strand: 'terms_signs',
+    prompt: `Which is the ${VOICE_RANK_WORD[rank]} ${group} voice?`,
+    stimulus: { music: null, text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: voice, accepted_alternatives: [] },
+    distractors,
+    hints: ['Each group holds three voices. Name them from the top down before you choose.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `The ${VOICE_RANK_WORD[rank]} ${group} voice is the ${voice}.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((d) => [
+          d,
+          VOICE_TABLE[d].group === group
+            ? `The ${d} is the ${VOICE_RANK_WORD[VOICE_TABLE[d].rank]} ${group} voice, not the ${VOICE_RANK_WORD[rank]}.`
+            : `The ${d} is a ${VOICE_TABLE[d].group} voice, so it is in the other group.`,
+        ]),
+      ),
+    },
+    srs_tags: [voiceTypeAtom(voice)],
+    kb_version: KB_VERSION,
+  };
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
   const selected = pick(rng, questionAtomsFrom(atoms));
 
   if (selected.kind === 'instrument_family') return buildFamilyMcq(idSeed, grade, selected.instrument);
   if (selected.kind === 'instrument_clef') return buildClefMcq(idSeed, grade, selected.instrument);
+  if (selected.kind === 'instrument_sound') return buildSoundMcq(rng, idSeed, grade, selected.instrument);
+  if (selected.kind === 'voice_type') return buildVoiceMcq(rng, idSeed, grade, selected.voice);
   return buildDirectionMatch(rng, idSeed, grade, directionsFromAtoms(atoms));
 }
 

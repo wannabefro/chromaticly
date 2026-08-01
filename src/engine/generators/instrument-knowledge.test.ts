@@ -142,3 +142,97 @@ describe('instrument_knowledge — reproducibility (KTD4: pure function of seed 
     expect(generate('instrument_knowledge', opts(9))).toEqual(generate('instrument_knowledge', opts(9)));
   });
 });
+
+// Grade 5 (chromaticly-e3z.16): the two question kinds the syllabus adds —
+// "the types of voice" and "the basic way by which they produce sound".
+describe('instrument_knowledge — Grade 5 sound production', () => {
+  const soundOpts = (seed: number, inst: string) => ({ grade: 5, seed, atoms: [`instrument_sound:${inst}`] });
+
+  test.each([
+    ['violin', 'a bowed string'],
+    ['flute', 'air blown across an edge'],
+    ['oboe', 'a double reed'],
+    ['clarinet', 'a single reed'],
+    ['trumpet', 'lips buzzing into a mouthpiece'],
+    ['timpani', 'a struck skin'],
+  ])('%s sounds through %s', (inst, mechanism) => {
+    expect(generate('instrument_knowledge', soundOpts(0, inst)).answer.canonical).toBe(mechanism);
+  });
+
+  // The single/double reed split is the whole reason the question is worth
+  // asking: both are woodwind and both are reeds.
+  test('clarinet and oboe are distinguished, not collapsed into "a reed"', () => {
+    const clarinet = generate('instrument_knowledge', soundOpts(1, 'clarinet'));
+    const oboe = generate('instrument_knowledge', soundOpts(1, 'oboe'));
+    expect(clarinet.answer.canonical).not.toBe(oboe.answer.canonical);
+    expect(clarinet.distractors).toContain(oboe.answer.canonical);
+  });
+
+  test('a sound question offers three distinct wrong mechanisms, never the answer', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const inst = generate('instrument_knowledge', soundOpts(seed, 'flute'));
+      expect(inst.distractors).toHaveLength(3);
+      expect(new Set(inst.distractors as string[]).size).toBe(3);
+      expect(inst.distractors).not.toContain(inst.answer.canonical);
+    }
+  });
+
+  test('the tag names the instrument, and grades 1-4 cannot own it', () => {
+    expect(generate('instrument_knowledge', soundOpts(0, 'viola')).srs_tags).toEqual(['instrument_sound:viola']);
+    expect(() => generate('instrument_knowledge', { grade: 5, seed: 0, atoms: ['instrument_sound:kazoo'] })).toThrow();
+  });
+
+  test('seeds 0..49 all produce a validator-clean instance', () => {
+    for (let seed = 0; seed < 50; seed++) {
+      expect(validate(generate('instrument_knowledge', soundOpts(seed, 'bassoon')))).toEqual({ ok: true, errors: [] });
+    }
+  });
+});
+
+describe('instrument_knowledge — Grade 5 voice types', () => {
+  const voiceOpts = (seed: number, voice: string) => ({ grade: 5, seed, atoms: [`voice_type:${voice}`] });
+
+  test.each([
+    ['soprano', 'highest female'],
+    ['mezzo-soprano', 'middle female'],
+    ['contralto', 'lowest female'],
+    ['tenor', 'highest male'],
+    ['baritone', 'middle male'],
+    ['bass', 'lowest male'],
+  ])('%s is asked for as the %s voice', (voice, phrase) => {
+    const inst = generate('instrument_knowledge', voiceOpts(0, voice));
+    expect(inst.answer.canonical).toBe(voice);
+    expect(inst.prompt).toContain(`${phrase} voice`);
+  });
+
+  // A question whose distractors were all from the other group would be
+  // answerable without knowing the order within a group.
+  test('the other two voices of the same group are always offered', () => {
+    for (let seed = 0; seed < 30; seed++) {
+      const inst = generate('instrument_knowledge', voiceOpts(seed, 'baritone'));
+      expect(inst.distractors).toContain('tenor');
+      expect(inst.distractors).toContain('bass');
+      expect(inst.distractors).toHaveLength(3);
+    }
+  });
+
+  test('every wrong answer is explained individually, never with one shared string', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const inst = generate('instrument_knowledge', voiceOpts(seed, 'contralto'));
+      const reasons = inst.feedback.by_distractor ?? {};
+      for (const d of inst.distractors) expect(typeof reasons[d as string]).toBe('string');
+      expect(new Set(Object.values(reasons)).size).toBe(inst.distractors.length);
+    }
+  });
+
+  test('an unknown voice throws, and the tag names the voice', () => {
+    expect(() => generate('instrument_knowledge', voiceOpts(0, 'countertenor'))).toThrow();
+    expect(generate('instrument_knowledge', voiceOpts(0, 'bass')).srs_tags).toEqual(['voice_type:bass']);
+  });
+
+  test('seeds 0..49 all produce a validator-clean instance', () => {
+    for (let seed = 0; seed < 50; seed++) {
+      expect(validate(generate('instrument_knowledge', voiceOpts(seed, 'soprano')))).toEqual({ ok: true, errors: [] });
+    }
+  });
+});
