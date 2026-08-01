@@ -66,6 +66,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   scale_construction: 2,
   triplet_recognition: 2,
   metre_classification: 3,
+  metre_from_class: 3,
   anacrusis_recognition: 3,
   octave_transposition: 3,
   chromatic_scale: 4,
@@ -304,6 +305,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
   {
     label: 'metre_classification (compound-time-3, pre-lesson pin, U6)',
     templateId: 'metre_classification',
+    atoms: ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'],
+  },
+  {
+    label: 'metre_from_class (compound-time-3, chromaticly-lgi)',
+    templateId: 'metre_from_class',
     atoms: ['metre:2/4', 'metre:3/4', 'metre:4/4', 'metre:6/8', 'metre:9/8', 'metre:12/8'],
   },
   {

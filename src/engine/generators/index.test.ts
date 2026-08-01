@@ -29,7 +29,7 @@ const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction', 'triplet_r
 // grade tier further out. octave_transposition (grade3-octave-transposition
 // slice, D1/D8) joins it — a grade-3-only pitch-content template, bucketed
 // the same way.
-const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'octave_transposition'];
+const GRADE_3_ONLY_TEMPLATE_IDS = ['metre_classification', 'metre_from_class', 'octave_transposition'];
 
 // clef_equivalence (chromaticly-ra3) throws below grade 4 (build() gate) — the
 // "same pitch across treble/alto/bass" skill the KB scopes only at grade 4.

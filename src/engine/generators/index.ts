@@ -18,7 +18,7 @@ import { findTheBar } from './find-the-bar';
 import { instrumentKnowledge } from './instrument-knowledge';
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
-import { metreClassification } from './metre-classification';
+import { metreClassification, metreFromClass } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
 import { modeSwap } from './mode-swap';
@@ -50,6 +50,7 @@ export const GENERATORS: Record<string, Generator> = {
   bar_validity: barValidity,
   add_time_signature: addTimeSignature,
   metre_classification: metreClassification,
+  metre_from_class: metreFromClass,
   anacrusis_recognition: anacrusisRecognition,
   cadence_recognition: cadenceRecognition,
   scale_degree_id: scaleDegreeId,

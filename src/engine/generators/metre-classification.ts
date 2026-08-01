@@ -30,7 +30,7 @@ import {
   type MetreClass,
 } from '../metre';
 import { mulberry32, pick } from '../rng';
-import { diatonicPitchesInComfortableRange, scopeForGrade } from '../scope';
+import { diatonicPitchesInComfortableRange, metreRenderableTimeSignatures, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import {
   barUnitsFor,
@@ -177,3 +177,55 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const metreClassification: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// Second shape (chromaticly-lgi): the class is named and the metre chosen.
+
+function buildFromClass(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const sig = pick(rng, metreSignaturesFromAtoms(atoms));
+  const cls = classifyMetre(sig);
+  const canonical = label(cls);
+
+  const irregular = isIrregularTimeSignature(sig);
+  // Only options of a DIFFERENT class: 2/4 and 2/2 are both simple duple, so an
+  // open "which metre is simple duple" has several right answers.
+  const others = metreRenderableTimeSignatures(grade).filter(
+    (t) => t !== sig && label(classifyMetre(t)) !== canonical,
+  );
+  const [num, den] = sig.split('/').map(Number);
+  // Nearest misreadings first: the same top number read the other way, then the
+  // same bottom number.
+  const rank = (t: string) => {
+    const [n, d] = t.split('/').map(Number);
+    return (n === num ? 0 : 2) + (d === den ? 0 : 1);
+  };
+  const distractors = [...others].sort((a, b) => rank(a) - rank(b) || others.indexOf(a) - others.indexOf(b)).slice(0, 2);
+  if (distractors.length < 2) throw new Error(`metre_from_class: too few sibling metres at grade ${grade}`);
+
+  return {
+    id: makeInstanceId('metre_from_class', grade, idSeed),
+    template_id: 'metre_from_class',
+    grade,
+    strand: 'rhythm',
+    prompt: `Which of these is ${canonical.toLowerCase()}?`,
+    stimulus: { music: null, text: canonical },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: sig, accepted_alternatives: [] },
+    distractors,
+    hints: [
+      irregular
+        ? 'An irregular metre has five or seven beats, which no equal division reaches.'
+        : 'The top number gives the beats: 2, 3 and 4 are simple; 6, 9 and 12 are compound, counted in threes.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `${sig} is ${canonical.toLowerCase()}.`,
+      by_distractor: Object.fromEntries(distractors.map((t) => [t, `${t} is ${label(classifyMetre(t)).toLowerCase()}.`])),
+    },
+    srs_tags: [metreAtom(sig)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const metreFromClass: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildFromClass(candidateSeed, opts.grade, opts.seed, opts.atoms));
