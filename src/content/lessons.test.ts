@@ -760,11 +760,13 @@ describe('clef-equivalence-4 lesson (chromaticly-ra3)', () => {
 describe('double-accidentals-4 lesson (chromaticly-9ig)', () => {
   const lesson = () => lessonById('double-accidentals-4')!;
 
-  test('exists, strand pitch, single template note_naming, is the chain tail', () => {
+  // Naming a double accidental and knowing what it sounds like are different
+  // skills (chromaticly-lgi), so the lesson alternates the two.
+  test('exists, strand pitch, pairs naming with sounds-as, is the chain tail', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(4);
     expect(lesson().strand).toBe('pitch');
-    expect(lesson().templates).toEqual(['note_naming']);
+    expect(lesson().templates).toEqual(['note_naming', 'note_sounds_as']);
     expect(lessonById('enharmonics-4')!.unlocks).toBe('double-accidentals-4');
     expect(lesson().unlocks).toBeNull();
   });

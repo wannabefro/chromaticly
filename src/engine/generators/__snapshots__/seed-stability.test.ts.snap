@@ -207368,6 +207368,1071 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_sounds_as @ double-accidentals-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F sharp",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That ignores the accidental. The double sharp moves F two semitones up, to G.",
+        "F sharp": "That moves F only one semitone. A double sharp moves it two, reaching G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves F two semitones up, which sounds as G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:F##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E flat",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That ignores the accidental. The double flat moves E two semitones down, to D.",
+        "E flat": "That moves E only one semitone. A double flat moves it two, reaching D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves E two semitones down, which sounds as D.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E flat",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That ignores the accidental. The double flat moves E two semitones down, to D.",
+        "E flat": "That moves E only one semitone. A double flat moves it two, reaching D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves E two semitones down, which sounds as D.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E flat",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That ignores the accidental. The double flat moves E two semitones down, to D.",
+        "E flat": "That moves E only one semitone. A double flat moves it two, reaching D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves E two semitones down, which sounds as D.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F sharp",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That ignores the accidental. The double sharp moves F two semitones up, to G.",
+        "F sharp": "That moves F only one semitone. A double sharp moves it two, reaching G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves F two semitones up, which sounds as G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:F##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_value_compare @ rhythm-breve-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -244300,6 +245365,1071 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "pitch",
     "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte note_sounds_as (double-accidentals-4, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F sharp",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That ignores the accidental. The double sharp moves F two semitones up, to G.",
+        "F sharp": "That moves F only one semitone. A double sharp moves it two, reaching G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves F two semitones up, which sounds as G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:F##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E flat",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That ignores the accidental. The double flat moves E two semitones down, to D.",
+        "E flat": "That moves E only one semitone. A double flat moves it two, reaching D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves E two semitones down, which sounds as D.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E flat",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That ignores the accidental. The double flat moves E two semitones down, to D.",
+        "E flat": "That moves E only one semitone. A double flat moves it two, reaching D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves E two semitones down, which sounds as D.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B flat",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That ignores the accidental. The double flat moves B two semitones down, to A.",
+        "B flat": "That moves B only one semitone. A double flat moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves B two semitones down, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Bbb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E flat",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That ignores the accidental. The double flat moves E two semitones down, to D.",
+        "E flat": "That moves E only one semitone. A double flat moves it two, reaching D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double flat moves E two semitones down, which sounds as D.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:bass:Ebb3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F sharp",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That ignores the accidental. The double sharp moves F two semitones up, to G.",
+        "F sharp": "That moves F only one semitone. A double sharp moves it two, reaching G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves F two semitones up, which sounds as G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:F##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G sharp",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "G": "That ignores the accidental. The double sharp moves G two semitones up, to A.",
+        "G sharp": "That moves G only one semitone. A double sharp moves it two, reaching A.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A double sharp moves G two semitones up, which sounds as A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp moves the note two semitones, not one.",
+    ],
+    "id": "note_sounds_as:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This note sounds the same as which note?",
+    "srs_tags": [
+      "note_read:treble:G##4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G##4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_sounds_as",
   },
 ]
 `;

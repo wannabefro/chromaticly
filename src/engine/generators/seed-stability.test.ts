@@ -80,6 +80,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   ornament_effect: 4,
   instrument_knowledge: 4,
   enharmonic_recognition: 4,
+  note_sounds_as: 4,
   clef_equivalence: 4,
   transposing_instrument: 5,
   metre_rewrite: 5,
@@ -456,6 +457,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'clef_equivalence (clef-equivalence-4, pre-lesson pin, chromaticly-ra3)',
     templateId: 'clef_equivalence',
     atoms: ['clef_equiv:cross'],
+  },
+  {
+    label: 'note_sounds_as (double-accidentals-4, chromaticly-lgi)',
+    templateId: 'note_sounds_as',
+    atoms: ['note_read:treble:F##4', 'note_read:treble:G##4', 'note_read:bass:Bbb3', 'note_read:bass:Ebb3'],
   },
   {
     label: 'chord_recognition (chords-4, pre-lesson pin)',

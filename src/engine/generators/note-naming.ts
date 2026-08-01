@@ -238,3 +238,68 @@ function buildStaveInput(contentSeed: number, grade: number, idSeed: number, ato
 
 export const noteNamingStaveInput: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => buildStaveInput(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// --- Sounds-as shape (chromaticly-lgi) -------------------------------------
+// Naming a double accidental and knowing what it sounds like are different
+// skills, and only the second one catches "F double sharp is a kind of F".
+
+const PITCH_CLASS: Record<Letter, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+const ACCIDENTAL_STEP: Record<string, number> = { double_sharp: 2, sharp: 1, flat: -1, double_flat: -2 };
+
+/** The plainest name for the pitch a spelling lands on. A double accidental in
+ *  this grade's atom set always reaches a natural; a black key keeps the
+ *  direction it travelled, so F sharp is never renamed G flat. */
+function soundsAsName(letter: Letter, accidental: Accidental): string {
+  const step = accidental ? ACCIDENTAL_STEP[accidental] : 0;
+  const pc = (((PITCH_CLASS[letter] + step) % 12) + 12) % 12;
+  const natural = (Object.keys(PITCH_CLASS) as Letter[]).find((l) => PITCH_CLASS[l] === pc);
+  if (natural) return natural;
+  const neighbour = (Object.keys(PITCH_CLASS) as Letter[]).find((l) => PITCH_CLASS[l] === (pc + (step > 0 ? -1 : 1) + 12) % 12);
+  if (!neighbour) throw new Error(`note_naming: no spelling for pitch class ${pc}`);
+  return `${neighbour} ${step > 0 ? 'sharp' : 'flat'}`;
+}
+
+function buildSoundsAs(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const rng = mulberry32(contentSeed);
+  const doubles = noteCandidates(atoms).filter(
+    (c) => c.accidental === 'double_sharp' || c.accidental === 'double_flat',
+  );
+  if (doubles.length === 0) {
+    throw new Error('note_naming: sounds-as needs a note_read atom with a double accidental');
+  }
+  const { clef, pitch, letter, accidental } = pick(rng, doubles);
+
+  const raised = accidental === 'double_sharp';
+  const canonical = soundsAsName(letter, accidental);
+  const once = `${letter} ${raised ? 'sharp' : 'flat'}`;
+  const distractors = [once, letter];
+
+  return {
+    id: makeInstanceId('note_sounds_as', grade, idSeed),
+    template_id: 'note_sounds_as',
+    grade,
+    strand: 'pitch',
+    prompt: 'This note sounds the same as which note?',
+    stimulus: {
+      music: { clef, key_sig: null, time_sig: null, voices: [{ events: [{ type: 'note', pitch, dur: 'semibreve' }] }] },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical, accepted_alternatives: [] },
+    distractors,
+    hints: [`A double ${raised ? 'sharp' : 'flat'} moves the note two semitones, not one.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `A double ${raised ? 'sharp' : 'flat'} moves ${letter} two semitones ${raised ? 'up' : 'down'}, which sounds as ${canonical}.`,
+      by_distractor: {
+        [once]: `That moves ${letter} only one semitone. A double ${raised ? 'sharp' : 'flat'} moves it two, reaching ${canonical}.`,
+        [letter]: `That ignores the accidental. The double ${raised ? 'sharp' : 'flat'} moves ${letter} two semitones ${raised ? 'up' : 'down'}, to ${canonical}.`,
+      },
+    },
+    srs_tags: [noteReadAtom(clef, pitch)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const noteSoundsAs: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildSoundsAs(candidateSeed, opts.grade, opts.seed, opts.atoms));
