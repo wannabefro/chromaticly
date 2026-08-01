@@ -110,11 +110,11 @@ describe('prerequisites — import-time guards', () => {
     expect(loadWith([{ ...VALID, requiresGrade: 0 }])).toThrow(/malformed/);
   });
 
-  // The guard that stops an unfixable chip shipping: intervals teaches nothing at
-  // grade 2, so an edge pointing there could never be satisfied.
+  // The guard that stops an unfixable chip shipping: chords teaches nothing below
+  // grade 4, so an edge pointing at grade 2 could never be satisfied.
   test('an edge whose required cell has no lessons fails', () => {
-    expect(LESSONS.some((l) => l.strand === 'intervals' && l.grade === 2)).toBe(false);
-    expect(loadWith([{ ...VALID, requiresGrade: 2 }])).toThrow(/has no lessons/);
+    expect(LESSONS.some((l) => l.strand === 'chords' && l.grade === 2)).toBe(false);
+    expect(loadWith([{ ...VALID, requiresStrand: 'chords', requiresGrade: 2 }])).toThrow(/has no lessons/);
   });
 
   // The rule that disqualified the SATB candidate: both sides were pitch, which is

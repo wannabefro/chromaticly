@@ -42,9 +42,9 @@ describe('placement — the ladder is built whole, then walked', () => {
 
   // The matrix is sparse by nature and these are the shapes the stepping rule has
   // to survive: a two-grade ladder, a ladder with a hole in it, a single-grade one.
-  test('the ladders are ragged — chords is [4, 5], intervals skips grade 2', () => {
+  test('the ladders are ragged — chords is [4, 5], while intervals is now unbroken', () => {
     expect(ladderFor('chords')).toEqual([4, 5]);
-    expect(ladderFor('intervals')).toEqual([1, 3, 4, 5]);
+    expect(ladderFor('intervals')).toEqual([1, 2, 3, 4, 5]);
     expect(ladderFor('context')).toEqual([1, 2, 3, 4, 5]);
   });
 
@@ -110,7 +110,8 @@ describe('placement — where a walk opens', () => {
   // Seed decay subtracts whole grades from a number never required to be a content
   // grade, so a re-test start must snap or it lands on a cell with no question.
   test('a re-test at a depth the strand has no content for snaps down to the nearest grade it does', () => {
-    expect(startWalk('intervals', LADDER_BUDGET, 2).pending).toBe(1);
+    expect(startWalk('chords', LADDER_BUDGET, 4).pending).toBe(4);
+    expect(startWalk('chords', LADDER_BUDGET, 2).pending).toBe(4);
   });
 
   test('a re-test below every content grade opens at the lowest — chords at depth 3 starts at 4', () => {
@@ -136,8 +137,14 @@ describe('placement — the walk steps adaptively and never repeats a grade', ()
     expect(answerWalk(opened, false).pending).toBe(2);
   });
 
-  test('stepping up from intervals grade 1 lands on 3, because grade 2 does not exist', () => {
-    expect(answerWalk(startWalk('intervals', LADDER_BUDGET, 1), true).pending).toBe(3);
+  test('stepping up from intervals grade 1 lands on 2, now that grade 2 exists', () => {
+    expect(answerWalk(startWalk('intervals', LADDER_BUDGET, 1), true).pending).toBe(2);
+  });
+
+  // The ragged-ladder rule still has a subject: chords starts at 4, so a step
+  // up from its first rung must skip 1-3 rather than walk them.
+  test('a ladder that starts above grade 1 still steps within its own rungs', () => {
+    expect(answerWalk(startWalk('chords', LADDER_BUDGET, 4), true).pending).toBe(5);
   });
 
   // chords is the shortest ladder left: [4, 5]. It stops at two, not at four.

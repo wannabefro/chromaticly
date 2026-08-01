@@ -228,6 +228,46 @@
         "smartTip": "Ledger lines keep the pattern going: line, space, line. Count in 3rds from a note you know.",
         "didYouKnow": "Before ledger lines were invented, a scribe who ran out of stave simply drew another line onto the stave itself, making it six or seven lines deep. Ledger lines were the tidier answer, and they arrived around 1500."
       },
+      "unlocks": "intervals-2"
+    },
+    {
+      "id": "intervals-2",
+      "title": "Intervals in the new keys",
+      "strand": "intervals",
+      "atoms": [
+        "interval_key:A_major",
+        "interval_key:Bb_major",
+        "interval_key:Eb_major",
+        "interval_key:A_minor",
+        "interval_key:E_minor",
+        "interval_key:D_minor"
+      ],
+      "templates": [
+        "interval_naming"
+      ],
+      "worked_example": {
+        "template_id": "interval_naming",
+        "grade": 2,
+        "seed": 4
+      },
+      "teach": {
+        "objectives": [
+          "An interval above the tonic is counted the same way in every key",
+          "Count both notes: tonic to the note itself, inclusive",
+          "The key signature changes the sound, not the number"
+        ],
+        "concept": {
+          "title": "The same count, six new keys",
+          "body": "Counting an interval above the tonic does not change when the key does. Start on the tonic, count the letter names up to the higher note, and count both ends: tonic to the next letter is a 2nd, and tonic to the same letter an octave higher is an 8th. Grade 2 adds A, B flat and E flat major, and A, E and D minor, so the tonic is now often a note carrying a sharp or a flat from the key signature. That accidental belongs to the key and does not add or remove a letter, so the number is unaffected. In a minor key the count works identically.",
+          "example": {
+            "template_id": "interval_naming",
+            "grade": 2,
+            "seed": 9
+          }
+        },
+        "smartTip": "Count letter names, not lines and spaces, and never leave out the note you started on.",
+        "didYouKnow": "The word interval comes from the Latin for \"between the walls\". Medieval theorists thought of pitches as fixed posts with space between them."
+      },
       "unlocks": "time-signatures-2"
     },
     {

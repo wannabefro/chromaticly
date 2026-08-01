@@ -87,11 +87,11 @@ describe('LaneScreen — one grade at a time', () => {
     const { findByTestId, getByTestId, queryByTestId } = renderLane('intervals', store);
     await findByTestId('lane-screen');
 
-    // Intervals holds grade 1 and teaches nothing at 2, so it opens on grade 3.
-    expect(getByTestId('lane-grade-label').props.children.join('')).toContain('Grade 3');
-    for (const lesson of laneUnits('intervals', 3)) expect(getByTestId(`unit-row-${lesson.id}`)).toBeTruthy();
+    // Intervals holds grade 1, so it opens on the next grade it teaches.
+    expect(getByTestId('lane-grade-label').props.children.join('')).toContain('Grade 2');
+    for (const lesson of laneUnits('intervals', 2)) expect(getByTestId(`unit-row-${lesson.id}`)).toBeTruthy();
     for (const lesson of laneUnits('intervals', 1)) expect(queryByTestId(`unit-row-${lesson.id}`)).toBeNull();
-    for (const lesson of laneUnits('intervals', 4)) expect(queryByTestId(`unit-row-${lesson.id}`)).toBeNull();
+    for (const lesson of laneUnits('intervals', 3)) expect(queryByTestId(`unit-row-${lesson.id}`)).toBeNull();
   });
 
   // The guard against the ladder creeping back. The prototype's grade row read as a
@@ -103,7 +103,7 @@ describe('LaneScreen — one grade at a time', () => {
     const { findByTestId, queryByText } = renderLane('intervals', store);
     await findByTestId('lane-screen');
 
-    for (const other of [1, 2, 4, 5]) {
+    for (const other of [1, 3, 4, 5]) {
       expect(queryByText(new RegExp(`\\bGrade ${other}\\b`))).toBeNull();
       expect(queryByText(new RegExp(`\\bgrade ${other}\\b`))).toBeNull();
     }
@@ -149,11 +149,11 @@ describe('LaneScreen — the grade picker', () => {
   // KTD3: four of seven strands skip grades. An empty list would read as a bug; the
   // picker states the absence instead.
   test('marks a grade this strand does not teach as "nothing here yet"', async () => {
-    const { findByTestId, getByTestId } = renderLane('intervals');
+    const { findByTestId, getByTestId } = renderLane('chords');
     await findByTestId('lane-screen');
     act(() => fireEvent.press(getByTestId('lane-other-grades')));
 
-    // Intervals teaches 1, 3, 4, 5 — never 2.
+    // Chords teaches 4 and 5 only.
     expect((await findByTestId('lane-grade-option-2-note')).props.children).toBe('nothing here yet');
     // An absence is not a lock: the row is a plain view, so there is no disabled
     // state to mistake for one.
@@ -227,7 +227,7 @@ describe('LaneScreen — the advisory prerequisite chip (R10)', () => {
 
   test('a met prerequisite renders no chip; the unmet one still does', async () => {
     const store = new ProgressStore();
-    for (const grade of [1, 3]) masterCell(store, 'intervals', grade);
+    for (const grade of [1, 2, 3]) masterCell(store, 'intervals', grade);
     const { findByTestId, getByTestId, queryByTestId } = renderLane('pitch', store);
     await findByTestId('lane-screen');
     act(() => fireEvent.press(getByTestId('lane-other-grades')));

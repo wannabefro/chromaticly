@@ -29,7 +29,7 @@ describe('the content matrix — sparse, and every consumer must cope', () => {
   test('each strand reports only the grades that actually have lessons', () => {
     expect(contentGradesFor('chords')).toEqual([4, 5]);
     expect(contentGradesFor('context')).toEqual([1, 2, 3, 4, 5]);
-    expect(contentGradesFor('intervals')).toEqual([1, 3, 4, 5]);
+    expect(contentGradesFor('intervals')).toEqual([1, 2, 3, 4, 5]);
   });
 
   test('chords genuinely has nothing below grade 4 — the mock\'s "Chords · grade 2" is unbuildable', () => {
@@ -61,14 +61,15 @@ describe('laneDepths — evidence path', () => {
     expect(chords.heldGrades).toEqual([4, 5]);
   });
 
-  // intervals has no grade-2 content. Requiring it would cap the lane at 1.
+  // chords is the sparse strand: it teaches nothing below grade 4. Requiring the
+  // empty grades would cap the lane at 0 instead of reporting the real depth.
   test('a grade with no content is skipped, not failed', () => {
-    expect(contentGradesFor('intervals')).not.toContain(2);
+    expect(contentGradesFor('chords')).not.toContain(3);
     const store = new ProgressStore();
-    master(store, 'intervals', 1, DAY);
-    master(store, 'intervals', 3, DAY);
+    master(store, 'chords', 4, DAY);
+    master(store, 'chords', 5, DAY);
 
-    expect(laneDepths(store, DAY).intervals.depth).toBe(3);
+    expect(laneDepths(store, DAY).chords.depth).toBe(5);
   });
 
   test('depth is contiguous, but heldGrades is not — the distinction the radar needs', () => {
@@ -90,9 +91,11 @@ describe('laneDepths — evidence path', () => {
   // the between-any-notes widening that makes augmented and diminished reachable.
   test('intervals G3 and G4 teach different atoms, so holding G3 does not hold G4', () => {
     expect(atomsFor('intervals', 3)).not.toEqual(atomsFor('intervals', 4));
+    expect(atomsFor('intervals', 2)).not.toEqual(atomsFor('intervals', 3));
 
     const store = new ProgressStore();
     master(store, 'intervals', 1, DAY);
+    master(store, 'intervals', 2, DAY);
     master(store, 'intervals', 3, DAY);
 
     expect(laneDepths(store, DAY).intervals.depth).toBe(3);

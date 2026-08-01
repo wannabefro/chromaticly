@@ -48,13 +48,11 @@ describe('LaneRow — one strand at its own depth (design 7a)', () => {
     expect(getByTestId('lane-row').props.accessibilityLabel).toBe('Scales & Keys, grade 3');
   });
 
-  // The trap the "N filled of 5" reading falls into: pitch teaches nothing at
-  // grade 2, so a learner at pitch depth 3 has THREE content grades held (1, 3, 4
-  // are its grades) but only two filled slots below the gap. The bar shows what is
-  // actually there, never a synthetic run.
+  // The trap the "N filled of 5" reading falls into. No strand has an interior
+  // hole today, so the fixture is built by hand rather than borrowed from one.
   test('a gap INSIDE the run is drawn as a gap, not filled through', () => {
-    expect(contentGradesFor('intervals')).toEqual([1, 3, 4, 5]);
-    const { getByTestId } = render(<LaneRow strand="intervals" depth={lane('intervals', 3)} testID="lane-row" />);
+    const holed: LaneDepth = { depth: 3, heldGrades: [1, 3], contentGrades: [1, 3, 4, 5], source: 'evidence' };
+    const { getByTestId } = render(<LaneRow strand="intervals" depth={holed} testID="lane-row" />);
 
     expect(getByTestId('lane-row-seg-1-filled')).toBeTruthy();
     expect(getByTestId('lane-row-seg-2-gap')).toBeTruthy();

@@ -294,6 +294,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
       'degrees-2',
       'tonic-triads-2',
       'ledger-lines-2',
+      'intervals-2',
       'time-signatures-2',
       'triplets-2',
       'grouping-2',

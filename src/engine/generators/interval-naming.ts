@@ -9,7 +9,7 @@
 
 import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { intervalAnyAtom, intervalAtom, intervalCompoundAtom, intervalTypeAtom, parseAtom } from '../atoms';
+import { intervalAnyAtom, intervalAtom, intervalCompoundAtom, intervalKeyAtom, intervalTypeAtom, parseAtom } from '../atoms';
 import {
   COMPOUND_NUMBERS,
   compoundAltLabel,
@@ -64,6 +64,90 @@ function sampleInterval(
   return { lowerPitch, steps, intervalNumber: steps + 1 };
 }
 
+/** The atom-named key signatures (interval_key:<key>) in `atoms`, in atom order.
+ *  Empty at grade 1, which has no such atom and keeps its untouched draw. */
+function intervalKeyTargets(atoms: string[], scope: GradeScope): string[] {
+  const inScope = new Set([
+    ...scope.keysMajor.map((k) => `${k}_major`),
+    ...scope.keysMinor.map((k) => `${k}_minor`),
+  ]);
+  const keys: string[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'interval_key' || parts.length !== 1) continue;
+    if (inScope.has(parts[0]) && !keys.includes(parts[0])) keys.push(parts[0]);
+  }
+  return keys;
+}
+
+// Grade 2 (chromaticly-0i9): same number-only rule as grade 1, but anchored to
+// a NAMED key so the minor tonics reach the learner and credit lands on the key
+// rather than on grade 1's bare interval:<n>.
+function buildAboveTonicInKey(
+  rng: () => number,
+  clef: Clef,
+  grade: number,
+  idSeed: number,
+  keys: string[],
+): ExerciseInstance {
+  const keySig = pick(rng, keys);
+  const tonic = keySig.split('_')[0];
+  const range = comfortablePitchRange(clef, grade);
+  const occurrences = diatonicPitchesInComfortableRange(clef, grade).filter((p) =>
+    p.startsWith(tonicLetter(tonic)),
+  );
+  if (occurrences.length === 0) {
+    throw new Error(`interval_naming: no in-range occurrence of tonic ${tonic} for clef ${clef}`);
+  }
+  const lowerPitch = occurrences[0];
+  const maxSteps = Math.min(7, scientificPitchOrdinal(range.high) - scientificPitchOrdinal(lowerPitch));
+  if (maxSteps < 1) {
+    throw new Error(`interval_naming: no room above the tonic ${lowerPitch} for an interval within range`);
+  }
+
+  const steps = int(rng, 1, maxSteps);
+  const number = steps + 1;
+  const lowerDisplay = spellInKeySig(lowerPitch, keySig);
+  const upper = spellInKeySig(naturalPitchStepsAbove(lowerPitch, steps), keySig);
+  const distractors = [number - 1, number + 1].filter((n) => n >= 1 && n <= 8 && n !== number);
+  const keyName = `${tonic} ${keySig.endsWith('_minor') ? 'minor' : 'major'}`;
+
+  return {
+    id: makeInstanceId('interval_naming', grade, idSeed),
+    template_id: 'interval_naming',
+    grade,
+    strand: 'intervals',
+    prompt: `This is ${keyName}. Name the interval above the tonic (number only).`,
+    stimulus: {
+      music: {
+        clef,
+        key_sig: keySig,
+        time_sig: null,
+        voices: [{ events: [{ type: 'chord', pitches: [lowerDisplay, upper], dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: number, accepted_alternatives: [] },
+    distractors,
+    hints: [`The lower note is the tonic of ${keyName}. Count the letter names up to the higher note, both ends included.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Recount from the tonic of ${keyName} to the upper note, counting both ends: it is ${article(number)} ${number}.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((n) => [
+          String(n),
+          n < number
+            ? `That is the number of steps between the notes. An interval counts both notes themselves, so this one is ${article(number)} ${number}.`
+            : `That is one too many. Count the letter names from the tonic to the upper note and you get ${number}, not ${n}.`,
+        ]),
+      ),
+    },
+    srs_tags: [intervalKeyAtom(keySig)],
+    kb_version: KB_VERSION,
+  };
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
@@ -75,6 +159,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   if (scope.intervalRule.namingStyle === 'number_and_type') {
     return buildNumberAndType(rng, scope, clef, grade, idSeed, atoms);
   }
+
+  const keyTargets = intervalKeyTargets(atoms, scope);
+  if (keyTargets.length > 0) return buildAboveTonicInKey(rng, clef, grade, idSeed, keyTargets);
 
   const key = pick(rng, [...scope.keysMajor]);
   const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade);

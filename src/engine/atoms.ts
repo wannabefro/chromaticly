@@ -97,6 +97,11 @@ export function metreAtom(sig: string): string {
   return `metre:${sig}`;
 }
 
+/** The Grade 2 interval widening is the KEY SET, so the key is the skill. */
+export function intervalKeyAtom(keySig: string): string {
+  return `interval_key:${keySig}`;
+}
+
 /** Grouping is metre-specific, so the signature is the skill (chromaticly-18o). */
 export function groupingAtom(sig: string): string {
   return `grouping:${sig}`;
