@@ -583,6 +583,72 @@ function buildBetweenAnyNotes(
 export const intervalNaming: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
 
+// --- Grade-5 reduction shape (chromaticly-lgi) -----------------------------
+// Naming a compound interval and reducing one to within an octave are separate
+// Grade 5 skills, so compound-intervals-5 pairs this with interval_naming.
+function buildCompoundReduce(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...scope.clefs]);
+  const targets = intervalCompoundTargets(atoms);
+  if (targets.length === 0) {
+    throw new Error('interval_compound_reduce: the lesson names no interval_compound atom');
+  }
+
+  const number = pick(rng, targets);
+  const pairs = naturalPitchPairsSpanning(diatonicPitchesInComfortableRange(clef, grade), number - 1);
+  if (pairs.length === 0) {
+    throw new Error(`interval_compound_reduce: no natural pair spans a ${number} for clef ${clef}`);
+  }
+  const [lower, upper] = pick(rng, pairs);
+
+  const quality = intervalQuality(lower, upper, number);
+  const simple = simpleEquivalent(number);
+  const canonical = intervalLabel(quality, simple);
+  const compoundLabel = intervalLabel(quality, number);
+  // The off-by-one: subtracting 8 rather than 7, because a 9th above a note is
+  // 8 letter names higher but only 7 steps of reduction.
+  const neighbour = simple > 2 ? simple - 1 : simple + 1;
+  const neighbourUpper = naturalPitchStepsAbove(lower, neighbour - 1);
+  const neighbourLabel = intervalLabel(intervalQuality(lower, neighbourUpper, neighbour), neighbour);
+
+  return {
+    id: makeInstanceId('interval_compound_reduce', grade, idSeed),
+    template_id: 'interval_compound_reduce',
+    grade,
+    strand: 'intervals',
+    prompt: 'Reduce this interval to within an octave. What is it then?',
+    stimulus: {
+      music: {
+        clef,
+        key_sig: null,
+        time_sig: null,
+        voices: [{ events: [{ type: 'chord', pitches: [lower, upper], dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical, accepted_alternatives: [] },
+    distractors: [compoundLabel, neighbourLabel],
+    hints: [
+      'Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Subtract 7 from the number and keep the quality: a ${compoundLabel} reduces to a ${canonical}.`,
+      by_distractor: {
+        [compoundLabel]: `That is the interval as written. Reducing it means taking an octave off, which gives a ${canonical}.`,
+        [neighbourLabel]: `That is a ${neighbourLabel}. Take 7 off the number, not 8 — both notes are counted, so a ${compoundLabel} reduces to a ${canonical}.`,
+      },
+    },
+    srs_tags: [intervalCompoundAtom(number)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const intervalCompoundReduce: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildCompoundReduce(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
 // --- Stave-input variant (U8/RD2): "write the note a [interval] higher than
 // the given note" — the sole Grade 1 stave-input item; no general write-any-
 // note (RD2). A separate template_id ("interval_naming_stave_input") rather

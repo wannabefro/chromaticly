@@ -16,7 +16,7 @@ import { chromaticScale } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
 import { findTheBar } from './find-the-bar';
 import { instrumentKnowledge } from './instrument-knowledge';
-import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
+import { intervalCompoundReduce, intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { keySignatureId } from './key-signature-id';
 import { metreClassification, metreFromClass } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
@@ -40,6 +40,7 @@ export const GENERATORS: Record<string, Generator> = {
   note_naming: noteNaming,
   note_naming_stave_input: noteNamingStaveInput,
   interval_naming: intervalNaming,
+  interval_compound_reduce: intervalCompoundReduce,
   interval_naming_stave_input: intervalNamingStaveInput,
   rhythm_sum: rhythmSum,
   key_signature_id: keySignatureId,

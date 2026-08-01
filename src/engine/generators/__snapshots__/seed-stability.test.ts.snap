@@ -247755,6 +247755,1131 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte interval_compound_reduce @ compound-intervals-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 7th",
+    },
+    "distractors": [
+      "minor 14th",
+      "major 6th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 6th": "That is a major 6th. Take 7 off the number, not 8 — both notes are counted, so a minor 14th reduces to a minor 7th.",
+        "minor 14th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 7th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 14th reduces to a minor 7th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:14",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G3",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 3rd": "That is a major 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 6th",
+    },
+    "distractors": [
+      "minor 13th",
+      "diminished 5th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "diminished 5th": "That is a diminished 5th. Take 7 off the number, not 8 — both notes are counted, so a minor 13th reduces to a minor 6th.",
+        "minor 13th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 6th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 13th reduces to a minor 6th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 7th",
+    },
+    "distractors": [
+      "minor 14th",
+      "minor 6th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 14th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 7th.",
+        "minor 6th": "That is a minor 6th. Take 7 off the number, not 8 — both notes are counted, so a minor 14th reduces to a minor 7th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 14th reduces to a minor 7th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:14",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 12th",
+      "perfect 4th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "perfect 12th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 5th.",
+        "perfect 4th": "That is a perfect 4th. Take 7 off the number, not 8 — both notes are counted, so a perfect 12th reduces to a perfect 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 12th reduces to a perfect 5th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:12",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "D4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 12th",
+      "perfect 4th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "perfect 12th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 5th.",
+        "perfect 4th": "That is a perfect 4th. Take 7 off the number, not 8 — both notes are counted, so a perfect 12th reduces to a perfect 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 12th reduces to a perfect 5th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:12",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "augmented 4th",
+    },
+    "distractors": [
+      "augmented 11th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "augmented 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a augmented 4th.",
+        "major 3rd": "That is a major 3rd. Take 7 off the number, not 8 — both notes are counted, so a augmented 11th reduces to a augmented 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a augmented 11th reduces to a augmented 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 6th",
+    },
+    "distractors": [
+      "minor 13th",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 13th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 6th.",
+        "perfect 5th": "That is a perfect 5th. Take 7 off the number, not 8 — both notes are counted, so a minor 13th reduces to a minor 6th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 13th reduces to a minor 6th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 3rd",
+    },
+    "distractors": [
+      "major 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 3rd.",
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a major 10th reduces to a major 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 10th reduces to a major 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "major 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 2nd.",
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a major 9th reduces to a major 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 9th reduces to a major 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 5th",
+    },
+    "distractors": [
+      "perfect 12th",
+      "perfect 4th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "perfect 12th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 5th.",
+        "perfect 4th": "That is a perfect 4th. Take 7 off the number, not 8 — both notes are counted, so a perfect 12th reduces to a perfect 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 12th reduces to a perfect 5th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:12",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C2",
+                  "G3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 2nd",
+    },
+    "distractors": [
+      "minor 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a minor 9th reduces to a minor 2nd.",
+        "minor 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 9th reduces to a minor 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "minor 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+        "minor 2nd": "That is a minor 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "G3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 6th",
+    },
+    "distractors": [
+      "minor 13th",
+      "diminished 5th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "diminished 5th": "That is a diminished 5th. Take 7 off the number, not 8 — both notes are counted, so a minor 13th reduces to a minor 6th.",
+        "minor 13th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 6th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 13th reduces to a minor 6th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "G5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 6th",
+    },
+    "distractors": [
+      "major 13th",
+      "perfect 5th",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 13th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 6th.",
+        "perfect 5th": "That is a perfect 5th. Take 7 off the number, not 8 — both notes are counted, so a major 13th reduces to a major 6th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 13th reduces to a major 6th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:13",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte interval_naming @ compound-intervals-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -287899,6 +289024,1131 @@ exports[`seed-stability — grade-5-only generator extras are pinned byte-for-by
     },
     "strand": "chords",
     "template_id": "cadence_recognition",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte interval_compound_reduce (compound-intervals-5, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "minor 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+        "minor 2nd": "That is a minor 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E3",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "E5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "major 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 2nd.",
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a major 9th reduces to a major 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 9th reduces to a major 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 3rd": "That is a major 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C3",
+                  "F4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "major 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 2nd.",
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a major 9th reduces to a major 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 9th reduces to a major 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 3rd": "That is a major 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A2",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 3rd",
+    },
+    "distractors": [
+      "major 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 3rd.",
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a major 10th reduces to a major 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 10th reduces to a major 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 3rd",
+    },
+    "distractors": [
+      "major 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 3rd.",
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a major 10th reduces to a major 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 10th reduces to a major 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "minor 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+        "minor 2nd": "That is a minor 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "major 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 3rd": "That is a major 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "major 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 2nd.",
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a major 9th reduces to a major 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 9th reduces to a major 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "major 2nd",
+    },
+    "distractors": [
+      "major 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a major 2nd.",
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a major 9th reduces to a major 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a major 9th reduces to a major 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "major 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "major 2nd": "That is a major 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 3rd",
+    },
+    "distractors": [
+      "minor 10th",
+      "minor 2nd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 10th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 3rd.",
+        "minor 2nd": "That is a minor 2nd. Take 7 off the number, not 8 — both notes are counted, so a minor 10th reduces to a minor 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 10th reduces to a minor 3rd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:10",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 2nd",
+    },
+    "distractors": [
+      "minor 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a minor 9th reduces to a minor 2nd.",
+        "minor 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 9th reduces to a minor 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minor 2nd",
+    },
+    "distractors": [
+      "minor 9th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a minor 9th reduces to a minor 2nd.",
+        "minor 9th": "That is the interval as written. Reducing it means taking an octave off, which gives a minor 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a minor 9th reduces to a minor 2nd.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:9",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "E5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "perfect 4th",
+    },
+    "distractors": [
+      "perfect 11th",
+      "minor 3rd",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minor 3rd": "That is a minor 3rd. Take 7 off the number, not 8 — both notes are counted, so a perfect 11th reduces to a perfect 4th.",
+        "perfect 11th": "That is the interval as written. Reducing it means taking an octave off, which gives a perfect 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Subtract 7 from the number and keep the quality: a perfect 11th reduces to a perfect 4th.",
+    },
+    "grade": 5,
+    "hints": [
+      "Take an octave off the number — subtract 7, not 8, because both notes are counted. The quality does not change.",
+    ],
+    "id": "interval_compound_reduce:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Reduce this interval to within an octave. What is it then?",
+    "srs_tags": [
+      "interval_compound:11",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "intervals",
+    "template_id": "interval_compound_reduce",
   },
 ]
 `;

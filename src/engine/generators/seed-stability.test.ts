@@ -84,6 +84,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   satb_voice_recognition: 5,
   tuplet_recognition: 5,
   cadence_recognition: 5,
+  interval_compound_reduce: 5,
 };
 
 /** The grade a template first exists at; every template not listed here exists from grade 1. */
@@ -545,6 +546,11 @@ const GRADE_5_EXTRA_CASES: Case[] = [
     label: 'cadence_recognition (cadences-5, chromaticly-e3z.5)',
     templateId: 'cadence_recognition',
     atoms: ['cadence:perfect', 'cadence:plagal', 'cadence:imperfect'],
+  },
+  {
+    label: 'interval_compound_reduce (compound-intervals-5, chromaticly-lgi)',
+    templateId: 'interval_compound_reduce',
+    atoms: ['interval_compound:9', 'interval_compound:10', 'interval_compound:11'],
   },
 ];
 

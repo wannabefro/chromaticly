@@ -33,7 +33,15 @@ import { CHROMATIC_TONICS, chromaticPositionLabel, chromaticScaleAscending } fro
 import { DEGREE_ORDER, DISPLAY_NAMES, nameFromDisplay, nameFromOrdinal, ordinalOf, ORDINALS } from './generators/degree-name-id';
 import { spellInKeySig } from './generators/key-spelling';
 import { naturalPitchStepsAbove } from './generators/pitch-math';
-import { diatonicIntervalNumber, intervalLabel, intervalQuality, parseIntervalLabel, pitchSemitone } from './interval-quality';
+import {
+  COMPOUND_NUMBERS,
+  diatonicIntervalNumber,
+  intervalLabel,
+  intervalQuality,
+  parseIntervalLabel,
+  pitchSemitone,
+  simpleEquivalent,
+} from './interval-quality';
 import { displayNote, ENHARMONIC_PARTNER } from './generators/enharmonic-recognition';
 import { classifyMetre, isCompoundTimeSignature } from './metre';
 import { musicEventUnits } from './music-event-units';
@@ -408,6 +416,46 @@ function intervalNamingQualityErrors(inst: ExerciseInstance, canonical: unknown)
     }
   }
 
+  return errors;
+}
+
+// The canonical here is the REDUCED label, so this cannot reuse intervalNamingHook
+// (which asserts the label of the interval as written). It recomputes the written
+// interval from the two rendered pitches and reduces it independently.
+function intervalCompoundReduceHook(inst: ExerciseInstance): string[] {
+  const canonical = inst.answer.canonical;
+  if (typeof canonical !== 'string') {
+    return ['interval_compound_reduce: canonical answer must be an interval label string'];
+  }
+  const music = inst.stimulus.music as Music | null;
+  const pitches = music ? music.voices.flatMap((voice) => voice.events).flatMap(eventPitches) : [];
+  if (pitches.length !== 2) {
+    return ['interval_compound_reduce: the stimulus must render exactly two pitches as a chord'];
+  }
+  const [lower, upper] = pitches;
+  const errors: string[] = [];
+  try {
+    const number = diatonicIntervalNumber(lower, upper);
+    if (!COMPOUND_NUMBERS.includes(number)) {
+      errors.push(`interval_compound_reduce: the stimulus spans a ${number}, which is not a compound interval`);
+      return errors;
+    }
+    const recomputed = intervalLabel(intervalQuality(lower, upper, number), simpleEquivalent(number));
+    if (canonical !== recomputed) {
+      errors.push(
+        `interval_compound_reduce: canonical "${canonical}" is not the reduction of ${lower}->${upper} ("${recomputed}")`,
+      );
+    }
+  } catch (err) {
+    errors.push(`interval_compound_reduce: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  for (const d of inst.distractors) {
+    if (typeof d !== 'string') {
+      errors.push(`interval_compound_reduce: distractor "${String(d)}" is not an interval label`);
+      continue;
+    }
+    if (d === canonical) errors.push(`interval_compound_reduce: distractor "${d}" repeats the canonical answer`);
+  }
   return errors;
 }
 
@@ -1953,6 +2001,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,
+  interval_compound_reduce: intervalCompoundReduceHook,
   interval_naming_stave_input: intervalNamingHook,
   key_signature_id: keySignatureIdHook,
   mode_swap: modeSwapHook,
