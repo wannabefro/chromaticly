@@ -105,6 +105,8 @@ export const shape = {
 /** Font families (loaded via expo-font in _layout; keys match the loaded names). */
 export const fonts = {
   ui: 'Figtree_400Regular',
+  // iOS never synthesises an italic for a custom face, so RichText swaps family.
+  uiItalic: 'Figtree_400Regular_Italic',
   uiMedium: 'Figtree_500Medium',
   uiSemibold: 'Figtree_600SemiBold',
   uiBold: 'Figtree_700Bold',

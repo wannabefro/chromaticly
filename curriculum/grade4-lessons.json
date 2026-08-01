@@ -285,7 +285,7 @@
         ],
         "concept": {
           "title": "Double-dotted notes",
-          "body": "A single dot adds half the note's value. A second dot adds half again — but half of the FIRST dot, not the note. So a double-dotted note lasts one and three-quarter times its plain value. A double-dotted minim is minim + crotchet + quaver (2 + 1 + ½ = 3½ crotchet beats); a double-dotted crotchet is crotchet + quaver + semiquaver. Each dot is worth half of whatever sits immediately to its left.",
+          "body": "A single dot adds half the note's value. A second dot adds half again — but half of the **first** dot, not the note. So a double-dotted note lasts one and three-quarter times its plain value. A double-dotted minim is minim + crotchet + quaver (2 + 1 + ½ = 3½ crotchet beats); a double-dotted crotchet is crotchet + quaver + semiquaver. Each dot is worth half of whatever sits immediately to its left.",
           "example": {
             "template_id": "rhythm_sum",
             "grade": 4,
@@ -322,7 +322,7 @@
         ],
         "concept": {
           "title": "Duplets",
-          "body": "In compound time the beat divides into three. A duplet borrows one beat for TWO equal notes instead — two played in the time of three. It is written with a bracket and a small ‘2’ over the group. So in 6/8, a duplet fills one dotted-crotchet beat with two notes where three quavers would normally go. It is the mirror image of the triplet you'd meet in simple time.",
+          "body": "In compound time the beat divides into three. A duplet borrows one beat for **two** equal notes instead — two played in the time of three. It is written with a bracket and a small ‘2’ over the group. So in 6/8, a duplet fills one dotted-crotchet beat with two notes where three quavers would normally go. It is the mirror image of the triplet you'd meet in simple time.",
           "example": {
             "template_id": "duplet_recognition",
             "grade": 4,
@@ -365,7 +365,7 @@
         ],
         "concept": {
           "title": "Reading any time signature",
-          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is TWO dotted-crotchet beats, not six. The bottom number only says which note gets the beat: 8 the quaver, 4 the crotchet, 16 the semiquaver. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values.",
+          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is **two** dotted-crotchet beats, not six. The bottom number only says which note gets the beat: 8 the quaver, 4 the crotchet, 16 the semiquaver. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values.",
           "example": {
             "template_id": "metre_classification",
             "grade": 4,
@@ -437,13 +437,13 @@
       },
       "teach": {
         "objectives": [
-          "Name the interval between ANY two notes now, not only above the tonic",
+          "Name the interval between **any** two notes now, not only above the tonic",
           "A perfect or major interval made a semitone wider is augmented; a perfect or minor interval made a semitone narrower is diminished",
           "The augmented 4th (e.g. F up to B) and diminished 5th (B up to F) are the classic examples — both span six semitones"
         ],
         "concept": {
           "title": "Augmented and diminished intervals",
-          "body": "Two new qualities join perfect, major and minor. Widen a perfect or major interval by a semitone and it becomes AUGMENTED; narrow a perfect or minor interval by a semitone and it becomes DIMINISHED. Find the number first by counting letter names (F–G–A–B is a 4th), then the quality by the semitones. The most common examples are the augmented 4th (F up to B, six semitones) and the diminished 5th (B up to F, also six semitones) — the same distance on the keyboard, named differently by how the notes are spelled. You can now name intervals between any two notes, not just from the key's tonic.",
+          "body": "Two new qualities join perfect, major and minor. Widen a perfect or major interval by a semitone and it becomes *augmented*; narrow a perfect or minor interval by a semitone and it becomes *diminished*. Find the number first by counting letter names (F–G–A–B is a 4th), then the quality by the semitones. The most common examples are the augmented 4th (F up to B, six semitones) and the diminished 5th (B up to F, also six semitones) — the same distance on the keyboard, named differently by how the notes are spelled. You can now name intervals between any two notes, not just from the key's tonic.",
           "example": {
             "template_id": "interval_naming",
             "grade": 4,
@@ -554,7 +554,7 @@
         ],
         "concept": {
           "title": "One pitch, three staves",
-          "body": "A clef fixes which pitch each line and space stands for, so the SAME sounding note lands in a different place depending on the clef. Middle C is the clearest case: it hangs on a ledger line just below the treble staff, on a ledger line just above the bass staff, and squarely on the middle line of the alto clef — one pitch, three positions. Rewriting a melody from one clef to another does not change a single sound; you keep every pitch and rhythm exactly, and only re-read where each note sits on the new staff.",
+          "body": "A clef fixes which pitch each line and space stands for, so the **same** sounding note lands in a different place depending on the clef. Middle C is the clearest case: it hangs on a ledger line just below the treble staff, on a ledger line just above the bass staff, and squarely on the middle line of the alto clef — one pitch, three positions. Rewriting a melody from one clef to another does not change a single sound; you keep every pitch and rhythm exactly, and only re-read where each note sits on the new staff.",
           "example": {
             "template_id": "clef_equivalence",
             "grade": 4,
@@ -591,7 +591,7 @@
         ],
         "concept": {
           "title": "Primary triads: I, IV and V",
-          "body": "A triad is a three-note chord: a root, the note a 3rd above it, and the note a 5th above. The three PRIMARY triads are built on the most important degrees of the scale — I on the tonic (1st), IV on the subdominant (4th), and V on the dominant (5th). In a major key all three are major triads. To name a chord you see, find its lowest note — the root — and work out which scale degree it lands on in the given key: root on the tonic is I, on the subdominant IV, on the dominant V. In C major that makes I = C–E–G, IV = F–A–C, and V = G–B–D.",
+          "body": "A triad is a three-note chord: a root, the note a 3rd above it, and the note a 5th above. The three *primary* triads are built on the most important degrees of the scale — I on the tonic (1st), IV on the subdominant (4th), and V on the dominant (5th). In a major key all three are major triads. To name a chord you see, find its lowest note — the root — and work out which scale degree it lands on in the given key: root on the tonic is I, on the subdominant IV, on the dominant V. In C major that makes I = C–E–G, IV = F–A–C, and V = G–B–D.",
           "example": {
             "template_id": "chord_recognition",
             "grade": 4,
@@ -631,7 +631,7 @@
         ],
         "concept": {
           "title": "Ornaments",
-          "body": "Ornaments decorate a note with extra, faster notes, written as small signs. A TRILL (tr) shakes rapidly between the written note and the one above it. A TURN curls around the note — the note above, the note, the note below, and back. An UPPER MORDENT flicks quickly up to the note above and back; a LOWER MORDENT flicks down to the note below and back. Two are grace notes, printed small just before the main note: an ACCIACCATURA (with a slash through its stem) is crushed in as fast as possible, while an APPOGGIATURA (no slash) leans on the beat and borrows time from the main note.",
+          "body": "Ornaments decorate a note with extra, faster notes, written as small signs. A *trill* (tr) shakes rapidly between the written note and the one above it. A *turn* curls around the note — the note above, the note, the note below, and back. An *upper mordent* flicks quickly up to the note above and back; a *lower mordent* flicks down to the note below and back. Two are grace notes, printed small just before the main note: an *acciaccatura* (with a slash through its stem) is crushed in as fast as possible, while an *appoggiatura* (no slash) leans on the beat and borrows time from the main note.",
           "example": {
             "template_id": "ornament_recognition",
             "grade": 4,
@@ -676,7 +676,7 @@
         ],
         "concept": {
           "title": "Instruments of the orchestra",
-          "body": "Orchestral instruments fall into four families. STRINGS (violin, viola, cello, double bass) are bowed or plucked. WOODWIND (flute, oboe, clarinet, bassoon) are blown. BRASS (trumpet, horn, trombone, tuba) are blown through a cupped mouthpiece. PERCUSSION (such as the timpani) are struck. Each instrument reads the clef that best fits its range: the violin and flute read treble, the cello and double bass read bass, and the viola reads the alto clef — which is why you learned it. Composers also write playing directions telling the player how to sound a note: arco means 'with the bow', pizzicato 'plucked', and con sordino 'with the mute'.",
+          "body": "Orchestral instruments fall into four families. *Strings* (violin, viola, cello, double bass) are bowed or plucked. *Woodwind* (flute, oboe, clarinet, bassoon) are blown. *Brass* (trumpet, horn, trombone, tuba) are blown through a cupped mouthpiece. *Percussion* (such as the timpani) are struck. Each instrument reads the clef that best fits its range: the violin and flute read treble, the cello and double bass read bass, and the viola reads the alto clef — which is why you learned it. Composers also write playing directions telling the player how to sound a note: arco means 'with the bow', pizzicato 'plucked', and con sordino 'with the mute'.",
           "example": {
             "template_id": "instrument_knowledge",
             "grade": 4,

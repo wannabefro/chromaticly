@@ -13,6 +13,7 @@ import type { Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { Button } from './components/Button';
 import { NotationCard } from './components/NotationCard';
+import { RichText } from './components/RichText';
 import { StrandChip } from './components/StrandChip';
 import { TheoryInSound } from './TheoryInSound';
 import { assembleOptions, type Option } from './grading';
@@ -85,7 +86,7 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
             {teach.objectives.map((objective, i) => (
               <View key={i} style={styles.objectiveRow}>
                 <Text style={[styles.objectiveNum, { color: hue }]}>{i + 1}</Text>
-                <Text style={styles.objectiveText}>{objective}</Text>
+                <RichText style={styles.objectiveText}>{objective}</RichText>
               </View>
             ))}
           </View>
@@ -93,7 +94,7 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
 
         <View style={styles.card}>
           <Text style={styles.cardTitle}>{teach.concept.title}</Text>
-          <Text style={styles.body}>{teach.concept.body}</Text>
+          <RichText style={styles.body}>{teach.concept.body}</RichText>
           {conceptMusic && (
             <View testID="teach-concept-notation">
               <NotationCard music={conceptMusic} testID="teach-concept-card" />
@@ -106,7 +107,7 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
             <Text style={styles.tipIcon}>💡</Text>
             <View style={styles.tipBody}>
               <Text style={styles.tipLabel}>SMART TIP</Text>
-              <Text style={styles.tipText}>{teach.smartTip}</Text>
+              <RichText style={styles.tipText}>{teach.smartTip}</RichText>
             </View>
           </View>
         )}
@@ -117,7 +118,7 @@ export function TeachPhase({ lesson, onStart, onClose, factCollected = false, on
               <Text style={[styles.overline, { color: hue }]}>Did you know?</Text>
               <Text style={styles.factCollected}>★ collected</Text>
             </View>
-            <Text style={styles.factText}>{teach.didYouKnow}</Text>
+            <RichText style={styles.factText}>{teach.didYouKnow}</RichText>
             <Text style={styles.factFoot}>saved to your fact-card collection</Text>
           </View>
         )}

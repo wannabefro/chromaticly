@@ -1,5 +1,6 @@
 import {
   Figtree_400Regular,
+  Figtree_400Regular_Italic,
   Figtree_500Medium,
   Figtree_600SemiBold,
   Figtree_700Bold,
@@ -30,6 +31,7 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     Figtree_400Regular,
+    Figtree_400Regular_Italic,
     Figtree_500Medium,
     Figtree_600SemiBold,
     Figtree_700Bold,
