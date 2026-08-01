@@ -159,3 +159,54 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const satbVoiceRecognition: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// --- Reverse shape (chromaticly-lgi) ---------------------------------------
+// Recognition reads a marked note and names its voice. This asks the rule the
+// other way round — where a named voice is written — which is what a learner
+// needs to WRITE an SATB chord rather than only read one.
+
+const POSITION_LABELS: Record<VoiceName, string> = {
+  soprano: 'Treble staff, stem up',
+  alto: 'Treble staff, stem down',
+  tenor: 'Bass staff, stem up',
+  bass: 'Bass staff, stem down',
+};
+
+function buildPosition(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  if (grade !== 5) {
+    throw new Error(`satb_voice_position: grade ${grade} is not supported (only 5)`);
+  }
+  const rng = mulberry32(contentSeed);
+  const targetVoice = pick(rng, voicesFromAtoms(atoms));
+  const others = SATB_VOICES.filter((v) => v !== targetVoice);
+
+  return {
+    id: makeInstanceId('satb_voice_position', grade, idSeed),
+    template_id: 'satb_voice_position',
+    grade,
+    strand: 'pitch',
+    prompt: `In an SATB chord, where is the ${VOICE_LABELS[targetVoice]} part written?`,
+    stimulus: { music: null, text: VOICE_LABELS[targetVoice] },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: POSITION_LABELS[targetVoice], accepted_alternatives: [] },
+    distractors: others.map((v) => POSITION_LABELS[v]),
+    hints: [
+      'The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `${VOICE_LABELS[targetVoice]} is written ${POSITION_LABELS[targetVoice].toLowerCase()}.`,
+      by_distractor: Object.fromEntries(
+        others.map((v) => [
+          POSITION_LABELS[v],
+          `That is where the ${VOICE_LABELS[v]} goes. ${VOICE_LABELS[targetVoice]} is on the ${STAFF_NAME[VOICE_META[targetVoice].staff]} staff with its stem ${VOICE_META[targetVoice].stem}.`,
+        ]),
+      ),
+    },
+    srs_tags: [satbVoiceAtom(targetVoice)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const satbVoicePosition: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildPosition(candidateSeed, opts.grade, opts.seed, opts.atoms));

@@ -98,6 +98,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'note_value_equivalence',
       'rhythm_sum_reverse',
       'chromatic_scale_missing',
+      'satb_voice_position',
       'scale_degree_stave_input',
       'tonic_triad_key_id',
       'interval_naming',

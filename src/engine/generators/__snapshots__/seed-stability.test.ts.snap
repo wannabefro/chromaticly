@@ -300142,6 +300142,811 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte satb_voice_position @ satb-voice-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Soprano is on the treble staff with its stem up.",
+        "Bass staff, stem up": "That is where the Tenor goes. Soprano is on the treble staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Soprano is on the treble staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Soprano is written treble staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Soprano part written?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Soprano",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem up": "That is where the Tenor goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem down": "That is where the Alto goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Bass is on the bass staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Bass is written bass staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Bass part written?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bass",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem up": "That is where the Tenor goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem down": "That is where the Alto goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Bass is on the bass staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Bass is written bass staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Bass part written?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bass",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem up": "That is where the Tenor goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem down": "That is where the Alto goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Bass is on the bass staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Bass is written bass staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Bass part written?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bass",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Soprano is on the treble staff with its stem up.",
+        "Bass staff, stem up": "That is where the Tenor goes. Soprano is on the treble staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Soprano is on the treble staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Soprano is written treble staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Soprano part written?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Soprano",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte satb_voice_recognition @ satb-voice-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -321278,6 +322083,811 @@ exports[`seed-stability — grade-5-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "metre_rewrite",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5-only generator extras are pinned byte-for-byte satb_voice_position (satb-voice-5, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Soprano is on the treble staff with its stem up.",
+        "Bass staff, stem up": "That is where the Tenor goes. Soprano is on the treble staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Soprano is on the treble staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Soprano is written treble staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Soprano part written?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Soprano",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem up": "That is where the Tenor goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem down": "That is where the Alto goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Bass is on the bass staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Bass is written bass staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Bass part written?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bass",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem up": "That is where the Tenor goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem down": "That is where the Alto goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Bass is on the bass staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Bass is written bass staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Bass part written?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bass",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Tenor is on the bass staff with its stem up.",
+        "Treble staff, stem up": "That is where the Soprano goes. Tenor is on the bass staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Tenor is written bass staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Tenor part written?",
+    "srs_tags": [
+      "satb_voice:tenor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Tenor",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Bass staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem up": "That is where the Tenor goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem down": "That is where the Alto goes. Bass is on the bass staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Bass is on the bass staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Bass is written bass staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Bass part written?",
+    "srs_tags": [
+      "satb_voice:bass",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bass",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem up",
+    },
+    "distractors": [
+      "Treble staff, stem down",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Soprano is on the treble staff with its stem up.",
+        "Bass staff, stem up": "That is where the Tenor goes. Soprano is on the treble staff with its stem up.",
+        "Treble staff, stem down": "That is where the Alto goes. Soprano is on the treble staff with its stem up.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Soprano is written treble staff, stem up.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Soprano part written?",
+    "srs_tags": [
+      "satb_voice:soprano",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Soprano",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Treble staff, stem down",
+    },
+    "distractors": [
+      "Treble staff, stem up",
+      "Bass staff, stem up",
+      "Bass staff, stem down",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Bass staff, stem down": "That is where the Bass goes. Alto is on the treble staff with its stem down.",
+        "Bass staff, stem up": "That is where the Tenor goes. Alto is on the treble staff with its stem down.",
+        "Treble staff, stem up": "That is where the Soprano goes. Alto is on the treble staff with its stem down.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Alto is written treble staff, stem down.",
+    },
+    "grade": 5,
+    "hints": [
+      "The treble staff carries the upper pair (soprano, alto) and the bass staff the lower pair (tenor, bass). Within each pair the higher voice stems up.",
+    ],
+    "id": "satb_voice_position:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "In an SATB chord, where is the Alto part written?",
+    "srs_tags": [
+      "satb_voice:alto",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Alto",
+    },
+    "strand": "pitch",
+    "template_id": "satb_voice_position",
   },
 ]
 `;

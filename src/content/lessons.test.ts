@@ -883,11 +883,13 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
 describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
   const lesson = () => lessonById('satb-voice-5')!;
 
-  test('exists, strand pitch, single template satb_voice_recognition, unlocks the voices lesson', () => {
+  // Reading a marked note and knowing where a named voice is written are the
+  // two directions of the same rule (chromaticly-lgi), so both now run.
+  test('exists, strand pitch, pairs recognition with position, unlocks the voices lesson', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(5);
     expect(lesson().strand).toBe('pitch');
-    expect(lesson().templates).toEqual(['satb_voice_recognition']);
+    expect(lesson().templates).toEqual(['satb_voice_recognition', 'satb_voice_position']);
     expect(lessonById('irregular-divisions-5')!.unlocks).toBe('satb-voice-5');
     // instruments-5 sits between it and the tail (chromaticly-e3z.16).
     expect(lesson().unlocks).toBe('instruments-5');

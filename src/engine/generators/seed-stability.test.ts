@@ -88,6 +88,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   transposing_instrument: 5,
   metre_rewrite: 5,
   satb_voice_recognition: 5,
+  satb_voice_position: 5,
   tuplet_recognition: 5,
   cadence_recognition: 5,
   interval_compound_reduce: 5,
@@ -576,6 +577,11 @@ const GRADE_5_EXTRA_CASES: Case[] = [
   {
     label: 'satb_voice_recognition (satb-5, pre-lesson pin, chromaticly-g5-1)',
     templateId: 'satb_voice_recognition',
+    atoms: ['satb_voice:soprano', 'satb_voice:alto', 'satb_voice:tenor', 'satb_voice:bass'],
+  },
+  {
+    label: 'satb_voice_position (satb-voice-5, chromaticly-lgi)',
+    templateId: 'satb_voice_position',
     atoms: ['satb_voice:soprano', 'satb_voice:alto', 'satb_voice:tenor', 'satb_voice:bass'],
   },
   {

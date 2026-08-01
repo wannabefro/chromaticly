@@ -29,7 +29,7 @@ import { ornamentEffect, ornamentRecognition } from './ornament-recognition';
 import { restCompletion, restValueId } from './rest-completion';
 import { rhythmSum, rhythmSumReverse } from './rhythm-sum';
 import { scaleDegreeId, scaleDegreeStaveInput, tonicTriadKeyId } from './scale-degree-id';
-import { satbVoiceRecognition } from './satb-voice-recognition';
+import { satbVoicePosition, satbVoiceRecognition } from './satb-voice-recognition';
 import { scaleConstruction } from './scale-construction';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
 import { tupletRecognition } from './tuplet-recognition';
@@ -87,6 +87,7 @@ export const GENERATORS: Record<string, Generator> = {
   tuplet_recognition: tupletRecognition,
   metre_rewrite: metreRewrite,
   satb_voice_recognition: satbVoiceRecognition,
+  satb_voice_position: satbVoicePosition,
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {
