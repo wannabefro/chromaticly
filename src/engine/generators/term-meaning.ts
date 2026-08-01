@@ -7,6 +7,7 @@ import {
   TERMS_DECK_G1,
   TERMS_DECK_G2,
   TERMS_DECK_G3,
+  TERMS_DECK_G4,
   TERMS_DECK_G5,
   type TermsDeckEntry,
 } from '../../content/terms-deck';
@@ -57,7 +58,7 @@ function slugify(text: string): string {
 /** Every term-atom slug the generator can emit — the authoritative vocabulary
  *  for cross-checking `term:<slug>` references (e.g. lesson data). */
 export const TERM_ATOM_SLUGS: ReadonlySet<string> = new Set(
-  [...TERMS_DECK_G1, ...TERMS_DECK_G2, ...TERMS_DECK_G3, ...TERMS_DECK_G5].map((e) => slugify(label(e))),
+  [...TERMS_DECK_G1, ...TERMS_DECK_G2, ...TERMS_DECK_G3, ...TERMS_DECK_G4, ...TERMS_DECK_G5].map((e) => slugify(label(e))),
 );
 
 export function termAtomSlugsForGrade(grade: number): ReadonlySet<string> {
@@ -99,7 +100,16 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
   const direction = pick<Direction>(rng, ['term_to_meaning', 'meaning_to_term']);
 
   // The grade's whole deck: one lesson rarely holds three same-category wrongs.
-  const pool = termsDeckForGrade(grade).filter((e) => e.category === entry.category && e !== entry);
+  // A same-meaning entry is barred, and no two distractors may share a meaning
+  // either: "which term means slow?" has four right answers across the
+  // languages (adagio, lento, lent, langsam), and the other direction would
+  // print the same option text twice.
+  const seenMeanings = new Set([entry.meaning]);
+  const pool = termsDeckForGrade(grade).filter((e) => {
+    if (e.category !== entry.category || e === entry || seenMeanings.has(e.meaning)) return false;
+    seenMeanings.add(e.meaning);
+    return true;
+  });
   const distractorEntries = sampleDistinct(rng, pool, 3);
 
   const termLabel = label(entry);

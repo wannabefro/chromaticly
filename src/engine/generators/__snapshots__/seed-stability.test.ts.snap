@@ -46152,7 +46152,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "moderately loud",
+        "value": "very loud",
       },
     ],
     "feedback": {
@@ -46193,7 +46193,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "dynamics",
-        "value": "diminuendo",
+        "value": "decrescendo",
       },
       {
         "category": "dynamics",
@@ -46201,7 +46201,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "decrescendo",
+        "value": "crescendo",
       },
     ],
     "feedback": {
@@ -46250,7 +46250,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "gradually getting quieter",
+        "value": "gradually getting louder",
       },
     ],
     "feedback": {
@@ -46291,15 +46291,15 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "dynamics",
-        "value": "quiet",
-      },
-      {
-        "category": "dynamics",
-        "value": "gradually getting louder",
-      },
-      {
-        "category": "dynamics",
         "value": "moderately quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "very quiet",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately loud",
       },
     ],
     "feedback": {
@@ -46393,7 +46393,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "quiet",
+        "value": "moderately loud",
       },
       {
         "category": "dynamics",
@@ -46442,11 +46442,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "mezzo forte",
+        "value": "forte",
       },
       {
         "category": "dynamics",
-        "value": "diminuendo",
+        "value": "decrescendo",
       },
     ],
     "feedback": {
@@ -46491,11 +46491,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "mezzo piano",
+        "value": "mezzo forte",
       },
       {
         "category": "dynamics",
-        "value": "pianissimo",
+        "value": "mezzo piano",
       },
     ],
     "feedback": {
@@ -46628,21 +46628,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "pianissimo",
+        "value": "gradually getting quieter",
       },
     },
     "distractors": [
       {
         "category": "dynamics",
-        "value": "fortissimo",
+        "value": "gradually getting louder",
       },
       {
         "category": "dynamics",
-        "value": "decrescendo",
+        "value": "moderately loud",
       },
       {
         "category": "dynamics",
-        "value": "forte",
+        "value": "very quiet",
       },
     ],
     "feedback": {
@@ -46661,13 +46661,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which term or sign means "very quiet"?",
+    "prompt": "What does "diminuendo" mean?",
     "srs_tags": [
-      "term:pianissimo",
+      "term:diminuendo",
     ],
     "stimulus": {
       "music": null,
-      "text": "very quiet",
+      "text": "diminuendo",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -46683,7 +46683,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "dynamics",
-        "value": "diminuendo",
+        "value": "decrescendo",
       },
       {
         "category": "dynamics",
@@ -46740,7 +46740,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "gradually getting louder",
+        "value": "very quiet",
       },
     ],
     "feedback": {
@@ -46775,21 +46775,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "moderately loud",
+        "value": "moderately quiet",
       },
     },
     "distractors": [
       {
         "category": "dynamics",
-        "value": "loud",
-      },
-      {
-        "category": "dynamics",
-        "value": "moderately quiet",
-      },
-      {
-        "category": "dynamics",
         "value": "gradually getting quieter",
+      },
+      {
+        "category": "dynamics",
+        "value": "gradually getting louder",
+      },
+      {
+        "category": "dynamics",
+        "value": "moderately loud",
       },
     ],
     "feedback": {
@@ -46808,13 +46808,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "What does "mezzo forte" mean?",
+    "prompt": "What does "mezzo piano" mean?",
     "srs_tags": [
-      "term:mezzo_forte",
+      "term:mezzo_piano",
     ],
     "stimulus": {
       "music": null,
-      "text": "mezzo forte",
+      "text": "mezzo piano",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -46834,11 +46834,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "pianissimo",
+        "value": "piano",
       },
       {
         "category": "dynamics",
-        "value": "mezzo piano",
+        "value": "fortissimo",
       },
     ],
     "feedback": {
@@ -46879,7 +46879,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "dynamics",
-        "value": "gradually getting quieter",
+        "value": "very quiet",
       },
       {
         "category": "dynamics",
@@ -46932,7 +46932,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "gradually getting quieter",
+        "value": "very quiet",
       },
       {
         "category": "dynamics",
@@ -46977,7 +46977,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "dynamics",
-        "value": "moderately loud",
+        "value": "loud",
       },
       {
         "category": "dynamics",
@@ -46985,7 +46985,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "gradually getting quieter",
+        "value": "gradually getting louder",
       },
     ],
     "feedback": {
@@ -47030,11 +47030,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "dynamics",
-        "value": "piano",
+        "value": "mezzo piano",
       },
       {
         "category": "dynamics",
-        "value": "decrescendo",
+        "value": "crescendo",
       },
     ],
     "feedback": {
@@ -47075,15 +47075,15 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "dynamics",
-        "value": "diminuendo",
+        "value": "decrescendo",
       },
       {
         "category": "dynamics",
-        "value": "crescendo",
+        "value": "pianissimo",
       },
       {
         "category": "dynamics",
-        "value": "forte",
+        "value": "fortissimo",
       },
     ],
     "feedback": {
@@ -48122,7 +48122,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "at a moderate speed",
+        "value": "quick",
       },
     ],
     "feedback": {
@@ -48171,7 +48171,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "ritardando",
+        "value": "rallentando",
       },
     ],
     "feedback": {
@@ -48261,15 +48261,15 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "slow",
-      },
-      {
-        "category": "tempo",
-        "value": "gradually getting slower",
-      },
-      {
-        "category": "tempo",
         "value": "at a medium speed",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting quicker",
+      },
+      {
+        "category": "tempo",
+        "value": "at a moderate speed",
       },
     ],
     "feedback": {
@@ -48363,7 +48363,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "slow",
+        "value": "at a moderate speed",
       },
       {
         "category": "tempo",
@@ -48412,7 +48412,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "moderato",
+        "value": "allegretto",
       },
       {
         "category": "tempo",
@@ -48461,11 +48461,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "moderato",
       },
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "andante",
       },
     ],
     "feedback": {
@@ -48710,7 +48710,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "gradually getting quicker",
       },
     ],
     "feedback": {
@@ -48804,11 +48804,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "adagio",
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "allegro",
       },
     ],
     "feedback": {
@@ -48843,21 +48843,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "accepted_alternatives": [],
       "canonical": {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "gradually getting slower",
       },
     },
     "distractors": [
       {
         "category": "tempo",
-        "value": "a tempo",
+        "value": "gradually getting quicker",
       },
       {
         "category": "tempo",
-        "value": "ritardando",
+        "value": "at a moderate speed",
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "quick",
       },
     ],
     "feedback": {
@@ -48876,13 +48876,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which term or sign means "gradually getting quicker"?",
+    "prompt": "What does "ritardando" mean?",
     "srs_tags": [
-      "term:accelerando",
+      "term:ritardando",
     ],
     "stimulus": {
       "music": null,
-      "text": "gradually getting quicker",
+      "text": "ritardando",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -48892,21 +48892,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "accepted_alternatives": [],
       "canonical": {
         "category": "tempo",
-        "value": "moderato",
+        "value": "gradually getting slower",
       },
     },
     "distractors": [
       {
         "category": "tempo",
-        "value": "adagio",
+        "value": "at a moderate speed",
       },
       {
         "category": "tempo",
-        "value": "rallentando",
+        "value": "gradually getting quicker",
       },
       {
         "category": "tempo",
-        "value": "ritardando",
+        "value": "slow",
       },
     ],
     "feedback": {
@@ -48925,13 +48925,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which term or sign means "at a moderate speed"?",
+    "prompt": "What does "ritardando" mean?",
     "srs_tags": [
-      "term:moderato",
+      "term:ritardando",
     ],
     "stimulus": {
       "music": null,
-      "text": "at a moderate speed",
+      "text": "ritardando",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -48947,7 +48947,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a moderate speed",
+        "value": "fairly quick",
       },
       {
         "category": "tempo",
@@ -49000,11 +49000,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "adagio",
+        "value": "andante",
       },
       {
         "category": "tempo",
-        "value": "ritardando",
+        "value": "rallentando",
       },
     ],
     "feedback": {
@@ -49049,11 +49049,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "rallentando",
+        "value": "accelerando",
       },
       {
         "category": "tempo",
-        "value": "allegretto",
+        "value": "allegro",
       },
     ],
     "feedback": {
@@ -73583,7 +73583,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "at a medium speed",
+        "value": "at a moderate speed",
       },
     ],
     "feedback": {
@@ -73628,7 +73628,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "ritardando",
+        "value": "rallentando",
       },
       {
         "category": "tempo",
@@ -73716,17 +73716,17 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       "accepted_alternatives": [],
       "canonical": {
         "category": "tempo",
-        "value": "less movement, slower",
+        "value": "slightly faster (or slower) than andante",
       },
     },
     "distractors": [
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "gradually getting slower",
       },
       {
         "category": "tempo",
-        "value": "slow",
+        "value": "fast",
       },
       {
         "category": "tempo",
@@ -73749,13 +73749,13 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "What does "meno mosso" mean?",
+    "prompt": "What does "andantino" mean?",
     "srs_tags": [
-      "term:meno_mosso",
+      "term:andantino",
     ],
     "stimulus": {
       "music": null,
-      "text": "meno mosso",
+      "text": "andantino",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -73771,15 +73771,15 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "adagio",
       },
       {
         "category": "tempo",
-        "value": "ritardando",
+        "value": "rallentando",
       },
       {
         "category": "tempo",
-        "value": "moderato",
+        "value": "allegretto",
       },
     ],
     "feedback": {
@@ -73820,11 +73820,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a medium speed",
+        "value": "at a moderate speed",
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "in time (resume the original speed)",
       },
       {
         "category": "tempo",
@@ -73869,7 +73869,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "largo",
+        "value": "presto",
       },
       {
         "category": "tempo",
@@ -73918,7 +73918,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "grave",
       },
       {
         "category": "tempo",
@@ -73926,7 +73926,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "andantino",
+        "value": "adagietto",
       },
     ],
     "feedback": {
@@ -73967,11 +73967,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "adagietto",
+        "value": "a tempo",
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "moderato",
       },
       {
         "category": "tempo",
@@ -74016,15 +74016,15 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a moderate speed",
-      },
-      {
-        "category": "tempo",
-        "value": "slow and stately",
-      },
-      {
-        "category": "tempo",
         "value": "fairly quick",
+      },
+      {
+        "category": "tempo",
+        "value": "slightly faster (or slower) than andante",
+      },
+      {
+        "category": "tempo",
+        "value": "quick",
       },
     ],
     "feedback": {
@@ -74069,11 +74069,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "gradually getting quicker",
       },
       {
         "category": "tempo",
-        "value": "very slow, solemn",
+        "value": "with movement",
       },
     ],
     "feedback": {
@@ -74118,7 +74118,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "moderato",
+        "value": "allegretto",
       },
       {
         "category": "tempo",
@@ -74163,7 +74163,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "more movement, quicker",
+        "value": "held back (immediately slower)",
       },
       {
         "category": "tempo",
@@ -74171,7 +74171,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "very slow, solemn",
       },
     ],
     "feedback": {
@@ -74220,7 +74220,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "in time (resume the original speed)",
       },
     ],
     "feedback": {
@@ -74269,7 +74269,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "adagio",
+        "value": "andante",
       },
     ],
     "feedback": {
@@ -74310,11 +74310,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "very slow, solemn",
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "gradually getting quicker",
       },
       {
         "category": "tempo",
@@ -74363,11 +74363,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "very slow, solemn",
       },
       {
         "category": "tempo",
-        "value": "rather slow",
+        "value": "slow and stately",
       },
     ],
     "feedback": {
@@ -74412,11 +74412,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "in time (resume the original speed)",
       },
       {
         "category": "tempo",
-        "value": "very slow, solemn",
+        "value": "with movement",
       },
     ],
     "feedback": {
@@ -74457,7 +74457,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "adagio",
+        "value": "andante",
       },
       {
         "category": "tempo",
@@ -74510,11 +74510,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "grave",
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "moderato",
       },
     ],
     "feedback": {
@@ -115138,7 +115138,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "very slow, solemn",
       },
       {
         "category": "tempo",
@@ -115232,7 +115232,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "slow",
+        "value": "at a medium speed",
       },
       {
         "category": "tempo",
@@ -115583,7 +115583,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "less movement, slower",
+        "value": "more movement, quicker",
       },
     ],
     "feedback": {
@@ -115677,11 +115677,11 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "larghetto",
+        "value": "largo",
       },
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "adagio",
       },
     ],
     "feedback": {
@@ -115869,7 +115869,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "adagio",
       },
       {
         "category": "tempo",
@@ -115877,7 +115877,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "meno mosso",
+        "value": "più mosso",
       },
     ],
     "feedback": {
@@ -170413,6 +170413,3426 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "scales_keys",
     "template_id": "scale_construction",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte term_meaning @ french-expression-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "less",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "delicate",
+      },
+      {
+        "category": "other_terms",
+        "value": "very, much",
+      },
+      {
+        "category": "other_terms",
+        "value": "playful, merry",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s0",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "moins" mean?",
+    "srs_tags": [
+      "term:moins",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "moins",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "mais",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "légèrement / léger",
+      },
+      {
+        "category": "other_terms",
+        "value": "brio (con brio)",
+      },
+      {
+        "category": "other_terms",
+        "value": "plus",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s1",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "but"?",
+    "srs_tags": [
+      "term:mais",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "but",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "but",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+      {
+        "category": "other_terms",
+        "value": "repeat from the beginning",
+      },
+      {
+        "category": "other_terms",
+        "value": "with",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s2",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "mais" mean?",
+    "srs_tags": [
+      "term:mais",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "mais",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "with",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "vigour (with vigour)",
+      },
+      {
+        "category": "other_terms",
+        "value": "playful, joking",
+      },
+      {
+        "category": "other_terms",
+        "value": "at choice, freely",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s3",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "avec" mean?",
+    "srs_tags": [
+      "term:avec",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "avec",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "non",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "sempre",
+      },
+      {
+        "category": "other_terms",
+        "value": "agitato",
+      },
+      {
+        "category": "other_terms",
+        "value": "staccato",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s4",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "not"?",
+    "srs_tags": [
+      "term:non",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "not",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "prominent (bring out the part)",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "playful, merry",
+      },
+      {
+        "category": "other_terms",
+        "value": "at choice, freely",
+      },
+      {
+        "category": "other_terms",
+        "value": "not",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s5",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "en dehors" mean?",
+    "srs_tags": [
+      "term:en_dehors",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "en dehors",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "et",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "scherzando",
+      },
+      {
+        "category": "other_terms",
+        "value": "sempre",
+      },
+      {
+        "category": "other_terms",
+        "value": "peu",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s6",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "and"?",
+    "srs_tags": [
+      "term:et",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "and",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "légèrement / léger",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "tranquillo",
+      },
+      {
+        "category": "other_terms",
+        "value": "delicato",
+      },
+      {
+        "category": "other_terms",
+        "value": "maestoso",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s7",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "light, lightly"?",
+    "srs_tags": [
+      "term:l_g_rement_l_ger",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "light, lightly",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "légèrement / léger",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "forza (con forza)",
+      },
+      {
+        "category": "other_terms",
+        "value": "giocoso",
+      },
+      {
+        "category": "other_terms",
+        "value": "poco (a poco)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s8",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "light, lightly"?",
+    "srs_tags": [
+      "term:l_g_rement_l_ger",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "light, lightly",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "very",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "smoothly",
+      },
+      {
+        "category": "other_terms",
+        "value": "heavy",
+      },
+      {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s9",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "très" mean?",
+    "srs_tags": [
+      "term:tr_s",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "très",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "very",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "less",
+      },
+      {
+        "category": "other_terms",
+        "value": "at choice, freely",
+      },
+      {
+        "category": "other_terms",
+        "value": "and",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s10",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "très" mean?",
+    "srs_tags": [
+      "term:tr_s",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "très",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "moins",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "non",
+      },
+      {
+        "category": "other_terms",
+        "value": "legato",
+      },
+      {
+        "category": "other_terms",
+        "value": "forza (con forza)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s11",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "less"?",
+    "srs_tags": [
+      "term:moins",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "less",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "little",
+      },
+      {
+        "category": "other_terms",
+        "value": "delicate",
+      },
+      {
+        "category": "other_terms",
+        "value": "enough, sufficiently",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s12",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "douce" mean?",
+    "srs_tags": [
+      "term:douce",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "douce",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "and",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "more",
+      },
+      {
+        "category": "other_terms",
+        "value": "less",
+      },
+      {
+        "category": "other_terms",
+        "value": "with determination",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s13",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "et" mean?",
+    "srs_tags": [
+      "term:et",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "et",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "douce",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "giocoso",
+      },
+      {
+        "category": "other_terms",
+        "value": "leggiero",
+      },
+      {
+        "category": "other_terms",
+        "value": "poco (a poco)",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s14",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "sweet"?",
+    "srs_tags": [
+      "term:douce",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "sweet",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "little",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "enough, sufficiently",
+      },
+      {
+        "category": "other_terms",
+        "value": "at choice, freely",
+      },
+      {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s15",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "peu" mean?",
+    "srs_tags": [
+      "term:peu",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "peu",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "little",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "agitated",
+      },
+      {
+        "category": "other_terms",
+        "value": "to, at",
+      },
+      {
+        "category": "other_terms",
+        "value": "simple, plain",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s16",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "peu" mean?",
+    "srs_tags": [
+      "term:peu",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "peu",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "prominent (bring out the part)",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "not too much",
+      },
+      {
+        "category": "other_terms",
+        "value": "agitated",
+      },
+      {
+        "category": "other_terms",
+        "value": "to, at",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s17",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "en dehors" mean?",
+    "srs_tags": [
+      "term:en_dehors",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "en dehors",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "avec",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "poco (a poco)",
+      },
+      {
+        "category": "other_terms",
+        "value": "ad libitum",
+      },
+      {
+        "category": "other_terms",
+        "value": "triste / tristamente",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s18",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "with"?",
+    "srs_tags": [
+      "term:avec",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "with",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "et",
+      },
+    },
+    "distractors": [
+      {
+        "category": "other_terms",
+        "value": "non",
+      },
+      {
+        "category": "other_terms",
+        "value": "à / au",
+      },
+      {
+        "category": "other_terms",
+        "value": "giocoso",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which terms you already know.",
+    ],
+    "id": "term_meaning:g4:s19",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "and"?",
+    "srs_tags": [
+      "term:et",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "and",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte term_meaning @ french-tempo-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow down",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "fast",
+      },
+      {
+        "category": "tempo",
+        "value": "gradually getting slower",
+      },
+      {
+        "category": "tempo",
+        "value": "slow",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s0",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "ralentir" mean?",
+    "srs_tags": [
+      "term:ralentir",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "ralentir",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "presser / en pressant",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "cédez",
+      },
+      {
+        "category": "tempo",
+        "value": "largo",
+      },
+      {
+        "category": "tempo",
+        "value": "vif",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s1",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "hurry, hurrying on"?",
+    "srs_tags": [
+      "term:presser_en_pressant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "hurry, hurrying on",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow down",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+      {
+        "category": "tempo",
+        "value": "quick",
+      },
+      {
+        "category": "tempo",
+        "value": "with some freedom of time",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s2",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "ralentir" mean?",
+    "srs_tags": [
+      "term:ralentir",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "ralentir",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "yield, relax the speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "slow and stately",
+      },
+      {
+        "category": "tempo",
+        "value": "more movement, quicker",
+      },
+      {
+        "category": "tempo",
+        "value": "rather slow",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s3",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "cédez" mean?",
+    "srs_tags": [
+      "term:c_dez",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "cédez",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "retenu / en retenant",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "a tempo",
+      },
+      {
+        "category": "tempo",
+        "value": "largo",
+      },
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s4",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "held back, holding back"?",
+    "srs_tags": [
+      "term:retenu_en_retenant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "held back, holding back",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "gradually getting quicker",
+      },
+      {
+        "category": "tempo",
+        "value": "slow and stately",
+      },
+      {
+        "category": "tempo",
+        "value": "slow down",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s5",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "modéré",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "modéré",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "ritenuto",
+      },
+      {
+        "category": "tempo",
+        "value": "adagietto",
+      },
+      {
+        "category": "tempo",
+        "value": "retenu / en retenant",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s6",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "at a moderate speed"?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "at a moderate speed",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "presser / en pressant",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "prestissimo",
+      },
+      {
+        "category": "tempo",
+        "value": "presto",
+      },
+      {
+        "category": "tempo",
+        "value": "grave",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s7",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "hurry, hurrying on"?",
+    "srs_tags": [
+      "term:presser_en_pressant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "hurry, hurrying on",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "presser / en pressant",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "vivace / vivo",
+      },
+      {
+        "category": "tempo",
+        "value": "adagio",
+      },
+      {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s8",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "hurry, hurrying on"?",
+    "srs_tags": [
+      "term:presser_en_pressant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "hurry, hurrying on",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "quick",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "slow",
+      },
+      {
+        "category": "tempo",
+        "value": "less movement, slower",
+      },
+      {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s9",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "vite" mean?",
+    "srs_tags": [
+      "term:vite",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "vite",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "quick",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "slow down",
+      },
+      {
+        "category": "tempo",
+        "value": "slow and stately",
+      },
+      {
+        "category": "tempo",
+        "value": "yield, relax the speed",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s10",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "vite" mean?",
+    "srs_tags": [
+      "term:vite",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "vite",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "ralentir",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "retenu / en retenant",
+      },
+      {
+        "category": "tempo",
+        "value": "moderato",
+      },
+      {
+        "category": "tempo",
+        "value": "vivace / vivo",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s11",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "slow down"?",
+    "srs_tags": [
+      "term:ralentir",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "slow down",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "held back, holding back",
+      },
+      {
+        "category": "tempo",
+        "value": "fast",
+      },
+      {
+        "category": "tempo",
+        "value": "broadening",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s12",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "lent" mean?",
+    "srs_tags": [
+      "term:lent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "lent",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "lively",
+      },
+      {
+        "category": "tempo",
+        "value": "hurry, hurrying on",
+      },
+      {
+        "category": "tempo",
+        "value": "fast",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s13",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "modéré",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "lent",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "andante",
+      },
+      {
+        "category": "tempo",
+        "value": "con moto",
+      },
+      {
+        "category": "tempo",
+        "value": "rallentando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s14",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "slow"?",
+    "srs_tags": [
+      "term:lent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "slow",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "held back, holding back",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "broadening",
+      },
+      {
+        "category": "tempo",
+        "value": "slightly faster (or slower) than andante",
+      },
+      {
+        "category": "tempo",
+        "value": "fairly quick",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s15",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "retenu / en retenant" mean?",
+    "srs_tags": [
+      "term:retenu_en_retenant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "retenu / en retenant",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "held back, holding back",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "slightly faster (or slower) than andante",
+      },
+      {
+        "category": "tempo",
+        "value": "broadening",
+      },
+      {
+        "category": "tempo",
+        "value": "more movement, quicker",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s16",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "retenu / en retenant" mean?",
+    "srs_tags": [
+      "term:retenu_en_retenant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "retenu / en retenant",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "rather slow",
+      },
+      {
+        "category": "tempo",
+        "value": "slow and stately",
+      },
+      {
+        "category": "tempo",
+        "value": "with some freedom of time",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s17",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does the French term "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "modéré",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "cédez",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+      {
+        "category": "tempo",
+        "value": "andantino",
+      },
+      {
+        "category": "tempo",
+        "value": "allargando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s18",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "yield, relax the speed"?",
+    "srs_tags": [
+      "term:c_dez",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "yield, relax the speed",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "modéré",
+      },
+    },
+    "distractors": [
+      {
+        "category": "tempo",
+        "value": "ralentir",
+      },
+      {
+        "category": "tempo",
+        "value": "allargando",
+      },
+      {
+        "category": "tempo",
+        "value": "accelerando",
+      },
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
+    },
+    "grade": 4,
+    "hints": [
+      "Think about which tempo terms you already know.",
+    ],
+    "id": "term_meaning:g4:s19",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which term or sign means "at a moderate speed"?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "at a moderate speed",
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte term_meaning_flashcard @ french-expression-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "less",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s0",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "moins",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "moins" mean?",
+    "srs_tags": [
+      "term:moins",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "but",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s1",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "mais",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "mais" mean?",
+    "srs_tags": [
+      "term:mais",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "but",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s2",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "mais",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "mais" mean?",
+    "srs_tags": [
+      "term:mais",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "with",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s3",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "avec",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "avec" mean?",
+    "srs_tags": [
+      "term:avec",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "not",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s4",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "non",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "non" mean?",
+    "srs_tags": [
+      "term:non",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "prominent (bring out the part)",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s5",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "en dehors",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "en dehors" mean?",
+    "srs_tags": [
+      "term:en_dehors",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "and",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s6",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "et",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "et" mean?",
+    "srs_tags": [
+      "term:et",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "light, lightly",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s7",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "légèrement / léger",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "légèrement / léger" mean?",
+    "srs_tags": [
+      "term:l_g_rement_l_ger",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "light, lightly",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s8",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "légèrement / léger",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "légèrement / léger" mean?",
+    "srs_tags": [
+      "term:l_g_rement_l_ger",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "very",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s9",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "très",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "très" mean?",
+    "srs_tags": [
+      "term:tr_s",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "very",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s10",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "très",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "très" mean?",
+    "srs_tags": [
+      "term:tr_s",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "less",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s11",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "moins",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "moins" mean?",
+    "srs_tags": [
+      "term:moins",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s12",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "douce",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "douce" mean?",
+    "srs_tags": [
+      "term:douce",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "and",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s13",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "et",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "et" mean?",
+    "srs_tags": [
+      "term:et",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "sweet",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s14",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "douce",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "douce" mean?",
+    "srs_tags": [
+      "term:douce",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "little",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s15",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "peu",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "peu" mean?",
+    "srs_tags": [
+      "term:peu",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "little",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s16",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "peu",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "peu" mean?",
+    "srs_tags": [
+      "term:peu",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "prominent (bring out the part)",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s17",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "en dehors",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "en dehors" mean?",
+    "srs_tags": [
+      "term:en_dehors",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "with",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s18",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "avec",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "avec" mean?",
+    "srs_tags": [
+      "term:avec",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "other_terms",
+        "value": "and",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s19",
+    "interaction": {
+      "config": {
+        "category": "other_terms",
+        "exemplar": undefined,
+        "term": "et",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "et" mean?",
+    "srs_tags": [
+      "term:et",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte term_meaning_flashcard @ french-tempo-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow down",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s0",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "ralentir",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "ralentir" mean?",
+    "srs_tags": [
+      "term:ralentir",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "hurry, hurrying on",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s1",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "presser / en pressant",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "presser / en pressant" mean?",
+    "srs_tags": [
+      "term:presser_en_pressant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow down",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s2",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "ralentir",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "ralentir" mean?",
+    "srs_tags": [
+      "term:ralentir",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "yield, relax the speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s3",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "cédez",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "cédez" mean?",
+    "srs_tags": [
+      "term:c_dez",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "held back, holding back",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s4",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "retenu / en retenant",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "retenu / en retenant" mean?",
+    "srs_tags": [
+      "term:retenu_en_retenant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s5",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "modéré",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s6",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "modéré",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "hurry, hurrying on",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s7",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "presser / en pressant",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "presser / en pressant" mean?",
+    "srs_tags": [
+      "term:presser_en_pressant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "hurry, hurrying on",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s8",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "presser / en pressant",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "presser / en pressant" mean?",
+    "srs_tags": [
+      "term:presser_en_pressant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "quick",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s9",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "vite",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "vite" mean?",
+    "srs_tags": [
+      "term:vite",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "quick",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s10",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "vite",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "vite" mean?",
+    "srs_tags": [
+      "term:vite",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow down",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s11",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "ralentir",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "ralentir" mean?",
+    "srs_tags": [
+      "term:ralentir",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s12",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "lent",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "lent" mean?",
+    "srs_tags": [
+      "term:lent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s13",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "modéré",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "slow",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s14",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "lent",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "lent" mean?",
+    "srs_tags": [
+      "term:lent",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "held back, holding back",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s15",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "retenu / en retenant",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "retenu / en retenant" mean?",
+    "srs_tags": [
+      "term:retenu_en_retenant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "held back, holding back",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s16",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "retenu / en retenant",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "retenu / en retenant" mean?",
+    "srs_tags": [
+      "term:retenu_en_retenant",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s17",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "modéré",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "yield, relax the speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s18",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "cédez",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "cédez" mean?",
+    "srs_tags": [
+      "term:c_dez",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "category": "tempo",
+        "value": "at a moderate speed",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — that's a different tempo term.",
+    },
+    "grade": 4,
+    "hints": [],
+    "id": "term_meaning_flashcard:g4:s19",
+    "interaction": {
+      "config": {
+        "category": "tempo",
+        "exemplar": undefined,
+        "term": "modéré",
+      },
+      "type": "flashcard",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What does "modéré" mean?",
+    "srs_tags": [
+      "term:mod_r",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "term_meaning_flashcard",
   },
 ]
 `;
@@ -228037,15 +231457,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "energetic",
+        "value": "light, nimble",
       },
       {
         "category": "other_terms",
-        "value": "not too much",
+        "value": "always",
       },
       {
         "category": "other_terms",
-        "value": "playful, merry",
+        "value": "expressive",
       },
     ],
     "feedback": {
@@ -228086,15 +231506,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "etwas",
+        "value": "mit Ausdruck",
       },
       {
         "category": "other_terms",
-        "value": "deciso",
+        "value": "energico",
       },
       {
         "category": "other_terms",
-        "value": "ohne",
+        "value": "ein wenig",
       },
     ],
     "feedback": {
@@ -228143,7 +231563,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "full",
+        "value": "little",
       },
     ],
     "feedback": {
@@ -228184,15 +231604,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "with determination",
+        "value": "energetic",
       },
       {
         "category": "other_terms",
-        "value": "simple, plain",
+        "value": "suddenly",
       },
       {
         "category": "other_terms",
-        "value": "at choice, freely",
+        "value": "vigour (with vigour)",
       },
     ],
     "feedback": {
@@ -228233,15 +231653,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "senza",
+        "value": "agitato",
       },
       {
         "category": "other_terms",
-        "value": "brio (con brio)",
+        "value": "energico",
       },
       {
         "category": "other_terms",
-        "value": "staccato",
+        "value": "grazioso",
       },
     ],
     "feedback": {
@@ -228282,15 +231702,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "playful, merry",
+        "value": "expressive",
       },
       {
         "category": "other_terms",
-        "value": "agitated",
+        "value": "vigour (with vigour)",
       },
       {
         "category": "other_terms",
-        "value": "with",
+        "value": "peaceful",
       },
     ],
     "feedback": {
@@ -228331,15 +231751,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "semplice",
+        "value": "subito",
       },
       {
         "category": "other_terms",
-        "value": "sempre",
+        "value": "ad libitum",
       },
       {
         "category": "other_terms",
-        "value": "nicht",
+        "value": "zart",
       },
     ],
     "feedback": {
@@ -228380,15 +231800,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "mit Ausdruck",
+        "value": "en dehors",
       },
       {
         "category": "other_terms",
-        "value": "energico",
+        "value": "leggiero",
       },
       {
         "category": "other_terms",
-        "value": "pesante",
+        "value": "scherzando",
       },
     ],
     "feedback": {
@@ -228429,15 +231849,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "leggiero",
-      },
-      {
-        "category": "other_terms",
-        "value": "espressivo",
+        "value": "pesante",
       },
       {
         "category": "other_terms",
         "value": "poco (a poco)",
+      },
+      {
+        "category": "other_terms",
+        "value": "molto",
       },
     ],
     "feedback": {
@@ -228482,11 +231902,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "bold, strong",
+        "value": "simple, plain",
       },
       {
         "category": "other_terms",
-        "value": "sweet",
+        "value": "the end (al fine = up to the end)",
       },
     ],
     "feedback": {
@@ -228527,15 +231947,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "always",
+        "value": "tender, delicate",
       },
       {
         "category": "other_terms",
-        "value": "agitated",
+        "value": "with determination",
       },
       {
         "category": "other_terms",
-        "value": "a little",
+        "value": "more",
       },
     ],
     "feedback": {
@@ -228576,15 +231996,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "mit",
+        "value": "traurig",
       },
       {
         "category": "other_terms",
-        "value": "legato",
+        "value": "staccato",
       },
       {
         "category": "other_terms",
-        "value": "leggiero",
+        "value": "pesante",
       },
     ],
     "feedback": {
@@ -228625,15 +232045,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "not",
+        "value": "full",
       },
       {
         "category": "other_terms",
-        "value": "delicate",
+        "value": "force (with force)",
       },
       {
         "category": "other_terms",
-        "value": "peaceful",
+        "value": "light, lightly",
       },
     ],
     "feedback": {
@@ -228674,15 +232094,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "without",
+        "value": "a little",
       },
       {
         "category": "other_terms",
-        "value": "always",
+        "value": "peaceful",
       },
       {
         "category": "other_terms",
-        "value": "delicate",
+        "value": "force (with force)",
       },
     ],
     "feedback": {
@@ -228723,15 +232143,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "grazioso",
+        "value": "giocoso",
       },
       {
         "category": "other_terms",
-        "value": "leggiero",
+        "value": "risoluto",
       },
       {
         "category": "other_terms",
-        "value": "espressivo",
+        "value": "poco (a poco)",
       },
     ],
     "feedback": {
@@ -228772,11 +232192,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "sad",
+        "value": "less",
       },
       {
         "category": "other_terms",
-        "value": "agitated",
+        "value": "with determination",
       },
       {
         "category": "other_terms",
@@ -228821,15 +232241,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "agitated",
+        "value": "with determination",
       },
       {
         "category": "other_terms",
-        "value": "sad",
+        "value": "but",
       },
       {
         "category": "other_terms",
-        "value": "in an undertone",
+        "value": "sad, sorrowful",
       },
     ],
     "feedback": {
@@ -228870,15 +232290,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "always",
+        "value": "without",
       },
       {
         "category": "other_terms",
-        "value": "agitated",
+        "value": "with determination",
       },
       {
         "category": "other_terms",
-        "value": "peaceful",
+        "value": "light, lightly",
       },
     ],
     "feedback": {
@@ -228919,15 +232339,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "poco (a poco)",
+        "value": "molto",
       },
       {
         "category": "other_terms",
-        "value": "ad libitum",
+        "value": "brio (con brio)",
       },
       {
         "category": "other_terms",
-        "value": "ruhig",
+        "value": "et",
       },
     ],
     "feedback": {
@@ -228968,15 +232388,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "immer",
+        "value": "traurig",
       },
       {
         "category": "other_terms",
-        "value": "ruhig",
+        "value": "légèrement / léger",
       },
       {
         "category": "other_terms",
-        "value": "espressivo",
+        "value": "poco (a poco)",
       },
     ],
     "feedback": {
@@ -229022,15 +232442,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
+        "value": "very slow, solemn",
+      },
+      {
+        "category": "tempo",
+        "value": "in time (resume the original speed)",
+      },
+      {
+        "category": "tempo",
         "value": "slow",
-      },
-      {
-        "category": "tempo",
-        "value": "gradually getting slower",
-      },
-      {
-        "category": "tempo",
-        "value": "gradually getting quicker",
       },
     ],
     "feedback": {
@@ -229071,11 +232491,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "lebhaft",
+        "value": "retenu / en retenant",
       },
       {
         "category": "tempo",
-        "value": "largo",
+        "value": "vivace / vivo",
       },
       {
         "category": "tempo",
@@ -229120,7 +232540,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a medium speed",
+        "value": "at a moderate speed",
       },
       {
         "category": "tempo",
@@ -229128,7 +232548,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "animated, lively",
+        "value": "hurry, hurrying on",
       },
     ],
     "feedback": {
@@ -229169,15 +232589,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "rather slow",
+        "value": "lively, quick",
       },
       {
         "category": "tempo",
-        "value": "less movement, slower",
+        "value": "very slow",
       },
       {
         "category": "tempo",
-        "value": "slightly faster (or slower) than andante",
+        "value": "slow and stately",
       },
     ],
     "feedback": {
@@ -229218,7 +232638,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "a tempo",
+        "value": "adagietto",
       },
       {
         "category": "tempo",
@@ -229267,15 +232687,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "gradually getting quicker",
-      },
-      {
-        "category": "tempo",
-        "value": "slightly faster (or slower) than andante",
+        "value": "gradually getting slower",
       },
       {
         "category": "tempo",
         "value": "fast",
+      },
+      {
+        "category": "tempo",
+        "value": "lively",
       },
     ],
     "feedback": {
@@ -229316,15 +232736,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "meno mosso",
+        "value": "adagissimo",
       },
       {
         "category": "tempo",
-        "value": "a tempo",
+        "value": "andantino",
       },
       {
         "category": "tempo",
-        "value": "schnell",
+        "value": "bewegt",
       },
     ],
     "feedback": {
@@ -229365,15 +232785,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "prestissimo",
-      },
-      {
-        "category": "tempo",
-        "value": "lento",
+        "value": "rubato (tempo rubato)",
       },
       {
         "category": "tempo",
         "value": "grave",
+      },
+      {
+        "category": "tempo",
+        "value": "più mosso",
       },
     ],
     "feedback": {
@@ -229414,15 +232834,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "presto",
-      },
-      {
-        "category": "tempo",
-        "value": "accelerando",
+        "value": "con moto",
       },
       {
         "category": "tempo",
         "value": "rallentando",
+      },
+      {
+        "category": "tempo",
+        "value": "a tempo",
       },
     ],
     "feedback": {
@@ -229467,7 +232887,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "very slow, solemn",
+        "value": "less movement, slower",
       },
       {
         "category": "tempo",
@@ -229512,7 +232932,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a moderate speed",
+        "value": "held back, holding back",
       },
       {
         "category": "tempo",
@@ -229520,7 +232940,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "slow",
+        "value": "hurry, hurrying on",
       },
     ],
     "feedback": {
@@ -229561,7 +232981,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "mässig",
+        "value": "vif",
       },
       {
         "category": "tempo",
@@ -229569,7 +232989,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "presto",
+        "value": "con moto",
       },
     ],
     "feedback": {
@@ -229614,11 +233034,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "rather slow",
+        "value": "fast",
       },
       {
         "category": "tempo",
-        "value": "as fast as possible",
+        "value": "with some freedom of time",
       },
     ],
     "feedback": {
@@ -229663,11 +233083,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "lively",
+        "value": "held back, holding back",
       },
       {
         "category": "tempo",
-        "value": "rather slow",
+        "value": "lively, quick",
       },
     ],
     "feedback": {
@@ -229712,11 +233132,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "con moto",
       },
       {
         "category": "tempo",
-        "value": "rallentando",
+        "value": "accelerando",
       },
     ],
     "feedback": {
@@ -229757,7 +233177,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "broadening",
+        "value": "animated, lively",
       },
       {
         "category": "tempo",
@@ -229806,15 +233226,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "slightly faster (or slower) than andante",
+        "value": "slow and stately",
       },
       {
         "category": "tempo",
-        "value": "broadening",
+        "value": "animated, lively",
       },
       {
         "category": "tempo",
-        "value": "more movement, quicker",
+        "value": "very slow",
       },
     ],
     "feedback": {
@@ -229855,15 +233275,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "in time (resume the original speed)",
+        "value": "slightly faster (or slower) than andante",
       },
       {
         "category": "tempo",
-        "value": "slow and stately",
+        "value": "fast",
       },
       {
         "category": "tempo",
-        "value": "broadening",
+        "value": "yield, relax the speed",
       },
     ],
     "feedback": {
@@ -229912,7 +233332,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "allargando",
+        "value": "rubato (tempo rubato)",
       },
     ],
     "feedback": {
@@ -229953,15 +233373,15 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "schnell",
+        "value": "vif",
       },
       {
         "category": "tempo",
-        "value": "allargando",
+        "value": "animato",
       },
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "rallentando",
       },
     ],
     "feedback": {

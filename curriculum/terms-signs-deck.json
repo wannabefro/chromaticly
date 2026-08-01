@@ -152,169 +152,6 @@
       }
     ]
   },
-  "grade_4_seed": {
-    "verified": false,
-    "note": "Grade 4 introduces FRENCH terms plus instrument directions and ornament signs",
-    "entries": [
-      {
-        "term": "à / au",
-        "lang": "fr",
-        "meaning": "to, at"
-      },
-      {
-        "term": "animé",
-        "lang": "fr",
-        "meaning": "animated, lively"
-      },
-      {
-        "term": "assez",
-        "lang": "fr",
-        "meaning": "enough, sufficiently"
-      },
-      {
-        "term": "avec",
-        "lang": "fr",
-        "meaning": "with"
-      },
-      {
-        "term": "cédez",
-        "lang": "fr",
-        "meaning": "yield, relax the speed"
-      },
-      {
-        "term": "douce",
-        "lang": "fr",
-        "meaning": "sweet"
-      },
-      {
-        "term": "en dehors",
-        "lang": "fr",
-        "meaning": "prominent (bring out the part)"
-      },
-      {
-        "term": "et",
-        "lang": "fr",
-        "meaning": "and"
-      },
-      {
-        "term": "légèrement / léger",
-        "lang": "fr",
-        "meaning": "light, lightly"
-      },
-      {
-        "term": "lent",
-        "lang": "fr",
-        "meaning": "slow"
-      },
-      {
-        "term": "mais",
-        "lang": "fr",
-        "meaning": "but"
-      },
-      {
-        "term": "moins",
-        "lang": "fr",
-        "meaning": "less"
-      },
-      {
-        "term": "modéré",
-        "lang": "fr",
-        "meaning": "at a moderate speed"
-      },
-      {
-        "term": "non",
-        "lang": "fr",
-        "meaning": "not"
-      },
-      {
-        "term": "peu",
-        "lang": "fr",
-        "meaning": "little"
-      },
-      {
-        "term": "plus",
-        "lang": "fr",
-        "meaning": "more"
-      },
-      {
-        "term": "presser / en pressant",
-        "lang": "fr",
-        "meaning": "hurry, hurrying on"
-      },
-      {
-        "term": "ralentir",
-        "lang": "fr",
-        "meaning": "slow down"
-      },
-      {
-        "term": "retenu / en retenant",
-        "lang": "fr",
-        "meaning": "held back, holding back"
-      },
-      {
-        "term": "sans",
-        "lang": "fr",
-        "meaning": "without"
-      },
-      {
-        "term": "très",
-        "lang": "fr",
-        "meaning": "very"
-      },
-      {
-        "term": "vif",
-        "lang": "fr",
-        "meaning": "lively"
-      },
-      {
-        "term": "vite",
-        "lang": "fr",
-        "meaning": "quick"
-      },
-      {
-        "term": "arco",
-        "meaning": "with the bow (after pizzicato)"
-      },
-      {
-        "term": "pizzicato",
-        "abbr": "pizz.",
-        "meaning": "plucked"
-      },
-      {
-        "term": "con sordino",
-        "meaning": "with mute"
-      },
-      {
-        "term": "senza sordino",
-        "meaning": "without mute"
-      },
-      {
-        "sign": "trill",
-        "abbr": "tr",
-        "meaning": "trill"
-      },
-      {
-        "sign": "turn",
-        "meaning": "turn"
-      },
-      {
-        "sign": "upper_mordent",
-        "meaning": "upper mordent"
-      },
-      {
-        "sign": "lower_mordent",
-        "meaning": "lower mordent"
-      },
-      {
-        "sign": "acciaccatura",
-        "meaning": "crushed note, played as quickly as possible"
-      },
-      {
-        "sign": "appoggiatura",
-        "meaning": "leaning note, takes part of the main note's value"
-      }
-    ]
-  },
   "grade_2": {
     "verified": true,
     "tempo": [
@@ -561,6 +398,131 @@
         "meaning": "time (first/second time)"
       }
     ]
+  },
+  "grade_4": {
+    "verified": true,
+    "note": "Grade 4 introduces FRENCH terms. The instrument directions and ornament signs of the old seed are owned by instruments-4 and ornaments-4, so they are not duplicated here.",
+    "dynamics": [],
+    "tempo": [
+      {
+        "term": "animé",
+        "lang": "fr",
+        "meaning": "animated, lively"
+      },
+      {
+        "term": "cédez",
+        "lang": "fr",
+        "meaning": "yield, relax the speed"
+      },
+      {
+        "term": "lent",
+        "lang": "fr",
+        "meaning": "slow"
+      },
+      {
+        "term": "modéré",
+        "lang": "fr",
+        "meaning": "at a moderate speed"
+      },
+      {
+        "term": "presser / en pressant",
+        "lang": "fr",
+        "meaning": "hurry, hurrying on"
+      },
+      {
+        "term": "ralentir",
+        "lang": "fr",
+        "meaning": "slow down"
+      },
+      {
+        "term": "retenu / en retenant",
+        "lang": "fr",
+        "meaning": "held back, holding back"
+      },
+      {
+        "term": "vif",
+        "lang": "fr",
+        "meaning": "lively"
+      },
+      {
+        "term": "vite",
+        "lang": "fr",
+        "meaning": "quick"
+      }
+    ],
+    "other_terms": [
+      {
+        "term": "à / au",
+        "lang": "fr",
+        "meaning": "to, at"
+      },
+      {
+        "term": "assez",
+        "lang": "fr",
+        "meaning": "enough, sufficiently"
+      },
+      {
+        "term": "avec",
+        "lang": "fr",
+        "meaning": "with"
+      },
+      {
+        "term": "douce",
+        "lang": "fr",
+        "meaning": "sweet"
+      },
+      {
+        "term": "en dehors",
+        "lang": "fr",
+        "meaning": "prominent (bring out the part)"
+      },
+      {
+        "term": "et",
+        "lang": "fr",
+        "meaning": "and"
+      },
+      {
+        "term": "légèrement / léger",
+        "lang": "fr",
+        "meaning": "light, lightly"
+      },
+      {
+        "term": "mais",
+        "lang": "fr",
+        "meaning": "but"
+      },
+      {
+        "term": "moins",
+        "lang": "fr",
+        "meaning": "less"
+      },
+      {
+        "term": "non",
+        "lang": "fr",
+        "meaning": "not"
+      },
+      {
+        "term": "peu",
+        "lang": "fr",
+        "meaning": "little"
+      },
+      {
+        "term": "plus",
+        "lang": "fr",
+        "meaning": "more"
+      },
+      {
+        "term": "sans",
+        "lang": "fr",
+        "meaning": "without"
+      },
+      {
+        "term": "très",
+        "lang": "fr",
+        "meaning": "very"
+      }
+    ],
+    "signs": []
   },
   "grade_5": {
     "verified": true,

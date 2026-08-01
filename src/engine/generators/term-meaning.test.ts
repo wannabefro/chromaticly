@@ -148,3 +148,29 @@ describe('termMeaningFlashcard — self-graded flashcard variant (U7/AD2)', () =
     }
   });
 });
+
+// A same-meaning distractor is a SECOND correct answer in the meaning_to_term
+// direction. The deck holds four terms glossed "slow" across four languages.
+describe('term_meaning — no option repeats another option\'s meaning', () => {
+  test.each([1, 2, 3, 4, 5])('grade %i: every option is a distinct meaning, over 200 seeds', (grade) => {
+    for (let seed = 0; seed < 200; seed++) {
+      const inst = termMeaning({ grade, seed, atoms: [] });
+      const values = [
+        (inst.answer.canonical as { value: string }).value,
+        ...(inst.distractors as { value: string }[]).map((d) => d.value),
+      ];
+      expect(new Set(values).size).toBe(values.length);
+    }
+  });
+
+  test('the four "slow" terms are never offered against each other', () => {
+    for (let seed = 0; seed < 300; seed++) {
+      const inst = termMeaning({ grade: 5, seed, atoms: [] });
+      const meanings = [
+        (inst.answer.canonical as { value: string }).value,
+        ...(inst.distractors as { value: string }[]).map((d) => d.value),
+      ];
+      expect(meanings.filter((m) => m === 'slow').length).toBeLessThanOrEqual(1);
+    }
+  });
+});
