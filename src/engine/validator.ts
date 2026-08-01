@@ -459,6 +459,33 @@ function intervalCompoundReduceHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// The match shape asks the reverse question, so its invariant is about the
+// OPTIONS: each bar must total exactly the signature that keys it, and no wrong
+// bar may total the answer's (a 6-quaver bar answers 3/4 and 6/8 alike).
+function timeSignatureMatchHook(inst: ExerciseInstance): string[] {
+  const errors = addTimeSignatureHook(inst);
+  if (errors.length > 0) return errors;
+
+  const canonical = inst.answer.canonical as string;
+  const options = inst.interaction.config?.option_music as Record<string, Music> | undefined;
+  if (!options || !options[canonical]) {
+    return ['time_signature_match: interaction.config.option_music must carry a bar for the canonical signature'];
+  }
+  for (const [sig, music] of Object.entries(options)) {
+    const units = music.voices[0].events.reduce((sum, ev) => sum + musicEventUnits(ev), 0);
+    if (units !== barUnitsFor(sig)) {
+      errors.push(`time_signature_match: the ${sig} option totals ${units} units, not the ${barUnitsFor(sig)} that bar needs`);
+    }
+    if (sig !== canonical && barUnitsFor(sig) === barUnitsFor(canonical)) {
+      errors.push(`time_signature_match: option "${sig}" holds the same bar length as "${canonical}", so both are right`);
+    }
+    if (music.time_sig_hidden !== true) {
+      errors.push(`time_signature_match: the ${sig} option prints its time signature, which gives the answer away`);
+    }
+  }
+  return errors;
+}
+
 function extractKeyTonic(raw: string): string | null {
   // Capture the accidental too: a flat/sharp key's tonic is "Bb"/"Eb", not the
   // bare letter — grade-2 keysMajor holds "Bb", so dropping the "b" rejects every
@@ -2010,6 +2037,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   term_meaning: termMeaningHook,
   bar_validity: barValidityHook,
   add_time_signature: addTimeSignatureHook,
+  time_signature_match: timeSignatureMatchHook,
   metre_classification: metreClassificationHook,
   anacrusis_recognition: anacrusisRecognitionHook,
   duplet_recognition: dupletRecognitionHook,

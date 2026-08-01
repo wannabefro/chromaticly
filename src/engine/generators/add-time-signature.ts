@@ -152,3 +152,68 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
 export const addTimeSignature: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed, opts.atoms));
+
+// --- Match shape (chromaticly-lgi) -----------------------------------------
+// The reverse question: the signature is given and the bar is chosen. Reading a
+// bar and filling one to a stated total are different skills, so the two shapes
+// alternate in time-signatures-2 and compound-bars-3.
+
+function barFor(rng: () => number, clef: string, pitch: string, sig: string, durations: readonly G1Duration[]): Music {
+  const events: MusicEvent[] = isCompoundTimeSignature(sig)
+    ? buildCompoundBarDurations(rng, sig).map((d): MusicEvent =>
+        d.dots === 1
+          ? { type: 'note', pitch, dur: d.dur as Duration, dots: d.dots }
+          : { type: 'note', pitch, dur: d.dur as Duration },
+      )
+    : buildBarDurations(rng, barUnitsFor(sig), durations).map((dur): MusicEvent => ({ type: 'note', pitch, dur: dur as Duration }));
+  events.push({ type: 'barline', style: 'single' });
+  // Every option hides its signature, or the answer is printed on the card.
+  return { clef: clef as Music['clef'], key_sig: null, time_sig: sig, time_sig_hidden: true, voices: [{ events }] };
+}
+
+function buildMatch(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const durations = scope.noteValues as readonly G1Duration[];
+  const atomScoped = timeSignaturesFromAtoms(atoms, grade);
+  const timeSignatures = atomScoped.length > 0 ? atomScoped : renderableTimeSignatures(grade);
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...scope.clefs]);
+  const timeSig = pick(rng, [...timeSignatures]);
+  const pitch = pick(rng, diatonicPitchesInComfortableRange(clef, grade));
+
+  // A bar of 6 quavers fits 3/4 and 6/8 alike, so an option whose bar is the
+  // same length as the answer's would be a second right answer.
+  const units = barUnitsFor(timeSig);
+  const distractors = distractorsForFamily(timeSig, grade).filter((d) => barUnitsFor(d) !== units);
+  if (distractors.length === 0) {
+    throw new Error(`time_signature_match: no same-family signature of a different bar length beside ${timeSig}`);
+  }
+
+  const optionMusic: Record<string, Music> = { [timeSig]: barFor(rng, clef, pitch, timeSig, durations) };
+  for (const d of distractors) optionMusic[d] = barFor(rng, clef, pitch, d, durations);
+
+  return {
+    id: makeInstanceId('time_signature_match', grade, idSeed),
+    template_id: 'time_signature_match',
+    grade,
+    strand: 'rhythm',
+    prompt: `Which of these bars is in ${timeSig}?`,
+    stimulus: { music: null, text: timeSig },
+    interaction: { type: 'mcq', config: { option_music: optionMusic } },
+    answer: { canonical: timeSig, accepted_alternatives: [] },
+    distractors,
+    hints: [`${timeSig} holds ${beatsPhrase(timeSig)}. Add up each bar and keep the one that totals that.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Not quite — add up each bar. ${timeSig} holds ${beatsPhrase(timeSig)}.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((d) => [d, `That bar holds ${beatsPhrase(d)}, which is ${d}. ${timeSig} holds ${beatsPhrase(timeSig)}.`]),
+      ),
+    },
+    srs_tags: [renderableTimeSignatures(1).includes(timeSig) ? addTimeSignatureAtom() : addTimeSignatureAtom(timeSig)],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const timeSignatureMatch: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildMatch(candidateSeed, opts.grade, opts.seed, opts.atoms));

@@ -67,6 +67,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   triplet_recognition: 2,
   metre_classification: 3,
   metre_from_class: 3,
+  time_signature_match: 2,
   anacrusis_recognition: 3,
   octave_transposition: 3,
   chromatic_scale: 4,
@@ -95,6 +96,11 @@ function introducedAtGrade(templateId: string): 1 | 2 | 3 | 4 | 5 {
 // Grade-2-only generators, pinned directly at grade 2 (mirrors EXTRA_CASES
 // above, since no grade-1 lesson can ever reference a grade-2-only template).
 const GRADE_2_EXTRA_CASES: Case[] = [
+  {
+    label: 'time_signature_match (time-signatures-2, chromaticly-lgi)',
+    templateId: 'time_signature_match',
+    atoms: ['add_time_signature:2/2', 'add_time_signature:3/2', 'add_time_signature:4/2', 'add_time_signature:3/8'],
+  },
   {
     label: 'mode_swap (minor-keys-2, pre-lesson pin)',
     templateId: 'mode_swap',
@@ -303,6 +309,11 @@ const GRADE_3_EXTRA_CASES: Case[] = [
   {
     label: 'add_time_signature compound (compound-bars-3, pre-lesson pin, U5)',
     templateId: 'add_time_signature',
+    atoms: ['add_time_signature:6/8', 'add_time_signature:9/8', 'add_time_signature:12/8'],
+  },
+  {
+    label: 'time_signature_match compound (compound-bars-3, chromaticly-lgi)',
+    templateId: 'time_signature_match',
     atoms: ['add_time_signature:6/8', 'add_time_signature:9/8', 'add_time_signature:12/8'],
   },
   {

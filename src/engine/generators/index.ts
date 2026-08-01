@@ -1,7 +1,7 @@
 // Tier-A generator registry (U6-U8). Maps each template_id to its generator.
 
 import type { ExerciseInstance } from '../schema';
-import { addTimeSignature } from './add-time-signature';
+import { addTimeSignature, timeSignatureMatch } from './add-time-signature';
 import { anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { chordFromName, chordRecognition } from './chord-recognition';
@@ -50,6 +50,7 @@ export const GENERATORS: Record<string, Generator> = {
   term_meaning_flashcard: termMeaningFlashcard,
   bar_validity: barValidity,
   add_time_signature: addTimeSignature,
+  time_signature_match: timeSignatureMatch,
   metre_classification: metreClassification,
   metre_from_class: metreFromClass,
   anacrusis_recognition: anacrusisRecognition,
