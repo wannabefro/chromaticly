@@ -93,6 +93,7 @@ const ATOM_REQUIRED_TEMPLATE_IDS = [
   'time_signature_match',
   'anacrusis_final_bar',
   'note_sounds_as',
+  'note_value_equivalence',
   'instrument_knowledge',
   'enharmonic_recognition',
   'rest_completion',

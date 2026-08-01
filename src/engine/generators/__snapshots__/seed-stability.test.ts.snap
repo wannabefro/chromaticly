@@ -209518,6 +209518,771 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_value_equivalence @ rhythm-breve-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 demisemiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A semiquaver lasts a quarter-beat and a demisemiquaver lasts an eighth-beat, so 2 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the semiquaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one semiquaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "semiquaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 semiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 semiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a semiquaver lasts a quarter-beat, so 2 semiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a semiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many semiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? semiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 quavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a quaver lasts half a beat, so 4 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 demisemiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A semiquaver lasts a quarter-beat and a demisemiquaver lasts an eighth-beat, so 2 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the semiquaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one semiquaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "semiquaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 quavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a quaver lasts half a beat, so 2 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 demisemiquavers.",
+        "4": "That is one step short down the note tree. Halving again gives 8 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a demisemiquaver lasts an eighth-beat, so 8 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 crotchets.",
+        "4": "That is one step short down the note tree. Halving again gives 8 crotchets.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A breve lasts 8 beats and a crotchet lasts 1 beat, so 8 crotchets fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the breve step by step down the note tree until you reach a crotchet, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many crotchets last as long as one breve?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "breve = ? crotchets",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 crotchets.",
+        "4": "That is one step short down the note tree. Halving again gives 8 crotchets.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A breve lasts 8 beats and a crotchet lasts 1 beat, so 8 crotchets fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the breve step by step down the note tree until you reach a crotchet, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many crotchets last as long as one breve?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "breve = ? crotchets",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 demisemiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A semiquaver lasts a quarter-beat and a demisemiquaver lasts an eighth-beat, so 2 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the semiquaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one semiquaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "semiquaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 quavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a quaver lasts half a beat, so 4 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 quavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a quaver lasts half a beat, so 2 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 semiquavers.",
+        "4": "That is one step short down the note tree. Halving again gives 8 semiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a semiquaver lasts a quarter-beat, so 8 semiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a semiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many semiquavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? semiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "16",
+    },
+    "distractors": [
+      "8",
+      "32",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "32": "That is one step too far down the note tree. Stop at 16 demisemiquavers.",
+        "8": "That is one step short down the note tree. Halving again gives 16 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a demisemiquaver lasts an eighth-beat, so 16 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 quavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a quaver lasts half a beat, so 2 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "16",
+    },
+    "distractors": [
+      "8",
+      "32",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "32": "That is one step too far down the note tree. Stop at 16 demisemiquavers.",
+        "8": "That is one step short down the note tree. Halving again gives 16 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a demisemiquaver lasts an eighth-beat, so 16 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 demisemiquavers.",
+        "4": "That is one step short down the note tree. Halving again gives 8 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a demisemiquaver lasts an eighth-beat, so 8 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte octave_transposition @ alto-transposition-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -247515,6 +248280,771 @@ exports[`seed-stability — grade-4-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "note_value_compare",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte note_value_equivalence (rhythm-breve-4, chromaticly-lgi) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 demisemiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A semiquaver lasts a quarter-beat and a demisemiquaver lasts an eighth-beat, so 2 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the semiquaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one semiquaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "semiquaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 semiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 semiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a semiquaver lasts a quarter-beat, so 2 semiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a semiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many semiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? semiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 quavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a quaver lasts half a beat, so 4 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 demisemiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A semiquaver lasts a quarter-beat and a demisemiquaver lasts an eighth-beat, so 2 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the semiquaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one semiquaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "semiquaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 quavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a quaver lasts half a beat, so 2 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 demisemiquavers.",
+        "4": "That is one step short down the note tree. Halving again gives 8 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a demisemiquaver lasts an eighth-beat, so 8 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 crotchets.",
+        "4": "That is one step short down the note tree. Halving again gives 8 crotchets.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A breve lasts 8 beats and a crotchet lasts 1 beat, so 8 crotchets fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the breve step by step down the note tree until you reach a crotchet, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many crotchets last as long as one breve?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "breve = ? crotchets",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 crotchets.",
+        "4": "That is one step short down the note tree. Halving again gives 8 crotchets.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A breve lasts 8 beats and a crotchet lasts 1 beat, so 8 crotchets fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the breve step by step down the note tree until you reach a crotchet, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many crotchets last as long as one breve?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "breve = ? crotchets",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 demisemiquavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A semiquaver lasts a quarter-beat and a demisemiquaver lasts an eighth-beat, so 2 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the semiquaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one semiquaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "semiquaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 quavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a quaver lasts half a beat, so 4 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 quavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a quaver lasts half a beat, so 2 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 semiquavers.",
+        "4": "That is one step short down the note tree. Halving again gives 8 semiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a semiquaver lasts a quarter-beat, so 8 semiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a semiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many semiquavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? semiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "2",
+      "8",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one step short down the note tree. Halving again gives 4 demisemiquavers.",
+        "8": "That is one step too far down the note tree. Stop at 4 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A quaver lasts half a beat and a demisemiquaver lasts an eighth-beat, so 4 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the quaver step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one quaver?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "quaver = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "16",
+    },
+    "distractors": [
+      "8",
+      "32",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "32": "That is one step too far down the note tree. Stop at 16 demisemiquavers.",
+        "8": "That is one step short down the note tree. Halving again gives 16 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a demisemiquaver lasts an eighth-beat, so 16 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one step short down the note tree. Halving again gives 2 quavers.",
+        "4": "That is one step too far down the note tree. Stop at 2 quavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a quaver lasts half a beat, so 2 quavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a quaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many quavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? quavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "16",
+    },
+    "distractors": [
+      "8",
+      "32",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "32": "That is one step too far down the note tree. Stop at 16 demisemiquavers.",
+        "8": "That is one step short down the note tree. Halving again gives 16 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A minim lasts 2 beats and a demisemiquaver lasts an eighth-beat, so 16 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the minim step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one minim?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "minim = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "8",
+    },
+    "distractors": [
+      "4",
+      "16",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "16": "That is one step too far down the note tree. Stop at 8 demisemiquavers.",
+        "4": "That is one step short down the note tree. Halving again gives 8 demisemiquavers.",
+      },
+      "correct": "Correct!",
+      "incorrect": "A crotchet lasts 1 beat and a demisemiquaver lasts an eighth-beat, so 8 demisemiquavers fill it.",
+    },
+    "grade": 4,
+    "hints": [
+      "Halve the crotchet step by step down the note tree until you reach a demisemiquaver, counting as you go.",
+    ],
+    "id": "note_value_equivalence:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many demisemiquavers last as long as one crotchet?",
+    "srs_tags": [
+      "note_value_compare",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "crotchet = ? demisemiquavers",
+    },
+    "strand": "rhythm",
+    "template_id": "note_value_equivalence",
   },
 ]
 `;

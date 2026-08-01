@@ -112,3 +112,66 @@ function build(contentSeed: number, grade: number, idSeed: number): ExerciseInst
 
 export const noteValueCompare: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => build(candidateSeed, opts.grade, opts.seed));
+
+// --- Equivalence shape (chromaticly-lgi) -----------------------------------
+// Seeing which of two notes is longer and knowing how many of one fill the
+// other are different skills. A breve is where the second one starts to bite.
+
+const PLURAL: Record<G1Duration, string> = {
+  semibreve: 'semibreves',
+  minim: 'minims',
+  crotchet: 'crotchets',
+  quaver: 'quavers',
+  semiquaver: 'semiquavers',
+  demisemiquaver: 'demisemiquavers',
+  breve: 'breves',
+};
+
+function buildEquivalence(contentSeed: number, grade: number, idSeed: number): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const durations = scope.noteValues as readonly G1Duration[];
+  const rng = mulberry32(contentSeed);
+
+  const longer = pick(rng, [...durations]);
+  const shorter = pick(rng, durations.filter((d) => UNITS[d] < UNITS[longer]));
+  const count = UNITS[longer] / UNITS[shorter];
+  if (!Number.isInteger(count) || count < 2) {
+    throw new Error(`note_value_equivalence: ${shorter} does not divide ${longer} a whole number of times`);
+  }
+
+  const distractors = [count / 2, count * 2].filter((n) => Number.isInteger(n) && n >= 1 && n !== count);
+  if (distractors.length < 2) {
+    throw new Error(`note_value_equivalence: no two whole-number miscounts beside ${count}`);
+  }
+
+  const label = (n: number): string => `${n}`;
+  return {
+    id: makeInstanceId('note_value_equivalence', grade, idSeed),
+    template_id: 'note_value_equivalence',
+    grade,
+    strand: 'rhythm',
+    prompt: `How many ${PLURAL[shorter]} last as long as one ${longer}?`,
+    stimulus: { music: null, text: `${longer} = ? ${PLURAL[shorter]}` },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: label(count), accepted_alternatives: [] },
+    distractors: distractors.map(label),
+    hints: [`Halve the ${longer} step by step down the note tree until you reach a ${shorter}, counting as you go.`],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `A ${longer} lasts ${BEAT_LABEL[longer]} and a ${shorter} lasts ${BEAT_LABEL[shorter]}, so ${count} ${PLURAL[shorter]} fill it.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((n) => [
+          label(n),
+          n < count
+            ? `That is one step short down the note tree. Halving again gives ${count} ${PLURAL[shorter]}.`
+            : `That is one step too far down the note tree. Stop at ${count} ${PLURAL[shorter]}.`,
+        ]),
+      ),
+    },
+    srs_tags: [noteValueCompareAtom()],
+    kb_version: KB_VERSION,
+  };
+}
+
+export const noteValueEquivalence: Generator = (opts: GenerateOptions) =>
+  generateValidated(opts.seed, (candidateSeed) => buildEquivalence(candidateSeed, opts.grade, opts.seed));

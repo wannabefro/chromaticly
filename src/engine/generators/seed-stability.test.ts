@@ -81,6 +81,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   instrument_knowledge: 4,
   enharmonic_recognition: 4,
   note_sounds_as: 4,
+  note_value_equivalence: 4,
   clef_equivalence: 4,
   transposing_instrument: 5,
   metre_rewrite: 5,
@@ -426,6 +427,11 @@ const GRADE_4_EXTRA_CASES: Case[] = [
   {
     label: 'note_value_compare breve (rhythm-4, pre-lesson pin)',
     templateId: 'note_value_compare',
+    atoms: [],
+  },
+  {
+    label: 'note_value_equivalence (rhythm-breve-4, chromaticly-lgi)',
+    templateId: 'note_value_equivalence',
     atoms: [],
   },
   {

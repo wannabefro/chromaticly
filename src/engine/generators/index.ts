@@ -23,7 +23,7 @@ import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
 import { modeSwap } from './mode-swap';
 import { noteNaming, noteNamingStaveInput, noteSoundsAs } from './note-naming';
-import { noteValueCompare } from './note-value-compare';
+import { noteValueCompare, noteValueEquivalence } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
 import { ornamentEffect, ornamentRecognition } from './ornament-recognition';
 import { restCompletion, restValueId } from './rest-completion';
@@ -67,6 +67,7 @@ export const GENERATORS: Record<string, Generator> = {
   note_grouping: noteGrouping,
   note_grouping_metre_id: noteGroupingMetreId,
   note_value_compare: noteValueCompare,
+  note_value_equivalence: noteValueEquivalence,
   music_in_context: findTheBar,
   octave_transposition: octaveTransposition,
   chromatic_scale: chromaticScale,
