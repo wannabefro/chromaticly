@@ -26,6 +26,8 @@ interface Case {
   label: string;
   templateId: string;
   atoms: string[];
+  /** by_ear_match only: the written template it composes over. */
+  source?: string;
 }
 
 // Every (lesson, template) pair production actually generates, pinned at grade 1.
@@ -48,6 +50,13 @@ const EXTRA_CASES: Case[] = [
     label: 'rest_completion (rests-1, pre-lesson pin, chromaticly-gni)',
     templateId: 'rest_completion',
     atoms: ['rest:semibreve', 'rest:minim', 'rest:crotchet', 'rest:quaver', 'rest:semiquaver'],
+  },
+  // Composes over a source, so a change to rest_completion moves this snapshot.
+  {
+    label: 'by_ear_match over rest_completion (theory-by-ear U2)',
+    templateId: 'by_ear_match',
+    atoms: ['rest:semibreve', 'rest:minim', 'rest:crotchet'],
+    source: 'rest_completion',
   },
 ];
 
@@ -170,9 +179,9 @@ describe('seed-stability — grade-1 generator output is pinned byte-for-byte', 
     expect(leaks).toEqual([]);
   });
 
-  describe.each(CASES)('$label', ({ templateId, atoms }) => {
+  describe.each(CASES)('$label', ({ templateId, atoms, source }) => {
     test('instances are a pure function of (template, grade, seed, atoms)', () => {
-      const instances = SEEDS.map((seed) => generate(templateId, { grade: 1, seed, atoms }));
+      const instances = SEEDS.map((seed) => generate(templateId, { grade: 1, seed, atoms, source }));
       expect(instances).toMatchSnapshot();
     });
   });

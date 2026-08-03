@@ -80,7 +80,11 @@ const GRADE_5_ONLY_TEMPLATE_IDS = [
 // curriculum-layer gate (assertAtomResolves reading scope.rests), not generator-level.
 // note_grouping (chromaticly-18o) joins them: it needs a grouping:<sig> atom and
 // runs at every grade, gated only by which signature the grade can render.
+// by_ear_match (theory-by-ear U2) joins them, one step further: it needs a
+// `source` template as well as atoms, and composes over that source's own
+// output, so it runs at whatever grade its source does.
 const ATOM_REQUIRED_TEMPLATE_IDS = [
+  'by_ear_match',
   'anacrusis_recognition',
   'chromatic_scale',
   'degree_name_id',

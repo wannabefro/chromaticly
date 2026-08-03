@@ -11,6 +11,8 @@ export interface GenerateOptions {
   grade: number;
   seed: number;
   atoms: string[];
+  /** by_ear_match only: the written template it composes over (KTD2/KTD8). */
+  source?: string;
 }
 
 export type Generator = (opts: GenerateOptions) => ExerciseInstance;

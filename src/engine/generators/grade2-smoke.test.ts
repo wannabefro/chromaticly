@@ -189,6 +189,10 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // (build gate), so a grade-2 sweep can't generate it; exercised by its
       // own grade-5 tests.
       'satb_voice_recognition',
+      // by_ear_match (theory-by-ear U2) — needs a `source` template as well as
+      // atoms, so a sweep that passes neither cannot generate it. Its own tests
+      // pin it against rest_completion.
+      'by_ear_match',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

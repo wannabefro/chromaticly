@@ -4295,6 +4295,2226 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte bar
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte by_ear_match over rest_completion (theory-by-ear U2) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 3,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "same": "The fourth note is written E3, but you heard F3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fourth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s0",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": null,
+        "verdict": "same",
+      },
+    },
+    "distractors": [
+      "pos:0",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s1",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 3,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+      "pos:4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written B4, and that is what you heard.",
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "pos:4": "The fifth note is written B4, and that is what you heard.",
+        "same": "The fourth note is written B4, but you heard A4.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fourth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s2",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 3,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "same": "The fourth note is written E3, but you heard F3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fourth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s3",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "same": "The first note is written E3, but you heard D3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s4",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "2/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": null,
+        "verdict": "same",
+      },
+    },
+    "distractors": [
+      "pos:0",
+      "pos:1",
+      "pos:2",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written B4, and that is what you heard.",
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "pos:3": "The fourth note is written B4, and that is what you heard.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s5",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "2/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 4,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "pos:3": "The fourth note is written E3, and that is what you heard.",
+        "same": "The fifth note is written E3, but you heard D3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fifth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s6",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 1,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:2",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "pos:3": "The fourth note is written E3, and that is what you heard.",
+        "same": "The second note is written E3, but you heard F3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The second note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s7",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "minim",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 2,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:3": "The fourth note is written E3, and that is what you heard.",
+        "same": "The third note is written E3, but you heard D3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The third note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s8",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "pos:3": "The fourth note is written B4, and that is what you heard.",
+        "same": "The first note is written B4, but you heard A4.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s9",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semiquaver",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "pos:3": "The fourth note is written B4, and that is what you heard.",
+        "same": "The first note is written B4, but you heard C5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s10",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semiquaver",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 1,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "same": "The second note is written B4, but you heard C5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The second note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s11",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "minim",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 3,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written B4, and that is what you heard.",
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "same": "The fourth note is written B4, but you heard C5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fourth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s12",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 3,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written B4, and that is what you heard.",
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "same": "The fourth note is written B4, but you heard A4.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fourth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s13",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "same": "The first note is written B4, but you heard C5.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s14",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 2,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written E3, and that is what you heard.",
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "same": "The third note is written E3, but you heard D3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The third note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s15",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "D3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "same": "The first note is written E3, but you heard F3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s16",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "same": "The first note is written E3, but you heard F3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s17",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "quaver",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 0,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:1",
+      "pos:2",
+      "pos:3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:1": "The second note is written E3, and that is what you heard.",
+        "pos:2": "The third note is written E3, and that is what you heard.",
+        "pos:3": "The fourth note is written E3, and that is what you heard.",
+        "same": "The first note is written E3, but you heard F3.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The first note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s18",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "bass",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "minim",
+                  "pitch": "F3",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "E3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:crotchet:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "position": 3,
+        "verdict": "different",
+      },
+    },
+    "distractors": [
+      "same",
+      "pos:0",
+      "pos:1",
+      "pos:2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "pos:0": "The first note is written B4, and that is what you heard.",
+        "pos:1": "The second note is written B4, and that is what you heard.",
+        "pos:2": "The third note is written B4, and that is what you heard.",
+        "same": "The fourth note is written B4, but you heard A4.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The fourth note was played differently from the way it is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Follow the notes with your finger as it plays. Where you lose the thread is usually where it changed.",
+    ],
+    "id": "by_ear_match:g1:s19",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "quaver",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "semiquaver",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "positions": [
+          0,
+          1,
+          2,
+          3,
+        ],
+        "source_template": "rest_completion",
+      },
+      "type": "by_ear_match",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "rest:minim:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "by_ear_match",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte interval_naming @ intervals instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

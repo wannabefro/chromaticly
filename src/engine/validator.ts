@@ -2165,6 +2165,37 @@ function restCompletionHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// by_ear_match recomputes the diff rather than trusting the generator: at most
+// one event may differ, and the canonical index must name it.
+function byEarMatchHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const written = (inst.stimulus.music as Music | null)?.voices?.[0]?.events ?? [];
+  const heard = ((inst.interaction.config as { played_music?: Music }).played_music)?.voices?.[0]?.events ?? [];
+  if (written.length === 0 || written.length !== heard.length) {
+    return ['by_ear_match: the played music must have the same events as the written music'];
+  }
+  const differing: number[] = [];
+  for (let i = 0; i < written.length; i++) {
+    const a = written[i] as { type: string; pitch?: string; dur?: string; dots?: number };
+    const b = heard[i] as { type: string; pitch?: string; dur?: string; dots?: number };
+    if (a.type !== b.type || a.dur !== b.dur || a.dots !== b.dots) {
+      return [`by_ear_match: event ${i} changed its type or duration, which alters the bar, not the pitch`];
+    }
+    if (a.pitch !== b.pitch) differing.push(i);
+  }
+  const { verdict, position } = (inst.answer.canonical ?? {}) as { verdict?: string; position?: number | null };
+  if (differing.length > 1) {
+    errors.push(`by_ear_match: ${differing.length} events differ, not at most 1`);
+  } else if (verdict === 'same' && differing.length !== 0) {
+    errors.push('by_ear_match: canonical says same, but the played music differs');
+  } else if (verdict === 'different' && differing[0] !== position) {
+    errors.push(`by_ear_match: canonical position ${String(position)} does not name the altered event (${String(differing[0])})`);
+  } else if (verdict !== 'same' && verdict !== 'different') {
+    errors.push(`by_ear_match: canonical verdict "${String(verdict)}" is neither same nor different`);
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   note_naming_stave_input: noteNamingStaveInputHook,
@@ -2197,4 +2228,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   instrument_knowledge: instrumentKnowledgeHook,
   enharmonic_recognition: enharmonicRecognitionHook,
   rest_completion: restCompletionHook,
+  by_ear_match: byEarMatchHook,
 };
