@@ -31,7 +31,7 @@ export function Practice() {
   );
 
   const instance = useMemo(
-    () => (pick ? generate(pick.template, { grade: pick.grade, seed: step, atoms: pick.atoms }) : null),
+    () => (pick ? generate(pick.template, { grade: pick.grade, seed: step, atoms: pick.atoms, source: pick.source }) : null),
     [pick, step],
   );
 

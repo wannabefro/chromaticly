@@ -419,3 +419,62 @@ describe('practice-plan — unattempted grade-3 lessons contribute no rotation p
     expect(picks.some((p) => p.atoms.some((a) => grade3Atoms.has(a)))).toBe(false);
   });
 });
+
+// KTD7: every atom mapped to templates[0], and 56 of 91 lessons list more.
+describe('practice routing resolves an atom to a template that actually emits it', () => {
+  function pickFor(atom: string) {
+    const entries = [{ atom, srs: reviewSrs(initialSrs(0), false, 0) }];
+    return nextPracticeTemplate(entries, 10_000_000_000, 0);
+  }
+
+  test('a due bar_validity atom is served as bar_validity, not as its lesson’s first template', () => {
+    const pick = pickFor('bar_validity');
+    expect(pick).not.toBeNull();
+    expect(pick!.template).toBe('bar_validity');
+  });
+
+  test('a due add_time_signature atom is served as add_time_signature', () => {
+    expect(pickFor('add_time_signature')!.template).toBe('add_time_signature');
+  });
+
+  test('every atom resolves to a template its own lesson lists', () => {
+    const wrong: string[] = [];
+    for (const lesson of LESSONS) {
+      for (const atom of lesson.atoms) {
+        const pick = pickFor(atom);
+        if (!pick || pick.grade !== lesson.grade) continue;
+        if (!lesson.templates.includes(pick.template)) wrong.push(`${atom} -> ${pick.template}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  // Three pre-existing NON-routing bugs, named so a regression cannot hide:
+  // key_sig (chromaticly-elb.7), context (passage path), interval (scope-gated).
+  const UNGENERATABLE = /^(key_sig:|context:|interval:6|interval:7|interval_any:)/;
+
+  test('every atom that CAN generate on the due path is tagged by the template it routed to', () => {
+    const wrong: string[] = [];
+    let checked = 0;
+    for (const lesson of LESSONS) {
+      for (const atom of lesson.atoms) {
+        if (UNGENERATABLE.test(atom)) continue;
+        const pick = pickFor(atom);
+        if (!pick) continue;
+        let tagged = false;
+        for (let seed = 0; seed < 6 && !tagged; seed++) {
+          try {
+            const inst = generate(pick.template, { grade: pick.grade, seed, atoms: pick.atoms, source: pick.source });
+            if (inst.srs_tags.includes(atom)) tagged = true;
+          } catch {
+            continue;
+          }
+        }
+        checked++;
+        if (!tagged) wrong.push(`${atom} -> ${pick.template}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+    expect(checked).toBeGreaterThan(200); // the exclusions must not swallow the suite
+  });
+});

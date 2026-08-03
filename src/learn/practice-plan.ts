@@ -19,17 +19,49 @@
 // whose intersection is empty is not emitted at all.
 
 import { LESSONS } from '../content/lessons';
-import type { Strand } from '../content/lessons';
+import type { Lesson, Strand } from '../content/lessons';
+import { isByEarAtom, writtenAtomOf } from '../engine/atoms';
+import { generate } from '../engine/generators';
 import { selectDue, type SrsState } from './srs';
 
-// atom → the template and grade of the first lesson/template that lists the atom
-// (first-owner-wins; the same atom id reused across two grades is not yet handled —
-// see practice-plan's module doc comment and D10 of the grade2-new-major-keys plan).
-const ATOM_TEMPLATE = new Map<string, { template: string; grade: number }>();
+// atom → first lesson listing it. A shared atom is reviewed at its own grade.
+const ATOM_OWNER = new Map<string, Lesson>();
 for (const lesson of LESSONS) {
   for (const atom of lesson.atoms) {
-    if (!ATOM_TEMPLATE.has(atom)) ATOM_TEMPLATE.set(atom, { template: lesson.templates[0], grade: lesson.grade });
+    if (!ATOM_OWNER.has(atom)) ATOM_OWNER.set(atom, lesson);
   }
+}
+
+/** 56 of 91 lessons list more than one template, so `templates[0]` served the
+ *  wrong exercise (KTD7). */
+function templateEmitting(lesson: Lesson, atom: string): string {
+  for (const template of lesson.templates) {
+    for (let seed = 0; seed < 6; seed++) {
+      try {
+        if (generate(template, { grade: lesson.grade, seed, atoms: lesson.atoms }).srs_tags.includes(atom)) {
+          return template;
+        }
+      } catch {
+        continue;
+      }
+    }
+  }
+  return lesson.templates[0];
+}
+
+const RESOLVED = new Map<string, { template: string; grade: number; source?: string }>();
+
+function atomTemplate(atom: string): { template: string; grade: number; source?: string } | undefined {
+  const cached = RESOLVED.get(atom);
+  if (cached) return cached;
+  const lesson = ATOM_OWNER.get(atom);
+  if (!lesson) return undefined;
+  // KTD8: the PAIR. A bare source id would serve the written exercise.
+  const resolved = isByEarAtom(atom)
+    ? { template: 'by_ear_match', grade: lesson.grade, source: lesson.by_ear_source ?? lesson.templates[0] }
+    : { template: templateEmitting(lesson, writtenAtomOf(atom)), grade: lesson.grade };
+  RESOLVED.set(atom, resolved);
+  return resolved;
 }
 
 /** atom → the strand of the first lesson that lists it, for the per-lane filter (R9). */
@@ -50,6 +82,8 @@ export interface PracticePick {
   template: string;
   atoms: string[];
   grade: number;
+  /** by_ear_match only: the written template it composes over (KTD8). */
+  source?: string;
 }
 
 /** Every template belonging to a lesson the learner has attempted at least one
@@ -75,14 +109,14 @@ export function attemptedTemplates(attempted: Set<string>): string[] {
  *  pair for the shared atom at GRADE 4: a learner who has only met grade-1
  *  `rest:quaver` would then be served it inside a grade-3 rhythm scope, so the
  *  stimulus around a familiar atom is material they have never seen. First-owner
- *  is already how the due path resolves a shared atom's grade (ATOM_TEMPLATE), so
+ *  is already how the due path resolves a shared atom's grade (ATOM_OWNER), so
  *  applying it here makes both paths agree: a shared atom is always reviewed at the
  *  grade that taught it. */
 function rotationPairs(attempted: Set<string>, strand?: Strand): PracticePick[] {
   const pairs: PracticePick[] = [];
   for (const lesson of LESSONS) {
     if (strand !== undefined && lesson.strand !== strand) continue;
-    const atoms = lesson.atoms.filter((a) => attempted.has(a) && ATOM_TEMPLATE.get(a)?.grade === lesson.grade);
+    const atoms = lesson.atoms.filter((a) => attempted.has(a) && ATOM_OWNER.get(a)?.grade === lesson.grade);
     if (atoms.length === 0) continue;
     for (const template of lesson.templates) pairs.push({ template, atoms, grade: lesson.grade });
   }
@@ -113,8 +147,8 @@ export function nextPracticeTemplate(
   const inLane = (atom: string) => strand === undefined || ATOM_STRAND.get(atom) === strand;
 
   for (const atom of selectDue(entries, now, (a) => eligible.has(a) && inLane(a))) {
-    const owner = ATOM_TEMPLATE.get(atom);
-    if (owner) return { template: owner.template, atoms: [atom], grade: owner.grade };
+    const owner = atomTemplate(atom);
+    if (owner) return { template: owner.template, atoms: [atom], grade: owner.grade, source: owner.source };
   }
   const pairs = rotationPairs(eligible, strand);
   if (pairs.length === 0) return null;
