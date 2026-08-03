@@ -209,3 +209,30 @@ the teach phase is already a scroll, and an option a learner cannot read is wort
 
 The tick stays inline (`B ✓`) beside a text label as drawn, and sits below a stave, which has no
 label to sit beside.
+
+### By-ear match card (8c) — a scored set item, not a teach card · approved 2026-08-02
+
+Screen 8c scopes the by-ear card to the **teach phase**: it plays, the learner answers, and nothing
+is recorded — no mastery, no SRS. It ships instead as an ordinary **scored member of the exercise
+set**, graded like any other item, appended after the eight written ones.
+
+The reason is a consequence of a product decision, not a preference. Hearing a lesson is now part of
+having learned it, so a lesson is incomplete until its by-ear item is answered. A phase that records
+nothing cannot gate anything — the moment by-ear counts, it has to live where credit is kept.
+
+Two things follow, and both are deliberate:
+
+1. **By-ear credit reaches lane depth and SRS, and never exam readiness.** ABRSM Theory Grades 1–5 is
+   a written paper. Readiness answers "would you pass it", so a by-ear atom must not move that number.
+   Two honest readings beat one that calls a learner unready for an exam they would pass.
+2. **The set grows rather than dilutes.** Eight written items stay eight. A lesson with a by-ear item
+   runs to nine.
+
+The cost is that the teach phase keeps a **second, unscored** by-ear mechanism — `TheoryInSound`, in
+the two lessons that carry it — so two things called by-ear have different consequences. Accepted as
+temporary: its fate is an open question, and nothing here depends on the answer.
+
+The card is not universal. It compares sound to notation, and 22 of the 91 lessons emit no notation
+(15 `term_meaning`, 4 `mode_swap`, 2 `instrument_knowledge`, 1 `degree_name_id`, 1
+`enharmonic_recognition`). Those are exempt rather than forced — the right by-ear question for a
+terms lesson is one phrase at two tempos, which is a different card.
