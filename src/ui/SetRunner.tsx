@@ -31,15 +31,17 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS, type Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
+import { deriveSeed } from '../engine/rng';
 import {
   emptySet,
   gems,
   isComplete,
   recordItem,
   score,
-  SCORED_SIZE,
+  scoredLengthFor,
   segmentStates,
-  SET_SIZE,
+  presentedLengthFor,
+  WRITTEN_ITEMS,
   WARM_UP_ITEMS,
   type ExerciseSetState,
 } from '../learn/exercise-set';
@@ -87,7 +89,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   // before any item can be answered. Keying on `revision` would instead re-read it
   // at the end of the set, when `complete()` bumps the count.
   const seedBase = useMemo(
-    () => (store?.getLesson(lesson.id).plays ?? 0) * SET_SIZE,
+    () => (store?.getLesson(lesson.id).plays ?? 0) * WRITTEN_ITEMS,
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is excluded on purpose; see above
     [store, ready, lesson.id],
   );
@@ -100,7 +102,17 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   const [nudgeStats, setNudgeStats] = useState<{ lessons: number; stars: number; dueCount: number } | null>(null);
   const strand = lesson.strand as Strand;
 
-  const templateId = lesson.templates[itemIndex % lesson.templates.length];
+  // The tail sits AFTER the written window. An entry in `templates` would be
+  // dealt into the rotation instead (KTD3).
+  const presentedLength = presentedLengthFor(lesson);
+  const scoredLength = scoredLengthFor(lesson);
+  const isByEar = itemIndex >= WRITTEN_ITEMS;
+  const templateId = isByEar ? 'by_ear_match' : lesson.templates[itemIndex % lesson.templates.length];
+
+  // Written seeds stay `plays * 8 + index`. By-ear draws from a hashed
+  // namespace, so the tail cannot shift the written stream (KTD4).
+  const plays = seedBase / WRITTEN_ITEMS;
+  const itemSeed = isByEar ? deriveSeed(plays, itemIndex - WRITTEN_ITEMS) : seedBase + itemIndex;
 
   const isWarmUp = itemIndex < WARM_UP_ITEMS;
 
@@ -110,13 +122,21 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   const isPassage = templateId === 'music_in_context';
 
   const passage = useMemo(
-    () => (isPassage ? buildContextPassage({ grade: lesson.grade, seed: seedBase + itemIndex, atoms: lesson.atoms }) : null),
-    [isPassage, seedBase, itemIndex, lesson.atoms, lesson.grade],
+    () => (isPassage ? buildContextPassage({ grade: lesson.grade, seed: itemSeed, atoms: lesson.atoms }) : null),
+    [isPassage, itemSeed, lesson.atoms, lesson.grade],
   );
 
   const instance = useMemo(
-    () => (isPassage ? null : generate(templateId, { grade: lesson.grade, seed: seedBase + itemIndex, atoms: lesson.atoms })),
-    [isPassage, templateId, seedBase, itemIndex, lesson.atoms, lesson.grade],
+    () =>
+      isPassage
+        ? null
+        : generate(templateId, {
+            grade: lesson.grade,
+            seed: itemSeed,
+            atoms: lesson.atoms,
+            source: isByEar ? (lesson.by_ear_source ?? undefined) : undefined,
+          }),
+    [isPassage, templateId, itemSeed, isByEar, lesson.by_ear_source, lesson.atoms, lesson.grade],
   );
 
   // Shared by both the checked (handleResult) and self-graded (handleSelfGrade)
@@ -129,7 +149,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
       // An unscored item never completes the set — `isComplete` reads the gem
       // count, which the warm-up leaves untouched, but saying so here keeps the
       // two ideas from having to agree by accident.
-      if (!unscored && isComplete(nextState)) {
+      if (!unscored && isComplete(nextState, scoredLength)) {
         const transitioned = await complete(lesson); // A2: complete the lesson exactly once
         setDone(true);
         // Decide the nudge HERE, imperatively — `transitioned` is true only on the first
@@ -148,7 +168,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
         setItemIndex((i) => i + 1);
       }
     },
-    [complete, lesson, store],
+    [complete, lesson, store, scoredLength],
   );
 
   // Optional chaining, not a non-null assertion: on a passage item `instance` really
@@ -170,9 +190,9 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
         return;
       }
       await recordAtom(atom, result, clock.now()); // A2: record the atom once, here
-      await advance(recordItem(setState, result));
+      await advance(recordItem(setState, result, scoredLength));
     },
-    [instance, isWarmUp, recordAtom, setState, advance, clock],
+    [instance, isWarmUp, recordAtom, setState, advance, clock, scoredLength],
   );
 
   // A passage's sub-questions each carry their own atom, so mastery moves per
@@ -200,13 +220,17 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
         return;
       }
       await advance(
-        recordItem(setState, {
-          correct: results.every((r) => r.correct),
-          hintsUsed: results.reduce((n, r) => n + r.hintsUsed, 0),
-        }),
+        recordItem(
+          setState,
+          {
+            correct: results.every((r) => r.correct),
+            hintsUsed: results.reduce((n, r) => n + r.hintsUsed, 0),
+          },
+          scoredLength,
+        ),
       );
     },
-    [isWarmUp, setState, advance],
+    [isWarmUp, setState, advance, scoredLength],
   );
 
   // U7/AD4b: a flashcard has no correct/incorrect verdict, so it never reaches
@@ -222,9 +246,9 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
         return;
       }
       await recordFlashcardGrade(atom, grade, clock.now());
-      await advance(recordItem(setState, { correct: grade !== 'again', hintsUsed: grade === 'hard' ? 1 : 0 }));
+      await advance(recordItem(setState, { correct: grade !== 'again', hintsUsed: grade === 'hard' ? 1 : 0 }, scoredLength));
     },
-    [instance, isWarmUp, recordFlashcardGrade, setState, advance, clock],
+    [instance, isWarmUp, recordFlashcardGrade, setState, advance, clock, scoredLength],
   );
 
   if (phase === 'teach' && lesson.teach) {
@@ -246,7 +270,7 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
     // decided in `advance` (nudgeStats set ⇒ show); render reads only that real state.
     return (
       <Screen>
-        <SetComplete gems={gems(setState)} score={score(setState)} total={SCORED_SIZE} strand={strand} onNext={() => onDone?.()} />
+        <SetComplete gems={gems(setState)} score={score(setState)} total={scoredLength} strand={strand} onNext={() => onDone?.()} />
         {nudgeStats && (
           <AccountNudgeSheet
             lessons={nudgeStats.lessons}
@@ -270,10 +294,10 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
           <Text style={styles.close}>×</Text>
         </Pressable>
         <View style={styles.segments}>
-          <ProgressSegments states={segmentStates(setState, itemIndex)} strand={strand} />
+          <ProgressSegments states={segmentStates(setState, presentedLength, itemIndex)} strand={strand} />
         </View>
         <Text style={styles.count} testID="set-count">
-          {isWarmUp ? 'try' : `${itemIndex - WARM_UP_ITEMS + 1}/${SCORED_SIZE}`}
+          {isWarmUp ? 'try' : `${itemIndex - WARM_UP_ITEMS + 1}/${scoredLength}`}
         </Text>
       </View>
       {passage ? (

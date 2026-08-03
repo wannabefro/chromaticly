@@ -24,7 +24,7 @@
 import { LESSONS, type Lesson } from './lessons';
 import { generate } from '../engine/generators';
 import { buildContextPassage } from '../engine/generators/context-passage';
-import { SET_SIZE, WARM_UP_ITEMS } from '../learn/exercise-set';
+import { WRITTEN_ITEMS, WARM_UP_ITEMS } from '../learn/exercise-set';
 
 const SEEDS_PER_ATOM = 40;
 
@@ -38,7 +38,7 @@ function tagsOf(instance: unknown): string[] {
  *  cannot make a valid instance, and `generateValidated` already retries. */
 function emittedBy(lesson: Lesson): Set<string> {
   const emitted = new Set<string>();
-  const seeds = Math.max(SET_SIZE, lesson.atoms.length * SEEDS_PER_ATOM);
+  const seeds = Math.max(WRITTEN_ITEMS, lesson.atoms.length * SEEDS_PER_ATOM);
   for (let seed = 0; seed < seeds; seed++) {
     const templateId = lesson.templates[seed % lesson.templates.length];
     const opts = { grade: lesson.grade, seed, atoms: lesson.atoms };
@@ -115,15 +115,15 @@ describe('a lesson becomes exhaustive as it is replayed', () => {
     '%s asks every atom it teaches within six plays',
     (_id, lesson) => {
       const hit = new Set<string>();
-      for (let seed = 0; seed < PLAYS * SET_SIZE; seed++) {
+      for (let seed = 0; seed < PLAYS * WRITTEN_ITEMS; seed++) {
         // The warm-up slots are PRESENTED but not CREDITED — every warm-up path in
         // SetRunner returns before `recordAtom`. Counting them made this guard
         // measure what the learner is shown rather than what they can master, and
         // an atom drawn only at offset 0 read as reachable while being worth
-        // nothing. `SET_SIZE`/`WARM_UP_ITEMS` are imported rather than restated so
+        // nothing. `WRITTEN_ITEMS`/`WARM_UP_ITEMS` are imported rather than restated so
         // the next change to the set shape cannot leave this behind again.
-        if (seed % SET_SIZE < WARM_UP_ITEMS) continue;
-        const templateId = lesson.templates[seed % SET_SIZE % lesson.templates.length];
+        if (seed % WRITTEN_ITEMS < WARM_UP_ITEMS) continue;
+        const templateId = lesson.templates[seed % WRITTEN_ITEMS % lesson.templates.length];
         const opts = { grade: lesson.grade, seed, atoms: lesson.atoms };
         try {
           const instance = templateId === 'music_in_context' ? buildContextPassage(opts) : generate(templateId, opts);

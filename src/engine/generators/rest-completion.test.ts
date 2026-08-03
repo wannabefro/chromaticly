@@ -3,7 +3,7 @@ import { validate } from '../validator';
 import { musicEventUnits } from '../music-event-units';
 import { barUnitsFor } from './bar-math';
 import { REST_UNITS, durationFromRestLabel } from './rest-math';
-import { SET_SIZE } from '../../learn/exercise-set';
+import { WRITTEN_ITEMS } from '../../learn/exercise-set';
 import type { Music } from '../../music/types';
 
 const G1_RESTS = ['rest:semibreve', 'rest:minim', 'rest:crotchet', 'rest:quaver', 'rest:semiquaver'];
@@ -16,7 +16,7 @@ describe('rest_completion generator (chromaticly-gni)', () => {
   // THE core invariant: the answer rest exactly fills the gap the sounding notes
   // leave in the stimulus bar. Recomputed here from the rendered stimulus.
   test('answer rest length == bar total − sounding notes, every seed', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = gen(1, seed, G1_RESTS);
       const music = inst.stimulus.music as Music;
       const sounding = music.voices[0].events.reduce((s, ev) => s + musicEventUnits(ev), 0);
@@ -27,13 +27,13 @@ describe('rest_completion generator (chromaticly-gni)', () => {
   });
 
   test('every instance is validator-clean (self-consistency hook passes)', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       expect(validate(gen(1, seed, G1_RESTS))).toEqual({ ok: true, errors: [] });
     }
   });
 
   test('options are distinct rests, answer is among them, no distractor equals the answer', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = gen(1, seed, G1_RESTS);
       const optionKeys = Object.keys((inst.interaction.config as { option_music: Record<string, unknown> }).option_music);
       expect(optionKeys).toContain(inst.answer.canonical);
@@ -43,7 +43,7 @@ describe('rest_completion generator (chromaticly-gni)', () => {
   });
 
   test('srs tag names the answer rest, drawn from the lesson atoms', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = gen(1, seed, G1_RESTS);
       expect(inst.srs_tags).toHaveLength(1);
       expect(G1_RESTS).toContain(inst.srs_tags[0]);

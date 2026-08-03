@@ -1,7 +1,7 @@
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
 import { musicToAbc } from '../music/abc-emitter';
-import { SET_SIZE } from '../learn/exercise-set';
+import { WRITTEN_ITEMS } from '../learn/exercise-set';
 import {
   assertAtomResolves,
   assertNoCrossDocDuplicateIds,
@@ -602,7 +602,7 @@ describe('rests-1 lesson (chromaticly-gni)', () => {
   // lesson's own atoms; the set is non-degenerate (several distinct rests asked).
   test('a set is validator-clean, tags only this lesson\'s rests, and shows variety', () => {
     const asked = new Set<string>();
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = generate('rest_completion', { grade: 1, seed, atoms: lesson().atoms });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       expect(lesson().atoms).toContain(inst.srs_tags[0]);
@@ -637,7 +637,7 @@ describe('rests-3 lesson (chromaticly-gni)', () => {
   });
 
   test('a set is validator-clean and tags only this lesson\'s rests', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = generate('rest_completion', { grade: 3, seed, atoms: lesson().atoms });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       expect(lesson().atoms).toContain(inst.srs_tags[0]);
@@ -674,7 +674,7 @@ describe('rests-4 lesson (chromaticly-gni)', () => {
   test('the breve rest is asked within a set, in a big bar, validator-clean', () => {
     const asked = new Set<string>();
     let sawBreveBar = false;
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = generate('rest_completion', { grade: 4, seed, atoms: lesson().atoms });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       expect(lesson().atoms).toContain(inst.srs_tags[0]);
@@ -706,7 +706,7 @@ describe('rhythm-doubledot-4 lesson (chromaticly-2fc)', () => {
   // The whole point of the lesson: EVERY item in the real per-set seed range
   // targets a double-dotted value — the regression this fixes was zero of them.
   test('every item in the deterministic set targets a double-dotted rhythm', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = generate('rhythm_sum', { grade: 4, seed, atoms: lesson().atoms });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       expect((inst.answer.canonical as { dots: number }).dots).toBe(2);
@@ -742,7 +742,7 @@ describe('clef-equivalence-4 lesson (chromaticly-ra3)', () => {
   // The generated set stays a valid, same-octave clef rewrite: answer pitches
   // match the source pitches note-for-note, on a different clef.
   test('every set item is a validator-clean, same-pitch rewrite on a different clef', () => {
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = generate('clef_equivalence', { grade: 4, seed, atoms: lesson().atoms });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       const music = inst.stimulus.music as { clef: string };
@@ -785,7 +785,7 @@ describe('double-accidentals-4 lesson (chromaticly-9ig)', () => {
   // must throw (the validator gate, not atom resolution, is what enforces it).
   test('names spell out the accidental, validate clean, and are grade-4-gated', () => {
     const canon = new Set<string>();
-    for (let seed = 0; seed < SET_SIZE; seed++) {
+    for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
       const inst = generate('note_naming', { grade: 4, seed, atoms: lesson().atoms });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       expect(inst.answer.canonical).toMatch(/^[A-G] double (sharp|flat)$/);
@@ -828,13 +828,13 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
 
   // C2 — THE invariant the atom ORDER is chosen to satisfy. key_signature_id
   // picks the asked key with one rng draw per item (key-signature-id.ts:69);
-  // over the deterministic per-set seed range (0..SET_SIZE-1, SetRunner.tsx:70)
+  // over the deterministic per-set seed range (0..WRITTEN_ITEMS-1, SetRunner.tsx:70)
   // the draw never lands the pool's index-0 key, so both focus keys must sit on
   // drawn indices. If a future edit reorders atoms and drops a focus key from
   // the set, this fails loud — the learner would complete the set never seeing
   // one of the two keys the lesson exists to teach.
-  test('both B major and D♭ major are asked within one set (seeds 0..SET_SIZE-1)', () => {
-    const asked = Array.from({ length: SET_SIZE }, (_, seed) =>
+  test('both B major and D♭ major are asked within one set (seeds 0..WRITTEN_ITEMS-1)', () => {
+    const asked = Array.from({ length: WRITTEN_ITEMS }, (_, seed) =>
       generate('key_signature_id', { grade: 4, seed, atoms: lesson().atoms }).answer.canonical,
     );
     expect(asked).toContain('B major');
@@ -845,7 +845,7 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
   // teach copy renders it "D♭ major". Grading is a plain string equal, so the
   // canonical must stay ASCII or every D♭ item would grade as wrong.
   test('the D♭ canonical answer is ASCII "Db major", not "D♭ major"', () => {
-    const asked = Array.from({ length: SET_SIZE }, (_, seed) =>
+    const asked = Array.from({ length: WRITTEN_ITEMS }, (_, seed) =>
       generate('key_signature_id', { grade: 4, seed, atoms: lesson().atoms }).answer.canonical,
     );
     const db = asked.filter((k) => k.startsWith('D'));
@@ -927,12 +927,12 @@ describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
 
 // Playability sweep, generalized over every grade the map can open (D7 note:
 // prefer generalizing this block over duplicating it per grade). SetRunner
-// seeds each of a set's SET_SIZE items with itemIndex (0..SET_SIZE-1,
+// seeds each of a set's WRITTEN_ITEMS items with itemIndex (0..WRITTEN_ITEMS-1,
 // SetRunner.tsx:57,70) — this is the real seed range a learner hits.
 describe.each([...LESSONS_BY_GRADE[2], ...LESSONS_BY_GRADE[3]])('$id playability sweep', (lesson) => {
   for (const templateId of lesson.templates) {
     test(`${templateId} generates across the real per-set seed range without throwing, tagging only this lesson's atoms`, () => {
-      for (let seed = 0; seed < SET_SIZE; seed++) {
+      for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
         const instance = generate(templateId, { grade: lesson.grade, seed, atoms: lesson.atoms });
         expect(lesson.atoms).toContain(instance.srs_tags[0]);
       }

@@ -12,7 +12,11 @@ import type { Lesson } from '../content/lessons';
 import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
 import * as generators from '../engine/generators';
 import { generate } from '../engine/generators';
-import { SCORED_SIZE, SET_SIZE } from '../learn/exercise-set';
+import { presentedLengthFor, scoredLengthFor, WRITTEN_ITEMS } from '../learn/exercise-set';
+
+// These fixtures are written-only lessons.
+const SET_SIZE = presentedLengthFor({});
+const SCORED_SIZE = scoredLengthFor({});
 import { ProgressProvider } from '../learn/ProgressContext';
 import { STORE_VERSION, type ProgressSnapshot, type SnapshotStorage } from '../learn/store';
 import { assembleOptions } from './grading';
@@ -533,13 +537,33 @@ describe('SetRunner — set seeds rotate per play, so a lesson is not the same e
     expect((await seedsAfter(1)).seeds).toContain(8);
   });
 
-  test('the fifth play asks seed 32 — the offset is plays x SET_SIZE, never a wrap', async () => {
+  test('the fifth play asks seed 32 — the offset is plays x WRITTEN_ITEMS, never a wrap', async () => {
     expect((await seedsAfter(4)).seeds).toContain(32);
   });
 
   // The bug this test exists for: reading `plays` in a lazy useState initializer
   // runs on the FIRST render, which can precede the snapshot load — pinning every
   // learner to offset 0 forever, silently, on device only.
+  // KTD4: a window widened to the PRESENTED length would start play 1 at 9, not
+  // 8, moving every written question after play 0.
+  test('a by-ear lesson asks the SAME written seeds a written-only one does, at every play', async () => {
+    const byEar = { ...target, by_ear_source: 'rest_completion' };
+    for (const plays of [0, 1, 4]) {
+      const spy = jest.spyOn(generators, 'generate');
+      const storage = memoryStorage();
+      storage.blob = snapshotWith(plays);
+      render(
+        <ProgressProvider storage={storage}>
+          <SetRunner lesson={byEar} />
+        </ProgressProvider>,
+      );
+      await act(async () => {});
+      const seeds = spy.mock.calls.map((c) => (c[1] as { seed: number }).seed);
+      spy.mockRestore();
+      expect(seeds).toContain(plays * 8);
+    }
+  });
+
   test('the offset survives a store that is still loading at first render', async () => {
     const spy = jest.spyOn(generators, 'generate');
     const storage = memoryStorage();

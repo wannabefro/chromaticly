@@ -65,6 +65,9 @@ const LessonSchema = z.object({
   strand: z.enum(['rhythm', 'pitch', 'scales_keys', 'intervals', 'chords', 'terms_signs', 'context']),
   atoms: z.array(z.string()).min(1),
   templates: z.array(z.string()).min(1),
+  /** theory-by-ear: the written template the by-ear item composes over (KTD3).
+   *  Absent on the 22 lessons that emit no notation to compare against. */
+  by_ear_source: z.string().min(1).nullable().optional(),
   worked_example: WorkedExampleSchema.nullable().optional(),
   teach: TeachSchema.nullable().optional(),
   unlocks: z.string().nullable(),
