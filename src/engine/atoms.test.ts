@@ -1,4 +1,8 @@
 import {
+  byEarAtom,
+  isByEarAtom,
+  ornamentSignAtom,
+  writtenAtomOf,
   intervalAtom,
   intervalTypeAtom,
   keySigAtom,
@@ -74,5 +78,28 @@ describe('parseAtom — build/parse round-trip recovers the original parts', () 
 
   test('transpose:octave atom round-trips to kind "transpose" with one part, "octave"', () => {
     expect(parseAtom(transposeAtom())).toEqual({ kind: 'transpose', parts: ['octave'] });
+  });
+});
+
+// KTD1: a suffix, so the readiness filter is a suffix test, not a drifting table.
+describe('by-ear atoms', () => {
+  test('the suffix is appended to the written atom, and the predicate recognises it', () => {
+    expect(byEarAtom('rest:crotchet')).toBe('rest:crotchet:by_ear');
+    expect(isByEarAtom('rest:crotchet:by_ear')).toBe(true);
+    expect(isByEarAtom('rest:crotchet')).toBe(false);
+  });
+
+  test('another suffixed atom is not a by-ear atom — the test is the suffix, not the shape', () => {
+    expect(isByEarAtom(ornamentSignAtom('turn'))).toBe(false);
+  });
+
+  test('stripping the suffix returns the written atom exactly, so credit can be traced back', () => {
+    for (const written of ['rest:crotchet', 'note_read:treble:C4', 'rhythm_sum', ornamentSignAtom('trill')]) {
+      expect(writtenAtomOf(byEarAtom(written))).toBe(written);
+    }
+  });
+
+  test('a written atom is its own written form, so callers need no branch', () => {
+    expect(writtenAtomOf('interval:5')).toBe('interval:5');
   });
 });

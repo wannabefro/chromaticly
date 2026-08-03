@@ -14,7 +14,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, VOICE_TYPES } from '../engine/atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, isByEarAtom, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, VOICE_TYPES, writtenAtomOf } from '../engine/atoms';
 import { GENERATORS } from '../engine/generators';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
@@ -92,6 +92,13 @@ export type LessonsDoc = Omit<z.infer<typeof LessonsDocSchema>, 'lessons'> & { l
 
 /** Throws if an SRS-atom id does not resolve to something a generator can emit at `grade`. */
 export function assertAtomResolves(atom: string, grade: number): void {
+  if (isByEarAtom(atom)) {
+    const written = writtenAtomOf(atom);
+    // A doubled suffix is malformed, not a base that happens to end in by_ear.
+    if (isByEarAtom(written)) throw new Error(`lessons: malformed by-ear atom "${atom}"`);
+    assertAtomResolves(written, grade);
+    return;
+  }
   const { kind, parts } = parseAtom(atom);
   switch (kind) {
     case 'rhythm_sum':

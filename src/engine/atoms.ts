@@ -299,6 +299,21 @@ export function ornamentSignAtom(kind: string): string {
   return `ornament:${kind}:${ORNAMENT_WRITTEN_TO_SIGN}`;
 }
 
+/** Exam readiness filters on this suffix, so by-ear can never read as written. */
+export const BY_EAR_SUFFIX = 'by_ear';
+
+export function byEarAtom(written: string): string {
+  return `${written}:${BY_EAR_SUFFIX}`;
+}
+
+export function isByEarAtom(atom: string): boolean {
+  return atom.endsWith(`:${BY_EAR_SUFFIX}`);
+}
+
+export function writtenAtomOf(atom: string): string {
+  return isByEarAtom(atom) ? atom.slice(0, -(BY_EAR_SUFFIX.length + 1)) : atom;
+}
+
 /** Grade-4 instrument-knowledge instruments (instrument_knowledge, KB
  *  instrument families/clefs). Mirrors INSTRUMENT_TABLE's keys in
  *  instrument-knowledge.ts — kept in sync by hand (like CHORD_NUMERALS/

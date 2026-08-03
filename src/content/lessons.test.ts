@@ -939,3 +939,21 @@ describe.each([...LESSONS_BY_GRADE[2], ...LESSONS_BY_GRADE[3]])('$id playability
     });
   }
 });
+
+describe('by-ear atoms resolve through their written base', () => {
+  // `rest` counts its parts, so this proves the suffix is stripped.
+  // `key_sig` ignores extras and would pass either way.
+  test('a by-ear atom resolves at the grade its base resolves at, and not before', () => {
+    expect(() => assertAtomResolves('rest:crotchet:by_ear', 1)).not.toThrow();
+    expect(() => assertAtomResolves('rest:breve:by_ear', 1)).toThrow();
+  });
+
+  test('a by-ear atom whose base is malformed still throws — the suffix is not an escape hatch', () => {
+    expect(() => assertAtomResolves('rest:not_a_duration:by_ear', 1)).toThrow();
+    expect(() => assertAtomResolves('no_such_kind:by_ear', 1)).toThrow();
+  });
+
+  test('a doubled suffix is malformed, not a base that happens to end in by_ear', () => {
+    expect(() => assertAtomResolves('rest:crotchet:by_ear:by_ear', 1)).toThrow();
+  });
+});
