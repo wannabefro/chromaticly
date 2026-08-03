@@ -28,6 +28,7 @@ import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
 import { transpositionInputSpec } from './TranspositionInput';
 import { noteValuePaletteSpec } from './NoteValuePalette';
+import { ByEarMatch, emptyByEarMatchResponse, type ByEarMatchResponse } from './ByEarMatch';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
 import { VoiceOptions, type VoiceOptionsResponse } from './VoiceOptions';
@@ -300,6 +301,37 @@ const voiceOptionsSpec: InteractionSpec<VoiceOptionsResponse> = {
   selectedValue: (_instance, response) => response ?? undefined,
 };
 
+/** The notation is its own reveal: the learner heard a change, and this is the page. */
+function byEarMatchCorrectAnswerView(instance: ExerciseInstance) {
+  const music = instance.stimulus.music;
+  const { verdict } = instance.answer.canonical as { verdict: string };
+  const caption = verdict === 'same' ? 'It matched — this is what you heard' : 'This is what is written';
+  return music ? <NotationCard music={music} caption={caption} testID="answer-notation" /> : null;
+}
+
+/** KTD6: collapses the composite response to the one key naming the mistake. */
+function byEarSelectedValue(instance: ExerciseInstance, response: ByEarMatchResponse): unknown {
+  const canonical = instance.answer.canonical as { verdict: string; position: number | null };
+  if (response.verdict === 'same') return canonical.verdict === 'same' ? undefined : 'same';
+  if (response.position === null) return undefined;
+  return response.position === canonical.position ? undefined : `pos:${response.position}`;
+}
+
+const byEarMatchSpec: InteractionSpec<ByEarMatchResponse> = {
+  Component: ByEarMatch,
+  emptyResponse: () => emptyByEarMatchResponse,
+  // AE3: "different" with no position chosen is not an answer yet.
+  canCheck: (response) => response.verdict === 'same' || (response.verdict === 'different' && response.position !== null),
+  grade: (instance, response) => {
+    const canonical = instance.answer.canonical as { verdict: string; position: number | null };
+    if (response.verdict !== canonical.verdict) return false;
+    return canonical.verdict === 'same' || response.position === canonical.position;
+  },
+  submits: true,
+  correctAnswerView: byEarMatchCorrectAnswerView,
+  selectedValue: byEarSelectedValue,
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -312,6 +344,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   roman_numeral_boxes: romanNumeralBoxesSpec,
   drag_match: dragMatchSpec,
   voice_options: voiceOptionsSpec,
+  by_ear_match: byEarMatchSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather
