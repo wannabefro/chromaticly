@@ -1,7 +1,6 @@
 // Per-strand lane depth (G6 U2) — the single derivation behind the Learn tab,
-// the profile radar, exam readiness, and the placement result. Four presentations,
-// one function: R3's "these must never disagree" becomes structural rather than a
-// convention someone has to remember.
+// the profile radar, exam readiness, and the placement result. One function,
+// parameterised by `writtenOnly`, so R3 stays structural.
 //
 // Two things this deliberately does NOT do:
 //
@@ -142,11 +141,12 @@ function depthFrom(contentGrades: number[], held: Set<number>): number {
 }
 
 /** The most recent write sequence across a strand's atoms — 0 when untouched.
- *  Derived, never stored: it is only ever compared against a seed's `seq`. */
-function lastAttemptSeq(store: ProgressStore, strand: Strand): number {
+ *  Derived, never stored: compared only against a seed's `seq`.
+ *  `writtenOnly` must reach here, or by-ear revokes the seed (R10). */
+function lastAttemptSeq(store: ProgressStore, strand: Strand, writtenOnly: boolean): number {
   let max = 0;
   for (const grade of contentGradesFor(strand)) {
-    for (const atom of atomsFor(strand, grade)) {
+    for (const atom of atomsFor(strand, grade, writtenOnly)) {
       const seq = store.getAtom(atom).srs.seq ?? 0;
       if (seq > max) max = seq;
     }
@@ -162,7 +162,7 @@ function depthForStrand(store: ProgressStore, strand: Strand, now: number, writt
   //    a re-test and a practice attempt on the SAME day must still order, and
   //    that is precisely the case the per-skill re-test exists for.
   const seed = store.seededDepthFor(strand);
-  if (seed && seed.seq >= lastAttemptSeq(store, strand)) {
+  if (seed && seed.seq >= lastAttemptSeq(store, strand, writtenOnly)) {
     const depth = decayedSeedDepth(seed, now);
     return {
       depth,
@@ -197,7 +197,7 @@ export function laneDepths(store: ProgressStore, now: number): Record<Strand, La
   return Object.fromEntries(STRAND_ORDER.map((strand) => [strand, depthForStrand(store, strand, now, false)])) as Record<Strand, LaneDepth>;
 }
 
-/** The same derivation over written atoms only (R10). */
+/** The same derivation over written atoms — what exam readiness reads (R10). */
 export function writtenLaneDepths(store: ProgressStore, now: number): Record<Strand, LaneDepth> {
   return Object.fromEntries(STRAND_ORDER.map((strand) => [strand, depthForStrand(store, strand, now, true)])) as Record<Strand, LaneDepth>;
 }

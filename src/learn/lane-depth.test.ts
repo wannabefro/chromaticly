@@ -11,6 +11,8 @@
 // Four of seven strands are stubs. That is the point of most of these tests.
 
 import { atomsFor, contentGradesFor, decayedSeedDepth, laneDepths, SEED_INTERVAL_DAYS, SLACK_FACTOR, writtenLaneDepths } from './lane-depth';
+import { initialMastery } from './mastery';
+import { initialSrs } from './srs';
 import { ProgressStore } from './store';
 
 const DAY = 20_600;
@@ -328,5 +330,31 @@ describe('written-only depth keeps by-ear credit out of exam readiness', () => {
     const store = new ProgressStore();
     store.setAtom(BY_EAR, { mastery: { streak: 3, mastered: true }, srs: { box: 2, lastReviewed: DAY, nextDue: DAY + 2 } });
     expect(writtenLaneDepths(store, DAY).rhythm.depth).toBe(0);
+  });
+
+  /** A placement seed, then one by-ear answer stamped after it. */
+  function seededThenByEar() {
+    const store = new ProgressStore();
+    store.setSeededDepth('rhythm', { depth: 3, day: DAY, seq: store.reserveSeq() });
+    store.setAtom(BY_EAR, { mastery: initialMastery(), srs: { ...initialSrs(), seq: store.reserveSeq() } });
+    return store;
+  }
+
+  // R10 both ways, including when it decides whether the seed still governs.
+  test('a by-ear answer does not revoke the placement seed for written readiness', () => {
+    const written = writtenLaneDepths(seededThenByEar(), DAY).rhythm;
+    expect(written.source).toBe('seed');
+    expect(written.depth).toBe(3);
+  });
+
+  test('the same by-ear answer DOES revoke it for the full vector', () => {
+    expect(laneDepths(seededThenByEar(), DAY).rhythm.source).toBe('evidence');
+  });
+
+  test('a WRITTEN answer still revokes the seed for written readiness', () => {
+    const store = new ProgressStore();
+    store.setSeededDepth('rhythm', { depth: 3, day: DAY, seq: store.reserveSeq() });
+    store.setAtom('rest:crotchet', { mastery: initialMastery(), srs: { ...initialSrs(), seq: store.reserveSeq() } });
+    expect(writtenLaneDepths(store, DAY).rhythm.source).toBe('evidence');
   });
 });
