@@ -5,7 +5,7 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=key-signatures
+- openLink: ${DEV_URL}/--/?seed=key-signatures
 
 # Expo Go shows its dev-menu sheet on a cold launch: dismiss the intro, then close
 # the menu via its X (top-right of the sheet).
@@ -14,7 +14,6 @@ appId: host.exp.Exponent
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }

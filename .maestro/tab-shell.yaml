@@ -4,14 +4,13 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=exam
+- openLink: ${DEV_URL}/--/?seed=exam
 
 - extendedWaitUntil:
     visible: { text: "Continue" }
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 # The shell opens on Learn, which is the seven-lane list (7a) since G6 U7.
 - extendedWaitUntil:

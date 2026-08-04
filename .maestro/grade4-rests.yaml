@@ -12,7 +12,6 @@ appId: host.exp.Exponent
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }

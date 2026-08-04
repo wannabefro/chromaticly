@@ -13,7 +13,6 @@ appId: host.exp.Exponent
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 # ?seed= lands directly on the lesson's own lane, already at its grade — there
 # is no lane-list step to walk.

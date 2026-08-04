@@ -8,14 +8,13 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=exam
+- openLink: ${DEV_URL}/--/?seed=exam
 
 - extendedWaitUntil:
     visible: { text: "Continue" }
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 # G6 U7: the exam gate no longer sits at the bottom of a scroll on the Learn tab
 # — the Learn tab is seven lanes now, and a paper belongs to no single lane. The

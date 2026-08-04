@@ -3,14 +3,13 @@
 # LESSON and OUT; see scripts/capture-lesson.sh.
 appId: host.exp.Exponent
 ---
-# Expo Go raises its developer-menu sheet over the loaded app. It covers the
-# lane, so it is dismissed before anything is asserted.
+# Expo Go can raise its developer-menu sheet over the loaded app; its Continue
+# button dismisses it.
 - extendedWaitUntil:
     visible: { text: "Continue" }
     timeout: 30000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%", optional: true }
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }

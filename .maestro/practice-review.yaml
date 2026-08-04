@@ -12,7 +12,7 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=exam
+- openLink: ${DEV_URL}/--/?seed=exam
 
 # Expo Go dev-menu sheet on a cold launch: dismiss the intro, then close via its X.
 - extendedWaitUntil:
@@ -20,7 +20,6 @@ appId: host.exp.Exponent
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
     visible: { id: "app-shell" }

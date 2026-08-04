@@ -16,7 +16,6 @@ appId: host.exp.Exponent
 - openLink: ${DEV_URL}
 - tapOn: { text: "Open", optional: true }
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 - extendedWaitUntil:
     visible: { id: "welcome-screen" }
     timeout: 60000

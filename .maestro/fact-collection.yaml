@@ -10,14 +10,13 @@
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: exp://127.0.0.1:8090/--/?seed=treble-notes
+- openLink: ${DEV_URL}/--/?seed=treble-notes
 
 - extendedWaitUntil:
     visible: { text: "Continue" }
     timeout: 40000
     optional: true
 - tapOn: { text: "Continue", optional: true }
-- tapOn: { point: "90%,48%" }
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }

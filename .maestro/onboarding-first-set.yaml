@@ -30,8 +30,6 @@ appId: host.exp.Exponent
 - tapOn:
     text: "Continue"
     optional: true
-- tapOn:
-    point: "90%,48%"
 - extendedWaitUntil:
     visible:
       id: "welcome-screen"
