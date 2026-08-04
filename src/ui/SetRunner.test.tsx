@@ -585,3 +585,69 @@ describe('SetRunner — set seeds rotate per play, so a lesson is not the same e
     spy.mockRestore();
   });
 });
+
+// The tail had NO test. The fixture at the top of this file strips `by_ear_source`,
+// so every other loop here ends at item 7 and `by_ear_match` never rendered.
+describe('SetRunner — a wired lesson serves the by-ear card as its ninth item', () => {
+  const wired = LESSONS_BY_GRADE[1].find((l) => l.id === 'rests-1')!;
+
+  async function answerWritten(getByTestId: (id: string) => any, itemIndex: number) {
+    const templateId = wired.templates[itemIndex % wired.templates.length];
+    const instance = generate(templateId, { grade: wired.grade, seed: itemIndex, atoms: wired.atoms });
+    const index = assembleOptions(instance).findIndex((o) => o.correct);
+    await act(async () => { fireEvent.press(getByTestId(`option-${index}`)); });
+    await act(async () => { fireEvent.press(getByTestId('check')); });
+    await act(async () => { fireEvent.press(getByTestId('feedback-sheet-continue')); });
+  }
+
+  async function runToTail() {
+    const view = render(
+      <ProgressProvider storage={memoryStorage()}>
+        <SetRunner lesson={wired} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(view.getByTestId);
+    for (let i = 0; i < WRITTEN_ITEMS; i++) await answerWritten(view.getByTestId, i);
+    return view;
+  }
+
+  test('the fixture is wired, or the run below would prove nothing', () => {
+    expect(wired.by_ear_source).toBeTruthy();
+    expect(presentedLengthFor(wired)).toBe(WRITTEN_ITEMS + 1);
+  });
+
+  test('item nine renders the by-ear card, not a ninth written question', async () => {
+    const { getByTestId, queryByTestId } = await runToTail();
+    expect(getByTestId('by-ear-match')).toBeTruthy();
+    expect(queryByTestId('option-0')).toBeNull();
+  });
+
+  // AE3: "different" alone is not an answer, so Check must stay disabled until a
+  // position is chosen.
+  test('Check is blocked on a verdict alone and released by a position', async () => {
+    const { getByTestId } = await runToTail();
+    await act(async () => { fireEvent.press(getByTestId('by-ear-verdict-different')); });
+    expect(getByTestId('check')).toBeDisabled();
+    await act(async () => { fireEvent.press(getByTestId('by-ear-position-1')); });
+    expect(getByTestId('check')).toBeEnabled();
+  });
+
+  test('the by-ear item credits a :by_ear atom, never the written one', async () => {
+    const storage = memoryStorage();
+    const view = render(
+      <ProgressProvider storage={storage}>
+        <SetRunner lesson={wired} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(view.getByTestId);
+    for (let i = 0; i < WRITTEN_ITEMS; i++) await answerWritten(view.getByTestId, i);
+    await act(async () => { fireEvent.press(view.getByTestId('by-ear-verdict-same')); });
+    await act(async () => { fireEvent.press(view.getByTestId('check')); });
+    await act(async () => { fireEvent.press(view.getByTestId('feedback-sheet-continue')); });
+
+    const atoms = Object.keys((JSON.parse(storage.blob!) as ProgressSnapshot).atoms);
+    expect(atoms.some((a) => a.endsWith(':by_ear'))).toBe(true);
+  });
+});

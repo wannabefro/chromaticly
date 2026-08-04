@@ -1,4 +1,5 @@
-import { LESSONS, LESSONS_BY_GRADE, lessonById, type Lesson } from '../content/lessons';
+import { creditedAtoms, LESSONS, LESSONS_BY_GRADE, lessonById, type Lesson } from '../content/lessons';
+import { isByEarAtom } from '../engine/atoms';
 import { generate } from '../engine/generators';
 import { validate } from '../engine/validator';
 import { attemptedAtomSet, attemptedTemplates, nextPracticeTemplate, type PracticePick } from './practice-plan';
@@ -477,5 +478,38 @@ describe('practice routing resolves an atom to a template that actually emits it
     }
     expect(wrong).toEqual([]);
     expect(checked).toBeGreaterThan(200); // the exclusions must not swallow the suite
+  });
+});
+
+// Every loop above walks `lesson.atoms`, which excludes `by_ear_atoms`.
+describe('practice routing serves a due by-ear atom without throwing', () => {
+  const byEarAtoms = [...new Set(LESSONS.flatMap((l) => creditedAtoms(l).filter(isByEarAtom)))];
+
+  function pickFor(atom: string) {
+    return nextPracticeTemplate([{ atom, srs: reviewSrs(initialSrs(0), false, 0) }], 10_000_000_000, 0);
+  }
+
+  test('the curriculum declares by-ear atoms, so the loops below are not vacuous', () => {
+    expect(byEarAtoms.length).toBeGreaterThan(100);
+  });
+
+  test('every due by-ear atom resolves to a pick carrying its written source', () => {
+    const unresolved = byEarAtoms.filter((a) => !pickFor(a)?.source);
+    expect(unresolved).toEqual([]);
+  });
+
+  // Practice generates in a render useMemo and src/ has no ErrorBoundary.
+  test('every due by-ear atom generates, and tags the atom that was asked for', () => {
+    const broken: string[] = [];
+    for (const atom of byEarAtoms) {
+      const pick = pickFor(atom)!;
+      try {
+        const inst = generate(pick.template, { grade: pick.grade, seed: 0, atoms: pick.atoms, source: pick.source });
+        if (!inst.srs_tags.includes(atom)) broken.push(`${atom} -> mis-tagged ${inst.srs_tags[0]}`);
+      } catch (err) {
+        broken.push(`${atom} -> threw ${(err as Error).message}`);
+      }
+    }
+    expect(broken).toEqual([]);
   });
 });
