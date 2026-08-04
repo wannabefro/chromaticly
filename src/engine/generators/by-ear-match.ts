@@ -6,7 +6,7 @@
 
 import { KB_VERSION } from '../../content/knowledge-base';
 import type { Music, MusicEvent, NoteEvent, Pitch } from '../../music/types';
-import { byEarAtom } from '../atoms';
+import { byEarAtom, writtenAtomOf } from '../atoms';
 import { mulberry32 } from '../rng';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
@@ -83,10 +83,13 @@ function noteName(pitch: Pitch): string {
   return pitch.replace(/-?\d+$/, '').replace(/#/g, '♯').replace(/b/g, '♭');
 }
 
-/** Ordinal for the copy — the learner counts notes, not event indices. */
+/** Both call sites supply "The ... note", so the fallback is a bare ordinal. */
 function ordinal(n: number): string {
   const words = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
-  return words[n] ?? `note ${n + 1}`;
+  if (words[n]) return words[n];
+  const num = n + 1;
+  const suffix = num % 100 >= 11 && num % 100 <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[num % 10] ?? 'th');
+  return `${num}${suffix}`;
 }
 
 function buildByEarMatch(
@@ -98,7 +101,9 @@ function buildByEarMatch(
   const sourceId = opts.source;
   if (!sourceId) throw new Error('by_ear_match: needs a `source` template id');
 
-  const source = generateSource(sourceId, { grade: opts.grade, seed: contentSeed, atoms: opts.atoms });
+  // Practice hands the DUE atom as the pool, and a due by-ear atom is suffixed.
+  const atoms = opts.atoms?.map(writtenAtomOf);
+  const source = generateSource(sourceId, { grade: opts.grade, seed: contentSeed, atoms });
   const music = source.stimulus.music as Music | null;
   if (!music || !music.voices?.[0]) throw new Error(`by_ear_match: source "${sourceId}" emits no music`);
 
