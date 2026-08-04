@@ -897,13 +897,13 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
     expect(abc).toContain('K:B clef=alto');
   });
 
-  // C5 — a Practice due-path can scope a single atom; key_signature_id needs >=2
-  // key atoms for a closed MCQ and throws below that (key-signature-id.ts:37).
-  // Adding B/D♭ atoms widens the set that can hit this PRE-EXISTING boundary
-  // (mirrors practice-plan.test.ts:134). Pinned here so the throw stays loud and
-  // is not mistaken for a regression this slice introduced.
-  test('a single-atom scope throws (pre-existing closed-MCQ boundary, not new debt)', () => {
-    expect(() => generate('key_signature_id', { grade: 4, seed: 0, atoms: ['key_sig:B_major'] })).toThrow();
+  // C5 — the Practice due-path scopes a SINGLE atom, which used to throw
+  // (chromaticly-elb.7). It now synthesises its wrong answers from the grade.
+  test('a single-atom scope is a whole item, and credits the atom that was asked', () => {
+    const instance = generate('key_signature_id', { grade: 4, seed: 0, atoms: ['key_sig:B_major'] });
+    expect(instance.answer.canonical).toBe('B major');
+    expect(instance.srs_tags).toEqual(['key_sig:B_major']);
+    expect(instance.distractors.length).toBeGreaterThanOrEqual(2);
   });
 });
 

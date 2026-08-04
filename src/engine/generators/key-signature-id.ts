@@ -14,7 +14,7 @@ import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
-/** Bare major tonics from the atoms. Fewer than two is a data bug. */
+/** Bare major tonics from the atoms. */
 function keysFromAtoms(atoms: string[]): string[] {
   const keys: string[] = [];
   for (const atom of atoms) {
@@ -24,10 +24,27 @@ function keysFromAtoms(atoms: string[]): string[] {
     if (mode !== 'major') throw new Error(`key_signature_id: non-major key "${parts[0]}" outside G1`);
     if (!keys.includes(tonic)) keys.push(tonic);
   }
-  if (keys.length < 2) {
-    throw new Error('key_signature_id: needs at least two key_sig:* atoms for a closed-item MCQ');
-  }
+  if (keys.length === 0) throw new Error('key_signature_id: needs at least one key_sig:* atom');
   return keys;
+}
+
+/** Signed accidental count: C 0, G +1, F -1. Sharps and flats are different
+ *  mistakes, so they must not collapse onto one number. */
+function signedAccidentals(key: string): number {
+  const map = keyAccidentals(`${key}_major`);
+  const letters = Object.keys(map);
+  if (letters.length === 0) return 0;
+  return map[letters[0]] === 'sharp' ? letters.length : -letters.length;
+}
+
+/** Wrong keys when Practice serves one due atom. Nearest accidental counts are
+ *  the confusable ones. */
+function neighbourKeys(key: string, scope: { keysMajor: readonly string[] }, count: number): string[] {
+  const target = signedAccidentals(key);
+  return [...scope.keysMajor]
+    .filter((k) => k !== key)
+    .sort((a, b) => Math.abs(signedAccidentals(a) - target) - Math.abs(signedAccidentals(b) - target) || a.localeCompare(b))
+    .slice(0, count);
 }
 
 function tonicPitchInRange(clef: Clef, key: string, grade: number): string {
@@ -67,7 +84,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const keys = keysFromAtoms(atoms);
   const clef = pick(rng, [...scope.clefs]);
   const key = pick(rng, keys);
-  const distractorKeys = keys.filter((k) => k !== key);
+  const distractorKeys = keys.length > 1 ? keys.filter((k) => k !== key) : neighbourKeys(key, scope, 3);
   const variant = pick(rng, ['name', 'choose'] as const);
 
   const common = {

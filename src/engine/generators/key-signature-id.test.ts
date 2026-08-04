@@ -75,9 +75,10 @@ describe('keySignatureId — key pool is atom-derived (R4, KTD5)', () => {
     }
   });
 
-  test('fewer than two key_sig:* atoms throws — no valid closed-item MCQ', () => {
-    expect(() => keySignatureId(optsFor(['key_sig:C_major'], 0))).toThrow(/at least two/);
-    expect(() => keySignatureId(optsFor([], 0))).toThrow(/at least two/);
+  // One atom is now a legitimate item — Practice serves exactly one (elb.7).
+  // Zero is still a data bug: there is nothing to ask about.
+  test('no key_sig:* atom at all throws', () => {
+    expect(() => keySignatureId(optsFor([], 0))).toThrow(/at least one/);
   });
 
   // D10 (review finding 2): a bare key signature is ambiguous between its
@@ -185,5 +186,45 @@ describe('keySignatureId — the item cannot be answered by matching staves', ()
       expect(said).toContain(`${wrong} has ${counts[wrong]}`);
       expect(said).toContain(`has ${counts[instance.answer.canonical as string]}, which is`);
     }
+  });
+});
+
+// chromaticly-elb.7: Practice serves ONE due atom; the generator required two.
+describe('key_signature_id — a single due atom is a whole item, not a crash', () => {
+  test('one atom generates, and that key is the answer', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = keySignatureId(optsFor(['key_sig:D_major'], seed));
+      expect(instance.answer.canonical).toBe('D major');
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  test('it still offers real wrong answers, drawn from the grade', () => {
+    const instance = keySignatureId(optsFor(['key_sig:C_major'], 0));
+    expect(instance.distractors.length).toBeGreaterThanOrEqual(2);
+    expect(instance.distractors).not.toContain('C major');
+    for (const d of instance.distractors) {
+      expect(G1_TONICS.map((t) => `${t} major`)).toContain(d);
+    }
+  });
+
+  test('every synthesised distractor keeps its own misconception line (rule 5)', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = keySignatureId(optsFor(['key_sig:G_major'], seed));
+      const reasons = instance.feedback.by_distractor ?? {};
+      for (const d of instance.distractors) expect(typeof reasons[d as string]).toBe('string');
+      expect(new Set(Object.values(reasons)).size).toBe(instance.distractors.length);
+    }
+  });
+
+  // C(0) is missed for G(1 sharp) or F(1 flat), not for D(2 sharps).
+  test('the distractors are the plausible neighbours, not an arbitrary pick', () => {
+    const instance = keySignatureId(optsFor(['key_sig:C_major'], 0));
+    expect(instance.distractors.slice(0, 2).sort()).toEqual(['F major', 'G major']);
+  });
+
+  test('every key_sig atom the curriculum credits can be served alone', () => {
+    const g1 = ['C', 'G', 'D', 'F'].map((k) => `key_sig:${k}_major`);
+    for (const atom of g1) expect(() => keySignatureId(optsFor([atom], 0))).not.toThrow();
   });
 });
