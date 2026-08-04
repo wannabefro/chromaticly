@@ -109,7 +109,11 @@ describe('by_ear_match', () => {
     for (const d of inst.distractors as string[]) {
       if (!d.startsWith('pos:')) continue;
       const i = Number(d.slice(4));
-      expect(inst.feedback.by_distractor?.[d]).toContain((events[i] as NoteEvent).pitch);
+      // The learner-facing name, never the internal "B4" — the octave digit is
+      // an implementation detail and reads as a typo on the card.
+      const written = (events[i] as NoteEvent).pitch;
+      expect(inst.feedback.by_distractor?.[d]).toContain(written.replace(/-?\d+$/, ''));
+      expect(inst.feedback.by_distractor?.[d]).not.toContain(written);
     }
   });
 

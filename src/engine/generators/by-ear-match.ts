@@ -78,6 +78,11 @@ function positionKey(index: number): string {
   return `pos:${index}`;
 }
 
+/** Learner-facing note name: "B", not the internal "B4" (chromatic-scale's rule). */
+function noteName(pitch: Pitch): string {
+  return pitch.replace(/-?\d+$/, '').replace(/#/g, '♯').replace(/b/g, '♭');
+}
+
 /** Ordinal for the copy — the learner counts notes, not event indices. */
 function ordinal(n: number): string {
   const words = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
@@ -116,7 +121,7 @@ function buildByEarMatch(
   const wrongPositions = positions.filter((i) => same || i !== target);
   const distractors = same ? wrongPositions.map(positionKey) : ['same', ...wrongPositions.map(positionKey)];
 
-  const writtenPitch = (i: number) => (events[i] as NoteEvent).pitch;
+  const writtenPitch = (i: number) => noteName((events[i] as NoteEvent).pitch);
   const by_distractor: Record<string, string> = Object.fromEntries(
     wrongPositions.map((i) => [
       positionKey(i),
@@ -124,7 +129,7 @@ function buildByEarMatch(
     ]),
   );
   if (!same) {
-    by_distractor.same = `The ${ordinal(noteNumber(target))} note is written ${writtenPitch(target)}, but you heard ${(altered.voices[0].events[target] as NoteEvent).pitch}.`;
+    by_distractor.same = `The ${ordinal(noteNumber(target))} note is written ${writtenPitch(target)}, but you heard ${noteName((altered.voices[0].events[target] as NoteEvent).pitch)}.`;
   }
 
   return {
