@@ -3,6 +3,8 @@
 // mutation that silently produces identical music would make every item
 // unanswerable while every structural assertion still passed.
 
+import { byEarPool, LESSONS } from '../../content/lessons';
+import { deriveSeed } from '../rng';
 import { generate } from './index';
 import { musicToAbc } from '../../music/abc-emitter';
 import type { Music, NoteEvent } from '../../music/types';
@@ -169,5 +171,100 @@ describe('the by_ear_match validator hook recomputes rather than trusts', () => 
       ev.dur = ev.dur === 'crotchet' ? 'minim' : 'crotchet';
     });
     expect(result.ok).toBe(false);
+  });
+});
+
+// Both defects below need a sweep over the seeds SetRunner asks for.
+describe('by_ear_match — the copy and the sound survive a full sweep', () => {
+  const wired = LESSONS.filter((l) => l.by_ear_source);
+  const sweep = wired.flatMap((lesson) =>
+    Array.from({ length: 30 }, (_, plays) =>
+      generate('by_ear_match', {
+        grade: lesson.grade,
+        seed: deriveSeed(plays, 0),
+        atoms: byEarPool(lesson),
+        source: lesson.by_ear_source!,
+      }),
+    ),
+  );
+
+  test('the sweep is wide enough to be worth reading', () => {
+    expect(sweep.length).toBeGreaterThan(1000);
+  });
+
+  test('no feedback line reads "The note 12 note" — ordinal never falls back to a phrase', () => {
+    const broken = sweep.flatMap((i) => Object.values(i.feedback.by_distractor ?? {}).filter((s) => /note \d+ note/.test(s)));
+    expect(broken).toEqual([]);
+  });
+
+  // The altered note is a bare letter, so an earlier accidental carried onto it.
+  const SEMI: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+  const SIGN: Record<string, number> = { '^': 1, '^^': 2, _: -1, __: -2, '=': 0 };
+
+  const SHARPS = 'FCGDAEB';
+  const FLATS = 'BEADGCF';
+  // Circle of fifths, independent of the emitter's own key map.
+  const SHARP_KEYS = ['C', 'G', 'D', 'A', 'E', 'B', 'F#', 'C#'];
+  const FLAT_KEYS = ['C', 'F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'];
+  const SHARP_MINORS = ['A', 'E', 'B', 'F#', 'C#', 'G#', 'D#', 'A#'];
+  const FLAT_MINORS = ['A', 'D', 'G', 'C', 'F', 'Bb', 'Eb', 'Ab'];
+
+  function keyShifts(keyToken: string): Record<string, number> {
+    const minor = keyToken.endsWith('m');
+    const tonic = minor ? keyToken.slice(0, -1) : keyToken;
+    const sharp = (minor ? SHARP_MINORS : SHARP_KEYS).indexOf(tonic);
+    const flat = (minor ? FLAT_MINORS : FLAT_KEYS).indexOf(tonic);
+    const out: Record<string, number> = {};
+    if (sharp > 0) for (let i = 0; i < sharp; i++) out[SHARPS[i]] = 1;
+    else if (flat > 0) for (let i = 0; i < flat; i++) out[FLATS[i]] = -1;
+    return out;
+  }
+
+  function soundedSemitones(abc: string, keyToken = 'C'): number[] {
+    const key = keyShifts(keyToken);
+    const bar = new Map<string, number>();
+    const out: number[] = [];
+    for (const [, bars, sign, letter, marks] of abc.matchAll(/(\|+)|(?:(\^\^|__|\^|_|=)?([A-Ga-g])([',]*)\d*)/g)) {
+      if (bars) {
+        bar.clear(); // an accidental's scope ends at the barline
+        continue;
+      }
+      const upper = letter.toUpperCase();
+      const octave = (letter === upper ? 4 : 5) + (marks.match(/'/g)?.length ?? 0) - (marks.match(/,/g)?.length ?? 0);
+      const slot = `${upper}${octave}`;
+      // A bar accidental is per letter AND octave; a key accidental is per letter.
+      const shift = sign ? SIGN[sign] : (bar.get(slot) ?? key[upper] ?? 0);
+      bar.set(slot, shift);
+      out.push((octave + 1) * 12 + SEMI[upper] + shift);
+    }
+    return out;
+  }
+
+  function pitchSemitone(pitch: string): number {
+    const m = /^([A-G])(#{1,2}|b{1,2})?(-?\d+)$/.exec(pitch)!;
+    const shift = m[2] ? (m[2][0] === '#' ? m[2].length : -m[2].length) : 0;
+    return (Number(m[3]) + 1) * 12 + SEMI[m[1]] + shift;
+  }
+
+  test('the emitted ABC sounds exactly the pitches the generator chose', () => {
+    const wrong: string[] = [];
+    for (const inst of sweep) {
+      for (const music of [inst.stimulus.music as Music, (inst.interaction.config as { played_music: Music }).played_music]) {
+        const lines = musicToAbc(music).trim().split('\n');
+        const body = lines.pop()!;
+        const keyToken = lines.find((l) => l.startsWith('K:'))!.slice(2).trim().split(/\s+/)[0];
+        const wanted = music.voices[0].events.filter((e) => e.type === 'note').map((e) => pitchSemitone((e as NoteEvent).pitch));
+        const sounded = soundedSemitones(body, keyToken);
+        if (JSON.stringify(wanted) !== JSON.stringify(sounded)) wrong.push(`${inst.id}: K=${keyToken} ${body} -> ${sounded} want ${wanted}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  test('the resolver itself catches a carried accidental, or the test above proves nothing', () => {
+    expect(soundedSemitones('^F8 F8')).toEqual([66, 66]);
+    expect(soundedSemitones('^F8 =F8')).toEqual([66, 65]);
+    expect(soundedSemitones('^F8 | F8')).toEqual([66, 65]);
+    expect(soundedSemitones('F8 | F8', 'G')).toEqual([66, 66]);
   });
 });

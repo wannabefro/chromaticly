@@ -45,7 +45,7 @@ export function emptySet(): ExerciseSetState {
 
 /** Fold one SCORED item result into the set. The warm-up never reaches here —
  *  it is presented and then dropped, which is what "this one doesn't count"
- *  means. Throws once the set already holds SCORED_SIZE items. */
+ *  means. Throws once the set already holds `scoredLength` items. */
 export function recordItem(
   state: ExerciseSetState,
   result: { correct: boolean; hintsUsed: number },

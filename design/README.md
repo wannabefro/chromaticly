@@ -232,7 +232,12 @@ The cost is that the teach phase keeps a **second, unscored** by-ear mechanism �
 the two lessons that carry it — so two things called by-ear have different consequences. Accepted as
 temporary: its fate is an open question, and nothing here depends on the answer.
 
-The card is not universal. It compares sound to notation, and 22 of the 91 lessons emit no notation
-(15 `term_meaning`, 4 `mode_swap`, 2 `instrument_knowledge`, 1 `degree_name_id`, 1
-`enharmonic_recognition`). Those are exempt rather than forced — the right by-ear question for a
-terms lesson is one phrase at two tempos, which is a different card.
+The card is not universal: 38 of the 91 lessons carry it and 53 are exempt, for two reasons.
+
+- **22 emit no notation at all** — 14 `term_meaning`, 4 `mode_swap`, 2 `instrument_knowledge`, 1
+  `degree_name_id`, 1 `enharmonic_recognition`.
+- **31 emit notation but fewer than three single notes.** "Tap where it differs" needs at least three
+  positions, or the wrong answers are not honest ones.
+
+Those are exempt rather than forced — the right by-ear question for a terms lesson is one phrase at
+two tempos, which is a different card.
