@@ -122,10 +122,14 @@ function buildByEarMatch(
   const distractors = same ? wrongPositions.map(positionKey) : ['same', ...wrongPositions.map(positionKey)];
 
   const writtenPitch = (i: number) => noteName((events[i] as NoteEvent).pitch);
+  // On a matching item the mistake is hearing a change that was not there, so
+  // the line leads with that rather than with the note they pointed at.
   const by_distractor: Record<string, string> = Object.fromEntries(
     wrongPositions.map((i) => [
       positionKey(i),
-      `The ${ordinal(noteNumber(i))} note is written ${writtenPitch(i)}, and that is what you heard.`,
+      same
+        ? `Nothing changed — the ${ordinal(noteNumber(i))} note is written ${writtenPitch(i)} and that is exactly what was played.`
+        : `The ${ordinal(noteNumber(i))} note is written ${writtenPitch(i)}, and that is what you heard.`,
     ]),
   );
   if (!same) {
