@@ -43,6 +43,7 @@ function sampleInterval(
   clef: Clef,
   key: string,
   grade: number,
+  targets: number[] = [],
 ): { lowerPitch: string; steps: number; intervalNumber: number } {
   const range = pitchRange(clef, grade);
 
@@ -60,7 +61,11 @@ function sampleInterval(
     throw new Error(`no room above the tonic ${lowerPitch} for an interval within range`);
   }
 
-  const steps = int(rng, 1, maxSteps);
+  const feasible = targets.filter((n) => n - 1 <= maxSteps);
+  if (targets.length > 0 && feasible.length === 0) {
+    throw new Error(`interval_naming: no atom-scoped interval fits above ${lowerPitch}`);
+  }
+  const steps = feasible.length > 0 ? pick(rng, feasible) - 1 : int(rng, 1, maxSteps);
   return { lowerPitch, steps, intervalNumber: steps + 1 };
 }
 
@@ -164,7 +169,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   if (keyTargets.length > 0) return buildAboveTonicInKey(rng, clef, grade, idSeed, keyTargets);
 
   const key = pick(rng, [...scope.keysMajor]);
-  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade);
+  const { lowerPitch, steps, intervalNumber } = sampleInterval(rng, clef, key, grade, numberTargets(atoms, 'interval'));
   const upperPitch = spellInKey(naturalPitchStepsAbove(lowerPitch, steps), key);
 
   const distractors = [intervalNumber - 1, intervalNumber + 1].filter(
@@ -227,11 +232,17 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
  *  `atoms` carries no interval_type atom (bare draw — onboarding/rotation, or
  *  a lesson's full 2..8 atom set covers the whole range anyway). */
 function intervalTypeTargets(atoms: string[]): number[] {
+  return numberTargets(atoms, 'interval_type');
+}
+
+/** Due-path scoping for any `<kind>:<n>` atom: a due `interval:6` must draw
+ *  a 6th. */
+function numberTargets(atoms: string[], kind: string): number[] {
   const numbers: number[] = [];
   for (const atom of atoms) {
-    const { kind, parts } = parseAtom(atom);
-    if (kind !== 'interval_type' || parts.length !== 1) continue;
-    const n = Number(parts[0]);
+    const parsed = parseAtom(atom);
+    if (parsed.kind !== kind || parsed.parts.length !== 1) continue;
+    const n = Number(parsed.parts[0]);
     if (Number.isInteger(n) && n >= 2 && n <= 8 && !numbers.includes(n)) numbers.push(n);
   }
   return numbers;
@@ -529,7 +540,7 @@ function buildBetweenAnyNotes(
   // natural-pitch-only domain.
   const pitches = diatonicPitchesInComfortableRange(clef, grade);
 
-  const targets = intervalTypeTargets(atoms);
+  const targets = [...new Set([...intervalTypeTargets(atoms), ...numberTargets(atoms, 'interval_any')])];
   const numberPool = targets.length > 0 ? targets : [2, 3, 4, 5, 6, 7, 8];
 
   const number = pick(rng, numberPool);

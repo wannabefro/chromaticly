@@ -544,3 +544,32 @@ describe('intervalNaming — grade 4, fyu.8: between-any-notes, natural pitches 
     expect(seen).toBeGreaterThan(0);
   });
 });
+
+// The due-path scoping fix, extended (ORC1/R5 already did `interval_type`).
+// Practice serves ONE due atom; these two kinds ignored it and drew at random,
+// so review of a weak 6th could serve any interval and the SRS signal was lost.
+describe('interval_naming — a due interval atom is the interval that gets asked', () => {
+  test('a due interval:<n> draws that number, at every seed', () => {
+    for (const n of [2, 3, 4, 5, 6, 7, 8]) {
+      for (let seed = 0; seed < 8; seed++) {
+        const inst = intervalNaming({ grade: 1, seed, atoms: [`interval:${n}`] });
+        expect(inst.srs_tags).toEqual([`interval:${n}`]);
+      }
+    }
+  });
+
+  test('a due interval_any:<n> draws that number, at every seed', () => {
+    for (const n of [2, 3, 4, 5, 6, 7, 8]) {
+      for (let seed = 0; seed < 8; seed++) {
+        const inst = intervalNaming({ grade: 4, seed, atoms: [`interval_any:${n}`] });
+        expect(inst.srs_tags).toEqual([`interval_any:${n}`]);
+      }
+    }
+  });
+
+  test('the full lesson atom set still spans the whole range — scoping is a no-op there', () => {
+    const atoms = [2, 3, 4, 5, 6, 7, 8].map((n) => `interval:${n}`);
+    const seen = new Set(Array.from({ length: 30 }, (_, seed) => intervalNaming({ grade: 1, seed, atoms }).srs_tags[0]));
+    expect(seen.size).toBeGreaterThan(3);
+  });
+});
