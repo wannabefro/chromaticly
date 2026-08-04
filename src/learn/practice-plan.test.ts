@@ -217,6 +217,7 @@ describe("practice-plan — nextPracticeTemplate threads the owning lesson's gra
   test('rotation-path pick for a template owned only by a grade-2 lesson carries grade: 2', () => {
     jest.isolateModules(() => {
       jest.doMock('../content/lessons', () => ({
+        creditedAtoms: (l: { atoms: string[]; by_ear_atoms?: string[] }) => [...l.atoms, ...(l.by_ear_atoms ?? [])],
         LESSONS: [
           {
             id: 'g1-fixture-lesson',

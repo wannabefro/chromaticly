@@ -34,10 +34,13 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
   };
 }
 
-// These tests press MCQ options, so the fixture must be an all-mcq lesson.
-const lesson = LESSONS_BY_GRADE[1].find((l) =>
+// These tests press MCQ options, so the fixture must be an all-mcq lesson. The
+// by-ear tail is stripped: these cover warm-up, gems and the nudge, and its own
+// tests cover the tail.
+const found = LESSONS_BY_GRADE[1].find((l) =>
   l.templates.every((t) => generate(t, { grade: l.grade, seed: 0, atoms: l.atoms }).interaction.type === 'mcq'),
 )!;
+const lesson = { ...found, by_ear_source: undefined };
 
 // Real Grade 1 lessons now open on the teach phase (302.3); the set begins once
 // the learner taps "Start exercises". Synthetic lessons with no teach content

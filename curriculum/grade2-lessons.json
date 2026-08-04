@@ -111,7 +111,13 @@
         "smartTip": "The 7th is raised with an accidental, written note by note — it is never written in the key signature.",
         "didYouKnow": "The augmented-2nd gap between the 6th and 7th notes is what gives harmonic minor its distinctive, almost exotic sound."
       },
-      "unlocks": "degrees-2"
+      "unlocks": "degrees-2",
+      "by_ear_source": "scale_construction",
+      "by_ear_atoms": [
+        "scale:A_minor_harmonic:by_ear",
+        "scale:D_minor_harmonic:by_ear",
+        "scale:E_minor_harmonic:by_ear"
+      ]
     },
     {
       "id": "degrees-2",
@@ -311,7 +317,13 @@
         "smartTip": "Read the bottom number first. It tells you what to count; the top number tells you how many.",
         "didYouKnow": "The C used for 4/4 is not an abbreviation of 'common'. It is a broken circle: medieval scribes drew a full circle for triple time, which they thought perfect, and a broken one for duple."
       },
-      "unlocks": "triplets-2"
+      "unlocks": "triplets-2",
+      "by_ear_source": "add_time_signature",
+      "by_ear_atoms": [
+        "add_time_signature:3/2:by_ear",
+        "add_time_signature:3/8:by_ear",
+        "add_time_signature:4/2:by_ear"
+      ]
     },
     {
       "id": "triplets-2",
@@ -351,7 +363,15 @@
         "smartTip": "Count the beat, not the notes. Three triplet quavers take exactly as long as two ordinary ones.",
         "didYouKnow": "Playing a triplet against a duplet in the other hand is called a cross-rhythm. Brahms wrote whole movements on it, and pianists still count them out loud."
       },
-      "unlocks": "grouping-2"
+      "unlocks": "grouping-2",
+      "by_ear_source": "triplet_recognition",
+      "by_ear_atoms": [
+        "triplet:2/2:by_ear",
+        "triplet:2/4:by_ear",
+        "triplet:3/4:by_ear",
+        "triplet:4/4:by_ear",
+        "triplet_rest:4/4:by_ear"
+      ]
     },
     {
       "id": "grouping-2",
@@ -389,7 +409,13 @@
         "smartTip": "Work out the beat from the bottom number first. Then beam one beat at a time.",
         "didYouKnow": "Copyists call a wrongly beamed bar a \"false grouping\". It is the fastest way to make a simple rhythm unreadable at sight."
       },
-      "unlocks": "tempo-2"
+      "unlocks": "tempo-2",
+      "by_ear_source": "note_grouping_metre_id",
+      "by_ear_atoms": [
+        "grouping:2/2:by_ear",
+        "grouping:3/2:by_ear",
+        "grouping:3/8:by_ear"
+      ]
     },
     {
       "id": "tempo-2",
@@ -561,7 +587,13 @@
         "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
         "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
       },
-      "unlocks": null
+      "unlocks": null,
+      "by_ear_source": "music_in_context",
+      "by_ear_atoms": [
+        "find_bar:highest:2:by_ear",
+        "find_bar:longest:2:by_ear",
+        "find_bar:lowest:2:by_ear"
+      ]
     }
   ]
 }

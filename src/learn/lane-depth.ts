@@ -17,7 +17,7 @@
 // Portable core: no react-native/expo import.
 
 import { isByEarAtom } from '../engine/atoms';
-import { LESSONS, type Strand } from '../content/lessons';
+import { creditedAtoms, LESSONS, type Strand } from '../content/lessons';
 import type { ProgressStore, SeededDepth } from './store';
 
 /** How far past its due date an atom drifts before it stops counting as held.
@@ -71,7 +71,7 @@ for (const lesson of LESSONS) {
     atoms = new Set();
     byGrade.set(lesson.grade, atoms);
   }
-  for (const atom of lesson.atoms) atoms.add(atom);
+  for (const atom of creditedAtoms(lesson)) atoms.add(atom);
 }
 
 /** The grades that have content for `strand`, ascending. */

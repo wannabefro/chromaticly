@@ -18,7 +18,7 @@
 // INTERSECTION of the lesson's atoms with what has been attempted, and a pair
 // whose intersection is empty is not emitted at all.
 
-import { LESSONS } from '../content/lessons';
+import { creditedAtoms, LESSONS } from '../content/lessons';
 import type { Lesson, Strand } from '../content/lessons';
 import { isByEarAtom, writtenAtomOf } from '../engine/atoms';
 import { generate } from '../engine/generators';
@@ -27,7 +27,7 @@ import { selectDue, type SrsState } from './srs';
 // atom → first lesson listing it. A shared atom is reviewed at its own grade.
 const ATOM_OWNER = new Map<string, Lesson>();
 for (const lesson of LESSONS) {
-  for (const atom of lesson.atoms) {
+  for (const atom of creditedAtoms(lesson)) {
     if (!ATOM_OWNER.has(atom)) ATOM_OWNER.set(atom, lesson);
   }
 }
@@ -67,7 +67,7 @@ function atomTemplate(atom: string): { template: string; grade: number; source?:
 /** atom → the strand of the first lesson that lists it, for the per-lane filter (R9). */
 const ATOM_STRAND = new Map<string, Strand>();
 for (const lesson of LESSONS) {
-  for (const atom of lesson.atoms) {
+  for (const atom of creditedAtoms(lesson)) {
     if (!ATOM_STRAND.has(atom)) ATOM_STRAND.set(atom, lesson.strand);
   }
 }

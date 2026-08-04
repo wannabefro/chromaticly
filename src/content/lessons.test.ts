@@ -957,3 +957,70 @@ describe('by-ear atoms resolve through their written base', () => {
     expect(() => assertAtomResolves('rest:crotchet:by_ear:by_ear', 1)).toThrow();
   });
 });
+
+// U8. by_ear_source is what makes the by-ear item servable, and by_ear_atoms is
+// what makes its credit visible. A lesson with one and not the other is broken.
+describe('by-ear wiring', () => {
+  const wired = LESSONS.filter((l) => l.by_ear_source);
+
+  test('the wired set is real and its size is stated, not assumed', () => {
+    expect(wired.length).toBe(38);
+  });
+
+  test('a lesson with a by-ear source names atoms, and vice versa', () => {
+    for (const lesson of LESSONS) {
+      expect(Boolean(lesson.by_ear_source)).toBe((lesson.by_ear_atoms ?? []).length > 0);
+    }
+  });
+
+  test('every by-ear source is a template the lesson itself teaches', () => {
+    for (const lesson of wired) expect(lesson.templates).toContain(lesson.by_ear_source);
+  });
+
+  test('every by-ear atom is suffixed, and its written base belongs to the lesson', () => {
+    for (const lesson of wired) {
+      for (const atom of lesson.by_ear_atoms!) {
+        expect(atom.endsWith(':by_ear')).toBe(true);
+        expect(lesson.atoms).toContain(atom.slice(0, -':by_ear'.length));
+      }
+    }
+  });
+
+  test('by-ear atoms stay OUT of the generator pool — they would change every written item', () => {
+    for (const lesson of LESSONS) {
+      expect(lesson.atoms.filter((a) => a.endsWith(':by_ear'))).toEqual([]);
+    }
+  });
+
+  test('every wired lesson serves a validator-clean by-ear item, and tags only its own atoms', () => {
+    for (const lesson of wired) {
+      const declared = new Set(lesson.by_ear_atoms);
+      for (let seed = 0; seed < 6; seed++) {
+        const inst = generate('by_ear_match', {
+          grade: lesson.grade,
+          seed,
+          atoms: lesson.atoms,
+          source: lesson.by_ear_source!,
+        });
+        expect(validate(inst)).toEqual({ ok: true, errors: [] });
+        for (const tag of inst.srs_tags) expect(declared.has(tag)).toBe(true);
+      }
+    }
+  });
+
+  test('every by-ear distractor carries its own line — the 100% bar holds here too', () => {
+    for (const lesson of wired) {
+      for (let seed = 0; seed < 3; seed++) {
+        const inst = generate('by_ear_match', {
+          grade: lesson.grade,
+          seed,
+          atoms: lesson.atoms,
+          source: lesson.by_ear_source!,
+        });
+        const reasons = inst.feedback.by_distractor ?? {};
+        for (const d of inst.distractors as string[]) expect(typeof reasons[d]).toBe('string');
+        expect(new Set(Object.values(reasons)).size).toBe(inst.distractors.length);
+      }
+    }
+  });
+});

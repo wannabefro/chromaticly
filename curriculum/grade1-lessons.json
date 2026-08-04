@@ -99,7 +99,11 @@
           ]
         }
       },
-      "unlocks": "bass-notes"
+      "unlocks": "bass-notes",
+      "by_ear_source": "bar_validity",
+      "by_ear_atoms": [
+        "bar_validity:by_ear"
+      ]
     },
     {
       "id": "bass-notes",
@@ -188,7 +192,14 @@
         "smartTip": "Count the beats already used, take that from the bar, and the rest you need is the silence of whatever is left.",
         "didYouKnow": "The semibreve rest hangs down from a line, the minim rest sits on top of one — a tiny difference worth a second look, since they are easy to mix up."
       },
-      "unlocks": "accidentals"
+      "unlocks": "accidentals",
+      "by_ear_source": "rest_completion",
+      "by_ear_atoms": [
+        "rest:crotchet:by_ear",
+        "rest:minim:by_ear",
+        "rest:quaver:by_ear",
+        "rest:semiquaver:by_ear"
+      ]
     },
     {
       "id": "accidentals",
@@ -264,7 +275,12 @@
         "smartTip": "A dot adds half, never double. Halve the note it follows, then add that on.",
         "didYouKnow": "The tie exists because a bar line cannot be crossed by a single note. A sound that runs from one bar into the next has to be written as two notes tied together."
       },
-      "unlocks": "major-scales-1"
+      "unlocks": "major-scales-1",
+      "by_ear_source": "tie_dot_value",
+      "by_ear_atoms": [
+        "single_dot:by_ear",
+        "tie:by_ear"
+      ]
     },
     {
       "id": "major-scales-1",
@@ -302,7 +318,14 @@
         "smartTip": "Two semitones, always in the same places: 3 to 4, and 7 to 8. Everything else is a tone.",
         "didYouKnow": "The 7th note is called the leading note because the semitone below the keynote pulls the ear upward. Take that semitone away and the scale stops sounding finished."
       },
-      "unlocks": "note-grouping-1"
+      "unlocks": "note-grouping-1",
+      "by_ear_source": "major_scale_steps",
+      "by_ear_atoms": [
+        "major_steps:C:by_ear",
+        "major_steps:D:by_ear",
+        "major_steps:F:by_ear",
+        "major_steps:G:by_ear"
+      ]
     },
     {
       "id": "note-grouping-1",
@@ -340,7 +363,13 @@
         "smartTip": "Beam within a beat, break between beats. Count the beat first, then draw the beams.",
         "didYouKnow": "Before beams, everything was written with separate tails. Beaming spread with printed music in the 1500s and made rhythm readable at speed."
       },
-      "unlocks": "dynamics-1"
+      "unlocks": "dynamics-1",
+      "by_ear_source": "note_grouping_metre_id",
+      "by_ear_atoms": [
+        "grouping:2/4:by_ear",
+        "grouping:3/4:by_ear",
+        "grouping:4/4:by_ear"
+      ]
     },
     {
       "id": "dynamics-1",
@@ -674,7 +703,13 @@
         "smartTip": "Highest and lowest mean the position on the stave, not how loud a note is.",
         "didYouKnow": "Bar numbers are a fairly modern habit — they spread in the 1800s as scores grew long enough that players needed a way to say where to restart."
       },
-      "unlocks": null
+      "unlocks": null,
+      "by_ear_source": "music_in_context",
+      "by_ear_atoms": [
+        "find_bar:highest:by_ear",
+        "find_bar:longest:by_ear",
+        "find_bar:lowest:by_ear"
+      ]
     }
   ]
 }

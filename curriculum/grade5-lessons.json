@@ -110,7 +110,13 @@
         "smartTip": "Write the seven letters first, in order, then add accidentals. That is what stops you writing D instead of Cx.",
         "didYouKnow": "A double sharp exists because notation tracks **letters**, not sounds. Cx and D sound identical on a keyboard, but a violinist reading Cx in D# minor plays it as a leading note straining up to D# — a slightly different pitch, and a very different intention."
       },
-      "unlocks": "compound-intervals-5"
+      "unlocks": "compound-intervals-5",
+      "by_ear_source": "scale_construction",
+      "by_ear_atoms": [
+        "scale:D#_minor_harmonic:by_ear",
+        "scale:D#_minor_melodic:by_ear",
+        "scale:Eb_minor_melodic:by_ear"
+      ]
     },
     {
       "id": "compound-intervals-5",
@@ -403,7 +409,13 @@
         "smartTip": "Sounds lower → write higher. B♭ clarinet up a major 2nd, A clarinet up a minor 3rd, horn in F up a perfect 5th. Change the key signature to the transposed key and let it spell the notes.",
         "didYouKnow": "Composers write for transposing instruments so a clarinettist can switch between the B♭ and A clarinet reading the **same** fingerings — the part is rewritten, but the hands do not have to relearn a thing."
       },
-      "unlocks": "ornaments-to-sign-5"
+      "unlocks": "ornaments-to-sign-5",
+      "by_ear_source": "transposing_instrument",
+      "by_ear_atoms": [
+        "transpose_instrument:a:by_ear",
+        "transpose_instrument:bb:by_ear",
+        "transpose_instrument:f:by_ear"
+      ]
     },
     {
       "id": "ornaments-to-sign-5",
@@ -444,7 +456,14 @@
         "smartTip": "Count the notes and their shape. Three notes flicking to a neighbour = a mordent; five notes winding above **and** below = a turn; a long even wobble = a trill; one small note leaning in = a grace note (slashed = acciaccatura, half-value = appoggiatura).",
         "didYouKnow": "Baroque composers often left ornaments as signs precisely because the exact notes were a matter of taste — the same trill sign could be played a dozen ways depending on the player and the tempo."
       },
-      "unlocks": "tenor-reading-5"
+      "unlocks": "tenor-reading-5",
+      "by_ear_source": "ornament_recognition",
+      "by_ear_atoms": [
+        "ornament:lower_mordent:written_to_sign:by_ear",
+        "ornament:trill:written_to_sign:by_ear",
+        "ornament:turn:written_to_sign:by_ear",
+        "ornament:upper_mordent:written_to_sign:by_ear"
+      ]
     },
     {
       "id": "tenor-reading-5",
@@ -521,7 +540,11 @@
         "smartTip": "Order the clefs by how high they read — bass, tenor, alto, treble. Moving up the list means writing up an octave.",
         "didYouKnow": "This is exactly what a copyist did by hand before software. Getting the direction wrong put a cello line an octave under the double basses, which is the kind of mistake that is heard immediately and fixed in the first rehearsal."
       },
-      "unlocks": "metre-rewrite-5"
+      "unlocks": "metre-rewrite-5",
+      "by_ear_source": "octave_transposition",
+      "by_ear_atoms": [
+        "transpose:octave:by_ear"
+      ]
     },
     {
       "id": "metre-rewrite-5",
@@ -556,7 +579,11 @@
         "smartTip": "Same pitches, same order — just re-value. Into compound: add a dot to every note. Back to simple: take every dot off. The beats stay lined up.",
         "didYouKnow": "6/8 and 3/4 use the exact same six quavers per bar, but group them differently — 6/8 as two dotted-crotchet beats, 3/4 as three crotchet beats. The time signature tells the player how to **feel** the bar, not just how to count it."
       },
-      "unlocks": "irregular-time-5"
+      "unlocks": "irregular-time-5",
+      "by_ear_source": "metre_rewrite",
+      "by_ear_atoms": [
+        "rewrite:simple_compound:by_ear"
+      ]
     },
     {
       "id": "irregular-time-5",
@@ -595,7 +622,14 @@
         "smartTip": "Count the beats. Five or seven means irregular — then look at the beams to see how they group.",
         "didYouKnow": "Irregular metres are the normal case in Balkan dance music, where a 7/8 grouped 2+2+3 has been danced for centuries. Western notation only needed a name for them once composers started borrowing them."
       },
-      "unlocks": "grouping-5"
+      "unlocks": "grouping-5",
+      "by_ear_source": "metre_classification",
+      "by_ear_atoms": [
+        "metre:5/4:by_ear",
+        "metre:5/8:by_ear",
+        "metre:7/4:by_ear",
+        "metre:7/8:by_ear"
+      ]
     },
     {
       "id": "grouping-5",
@@ -632,7 +666,12 @@
         "smartTip": "Read the beams before you play. In an irregular metre they are the only thing that fixes the accents.",
         "didYouKnow": "Bulgarian and Greek dance music is full of 7/8. Players name the groups aloud, calling them long-short-short rather than counting to seven."
       },
-      "unlocks": "irregular-divisions-5"
+      "unlocks": "irregular-divisions-5",
+      "by_ear_source": "note_grouping_metre_id",
+      "by_ear_atoms": [
+        "grouping:5/8:by_ear",
+        "grouping:7/8:by_ear"
+      ]
     },
     {
       "id": "irregular-divisions-5",
@@ -669,7 +708,12 @@
         "smartTip": "The bracket number is how many you play. What they replace is always one beat — here, four semiquavers.",
         "didYouKnow": "Chopin wrote runs of eleven, thirteen and even thirty-five notes over a single beat. The bracket number stops being a rhythm to count and becomes an instruction to play the flourish in the time available."
       },
-      "unlocks": "satb-voice-5"
+      "unlocks": "satb-voice-5",
+      "by_ear_source": "tuplet_recognition",
+      "by_ear_atoms": [
+        "tuplet:5:by_ear",
+        "tuplet:6:by_ear"
+      ]
     },
     {
       "id": "satb-voice-5",
@@ -794,7 +838,13 @@
         "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
         "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
       },
-      "unlocks": null
+      "unlocks": null,
+      "by_ear_source": "music_in_context",
+      "by_ear_atoms": [
+        "find_bar:highest:5:by_ear",
+        "find_bar:longest:5:by_ear",
+        "find_bar:lowest:5:by_ear"
+      ]
     }
   ]
 }

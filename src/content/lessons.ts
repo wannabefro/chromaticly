@@ -68,6 +68,8 @@ const LessonSchema = z.object({
   /** theory-by-ear: the written template the by-ear item composes over (KTD3).
    *  Absent on the 22 lessons that emit no notation to compare against. */
   by_ear_source: z.string().min(1).nullable().optional(),
+  /** NOT in `atoms`: that array is the generator's sampling pool. */
+  by_ear_atoms: z.array(z.string()).optional(),
   worked_example: WorkedExampleSchema.nullable().optional(),
   teach: TeachSchema.nullable().optional(),
   unlocks: z.string().nullable(),
@@ -94,6 +96,11 @@ export type Strand = Lesson['strand'];
 export type LessonsDoc = Omit<z.infer<typeof LessonsDocSchema>, 'lessons'> & { lessons: Lesson[] };
 
 /** Throws if an SRS-atom id does not resolve to something a generator can emit at `grade`. */
+/** Credit consumers read this; generators read `lesson.atoms`. */
+export function creditedAtoms(lesson: { atoms: string[]; by_ear_atoms?: string[] }): string[] {
+  return [...lesson.atoms, ...(lesson.by_ear_atoms ?? [])];
+}
+
 export function assertAtomResolves(atom: string, grade: number): void {
   if (isByEarAtom(atom)) {
     const written = writtenAtomOf(atom);
@@ -565,7 +572,7 @@ export function loadDoc(raw: unknown): LessonsDoc {
     for (const template of lesson.templates) {
       if (!(template in GENERATORS)) throw new Error(`lessons: "${lesson.id}" uses unknown template "${template}"`);
     }
-    for (const atom of lesson.atoms) assertAtomResolves(atom, lesson.grade);
+    for (const atom of creditedAtoms(lesson)) assertAtomResolves(atom, lesson.grade);
     if (lesson.worked_example && !(lesson.worked_example.template_id in GENERATORS)) {
       throw new Error(`lessons: "${lesson.id}" worked example uses unknown template "${lesson.worked_example.template_id}"`);
     }

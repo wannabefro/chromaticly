@@ -291,8 +291,6 @@ describe('written-only depth keeps by-ear credit out of exam readiness', () => {
     return store;
   }
 
-  // U8 populates the by-ear atoms. Until then these are equal-not-fewer, so the
-  // count is stated rather than assumed.
   test('every written-only atom list excludes by-ear atoms, at every populated cell', () => {
     let byEarSeen = 0;
     for (const strand of ['rhythm', 'pitch', 'scales_keys', 'intervals', 'chords', 'terms_signs', 'context'] as const) {
@@ -304,8 +302,8 @@ describe('written-only depth keeps by-ear credit out of exam readiness', () => {
         expect(all.filter((a) => !a.endsWith(':by_ear'))).toEqual(written);
       }
     }
-    // U8 makes this positive. Dropping back to 0 means the atoms went missing.
-    expect(byEarSeen).toBe(0);
+    // U8 populated these. Dropping back to 0 means the atoms went missing.
+    expect(byEarSeen).toBeGreaterThan(0);
   });
 
   test('AE4: every written atom mastered and no by-ear atom attempted still reads ready', () => {

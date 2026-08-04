@@ -326,7 +326,15 @@
         "smartTip": "Always spell the raised 7th on the 7th letter of the scale, never on a different letter — that's why F♯ minor's raised 7th is written E♯, not F natural.",
         "didYouKnow": "E♯ and B♯ look unusual on the stave, but they're the correct, exam-expected spellings — writing F natural or C natural instead would name the wrong letter of the scale entirely."
       },
-      "unlocks": "melodic-minor-3"
+      "unlocks": "melodic-minor-3",
+      "by_ear_source": "scale_construction",
+      "by_ear_atoms": [
+        "scale:B_minor_harmonic:by_ear",
+        "scale:C_minor_harmonic:by_ear",
+        "scale:F#_minor_harmonic:by_ear",
+        "scale:F_minor_harmonic:by_ear",
+        "scale:G_minor_harmonic:by_ear"
+      ]
     },
     {
       "id": "melodic-minor-3",
@@ -369,7 +377,16 @@
         "smartTip": "Check the direction before you check the notes — a melodic minor scale's ascending and descending forms are genuinely different, not a memory slip.",
         "didYouKnow": "Melodic minor's ascending form was designed to smooth out the awkward augmented-2nd leap of harmonic minor, which makes melodies harder to sing — the descending form then simply reverts to natural minor, since that leap isn't a problem going down."
       },
-      "unlocks": "compound-time-3"
+      "unlocks": "compound-time-3",
+      "by_ear_source": "scale_construction",
+      "by_ear_atoms": [
+        "scale:A_minor_melodic:by_ear",
+        "scale:B_minor_melodic:by_ear",
+        "scale:E_minor_melodic:by_ear",
+        "scale:F#_minor_melodic:by_ear",
+        "scale:F_minor_melodic:by_ear",
+        "scale:G_minor_melodic:by_ear"
+      ]
     },
     {
       "id": "compound-time-3",
@@ -424,7 +441,15 @@
           ]
         }
       },
-      "unlocks": "compound-bars-3"
+      "unlocks": "compound-bars-3",
+      "by_ear_source": "metre_classification",
+      "by_ear_atoms": [
+        "metre:12/8:by_ear",
+        "metre:2/4:by_ear",
+        "metre:4/4:by_ear",
+        "metre:6/8:by_ear",
+        "metre:9/8:by_ear"
+      ]
     },
     {
       "id": "compound-bars-3",
@@ -462,7 +487,13 @@
         "smartTip": "Count the dotted-crotchet beats, not the quavers — three beats means 9/8, four means 12/8.",
         "didYouKnow": "Demisemiquavers are rare outside fast, decorative passages — composers reach for them to write a flourish, not a steady pulse."
       },
-      "unlocks": "rests-3"
+      "unlocks": "rests-3",
+      "by_ear_source": "add_time_signature",
+      "by_ear_atoms": [
+        "add_time_signature:12/8:by_ear",
+        "add_time_signature:6/8:by_ear",
+        "add_time_signature:9/8:by_ear"
+      ]
     },
     {
       "id": "rests-3",
@@ -500,7 +531,12 @@
         "smartTip": "Count the hooks: one hook is a quaver rest, two a semiquaver, three a demisemiquaver — the same order as the notes' tails.",
         "didYouKnow": "The demisemiquaver rest packs three hooks onto a tiny symbol — beyond it lie the hemidemisemiquaver rest and its four hooks, rarely seen outside virtuoso flourishes."
       },
-      "unlocks": "grouping-3"
+      "unlocks": "grouping-3",
+      "by_ear_source": "rest_completion",
+      "by_ear_atoms": [
+        "rest:demisemiquaver:by_ear",
+        "rest:semiquaver:by_ear"
+      ]
     },
     {
       "id": "grouping-3",
@@ -538,7 +574,13 @@
         "smartTip": "Count the beamed groups, not the quavers. Each group is one dotted beat.",
         "didYouKnow": "The 6/8 and 3/4 pairing is the whole joke of \"America\" in West Side Story, which alternates the two on identical notes."
       },
-      "unlocks": "intervals-3"
+      "unlocks": "intervals-3",
+      "by_ear_source": "note_grouping_metre_id",
+      "by_ear_atoms": [
+        "grouping:12/8:by_ear",
+        "grouping:6/8:by_ear",
+        "grouping:9/8:by_ear"
+      ]
     },
     {
       "id": "intervals-3",
@@ -663,7 +705,13 @@
         "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
         "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
       },
-      "unlocks": "anacrusis-3"
+      "unlocks": "anacrusis-3",
+      "by_ear_source": "music_in_context",
+      "by_ear_atoms": [
+        "find_bar:highest:3:by_ear",
+        "find_bar:longest:3:by_ear",
+        "find_bar:lowest:3:by_ear"
+      ]
     },
     {
       "id": "anacrusis-3",
@@ -701,7 +749,13 @@
         "smartTip": "Count backwards from the first barline to the very first note — however many beats that takes is the length of the upbeat.",
         "didYouKnow": "Plenty of familiar songs start on an upbeat — \"Hap-py birth-day to you\" begins on the third beat of the bar — which is why the word anacrusis comes from the Greek for \"striking up\"."
       },
-      "unlocks": "transposition-3"
+      "unlocks": "transposition-3",
+      "by_ear_source": "anacrusis_recognition",
+      "by_ear_atoms": [
+        "anacrusis:2/4:by_ear",
+        "anacrusis:3/4:by_ear",
+        "anacrusis:4/4:by_ear"
+      ]
     },
     {
       "id": "transposition-3",
@@ -736,7 +790,11 @@
         "smartTip": "Keep the letter name and just move it one octave — a G stays a G, never becomes an A or an F, even though it lands on a different line or space on the new stave.",
         "didYouKnow": "Octave transposition is the simplest kind of transposition, because the letter names never change — later grades add transposing to a different key altogether, like a clarinet in B♭ reading its part a tone higher than it actually sounds."
       },
-      "unlocks": null
+      "unlocks": null,
+      "by_ear_source": "octave_transposition",
+      "by_ear_atoms": [
+        "transpose:octave:by_ear"
+      ]
     }
   ]
 }

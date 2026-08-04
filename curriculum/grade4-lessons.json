@@ -110,7 +110,14 @@
         "smartTip": "Always raise on the same letter. G♯ minor's 7th letter is F, so its raised 7th must stay an F — an F♯ raised a semitone is F double-sharp, not G.",
         "didYouKnow": "A double-sharp (𝄪) raises a note by two semitones — a whole tone — from its natural pitch, so F𝄪 sounds the same as G, but naming it F keeps every letter of the G♯ minor scale distinct."
       },
-      "unlocks": "chromatic-scale-4"
+      "unlocks": "chromatic-scale-4",
+      "by_ear_source": "scale_construction",
+      "by_ear_atoms": [
+        "scale:Bb_minor_harmonic:by_ear",
+        "scale:Bb_minor_melodic:by_ear",
+        "scale:G#_minor_harmonic:by_ear",
+        "scale:G#_minor_melodic:by_ear"
+      ]
     },
     {
       "id": "chromatic-scale-4",
@@ -149,7 +156,14 @@
         "smartTip": "Going up, reach for sharps. Every whole-tone gap gets a sharpened note wedged in; the two natural semitones, E–F and B–C, are left alone.",
         "didYouKnow": "‘Chromatic’ comes from the Greek chroma, meaning colour — the extra notes between the scale steps were heard as adding colour to the plain diatonic scale."
       },
-      "unlocks": "degree-names-4"
+      "unlocks": "degree-names-4",
+      "by_ear_source": "chromatic_scale",
+      "by_ear_atoms": [
+        "scale:C_chromatic:by_ear",
+        "scale:D_chromatic:by_ear",
+        "scale:F_chromatic:by_ear",
+        "scale:G_chromatic:by_ear"
+      ]
     },
     {
       "id": "degree-names-4",
@@ -263,7 +277,12 @@
         "smartTip": "Two semibreve rests make a breve rest — eight beats of silence. The block fills the middle space; the semibreve rest only hangs beneath a line.",
         "didYouKnow": "The breve rest is so rare that many musicians go years without writing one — it turns up mostly in slow music with very long bars."
       },
-      "unlocks": "rhythm-doubledot-4"
+      "unlocks": "rhythm-doubledot-4",
+      "by_ear_source": "rest_completion",
+      "by_ear_atoms": [
+        "rest:breve:by_ear",
+        "rest:semibreve:by_ear"
+      ]
     },
     {
       "id": "rhythm-doubledot-4",
@@ -336,7 +355,13 @@
         "smartTip": "A duplet is a triplet turned inside out: two-in-the-time-of-three in compound time, where a triplet is three-in-the-time-of-two in simple time.",
         "didYouKnow": "A duplet lets a composer slip a momentary ‘simple-time’ feel into a compound-time bar — two even beats where the metre expects a lilting three — without changing the time signature."
       },
-      "unlocks": "time-signatures-4"
+      "unlocks": "time-signatures-4",
+      "by_ear_source": "duplet_recognition",
+      "by_ear_atoms": [
+        "duplet:12/8:by_ear",
+        "duplet:6/8:by_ear",
+        "duplet:9/8:by_ear"
+      ]
     },
     {
       "id": "time-signatures-4",
@@ -380,7 +405,17 @@
         "smartTip": "Top number first: 2/3/4 is simple, 6/9/12 is compound (divide by three for the beat count). The bottom number is only which note gets the beat.",
         "didYouKnow": "Fast movements are sometimes written in 6/16 so the page looks less crowded, while slow, broad music may use 6/4 — but both are still a lilting compound duple, exactly like 6/8."
       },
-      "unlocks": "grouping-4"
+      "unlocks": "grouping-4",
+      "by_ear_source": "metre_classification",
+      "by_ear_atoms": [
+        "metre:12/16:by_ear",
+        "metre:12/4:by_ear",
+        "metre:3/8:by_ear",
+        "metre:6/16:by_ear",
+        "metre:6/4:by_ear",
+        "metre:9/16:by_ear",
+        "metre:9/4:by_ear"
+      ]
     },
     {
       "id": "grouping-4",
@@ -418,7 +453,12 @@
         "smartTip": "Find the beat, then beam exactly one beat at a time. The denominator alone never tells you.",
         "didYouKnow": "6/4 was standard in Renaissance dance music and came back through Holst and Stravinsky, who liked its long, slow-turning beat."
       },
-      "unlocks": "intervals-4"
+      "unlocks": "intervals-4",
+      "by_ear_source": "note_grouping_metre_id",
+      "by_ear_atoms": [
+        "grouping:4/8:by_ear",
+        "grouping:6/4:by_ear"
+      ]
     },
     {
       "id": "intervals-4",
@@ -537,7 +577,11 @@
         "smartTip": "Same letters, new octave. Moving to a higher clef (alto → treble) shifts the tune up an octave; to a lower clef (alto → bass), down an octave.",
         "didYouKnow": "Rewriting the same music in another clef and octave is how a viola line might be shared with a violinist or cellist — the clef and octave move, but the tune stays unmistakably the same."
       },
-      "unlocks": "clef-equivalence-4"
+      "unlocks": "clef-equivalence-4",
+      "by_ear_source": "octave_transposition",
+      "by_ear_atoms": [
+        "transpose:octave:by_ear"
+      ]
     },
     {
       "id": "clef-equivalence-4",
@@ -572,7 +616,11 @@
         "smartTip": "The note does not move — you do. Keep the exact pitch and ask “where does this sound live on the new clef?”",
         "didYouKnow": "This is why an orchestral score stacks different clefs: a cellist reading bass clef and a violist reading alto clef can play the very same note, each written where it sits most cleanly on their own staff."
       },
-      "unlocks": "chords-4"
+      "unlocks": "chords-4",
+      "by_ear_source": "clef_equivalence",
+      "by_ear_atoms": [
+        "clef_equiv:cross:by_ear"
+      ]
     },
     {
       "id": "chords-4",
@@ -829,7 +877,13 @@
         "smartTip": "Clef, key signature, time signature, then notes. The same order every time.",
         "didYouKnow": "Examiners write the general-observation question last, after the rest of the paper is set, so that it uses only what the paper has already asked about."
       },
-      "unlocks": "enharmonics-4"
+      "unlocks": "enharmonics-4",
+      "by_ear_source": "music_in_context",
+      "by_ear_atoms": [
+        "find_bar:highest:4:by_ear",
+        "find_bar:longest:4:by_ear",
+        "find_bar:lowest:4:by_ear"
+      ]
     },
     {
       "id": "enharmonics-4",
