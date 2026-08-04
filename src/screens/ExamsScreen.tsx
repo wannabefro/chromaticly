@@ -13,7 +13,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { LEVELS } from '../content/levels';
 import { EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, hasExamPaper, QUESTIONS_PER_SECTION } from '../learn/exam';
-import { laneDepths } from '../learn/lane-depth';
+import { writtenLaneDepths } from '../learn/lane-depth';
 import { examReadiness } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { ExamGateNode } from '../ui/components/ExamGateNode';
@@ -48,7 +48,7 @@ export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProp
 
   const readiness = useMemo(() => {
     if (!store) return null;
-    return examReadiness(EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, laneDepths(store, clock.now()), QUESTIONS_PER_SECTION);
+    return examReadiness(EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, writtenLaneDepths(store, clock.now()), QUESTIONS_PER_SECTION);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
   }, [store, revision, clock]);
 

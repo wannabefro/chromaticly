@@ -10,7 +10,7 @@
 //   context     G1
 // Four of seven strands are stubs. That is the point of most of these tests.
 
-import { atomsFor, contentGradesFor, decayedSeedDepth, laneDepths, SEED_INTERVAL_DAYS, SLACK_FACTOR } from './lane-depth';
+import { atomsFor, contentGradesFor, decayedSeedDepth, laneDepths, SEED_INTERVAL_DAYS, SLACK_FACTOR, writtenLaneDepths } from './lane-depth';
 import { ProgressStore } from './store';
 
 const DAY = 20_600;
@@ -277,5 +277,58 @@ describe('laneDepths — never writes', () => {
     laneDepths(store, DAY + 5_000);
 
     expect(JSON.stringify(store.toSnapshot())).toEqual(before);
+  });
+});
+
+// R10/AE4/AE5: a by-ear atom must never move readiness.
+describe('written-only depth keeps by-ear credit out of exam readiness', () => {
+  const BY_EAR = 'rest:crotchet:by_ear';
+
+  /** A strand cell plus one by-ear atom the learner has NOT answered. */
+  function storeWithUnansweredByEar() {
+    const store = new ProgressStore();
+    master(store, 'rhythm', 1, DAY);
+    return store;
+  }
+
+  // U8 populates the by-ear atoms. Until then these are equal-not-fewer, so the
+  // count is stated rather than assumed.
+  test('every written-only atom list excludes by-ear atoms, at every populated cell', () => {
+    let byEarSeen = 0;
+    for (const strand of ['rhythm', 'pitch', 'scales_keys', 'intervals', 'chords', 'terms_signs', 'context'] as const) {
+      for (const grade of contentGradesFor(strand)) {
+        const all = atomsFor(strand, grade);
+        const written = atomsFor(strand, grade, true);
+        byEarSeen += all.length - written.length;
+        expect(written.every((a) => !a.endsWith(':by_ear'))).toBe(true);
+        expect(all.filter((a) => !a.endsWith(':by_ear'))).toEqual(written);
+      }
+    }
+    // U8 makes this positive. Dropping back to 0 means the atoms went missing.
+    expect(byEarSeen).toBe(0);
+  });
+
+  test('AE4: every written atom mastered and no by-ear atom attempted still reads ready', () => {
+    const store = storeWithUnansweredByEar();
+    expect(writtenLaneDepths(store, DAY).rhythm.depth).toBe(1);
+  });
+
+  test('AE5: the full vector is never HIGHER than the written-only one', () => {
+    const store = storeWithUnansweredByEar();
+    for (const strand of Object.keys(writtenLaneDepths(store, DAY)) as (keyof ReturnType<typeof laneDepths>)[]) {
+      expect(laneDepths(store, DAY)[strand].depth).toBeLessThanOrEqual(writtenLaneDepths(store, DAY)[strand].depth);
+    }
+  });
+
+  test('a strand with no by-ear atoms reads identically through both derivations', () => {
+    const store = new ProgressStore();
+    master(store, 'intervals', 1, DAY);
+    expect(laneDepths(store, DAY).intervals).toEqual(writtenLaneDepths(store, DAY).intervals);
+  });
+
+  test('a by-ear atom alone never raises the written-only depth', () => {
+    const store = new ProgressStore();
+    store.setAtom(BY_EAR, { mastery: { streak: 3, mastered: true }, srs: { box: 2, lastReviewed: DAY, nextDue: DAY + 2 } });
+    expect(writtenLaneDepths(store, DAY).rhythm.depth).toBe(0);
   });
 });

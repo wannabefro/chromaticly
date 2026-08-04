@@ -16,6 +16,7 @@
 //
 // Portable core: no react-native/expo import.
 
+import { isByEarAtom } from '../engine/atoms';
 import { LESSONS, type Strand } from '../content/lessons';
 import type { ProgressStore, SeededDepth } from './store';
 
@@ -78,9 +79,10 @@ export function contentGradesFor(strand: Strand): number[] {
   return [...(MATRIX.get(strand)?.keys() ?? [])].sort((a, b) => a - b);
 }
 
-/** The atom ids `strand` teaches at `grade`. */
-export function atomsFor(strand: Strand, grade: number): string[] {
-  return [...(MATRIX.get(strand)?.get(grade) ?? [])];
+/** `writtenOnly` drops the `:by_ear` atoms, keeping readiness a written claim. */
+export function atomsFor(strand: Strand, grade: number, writtenOnly = false): string[] {
+  const atoms = [...(MATRIX.get(strand)?.get(grade) ?? [])];
+  return writtenOnly ? atoms.filter((a) => !isByEarAtom(a)) : atoms;
 }
 
 /** A seed's depth after expiry. Whole grades shed per elapsed interval, floored
@@ -107,8 +109,15 @@ function isStale(srs: { lastReviewed: number; nextDue: number }, now: number): b
 
 /** A cell is held when every atom in it is mastered AND at most half are stale.
  *  One lapsed atom in six must not drop a whole grade; a majority must. */
-function cellHeld(store: ProgressStore, strand: Strand, grade: number, now: number, ignoreStaleness: boolean): boolean {
-  const atoms = atomsFor(strand, grade);
+function cellHeld(
+  store: ProgressStore,
+  strand: Strand,
+  grade: number,
+  now: number,
+  ignoreStaleness: boolean,
+  writtenOnly: boolean,
+): boolean {
+  const atoms = atomsFor(strand, grade, writtenOnly);
   if (atoms.length === 0) return false;
   let stale = 0;
   for (const atom of atoms) {
@@ -145,7 +154,7 @@ function lastAttemptSeq(store: ProgressStore, strand: Strand): number {
   return max;
 }
 
-function depthForStrand(store: ProgressStore, strand: Strand, now: number): LaneDepth {
+function depthForStrand(store: ProgressStore, strand: Strand, now: number, writtenOnly: boolean): LaneDepth {
   const contentGrades = contentGradesFor(strand);
 
   // 1. Authority. A seed governs while it is at least as recent as anything the
@@ -167,8 +176,8 @@ function depthForStrand(store: ProgressStore, strand: Strand, now: number): Lane
   }
 
   // 2. Evidence.
-  const held = new Set(contentGrades.filter((g) => cellHeld(store, strand, g, now, false)));
-  const heldIgnoringStaleness = new Set(contentGrades.filter((g) => cellHeld(store, strand, g, now, true)));
+  const held = new Set(contentGrades.filter((g) => cellHeld(store, strand, g, now, false, writtenOnly)));
+  const heldIgnoringStaleness = new Set(contentGrades.filter((g) => cellHeld(store, strand, g, now, true, writtenOnly)));
 
   const depth = depthFrom(contentGrades, held);
   const undecayed = depthFrom(contentGrades, heldIgnoringStaleness);
@@ -185,5 +194,10 @@ function depthForStrand(store: ProgressStore, strand: Strand, now: number): Lane
 /** Every lane's depth at `now` (whole days since the epoch). The one derivation —
  *  callers present it differently, they never re-derive it. */
 export function laneDepths(store: ProgressStore, now: number): Record<Strand, LaneDepth> {
-  return Object.fromEntries(STRAND_ORDER.map((strand) => [strand, depthForStrand(store, strand, now)])) as Record<Strand, LaneDepth>;
+  return Object.fromEntries(STRAND_ORDER.map((strand) => [strand, depthForStrand(store, strand, now, false)])) as Record<Strand, LaneDepth>;
+}
+
+/** The same derivation over written atoms only (R10). */
+export function writtenLaneDepths(store: ProgressStore, now: number): Record<Strand, LaneDepth> {
+  return Object.fromEntries(STRAND_ORDER.map((strand) => [strand, depthForStrand(store, strand, now, true)])) as Record<Strand, LaneDepth>;
 }

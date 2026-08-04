@@ -26,7 +26,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { LESSONS } from '../content/lessons';
 import { EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, QUESTIONS_PER_SECTION } from '../learn/exam';
-import { laneDepths } from '../learn/lane-depth';
+import { writtenLaneDepths } from '../learn/lane-depth';
 import { examReadiness, strandMastery } from '../learn/mastery-rollup';
 import { useProgressContext } from '../learn/ProgressContext';
 import { Screen } from '../ui/Screen';
@@ -49,7 +49,7 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
 
   const readiness = useMemo(() => {
     if (!store) return null;
-    return examReadiness(EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, laneDepths(store, clock.now()), QUESTIONS_PER_SECTION);
+    return examReadiness(EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, writtenLaneDepths(store, clock.now()), QUESTIONS_PER_SECTION);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
   }, [store, revision, clock]);
 
@@ -61,8 +61,8 @@ export default function ProfileScreen({ onOpenExams, onDrillStrand }: ProfileScr
     // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6)
   }, [store, revision]);
 
-  // R3: the radar is a PROJECTION of the same `laneDepths` the Learn tab, exam
-  // readiness and the placement result read — never a second derivation.
+  // R3: the radar projects the FULL `laneDepths`, by-ear included. Readiness
+  // above reads `writtenLaneDepths` instead — the two numbers differ on purpose.
   const mastery = useMemo(() => {
     if (!store) return {};
     return strandMastery(store, clock.now());
