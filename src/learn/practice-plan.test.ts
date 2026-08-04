@@ -439,16 +439,30 @@ describe('practice routing resolves an atom to a template that actually emits it
     expect(pickFor('add_time_signature')!.template).toBe('add_time_signature');
   });
 
+  /** Review-only companions: not in `templates`, but the same material. A new
+   *  entry needs a stated reason. */
+  const REVIEW_COMPANION = new Map([
+    ['context_question', 'music_in_context'], // one sub-question of the same 8d passage
+  ]);
+
   test('every atom resolves to a template its own lesson lists', () => {
     const wrong: string[] = [];
     for (const lesson of LESSONS) {
       for (const atom of lesson.atoms) {
         const pick = pickFor(atom);
         if (!pick || pick.grade !== lesson.grade) continue;
-        if (!lesson.templates.includes(pick.template)) wrong.push(`${atom} -> ${pick.template}`);
+        const served = REVIEW_COMPANION.get(pick.template) ?? pick.template;
+        if (!lesson.templates.includes(served)) wrong.push(`${atom} -> ${pick.template}`);
       }
     }
     expect(wrong).toEqual([]);
+  });
+
+  test('a review companion only stands in for a template the lesson does list', () => {
+    for (const [companion, parent] of REVIEW_COMPANION) {
+      expect(companion).not.toBe(parent);
+      expect(LESSONS.some((l) => l.templates.includes(parent))).toBe(true);
+    }
   });
 
   // Three pre-existing NON-routing bugs, named so a regression cannot hide:
@@ -511,5 +525,39 @@ describe('practice routing serves a due by-ear atom without throwing', () => {
       }
     }
     expect(broken).toEqual([]);
+  });
+});
+
+
+// A context:* atom is earned inside the 8d passage, which only the set phase runs.
+describe('practice routing serves a due context atom', () => {
+  const contextAtoms = [...new Set(LESSONS.flatMap(creditedAtoms))].filter((a) => a.startsWith('context:'));
+
+  test('the curriculum declares context atoms, so this is not vacuous', () => {
+    expect(contextAtoms.length).toBeGreaterThan(10);
+  });
+
+  test('every due context atom generates and tags the atom that was asked for', () => {
+    const broken: string[] = [];
+    for (const atom of contextAtoms) {
+      const pick = nextPracticeTemplate([{ atom, srs: reviewSrs(initialSrs(0), false, 0) }], 10_000_000_000, 0);
+      if (!pick) { broken.push(`${atom} UNROUTABLE`); continue; }
+      let ok = false;
+      for (let seed = 0; seed < 6 && !ok; seed++) {
+        try {
+          if (generate(pick.template, { grade: pick.grade, seed, atoms: pick.atoms }).srs_tags.includes(atom)) ok = true;
+        } catch { continue; }
+      }
+      if (!ok) broken.push(`${atom} -> ${pick.template}`);
+    }
+    expect(broken).toEqual([]);
+  });
+
+  test('the served question still carries the passage it asks about', () => {
+    const pick = nextPracticeTemplate(
+      [{ atom: 'context:highest_note', srs: reviewSrs(initialSrs(0), false, 0) }], 10_000_000_000, 0,
+    )!;
+    const inst = generate(pick.template, { grade: pick.grade, seed: 0, atoms: pick.atoms });
+    expect(inst.stimulus.music).not.toBeNull();
   });
 });

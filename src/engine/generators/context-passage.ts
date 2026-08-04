@@ -27,7 +27,7 @@ import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import { scientificPitchOrdinal } from './pitch-math';
 import type { ExerciseInstance } from '../schema';
 import { makeInstanceId } from './retry';
-import type { GenerateOptions } from './types';
+import type { GenerateOptions, Generator } from './types';
 
 const BARS = 4;
 const MAX_ATTEMPTS = 64;
@@ -251,6 +251,18 @@ function timeSigQuestion(
     kb_version: KB_VERSION,
   };
 }
+
+/** One sub-question of a passage, for review: Practice serves a single due
+ *  `context:*` atom. */
+export const contextQuestion: Generator = (opts: GenerateOptions) => {
+  const wanted = (opts.atoms ?? []).filter((a) => a.startsWith('context:'));
+  if (wanted.length === 0) throw new Error('context_question: needs a context:* atom');
+  const passage = buildContextPassage(opts);
+  const match = passage.questions.find((q) => q.srs_tags.some((t) => wanted.includes(t)));
+  if (!match) throw new Error(`context_question: passage asks nothing about ${wanted.join(', ')}`);
+  // Served on its own it IS this template, not the passage it was cut from.
+  return { ...match, template_id: 'context_question' };
+};
 
 /** Build one passage and the sub-questions asked over it. Retries the seed until the
  *  passage has a unique highest note, lowest note and longest note — a tie would make

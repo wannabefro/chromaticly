@@ -6515,6 +6515,2421 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte by_
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte context_question (review of one 8d sub-question) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "E5",
+      "C5",
+      "B4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "D5",
+      "B4",
+      "G4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "D5",
+      "A4",
+      "G4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s22",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "G5",
+      "F5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s32",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "mf",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "C5",
+      "A4",
+      "G4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s42",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "G5",
+      "F5",
+      "E5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s52",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G5",
+    },
+    "distractors": [
+      "F5",
+      "D5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s62",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "mf",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "F5",
+      "C5",
+      "B4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s72",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "mf",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G5",
+    },
+    "distractors": [
+      "F5",
+      "E5",
+      "D5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s82",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G5",
+    },
+    "distractors": [
+      "C5",
+      "B4",
+      "A4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s92",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F5",
+    },
+    "distractors": [
+      "E5",
+      "D5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s102",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G5",
+    },
+    "distractors": [
+      "F5",
+      "E5",
+      "B4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s112",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "mf",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "F5",
+      "E5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s122",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "A4",
+      "G4",
+      "E4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s132",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "E5",
+      "D5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s142",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "G5",
+      "E5",
+      "D5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s152",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G5",
+    },
+    "distractors": [
+      "E5",
+      "B4",
+      "G4",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s162",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "mark": "p",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "G5",
+      "F5",
+      "E5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s172",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A5",
+    },
+    "distractors": [
+      "E5",
+      "D5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s182",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "mf",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F5",
+    },
+    "distractors": [
+      "E5",
+      "D5",
+      "C5",
+    ],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — the highest note is the one sitting highest on the stave, whichever bar it is in.",
+    },
+    "grade": 1,
+    "hints": [
+      "Find the note that sits highest on the stave — then name it.",
+    ],
+    "id": "music_in_context_highest_note:g1:s192",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which is the highest note in the passage?",
+    "srs_tags": [
+      "context:highest_note",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "style": "single",
+                "type": "barline",
+              },
+              {
+                "mark": "f",
+                "type": "dynamic",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "context",
+    "template_id": "context_question",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte interval_naming @ intervals instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

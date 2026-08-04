@@ -14,6 +14,7 @@ const TEMPLATE_IDS = [
   'add_time_signature',
   'note_value_compare',
   'music_in_context',
+  'context_question',
 ];
 
 // mode_swap and scale_construction only exist from grade 2 up (scope.keysMinor

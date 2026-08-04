@@ -57,6 +57,12 @@ function atomTemplate(atom: string): { template: string; grade: number; source?:
   const lesson = ATOM_OWNER.get(atom);
   if (!lesson) return undefined;
   // KTD8: the PAIR. A bare source id would serve the written exercise.
+  // The 8d passage is a set-phase item; review serves its single question (KTD8).
+  if (atom.startsWith('context:')) {
+    const entry = { template: 'context_question', grade: lesson.grade };
+    RESOLVED.set(atom, entry);
+    return entry;
+  }
   const resolved = isByEarAtom(atom)
     ? { template: 'by_ear_match', grade: lesson.grade, source: lesson.by_ear_source ?? lesson.templates[0] }
     : { template: templateEmitting(lesson, writtenAtomOf(atom)), grade: lesson.grade };

@@ -111,6 +111,7 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'add_time_signature',
       'note_value_compare',
       'music_in_context',
+      'context_question',
       'mode_swap',
       'scale_construction',
       // metre_classification (U6, D7) is grade-3-only — same reason

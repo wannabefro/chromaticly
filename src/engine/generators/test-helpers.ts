@@ -26,5 +26,6 @@ export function optsFor(atoms: string[], seed: number): GenerateOptions {
 export function atomsForTemplate(templateId: string): string[] {
   if (templateId === 'note_naming') return atomsForLesson('treble-notes');
   if (templateId === 'key_signature_id') return atomsForLesson('key-signatures');
+  if (templateId === 'context_question') return ['context:highest_note'];
   return [];
 }

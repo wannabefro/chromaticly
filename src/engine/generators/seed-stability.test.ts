@@ -43,6 +43,8 @@ const LESSON_CASES: Case[] = LESSONS_BY_GRADE[1].flatMap((lesson) =>
 // rotation), pinned with a representative real atom scope.
 const EXTRA_CASES: Case[] = [
   { label: 'note_value_compare (rotation)', templateId: 'note_value_compare', atoms: [] },
+  // Draws from the same passage RNG as music_in_context, so a change there moves this.
+  { label: 'context_question (review of one 8d sub-question)', templateId: 'context_question', atoms: ['context:highest_note'] },
   { label: 'term_meaning (rotation)', templateId: 'term_meaning', atoms: atomsForLesson('signs-1') },
   // chromaticly-gni — rest_completion is introduced at grade 1; pinned pre-lesson
   // (before rests-1 exists) so registration is covered by the net at introduction.

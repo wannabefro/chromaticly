@@ -15,6 +15,7 @@ import { tieDotValue } from './tie-dot-value';
 import { enharmonicRecognition } from './enharmonic-recognition';
 import { chromaticScale, chromaticScaleMissing } from './chromatic-scale';
 import { degreeNameId } from './degree-name-id';
+import { contextQuestion } from './context-passage';
 import { findTheBar } from './find-the-bar';
 import { instrumentKnowledge } from './instrument-knowledge';
 import { intervalCompoundReduce, intervalNaming, intervalNamingStaveInput } from './interval-naming';
@@ -71,6 +72,7 @@ export const GENERATORS: Record<string, Generator> = {
   note_value_compare: noteValueCompare,
   note_value_equivalence: noteValueEquivalence,
   music_in_context: findTheBar,
+  context_question: contextQuestion,
   octave_transposition: octaveTransposition,
   chromatic_scale: chromaticScale,
   chromatic_scale_missing: chromaticScaleMissing,
