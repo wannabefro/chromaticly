@@ -94,6 +94,18 @@ function sampleDistinct<T>(rng: () => number, items: T[], n: number): T[] {
   return result;
 }
 
+/** How far a distractor's meaning may differ in length from the answer's. */
+const SHAPE_TOLERANCE = 20;
+
+/** Distractors close in LENGTH to the answer, or length gives it away
+ *  (chromaticly-tnu). */
+function nearestInShape(pool: TermsDeckEntry[], meaning: string): TermsDeckEntry[] {
+  const distance = (e: TermsDeckEntry) => Math.abs(e.meaning.length - meaning.length);
+  const ranked = [...pool].sort((a, b) => distance(a) - distance(b));
+  const within = ranked.filter((e) => distance(e) <= SHAPE_TOLERANCE);
+  return within.length >= 3 ? within : ranked.slice(0, 3);
+}
+
 function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDeckEntry[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
   const entry = pick(rng, deck);
@@ -110,7 +122,7 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
     seenMeanings.add(e.meaning);
     return true;
   });
-  const distractorEntries = sampleDistinct(rng, pool, 3);
+  const distractorEntries = sampleDistinct(rng, nearestInShape(pool, entry.meaning), 3);
 
   const termLabel = label(entry);
   const stimulusText = direction === 'term_to_meaning' ? termLabel : entry.meaning;
@@ -199,6 +211,8 @@ function buildFlashcard(contentSeed: number, grade: number, idSeed: number, deck
     interaction: { type: 'flashcard', config: { term: termLabel, category: entry.category, exemplar: exemplarFor(entry) } },
     answer: { canonical: { value: entry.meaning, category: entry.category }, accepted_alternatives: [] },
     distractors: [],
+    // Self-graded: the learner reveals the meaning, so there is nothing to hint
+    // toward without giving the card away.
     hints: [],
     feedback: {
       correct: 'Correct!',

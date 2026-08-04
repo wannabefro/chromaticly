@@ -240,3 +240,34 @@ describe('generate() — dispatches to the right generator', () => {
     expect(() => generate('melody_generator', { grade: 1, seed: 0, atoms: [] })).toThrow(/No generator registered/);
   });
 });
+
+// A hint is the smart tip a stuck learner opens; an item without one leaves
+// them with nothing but the answer.
+describe('every asked template offers a way in', () => {
+  /** Each needs a stated reason, and both of these have one already. */
+  const NO_HINT_BY_DESIGN = new Set([
+    'term_meaning_flashcard', // self-graded: revealing the meaning IS the answer
+    'note_value_compare', // KTD2: a two-option "which lasts longer" needs no way in
+  ]);
+
+  test('every distractor-bearing template emits at least one hint', () => {
+    const missing: string[] = [];
+    for (const templateId of TEMPLATE_IDS) {
+      if (NO_HINT_BY_DESIGN.has(templateId)) continue;
+      let hinted = false;
+      for (let seed = 0; seed < 6 && !hinted; seed++) {
+        try {
+          if (generate(templateId, { grade: 1, seed, atoms: atomsForTemplate(templateId) }).hints.length > 0) hinted = true;
+        } catch {
+          continue;
+        }
+      }
+      if (!hinted) missing.push(templateId);
+    }
+    expect(missing).toEqual([]);
+  });
+
+  test('the exemption list names only templates that exist', () => {
+    for (const id of NO_HINT_BY_DESIGN) expect(TEMPLATE_IDS).toContain(id);
+  });
+});

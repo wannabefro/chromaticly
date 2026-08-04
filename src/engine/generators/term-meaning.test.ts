@@ -174,3 +174,48 @@ describe('term_meaning — no option repeats another option\'s meaning', () => {
     }
   });
 });
+
+// chromaticly-tnu: same category passed, but length gave the answer away.
+describe('term_meaning — a distractor matches the answer in shape, not just category', () => {
+  const items = (grade: number) =>
+    Array.from({ length: 120 }, (_, seed) => termMeaning({ grade, seed, atoms: [] }));
+
+  const texts = (inst: ReturnType<typeof termMeaning>) => ({
+    answer: (inst.answer.canonical as { value: string }).value,
+    wrongs: (inst.distractors as { value: string }[]).map((d) => d.value),
+  });
+
+  test('a short answer is never offered against a long definition', () => {
+    const bad: string[] = [];
+    for (const grade of [1, 3, 5]) {
+      for (const inst of items(grade)) {
+        const { answer, wrongs } = texts(inst);
+        if (answer.length > 12) continue;
+        for (const w of wrongs) if (w.length >= 40) bad.push(`"${answer}" vs "${w}"`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  // 35 is the deck's floor: "andantino" carries a syllabus-required ambiguity
+  // and cannot be shortened to sit beside "quick".
+  test('the longest option is never wildly longer than the shortest, at any grade', () => {
+    const bad: string[] = [];
+    for (const grade of [1, 2, 3, 4, 5]) {
+      for (const inst of items(grade)) {
+        const { answer, wrongs } = texts(inst);
+        const all = [answer, ...wrongs].map((t) => t.length);
+        const spread = Math.max(...all) - Math.min(...all);
+        if (spread > 35) bad.push(`g${grade} spread ${spread}: ${[answer, ...wrongs].join(' | ')}`);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+
+  test('the shape rule does not collapse the item — options stay distinct', () => {
+    for (const inst of items(5)) {
+      const { answer, wrongs } = texts(inst);
+      expect(new Set([answer, ...wrongs]).size).toBe(wrongs.length + 1);
+    }
+  });
+});
