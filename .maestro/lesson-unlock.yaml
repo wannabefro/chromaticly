@@ -71,7 +71,12 @@ appId: host.exp.Exponent
 - extendedWaitUntil:
     visible: { id: "lane-screen" }
     timeout: 20000
-- tapOn: { id: "lane-other-grades" }
+# The picker toggles and may already be open (chromaticly-9ys).
+- runFlow:
+    when:
+      notVisible: { id: "lane-grade-picker" }
+    commands:
+      - tapOn: { id: "lane-other-grades" }
 - extendedWaitUntil:
     visible: { id: "lane-grade-picker" }
     timeout: 10000

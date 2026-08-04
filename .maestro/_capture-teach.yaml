@@ -20,7 +20,13 @@ appId: host.exp.Exponent
     visible: { id: "lane-screen" }
     timeout: 60000
 
-- tapOn: { id: "lane-other-grades", optional: true }
+# The picker TOGGLES, and the blind dev-overlay tap above can already have
+# opened it, so tapping unconditionally closed it again (chromaticly-9ys).
+- runFlow:
+    when:
+      notVisible: { id: "lane-grade-option-${GRADE}" }
+    commands:
+      - tapOn: { id: "lane-other-grades", optional: true }
 - extendedWaitUntil:
     visible: { id: "lane-grade-option-${GRADE}" }
     timeout: 10000
