@@ -1,4 +1,5 @@
 import { generate } from '../engine/generators';
+import { deriveSeed } from '../engine/rng';
 import { validate } from '../engine/validator';
 import { musicToAbc } from '../music/abc-emitter';
 import { WRITTEN_ITEMS } from '../learn/exercise-set';
@@ -6,6 +7,7 @@ import {
   assertAtomResolves,
   assertNoCrossDocDuplicateIds,
   assertUnlockGraph,
+  byEarPool,
   loadDoc,
   LESSONS,
   LESSONS_BY_GRADE,
@@ -233,6 +235,34 @@ describe('lessons — a lesson id reused across two grade docs fails loud at loa
     expect(() => assertNoCrossDocDuplicateIds([{ grade: 1, version: 'g1', lessons: LESSONS_BY_GRADE[1] }, syntheticDoc])).toThrow(
       new RegExp(`"${duplicateId}".*more than one grade doc`),
     );
+  });
+});
+
+// Its three sibling template ids are checked at load. This one was not.
+describe('lessons — an unknown by-ear source fails at import, not on device', () => {
+  const doc = (by_ear_source: string) => ({
+    grade: 2,
+    version: 'synthetic-test-doc',
+    lessons: [
+      {
+        id: 'synthetic-by-ear',
+        title: 'Synthetic',
+        strand: 'rhythm',
+        atoms: ['rhythm_sum'],
+        templates: ['rhythm_sum'],
+        by_ear_source,
+        by_ear_atoms: ['rhythm_sum:by_ear'],
+        unlocks: null,
+      },
+    ],
+  });
+
+  test('a by-ear source naming no generator throws', () => {
+    expect(() => loadDoc(doc('rhythm_sum_by_ear'))).toThrow(/unknown template "rhythm_sum_by_ear"/);
+  });
+
+  test('a real generator loads — the check rejects the typo, not the feature', () => {
+    expect(() => loadDoc(doc('rhythm_sum'))).not.toThrow();
   });
 });
 
@@ -992,14 +1022,15 @@ describe('by-ear wiring', () => {
     }
   });
 
+  // The seeds SetRunner asks for. A 0..5 sweep missed 34 undeclared atoms.
   test('every wired lesson serves a validator-clean by-ear item, and tags only its own atoms', () => {
     for (const lesson of wired) {
       const declared = new Set(lesson.by_ear_atoms);
-      for (let seed = 0; seed < 6; seed++) {
+      for (let plays = 0; plays < 30; plays++) {
         const inst = generate('by_ear_match', {
           grade: lesson.grade,
-          seed,
-          atoms: lesson.atoms,
+          seed: deriveSeed(plays, 0),
+          atoms: byEarPool(lesson),
           source: lesson.by_ear_source!,
         });
         expect(validate(inst)).toEqual({ ok: true, errors: [] });

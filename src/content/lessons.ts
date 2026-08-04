@@ -101,6 +101,13 @@ export function creditedAtoms(lesson: { atoms: string[]; by_ear_atoms?: string[]
   return [...lesson.atoms, ...(lesson.by_ear_atoms ?? [])];
 }
 
+/** The by-ear item's pool: written twins of the DECLARED by-ear atoms. The full
+ *  `atoms` let it credit an entry no review path could reach. */
+export function byEarPool(lesson: { atoms: string[]; by_ear_atoms?: string[] }): string[] {
+  const declared = lesson.by_ear_atoms;
+  return declared?.length ? declared.map(writtenAtomOf) : lesson.atoms;
+}
+
 export function assertAtomResolves(atom: string, grade: number): void {
   if (isByEarAtom(atom)) {
     const written = writtenAtomOf(atom);
@@ -571,6 +578,9 @@ export function loadDoc(raw: unknown): LessonsDoc {
   for (const lesson of lessons) {
     for (const template of lesson.templates) {
       if (!(template in GENERATORS)) throw new Error(`lessons: "${lesson.id}" uses unknown template "${template}"`);
+    }
+    if (lesson.by_ear_source && !(lesson.by_ear_source in GENERATORS)) {
+      throw new Error(`lessons: "${lesson.id}" by-ear source is unknown template "${lesson.by_ear_source}"`);
     }
     for (const atom of creditedAtoms(lesson)) assertAtomResolves(atom, lesson.grade);
     if (lesson.worked_example && !(lesson.worked_example.template_id in GENERATORS)) {

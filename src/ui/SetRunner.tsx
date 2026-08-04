@@ -1,4 +1,4 @@
-// SetRunner (U7/U9): drives a fixed 8-item set for a lesson (design 2b header →
+// SetRunner (U7/U9): drives a lesson's set, 8 or 9 items (design 2b header →
 // items → 2f). Cycles the lesson's templates (itemIndex % templates.length) so a
 // multi-template lesson varies its interaction across the set — a single-template
 // lesson is unaffected (i % 1 === 0 always picks templates[0]).
@@ -9,7 +9,7 @@
 // was 88 of the curriculum's 262 atoms — 34% — and review could not recover them
 // either, because Practice only selects atoms the learner has ATTEMPTED.
 //
-// So the seed is `itemIndex + SET_SIZE * plays`. The first play is still 0..7, so
+// So the seed is `itemIndex + WRITTEN_ITEMS * plays`. The first play is still 0..7, so
 // a set is deterministic and every pinned generator snapshot and Maestro flow is
 // byte-identical; the second play is 8..15, and so on. Measured after the fix,
 // 22 of the 25 short lessons reach every atom within 2-4 plays.
@@ -20,8 +20,8 @@
 // ITEM 1 IS A TRY, NOT A TEST (chromaticly-inr). A lesson used to run one worked
 // example on the teach card straight into eight scored questions. The first item
 // is now a warm-up: same generator, same shell, smart tip already open, and no
-// gem. Eight items are still presented — the seed window per play is unchanged —
-// and seven are scored. The warm-up records nothing at all — no gem, no mastery,
+// gem. The written eight are presented; seven are scored.
+// The warm-up records nothing at all — no gem, no mastery,
 // no SRS review. It cannot be evidence of mastery (its tip is open before the
 // question is read), and recording it as hint-assisted would RESET the atom's
 // streak (mastery.ts recordAttempt), charging the learner for taking the on-ramp.
@@ -29,7 +29,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { LESSONS, type Lesson } from '../content/lessons';
+import { byEarPool, LESSONS, type Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
 import { deriveSeed } from '../engine/rng';
 import {
@@ -133,10 +133,10 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
         : generate(templateId, {
             grade: lesson.grade,
             seed: itemSeed,
-            atoms: lesson.atoms,
+            atoms: isByEar ? byEarPool(lesson) : lesson.atoms,
             source: isByEar ? (lesson.by_ear_source ?? undefined) : undefined,
           }),
-    [isPassage, templateId, itemSeed, isByEar, lesson.by_ear_source, lesson.atoms, lesson.grade],
+    [isPassage, templateId, itemSeed, isByEar, lesson],
   );
 
   // Shared by both the checked (handleResult) and self-graded (handleSelfGrade)
