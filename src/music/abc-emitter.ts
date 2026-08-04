@@ -109,23 +109,23 @@ function keyName(keySig: KeySig): string {
   return mode === 'minor' ? `${tonic}m` : tonic;
 }
 
+/** What each letter+octave currently sounds, within the bar being emitted. */
+export type BarAccidentals = Map<string, Accidental>;
+
 /**
  * Emit the ABC pitch token for a scientific pitch, given the key's accidental map.
  * Takes NO clef — the token is absolute (the invariant). Prints an accidental only
  * when it differs from what the key signature already applies to that letter.
  */
-export function pitchToAbc(pitch: string, keyAcc: Record<string, Accidental>): string {
+export function pitchToAbc(pitch: string, keyAcc: Record<string, Accidental>, barAcc?: BarAccidentals): string {
   const { letter, accidental, octave } = parsePitch(pitch);
-  const keyAccidental = keyAcc[letter];
+  const slot = `${letter}${octave}`;
 
-  let accidentalStr = '';
-  if (accidental) {
-    // Explicit accidental: suppress only if the key already imposes the same one.
-    if (accidental !== keyAccidental) accidentalStr = ACCIDENTAL_ABC[accidental];
-  } else if (keyAccidental) {
-    // Plain letter but the key alters it -> must print a natural.
-    accidentalStr = ACCIDENTAL_ABC.natural;
-  }
+  // What this pitch must sound, against what is in force for the slot.
+  const want: Accidental = accidental ?? 'natural';
+  const inForce: Accidental = barAcc?.get(slot) ?? keyAcc[letter] ?? 'natural';
+  const accidentalStr = want === inForce ? '' : ACCIDENTAL_ABC[want];
+  barAcc?.set(slot, want);
 
   const base = octave >= 5 ? letter.toLowerCase() : letter.toUpperCase();
   const marks = octave >= 5 ? "'".repeat(octave - 5) : ','.repeat(4 - octave);
@@ -172,21 +172,21 @@ const ORNAMENT_DECORATION: Partial<Record<OrnamentKind, string>> = {
 /** The ABC prefix that carries an ornament onto its note: a `!name!` decoration
  *  for trill/turn/mordents, or a grace note (`{/g}` slashed acciaccatura,
  *  `{g}` appoggiatura) that abcjs prints small before the principal. */
-function ornamentPrefix(orn: Ornament, keyAcc: Record<string, Accidental>): string {
+function ornamentPrefix(orn: Ornament, keyAcc: Record<string, Accidental>, barAcc: BarAccidentals): string {
   const decoration = ORNAMENT_DECORATION[orn.kind];
   if (decoration) return decoration;
   if (!orn.pitch) throw new Error(`Ornament "${orn.kind}" is a grace note and needs a pitch`);
-  const grace = pitchToAbc(orn.pitch, keyAcc);
+  const grace = pitchToAbc(orn.pitch, keyAcc, barAcc);
   return orn.kind === 'acciaccatura' ? `{/${grace}}` : `{${grace}}`;
 }
 
-function noteToAbc(ev: NoteEvent, keyAcc: Record<string, Accidental>): string {
-  const prefix = ev.ornament ? ornamentPrefix(ev.ornament, keyAcc) : '';
-  return prefix + pitchToAbc(ev.pitch, keyAcc) + durationToAbc(ev.dur, ev.dots ?? 0) + (ev.tie ? '-' : '');
+function noteToAbc(ev: NoteEvent, keyAcc: Record<string, Accidental>, barAcc: BarAccidentals): string {
+  const prefix = ev.ornament ? ornamentPrefix(ev.ornament, keyAcc, barAcc) : '';
+  return prefix + pitchToAbc(ev.pitch, keyAcc, barAcc) + durationToAbc(ev.dur, ev.dots ?? 0) + (ev.tie ? '-' : '');
 }
 
-function chordToAbc(ev: ChordEvent, keyAcc: Record<string, Accidental>): string {
-  const inner = ev.pitches.map((p) => pitchToAbc(p, keyAcc)).join('');
+function chordToAbc(ev: ChordEvent, keyAcc: Record<string, Accidental>, barAcc: BarAccidentals): string {
+  const inner = ev.pitches.map((p) => pitchToAbc(p, keyAcc, barAcc)).join('');
   return `[${inner}]${durationToAbc(ev.dur, ev.dots ?? 0)}`;
 }
 
@@ -281,6 +281,7 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, groupAt: (
   let beatPos = 0; // crotchet-beats elapsed in the current bar
   let prevBeamable = false;
   let prevBeat = -1;
+  const barAcc: BarAccidentals = new Map();
 
   const append = (token: string, glue: boolean) => {
     out += out === '' ? token : (glue ? '' : ' ') + token;
@@ -294,6 +295,7 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, groupAt: (
     if (ev.type === 'barline') {
       if (pendingDecoration) throw new Error('Dynamic marking must precede a note, not a barline');
       append(ev.style === 'double' ? '||' : '|', false);
+      barAcc.clear();
       beatPos = 0;
       prevBeamable = false;
       prevBeat = -1;
@@ -313,7 +315,8 @@ function voiceToAbc(voice: Voice, keyAcc: Record<string, Accidental>, groupAt: (
     const beamable = isPitched && written <= 0.5; // quaver or shorter carries a beam
     const tupletPrefix = tuplet?.start ? `(${tuplet.size}:${tuplet.inTimeOf}:${tuplet.size}` : '';
     const body =
-      tupletPrefix + (ev.type === 'note' ? noteToAbc(ev, keyAcc) : ev.type === 'chord' ? chordToAbc(ev, keyAcc) : restToAbc(ev));
+      tupletPrefix +
+      (ev.type === 'note' ? noteToAbc(ev, keyAcc, barAcc) : ev.type === 'chord' ? chordToAbc(ev, keyAcc, barAcc) : restToAbc(ev));
 
     // Glue to the previous token only when both are beam-carrying notes in the same beat,
     // and no dynamic sits between them (a marking starts a fresh group).

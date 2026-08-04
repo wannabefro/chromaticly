@@ -589,3 +589,48 @@ describe('musicToAbc — irregular metres beam by group, not by a uniform beat',
     expect(bar('3/4', 6).trim().split('\n').pop()).toBe('c4c4 c4c4 c4c4');
   });
 });
+
+// An accidental holds for the rest of its bar, exactly as on paper. Comparing
+// against the key signature alone sounded a later plain letter a semitone out.
+describe('abc-emitter — an accidental earlier in the bar forces a natural later in it', () => {
+  const notes = (pitches: string[], withBar = false): Music => ({
+    key_sig: null,
+    time_sig: null,
+    clef: 'treble',
+    voices: [
+      {
+        events: pitches.flatMap((p, i) =>
+          withBar && i === 2
+            ? [{ type: 'barline' as const, style: 'single' as const }, { type: 'note' as const, pitch: p, dur: 'crotchet' as const }]
+            : [{ type: 'note' as const, pitch: p, dur: 'crotchet' as const }],
+        ),
+      },
+    ],
+  });
+
+  const body = (m: Music) => musicToAbc(m).trim().split('\n').pop()!;
+
+  test('a plain F after an F sharp in the same bar emits =F, not a second sharp', () => {
+    expect(body(notes(['F#4', 'F4']))).toBe('^F8 =F8');
+  });
+
+  test('a barline clears it — the F after the bar needs no natural', () => {
+    expect(body(notes(['F#4', 'G4', 'F4'], true))).toBe('^F8 G8 | F8');
+  });
+
+  test('the same letter an octave away is a separate slot', () => {
+    expect(body(notes(['F#4', 'F5']))).toBe('^F8 f8');
+  });
+
+  // The second sharp is already in force, so printing it again adds nothing.
+  test('a repeated sharp is written once, and the second F still sounds sharp', () => {
+    expect(body(notes(['F#4', 'F#4']))).toBe('^F8 F8');
+  });
+
+  // In G major the key sharpens F, so an earlier F natural forces the sign back.
+  test('an explicit sharp is re-printed when a natural displaced the key signature', () => {
+    const m = notes(['F4', 'F#4']);
+    m.key_sig = 'G_major';
+    expect(body(m)).toBe('=F8 ^F8');
+  });
+});
