@@ -28,7 +28,7 @@ appId: host.exp.Exponent
 
 # The lane opens on the learner's own grade, so pick the lesson's grade first.
 # The picker TOGGLES, and the blind dev-overlay tap above can already have
-# opened it, so tapping unconditionally closed it again (chromaticly-9ys).
+# opened it, so tapping unconditionally closed it again (chromaticly-58e).
 - runFlow:
     when:
       notVisible: { id: "lane-grade-option-${GRADE}" }

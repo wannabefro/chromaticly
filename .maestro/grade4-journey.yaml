@@ -81,7 +81,7 @@ appId: host.exp.Exponent
 - extendedWaitUntil:
     visible: { id: "lane-screen" }
     timeout: 15000
-# The picker toggles and may already be open (chromaticly-9ys).
+# The picker toggles and may already be open (chromaticly-58e).
 - runFlow:
     when:
       notVisible: { id: "lane-grade-picker" }
