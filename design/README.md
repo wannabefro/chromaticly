@@ -241,3 +241,27 @@ The card is not universal: 38 of the 91 lessons carry it and 53 are exempt, for 
 
 Those are exempt rather than forced — the right by-ear question for a terms lesson is one phrase at
 two tempos, which is a different card.
+
+### Eleven lessons carry no by-ear item at all · approved 2026-08-05
+
+Stage two adds two more cards, which between them reach 42 of those 53 lessons. The remaining
+**11 stay written-only permanently**. This is a decision, not a backlog item, and nothing should
+later read the gap as unfinished work.
+
+A by-ear question is honest only when the learner can tell the answers apart by listening. These
+cannot, for four separate reasons:
+
+| Lessons | Why no question exists |
+|---|---|
+| `key-signatures`, `key-signatures-2`, `major-keys-3`, `major-keys-4`, `major-keys-5` | Naming a key from sound alone is absolute pitch, which the product contract already puts out of scope |
+| `enharmonics-4` | F♯ and G♭ are the same sound. The question cannot be built at all |
+| `instruments-4`, `instruments-5` | Timbre, `arco` and `pizzicato`. The audio path has one soundfont voice |
+| `piano-directions-5` | `una corda`, `ped`, `mano destra` — technique nothing in the audio path renders |
+| `character-3`, `expression-2` | `deciso` against `risoluto`, `grazioso` against `giocoso`. A synth cannot separate interpretive synonyms fairly |
+
+The same test applies **per atom**, not only per lesson, because `by_ear_atoms` declares a subset.
+Inside the 11 buildable terms lessons, 41 atoms still fail it: `da capo`, `fine`, `repeat marks` and
+`prima/seconda volta` name navigation, and `poco a poco`, `molto`, `sempre`, `assez`, `sehr` are
+modifiers rather than sounds.
+
+Coverage therefore lands at **80 of 91**, and the 11 are recorded here rather than tracked as a gap.
