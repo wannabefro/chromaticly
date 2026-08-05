@@ -1,5 +1,6 @@
+import { isByEarAtom } from '../engine/atoms';
+import { atomsFor, contentGradesFor, STRAND_ORDER } from './lane-depth';
 import { SELF_GRADED_INTERACTIONS } from '../engine/schema';
-import { contentGradesFor, STRAND_ORDER } from './lane-depth';
 import {
   answerPlacement,
   answerWalk,
@@ -278,5 +279,31 @@ describe('placement — the mixed pass', () => {
     for (const value of Object.values(outcome.kind === 'placed' ? outcome.depths : {})) {
       expect(typeof value).toBe('number');
     }
+  });
+});
+
+// Placement is the exam-track on-ramp, so a by-ear atom must never reach it (R4).
+// Before this guard, chord:I:by_ear parsed as position "by_ear" and dropped
+// grade 4 out of the chords ladder entirely.
+describe('placement probes the written pool only', () => {
+  test('the written-only flag is load-bearing — the raw pool does carry by-ear atoms', () => {
+    const raw = STRAND_ORDER.flatMap((strand) =>
+      contentGradesFor(strand).flatMap((grade) => atomsFor(strand, grade).filter(isByEarAtom)),
+    );
+    expect(raw.length).toBeGreaterThan(0);
+  });
+
+  test('every probe a placement walk can serve generates without throwing', () => {
+    const broken = STRAND_ORDER.flatMap((strand) =>
+      contentGradesFor(strand).flatMap((grade) =>
+        atomsFor(strand, grade, true).filter(isByEarAtom).map((a) => `${strand}/${grade}: ${a}`),
+      ),
+    );
+    expect(broken).toEqual([]);
+  });
+
+  test('every chords grade still yields a placement probe', () => {
+    const missing = contentGradesFor('chords').filter((g) => atomsFor('chords', g, true).length === 0);
+    expect(missing).toEqual([]);
   });
 });

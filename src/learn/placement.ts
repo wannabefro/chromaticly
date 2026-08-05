@@ -85,7 +85,8 @@ function markableTemplate(strand: Strand, grade: number): string | undefined {
 }
 
 function probeCell(strand: Strand, grade: number): string | undefined {
-  const atoms = atomsFor(strand, grade);
+  // Placement decides exam-track grade, so it probes the WRITTEN pool only (R4).
+  const atoms = atomsFor(strand, grade, true);
   for (const template of TEMPLATES.get(strand)?.get(grade) ?? []) {
     let instance: ExerciseInstance;
     try {
@@ -216,7 +217,7 @@ export function walkItem(walk: StrandWalk, seed: number): PlacementItem | null {
   const grade = walk.pending;
   const template = markableTemplate(walk.strand, grade);
   if (template === undefined) return null;
-  return { strand: walk.strand, grade, instance: generate(template, { grade, seed, atoms: atomsFor(walk.strand, grade) }) };
+  return { strand: walk.strand, grade, instance: generate(template, { grade, seed, atoms: atomsFor(walk.strand, grade, true) }) };
 }
 
 /** The mixed pass: one walk per placeable strand, asked in `STRAND_ORDER`. */
