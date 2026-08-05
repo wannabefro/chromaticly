@@ -2196,6 +2196,45 @@ function byEarMatchHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// by_ear_verify recomputes the diff: one field of one event may differ, never both.
+function byEarVerifyHook(inst: ExerciseInstance): string[] {
+  const written = (inst.stimulus.music as Music | null)?.voices?.[0]?.events ?? [];
+  const heard = ((inst.interaction.config as { played_music?: Music }).played_music)?.voices?.[0]?.events ?? [];
+  if (written.length === 0 || written.length !== heard.length) {
+    return ['by_ear_verify: the played music must have the same events as the written music'];
+  }
+  let differingEvents = 0;
+  for (let i = 0; i < written.length; i++) {
+    const a = written[i] as { type: string; pitch?: string; pitches?: string[]; dur?: string; dots?: number };
+    const b = heard[i] as typeof a;
+    if (a.type !== b.type) {
+      return [`by_ear_verify: event ${i} changed its type, which this template never alters`];
+    }
+    const durChanged = a.dur !== b.dur || a.dots !== b.dots;
+    const chordDiffs = a.type === 'chord' ? (a.pitches ?? []).filter((p, pi) => p !== b.pitches?.[pi]).length : 0;
+    const pitchChanged = a.type === 'note' ? a.pitch !== b.pitch : chordDiffs > 0;
+    if (a.type === 'chord' && chordDiffs > 1) {
+      return [`by_ear_verify: event ${i} changed ${chordDiffs} chord tones, not one (KTD9)`];
+    }
+    if (durChanged && pitchChanged) {
+      return [`by_ear_verify: event ${i} changed both pitch and duration — this template alters exactly one`];
+    }
+    if (durChanged || pitchChanged) differingEvents++;
+  }
+  const errors: string[] = [];
+  const verdict = inst.answer.canonical as string;
+  if (differingEvents > 1) {
+    errors.push(`by_ear_verify: ${differingEvents} events differ, not at most 1`);
+  } else if (verdict === 'Same' && differingEvents !== 0) {
+    errors.push('by_ear_verify: canonical says Same, but the played music differs');
+  } else if (verdict === 'Different' && differingEvents === 0) {
+    errors.push('by_ear_verify: canonical says Different, but the played music is identical');
+  } else if (verdict !== 'Same' && verdict !== 'Different') {
+    errors.push(`by_ear_verify: canonical verdict "${verdict}" is neither Same nor Different`);
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   note_naming_stave_input: noteNamingStaveInputHook,
@@ -2229,4 +2268,5 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   enharmonic_recognition: enharmonicRecognitionHook,
   rest_completion: restCompletionHook,
   by_ear_match: byEarMatchHook,
+  by_ear_verify: byEarVerifyHook,
 };

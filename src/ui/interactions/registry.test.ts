@@ -116,6 +116,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
   test('the registry is partial — only the built interaction types are registered', () => {
     expect(Object.keys(INTERACTIONS).sort()).toEqual([
       'by_ear_match',
+      'by_ear_verify',
       'drag_match',
       'find_the_bar',
       'flashcard',
@@ -307,6 +308,52 @@ describe('registry — roman_numeral_boxes (fyu.10, chord_recognition)', () => {
       expect(view.props.caption).toContain(/^([A-G][#b]{0,2})/.exec(pitch)![1]);
     }
     expect(view.props.play).not.toBe(false);
+  });
+});
+
+describe('registry — by_ear_verify (theory-by-ear U1, KTD5/KTD6: its own type, reusing mcq grading)', () => {
+  const atoms = ['note_read:treble:C4', 'note_read:treble:D4', 'note_read:treble:E4'];
+  const verifyInstance = generate('by_ear_verify', { grade: 1, seed: 0, atoms, source: 'note_naming' });
+
+  test('emptyResponse resets to no option picked', () => {
+    expect(lookupInteraction('by_ear_verify').emptyResponse(verifyInstance)).toBeNull();
+  });
+
+  test('canCheck is false until an option is picked, true once one is', () => {
+    const spec = lookupInteraction('by_ear_verify');
+    expect(spec.canCheck(null)).toBe(false);
+    expect(spec.canCheck(0)).toBe(true);
+  });
+
+  test('grade matches gradeMcq over the assembled options — reused, not reimplemented (KTD6)', () => {
+    const spec = lookupInteraction('by_ear_verify');
+    const options = assembleOptions(verifyInstance);
+    const correctIndex = options.findIndex((o) => o.correct);
+    const wrongIndex = options.findIndex((o) => !o.correct);
+    expect(spec.grade(verifyInstance, correctIndex)).toBe(gradeMcq(verifyInstance, options[correctIndex].value));
+    expect(spec.grade(verifyInstance, correctIndex)).toBe(true);
+    expect(spec.grade(verifyInstance, wrongIndex)).toBe(false);
+  });
+
+  test('submits is true — by_ear_verify uses the shared Check button', () => {
+    expect(lookupInteraction('by_ear_verify').submits).toBe(true);
+  });
+
+  // KTD6: the reveal shows the WRITTEN stimulus, never played_music.
+  test('correctAnswerView renders the written stimulus on paper, not the played music', () => {
+    const view = lookupInteraction('by_ear_verify').correctAnswerView(verifyInstance) as {
+      type: unknown;
+      props: { music: unknown };
+    };
+    expect(view.type).toBe(NotationCard);
+    expect(view.props.music).toEqual(verifyInstance.stimulus.music);
+  });
+
+  test('selectedValue names the picked option, so wrong-answer feedback can look it up', () => {
+    const spec = lookupInteraction('by_ear_verify');
+    const options = assembleOptions(verifyInstance);
+    const wrongIndex = options.findIndex((o) => !o.correct);
+    expect(spec.selectedValue?.(verifyInstance, wrongIndex)).toBe(options[wrongIndex].value);
   });
 });
 

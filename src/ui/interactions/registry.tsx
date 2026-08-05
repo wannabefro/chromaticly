@@ -17,6 +17,7 @@ import type { ExerciseInstance, InteractionType } from '../../engine/schema';
 import type { Duration, Music } from '../../music/types';
 import { NotationCard } from '../components/NotationCard';
 import { OrnamentSign } from '../components/OrnamentSign';
+import { PlayButton } from '../components/PlayButton';
 import { assembleOptions, gradeDragMatch, gradeMcq, gradeStaveInput, gradeText, gradeTrueFalse, optionLabel } from '../grading';
 import { colors, shape, type as typo } from '../theme';
 import { DragMatch, type DragMatchResponse } from './DragMatch';
@@ -332,6 +333,39 @@ const byEarMatchSpec: InteractionSpec<ByEarMatchResponse> = {
   selectedValue: byEarSelectedValue,
 };
 
+/** KTD6: its own type, not plain mcq — adds the play control mcqSpec lacks. */
+function ByEarVerifyInteraction({ instance, response, graded, strand, onResponseChange, onPlayMusic }: InteractionComponentProps<number | null>) {
+  const options = useMemo(() => assembleOptions(instance), [instance]);
+  const config = instance.interaction.config as unknown as { played_music: Music };
+  return (
+    <View style={styles.byEarVerify} testID="by-ear-verify">
+      <View style={styles.listenRow}>
+        <PlayButton strand={strand} onPress={() => onPlayMusic?.(config.played_music)} testID="by-ear-verify-listen" />
+        <Text style={styles.listenLabel}>Listen, then compare it with the notation above.</Text>
+      </View>
+      <Mcq options={options} selectedIndex={response} graded={graded} strand={strand} onSelectIndex={onResponseChange} />
+    </View>
+  );
+}
+
+/** The notation is its own reveal, captioned with the verdict the learner missed. */
+function byEarVerifyCorrectAnswerView(instance: ExerciseInstance) {
+  const music = instance.stimulus.music;
+  const verdict = instance.answer.canonical as string;
+  const caption = verdict === 'Same' ? 'It matched — this is what you heard' : 'This is what is written';
+  return music ? <NotationCard music={music} caption={caption} testID="answer-notation" /> : null;
+}
+
+const byEarVerifySpec: InteractionSpec<number | null> = {
+  Component: ByEarVerifyInteraction,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeMcq(instance, assembleOptions(instance)[response ?? 0].value),
+  submits: true,
+  correctAnswerView: byEarVerifyCorrectAnswerView,
+  selectedValue: (instance, response) => (response === null ? undefined : assembleOptions(instance)[response]?.value),
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -345,6 +379,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   drag_match: dragMatchSpec,
   voice_options: voiceOptionsSpec,
   by_ear_match: byEarMatchSpec,
+  by_ear_verify: byEarVerifySpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather
@@ -365,4 +400,7 @@ const styles = StyleSheet.create({
   trueFalseAnswer: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline },
   trueFalseAnswerBar: { ...typo.label },
   dragMatchAnswerRow: { ...typo.label, color: colors.text },
+  byEarVerify: { gap: shape.spaceStack },
+  listenRow: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
+  listenLabel: { ...typo.body, color: colors.textMuted, flex: 1 },
 });

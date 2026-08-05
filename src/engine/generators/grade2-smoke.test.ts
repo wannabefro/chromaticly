@@ -194,6 +194,9 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       // atoms, so a sweep that passes neither cannot generate it. Its own tests
       // pin it against rest_completion.
       'by_ear_match',
+      // by_ear_verify (theory-by-ear U1) — same shape, needs a `source`
+      // template. Its own tests pin it against note_naming.
+      'by_ear_verify',
     ];
     expect(new Set(covered)).toEqual(new Set(Object.keys(GENERATORS)));
   });

@@ -26,7 +26,7 @@ interface Case {
   label: string;
   templateId: string;
   atoms: string[];
-  /** by_ear_match only: the written template it composes over. */
+  /** by_ear_match/by_ear_verify only: the written template it composes over. */
   source?: string;
 }
 
@@ -59,6 +59,13 @@ const EXTRA_CASES: Case[] = [
     templateId: 'by_ear_match',
     atoms: ['rest:semibreve', 'rest:minim', 'rest:crotchet'],
     source: 'rest_completion',
+  },
+  // Composes over a source, so a change to note_naming moves this snapshot.
+  {
+    label: 'by_ear_verify over note_naming (theory-by-ear U1)',
+    templateId: 'by_ear_verify',
+    atoms: ['note_read:treble:C4', 'note_read:treble:D4', 'note_read:treble:E4'],
+    source: 'note_naming',
   },
 ];
 

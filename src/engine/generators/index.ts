@@ -5,6 +5,7 @@ import { addTimeSignature, timeSignatureMatch } from './add-time-signature';
 import { anacrusisFinalBar, anacrusisRecognition } from './anacrusis-recognition';
 import { barValidity } from './bar-validity';
 import { makeByEarMatch } from './by-ear-match';
+import { makeByEarVerify } from './by-ear-verify';
 import { chordFromName, chordRecognition } from './chord-recognition';
 import { clefEquivalence } from './clef-equivalence';
 import { cadenceRecognition } from './cadence-recognition';
@@ -92,6 +93,7 @@ export const GENERATORS: Record<string, Generator> = {
   satb_voice_recognition: satbVoiceRecognition,
   satb_voice_position: satbVoicePosition,
   by_ear_match: (opts) => makeByEarMatch(generate)(opts),
+  by_ear_verify: (opts) => makeByEarVerify(generate)(opts),
 };
 
 export function generate(templateId: string, opts: GenerateOptions): ExerciseInstance {

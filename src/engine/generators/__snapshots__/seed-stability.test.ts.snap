@@ -6515,6 +6515,1391 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte by_
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte by_ear_verify over note_naming (theory-by-ear U1) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s0",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s1",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s2",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:D4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Same",
+    },
+    "distractors": [
+      "Different",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Different": "Nothing changed — what you heard matches the notation exactly.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s3",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:D4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s4",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s5",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s6",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:E4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s7",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:D4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s8",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s9",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s10",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:D4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s11",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:D4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Same",
+    },
+    "distractors": [
+      "Different",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Different": "Nothing changed — what you heard matches the notation exactly.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s12",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s13",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "B3",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Same",
+    },
+    "distractors": [
+      "Different",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Different": "Nothing changed — what you heard matches the notation exactly.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s14",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s15",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:E4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s16",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:E4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s17",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:E4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Same",
+    },
+    "distractors": [
+      "Different",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Different": "Nothing changed — what you heard matches the notation exactly.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s18",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:C4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Different",
+    },
+    "distractors": [
+      "Same",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Same": "Something changed — what you heard does not match the notation.",
+      },
+      "correct": "Correct!",
+      "incorrect": "What you heard was not exactly what is written.",
+    },
+    "grade": 1,
+    "hints": [
+      "Listen carefully, then compare what you hear with the notation above.",
+    ],
+    "id": "by_ear_verify:g1:s19",
+    "interaction": {
+      "config": {
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": null,
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "semibreve",
+                  "pitch": "D4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+        "source_template": "note_naming",
+      },
+      "type": "by_ear_verify",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Does what you hear match what is written?",
+    "srs_tags": [
+      "note_read:treble:E4:by_ear",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "by_ear_verify",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte context_question (review of one 8d sub-question) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
