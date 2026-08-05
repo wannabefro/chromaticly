@@ -15,7 +15,8 @@ import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, isByEarAtom, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, VOICE_TYPES, writtenAtomOf } from '../engine/atoms';
-import { GENERATORS } from '../engine/generators';
+import { GENERATORS, generate } from '../engine/generators';
+import { byEarCardFor } from '../engine/generators/by-ear-cards';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
 import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
@@ -581,6 +582,14 @@ export function loadDoc(raw: unknown): LessonsDoc {
     }
     if (lesson.by_ear_source && !(lesson.by_ear_source in GENERATORS)) {
       throw new Error(`lessons: "${lesson.id}" by-ear source is unknown template "${lesson.by_ear_source}"`);
+    }
+    if (lesson.by_ear_source) {
+      const card = byEarCardFor(lesson);
+      try {
+        generate(card, { grade: lesson.grade, seed: 0, atoms: byEarPool(lesson), source: lesson.by_ear_source });
+      } catch (err) {
+        throw new Error(`lessons: "${lesson.id}" by-ear card "${card}" cannot generate: ${(err as Error).message}`);
+      }
     }
     for (const atom of creditedAtoms(lesson)) assertAtomResolves(atom, lesson.grade);
     if (lesson.worked_example && !(lesson.worked_example.template_id in GENERATORS)) {

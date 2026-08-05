@@ -651,3 +651,39 @@ describe('SetRunner — a wired lesson serves the by-ear card as its ninth item'
     expect(atoms.some((a) => a.endsWith(':by_ear'))).toBe(true);
   });
 });
+
+// SetRunner used to hardcode by_ear_match for every tail item, even a Group A source.
+describe('SetRunner — a Group A by-ear source routes to by_ear_verify, not by_ear_match', () => {
+  const trebleNotes = LESSONS_BY_GRADE[1].find((l) => l.id === 'treble-notes')!;
+  // Single-templated so every written item stays mcq — treble-notes itself
+  // cycles in note_naming_stave_input, which answerWritten below cannot press.
+  const groupA: Lesson = {
+    ...trebleNotes,
+    templates: ['note_naming'],
+    by_ear_source: 'note_naming',
+    by_ear_atoms: [`${trebleNotes.atoms[0]}:by_ear`],
+  };
+
+  async function answerWritten(getByTestId: (id: string) => any, itemIndex: number) {
+    const templateId = groupA.templates[itemIndex % groupA.templates.length];
+    const instance = generate(templateId, { grade: groupA.grade, seed: itemIndex, atoms: groupA.atoms });
+    const index = assembleOptions(instance).findIndex((o) => o.correct);
+    await act(async () => { fireEvent.press(getByTestId(`option-${index}`)); });
+    await act(async () => { fireEvent.press(getByTestId('check')); });
+    await act(async () => { fireEvent.press(getByTestId('feedback-sheet-continue')); });
+  }
+
+  test('item nine renders by-ear-verify, not by-ear-match', async () => {
+    const view = render(
+      <ProgressProvider storage={memoryStorage()}>
+        <SetRunner lesson={groupA} />
+      </ProgressProvider>,
+    );
+    await act(async () => {});
+    await startExercises(view.getByTestId);
+    for (let i = 0; i < WRITTEN_ITEMS; i++) await answerWritten(view.getByTestId, i);
+
+    expect(view.getByTestId('by-ear-verify')).toBeTruthy();
+    expect(view.queryByTestId('by-ear-match')).toBeNull();
+  });
+});

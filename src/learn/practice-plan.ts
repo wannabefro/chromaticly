@@ -22,6 +22,7 @@ import { creditedAtoms, LESSONS } from '../content/lessons';
 import type { Lesson, Strand } from '../content/lessons';
 import { isByEarAtom, writtenAtomOf } from '../engine/atoms';
 import { generate } from '../engine/generators';
+import { byEarCardFor } from '../engine/generators/by-ear-cards';
 import { selectDue, type SrsState } from './srs';
 
 // atom → first lesson listing it. A shared atom is reviewed at its own grade.
@@ -64,7 +65,11 @@ function atomTemplate(atom: string): { template: string; grade: number; source?:
     return entry;
   }
   const resolved = isByEarAtom(atom)
-    ? { template: 'by_ear_match', grade: lesson.grade, source: lesson.by_ear_source ?? lesson.templates[0] }
+    ? {
+        template: byEarCardFor(lesson),
+        grade: lesson.grade,
+        source: lesson.by_ear_source ?? lesson.templates[0],
+      }
     : { template: templateEmitting(lesson, writtenAtomOf(atom)), grade: lesson.grade };
   RESOLVED.set(atom, resolved);
   return resolved;

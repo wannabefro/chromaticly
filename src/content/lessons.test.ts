@@ -1,4 +1,5 @@
-import { generate } from '../engine/generators';
+import { generate, GENERATORS } from '../engine/generators';
+import { byEarCardFor } from '../engine/generators/by-ear-cards';
 import { deriveSeed } from '../engine/rng';
 import { validate } from '../engine/validator';
 import { musicToAbc } from '../music/abc-emitter';
@@ -261,8 +262,46 @@ describe('lessons — an unknown by-ear source fails at import, not on device', 
     expect(() => loadDoc(doc('rhythm_sum_by_ear'))).toThrow(/unknown template "rhythm_sum_by_ear"/);
   });
 
-  test('a real generator loads — the check rejects the typo, not the feature', () => {
-    expect(() => loadDoc(doc('rhythm_sum'))).not.toThrow();
+  test('a real, servable generator loads — the check rejects the typo, not the feature', () => {
+    const servable = {
+      grade: 2,
+      version: 'synthetic-test-doc',
+      lessons: [
+        {
+          id: 'synthetic-by-ear-servable',
+          title: 'Synthetic',
+          strand: 'rhythm',
+          atoms: ['rest:crotchet'],
+          templates: ['rest_completion'],
+          by_ear_source: 'rest_completion',
+          by_ear_atoms: ['rest:crotchet:by_ear'],
+          unlocks: null,
+        },
+      ],
+    };
+    expect(() => loadDoc(servable)).not.toThrow();
+  });
+
+  // U2: the source is a real template, but its mapped card cannot generate for
+  // this lesson's atoms — a render-time throw is what crashed Practice twice.
+  test('a by-ear source whose mapped card cannot generate throws, naming the lesson', () => {
+    const bad = {
+      grade: 1,
+      version: 'synthetic-test-doc',
+      lessons: [
+        {
+          id: 'synthetic-by-ear-unservable',
+          title: 'Synthetic',
+          strand: 'pitch',
+          atoms: ['rhythm_sum'],
+          templates: ['note_naming'],
+          by_ear_source: 'note_naming',
+          by_ear_atoms: ['rhythm_sum:by_ear'],
+          unlocks: null,
+        },
+      ],
+    };
+    expect(() => loadDoc(bad)).toThrow(/"synthetic-by-ear-unservable".*by-ear card "by_ear_verify" cannot generate/s);
   });
 });
 
@@ -1027,7 +1066,7 @@ describe('by-ear wiring', () => {
     for (const lesson of wired) {
       const declared = new Set(lesson.by_ear_atoms);
       for (let plays = 0; plays < 30; plays++) {
-        const inst = generate('by_ear_match', {
+        const inst = generate(byEarCardFor(lesson), {
           grade: lesson.grade,
           seed: deriveSeed(plays, 0),
           atoms: byEarPool(lesson),
@@ -1042,7 +1081,7 @@ describe('by-ear wiring', () => {
   test('every by-ear distractor carries its own line — the 100% bar holds here too', () => {
     for (const lesson of wired) {
       for (let seed = 0; seed < 3; seed++) {
-        const inst = generate('by_ear_match', {
+        const inst = generate(byEarCardFor(lesson), {
           grade: lesson.grade,
           seed,
           atoms: lesson.atoms,
@@ -1053,5 +1092,14 @@ describe('by-ear wiring', () => {
         expect(new Set(Object.values(reasons)).size).toBe(inst.distractors.length);
       }
     }
+  });
+
+  test('every wired lesson resolves to a by-ear card that exists in GENERATORS', () => {
+    for (const lesson of wired) expect(byEarCardFor(lesson) in GENERATORS).toBe(true);
+  });
+
+  // Stage two must not downgrade a lesson stage one already serves richly.
+  test('every lesson stage one wired keeps by_ear_match', () => {
+    expect(wired.filter((lesson) => byEarCardFor(lesson) !== 'by_ear_match')).toEqual([]);
   });
 });

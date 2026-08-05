@@ -528,6 +528,35 @@ describe('practice routing serves a due by-ear atom without throwing', () => {
   });
 });
 
+// The due-atom path hardcoded by_ear_match. No real lesson wires Group A yet, so this fixture proves the routing.
+describe('practice routing — a due Group A by-ear atom resolves to by_ear_verify, not by_ear_match', () => {
+  test('note_read:treble:C4:by_ear routes to by_ear_verify by name', () => {
+    jest.isolateModules(() => {
+      jest.doMock('../content/lessons', () => ({
+        creditedAtoms: (l: { atoms: string[]; by_ear_atoms?: string[] }) => [...l.atoms, ...(l.by_ear_atoms ?? [])],
+        LESSONS: [
+          {
+            id: 'note-read-fixture',
+            title: 'Note read fixture',
+            strand: 'pitch',
+            atoms: ['note_read:treble:C4'],
+            templates: ['note_naming'],
+            by_ear_source: 'note_naming',
+            by_ear_atoms: ['note_read:treble:C4:by_ear'],
+            worked_example: null,
+            unlocks: null,
+            grade: 1,
+          },
+        ],
+      }));
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const isolated = require('./practice-plan');
+      const entries = [{ atom: 'note_read:treble:C4:by_ear', srs: reviewSrs(initialSrs(0), false, 0) }];
+      const pick = isolated.nextPracticeTemplate(entries, 10_000_000_000, 0);
+      expect(pick?.template).toBe('by_ear_verify');
+    });
+  });
+});
 
 // A context:* atom is earned inside the 8d passage, which only the set phase runs.
 describe('practice routing serves a due context atom', () => {

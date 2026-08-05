@@ -31,6 +31,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { byEarPool, LESSONS, type Lesson } from '../content/lessons';
 import { generate } from '../engine/generators';
+import { byEarCardFor } from '../engine/generators/by-ear-cards';
 import { deriveSeed } from '../engine/rng';
 import {
   emptySet,
@@ -107,7 +108,9 @@ export function SetRunner({ lesson, onDone, onCreateAccount }: SetRunnerProps) {
   const presentedLength = presentedLengthFor(lesson);
   const scoredLength = scoredLengthFor(lesson);
   const isByEar = itemIndex >= WRITTEN_ITEMS;
-  const templateId = isByEar ? 'by_ear_match' : lesson.templates[itemIndex % lesson.templates.length];
+  const templateId = isByEar
+    ? byEarCardFor(lesson)
+    : lesson.templates[itemIndex % lesson.templates.length];
 
   // Written seeds stay `plays * 8 + index`. By-ear draws from a hashed
   // namespace, so the tail cannot shift the written stream (KTD4).
