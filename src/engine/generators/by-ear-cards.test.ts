@@ -21,8 +21,35 @@ describe('byEarCardFor — the richer card wherever it works', () => {
     expect(byEarCardFor(lesson('enharmonics-4'))).toBe('by_ear_verify');
   });
 
+  // U3 wired 22 more lessons whose source draws too few notes for by_ear_match,
+  // so only the stage-one set is held to the richer card.
+  const U3_VERIFY_ONLY = new Set([
+    'treble-notes',
+    'bass-notes',
+    'accidentals',
+    'ledger-lines-2',
+    'ledger-lines-3',
+    'alto-reading-4',
+    'double-accidentals-4',
+    'tenor-reading-5',
+    'intervals',
+    'intervals-2',
+    'intervals-3',
+    'intervals-4',
+    'compound-intervals-5',
+    'degrees-1',
+    'degrees-2',
+    'degrees-3',
+    'chords-4',
+    'chord-inversions-5',
+    'cadences-5',
+    'satb-voice-5',
+    'rhythm-breve-4',
+    'ornaments-4',
+  ]);
+
   test('every lesson stage one already wired keeps the card it shipped with', () => {
-    const wired = LESSONS.filter((l) => l.by_ear_source);
-    expect(wired.filter((l) => byEarCardFor(l) !== 'by_ear_match')).toEqual([]);
+    const stageOne = LESSONS.filter((l) => l.by_ear_source && !U3_VERIFY_ONLY.has(l.id));
+    expect(stageOne.filter((l) => byEarCardFor(l) !== 'by_ear_match')).toEqual([]);
   });
 });

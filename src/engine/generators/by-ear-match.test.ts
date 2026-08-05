@@ -5,6 +5,7 @@
 
 import { byEarPool, LESSONS } from '../../content/lessons';
 import { deriveSeed } from '../rng';
+import { byEarCardFor } from './by-ear-cards';
 import { generate } from './index';
 import { musicToAbc } from '../../music/abc-emitter';
 import type { Music, NoteEvent } from '../../music/types';
@@ -176,7 +177,9 @@ describe('the by_ear_match validator hook recomputes rather than trusts', () => 
 
 // Both defects below need a sweep over the seeds SetRunner asks for.
 describe('by_ear_match — the copy and the sound survive a full sweep', () => {
-  const wired = LESSONS.filter((l) => l.by_ear_source);
+  // U3 wired 22 lessons whose source is too thin for by_ear_match — this
+  // sweep is about the card itself, so it stays scoped to lessons that use it.
+  const wired = LESSONS.filter((l) => l.by_ear_source && byEarCardFor(l) === 'by_ear_match');
   const sweep = wired.flatMap((lesson) =>
     Array.from({ length: 30 }, (_, plays) =>
       generate('by_ear_match', {

@@ -1033,7 +1033,40 @@ describe('by-ear wiring', () => {
   const wired = LESSONS.filter((l) => l.by_ear_source);
 
   test('the wired set is real and its size is stated, not assumed', () => {
-    expect(wired.length).toBe(38);
+    expect(wired.length).toBe(60);
+  });
+
+  // U3: the 22 lessons whose source draws too few notes for by_ear_match, so
+  // they fall back to by_ear_verify's same-or-different card.
+  const U3_VERIFY_ONLY = new Set([
+    'treble-notes',
+    'bass-notes',
+    'accidentals',
+    'ledger-lines-2',
+    'ledger-lines-3',
+    'alto-reading-4',
+    'double-accidentals-4',
+    'tenor-reading-5',
+    'intervals',
+    'intervals-2',
+    'intervals-3',
+    'intervals-4',
+    'compound-intervals-5',
+    'degrees-1',
+    'degrees-2',
+    'degrees-3',
+    'chords-4',
+    'chord-inversions-5',
+    'cadences-5',
+    'satb-voice-5',
+    'rhythm-breve-4',
+    'ornaments-4',
+  ]);
+
+  test('every U3 lesson resolves to by_ear_verify — its source draws too few notes for by_ear_match', () => {
+    const u3 = wired.filter((lesson) => U3_VERIFY_ONLY.has(lesson.id));
+    expect(u3.length).toBe(U3_VERIFY_ONLY.size);
+    for (const lesson of u3) expect(byEarCardFor(lesson)).toBe('by_ear_verify');
   });
 
   test('a lesson with a by-ear source names atoms, and vice versa', () => {
@@ -1100,6 +1133,7 @@ describe('by-ear wiring', () => {
 
   // Stage two must not downgrade a lesson stage one already serves richly.
   test('every lesson stage one wired keeps by_ear_match', () => {
-    expect(wired.filter((lesson) => byEarCardFor(lesson) !== 'by_ear_match')).toEqual([]);
+    const stageOne = wired.filter((lesson) => !U3_VERIFY_ONLY.has(lesson.id));
+    expect(stageOne.filter((lesson) => byEarCardFor(lesson) !== 'by_ear_match')).toEqual([]);
   });
 });

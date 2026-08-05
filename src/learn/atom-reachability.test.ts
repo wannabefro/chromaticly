@@ -24,8 +24,8 @@ function servedTagsFor(atom: string): { template: string; tagged: boolean } | nu
 }
 
 describe('every credited atom is reachable by review', () => {
-  test('the curriculum is big enough that this is not vacuous', () => {
-    expect(ALL.length).toBeGreaterThan(500);
+  test('the curriculum credits exactly the atoms it currently declares', () => {
+    expect(ALL.length).toBe(725);
   });
 
   test('every atom routes to a template', () => {

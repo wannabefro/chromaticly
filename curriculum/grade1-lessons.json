@@ -48,7 +48,23 @@
         "smartTip": "The four spaces spell the word FACE from the bottom up — the quickest notes to recall.",
         "didYouKnow": "The treble clef is a stylised letter G — its curl loops right around the G line."
       },
-      "unlocks": "note-values"
+      "unlocks": "note-values",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:treble:C4:by_ear",
+        "note_read:treble:D4:by_ear",
+        "note_read:treble:E4:by_ear",
+        "note_read:treble:F4:by_ear",
+        "note_read:treble:G4:by_ear",
+        "note_read:treble:A4:by_ear",
+        "note_read:treble:B4:by_ear",
+        "note_read:treble:C5:by_ear",
+        "note_read:treble:D5:by_ear",
+        "note_read:treble:E5:by_ear",
+        "note_read:treble:F5:by_ear",
+        "note_read:treble:G5:by_ear",
+        "note_read:treble:A5:by_ear"
+      ]
     },
     {
       "id": "note-values",
@@ -152,7 +168,24 @@
         "smartTip": "The bass clef is the F clef — its two dots hug the F line, top and bottom.",
         "didYouKnow": "Middle C sits just above the bass stave and just below the treble — one note shared between the two clefs."
       },
-      "unlocks": "rests-1"
+      "unlocks": "rests-1",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:bass:E2:by_ear",
+        "note_read:bass:F2:by_ear",
+        "note_read:bass:G2:by_ear",
+        "note_read:bass:A2:by_ear",
+        "note_read:bass:B2:by_ear",
+        "note_read:bass:C3:by_ear",
+        "note_read:bass:D3:by_ear",
+        "note_read:bass:E3:by_ear",
+        "note_read:bass:F3:by_ear",
+        "note_read:bass:G3:by_ear",
+        "note_read:bass:A3:by_ear",
+        "note_read:bass:B3:by_ear",
+        "note_read:bass:C4:by_ear",
+        "note_read:bass:D4:by_ear"
+      ]
     },
     {
       "id": "rests-1",
@@ -239,7 +272,15 @@
         "smartTip": "An accidental only lasts to the next bar-line — the bar-line wipes the slate clean.",
         "didYouKnow": "On a keyboard a sharp and the flat above it can be the same key — C♯ and D♭ are one black note."
       },
-      "unlocks": "ties-and-dots-1"
+      "unlocks": "ties-and-dots-1",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:treble:F#5:by_ear",
+        "note_read:treble:C#5:by_ear",
+        "note_read:treble:Bb4:by_ear",
+        "note_read:bass:F#3:by_ear",
+        "note_read:bass:Bb2:by_ear"
+      ]
     },
     {
       "id": "ties-and-dots-1",
@@ -538,7 +579,17 @@
         "smartTip": "The keynote is the 1st degree, not the 0th. Count letter names from it, including it.",
         "didYouKnow": "Numbering degrees instead of naming notes is what lets a tune be described once and played in any key. A folk musician calling a phrase '1-3-5' has said something true in every key at once."
       },
-      "unlocks": "intervals"
+      "unlocks": "intervals",
+      "by_ear_source": "scale_degree_id",
+      "by_ear_atoms": [
+        "degree:1:by_ear",
+        "degree:2:by_ear",
+        "degree:3:by_ear",
+        "degree:4:by_ear",
+        "degree:5:by_ear",
+        "degree:6:by_ear",
+        "degree:7:by_ear"
+      ]
     },
     {
       "id": "intervals",
@@ -580,7 +631,17 @@
         "smartTip": "Count the lower note as ‘one’ — intervals include both ends, not just the gaps between.",
         "didYouKnow": "An octave spans eight notes because the eighth note repeats the first — the letter names come back around."
       },
-      "unlocks": "tonic-triads-1"
+      "unlocks": "tonic-triads-1",
+      "by_ear_source": "interval_naming",
+      "by_ear_atoms": [
+        "interval:2:by_ear",
+        "interval:3:by_ear",
+        "interval:4:by_ear",
+        "interval:5:by_ear",
+        "interval:6:by_ear",
+        "interval:7:by_ear",
+        "interval:8:by_ear"
+      ]
     },
     {
       "id": "tonic-triads-1",

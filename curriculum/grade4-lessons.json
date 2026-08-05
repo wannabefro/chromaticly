@@ -240,7 +240,11 @@
         "smartTip": "A breve is two semibreves joined — eight crotchet beats in all, twice the length of a semibreve.",
         "didYouKnow": "‘Breve’ comes from the Latin brevis, ‘short’ — it was once one of the shortest notes in medieval music, before quicker values pushed it all the way to the long end of the scale."
       },
-      "unlocks": "rests-4"
+      "unlocks": "rests-4",
+      "by_ear_source": "note_value_compare",
+      "by_ear_atoms": [
+        "note_value_compare:by_ear"
+      ]
     },
     {
       "id": "rests-4",
@@ -500,7 +504,17 @@
         "smartTip": "Number first (count letter names), quality second (count semitones). Bigger than perfect/major = augmented; smaller than perfect/minor = diminished.",
         "didYouKnow": "The augmented 4th and diminished 5th — the ‘tritone’ — was once nicknamed diabolus in musica, ‘the devil in music’, for its restless sound that seems to demand resolution."
       },
-      "unlocks": "alto-reading-4"
+      "unlocks": "alto-reading-4",
+      "by_ear_source": "interval_naming",
+      "by_ear_atoms": [
+        "interval_any:2:by_ear",
+        "interval_any:3:by_ear",
+        "interval_any:4:by_ear",
+        "interval_any:5:by_ear",
+        "interval_any:6:by_ear",
+        "interval_any:7:by_ear",
+        "interval_any:8:by_ear"
+      ]
     },
     {
       "id": "alto-reading-4",
@@ -542,7 +556,17 @@
         "smartTip": "The two curved arms of the alto clef point straight at the middle line — and that line is middle C. Count every other note from there.",
         "didYouKnow": "The alto clef is a movable ‘C clef’: the same symbol shifted up one line becomes the tenor clef (for high cello and bassoon). Sitting on the middle line, it is the alto clef the viola reads."
       },
-      "unlocks": "alto-transposition-4"
+      "unlocks": "alto-transposition-4",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:alto:C4:by_ear",
+        "note_read:alto:F3:by_ear",
+        "note_read:alto:A3:by_ear",
+        "note_read:alto:E4:by_ear",
+        "note_read:alto:G4:by_ear",
+        "note_read:alto:B3:by_ear",
+        "note_read:alto:D4:by_ear"
+      ]
     },
     {
       "id": "alto-transposition-4",
@@ -658,7 +682,13 @@
         "smartTip": "Read the key signature, then look at the chord's lowest note. If it is the key's 1st degree the chord is I, the 4th degree IV, the 5th degree V.",
         "didYouKnow": "I, IV and V are called the primary triads because between them they use every note of the major scale — which is why so much music can be harmonised with just these three chords."
       },
-      "unlocks": "ornaments-4"
+      "unlocks": "ornaments-4",
+      "by_ear_source": "chord_recognition",
+      "by_ear_atoms": [
+        "chord:I:by_ear",
+        "chord:IV:by_ear",
+        "chord:V:by_ear"
+      ]
     },
     {
       "id": "ornaments-4",
@@ -699,7 +729,16 @@
         "smartTip": "A mordent flicks once (up = upper, down = lower); a turn curls both ways around the note; a trill shakes on and on. The two grace notes sit before the main note — the slashed acciaccatura is the quicker.",
         "didYouKnow": "‘Acciaccatura’ comes from the Italian acciaccare, ‘to crush’ — it is crushed against the main note so fast the two almost sound at once, then instantly released."
       },
-      "unlocks": "instruments-4"
+      "unlocks": "instruments-4",
+      "by_ear_source": "ornament_recognition",
+      "by_ear_atoms": [
+        "ornament:trill:by_ear",
+        "ornament:turn:by_ear",
+        "ornament:upper_mordent:by_ear",
+        "ornament:lower_mordent:by_ear",
+        "ornament:acciaccatura:by_ear",
+        "ornament:appoggiatura:by_ear"
+      ]
     },
     {
       "id": "instruments-4",
@@ -966,7 +1005,14 @@
         "smartTip": "Keep the letter name and add the words: a double sharp on F is still an F — “F double sharp” — even though it sounds like G.",
         "didYouKnow": "Double sharps appear whenever a key already full of sharps needs to raise a note further — like the F𝄪 leading note of G♯ minor. Composers keep the letter so the note still reads as the seventh degree of the scale, not a stray G."
       },
-      "unlocks": null
+      "unlocks": null,
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:treble:F##4:by_ear",
+        "note_read:treble:G##4:by_ear",
+        "note_read:bass:Bbb3:by_ear",
+        "note_read:bass:Ebb3:by_ear"
+      ]
     }
   ]
 }

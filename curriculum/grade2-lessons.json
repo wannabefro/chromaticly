@@ -159,7 +159,17 @@
         "smartTip": "Read the key signature, find the keynote, then count letter names up from it.",
         "didYouKnow": "This is why a singer can be told 'you are flat on the 3rd' without anyone naming a note. The degree number is the same instruction in every key."
       },
-      "unlocks": "tonic-triads-2"
+      "unlocks": "tonic-triads-2",
+      "by_ear_source": "scale_degree_id",
+      "by_ear_atoms": [
+        "degree:1:by_ear",
+        "degree:2:by_ear",
+        "degree:3:by_ear",
+        "degree:4:by_ear",
+        "degree:5:by_ear",
+        "degree:6:by_ear",
+        "degree:7:by_ear"
+      ]
     },
     {
       "id": "tonic-triads-2",
@@ -237,7 +247,17 @@
         "smartTip": "Ledger lines keep the pattern going: line, space, line. Count in 3rds from a note you know.",
         "didYouKnow": "Before ledger lines were invented, a scribe who ran out of stave simply drew another line onto the stave itself, making it six or seven lines deep. Ledger lines were the tidier answer, and they arrived around 1500."
       },
-      "unlocks": "intervals-2"
+      "unlocks": "intervals-2",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:treble:A3:by_ear",
+        "note_read:treble:B3:by_ear",
+        "note_read:treble:B5:by_ear",
+        "note_read:treble:C6:by_ear",
+        "note_read:bass:C2:by_ear",
+        "note_read:bass:D2:by_ear",
+        "note_read:bass:E4:by_ear"
+      ]
     },
     {
       "id": "intervals-2",
@@ -278,7 +298,16 @@
         "smartTip": "Count letter names, not lines and spaces, and never leave out the note you started on.",
         "didYouKnow": "The word interval comes from the Latin for \"between the walls\". Medieval theorists thought of pitches as fixed posts with space between them."
       },
-      "unlocks": "time-signatures-2"
+      "unlocks": "time-signatures-2",
+      "by_ear_source": "interval_naming",
+      "by_ear_atoms": [
+        "interval_key:A_major:by_ear",
+        "interval_key:Bb_major:by_ear",
+        "interval_key:Eb_major:by_ear",
+        "interval_key:A_minor:by_ear",
+        "interval_key:E_minor:by_ear",
+        "interval_key:D_minor:by_ear"
+      ]
     },
     {
       "id": "time-signatures-2",

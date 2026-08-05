@@ -118,7 +118,17 @@
         "smartTip": "The degree number and the interval above the keynote are the same count. Find the keynote and count letters.",
         "didYouKnow": "Degrees are the reason a chord chart written in Roman numerals transposes for free. The numbers are positions, so they survive a key change untouched."
       },
-      "unlocks": "tonic-triads-3"
+      "unlocks": "tonic-triads-3",
+      "by_ear_source": "scale_degree_id",
+      "by_ear_atoms": [
+        "degree:1:by_ear",
+        "degree:2:by_ear",
+        "degree:3:by_ear",
+        "degree:4:by_ear",
+        "degree:5:by_ear",
+        "degree:6:by_ear",
+        "degree:7:by_ear"
+      ]
     },
     {
       "id": "tonic-triads-3",
@@ -622,7 +632,17 @@
         "smartTip": "Check the key signature first — above a major tonic every 2nd, 3rd, 6th and 7th is major; above a minor tonic, they're minor instead.",
         "didYouKnow": "Perfect intervals (unison, 4th, 5th, octave) get their name because their simple, pure ratios sounded \"perfect\" to early theorists — they never take a major or minor label."
       },
-      "unlocks": "ledger-lines-3"
+      "unlocks": "ledger-lines-3",
+      "by_ear_source": "interval_naming",
+      "by_ear_atoms": [
+        "interval_type:2:by_ear",
+        "interval_type:3:by_ear",
+        "interval_type:4:by_ear",
+        "interval_type:5:by_ear",
+        "interval_type:6:by_ear",
+        "interval_type:7:by_ear",
+        "interval_type:8:by_ear"
+      ]
     },
     {
       "id": "ledger-lines-3",
@@ -665,7 +685,18 @@
         "smartTip": "Count in 3rds from a landmark you already know, not ledger line by ledger line from the stave — line to space to line gets you there in half the steps.",
         "didYouKnow": "Ledger lines have no upper limit — orchestral parts for piccolo or double bass sometimes stack five or six of them, though this course never asks for more than one beyond Grade 2's range."
       },
-      "unlocks": "music-in-context-3"
+      "unlocks": "music-in-context-3",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:treble:F3:by_ear",
+        "note_read:treble:G3:by_ear",
+        "note_read:treble:D6:by_ear",
+        "note_read:treble:E6:by_ear",
+        "note_read:bass:A1:by_ear",
+        "note_read:bass:B1:by_ear",
+        "note_read:bass:F4:by_ear",
+        "note_read:bass:G4:by_ear"
+      ]
     },
     {
       "id": "music-in-context-3",

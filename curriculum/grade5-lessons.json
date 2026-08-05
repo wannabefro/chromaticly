@@ -157,7 +157,16 @@
         "smartTip": "Name it as if it fitted in an octave, then add 7 to the number. Quality stays; only the number grows.",
         "didYouKnow": "Compound intervals are how chord symbols get their names. The 9th, 11th and 13th in a jazz chord are a 2nd, a 4th and a 6th moved up an octave — stacked above the 7th so they colour the chord rather than crowd it."
       },
-      "unlocks": "chord-inversions-5"
+      "unlocks": "chord-inversions-5",
+      "by_ear_source": "interval_naming",
+      "by_ear_atoms": [
+        "interval_compound:9:by_ear",
+        "interval_compound:10:by_ear",
+        "interval_compound:11:by_ear",
+        "interval_compound:12:by_ear",
+        "interval_compound:13:by_ear",
+        "interval_compound:14:by_ear"
+      ]
     },
     {
       "id": "chord-inversions-5",
@@ -204,7 +213,22 @@
         "smartTip": "The lowest note names the position, not the numeral. Find the root by stacking the notes in 3rds first, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
         "didYouKnow": "The little letters a, b and c are the ABRSM way of writing inversions. Elsewhere you may meet figured bass instead — IVb is the same chord a musician of Bach's day would have marked with a small 6 under the bass note."
       },
-      "unlocks": "cadences-5"
+      "unlocks": "cadences-5",
+      "by_ear_source": "chord_recognition",
+      "by_ear_atoms": [
+        "chord:I:a:by_ear",
+        "chord:I:b:by_ear",
+        "chord:I:c:by_ear",
+        "chord:II:a:by_ear",
+        "chord:II:b:by_ear",
+        "chord:II:c:by_ear",
+        "chord:IV:a:by_ear",
+        "chord:IV:b:by_ear",
+        "chord:IV:c:by_ear",
+        "chord:V:a:by_ear",
+        "chord:V:b:by_ear",
+        "chord:V:c:by_ear"
+      ]
     },
     {
       "id": "cadences-5",
@@ -241,7 +265,13 @@
         "smartTip": "Ends on V? Imperfect. Ends on I? Then look at the chord before: V makes it perfect, IV makes it plagal.",
         "didYouKnow": "The plagal cadence is called the 'Amen cadence' because it is what generations of hymn books put under that word. Its softer arrival is why it feels like a benediction rather than a conclusion."
       },
-      "unlocks": "german-tempo-5"
+      "unlocks": "german-tempo-5",
+      "by_ear_source": "cadence_recognition",
+      "by_ear_atoms": [
+        "cadence:perfect:by_ear",
+        "cadence:plagal:by_ear",
+        "cadence:imperfect:by_ear"
+      ]
     },
     {
       "id": "german-tempo-5",
@@ -505,7 +535,17 @@
         "smartTip": "Find the 4th line — that is middle C. Count from there, never from the bottom of the stave.",
         "didYouKnow": "A cello part can switch bass, tenor and treble clef within a single phrase. The clef changes so the notes stay on the stave; the player is not changing instrument, only changing the ruler they are reading against."
       },
-      "unlocks": "tenor-transposition-5"
+      "unlocks": "tenor-transposition-5",
+      "by_ear_source": "note_naming",
+      "by_ear_atoms": [
+        "note_read:tenor:C4:by_ear",
+        "note_read:tenor:D3:by_ear",
+        "note_read:tenor:F3:by_ear",
+        "note_read:tenor:A3:by_ear",
+        "note_read:tenor:E4:by_ear",
+        "note_read:tenor:G3:by_ear",
+        "note_read:tenor:B3:by_ear"
+      ]
     },
     {
       "id": "tenor-transposition-5",
@@ -752,7 +792,14 @@
         "smartTip": "Staff first, then stem: treble staff = Soprano or Alto, bass staff = Tenor or Bass. Stem up = the higher voice of that pair (Soprano, Tenor); stem down = the lower voice (Alto, Bass).",
         "didYouKnow": "SATB writing comes from choral music, where the four voice types sit in that same top-to-bottom order — but the same layout works just as well for four-part keyboard harmony with no singers at all."
       },
-      "unlocks": "instruments-5"
+      "unlocks": "instruments-5",
+      "by_ear_source": "satb_voice_recognition",
+      "by_ear_atoms": [
+        "satb_voice:soprano:by_ear",
+        "satb_voice:alto:by_ear",
+        "satb_voice:tenor:by_ear",
+        "satb_voice:bass:by_ear"
+      ]
     },
     {
       "id": "instruments-5",
