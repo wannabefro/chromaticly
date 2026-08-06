@@ -16,9 +16,23 @@ OUT = REPO / "assets/images"
 ANDROID_SAFE = 0.78
 
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from _iconlib import fit_png, silhouette  # noqa: E402
+
+
 def ground_only(bg: str) -> str:
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" '
             f'height="1024"><rect width="1024" height="1024" fill="{bg}"/></svg>')
+
+
+def rounded_card(src: pathlib.Path, bg: str, scale: float) -> str:
+    """The splash art on its own rounded card, so a light mark can sit on a dark
+    splash without a full-screen colour change."""
+    inner = wrap(src, None, scale)
+    body = inner[inner.index(">", inner.index("<svg")) + 1: inner.rindex("</svg>")]
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
+            f'viewBox="0 0 1024 1024" width="1024" height="1024">'
+            f'<rect width="1024" height="1024" rx="229" fill="{bg}"/>{body}</svg>')
 
 
 def wrap(src: pathlib.Path, bg: str | None, scale: float) -> str:
@@ -55,20 +69,26 @@ def main() -> int:
     ap.add_argument("source")
     ap.add_argument("--bg", default="#0b0c0f", help="opaque ground for the iOS/web assets")
     ap.add_argument("--scale", type=float, default=1.0, help="scale the artwork inside the square")
+    ap.add_argument("--fit", type=float, default=None, metavar="F",
+                    help="crop to the art's own alpha bounds and centre it at F of the square (e.g. 0.86)")
     a = ap.parse_args()
 
     src = pathlib.Path(a.source).resolve()
     if not src.exists():
         print(f"no such file: {src}", file=sys.stderr)
         return 1
+    if a.fit:
+        src = fit_png(src, a.fit)
+        print(f"fitted to {a.fit:.0%} of the square, centred on the artwork's own bounds\n")
 
     # The Android background layer is the ground alone — the artwork lives in the
     # foreground layer, which the launcher parallaxes over it.
     render(ground_only(a.bg), OUT / "android-icon-background.png", 1024)
+    render(rounded_card(src, a.bg, a.scale), OUT / "splash-icon.png", 512)
+    print(f"{'splash-icon.png':32} 512x512  {(OUT / 'splash-icon.png').stat().st_size // 1024} KB")
     jobs = [
         ("icon.png", a.bg, a.scale, 1024),
         ("favicon.png", a.bg, a.scale, 64),
-        ("splash-icon.png", None, a.scale, 512),
         ("android-icon-foreground.png", None, a.scale * ANDROID_SAFE, 1024),
     ]
     for name, bg, scale, px in jobs:
@@ -76,16 +96,25 @@ def main() -> int:
         print(f"{name:32} {px}x{px}  {(OUT / name).stat().st_size // 1024} KB")
 
     # The App Store artwork is rejected outright if it carries an alpha channel.
+    # Inset to match the foreground layer: the launcher crops both the same way.
+    mono_src = wrap(src, None, a.scale * ANDROID_SAFE)
+    with tempfile.NamedTemporaryFile("w", suffix=".svg", delete=False) as f:
+        f.write(mono_src)
+    render(mono_src, OUT / "_mono-tmp.png", 1024)
+    silhouette(OUT / "_mono-tmp.png", OUT / "android-icon-monochrome.png")
+    (OUT / "_mono-tmp.png").unlink()
+    print(f"{'android-icon-monochrome.png':32} 1024x1024  "
+          f"{(OUT / 'android-icon-monochrome.png').stat().st_size // 1024} KB")
+
     bad = [n for n, want in [("icon.png", False), ("favicon.png", False),
                              ("android-icon-background.png", False),
-                             ("android-icon-foreground.png", True)]
+                             ("android-icon-foreground.png", True),
+                             ("android-icon-monochrome.png", True)]
            if has_alpha(OUT / n) != want]
     if bad:
         print("\nALPHA WRONG: " + ", ".join(bad), file=sys.stderr)
         return 1
     print("\nalpha correct on every file")
-    print("android-icon-monochrome.png is NOT generated — it needs a flat single-colour "
-          "silhouette, which cannot be derived from colour artwork.")
     return 0
 
 

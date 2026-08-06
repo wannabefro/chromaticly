@@ -39,3 +39,7 @@ example
 
 # Maestro takeScreenshot output (written to the invocation cwd)
 /*.png
+
+# Python bytecode from the icon export scripts
+__pycache__/
+*.pyc

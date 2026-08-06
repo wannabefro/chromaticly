@@ -32,6 +32,8 @@ def main() -> int:
     ap.add_argument("source")
     ap.add_argument("--bg", default="#0b0c0f")
     ap.add_argument("--scale", type=float, default=1.0)
+    ap.add_argument("--fit", type=float, default=None, metavar="F",
+                    help="crop to the art's own alpha bounds and centre it at F of the square")
     ap.add_argument("--out", default="icon-proof.png")
     ap.add_argument("--open", action="store_true", dest="open_it")
     a = ap.parse_args()
@@ -40,6 +42,10 @@ def main() -> int:
     if not src.exists():
         print(f"no such file: {src}", file=sys.stderr)
         return 1
+    if a.fit:
+        sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+        from _iconlib import fit_png
+        src = fit_png(src, a.fit)
 
     art = art_svg(src, a.bg, a.scale)
     # Each tile is drawn at 300 and the artwork scaled into it, so what you see is
