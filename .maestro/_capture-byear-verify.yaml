@@ -1,0 +1,87 @@
+# Screenshots the by_ear_VERIFY card (stage two), the LAST item of a wired lesson's set —
+# so the eight written items are answered blindly first to reach it. The deep
+# link is opened by simctl before maestro runs; see scripts/capture-lesson.sh.
+appId: host.exp.Exponent
+---
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 30000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 60000
+    optional: true
+- tapOn: { text: "Continue", optional: true }
+
+- tapOn: { id: "set-close", optional: true }
+- tapOn: { id: "teach-close", optional: true }
+- extendedWaitUntil:
+    visible: { id: "lane-screen" }
+    timeout: 60000
+
+# The picker TOGGLES, and the blind dev-overlay tap above can already have
+# opened it, so tapping unconditionally closed it again (chromaticly-58e).
+- runFlow:
+    when:
+      notVisible: { id: "lane-grade-option-${GRADE}" }
+    commands:
+      - tapOn: { id: "lane-other-grades", optional: true }
+- extendedWaitUntil:
+    visible: { id: "lane-grade-option-${GRADE}" }
+    timeout: 10000
+    optional: true
+- tapOn: { id: "lane-grade-option-${GRADE}", optional: true }
+- scrollUntilVisible:
+    element: { id: "unit-row-${LESSON}" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 45000
+- tapOn: { id: "unit-row-${LESSON}" }
+
+- extendedWaitUntil:
+    visible: { id: "teach-phase" }
+    timeout: 20000
+- tapOn: { id: "teach-start" }
+
+- extendedWaitUntil:
+    visible: { id: "prompt" }
+    timeout: 20000
+
+# Answer the eight written items blindly — right or wrong does not matter here,
+# reaching the tail does.
+# A fixed count is wrong: a warm-up item advances without a feedback sheet, so
+# iterations and items are not one-to-one. Loop until the tail card appears.
+- repeat:
+    while:
+      notVisible: { id: "by-ear-verify" }
+    commands:
+      - tapOn: { id: "option-0" }
+      - tapOn: { id: "check" }
+      # A warm-up item auto-advances with no sheet, so this one may be absent.
+      - tapOn: { id: "feedback-sheet-continue", optional: true }
+
+- extendedWaitUntil:
+    visible: { id: "by-ear-verify" }
+    timeout: 20000
+- extendedWaitUntil:
+    visible: { id: "__settle_never__" }
+    timeout: 4500
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-verify-1-card
+
+- tapOn: { id: "by-ear-verify-listen" }
+- takeScreenshot: ${OUT}/${LESSON}-verify-2-listened
+
+- tapOn: { id: "option-0", optional: true }
+- takeScreenshot: ${OUT}/${LESSON}-verify-3-answered
+
+- tapOn: { id: "check", optional: true }
+- extendedWaitUntil:
+    visible: { id: "__settle_never__" }
+    timeout: 3000
+    optional: true
+- takeScreenshot: ${OUT}/${LESSON}-verify-4-feedback
