@@ -109,7 +109,7 @@ describe('ExamsScreen — only unlocked levels get a gate (mirrors the map, R-pa
 // unaffected by the sealed-paper state (D8 only gates onPress + copy, not the numbers).
 describe('ExamsScreen — Level 2 sizing still derives from LESSONS_BY_GRADE[2]', () => {
   test('LEVELS[1] has one unit per grade-2 lesson (moves only at content growth, not by surprise)', () => {
-    expect(LEVELS[1].unitIds).toHaveLength(LESSONS_BY_GRADE[2].length);
+    expect(LEVELS.find((l) => l.grade === 2)!.unitIds).toHaveLength(LESSONS_BY_GRADE[2].length);
   });
 });
 
@@ -190,12 +190,37 @@ describe('ExamsScreen — readiness over the depth vector (7d)', () => {
 
   // R2: nothing is locked, so the level list is the whole set. The old screen
   // filtered on `isLevelUnlocked`, drawing a distinction that no longer exists.
-  test('every level is listed, and the source no longer consults isLevelUnlocked', async () => {
+  test('every EXAMINABLE level is listed, and the source no longer consults isLevelUnlocked', async () => {
     const { findByTestId } = renderExams();
     await findByTestId('exams-screen');
 
-    for (const level of LEVELS) expect(await findByTestId(`exam-gate-${level.id}`)).toBeTruthy();
+    // Every level that has a gate. First steps has none — see the First steps
+    // describe below for why absence rather than a "coming soon" row.
+    for (const level of LEVELS.filter((l) => l.examGate != null)) {
+      expect(await findByTestId(`exam-gate-${level.id}`)).toBeTruthy();
+    }
     const source = readFileSync(join(__dirname, 'ExamsScreen.tsx'), 'utf8');
     expect(source).not.toMatch(/\bisLevelUnlocked\b/);
+  });
+});
+
+// First steps (chromaticly-dhe) has no exam paper and never will — ABRSM has no
+// Grade 0 theory exam. A "coming soon" row for it would advertise something that
+// does not exist, so the screen filters on the gate's presence rather than on the
+// grade number: the field is the fact, the number is only a proxy for it.
+describe('Exams — a level that cannot be sat gets no row', () => {
+  test('it renders one gate per examinable level, and none for First steps', async () => {
+    const { findByTestId, queryByTestId } = renderExams();
+    await findByTestId('exams-screen');
+
+    expect(queryByTestId('exam-gate-level-0')).toBeNull();
+    for (const level of LEVELS.filter((l) => l.examGate != null)) {
+      expect(queryByTestId(`exam-gate-${level.id}`)).toBeTruthy();
+    }
+  });
+
+  test('the level with no gate is genuinely in LEVELS — the row is filtered, not the level', () => {
+    expect(LEVELS.some((l) => l.grade === 0)).toBe(true);
+    expect(LEVELS.find((l) => l.grade === 0)!.examGate).toBeUndefined();
   });
 });

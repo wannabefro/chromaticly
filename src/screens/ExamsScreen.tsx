@@ -102,10 +102,12 @@ export default function ExamsScreen({ onImmersive, onOpenLane }: ExamsScreenProp
         }
       />
 
-      {/* Every level, unfiltered: nothing is locked (R2), so the list is the whole
-          set and a grade with no paper yet says so on its own node. */}
+      {/* Every level that HAS a gate: nothing is locked (R2), so the list is the
+          whole set and a grade with no paper yet says so on its own node. A level
+          with no examGate cannot be sat at all (First steps), and a "coming soon"
+          row for it would advertise a paper that will never exist. */}
       <View style={styles.list}>
-        {LEVELS.map((level) => (
+        {LEVELS.filter((level) => level.examGate != null).map((level) => (
           <ExamGateNode
             key={level.id}
             levelGrade={level.grade}

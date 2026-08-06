@@ -26,7 +26,15 @@ const GRADE_DESCRIPTORS: Record<number, string> = {
   5: 'The gateway exam — harmony, tenor clef',
 };
 
-const FIRST_STARTABLE_GRADE = LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;
+/** The grades this screen offers. First steps (grade 0) is deliberately ABSENT:
+ *  design 5a draws exactly five cards and `design/` has no screen for a sixth, so
+ *  how it should appear here is an open design decision. Until that ruling exists,
+ *  showing it would mean inventing a card AND rendering the words "Grade 0", which
+ *  the level's own naming decision forbids. The level is reachable, just not from
+ *  this picker yet. */
+const PICKABLE_LEVELS = LEVELS.filter((l) => l.grade >= 1);
+
+const FIRST_STARTABLE_GRADE = PICKABLE_LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;
 
 export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
   // Default-select the first available grade so the primary CTA is immediately
@@ -41,7 +49,7 @@ export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
       </View>
 
       <ScrollView contentContainerStyle={styles.pills}>
-        {LEVELS.map((level) => {
+        {PICKABLE_LEVELS.map((level) => {
           const selectable = isStartableGrade(level.grade);
           const selected = selectable && level.grade === selectedGrade;
           return (

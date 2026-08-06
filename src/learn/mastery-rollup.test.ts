@@ -279,7 +279,9 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
 // now, since Grade 5 shipped its slice). There are no content-less levels
 // left, so nothing ever fails to "open" onto units.
 describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)', () => {
-  const [level1, level2, , , level5] = LEVELS;
+  // By grade, not by position: LEVELS now opens with First steps (grade 0).
+  const byGrade = (g: number) => LEVELS.find((l) => l.grade === g)!;
+  const [level1, level2, level5] = [byGrade(1), byGrade(2), byGrade(5)];
 
   test('Level 1 is always unlocked, even on a fresh store', () => {
     const store = new ProgressStore();
@@ -307,12 +309,15 @@ describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)
 
   test('currentLevel follows the working grade (Profile.grade), not the highest reachable level', () => {
     const store = new ProgressStore();
-    expect(currentLevel(LEVELS, store)).toBe(level1); // fresh store, no profile → grade 1 default
+    // Grade 1, not LEVELS[0] — the list now opens with First steps (grade 0), and
+    // a profile with no stored grade must not land there.
+    expect(currentLevel(LEVELS, store)).toBe(level1);
+    expect(LEVELS[0].grade).toBe(0);
 
     store.setProfile({ grade: 2, onboardedAt: '2026-07-13T00:00:00.000Z' });
     // Level 3 is also reachable (has content) at this point, but currentLevel
     // must still report Level 2 — the learner's chosen working grade.
-    expect(isLevelUnlocked(LEVELS[2], store)).toBe(true);
+    expect(isLevelUnlocked(LEVELS.find((l) => l.grade === 3)!, store)).toBe(true);
     expect(currentLevel(LEVELS, store)).toBe(level2);
   });
 });

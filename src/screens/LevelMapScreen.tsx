@@ -186,13 +186,18 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
                   />
                 );
               })}
-              <ExamGateNode
-                levelGrade={level.grade}
-                unitsRequired={level.unitIds.length}
-                hasPaper={hasExamPaper(level.grade)}
-                onPress={hasExamPaper(level.grade) ? () => setExamGrade(level.grade) : undefined}
-                testID={`exam-gate-${level.id}`}
-              />
+              {/* A level with no examGate cannot be sat (First steps), so it caps
+                  with nothing rather than a seal promising a paper that will
+                  never exist. */}
+              {level.examGate != null && (
+                <ExamGateNode
+                  levelGrade={level.grade}
+                  unitsRequired={level.unitIds.length}
+                  hasPaper={hasExamPaper(level.grade)}
+                  onPress={hasExamPaper(level.grade) ? () => setExamGrade(level.grade) : undefined}
+                  testID={`exam-gate-${level.id}`}
+                />
+              )}
             </LevelNode>
           );
         })}

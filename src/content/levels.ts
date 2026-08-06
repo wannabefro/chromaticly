@@ -18,7 +18,27 @@ export interface Level {
   title: string;
   prerequisite?: string;
   unitIds: string[];
-  examGate: { unlockAtStars: number };
+  /** ABSENT on a level that cannot be sat. ABRSM has no Grade 0 theory paper, so
+   *  First steps has no honest gate, and absence is the honest representation:
+   *  a sentinel would still render a row promising a paper that will never exist.
+   *  Optional rather than nullable so TypeScript names every consumer. */
+  examGate?: { unlockAtStars: number };
+}
+
+/** First steps (chromaticly-dhe) — the starter level below Grade 1. Same
+ *  anti-drift rule as level1()-level5(): unitIds derive from the doc.
+ *
+ *  No examGate and no prerequisite. There is no Grade 0 paper to sit, so the gate
+ *  that opens Grade 1 is the unit list itself. `title` is the user-facing name —
+ *  "Grade 0" is the internal key and appears in no copy, because a zero reads as
+ *  a failing mark to an adult beginner. */
+function level0(): Level {
+  return {
+    id: 'level-0',
+    grade: 0,
+    title: 'First steps',
+    unitIds: LESSONS_BY_GRADE[0].map((l) => l.id),
+  };
 }
 
 function level1(): Level {
@@ -97,7 +117,7 @@ function level5(): Level {
   };
 }
 
-export const LEVELS: Level[] = [level1(), level2(), level3(), level4(), level5()];
+export const LEVELS: Level[] = [level0(), level1(), level2(), level3(), level4(), level5()];
 
 /** Whether a grade can be picked as a start grade (free grade access, fyu.2).
  *  Grade is a self-service choice now, so any grade that HAS content is

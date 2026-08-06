@@ -103,7 +103,7 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     const { getByTestId, getByText, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
-    const level1 = LEVELS[0];
+    const level1 = LEVELS.find((l) => l.grade === 1)!;
     const gate = getByTestId(`exam-gate-${level1.id}`);
     expect(getByText(`take it any time · best after ${level1.unitIds.length} units ★`)).toBeTruthy();
     expect(within(gate).queryByText('🔒')).toBeNull();
@@ -138,7 +138,7 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     const { getByTestId, findByTestId, queryByText } = renderMap();
     await findByTestId('level-map-screen');
 
-    for (const level of [LEVELS[1], LEVELS[2]]) {
+    for (const level of [2, 3].map((g) => LEVELS.find((l) => l.grade === g)!)) {
       const node = within(getByTestId(`level-node-${level.id}`));
       expect(node.getByText(level.title)).toBeTruthy();
       // A locked node would show its prerequisite copy; an expanded one never does.
@@ -191,7 +191,7 @@ describe('LevelMapScreen — Level 2 is reachable by content presence (fyu.2)', 
     const { getByTestId, findByTestId } = renderMap();
     await findByTestId('level-map-screen');
 
-    const level2 = LEVELS[1];
+    const level2 = LEVELS.find((l) => l.grade === 2)!;
     const node = within(getByTestId(`level-node-${level2.id}`));
     expect(node.queryByText('Clear the Level 1 exam to unlock')).toBeNull();
     expect(getByTestId('unit-row-key-signatures-2')).toBeTruthy();

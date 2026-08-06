@@ -99,3 +99,33 @@ describe('GradeSelectScreen — every content-ful grade is selectable; onboardin
     expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
   });
 });
+
+// First steps (grade 0, chromaticly-dhe) is a real level and is reachable — it is
+// just not offered HERE yet. design 5a draws exactly five cards and `design/` has
+// no screen for a sixth, so how it should appear is an open design decision. These
+// assertions hold the line until that ruling lands, and go red the moment someone
+// adds the level to this picker without one.
+describe('grade select — First steps stays off the picker until the design rules on it', () => {
+  test('exactly the grade-1..5 levels get a pill, and grade 0 gets none', () => {
+    const { getByTestId, queryByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+
+    expect(queryByTestId('grade-pill-0')).toBeNull();
+    for (const level of LEVELS.filter((l) => l.grade >= 1)) {
+      expect(getByTestId(`grade-pill-${level.grade}`)).toBeTruthy();
+    }
+  });
+
+  test('the words "Grade 0" appear nowhere on the screen', () => {
+    const { queryByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(queryByText(/grade 0/i)).toBeNull();
+  });
+
+  test('Grade 1 is the default even though a lower level now exists', () => {
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
+  });
+
+  test('the level itself is real — the pill is filtered, not the level', () => {
+    expect(LEVELS.find((l) => l.grade === 0)!.unitIds.length).toBeGreaterThan(0);
+  });
+});

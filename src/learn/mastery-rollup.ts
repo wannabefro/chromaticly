@@ -195,5 +195,7 @@ export function isLevelUnlocked(level: Level, _store?: ProgressStore): boolean {
  *  readiness card, and the level-map active highlight. Falls back to Level 1. */
 export function currentLevel(levels: Level[], store: ProgressStore): Level {
   const workingGrade = store.getGrade() ?? 1;
-  return levels.find((l) => l.grade === workingGrade) ?? levels[0];
+  // Falls back to Grade 1, never levels[0] — LEVELS now opens with First steps
+  // (grade 0), and a profile with no stored grade must not land there.
+  return levels.find((l) => l.grade === workingGrade) ?? levels.find((l) => l.grade === 1) ?? levels[0];
 }

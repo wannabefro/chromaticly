@@ -5,7 +5,7 @@ import { LESSONS, LESSONS_BY_GRADE, lessonsForGrade, lessonById } from './lesson
 import { isStartableGrade, LEVELS } from './levels';
 
 describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, not a frozen fixture)', () => {
-  const level1 = LEVELS[0];
+  const level1 = LEVELS.find((l) => l.grade === 1)!;
 
   // Sourced from the grade-1 doc alone (LESSONS_BY_GRADE[1]), not the merged
   // LESSONS export — otherwise a later-registered grade-2 doc would silently
@@ -24,14 +24,14 @@ describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, 
   });
 
   test('exam gate unlocks at 3 stars per unit (RD3: all units at 3 stars)', () => {
-    expect(level1.examGate.unlockAtStars).toBe(level1.unitIds.length * 3);
+    expect(level1.examGate!.unlockAtStars).toBe(level1.unitIds.length * 3);
   });
 });
 
 // U5: Level 2's shape derives from authored content, never a frozen literal
 // (the same anti-drift rule levels.ts:1-3 states for Level 1).
 describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U5)', () => {
-  const level2 = LEVELS[1];
+  const level2 = LEVELS.find((l) => l.grade === 2)!;
 
   test('Level 2 has one unit id per grade-2 lesson, in lesson order', () => {
     expect(level2.id).toBe('level-2');
@@ -40,7 +40,7 @@ describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U
   });
 
   test('exam gate unlocks at 3 stars per unit, same rule as Level 1', () => {
-    expect(level2.examGate.unlockAtStars).toBe(level2.unitIds.length * 3);
+    expect(level2.examGate!.unlockAtStars).toBe(level2.unitIds.length * 3);
   });
 
   // fyu.2: unlock is a derivation over the store, not a field — but under free
@@ -55,7 +55,7 @@ describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U
 // U6: Level 3's shape derives from the authored grade-3 doc, never a literal
 // (the same anti-drift rule as level1()/level2()).
 describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U6)', () => {
-  const level3 = LEVELS[2];
+  const level3 = LEVELS.find((l) => l.grade === 3)!;
 
   test('Level 3 has one unit id per grade-3 lesson, in lesson order', () => {
     expect(level3.id).toBe('level-3');
@@ -66,9 +66,9 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
   // chromaticly-gni grew grade 3 from 9 to 10 units; chromaticly-e3z.1 added
   // major-keys-3 for the syllabus's "all keys to four sharps and flats", making 11.
   test('exam gate unlocks at 3 stars per unit, same rule as Level 1/2 (54 stars for 18 grade-3 units)', () => {
-    expect(level3.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
+    expect(level3.examGate!.unlockAtStars).toBe(LESSONS_BY_GRADE[3].length * 3);
     expect(level3.unitIds).toHaveLength(18);
-    expect(level3.examGate.unlockAtStars).toBe(54);
+    expect(level3.examGate!.unlockAtStars).toBe(54);
   });
 
   // fyu.2: reachability is content presence only — Level 3 is reachable on a
@@ -96,7 +96,7 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
 
 // fyu.13: Level 4 is now real — same anti-drift derivation as Level 1-3.
 describe('levels — Level 4 derives dynamically from LESSONS_BY_GRADE[4] (fyu.13)', () => {
-  const level4 = LEVELS[3];
+  const level4 = LEVELS.find((l) => l.grade === 4)!;
 
   test('Level 4 has one unit id per grade-4 lesson, in lesson order', () => {
     expect(level4.id).toBe('level-4');
@@ -105,7 +105,7 @@ describe('levels — Level 4 derives dynamically from LESSONS_BY_GRADE[4] (fyu.1
   });
 
   test('exam gate unlocks at 3 stars per unit, same rule as Level 1-3', () => {
-    expect(level4.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[4].length * 3);
+    expect(level4.examGate!.unlockAtStars).toBe(LESSONS_BY_GRADE[4].length * 3);
   });
 
   test('Level 4 is reachable on a fresh store — content presence is the only gate (free access)', () => {
@@ -116,7 +116,7 @@ describe('levels — Level 4 derives dynamically from LESSONS_BY_GRADE[4] (fyu.1
 // chromaticly-ehp: Level 5 derives dynamically from LESSONS_BY_GRADE[5], same
 // anti-drift rule as level1()-level4() — no content-less levels remain.
 describe('levels — Level 5 derives dynamically from LESSONS_BY_GRADE[5] (chromaticly-ehp)', () => {
-  const level5 = LEVELS[4];
+  const level5 = LEVELS.find((l) => l.grade === 5)!;
 
   test('Level 5 has one unit id per grade-5 lesson, in lesson order', () => {
     expect(level5.id).toBe('level-5');
@@ -125,7 +125,7 @@ describe('levels — Level 5 derives dynamically from LESSONS_BY_GRADE[5] (chrom
   });
 
   test('exam gate unlocks at 3 stars per unit, same rule as Level 1-4', () => {
-    expect(level5.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[5].length * 3);
+    expect(level5.examGate!.unlockAtStars).toBe(LESSONS_BY_GRADE[5].length * 3);
   });
 
   test('Level 5 is reachable on a fresh store — content presence is the only gate (free access)', () => {
@@ -139,9 +139,10 @@ describe('levels — Level 5 derives dynamically from LESSONS_BY_GRADE[5] (chrom
   });
 });
 
-describe('levels — no content-less levels remain; every grade 1-5 has real content (R1, R4, chromaticly-ehp)', () => {
-  test('all five levels carry at least one unit — there is no "coming soon" placeholder left', () => {
-    expect(LEVELS.map((l) => l.grade)).toEqual([1, 2, 3, 4, 5]);
+describe('levels — no content-less levels remain; every grade 0-5 has real content (R1, R4, chromaticly-ehp)', () => {
+  test('every level carries at least one unit — there is no "coming soon" placeholder left', () => {
+    // First steps (grade 0, chromaticly-dhe) joins the list with five real units.
+    expect(LEVELS.map((l) => l.grade)).toEqual([0, 1, 2, 3, 4, 5]);
     expect(LEVELS.filter((l) => l.unitIds.length === 0)).toEqual([]);
   });
 });
@@ -163,15 +164,15 @@ describe('levels — isStartableGrade is a static content concept, decoupled fro
 // in src/content/lessons.ts) — the point is that including it changes nothing
 // below.
 describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 zero-movement invariant)', () => {
-  const level1 = LEVELS[0];
+  const level1 = LEVELS.find((l) => l.grade === 1)!;
 
   // Grade-LOCAL growth is expected here. The invariant guards leakage.
   test('Level 1 unit count and exam-gate threshold match the grade-1 doc values (16 units / 48 stars)', () => {
     expect(level1.unitIds).toHaveLength(16);
-    expect(level1.examGate.unlockAtStars).toBe(48);
+    expect(level1.examGate!.unlockAtStars).toBe(48);
     // Same numbers whether read from Level 1 or straight off the grade-1 doc.
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
-    expect(level1.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[1].length * 3);
+    expect(level1.examGate!.unlockAtStars).toBe(LESSONS_BY_GRADE[1].length * 3);
   });
 
   test('accountNudgeStats over the merged LESSONS equals its value over grade-1 lessons alone, on a store with no exam cleared', () => {
@@ -194,18 +195,18 @@ describe('registering grade-2 content moves ZERO grade-1-visible numbers (D13 ze
 // — the point is that including it changes nothing below, on a store where
 // the grade-2 exam has NOT been cleared (i.e. Level 3 stays locked).
 describe('registering grade-3 content moves ZERO grade-1/2-visible numbers (D9/U6 zero-movement invariant)', () => {
-  const level1 = LEVELS[0];
-  const level2 = LEVELS[1];
+  const level1 = LEVELS.find((l) => l.grade === 1)!;
+  const level2 = LEVELS.find((l) => l.grade === 2)!;
 
   test('Level 1 shape (unit count, star gate, id list) is unchanged by grade-3 registration', () => {
     expect(level1.unitIds).toHaveLength(16);
-    expect(level1.examGate.unlockAtStars).toBe(48);
+    expect(level1.examGate!.unlockAtStars).toBe(48);
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 
   test('Level 2 shape (unit count, star gate, id list) is unchanged', () => {
     expect(level2.unitIds).toEqual(LESSONS_BY_GRADE[2].map((l) => l.id));
-    expect(level2.examGate.unlockAtStars).toBe(LESSONS_BY_GRADE[2].length * 3);
+    expect(level2.examGate!.unlockAtStars).toBe(LESSONS_BY_GRADE[2].length * 3);
   });
 
   test('accountNudgeStats over the merged LESSONS equals its value over grade-1+2 lessons alone, on a store with no grade-2 exam cleared', () => {
@@ -218,5 +219,50 @@ describe('registering grade-3 content moves ZERO grade-1/2-visible numbers (D9/U
       now,
     );
     expect(overMerged).toEqual(overGrade1And2Only);
+  });
+});
+
+// First steps (chromaticly-dhe) — the starter level below Grade 1. ABRSM has no
+// Grade 0 theory paper, so this level has no exam gate at all: absence is the
+// representation, because a sentinel would still draw a row promising a paper
+// that will never exist.
+describe('level 0 — First steps, a level that cannot be sat', () => {
+  const level0 = LEVELS.find((l) => l.grade === 0)!;
+
+  test('it leads the list and derives its units from the grade-0 doc', () => {
+    expect(LEVELS[0]).toBe(level0);
+    expect(level0.id).toBe('level-0');
+    expect(level0.unitIds).toEqual(LESSONS_BY_GRADE[0].map((l) => l.id));
+    expect(level0.unitIds).toHaveLength(5);
+  });
+
+  test('it carries no exam gate, and every other level still does', () => {
+    expect(level0.examGate).toBeUndefined();
+    for (const level of LEVELS.filter((l) => l.grade >= 1)) {
+      expect(level.examGate).toEqual({ unlockAtStars: level.unitIds.length * 3 });
+    }
+  });
+
+  // "Grade 0" is the internal key. A zero reads as a failing mark to an adult
+  // beginner, which is the opposite of what the level is for.
+  test('its title is the user-facing name, and says nothing about a grade', () => {
+    expect(level0.title).toBe('First steps');
+    expect(level0.title).not.toMatch(/grade/i);
+  });
+
+  test('it has no prerequisite — it is where a learner starts', () => {
+    expect(level0.prerequisite).toBeUndefined();
+  });
+
+  test('it is startable, because it has units', () => {
+    expect(isStartableGrade(0)).toBe(true);
+  });
+
+  test('grades 1-5 keep their order and their unit lists', () => {
+    expect(LEVELS.map((l) => l.grade)).toEqual([0, 1, 2, 3, 4, 5]);
+    for (const grade of [1, 2, 3, 4, 5]) {
+      const level = LEVELS.find((l) => l.grade === grade)!;
+      expect(level.unitIds).toEqual(LESSONS_BY_GRADE[grade].map((l) => l.id));
+    }
   });
 });

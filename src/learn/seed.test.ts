@@ -53,7 +53,7 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     const earned = rows.reduce((sum, r) => sum + r.stars, 0);
 
     // The gate opens when earned stars reach the level's threshold.
-    expect(earned).toBeGreaterThanOrEqual(level1.examGate.unlockAtStars);
+    expect(earned).toBeGreaterThanOrEqual(level1.examGate!.unlockAtStars);
     expect(store.isOnboarded()).toBe(true);
   });
 
