@@ -23,6 +23,7 @@ export const InteractionTypeSchema = z.enum([
   'voice_options',
   'by_ear_match',
   'by_ear_verify',
+  'aural_mcq',
 ]);
 
 export type InteractionType = z.infer<typeof InteractionTypeSchema>;

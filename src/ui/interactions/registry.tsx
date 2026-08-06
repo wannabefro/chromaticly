@@ -29,6 +29,7 @@ import { StaveInput, type StaveInputResponse } from './StaveInput';
 import { TextInputField } from './TextInputField';
 import { transpositionInputSpec } from './TranspositionInput';
 import { noteValuePaletteSpec } from './NoteValuePalette';
+import { AuralMcq } from './AuralMcq';
 import { ByEarMatch, emptyByEarMatchResponse, type ByEarMatchResponse } from './ByEarMatch';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
@@ -366,6 +367,19 @@ const byEarVerifySpec: InteractionSpec<number | null> = {
   selectedValue: (instance, response) => (response === null ? undefined : assembleOptions(instance)[response]?.value),
 };
 
+/** A notation-free aural MCQ. The correct-answer view is the LABEL, not a stave:
+ *  the item deliberately shows no notation, so revealing one on the feedback
+ *  sheet would undo the thing the card exists to do. */
+const auralMcqSpec: InteractionSpec<number | null> = {
+  Component: AuralMcq,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeMcq(instance, assembleOptions(instance)[response ?? 0].value),
+  submits: true,
+  correctAnswerView: defaultCorrectAnswerView,
+  selectedValue: (instance, response) => (response === null ? undefined : assembleOptions(instance)[response]?.value),
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -380,6 +394,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   voice_options: voiceOptionsSpec,
   by_ear_match: byEarMatchSpec,
   by_ear_verify: byEarVerifySpec,
+  aural_mcq: auralMcqSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

@@ -115,6 +115,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
 
   test('the registry is partial — only the built interaction types are registered', () => {
     expect(Object.keys(INTERACTIONS).sort()).toEqual([
+      'aural_mcq',
       'by_ear_match',
       'by_ear_verify',
       'drag_match',
