@@ -424,9 +424,27 @@ D11's premise is retired: `RootRouter` holds the chosen grade in state and alrea
 `PlanScreen` one screen earlier, so "before any profile exists" was never the same as "before the
 grade is known".
 
-**Not fixed here, and recorded so it is not read as settled:** `note_value_compare` is the sole atom
-of `rhythm-breve-4`, a **grade 4** lesson, so the warm-up still hands every grade 1–5 learner a fully
-three-starred grade-4 lesson before they have done anything, and real evidence toward grade-4 rhythm
-readiness. That is `chromaticly-atz`. The scope is grade-1-legal; the lesson that owns the atom is
-not, and D11 conflated the two. The fix is one entry in the table above once the replacement grade-1
-rhythm atom is chosen.
+**The grade 1–5 warm-up moved too, for the same reason** (`chromaticly-atz`, fixed 2026-08-06).
+It drilled `note_value_compare`, which is grade-1 *scope* but is the sole atom of `rhythm-breve-4`, a
+**grade 4** lesson. Retry-until-correct guarantees mastery of the warm-up atom, so every new learner
+arrived with that grade-4 lesson fully three-starred and with real evidence toward grade-4 rhythm
+readiness. D11 asked whether the atom was legal at grade 1 and never asked which lesson owned it.
+
+It now drills **`add_time_signature`**, from `note-values` — the grade-1 lesson this warm-up has
+always been *named* after. Chosen over that lesson's other two atoms because it alone keeps the shape
+screens 4–5 draw: `rhythm_sum` renders no stimulus notation, so the play affordance and its "tap play"
+coach mark would point at nothing, and `bar_validity` answers with a row of ticks rather than one
+choice. It also varies where the old one did not — three seeds give 3/4, 4/4 and 2/4, against one
+repeated prompt before.
+
+**The three seeds are authored, not 0,1,2.** Seeds 0, 1 and 2 all draw the **bass** clef, so the
+first three staves the app ever showed a grade-1 learner used the clef they meet in lesson 3
+(`bass-notes`), not lesson 1 (`treble-notes`). The question is purely rhythmic, which is exactly why
+the clef must not be the odd thing about it. Seeds 3, 5 and 6 are treble, and answer 3/4, 2/4 and 4/4
+rather than repeating — retry-until-correct already re-presents an item, and three identical answers
+on top of that is a pattern a learner can ride without reading the question.
+
+**The rules this leaves behind**, all asserted per grade in `src/learn/warm-up.test.ts`: a warm-up
+may only credit a lesson at the learner's own level; it may never credit a single-atom lesson,
+because mastering the one atom completes it outright; and its notation must use the clef its level
+teaches first.

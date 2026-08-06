@@ -15,6 +15,7 @@ import { act, fireEvent, render } from '@testing-library/react-native';
 import { generate } from '../engine/generators';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
+import { warmUpFor } from '../learn/warm-up';
 import { assembleOptions } from '../ui/grading';
 import RootRouter from './RootRouter';
 
@@ -30,8 +31,12 @@ function memoryStorage(seed: string | null = null): SnapshotStorage & { blob: st
   };
 }
 
-function correctIndexFor(seed: number): number {
-  const instance = generate('note_value_compare', { grade: 1, seed, atoms: ['note_value_compare'] });
+/** Read from the warm-up definition, never re-declared — a hardcoded atom here
+ *  answers a question the warm-up is no longer asking, and the walk then loops on
+ *  retry-until-correct instead of reaching Landing. */
+function correctIndexFor(index: number, grade = 1): number {
+  const w = warmUpFor(grade);
+  const instance = generate(w.template, { grade: w.grade, seed: w.seeds[index], atoms: [w.atom] });
   return assembleOptions(instance).findIndex((o) => o.correct);
 }
 

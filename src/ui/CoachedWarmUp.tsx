@@ -49,7 +49,7 @@ export function CoachedWarmUp({ onComplete, onClose, grade }: CoachedWarmUpProps
     // The generator grade comes from the warm-up definition, not from the learner
     // (D11): it must be a grade whose scope the atom is legal in, which is not
     // always the grade they picked.
-    () => generate(warmUp.template, { grade: warmUp.grade, seed: index, atoms: [warmUp.atom] }),
+    () => generate(warmUp.template, { grade: warmUp.grade, seed: warmUp.seeds[index], atoms: [warmUp.atom] }),
     // attempt is the retry signal — same seed, new identity. eslint-disable-next-line react-hooks/exhaustive-deps
     [index, attempt, warmUp],
   );

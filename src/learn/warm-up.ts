@@ -23,22 +23,39 @@ export interface WarmUp {
   atom: string;
   /** The grade handed to the generator, which need not be the learner's. */
   grade: number;
+  /** The three seeds, in order. Authored rather than 0,1,2: the seed picks the
+   *  clef and the answer, and the first three questions of the app are worth
+   *  choosing rather than inheriting. */
+  seeds: [number, number, number];
   /** Drives the screen accent and the copy. One accent per screen. */
   strand: Strand;
   /** How PlanScreen names it, one screen earlier. */
   title: string;
 }
 
-/** Grades 1-5. `note_value_compare` is grade-1 SCOPE, which is why it is safe to
- *  generate before a profile exists.
+/** Grades 1-5, and the atom belongs to `note-values` — the grade-1 lesson this
+ *  warm-up has always been NAMED after (chromaticly-atz).
  *
- *  It is NOT a grade-1 lesson's atom — it is the sole atom of `rhythm-breve-4`,
- *  so this warm-up hands every new learner a fully 3-starred GRADE 4 lesson.
- *  That is chromaticly-atz, and fixing it is a one-line change here once the
- *  replacement grade-1 rhythm atom is chosen. */
+ *  It used to drill `note_value_compare`, which is grade-1 SCOPE but is the sole
+ *  atom of `rhythm-breve-4`, a GRADE 4 lesson. Retry-until-correct guarantees
+ *  mastery, so every new learner arrived with that lesson 3-starred and with real
+ *  evidence toward grade-4 rhythm readiness. Scope and ownership are different
+ *  questions, and only the first one was being asked.
+ *
+ *  `add_time_signature` was chosen over the lesson's other two atoms because it is
+ *  the only one that keeps the designed shape of screens 4-5: `rhythm_sum` draws
+ *  no stimulus notation, so the play affordance and its "tap play" coach mark
+ *  would have nothing to point at, and `bar_validity` answers with a row of
+ *  ticks rather than one choice. */
 const DEFAULT_WARM_UP: WarmUp = {
-  template: 'note_value_compare',
-  atom: 'note_value_compare',
+  template: 'add_time_signature',
+  atom: 'add_time_signature',
+  // Seeds 0,1,2 all draw BASS clef, which would make the first three staves the
+  // app ever shows a learner use a clef they meet in lesson 3 (`bass-notes`),
+  // not lesson 1 (`treble-notes`). The question is purely rhythmic, so the clef
+  // is incidental to it — which is exactly why it should not be the odd one.
+  // These three are treble, and answer 3/4, 2/4 and 4/4 rather than repeating.
+  seeds: [3, 5, 6],
   grade: 1,
   strand: 'rhythm',
   title: 'Note values warm-up',
@@ -56,6 +73,9 @@ const WARM_UPS: Record<number, WarmUp> = {
   0: {
     template: 'alphabet_step',
     atom: alphabetAtom('G'),
+    // 0 and 1 are the two questions this atom has: the wrap, then the step back.
+    // 2 repeats the wrap, which is the one worth meeting twice.
+    seeds: [0, 1, 2],
     grade: 0,
     strand: 'pitch',
     title: 'Musical alphabet warm-up',

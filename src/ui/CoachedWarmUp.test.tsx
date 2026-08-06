@@ -1,5 +1,5 @@
 // Coached warm-up (design steps 4–5): the 3-question on-ramp. Invariants guarded:
-// it draws a REAL first Rhythm mastery point (records the note_value_compare atom),
+// it draws a REAL first mastery point (records the atom warm-up.ts names),
 // it NEVER completes a lesson (KTD3), retry-until-correct always ends 3/3
 // (KTD3b), onComplete fires only after the 3rd correct, and all gamification +
 // hints are suppressed (R4).
@@ -30,15 +30,19 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
   };
 }
 
-const WARM_UP_ATOM = 'note_value_compare';
+// Read from the definition, never re-declared. This file used to hardcode the
+// atom, which made it the sixth literal the shared definition exists to remove —
+// and it stayed green through a swap it should have caught.
+const WARM_UP_ATOM = warmUpFor(1).atom;
 
 /** The shuffled option index of the correct / wrong answer for a warm-up seed. */
-function correctIndexFor(seed: number): number {
-  const instance = generate(WARM_UP_ATOM, { grade: 1, seed, atoms: [WARM_UP_ATOM] });
+function correctIndexFor(index: number, grade = 1): number {
+  const w = warmUpFor(grade);
+  const instance = generate(w.template, { grade: w.grade, seed: w.seeds[index], atoms: [w.atom] });
   return assembleOptions(instance).findIndex((o) => o.correct);
 }
 function wrongIndexFor(seed: number): number {
-  return correctIndexFor(seed) === 0 ? 1 : 0; // 2-option MCQ
+  return correctIndexFor(seed) === 0 ? 1 : 0; // any index but the correct one
 }
 
 async function answer(getByTestId: (id: string) => any, optionIndex: number) {
@@ -58,13 +62,7 @@ function renderWarmUp(grade: number | null = 1) {
   return { ...utils, storage, onComplete };
 }
 
-/** The correct option index for a grade-0 warm-up seed. Its MCQ has 3 options,
- *  not 2, so the grade-1 helpers above cannot be reused. */
-function firstStepsCorrectIndex(seed: number): number {
-  const w = warmUpFor(0);
-  const instance = generate(w.template, { grade: w.grade, seed, atoms: [w.atom] });
-  return assembleOptions(instance).findIndex((o) => o.correct);
-}
+const firstStepsCorrectIndex = (seed: number) => correctIndexFor(seed, 0);
 
 describe('CoachedWarmUp — a 3-question coached on-ramp (R4, R5, KTD3)', () => {
   test('renders the warm-up shell, the 1/3 counter, the coach mark, and the notation stimulus', async () => {
@@ -230,9 +228,8 @@ describe('CoachedWarmUp — at grade 0 the on-ramp is readable without notation'
     expect(getByTestId('warmup-count').props.children).toEqual([1, '/', 3]);
   });
 
-  test('every other grade is untouched and still drills the grade-1 atom', async () => {
-    for (const grade of [1, 3, 5]) {
-      expect(warmUpFor(grade).atom).toBe(WARM_UP_ATOM);
-    }
+  test('every other grade shares one definition, and it is not this one', async () => {
+    for (const grade of [1, 3, 5]) expect(warmUpFor(grade)).toEqual(warmUpFor(1));
+    expect(warmUpFor(0).atom).not.toBe(WARM_UP_ATOM);
   });
 });

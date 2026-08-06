@@ -7,12 +7,11 @@ import { LESSONS } from '../content/lessons';
 import { warmUpFor } from './warm-up';
 
 const EVERY_GRADE = [0, 1, 2, 3, 4, 5];
-const SEEDS = [0, 1, 2];
 
 describe('warmUpFor — every level gets an item its learner can actually read', () => {
   test.each(EVERY_GRADE)('grade %i generates all three questions without throwing', (grade) => {
     const w = warmUpFor(grade);
-    for (const seed of SEEDS) {
+    for (const seed of w.seeds) {
       expect(generate(w.template, { grade: w.grade, seed, atoms: [w.atom] })).toBeTruthy();
     }
   });
@@ -21,7 +20,7 @@ describe('warmUpFor — every level gets an item its learner can actually read',
   // whose generator credited something else would silently break it.
   test.each(EVERY_GRADE)('grade %i credits exactly its own atom, on every seed', (grade) => {
     const w = warmUpFor(grade);
-    for (const seed of SEEDS) {
+    for (const seed of w.seeds) {
       expect(generate(w.template, { grade: w.grade, seed, atoms: [w.atom] }).srs_tags).toEqual([w.atom]);
     }
   });
@@ -31,7 +30,7 @@ describe('warmUpFor — every level gets an item its learner can actually read',
   // wall rather than a lesson.
   test('the First steps warm-up draws no notation', () => {
     const w = warmUpFor(0);
-    for (const seed of SEEDS) {
+    for (const seed of w.seeds) {
       expect(generate(w.template, { grade: w.grade, seed, atoms: [w.atom] }).stimulus.music).toBeNull();
     }
   });
@@ -66,19 +65,48 @@ describe('warmUpFor — the strand it claims is the strand it teaches', () => {
   });
 });
 
-// chromaticly-atz, recorded here so the fix is a one-line change with a test
-// already waiting for it. `note_value_compare` is the SOLE atom of rhythm-breve-4,
-// a GRADE 4 lesson, so retry-until-correct hands every new grade-1..5 learner a
-// fully 3-starred grade-4 lesson before they have done anything.
-describe('warmUpFor — the known defect, pinned so the fix is provable', () => {
-  test('First steps drills an atom from its OWN level', () => {
-    const owner = LESSONS.find((l) => l.atoms.includes(warmUpFor(0).atom))!;
-    expect(owner.grade).toBe(0);
+// chromaticly-atz. Retry-until-correct guarantees mastery of the warm-up atom, so
+// whichever LESSON owns that atom is credited before the learner has done
+// anything. `note_value_compare` is grade-1 scope but is the sole atom of
+// rhythm-breve-4, a GRADE 4 lesson — so every new learner arrived with a grade-4
+// lesson 3-starred. Scope and ownership are different questions.
+describe('warmUpFor — the warm-up may only credit a lesson at the learner\'s own level', () => {
+  test.each(EVERY_GRADE)('grade %i drills an atom owned by a lesson at that same grade', (grade) => {
+    const owner = LESSONS.find((l) => l.atoms.includes(warmUpFor(grade).atom))!;
+    expect(owner.grade).toBe(grade === 0 ? 0 : 1);
   });
 
-  test('the grades still drill an atom from a grade-4 lesson — chromaticly-atz, not yet fixed', () => {
-    const owner = LESSONS.find((l) => l.atoms.includes(warmUpFor(1).atom))!;
-    expect(owner.grade).toBe(4);
-    expect(owner.atoms).toHaveLength(1); // one atom, so the warm-up 3-stars the whole lesson
+  // A single-atom lesson is the shape that made the old defect severe: mastering
+  // the one atom completed the whole lesson. Several atoms means the warm-up
+  // nudges the lesson rather than finishing it.
+  test.each(EVERY_GRADE)('grade %i cannot complete its owner lesson outright', (grade) => {
+    const owner = LESSONS.find((l) => l.atoms.includes(warmUpFor(grade).atom))!;
+    expect(owner.atoms.length).toBeGreaterThan(1);
+  });
+});
+
+// The seeds are authored, so what they draw is a decision and gets a test.
+describe('warmUpFor — the three seeds are chosen, not inherited', () => {
+  test.each(EVERY_GRADE)('grade %i asks three questions, no more and no fewer', (grade) => {
+    expect(warmUpFor(grade).seeds).toHaveLength(3);
+  });
+
+  // Seeds 0,1,2 all draw BASS clef, so the first three staves the app ever showed
+  // used a clef the learner meets in lesson 3, not lesson 1. The question is
+  // purely rhythmic, which is why the clef must not be the odd thing about it.
+  test('every notated warm-up card is in the clef its level teaches first', () => {
+    const w = warmUpFor(1);
+    for (const seed of w.seeds) {
+      const music = generate(w.template, { grade: w.grade, seed, atoms: [w.atom] }).stimulus.music as { clef: string };
+      expect(music.clef).toBe('treble');
+    }
+  });
+
+  // Retry-until-correct already re-presents an item. Three identical answers on
+  // top of that is a pattern a learner can ride without reading the question.
+  test('the grade-1 warm-up does not give the same answer three times', () => {
+    const w = warmUpFor(1);
+    const answers = w.seeds.map((seed) => String(generate(w.template, { grade: w.grade, seed, atoms: [w.atom] }).answer.canonical));
+    expect(new Set(answers).size).toBe(3);
   });
 });
