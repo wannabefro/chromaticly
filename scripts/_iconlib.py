@@ -4,16 +4,19 @@ import pathlib, tempfile
 CANVAS = 1024
 
 
-def fit_png(src: pathlib.Path, fit: float) -> pathlib.Path:
-    """Crop to the artwork's own alpha bounds, then centre it at `fit` of the square.
+def fit_png(src: pathlib.Path, fit: float, alpha_floor: int = 16) -> pathlib.Path:
+    """Crop to the artwork's VISIBLE bounds, then centre it at `fit` of the square.
 
-    Art exported from a design tool usually carries uneven margins, so scaling the
-    file as a whole leaves the mark small and off-centre inside the icon mask.
+    Bounds ignore alpha at or below `alpha_floor`. A soft drop shadow can reach
+    far past the mark at an alpha nobody can see — measured on this repo's own
+    artwork, a band of alpha 1-8 made the box 147 px taller than the mark and
+    centred the shadow instead, leaving the mark 80 px high in the square.
     """
     from PIL import Image
 
     im = Image.open(src).convert("RGBA")
-    box = im.getbbox()
+    visible = im.getchannel("A").point(lambda v: 255 if v > alpha_floor else 0)
+    box = visible.getbbox()
     if box is None:
         return src
     art = im.crop(box)
