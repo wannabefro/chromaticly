@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""Export one source artwork to every icon asset app.json references.
+
+    scripts/export-icon.py design/brand/chromaticly-icon.svg
+    scripts/export-icon.py logo.png --bg '#ffffff' --scale 0.88
+
+Source may be SVG or PNG. Needs rsvg-convert (brew install librsvg).
+"""
+import argparse, base64, pathlib, subprocess, sys, tempfile
+
+REPO = pathlib.Path(__file__).resolve().parent.parent
+OUT = REPO / "assets/images"
+
+# Android crops the adaptive layers to a 66.7% centred zone. Everything outside
+# it can be masked away on some launchers, so the mark is inset for those two.
+ANDROID_SAFE = 0.78
+
+
+def ground_only(bg: str) -> str:
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" '
+            f'height="1024"><rect width="1024" height="1024" fill="{bg}"/></svg>')
+
+
+def wrap(src: pathlib.Path, bg: str | None, scale: float) -> str:
+    """A 1024 SVG holding the source, optionally over an opaque ground."""
+    if src.suffix.lower() == ".svg":
+        inner = src.read_text()
+        inner = inner[inner.index(">", inner.index("<svg")) + 1: inner.rindex("</svg>")]
+        art = f'<g transform="translate({512*(1-scale):.1f},{512*(1-scale):.1f}) scale({scale})">{inner}</g>'
+    else:
+        b64 = base64.b64encode(src.read_bytes()).decode()
+        s = 1024 * scale
+        off = (1024 - s) / 2
+        art = (f'<image x="{off:.1f}" y="{off:.1f}" width="{s:.1f}" height="{s:.1f}" '
+               f'href="data:image/png;base64,{b64}"/>')
+    ground = f'<rect width="1024" height="1024" fill="{bg}"/>' if bg else ""
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
+            f'viewBox="0 0 1024 1024" width="1024" height="1024">{ground}{art}</svg>')
+
+
+def render(svg_text: str, dest: pathlib.Path, px: int) -> None:
+    with tempfile.NamedTemporaryFile("w", suffix=".svg", delete=False) as f:
+        f.write(svg_text)
+        tmp = f.name
+    subprocess.run(["rsvg-convert", "-w", str(px), "-h", str(px), tmp, "-o", str(dest)], check=True)
+
+
+def has_alpha(p: pathlib.Path) -> bool:
+    r = subprocess.run(["sips", "-g", "hasAlpha", str(p)], capture_output=True, text=True)
+    return "yes" in r.stdout
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("source")
+    ap.add_argument("--bg", default="#0b0c0f", help="opaque ground for the iOS/web assets")
+    ap.add_argument("--scale", type=float, default=1.0, help="scale the artwork inside the square")
+    a = ap.parse_args()
+
+    src = pathlib.Path(a.source).resolve()
+    if not src.exists():
+        print(f"no such file: {src}", file=sys.stderr)
+        return 1
+
+    # The Android background layer is the ground alone — the artwork lives in the
+    # foreground layer, which the launcher parallaxes over it.
+    render(ground_only(a.bg), OUT / "android-icon-background.png", 1024)
+    jobs = [
+        ("icon.png", a.bg, a.scale, 1024),
+        ("favicon.png", a.bg, a.scale, 64),
+        ("splash-icon.png", None, a.scale, 512),
+        ("android-icon-foreground.png", None, a.scale * ANDROID_SAFE, 1024),
+    ]
+    for name, bg, scale, px in jobs:
+        render(wrap(src, bg, scale), OUT / name, px)
+        print(f"{name:32} {px}x{px}  {(OUT / name).stat().st_size // 1024} KB")
+
+    # The App Store artwork is rejected outright if it carries an alpha channel.
+    bad = [n for n, want in [("icon.png", False), ("favicon.png", False),
+                             ("android-icon-background.png", False),
+                             ("android-icon-foreground.png", True)]
+           if has_alpha(OUT / n) != want]
+    if bad:
+        print("\nALPHA WRONG: " + ", ".join(bad), file=sys.stderr)
+        return 1
+    print("\nalpha correct on every file")
+    print("android-icon-monochrome.png is NOT generated — it needs a flat single-colour "
+          "silhouette, which cannot be derived from colour artwork.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
