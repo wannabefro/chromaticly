@@ -31,7 +31,7 @@ import { assertRhythmFillsBars } from './teach-rhythm';
 
 const WorkedExampleSchema = z.object({
   template_id: z.string(),
-  grade: z.number().int().min(1).max(5),
+  grade: z.number().int().min(0).max(5),
   seed: z.number().int(),
 });
 
@@ -77,7 +77,7 @@ const LessonSchema = z.object({
 });
 
 const LessonsDocSchema = z.object({
-  grade: z.number().int().min(1).max(5),
+  grade: z.number().int().min(0).max(5),
   version: z.string().min(1),
   lessons: z.array(LessonSchema).min(1),
 });

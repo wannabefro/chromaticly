@@ -230,8 +230,10 @@ describe('grade-2 pitch ranges (D3 judgment call)', () => {
 });
 
 describe('scopeForGrade — unsupported grades fail loud', () => {
-  // Grade 5 is now supported (chromaticly-ehp); 6 is the first unsupported grade.
-  test.each([0, 6, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
+  // Grade 5 is supported (chromaticly-ehp) and grade 0 is now First steps
+  // (chromaticly-dhe), so the supported band is 0..5 and it is bounded at both
+  // ends: -1 below, 6 above.
+  test.each([-1, 6, 99])('scopeForGrade(%i) throws, naming the grade', (grade) => {
     expect(() => scopeForGrade(grade)).toThrow(String(grade));
   });
 });
@@ -534,5 +536,56 @@ describe('comfortablePitchRange — caps at the grade-2 range, never widens past
       expect(comfortablePitchRange(clef, 3)).toEqual(pitchRange(clef, 2));
       expect(comfortablePitchRange(clef, 3)).not.toEqual(pitchRange(clef, 3));
     }
+  });
+});
+
+// Grade 0 (First steps, chromaticly-dhe). The narrowest scope in the file, and
+// deliberately hand-written rather than derived from grade 1: it is a SUBSET, so
+// a spread would widen it every time grade 1 grows.
+describe('grade 0 — the First steps scope', () => {
+  test('is narrower than grade 1 on every axis First steps teaches', () => {
+    const scope = scopeForGrade(0);
+    expect(scope.clefs).toEqual(['treble']);
+    expect(scope.noteValues).toEqual(['semibreve', 'minim', 'crotchet', 'quaver']);
+    expect(scope.rests).toEqual(['semibreve', 'minim', 'crotchet', 'quaver']);
+    expect(scope.keysMajor).toEqual(['C']);
+    expect(scope.keysMinor).toEqual([]);
+    expect(scope.minorForms).toEqual([]);
+    expect(scope.timeSignatures).toEqual(['4/4']);
+    expect(scope.rhythmDevices).toEqual([]);
+  });
+
+  // The pair is what atom validation reads (scope AND renderable), so the
+  // intersection is the real answer — renderableTimeSignatures(0) is the wider side.
+  test('only 4/4 survives the scope-and-renderable intersection', () => {
+    const renderable = renderableTimeSignatures(0);
+    expect(scopeForGrade(0).timeSignatures.filter((s) => renderable.includes(s))).toEqual(['4/4']);
+  });
+
+  test('the treble reading range is the stave plus middle C, with no ledger lines above', () => {
+    const pitches = diatonicPitchesInRange('treble', 0);
+    expect(pitches).toContain('C4'); // one ledger line below — the landmark lesson 4 teaches
+    expect(pitches).toContain('G5'); // top line
+    expect(pitches).not.toContain('A5'); // the space above the stave: grade 1's bound, not grade 0's
+    expect(pitches).not.toContain('B3'); // below middle C
+  });
+
+  test('comfortablePitchRange does not widen grade 0 — Math.min(0, 2) is 0', () => {
+    expect(comfortablePitchRange('treble', 0)).toEqual(pitchRange('treble', 0));
+  });
+
+  // The guard is a lookup miss, not a range check. Widening the literal type to
+  // include 0 must not turn an unsupported grade into a silent undefined.
+  test('an unsupported grade still throws', () => {
+    expect(() => scopeForGrade(-1)).toThrow('scope: grade -1 is not supported');
+    expect(() => scopeForGrade(6)).toThrow('scope: grade 6 is not supported');
+  });
+
+  test('grades 1-5 are untouched by the widening', () => {
+    for (const grade of [1, 2, 3, 4, 5] as const) {
+      expect(scopeForGrade(grade)).toBe(GRADE_SCOPES[grade]);
+    }
+    expect(scopeForGrade(1).clefs).toEqual(['treble', 'bass']);
+    expect(scopeForGrade(1).timeSignatures).toEqual(['2/4', '3/4', '4/4']);
   });
 });

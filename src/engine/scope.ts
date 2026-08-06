@@ -39,6 +39,46 @@ const ALTO_RANGE: { low: Pitch; high: Pitch } = { low: 'G2', high: 'F5' };
 // from each outer line. Grades 1-4 never read it (their clefs exclude tenor).
 const TENOR_RANGE: { low: Pitch; high: Pitch } = { low: 'E2', high: 'D5' };
 
+// Grade 0 — First steps (chromaticly-dhe), the starter level below Grade 1. It
+// has no ABRSM exam and teaches what Grade 1 assumes: the alphabet, the keyboard,
+// the stave, pulse, and the four note shapes.
+//
+// Written out rather than spread from GRADE_1_SCOPE, which every other scope in
+// this file does. Grade 0 is a SUBSET, not an extension, so a spread would widen
+// it silently every time Grade 1 grows. Each bound below is the narrowest value
+// that still lets the five First steps templates generate:
+//   - treble only: the bass clef is a Grade 1 lesson, and unqualified
+//     "higher on the stave is higher in pitch" is false once a second clef exists.
+//   - four note values: what lesson 5 names. The semiquaver arrives in Grade 1.
+//   - 4/4 alone: lesson 1 teaches that a pulse exists, not how metres differ.
+//   - C major alone, no minors, no rhythm devices: nothing here needs a key.
+//   - treble C4..G5: the stave, plus middle C as the landmark lesson 4 teaches.
+//     Deliberately one bound tighter than Grade 1's A5 — a beginner reading their
+//     first stave should never meet the space above it.
+const GRADE_0_SCOPE: GradeScope = {
+  clefs: ['treble'],
+  noteValues: ['semibreve', 'minim', 'crotchet', 'quaver'],
+  rests: ['semibreve', 'minim', 'crotchet', 'quaver'],
+  keysMajor: ['C'],
+  keysMinor: [],
+  minorForms: [],
+  timeSignatures: ['4/4'],
+  rhythmDevices: [],
+  intervalRule: {
+    aboveTonicOnly: true,
+    namingStyle: 'number',
+    maxOctaves: 1,
+  },
+  pitchRanges: {
+    treble: { low: 'C4', high: 'G5' },
+    // Never read at this grade — `clefs` excludes all three. They exist only to
+    // satisfy the exhaustive Record<Clef>, the same way Grade 1 carries alto.
+    bass: { low: 'E2', high: 'D4' },
+    alto: ALTO_RANGE,
+    tenor: TENOR_RANGE,
+  },
+};
+
 const GRADE_1_SCOPE: GradeScope = {
   clefs: ['treble', 'bass'],
   noteValues: ['semibreve', 'minim', 'crotchet', 'quaver', 'semiquaver'],
@@ -225,12 +265,14 @@ const GRADE_5_SCOPE: GradeScope = {
 };
 
 export const GRADE_SCOPES: {
+  0: GradeScope;
   1: GradeScope;
   2: GradeScope;
   3: GradeScope;
   4: GradeScope;
   5: GradeScope;
 } = {
+  0: GRADE_0_SCOPE,
   1: GRADE_1_SCOPE,
   2: GRADE_2_SCOPE,
   3: GRADE_3_SCOPE,

@@ -42,7 +42,8 @@ export const SELF_GRADED_INTERACTIONS: ReadonlySet<InteractionType> = new Set<In
 export const ExerciseInstanceSchema = z.object({
   id: z.string(),
   template_id: z.string(),
-  grade: z.number().int().min(1).max(5),
+  // 0 is First steps (chromaticly-dhe), the starter level below Grade 1.
+  grade: z.number().int().min(0).max(5),
   strand: z.enum(['rhythm', 'pitch', 'scales_keys', 'intervals', 'chords', 'terms_signs', 'context']),
   unit: z.string().optional(),
   prompt: z.string(),
