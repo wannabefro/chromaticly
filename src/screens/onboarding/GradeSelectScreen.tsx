@@ -1,14 +1,14 @@
 // Grade select (design screen 2, "step 2 · one question"): the ONLY setup
 // question (R2). Grade pills are the fast path; the placement quiz is a deferred
-// branch (shown disabled). Only Grade 1 has content (levels.ts) — Grades 2–5
-// render locked "coming soon" and can't be selected, so onboarding never persists
-// an ungenerated grade. The reassurance line ("switch any time") kills choice
-// anxiety per the design annotation.
+// branch (shown disabled). A grade is selectable once levels.ts gives it units,
+// so onboarding never persists an ungenerated grade. The reassurance line
+// ("switch any time") kills choice anxiety per the design annotation.
 
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { isStartableGrade, LEVELS } from '../../content/levels';
+import { placeableStrands } from '../../learn/placement';
 import { Button } from '../../ui/components/Button';
 import { ACCENT, colors, shape, type } from '../../ui/theme';
 
@@ -63,7 +63,10 @@ export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
 
         <Pressable testID="placement-quiz" disabled style={styles.quiz}>
           <Text style={styles.quizLabel}>Not sure? Take the placement quiz</Text>
-          <Text style={styles.quizMeta}>8 questions · ~3 min · recommends a grade · coming soon</Text>
+          {/* Derived, per the 7c ruling — it stays true when a strand gains a lesson. */}
+          <Text style={styles.quizMeta}>
+            {placeableStrands().length} questions · ~3 min · recommends a grade · coming soon
+          </Text>
         </Pressable>
       </ScrollView>
 

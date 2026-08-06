@@ -1,0 +1,87 @@
+# Screenshot the whole first-run journey, one frame per screen. Same path as
+# onboarding-first-set.yaml, which asserts; this one looks. Keep the two in step.
+#   maestro test -e DEV_URL=exp://127.0.0.1:48090 -e OUT=<dir> .maestro/_capture-onboarding.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}
+- tapOn:
+    text: "Open"
+    optional: true
+- tapOn:
+    text: "Continue"
+    optional: true
+# clearState wipes Expo Go's first-launch flag, so it opens its developer menu
+# over the app. Its X carries the accessibility label "Close".
+- tapOn:
+    text: "Close"
+    optional: true
+- extendedWaitUntil:
+    visible:
+      id: "welcome-screen"
+    timeout: 60000
+- takeScreenshot: ${OUT}/01-welcome
+
+- tapOn:
+    id: "start-learning"
+- assertVisible:
+    id: "grade-select-screen"
+- takeScreenshot: ${OUT}/02-grade-select
+
+- tapOn:
+    id: "start-grade"
+- assertVisible:
+    id: "plan-screen"
+- takeScreenshot: ${OUT}/03-plan
+
+- tapOn:
+    id: "plan-start-warmup"
+- assertVisible:
+    id: "warm-up-screen"
+- takeScreenshot: ${OUT}/04-warmup-question
+
+# Correct indices for note_value_compare seeds 0..2 are 0, 1, 1.
+- tapOn:
+    id: "option-0"
+- takeScreenshot: ${OUT}/05-warmup-answered
+- tapOn:
+    id: "check"
+- takeScreenshot: ${OUT}/06-warmup-feedback
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn:
+    id: "option-1"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn:
+    id: "option-1"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- extendedWaitUntil:
+    visible:
+      id: "landed-screen"
+    timeout: 15000
+- takeScreenshot: ${OUT}/07-landed
+
+- tapOn:
+    id: "landed-continue"
+- extendedWaitUntil:
+    visible:
+      id: "lanes-screen"
+    timeout: 15000
+- takeScreenshot: ${OUT}/08-lanes
+
+- tapOn:
+    id: "lane-row-pitch"
+- extendedWaitUntil:
+    visible:
+      id: "lane-screen"
+    timeout: 15000
+- takeScreenshot: ${OUT}/09-lane-pitch

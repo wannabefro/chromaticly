@@ -25,10 +25,13 @@ appId: host.exp.Exponent
     optional: true
 # clearState wipes Expo Go's own first-launch flag, so a fresh open shows its
 # "developer menu": first an intro sheet (Continue), then the menu itself, which
-# must be closed via its X (top-right) to reveal the app. Both no-op on a warm
-# open (Continue not found; the point tap lands on empty Welcome space).
+# must be closed via its X, which carries the accessibility label "Close". Both
+# no-op on a warm open.
 - tapOn:
     text: "Continue"
+    optional: true
+- tapOn:
+    text: "Close"
     optional: true
 - extendedWaitUntil:
     visible:

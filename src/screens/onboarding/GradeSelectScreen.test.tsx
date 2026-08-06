@@ -8,6 +8,7 @@ import { fireEvent, render } from '@testing-library/react-native';
 
 import { LEVELS } from '../../content/levels';
 import { isLevelUnlocked } from '../../learn/mastery-rollup';
+import { placeableStrands } from '../../learn/placement';
 import { ProgressStore } from '../../learn/store';
 import { GradeSelectScreen } from './GradeSelectScreen';
 
@@ -31,6 +32,13 @@ describe('GradeSelectScreen — every content-ful grade is selectable; onboardin
   test('the placement-quiz affordance is present but disabled (deferred)', () => {
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
     expect(getByTestId('placement-quiz').props.accessibilityState?.disabled).toBe(true);
+  });
+
+  // The card promised 8 questions while placement asks one per placeable strand,
+  // which is 7 (design ruling 7c, 2026-07-31: the count is derived).
+  test('the quiz card promises one question per placeable strand, never a literal', () => {
+    const { getByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByText(new RegExp(`^${placeableStrands().length} questions`))).toBeTruthy();
   });
 
   test('starting selects Grade 1', () => {
