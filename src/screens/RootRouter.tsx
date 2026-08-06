@@ -81,6 +81,7 @@ export default function RootRouter() {
       case 'warmup':
         return (
           <CoachedWarmUp
+            grade={grade}
             onComplete={(earned) => {
               setGems(earned);
               setStep('landed');
@@ -92,7 +93,7 @@ export default function RootRouter() {
         // Both CTAs mark the guest onboarded; completeOnboarding persists the grade
         // and bumps context revision → isOnboarded flips → level map (grade home).
         const finish = () => completeOnboarding(grade, new Date().toISOString());
-        return <LandedScreen onContinue={finish} onExplore={finish} gems={gems} />;
+        return <LandedScreen onContinue={finish} onExplore={finish} gems={gems} grade={grade} />;
       }
     }
   }

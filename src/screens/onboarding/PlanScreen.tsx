@@ -9,6 +9,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { LEVELS } from '../../content/levels';
+import { warmUpFor } from '../../learn/warm-up';
 import { Button } from '../../ui/components/Button';
 import { colors, shape, type } from '../../ui/theme';
 
@@ -60,7 +61,7 @@ export function PlanScreen({ grade, onStartWarmUp }: PlanScreenProps) {
 
       <View style={styles.warmupBlock}>
         <Text style={styles.overline}>First up · 2 min</Text>
-        <Text style={styles.warmupTitle}>Note values warm-up</Text>
+        <Text style={styles.warmupTitle}>{warmUpFor(grade).title}</Text>
         <Text style={styles.warmupBody}>3 quick questions to draw your first mastery point.</Text>
       </View>
 

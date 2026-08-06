@@ -14,6 +14,7 @@ import { act, fireEvent, render } from '@testing-library/react-native';
 import { generate } from '../engine/generators';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
+import { warmUpFor } from '../learn/warm-up';
 import { CoachedWarmUp } from './CoachedWarmUp';
 import { assembleOptions } from './grading';
 
@@ -46,15 +47,23 @@ async function answer(getByTestId: (id: string) => any, optionIndex: number) {
   await act(async () => fireEvent.press(getByTestId('feedback-sheet-continue')));
 }
 
-function renderWarmUp() {
+function renderWarmUp(grade: number | null = 1) {
   const storage = memoryStorage();
   const onComplete = jest.fn();
   const utils = render(
     <ProgressProvider storage={storage}>
-      <CoachedWarmUp onComplete={onComplete} onClose={jest.fn()} />
+      <CoachedWarmUp onComplete={onComplete} onClose={jest.fn()} grade={grade} />
     </ProgressProvider>,
   );
   return { ...utils, storage, onComplete };
+}
+
+/** The correct option index for a grade-0 warm-up seed. Its MCQ has 3 options,
+ *  not 2, so the grade-1 helpers above cannot be reused. */
+function firstStepsCorrectIndex(seed: number): number {
+  const w = warmUpFor(0);
+  const instance = generate(w.template, { grade: w.grade, seed, atoms: [w.atom] });
+  return assembleOptions(instance).findIndex((o) => o.correct);
 }
 
 describe('CoachedWarmUp — a 3-question coached on-ramp (R4, R5, KTD3)', () => {
@@ -163,5 +172,67 @@ describe('CoachedWarmUp — a 3-question coached on-ramp (R4, R5, KTD3)', () => 
     expect(snapshot.atoms[WARM_UP_ATOM].mastery.mastered).toBe(true);
     expect(snapshot.lessons).toEqual({}); // no lesson marked complete
     expect(Object.keys(snapshot.atoms)).toEqual([WARM_UP_ATOM]); // nothing else touched
+  });
+});
+
+// The First steps warm-up (chromaticly-6xk). A learner who picks that level has
+// never read music, and the grade-1 warm-up opens with "which of these two
+// noteheads lasts longer?" — under retry-until-correct, a question they cannot
+// read is not an on-ramp, it is a wall they brute-force until they guess.
+describe('CoachedWarmUp — at grade 0 the on-ramp is readable without notation', () => {
+  test('it draws no notation at all, which is the whole reason for the swap', async () => {
+    const { queryByTestId, getByTestId } = renderWarmUp(0);
+    await act(async () => {});
+
+    expect(getByTestId('warm-up-screen')).toBeTruthy();
+    expect(queryByTestId('stimulus-music')).toBeNull();
+  });
+
+  // The coach mark promises audio. With no notation there is no play control, so
+  // the promise would point at nothing.
+  test('the "tap play" coach mark is withheld when there is nothing to play', async () => {
+    const { queryByTestId } = renderWarmUp(0);
+    await act(async () => {});
+
+    expect(queryByTestId('warmup-coach')).toBeNull();
+  });
+
+  test('it records the First steps atom, and never the grade-1 one', async () => {
+    const { getByTestId, storage, onComplete } = renderWarmUp(0);
+    await act(async () => {});
+
+    for (const seed of [0, 1, 2]) await answer(getByTestId, firstStepsCorrectIndex(seed));
+
+    expect(onComplete).toHaveBeenCalledTimes(1);
+    const snapshot = JSON.parse(storage.blob!);
+    expect(Object.keys(snapshot.atoms)).toEqual([warmUpFor(0).atom]);
+    expect(Object.keys(snapshot.atoms)).not.toContain(WARM_UP_ATOM);
+  });
+
+  // The point of the single-atom design (KTD3b). The swap must not cost it.
+  test('the mastery guarantee survives the swap: one atom, mastered, after 3 of 3', async () => {
+    const { getByTestId, storage } = renderWarmUp(0);
+    await act(async () => {});
+
+    for (const seed of [0, 1, 2]) await answer(getByTestId, firstStepsCorrectIndex(seed));
+
+    const snapshot = JSON.parse(storage.blob!);
+    expect(snapshot.atoms[warmUpFor(0).atom].mastery.mastered).toBe(true);
+  });
+
+  test('retry-until-correct still holds — a wrong answer re-presents rather than advancing', async () => {
+    const { getByTestId } = renderWarmUp(0);
+    await act(async () => {});
+
+    const wrong = firstStepsCorrectIndex(0) === 0 ? 1 : 0;
+    await answer(getByTestId, wrong);
+
+    expect(getByTestId('warmup-count').props.children).toEqual([1, '/', 3]);
+  });
+
+  test('every other grade is untouched and still drills the grade-1 atom', async () => {
+    for (const grade of [1, 3, 5]) {
+      expect(warmUpFor(grade).atom).toBe(WARM_UP_ATOM);
+    }
   });
 });

@@ -2,6 +2,7 @@
 
 import { fireEvent, render } from '@testing-library/react-native';
 
+import { warmUpFor } from '../../learn/warm-up';
 import { PlanScreen } from './PlanScreen';
 
 describe('PlanScreen — sets the mental model, then funnels to the warm-up (R3)', () => {
@@ -47,6 +48,15 @@ describe('PlanScreen — First steps has no paper, and no grade number', () => {
 
   // Three cards either way. Dropping the exam card without replacing it left a
   // visible hole on the device, which reads as unfinished rather than deliberate.
+  // One definition drives the generator, the recorded atom, the accent and this
+  // line. Naming a warm-up the learner will not be given is how they drift apart.
+  test('the warm-up block names the First steps warm-up, not the grade-1 one', () => {
+    const { getByText, queryByText } = render(<PlanScreen grade={0} onStartWarmUp={jest.fn()} />);
+
+    expect(getByText(warmUpFor(0).title)).toBeTruthy();
+    expect(queryByText(warmUpFor(1).title)).toBeNull();
+  });
+
   test('the exam card is replaced, not removed — the level ends in Grade 1 instead', () => {
     const { getByText, queryByText } = render(<PlanScreen grade={0} onStartWarmUp={jest.fn()} />);
 

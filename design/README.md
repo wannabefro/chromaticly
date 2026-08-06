@@ -394,3 +394,39 @@ mechanism.
 
 **`LevelMapScreen` is not the answer and was not used.** It is dead code from the retired
 pre-lane spine, referenced only by its own test.
+
+### The coached warm-up drills the level you chose · approved 2026-08-06
+
+Screens 4–5 draw the warm-up as a notated "which note lasts longer?" item, and D11 pinned it to
+grade 1 for every learner on the grounds that the warm-up runs before a profile exists. It now
+branches on the chosen level, and at grade 0 it drills the musical alphabet instead.
+
+A First steps learner is, by construction, someone who has never read music. Retry-until-correct
+(KTD3b) re-presents the same item until it is answered correctly — which turns a question they
+cannot read into a wall they brute-force until they guess, on the first screen the app ever asks
+them anything. Rewording it does not help, because the wall is the mechanic, not the copy.
+
+`alphabet:G` needs no notation and no audio. G is chosen over the other six letters because its two
+questions are the wrap ("after G" → A, the fact lesson 2 exists for) and an ordinary step
+("before G" → F).
+
+Three things follow, and all three are the same decision:
+
+1. **One definition, in `src/learn/warm-up.ts`.** The generator call, the recorded atom, the screen
+   accent, PlanScreen's name for it and LandedScreen's "your first *strand* point" all read it.
+   Before this they were five literals in three files, and one was already wrong.
+2. **The accent follows the atom.** The warm-up is a pitch item at grade 0, so the hue and the strand
+   label follow — one accent per screen, and it must be the screen's own.
+3. **The "tap play" coach mark is withheld when the item has no notation**, because there is then no
+   play control for it to point at.
+
+D11's premise is retired: `RootRouter` holds the chosen grade in state and already hands it to
+`PlanScreen` one screen earlier, so "before any profile exists" was never the same as "before the
+grade is known".
+
+**Not fixed here, and recorded so it is not read as settled:** `note_value_compare` is the sole atom
+of `rhythm-breve-4`, a **grade 4** lesson, so the warm-up still hands every grade 1–5 learner a fully
+three-starred grade-4 lesson before they have done anything, and real evidence toward grade-4 rhythm
+readiness. That is `chromaticly-nm4`. The scope is grade-1-legal; the lesson that owns the atom is
+not, and D11 conflated the two. The fix is one entry in the table above once the replacement grade-1
+rhythm atom is chosen.
