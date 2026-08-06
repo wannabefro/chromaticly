@@ -2,7 +2,9 @@
 // the lessons suite all call this instead of hardcoding a card id (KTD7).
 
 import { writtenAtomOf } from '../atoms';
+import type { ExerciseInstance } from '../schema';
 import { generate } from './index';
+import type { GenerateOptions } from './types';
 
 export const DEFAULT_BY_EAR_CARD = 'by_ear_match';
 export const FALLBACK_BY_EAR_CARD = 'by_ear_verify';
@@ -38,12 +40,27 @@ function poolOf(lesson: ByEarLesson): string[] {
 }
 
 /** Keep the richer card wherever it works: it asks which note differs, not only
- *  whether one does. */
+ *  whether one does. Every declared atom must serve it ALONE — Practice hands one
+ *  due atom, and a throw there lands in a render with no ErrorBoundary above it. */
 function canServeMatch(lesson: ByEarLesson, source: string): boolean {
+  return poolOf(lesson).every((atom) => {
+    try {
+      generate(DEFAULT_BY_EAR_CARD, { grade: lesson.grade, seed: 0, atoms: [atom], source });
+      return true;
+    } catch {
+      return false;
+    }
+  });
+}
+
+/** Practice draws an arbitrary seed, so no load-time probe can prove every seed
+ *  builds. by_ear_match throws when its source happens to draw too few notes,
+ *  and that lands in a render with no ErrorBoundary — so degrade, never throw. */
+export function generateByEar(template: string, opts: GenerateOptions): ExerciseInstance {
   try {
-    generate(DEFAULT_BY_EAR_CARD, { grade: lesson.grade, seed: 0, atoms: poolOf(lesson), source });
-    return true;
-  } catch {
-    return false;
+    return generate(template, opts);
+  } catch (err) {
+    if (template === FALLBACK_BY_EAR_CARD) throw err;
+    return generate(FALLBACK_BY_EAR_CARD, opts);
   }
 }

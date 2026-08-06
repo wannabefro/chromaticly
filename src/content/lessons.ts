@@ -585,10 +585,14 @@ export function loadDoc(raw: unknown): LessonsDoc {
     }
     if (lesson.by_ear_source) {
       const card = byEarCardFor(lesson);
-      try {
-        generate(card, { grade: lesson.grade, seed: 0, atoms: byEarPool(lesson), source: lesson.by_ear_source });
-      } catch (err) {
-        throw new Error(`lessons: "${lesson.id}" by-ear card "${card}" cannot generate: ${(err as Error).message}`);
+      // Each atom ALONE: Practice serves one due atom, and a throw there lands in
+      // a render with no ErrorBoundary above it.
+      for (const atom of byEarPool(lesson)) {
+        try {
+          generate(card, { grade: lesson.grade, seed: 0, atoms: [atom], source: lesson.by_ear_source });
+        } catch (err) {
+          throw new Error(`lessons: "${lesson.id}" by-ear card "${card}" cannot generate "${atom}": ${(err as Error).message}`);
+        }
       }
     }
     for (const atom of creditedAtoms(lesson)) assertAtomResolves(atom, lesson.grade);

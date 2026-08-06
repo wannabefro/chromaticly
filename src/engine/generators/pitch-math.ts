@@ -42,3 +42,39 @@ export function naturalPitchAtOrdinal(ordinal: number): Pitch {
 export function naturalPitchStepsAbove(pitch: Pitch, steps: number): Pitch {
   return naturalPitchAtOrdinal(scientificPitchOrdinal(pitch) + steps);
 }
+
+// Accidental-aware arithmetic, used by the two by-ear generators. It is separate
+// from the natural-only helpers above because a by-ear mutation must compare what
+// SOUNDS, so an enharmonic "step" that changes nothing is caught before it ships.
+
+const SEMITONES: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+
+export interface ParsedPitch {
+  letter: string;
+  accidental: string;
+  octave: number;
+}
+
+export function parsePitch(pitch: Pitch): ParsedPitch | null {
+  const m = /^([A-G])(#{1,2}|b{1,2})?(-?\d+)$/.exec(pitch);
+  if (!m) return null;
+  return { letter: m[1], accidental: m[2] ?? '', octave: Number(m[3]) };
+}
+
+/** Absolute semitone height, so an enharmonic step that sounds identical is caught. */
+export function semitoneOf(pitch: Pitch): number | null {
+  const p = parsePitch(pitch);
+  if (!p) return null;
+  const shift = p.accidental.startsWith('#') ? p.accidental.length : -p.accidental.length;
+  return (p.octave + 1) * 12 + SEMITONES[p.letter] + shift;
+}
+
+/** The next letter name up or down, carrying the octave across the B/C boundary. */
+export function stepPitch(pitch: Pitch, up: boolean): Pitch | null {
+  const p = parsePitch(pitch);
+  if (!p) return null;
+  const i = LETTERS.indexOf(p.letter as Letter);
+  const next = (i + (up ? 1 : 6)) % 7;
+  const octave = up && next === 0 ? p.octave + 1 : !up && i === 0 ? p.octave - 1 : p.octave;
+  return `${LETTERS[next]}${octave}`;
+}

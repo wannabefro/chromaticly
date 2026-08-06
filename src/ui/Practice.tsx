@@ -12,6 +12,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { Strand } from '../content/lessons';
 import { generate } from '../engine/generators';
+import { generateByEar } from '../engine/generators/by-ear-cards';
 import { useProgressContext } from '../learn/ProgressContext';
 import { nextPracticeTemplate } from '../learn/practice-plan';
 import { colors, shape, strandDef, type as typo } from './theme';
@@ -31,7 +32,13 @@ export function Practice() {
   );
 
   const instance = useMemo(
-    () => (pick ? generate(pick.template, { grade: pick.grade, seed: step, atoms: pick.atoms, source: pick.source }) : null),
+    () => {
+      if (!pick) return null;
+      const opts = { grade: pick.grade, seed: step, atoms: pick.atoms, source: pick.source };
+      // `source` is set only for a by-ear atom, which is the one card that can
+      // fail to build on an unlucky seed.
+      return pick.source ? generateByEar(pick.template, opts) : generate(pick.template, opts);
+    },
     [pick, step],
   );
 

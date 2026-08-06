@@ -2,7 +2,7 @@
 // template draws 3 notes for one lesson and 1 for another.
 
 import { LESSONS } from '../../content/lessons';
-import { byEarCardFor } from './by-ear-cards';
+import { byEarCardFor, generateByEar } from './by-ear-cards';
 
 function lesson(id: string) {
   return LESSONS.find((l) => l.id === id)!;
@@ -51,5 +51,20 @@ describe('byEarCardFor — the richer card wherever it works', () => {
   test('every lesson stage one already wired keeps the card it shipped with', () => {
     const stageOne = LESSONS.filter((l) => l.by_ear_source && !U3_VERIFY_ONLY.has(l.id));
     expect(stageOne.filter((l) => byEarCardFor(l) !== 'by_ear_match')).toEqual([]);
+  });
+});
+
+// No load-time probe can prove every seed builds: Practice draws an arbitrary
+// one, and generateValidated explores derived seeds from THAT seed. Found by
+// /council 2026-08-06 — rests-1 / rest:minim / seed 31 threw into a render.
+describe('generateByEar — an unlucky seed degrades, it never throws', () => {
+  test('a seed where by_ear_match cannot build falls back to by_ear_verify', () => {
+    const opts = { grade: 1, seed: 31, atoms: ['rest:minim'], source: 'rest_completion' };
+    expect(generateByEar('by_ear_match', opts).template_id).toBe('by_ear_verify');
+  });
+
+  test('a seed where it can build is left alone', () => {
+    const opts = { grade: 1, seed: 0, atoms: ['rest:minim'], source: 'rest_completion' };
+    expect(generateByEar('by_ear_match', opts).template_id).toBe('by_ear_match');
   });
 });

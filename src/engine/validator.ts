@@ -2197,15 +2197,23 @@ function byEarMatchHook(inst: ExerciseInstance): string[] {
 }
 
 // by_ear_verify recomputes the diff: one field of one event may differ, never both.
+// It walks EVERY voice — satb_voice_recognition rings a note in any of four, and
+// comparing voices[0] alone would miss an alteration made in the ringed one.
 function byEarVerifyHook(inst: ExerciseInstance): string[] {
-  const written = (inst.stimulus.music as Music | null)?.voices?.[0]?.events ?? [];
-  const heard = ((inst.interaction.config as { played_music?: Music }).played_music)?.voices?.[0]?.events ?? [];
-  if (written.length === 0 || written.length !== heard.length) {
-    return ['by_ear_verify: the played music must have the same events as the written music'];
+  const writtenVoices = (inst.stimulus.music as Music | null)?.voices ?? [];
+  const heardVoices = ((inst.interaction.config as { played_music?: Music }).played_music)?.voices ?? [];
+  if (writtenVoices.length === 0 || writtenVoices.length !== heardVoices.length) {
+    return ['by_ear_verify: the played music must have the same voices as the written music'];
   }
   let differingEvents = 0;
-  for (let i = 0; i < written.length; i++) {
-    const a = written[i] as { type: string; pitch?: string; pitches?: string[]; dur?: string; dots?: number };
+  for (let v = 0; v < writtenVoices.length; v++) {
+    const written = writtenVoices[v].events;
+    const heard = heardVoices[v].events;
+    if (written.length === 0 || written.length !== heard.length) {
+      return ['by_ear_verify: the played music must have the same events as the written music'];
+    }
+    for (let i = 0; i < written.length; i++) {
+    const a = written[i] as { type: string; pitch?: string; pitches?: string[]; dur?: string; dots?: number; ornament?: { kind: string } };
     const b = heard[i] as typeof a;
     if (a.type !== b.type) {
       return [`by_ear_verify: event ${i} changed its type, which this template never alters`];
@@ -2213,13 +2221,15 @@ function byEarVerifyHook(inst: ExerciseInstance): string[] {
     const durChanged = a.dur !== b.dur || a.dots !== b.dots;
     const chordDiffs = a.type === 'chord' ? (a.pitches ?? []).filter((p, pi) => p !== b.pitches?.[pi]).length : 0;
     const pitchChanged = a.type === 'note' ? a.pitch !== b.pitch : chordDiffs > 0;
+    const ornamentChanged = a.ornament?.kind !== b.ornament?.kind;
     if (a.type === 'chord' && chordDiffs > 1) {
       return [`by_ear_verify: event ${i} changed ${chordDiffs} chord tones, not one (KTD9)`];
     }
-    if (durChanged && pitchChanged) {
-      return [`by_ear_verify: event ${i} changed both pitch and duration — this template alters exactly one`];
+    if ([durChanged, pitchChanged, ornamentChanged].filter(Boolean).length > 1) {
+      return [`by_ear_verify: event ${i} changed more than one field — this template alters exactly one`];
     }
-    if (durChanged || pitchChanged) differingEvents++;
+    if (durChanged || pitchChanged || ornamentChanged) differingEvents++;
+    }
   }
   const errors: string[] = [];
   const verdict = inst.answer.canonical as string;

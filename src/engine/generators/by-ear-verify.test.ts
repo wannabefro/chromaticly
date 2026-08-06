@@ -208,3 +208,17 @@ describe('the by_ear_verify validator hook recomputes rather than trusts', () =>
     expect(() => generate('by_ear_verify', { grade: 1, seed: 0, atoms: NOTE_ATOMS })).toThrow();
   });
 });
+
+// A two-option card must be a coin flip. It was 63% "Different" on release: the
+// 1/3 rate was copied from by_ear_match, where answering "different" still costs
+// a tap-where step. Found by /council 2026-08-06.
+describe('by_ear_verify — a guesser gets no edge', () => {
+  test('the verdict is near even across 300 seeds', () => {
+    const verdicts = Array.from({ length: 300 }, (_, seed) =>
+      make(seed).answer.canonical,
+    );
+    const same = verdicts.filter((v) => v === 'Same').length;
+    expect(same).toBeGreaterThan(120);
+    expect(same).toBeLessThan(180);
+  });
+});
