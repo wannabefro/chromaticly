@@ -1,11 +1,11 @@
-// U9 acceptance test for Welcome (6a): guest is the primary, functional path;
-// sign-in is present but inert this slice (R1).
+// U9 acceptance test for Welcome (6a): guest is the ONLY path (R1). Nothing in
+// the app syncs, so no screen may offer sign-in.
 
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
 
 import { WelcomeScreen } from './WelcomeScreen';
 
-describe('WelcomeScreen — guest is the primary path, sign-in is non-functional (R1)', () => {
+describe('WelcomeScreen — guest is the only path; the app promises no sync (R1)', () => {
   test('renders the welcome screen, the design tagline, and fires onStart from "Start learning"', () => {
     const onStart = jest.fn();
     const { getByTestId, getByText } = render(<WelcomeScreen onStart={onStart} />);
@@ -17,15 +17,14 @@ describe('WelcomeScreen — guest is the primary path, sign-in is non-functional
     expect(onStart).toHaveBeenCalledTimes(1);
   });
 
-  test('sign-in buttons are disabled and never fire', () => {
-    const onStart = jest.fn();
-    const { getByTestId } = render(<WelcomeScreen onStart={onStart} />);
+  // These shipped disabled and labelled "coming soon". Nothing syncs, so they
+  // advertised a capability that does not exist. Removed 2026-08-06.
+  test('offers no sign-in affordance and makes no sync promise', () => {
+    render(<WelcomeScreen onStart={jest.fn()} />);
 
     for (const testID of ['signin-apple', 'signin-google', 'signin-email']) {
-      const button = getByTestId(testID);
-      expect(button.props.accessibilityState?.disabled).toBe(true);
-      fireEvent.press(button);
+      expect(screen.queryByTestId(testID)).toBeNull();
     }
-    expect(onStart).not.toHaveBeenCalled();
+    expect(screen.queryByText(/sync|sign in/i)).toBeNull();
   });
 });

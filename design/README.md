@@ -39,7 +39,7 @@ Sources: product brief pasted in project chat (graded music-theory curriculum & 
 - No icon font. Icons are minimal inline SVG strokes (2px, currentColor-style single hue): tab bar glyphs, play triangles, stat bars. Play affordance is always a solid triangle in a circle.
 - Music glyphs come from **Noto Music** (Google Fonts) inline in text and SVG `<text>`: 𝄞 U+1D11E clef, ♯♭♮ accidentals, 𝅗𝅥/𝅘𝅥/𝅘𝅥𝅮 note values. In production, notation itself is rendered by abcjs/VexFlow into the paper card (`NotationCard` is the placeholder contract).
 - Strand glyph pairings (for colour-vision-safe mode): Rhythm 𝅘𝅥, Pitch 𝄞, Scales ♯, Intervals ⟷, Chords ≡, Terms 𝆑, Context 𝄚.
-- **The mark is the chromatic C** (approved 2026-08-06 — this line previously read "Do not invent a logo"). Sam's artwork: a ring of chromatic wedges broken at the right, a dark C whose inner arc becomes piano keys, and a quaver at the upper right. Source of truth is `design/brand/logo-source.png`; every icon asset is derived from it by `scripts/export-icon.py --bg '#ffffff' --fit 0.86`, never edited by hand. The mark is **light-ground** — the C and the quaver are near-black, so it must never be placed on a dark surface. That is why the splash keeps the dark canvas but puts the mark on its own white rounded card. The **iOS 18 dark variant** recolours only that near-black ink to `--paper`, leaving every wedge as drawn, and ships with its transparency intact because iOS supplies the dark backdrop itself. The **tinted** variant is deliberately absent: Expo fills the tinted source with a white background, which flattens grayscale artwork, so iOS derives its own from the light icon instead. Alongside it the brand sets "Chromaticly" in Figtree 800. The wedge palette is the mark's own and deliberately wider than the seven strand hues; do not reconcile them.
+- **The mark is the chromatic C** (approved 2026-08-06 — this line previously read "Do not invent a logo"). Sam's artwork: a ring of chromatic wedges broken at the right, a dark C whose inner arc becomes piano keys, and a quaver at the upper right. Source of truth is `design/brand/logo-source.png`; every icon asset is derived from it by `scripts/export-icon.py design/brand/logo-source.png --bg '#ffffff' --fit 0.80`, never edited by hand. The fit measures **visible** bounds only — the artwork carries a soft shadow reaching 147 px below the mark at alpha 1–8, and counting it centred the shadow instead. The mark is **light-ground** — the C and the quaver are near-black, so it must never be placed on a dark surface. That is why the splash keeps the dark canvas but puts the mark on its own white rounded card. The **iOS 18 dark variant** recolours only that near-black ink to `--paper`, leaving every wedge as drawn, and ships with its transparency intact because iOS supplies the dark backdrop itself. The **tinted** variant is deliberately absent: Expo fills the tinted source with a white background, which flattens grayscale artwork, so iOS derives its own from the light icon instead. **In-app, use the dark variant** — the Welcome screen renders `icon-dark.png` directly, because the app canvas is dark and that file is transparent with light ink. The 7-hue `brandGradient` token it replaced is now unused; keep it for the score rings. Alongside it the brand sets "Chromaticly" in Figtree 800. The wedge palette is the mark's own and deliberately wider than the seven strand hues; do not reconcile them.
 
 ## Index
 - `styles.css` → `tokens/colors.css`, `tokens/typography.css`, `tokens/shape.css`
@@ -288,3 +288,25 @@ Two things stay unchanged, and both are deliberate:
 2. **The reveal keeps its play.** The correct-answer notation inside the FeedbackSheet sounds
    normally, per rule 5. The written music becomes playable the moment the answer is in — which is
    the teaching moment, not the exam.
+
+### Welcome offers no sign-in · approved 2026-08-06
+
+Screen 6a draws three sign-in buttons under an "or sign in to sync" divider, framed as secondary.
+They shipped **disabled and labelled "Coming soon"**, because nothing in the app syncs. They are now
+removed, and 6a is superseded on this point.
+
+The reason is that the buttons advertised a capability that does not exist. A first-time tester meets
+them in the first fifteen seconds, taps one, and nothing happens. "Coming soon" does not repair that —
+it confirms the screen is unfinished at the moment the app is making its only first impression.
+
+What stays, and why it is not the same thing:
+
+| Surface | Verdict |
+|---|---|
+| `AccountCreateScreen` | **Stays.** It claims a display name and nothing else — no email, no OAuth, no sync promise. A local identity is honest on a device-only app |
+| `AccountNudgeSheet` | **Stays.** It already carries no "sync now" promise and no committed future-sync claim |
+| Welcome sign-in block | **Removed.** The only surface that promised a server |
+
+The subtext under the primary button changes from "No account needed — jump straight in." to
+"No account needed. Everything stays on this device." — the same reassurance, now also a true
+statement of where progress lives. Restore the block only when sync actually exists.
