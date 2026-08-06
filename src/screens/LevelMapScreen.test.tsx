@@ -114,6 +114,17 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(getByTestId('exam-start')).toBeTruthy();
   });
 
+  // First steps has no exam and must not grow one by accident. The seal is what a
+  // learner reads as "there is a paper here", so its ABSENCE is the assertion.
+  test('the First steps level renders no exam-gate seal, because it has no paper', async () => {
+    const { queryByTestId, findByTestId } = renderMap();
+    await findByTestId('level-map-screen');
+
+    const level0 = LEVELS.find((l) => l.grade === 0)!;
+    expect(level0.examGate).toBeUndefined();
+    expect(queryByTestId(`exam-gate-${level0.id}`)).toBeNull();
+  });
+
   // chromaticly-ehp: Grade 5 shipped its content slice, so no level renders
   // collapsed anymore — every level (1-5) is reachable on a fresh store
   // (content presence is the only gate) and renders expanded with real units.

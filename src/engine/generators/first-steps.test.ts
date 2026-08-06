@@ -52,6 +52,16 @@ describe('every First steps generator — the properties the ledgers depend on',
   // distractor a learner can pick names its own misconception. The first version
   // of this test skipped when by_distractor was absent, which let stave_position
   // ship with none at all — a vacuous pass, caught by the repo-wide test instead.
+  // A distractor drawn by position rather than by the seeded RNG is the same
+  // every time, so a value that appears ONLY when it is correct is a free mark.
+  test.each([
+    ['alphabet_step', 3],
+    ['note_shape_length', 2],
+  ])('%s varies its distractor set across seeds rather than taking a fixed slice', (template, minimumSets) => {
+    const sets = SEEDS.map((seed) => generate(template, { grade: 0, seed, atoms: [] }).distractors.slice().sort().join());
+    expect(new Set(sets).size).toBeGreaterThanOrEqual(minimumSets);
+  });
+
   test.each(TEMPLATES)('%s writes a distinct by_distractor line for every distractor it emits', (template) => {
     for (const seed of SEEDS) {
       const instance = generate(template, { grade: 0, seed, atoms: [] });
@@ -135,6 +145,22 @@ describe('keyboard_find (lesson 3) — answered on the keyboard, located by the 
   test('the answer is a pitch inside the keyboard component span', () => {
     for (const seed of SEEDS) {
       expect(generate('keyboard_find', { grade: 0, seed, atoms: [] }).answer.canonical).toMatch(/^[A-G]4$/);
+    }
+  });
+
+  // Keyboard.tsx draws C4..F5, so C D E F appear twice and both are tappable.
+  // Marking the upper one wrong contradicts the atom, which is keyed by LETTER.
+  test('where the keyboard draws the letter twice, both octaves are accepted', () => {
+    for (const letter of ['C', 'D', 'E', 'F']) {
+      const instance = generate('keyboard_find', { grade: 0, seed: 0, atoms: [keyboardAtom(letter)] });
+      expect(instance.answer.accepted_alternatives).toEqual([`${letter}5`]);
+    }
+  });
+
+  test('where it draws the letter once, there is no alternative to accept', () => {
+    for (const letter of ['G', 'A', 'B']) {
+      const instance = generate('keyboard_find', { grade: 0, seed: 0, atoms: [keyboardAtom(letter)] });
+      expect(instance.answer.accepted_alternatives).toEqual([]);
     }
   });
 

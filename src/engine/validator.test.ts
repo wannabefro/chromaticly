@@ -1,5 +1,6 @@
 import type { ExerciseInstance } from './schema';
 import { ExerciseInstanceSchema } from './schema';
+import { generate } from './generators';
 import { validate } from './validator';
 
 function validNoteNamingInstance(): ExerciseInstance {
@@ -1104,5 +1105,72 @@ describe('validate — voice_options CLOSED-set distractor integrity (U8 decisio
     const result = validate(instance);
     expect(result.ok).toBe(false);
     expect(result.errors.some((e) => e.includes('not exactly one defensible answer'))).toBe(true);
+  });
+});
+
+// The five First steps hooks (chromaticly-dhe). Each one recomputes the answer
+// from the material the LEARNER sees, so the test that proves it works is the one
+// that corrupts that material and expects a rejection. A hook only asserted
+// against valid generator output would pass even if it returned [] unconditionally.
+describe('validate — per-template hooks: First steps (recompute-don\'t-trust)', () => {
+  const g = (template: string, atoms: string[] = []) => generate(template, { grade: 0, seed: 0, atoms });
+
+  test('pulse_count: a bar whose event count disagrees with the answer is rejected', () => {
+    const instance = g('pulse_count');
+    instance.answer.canonical = String(Number(instance.answer.canonical) + 1);
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('pulse_count') && e.includes('but the answer says'))).toBe(true);
+  });
+
+  test('pulse_count: notation on an aural card is rejected even when the count is right', () => {
+    const instance = g('pulse_count');
+    instance.stimulus.music = (instance.interaction.config as { played_music: never }).played_music;
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('the card is aural'))).toBe(true);
+  });
+
+  test('alphabet_step: an answer that is not the next letter is rejected', () => {
+    const instance = g('alphabet_step');
+    instance.answer.canonical = instance.distractors[0];
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('alphabet_step') && e.includes('but the answer says'))).toBe(true);
+  });
+
+  test('keyboard_find: an answer whose letter is not the atom it credits is rejected', () => {
+    const instance = g('keyboard_find');
+    const wrong = 'ABCDEFG'.split('').find((l) => l !== String(instance.answer.canonical)[0])!;
+    instance.answer.canonical = `${wrong}4`;
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('keyboard_find') && e.includes('credits'))).toBe(true);
+  });
+
+  test('stave_position: swapping line for space is rejected', () => {
+    const instance = g('stave_position', ['stave_anatomy:line_or_space']);
+    instance.answer.canonical = instance.answer.canonical === 'On a line' ? 'In a space' : 'On a line';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('stave_position'))).toBe(true);
+  });
+
+  // The bug this hook actually caught during the build: the generator compared
+  // pitches as strings, so the note it called higher could sound lower.
+  test('stave_position: naming the lower of the two drawn notes as the higher is rejected', () => {
+    const instance = g('stave_position', ['stave_anatomy:higher_lower']);
+    instance.answer.canonical = instance.answer.canonical === 'The first one' ? 'The second one' : 'The first one';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('stave_position') && e.includes('makes it'))).toBe(true);
+  });
+
+  test('note_shape_length: an answer naming a shape the stimulus does not draw is rejected', () => {
+    const instance = g('note_shape_length');
+    instance.answer.canonical = instance.answer.canonical === 'minim' ? 'crotchet' : 'minim';
+    const result = validate(instance);
+    expect(result.ok).toBe(false);
+    expect(result.errors.some((e) => e.includes('note_shape_length') && e.includes('draws a'))).toBe(true);
   });
 });

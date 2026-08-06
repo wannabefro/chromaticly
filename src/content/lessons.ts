@@ -676,9 +676,6 @@ assertNoCrossDocDuplicateIds(GRADE_DOCS);
 
 export const LESSONS_BY_GRADE: Record<number, Lesson[]> = Object.fromEntries(GRADE_DOCS.map((doc) => [doc.grade, doc.lessons]));
 
-// The grade-1 doc specifically — some grade-1-only surfaces still read this directly.
-export const LESSONS_DOC: LessonsDoc = GRADE_DOCS[0];
-
 // Concatenated in grade order so a second registered doc extends this, not rewrites it.
 export const LESSONS: Lesson[] = Object.keys(LESSONS_BY_GRADE)
   .map(Number)

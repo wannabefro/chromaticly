@@ -486,3 +486,53 @@ describe('ExerciseLoop — transposition_input (U4/D5/D6): per-item grading prot
     expect(onResult).toHaveBeenCalledWith(expect.objectContaining({ correct: false }));
   });
 });
+
+// aural_mcq (chromaticly-dhe) is the first interaction to pair `played_music` with
+// a NULL stimulus, and that combination broke the loop in two places at once:
+// `onPlayMusic` was gated on `stimulus.music`, and `surfaceRef` was bound only
+// inside the branch that renders notation. Either alone makes play a silent no-op.
+//
+// This case lives HERE and not in AuralMcq.test.tsx on purpose. That file injects
+// `onPlayMusic` itself, so it proves the component calls what it is handed and is
+// structurally blind to the loop never handing it anything.
+describe('ExerciseLoop — an aural item with no notation can still be heard', () => {
+  const auralInstance = () => generate('pulse_count', { grade: 0, seed: 1, atoms: [] });
+
+  test('it mounts a surface even though there is nothing to look at', () => {
+    const instance = auralInstance();
+    expect(instance.stimulus.music).toBeNull();
+
+    const { getByTestId, queryByTestId } = render(
+      <ExerciseLoop instance={instance} onResult={jest.fn()} />,
+    );
+
+    expect(queryByTestId('stimulus-music')).toBeNull();
+    expect(getByTestId('audio-only-surface')).toBeTruthy();
+  });
+
+  test('tapping play reaches the surface as a real command', () => {
+    mockSurface.posted.length = 0;
+    const instance = auralInstance();
+    const { getByTestId } = render(<ExerciseLoop instance={instance} onResult={jest.fn()} />);
+
+    fireEvent.press(getByTestId('aural-mcq-listen'));
+
+    // playMusic goes on the wire as a playAbc command (MusicSurface.tsx:135).
+    // Assert the abc carries the bar the item asks about, not merely that some
+    // command was issued — a play that sounded the wrong music would still pass.
+    const played = mockSurface.posted.filter((cmd) => cmd.includes('"playAbc"'));
+    expect(played).toHaveLength(1);
+    const beats = Number(instance.answer.canonical);
+    expect(JSON.parse(played[0]).abc.trim().split('\n').pop().split(' ')).toHaveLength(beats);
+  });
+
+  // The gate that caused the break: it must follow the AUDIO, not the notation.
+  test('an item with neither notation nor audio still gets no play callback', () => {
+    const textOnly = generate('alphabet_step', { grade: 0, seed: 0, atoms: [] });
+    expect(textOnly.stimulus.music).toBeNull();
+    expect(textOnly.interaction.config.played_music).toBeUndefined();
+
+    const { queryByTestId } = render(<ExerciseLoop instance={textOnly} onResult={jest.fn()} />);
+    expect(queryByTestId('audio-only-surface')).toBeNull();
+  });
+});

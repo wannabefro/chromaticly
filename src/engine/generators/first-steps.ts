@@ -27,6 +27,20 @@ import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
+/** Draw `count` distinct members of `pool` with the seeded RNG.
+ *
+ *  Never `.slice()`. Slicing a fixed list takes the same members every time, so
+ *  the option SET leaks the answer however well assembleOptions shuffles the
+ *  display: a value that can only appear when it is correct is a free mark. */
+function sampleDistinct<T>(rng: () => number, pool: readonly T[], count: number): T[] {
+  const remaining = [...pool];
+  const drawn: T[] = [];
+  while (drawn.length < count && remaining.length > 0) {
+    drawn.push(remaining.splice(Math.floor(rng() * remaining.length), 1)[0]);
+  }
+  return drawn;
+}
+
 /** Pick from `pool`, falling back to the whole set when the caller's atom scope
  *  names nothing this template can serve. Practice hands a single due atom, so
  *  every one of these must survive a one-element pool. */
@@ -110,7 +124,7 @@ function buildAlphabetStep(contentSeed: number, grade: number, idSeed: number, a
   const up = rng() < 0.5;
   const answer = ALPHABET_LETTERS[(index + (up ? 1 : ALPHABET_LETTERS.length - 1)) % ALPHABET_LETTERS.length];
 
-  const distractors = ALPHABET_LETTERS.filter((l) => l !== answer && l !== letter).slice(0, 2);
+  const distractors = sampleDistinct(rng, ALPHABET_LETTERS.filter((l) => l !== answer && l !== letter), 2);
 
   return {
     id: makeInstanceId('alphabet_step', grade, idSeed),
@@ -165,9 +179,13 @@ const KEYBOARD_LANDMARK: Record<string, string> = {
 function buildKeyboardFind(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
   const letter = pick(rng, scopeTo(atoms, 'keyboard', WHITE_LETTERS));
-  // The keyboard spans C4..F5, so C D E F are reachable in both octaves and
-  // G A B in the lower one only. Pin the lower octave: one answer per question.
   const pitch = `${letter}4`;
+  // The keyboard component draws C4..F5, so C D E F appear TWICE and both are
+  // live keys. The atom is keyed by letter precisely because C4 and C5 are the
+  // same answer to "where does C live", so the upper octave must be accepted —
+  // otherwise a learner follows the hint, taps the nearer D, and is marked wrong
+  // while being read back the exact landmark they used.
+  const upperOctave = ['C', 'D', 'E', 'F'].includes(letter) ? [`${letter}5`] : [];
 
   return {
     id: makeInstanceId('keyboard_find', grade, idSeed),
@@ -177,7 +195,7 @@ function buildKeyboardFind(contentSeed: number, grade: number, idSeed: number, a
     prompt: `Find ${letter} on the keyboard.`,
     stimulus: { music: null, text: letter },
     interaction: { type: 'keyboard_tap', config: {} },
-    answer: { canonical: pitch, accepted_alternatives: [] },
+    answer: { canonical: pitch, accepted_alternatives: upperOctave },
     distractors: [],
     hints: [`${letter} is ${KEYBOARD_LANDMARK[letter]}.`],
     feedback: {
@@ -278,7 +296,7 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
       correct: 'Yes — within one clef, further up the stave is the higher sound.',
       incorrect: `${answer} is higher: it sits further up the stave, and in this clef that means a higher sound.`,
       by_distractor: {
-        [wrong]: `That one sits LOWER on the stave, so in this clef it is the lower sound. ${answer.toLowerCase()} is higher.`,
+        [wrong]: `That one sits LOWER on the stave, so in this clef it is the lower sound. ${answer} is higher.`,
       },
     },
     srs_tags: [staveAnatomyAtom('higher_lower')],
@@ -335,7 +353,7 @@ function buildNoteShapeLength(contentSeed: number, grade: number, idSeed: number
     : [{ type: 'note' as const, pitch, dur: shape }];
   const music: Music = { clef: 'treble', key_sig: null, time_sig: null, voices: [{ events }] };
 
-  const others = Object.keys(SHAPE_BEATS).filter((s) => s !== shape).slice(0, 2);
+  const others = sampleDistinct(rng, Object.keys(SHAPE_BEATS).filter((s) => s !== shape), 2);
 
   return {
     id: makeInstanceId('note_shape_length', grade, idSeed),

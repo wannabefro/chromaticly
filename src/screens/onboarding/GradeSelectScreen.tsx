@@ -30,8 +30,8 @@ const GRADE_DESCRIPTORS: Record<number, string> = {
  *  design 5a draws exactly five cards and `design/` has no screen for a sixth, so
  *  how it should appear here is an open design decision. Until that ruling exists,
  *  showing it would mean inventing a card AND rendering the words "Grade 0", which
- *  the level's own naming decision forbids. The level is reachable, just not from
- *  this picker yet. */
+ *  the level's own naming decision forbids. The content ships unreachable: no
+ *  surface starts grade 0 until the design ruling lands and adds the entry. */
 const PICKABLE_LEVELS = LEVELS.filter((l) => l.grade >= 1);
 
 const FIRST_STARTABLE_GRADE = PICKABLE_LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;

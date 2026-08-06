@@ -164,7 +164,8 @@ export function ExerciseLoop({
     ((music as Music | null)?.voices.some((v) => v.events.some((e) => e.type === 'note' && e.ornament != null)) ?? false);
   // A by-ear card must not play the written music — that lets a learner compare
   // sound to sound and never read the notation.
-  const isByEar = instance.interaction.config?.played_music != null;
+  const playedMusic = instance.interaction.config?.played_music as Music | undefined;
+  const isByEar = playedMusic != null;
   // The amber partial sheet is only for some-right-some-wrong (D5) — an all-wrong
   // attempt still routes to the plain incorrect sheet below.
   const partialSummary = graded === false ? (spec.partialFeedback?.(instance, response) ?? null) : null;
@@ -197,6 +198,17 @@ export function ExerciseLoop({
           )
         )}
 
+        {/* An aural item with NO notation (aural_mcq) still needs a surface, because
+            the surface is what synthesises the audio. Without one `surfaceRef` is
+            null and every play is a silent no-op. Clipped to zero height rather
+            than not rendered — the same trick TheoryInSound uses, and for the same
+            reason: the card is by ear, so it must be heard and not seen. */}
+        {music == null && playedMusic != null && (
+          <View style={styles.audioOnlySurface} pointerEvents="none" testID="audio-only-surface">
+            <NotationCard ref={surfaceRef} music={playedMusic} play={false} onEvent={handleSurfaceEvent} />
+          </View>
+        )}
+
         {coachMark}
 
         <spec.Component
@@ -206,7 +218,7 @@ export function ExerciseLoop({
           strand={strand}
           onResponseChange={setResponse}
           onSelfGrade={onSelfGrade}
-          onPlayMusic={music ? handlePlayMusic : undefined}
+          onPlayMusic={music != null || playedMusic != null ? handlePlayMusic : undefined}
         />
 
         {/* Keyed on the instance so the reveal count resets with the item. Nothing
@@ -288,4 +300,5 @@ const styles = StyleSheet.create({
   },
   prompt: { ...typo.prompt, color: colors.text },
   stimulusText: { ...typo.title, color: colors.text, textAlign: 'center' },
+  audioOnlySurface: { height: 0, overflow: 'hidden' },
 });

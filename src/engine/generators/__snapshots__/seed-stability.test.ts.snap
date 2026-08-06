@@ -1233,13 +1233,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "F",
     },
     "distractors": [
-      "A",
+      "C",
       "B",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from E.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step forward from E.",
+        "C": "C is somewhere else in the row. Read A B C D E F G and step forward from E.",
       },
       "correct": "Yes — F comes after E.",
       "incorrect": "The letters run A B C D E F G and then back to A, so F comes after E.",
@@ -1271,13 +1271,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "A",
+      "G",
       "B",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "G": "G is somewhere else in the row. Read A B C D E F G and step back from D.",
       },
       "correct": "Yes — C comes before D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
@@ -1347,13 +1347,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "A",
       "D",
+      "F",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from B.",
         "D": "D is somewhere else in the row. Read A B C D E F G and step forward from B.",
+        "F": "F is somewhere else in the row. Read A B C D E F G and step forward from B.",
       },
       "correct": "Yes — C comes after B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes after B.",
@@ -1385,13 +1385,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "A",
       "B",
+      "C",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from E.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step back from E.",
+        "C": "C is somewhere else in the row. Read A B C D E F G and step back from E.",
       },
       "correct": "Yes — D comes before E.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes before E.",
@@ -1424,12 +1424,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     },
     "distractors": [
       "A",
-      "B",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
         "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from C.",
       },
       "correct": "Yes — D comes after C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
@@ -1461,13 +1461,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "B",
     },
     "distractors": [
-      "A",
+      "E",
       "D",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from C.",
         "D": "D is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step back from C.",
       },
       "correct": "Yes — B comes before C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so B comes before C.",
@@ -1499,13 +1499,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "A",
+      "F",
       "B",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "F": "F is somewhere else in the row. Read A B C D E F G and step back from D.",
       },
       "correct": "Yes — C comes before D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
@@ -1537,13 +1537,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
+      "E",
       "A",
-      "B",
     ],
     "feedback": {
       "by_distractor": {
         "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
-        "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step back from D.",
       },
       "correct": "Yes — C comes before D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
@@ -1576,12 +1576,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     },
     "distractors": [
       "B",
-      "C",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
         "B": "B is somewhere else in the row. Read A B C D E F G and step forward from G.",
-        "C": "C is somewhere else in the row. Read A B C D E F G and step forward from G.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from G.",
       },
       "correct": "Yes — after G the letters start again at A. There is no H in music.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes after G.",
@@ -1613,13 +1613,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "A",
     },
     "distractors": [
-      "B",
+      "F",
       "C",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from G.",
         "C": "C is somewhere else in the row. Read A B C D E F G and step forward from G.",
+        "F": "F is somewhere else in the row. Read A B C D E F G and step forward from G.",
       },
       "correct": "Yes — after G the letters start again at A. There is no H in music.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes after G.",
@@ -1651,13 +1651,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
+      "G",
       "A",
-      "B",
     ],
     "feedback": {
       "by_distractor": {
         "A": "A is somewhere else in the row. Read A B C D E F G and step back from E.",
-        "B": "B is somewhere else in the row. Read A B C D E F G and step back from E.",
+        "G": "G is somewhere else in the row. Read A B C D E F G and step back from E.",
       },
       "correct": "Yes — D comes before E.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes before E.",
@@ -1689,13 +1689,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "A",
+      "G",
       "D",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from B.",
         "D": "D is somewhere else in the row. Read A B C D E F G and step forward from B.",
+        "G": "G is somewhere else in the row. Read A B C D E F G and step forward from B.",
       },
       "correct": "Yes — C comes after B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes after B.",
@@ -1727,13 +1727,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "A",
-      "B",
+      "G",
+      "F",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "F": "F is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "G": "G is somewhere else in the row. Read A B C D E F G and step forward from C.",
       },
       "correct": "Yes — D comes after C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
@@ -1766,12 +1766,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     },
     "distractors": [
       "C",
-      "D",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
         "C": "C is somewhere else in the row. Read A B C D E F G and step back from B.",
-        "D": "D is somewhere else in the row. Read A B C D E F G and step back from B.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step back from B.",
       },
       "correct": "Yes — A comes before B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes before B.",
@@ -1803,13 +1803,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "G",
     },
     "distractors": [
-      "A",
+      "D",
       "B",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from F.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step forward from F.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step forward from F.",
       },
       "correct": "Yes — G comes after F.",
       "incorrect": "The letters run A B C D E F G and then back to A, so G comes after F.",
@@ -1841,13 +1841,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "G",
     },
     "distractors": [
-      "A",
       "B",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from F.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step forward from F.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from F.",
       },
       "correct": "Yes — G comes after F.",
       "incorrect": "The letters run A B C D E F G and then back to A, so G comes after F.",
@@ -1879,13 +1879,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "A",
       "B",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
         "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from C.",
       },
       "correct": "Yes — D comes after C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
@@ -1917,13 +1917,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "A",
     },
     "distractors": [
-      "C",
       "D",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "C": "C is somewhere else in the row. Read A B C D E F G and step back from B.",
         "D": "D is somewhere else in the row. Read A B C D E F G and step back from B.",
+        "E": "E is somewhere else in the row. Read A B C D E F G and step back from B.",
       },
       "correct": "Yes — A comes before B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes before B.",
@@ -1955,13 +1955,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "B",
     },
     "distractors": [
-      "A",
-      "D",
+      "G",
+      "F",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from C.",
-        "D": "D is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "F": "F is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "G": "G is somewhere else in the row. Read A B C D E F G and step back from C.",
       },
       "correct": "Yes — B comes before C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so B comes before C.",
@@ -14794,7 +14794,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "F5",
+      ],
       "canonical": "F4",
     },
     "distractors": [],
@@ -14825,7 +14827,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "F5",
+      ],
       "canonical": "F4",
     },
     "distractors": [],
@@ -14856,7 +14860,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "D5",
+      ],
       "canonical": "D4",
     },
     "distractors": [],
@@ -14918,7 +14924,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "E5",
+      ],
       "canonical": "E4",
     },
     "distractors": [],
@@ -14949,7 +14957,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "E5",
+      ],
       "canonical": "E4",
     },
     "distractors": [],
@@ -14980,7 +14990,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "F5",
+      ],
       "canonical": "F4",
     },
     "distractors": [],
@@ -15011,7 +15023,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "F5",
+      ],
       "canonical": "F4",
     },
     "distractors": [],
@@ -15135,7 +15149,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "D5",
+      ],
       "canonical": "D4",
     },
     "distractors": [],
@@ -15166,7 +15182,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "E5",
+      ],
       "canonical": "E4",
     },
     "distractors": [],
@@ -15197,7 +15215,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "D5",
+      ],
       "canonical": "D4",
     },
     "distractors": [],
@@ -15290,7 +15310,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "E5",
+      ],
       "canonical": "E4",
     },
     "distractors": [],
@@ -15321,7 +15343,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "D5",
+      ],
       "canonical": "D4",
     },
     "distractors": [],
@@ -15352,7 +15376,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
   },
   {
     "answer": {
-      "accepted_alternatives": [],
+      "accepted_alternatives": [
+        "E5",
+      ],
       "canonical": "E4",
     },
     "distractors": [],
@@ -44640,8 +44666,8 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "crotchet",
     },
     "distractors": [
-      "semibreve",
       "minim",
+      "semibreve",
     ],
     "feedback": {
       "by_distractor": {
@@ -44693,12 +44719,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "crotchet",
     },
     "distractors": [
+      "quaver",
       "semibreve",
-      "minim",
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a crotchet.",
         "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
       },
       "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
@@ -44799,13 +44825,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "semibreve",
     },
     "distractors": [
-      "minim",
       "crotchet",
+      "quaver",
     ],
     "feedback": {
       "by_distractor": {
         "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a semibreve.",
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a semibreve.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a semibreve.",
       },
       "correct": "Yes — a semibreve is an open notehead with no stem, and it is written as 4 beats.",
       "incorrect": "This is a semibreve: an open notehead with no stem. It is written as 4 beats.",
@@ -44958,8 +44984,8 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "minim",
     },
     "distractors": [
-      "semibreve",
       "crotchet",
+      "semibreve",
     ],
     "feedback": {
       "by_distractor": {
@@ -45011,12 +45037,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "minim",
     },
     "distractors": [
+      "quaver",
       "semibreve",
-      "crotchet",
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
         "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
       },
       "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
@@ -45064,8 +45090,8 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "minim",
     },
     "distractors": [
-      "semibreve",
       "crotchet",
+      "semibreve",
     ],
     "feedback": {
       "by_distractor": {
@@ -45117,8 +45143,8 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "quaver",
     },
     "distractors": [
-      "semibreve",
       "minim",
+      "semibreve",
     ],
     "feedback": {
       "by_distractor": {
@@ -45175,13 +45201,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "quaver",
     },
     "distractors": [
-      "semibreve",
       "minim",
+      "crotchet",
     ],
     "feedback": {
       "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a quaver.",
         "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a quaver.",
       },
       "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
       "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
@@ -45228,12 +45254,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "crotchet",
     },
     "distractors": [
+      "quaver",
       "semibreve",
-      "minim",
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a crotchet.",
         "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
       },
       "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
@@ -45281,12 +45307,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "minim",
     },
     "distractors": [
+      "quaver",
       "semibreve",
-      "crotchet",
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
         "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
       },
       "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
@@ -45334,13 +45360,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "minim",
     },
     "distractors": [
-      "semibreve",
+      "quaver",
       "crotchet",
     ],
     "feedback": {
       "by_distractor": {
         "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
       },
       "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
@@ -45440,12 +45466,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "crotchet",
     },
     "distractors": [
+      "quaver",
       "semibreve",
-      "minim",
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a crotchet.",
         "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
       },
       "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
@@ -45493,13 +45519,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "quaver",
     },
     "distractors": [
-      "semibreve",
+      "crotchet",
       "minim",
     ],
     "feedback": {
       "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a quaver.",
         "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a quaver.",
       },
       "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
       "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
@@ -45657,13 +45683,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
       "canonical": "minim",
     },
     "distractors": [
-      "semibreve",
+      "quaver",
       "crotchet",
     ],
     "feedback": {
       "by_distractor": {
         "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
       },
       "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
@@ -61297,7 +61323,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the first one is higher.",
+        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -61455,7 +61481,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the second one is higher.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -61562,7 +61588,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the first one is higher.",
+        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -61618,7 +61644,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the first one is higher.",
+        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -61674,7 +61700,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the second one is higher.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -61832,7 +61858,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the second one is higher.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -61990,7 +62016,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the second one is higher.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -62199,7 +62225,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the first one is higher.",
+        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
@@ -62255,7 +62281,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "feedback": {
       "by_distractor": {
-        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. the second one is higher.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
       "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
