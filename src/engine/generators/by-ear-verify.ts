@@ -72,9 +72,10 @@ function durationIndices(events: readonly MusicEvent[]): number[] {
 
 /** Every named Duration is a distinct length, so any other choice is audibly
  *  different — no enharmonic-style aliasing to guard against. */
-function alterOneDuration(music: Music, index: number, rng: () => number, grade: number, voice = 0): Music {
+function alterOneDuration(music: Music, index: number, rng: () => number, grade: number, voice = 0): Music | null {
   const original = music.voices[voice].events[index] as { dur: Duration };
   const choices = scopeForGrade(grade).noteValues.filter((d) => d !== original.dur);
+  if (choices.length === 0) return null;
   const dur = choices[Math.floor(rng() * choices.length)];
   const out = cloneMusic(music);
   const ev = out.voices[voice].events[index] as { dur: Duration; dots?: number };
@@ -128,7 +129,11 @@ function buildByEarVerify(
   // The verdict comes from the ORIGINAL seed, not the retry seed. A "Same" item is
   // trivially valid, so re-rolling it on every retry drifts the answer toward Same.
   const wantSame = mulberry32(idSeed)() < SAME_RATE;
-  const ornaments = ornamentIndices(events);
+  // Gate on what the source CREDITS, not on what it happens to contain. An
+  // ornament present in a rhythm source would otherwise be altered while a
+  // rhythm atom took the credit.
+  const creditsOrnament = source.srs_tags.some((t) => t.startsWith('ornament:'));
+  const ornaments = creditsOrnament ? ornamentIndices(events) : [];
 
   let altered: Music | null;
   if (wantSame) {
@@ -142,6 +147,7 @@ function buildByEarVerify(
     if (indices.length === 0) throw new Error(`by_ear_verify: source "${sourceId}" has no duration-bearing events`);
     const index = indices[Math.floor(rng() * indices.length)];
     altered = alterOneDuration(music, index, rng, opts.grade, voice);
+    if (!altered) throw new Error(`by_ear_verify: grade ${opts.grade} has no alternative note value`);
   } else {
     const refs = soundingRefs(events);
     if (refs.length === 0) throw new Error(`by_ear_verify: source "${sourceId}" has no sounding notes to alter`);

@@ -9,6 +9,7 @@ import { generate } from './index';
 import { validate } from '../validator';
 import { alterOneSoundingPitch, soundingRefs } from './by-ear-verify';
 
+const ORNAMENT_ATOMS = ['ornament:trill', 'ornament:turn', 'ornament:upper_mordent', 'ornament:appoggiatura'];
 const NOTE_ATOMS = ['note_read:treble:C4', 'note_read:treble:D4', 'note_read:treble:E4'];
 
 function make(seed = 0, source = 'note_naming', grade = 1, atoms = NOTE_ATOMS) {
@@ -220,5 +221,33 @@ describe('by_ear_verify — a guesser gets no edge', () => {
     const same = verdicts.filter((v) => v === 'Same').length;
     expect(same).toBeGreaterThan(120);
     expect(same).toBeLessThan(180);
+  });
+});
+
+// The mutation must follow the CREDIT, not what the music happens to contain.
+// Found by the Codex outsider seat 2026-08-06: the ornament branch preceded the
+// strand check, so an ornament in a rhythm source would be altered while a
+// rhythm atom took the credit.
+describe('by_ear_verify — the altered thing is the credited thing', () => {
+  test('a source that credits no ornament atom never alters an ornament', () => {
+    for (let seed = 0; seed < 60; seed++) {
+      const inst = make(seed, 'note_naming');
+      if (inst.srs_tags.some((t) => t.startsWith('ornament:'))) continue;
+      const w = (inst.stimulus.music as Music).voices.flatMap((v) => v.events) as NoteEvent[];
+      const p = played(inst).voices.flatMap((v) => v.events) as NoteEvent[];
+      expect(w.map((e) => e.ornament?.kind)).toEqual(p.map((e) => e.ornament?.kind));
+    }
+  });
+
+  test('a source that credits an ornament atom alters the ornament, not the pitch', () => {
+    const differing = Array.from({ length: 40 }, (_, s) => make(s, 'ornament_recognition', 4, ORNAMENT_ATOMS)).filter(
+      (i) => i.answer.canonical === 'Different',
+    );
+    expect(differing.length).toBeGreaterThan(0);
+    for (const inst of differing) {
+      const w = (inst.stimulus.music as Music).voices[0].events as NoteEvent[];
+      const p = played(inst).voices[0].events as NoteEvent[];
+      expect(w.map((e) => e.pitch)).toEqual(p.map((e) => e.pitch));
+    }
   });
 });
