@@ -66,7 +66,7 @@ describe('warmUpFor — the strand it claims is the strand it teaches', () => {
   });
 });
 
-// chromaticly-nm4, recorded here so the fix is a one-line change with a test
+// chromaticly-atz, recorded here so the fix is a one-line change with a test
 // already waiting for it. `note_value_compare` is the SOLE atom of rhythm-breve-4,
 // a GRADE 4 lesson, so retry-until-correct hands every new grade-1..5 learner a
 // fully 3-starred grade-4 lesson before they have done anything.
@@ -76,7 +76,7 @@ describe('warmUpFor — the known defect, pinned so the fix is provable', () => 
     expect(owner.grade).toBe(0);
   });
 
-  test('the grades still drill an atom from a grade-4 lesson — chromaticly-nm4, not yet fixed', () => {
+  test('the grades still drill an atom from a grade-4 lesson — chromaticly-atz, not yet fixed', () => {
     const owner = LESSONS.find((l) => l.atoms.includes(warmUpFor(1).atom))!;
     expect(owner.grade).toBe(4);
     expect(owner.atoms).toHaveLength(1); // one atom, so the warm-up 3-stars the whole lesson

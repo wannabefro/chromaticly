@@ -3,7 +3,7 @@
 // One definition, because five surfaces read it and they must not drift: the
 // generator call, the recorded atom, the screen accent, PlanScreen's name for it,
 // and LandedScreen's "your first <strand> point" copy. Before this they were five
-// literals in three files, and one of them was already wrong (chromaticly-nm4).
+// literals in three files, and one of them was already wrong (chromaticly-atz).
 //
 // The atom is a CONSTANT across all three questions and that is deliberate:
 // retry-until-correct (KTD3b) guarantees three in a row on one atom, which is what
@@ -34,7 +34,7 @@ export interface WarmUp {
  *
  *  It is NOT a grade-1 lesson's atom — it is the sole atom of `rhythm-breve-4`,
  *  so this warm-up hands every new learner a fully 3-starred GRADE 4 lesson.
- *  That is chromaticly-nm4, and fixing it is a one-line change here once the
+ *  That is chromaticly-atz, and fixing it is a one-line change here once the
  *  replacement grade-1 rhythm atom is chosen. */
 const DEFAULT_WARM_UP: WarmUp = {
   template: 'note_value_compare',

@@ -427,6 +427,6 @@ grade is known".
 **Not fixed here, and recorded so it is not read as settled:** `note_value_compare` is the sole atom
 of `rhythm-breve-4`, a **grade 4** lesson, so the warm-up still hands every grade 1–5 learner a fully
 three-starred grade-4 lesson before they have done anything, and real evidence toward grade-4 rhythm
-readiness. That is `chromaticly-nm4`. The scope is grade-1-legal; the lesson that owns the atom is
+readiness. That is `chromaticly-atz`. The scope is grade-1-legal; the lesson that owns the atom is
 not, and D11 conflated the two. The fix is one entry in the table above once the replacement grade-1
 rhythm atom is chosen.
