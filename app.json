@@ -8,12 +8,15 @@
     "scheme": "chromaticly",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "com.chromaticly.app",
+      "supportsTablet": true,
       "icon": {
         "light": "./assets/images/icon.png",
         "dark": "./assets/images/icon-dark.png"
       }
     },
     "android": {
+      "package": "com.chromaticly.app",
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
