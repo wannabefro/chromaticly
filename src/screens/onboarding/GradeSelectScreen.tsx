@@ -5,7 +5,9 @@
 // per the design annotation.
 //
 // First steps leads the list as a set-apart lead-in card, never as a sixth rung —
-// design/README.md, "First steps sits above the grade ladder, not inside it".
+// design/README.md, "First steps sits above the grade ladder, not inside it". The
+// grade numerals are what make that visible: the five are numbered rungs and it
+// is not. See "The grade cards are numbered, in one accent" in the same file.
 
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -94,8 +96,14 @@ export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
               testID={`grade-pill-${level.grade}`}
               disabled={!selectable}
               onPress={() => setSelectedGrade(level.grade)}
-              style={[styles.pill, selected && styles.pillSelected, !selectable && styles.pillLocked]}
+              style={[styles.pill, styles.graded, selected && styles.pillSelected, !selectable && styles.pillLocked]}
             >
+              {/* The numeral identifies the rung; the accent states which one is
+                  chosen. Two jobs, two devices — 5a gave each badge its own hue,
+                  which spends the screen's one accent five times to say nothing. */}
+              <View style={[styles.badge, selected && styles.badgeSelected]}>
+                <Text style={[styles.badgeNumeral, selected && styles.badgeNumeralSelected]}>{level.grade}</Text>
+              </View>
               <View style={styles.pillTextBlock}>
                 <Text style={[styles.pillGrade, selected && styles.pillGradeSelected]}>{level.title}</Text>
                 <Text style={styles.pillDescriptor}>{GRADE_DESCRIPTORS[level.grade]}</Text>
@@ -171,6 +179,22 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceCardSunken,
   },
   pillLocked: { opacity: 0.4 },
+  graded: { gap: shape.spaceInline },
+  // 34pt at radius 10, the numbers design 5a states. Neutral at rest, so the
+  // accent appears exactly once on the screen — on the card that is chosen.
+  badge: {
+    width: 34,
+    height: 34,
+    borderRadius: 10,
+    backgroundColor: colors.surfaceCardSunken,
+    borderWidth: shape.borderW,
+    borderColor: colors.borderStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeSelected: { backgroundColor: ACCENT, borderColor: ACCENT },
+  badgeNumeral: { ...type.option, color: colors.textFaint },
+  badgeNumeralSelected: { color: 'rgba(0,0,0,0.82)' },
   pillTextBlock: { flex: 1, gap: 2 },
   pillGrade: {
     fontFamily: type.option.fontFamily,

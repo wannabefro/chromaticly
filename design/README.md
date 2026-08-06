@@ -448,3 +448,26 @@ on top of that is a pattern a learner can ride without reading the question.
 may only credit a lesson at the learner's own level; it may never credit a single-atom lesson,
 because mastering the one atom completes it outright; and its notation must use the clef its level
 teaches first.
+
+### The grade cards are numbered, in one accent · approved 2026-08-06
+
+Screen 5a draws a 34pt numeral badge on each of the five grade cards and gives each badge its **own
+hue** — `#f0949b`, `#f0c489`, `#cb7ad4`, `#7fcaea`, `#dca6e2`. The built screen had no badges at all.
+Both are wrong, and the prototype cannot simply be followed here, because those five hues break the
+one-accent rule and none of them is the strand colour of anything. They encode nothing.
+
+**The numerals return, in a neutral tint, and the accent marks only the chosen card.** The numeral
+identifies the rung; the colour states the selection. Two jobs, two devices, neither competing with
+the other — where 5a spends the screen's single accent five times and then needs the border and the
+tick to say which card is actually selected.
+
+This is not the lane list's exception restated. That one carries seven hues because the screen *is*
+the radar and no single strand can be current, and every hue there names a strand. Here the colours
+name nothing, so there is no sentence to write in their defence.
+
+**It also makes the First steps ruling visible rather than merely true.** The argument for putting
+First steps above the ladder was that a sixth numeral would assert it is the grade below Grade 1.
+Numbering the five and leaving it unnumbered is that argument, drawn: they are rungs, it is not.
+`GradeSelectScreen.test.tsx` asserts the absence, so a later edit that gives it a badge goes red.
+
+Not changed: the badge geometry. 34pt at radius 10, exactly as 5a states it.

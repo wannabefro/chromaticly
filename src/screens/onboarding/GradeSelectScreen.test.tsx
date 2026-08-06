@@ -4,7 +4,7 @@
 // slice) every grade 1-5 has content, so every pill is selectable — there is
 // no content-less grade left to lock.
 
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent, render, within } from '@testing-library/react-native';
 
 import { LEVELS } from '../../content/levels';
 import { isLevelUnlocked } from '../../learn/mastery-rollup';
@@ -158,5 +158,54 @@ describe('grade select — First steps leads the picker without joining the ladd
     const { getByText, queryByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
     expect(getByText('Where should we start?')).toBeTruthy();
     expect(queryByText(/do you know your grade/i)).toBeNull();
+  });
+});
+
+// The grade numerals (design/README.md, "The grade cards are numbered, in one
+// accent"). 5a gave each of the five badges its OWN hue, which spends the
+// screen's single accent five times to encode nothing — so the numeral
+// identifies the rung and the accent states which one is chosen.
+describe('grade select — the five are numbered rungs, and First steps is not one', () => {
+  test('each grade card shows its own numeral', () => {
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+
+    for (const g of [1, 2, 3, 4, 5]) {
+      expect(within(getByTestId(`grade-pill-${g}`)).getByText(String(g))).toBeTruthy();
+    }
+  });
+
+  // The whole argument for putting First steps above the ladder was that a sixth
+  // numeral would assert it is the grade below Grade 1. A badge here would undo it.
+  test('First steps carries no numeral, which is what keeps it out of the ladder', () => {
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+
+    const starter = within(getByTestId('grade-pill-0'));
+    for (const g of [0, 1, 2, 3, 4, 5]) expect(starter.queryByText(String(g))).toBeNull();
+  });
+
+  // One accent per screen. A badge that is accent-hued at rest would put the
+  // screen's accent on all five cards, and it would stop meaning "selected".
+  test('only the selected card draws its numeral in the accent', () => {
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+
+    const badgeStyle = (g: number) => {
+      const numeral = within(getByTestId(`grade-pill-${g}`)).getByText(String(g));
+      return JSON.stringify(numeral.props.style);
+    };
+    expect(badgeStyle(1)).not.toEqual(badgeStyle(2)); // 1 is the default selection
+    expect(badgeStyle(2)).toEqual(badgeStyle(3));
+    expect(badgeStyle(3)).toEqual(badgeStyle(5));
+  });
+
+  test('selecting another grade moves the accent rather than adding one', () => {
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    const numeralStyle = (g: number) =>
+      JSON.stringify(within(getByTestId(`grade-pill-${g}`)).getByText(String(g)).props.style);
+
+    const restingStyle = numeralStyle(3);
+    fireEvent.press(getByTestId('grade-pill-3'));
+
+    expect(numeralStyle(3)).not.toEqual(restingStyle);
+    expect(numeralStyle(1)).toEqual(restingStyle); // grade 1 handed the accent back
   });
 });
