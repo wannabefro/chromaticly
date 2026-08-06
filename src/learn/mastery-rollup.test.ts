@@ -1,6 +1,7 @@
 import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
-import { atomsFor, contentGradesFor, laneDepths, SLACK_FACTOR } from './lane-depth';
+import { EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, QUESTIONS_PER_SECTION } from './exam';
+import { atomsFor, contentGradesFor, laneDepths, SLACK_FACTOR, writtenLaneDepths } from './lane-depth';
 import { MASTERY_THRESHOLD } from './mastery';
 import { accountNudgeStats, currentLevel, deriveStars, examReadiness, isLevelUnlocked, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
@@ -407,5 +408,60 @@ describe('examReadiness — a vector comparison over the paper’s own sections 
     const r = examReadiness(1, SECTIONS, depths({ pitch: 1, scales_keys: 1, intervals: 1, terms_signs: 1 }), MARKS);
     expect(r.shortfalls.map((s) => s.strand)).toEqual(['rhythm']);
     expect(r.rows.find((row) => row.strand === 'rhythm')!.depth).toBe(0);
+  });
+});
+
+// The readiness BASELINE (chromaticly-dhe, KTD1). Every other examReadiness test
+// above hands it a synthetic `depths` object, so they prove its arithmetic and
+// nothing about the derivation that feeds it on device. This one runs the real
+// chain — store → writtenLaneDepths → examReadiness — and pins the answer as
+// literal numbers.
+//
+// It exists to catch one specific silent regression. `depthFrom` walks
+// contentGrades ascending and BREAKS at the first unheld grade. So any lesson
+// added below grade 1 puts an unheld grade at the head of every strand's list,
+// and every learner who did not take that level reads depth 0 everywhere —
+// including strands they have fully mastered. Nothing throws; readiness just
+// silently reports every examined strand short.
+//
+// Captured BEFORE the First steps content exists. Captured afterwards it would
+// pin the post-change values and prove nothing.
+describe('exam readiness baseline — pinned through the real derivation (KTD1)', () => {
+  const EXAMINED = ['rhythm', 'pitch', 'scales_keys', 'intervals', 'terms_signs'];
+
+  function readinessFor(store: ProgressStore) {
+    return examReadiness(EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, writtenLaneDepths(store, DAY), QUESTIONS_PER_SECTION);
+  }
+
+  test('a fresh store is short of all five examined strands, and of nothing else', () => {
+    const r = readinessFor(new ProgressStore());
+
+    expect(r.grade).toBe(1);
+    expect(r.totalMarks).toBe(20);
+    expect(r.marksAtRisk).toBe(20);
+    expect(r.ready).toBe(false);
+    expect(r.shortfalls.map((row) => row.strand)).toEqual(EXAMINED);
+    // chords and context are NOT examined at grade 1, so they are never shortfalls
+    // however low they read (KTD8's phantom-gap regression).
+    expect(r.rows.filter((row) => row.examined).map((row) => row.strand)).toEqual(EXAMINED);
+    for (const strand of ['chords', 'context']) {
+      expect(r.rows.find((row) => row.strand === strand)?.short).toBe(false);
+    }
+  });
+
+  // THE load-bearing case. A learner who masters Grade 1 and never touches any
+  // level below it must read ready. This is the assertion a lane-depth matrix
+  // that admits grade 0 turns red.
+  test('mastering every examined Grade 1 strand reads ready, with nothing at risk', () => {
+    const store = new ProgressStore();
+    for (const strand of EXAMINED) masterCell(store, strand as Parameters<typeof atomsFor>[0], 1);
+
+    const r = readinessFor(store);
+    expect(r.shortfalls).toEqual([]);
+    expect(r.marksAtRisk).toBe(0);
+    expect(r.ready).toBe(true);
+    for (const strand of EXAMINED) {
+      expect(r.rows.find((row) => row.strand === strand)?.depth).toBeGreaterThanOrEqual(1);
+    }
   });
 });

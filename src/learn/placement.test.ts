@@ -307,3 +307,40 @@ describe('placement probes the written pool only', () => {
     expect(missing).toEqual([]);
   });
 });
+
+// The placement floor (chromaticly-dhe). First steps is opt-in only: the ladder
+// probes Grade 1 atoms and has no pre-Grade-1 atoms to probe, so it cannot
+// measure anyone INTO the level. Placing them there would be a guess wearing a
+// measurement's clothes.
+//
+// This holds structurally rather than by a check here — LADDERS is built from
+// contentGradesFor, and lane-depth's LANE_FLOOR_GRADE keeps grade 0 out of that
+// map. These assertions are what turn red if that floor is ever removed.
+describe('placement never reaches below Grade 1 (First steps is opt-in only)', () => {
+  test('every placeable strand opens its ladder at Grade 1 or above', () => {
+    for (const strand of placeableStrands()) {
+      expect(ladderFor(strand)[0]).toBeGreaterThanOrEqual(1);
+    }
+  });
+
+  test('no ladder contains grade 0 at any position', () => {
+    for (const strand of STRAND_ORDER) {
+      expect(ladderFor(strand)).not.toContain(0);
+    }
+  });
+
+  // Pinned so a content change that shifts a lower median is visible rather than
+  // silent — the opening grade IS the measurement on a one-item pass.
+  test('the mixed pass opens each strand where it opens today', () => {
+    const opening = Object.fromEntries(startPlacement().walks.map((w) => [w.strand, w.pending]));
+    expect(opening).toEqual({
+      rhythm: 3,
+      pitch: 3,
+      scales_keys: 3,
+      intervals: 3,
+      chords: 4,
+      terms_signs: 3,
+      context: 3,
+    });
+  });
+});

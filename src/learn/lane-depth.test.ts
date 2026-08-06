@@ -10,7 +10,7 @@
 //   context     G1
 // Four of seven strands are stubs. That is the point of most of these tests.
 
-import { atomsFor, contentGradesFor, decayedSeedDepth, laneDepths, SEED_INTERVAL_DAYS, SLACK_FACTOR, writtenLaneDepths } from './lane-depth';
+import { atomsFor, buildLaneMatrix, contentGradesFor, decayedSeedDepth, laneDepths, SEED_INTERVAL_DAYS, SLACK_FACTOR, STRAND_ORDER, writtenLaneDepths } from './lane-depth';
 import { initialMastery } from './mastery';
 import { initialSrs } from './srs';
 import { ProgressStore } from './store';
@@ -356,5 +356,45 @@ describe('written-only depth keeps by-ear credit out of exam readiness', () => {
     store.setSeededDepth('rhythm', { depth: 3, day: DAY, seq: store.reserveSeq() });
     store.setAtom('rest:crotchet', { mastery: initialMastery(), srs: { ...initialSrs(), seq: store.reserveSeq() } });
     expect(writtenLaneDepths(store, DAY).rhythm.source).toBe('evidence');
+  });
+});
+
+// The lane floor (chromaticly-dhe, KTD1). First steps is grade 0 and must never
+// reach this derivation: exam readiness, the placement ladder and the radar all
+// read the same map, and `depthFrom` breaks at the first unheld grade — so an
+// unheld grade 0 at the head of a strand's list zeroes every learner who skipped
+// the level, in strands they have fully mastered.
+//
+// Tested against a synthetic lesson list because the module's own MATRIX is built
+// from the real curriculum and cannot be varied.
+describe('buildLaneMatrix — the grade floor keeps First steps out of every lane derivation', () => {
+  const g0 = { strand: 'rhythm', grade: 0, atoms: ['pulse:beat'] };
+  const g1 = { strand: 'rhythm', grade: 1, atoms: ['rhythm_sum'] };
+
+  test('a grade-0 lesson contributes no cell at all', () => {
+    const matrix = buildLaneMatrix([g0]);
+    expect(matrix.get('rhythm')).toBeUndefined();
+  });
+
+  test('a grade-0 lesson never prepends an unheld grade to a strand that also has real content', () => {
+    expect([...buildLaneMatrix([g0, g1]).get('rhythm')!.keys()]).toEqual([1]);
+  });
+
+  test('its atoms are dropped from the cell, not merged into grade 1', () => {
+    const atoms = buildLaneMatrix([g0, g1]).get('rhythm')!.get(1)!;
+    expect([...atoms]).toEqual(['rhythm_sum']);
+    expect(atoms.has('pulse:beat')).toBe(false);
+  });
+
+  // The floor is a `<` comparison, so grade 1 itself must survive it. Asserted at
+  // the boundary, not one value inside it.
+  test('grade 1 is AT the floor and is kept', () => {
+    expect([...buildLaneMatrix([g1]).get('rhythm')!.keys()]).toEqual([1]);
+  });
+
+  test('the live matrix carries no grade below 1 for any strand', () => {
+    for (const strand of STRAND_ORDER) {
+      for (const grade of contentGradesFor(strand)) expect(grade).toBeGreaterThanOrEqual(1);
+    }
   });
 });

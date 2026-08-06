@@ -54,24 +54,48 @@ export interface LaneDepth {
 
 export const STRAND_ORDER: Strand[] = ['rhythm', 'pitch', 'scales_keys', 'intervals', 'chords', 'terms_signs', 'context'];
 
-/** (strand → grade → atom ids), built once at module load — the same shape and
- *  rationale as practice-plan's ATOM_TEMPLATE map. Atom ids are de-duplicated per
- *  cell: 11 ids appear in two grades of one strand (e.g. `rest:semibreve` in G1
- *  and G4), and each occurrence is genuine evidence for the cell that lists it. */
-const MATRIX: Map<string, Map<number, Set<string>>> = new Map();
-for (const lesson of LESSONS) {
-  let byGrade = MATRIX.get(lesson.strand);
-  if (!byGrade) {
-    byGrade = new Map();
-    MATRIX.set(lesson.strand, byGrade);
+/** The lowest grade this derivation will look at. First steps is grade 0
+ *  (chromaticly-dhe) and is deliberately below it.
+ *
+ *  `depthFrom` walks contentGrades ascending and BREAKS at the first unheld
+ *  grade. So a lesson below grade 1 puts an unheld grade at the head of every
+ *  strand's list for every learner who skipped that level — and each of them
+ *  then reads depth 0 in strands they have fully mastered. Nothing throws;
+ *  exam readiness simply reports every examined strand short.
+ *
+ *  This floor is therefore what makes "First steps never moves readiness" true
+ *  by construction rather than by assurance, and it covers the placement ladder
+ *  and the radar in the same stroke — both read this map. */
+export const LANE_FLOOR_GRADE = 1;
+
+type MatrixLesson = { strand: string; grade: number; atoms: string[]; by_ear_atoms?: string[] };
+
+/** (strand → grade → atom ids). Atom ids are de-duplicated per cell: 11 ids
+ *  appear in two grades of one strand (e.g. `rest:semibreve` in G1 and G4), and
+ *  each occurrence is genuine evidence for the cell that lists it.
+ *
+ *  Exported so the floor above is testable against a synthetic lesson list — the
+ *  module-level map is built from the real curriculum and cannot be varied. */
+export function buildLaneMatrix(lessons: readonly MatrixLesson[]): Map<string, Map<number, Set<string>>> {
+  const matrix: Map<string, Map<number, Set<string>>> = new Map();
+  for (const lesson of lessons) {
+    if (lesson.grade < LANE_FLOOR_GRADE) continue;
+    let byGrade = matrix.get(lesson.strand);
+    if (!byGrade) {
+      byGrade = new Map();
+      matrix.set(lesson.strand, byGrade);
+    }
+    let atoms = byGrade.get(lesson.grade);
+    if (!atoms) {
+      atoms = new Set();
+      byGrade.set(lesson.grade, atoms);
+    }
+    for (const atom of creditedAtoms(lesson)) atoms.add(atom);
   }
-  let atoms = byGrade.get(lesson.grade);
-  if (!atoms) {
-    atoms = new Set();
-    byGrade.set(lesson.grade, atoms);
-  }
-  for (const atom of creditedAtoms(lesson)) atoms.add(atom);
+  return matrix;
 }
+
+const MATRIX = buildLaneMatrix(LESSONS);
 
 /** The grades that have content for `strand`, ascending. */
 export function contentGradesFor(strand: Strand): number[] {
