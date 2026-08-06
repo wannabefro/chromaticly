@@ -30,6 +30,7 @@ import { TextInputField } from './TextInputField';
 import { transpositionInputSpec } from './TranspositionInput';
 import { noteValuePaletteSpec } from './NoteValuePalette';
 import { AuralMcq } from './AuralMcq';
+import { Keyboard, KeyboardView, type KeyboardResponse } from './Keyboard';
 import { ByEarMatch, emptyByEarMatchResponse, type ByEarMatchResponse } from './ByEarMatch';
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
@@ -380,6 +381,23 @@ const auralMcqSpec: InteractionSpec<number | null> = {
   selectedValue: (instance, response) => (response === null ? undefined : assembleOptions(instance)[response]?.value),
 };
 
+/** The correct-answer view is the SAME keyboard, read-only, with the answer key
+ *  lit (5e: "correct key highlighted after Check") — so the key the learner is
+ *  shown is drawn by the code that drew the key they tapped. */
+function keyboardCorrectAnswerView(instance: ExerciseInstance) {
+  return <KeyboardView selected={String(instance.answer.canonical)} strand="pitch" testID="answer-keyboard" />;
+}
+
+const keyboardTapSpec: InteractionSpec<KeyboardResponse> = {
+  Component: Keyboard,
+  emptyResponse: () => null,
+  canCheck: (response) => response !== null,
+  grade: (instance, response) => gradeText(instance, response ?? ''),
+  submits: true,
+  correctAnswerView: keyboardCorrectAnswerView,
+  selectedValue: (_instance, response) => response ?? undefined,
+};
+
 export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>> = {
   mcq: mcqSpec,
   text_input: textInputSpec,
@@ -395,6 +413,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   by_ear_match: byEarMatchSpec,
   by_ear_verify: byEarVerifySpec,
   aural_mcq: auralMcqSpec,
+  keyboard_tap: keyboardTapSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

@@ -23,6 +23,8 @@ const SLICE_FILES = [
   'ui/interactions/StaveInput.tsx',
   'ui/interactions/TranspositionInput.tsx',
   'ui/interactions/registry.tsx',
+  'ui/interactions/Keyboard.tsx',
+  'ui/interactions/AuralMcq.tsx',
   'ui/SetRunner.tsx',
   'ui/SetComplete.tsx',
   'ui/TeachPhase.tsx',
