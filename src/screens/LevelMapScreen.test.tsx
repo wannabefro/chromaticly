@@ -114,14 +114,18 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(getByTestId('exam-start')).toBeTruthy();
   });
 
-  // The pill reads the working level. A learner who chose First steps must never
-  // be shown "Grade 0" — the level title is what the pill is for.
+  // The pill reads the working level's TITLE. This must be asserted on a grade-0
+  // profile and nowhere else: level 1's title is the literal string "Grade 1", so
+  // on the default profile `title` and `Grade ${grade}` are indistinguishable and
+  // the guard passes against the exact code it exists to forbid (council finding 2,
+  // reproduced by mutation).
   test('the grade pill reads the level title, so First steps never prints a grade number', async () => {
-    const { getByTestId, findByTestId } = renderMap();
+    const store = new ProgressStore();
+    store.setProfile({ grade: 0, onboardedAt: '2026-08-06T00:00:00.000Z' });
+    const { getByTestId, findByTestId } = renderMap(JSON.stringify(store.toSnapshot()));
     await findByTestId('level-map-screen');
 
-    expect(getByTestId('grade-pill')).toHaveTextContent('Grade 1');
-    expect(LEVELS.find((l) => l.grade === 0)!.title).toBe('First steps');
+    expect(getByTestId('grade-pill')).toHaveTextContent('First steps');
   });
 
   // First steps has no exam and must not grow one by accident. The seal is what a

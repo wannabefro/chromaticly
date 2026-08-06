@@ -358,3 +358,39 @@ paper gets the right card without anyone remembering.
 **The headline reverts to 5a's "Where should we start?".** The built screen had drifted to "Do you
 know your grade?", which asks the one reader First steps exists for to admit they do not — on the
 screen that now carries their answer.
+
+### The Learn tab at grade 0 is a chain, not a lane · approved 2026-08-06
+
+A council review found the level unreachable: the picker offered First steps, the profile stored it,
+and no mounted screen could open the five lessons. `AppShell` routes the Learn tab through
+`LanesScreen`/`LaneScreen`, both of which resolve their grade through `lane-depth.ts`'s `MATRIX` —
+which `LANE_FLOOR_GRADE = 1` deliberately excludes grade 0 from. The firewall that keeps First steps
+out of exam readiness was also, silently, keeping it out of navigation.
+
+**First steps gets its own screen.** At grade 0 the Learn tab renders `FirstStepsScreen`: the five
+lessons in their authored `unlocks` order, tapped to open, with a count instead of a depth bar.
+
+Lowering the floor was the smaller diff and is the wrong fix, for two separate reasons:
+
+1. **It splits one guard into three.** The floor is a single line at the single map that readiness,
+   the placement ladder and the radar all read. Moving it into those three derivations restores
+   exactly the fragility it was written to remove.
+2. **The seven-lane model asks a question a beginner cannot answer.** 7a is "which of my skills is
+   shallow?" — a reading for someone who has depths. First steps is one linear chain with no exam, no
+   depth and no strand story, so it gets a linear screen. Its lessons still carry strands, and the
+   rows still draw the strand overline, because that vocabulary is what the rest of the app uses.
+
+Two exits, and they are the same door:
+
+| state | what it draws |
+|---|---|
+| unfinished | a quiet "Already know this? Go straight to Grade 1" line |
+| all five done | a hand-off card, with `Start Grade 1` as the primary action |
+
+The skip is not a courtesy. R2 says entry is never withdrawn, and someone who over-estimated how
+little they knew must be able to leave without finishing and without being asked why. Advancing is
+`setGrade(1)`, which is what makes the Learn tab fall back to the seven lanes — there is no second
+mechanism.
+
+**`LevelMapScreen` is not the answer and was not used.** It is dead code from the retired
+pre-lane spine, referenced only by its own test.

@@ -12,6 +12,7 @@ jest.mock('react-native-webview', () => {
 import { act, fireEvent, render, waitFor } from '@testing-library/react-native';
 
 import { buildExamPaper } from '../learn/exam';
+import { ProgressStore } from '../learn/store';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
 import { assembleOptions } from '../ui/grading';
@@ -29,6 +30,19 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
       this.blob = serialized;
     },
   };
+}
+
+/** A shell that boots on an already-onboarded profile, which is the only way to
+ *  exercise a grade-dependent route — the empty store has no grade at all. */
+function renderShellAtGrade(grade: number) {
+  const store = new ProgressStore();
+  store.setProfile({ grade, onboardedAt: '2026-08-06T00:00:00.000Z' });
+  const blob = JSON.stringify(store.toSnapshot());
+  return render(
+    <ProgressProvider storage={{ async load() { return blob; }, async save() {} }}>
+      <AppShell />
+    </ProgressProvider>,
+  );
 }
 
 function renderShell() {
@@ -233,5 +247,42 @@ describe('AppShell — a short strand routes to its lane, not just to Learn (7d)
     act(() => fireEvent.press(getByTestId('profile-readiness-card-short-rhythm')));
     await waitFor(() => expect(getByTestId('lane-screen')).toBeTruthy());
     expect(getByTestId('lane-heading').props.children).toBe('Rhythm');
+  });
+});
+
+
+// Council finding 1: the picker offered grade 0 and no mounted screen could open
+// its lessons, because the Learn tab routes through the lane matrix and the
+// readiness firewall keeps grade 0 out of it. The fix is a route, not a lower
+// floor — so what must hold is that the Learn tab BRANCHES on the working grade.
+describe('AppShell — the Learn tab at grade 0 is First steps, not the seven lanes', () => {
+  test('a grade-0 profile opens First steps', async () => {
+    const { getByTestId, queryByTestId, findByTestId } = renderShellAtGrade(0);
+    await findByTestId('first-steps-screen');
+
+    expect(queryByTestId('lanes-screen')).toBeNull();
+    expect(getByTestId('tab-learn').props.accessibilityState?.selected).toBe(true);
+  });
+
+  test('every other grade still opens the seven lanes', async () => {
+    for (const grade of [1, 3, 5]) {
+      const { queryByTestId, findByTestId, unmount } = renderShellAtGrade(grade);
+      await findByTestId('lanes-screen');
+      expect(queryByTestId('first-steps-screen')).toBeNull();
+      unmount();
+    }
+  });
+
+  // The tab bar is how a beginner reaches Practice and Profile. A route that
+  // replaced the whole shell rather than the tab's pane would strand them.
+  test('First steps keeps the tab bar, and the other three tabs still open', async () => {
+    const { getByTestId, findByTestId } = renderShellAtGrade(0);
+    await findByTestId('first-steps-screen');
+
+    expect(getByTestId('tab-bar')).toBeTruthy();
+    await act(async () => {
+      fireEvent.press(getByTestId('tab-practice'));
+    });
+    expect(getByTestId('practice-screen')).toBeTruthy();
   });
 });

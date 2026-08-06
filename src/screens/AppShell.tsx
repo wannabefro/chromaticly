@@ -34,6 +34,7 @@ import { SetRunner } from '../ui/SetRunner';
 import type { Strand } from '../ui/theme';
 import { AccountCreateScreen } from './AccountCreateScreen';
 import ExamsScreen from './ExamsScreen';
+import { FIRST_STEPS_GRADE, FirstStepsScreen, NEXT_GRADE } from './FirstStepsScreen';
 import LanesScreen from './LanesScreen';
 import LaneScreen from './LaneScreen';
 import PracticeScreen from './PracticeScreen';
@@ -46,7 +47,7 @@ export interface AppShellProps {
 }
 
 export default function AppShell({ initialLane }: AppShellProps = {}) {
-  const { markNudgeSeen, setGrade } = useProgressContext();
+  const { grade, markNudgeSeen, setGrade } = useProgressContext();
   const [tab, setTab] = useState<TabKey>('learn');
   /** The Learn pane: null is the lane list, a strand is that lane's detail. */
   const [lane, setLane] = useState<Strand | null>(initialLane ?? null);
@@ -113,7 +114,12 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
     <View style={styles.shell} testID="app-shell">
       <View style={styles.pane}>
         {tab === 'learn' &&
-          (lane === null ? (
+          // First steps is a linear chain, not one of the seven lanes, so at grade 0
+          // the Learn tab IS that chain. Guarded on `lane === null` so a cross-tab
+          // drill (Profile's radar, an exam shortfall) still opens its lane.
+          (grade === FIRST_STEPS_GRADE && lane === null ? (
+            <FirstStepsScreen onOpenLesson={openLesson} onAdvance={() => void setGrade(NEXT_GRADE)} />
+          ) : lane === null ? (
             // Through `openLane`, never `setLane`: the grade pin is a second state
             // slot, and a bare `setLane` leaves whatever grade the last exam drill
             // pinned. That opened Chords at "Grade 1" — an empty state, with the
