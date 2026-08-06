@@ -8,11 +8,7 @@ appId: host.exp.Exponent
 - clearState
 - openLink: ${DEV_URL}/--/?seed=note-values
 
-- extendedWaitUntil:
-    visible: { text: "Continue" }
-    timeout: 40000
-    optional: true
-- tapOn: { text: "Continue", optional: true }
+- runFlow: _dev-menu.yaml
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }

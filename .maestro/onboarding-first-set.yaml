@@ -20,19 +20,7 @@ appId: host.exp.Exponent
 ---
 - clearState
 - openLink: ${DEV_URL}
-- tapOn:
-    text: "Open"
-    optional: true
-# clearState wipes Expo Go's own first-launch flag, so a fresh open shows its
-# "developer menu": first an intro sheet (Continue), then the menu itself, which
-# must be closed via its X, which carries the accessibility label "Close". Both
-# no-op on a warm open.
-- tapOn:
-    text: "Continue"
-    optional: true
-- tapOn:
-    text: "Close"
-    optional: true
+- runFlow: _dev-menu.yaml
 - extendedWaitUntil:
     visible:
       id: "welcome-screen"

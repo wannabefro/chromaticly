@@ -14,8 +14,7 @@ appId: host.exp.Exponent
 ---
 - clearState
 - openLink: ${DEV_URL}
-- tapOn: { text: "Open", optional: true }
-- tapOn: { text: "Continue", optional: true }
+- runFlow: _dev-menu.yaml
 - extendedWaitUntil:
     visible: { id: "welcome-screen" }
     timeout: 60000

@@ -1,0 +1,33 @@
+# Get past Expo Go's own UI after a launch. Called by every flow, immediately
+# after `openLink`.
+#
+# `clearState` wipes Expo Go's first-launch flag as well as ours, so a fresh open
+# shows ITS chrome over our app: an intro sheet ("Continue"), then the developer
+# menu, whose X carries the accessibility label "Close". Neither belongs to
+# Chromaticly and both hide it completely from Maestro. Every step is optional, so
+# this is a no-op on a warm open.
+#
+# This lives in one file because the alternative was measured: the fix landed in
+# `onboarding-first-set.yaml` (04e236c) and was never propagated, so 50 of 51
+# tracked flows still failed at their first assertion. Every one of them failed
+# the same way and took the same time doing it, which read as flows running
+# concurrently against one simulator (chromaticly-q6b) rather than as 50 copies of
+# one missing line.
+#
+# Underscore-prefixed, so `scripts/e2e.sh` excludes it from the sweep — it is a
+# subflow, not a test.
+appId: host.exp.Exponent
+---
+- tapOn:
+    text: "Open"
+    optional: true
+- extendedWaitUntil:
+    visible: { text: "Continue" }
+    timeout: 40000
+    optional: true
+- tapOn:
+    text: "Continue"
+    optional: true
+- tapOn:
+    text: "Close"
+    optional: true

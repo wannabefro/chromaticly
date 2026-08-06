@@ -9,11 +9,7 @@ appId: host.exp.Exponent
 
 # Expo Go shows its dev-menu sheet on a cold launch: dismiss the intro, then close
 # the menu via its X (top-right of the sheet).
-- extendedWaitUntil:
-    visible: { text: "Continue" }
-    timeout: 40000
-    optional: true
-- tapOn: { text: "Continue", optional: true }
+- runFlow: _dev-menu.yaml
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }

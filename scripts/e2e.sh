@@ -53,8 +53,35 @@ if [ "$#" -eq 1 ] && [ -d "$1" ]; then
     echo "e2e: no tracked flows under $DIR" >&2
     exit 1
   fi
-  echo "e2e: ${#FLOWS[@]} tracked flows"
-  exec maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "${FLOWS[@]}"
+else
+  FLOWS=("$@")
 fi
 
-exec maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "$@"
+# ONE FLOW PER INVOCATION, deliberately — and for explicit paths too, since
+# `npm run e2e:interactions` passes four of them.
+#
+# `maestro test a.yaml b.yaml` runs them CONCURRENTLY against the one simulator,
+# and every flow starts with `clearState`, so they wipe each other's state mid-run
+# and fail together at roughly the same elapsed time. That identical timing is
+# what made this read as a Maestro bug rather than as our own batching
+# (chromaticly-q6b). Measured 2026-08-06: grade1-rests fails at 1m52s inside the
+# batch and passes alone.
+if [ "${#FLOWS[@]}" -eq 1 ]; then
+  exec maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "${FLOWS[0]}"
+fi
+
+echo "e2e: ${#FLOWS[@]} flows, one at a time"
+failed=()
+for flow in "${FLOWS[@]}"; do
+  echo "e2e: --- $flow"
+  if ! maestro --device "$UDID" test -e "DEV_URL=$DEV_URL" "$flow"; then
+    failed+=("$flow")
+  fi
+done
+
+if [ "${#failed[@]}" -gt 0 ]; then
+  echo "e2e: ${#failed[@]} of ${#FLOWS[@]} flows FAILED:" >&2
+  printf '  %s\n' "${failed[@]}" >&2
+  exit 1
+fi
+echo "e2e: ${#FLOWS[@]} of ${#FLOWS[@]} flows passed"
