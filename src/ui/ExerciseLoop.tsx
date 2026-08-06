@@ -162,6 +162,9 @@ export function ExerciseLoop({
   const isOrnament =
     instance.interaction.config?.ornament != null &&
     ((music as Music | null)?.voices.some((v) => v.events.some((e) => e.type === 'note' && e.ornament != null)) ?? false);
+  // A by-ear card must not play the written music — that lets a learner compare
+  // sound to sound and never read the notation.
+  const isByEar = instance.interaction.config?.played_music != null;
   // The amber partial sheet is only for some-right-some-wrong (D5) — an all-wrong
   // attempt still routes to the plain incorrect sheet below.
   const partialSummary = graded === false ? (spec.partialFeedback?.(instance, response) ?? null) : null;
@@ -183,7 +186,7 @@ export function ExerciseLoop({
             {isOrnament ? (
               <OrnamentCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />
             ) : (
-              <NotationCard ref={surfaceRef} music={music} onEvent={handleSurfaceEvent} />
+              <NotationCard ref={surfaceRef} music={music} play={!isByEar} onEvent={handleSurfaceEvent} />
             )}
           </View>
         ) : (

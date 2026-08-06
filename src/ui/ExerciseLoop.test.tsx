@@ -245,6 +245,15 @@ describe('ExerciseLoop — stimulus + surface persistence', () => {
     expect(getByTestId('notation-card-play')).toBeTruthy();
   });
 
+  // The whole question is "does what you hear match what is written". A second
+  // play control on the card would answer it by ear alone.
+  test('a by-ear item shows only its own Listen control, never the card play', () => {
+    const inst = generate('by_ear_verify', { grade: 1, seed: 0, atoms: ['rest:minim'], source: 'rest_completion' });
+    const { getByTestId, queryByTestId } = render(<ExerciseLoop instance={inst} onResult={jest.fn()} />);
+    expect(getByTestId('by-ear-verify-listen')).toBeTruthy();
+    expect(queryByTestId('notation-card-play')).toBeNull();
+  });
+
   test('advancing to a new instance resets state without remounting the notation surface', () => {
     mockSurface.mounts = 0;
     const next: ExerciseInstance = { ...musicInstance, id: 'test-music-2', prompt: 'Name this note (again).' };

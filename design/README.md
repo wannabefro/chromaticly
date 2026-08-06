@@ -265,3 +265,26 @@ Inside the 11 buildable terms lessons, 41 atoms still fail it: `da capo`, `fine`
 modifiers rather than sounds.
 
 Coverage therefore lands at **80 of 91**, and the 11 are recorded here rather than tracked as a gap.
+
+### A by-ear card carries one play control, and it belongs to the question · approved 2026-08-06
+
+On a by-ear item the notation card shows **no play affordance**. The single play control is the
+strand-hued `Listen` button beside the answer area, and it sounds the **heard** performance.
+
+Device capture on 2026-08-05 found two. The card's own affordance sounded the written music and the
+`Listen` button sounded the heard music, so a learner could play both and compare sound with sound.
+That answers "does what you hear match what is written?" without reading the notation, which is the
+whole question. No unit test caught it — both controls were individually correct.
+
+This reads as an exception to rule 2 (*every notation display carries a play affordance*) and is
+not one. The affordance moved; it did not go. Screen 8c, the design's own by-ear card, already draws
+exactly one play control, sitting beside the answer area rather than on a stave. The scored cards
+now match it.
+
+Two things stay unchanged, and both are deliberate:
+
+1. **Every written item keeps its card play affordance.** The rule is untouched everywhere the
+   notation is the thing under test rather than the thing being compared against.
+2. **The reveal keeps its play.** The correct-answer notation inside the FeedbackSheet sounds
+   normally, per rule 5. The written music becomes playable the moment the answer is in — which is
+   the teaching moment, not the exam.
