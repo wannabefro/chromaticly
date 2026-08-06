@@ -14,7 +14,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, isByEarAtom, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, VOICE_TYPES, writtenAtomOf } from '../engine/atoms';
+import { ALPHABET_LETTERS, CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, isByEarAtom, NOTE_SHAPES, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, STAVE_ANATOMY_KINDS, VOICE_TYPES, writtenAtomOf } from '../engine/atoms';
 import { GENERATORS, generate } from '../engine/generators';
 import { byEarCardFor } from '../engine/generators/by-ear-cards';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
@@ -131,6 +131,35 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'note_value_compare':
       if (parts.length !== 0) throw new Error(`lessons: malformed note_value_compare atom "${atom}"`);
       return;
+    // First steps (grade 0, chromaticly-dhe). None of the five is grade-scoped —
+    // the level teaches what notation IS, so no key, metre or clef bounds them.
+    case 'pulse':
+      if (parts.length !== 0) throw new Error(`lessons: malformed pulse atom "${atom}"`);
+      return;
+    case 'alphabet': {
+      if (parts.length !== 1 || !ALPHABET_LETTERS.includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" is not one of the seven letter names`);
+      }
+      return;
+    }
+    case 'keyboard': {
+      if (parts.length !== 1 || !ALPHABET_LETTERS.includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" is not a white-key letter`);
+      }
+      return;
+    }
+    case 'stave_anatomy': {
+      if (parts.length !== 1 || !STAVE_ANATOMY_KINDS.includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" is not a stave-anatomy question kind`);
+      }
+      return;
+    }
+    case 'note_shape': {
+      if (parts.length !== 1 || !NOTE_SHAPES.includes(parts[0])) {
+        throw new Error(`lessons: atom "${atom}" is not a First steps note shape`);
+      }
+      return;
+    }
     case 'bar_validity':
       if (parts.length !== 0) throw new Error(`lessons: malformed bar_validity atom "${atom}"`);
       return;

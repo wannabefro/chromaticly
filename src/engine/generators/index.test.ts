@@ -3,6 +3,16 @@ import { GENERATORS, generate } from './index';
 import { atomsForTemplate } from './test-helpers';
 
 const TEMPLATE_IDS = [
+  // First steps (grade 0, chromaticly-dhe). They live in the grade-1 loops
+  // rather than a grade-0-only bucket because none of them is grade-0-only:
+  // each reads its material from scopeForGrade and is valid at every grade.
+  // That is deliberate — a grade-0-only generator would need a grade2-smoke
+  // exclusion, and the ledgers are easier to keep honest without one.
+  'pulse_count',
+  'alphabet_step',
+  'keyboard_find',
+  'stave_position',
+  'note_shape_length',
   'note_naming',
   'interval_naming',
   'interval_naming_stave_input',

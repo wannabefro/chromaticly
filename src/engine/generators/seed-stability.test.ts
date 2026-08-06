@@ -42,6 +42,17 @@ const LESSON_CASES: Case[] = LESSONS_BY_GRADE[1].flatMap((lesson) =>
 // Registered templates no lesson references (used in onboarding / practice
 // rotation), pinned with a representative real atom scope.
 const EXTRA_CASES: Case[] = [
+  // First steps (grade 0, chromaticly-dhe). LESSON_CASES reads
+  // LESSONS_BY_GRADE[1] only, so grade-0 lessons are never picked up there —
+  // these pins are the whole of the net's coverage for the five templates.
+  // Pinned at grade 1, like every other case in this file: they are grade-
+  // tolerant by design, so the grade-1 pin still catches any change to how they
+  // consume the RNG.
+  { label: 'pulse_count (First steps lesson 1)', templateId: 'pulse_count', atoms: [] },
+  { label: 'alphabet_step (First steps lesson 2)', templateId: 'alphabet_step', atoms: [] },
+  { label: 'keyboard_find (First steps lesson 3)', templateId: 'keyboard_find', atoms: [] },
+  { label: 'stave_position (First steps lesson 4)', templateId: 'stave_position', atoms: [] },
+  { label: 'note_shape_length (First steps lesson 5)', templateId: 'note_shape_length', atoms: [] },
   { label: 'note_value_compare (rotation)', templateId: 'note_value_compare', atoms: [] },
   // Draws from the same passage RNG as music_in_context, so a change there moves this.
   { label: 'context_question (review of one 8d sub-question)', templateId: 'context_question', atoms: ['context:highest_note'] },

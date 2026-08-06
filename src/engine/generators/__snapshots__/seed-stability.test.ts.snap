@@ -1225,6 +1225,771 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte add
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alphabet_step (First steps lesson 2) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from E.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from E.",
+      },
+      "correct": "Yes — F comes after E.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so F comes after E.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after E?",
+    "srs_tags": [
+      "alphabet:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
+      },
+      "correct": "Yes — C comes before D.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before D?",
+    "srs_tags": [
+      "alphabet:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from D.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from D.",
+      },
+      "correct": "Yes — E comes after D.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so E comes after D.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after D?",
+    "srs_tags": [
+      "alphabet:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "A",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from B.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step forward from B.",
+      },
+      "correct": "Yes — C comes after B.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so C comes after B.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after B?",
+    "srs_tags": [
+      "alphabet:B",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from E.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step back from E.",
+      },
+      "correct": "Yes — D comes before E.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so D comes before E.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before E?",
+    "srs_tags": [
+      "alphabet:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
+      },
+      "correct": "Yes — D comes after C.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after C?",
+    "srs_tags": [
+      "alphabet:C",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "A",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step back from C.",
+      },
+      "correct": "Yes — B comes before C.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so B comes before C.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before C?",
+    "srs_tags": [
+      "alphabet:C",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
+      },
+      "correct": "Yes — C comes before D.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before D?",
+    "srs_tags": [
+      "alphabet:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
+      },
+      "correct": "Yes — C comes before D.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before D?",
+    "srs_tags": [
+      "alphabet:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from G.",
+        "C": "C is somewhere else in the row. Read A B C D E F G and step forward from G.",
+      },
+      "correct": "Yes — after G the letters start again at A. There is no H in music.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so A comes after G.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after G?",
+    "srs_tags": [
+      "alphabet:G",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from G.",
+        "C": "C is somewhere else in the row. Read A B C D E F G and step forward from G.",
+      },
+      "correct": "Yes — after G the letters start again at A. There is no H in music.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so A comes after G.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after G?",
+    "srs_tags": [
+      "alphabet:G",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from E.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step back from E.",
+      },
+      "correct": "Yes — D comes before E.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so D comes before E.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before E?",
+    "srs_tags": [
+      "alphabet:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "A",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from B.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step forward from B.",
+      },
+      "correct": "Yes — C comes after B.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so C comes after B.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after B?",
+    "srs_tags": [
+      "alphabet:B",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
+      },
+      "correct": "Yes — D comes after C.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after C?",
+    "srs_tags": [
+      "alphabet:C",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "C",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is somewhere else in the row. Read A B C D E F G and step back from B.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step back from B.",
+      },
+      "correct": "Yes — A comes before B.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so A comes before B.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before B?",
+    "srs_tags": [
+      "alphabet:B",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from F.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from F.",
+      },
+      "correct": "Yes — G comes after F.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so G comes after F.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after F?",
+    "srs_tags": [
+      "alphabet:F",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from F.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from F.",
+      },
+      "correct": "Yes — G comes after F.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so G comes after F.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after F?",
+    "srs_tags": [
+      "alphabet:F",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "A",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
+      },
+      "correct": "Yes — D comes after C.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes after C?",
+    "srs_tags": [
+      "alphabet:C",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "C",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "C is somewhere else in the row. Read A B C D E F G and step back from B.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step back from B.",
+      },
+      "correct": "Yes — A comes before B.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so A comes before B.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before B?",
+    "srs_tags": [
+      "alphabet:B",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "A",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "D": "D is somewhere else in the row. Read A B C D E F G and step back from C.",
+      },
+      "correct": "Yes — B comes before C.",
+      "incorrect": "The letters run A B C D E F G and then back to A, so B comes before C.",
+    },
+    "grade": 1,
+    "hints": [
+      "The letters run A to G and then start again at A — there is no H.",
+    ],
+    "id": "alphabet_step:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which letter comes before C?",
+    "srs_tags": [
+      "alphabet:C",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A B C D E F G",
+    },
+    "strand": "pitch",
+    "template_id": "alphabet_step",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte bar_validity @ note-values instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -13990,6 +14755,631 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte key
     },
     "strand": "scales_keys",
     "template_id": "key_signature_id",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte keyboard_find (First steps lesson 3) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is G — between the first two of the three black keys.",
+      "incorrect": "G is between the first two of the three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "G is between the first two of the three black keys.",
+    ],
+    "id": "keyboard_find:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find G on the keyboard.",
+    "srs_tags": [
+      "keyboard:G",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "G",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is F — just left of the group of three black keys.",
+      "incorrect": "F is just left of the group of three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "F is just left of the group of three black keys.",
+    ],
+    "id": "keyboard_find:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find F on the keyboard.",
+    "srs_tags": [
+      "keyboard:F",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "F",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is F — just left of the group of three black keys.",
+      "incorrect": "F is just left of the group of three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "F is just left of the group of three black keys.",
+    ],
+    "id": "keyboard_find:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find F on the keyboard.",
+    "srs_tags": [
+      "keyboard:F",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "F",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is D — between the two black keys.",
+      "incorrect": "D is between the two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "D is between the two black keys.",
+    ],
+    "id": "keyboard_find:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find D on the keyboard.",
+    "srs_tags": [
+      "keyboard:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "D",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is G — between the first two of the three black keys.",
+      "incorrect": "G is between the first two of the three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "G is between the first two of the three black keys.",
+    ],
+    "id": "keyboard_find:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find G on the keyboard.",
+    "srs_tags": [
+      "keyboard:G",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "G",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is E — just right of the group of two black keys.",
+      "incorrect": "E is just right of the group of two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "E is just right of the group of two black keys.",
+    ],
+    "id": "keyboard_find:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find E on the keyboard.",
+    "srs_tags": [
+      "keyboard:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "E",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is E — just right of the group of two black keys.",
+      "incorrect": "E is just right of the group of two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "E is just right of the group of two black keys.",
+    ],
+    "id": "keyboard_find:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find E on the keyboard.",
+    "srs_tags": [
+      "keyboard:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "E",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is F — just left of the group of three black keys.",
+      "incorrect": "F is just left of the group of three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "F is just left of the group of three black keys.",
+    ],
+    "id": "keyboard_find:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find F on the keyboard.",
+    "srs_tags": [
+      "keyboard:F",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "F",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is F — just left of the group of three black keys.",
+      "incorrect": "F is just left of the group of three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "F is just left of the group of three black keys.",
+    ],
+    "id": "keyboard_find:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find F on the keyboard.",
+    "srs_tags": [
+      "keyboard:F",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "F",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is B — just right of the group of three black keys.",
+      "incorrect": "B is just right of the group of three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "B is just right of the group of three black keys.",
+    ],
+    "id": "keyboard_find:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find B on the keyboard.",
+    "srs_tags": [
+      "keyboard:B",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "B",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is B — just right of the group of three black keys.",
+      "incorrect": "B is just right of the group of three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "B is just right of the group of three black keys.",
+    ],
+    "id": "keyboard_find:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find B on the keyboard.",
+    "srs_tags": [
+      "keyboard:B",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "B",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is G — between the first two of the three black keys.",
+      "incorrect": "G is between the first two of the three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "G is between the first two of the three black keys.",
+    ],
+    "id": "keyboard_find:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find G on the keyboard.",
+    "srs_tags": [
+      "keyboard:G",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "G",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is D — between the two black keys.",
+      "incorrect": "D is between the two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "D is between the two black keys.",
+    ],
+    "id": "keyboard_find:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find D on the keyboard.",
+    "srs_tags": [
+      "keyboard:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "D",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is E — just right of the group of two black keys.",
+      "incorrect": "E is just right of the group of two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "E is just right of the group of two black keys.",
+    ],
+    "id": "keyboard_find:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find E on the keyboard.",
+    "srs_tags": [
+      "keyboard:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "E",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is D — between the two black keys.",
+      "incorrect": "D is between the two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "D is between the two black keys.",
+    ],
+    "id": "keyboard_find:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find D on the keyboard.",
+    "srs_tags": [
+      "keyboard:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "D",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is A — between the last two of the three black keys.",
+      "incorrect": "A is between the last two of the three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "A is between the last two of the three black keys.",
+    ],
+    "id": "keyboard_find:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find A on the keyboard.",
+    "srs_tags": [
+      "keyboard:A",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is A — between the last two of the three black keys.",
+      "incorrect": "A is between the last two of the three black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "A is between the last two of the three black keys.",
+    ],
+    "id": "keyboard_find:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find A on the keyboard.",
+    "srs_tags": [
+      "keyboard:A",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is E — just right of the group of two black keys.",
+      "incorrect": "E is just right of the group of two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "E is just right of the group of two black keys.",
+    ],
+    "id": "keyboard_find:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find E on the keyboard.",
+    "srs_tags": [
+      "keyboard:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "E",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is D — between the two black keys.",
+      "incorrect": "D is between the two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "D is between the two black keys.",
+    ],
+    "id": "keyboard_find:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find D on the keyboard.",
+    "srs_tags": [
+      "keyboard:D",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "D",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E4",
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "That is E — just right of the group of two black keys.",
+      "incorrect": "E is just right of the group of two black keys. Find the black-key group first, then the white key beside it.",
+    },
+    "grade": 1,
+    "hints": [
+      "E is just right of the group of two black keys.",
+    ],
+    "id": "keyboard_find:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "keyboard_tap",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Find E on the keyboard.",
+    "srs_tags": [
+      "keyboard:E",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "E",
+    },
+    "strand": "pitch",
+    "template_id": "keyboard_find",
   },
 ]
 `;
@@ -43242,6 +44632,1081 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
 ]
 `;
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte note_shape_length (First steps lesson 5) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+      },
+      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A crotchet is a filled notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+      },
+      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A crotchet is a filled notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+      },
+      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A crotchet is a filled notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve",
+    },
+    "distractors": [
+      "minim",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a semibreve.",
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a semibreve.",
+      },
+      "correct": "Yes — a semibreve is an open notehead with no stem, and it is written as 4 beats.",
+      "incorrect": "This is a semibreve: an open notehead with no stem. It is written as 4 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A semibreve is an open notehead with no stem.",
+    ],
+    "id": "note_shape_length:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+      },
+      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A crotchet is a filled notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a quaver.",
+      },
+      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
+      "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A quaver is a filled notehead with a tail — or beamed to its neighbour.",
+    ],
+    "id": "note_shape_length:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What are these two notes called?",
+    "srs_tags": [
+      "note_shape:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a quaver.",
+      },
+      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
+      "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A quaver is a filled notehead with a tail — or beamed to its neighbour.",
+    ],
+    "id": "note_shape_length:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+      },
+      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A crotchet is a filled notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "crotchet",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+      },
+      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A crotchet is a filled notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:crotchet",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "quaver",
+    },
+    "distractors": [
+      "semibreve",
+      "minim",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a quaver.",
+      },
+      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
+      "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A quaver is a filled notehead with a tail — or beamed to its neighbour.",
+    ],
+    "id": "note_shape_length:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What are these two notes called?",
+    "srs_tags": [
+      "note_shape:quaver",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "semibreve",
+    },
+    "distractors": [
+      "minim",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a semibreve.",
+        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a semibreve.",
+      },
+      "correct": "Yes — a semibreve is an open notehead with no stem, and it is written as 4 beats.",
+      "incorrect": "This is a semibreve: an open notehead with no stem. It is written as 4 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A semibreve is an open notehead with no stem.",
+    ],
+    "id": "note_shape_length:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:semibreve",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "minim",
+    },
+    "distractors": [
+      "semibreve",
+      "crotchet",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+      },
+      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at the notehead first: is it open or filled? A minim is an open notehead with a stem.",
+    ],
+    "id": "note_shape_length:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "What is this note called?",
+    "srs_tags": [
+      "note_shape:minim",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_shape_length",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte note_value_compare (rotation) instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -44323,6 +46788,1336 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     },
     "strand": "rhythm",
     "template_id": "note_value_compare",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte pulse_count (First steps lesson 1) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s0",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s1",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s2",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one short — count again from the first beat.",
+        "3": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 2 beats, each one the same length.",
+      "incorrect": "There were 2 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s3",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "2/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "3",
+      "5",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3": "That is one short — count again from the first beat.",
+        "5": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 4 beats, each one the same length.",
+      "incorrect": "There were 4 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s4",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "F5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s5",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "F4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s6",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s7",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s8",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "3",
+      "5",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3": "That is one short — count again from the first beat.",
+        "5": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 4 beats, each one the same length.",
+      "incorrect": "There were 4 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s9",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "3",
+      "5",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3": "That is one short — count again from the first beat.",
+        "5": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 4 beats, each one the same length.",
+      "incorrect": "There were 4 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s10",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "B4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s11",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one short — count again from the first beat.",
+        "3": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 2 beats, each one the same length.",
+      "incorrect": "There were 2 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s12",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "2/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "G4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s13",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one short — count again from the first beat.",
+        "3": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 2 beats, each one the same length.",
+      "incorrect": "There were 2 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s14",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "2/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "3",
+      "5",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3": "That is one short — count again from the first beat.",
+        "5": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 4 beats, each one the same length.",
+      "incorrect": "There were 4 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s15",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "A4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "4",
+    },
+    "distractors": [
+      "3",
+      "5",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3": "That is one short — count again from the first beat.",
+        "5": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 4 beats, each one the same length.",
+      "incorrect": "There were 4 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s16",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "4/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "C4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s17",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E4",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "2",
+    },
+    "distractors": [
+      "1",
+      "3",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "1": "That is one short — count again from the first beat.",
+        "3": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 2 beats, each one the same length.",
+      "incorrect": "There were 2 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s18",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "2/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "E5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "3",
+    },
+    "distractors": [
+      "2",
+      "4",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2": "That is one short — count again from the first beat.",
+        "4": "That is one too many — count again from the first beat.",
+      },
+      "correct": "Yes — 3 beats, each one the same length.",
+      "incorrect": "There were 3 beats. Play it again and tap along before you count.",
+    },
+    "grade": 1,
+    "hints": [
+      "Tap your hand on each beat as it goes by, then count your taps.",
+    ],
+    "id": "pulse_count:g1:s19",
+    "interaction": {
+      "config": {
+        "listen_prompt": "Tap play and count the steady beats.",
+        "played_music": {
+          "clef": "treble",
+          "key_sig": null,
+          "time_sig": "3/4",
+          "voices": [
+            {
+              "events": [
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+                {
+                  "dur": "crotchet",
+                  "pitch": "D5",
+                  "type": "note",
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "type": "aural_mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "How many beats did you count?",
+    "srs_tags": [
+      "pulse",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "pulse_count",
   },
 ]
 `;
@@ -57435,6 +61230,1016 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sca
     },
     "strand": "scales_keys",
     "template_id": "scale_degree_stave_input",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte stave_position (First steps lesson 4) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The first one",
+    },
+    "distractors": [
+      "The second one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "In a space",
+    },
+    "distractors": [
+      "On a line",
+    ],
+    "feedback": {
+      "correct": "Yes — it sits in the gap between two lines.",
+      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "In a space",
+    },
+    "distractors": [
+      "On a line",
+    ],
+    "feedback": {
+      "correct": "Yes — it sits in the gap between two lines.",
+      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The second one",
+    },
+    "distractors": [
+      "The first one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The first one",
+    },
+    "distractors": [
+      "The second one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The first one",
+    },
+    "distractors": [
+      "The second one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The second one",
+    },
+    "distractors": [
+      "The first one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "In a space",
+    },
+    "distractors": [
+      "On a line",
+    ],
+    "feedback": {
+      "correct": "Yes — it sits in the gap between two lines.",
+      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The second one",
+    },
+    "distractors": [
+      "The first one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The second one",
+    },
+    "distractors": [
+      "The first one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "On a line",
+    },
+    "distractors": [
+      "In a space",
+    ],
+    "feedback": {
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "In a space",
+    },
+    "distractors": [
+      "On a line",
+    ],
+    "feedback": {
+      "correct": "Yes — it sits in the gap between two lines.",
+      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+    },
+    "grade": 1,
+    "hints": [
+      "A note on a line has the line running straight through the middle of it.",
+    ],
+    "id": "stave_position:g1:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Is this note on a line, or in a space?",
+    "srs_tags": [
+      "stave_anatomy:line_or_space",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The first one",
+    },
+    "distractors": [
+      "The second one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The second one",
+    },
+    "distractors": [
+      "The first one",
+    ],
+    "feedback": {
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "the second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "A5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
   },
 ]
 `;

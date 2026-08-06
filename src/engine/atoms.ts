@@ -399,3 +399,48 @@ export const SATB_VOICES: readonly VoiceName[] = ['soprano', 'alto', 'tenor', 'b
 export function satbVoiceAtom(voice: VoiceName): string {
   return `satb_voice:${voice}`;
 }
+
+// --- First steps atoms (grade 0, chromaticly-dhe) ---------------------------
+// None of these takes a grade-scoped part, so each validates on shape alone.
+// That is deliberate: the level teaches what notation IS, and none of its five
+// lessons depends on a key, a metre or a clef the grade scope could widen.
+
+/** The single pulse atom. Lesson 1 asks how many beats a played bar has, and
+ *  there is only one idea under it — a beat exists and can be counted. */
+export function pulseAtom(): string {
+  return 'pulse';
+}
+
+/** The seven letter names. One atom per letter so the SRS can review the wrap
+ *  after G on its own — that wrap is the thing Grade 1 states in passing and
+ *  never drills, and a single `alphabet` atom would hide it inside an average. */
+export const ALPHABET_LETTERS: readonly string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+export function alphabetAtom(letter: string): string {
+  return `alphabet:${letter}`;
+}
+
+/** One atom per white-key letter the keyboard lesson asks for. Keyed by letter,
+ *  not by pitch: lesson 3 teaches where a NAME lives on the keyboard, and C4 and
+ *  C5 are the same answer to that question. */
+export function keyboardAtom(letter: string): string {
+  return `keyboard:${letter}`;
+}
+
+/** The parts of a stave a beginner must be able to name before Grade 1 assumes
+ *  them: whether a note sits on a line or in a space, and which of two notes is
+ *  higher — the latter always asked within ONE clef, because unqualified it is
+ *  false the moment the bass clef arrives. */
+export const STAVE_ANATOMY_KINDS: readonly string[] = ['line_or_space', 'higher_lower'];
+
+export function staveAnatomyAtom(kind: string): string {
+  return `stave_anatomy:${kind}`;
+}
+
+/** One atom per note shape lesson 5 names. The shape and its length arrive
+ *  together — a name learned without a meaning is an arbitrary label. */
+export const NOTE_SHAPES: readonly string[] = ['semibreve', 'minim', 'crotchet', 'quaver'];
+
+export function noteShapeAtom(shape: string): string {
+  return `note_shape:${shape}`;
+}

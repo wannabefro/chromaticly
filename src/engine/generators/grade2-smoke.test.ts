@@ -110,6 +110,14 @@ describe('grade-2 smoke — every registered generator is exercised', () => {
       'bar_validity',
       'add_time_signature',
       'note_value_compare',
+      // First steps (grade 0, chromaticly-dhe). Genuinely swept, not excused:
+      // each reads its material from scopeForGrade, so grade 2 gives them
+      // grade-2 clefs, note values and metres and they produce valid content.
+      'pulse_count',
+      'alphabet_step',
+      'keyboard_find',
+      'stave_position',
+      'note_shape_length',
       'music_in_context',
       'context_question',
       'mode_swap',

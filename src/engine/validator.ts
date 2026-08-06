@@ -2245,7 +2245,104 @@ function byEarVerifyHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+
+// --- First steps hooks (grade 0, chromaticly-dhe) --------------------------
+// House rule: recompute, never re-read. Each of these derives the answer a
+// second time, by a different route from the generator's, and compares. A hook
+// that merely restated the generator's own table would pass for a generator
+// that had gone wrong in exactly the way the table did.
+
+const FIRST_STEPS_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+/** The answer is the number of beats. Recomputed by COUNTING the events in the
+ *  bar the learner actually hears — the generator built the bar from the number,
+ *  so counting it back is a genuinely independent route. */
+function pulseCountHook(inst: ExerciseInstance): string[] {
+  const played = (inst.interaction.config as { played_music?: { voices?: { events?: unknown[] }[] } })?.played_music;
+  const events = played?.voices?.[0]?.events;
+  if (!Array.isArray(events)) return ['pulse_count: interaction.config.played_music carries no bar to count'];
+  if (inst.stimulus.music !== null) return ['pulse_count: the card is aural — stimulus.music must be null'];
+  const counted = events.length;
+  return String(counted) === String(inst.answer.canonical)
+    ? []
+    : [`pulse_count: the played bar has ${counted} events but the answer says ${inst.answer.canonical}`];
+}
+
+/** Recomputed by stepping the alphabet independently of the generator's own
+ *  modulo, reading the direction and the starting letter back out of the prompt
+ *  the learner is shown. */
+function alphabetStepHook(inst: ExerciseInstance): string[] {
+  const match = /Which letter comes (after|before) ([A-G])\?/.exec(inst.prompt);
+  if (!match) return [`alphabet_step: prompt does not name a direction and a letter: "${inst.prompt}"`];
+  const [, direction, from] = match;
+  const step = direction === 'after' ? 1 : -1;
+  const index = (FIRST_STEPS_LETTERS.indexOf(from) + step + 7) % 7;
+  const expected = FIRST_STEPS_LETTERS[index];
+  return expected === inst.answer.canonical
+    ? []
+    : [`alphabet_step: ${direction} ${from} is ${expected}, but the answer says ${inst.answer.canonical}`];
+}
+
+/** Recomputed from the atom the item credits, which is set on a different line
+ *  from the answer. A drift between the two would mean the SRS credits one
+ *  letter while the learner is asked about another. */
+function keyboardFindHook(inst: ExerciseInstance): string[] {
+  const letter = inst.srs_tags[0]?.split(':')[1];
+  if (!letter || !FIRST_STEPS_LETTERS.includes(letter)) return [`keyboard_find: srs_tag names no white-key letter`];
+  const canonical = String(inst.answer.canonical);
+  if (!/^[A-G]\d$/.test(canonical)) return [`keyboard_find: canonical "${canonical}" is not a keyboard pitch`];
+  return canonical[0] === letter ? [] : [`keyboard_find: credits ${letter} but answers ${canonical}`];
+}
+
+/** Line-or-space recomputed from stave geometry rather than the generator's
+ *  parity helper: count diatonic steps up from the clef's bottom line. */
+const STAVE_BOTTOM_LINE: Record<string, string> = { treble: 'E4', bass: 'G2', alto: 'F3', tenor: 'D3' };
+
+function stavePositionHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as { clef?: string; voices?: { events?: { pitch?: string }[] }[] } | null;
+  const events = music?.voices?.[0]?.events;
+  if (!music || !Array.isArray(events) || events.length === 0) return ['stave_position: no notated stimulus to read'];
+
+  const canonical = String(inst.answer.canonical);
+  if (canonical === 'On a line' || canonical === 'In a space') {
+    const bottom = STAVE_BOTTOM_LINE[music.clef ?? ''];
+    const pitch = events[0]?.pitch;
+    if (!bottom || !pitch) return ['stave_position: cannot locate the note on its stave'];
+    const ord = (p: string) => Number(p[1]) * 7 + ['C', 'D', 'E', 'F', 'G', 'A', 'B'].indexOf(p[0]);
+    const expected = (ord(pitch) - ord(bottom)) % 2 === 0 ? 'On a line' : 'In a space';
+    return expected === canonical ? [] : [`stave_position: ${pitch} in ${music.clef} is ${expected}, not ${canonical}`];
+  }
+
+  // The higher/lower shape: recompute by comparing the two drawn pitches.
+  if (events.length !== 2) return ['stave_position: a higher/lower question must draw exactly two notes'];
+  const ord = (p: string) => Number(p[1]) * 7 + ['C', 'D', 'E', 'F', 'G', 'A', 'B'].indexOf(p[0]);
+  const [first, second] = events.map((e) => e.pitch ?? '');
+  if (!first || !second) return ['stave_position: a higher/lower question is missing a pitch'];
+  const expected = ord(first) > ord(second) ? 'The first one' : 'The second one';
+  return expected === canonical ? [] : [`stave_position: ${first} vs ${second} makes it ${expected}, not ${canonical}`];
+}
+
+/** Recomputed by reading the duration off the drawn note, not off the generator's
+ *  chosen shape — and every drawn note must share it, or a beamed pair would be
+ *  two different values wearing one answer. */
+function noteShapeLengthHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as { voices?: { events?: { dur?: string }[] }[] } | null;
+  const events = music?.voices?.[0]?.events;
+  if (!Array.isArray(events) || events.length === 0) return ['note_shape_length: no notated stimulus to read'];
+  const durations = new Set(events.map((e) => e.dur));
+  if (durations.size !== 1) return [`note_shape_length: the stimulus draws ${durations.size} different note values`];
+  const drawn = [...durations][0];
+  return drawn === inst.answer.canonical
+    ? []
+    : [`note_shape_length: the stimulus draws a ${drawn} but the answer says ${inst.answer.canonical}`];
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
+  pulse_count: pulseCountHook,
+  alphabet_step: alphabetStepHook,
+  keyboard_find: keyboardFindHook,
+  stave_position: stavePositionHook,
+  note_shape_length: noteShapeLengthHook,
   note_naming: noteNamingHook,
   note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,

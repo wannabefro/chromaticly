@@ -26,6 +26,7 @@ import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
 import { modeSwap } from './mode-swap';
 import { noteNaming, noteNamingStaveInput, noteSoundsAs } from './note-naming';
+import { alphabetStep, keyboardFind, noteShapeLength, pulseCount, stavePosition } from './first-steps';
 import { noteValueCompare, noteValueEquivalence } from './note-value-compare';
 import { octaveTransposition } from './octave-transposition';
 import { ornamentEffect, ornamentRecognition } from './ornament-recognition';
@@ -70,6 +71,12 @@ export const GENERATORS: Record<string, Generator> = {
   tie_dot_value: tieDotValue,
   note_grouping: noteGrouping,
   note_grouping_metre_id: noteGroupingMetreId,
+  // First steps (grade 0, chromaticly-dhe).
+  pulse_count: pulseCount,
+  alphabet_step: alphabetStep,
+  keyboard_find: keyboardFind,
+  stave_position: stavePosition,
+  note_shape_length: noteShapeLength,
   note_value_compare: noteValueCompare,
   note_value_equivalence: noteValueEquivalence,
   music_in_context: findTheBar,
