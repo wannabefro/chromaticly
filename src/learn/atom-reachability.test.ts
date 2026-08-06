@@ -25,7 +25,9 @@ function servedTagsFor(atom: string): { template: string; tagged: boolean } | nu
 
 describe('every credited atom is reachable by review', () => {
   test('the curriculum credits exactly the atoms it currently declares', () => {
-    expect(ALL.length).toBe(725);
+    // 725 before First steps (chromaticly-dhe), which adds 21: one pulse, seven
+    // letters, seven keyboard letters, two stave-anatomy kinds, four note shapes.
+    expect(ALL.length).toBe(746);
   });
 
   test('every atom routes to a template', () => {

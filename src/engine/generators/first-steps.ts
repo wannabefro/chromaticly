@@ -237,6 +237,9 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
         incorrect: onLine
           ? 'That one is on a line: the line runs straight through the middle of the note.'
           : 'That one is in a space: it sits in the gap between two lines.',
+        by_distractor: onLine
+          ? { 'In a space': 'A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.' }
+          : { 'On a line': 'A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.' },
       },
       srs_tags: [staveAnatomyAtom('line_or_space')],
       kb_version: KB_VERSION,
@@ -258,6 +261,7 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
     voices: [{ events: [{ type: 'note', pitch: first, dur: 'semibreve' }, { type: 'note', pitch: second, dur: 'semibreve' }] }],
   };
   const answer = first === high ? 'The first one' : 'The second one';
+  const wrong = answer === 'The first one' ? 'The second one' : 'The first one';
 
   return {
     id: makeInstanceId('stave_position', grade, idSeed),
@@ -268,11 +272,14 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
     stimulus: { music, text: null },
     interaction: { type: 'mcq', config: {} },
     answer: { canonical: answer, accepted_alternatives: [] },
-    distractors: [answer === 'The first one' ? 'The second one' : 'The first one'],
+    distractors: [wrong],
     hints: ['Within one clef, the note further up the stave is the higher sound. Tap play to hear it.'],
     feedback: {
       correct: 'Yes — within one clef, further up the stave is the higher sound.',
-      incorrect: `${answer.toLowerCase()} is higher: it sits further up the stave, and in this clef that means a higher sound.`,
+      incorrect: `${answer} is higher: it sits further up the stave, and in this clef that means a higher sound.`,
+      by_distractor: {
+        [wrong]: `That one sits LOWER on the stave, so in this clef it is the lower sound. ${answer.toLowerCase()} is higher.`,
+      },
     },
     srs_tags: [staveAnatomyAtom('higher_lower')],
     kb_version: KB_VERSION,

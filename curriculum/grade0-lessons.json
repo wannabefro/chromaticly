@@ -1,0 +1,206 @@
+{
+  "grade": 0,
+  "version": "g0-lessons-2026-08-06",
+  "lessons": [
+    {
+      "id": "pulse-0",
+      "title": "Pulse",
+      "strand": "rhythm",
+      "atoms": [
+        "pulse"
+      ],
+      "templates": [
+        "pulse_count"
+      ],
+      "worked_example": {
+        "template_id": "pulse_count",
+        "grade": 0,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Music has a steady beat you can feel",
+          "The beats keep coming at the same speed",
+          "You can count the beats in a bar"
+        ],
+        "concept": {
+          "title": "Feel the beat before you read one",
+          "body": "Put a hand on the table and tap along to a song you know. That steady tap is the **pulse** — it keeps going whether or not anything is playing over the top of it, like a clock or a heartbeat. Every beat lasts the same length as the one before it. Music is grouped into short chunks called **bars**, and each bar holds the same number of beats. Counting them is how you know where you are. You do not need to read anything yet: listen, tap, and count."
+        },
+        "smartTip": "Tap first, count second. If you try to count before you feel the beat, you will lose it.",
+        "didYouKnow": "Musicians say a piece is in four when each bar holds four beats — the count comes before any symbol on the page.",
+        "theoryInSound": {
+          "prompt": "Play the bar, then tap each strong beat you hear.",
+          "timeSignature": "4/4",
+          "notes": [
+            "crotchet",
+            "crotchet",
+            "crotchet",
+            "crotchet",
+            "crotchet",
+            "crotchet",
+            "crotchet",
+            "crotchet"
+          ]
+        }
+      },
+      "unlocks": "alphabet-0"
+    },
+    {
+      "id": "alphabet-0",
+      "title": "The musical alphabet",
+      "strand": "pitch",
+      "atoms": [
+        "alphabet:A",
+        "alphabet:B",
+        "alphabet:C",
+        "alphabet:D",
+        "alphabet:E",
+        "alphabet:F",
+        "alphabet:G"
+      ],
+      "templates": [
+        "alphabet_step"
+      ],
+      "worked_example": {
+        "template_id": "alphabet_step",
+        "grade": 0,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Music uses only seven letter names, A to G",
+          "After G the names start again at A",
+          "There is no note called H"
+        ],
+        "concept": {
+          "title": "Seven letters, then round again",
+          "body": "Every note in music is named with one of seven letters: **A B C D E F G**. That is the whole set. When you reach G the names do not carry on to H — they start again at A, and keep going round for as long as the instrument does. Going the other way works the same: below A comes G. This is the single fact everything else in music reading is counted from, so it is worth knowing it forwards and backwards rather than only forwards.",
+          "example": {
+            "template_id": "alphabet_step",
+            "grade": 0,
+            "seed": 2
+          }
+        },
+        "smartTip": "Say the seven letters out loud in a circle — A B C D E F G A B C — until the jump from G back to A stops feeling like a jump.",
+        "didYouKnow": "The seven letters are far older than the stave. Musicians were naming notes A to G centuries before anyone drew five lines to put them on."
+      },
+      "unlocks": "keyboard-0"
+    },
+    {
+      "id": "keyboard-0",
+      "title": "The keyboard",
+      "strand": "pitch",
+      "atoms": [
+        "keyboard:A",
+        "keyboard:B",
+        "keyboard:C",
+        "keyboard:D",
+        "keyboard:E",
+        "keyboard:F",
+        "keyboard:G"
+      ],
+      "templates": [
+        "keyboard_find"
+      ],
+      "worked_example": {
+        "template_id": "keyboard_find",
+        "grade": 0,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "The white keys repeat the seven letters, over and over",
+          "The black keys come in groups of two and three",
+          "You find any white key from the black-key group beside it"
+        ],
+        "concept": {
+          "title": "The black keys are the landmarks",
+          "body": "A keyboard looks like a wall of identical white keys, and it is not. Look at the black keys instead: they come in a repeating pattern of **two, then three**. That pattern is the map. **C** is the white key just left of every group of two, and **D** sits between those two. **F** is just left of every group of three. Once you can find C and F you can count to any other letter, because the white keys simply run A B C D E F G and round again, left to right. Nobody counts from the end of the keyboard — everybody uses the black keys.",
+          "example": {
+            "template_id": "keyboard_find",
+            "grade": 0,
+            "seed": 3
+          }
+        },
+        "smartTip": "Find the group of two black keys first, every time. C is immediately to its left, and everything else is a short count from there.",
+        "didYouKnow": "The two-and-three pattern is what lets a pianist play in the dark, and it is why the keyboard is the fastest way to see how far apart two notes are."
+      },
+      "unlocks": "stave-0"
+    },
+    {
+      "id": "stave-0",
+      "title": "The stave",
+      "strand": "pitch",
+      "atoms": [
+        "stave_anatomy:line_or_space",
+        "stave_anatomy:higher_lower"
+      ],
+      "templates": [
+        "stave_position"
+      ],
+      "worked_example": {
+        "template_id": "stave_position",
+        "grade": 0,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "A stave is five lines and the four spaces between them",
+          "A note sits either ON a line or IN a space",
+          "Written music has two directions: up the page is pitch, left to right is time"
+        ],
+        "concept": {
+          "title": "Five lines, and two directions",
+          "body": "Written music sits on a **stave**: five lines, with four spaces between them. A note is either **on a line**, with the line running straight through the middle of it, or **in a space**, sitting in the gap. There is no third option.\n\nThe stave carries two different things at once, and telling them apart is the whole trick. **Up and down** the page is **pitch** — how high or low a note sounds. **Left to right** is **time** — the order you play things in, first to last. So a note higher up the page sounds higher, and a note further right happens later.\n\nOne caution about that first rule: it holds within a single **clef**. A clef is the symbol at the start of the stave, and its job is to fix a reference pitch so you know which line means what. Change the clef and the same line means a different note, so 'higher up means higher sound' is only safe to use while you stay in one clef. You will meet a second clef in Grade 1.",
+          "example": {
+            "template_id": "stave_position",
+            "grade": 0,
+            "seed": 4
+          }
+        },
+        "smartTip": "Ask one question at a time: first is it on a line or in a space, then how high does it sit. Trying to see both at once is what makes a stave look like a blur.",
+        "didYouKnow": "Staves have had four, six and even eleven lines at various points in history. Five won because it fits comfortably inside what the eye can take in at a glance."
+      },
+      "unlocks": "note-shapes-0"
+    },
+    {
+      "id": "note-shapes-0",
+      "title": "Note shapes and their lengths",
+      "strand": "rhythm",
+      "atoms": [
+        "note_shape:semibreve",
+        "note_shape:minim",
+        "note_shape:crotchet",
+        "note_shape:quaver"
+      ],
+      "templates": [
+        "note_shape_length"
+      ],
+      "worked_example": {
+        "template_id": "note_shape_length",
+        "grade": 0,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Four note shapes, and the length each one is written as",
+          "An open notehead lasts longer than a filled one",
+          "A quaver may carry a tail, or be beamed to its neighbour"
+        ],
+        "concept": {
+          "title": "The shape tells you how long",
+          "body": "A note's **shape** tells you how long it is written to last, measured against the pulse you counted in lesson 1. There are four to start with.\n\nA **semibreve** is an open notehead with no stem, written as four beats. A **minim** is an open notehead with a stem, written as two. A **crotchet** is a filled notehead with a stem, written as one beat — this is the one you have been tapping. A **quaver** is a filled notehead with a tail, written as half a beat.\n\nRead the notehead first: **open notes are long, filled notes are short**. Then look for the stem and the tail.\n\nOne thing to watch. A quaver does not always carry a tail. When two or more quavers fall in the same beat they are joined by a thick line across their stems, called a **beam** — and a beamed pair is still two quavers. It is the same note value, drawn tidily.\n\nThese lengths are what each shape is *written* as. How long a note actually sounds is a separate question a performer answers.",
+          "example": {
+            "template_id": "note_shape_length",
+            "grade": 0,
+            "seed": 5
+          }
+        },
+        "smartTip": "Open or filled, then stem or no stem, then tail or no tail. Three quick looks name any of the four.",
+        "didYouKnow": "The names are British. American musicians call the same four shapes a whole note, half note, quarter note and eighth note — which say the lengths out loud."
+      },
+      "unlocks": null
+    }
+  ]
+}

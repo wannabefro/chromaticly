@@ -75,8 +75,8 @@ describe('LevelMapScreen — the grade home (R1)', () => {
   });
 
   test('a fully-mastered unit shows 3 filled stars; a partial unit shows the derived count', async () => {
-    const first = LESSONS[0];
-    const second = LESSONS[1];
+    const first = LESSONS_BY_GRADE[1][0];
+    const second = LESSONS_BY_GRADE[1][1];
     const seed = seedBlob((store) => {
       masterAtoms(store, first.atoms);
       store.setLesson(first.id, { completed: true });
@@ -154,7 +154,7 @@ describe('LevelMapScreen — the grade home (R1)', () => {
 
     const accent = getByTestId('level-node-level-1-accent');
     const flatten = (style: unknown) => Object.assign({}, ...(Array.isArray(style) ? style : [style]));
-    const firstStrand = strandDef(LESSONS[0].strand as Strand);
+    const firstStrand = strandDef(LESSONS_BY_GRADE[1][0].strand as Strand);
 
     expect(flatten(accent.props.style).backgroundColor).toBe(firstStrand.hue);
   });
@@ -164,7 +164,7 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     await findByTestId('level-map-screen');
 
     await act(async () => {
-      fireEvent.press(getByTestId(`unit-row-${LESSONS[0].id}`));
+      fireEvent.press(getByTestId(`unit-row-${LESSONS_BY_GRADE[1][0].id}`));
     });
 
     expect(getByTestId('set-runner')).toBeTruthy();

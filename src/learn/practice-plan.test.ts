@@ -6,7 +6,11 @@ import { attemptedAtomSet, attemptedTemplates, nextPracticeTemplate, type Practi
 import { ProgressStore } from './store';
 import { initialSrs, reviewSrs, type SrsState } from './srs';
 
-const firstLesson = LESSONS[0];
+// LESSONS is in grade order and now opens with First steps (grade 0), so
+// LESSONS[0] is no longer a grade-1 lesson. These cases assert the OWNING
+// lesson's grade reaches the pick, so they name the grade-1 lesson explicitly
+// rather than relying on curriculum order.
+const firstLesson = LESSONS_BY_GRADE[1][0];
 const grade2Lesson = LESSONS_BY_GRADE[2][0];
 
 /** Every atom of `lessons`, attempted and NOT due — so selection falls through to

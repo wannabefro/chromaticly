@@ -9,6 +9,7 @@
 // unlock, so grade-2 content loads and is pinned but isn't reachable yet.
 
 import { z } from 'zod';
+import grade0Raw from '../../curriculum/grade0-lessons.json';
 import grade1Raw from '../../curriculum/grade1-lessons.json';
 import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
@@ -662,6 +663,8 @@ export function assertNoCrossDocDuplicateIds(docs: readonly LessonsDoc[]): void 
 // Grade-1 first — order matters for the interim single-root-per-grade unlock
 // behavior (see U2 of the grade2-new-major-keys plan).
 const GRADE_DOCS: readonly LessonsDoc[] = [
+  // First steps (grade 0, chromaticly-dhe) leads, so LESSONS stays in grade order.
+  loadDoc(grade0Raw),
   loadDoc(grade1Raw),
   loadDoc(grade2Raw),
   loadDoc(grade3Raw),

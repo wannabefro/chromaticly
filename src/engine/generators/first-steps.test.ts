@@ -48,12 +48,19 @@ describe('every First steps generator — the properties the ledgers depend on',
     }
   });
 
-  test.each(TEMPLATES)('%s names every distractor it emits in by_distractor, or names none', (template) => {
+  // The house rule (misconception-coverage.test.ts, design rule 5): EVERY
+  // distractor a learner can pick names its own misconception. The first version
+  // of this test skipped when by_distractor was absent, which let stave_position
+  // ship with none at all — a vacuous pass, caught by the repo-wide test instead.
+  test.each(TEMPLATES)('%s writes a distinct by_distractor line for every distractor it emits', (template) => {
     for (const seed of SEEDS) {
       const instance = generate(template, { grade: 0, seed, atoms: [] });
+      if (instance.distractors.length === 0) continue; // keyboard_tap has no options
       const byDistractor = instance.feedback.by_distractor;
-      if (!byDistractor) continue;
-      for (const distractor of instance.distractors) expect(byDistractor[distractor]).toBeTruthy();
+      expect(byDistractor).toBeTruthy();
+      const lines = instance.distractors.map((d) => byDistractor![d]);
+      for (const line of lines) expect(line).toBeTruthy();
+      expect(new Set(lines).size).toBe(lines.length);
     }
   });
 });

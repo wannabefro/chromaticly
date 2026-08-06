@@ -13,7 +13,7 @@ import { join } from 'node:path';
 
 import { act, fireEvent, render, waitFor, within } from '@testing-library/react-native';
 
-import { LESSONS_BY_GRADE } from '../content/lessons';
+import { LESSONS, LESSONS_BY_GRADE } from '../content/lessons';
 import { LEVELS } from '../content/levels';
 import { daysSinceEpoch } from '../learn/clock';
 import { ProgressProvider } from '../learn/ProgressContext';
@@ -128,12 +128,11 @@ describe('ProfileScreen — where the learner stands (5c, readiness amended by 7
 
   test('the fact collection counts what has actually been collected, across every content-ful grade (1-5), not just the working grade', async () => {
     const { getByTestId } = renderProfile(seeded([]));
-    const totalContentfulLessons =
-      LESSONS_BY_GRADE[1].length +
-      LESSONS_BY_GRADE[2].length +
-      LESSONS_BY_GRADE[3].length +
-      LESSONS_BY_GRADE[4].length +
-      LESSONS_BY_GRADE[5].length;
+    // Derived from LESSONS, not a hand-summed grade list. The screen's own rule is
+    // "the collection is the whole curriculum", and First steps (grade 0) joined it
+    // — its lessons draw real stars and real mastery, so a collection that ignored
+    // them would sit still while the learner finished five lessons.
+    const totalContentfulLessons = LESSONS.length;
     await waitFor(() => expect(getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
   });
 
@@ -141,12 +140,11 @@ describe('ProfileScreen — where the learner stands (5c, readiness amended by 7
   // join the fact-card total and strand radar ALREADY on a fresh store —
   // content presence is the only gate now, so recording an exam clear moves nothing.
   test('grades 2-5 already join the fact-card total and strand radar on a fresh store; recording the grade-1 exam changes nothing', async () => {
-    const totalContentfulLessons =
-      LESSONS_BY_GRADE[1].length +
-      LESSONS_BY_GRADE[2].length +
-      LESSONS_BY_GRADE[3].length +
-      LESSONS_BY_GRADE[4].length +
-      LESSONS_BY_GRADE[5].length;
+    // Derived from LESSONS, not a hand-summed grade list. The screen's own rule is
+    // "the collection is the whole curriculum", and First steps (grade 0) joined it
+    // — its lessons draw real stars and real mastery, so a collection that ignored
+    // them would sit still while the learner finished five lessons.
+    const totalContentfulLessons = LESSONS.length;
     const fresh = renderProfile(seeded(['key-signatures']));
     await waitFor(() => expect(fresh.getByTestId('profile-facts')).toHaveTextContent(`0 of ${totalContentfulLessons}`));
 
