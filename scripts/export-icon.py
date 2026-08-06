@@ -17,7 +17,7 @@ ANDROID_SAFE = 0.78
 
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from _iconlib import fit_png, silhouette  # noqa: E402
+from _iconlib import fit_png, relight_ink, silhouette  # noqa: E402
 
 
 def ground_only(bg: str) -> str:
@@ -96,6 +96,13 @@ def main() -> int:
         print(f"{name:32} {px}x{px}  {(OUT / name).stat().st_size // 1024} KB")
 
     # The App Store artwork is rejected outright if it carries an alpha channel.
+    # iOS 18 dark variant. Expo keeps transparency here and strips it everywhere
+    # else, so this one ships as the mark alone and iOS supplies the backdrop.
+    render(wrap(src, None, a.scale), OUT / "_dark-tmp.png", 1024)
+    relight_ink(OUT / "_dark-tmp.png", OUT / "icon-dark.png")
+    (OUT / "_dark-tmp.png").unlink()
+    print(f"{'icon-dark.png':32} 1024x1024  {(OUT / 'icon-dark.png').stat().st_size // 1024} KB")
+
     # Inset to match the foreground layer: the launcher crops both the same way.
     mono_src = wrap(src, None, a.scale * ANDROID_SAFE)
     with tempfile.NamedTemporaryFile("w", suffix=".svg", delete=False) as f:
@@ -109,7 +116,8 @@ def main() -> int:
     bad = [n for n, want in [("icon.png", False), ("favicon.png", False),
                              ("android-icon-background.png", False),
                              ("android-icon-foreground.png", True),
-                             ("android-icon-monochrome.png", True)]
+                             ("android-icon-monochrome.png", True),
+                             ("icon-dark.png", True)]
            if has_alpha(OUT / n) != want]
     if bad:
         print("\nALPHA WRONG: " + ", ".join(bad), file=sys.stderr)
