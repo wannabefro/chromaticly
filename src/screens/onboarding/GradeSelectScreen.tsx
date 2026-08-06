@@ -16,14 +16,14 @@ export interface GradeSelectScreenProps {
   onSelectGrade: (grade: number) => void;
 }
 
-/** Short, plain-language "what this grade covers" line per pill. Grade 3's is
- *  taken verbatim from the design; the rest are faithful one-liners. */
+/** Verbatim from design 5a. Each names content that exists — melodic-minor-3,
+ *  chromatic-scale-4, alto-reading-4, tenor-reading-5, cadences-5, satb-voice-5. */
 const GRADE_DESCRIPTORS: Record<number, string> = {
-  1: 'The basics — notes, rhythm, simple keys',
-  2: 'Ledger lines, more keys, triads',
-  3: 'Compound time, minor keys',
-  4: 'Clefs, keys to five sharps and flats',
-  5: 'Advanced rhythm, transposition',
+  1: 'The basics — note values, simple time',
+  2: 'New keys, triplets, more intervals',
+  3: 'Compound time, melodic minor',
+  4: 'Chromatic scales, alto clef',
+  5: 'The gateway exam — harmony, tenor clef',
 };
 
 const FIRST_STARTABLE_GRADE = LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;

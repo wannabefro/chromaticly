@@ -101,6 +101,21 @@ describe('CoachedWarmUp — a 3-question coached on-ramp (R4, R5, KTD3)', () => 
 
     await answer(getByTestId, correctIndexFor(2));
     expect(onComplete).toHaveBeenCalledTimes(1);
+    expect(onComplete).toHaveBeenCalledWith(['clean', 'clean', 'clean']);
+  });
+
+  // LandedScreen draws these. A retried item must not come back looking clean, or
+  // the reward screen overstates what the learner actually did.
+  test('a retried item reports hinted, and only that item', async () => {
+    const { getByTestId, onComplete } = renderWarmUp();
+    await act(async () => {});
+
+    await answer(getByTestId, wrongIndexFor(0)); // miss the first item, then retry it
+    await answer(getByTestId, correctIndexFor(0));
+    await answer(getByTestId, correctIndexFor(1));
+    await answer(getByTestId, correctIndexFor(2));
+
+    expect(onComplete).toHaveBeenCalledWith(['hinted', 'clean', 'clean']);
   });
 
   test('onComplete never fires after Check alone — only after the 3rd feedback Continue', async () => {

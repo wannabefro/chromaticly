@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 
 import { lessonById } from '../content/lessons';
 import { useProgressContext } from '../learn/ProgressContext';
+import { type GemState } from '../ui/components/MasteryGems';
 import { CoachedWarmUp } from '../ui/CoachedWarmUp';
 import type { Strand } from '../ui/theme';
 import { GradeSelectScreen } from './onboarding/GradeSelectScreen';
@@ -28,6 +29,7 @@ export default function RootRouter() {
   const { ready, isOnboarded, completeOnboarding, seedTo } = useProgressContext();
   const [step, setStep] = useState<Step>('welcome');
   const [grade, setGrade] = useState(1);
+  const [gems, setGems] = useState<GemState[]>([]);
 
   // DEV/E2E only (302.5): a `--/?seed=<unitId>` deep link fast-forwards progress so
   // a Maestro flow can jump to a deep unit instead of grinding the chain. The seed
@@ -77,12 +79,20 @@ export default function RootRouter() {
       case 'plan':
         return <PlanScreen grade={grade} onStartWarmUp={() => setStep('warmup')} />;
       case 'warmup':
-        return <CoachedWarmUp onComplete={() => setStep('landed')} onClose={() => setStep('plan')} />;
+        return (
+          <CoachedWarmUp
+            onComplete={(earned) => {
+              setGems(earned);
+              setStep('landed');
+            }}
+            onClose={() => setStep('plan')}
+          />
+        );
       case 'landed': {
         // Both CTAs mark the guest onboarded; completeOnboarding persists the grade
         // and bumps context revision → isOnboarded flips → level map (grade home).
         const finish = () => completeOnboarding(grade, new Date().toISOString());
-        return <LandedScreen onContinue={finish} onExplore={finish} />;
+        return <LandedScreen onContinue={finish} onExplore={finish} gems={gems} />;
       }
     }
   }

@@ -10,16 +10,19 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '../../ui/components/Button';
+import { MasteryGems, type GemState } from '../../ui/components/MasteryGems';
 import { colors, shape, strandDef, type, type Strand } from '../../ui/theme';
 
 export interface LandedScreenProps {
   onContinue: () => void;
   onExplore: () => void;
+  /** One gem per warm-up item, from CoachedWarmUp — the point the copy names. */
+  gems: GemState[];
 }
 
 const RHYTHM_HUE = strandDef('rhythm' as Strand).hue;
 
-export function LandedScreen({ onContinue, onExplore }: LandedScreenProps) {
+export function LandedScreen({ onContinue, onExplore, gems }: LandedScreenProps) {
   return (
     <View style={styles.container} testID="landed-screen">
       <View style={styles.head}>
@@ -31,6 +34,8 @@ export function LandedScreen({ onContinue, onExplore }: LandedScreenProps) {
           <Text style={[styles.strandLabel, { color: RHYTHM_HUE }]}>Rhythm</Text> point is on the board.
           The full lesson picks up right here.
         </Text>
+        {/* The copy named a point and nothing showed it. One gem per warm-up item. */}
+        <MasteryGems items={gems} hue={RHYTHM_HUE} testID="landed-gems" />
       </View>
 
       <View style={styles.footer}>
@@ -50,7 +55,8 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
     justifyContent: 'space-between',
   },
-  head: { gap: 12, marginTop: 48 },
+  // Centred in the space above the footer. Top-aligned, this screen was 55% empty.
+  head: { flex: 1, gap: 12, justifyContent: 'center' },
   overline: {
     fontFamily: type.overline.fontFamily,
     fontSize: type.overline.fontSize,

@@ -17,6 +17,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { generate } from '../engine/generators';
 import { useProgressContext } from '../learn/ProgressContext';
+import { type GemState } from './components/MasteryGems';
 import { ExerciseLoop } from './ExerciseLoop';
 import { type AttemptResult } from './grading';
 import { Screen } from './Screen';
@@ -27,13 +28,15 @@ const TOTAL = 3;
 const RHYTHM_HUE = strandDef('rhythm' as Strand).hue;
 
 export interface CoachedWarmUpProps {
-  onComplete: () => void;
+  /** One gem per item, in order: clean if it was answered first try, hinted if retried. */
+  onComplete: (gems: GemState[]) => void;
   onClose?: () => void;
 }
 
 export function CoachedWarmUp({ onComplete, onClose }: CoachedWarmUpProps) {
   const { recordAtom, clock } = useProgressContext();
   const [index, setIndex] = useState(0);
+  const [gems, setGems] = useState<GemState[]>([]);
   // Bumped on an incorrect answer to regenerate the same-seed item with a fresh
   // object identity, so ExerciseLoop resets and re-presents it (retry, KTD3b).
   const [attempt, setAttempt] = useState(0);
@@ -53,10 +56,13 @@ export function CoachedWarmUp({ onComplete, onClose }: CoachedWarmUpProps) {
       setAttempt((a) => a + 1); // re-present the same question; do not advance
       return;
     }
+    // attempt is still 0 here on a first-try answer; it resets only when we advance.
+    const next: GemState[] = [...gems, attempt === 0 ? 'clean' : 'hinted'];
     if (index >= TOTAL - 1) {
-      onComplete();
+      onComplete(next);
       return;
     }
+    setGems(next);
     setIndex((i) => i + 1);
     setAttempt(0);
   }
