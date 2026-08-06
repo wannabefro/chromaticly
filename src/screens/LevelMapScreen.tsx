@@ -129,8 +129,10 @@ export default function LevelMapScreen({ onImmersive }: LevelMapScreenProps = {}
       <View style={styles.header}>
         <Text style={styles.title}>Learn</Text>
         <View style={styles.gradePill}>
+          {/* The level TITLE, never the number — a learner in First steps must not
+              be shown "Grade 0", and the title is right for the five as well. */}
           <Text style={styles.gradePillText} testID="grade-pill">
-            Grade {activeLevel.grade}
+            {activeLevel.title}
           </Text>
         </View>
       </View>

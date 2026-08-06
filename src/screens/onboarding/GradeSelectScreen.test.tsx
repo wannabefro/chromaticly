@@ -18,7 +18,7 @@ describe('GradeSelectScreen — every content-ful grade is selectable; onboardin
 
     expect(getByTestId('grade-select-screen')).toBeTruthy();
     for (let g = 1; g <= 5; g++) expect(getByTestId(`grade-pill-${g}`)).toBeTruthy();
-    expect(getByText('You can switch grades any time in Profile.')).toBeTruthy();
+    expect(getByText('You can switch any time in Profile.')).toBeTruthy();
   });
 
   test('all five grades (1-5) are content-ful and enabled — no pill is disabled', () => {
@@ -100,32 +100,63 @@ describe('GradeSelectScreen — every content-ful grade is selectable; onboardin
   });
 });
 
-// First steps (grade 0, chromaticly-dhe) is a real level and is reachable — it is
-// just not offered HERE yet. design 5a draws exactly five cards and `design/` has
-// no screen for a sixth, so how it should appear is an open design decision. These
-// assertions hold the line until that ruling lands, and go red the moment someone
-// adds the level to this picker without one.
-describe('grade select — First steps stays off the picker until the design rules on it', () => {
-  test('exactly the grade-1..5 levels get a pill, and grade 0 gets none', () => {
-    const { getByTestId, queryByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+// First steps (grade 0) leads the picker as a set-apart lead-in card, never as a
+// sixth rung of the grade ladder — design/README.md, "First steps sits above the
+// grade ladder, not inside it" (approved 2026-08-06). Each assertion below pins
+// one clause of that ruling, so a later edit that quietly turns it back into a
+// sixth grade goes red.
+describe('grade select — First steps leads the picker without joining the ladder', () => {
+  test('it is offered, and it is offered FIRST — order is the whole reason for the shape', () => {
+    const { getByTestId, getAllByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
 
-    expect(queryByTestId('grade-pill-0')).toBeNull();
-    for (const level of LEVELS.filter((l) => l.grade >= 1)) {
-      expect(getByTestId(`grade-pill-${level.grade}`)).toBeTruthy();
-    }
+    expect(getByTestId('grade-pill-0')).toBeTruthy();
+    const ids = getAllByTestId(/^grade-pill-\d$/).map((n) => n.props.testID);
+    expect(ids[0]).toBe('grade-pill-0');
   });
 
+  // The level has no exam, no gate and no place in exam readiness, and "Grade 0"
+  // reads as a failing mark to an adult beginner. The internal key never surfaces.
   test('the words "Grade 0" appear nowhere on the screen', () => {
     const { queryByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
     expect(queryByText(/grade 0/i)).toBeNull();
   });
 
-  test('Grade 1 is the default even though a lower level now exists', () => {
+  test('its card names the level and says it carries no exam', () => {
+    const { getByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByText('First steps')).toBeTruthy();
+    expect(getByText(/No exam\./)).toBeTruthy();
+  });
+
+  // Ruling clause 4. A default that drops every tap-through learner into the
+  // beginner level is worse than one that misses a beginner.
+  test('Grade 1 stays the default selection, even though a lower level now leads the list', () => {
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
     expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
   });
 
-  test('the level itself is real — the pill is filtered, not the level', () => {
-    expect(LEVELS.find((l) => l.grade === 0)!.unitIds.length).toBeGreaterThan(0);
+  // Ruling clause 5. `Start Grade ${grade}` would print the forbidden words, so
+  // the button reads the level TITLE — which is also still right for the five.
+  test('selecting it makes the button read the level title, and starting it passes grade 0', () => {
+    const onSelectGrade = jest.fn();
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={onSelectGrade} />);
+
+    fireEvent.press(getByTestId('grade-pill-0'));
+    expect(getByTestId('start-grade')).toHaveTextContent('Start First steps');
+
+    fireEvent.press(getByTestId('start-grade'));
+    expect(onSelectGrade).toHaveBeenCalledWith(0);
+  });
+
+  // Ruling clause 2: one mono label carries the distinction, so the five below it
+  // stay a ladder of five rather than becoming a list of six.
+  test('a group label separates it from the grades it is not one of', () => {
+    const { getByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByText('or pick your grade')).toBeTruthy();
+  });
+
+  test('the headline is 5a\'s question, not the "do you know your grade?" drift', () => {
+    const { getByText, queryByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByText('Where should we start?')).toBeTruthy();
+    expect(queryByText(/do you know your grade/i)).toBeNull();
   });
 });

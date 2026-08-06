@@ -1,8 +1,11 @@
-// Grade select (design screen 2, "step 2 · one question"): the ONLY setup
-// question (R2). Grade pills are the fast path; the placement quiz is a deferred
-// branch (shown disabled). A grade is selectable once levels.ts gives it units,
-// so onboarding never persists an ungenerated grade. The reassurance line
-// ("switch any time") kills choice anxiety per the design annotation.
+// Grade select (design screen 5a): the ONLY setup question (R2). Grade pills are
+// the fast path; the placement quiz is a deferred branch (shown disabled). A grade
+// is selectable once levels.ts gives it units, so onboarding never persists an
+// ungenerated grade. The reassurance line ("switch any time") kills choice anxiety
+// per the design annotation.
+//
+// First steps leads the list as a set-apart lead-in card, never as a sixth rung —
+// design/README.md, "First steps sits above the grade ladder, not inside it".
 
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -16,9 +19,12 @@ export interface GradeSelectScreenProps {
   onSelectGrade: (grade: number) => void;
 }
 
-/** Verbatim from design 5a. Each names content that exists — melodic-minor-3,
- *  chromatic-scale-4, alto-reading-4, tenor-reading-5, cadences-5, satb-voice-5. */
+/** Verbatim from design 5a for grades 1-5. Each names content that exists —
+ *  melodic-minor-3, chromatic-scale-4, alto-reading-4, tenor-reading-5,
+ *  cadences-5, satb-voice-5. Grade 0 names its own, and states "no exam", which
+ *  is the structural fact separating it from the five. */
 const GRADE_DESCRIPTORS: Record<number, string> = {
+  0: 'New to reading music — pulse, letters, the stave. No exam.',
   1: 'The basics — note values, simple time',
   2: 'New keys, triplets, more intervals',
   3: 'Compound time, melodic minor',
@@ -26,30 +32,60 @@ const GRADE_DESCRIPTORS: Record<number, string> = {
   5: 'The gateway exam — harmony, tenor clef',
 };
 
-/** The grades this screen offers. First steps (grade 0) is deliberately ABSENT:
- *  design 5a draws exactly five cards and `design/` has no screen for a sixth, so
- *  how it should appear here is an open design decision. Until that ruling exists,
- *  showing it would mean inventing a card AND rendering the words "Grade 0", which
- *  the level's own naming decision forbids. The content ships unreachable: no
- *  surface starts grade 0 until the design ruling lands and adds the entry. */
-const PICKABLE_LEVELS = LEVELS.filter((l) => l.grade >= 1);
+const STARTER_LEVELS = LEVELS.filter((l) => l.grade < 1);
+const GRADED_LEVELS = LEVELS.filter((l) => l.grade >= 1);
 
-const FIRST_STARTABLE_GRADE = PICKABLE_LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;
+/** Grade 1, not First steps. A default that drops every tap-through learner into
+ *  the beginner level is worse than one that misses a beginner (design ruling). */
+const DEFAULT_GRADE = GRADED_LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;
+
+/** The system's signature staff-line motif, drawn rather than tiled — RN has no
+ *  repeating-linear-gradient. Decorative only, so it stays out of the a11y tree. */
+function StaffLines() {
+  return (
+    <View style={styles.staffLines} pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <View key={i} style={styles.staffLine} />
+      ))}
+    </View>
+  );
+}
 
 export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
-  // Default-select the first available grade so the primary CTA is immediately
-  // actionable (keeps the <90s path fast); locked grades can't become selected.
-  const [selectedGrade, setSelectedGrade] = useState<number>(FIRST_STARTABLE_GRADE);
+  // Default-select so the primary CTA is immediately actionable (keeps the <90s
+  // path fast); locked grades can't become selected.
+  const [selectedGrade, setSelectedGrade] = useState<number>(DEFAULT_GRADE);
+  const selectedLevel = LEVELS.find((l) => l.grade === selectedGrade);
 
   return (
     <View style={styles.container} testID="grade-select-screen">
       <View style={styles.head}>
         <Text style={styles.overline}>1 of 1 — that&apos;s the whole setup</Text>
-        <Text style={styles.title}>Do you know your grade?</Text>
+        <Text style={styles.title}>Where should we start?</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.pills}>
-        {PICKABLE_LEVELS.map((level) => {
+        {STARTER_LEVELS.map((level) => {
+          const selected = level.grade === selectedGrade;
+          return (
+            <Pressable
+              key={level.id}
+              testID={`grade-pill-${level.grade}`}
+              onPress={() => setSelectedGrade(level.grade)}
+              style={[styles.pill, styles.starter, selected && styles.pillSelected]}
+            >
+              <StaffLines />
+              <View style={styles.pillTextBlock}>
+                <Text style={[styles.pillGrade, styles.pillGradeSelected]}>{level.title}</Text>
+                <Text style={styles.pillDescriptor}>{GRADE_DESCRIPTORS[level.grade]}</Text>
+              </View>
+            </Pressable>
+          );
+        })}
+
+        {STARTER_LEVELS.length > 0 && <Text style={styles.groupLabel}>or pick your grade</Text>}
+
+        {GRADED_LEVELS.map((level) => {
           const selectable = isStartableGrade(level.grade);
           const selected = selectable && level.grade === selectedGrade;
           return (
@@ -61,7 +97,7 @@ export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
               style={[styles.pill, selected && styles.pillSelected, !selectable && styles.pillLocked]}
             >
               <View style={styles.pillTextBlock}>
-                <Text style={[styles.pillGrade, selected && styles.pillGradeSelected]}>Grade {level.grade}</Text>
+                <Text style={[styles.pillGrade, selected && styles.pillGradeSelected]}>{level.title}</Text>
                 <Text style={styles.pillDescriptor}>{GRADE_DESCRIPTORS[level.grade]}</Text>
               </View>
               {!selectable && <Text style={styles.comingSoon}>Coming soon</Text>}
@@ -79,9 +115,11 @@ export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
       </ScrollView>
 
       <View style={styles.footer}>
-        <Text style={styles.reassurance}>You can switch grades any time in Profile.</Text>
+        <Text style={styles.reassurance}>You can switch any time in Profile.</Text>
+        {/* The title, never the number — "Start Grade 0" would print the words the
+            naming decision forbids. */}
         <Button
-          label={`Start Grade ${selectedGrade}`}
+          label={`Start ${selectedLevel?.title ?? `Grade ${selectedGrade}`}`}
           onPress={() => onSelectGrade(selectedGrade)}
           testID="start-grade"
         />
@@ -146,6 +184,32 @@ const styles = StyleSheet.create({
     fontSize: type.body.fontSize,
     lineHeight: type.body.lineHeight,
     color: colors.textFaint,
+  },
+  // Set apart by treatment, never by the accent — the accent means "selected" here.
+  starter: {
+    borderRadius: shape.radiusCardLg,
+    borderColor: colors.borderStrong,
+    overflow: 'hidden',
+  },
+  staffLines: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    justifyContent: 'center',
+    gap: 11,
+    opacity: 0.035,
+  },
+  staffLine: { height: 1, backgroundColor: colors.text },
+  groupLabel: {
+    fontFamily: type.overline.fontFamily,
+    fontSize: type.overline.fontSize,
+    lineHeight: type.overline.lineHeight,
+    letterSpacing: type.overline.letterSpacing,
+    textTransform: type.overline.textTransform,
+    color: colors.textGhost,
+    marginTop: 4,
   },
   comingSoon: {
     fontFamily: type.label.fontFamily,

@@ -114,6 +114,16 @@ describe('LevelMapScreen — the grade home (R1)', () => {
     expect(getByTestId('exam-start')).toBeTruthy();
   });
 
+  // The pill reads the working level. A learner who chose First steps must never
+  // be shown "Grade 0" — the level title is what the pill is for.
+  test('the grade pill reads the level title, so First steps never prints a grade number', async () => {
+    const { getByTestId, findByTestId } = renderMap();
+    await findByTestId('level-map-screen');
+
+    expect(getByTestId('grade-pill')).toHaveTextContent('Grade 1');
+    expect(LEVELS.find((l) => l.grade === 0)!.title).toBe('First steps');
+  });
+
   // First steps has no exam and must not grow one by accident. The seal is what a
   // learner reads as "there is a paper here", so its ABSENCE is the assertion.
   test('the First steps level renders no exam-gate seal, because it has no paper', async () => {

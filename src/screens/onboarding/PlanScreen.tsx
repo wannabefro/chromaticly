@@ -8,6 +8,7 @@
 
 import { StyleSheet, Text, View } from 'react-native';
 
+import { LEVELS } from '../../content/levels';
 import { Button } from '../../ui/components/Button';
 import { colors, shape, type } from '../../ui/theme';
 
@@ -19,19 +20,37 @@ export interface PlanScreenProps {
 const PLAN_CARDS = [
   { title: 'Short lessons', body: 'Read a little, hear a lot — every example plays.' },
   { title: 'Quick exercises', body: 'One question per screen. Wrong answers explain why.' },
-  { title: 'A real practice exam', body: "Sit it whenever you like — we'll tell you when you look ready." },
 ] as const;
 
+/** The third card is the level's ENDING, and the two levels end differently. A
+ *  level that cannot be sat must not be sold on an exam it will never offer —
+ *  and dropping the card without replacing it left a screen with a hole in it,
+ *  which reads as unfinished rather than as deliberate (device capture). */
+const EXAM_CARD = {
+  title: 'A real practice exam',
+  body: "Sit it whenever you like — we'll tell you when you look ready.",
+} as const;
+
+const HANDOFF_CARD = {
+  title: 'Then Grade 1',
+  body: 'No exam here — when these five are done, Grade 1 picks up right where they leave off.',
+} as const;
+
 export function PlanScreen({ grade, onStartWarmUp }: PlanScreenProps) {
+  // The title, never the number — "Grade 0" is the words the naming decision forbids.
+  const level = LEVELS.find((l) => l.grade === grade);
+  const name = level?.title ?? `Grade ${grade}`;
+  const cards = [...PLAN_CARDS, level?.examGate ? EXAM_CARD : HANDOFF_CARD];
+
   return (
     <View style={styles.container} testID="plan-screen">
       <View style={styles.head}>
-        <Text style={styles.overline}>Grade {grade} · ready</Text>
-        <Text style={styles.title}>Here&apos;s how Grade {grade} works</Text>
+        <Text style={styles.overline}>{name} · ready</Text>
+        <Text style={styles.title}>Here&apos;s how {name} works</Text>
       </View>
 
       <View style={styles.cards}>
-        {PLAN_CARDS.map((card) => (
+        {cards.map((card) => (
           <View key={card.title} style={styles.card}>
             <Text style={styles.cardTitle}>{card.title}</Text>
             <Text style={styles.cardBody}>{card.body}</Text>

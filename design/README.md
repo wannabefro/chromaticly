@@ -310,3 +310,51 @@ What stays, and why it is not the same thing:
 The subtext under the primary button changes from "No account needed — jump straight in." to
 "No account needed. Everything stays on this device." — the same reassurance, now also a true
 statement of where progress lives. Restore the block only when sync actually exists.
+
+### First steps sits above the grade ladder, not inside it · approved 2026-08-06
+
+Screen 5a draws exactly five cards and `design/` has no screen for a sixth. First steps is a real
+level with no exam paper, no exam gate, and no contribution to exam readiness, so where it appears on
+the picker is a decision the prototype cannot settle. Chosen from three shapes; the two not taken are
+recorded because each wins something this one has to pay for.
+
+| shape | why not |
+|---|---|
+| **B — a lead-in card above the ladder** *(taken)* | — |
+| A — a sixth card, first in the stack | Five siblings are numbered rungs of one ladder. Sixth-in-kind, first-in-order asserts it IS the grade below Grade 1, and the missing numeral reads as an omission rather than a category |
+| C — below the five, grouped with the placement quiz | The truest grouping on paper — both answer "I don't know my grade" — but it is ordered last. The reader who needs it most scans five cards that all look plausible, stops at "Grade 1 · the basics", and bounces. That is the failure the level exists to prevent |
+
+Discoverability and category-honesty pull in opposite directions, and B is the only shape that pays
+both. What it renders:
+
+1. **The card is set apart by treatment, not by the accent.** Hero radius (`--radius-card-lg`), the
+   signature staff-line motif at 3.5%, and `--border-strong`. The accent is not spent here, so violet
+   still means *selected* and the screen keeps exactly one accent (rule: one accent per screen).
+   A 𝄞 glyph badge was drawn and then **removed on device capture**: it narrowed the text column
+   enough to wrap the descriptor onto a third line, which made the lead-in card two and a half times
+   the height of the five below it — far more emphasis than the ruling intends.
+2. **One mono group label — "or pick your grade" — carries the whole distinction.** The same grammar
+   the lane list uses. No second heading, no tab, no segmented control.
+3. **The descriptor states "no exam".** It is the structural fact that separates this level from the
+   five, and the picker is the last screen where a learner can act on it.
+4. **Grade 1 stays the default selection.** First steps is read first but is not preselected. A
+   default that drops every tap-through learner into the beginner level is worse than one that misses
+   a beginner, and 5a already put the default at the modal answer.
+5. **The primary button reads the level title, never the grade number.** `Start Grade 0` would print
+   the words the naming decision forbids, so the button reads "Start First steps" here and
+   "Start Grade N" everywhere else.
+
+**The plan screen's third card is replaced, not removed.** `PlanScreen` sold "a real practice exam"
+to every level. First steps has no paper, and dropping the card left a visible hole that reads as an
+unfinished screen rather than a deliberate one (device capture, 2026-08-06). It gets its own third
+card instead — "Then Grade 1 · No exam here — when these five are done, Grade 1 picks up right where
+they leave off" — which answers the question a beginner actually has about a level that ends without
+an exam. The choice is driven by `examGate`, never by `grade === 0`, so a level that later gains a
+paper gets the right card without anyone remembering.
+
+**Neither the plan screen nor the Learn tab prints a grade number for this level.** Both read
+`Level.title`, which is right for the five as well — "Grade 0" appears nowhere.
+
+**The headline reverts to 5a's "Where should we start?".** The built screen had drifted to "Do you
+know your grade?", which asks the one reader First steps exists for to admit they do not — on the
+screen that now carries their answer.
