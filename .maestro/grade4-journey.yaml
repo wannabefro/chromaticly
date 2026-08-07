@@ -61,7 +61,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "profile-working-grade" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 # The value is a descendant Text of the row, not the row's own label, so the
 # claim is two asserts: the row is there, and "Grade 4" is on screen.
 - assertVisible: { id: "profile-working-grade" }

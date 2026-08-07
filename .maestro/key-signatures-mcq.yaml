@@ -17,7 +17,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "unit-row-key-signatures" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - tapOn: { id: "unit-row-key-signatures" }
 
 # Every lesson opens on the teach phase (302.3); the CTA starts the set.

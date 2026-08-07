@@ -16,7 +16,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "unit-row-music-in-context" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - tapOn: { id: "unit-row-music-in-context" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }

@@ -17,7 +17,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "unit-row-minor-scales-3" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - tapOn: { id: "unit-row-minor-scales-3" }
 
 - extendedWaitUntil:

@@ -6,6 +6,11 @@
 #
 # Seeds to treble-notes so a lesson is enterable with zero facts collected yet.
 #
+# The total is matched as `\d+`, not as a literal. It is `LESSONS.length`, which
+# was 46 when this flow was written and is 96 now — grades 3-5 and First steps
+# all landed after it. The flow proves the count MOVES; the total is not its
+# subject, and pinning it made the flow fail on every curriculum addition.
+#
 # Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
 appId: host.exp.Exponent
 ---
@@ -23,7 +28,7 @@ appId: host.exp.Exponent
 - assertVisible: { id: "profile-screen" }
 - assertVisible:
     id: "profile-facts"
-    text: "0 of 46"
+    text: "0 of \\d+"
 - takeScreenshot: facts-before
 
 # Viewing a lesson's teach phase collects its fact (no manual button — it's the act
@@ -42,5 +47,5 @@ appId: host.exp.Exponent
 - tapOn: { id: "tab-profile" }
 - assertVisible:
     id: "profile-facts"
-    text: "1 of 46"
+    text: "1 of \\d+"
 - takeScreenshot: facts-after

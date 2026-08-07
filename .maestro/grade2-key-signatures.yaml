@@ -20,7 +20,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "unit-row-key-signatures-2" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - takeScreenshot: g2-lane
 - tapOn: { id: "unit-row-key-signatures-2" }
 

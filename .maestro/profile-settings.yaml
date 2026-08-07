@@ -21,7 +21,10 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "settings-block" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - assertVisible: { id: "setting-notation-medium" }
 - assertVisible: { id: "setting-hand-right" }
 - assertNotVisible: { text: "Terminology" }
@@ -42,6 +45,9 @@ appId: host.exp.Exponent
 - scrollUntilVisible:
     element: { id: "settings-block" }
     direction: DOWN
-    timeout: 15000
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 # A second relaunch screenshot is the persistence evidence; the picked segments stay lit.
 - takeScreenshot: settings-after-relaunch
