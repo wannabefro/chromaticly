@@ -64,7 +64,7 @@
         ],
         "concept": {
           "title": "Grade 2 relative minor keys",
-          "body": "Every major key has a relative minor that shares its key signature exactly. C major and A minor both have no sharps or flats; G major and E minor both have one sharp, F♯; F major and D minor both have one flat, B♭. To find the relative minor of a major key, count a minor 3rd down from its tonic — three semitones, which is always two letter names lower. C down to A, G down to E, F down to D. The pair share every note in the scale, so nothing on the page tells you which of the two a piece is in. What tells you is where the music settles. A piece in A minor keeps returning to A and usually ends there, and it will also show a G♯ the key signature does not account for, because a minor key raises its 7th with an accidental.",
+          "body": "Every major key has a relative minor that shares its key signature exactly. C major and A minor both have no sharps or flats; G major and E minor both have one sharp, F♯; F major and D minor both have one flat, B♭. To find the relative minor of a major key, count a minor 3rd down from its tonic — three semitones, which is always two letter names lower. C down to A, G down to E, F down to D. The key signature alone cannot tell you which of the two a piece is in, because the pair share it. What tells you is where the music settles. A piece in A minor keeps returning to A and usually ends there, and it will usually show a G♯ the key signature does not account for, because a minor key raises its 7th with an accidental where the music calls for it.",
           "example": {
             "template_id": "mode_swap",
             "grade": 2,
@@ -72,7 +72,7 @@
           }
         },
         "smartTip": "Count three semitones — a minor 3rd — down from the major tonic and you'll land on the relative minor, two letter-names lower: C down to A, G down to E, F down to D.",
-        "didYouKnow": "A relative major and minor share every note in their scale, yet sound completely different — because their home note, the tonic, is different."
+        "didYouKnow": "A relative major and its natural minor share every note, yet sound completely different — because their home note, the tonic, is different."
       },
       "unlocks": "minor-scales-2"
     },
@@ -101,7 +101,7 @@
         ],
         "concept": {
           "title": "Grade 2 harmonic minor",
-          "body": "Harmonic minor is the natural minor scale — the one the key signature gives you — with a single change: the 7th note is raised a semitone. A minor's raised 7th is G♯, E minor's is D♯, and D minor's is C♯. That one accidental changes the shape of the scale. Semitones now fall between the 2nd and 3rd, between the 5th and 6th, and between the 7th and 8th, and a gap of three semitones opens between the 6th and 7th. Three semitones written as a 2nd is called an augmented 2nd, and it is the interval that gives harmonic minor its distinctive sound. The raised 7th is written note by note, never in the key signature, because the key signature belongs to the natural minor.",
+          "body": "Harmonic minor is the natural minor scale — the one the key signature gives you — with a single change: the 7th note is raised a semitone. A minor's raised 7th is G♯, E minor's is D♯, and D minor's is C♯. That one accidental changes the shape of the scale. Semitones now fall between the 2nd and 3rd, between the 5th and 6th, and between the 7th and 8th, and a gap of three semitones opens between the 6th and 7th. Three semitones written as a 2nd is called an augmented 2nd, and it is the interval that gives harmonic minor its distinctive sound. The raised 7th is written note by note, never in the key signature, because the key signature spells the natural form of the scale.",
           "example": {
             "template_id": "scale_construction",
             "grade": 2,
@@ -183,7 +183,7 @@
         "tonic_triad_key_id"
       ],
       "worked_example": {
-        "template_id": "scale_degree_id",
+        "template_id": "tonic_triad_key_id",
         "grade": 2,
         "seed": 0
       },
@@ -197,7 +197,7 @@
           "title": "Three notes that fix the key",
           "body": "The tonic triad is still the 1st, 3rd and 5th degrees of the scale stacked on top of each other, whatever the key. In B♭ major that gives B♭, D and F; in E♭ major, E♭, G and B♭; in A major, A, C♯ and E. Build it by letter name first — the keynote, then skip a letter, then skip another — and let the key signature supply every sharp or flat. That is why you rarely need to write an accidental in a tonic triad. Root position means the keynote is the lowest of the three, which is how the triad is always written at this grade. A minor key builds its tonic triad the same way from its own keynote, using the notes of the natural minor scale.",
           "example": {
-            "template_id": "scale_degree_id",
+            "template_id": "tonic_triad_key_id",
             "grade": 2,
             "seed": 2
           }
@@ -332,11 +332,11 @@
         "objectives": [
           "Read a time signature whose beat is a minim, not a crotchet",
           "The top number counts beats; the bottom number says which note is the beat",
-          "3/8 counts three quavers, and is usually felt as one beat"
+          "3/8 counts three quaver beats, and at speed the whole bar can be felt as one"
         ],
         "concept": {
           "title": "The bottom number chooses the beat",
-          "body": "Every signature so far had a 4 underneath, so the beat was a crotchet. The bottom number is what picks the beat, and 2 means a minim. So 3/2 is three minim beats in a bar, counted exactly like 3/4 but written in longer notes. 4/2 is four. The music does not go slower — the note values are simply larger, which is why 2/2 is often written as a C with a line through it and called cut time. 8 underneath means the beat is a quaver: 3/8 holds three of them, and at speed you feel the whole bar as one.",
+          "body": "Every signature so far had a 4 underneath, so the beat was a crotchet. The bottom number is what picks the beat, and 2 means a minim. So 3/2 is three minim beats in a bar, counted exactly like 3/4 but written in longer notes. 4/2 is four. The music does not go slower — the note values are simply larger, which is why 2/2 is often written as a C with a line through it and called cut time. 8 underneath means the beat is a quaver: 3/8 holds three quaver beats, and only at speed is the whole bar felt as one.",
           "example": {
             "template_id": "add_time_signature",
             "grade": 2,
@@ -377,12 +377,12 @@
       "teach": {
         "objectives": [
           "A triplet plays three notes in the time of two of the same value",
-          "The group fills exactly one beat, whatever the beat is",
+          "Three triplet notes last as long as two ordinary notes of the same value",
           "A rest inside the group still takes up one of its three places"
         ],
         "concept": {
           "title": "Three in the time of two",
-          "body": "A beat normally splits in two. A triplet splits it in three instead, and the small 3 above the group is what tells you. The three notes together last exactly one beat, so three quavers under a triplet bracket fill a crotchet beat that would otherwise hold two quavers. Whatever the beat is, the rule is the same: three in the time of two. A triplet can also contain a rest. The bracket still covers three places and still fills one beat, but one of those places is silent, so only two notes sound.",
+          "body": "A beat normally splits in two. A triplet splits it in three instead, and the small 3 above the group is what tells you. The three notes together last as long as two ordinary notes of the same value, so three quavers under a triplet bracket fill the crotchet that would otherwise hold two quavers. Whatever the note value, the rule is the same: three in the time of two. In 2/4, 3/4 and 4/4 that group is exactly one crotchet beat; in 2/2 the beat is a minim, so the same group fills half of it. A triplet can also contain a rest. The bracket still covers three places, but one of them is silent, so only two notes sound.",
           "example": {
             "template_id": "triplet_recognition",
             "grade": 2,
@@ -428,7 +428,7 @@
         ],
         "concept": {
           "title": "The beat decides the beams",
-          "body": "Grouping follows the beat, and the new time signatures move the beat. In 2/2 and 3/2 the beat is a minim, so four quavers fit inside one beat and are beamed as one group; writing them as two pairs would show a crotchet beat that is not there. In 3/8 the beat moves the other way: the quaver is the beat, so quavers are beamed in threes across the bar and semiquavers beam in pairs, two to each quaver beat. The notes on the page can be identical in two metres. Only the beams tell the reader which beat to feel.",
+          "body": "Grouping follows the beat, and the new time signatures move the beat. In 2/2 and 3/2 the beat is a minim, so four quavers fit inside one beat and are beamed as one group; writing them as two pairs would show a crotchet beat that is not there. In 3/8 the beat moves the other way: the quaver is the beat, so quavers are beamed in threes across the bar and semiquavers beam in pairs, two to each quaver beat. The notes on the page can be identical in two metres. The time signature names the beat, and the beams are what make it visible bar by bar.",
           "example": {
             "template_id": "note_grouping",
             "grade": 2,
@@ -476,7 +476,7 @@
       "teach": {
         "objectives": [
           "Recognise the Grade 2 tempo words and the words that modify a speed",
-          "The endings -etto and -ino make a word less extreme, not more",
+          "Larghetto is less slow than largo, and adagietto less slow than adagio",
           "Ritenuto is an immediate change; rallentando is gradual"
         ],
         "concept": {
@@ -520,11 +520,11 @@
         "objectives": [
           "Recognise the Grade 2 words for character and degree",
           "Poco, molto, non troppo and sempre never stand alone",
-          "Senza means without; simile means carry on the same way"
+          "Senza means without, and attaches to a direction the same way"
         ],
         "concept": {
           "title": "How much, and in what mood",
-          "body": "Two kinds of word here, and they work together. The first names a mood for a whole passage: *espressivo* expressive, *grazioso* graceful, *giocoso* playful. The second says **how much** of something else — *poco* a little, *poco a poco* little by little, *molto* very, *non troppo* not too much, *sempre* always. Those four never appear alone; they attach to another word and adjust it, so allegro non troppo is fast but not too fast, and cresc. poco a poco is a swell that arrives gradually. *Senza* means without, and it works the same way: senza rit. is an instruction not to slow down.",
+          "body": "Two kinds of word here, and they work together. The first names a mood for a whole passage: *espressivo* expressive, *grazioso* graceful, *giocoso* playful. The second says **how much** of something else — *poco* a little, *poco a poco* little by little, *molto* very, *non troppo* not too much, *sempre* always. None of those appears alone; each attaches to another word and adjusts it, so allegro non troppo is fast but not too fast, and cresc. poco a poco is a swell that arrives gradually. *Senza* means without, and it works the same way: senza rit. is an instruction not to slow down.",
           "example": {
             "template_id": "term_meaning",
             "grade": 2,
@@ -562,11 +562,11 @@
         "objectives": [
           "Recognise the Grade 2 articulation marks and navigation signs",
           "Tenuto, fortepiano and sforzando each shape a single note",
-          "Dal segno, al fine and 8va tell you where to go, not how to play"
+          "Dal segno and al fine tell you where to go; 8va moves a passage an octave"
         ],
         "concept": {
           "title": "Shaping a note, and finding your way",
-          "body": "These do two jobs. Three of them shape a single note: *tenuto* holds it for its full value, *fortepiano* (fp) attacks it loudly then drops instantly to quiet, and *sforzando* (sf) forces it out. The rest are navigation. *Dal segno* (D.S.) sends you back to the sign, *al fine* says play on to the word 'fine', and *8va* moves a passage an octave from where it is written. *Simile* says carry on in the same way, so a pattern already established does not have to be re-marked on every note.",
+          "body": "These do two jobs. Three of them shape a single note: *tenuto* holds it for its full value, *fortepiano* (fp) attacks it loudly then drops instantly to quiet, and *sforzando* (sf) forces it out. Two send you somewhere: *dal segno* (D.S.) goes back to the sign, and *al fine* says play on to the word 'fine'. The last two do neither. *8va* moves a passage an octave from where it is written, and *simile* says carry on in the same way, so a pattern already established does not have to be re-marked on every note.",
           "example": {
             "template_id": "term_meaning",
             "grade": 2,
