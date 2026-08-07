@@ -60,21 +60,14 @@ appId: host.exp.Exponent
     visible: { id: "lanes-screen" }
     timeout: 15000
 
-# The working grade is Grade 4. The grade pill went with the level map, so the
-# claim is made where the grade still lives — Profile's working-grade row.
-- tapOn: { id: "tab-profile" }
-- scrollUntilVisible:
-    element: { id: "profile-working-grade" }
-    direction: DOWN
-    visibilityPercentage: 20
-    centerElement: true
-    waitToSettleTimeoutMs: 500
-    timeout: 20000
-# The value is a descendant Text of the row, not the row's own label, so the
-# claim is two asserts: the row is there, and "Grade 4" is on screen.
-- assertVisible: { id: "profile-working-grade" }
-- assertVisible: { text: "Grade 4" }
-- tapOn: { id: "tab-learn" }
+# The Profile working-grade assertion is GONE, not moved. G6 U8 deleted that row
+# with the grade pill: a learner has seven lane depths and no single current
+# grade, and `Profile.grade` survives only as hidden onboarding state that
+# nothing renders. `readiness-drill.yaml` and `ProfileScreen.test.tsx` both
+# assert its absence, so this flow was the last place claiming it exists.
+#
+# Nothing is lost. The grade-4 claim is made below, where it is now real: the
+# lane picker opens grade 4 explicitly and `keys-4` is entered.
 
 # keys-4 is a SCALES & KEYS unit at grade 4. Onboarding asserts a grade but
 # produces no evidence, so the lane opens at its first content-bearing grade and
