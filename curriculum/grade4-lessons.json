@@ -34,7 +34,7 @@
           }
         },
         "smartTip": "Count three semitones — a minor 3rd — down from the major tonic to find the relative minor: B down to G♯, D♭ down to B♭.",
-        "didYouKnow": "B major and D♭ major sit right next to each other on the piano — B major's tonic and C♭ (D♭ major's leading note) are the same key — yet their key signatures are opposites: five sharps versus five flats."
+        "didYouKnow": "B major and D♭ major sit a semitone apart on the piano, and B is the same key as C♭ — yet their key signatures are opposites: five sharps versus five flats."
       },
       "unlocks": "major-keys-4"
     },
@@ -142,18 +142,18 @@
         "objectives": [
           "A chromatic scale moves entirely in semitones, using every pitch between its tonic and the octave",
           "That is twelve semitone steps — thirteen notes counting both the tonic and its octave",
-          "Ascending, it is spelled with sharps: a sharpened letter fills each whole-tone gap, and none is added where letters are already a semitone apart (E–F, B–C)"
+          "The usual ascending spelling uses sharps: a sharpened letter fills each whole-tone gap, and none is added where letters are already a semitone apart (E–F, B–C)"
         ],
         "concept": {
           "title": "The chromatic scale",
-          "body": "A chromatic scale climbs entirely by semitones, touching every note between the tonic and its octave — twelve steps, thirteen notes. Ascending, it is written with sharps: between two letters a whole tone apart you insert the lower letter sharpened (C, C♯, D, D♯, E …), and where two letters are already only a semitone apart — E to F, and B to C — you add nothing. The key signature plays no part: a chromatic scale carries no key of its own.",
+          "body": "A chromatic scale climbs entirely by semitones, touching every note between the tonic and its octave — twelve steps, thirteen notes. Ascending, it is usually written with sharps: between two letters a whole tone apart you insert the lower letter sharpened (C, C♯, D, D♯, E …), and where two letters are already only a semitone apart — E to F, and B to C — you add nothing. The key signature plays no part: a chromatic scale carries no key of its own.",
           "example": {
             "template_id": "chromatic_scale",
             "grade": 4,
             "seed": 0
           }
         },
-        "smartTip": "Going up, reach for sharps. Every whole-tone gap gets a sharpened note wedged in; the two natural semitones, E–F and B–C, are left alone.",
+        "smartTip": "Going up, reach for sharps first. Every whole-tone gap gets a sharpened note wedged in; the two natural semitones, E–F and B–C, are left alone.",
         "didYouKnow": "‘Chromatic’ comes from the Greek chroma, meaning colour — the extra notes between the scale steps were heard as adding colour to the plain diatonic scale."
       },
       "unlocks": "degree-names-4",
@@ -393,20 +393,20 @@
       },
       "teach": {
         "objectives": [
-          "The top number names the beats; the bottom number names the note that gets one beat",
+          "The top number decides the family; the bottom number names the note being counted",
           "6, 9 and 12 on top mean compound time — group the beats in threes",
           "The bottom number never decides simple versus compound: 6/4, 6/8 and 6/16 are all compound duple"
         ],
         "concept": {
           "title": "Reading any time signature",
-          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is **two** dotted-crotchet beats, not six. The bottom number only says which note gets the beat: 8 the quaver, 4 the crotchet, 16 the semiquaver. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values.",
+          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is **two** dotted-crotchet beats, not six. The bottom number only says which note is being counted: 8 the quaver, 4 the crotchet, 16 the semiquaver. In simple time that note is the beat; in compound time three of them make one dotted beat, so 6/16 is two dotted-quaver beats and 6/4 two dotted-minim beats. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values.",
           "example": {
             "template_id": "metre_classification",
             "grade": 4,
             "seed": 2
           }
         },
-        "smartTip": "Top number first: 2/3/4 is simple, 6/9/12 is compound (divide by three for the beat count). The bottom number is only which note gets the beat.",
+        "smartTip": "Top number first: 2/3/4 is simple, 6/9/12 is compound (divide by three for the beat count). The bottom number is only which note is counted — in compound time it takes three of them to make a beat.",
         "didYouKnow": "Fast movements are sometimes written in 6/16 so the page looks less crowded, while slow, broad music may use 6/4 — but both are still a lilting compound duple, exactly like 6/8."
       },
       "unlocks": "grouping-4",
@@ -587,18 +587,18 @@
         "objectives": [
           "Rewrite a melody an octave higher or lower, moving between clefs so it stays on the staff",
           "Every letter name stays the same — only the octave (and the clef) changes",
-          "Moving to a higher clef writes the melody up an octave; to a lower clef, down an octave"
+          "The clef is chosen to keep the transposed melody on the stave, not to decide its direction"
         ],
         "concept": {
           "title": "Octave transposition to and from the alto clef",
-          "body": "Octave transposition rewrites a melody an octave away while keeping every letter name the same — only the octave changes. Choosing a different clef lets the rewritten melody stay comfortably on the staff: a melody in the alto clef can be written an octave higher in the treble, or an octave lower in the bass. The notes look different on the page, but they are the same letters, just an octave apart.",
+          "body": "Octave transposition rewrites a melody an octave away while keeping every letter name the same — only the octave changes. The question gives the direction; a different clef is what lets the rewritten melody stay comfortably on the staff: a melody in the alto clef can be written an octave higher in the treble, or an octave lower in the bass. The notes look different on the page, but they are the same letters, just an octave apart.",
           "example": {
             "template_id": "octave_transposition",
             "grade": 4,
             "seed": 4
           }
         },
-        "smartTip": "Same letters, new octave. Moving to a higher clef (alto → treble) shifts the tune up an octave; to a lower clef (alto → bass), down an octave.",
+        "smartTip": "Same letters, new octave. Read the direction from the question, then pick the clef that keeps the result on the stave: alto → treble going up, alto → bass going down.",
         "didYouKnow": "Rewriting the same music in another clef and octave is how a viola line might be shared with a violinist or cellist — the clef and octave move, but the tune stays unmistakably the same."
       },
       "unlocks": "clef-equivalence-4",
@@ -668,18 +668,18 @@
         "objectives": [
           "The three primary triads — I, IV and V — are built on the 1st, 4th and 5th degrees of a major scale",
           "In a major key all three are major triads: a root, the note a 3rd above it, and the note a 5th above",
-          "Name a chord by finding which scale degree its lowest note — the root — sits on: tonic → I, subdominant → IV, dominant → V"
+          "Every chord here is in root position, so its lowest note is its root: tonic → I, subdominant → IV, dominant → V"
         ],
         "concept": {
           "title": "Primary triads: I, IV and V",
-          "body": "A triad is a three-note chord: a root, the note a 3rd above it, and the note a 5th above. The three *primary* triads are built on the most important degrees of the scale — I on the tonic (1st), IV on the subdominant (4th), and V on the dominant (5th). In a major key all three are major triads. To name a chord you see, find its lowest note — the root — and work out which scale degree it lands on in the given key: root on the tonic is I, on the subdominant IV, on the dominant V. In C major that makes I = C–E–G, IV = F–A–C, and V = G–B–D.",
+          "body": "A triad is a three-note chord: a root, the note a 3rd above it, and the note a 5th above. The three *primary* triads are built on the most important degrees of the scale — I on the tonic (1st), IV on the subdominant (4th), and V on the dominant (5th). In a major key all three are major triads. Every chord at this grade is in root position, so its lowest note is its root. To name a chord you see, find that lowest note and work out which scale degree it lands on in the given key: root on the tonic is I, on the subdominant IV, on the dominant V. In C major that makes I = C–E–G, IV = F–A–C, and V = G–B–D.",
           "example": {
             "template_id": "chord_recognition",
             "grade": 4,
             "seed": 0
           }
         },
-        "smartTip": "Read the key signature, then look at the chord's lowest note. If it is the key's 1st degree the chord is I, the 4th degree IV, the 5th degree V.",
+        "smartTip": "Read the key signature, then look at the chord's lowest note — in root position that is the root. If it is the key's 1st degree the chord is I, the 4th degree IV, the 5th degree V.",
         "didYouKnow": "I, IV and V are called the primary triads because between them they use every note of the major scale — which is why so much music can be harmonised with just these three chords."
       },
       "unlocks": "ornaments-4",
@@ -773,7 +773,7 @@
         ],
         "concept": {
           "title": "Instruments of the orchestra",
-          "body": "Orchestral instruments fall into four families. *Strings* (violin, viola, cello, double bass) are bowed or plucked. *Woodwind* (flute, oboe, clarinet, bassoon) are blown. *Brass* (trumpet, horn, trombone, tuba) are blown through a cupped mouthpiece. *Percussion* (such as the timpani) are struck. Each instrument reads the clef that best fits its range: the violin and flute read treble, the cello and double bass read bass, and the viola reads the alto clef — which is why you learned it. Composers also write playing directions telling the player how to sound a note: arco means 'with the bow', pizzicato 'plucked', and con sordino 'with the mute'.",
+          "body": "Orchestral instruments fall into four families. *Strings* (violin, viola, cello, double bass) are bowed or plucked. *Woodwind* (flute, oboe, clarinet, bassoon) are blown. *Brass* (trumpet, horn, trombone, tuba) sound from the player's vibrating lips against a mouthpiece — cupped on the trumpet and trombone, funnel-shaped on the horn. *Percussion* (such as the timpani) are struck. Each instrument reads the clef that best fits its range: the violin and flute read treble, the cello and double bass read bass, and the viola reads the alto clef — which is why you learned it. Composers also write playing directions telling the player how to sound a note: arco means 'with the bow', pizzicato 'plucked', and con sordino 'with the mute'.",
           "example": {
             "template_id": "instrument_knowledge",
             "grade": 4,
@@ -861,12 +861,12 @@
       "teach": {
         "objectives": [
           "Small French words change the word they sit beside",
-          "très is very, assez is enough, peu is little, moins is less and plus is more",
+          "très is very, assez is fairly, peu is little, moins is less and plus is more",
           "sans and avec are the without/with pair, like senza and con"
         ],
         "concept": {
           "title": "The words in between",
-          "body": "Most French marks are built from a character word and a small qualifier, exactly as the Italian ones are. The qualifiers do the same jobs you already know: très is very, assez is enough or sufficiently, peu is little, moins is less and plus is more. Sans and avec are without and with, the French senza and con. Mais is but, et is and, non is not, and à or au is to or at. Two carry meaning on their own: douce is sweet, and légèrement or léger asks for a light touch. En dehors is the one to learn deliberately, because it is an instruction about balance rather than character: bring this part out.",
+          "body": "Most French marks are built from a character word and a small qualifier, exactly as the Italian ones are. The qualifiers do the same jobs you already know: très is very, assez is fairly or rather, peu is little, moins is less and plus is more. Sans and avec are without and with, the French senza and con. Mais is but, et is and, non is not, and à or au is to or at. Two carry meaning on their own: douce is sweet, and légèrement or léger asks for a light touch. En dehors is the one to learn deliberately, because it is an instruction about balance rather than character: bring this part out.",
           "example": {
             "template_id": "term_meaning",
             "grade": 4,
@@ -906,7 +906,7 @@
         ],
         "concept": {
           "title": "More on the page, same method",
-          "body": "Grade 4 adds double dots, duplets, new metres and a wider set of keys, and a passage may use any of them. That makes the page busier rather than the questions harder, and the danger is reading in the wrong order: a learner who looks at the notes before the key signature will name the wrong pitch every time an accidental is implied. Keep the order. Clef, key signature, time signature, then notes. If a question asks about a bar, count the bars from the beginning rather than estimating — an examiner's answer is always exact, and a passage with an anacrusis does not start at bar one.",
+          "body": "Grade 4 adds double dots, duplets, new metres and a wider set of keys, and a passage may use any of them. That makes the page busier rather than the questions harder, and the danger is reading in the wrong order: a learner who looks at the notes before the key signature will name the wrong pitch every time an accidental is implied. Keep the order. Clef, key signature, time signature, then notes. If a question asks about a bar, count the bars from the beginning rather than estimating — an examiner's answer is always exact, and an anacrusis is not counted as bar 1 — the first complete bar is.",
           "example": {
             "template_id": "music_in_context",
             "grade": 4,
@@ -951,12 +951,12 @@
       "teach": {
         "objectives": [
           "Two notes are enharmonic when they sound the same pitch but are spelled with different letters",
-          "Every black key on the keyboard has two names — one sharp, one flat",
+          "Every black key on the keyboard has two common names — one sharp, one flat",
           "F♯ and G♭ are the same sound written two ways; so are C♯/D♭, D♯/E♭, G♯/A♭ and A♯/B♭"
         ],
         "concept": {
           "title": "The same pitch, two spellings",
-          "body": "On a keyboard the black key between F and G can be called F♯ (a semitone above F) or G♭ (a semitone below G). Same key, same sound — two names. Notes related this way are called enharmonic equivalents. Which spelling you use depends on the key you are in: sharp keys prefer sharps, flat keys prefer flats. The five black keys give the five common pairs: C♯/D♭, D♯/E♭, F♯/G♭, G♯/A♭ and A♯/B♭.",
+          "body": "On a keyboard the black key between F and G can be called F♯ (a semitone above F) or G♭ (a semitone below G). Same key, same sound — two names. Notes related this way are called enharmonic equivalents. Which spelling you use depends on what the note is doing: sharp keys lean on sharps and flat keys on flats, but the scale degree decides, which is why G♯ minor needs an F𝄪 rather than a G. The five black keys give the five common pairs: C♯/D♭, D♯/E♭, F♯/G♭, G♯/A♭ and A♯/B♭.",
           "example": {
             "template_id": "enharmonic_recognition",
             "grade": 4,
