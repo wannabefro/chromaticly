@@ -99,7 +99,15 @@ describe('pulse_count (lesson 1) — aural, and never notated', () => {
     expect(generate('pulse_count', { grade: 0, seed: 0, atoms: [] }).srs_tags).toEqual([pulseAtom()]);
   });
 
-  test('at grade 0 the only metre is 4/4, so every bar is four beats', () => {
+  // Every grade-0 bar is four beats, and that is a DECISION, not a side effect
+  // of GRADE_0_SCOPE naming one metre (chromaticly-3uv, ruled 2026-08-07).
+  // Lesson 1 teaches a learner to FEEL a pulse, not to count variable metres; a
+  // 3/4 bar arrives in Grade 1. So the answer being predictable is the cost of
+  // the lesson doing one thing, and it is accepted.
+  //
+  // `beatsPerBarFor` reads the scope, so adding a metre to grade 0 would start
+  // varying the count silently. This test is what makes that a failure.
+  test('the pulse bar is four beats on every seed — fixed by decision, not by scope', () => {
     for (const seed of SEEDS) {
       expect(generate('pulse_count', { grade: 0, seed, atoms: [] }).answer.canonical).toBe('4');
     }
