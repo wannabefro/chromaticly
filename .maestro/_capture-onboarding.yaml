@@ -38,11 +38,17 @@ appId: host.exp.Exponent
     id: "plan-start-warmup"
 - assertVisible:
     id: "warm-up-screen"
+
+# The three coached questions, answered by LABEL rather than by index.
+# `warmUpFor` owns the seeds, and a seed change reshuffles the options — the
+# old `option-0 / option-1 / option-1` comment was already wrong when the
+# warm-up atom moved to `add_time_signature` (chromaticly-atz), and
+# retry-until-correct turned that into a silent stall on question 3 of 3.
 - takeScreenshot: ${OUT}/04-warmup-question
 
 # Correct indices for note_value_compare seeds 0..2 are 0, 1, 1.
 - tapOn:
-    id: "option-0"
+    text: "3/4"
 - takeScreenshot: ${OUT}/05-warmup-answered
 - tapOn:
     id: "check"
@@ -51,14 +57,14 @@ appId: host.exp.Exponent
     id: "feedback-sheet-continue"
 
 - tapOn:
-    id: "option-1"
+    text: "2/4"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
 - tapOn:
-    id: "option-1"
+    text: "4/4"
 - tapOn:
     id: "check"
 - tapOn:

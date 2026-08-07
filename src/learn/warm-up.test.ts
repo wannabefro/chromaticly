@@ -2,6 +2,9 @@
 // not about which constant is stored: each one runs the definition through the
 // real generator and checks the item a learner would actually be handed.
 
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import { generate } from '../engine/generators';
 import { LESSONS } from '../content/lessons';
 import { warmUpFor } from './warm-up';
@@ -108,5 +111,31 @@ describe('warmUpFor — the three seeds are chosen, not inherited', () => {
     const w = warmUpFor(1);
     const answers = w.seeds.map((seed) => String(generate(w.template, { grade: w.grade, seed, atoms: [w.atom] }).answer.canonical));
     expect(new Set(answers).size).toBe(3);
+  });
+});
+
+// The Maestro flows answer the warm-up by label, so the labels ARE the contract
+// between this module and three flow files. When the atom moved to
+// `add_time_signature` the flows still tapped the old option indices, and
+// retry-until-correct hid it: the run did not fail on the wrong answer, it
+// stalled on question 3 of 3 and reported a missing `landed-screen` 30s later.
+// This test names that coupling so the next seed change fails in jest instead.
+describe('warmUpFor — the flows that answer it by label stay in step', () => {
+  const FLOWS = [
+    '.maestro/onboarding-first-set.yaml',
+    '.maestro/grade4-journey.yaml',
+    '.maestro/_capture-onboarding.yaml',
+  ];
+
+  const expected = warmUpFor(1).seeds.map((seed) =>
+    String(generate(warmUpFor(1).template, { grade: warmUpFor(1).grade, seed, atoms: [warmUpFor(1).atom] }).answer.canonical),
+  );
+
+  test.each(FLOWS)('%s taps the three correct answers, in order', (flow) => {
+    // From `warm-up-screen` on: a flow's own launch chrome also taps by text
+    // ("Open", "Continue", "Close"), and those are not answers.
+    const text = readFileSync(join(__dirname, '..', '..', flow), 'utf8').split('warm-up-screen')[1];
+    const tapped = [...text.matchAll(/tapOn:\s*\{?\s*text: "([^"]+)"/g)].map((m) => m[1]);
+    expect(tapped.slice(0, 3)).toEqual(expected);
   });
 });

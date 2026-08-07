@@ -23,9 +23,17 @@ appId: host.exp.Exponent
     visible: { id: "lane-screen" }
     timeout: 90000
 
-# Baseline: nothing collected yet.
+# Baseline: nothing collected yet. The card sits below the readiness card and the
+# strand radar (G6 U8 put both above it), so it is off-screen on first paint.
 - tapOn: { id: "tab-profile" }
 - assertVisible: { id: "profile-screen" }
+- scrollUntilVisible:
+    element: { id: "profile-facts" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - assertVisible:
     id: "profile-facts"
     text: "0 of \\d+"
@@ -45,6 +53,13 @@ appId: host.exp.Exponent
     visible: { id: "lane-screen" }
     timeout: 20000
 - tapOn: { id: "tab-profile" }
+- scrollUntilVisible:
+    element: { id: "profile-facts" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
 - assertVisible:
     id: "profile-facts"
     text: "1 of \\d+"

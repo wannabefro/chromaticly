@@ -5,14 +5,16 @@
 # notation, navigation). There is NO age gate on this path (it moved to account
 # creation), so the old under-13 soft-block pass is gone.
 #
-# The 3 warm-up items are pure functions of note_value_compare (grade 1, seed
-# 0..2) fed by CoachedWarmUp, so the correct-option index is fixed: 0, 1, 1
-# (answers: minim, minim, semibreve). We tap by option INDEX (`option-<i>`), not
-# by label: every option is a plain-language note-value phrase, and single-letter
-# fragments collide with the A/B position badges, so a label tap is ambiguous.
-# Regenerate the indices if the generator or assembleOptions' shuffle changes.
-# (Retry-until-correct means a wrong tap loops the item rather than failing the
-# run, but the indices keep the pass clean and fast.)
+# The 3 warm-up items are pure functions of `warmUpFor`, so their answers are
+# fixed: 3/4, 2/4, 4/4. We tap by LABEL, not by index. Index was correct while
+# the warm-up drilled `note_value_compare`, whose options are plain-language
+# note-value phrases that collide with the A/B/C position badges. Since
+# chromaticly-atz it drills `add_time_signature`, whose options are "3/4" and
+# friends — unambiguous, and immune to a reshuffle of assembleOptions.
+#
+# Retry-until-correct loops a wrong item rather than failing the run, so a stale
+# index does not fail here: it stalls on question 3 of 3 and reports a missing
+# landed-screen 30 seconds later. A label cannot go stale that way.
 #
 # Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
 #   maestro test -e DEV_URL=exp://127.0.0.1:8090 .maestro/onboarding-first-set.yaml
@@ -44,23 +46,23 @@ appId: host.exp.Exponent
 - assertVisible:
     id: "warm-up-screen"
 
-# 3 coached questions (seeds 0..2). Correct indices: 0, 1, 1.
+# The three coached questions, answered by LABEL (see the header note).
 - tapOn:
-    id: "option-0"
-- tapOn:
-    id: "check"
-- tapOn:
-    id: "feedback-sheet-continue"
-
-- tapOn:
-    id: "option-1"
+    text: "3/4"
 - tapOn:
     id: "check"
 - tapOn:
     id: "feedback-sheet-continue"
 
 - tapOn:
-    id: "option-1"
+    text: "2/4"
+- tapOn:
+    id: "check"
+- tapOn:
+    id: "feedback-sheet-continue"
+
+- tapOn:
+    text: "4/4"
 - tapOn:
     id: "check"
 - tapOn:
