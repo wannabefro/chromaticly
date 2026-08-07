@@ -6,7 +6,7 @@
 // storage-agnostic; the DEV-only wiring that calls it lives in useProgress +
 // RootRouter behind a __DEV__ deep link.
 
-import type { Lesson } from '../content/lessons';
+import { creditedAtoms, type Lesson } from '../content/lessons';
 import { initialSrs } from './srs';
 import type { ProgressStore } from './store';
 
@@ -23,7 +23,12 @@ function rootLesson(lessons: Lesson[]): Lesson | undefined {
 function masterGrade(store: ProgressStore, gradeLessons: Lesson[], now: number): void {
   for (const lesson of gradeLessons) {
     store.setLesson(lesson.id, { completed: true });
-    for (const atom of lesson.atoms) {
+    // `creditedAtoms`, not `atoms`: a lane cell is held only when EVERY credited
+    // atom is mastered, and that set includes `by_ear_atoms`. Seeding `atoms`
+    // alone left every by-ear-bearing grade unheld, so a learner seeded past
+    // grade 1 read depth 0 and the lane opened on grade 1 with every unit 3★ —
+    // stars read `atoms`, depth reads `creditedAtoms`, and only depth was wrong.
+    for (const atom of creditedAtoms(lesson)) {
       // `now` (whole days since the epoch, G6 U1) rather than the old implicit 0:
       // a seeded atom must land on the same time base as a genuinely reviewed one,
       // or the E2E fixture is ~20,000 days overdue the moment lane-depth reads it.

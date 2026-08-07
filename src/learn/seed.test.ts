@@ -6,6 +6,7 @@
 
 import { LESSONS, lessonById } from '../content/lessons';
 import { LEVELS } from '../content/levels';
+import { contentGradesFor, laneDepths, STRAND_ORDER } from './lane-depth';
 import { unitStates } from './mastery-rollup';
 import { seedExamReady, seedProgressToUnit } from './seed';
 import { ProgressStore } from './store';
@@ -102,5 +103,31 @@ describe('seedProgressToUnit — fast-forward to a target unit (302.5)', () => {
     for (const lesson of LESSONS.filter((l) => l.grade === 2)) {
       expect(store.getLesson(lesson.id).completed).toBe(false);
     }
+  });
+});
+
+// The seed claims a grade is mastered end to end. Lane depth is what reads that
+// claim, and it reads `creditedAtoms` — `atoms` plus `by_ear_atoms`. Seeding
+// `atoms` alone therefore produced a state no honest play can reach: every unit
+// 3★ (stars read `atoms`) and the lane still reading depth 0. On device the lane
+// opened on grade 1 with everything complete, and 11 Maestro flows scrolled for a
+// grade-2 or grade-3 row that was never rendered.
+describe('seedProgressToUnit — a seeded grade is HELD, not merely starred', () => {
+  const strandsWithGrade1Content = STRAND_ORDER.filter((s) => contentGradesFor(s).includes(1));
+
+  test.each(strandsWithGrade1Content)('%s reads depth 1 after a seed past grade 1', (strand) => {
+    const store = new ProgressStore();
+    seedProgressToUnit(store, LESSONS, 'key-signatures-2', AT, 100);
+    expect(laneDepths(store, 100)[strand].depth).toBe(1);
+  });
+
+  // The defect in its own terms: a by-ear atom is credited, so the seed must
+  // master it. Naming it here means a future `creditedAtoms` change fails loudly.
+  test('every credited atom of a seeded grade is mastered, by-ear included', () => {
+    const store = new ProgressStore();
+    seedProgressToUnit(store, LESSONS, 'key-signatures-2', AT, 100);
+    const byEar = LESSONS.filter((l) => l.grade === 1).flatMap((l) => l.by_ear_atoms ?? []);
+    expect(byEar.length).toBeGreaterThan(0);
+    for (const atom of byEar) expect(store.getAtom(atom).mastery.mastered).toBe(true);
   });
 });
