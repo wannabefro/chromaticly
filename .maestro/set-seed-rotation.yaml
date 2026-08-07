@@ -8,18 +8,32 @@
 # set has been completed. They must differ. Correctness of the answers is not the
 # point here and is Jest-covered, so the flow taps option-0 blindly.
 #
+# It drills `key-signatures` rather than `treble-notes` because a blind option-0
+# tap needs a set that is MCQ all the way through. `treble-notes` mixes mcq with
+# stave_input, which has no `option-0` at all, so the walk died on item 2 of 8.
+# `key-signatures` is 8 items, every one an mcq, and no by-ear tail — so `repeat:
+# 8` finishes the set exactly. Its item 1 moves G major -> D major between plays,
+# which is the difference the two screenshots have to show.
+#
 # Prerequisite: Metro running, Chromaticly active in Expo Go (see README).
 appId: host.exp.Exponent
 ---
 - clearState
-- openLink: ${DEV_URL}/--/?seed=treble-notes
+- openLink: ${DEV_URL}/--/?seed=key-signatures
 
 - runFlow: _dev-menu.yaml
 
 - extendedWaitUntil:
     visible: { id: "lane-screen" }
     timeout: 90000
-- tapOn: { id: "unit-row-treble-notes" }
+- scrollUntilVisible:
+    element: { id: "unit-row-key-signatures" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
+- tapOn: { id: "unit-row-key-signatures" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }
     timeout: 20000
@@ -43,6 +57,13 @@ appId: host.exp.Exponent
 - extendedWaitUntil:
     visible: { id: "set-complete" }
     timeout: 20000
+
+# `key-signatures` has 10 completed predecessors, so this set is the third-lesson
+# transition the account nudge (6c) keys on, and it overlays the complete screen.
+# Dismiss it BEFORE `set-next`, or the overlay swallows that tap. Optional: the
+# nudge is one-time, so the second play never sees it.
+- tapOn: { id: "account-nudge-sheet-dismiss", optional: true }
+
 - takeScreenshot: seed-set-complete
 - tapOn: { id: "set-next" }
 
@@ -50,7 +71,14 @@ appId: host.exp.Exponent
 - extendedWaitUntil:
     visible: { id: "lane-screen" }
     timeout: 20000
-- tapOn: { id: "unit-row-treble-notes" }
+- scrollUntilVisible:
+    element: { id: "unit-row-key-signatures" }
+    direction: DOWN
+    visibilityPercentage: 20
+    centerElement: true
+    waitToSettleTimeoutMs: 500
+    timeout: 20000
+- tapOn: { id: "unit-row-key-signatures" }
 - extendedWaitUntil:
     visible: { id: "teach-phase" }
     timeout: 20000
