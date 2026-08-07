@@ -236,11 +236,11 @@
         "objectives": [
           "Recognise the Grade 3 words for weight, touch and mood",
           "These describe how the music should feel, not how fast it goes",
-          "Semplice asks for the opposite of all of them — play it plainly"
+          "Semplice asks for a plain, unaffected manner rather than any of them"
         ],
         "concept": {
           "title": "How heavy, and how it feels",
-          "body": "This half of the Grade 3 vocabulary is about weight and mood. *Leggiero* is light and nimble, *pesante* heavy, *delicato* delicate, *sostenuto* sustained. The moods run from *tranquillo* calm to *triste* sad to *scherzando* joking. And *semplice* asks for none of it — play the passage plainly, without adding character of your own. None of these changes the tempo. A piece marked andante tranquillo goes at exactly the speed andante asks for; the second word tells you what it should sound like when it gets there.",
+          "body": "This half of the Grade 3 vocabulary is about weight and mood. *Leggiero* is light and nimble, *pesante* heavy, *delicato* delicate, *sostenuto* sustained. The moods run from *tranquillo* calm to *triste* sad to *scherzando* joking. And *semplice* asks for plainness itself — play the passage simply and unaffectedly. None of these changes the tempo. A piece marked andante tranquillo goes at exactly the speed andante asks for; the second word tells you what it should sound like when it gets there.",
           "example": {
             "template_id": "term_meaning",
             "grade": 3,
@@ -248,7 +248,7 @@
           }
         },
         "smartTip": "None of these alters the speed. Andante tranquillo is andante, played calmly.",
-        "didYouKnow": "Semplice is the rarest instruction of the group, and the hardest to follow. It asks a player to stop interpreting, which takes more discipline than any amount of expression."
+        "didYouKnow": "Semplice is the rarest instruction of the group, and the hardest to follow. Playing something plainly and still making it live takes more discipline than any amount of added expression."
       },
       "unlocks": "directions-3"
     },
@@ -286,7 +286,7 @@
         ],
         "concept": {
           "title": "The far ends, and where to look",
-          "body": "Two of these push a tempo word to its limit: *adagissimo* is very slow and *prestissimo* as fast as possible, the *-issimo* ending doing the same job it does in fortissimo. *Allargando* broadens, and *tempo rubato* gives the player freedom with the time — literally 'stolen time', taken from one note and paid back to another. *Ad libitum* leaves a passage to the player's choice. *Subito* means suddenly, so subito piano is an instant drop, and *sotto voce* asks for an undertone. The rest are marks on the page rather than instructions in words: *marcato* emphasises a note, and *prima volta* and *seconda volta* are the first-time and second-time bars that tell you which ending to take on a repeat.",
+          "body": "Two of these push a tempo word to its limit: *adagissimo* is very slow and *prestissimo* as fast as possible, the *-issimo* ending doing the same job it does in fortissimo. *Allargando* broadens, and *tempo rubato* gives the player freedom with the time — literally 'stolen time', taken from one note and paid back to another. *Ad libitum* leaves the manner of a passage to the player, to be taken freely. *Subito* means suddenly, so subito piano is an instant drop, and *sotto voce* asks for an undertone. The rest are marks on the page rather than instructions in words: *marcato* emphasises a note, and *prima volta* and *seconda volta* are the first-time and second-time bars that tell you which ending to take on a repeat.",
           "example": {
             "template_id": "term_meaning",
             "grade": 3,
@@ -385,7 +385,7 @@
           }
         },
         "smartTip": "Check the direction before you check the notes — a melodic minor scale's ascending and descending forms are genuinely different, not a memory slip.",
-        "didYouKnow": "Melodic minor's ascending form was designed to smooth out the awkward augmented-2nd leap of harmonic minor, which makes melodies harder to sing — the descending form then simply reverts to natural minor, since that leap isn't a problem going down."
+        "didYouKnow": "Melodic minor's ascending form was designed to smooth out the awkward augmented-2nd leap of harmonic minor, which makes melodies harder to sing — the descending form then reverts to natural minor, because a melody falling away from the tonic has no need of the leading note."
       },
       "unlocks": "compound-time-3",
       "by_ear_source": "scale_construction",
@@ -437,7 +437,7 @@
         "smartTip": "Feel 6/8 as a gentle two, not a fast six — like the swing of \"merri-ly, merri-ly\".",
         "didYouKnow": "Many famous lullabies and jigs are in 6/8 — its lilting two-in-a-bar sway is why it feels like rocking.",
         "theoryInSound": {
-          "prompt": "Play the bar and tap on each strong beat you hear.",
+          "prompt": "Play the two bars and tap on each strong beat you hear.",
           "timeSignature": "6/8",
           "notes": [
             "quaver",
@@ -527,11 +527,11 @@
         "objectives": [
           "The quaver, semiquaver and demisemiquaver rests match the quaver, semiquaver and demisemiquaver notes",
           "Each smaller rest is written with one more hook than the one above it, just as each smaller note gains a tail",
-          "Fill a gap by matching its exact length — a shorter silence needs a shorter rest"
+          "Fill a gap by matching its exact length, counted in crotchets rather than in beats"
         ],
         "concept": {
           "title": "The shorter rests",
-          "body": "The smaller note values each have a matching rest. A quaver rest lasts half a beat, a semiquaver rest a quarter, a demisemiquaver rest an eighth. Their symbols echo the notes: as the note gains a tail, the rest gains a hook — one for the quaver rest, two for the semiquaver, three for the demisemiquaver. To complete a bar, find how much time is missing and pick the rest of exactly that length.",
+          "body": "The smaller note values each have a matching rest. A quaver rest lasts half a crotchet, a semiquaver rest a quarter of one and a demisemiquaver rest an eighth. Read them against the crotchet, not against the beat: in compound time the beat is a dotted crotchet, so a quaver rest is a third of it. Their symbols echo the notes: as the note gains a tail, the rest gains a hook — one for the quaver rest, two for the semiquaver, three for the demisemiquaver. To complete a bar, find how much time is missing and pick the rest of exactly that length.",
           "example": {
             "template_id": "rest_completion",
             "grade": 3,
@@ -570,11 +570,11 @@
         "objectives": [
           "Compound time beams its quavers in threes, one group per dotted beat",
           "6/8 and 3/4 hold the same six quavers and differ only in the beams",
-          "The number of beams equals the number of beats"
+          "The number of beamed groups equals the number of beats"
         ],
         "concept": {
           "title": "Threes, not twos",
-          "body": "A compound beat is a dotted crotchet, which divides into three quavers rather than two. So 6/8 beams its six quavers as two groups of three, 9/8 as three groups, and 12/8 as four. This is the clearest difference between 6/8 and 3/4 on the page: both bars hold six quavers and last the same time, but 3/4 beams them in twos for three crotchet beats and 6/8 in threes for two dotted beats. Nothing else in the notation distinguishes them, so the beams carry the whole meaning. Count the groups and you have counted the beats.",
+          "body": "A compound beat is a dotted crotchet, which divides into three quavers rather than two. So 6/8 beams its six quavers as two groups of three, 9/8 as three groups, and 12/8 as four. This is the clearest difference between 6/8 and 3/4 on the page: both bars hold the same six quavers, but 3/4 beams them in twos for three crotchet beats and 6/8 in threes for two dotted beats. Once the time signature has named the metre, the beams are what show it note by note. Count the groups and you have counted the beats.",
           "example": {
             "template_id": "note_grouping",
             "grade": 3,
@@ -618,7 +618,7 @@
         "objectives": [
           "Every interval above the tonic has both a number (2nd, 3rd... octave) and a quality — perfect, major, or minor",
           "4ths, 5ths and octaves are always perfect; 2nds, 3rds, 6ths and 7ths take a major or minor label",
-          "A minor key's 3rd, 6th and 7th above the tonic are a semitone smaller than a major key's — that's what makes them minor"
+          "A minor key's 3rd, 6th and 7th above the tonic are a semitone smaller than a major key's; its 2nd is not"
         ],
         "concept": {
           "title": "Naming interval quality",
@@ -629,7 +629,7 @@
             "seed": 14
           }
         },
-        "smartTip": "Check the key signature first — above a major tonic every 2nd, 3rd, 6th and 7th is major; above a minor tonic, they're minor instead.",
+        "smartTip": "Check the key signature first — above a major tonic every 2nd, 3rd, 6th and 7th is major; above a minor tonic the 3rd, 6th and 7th shrink to minor while the 2nd stays major.",
         "didYouKnow": "Perfect intervals (unison, 4th, 5th, octave) get their name because their simple, pure ratios sounded \"perfect\" to early theorists — they never take a major or minor label."
       },
       "unlocks": "ledger-lines-3",
@@ -670,19 +670,19 @@
       "teach": {
         "objectives": [
           "How ledger lines extend the stave one line at a time, above and below",
-          "Counting outward in 3rds — line, space, line — from a landmark note you already know",
+          "Counting outward in 3rds — line to line, space to space — from a landmark note you already know",
           "The newly reachable notes: F3 up to E6 in the treble clef, A1 up to G4 in the bass clef"
         ],
         "concept": {
           "title": "Reading ledger-line notes",
-          "body": "Ledger lines are short extra lines that continue the stave, one at a time, above or below it. Rather than counting every ledger line from scratch, count outward in 3rds — line, space, line — from a landmark you already know: middle C sits on its own ledger line, just below the treble stave and just above the bass stave. Working outward this way now reaches one ledger line further than Grade 2 — down to F3 and up to E6 in the treble clef, and down to A1 and up to G4 in the bass clef.",
+          "body": "Ledger lines are short extra lines that continue the stave, one at a time, above or below it. Rather than counting every ledger line from scratch, count outward in 3rds — line to the next line, space to the next space — from a landmark you already know: middle C sits on its own ledger line, just below the treble stave and just above the bass stave. Working outward this way now reaches one ledger line further than Grade 2 — down to F3 and up to E6 in the treble clef, and down to A1 and up to G4 in the bass clef.",
           "example": {
             "template_id": "note_naming",
             "grade": 3,
             "seed": 16
           }
         },
-        "smartTip": "Count in 3rds from a landmark you already know, not ledger line by ledger line from the stave — line to space to line gets you there in half the steps.",
+        "smartTip": "Count in 3rds from a landmark you already know, not a step at a time — line to line, or space to space, gets you there in half the counts.",
         "didYouKnow": "Ledger lines have no upper limit — orchestral parts for piccolo or double bass sometimes stack five or six of them, though this course never asks for more than one beyond Grade 2's range."
       },
       "unlocks": "music-in-context-3",
@@ -765,12 +765,12 @@
       "teach": {
         "objectives": [
           "What an anacrusis (upbeat) is — one or more notes that lead into the first full bar",
-          "Why the first partial bar and the final bar together always make one complete bar",
+          "Why the first partial bar and the final bar normally add up to one complete bar",
           "How to count the beats in the upbeat from the stave"
         ],
         "concept": {
           "title": "Starting before the first full bar",
-          "body": "An anacrusis — an upbeat — is a run-up of notes before the first full bar, landing on the first strong beat. Because that opening bar is short, it has \"borrowed\" beats from a full bar's worth; the piece pays them back with a matching short bar at the very end, so the first bar and the last bar together always add up to exactly one whole bar. To find how many beats are in the upbeat, count the beats from the start of the piece to the first barline.",
+          "body": "An anacrusis — an upbeat — is a run-up of notes before the first full bar, landing on the first strong beat. Because that opening bar is short, it has \"borrowed\" beats from a full bar's worth; the piece normally pays them back with a matching short bar at the very end, so the first bar and the last bar together add up to one whole bar. To find how many beats are in the upbeat, count the beats from the start of the piece to the first barline.",
           "example": {
             "template_id": "anacrusis_recognition",
             "grade": 3,
