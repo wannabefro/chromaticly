@@ -93,14 +93,14 @@
         ],
         "concept": {
           "title": "How long each note lasts",
-          "body": "Each note value lasts twice as long as the next one down, so the whole family halves step by step: a semibreve is four crotchet beats, a minim two, a crotchet one, and a quaver half a beat. A dot placed after a note adds **half** of that note again — a dotted minim is two beats plus one, so three. The crotchet is the beat here because Grade 1 counts in crotchets; in other time signatures a different note takes the beat, which is why the values are described as ratios rather than as seconds.",
+          "body": "Each note value lasts twice as long as the next one down, so the whole family halves step by step: a semibreve is four crotchet beats, a minim two, a crotchet one, a quaver half a beat and a semiquaver a quarter of one. A dot placed after a note adds **half** of that note again — a dotted minim is two beats plus one, so three. The crotchet is the beat here because Grade 1 counts in crotchets; in other time signatures a different note takes the beat, which is why the values are described as ratios rather than as seconds.",
           "example": {
             "template_id": "bar_validity",
             "grade": 1,
             "seed": 5
           }
         },
-        "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver.",
+        "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver, semiquaver.",
         "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
         "theoryInSound": {
           "prompt": "Play the rhythm and tap each strong beat you hear — the beat that feels accented.",
@@ -215,7 +215,7 @@
         ],
         "concept": {
           "title": "Silence has a length too",
-          "body": "A rest is a measured silence, and every note value has a matching rest of the same length: a semibreve rest, a minim rest, a crotchet rest, a quaver rest. Silence is counted, not skipped — the bar still has to add up. To find the rest that completes a bar, do it in three steps. Add up the beats already written. Take that away from the number of beats the time signature asks for. Then choose the rest worth exactly the beats left over.",
+          "body": "A rest is a measured silence, and every note value has a matching rest of the same length: a semibreve rest, a minim rest, a crotchet rest, a quaver rest and a semiquaver rest. Silence is counted, not skipped — the bar still has to add up. To find the rest that completes a bar, do it in three steps. Add up the beats already written. Take that away from the number of beats the time signature asks for. Then choose the rest worth exactly the beats left over.",
           "example": {
             "template_id": "rest_completion",
             "grade": 1,
@@ -262,7 +262,7 @@
         ],
         "concept": {
           "title": "Sharps, flats and naturals",
-          "body": "An accidental changes a note by a semitone, the smallest step in Western music. A sharp raises the note by a semitone, a flat lowers it by a semitone, and a natural cancels either one and returns the note to its plain letter. The sign is always written **before** the note it changes, even though you say it after — you write the sharp then the F, but you call it F sharp. An accidental lasts for the rest of the bar and applies only to that line or space; the next bar-line clears it.",
+          "body": "An accidental changes a note by a semitone, the smallest step in Western music. A sharp raises the note by a semitone, a flat lowers it by a semitone, and a natural cancels either one and returns the note to its plain letter. The sign is always written **before** the note it changes, even though you say it after — you write the sharp then the F, but you call it F sharp. An accidental lasts for the rest of the bar and applies only to that line or space; the next bar-line clears it. The one exception is a note tied across that bar-line, which keeps the accidental for as long as the tie holds it.",
           "example": {
             "template_id": "note_naming",
             "grade": 1,
@@ -439,7 +439,7 @@
       "teach": {
         "objectives": [
           "The six volume levels, from pianissimo to fortissimo",
-          "That mezzo means \"half\", so it softens the word it sits with",
+          "That mezzo means \"half\", so it pulls the word it sits with toward the middle",
           "The words and hairpins that ask for a **gradual** change"
         ],
         "concept": {
@@ -451,7 +451,7 @@
             "seed": 0
           }
         },
-        "smartTip": "Read the letters, not the words: one p or f is loud or quiet, two is very, and an m in front halves it.",
+        "smartTip": "Read the letters, not the words: one p or f is quiet or loud, two is very, and an m in front moves it toward the middle.",
         "didYouKnow": "The instrument is named after the dynamics — the \"pianoforte\" was the first keyboard that could play both soft and loud depending on how hard you pressed."
       },
       "unlocks": "key-signatures"
@@ -490,7 +490,7 @@
           }
         },
         "smartTip": "One sharp is G major and one flat is F major — the two quickest to name at a glance.",
-        "didYouKnow": "Sharps are always written in the same order — F, C, G, D — each a fifth above the last."
+        "didYouKnow": "Sharps are always written in the same order — F, C, G, D, A, E, B — each a fifth above the last. Grade 1 never needs more than the first two."
       },
       "unlocks": "tempo-1"
     },
@@ -675,7 +675,7 @@
           }
         },
         "smartTip": "Stack the 1st, 3rd and 5th degrees. Skip a letter each time, starting on the keynote.",
-        "didYouKnow": "The tonic triad is why a piece can 'sound like' its key within a bar. Three notes are enough to fix it, which is what a composer relies on when a piece opens with a chord rather than a tune."
+        "didYouKnow": "The tonic triad is why a piece can 'sound like' its key within a bar. Three notes are enough to point at it strongly, which is what a composer relies on when a piece opens with a chord rather than a tune."
       },
       "unlocks": "signs-1"
     },
@@ -714,7 +714,7 @@
         ],
         "concept": {
           "title": "The marks on the page",
-          "body": "Some marks change how a note sounds. Legato means smoothly, and a slur — a curved line over notes of **different** pitch — asks for exactly that. Staccato means short and detached, written as a dot above or below the notehead. An accent is a small wedge asking for extra emphasis. Cantabile means in a singing style and dolce means sweetly. A tie looks exactly like a slur but joins two notes of the **same** pitch, and it makes one longer note rather than two. A pause holds a note longer than written. Repeat marks send you back to the opening sign, or to the very beginning if there is no opening sign; D.C. (da capo) means go back to the beginning, and Fine marks where to stop.",
+          "body": "Some marks change how a note sounds. Legato means smoothly, and a slur — a curved line over notes of **different** pitch — asks for exactly that. Staccato means short and detached, written as a dot above or below the notehead. An accent is a small wedge asking for extra emphasis. Cantabile means in a singing style and dolce means sweetly. A tie looks exactly like a slur but joins two notes of the **same** pitch, and it makes one longer note rather than two. A pause holds a note longer than written. Repeat marks send you back to the opening repeat sign, or to the very beginning if there is no opening repeat sign; D.C. (da capo) means go back to the beginning, and Fine marks where to stop.",
           "example": {
             "template_id": "term_meaning_flashcard",
             "grade": 1,
