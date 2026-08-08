@@ -1,6 +1,10 @@
 // Typed message protocol between React Native and the WebView music surface (U3).
 // Both directions are JSON strings over WebView postMessage.
 
+/** How each placed bar-line is marked once the answer is graded. `missed` names
+ *  a line the learner never placed (chromaticly-gbx). */
+export type BarlineMarks = { wrong: number[]; missed: number[]; correct?: number[] };
+
 /** RN → WebView commands. */
 export type SurfaceCommand =
   /** Render ABC. `scale` (abcjs staff scale, design 5c notation size) is optional;
@@ -32,7 +36,7 @@ export type SurfaceCommand =
   /** tap_placement (chromaticly-51o). Off elsewhere: the zones sit above the
    *  notes. `gaps` are indices, 1 = the space after note 1. */
   | { type: 'setGapMode'; enabled: boolean }
-  | { type: 'setBarlines'; gaps: number[]; color?: string; marks?: { wrong: number[]; missed: number[] } };
+  | { type: 'setBarlines'; gaps: number[]; color?: string; marks?: BarlineMarks };
 
 /** WebView → RN events, including instrumentation timings (ms). */
 export type SurfaceEvent =

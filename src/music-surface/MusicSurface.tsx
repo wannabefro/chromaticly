@@ -6,7 +6,7 @@ import { musicToAbc } from '../music/abc-emitter';
 import type { Music } from '../music/types';
 import { colors } from '../ui/theme';
 import abcjsSource from './abcjs-source.json';
-import { decodeEvent, encodeCommand, type SurfaceCommand, type SurfaceEvent } from './bridge';
+import { decodeEvent, encodeCommand, type BarlineMarks, type SurfaceCommand, type SurfaceEvent } from './bridge';
 import { buildSurfaceHtml } from './surface-html';
 
 const ABCJS_SOURCE = (abcjsSource as { source: string }).source;
@@ -14,7 +14,7 @@ const ABCJS_SOURCE = (abcjsSource as { source: string }).source;
 /** Note-granularity ring target: which staff/voice/note-in-voice to ring. */
 export type NoteLocator = { staff: number; voice: number; noteIndex: number };
 
-type Barlines = { gaps: number[]; color?: string; marks?: { wrong: number[]; missed: number[] } };
+type Barlines = { gaps: number[]; color?: string; marks?: BarlineMarks };
 
 export interface MusicSurfaceHandle {
   play(): void;
@@ -33,7 +33,7 @@ export interface MusicSurfaceHandle {
   /** tap_placement (chromaticly-51o): turn the between-note tap zones on, and
    *  draw the bar-lines the learner has placed. */
   setGapMode(enabled: boolean): void;
-  setBarlines(gaps: number[], color?: string, marks?: { wrong: number[]; missed: number[] }): void;
+  setBarlines(gaps: number[], color?: string, marks?: BarlineMarks): void;
 }
 
 export interface MusicSurfaceProps {

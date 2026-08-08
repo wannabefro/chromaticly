@@ -523,6 +523,7 @@ ${playButton}
     layer.setAttribute('class', 'placed-barlines');
     var wrong = (marks && marks.wrong) || [];
     var missed = (marks && marks.missed) || [];
+    var right = (marks && marks.correct) || [];
     function line(gap, stroke, dashed) {
       var x = centres[gap - 1];
       if (x == null) return;
@@ -537,7 +538,8 @@ ${playButton}
     }
     for (var i = 0; i < lastBarlines.gaps.length; i++) {
       var gap = lastBarlines.gaps[i];
-      line(gap, wrong.indexOf(gap) >= 0 ? MARK_WRONG : (color || RING_COLOR), false);
+      var stroke = wrong.indexOf(gap) >= 0 ? MARK_WRONG : right.indexOf(gap) >= 0 ? MARK_RIGHT : (color || RING_COLOR);
+      line(gap, stroke, false);
     }
     // Printing the answer alone hides half the lesson.
     for (var j = 0; j < missed.length; j++) line(missed[j], MARK_RIGHT, true);

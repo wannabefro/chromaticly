@@ -127,7 +127,7 @@ describe('tapPlacementSpec — the in-score gap protocol', () => {
     const inst = instance();
     expect(spec().surfaceBarlines!(inst, [3, 7], null)).toEqual({
       gaps: [3, 7],
-      marks: { wrong: [], missed: [] },
+      marks: { wrong: [], missed: [], correct: [] },
     });
   });
 
@@ -140,11 +140,14 @@ describe('tapPlacementSpec — the in-score gap protocol', () => {
     expect(drawn.gaps).toEqual(response);
     expect(drawn.marks.wrong).toEqual([answer[1] + 1]);
     expect(drawn.marks.missed).toEqual(answer.slice(1));
+    expect(drawn.marks.correct).toEqual([answer[0]]);
   });
 
-  test('a fully correct answer marks nothing wrong and nothing missed', () => {
+  // chromaticly-gbx: the strip paints a right line green, so the score must too.
+  test('a fully correct answer marks every line correct, nothing wrong or missed', () => {
     const inst = instance();
-    const drawn = spec().surfaceBarlines!(inst, inst.answer.canonical as number[], true);
-    expect(drawn.marks).toEqual({ wrong: [], missed: [] });
+    const answer = inst.answer.canonical as number[];
+    const drawn = spec().surfaceBarlines!(inst, answer, true);
+    expect(drawn.marks).toEqual({ wrong: [], missed: [], correct: answer });
   });
 });

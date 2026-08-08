@@ -15,6 +15,7 @@ import type { ReactNode } from 'react';
 import type { ExerciseInstance } from '../../engine/schema';
 import type { SrsGrade } from '../../learn/srs';
 import type { Music } from '../../music/types';
+import type { BarlineMarks } from '../../music-surface/bridge';
 import type { Strand } from '../theme';
 
 export interface InteractionComponentProps<Response> {
@@ -72,7 +73,7 @@ export interface InteractionSpec<Response = unknown> {
     instance: ExerciseInstance,
     response: Response,
     graded: boolean | null,
-  ): { gaps: number[]; marks: { wrong: number[]; missed: number[] } };
+  ): { gaps: number[]; marks: BarlineMarks };
   /** Per-item feedback summary (D5): non-null only when some but not all items are
    *  correct — drives the amber `partial` FeedbackSheet instead of the plain
    *  incorrect one. All-right and all-wrong both return null (those route to the

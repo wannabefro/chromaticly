@@ -10,6 +10,7 @@ import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../../engine/schema';
+import type { BarlineMarks } from '../../music-surface/bridge';
 import type { Music, MusicEvent } from '../../music/types';
 import { colors, shape, strandDef, type as typo } from '../theme';
 import type { InteractionComponentProps } from './types';
@@ -128,14 +129,16 @@ export function barlineMarks(
   instance: ExerciseInstance,
   response: TapPlacementResponse,
   graded: boolean | null,
-): { gaps: number[]; marks: { wrong: number[]; missed: number[] } } {
+): { gaps: number[]; marks: BarlineMarks } {
   const correct = (instance.answer.canonical as number[]) ?? [];
-  if (graded === null) return { gaps: response, marks: { wrong: [], missed: [] } };
+  if (graded === null) return { gaps: response, marks: { wrong: [], missed: [], correct: [] } };
   return {
     gaps: response,
     marks: {
       wrong: response.filter((p) => !correct.includes(p)),
       missed: correct.filter((p) => !response.includes(p)),
+      // The strip paints a right line green, so the score must agree.
+      correct: response.filter((p) => correct.includes(p)),
     },
   };
 }

@@ -61,10 +61,6 @@ describe('buildSurfaceHtml', () => {
     expect(html).toContain('bar-highlight');
   });
 
-  // Regression: the page script lives in a JS template literal, so a single-backslash
-  // \d collapses to a literal "d" in the emitted HTML and the measure regex silently
-  // never matches (the bug that made bar-tap do nothing on device). The emitted HTML
-  // must carry a real \d.
   // The page is a JS template literal, so a single-backslash \d collapses to a
   // literal "d" and the regex silently never matches (chromaticly-a47). Guard the
   // class, not each regex: the note sort shipped broken while the measure one passed.
@@ -385,6 +381,12 @@ describe('surface HTML — gap zones (chromaticly-51o)', () => {
   test('marking uses the semantic colours, never the strand hue', () => {
     expect(html).toContain("var MARK_WRONG = '#e0575e';");
     expect(html).toContain("var MARK_RIGHT = '#3a9e63';");
+  });
+
+  // chromaticly-gbx: the strip already paints a right line green.
+  test('a placed line marked correct takes the right colour, not the strand hue', () => {
+    expect(html).toContain('var right = (marks && marks.correct) || [];');
+    expect(html).toContain('right.indexOf(gap) >= 0 ? MARK_RIGHT');
   });
 
   // Drawn from getBBox, so a command landing before the paint finds nothing.
