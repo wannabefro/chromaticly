@@ -25,6 +25,7 @@ import { metreClassification, metreFromClass } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
 import { modeSwap } from './mode-swap';
+import { tonalCentre } from './tonal-centre';
 import { accidentalCancellation } from './accidental-cancellation';
 import { noteNaming, noteNamingStaveInput, noteSoundsAs } from './note-naming';
 import { alphabetStep, keyboardFind, noteShapeLength, pulseCount, stavePosition } from './first-steps';
@@ -53,6 +54,7 @@ export const GENERATORS: Record<string, Generator> = {
   rhythm_sum_reverse: rhythmSumReverse,
   key_signature_id: keySignatureId,
   mode_swap: modeSwap,
+  tonal_centre: tonalCentre,
   scale_construction: scaleConstruction,
   term_meaning: termMeaning,
   term_meaning_flashcard: termMeaningFlashcard,

@@ -92,6 +92,7 @@ const CASES = [...LESSON_CASES, ...EXTRA_CASES];
 // this map needs beyond grade 2.
 const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   mode_swap: 2,
+  tonal_centre: 2,
   scale_construction: 2,
   triplet_recognition: 2,
   metre_classification: 3,
@@ -141,6 +142,18 @@ const GRADE_2_EXTRA_CASES: Case[] = [
     label: 'mode_swap (minor-keys-2, pre-lesson pin)',
     templateId: 'mode_swap',
     atoms: ['key_sig:A_minor', 'key_sig:E_minor', 'key_sig:D_minor'],
+  },
+  {
+    label: 'tonal_centre (minor-keys-2, chromaticly-io4.3)',
+    templateId: 'tonal_centre',
+    atoms: [
+      'tonal_centre:C_major',
+      'tonal_centre:G_major',
+      'tonal_centre:F_major',
+      'tonal_centre:A_minor',
+      'tonal_centre:E_minor',
+      'tonal_centre:D_minor',
+    ],
   },
   {
     label: 'scale_construction (minor-scales-2, pre-lesson pin)',

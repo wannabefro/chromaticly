@@ -83,10 +83,17 @@
       "atoms": [
         "key_sig:A_minor",
         "key_sig:E_minor",
-        "key_sig:D_minor"
+        "key_sig:D_minor",
+        "tonal_centre:C_major",
+        "tonal_centre:G_major",
+        "tonal_centre:F_major",
+        "tonal_centre:A_minor",
+        "tonal_centre:E_minor",
+        "tonal_centre:D_minor"
       ],
       "templates": [
-        "mode_swap"
+        "mode_swap",
+        "tonal_centre"
       ],
       "worked_example": {
         "template_id": "mode_swap",
@@ -97,7 +104,8 @@
         "objectives": [
           "The three relative pairs: A minor with C major, E minor with G major, D minor with F major",
           "A key and its relative minor or major always share the same key signature",
-          "How to count a minor 3rd down from a major tonic to find its relative minor"
+          "How to count a minor 3rd down from a major tonic to find its relative minor",
+          "The key signature fits both keys of a pair — where the music settles is what tells them apart"
         ],
         "concept": {
           "title": "Grade 2 relative minor keys",

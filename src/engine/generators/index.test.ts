@@ -31,7 +31,7 @@ const TEMPLATE_IDS = [
 // is empty at grade 1, so no grade-1 instance is ever valid) — covered
 // separately below rather than through the grade-1 loops the rest of this
 // file shares.
-const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction', 'triplet_recognition'];
+const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction', 'triplet_recognition', 'tonal_centre'];
 
 // metre_classification (U6, D7) only exists from grade 3 up (its atoms are
 // metre:<sig> over the compound trio + the three simple signatures, and

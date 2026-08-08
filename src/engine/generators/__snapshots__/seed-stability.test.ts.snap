@@ -105086,6 +105086,1371 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte tim
 ]
 `;
 
+exports[`seed-stability — grade-2 generator output is pinned byte-for-byte tonal_centre @ minor-keys-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "G major": "G major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "D minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "D minor": "D minor shares this key signature, so the signature cannot decide it. The passage starts and ends on F, which makes it F major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on F, so it is in F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:F_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "E minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "E minor": "E minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "G major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "G major": "G major shares this key signature, so the signature cannot decide it. The passage starts and ends on E, which makes it E minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on E, so it is in E minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:E_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "F major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "F major": "F major shares this key signature, so the signature cannot decide it. The passage starts and ends on D, which makes it D minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on D, so it is in D minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:D_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "G major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "G major": "G major shares this key signature, so the signature cannot decide it. The passage starts and ends on E, which makes it E minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on E, so it is in E minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:E_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "F major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "F major": "F major shares this key signature, so the signature cannot decide it. The passage starts and ends on D, which makes it D minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on D, so it is in D minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:D_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "D minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "D minor": "D minor shares this key signature, so the signature cannot decide it. The passage starts and ends on F, which makes it F major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on F, so it is in F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:F_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "G major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "G major": "G major shares this key signature, so the signature cannot decide it. The passage starts and ends on E, which makes it E minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on E, so it is in E minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:E_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "G major": "G major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "D minor",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D minor": "D minor shares this key signature, so the signature cannot decide it. The passage starts and ends on F, which makes it F major.",
+        "G major": "G major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on F, so it is in F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:F_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+]
+`;
+
 exports[`seed-stability — grade-2 generator output is pinned byte-for-byte tonic_triad_key_id @ tonic-triads-2 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -114262,6 +115627,1371 @@ exports[`seed-stability — grade-2-only generator extras are pinned byte-for-by
     },
     "strand": "rhythm",
     "template_id": "time_signature_match",
+  },
+]
+`;
+
+exports[`seed-stability — grade-2-only generator extras are pinned byte-for-byte tonal_centre (minor-keys-2, chromaticly-io4.3) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "G major": "G major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "D minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "D minor": "D minor shares this key signature, so the signature cannot decide it. The passage starts and ends on F, which makes it F major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on F, so it is in F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:F_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "E minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "E minor": "E minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "G major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "G major": "G major shares this key signature, so the signature cannot decide it. The passage starts and ends on E, which makes it E minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on E, so it is in E minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:E_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "F major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "F major": "F major shares this key signature, so the signature cannot decide it. The passage starts and ends on D, which makes it D minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on D, so it is in D minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:D_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "G major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "G major": "G major shares this key signature, so the signature cannot decide it. The passage starts and ends on E, which makes it E minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on E, so it is in E minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:E_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D minor",
+    },
+    "distractors": [
+      "F major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "F major": "F major shares this key signature, so the signature cannot decide it. The passage starts and ends on D, which makes it D minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on D, so it is in D minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:D_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "F major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "F major": "F major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "D minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "D minor": "D minor shares this key signature, so the signature cannot decide it. The passage starts and ends on F, which makes it F major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on F, so it is in F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:F_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E minor",
+    },
+    "distractors": [
+      "G major",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "G major": "G major shares this key signature, so the signature cannot decide it. The passage starts and ends on E, which makes it E minor.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on E, so it is in E minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:E_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "E_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C major",
+    },
+    "distractors": [
+      "A minor",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "A minor shares this key signature, so the signature cannot decide it. The passage starts and ends on C, which makes it C major.",
+        "G major": "G major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on C, so it is in C major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:C_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "E minor",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+        "E minor": "E minor shares this key signature, so the signature cannot decide it. The passage starts and ends on G, which makes it G major.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on G, so it is in G major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:G_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F major",
+    },
+    "distractors": [
+      "D minor",
+      "G major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D minor": "D minor shares this key signature, so the signature cannot decide it. The passage starts and ends on F, which makes it F major.",
+        "G major": "G major has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on F, so it is in F major.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:F_major",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_major",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A minor",
+    },
+    "distractors": [
+      "C major",
+      "D minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "C major shares this key signature, so the signature cannot decide it. The passage starts and ends on A, which makes it A minor.",
+        "D minor": "D minor has a different key signature from the one printed here. Count the sharps or flats on the stave first.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The passage starts and ends on A, so it is in A minor.",
+    },
+    "grade": 2,
+    "hints": [
+      "This key signature fits two keys. The note the music starts and ends on tells you which of them.",
+    ],
+    "id": "tonal_centre:g2:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which key is this passage in?",
+    "srs_tags": [
+      "tonal_centre:A_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G#4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonal_centre",
   },
 ]
 `;

@@ -295,17 +295,19 @@ describe('practice-plan — grade-2 minor picks are generatable (U7)', () => {
     const entries = attempted([minorKeysLesson, minorScalesLesson]);
 
     const templates = attemptedTemplates(attemptedAtomSet(entries));
-    expect(new Set(templates)).toEqual(new Set(['mode_swap', 'scale_construction']));
+    expect(new Set(templates)).toEqual(new Set(['mode_swap', 'scale_construction', 'tonal_centre']));
 
     // walk every rotation step so both templates are actually reached, not just present
     const picksByTemplate = new Map<string, PracticePick>();
     for (const pick of fullRotationCycle(entries)) picksByTemplate.set(pick.template, pick);
-    expect(new Set(picksByTemplate.keys())).toEqual(new Set(['mode_swap', 'scale_construction']));
+    expect(new Set(picksByTemplate.keys())).toEqual(new Set(['mode_swap', 'scale_construction', 'tonal_centre']));
 
     expect(picksByTemplate.get('mode_swap')!.atoms).toEqual(minorKeysLesson.atoms);
     expect(picksByTemplate.get('mode_swap')!.grade).toBe(2);
     expect(picksByTemplate.get('scale_construction')!.atoms).toEqual(minorScalesLesson.atoms);
     expect(picksByTemplate.get('scale_construction')!.grade).toBe(2);
+    expect(picksByTemplate.get('tonal_centre')!.atoms).toEqual(minorKeysLesson.atoms);
+    expect(picksByTemplate.get('tonal_centre')!.grade).toBe(2);
   });
 });
 

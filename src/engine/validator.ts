@@ -2518,6 +2518,41 @@ function accidentalCancellationHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// tonalCentreHook (chromaticly-io4.3) — recompute-don't-trust. The tonic must
+// open and close the passage; only minor may raise the 7th.
+function tonalCentreHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const canonical = String(inst.answer.canonical);
+  const m = /^([A-G][#b]?) (major|minor)$/.exec(canonical);
+  if (!m) return [`tonal_centre: "${canonical}" is not a key name`];
+  const [, tonic, mode] = m;
+
+  const music = inst.stimulus.music as Music | null;
+  const pitches = (music?.voices[0]?.events ?? []).map((ev) => ('pitch' in ev ? String(ev.pitch) : ''));
+  if (pitches.length < 3) return ['tonal_centre: the passage is too short to settle anywhere'];
+
+  const bare = (p: string) => p.replace(/-?\d+$/, '');
+  if (bare(pitches[0]) !== tonic || bare(pitches[pitches.length - 1]) !== tonic) {
+    errors.push(`tonal_centre: ${canonical} must open and close on ${tonic}, not ${bare(pitches[0])}..${bare(pitches[pitches.length - 1])}`);
+  }
+  if (music?.key_sig !== `${tonic}_${mode}`) {
+    errors.push(`tonal_centre: the stave carries ${String(music?.key_sig)} but the answer says ${canonical}`);
+  }
+
+  // The raised 7th is the clue: present in minor, never in major.
+  const letter = LETTER_ORDER[(LETTER_ORDER.indexOf(tonic[0] as (typeof LETTER_ORDER)[number]) + 6) % 7];
+  const diatonic = bare(spellInKeySig(`${letter}4`, `${tonic}_${mode}`));
+  const sharpened = diatonic.endsWith('b') ? letter : `${letter}#`;
+  const raised = sharpened !== diatonic && pitches.some((p) => p !== '' && bare(p) === sharpened);
+  if (mode === 'minor' && !raised) errors.push(`tonal_centre: ${canonical} never raises its 7th`);
+  if (mode === 'major' && raised) errors.push(`tonal_centre: ${canonical} raises a 7th it has no reason to`);
+
+  if (inst.distractors.includes(canonical)) {
+    errors.push(`tonal_centre: "${canonical}" is both the answer and a distractor`);
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   accidental_cancellation: accidentalCancellationHook,
   pulse_count: pulseCountHook,
@@ -2526,6 +2561,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   stave_position: stavePositionHook,
   note_shape_length: noteShapeLengthHook,
   note_naming: noteNamingHook,
+  tonal_centre: tonalCentreHook,
   note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,
   interval_compound_reduce: intervalCompoundReduceHook,

@@ -23,6 +23,7 @@ import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
 import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { parseCancellationAtom } from '../engine/generators/accidental-cancellation';
+import { parseTonalCentreAtom, tonalCentrePairs } from '../engine/generators/tonal-centre';
 import { dottedRestsInScope, parseRestToken } from '../engine/generators/rest-math';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -260,6 +261,13 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (!diatonicPitchesInRange(clef as Clef, grade).includes(pitch ?? '')) {
         throw new Error(`lessons: atom "${atom}" pitch is outside the ${clef} G${grade} range`);
       }
+      return;
+    }
+    case 'tonal_centre': {
+      const centre = parseTonalCentreAtom(atom);
+      const pairs = tonalCentrePairs(grade);
+      const known = centre && pairs.some((p) => (centre.mode === 'minor' ? p.minor : p.major) === centre.tonic);
+      if (!known) throw new Error(`lessons: atom "${atom}" is not a G${grade} relative-pair key`);
       return;
     }
     case 'key_sig': {
