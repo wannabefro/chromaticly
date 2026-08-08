@@ -35,6 +35,7 @@ import { ByEarMatch, emptyByEarMatchResponse, type ByEarMatchResponse } from './
 import { TrueFalse, type TrueFalseResponse } from './TrueFalse';
 import type { InteractionComponentProps, InteractionSpec } from './types';
 import { VoiceOptions, type VoiceOptionsResponse } from './VoiceOptions';
+import { tapPlacementSpec } from './TapPlacement';
 
 /** The correct-answer render shared by mcq/text_input today: the canonical
  *  answer's label, or — when the stimulus carries notation — that notation on
@@ -414,6 +415,7 @@ export const INTERACTIONS: Partial<Record<InteractionType, InteractionSpec<any>>
   by_ear_verify: byEarVerifySpec,
   aural_mcq: auralMcqSpec,
   keyboard_tap: keyboardTapSpec,
+  tap_placement: tapPlacementSpec,
 };
 
 /** Fail-loud lookup — an unregistered/unsupported interaction.type throws rather

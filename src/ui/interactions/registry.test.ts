@@ -107,7 +107,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
   });
 
   test('throws for every schema-enum value with no registered entry', () => {
-    const unsupported = ['multi_select', 'tap_placement', 'grid_fill'] as const;
+    const unsupported = ['multi_select', 'grid_fill'] as const;
     for (const type of unsupported) {
       expect(() => lookupInteraction(type)).toThrow();
     }
@@ -126,6 +126,7 @@ describe('registry — lookupInteraction fails loud on unsupported types (AD1: n
       'note_value_palette',
       'roman_numeral_boxes',
       'stave_input',
+      'tap_placement',
       'text_input',
       'transposition_input',
       'true_false',

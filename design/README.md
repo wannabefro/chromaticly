@@ -471,3 +471,37 @@ Numbering the five and leaving it unnumbered is that argument, drawn: they are r
 `GradeSelectScreen.test.tsx` asserts the absence, so a later edit that gives it a badge goes red.
 
 Not changed: the badge geometry. 34pt at radius 10, exactly as 5a states it.
+
+### tap_placement — adding bar-lines · approved 2026-08-08
+
+`Chromaticly Core Flows.dc.html` has no screen for `add_barlines`, which
+`curriculum/exercise-templates.json` has specced since the first grade-1 pass. The card is new,
+and it reuses the existing contracts rather than adding to them:
+
+1. **The stimulus is a NotationCard**, unchanged — paper, play affordance, SVG overlay children.
+   The tap zones and the placed bar-lines are overlay children, which the contract already allows.
+2. **A placed bar-line is the strand hue**, never ink, so what the learner added never reads as
+   part of the printed rhythm.
+3. **Marking uses `--correct` / `--incorrect` on the paper**, not the strand hue. It is the one
+   place the paper carries a semantic colour, and it is needed because "mine" and "right" must not
+   share one.
+4. **The tap zones tile** with no dead space, each at least 44px wide, and a tap snaps the line to
+   the zone centre rather than the finger position.
+5. **A placed bar-line is removed by tapping it again.** Drag needs a gesture the app uses nowhere
+   else, and an undo control would compete with Check.
+6. **The gaps show at rest** as faint `--paper-slot` guides, the same token `stave_input` uses for
+   ghost noteheads. Without them a tap on a notehead reads as a broken screen rather than a miss.
+7. **A wrong answer marks the learner's own lines**, struck through, alongside the missing one.
+   Principle 4 is that wrong answers teach, and printing the right answer alone leaves the learner
+   to diff two pictures from memory.
+
+**Built in two stages, and the first one is visibly short of the card above.** The approved card
+draws the bar-lines inside the paper, which needs the surface to report a tap *between* two notes.
+`src/music-surface/bridge.ts` emits `barTapped` only — a tap resolves to the note abcjs hit-tested,
+never to a gap. So stage 1 puts the tap zones in the answer card below the stave, exactly as
+`find_the_bar`'s bar strip does, and grades the same set of positions. Stage 2 adds the gap event
+and moves the zones into the paper. Tracked on chromaticly-51o.
+
+The rejected alternative is recorded there too: an mcq that labels candidate positions and asks
+where the FIRST bar-line goes. It ships without a design decision, and it asks for one bar-line
+rather than the rhythm.

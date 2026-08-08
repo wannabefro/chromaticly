@@ -84,6 +84,7 @@ function assertRenderableTimeSigOnly(music: Music | null): void {
 describe('grade-2 smoke — every registered generator is exercised', () => {
   test('the ledger below covers every GENERATORS entry (no template silently unpinned)', () => {
     const covered = [
+      'add_barlines',
       'rest_grouping',
       'tonal_centre',
       'note_naming',

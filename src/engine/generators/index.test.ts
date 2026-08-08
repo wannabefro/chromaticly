@@ -33,6 +33,10 @@ const TEMPLATE_IDS = [
 // file shares.
 const GRADE_2_ONLY_TEMPLATE_IDS = ['mode_swap', 'scale_construction', 'triplet_recognition', 'tonal_centre'];
 
+// add_barlines exists from grade 1, but its interaction is tap_placement — it is
+// covered by its own case set rather than the grade-1 mcq loops.
+const TAP_PLACEMENT_TEMPLATE_IDS = ['add_barlines'];
+
 // metre_classification (U6, D7) only exists from grade 3 up (its atoms are
 // metre:<sig> over the compound trio + the three simple signatures, and
 // classifyMetre/checkScope reject a grade-1/2 call) — same "no valid
@@ -137,6 +141,7 @@ describe('GENERATORS registry', () => {
       ...GRADE_4_ONLY_TEMPLATE_IDS,
       ...GRADE_5_ONLY_TEMPLATE_IDS,
       ...ATOM_REQUIRED_TEMPLATE_IDS,
+      ...TAP_PLACEMENT_TEMPLATE_IDS,
     ]) {
       expect(typeof GENERATORS[templateId]).toBe('function');
     }
@@ -151,6 +156,7 @@ describe('GENERATORS registry', () => {
         ...GRADE_4_ONLY_TEMPLATE_IDS,
         ...GRADE_5_ONLY_TEMPLATE_IDS,
         ...ATOM_REQUIRED_TEMPLATE_IDS,
+        ...TAP_PLACEMENT_TEMPLATE_IDS,
       ].sort(),
     );
   });

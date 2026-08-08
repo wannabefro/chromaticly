@@ -2659,6 +2659,50 @@ function restGroupingHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// addBarlinesHook (chromaticly-51o) — recompute-don't-trust. The answer is
+// recomputed by summing the drawn note lengths and marking every note index
+// where the running total lands exactly on a bar.
+const BARLINE_UNITS: Record<string, number> = {
+  demisemiquaver: 1, semiquaver: 2, quaver: 4, crotchet: 8, minim: 16, semibreve: 32, breve: 64,
+};
+
+function addBarlinesHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const music = inst.stimulus.music as Music | null;
+  if (!music?.time_sig) return ['add_barlines: the stimulus needs a time signature'];
+  const barUnits = barUnitsFor(music.time_sig);
+
+  const events = (music.voices[0]?.events ?? []).filter((ev) => ev.type !== 'barline');
+  if (events.some((ev) => ev.type !== 'note')) return ['add_barlines: the rhythm must be notes only'];
+  if (events.some((ev) => 'pitch' in ev && ev.type === 'note' && !(ev.dur in BARLINE_UNITS))) {
+    return ['add_barlines: the rhythm holds a length this template cannot measure'];
+  }
+
+  // A bar-line already printed inside the rhythm would give the answer away.
+  const internal = (music.voices[0]?.events ?? []).slice(0, -1).filter((ev) => ev.type === 'barline');
+  if (internal.length > 0) errors.push('add_barlines: the stimulus still carries an internal bar-line');
+
+  const expected: number[] = [];
+  let running = 0;
+  events.forEach((ev, index) => {
+    const base = BARLINE_UNITS[(ev as { dur: string }).dur];
+    const dots = (ev as { dots?: number }).dots ?? 0;
+    running += dots === 1 ? base * 1.5 : dots === 2 ? base * 1.75 : base;
+    if (running % barUnits === 0 && index < events.length - 1) expected.push(index + 1);
+  });
+  if (running % barUnits !== 0) {
+    errors.push(`add_barlines: the rhythm holds ${running} units, which is not a whole number of ${music.time_sig} bars`);
+  }
+
+  const canonical = inst.answer.canonical;
+  if (!Array.isArray(canonical) || canonical.some((p) => typeof p !== 'number')) {
+    errors.push('add_barlines: the answer must be a list of note positions');
+  } else if (JSON.stringify([...canonical].sort((a, b) => a - b)) !== JSON.stringify(expected)) {
+    errors.push(`add_barlines: the bars fall at ${expected.join(', ')}, but the answer says ${canonical.join(', ')}`);
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   accidental_cancellation: accidentalCancellationHook,
   pulse_count: pulseCountHook,
@@ -2669,6 +2713,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_naming: noteNamingHook,
   tonal_centre: tonalCentreHook,
   rest_grouping: restGroupingHook,
+  add_barlines: addBarlinesHook,
   note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,
   interval_compound_reduce: intervalCompoundReduceHook,

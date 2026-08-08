@@ -264,6 +264,13 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'add_barlines': {
+      const [sig] = parts;
+      if (!renderableTimeSignatures(grade).includes(sig)) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} time signature`);
+      }
+      return;
+    }
     case 'rest_grouping': {
       const [sig] = parts;
       if (!isCompoundTimeSignature(sig) || !metreRenderableTimeSignatures(grade).includes(sig)) {

@@ -369,16 +369,20 @@
     },
     {
       "id": "note-grouping-1",
-      "title": "Grouping notes in a bar",
+      "title": "Grouping notes, and where the bar-lines go",
       "strand": "rhythm",
       "atoms": [
         "grouping:2/4",
         "grouping:3/4",
-        "grouping:4/4"
+        "grouping:4/4",
+        "add_barlines:2/4",
+        "add_barlines:3/4",
+        "add_barlines:4/4"
       ],
       "templates": [
         "note_grouping",
-        "note_grouping_metre_id"
+        "note_grouping_metre_id",
+        "add_barlines"
       ],
       "worked_example": {
         "template_id": "note_grouping",
@@ -389,11 +393,12 @@
         "objectives": [
           "Beams join notes shorter than a crotchet into one beat",
           "A new beat always starts a new beam",
-          "The same notes beamed differently show a different beat"
+          "The same notes beamed differently show a different beat",
+          "Add the bar-lines to a rhythm that has none, counting beats from the start"
         ],
         "concept": {
           "title": "Beams show the beat",
-          "body": "Quavers and shorter notes are joined by a beam instead of being written with separate tails. The beam is not decoration: it tells the reader where each beat begins. In 2/4, 3/4 and 4/4 the beat is a crotchet, so two quavers are beamed together and the next pair starts a fresh beam. Six quavers in 3/4 are written as three joined pairs, never as one long run of six, because a reader has to see three beats. Change the beams and you change what the bar looks like it is in, which is why grouping is part of writing music correctly rather than a matter of taste.",
+          "body": "Quavers and shorter notes are joined by a beam instead of being written with separate tails. The beam is not decoration: it tells the reader where each beat begins. In 2/4, 3/4 and 4/4 the beat is a crotchet, so two quavers are beamed together and the next pair starts a fresh beam. Six quavers in 3/4 are written as three joined pairs, never as one long run of six, because a reader has to see three beats. Change the beams and you change what the bar looks like it is in, which is why grouping is part of writing music correctly rather than a matter of taste.\n\nThat is also how you put the bar-lines IN. Work along the rhythm adding up beats, and the moment you reach a full bar, a bar-line goes there — between two notes, never through one. Then start counting again at one. Because the beams already show the beats, you can often see where a bar ends without counting note by note. The double bar at the very end is printed for you.",
           "example": {
             "template_id": "note_grouping",
             "grade": 1,

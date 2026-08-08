@@ -1,5 +1,4435 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte add_barlines (note-grouping-1, chromaticly-51o) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        7,
+        9,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s0",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 12,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        6,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s1",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 11,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        3,
+        7,
+        12,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s2",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 14,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        4,
+        5,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s3",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 6,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        7,
+        12,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s4",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 15,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        8,
+        11,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s5",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 15,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        7,
+        10,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s6",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 15,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        4,
+        7,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s7",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 10,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        6,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s8",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 10,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        5,
+        11,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s9",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 14,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        6,
+        13,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s10",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 18,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        4,
+        6,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s11",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 8,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        1,
+        3,
+        4,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s12",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 6,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        3,
+        6,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s13",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 10,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        1,
+        2,
+        3,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s14",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 4,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        5,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s15",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 13,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        6,
+        10,
+        15,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s16",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 17,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        7,
+        9,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s17",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 13,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        1,
+        3,
+        5,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s18",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 8,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        6,
+        9,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s19",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 11,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+]
+`;
+
+exports[`seed-stability — grade-1 generator output is pinned byte-for-byte add_barlines @ note-grouping-1 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        7,
+        9,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s0",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 12,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        6,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s1",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 11,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        3,
+        7,
+        12,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s2",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 14,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        4,
+        5,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s3",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 6,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        7,
+        12,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s4",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 15,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        8,
+        11,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s5",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 15,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        7,
+        10,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s6",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 15,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        4,
+        7,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s7",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 10,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        6,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s8",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 10,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E3",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        5,
+        11,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s9",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 14,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        6,
+        13,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s10",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 18,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        4,
+        6,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s11",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 8,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        1,
+        3,
+        4,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s12",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 6,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        3,
+        6,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s13",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 10,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        1,
+        2,
+        3,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s14",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 4,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        5,
+        8,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s15",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 13,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        6,
+        10,
+        15,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 4/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s16",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 17,
+        "time_sig": "4/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 4/4.",
+    "srs_tags": [
+      "add_barlines:4/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "4/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        4,
+        7,
+        9,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s17",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 13,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "semiquaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        1,
+        3,
+        5,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 2/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s18",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 8,
+        "time_sig": "2/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 2/4.",
+    "srs_tags": [
+      "add_barlines:2/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "2/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "minim",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A2",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": [
+        2,
+        6,
+        9,
+      ],
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Each bar of 3/4 holds the same total. Count the beats from the start, and put a bar-line every time you reach that total.",
+    },
+    "grade": 1,
+    "hints": [
+      "Look at how the notes are grouped — beams show you where the beats are.",
+    ],
+    "id": "add_barlines:g1:s19",
+    "interaction": {
+      "config": {
+        "bars": 4,
+        "notes": 11,
+        "time_sig": "3/4",
+      },
+      "type": "tap_placement",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Add the bar-lines to this rhythm in 3/4.",
+    "srs_tags": [
+      "add_barlines:3/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "minim",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "add_barlines",
+  },
+]
+`;
+
 exports[`seed-stability — grade-1 generator output is pinned byte-for-byte add_time_signature @ note-values instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

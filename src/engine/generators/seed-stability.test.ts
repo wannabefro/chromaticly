@@ -54,6 +54,11 @@ const EXTRA_CASES: Case[] = [
   { label: 'stave_position (First steps lesson 4)', templateId: 'stave_position', atoms: [] },
   { label: 'note_shape_length (First steps lesson 5)', templateId: 'note_shape_length', atoms: [] },
   { label: 'note_value_compare (rotation)', templateId: 'note_value_compare', atoms: [] },
+  {
+    label: 'add_barlines (note-grouping-1, chromaticly-51o)',
+    templateId: 'add_barlines',
+    atoms: ['add_barlines:2/4', 'add_barlines:3/4', 'add_barlines:4/4'],
+  },
   // Draws from the same passage RNG as music_in_context, so a change there moves this.
   { label: 'context_question (review of one 8d sub-question)', templateId: 'context_question', atoms: ['context:highest_note'] },
   { label: 'term_meaning (rotation)', templateId: 'term_meaning', atoms: atomsForLesson('signs-1') },

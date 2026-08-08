@@ -25,6 +25,7 @@ import { metreClassification, metreFromClass } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
 import { restGrouping } from './rest-grouping';
+import { addBarlines } from './add-barlines';
 import { modeSwap } from './mode-swap';
 import { tonalCentre } from './tonal-centre';
 import { accidentalCancellation } from './accidental-cancellation';
@@ -76,6 +77,7 @@ export const GENERATORS: Record<string, Generator> = {
   tie_dot_value: tieDotValue,
   note_grouping: noteGrouping,
   rest_grouping: restGrouping,
+  add_barlines: addBarlines,
   note_grouping_metre_id: noteGroupingMetreId,
   // First steps (grade 0, chromaticly-dhe).
   pulse_count: pulseCount,
