@@ -259,3 +259,18 @@ describe('addTimeSignature — fuzz gate: 100 generated items are all validator-
     }
   });
 });
+
+// chromaticly-e6p. A lesson scoping to a simple signature was credited the bare atom.
+describe('the credited atom is the atom that scoped the question', () => {
+  test.each([
+    [1, ['add_time_signature']],
+    [2, ['add_time_signature:2/4']],
+    [2, ['add_time_signature:2/2', 'add_time_signature:3/2']],
+    [3, ['add_time_signature:6/8']],
+  ])('grade %i, %j', (grade, atoms) => {
+    for (let seed = 0; seed < 24; seed++) {
+      expect(atoms).toContain(addTimeSignature({ grade, seed, atoms }).srs_tags[0]);
+    }
+  });
+});
+

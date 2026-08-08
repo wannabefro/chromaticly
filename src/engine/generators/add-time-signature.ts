@@ -93,6 +93,9 @@ function whyWrong(wrong: string, correct: string): string {
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const G1_DURATIONS = scope.noteValues as readonly G1Duration[];
+  // The atom that scoped the pick is the atom that gets credited
+  // (chromaticly-e6p) — deriving it from the signature's grade credited the
+  // bare atom for a scoped question, so the due atom never advanced.
   const atomScoped = timeSignaturesFromAtoms(atoms, grade);
   const timeSignatures = atomScoped.length > 0 ? atomScoped : renderableTimeSignatures(grade);
   const rng = mulberry32(contentSeed);
@@ -145,7 +148,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     },
     // The bare atom belongs to the grade-1 /4 trio. Every metre added later
     // gets its own, or the credit misroutes to the grade-1 lesson that owns it.
-    srs_tags: [renderableTimeSignatures(1).includes(timeSig) ? addTimeSignatureAtom() : addTimeSignatureAtom(timeSig)],
+    srs_tags: [atomScoped.length > 0 ? addTimeSignatureAtom(timeSig) : addTimeSignatureAtom()],
     kb_version: KB_VERSION,
   };
 }
@@ -210,7 +213,7 @@ function buildMatch(contentSeed: number, grade: number, idSeed: number, atoms: s
         distractors.map((d) => [d, `That bar holds ${beatsPhrase(d)}, which is ${d}. ${timeSig} holds ${beatsPhrase(timeSig)}.`]),
       ),
     },
-    srs_tags: [renderableTimeSignatures(1).includes(timeSig) ? addTimeSignatureAtom() : addTimeSignatureAtom(timeSig)],
+    srs_tags: [atomScoped.length > 0 ? addTimeSignatureAtom(timeSig) : addTimeSignatureAtom()],
     kb_version: KB_VERSION,
   };
 }
