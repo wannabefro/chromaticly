@@ -342,8 +342,20 @@ export function assertAtomResolves(atom: string, grade: number): void {
     // subdominant and dominant chords in ANY key set for the grade, and the
     // course had only the major ones.
     case 'chord_minor': {
-      const [numeral] = parts;
-      if (grade < 4 || parts.length !== 1 || !(CHORD_NUMERALS_MINOR as readonly string[]).includes(numeral)) {
+      const [numeral, position] = parts;
+      // 3-part chord_minor:<numeral>:<pos> is the Grade-5 minor inversion
+      // (chromaticly-ic5.5); the bare 2-part atom stays the Grade-4 path.
+      if (position !== undefined) {
+        if (
+          grade < 5 ||
+          !(CHORD_NUMERALS_G5 as readonly string[]).includes(numeral) ||
+          !(CHORD_POSITIONS as readonly string[]).includes(position)
+        ) {
+          throw new Error(`lessons: atom "${atom}" is not a G${grade} minor chord inversion`);
+        }
+        return;
+      }
+      if (grade < 4 || !(CHORD_NUMERALS_MINOR as readonly string[]).includes(numeral)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} minor-key primary triad`);
       }
       return;

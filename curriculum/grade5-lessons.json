@@ -250,7 +250,7 @@
         "smartTip": "The lowest note names the position, not the numeral. Find the root by stacking the notes in 3rds first, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
         "didYouKnow": "The little letters a, b and c are the ABRSM way of writing inversions. Elsewhere you may meet figured bass instead — IVb is the same chord a musician of Bach's day would have marked with a small 6 under the bass note."
       },
-      "unlocks": "cadences-5",
+      "unlocks": "minor-inversions-5",
       "by_ear_source": "chord_recognition",
       "by_ear_atoms": [
         "chord:I:a:by_ear",
@@ -266,6 +266,52 @@
         "chord:V:b:by_ear",
         "chord:V:c:by_ear"
       ]
+    },
+    {
+      "id": "minor-inversions-5",
+      "title": "Inversions in a minor key",
+      "strand": "chords",
+      "atoms": [
+        "chord_minor:I:a",
+        "chord_minor:I:b",
+        "chord_minor:I:c",
+        "chord_minor:II:a",
+        "chord_minor:II:b",
+        "chord_minor:II:c",
+        "chord_minor:IV:a",
+        "chord_minor:IV:b",
+        "chord_minor:IV:c",
+        "chord_minor:V:a",
+        "chord_minor:V:b",
+        "chord_minor:V:c"
+      ],
+      "templates": [
+        "chord_recognition"
+      ],
+      "worked_example": {
+        "template_id": "chord_recognition",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The same four chords — i, ii, iv and V — in any minor key set for the grade",
+          "In a minor key ii is a *diminished* triad, not a minor one",
+          "V is major in a minor key, because the harmonic form raises the 7th"
+        ],
+        "concept": {
+          "title": "The same four chords, three different qualities",
+          "body": "Everything about position carries over unchanged. The bass note still names it: root in the bass is a, the 3rd in the bass is b, the 5th in the bass is c. Find the root by stacking the notes in 3rds, then look at the bottom note.\n\nWhat changes is quality. In A minor: i is A C E, a minor triad. iv is D F A, minor as well. V is E G# B — major, because the harmonic form of the scale raises the 7th, and that raised 7th IS the 3rd of the dominant. That is the whole reason V works as a dominant in a minor key.\n\nii is the one worth remembering. In A minor it is B D F: a minor 3rd, then another minor 3rd. Two minor 3rds stacked make a *diminished* triad, and it is the only diminished chord in this set. Written out in an exam it is still ii, ii*b* or ii*c* like any other, but it will never sound like a minor chord, because it is not one.",
+          "example": {
+            "template_id": "chord_recognition",
+            "grade": 5,
+            "seed": 4
+          }
+        },
+        "smartTip": "i and iv minor, V major, ii diminished. Only ii has two minor 3rds stacked on each other.",
+        "didYouKnow": "The diminished ii chord is why a minor-key cadence so often goes ii-b then V. In first inversion its bass note is the 4th degree, which is the same bass note a iv chord would give — so it slips into the same place with a sharper edge."
+      },
+      "unlocks": "cadences-5"
     },
     {
       "id": "cadences-5",

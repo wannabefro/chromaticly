@@ -3,6 +3,7 @@ import { validate } from '../validator';
 import { intervalQuality, diatonicIntervalNumber } from '../interval-quality';
 import { CHORD_DEGREE_STEPS } from './chord-recognition';
 import { generate } from './index';
+import type { Music } from '../../music/types';
 
 const ALL_ATOMS = ['chord:I', 'chord:IV', 'chord:V'];
 
@@ -309,5 +310,111 @@ describe('chord_recognition — minor keys (G4 item 4)', () => {
   test('the atom does not resolve below grade 4', () => {
     expect(() => assertAtomResolves('chord_minor:V', 3)).toThrow();
     expect(() => assertAtomResolves('chord_minor:V', 4)).not.toThrow();
+  });
+});
+
+// chromaticly-ic5.5. G5 item 4 asks for inversions in any major OR minor key.
+describe('chord_recognition — inversions in a minor key (chromaticly-ic5.5)', () => {
+  const ATOMS = ['I', 'II', 'IV', 'V'].flatMap((n) => ['a', 'b', 'c'].map((p) => `chord_minor:${n}:${p}`));
+
+  const gen = (seed: number, atoms: string[] = ATOMS) =>
+    generate('chord_recognition', { grade: 5, seed, atoms });
+
+  const triadsOf = (inst: ReturnType<typeof gen>) =>
+    (inst.interaction.config as { triads: Record<string, string[]> }).triads;
+
+  /** Semitones between two spelled pitches, so quality is read not assumed. */
+  const semitones = (low: string, high: string): number => {
+    const STEP: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+    const parse = (p: string) => {
+      const m = /^([A-G])(##|bb|#|b)?(-?\d+)$/.exec(p)!;
+      const shift = m[2] === '#' ? 1 : m[2] === 'b' ? -1 : m[2] === '##' ? 2 : m[2] === 'bb' ? -2 : 0;
+      return STEP[m[1]] + shift + 12 * Number(m[3]);
+    };
+    return parse(high) - parse(low);
+  };
+
+  test('every item is validator-clean and carries a minor key signature', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      const inst = gen(seed);
+      expect((inst.stimulus.music as Music).key_sig).toMatch(/_minor$/);
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  // THE invariant, and the reason this could not join chord-inversions-5.
+  test('ii is two stacked minor 3rds — a diminished triad, in every key drawn', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      const [root, third, fifth] = triadsOf(gen(seed)).II;
+      expect(semitones(root, third)).toBe(3);
+      expect(semitones(third, fifth)).toBe(3);
+    }
+  });
+
+  test('i and iv are minor and V is major, so the raised 7th is on the page', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      const triads = triadsOf(gen(seed));
+      for (const numeral of ['I', 'IV']) {
+        expect(semitones(triads[numeral][0], triads[numeral][1])).toBe(3);
+      }
+      expect(semitones(triads.V[0], triads.V[1])).toBe(4);
+    }
+  });
+
+  test('all twelve numeral-and-position pairs are asked', () => {
+    const asked = new Set<string>();
+    for (let seed = 0; seed < 60; seed++) asked.add(gen(seed).srs_tags[0]);
+    expect([...asked].sort()).toEqual([...ATOMS].sort());
+  });
+
+  test.each(ATOMS)('a single due atom %s is a whole item', (atom) => {
+    const inst = gen(0, [atom]);
+    expect(inst.srs_tags).toEqual([atom]);
+    expect(validate(inst)).toEqual({ ok: true, errors: [] });
+  });
+
+  test('the major inversions path is untouched — it still draws a major key', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const inst = generate('chord_recognition', { grade: 5, seed, atoms: ['chord:II:b'] });
+      expect((inst.stimulus.music as Music).key_sig).toMatch(/_major$/);
+      expect(semitones(triadsOf(inst).II[0], triadsOf(inst).II[1])).toBe(3);
+      expect(semitones(triadsOf(inst).II[1], triadsOf(inst).II[2])).toBe(4);
+    }
+  });
+
+  test('an unknown numeral or position in a minor inversion atom throws', () => {
+    expect(() => gen(0, ['chord_minor:III:a'])).toThrow();
+    expect(() => gen(0, ['chord_minor:I:d'])).toThrow();
+  });
+});
+
+// The inversion branch never checked quality before this.
+describe('chordInversionErrors rejects a triad of the wrong quality', () => {
+  const minor = () => generate('chord_recognition', { grade: 5, seed: 1, atoms: ['chord_minor:I:a'] });
+
+  test('a ii built minor instead of diminished', () => {
+    const inst = minor();
+    const triads = (inst.interaction.config as { triads: Record<string, string[]> }).triads;
+    const [root, third] = triads.II;
+    triads.II = [root, third, `${triads.II[2].replace(/[#b]/g, '')}`];
+    expect(validate(inst).errors.some((e) => e.includes('config.triads.II'))).toBe(true);
+  });
+
+  test('a V built without its raised 7th', () => {
+    // Some keys raise the 7th with a natural, so search for a sharp.
+    const inst = Array.from({ length: 20 }, (_, seed) =>
+      generate('chord_recognition', { grade: 5, seed, atoms: ['chord_minor:I:a'] }),
+    ).find((i) => (i.interaction.config as { triads: Record<string, string[]> }).triads.V[1].includes('#'));
+    expect(inst).toBeDefined();
+    const triads = (inst!.interaction.config as { triads: Record<string, string[]> }).triads;
+    triads.V = [triads.V[0], triads.V[1].replace('#', ''), triads.V[2]];
+    expect(validate(inst!).errors.some((e) => e.includes('config.triads.V'))).toBe(true);
+  });
+
+  test('a chip map whose answer chord is not the notated one', () => {
+    const inst = minor();
+    const triads = (inst.interaction.config as { triads: Record<string, string[]> }).triads;
+    triads.I = triads.IV;
+    expect(validate(inst).errors.some((e) => e.includes('does not spell the stimulus chord'))).toBe(true);
   });
 });

@@ -310992,6 +310992,2911 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte chord_recognition @ minor-inversions-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "The chord is right. IIa puts the root in the bass; here the bass note is the 5th.",
+        "IIb": "The chord is right. IIb puts the 3rd in the bass; here the bass note is the 5th.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 2nd.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 2nd.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "The position is right. V is built on the 5th degree; this root is the 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s0",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "G2",
+            "Bb2",
+            "D3",
+          ],
+          "II": [
+            "A2",
+            "C3",
+            "Eb3",
+          ],
+          "IV": [
+            "C2",
+            "Eb2",
+            "G2",
+          ],
+          "V": [
+            "D2",
+            "F#2",
+            "A2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:II:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Eb3",
+                  "A3",
+                  "C4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "a",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "The position is right. II is built on the 2nd degree; this root is the 1st.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "The position is right. IV is built on the 4th degree; this root is the 1st.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ib": "The chord is right. Ib puts the 3rd in the bass; here the bass note is the root.",
+        "Ic": "The chord is right. Ic puts the 5th in the bass; here the bass note is the root.",
+        "Va": "The position is right. V is built on the 5th degree; this root is the 1st.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s1",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "II": [
+            "D4",
+            "F4",
+            "Ab4",
+          ],
+          "IV": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:I:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "Eb4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "The position is right. II is built on the 2nd degree; this root is the 1st.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 1st.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "The chord is right. Ia puts the root in the bass; here the bass note is the 3rd.",
+        "Ic": "The chord is right. Ic puts the 5th in the bass; here the bass note is the 3rd.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "The position is right. V is built on the 5th degree; this root is the 1st.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s2",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "II": [
+            "C#2",
+            "E2",
+            "G2",
+          ],
+          "IV": [
+            "E2",
+            "G2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:I:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "F#3",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "The chord is right. IIa puts the root in the bass; here the bass note is the 3rd.",
+        "IIc": "The chord is right. IIc puts the 5th in the bass; here the bass note is the 3rd.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 2nd.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "The position is right. I is built on the 1st degree; this root is the 2nd.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "The position is right. V is built on the 5th degree; this root is the 2nd.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s3",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F#4",
+            "A4",
+            "C#5",
+          ],
+          "II": [
+            "G#4",
+            "B4",
+            "D5",
+          ],
+          "IV": [
+            "B3",
+            "D4",
+            "F#4",
+          ],
+          "V": [
+            "C#4",
+            "E#4",
+            "G#4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:II:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B4",
+                  "D5",
+                  "G#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Va": "The chord is right. Va puts the root in the bass; here the bass note is the 3rd.",
+        "Vc": "The chord is right. Vc puts the 5th in the bass; here the bass note is the 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s4",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "II": [
+            "C#2",
+            "E2",
+            "G2",
+          ],
+          "IV": [
+            "E2",
+            "G2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A#2",
+                  "C#3",
+                  "F#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 1st.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 1st.",
+        "Ia": "The chord is right. Ia puts the root in the bass; here the bass note is the 5th.",
+        "Ib": "The chord is right. Ib puts the 3rd in the bass; here the bass note is the 5th.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "The position is right. V is built on the 5th degree; this root is the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s5",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "B3",
+            "D4",
+            "F#4",
+          ],
+          "II": [
+            "C#4",
+            "E4",
+            "G4",
+          ],
+          "IV": [
+            "E4",
+            "G4",
+            "B4",
+          ],
+          "V": [
+            "F#4",
+            "A#4",
+            "C#5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:I:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F#4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "IV",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "The position is right. II is built on the 2nd degree; this root is the 4th.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "The chord is right. IVa puts the root in the bass; here the bass note is the 3rd.",
+        "IVc": "The chord is right. IVc puts the 5th in the bass; here the bass note is the 3rd.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "The position is right. I is built on the 1st degree; this root is the 4th.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "The position is right. V is built on the 5th degree; this root is the 4th.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s6",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Eb4",
+            "Gb4",
+            "Bb4",
+          ],
+          "II": [
+            "F4",
+            "Ab4",
+            "Cb5",
+          ],
+          "IV": [
+            "Ab3",
+            "Cb4",
+            "Eb4",
+          ],
+          "V": [
+            "Bb3",
+            "D4",
+            "F4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:IV:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Eb_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Cb4",
+                  "Eb4",
+                  "Ab4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "IV",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 4th.",
+        "IVa": "The chord is right. IVa puts the root in the bass; here the bass note is the 5th.",
+        "IVb": "The chord is right. IVb puts the 3rd in the bass; here the bass note is the 5th.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 4th.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "The position is right. V is built on the 5th degree; this root is the 4th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s7",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C#4",
+            "E4",
+            "G#4",
+          ],
+          "II": [
+            "D#4",
+            "F#4",
+            "A4",
+          ],
+          "IV": [
+            "F#4",
+            "A4",
+            "C#5",
+          ],
+          "V": [
+            "G#4",
+            "B#4",
+            "D#5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:IV:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C#5",
+                  "F#5",
+                  "A5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "The chord is right. IIa puts the root in the bass; here the bass note is the 5th.",
+        "IIb": "The chord is right. IIb puts the 3rd in the bass; here the bass note is the 5th.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 2nd.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 2nd.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "The position is right. V is built on the 5th degree; this root is the 2nd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s8",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "II": [
+            "D4",
+            "F4",
+            "Ab4",
+          ],
+          "IV": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:II:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab4",
+                  "D5",
+                  "F5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "The position is right. II is built on the 2nd degree; this root is the 1st.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 1st.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "The chord is right. Ia puts the root in the bass; here the bass note is the 3rd.",
+        "Ic": "The chord is right. Ic puts the 5th in the bass; here the bass note is the 3rd.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "The position is right. V is built on the 5th degree; this root is the 1st.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s9",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "G2",
+            "Bb2",
+            "D3",
+          ],
+          "II": [
+            "A2",
+            "C3",
+            "Eb3",
+          ],
+          "IV": [
+            "C2",
+            "Eb2",
+            "G2",
+          ],
+          "V": [
+            "D2",
+            "F#2",
+            "A2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:I:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb2",
+                  "D3",
+                  "G3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Va": "The chord is right. Va puts the root in the bass; here the bass note is the 5th.",
+        "Vb": "The chord is right. Vb puts the 3rd in the bass; here the bass note is the 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s10",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C2",
+            "Eb2",
+            "G2",
+          ],
+          "II": [
+            "D2",
+            "F2",
+            "Ab2",
+          ],
+          "IV": [
+            "F2",
+            "Ab2",
+            "C3",
+          ],
+          "V": [
+            "G2",
+            "B2",
+            "D3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "G3",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Va": "The chord is right. Va puts the root in the bass; here the bass note is the 5th.",
+        "Vb": "The chord is right. Vb puts the 3rd in the bass; here the bass note is the 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s11",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "Ab2",
+            "C3",
+          ],
+          "II": [
+            "G2",
+            "Bb2",
+            "Db3",
+          ],
+          "IV": [
+            "Bb2",
+            "Db3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G2",
+                  "C3",
+                  "E3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Va": "The chord is right. Va puts the root in the bass; here the bass note is the 5th.",
+        "Vb": "The chord is right. Vb puts the 3rd in the bass; here the bass note is the 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s12",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "G4",
+            "Bb4",
+            "D5",
+          ],
+          "II": [
+            "A3",
+            "C4",
+            "Eb4",
+          ],
+          "IV": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "V": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A4",
+                  "D5",
+                  "F#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Va": "The chord is right. Va puts the root in the bass; here the bass note is the 5th.",
+        "Vb": "The chord is right. Vb puts the 3rd in the bass; here the bass note is the 5th.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s13",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "A3",
+            "C4",
+            "E4",
+          ],
+          "II": [
+            "B3",
+            "D4",
+            "F4",
+          ],
+          "IV": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "V": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B4",
+                  "E5",
+                  "G#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "The position is right. II is built on the 2nd degree; this root is the 1st.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 1st.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "The chord is right. Ia puts the root in the bass; here the bass note is the 3rd.",
+        "Ic": "The chord is right. Ic puts the 5th in the bass; here the bass note is the 3rd.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "The position is right. V is built on the 5th degree; this root is the 1st.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s14",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "C#4",
+            "E4",
+            "G#4",
+          ],
+          "II": [
+            "D#4",
+            "F#4",
+            "A4",
+          ],
+          "IV": [
+            "F#4",
+            "A4",
+            "C#5",
+          ],
+          "V": [
+            "G#4",
+            "B#4",
+            "D#5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:I:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G#4",
+                  "C#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "a",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Vb": "The chord is right. Vb puts the 3rd in the bass; here the bass note is the root.",
+        "Vc": "The chord is right. Vc puts the 5th in the bass; here the bass note is the root.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s15",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F#2",
+            "A2",
+            "C#3",
+          ],
+          "II": [
+            "G#2",
+            "B2",
+            "D3",
+          ],
+          "IV": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "V": [
+            "C#2",
+            "E#2",
+            "G#2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C#2",
+                  "E#2",
+                  "G#2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "The chord is right. IIa puts the root in the bass; here the bass note is the 3rd.",
+        "IIc": "The chord is right. IIc puts the 5th in the bass; here the bass note is the 3rd.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 2nd.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "The position is right. I is built on the 1st degree; this root is the 2nd.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "The position is right. V is built on the 5th degree; this root is the 2nd.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s16",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "A2",
+            "C3",
+            "E3",
+          ],
+          "II": [
+            "B2",
+            "D3",
+            "F3",
+          ],
+          "IV": [
+            "D2",
+            "F2",
+            "A2",
+          ],
+          "V": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:II:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D3",
+                  "F3",
+                  "B3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "II",
+        "position": "a",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIb": "The chord is right. IIb puts the 3rd in the bass; here the bass note is the root.",
+        "IIc": "The chord is right. IIc puts the 5th in the bass; here the bass note is the root.",
+        "IVa": "The position is right. IV is built on the 4th degree; this root is the 2nd.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "The position is right. I is built on the 1st degree; this root is the 2nd.",
+        "Ib": "Ib is the 1st-degree chord with the 3rd in the bass. This one is neither.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Va": "The position is right. V is built on the 5th degree; this root is the 2nd.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "Vc is the 5th-degree chord with the 5th in the bass. This one is neither.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s17",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "II": [
+            "E4",
+            "G4",
+            "Bb4",
+          ],
+          "IV": [
+            "G4",
+            "Bb4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:II:a",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G4",
+                  "Bb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "I",
+        "position": "c",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "b",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "IIb is the 2nd-degree chord with the 3rd in the bass. This one is neither.",
+        "IIc": "The position is right. II is built on the 2nd degree; this root is the 1st.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "IVb is the 4th-degree chord with the 3rd in the bass. This one is neither.",
+        "IVc": "The position is right. IV is built on the 4th degree; this root is the 1st.",
+        "Ia": "The chord is right. Ia puts the root in the bass; here the bass note is the 5th.",
+        "Ib": "The chord is right. Ib puts the 3rd in the bass; here the bass note is the 5th.",
+        "Va": "Va is the 5th-degree chord with the root in the bass. This one is neither.",
+        "Vb": "Vb is the 5th-degree chord with the 3rd in the bass. This one is neither.",
+        "Vc": "The position is right. V is built on the 5th degree; this root is the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s18",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "Bb3",
+            "Db4",
+            "F4",
+          ],
+          "II": [
+            "C4",
+            "Eb4",
+            "Gb4",
+          ],
+          "IV": [
+            "Eb4",
+            "Gb4",
+            "Bb4",
+          ],
+          "V": [
+            "F4",
+            "A4",
+            "C5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:I:c",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "Bb_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "Bb4",
+                  "Db5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "numeral": "V",
+        "position": "b",
+      },
+    },
+    "distractors": [
+      {
+        "numeral": "I",
+        "position": "a",
+      },
+      {
+        "numeral": "I",
+        "position": "b",
+      },
+      {
+        "numeral": "I",
+        "position": "c",
+      },
+      {
+        "numeral": "II",
+        "position": "a",
+      },
+      {
+        "numeral": "II",
+        "position": "b",
+      },
+      {
+        "numeral": "II",
+        "position": "c",
+      },
+      {
+        "numeral": "IV",
+        "position": "a",
+      },
+      {
+        "numeral": "IV",
+        "position": "b",
+      },
+      {
+        "numeral": "IV",
+        "position": "c",
+      },
+      {
+        "numeral": "V",
+        "position": "a",
+      },
+      {
+        "numeral": "V",
+        "position": "c",
+      },
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IIa": "IIa is the 2nd-degree chord with the root in the bass. This one is neither.",
+        "IIb": "The position is right. II is built on the 2nd degree; this root is the 5th.",
+        "IIc": "IIc is the 2nd-degree chord with the 5th in the bass. This one is neither.",
+        "IVa": "IVa is the 4th-degree chord with the root in the bass. This one is neither.",
+        "IVb": "The position is right. IV is built on the 4th degree; this root is the 5th.",
+        "IVc": "IVc is the 4th-degree chord with the 5th in the bass. This one is neither.",
+        "Ia": "Ia is the 1st-degree chord with the root in the bass. This one is neither.",
+        "Ib": "The position is right. I is built on the 1st degree; this root is the 5th.",
+        "Ic": "Ic is the 1st-degree chord with the 5th in the bass. This one is neither.",
+        "Va": "The chord is right. Va puts the root in the bass; here the bass note is the 3rd.",
+        "Vc": "The chord is right. Vc puts the 5th in the bass; here the bass note is the 3rd.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the root by stacking the notes in 3rds, then check which member is in the bass: root = a, 3rd = b, 5th = c.",
+    },
+    "grade": 5,
+    "hints": [
+      "The lowest note (the bass) names the position: root in the bass = a, the 3rd in the bass = b (1st inversion), the 5th in the bass = c (2nd inversion).",
+    ],
+    "id": "chord_recognition:g5:s19",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "II",
+          "IV",
+          "V",
+        ],
+        "positions": [
+          "a",
+          "b",
+          "c",
+        ],
+        "triads": {
+          "I": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "II": [
+            "G4",
+            "Bb4",
+            "Db5",
+          ],
+          "IV": [
+            "Bb3",
+            "Db4",
+            "F4",
+          ],
+          "V": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord and its position.",
+    "srs_tags": [
+      "chord_minor:V:b",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte instrument_knowledge @ instrument-clefs-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

@@ -17,6 +17,7 @@ import {
   CHORD_POSITIONS,
   chordAtom,
   chordMinorAtom,
+  chordMinorPositionAtom,
   chordPositionAtom,
   parseAtom,
 } from '../atoms';
@@ -42,6 +43,12 @@ const CHORD_CLEFS: readonly Clef[] = ['treble', 'bass'];
  *  by the Grade-5 inversions path (chromaticly-ehp); Grade 4 never generates a
  *  degree-1 root, so its recompute set is effectively unchanged. */
 export const CHORD_DEGREE_STEPS: Record<string, number> = { I: 0, II: 1, IV: 3, V: 4 };
+
+/** The quality each Grade-5 numeral takes in each mode. */
+export const TRIAD_QUALITY: Record<'major' | 'minor', Record<string, 'major' | 'minor' | 'diminished'>> = {
+  major: { I: 'major', II: 'minor', IV: 'major', V: 'major' },
+  minor: { I: 'minor', II: 'diminished', IV: 'minor', V: 'major' },
+};
 
 /** Reposition a root-position triad [root, third, fifth] (ascending, root
  *  lowest) into the given inversion, raising wrapped members an octave so the
@@ -166,6 +173,26 @@ function minorNumeralsFromAtoms(atoms: string[]): string[] {
     if (!numerals.includes(parts[0])) numerals.push(parts[0]);
   }
   return numerals;
+}
+
+/** The `chord_minor:<numeral>:<pos>` pairs — the minor inversions path. */
+function minorInversionPairsFromAtoms(atoms: string[]): { numeral: string; position: string }[] {
+  const pairs: { numeral: string; position: string }[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'chord_minor' || parts.length !== 2) continue;
+    const [numeral, position] = parts;
+    if (!(CHORD_NUMERALS_G5 as readonly string[]).includes(numeral)) {
+      throw new Error(`chord_recognition: atom "${atom}" names an unknown chord numeral`);
+    }
+    if (!(CHORD_POSITIONS as readonly string[]).includes(position)) {
+      throw new Error(`chord_recognition: atom "${atom}" names an unknown chord position`);
+    }
+    if (!pairs.some((p) => p.numeral === numeral && p.position === position)) {
+      pairs.push({ numeral, position });
+    }
+  }
+  return pairs;
 }
 
 /** Root-position triad on the 1st, 4th or 5th degree of a MINOR key, spelled
@@ -294,18 +321,19 @@ function buildInversion(
   grade: number,
   idSeed: number,
   pairs: { numeral: string; position: string }[],
+  mode: 'major' | 'minor' = 'major',
 ): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
   const clef = pick(rng, [...CHORD_CLEFS]);
-  const key = pick(rng, [...scope.keysMajor]);
+  const key = pick(rng, mode === 'minor' ? [...scope.keysMinor] : [...scope.keysMajor]);
   const { numeral, position } = pick(rng, pairs);
 
   // Root-position triads for every G5 numeral, built with room for the widest
   // (2nd-inversion) voicing so any of them could be inverted and still fit.
   const triads: Record<string, [string, string, string]> = {};
   for (const n of CHORD_NUMERALS_G5) {
-    triads[n] = buildTriad(clef, grade, key, n, 9);
+    triads[n] = mode === 'minor' ? buildMinorTriad(clef, grade, key, n, 9) : buildTriad(clef, grade, key, n, 9);
   }
 
   const stimulusPitches = applyInversion(triads[numeral], position);
@@ -326,7 +354,7 @@ function buildInversion(
     stimulus: {
       music: {
         clef,
-        key_sig: `${key}_major`,
+        key_sig: `${key}_${mode}`,
         time_sig: null,
         voices: [{ events: [{ type: 'chord', pitches: stimulusPitches, dur: 'semibreve' }] }],
       },
@@ -349,12 +377,16 @@ function buildInversion(
         distractors.map((d) => [`${d.numeral}${d.position}`, whyWrongPair(d, { numeral, position })]),
       ),
     },
-    srs_tags: [chordPositionAtom(numeral, position)],
+    srs_tags: [mode === 'minor' ? chordMinorPositionAtom(numeral, position) : chordPositionAtom(numeral, position)],
     kb_version: KB_VERSION,
   };
 }
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
+  const minorInversionPairs = minorInversionPairsFromAtoms(atoms);
+  if (minorInversionPairs.length > 0) {
+    return buildInversion(contentSeed, grade, idSeed, minorInversionPairs, 'minor');
+  }
   const inversionPairs = inversionPairsFromAtoms(atoms);
   if (inversionPairs.length > 0) {
     return buildInversion(contentSeed, grade, idSeed, inversionPairs);

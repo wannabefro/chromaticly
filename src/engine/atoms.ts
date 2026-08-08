@@ -235,6 +235,12 @@ export function chordPositionAtom(numeral: string, position: string): string {
   return `chord:${numeral}:${position}`;
 }
 
+/** The same shape in a MINOR key (chromaticly-ic5.5), e.g. "chord_minor:II:b".
+ *  Its own atom kind because ii is diminished there and I and IV are minor. */
+export function chordMinorPositionAtom(numeral: string, position: string): string {
+  return `chord_minor:${numeral}:${position}`;
+}
+
 /** Grade-5 transposing instruments (transposing_instrument, KB grade5Adds
  *  transposition). The learner writes the part each must READ to sound at
  *  concert pitch — the instrument sounds LOWER than written, so the written

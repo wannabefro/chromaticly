@@ -15,7 +15,7 @@ import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind, Rest
 import { barUnitsFor } from './generators/bar-math';
 import { parseRestLabel, restToken, restUnits } from './generators/rest-math';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_NUMERALS_MINOR, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
-import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
+import { CHORD_DEGREE_STEPS, TRIAD_QUALITY } from './generators/chord-recognition';
 import {
   CLEFS_DISPLAY,
   CLEFS_DISPLAY_G5,
@@ -1731,14 +1731,15 @@ function assertMajorTriad(pitches: unknown, label: string, errors: string[]): vo
  *  chord is supposed to have. A minor key's i and iv are minor triads and its V
  *  is major — that asymmetry IS the raised 7th, so checking it here is what
  *  catches a dominant built without one. */
-function assertTriadQuality(pitches: unknown, quality: 'major' | 'minor', label: string, errors: string[]): void {
+function assertTriadQuality(pitches: unknown, quality: 'major' | 'minor' | 'diminished', label: string, errors: string[]): void {
   if (!Array.isArray(pitches) || pitches.length !== 3 || pitches.some((p) => typeof p !== 'string')) {
     errors.push(`chord_recognition: ${label} must be exactly 3 spelled pitches`);
     return;
   }
   const [root, third, fifth] = pitches as string[];
+  // Two stacked 3rds name the quality: major+minor, minor+major, minor+minor.
   const lower = quality === 'major' ? 'major' : 'minor';
-  const upper = quality === 'major' ? 'minor' : 'major';
+  const upper = quality === 'minor' ? 'major' : quality === 'major' ? 'minor' : 'minor';
   try {
     const thirdNumber = diatonicIntervalNumber(root, third);
     if (thirdNumber !== 3 || intervalQuality(root, third, thirdNumber) !== lower) {
@@ -1788,7 +1789,12 @@ function recomputeTriad(pitches: string[]): { rootLetter: string; position: stri
 // is found by tertian stacking (not positionally), the numeral from the root's
 // degree above the tonic (CHORD_DEGREE_STEPS incl. II), and the position from
 // which chord member is in the bass. Both axes of the canonical must match.
-function chordInversionErrors(inst: ExerciseInstance, tonic: string, stimulusPitches: string[]): string[] {
+function chordInversionErrors(
+  inst: ExerciseInstance,
+  tonic: string,
+  mode: 'major' | 'minor',
+  stimulusPitches: string[],
+): string[] {
   const errors: string[] = [];
   const canonical = inst.answer.canonical as { numeral?: unknown; position?: unknown };
   const recomputed = recomputeTriad(stimulusPitches);
@@ -1822,7 +1828,28 @@ function chordInversionErrors(inst: ExerciseInstance, tonic: string, stimulusPit
   if (JSON.stringify(positions) !== JSON.stringify([...CHORD_POSITIONS])) {
     errors.push('chord_recognition: interaction.config.positions must be a/b/c');
   }
+
+  // Quality is the whole minor case, and an inverted voicing is not
+  // [root, third, fifth] — so the chips carry it.
+  const triads = inst.interaction.config?.triads as Record<string, unknown> | undefined;
+  if (!triads || typeof triads !== 'object') {
+    errors.push('chord_recognition: interaction.config.triads is required');
+    return errors;
+  }
+  for (const numeral of CHORD_NUMERALS_G5) {
+    assertTriadQuality(triads[numeral], TRIAD_QUALITY[mode][numeral], `config.triads.${numeral} in ${tonic} ${mode}`, errors);
+  }
+  const source = triads[String(canonical.numeral)];
+  if (Array.isArray(source) && !sameLetters(source as string[], stimulusPitches)) {
+    errors.push("chord_recognition: config.triads[answer.numeral] does not spell the stimulus chord");
+  }
   return errors;
+}
+
+/** Same three note names, ignoring octave — an inversion is a re-voicing. */
+function sameLetters(a: string[], b: string[]): boolean {
+  const bare = (p: string[]) => p.map((x) => x.replace(/-?\d+$/, '')).sort().join(' ');
+  return bare(a) === bare(b);
 }
 
 // chordMinorErrors (chromaticly-7xv) — the minor-key primary triads. Recomputes
@@ -1907,7 +1934,7 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
   // { numeral, position } pair rather than a bare numeral string. Validated by
   // its own recompute — the root is NOT positionally first once inverted.
   if (inst.answer.canonical && typeof inst.answer.canonical === 'object') {
-    return chordInversionErrors(inst, tonic, stimulusPitches);
+    return chordInversionErrors(inst, tonic, mode, stimulusPitches);
   }
 
   if (mode === 'minor') {
