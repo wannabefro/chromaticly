@@ -327,10 +327,9 @@ function buildNumberAndType(
   idSeed: number,
   atoms: string[],
 ): ExerciseInstance {
-  // Grade 4 (fyu.8): the interval domain opens beyond the tonic — between any
-  // two natural pitches, key_sig: null. Its own draw sequence, branched
-  // BEFORE any tonic-anchored draw below, so grades 1-3 (aboveTonicOnly:
-  // true) take the untouched byte-identical path.
+  // Grade 4 (fyu.8): the interval domain opens beyond the tonic. Its own draw
+  // sequence, branched BEFORE any tonic-anchored draw below, so grades 1-3
+  // (aboveTonicOnly: true) take the untouched byte-identical path.
   if (!scope.intervalRule.aboveTonicOnly) {
     const compound = intervalCompoundTargets(atoms);
     if (compound.length > 0) return buildCompound(rng, scope, clef, grade, idSeed, compound);
@@ -413,14 +412,8 @@ function buildNumberAndType(
 }
 
 // --- Grade-4 between-any-notes branch (fyu.8) ------------------------------
-// KB.grade4Adds.intervals ("between any two diatonic notes... incl.
-// augmented, diminished, minor 2nd") — LOCKED to natural pitches only
-// (key_sig: null), no key-signature accidentals or minor-key raised degrees.
-// In the natural (C-major) pitch set this reaches exactly: perfect
-// unison/4th/5th/octave, major/minor 2nd/3rd/6th/7th, the augmented 4th
-// (F-B), the diminished 5th (B-F), and the minor 2nds (E-F, B-C) — the full
-// grade-4 aug/dim + between-any-notes scope without form-aware chromatic
-// qualities (deferred) or compound intervals (grade 5, out of scope).
+// Inside a key since chromaticly-mf6. F-A is a major 3rd in C major and a
+// MINOR 3rd in D major.
 
 /** Every (lower, upper) natural-pitch pair in `pitches` (ascending, i<j)
  *  spanning exactly `steps` diatonic letter-steps — the pool `pick` draws the
@@ -438,9 +431,27 @@ function naturalPitchPairsSpanning(pitches: string[], steps: number): [string, s
   return pairs;
 }
 
+/** Draw a key from the grade's set and spell a natural pair inside it. */
+function drawKeyedPair(
+  rng: () => number,
+  scope: GradeScope,
+  pairs: [string, string][],
+): { keySig: string; naturalLower: string; lower: string; upper: string } {
+  const keySig = pick(rng, [
+    ...scope.keysMajor.map((k) => `${k}_major`),
+    ...scope.keysMinor.map((k) => `${k}_minor`),
+  ]);
+  const [naturalLower, naturalUpper] = pick(rng, pairs);
+  return {
+    keySig,
+    naturalLower,
+    lower: spellInKeySig(naturalLower, keySig),
+    upper: spellInKeySig(naturalUpper, keySig),
+  };
+}
+
 /** The atom-named compound numbers (interval_compound:<n>) in `atoms`, in atom
- *  order. Empty when the lesson/due-path names none, which is what keeps the
- *  grade-4 between-any-notes draw byte-identical. */
+ *  order. Empty when the lesson/due-path names none. */
 function intervalCompoundTargets(atoms: string[]): number[] {
   const numbers: number[] = [];
   for (const atom of atoms) {
@@ -453,8 +464,8 @@ function intervalCompoundTargets(atoms: string[]): number[] {
 }
 
 // --- Grade-5 compound branch (chromaticly-e3z.8) ---------------------------
-// "All simple and compound intervals from any note." Same natural-pitch,
-// key_sig-less domain as the grade-4 branch, one octave wider.
+// "All simple and compound intervals from any note." The same keyed domain as
+// the grade-4 branch (chromaticly-mf6), one octave wider.
 //
 // The distractors are not the grade-4 shape. The mistake this exercise exists
 // to catch is answering with the SIMPLE form — calling a 10th a 3rd because the
@@ -480,13 +491,13 @@ function buildCompound(
   if (pairs.length === 0) {
     throw new Error(`interval_naming: no natural pitch pair spans a ${number} within range for clef ${clef}`);
   }
-  const [lower, upper] = pick(rng, pairs);
+  const { keySig, naturalLower, lower, upper } = drawKeyedPair(rng, scope, pairs);
 
   const quality = intervalQuality(lower, upper, number);
   const canonical = intervalLabel(quality, number);
   const simpleLabel = intervalLabel(quality, simpleEquivalent(number));
   const [neighbour] = nearestNumbers(number, 1, COMPOUND_NUMBERS);
-  const neighbourUpper = naturalPitchStepsAbove(lower, neighbour - 1);
+  const neighbourUpper = spellInKeySig(naturalPitchStepsAbove(naturalLower, neighbour - 1), keySig);
   const neighbourLabel = intervalLabel(intervalQuality(lower, neighbourUpper, neighbour), neighbour);
 
   return {
@@ -498,7 +509,7 @@ function buildCompound(
     stimulus: {
       music: {
         clef,
-        key_sig: null,
+        key_sig: keySig,
         time_sig: null,
         voices: [{ events: [{ type: 'chord', pitches: [lower, upper], dur: 'semibreve' }] }],
       },
@@ -553,11 +564,11 @@ function buildBetweenAnyNotes(
   if (pairs.length === 0) {
     throw new Error(`interval_naming: no natural pitch pair spans a ${number} within range for clef ${clef}`);
   }
-  const [lower, upper] = pick(rng, pairs);
+  const { keySig, naturalLower, lower, upper } = drawKeyedPair(rng, scope, pairs);
 
   const quality = intervalQuality(lower, upper, number);
   const canonical = intervalLabel(quality, number);
-  const distractors = buildQualityDistractors(lower, lower, (p) => p, number, quality);
+  const distractors = buildQualityDistractors(naturalLower, lower, (p) => spellInKeySig(p, keySig), number, quality);
 
   return {
     id: makeInstanceId('interval_naming', grade, idSeed),
@@ -568,7 +579,7 @@ function buildBetweenAnyNotes(
     stimulus: {
       music: {
         clef,
-        key_sig: null,
+        key_sig: keySig,
         time_sig: null,
         voices: [{ events: [{ type: 'chord', pitches: [lower, upper], dur: 'semibreve' }] }],
       },
@@ -578,7 +589,7 @@ function buildBetweenAnyNotes(
     answer: { canonical, accepted_alternatives: [] },
     distractors,
     hints: [
-      'Count the letter names for the number, then check the semitones between the two notes — major/perfect is the usual size, a semitone smaller is minor/diminished, a semitone bigger is augmented.',
+      'Read the key signature first — it may sharpen or flatten one of these notes. Then count the letter names for the number and the semitones for the size.',
     ],
     feedback: {
       correct: 'Correct!',
@@ -611,7 +622,7 @@ function buildCompoundReduce(contentSeed: number, grade: number, idSeed: number,
   if (pairs.length === 0) {
     throw new Error(`interval_compound_reduce: no natural pair spans a ${number} for clef ${clef}`);
   }
-  const [lower, upper] = pick(rng, pairs);
+  const { keySig, naturalLower, lower, upper } = drawKeyedPair(rng, scope, pairs);
 
   const quality = intervalQuality(lower, upper, number);
   const simple = simpleEquivalent(number);
@@ -620,7 +631,7 @@ function buildCompoundReduce(contentSeed: number, grade: number, idSeed: number,
   // The off-by-one: subtracting 8 rather than 7, because a 9th above a note is
   // 8 letter names higher but only 7 steps of reduction.
   const neighbour = simple > 2 ? simple - 1 : simple + 1;
-  const neighbourUpper = naturalPitchStepsAbove(lower, neighbour - 1);
+  const neighbourUpper = spellInKeySig(naturalPitchStepsAbove(naturalLower, neighbour - 1), keySig);
   const neighbourLabel = intervalLabel(intervalQuality(lower, neighbourUpper, neighbour), neighbour);
 
   return {
@@ -632,7 +643,7 @@ function buildCompoundReduce(contentSeed: number, grade: number, idSeed: number,
     stimulus: {
       music: {
         clef,
-        key_sig: null,
+        key_sig: keySig,
         time_sig: null,
         voices: [{ events: [{ type: 'chord', pitches: [lower, upper], dur: 'semibreve' }] }],
       },

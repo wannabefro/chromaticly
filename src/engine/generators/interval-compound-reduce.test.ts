@@ -30,6 +30,24 @@ describe('interval_compound_reduce', () => {
     }
   });
 
+  // chromaticly-mf6. The reduction never asked the learner to read a signature.
+  test('the stimulus carries a grade-5 key signature, and the accidental decides the quality', () => {
+    const accidentals = new Set<string>();
+    const qualities = new Set<string>();
+    for (let seed = 0; seed < 120; seed++) {
+      const inst = make(seed);
+      const music = inst.stimulus.music as { key_sig: string | null; voices: { events: { pitches?: string[] }[] }[] };
+      expect(music.key_sig).toBeTruthy();
+      for (const pitch of music.voices[0].events[0].pitches ?? []) {
+        const m = /^[A-G](#|b)/.exec(pitch);
+        if (m) accidentals.add(m[1]);
+      }
+      qualities.add(String(inst.answer.canonical).split(' ')[0]);
+    }
+    expect(accidentals).toEqual(new Set(['#', 'b']));
+    expect(qualities).toContain('diminished');
+  });
+
   test('each wrong option is told which mistake it is, and the two differ', () => {
     for (let seed = 0; seed < 10; seed++) {
       const inst = make(seed);

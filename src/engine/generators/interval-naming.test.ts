@@ -444,28 +444,49 @@ describe('intervalNaming — grade 3, fuzz gate: 100 generated items are all val
   });
 });
 
-// fyu.8 — grade-4 aug/dim + between-any-notes. Domain LOCKED to natural
-// pitches only (key_sig: null): grades 1-3 stay untouched (byte-identity
-// fixture above), so this suite covers only the new aboveTonicOnly:false
-// branch.
+// fyu.8 — grade-4 aug/dim + between-any-notes. Grades 1-3 stay untouched
+// (byte-identity fixture above), so this suite covers only the new
+// aboveTonicOnly:false branch.
 
-describe('intervalNaming — grade 4, fyu.8: between-any-notes, natural pitches only, key_sig: null', () => {
-  test('seeds 0..40: every instance validates clean, both stimulus pitches are natural, and the interval is <= an octave', () => {
+describe('intervalNaming — grade 4, fyu.8: between-any-notes, inside a key', () => {
+  test('seeds 0..40: every instance validates clean and the interval is <= an octave', () => {
     for (let seed = 0; seed <= 40; seed++) {
       const instance = intervalNaming({ grade: 4, seed, atoms: [] });
       expect(validate(instance)).toEqual({ ok: true, errors: [] });
 
-      const music = instance.stimulus.music as Music;
-      expect(music.key_sig).toBeNull();
-
       const [lower, upper] = chordPitches(instance);
-      expect(lower).toMatch(/^[A-G]-?\d+$/);
-      expect(upper).toMatch(/^[A-G]-?\d+$/);
+      expect(lower).toMatch(/^[A-G](#|b)?-?\d+$/);
+      expect(upper).toMatch(/^[A-G](#|b)?-?\d+$/);
 
       const number = diatonicIntervalNumber(lower, upper);
       expect(number).toBeGreaterThanOrEqual(2);
       expect(number).toBeLessThanOrEqual(8);
     }
+  });
+
+  // chromaticly-mf6. G4 item 2 asks for intervals in any key set for the grade.
+  test('every stimulus carries a key signature from the grade-4 set', () => {
+    const keys = new Set<string>();
+    for (let seed = 0; seed <= 40; seed++) {
+      const music = intervalNaming({ grade: 4, seed, atoms: [] }).stimulus.music as Music;
+      expect(music.key_sig).toBeTruthy();
+      keys.add(music.key_sig as string);
+    }
+    const scope = scopeForGrade(4);
+    const inScope = new Set([...scope.keysMajor.map((k) => `${k}_major`), ...scope.keysMinor.map((k) => `${k}_minor`)]);
+    for (const key of keys) expect(inScope.has(key)).toBe(true);
+    expect(keys.size).toBeGreaterThan(1);
+  });
+
+  test('the signature actually alters notes — both sharps and flats reach the stave', () => {
+    const accidentals = new Set<string>();
+    for (let seed = 0; seed < 150; seed++) {
+      for (const pitch of chordPitches(intervalNaming({ grade: 4, seed, atoms: [] }))) {
+        const m = /^[A-G](#|b)/.exec(pitch);
+        if (m) accidentals.add(m[1]);
+      }
+    }
+    expect(accidentals).toEqual(new Set(['#', 'b']));
   });
 
   test('every canonical is exactly the label recomputed from its own stimulus (seeds 0..99)', () => {
@@ -548,6 +569,51 @@ describe('intervalNaming — grade 4, fyu.8: between-any-notes, natural pitches 
 // The due-path scoping fix, extended (ORC1/R5 already did `interval_type`).
 // Practice serves ONE due atom; these two kinds ignored it and drew at random,
 // so review of a weak 6th could serve any interval and the SRS signal was lost.
+// chromaticly-mf6 — G5 item 3 asks for every interval FROM ANY NOTE.
+describe('intervalNaming — grade 5: compound intervals inside a key', () => {
+  const G5_ATOMS = [9, 10, 11, 12, 13, 14].map((n) => `interval_compound:${n}`);
+  const compound = (seed: number) => intervalNaming({ grade: 5, seed, atoms: G5_ATOMS });
+
+  test('every instance validates clean and carries a grade-5 key signature', () => {
+    const scope = scopeForGrade(5);
+    const inScope = new Set([...scope.keysMajor.map((k) => `${k}_major`), ...scope.keysMinor.map((k) => `${k}_minor`)]);
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = compound(seed);
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+      expect(inScope.has((instance.stimulus.music as Music).key_sig as string)).toBe(true);
+    }
+  });
+
+  test('both sharps and flats reach the stave', () => {
+    const accidentals = new Set<string>();
+    for (let seed = 0; seed < 150; seed++) {
+      for (const pitch of chordPitches(compound(seed))) {
+        const m = /^[A-G](#|b)/.exec(pitch);
+        if (m) accidentals.add(m[1]);
+      }
+    }
+    expect(accidentals).toEqual(new Set(['#', 'b']));
+  });
+
+  // Without the key, quality is a function of the letter pair alone.
+  test('the same letter pair reads as a different quality in a different key', () => {
+    const qualities = new Set<string>();
+    for (let seed = 0; seed < 150; seed++) {
+      qualities.add(parseIntervalLabel(compound(seed).answer.canonical as string).quality);
+    }
+    expect(qualities).toContain('augmented');
+    expect(qualities).toContain('diminished');
+  });
+
+  test('the compound alternative name is still accepted', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = compound(seed);
+      expect(instance.answer.accepted_alternatives).toHaveLength(1);
+      expect(String(instance.answer.accepted_alternatives[0])).toMatch(/^compound /);
+    }
+  });
+});
+
 describe('interval_naming — a due interval atom is the interval that gets asked', () => {
   test('a due interval:<n> draws that number, at every seed', () => {
     for (const n of [2, 3, 4, 5, 6, 7, 8]) {
