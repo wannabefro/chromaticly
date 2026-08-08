@@ -81,9 +81,15 @@ function keyName({ tonic, mode }: TonalCentre): string {
   return `${tonic} ${mode}`;
 }
 
-function relativeOf(centre: TonalCentre, grade: number): TonalCentre {
-  const pair = tonalCentrePairs(grade).find((p) => p.minor === centre.tonic || p.major === centre.tonic);
+/** From grade 3 up a tonic names two pairs, so the mode picks it (chromaticly-xc2). */
+function pairFor(centre: TonalCentre, grade: number): { minor: string; major: string } {
+  const pair = tonalCentrePairs(grade).find((p) => (centre.mode === 'minor' ? p.minor : p.major) === centre.tonic);
   if (!pair) throw new Error(`tonal_centre: ${keyName(centre)} is outside grade ${grade}`);
+  return pair;
+}
+
+function relativeOf(centre: TonalCentre, grade: number): TonalCentre {
+  const pair = pairFor(centre, grade);
   return centre.mode === 'minor' ? { tonic: pair.major, mode: 'major' } : { tonic: pair.minor, mode: 'minor' };
 }
 
@@ -99,8 +105,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const passage = tonalCentrePassage(centre, pick(rng, risesInStave(centre)));
 
   // With two options the pair alone answers it, and the signature goes unread.
+  const own = pairFor(centre, grade);
   const elsewhere = tonalCentrePairs(grade)
-    .filter((p) => p.minor !== centre.tonic && p.major !== centre.tonic)
+    .filter((p) => p.minor !== own.minor)
     .map((p) => (centre.mode === 'minor' ? { tonic: p.minor, mode: 'minor' as const } : { tonic: p.major, mode: 'major' as const }));
   const otherPair = pick(rng, elsewhere);
 

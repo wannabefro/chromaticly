@@ -175,3 +175,21 @@ describe('tonalCentreHook rejects a tampered instance', () => {
     expect(tamper((inst) => { inst.answer.canonical = 'C'; })).not.toEqual([]);
   });
 });
+
+// chromaticly-xc2. From grade 3 up a tonic names two pairs — C is the major of
+// A minor and the minor of Eb major — so a name-only match picks the wrong one.
+describe('tonal_centre — the relative is found by mode, not by tonic name alone', () => {
+  test('the relative of C minor is Eb major, never C major', () => {
+    const inst = generate('tonal_centre', { grade: 3, seed: 0, atoms: ['tonal_centre:C_minor'] });
+    expect(inst.answer.canonical).toBe('C minor');
+    expect(inst.distractors).toContain('Eb major');
+    expect(inst.distractors).not.toContain('C major');
+  });
+
+  test('every grade-3 centre offers its own relative', () => {
+    for (const pair of tonalCentrePairs(3)) {
+      const inst = generate('tonal_centre', { grade: 3, seed: 0, atoms: [tonalCentreAtom({ tonic: pair.minor, mode: 'minor' })] });
+      expect(inst.distractors).toContain(`${pair.major} major`);
+    }
+  });
+});
