@@ -18,6 +18,14 @@ export function restAtom(duration: Duration, dots: Dots = 0): string {
   return `rest:${prefix}${duration}`;
 }
 
+/** note_read_keyed:<clef>:<letter><octave> — the same stave POSITION as
+ *  note_read, but read under a key signature the generator draws
+ *  (chromaticly-7xv.6). The pitch part is always natural: the signature, not the
+ *  atom, decides what the note sounds. */
+export function keyedNoteAtom(clef: Clef, naturalPitch: string): string {
+  return `note_read_keyed:${clef}:${naturalPitch}`;
+}
+
 export function keySigAtom(key: string): string {
   return `key_sig:${key}`;
 }

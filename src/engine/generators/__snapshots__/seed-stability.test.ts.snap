@@ -228538,21 +228538,24 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
-exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_naming @ alto-reading-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_naming @ alto-keyed-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
     "answer": {
-      "accepted_alternatives": [],
-      "canonical": "G",
+      "accepted_alternatives": [
+        "D#",
+        "D♯",
+      ],
+      "canonical": "D sharp",
     },
     "distractors": [
-      "A",
-      "F",
+      "E",
+      "C sharp",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
-        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "C sharp": "That is C sharp — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "E": "That is one line or space out. E is the next step up from D sharp — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -228569,19 +228572,19 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:G4",
+      "note_read_keyed:alto:D4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "E_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "G4",
+                "pitch": "D#4",
                 "type": "note",
               },
             ],
@@ -228622,118 +228625,12 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:F3",
+      "note_read_keyed:alto:F3",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "F3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "E",
-    },
-    "distractors": [
-      "F",
-      "D",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "D": "That is D — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 4,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g4:s2",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:alto:E4",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "alto",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "E4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "F",
-    },
-    "distractors": [
-      "G",
-      "E",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "E": "That is E — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 4,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g4:s3",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:alto:F3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "alto",
-        "key_sig": null,
+        "key_sig": "A_minor",
         "time_sig": null,
         "voices": [
           {
@@ -228758,13 +228655,119 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "canonical": "D",
     },
     "distractors": [
-      "E",
+      "E flat",
       "C",
     ],
     "feedback": {
       "by_distractor": {
         "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
+        "E flat": "That is one line or space out. E flat is the next step up from D — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:D4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A flat",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A flat": "That is one line or space out. A flat is the next step up from G — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F sharp",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is D — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "F sharp": "That is one line or space out. F sharp is the next step up from E — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -228781,19 +228784,75 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:D4",
+      "note_read_keyed:alto:E4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "F#_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "D4",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bb",
+        "B♭",
+      ],
+      "canonical": "B flat",
+    },
+    "distractors": [
+      "C",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "C": "That is one line or space out. C is the next step up from B flat — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
                 "type": "note",
               },
             ],
@@ -228826,7 +228885,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
-    "id": "note_naming:g4:s5",
+    "id": "note_naming:g4:s6",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -228834,12 +228893,12 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:A3",
+      "note_read_keyed:alto:A3",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "G_major",
         "time_sig": null,
         "voices": [
           {
@@ -228860,70 +228919,20 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   },
   {
     "answer": {
-      "accepted_alternatives": [],
-      "canonical": "F",
+      "accepted_alternatives": [
+        "Ab",
+        "A♭",
+      ],
+      "canonical": "A flat",
     },
     "distractors": [
+      "B flat",
       "G",
-      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "E": "That is E — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 4,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g4:s6",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:alto:F3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "alto",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "F3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "G",
-    },
-    "distractors": [
-      "A",
-      "F",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
-        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "B flat": "That is one line or space out. B flat is the next step up from A flat — count again from a clef landmark you are sure of.",
+        "G": "That is G — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -228940,19 +228949,19 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:G4",
+      "note_read_keyed:alto:A3",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "C_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "G4",
+                "pitch": "Ab3",
                 "type": "note",
               },
             ],
@@ -228967,16 +228976,16 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "B",
+      "canonical": "C",
     },
     "distractors": [
-      "C",
-      "A",
+      "D",
+      "B",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+        "B": "That is B — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "D": "That is one line or space out. D is the next step up from C — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -228993,19 +229002,19 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:B3",
+      "note_read_keyed:alto:C4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "A_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "B3",
+                "pitch": "C4",
                 "type": "note",
               },
             ],
@@ -229019,17 +229028,20 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   },
   {
     "answer": {
-      "accepted_alternatives": [],
-      "canonical": "D",
+      "accepted_alternatives": [
+        "G#",
+        "G♯",
+      ],
+      "canonical": "G sharp",
     },
     "distractors": [
-      "E",
-      "C",
+      "A",
+      "F sharp",
     ],
     "feedback": {
       "by_distractor": {
-        "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
+        "A": "That is one line or space out. A is the next step up from G sharp — count again from a clef landmark you are sure of.",
+        "F sharp": "That is F sharp — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -229046,19 +229058,131 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:D4",
+      "note_read_keyed:alto:G4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "E_major",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "D4",
+                "pitch": "G#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Db",
+        "D♭",
+      ],
+      "canonical": "D flat",
+    },
+    "distractors": [
+      "E flat",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "E flat": "That is one line or space out. E flat is the next step up from D flat — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:D4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "Bb_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Db4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "F#",
+        "F♯",
+      ],
+      "canonical": "F sharp",
+    },
+    "distractors": [
+      "G",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That is E — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "G": "That is one line or space out. G is the next step up from F sharp — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:F3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F#3",
                 "type": "note",
               },
             ],
@@ -229076,119 +229200,13 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "canonical": "D",
     },
     "distractors": [
-      "E",
+      "E flat",
       "C",
     ],
     "feedback": {
       "by_distractor": {
         "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 4,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g4:s10",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:alto:D4",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "alto",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "D4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "B",
-    },
-    "distractors": [
-      "C",
-      "A",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 4,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g4:s11",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:alto:B3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "alto",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "B3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "F",
-    },
-    "distractors": [
-      "G",
-      "E",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "E": "That is E — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
+        "E flat": "That is one line or space out. E flat is the next step up from D — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -229205,19 +229223,19 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:F3",
+      "note_read_keyed:alto:D4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "G_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "F3",
+                "pitch": "D4",
                 "type": "note",
               },
             ],
@@ -229258,12 +229276,12 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:A3",
+      "note_read_keyed:alto:A3",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "D_major",
         "time_sig": null,
         "voices": [
           {
@@ -229285,16 +229303,16 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "B",
+      "canonical": "A",
     },
     "distractors": [
-      "C",
-      "A",
+      "B flat",
+      "G",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+        "B flat": "That is one line or space out. B flat is the next step up from A — count again from a clef landmark you are sure of.",
+        "G": "That is G — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -229311,19 +229329,19 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:B3",
+      "note_read_keyed:alto:A3",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
-        "key_sig": null,
+        "key_sig": "D_minor",
         "time_sig": null,
         "voices": [
           {
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "B3",
+                "pitch": "A3",
                 "type": "note",
               },
             ],
@@ -229338,16 +229356,16 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "B",
+      "canonical": "A",
     },
     "distractors": [
-      "C",
-      "A",
+      "B",
+      "G",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+        "B": "That is one line or space out. B is the next step up from A — count again from a clef landmark you are sure of.",
+        "G": "That is G — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -229364,7 +229382,283 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:B3",
+      "note_read_keyed:alto:A3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F sharp",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is D — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "F sharp": "That is one line or space out. F sharp is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C sharp",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "C sharp": "That is one line or space out. C sharp is the next step up from B — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "A_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G#",
+        "G♯",
+      ],
+      "canonical": "G sharp",
+    },
+    "distractors": [
+      "A",
+      "F sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G sharp — count again from a clef landmark you are sure of.",
+        "F sharp": "That is F sharp — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "F#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bb",
+        "B♭",
+      ],
+      "canonical": "B flat",
+    },
+    "distractors": [
+      "C",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "C": "That is one line or space out. C is the next step up from B flat — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:alto:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": "F_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte note_naming @ alto-reading-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:D4",
     ],
     "stimulus": {
       "music": {
@@ -229376,7 +229670,219 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "B3",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:D4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "G",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "That is E — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:F4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F4",
                 "type": "note",
               },
             ],
@@ -229409,7 +229915,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
-    "id": "note_naming:g4:s16",
+    "id": "note_naming:g4:s5",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -229462,7 +229968,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
-    "id": "note_naming:g4:s17",
+    "id": "note_naming:g4:s6",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -229497,6 +230003,59 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
+      "canonical": "D",
+    },
+    "distractors": [
+      "E",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:D4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "D4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
       "canonical": "E",
     },
     "distractors": [
@@ -229515,7 +230074,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
-    "id": "note_naming:g4:s18",
+    "id": "note_naming:g4:s8",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -229550,6 +230109,112 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:G4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:G4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
       "canonical": "F",
     },
     "distractors": [
@@ -229568,7 +230233,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
-    "id": "note_naming:g4:s19",
+    "id": "note_naming:g4:s11",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -229576,7 +230241,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:alto:F3",
+      "note_read:alto:F4",
     ],
     "stimulus": {
       "music": {
@@ -229588,7 +230253,431 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "F3",
+                "pitch": "F4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That is one line or space out. B is the next step up from A — count again from a clef landmark you are sure of.",
+        "G": "That is G — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is D — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is D — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is D — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is A — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "D",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That is B — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+        "D": "That is one line or space out. D is the next step up from C — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:C4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the treble clef. This stave carries an alto clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 4,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:alto:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
                 "type": "note",
               },
             ],
@@ -230746,13 +231835,13 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "crotchet",
-        "pitch": "G4",
+        "pitch": "D4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
     },
     "grade": 4,
     "hints": [
@@ -230766,9 +231855,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write G on the stave, as a crotchet.",
+    "prompt": "Write D on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:alto:G4",
+      "note_read:alto:D4",
     ],
     "stimulus": {
       "music": null,
@@ -230782,13 +231871,13 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "breve",
-        "pitch": "E4",
+        "pitch": "C4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the breve.",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the breve.",
     },
     "grade": 4,
     "hints": [
@@ -230802,261 +231891,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a breve.",
+    "prompt": "Write C on the stave, as a breve.",
     "srs_tags": [
-      "note_read:alto:E4",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "crotchet",
-        "pitch": "E4",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s2",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a crotchet.",
-    "srs_tags": [
-      "note_read:alto:E4",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "crotchet",
-        "pitch": "F3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the crotchet.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s3",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a crotchet.",
-    "srs_tags": [
-      "note_read:alto:F3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "demisemiquaver",
-        "pitch": "G4",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the demisemiquaver.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s4",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write G on the stave, as a demisemiquaver.",
-    "srs_tags": [
-      "note_read:alto:G4",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "minim",
-        "pitch": "A3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s5",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write A on the stave, as a minim.",
-    "srs_tags": [
-      "note_read:alto:A3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "breve",
-        "pitch": "A3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the breve.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s6",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write A on the stave, as a breve.",
-    "srs_tags": [
-      "note_read:alto:A3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "quaver",
-        "pitch": "E4",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s7",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a quaver.",
-    "srs_tags": [
-      "note_read:alto:E4",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "quaver",
-        "pitch": "E4",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s8",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a quaver.",
-    "srs_tags": [
-      "note_read:alto:E4",
+      "note_read:alto:C4",
     ],
     "stimulus": {
       "music": null,
@@ -231082,7 +231919,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s9",
+    "id": "note_naming_stave_input:g4:s2",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231105,20 +231942,20 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "answer": {
       "accepted_alternatives": [],
       "canonical": {
-        "dur": "quaver",
-        "pitch": "D4",
+        "dur": "crotchet",
+        "pitch": "G3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the quaver.",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
     },
     "grade": 4,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s10",
+    "id": "note_naming_stave_input:g4:s3",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231126,9 +231963,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write D on the stave, as a quaver.",
+    "prompt": "Write G on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:alto:D4",
+      "note_read:alto:G3",
     ],
     "stimulus": {
       "music": null,
@@ -231141,20 +231978,20 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "answer": {
       "accepted_alternatives": [],
       "canonical": {
-        "dur": "semiquaver",
-        "pitch": "G4",
+        "dur": "demisemiquaver",
+        "pitch": "E4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semiquaver.",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the demisemiquaver.",
     },
     "grade": 4,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s11",
+    "id": "note_naming_stave_input:g4:s4",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231162,7 +231999,187 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write G on the stave, as a semiquaver.",
+    "prompt": "Write E on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s5",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "breve",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the breve.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s6",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a breve.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s7",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:C4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s8",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:C4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "crotchet",
+        "pitch": "G4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the crotchet.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s9",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a crotchet.",
     "srs_tags": [
       "note_read:alto:G4",
     ],
@@ -231177,20 +232194,20 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "answer": {
       "accepted_alternatives": [],
       "canonical": {
-        "dur": "crotchet",
-        "pitch": "F3",
+        "dur": "quaver",
+        "pitch": "G4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the quaver.",
     },
     "grade": 4,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s12",
+    "id": "note_naming_stave_input:g4:s10",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231198,45 +232215,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a crotchet.",
+    "prompt": "Write G on the stave, as a quaver.",
     "srs_tags": [
-      "note_read:alto:F3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "semibreve",
-        "pitch": "A3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the semibreve.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s13",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write A on the stave, as a semibreve.",
-    "srs_tags": [
-      "note_read:alto:A3",
+      "note_read:alto:G4",
     ],
     "stimulus": {
       "music": null,
@@ -231250,19 +232231,19 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "semiquaver",
-        "pitch": "F3",
+        "pitch": "D4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semiquaver.",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the semiquaver.",
     },
     "grade": 4,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s14",
+    "id": "note_naming_stave_input:g4:s11",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231270,9 +232251,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a semiquaver.",
+    "prompt": "Write D on the stave, as a semiquaver.",
     "srs_tags": [
-      "note_read:alto:F3",
+      "note_read:alto:D4",
     ],
     "stimulus": {
       "music": null,
@@ -231285,20 +232266,20 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "answer": {
       "accepted_alternatives": [],
       "canonical": {
-        "dur": "quaver",
-        "pitch": "B3",
+        "dur": "crotchet",
+        "pitch": "A3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
     },
     "grade": 4,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s15",
+    "id": "note_naming_stave_input:g4:s12",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231306,9 +232287,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write B on the stave, as a quaver.",
+    "prompt": "Write A on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:alto:B3",
+      "note_read:alto:A3",
     ],
     "stimulus": {
       "music": null,
@@ -231334,7 +232315,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s16",
+    "id": "note_naming_stave_input:g4:s13",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231345,78 +232326,6 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "prompt": "Write B on the stave, as a semibreve.",
     "srs_tags": [
       "note_read:alto:B3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "minim",
-        "pitch": "A3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s17",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write A on the stave, as a minim.",
-    "srs_tags": [
-      "note_read:alto:A3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "demisemiquaver",
-        "pitch": "F3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the demisemiquaver.",
-    },
-    "grade": 4,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g4:s18",
-    "interaction": {
-      "config": {
-        "clef": "alto",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a demisemiquaver.",
-    "srs_tags": [
-      "note_read:alto:F3",
     ],
     "stimulus": {
       "music": null,
@@ -231442,7 +232351,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g4:s19",
+    "id": "note_naming_stave_input:g4:s14",
     "interaction": {
       "config": {
         "clef": "alto",
@@ -231453,6 +232362,186 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "prompt": "Write A on the stave, as a semiquaver.",
     "srs_tags": [
       "note_read:alto:A3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s15",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "E4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the semibreve.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s16",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:alto:E4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s17",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:alto:B3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s18",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:alto:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "B3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 4,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g4:s19",
+    "interaction": {
+      "config": {
+        "clef": "alto",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write B on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:alto:B3",
     ],
     "stimulus": {
       "music": null,
@@ -319909,21 +320998,21 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
-exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte note_naming @ tenor-reading-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte note_naming @ tenor-keyed-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "E",
+      "canonical": "B",
     },
     "distractors": [
-      "F",
-      "A",
+      "C sharp",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is A — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
+        "C sharp": "That is one line or space out. C sharp is the next step up from B — count again from a clef landmark you are sure of.",
+        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -319940,7 +321029,1096 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:E4",
+      "note_read_keyed:tenor:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "A#",
+        "A♯",
+      ],
+      "canonical": "A sharp",
+    },
+    "distractors": [
+      "G sharp",
+      "D sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D sharp": "That is D sharp — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "G sharp": "That is one line or space out. G sharp is the next step down from A sharp — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:A3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "G#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C sharp",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C sharp": "That is one line or space out. C sharp is the next step up from B — count again from a clef landmark you are sure of.",
+        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "E_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Eb",
+        "E♭",
+      ],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "F",
+      "A flat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A flat": "That is A flat — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E flat — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:E3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "Db_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "C#",
+        "C♯",
+      ],
+      "canonical": "C sharp",
+    },
+    "distractors": [
+      "D sharp",
+      "F sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D sharp": "That is one line or space out. D sharp is the next step up from C sharp — count again from a clef landmark you are sure of.",
+        "F sharp": "That is F sharp — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:C4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "C#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A flat",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A flat": "That is one line or space out. A flat is the next step up from G — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "Eb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "G#",
+        "G♯",
+      ],
+      "canonical": "G sharp",
+    },
+    "distractors": [
+      "F sharp",
+      "C sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C sharp": "That is C sharp — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F sharp": "That is one line or space out. F sharp is the next step down from G sharp — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "D#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "G",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is D — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "G": "That is one line or space out. G is the next step down from A — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:A3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "E_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "B",
+      "D",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That is one line or space out. B is the next step up from A — count again from a clef landmark you are sure of.",
+        "D": "That is D — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:A3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "F sharp",
+      "A sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A sharp": "That is A sharp — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F sharp": "That is one line or space out. F sharp is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "B_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Eb",
+        "E♭",
+      ],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "D flat",
+      "A flat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A flat": "That is A flat — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "D flat": "That is one line or space out. D flat is the next step down from E flat — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "Gb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Bb",
+        "B♭",
+      ],
+      "canonical": "B flat",
+    },
+    "distractors": [
+      "A",
+      "E flat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step down from B flat — count again from a clef landmark you are sure of.",
+        "E flat": "That is E flat — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "E flat",
+      "B flat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B flat": "That is B flat — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "E flat": "That is one line or space out. E flat is the next step down from F — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:F3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "Ab_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step down from G — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "C_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "G",
+      "B flat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B flat": "That is B flat — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:F3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "C#",
+        "C♯",
+      ],
+      "canonical": "C sharp",
+    },
+    "distractors": [
+      "B",
+      "F sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That is one line or space out. B is the next step down from C sharp — count again from a clef landmark you are sure of.",
+        "F sharp": "That is F sharp — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:C4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "F#_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "D",
+      "F sharp",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is one line or space out. D is the next step up from C — count again from a clef landmark you are sure of.",
+        "F sharp": "That is F sharp — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:C4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "G_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "Bb_major",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [
+        "Eb",
+        "E♭",
+      ],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "F",
+      "A flat",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A flat": "That is A flat — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E flat — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:E3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "C_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step down from G — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read_keyed:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+]
+`;
+
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte note_naming @ tenor-reading-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "C",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:B3",
     ],
     "stimulus": {
       "music": {
@@ -319952,7 +322130,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "E4",
+                "pitch": "B3",
                 "type": "note",
               },
             ],
@@ -320020,16 +322198,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "A",
+      "canonical": "B",
     },
     "distractors": [
-      "B",
-      "D",
+      "C",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "That is one line or space out. B is the next step up from A — count again from a clef landmark you are sure of.",
-        "D": "That is D — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
+        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320046,7 +322224,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:A3",
+      "note_read:tenor:B3",
     ],
     "stimulus": {
       "music": {
@@ -320058,60 +322236,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "A3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "D",
-    },
-    "distractors": [
-      "E",
-      "G",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
-        "G": "That is G — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s3",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:D3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "D3",
+                "pitch": "B3",
                 "type": "note",
               },
             ],
@@ -320129,13 +322254,66 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "canonical": "E",
     },
     "distractors": [
-      "D",
+      "F",
       "A",
     ],
     "feedback": {
       "by_distractor": {
         "A": "That is A — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "D": "That is one line or space out. D is the next step down from E — count again from a clef landmark you are sure of.",
+        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:E3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "B",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That is one line or space out. B is the next step down from C — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320152,7 +322330,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:E4",
+      "note_read:tenor:C4",
     ],
     "stimulus": {
       "music": {
@@ -320164,7 +322342,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "E4",
+                "pitch": "C4",
                 "type": "note",
               },
             ],
@@ -320179,16 +322357,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "F",
+      "canonical": "G",
     },
     "distractors": [
-      "G",
-      "B",
+      "A",
+      "C",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "That is B — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320205,7 +322383,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:F3",
+      "note_read:tenor:G3",
     ],
     "stimulus": {
       "music": {
@@ -320217,7 +322395,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "F3",
+                "pitch": "G3",
                 "type": "note",
               },
             ],
@@ -320232,16 +322410,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "F",
+      "canonical": "G",
     },
     "distractors": [
-      "E",
-      "B",
+      "F",
+      "C",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "That is B — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "E": "That is one line or space out. E is the next step down from F — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step down from G — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320258,7 +322436,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:F3",
+      "note_read:tenor:G3",
     ],
     "stimulus": {
       "music": {
@@ -320270,7 +322448,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "F3",
+                "pitch": "G3",
                 "type": "note",
               },
             ],
@@ -320391,16 +322569,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "B",
+      "canonical": "E",
     },
     "distractors": [
-      "C",
-      "E",
+      "F",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
-        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "A": "That is A — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320410,112 +322588,6 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
     "id": "note_naming:g5:s9",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:B3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "B3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "B",
-    },
-    "distractors": [
-      "C",
-      "E",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
-        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s10",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:B3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "B3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "E",
-    },
-    "distractors": [
-      "D",
-      "A",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "A": "That is A — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "D": "That is one line or space out. D is the next step down from E — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s11",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -320550,16 +322622,122 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "D",
+      "canonical": "E",
     },
     "distractors": [
-      "E",
-      "G",
+      "F",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "E": "That is one line or space out. E is the next step up from D — count again from a clef landmark you are sure of.",
-        "G": "That is G — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "A": "That is A — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step up from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:E4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B",
+    },
+    "distractors": [
+      "A",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step down from B — count again from a clef landmark you are sure of.",
+        "E": "That is E — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:B3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F",
+    },
+    "distractors": [
+      "G",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "That is B — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320576,7 +322754,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:D3",
+      "note_read:tenor:F3",
     ],
     "stimulus": {
       "music": {
@@ -320588,7 +322766,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "D3",
+                "pitch": "F3",
                 "type": "note",
               },
             ],
@@ -320603,16 +322781,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "F",
+      "canonical": "G",
     },
     "distractors": [
-      "G",
-      "B",
+      "A",
+      "C",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "That is B — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -320629,112 +322807,6 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:tenor:F3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "F3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "D",
-    },
-    "distractors": [
-      "C",
-      "G",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "C": "That is one line or space out. C is the next step down from D — count again from a clef landmark you are sure of.",
-        "G": "That is G — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s14",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:D3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "D3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "G",
-    },
-    "distractors": [
-      "A",
-      "C",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
-        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s15",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
       "note_read:tenor:G3",
     ],
     "stimulus": {
@@ -320748,165 +322820,6 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitch": "G3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "G",
-    },
-    "distractors": [
-      "A",
-      "C",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
-        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s16",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:G3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "G3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "F",
-    },
-    "distractors": [
-      "G",
-      "B",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "B": "That is B — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-        "G": "That is one line or space out. G is the next step up from F — count again from a clef landmark you are sure of.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s17",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:F3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "F3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "D",
-    },
-    "distractors": [
-      "C",
-      "G",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "C": "That is one line or space out. C is the next step down from D — count again from a clef landmark you are sure of.",
-        "G": "That is G — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the lines and spaces up or down from a clef landmark you already know.",
-    ],
-    "id": "note_naming:g5:s18",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write the name of this note.",
-    "srs_tags": [
-      "note_read:tenor:D3",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "tenor",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "D3",
                 "type": "note",
               },
             ],
@@ -320939,7 +322852,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "hints": [
       "Count the lines and spaces up or down from a clef landmark you already know.",
     ],
-    "id": "note_naming:g5:s19",
+    "id": "note_naming:g5:s14",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -320971,6 +322884,271 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "strand": "pitch",
     "template_id": "note_naming",
   },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "D",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is one line or space out. D is the next step up from C — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:C4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C",
+    },
+    "distractors": [
+      "D",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "That is one line or space out. D is the next step up from C — count again from a clef landmark you are sure of.",
+        "F": "That is F — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:C4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "A",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is one line or space out. A is the next step up from G — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E",
+    },
+    "distractors": [
+      "D",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is A — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "D": "That is one line or space out. D is the next step down from E — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:E3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "E3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "F",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C": "That is C — but only in the bass clef. This stave carries a tenor clef, so the same line or space is a different note.",
+        "F": "That is one line or space out. F is the next step down from G — count again from a clef landmark you are sure of.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the lines and spaces up or down from a clef landmark you already know.",
+    ],
+    "id": "note_naming:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write the name of this note.",
+    "srs_tags": [
+      "note_read:tenor:G3",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "tenor",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming",
+  },
 ]
 `;
 
@@ -320981,13 +323159,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "crotchet",
-        "pitch": "E4",
+        "pitch": "B3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
     },
     "grade": 5,
     "hints": [
@@ -321001,9 +323179,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a crotchet.",
+    "prompt": "Write B on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:tenor:E4",
+      "note_read:tenor:B3",
     ],
     "stimulus": {
       "music": null,
@@ -321053,13 +323231,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "crotchet",
-        "pitch": "A3",
+        "pitch": "B3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
     },
     "grade": 5,
     "hints": [
@@ -321073,9 +323251,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write A on the stave, as a crotchet.",
+    "prompt": "Write B on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:tenor:A3",
+      "note_read:tenor:B3",
     ],
     "stimulus": {
       "music": null,
@@ -321089,13 +323267,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "crotchet",
-        "pitch": "D3",
+        "pitch": "E3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
     },
     "grade": 5,
     "hints": [
@@ -321109,9 +323287,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write D on the stave, as a crotchet.",
+    "prompt": "Write E on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:tenor:D3",
+      "note_read:tenor:E3",
     ],
     "stimulus": {
       "music": null,
@@ -321125,13 +323303,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "demisemiquaver",
-        "pitch": "E4",
+        "pitch": "C4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the demisemiquaver.",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the demisemiquaver.",
     },
     "grade": 5,
     "hints": [
@@ -321145,9 +323323,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a demisemiquaver.",
+    "prompt": "Write C on the stave, as a demisemiquaver.",
     "srs_tags": [
-      "note_read:tenor:E4",
+      "note_read:tenor:C4",
     ],
     "stimulus": {
       "music": null,
@@ -321161,13 +323339,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "minim",
-        "pitch": "F3",
+        "pitch": "G3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the minim.",
     },
     "grade": 5,
     "hints": [
@@ -321181,9 +323359,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a minim.",
+    "prompt": "Write G on the stave, as a minim.",
     "srs_tags": [
-      "note_read:tenor:F3",
+      "note_read:tenor:G3",
     ],
     "stimulus": {
       "music": null,
@@ -321197,13 +323375,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "breve",
-        "pitch": "F3",
+        "pitch": "G3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the breve.",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the breve.",
     },
     "grade": 5,
     "hints": [
@@ -321217,9 +323395,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a breve.",
+    "prompt": "Write G on the stave, as a breve.",
     "srs_tags": [
-      "note_read:tenor:F3",
+      "note_read:tenor:G3",
     ],
     "stimulus": {
       "music": null,
@@ -321305,13 +323483,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "crotchet",
-        "pitch": "B3",
+        "pitch": "E4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the crotchet.",
     },
     "grade": 5,
     "hints": [
@@ -321325,79 +323503,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write B on the stave, as a crotchet.",
-    "srs_tags": [
-      "note_read:tenor:B3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "quaver",
-        "pitch": "B3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
-    },
-    "grade": 5,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g5:s10",
-    "interaction": {
-      "config": {
-        "clef": "tenor",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write B on the stave, as a quaver.",
-    "srs_tags": [
-      "note_read:tenor:B3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "semiquaver",
-        "pitch": "E4",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the semiquaver.",
-    },
-    "grade": 5,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g5:s11",
-    "interaction": {
-      "config": {
-        "clef": "tenor",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write E on the stave, as a semiquaver.",
+    "prompt": "Write E on the stave, as a crotchet.",
     "srs_tags": [
       "note_read:tenor:E4",
     ],
@@ -321412,20 +323518,20 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "answer": {
       "accepted_alternatives": [],
       "canonical": {
-        "dur": "crotchet",
-        "pitch": "D3",
+        "dur": "quaver",
+        "pitch": "E4",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the crotchet.",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the quaver.",
     },
     "grade": 5,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g5:s12",
+    "id": "note_naming_stave_input:g5:s10",
     "interaction": {
       "config": {
         "clef": "tenor",
@@ -321433,45 +323539,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write D on the stave, as a crotchet.",
+    "prompt": "Write E on the stave, as a quaver.",
     "srs_tags": [
-      "note_read:tenor:D3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "semibreve",
-        "pitch": "F3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the semibreve.",
-    },
-    "grade": 5,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g5:s13",
-    "interaction": {
-      "config": {
-        "clef": "tenor",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a semibreve.",
-    "srs_tags": [
-      "note_read:tenor:F3",
+      "note_read:tenor:E4",
     ],
     "stimulus": {
       "music": null,
@@ -321485,19 +323555,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "dur": "semiquaver",
-        "pitch": "D3",
+        "pitch": "B3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the semiquaver.",
+      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the semiquaver.",
     },
     "grade": 5,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g5:s14",
+    "id": "note_naming_stave_input:g5:s11",
     "interaction": {
       "config": {
         "clef": "tenor",
@@ -321505,9 +323575,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write D on the stave, as a semiquaver.",
+    "prompt": "Write B on the stave, as a semiquaver.",
     "srs_tags": [
-      "note_read:tenor:D3",
+      "note_read:tenor:B3",
     ],
     "stimulus": {
       "music": null,
@@ -321520,20 +323590,20 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "answer": {
       "accepted_alternatives": [],
       "canonical": {
-        "dur": "quaver",
-        "pitch": "G3",
+        "dur": "crotchet",
+        "pitch": "F3",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the quaver.",
+      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the crotchet.",
     },
     "grade": 5,
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g5:s15",
+    "id": "note_naming_stave_input:g5:s12",
     "interaction": {
       "config": {
         "clef": "tenor",
@@ -321541,9 +323611,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write G on the stave, as a quaver.",
+    "prompt": "Write F on the stave, as a crotchet.",
     "srs_tags": [
-      "note_read:tenor:G3",
+      "note_read:tenor:F3",
     ],
     "stimulus": {
       "music": null,
@@ -321569,7 +323639,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g5:s16",
+    "id": "note_naming_stave_input:g5:s13",
     "interaction": {
       "config": {
         "clef": "tenor",
@@ -321580,78 +323650,6 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "prompt": "Write G on the stave, as a semibreve.",
     "srs_tags": [
       "note_read:tenor:G3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "minim",
-        "pitch": "F3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to F, then add the accidental and choose the minim.",
-    },
-    "grade": 5,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g5:s17",
-    "interaction": {
-      "config": {
-        "clef": "tenor",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write F on the stave, as a minim.",
-    "srs_tags": [
-      "note_read:tenor:F3",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "note_naming_stave_input",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": {
-        "dur": "demisemiquaver",
-        "pitch": "D3",
-      },
-    },
-    "distractors": [],
-    "feedback": {
-      "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the demisemiquaver.",
-    },
-    "grade": 5,
-    "hints": [
-      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
-    ],
-    "id": "note_naming_stave_input:g5:s18",
-    "interaction": {
-      "config": {
-        "clef": "tenor",
-      },
-      "type": "stave_input",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Write D on the stave, as a demisemiquaver.",
-    "srs_tags": [
-      "note_read:tenor:D3",
     ],
     "stimulus": {
       "music": null,
@@ -321677,7 +323675,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "hints": [
       "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
     ],
-    "id": "note_naming_stave_input:g5:s19",
+    "id": "note_naming_stave_input:g5:s14",
     "interaction": {
       "config": {
         "clef": "tenor",
@@ -321688,6 +323686,186 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "prompt": "Write F on the stave, as a semiquaver.",
     "srs_tags": [
       "note_read:tenor:F3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "quaver",
+        "pitch": "C4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s15",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a quaver.",
+    "srs_tags": [
+      "note_read:tenor:C4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semibreve",
+        "pitch": "C4",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the semibreve.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s16",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write C on the stave, as a semibreve.",
+    "srs_tags": [
+      "note_read:tenor:C4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "minim",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the minim.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s17",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a minim.",
+    "srs_tags": [
+      "note_read:tenor:G3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "demisemiquaver",
+        "pitch": "E3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to E, then add the accidental and choose the demisemiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s18",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write E on the stave, as a demisemiquaver.",
+    "srs_tags": [
+      "note_read:tenor:E3",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "note_naming_stave_input",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": {
+        "dur": "semiquaver",
+        "pitch": "G3",
+      },
+    },
+    "distractors": [],
+    "feedback": {
+      "correct": "Correct!",
+      "incorrect": "Not quite — count the lines and spaces to G, then add the accidental and choose the semiquaver.",
+    },
+    "grade": 5,
+    "hints": [
+      "Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.",
+    ],
+    "id": "note_naming_stave_input:g5:s19",
+    "interaction": {
+      "config": {
+        "clef": "tenor",
+      },
+      "type": "stave_input",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Write G on the stave, as a semiquaver.",
+    "srs_tags": [
+      "note_read:tenor:G3",
     ],
     "stimulus": {
       "music": null,

@@ -470,6 +470,8 @@ describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
   test('key_sig Eb_major is outside G1 scope but inside G2 scope', () => {
     const instance = validNoteNamingInstance();
     (instance.stimulus.music as any).key_sig = 'Eb_major';
+    // The signature flattens the E the stimulus draws, so the answer must too.
+    instance.answer.canonical = 'E flat';
 
     expect(validate(instance).ok).toBe(false);
 
@@ -480,6 +482,7 @@ describe('validate — grade-aware scope (D5: scope is law, per grade)', () => {
   test('a treble C6 pitch is outside the G1 range but inside the G2 range', () => {
     const instance = validNoteNamingInstance();
     (instance.stimulus.music as any).voices[0].events[0].pitch = 'C6';
+    instance.answer.canonical = 'C';
 
     expect(validate(instance).ok).toBe(false);
 
@@ -552,6 +555,7 @@ describe('validate — grade-aware never-spellings (D6): B#/E# become legal at g
     (pitch) => {
       const instance = validNoteNamingInstance();
       (instance.stimulus.music as any).voices[0].events[0].pitch = pitch;
+      instance.answer.canonical = `${pitch[0]} sharp`;
 
       instance.grade = 3;
       expect(validate(instance)).toEqual({ ok: true, errors: [] });

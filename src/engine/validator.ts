@@ -317,6 +317,19 @@ function noteNamingStaveInputHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+const ACCIDENTAL_NAME: Record<string, string> = { '#': ' sharp', b: ' flat', '##': ' double sharp', bb: ' double flat' };
+
+/** The name the stave prints: the note's own accidental, else the key's. */
+function printedNoteName(pitch: string, keySig: string | null): string | null {
+  const m = /^([A-G])(##|bb|#|b)?(-?\d+)$/.exec(pitch);
+  if (!m) return null;
+  const [, letter, own] = m;
+  if (own) return `${letter}${ACCIDENTAL_NAME[own]}`;
+  if (!keySig) return letter;
+  const fromKey = /^([A-G])(#|b)?/.exec(spellInKeySig(`${letter}4`, keySig));
+  return fromKey?.[2] ? `${letter}${ACCIDENTAL_NAME[fromKey[2]]}` : letter;
+}
+
 function noteNamingHook(inst: ExerciseInstance): string[] {
   const errors: string[] = [];
   const canonical = inst.answer.canonical;
@@ -326,6 +339,23 @@ function noteNamingHook(inst: ExerciseInstance): string[] {
   for (const d of inst.distractors) {
     if (typeof d !== 'string' || !NOTE_NAME_RE.test(d.trim())) {
       errors.push(`note_naming: distractor "${String(d)}" is not a note name`);
+    }
+  }
+
+  // Recompute-don't-trust (chromaticly-7xv.6). Shape alone passed a keyed item
+  // whose answer ignored the signature.
+  const music = inst.stimulus.music as Music | null;
+  const drawn = music?.voices[0]?.events[0];
+  const pitch = drawn && 'pitch' in drawn ? String(drawn.pitch) : null;
+  if (pitch) {
+    const expected = printedNoteName(pitch, music?.key_sig ?? null);
+    if (expected === null) {
+      errors.push(`note_naming: unreadable stimulus pitch "${pitch}"`);
+    } else if (typeof canonical === 'string' && canonical !== expected) {
+      errors.push(`note_naming: the stave prints ${expected} but the answer says "${canonical}"`);
+    }
+    if (typeof canonical === 'string' && inst.distractors.includes(canonical)) {
+      errors.push(`note_naming: "${canonical}" is both the answer and a distractor`);
     }
   }
   return errors;

@@ -572,13 +572,15 @@
       "title": "The alto clef",
       "strand": "pitch",
       "atoms": [
-        "note_read:alto:C4",
         "note_read:alto:F3",
+        "note_read:alto:G3",
         "note_read:alto:A3",
-        "note_read:alto:E4",
-        "note_read:alto:G4",
         "note_read:alto:B3",
-        "note_read:alto:D4"
+        "note_read:alto:C4",
+        "note_read:alto:D4",
+        "note_read:alto:E4",
+        "note_read:alto:F4",
+        "note_read:alto:G4"
       ],
       "templates": [
         "note_naming",
@@ -607,17 +609,62 @@
         "smartTip": "The two curved arms of the alto clef point straight at the middle line — and that line is middle C. Count every other note from there.",
         "didYouKnow": "The alto clef is a movable ‘C clef’: the same symbol shifted up one line becomes the tenor clef (for high cello and bassoon). Sitting on the middle line, it is the alto clef the viola reads."
       },
-      "unlocks": "alto-transposition-4",
+      "unlocks": "alto-keyed-4",
       "by_ear_source": "note_naming",
       "by_ear_atoms": [
-        "note_read:alto:C4:by_ear",
         "note_read:alto:F3:by_ear",
+        "note_read:alto:G3:by_ear",
         "note_read:alto:A3:by_ear",
-        "note_read:alto:E4:by_ear",
-        "note_read:alto:G4:by_ear",
         "note_read:alto:B3:by_ear",
-        "note_read:alto:D4:by_ear"
+        "note_read:alto:C4:by_ear",
+        "note_read:alto:D4:by_ear",
+        "note_read:alto:E4:by_ear",
+        "note_read:alto:F4:by_ear",
+        "note_read:alto:G4:by_ear"
       ]
+    },
+    {
+      "id": "alto-keyed-4",
+      "title": "The alto clef in a key signature",
+      "strand": "pitch",
+      "atoms": [
+        "note_read_keyed:alto:F3",
+        "note_read_keyed:alto:G3",
+        "note_read_keyed:alto:A3",
+        "note_read_keyed:alto:B3",
+        "note_read_keyed:alto:C4",
+        "note_read_keyed:alto:D4",
+        "note_read_keyed:alto:E4",
+        "note_read_keyed:alto:F4",
+        "note_read_keyed:alto:G4"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name a note in the alto clef when a key signature is printed",
+          "A sharp or flat in the signature alters every note of that letter, in every octave",
+          "Find the letter first, then apply the signature — the count from middle C never changes"
+        ],
+        "concept": {
+          "title": "Letter first, signature second",
+          "body": "Everything you learned about counting from middle C on the middle line still holds. A key signature does not move a single note; it decides what the letters you count to actually sound.\n\nSo read in two steps. Step one: count lines and spaces from middle C and get the letter. Step two: look back at the signature and ask whether that letter carries a sharp or a flat. If it does, the note is sharp or flat — in every octave, not only the one the signature prints.\n\nThe signature itself is printed at the alto clef's own positions. An F sharp sits on the alto clef's F line, which is the bottom line, not where your eye expects it from the treble. That is the one thing that catches people out, and reading the letter first makes it harmless.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 4,
+            "seed": 3
+          }
+        },
+        "smartTip": "Count to the letter, then check the signature. Doing it the other way round is how a note ends up sharp in the wrong octave.",
+        "didYouKnow": "A viola part in five sharps looks alarming and is not. The player still reads the same nine lines and spaces; the signature simply tells the left hand where to sit."
+      },
+      "unlocks": "alto-transposition-4"
     },
     {
       "id": "alto-transposition-4",

@@ -252,6 +252,16 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    // The pitch names a position; an accidental would contradict the signature.
+    case 'note_read_keyed': {
+      const [clef, pitch] = parts;
+      if (!scopeForGrade(grade).clefs.includes(clef as Clef)) throw new Error(`lessons: atom "${atom}" has clef outside G${grade} scope`);
+      if (/[#b]/.test(pitch ?? '')) throw new Error(`lessons: atom "${atom}" must name a natural pitch`);
+      if (!diatonicPitchesInRange(clef as Clef, grade).includes(pitch ?? '')) {
+        throw new Error(`lessons: atom "${atom}" pitch is outside the ${clef} G${grade} range`);
+      }
+      return;
+    }
     case 'key_sig': {
       const [key] = parts;
       const [tonic, mode] = (key ?? '').split('_');

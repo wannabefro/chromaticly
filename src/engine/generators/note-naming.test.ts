@@ -1,5 +1,6 @@
 import { validate } from '../validator';
-import { noteNaming } from './note-naming';
+import { spellInKeySig } from './key-spelling';
+import { noteNaming, noteNamingStaveInput } from './note-naming';
 import { atomsForLesson, optsFor } from './test-helpers';
 
 const TREBLE = atomsForLesson('treble-notes'); // 13 treble naturals C4..A5
@@ -223,5 +224,111 @@ describe('noteNaming — each distractor names its own misconception (never-viol
         }
       }
     }
+  });
+});
+
+// chromaticly-7xv.6 / chromaticly-ic5.4. Both grades ask for notes in any clef,
+// in any key set for the grade.
+describe('noteNaming — a keyed atom is read under a drawn key signature', () => {
+  const ALTO_KEYED = atomsForLesson('alto-keyed-4');
+  const TENOR_KEYED = atomsForLesson('tenor-keyed-5');
+  const CASES = [
+    ['alto-keyed-4', 4, ALTO_KEYED],
+    ['tenor-keyed-5', 5, TENOR_KEYED],
+  ] as const;
+
+  test.each(CASES)('%s draws a signature on every item and stays validator-clean', (_id, grade, atoms) => {
+    for (let seed = 0; seed < 40; seed++) {
+      const instance = noteNaming({ grade, seed, atoms: [...atoms] });
+      expect((instance.stimulus.music as any).key_sig).not.toBeNull();
+      expect(validate(instance)).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  // THE invariant: naming the note as written would teach the opposite.
+  test.each(CASES)('%s names the note the signature produces, not the natural', (_id, grade, atoms) => {
+    const altered: string[] = [];
+    for (let seed = 0; seed < 40; seed++) {
+      const instance = noteNaming({ grade, seed, atoms: [...atoms] });
+      const { pitch } = stimulus(instance);
+      const written = pitch.replace(/-?\d+$/, '').replace('#', ' sharp').replace('b', ' flat');
+      expect(instance.answer.canonical).toBe(written);
+      if (written.length > 1) altered.push(written);
+    }
+    expect(altered.some((a) => a.endsWith('sharp'))).toBe(true);
+    expect(altered.some((a) => a.endsWith('flat'))).toBe(true);
+  });
+
+  // Crediting the sounding pitch would split one position into 22 atoms.
+  test.each(CASES)('%s credits the natural position whatever the signature does', (_id, grade, atoms) => {
+    for (let seed = 0; seed < 40; seed++) {
+      const tag = noteNaming({ grade, seed, atoms: [...atoms] }).srs_tags[0];
+      expect(atoms).toContain(tag);
+    }
+  });
+
+  test('a single due keyed atom is a whole item', () => {
+    const instance = noteNaming({ grade: 4, seed: 0, atoms: ['note_read_keyed:alto:C4'] });
+    expect(instance.srs_tags).toEqual(['note_read_keyed:alto:C4']);
+    expect(instance.distractors).not.toContain(instance.answer.canonical);
+    expect(validate(instance)).toEqual({ ok: true, errors: [] });
+  });
+
+  // A natural distractor under a signature that alters it is unprintable.
+  test('a distractor altered by the signature carries its accidental', () => {
+    let checked = 0;
+    for (let seed = 0; seed < 60; seed++) {
+      const instance = noteNaming({ grade: 5, seed, atoms: [...TENOR_KEYED] });
+      const keySig = (instance.stimulus.music as any).key_sig as string;
+      for (const d of instance.distractors as string[]) {
+        const letter = d[0];
+        const spelled = spellInKeySig(`${letter}4`, keySig);
+        if (spelled === `${letter}4`) continue;
+        expect(d).toBe(`${letter} ${spelled[1] === '#' ? 'sharp' : 'flat'}`);
+        checked++;
+      }
+    }
+    expect(checked).toBeGreaterThan(0);
+  });
+
+  test('a plain note_read atom still draws no signature and credits the plain atom', () => {
+    for (let seed = 0; seed < 20; seed++) {
+      const instance = noteNaming({ grade: 4, seed, atoms: ['note_read:alto:F3'] });
+      expect((instance.stimulus.music as any).key_sig).toBeNull();
+      expect(instance.srs_tags).toEqual(['note_read:alto:F3']);
+    }
+  });
+});
+
+// Shape alone passed an answer that ignored the signature.
+describe('noteNamingHook rejects an answer the stave does not print', () => {
+  const keyed = () => noteNaming({ grade: 4, seed: 0, atoms: [...atomsForLesson('alto-keyed-4')] });
+
+  test('a canonical that names the natural under an altering signature', () => {
+    // Only an altering signature makes the natural wrong, so search for one.
+    const altered = Array.from({ length: 40 }, (_, seed) =>
+      noteNaming({ grade: 4, seed, atoms: [...atomsForLesson('alto-keyed-4')] }),
+    ).find((i) => /[#b]/.test(stimulus(i).pitch));
+    expect(altered).toBeDefined();
+    altered!.answer.canonical = stimulus(altered!).pitch.replace(/[#b]-?\d+$/, '');
+    expect(validate(altered!).errors.some((e) => e.includes('the stave prints'))).toBe(true);
+  });
+
+  test('a canonical naming a different letter entirely', () => {
+    const instance = keyed();
+    instance.answer.canonical = 'B';
+    expect(validate(instance).errors.some((e) => e.includes('the stave prints'))).toBe(true);
+  });
+
+  test('an answer that also appears among the distractors', () => {
+    const instance = keyed();
+    instance.distractors = [...instance.distractors, instance.answer.canonical as string];
+    expect(validate(instance).errors.some((e) => e.includes('both the answer and a distractor'))).toBe(true);
+  });
+});
+
+describe('noteNamingStaveInput refuses a keyed-only pool', () => {
+  test('it throws rather than crediting the plain atom for a question never asked', () => {
+    expect(() => noteNamingStaveInput({ grade: 4, seed: 0, atoms: ['note_read_keyed:alto:C4'] })).toThrow();
   });
 });

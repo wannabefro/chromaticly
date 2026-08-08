@@ -536,13 +536,15 @@
       "title": "The tenor clef",
       "strand": "pitch",
       "atoms": [
-        "note_read:tenor:C4",
         "note_read:tenor:D3",
+        "note_read:tenor:E3",
         "note_read:tenor:F3",
-        "note_read:tenor:A3",
-        "note_read:tenor:E4",
         "note_read:tenor:G3",
-        "note_read:tenor:B3"
+        "note_read:tenor:A3",
+        "note_read:tenor:B3",
+        "note_read:tenor:C4",
+        "note_read:tenor:D4",
+        "note_read:tenor:E4"
       ],
       "templates": [
         "note_naming",
@@ -571,17 +573,62 @@
         "smartTip": "Find the 4th line — that is middle C. Count from there, never from the bottom of the stave.",
         "didYouKnow": "A cello part can switch bass, tenor and treble clef within a single phrase. The clef changes so the notes stay on the stave; the player is not changing instrument, only changing the ruler they are reading against."
       },
-      "unlocks": "tenor-transposition-5",
+      "unlocks": "tenor-keyed-5",
       "by_ear_source": "note_naming",
       "by_ear_atoms": [
-        "note_read:tenor:C4:by_ear",
         "note_read:tenor:D3:by_ear",
+        "note_read:tenor:E3:by_ear",
         "note_read:tenor:F3:by_ear",
-        "note_read:tenor:A3:by_ear",
-        "note_read:tenor:E4:by_ear",
         "note_read:tenor:G3:by_ear",
-        "note_read:tenor:B3:by_ear"
+        "note_read:tenor:A3:by_ear",
+        "note_read:tenor:B3:by_ear",
+        "note_read:tenor:C4:by_ear",
+        "note_read:tenor:D4:by_ear",
+        "note_read:tenor:E4:by_ear"
       ]
+    },
+    {
+      "id": "tenor-keyed-5",
+      "title": "Any clef, any key signature",
+      "strand": "pitch",
+      "atoms": [
+        "note_read_keyed:tenor:D3",
+        "note_read_keyed:tenor:E3",
+        "note_read_keyed:tenor:F3",
+        "note_read_keyed:tenor:G3",
+        "note_read_keyed:tenor:A3",
+        "note_read_keyed:tenor:B3",
+        "note_read_keyed:tenor:C4",
+        "note_read_keyed:tenor:D4",
+        "note_read_keyed:tenor:E4"
+      ],
+      "templates": [
+        "note_naming"
+      ],
+      "worked_example": {
+        "template_id": "note_naming",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Name a note in the tenor clef when a key signature is printed",
+          "Grade 5 keys reach six sharps and six flats, so almost every letter can be altered",
+          "Find the letter first, then apply the signature — the count from the 4th line never changes"
+        ],
+        "concept": {
+          "title": "The signature never moves a note",
+          "body": "Read the tenor clef the way you already do: find middle C on the 4th line, then count. A key signature changes nothing about that count. It only decides what the letter you land on sounds.\n\nAt Grade 5 the keys run out to six sharps and six flats, so nearly every letter you name can be altered. That makes the two-step habit worth keeping: get the letter, then check the signature for that letter. A sharp or flat applies to every octave of it, not only the octave printed at the start of the stave.\n\nThe signature is printed at the tenor clef’s own positions, so it looks unfamiliar even in a key you know well. Ignore its shape and read its letters.",
+          "example": {
+            "template_id": "note_naming",
+            "grade": 5,
+            "seed": 5
+          }
+        },
+        "smartTip": "Name the letter before you look at the signature. The signature answers \"sharp, flat or neither\", and nothing else.",
+        "didYouKnow": "A cellist can meet bass, tenor and treble clef in one line of music, all under the same key signature. The signature is redrawn at each clef change, in that clef’s positions — same key, different picture."
+      },
+      "unlocks": "tenor-transposition-5"
     },
     {
       "id": "tenor-transposition-5",

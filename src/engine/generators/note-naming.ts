@@ -12,10 +12,11 @@
 
 import type { Clef } from '../../music/types';
 import { KB_VERSION } from '../../content/knowledge-base';
-import { noteReadAtom, parseAtom } from '../atoms';
+import { keyedNoteAtom, noteReadAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import { diatonicPitchesInRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
+import { spellInKeySig } from './key-spelling';
 import { naturalPitchAtOrdinal, pitchOrdinal, type Letter } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -34,6 +35,8 @@ interface NoteCandidate {
   pitch: string; // scientific, may carry an accidental, e.g. "F#5" or "C4"
   letter: Letter;
   accidental: Accidental;
+  /** chromaticly-7xv.6: read under a drawn signature, not as written. */
+  keyed: boolean;
 }
 
 function parseNotePitch(pitch: string): { letter: Letter; accidental: Accidental; octave: number } {
@@ -50,15 +53,21 @@ function noteCandidates(atoms: string[]): NoteCandidate[] {
   const candidates: NoteCandidate[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
-    if (kind !== 'note_read') continue;
+    if (kind !== 'note_read' && kind !== 'note_read_keyed') continue;
     const [clef, pitch] = parts;
     const { letter, accidental } = parseNotePitch(pitch);
-    candidates.push({ clef: clef as Clef, pitch, letter, accidental });
+    candidates.push({ clef: clef as Clef, pitch, letter, accidental, keyed: kind === 'note_read_keyed' });
   }
   if (candidates.length === 0) {
     throw new Error('note_naming: lesson declares no note_read:* atoms');
   }
   return candidates;
+}
+
+/** The pool a keyed reading draws from. */
+function keySigPool(grade: number): string[] {
+  const scope = scopeForGrade(grade);
+  return [...scope.keysMajor.map((k) => `${k}_major`), ...scope.keysMinor.map((k) => `${k}_minor`)];
 }
 
 /** Drop the accidental when it would spell a never-Grade-1 note (Cb/Fb/B#/E#),
@@ -141,15 +150,28 @@ function acceptedAlternatives(letter: Letter, accidental: Accidental): string[] 
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const { clef, pitch, letter, accidental } = pick(rng, noteCandidates(atoms));
+  const candidate = pick(rng, noteCandidates(atoms));
+  const { clef, letter, keyed } = candidate;
+
+  // The extra draw happens only on this branch, so every note_read lesson
+  // keeps its rng sequence.
+  const keySig = keyed ? pick(rng, keySigPool(grade)) : null;
+  const pitch = keySig ? spellInKeySig(candidate.pitch, keySig) : candidate.pitch;
+  const accidental = keySig ? parseNotePitch(pitch).accidental : candidate.accidental;
 
   const direction = pick(rng, [1, -1] as const);
   const adjacent = adjacentLetter(letter, direction);
-  const clefConfusion = clefConfusionLetter(clef, pitch);
+  const clefConfusion = clefConfusionLetter(clef, candidate.pitch);
+
+  // A miscounted neighbour is read as the signature writes it.
+  const inKey = (l: Letter): Accidental =>
+    keySig ? parseNotePitch(spellInKeySig(`${l}4`, keySig)).accidental : null;
 
   const canonical = formatNoteName(letter, accidental);
-  const offByOne = formatNoteName(adjacent, null);
-  const wrongClef = formatNoteName(clefConfusion, safeDistractorAccidental(clefConfusion, accidental));
+  const offByOne = formatNoteName(adjacent, inKey(adjacent));
+  const wrongClef = keySig
+    ? formatNoteName(clefConfusion, inKey(clefConfusion))
+    : formatNoteName(clefConfusion, safeDistractorAccidental(clefConfusion, accidental));
   const distractors = [offByOne, wrongClef];
 
   // The two distractors are the two named misconceptions, so each one can say
@@ -175,7 +197,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     stimulus: {
       music: {
         clef,
-        key_sig: null,
+        key_sig: keySig,
         time_sig: null,
         voices: [{ events: [{ type: 'note', pitch, dur: 'semibreve' }] }],
       },
@@ -191,7 +213,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
         'Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.',
       by_distractor: byDistractor,
     },
-    srs_tags: [noteReadAtom(clef, pitch)],
+    srs_tags: [keyed ? keyedNoteAtom(clef, candidate.pitch) : noteReadAtom(clef, pitch)],
     kb_version: KB_VERSION,
   };
 }
@@ -203,7 +225,10 @@ export const noteNaming: Generator = (opts: GenerateOptions) =>
 
 function buildStaveInput(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const { clef, pitch, letter, accidental } = pick(rng, noteCandidates(atoms));
+  // Placing a position would credit the plain atom for an unasked question.
+  const plain = noteCandidates(atoms).filter((c) => !c.keyed);
+  if (plain.length === 0) throw new Error('note_naming_stave_input: every atom is keyed; nothing to place');
+  const { clef, pitch, letter, accidental } = pick(rng, plain);
   if (accidental === 'double_sharp' || accidental === 'double_flat') {
     throw new Error(`note_naming_stave_input: ${pitch} needs a double accidental the stave input cannot place`);
   }
