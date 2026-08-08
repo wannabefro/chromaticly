@@ -88476,12 +88476,12 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     },
     "distractors": [
       "D",
-      "E",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
+        "A": "That is A — but only in the treble clef. This stave carries a bass clef, so the same line or space is a different note.",
         "D": "That is one line or space out. D is the next step up from C — count again from a clef landmark you are sure of.",
-        "E": "That is E — but only in the bass clef. This stave carries a treble clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -88498,11 +88498,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:treble:C6",
+      "note_read:bass:C2",
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
+        "clef": "bass",
         "key_sig": null,
         "time_sig": null,
         "voices": [
@@ -88510,7 +88510,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "C6",
+                "pitch": "C2",
                 "type": "note",
               },
             ],
@@ -88578,16 +88578,16 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "C",
+      "canonical": "D",
     },
     "distractors": [
+      "C",
       "B",
-      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is A — but only in the treble clef. This stave carries a bass clef, so the same line or space is a different note.",
-        "B": "That is one line or space out. B is the next step down from C — count again from a clef landmark you are sure of.",
+        "B": "That is B — but only in the treble clef. This stave carries a bass clef, so the same line or space is a different note.",
+        "C": "That is one line or space out. C is the next step down from D — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -88604,7 +88604,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:bass:C2",
+      "note_read:bass:D2",
     ],
     "stimulus": {
       "music": {
@@ -88616,7 +88616,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "C2",
+                "pitch": "D2",
                 "type": "note",
               },
             ],
@@ -89002,16 +89002,16 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "B",
+      "canonical": "A",
     },
     "distractors": [
+      "B",
       "C",
-      "D",
     ],
     "feedback": {
       "by_distractor": {
-        "C": "That is one line or space out. C is the next step up from B — count again from a clef landmark you are sure of.",
-        "D": "That is D — but only in the bass clef. This stave carries a treble clef, so the same line or space is a different note.",
+        "B": "That is one line or space out. B is the next step up from A — count again from a clef landmark you are sure of.",
+        "C": "That is C — but only in the bass clef. This stave carries a treble clef, so the same line or space is a different note.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -89028,7 +89028,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:treble:B3",
+      "note_read:treble:A5",
     ],
     "stimulus": {
       "music": {
@@ -89040,7 +89040,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "B3",
+                "pitch": "A5",
                 "type": "note",
               },
             ],
@@ -89108,16 +89108,16 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "B",
+      "canonical": "A",
     },
     "distractors": [
-      "A",
-      "D",
+      "G",
+      "C",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "That is one line or space out. A is the next step down from B — count again from a clef landmark you are sure of.",
-        "D": "That is D — but only in the bass clef. This stave carries a treble clef, so the same line or space is a different note.",
+        "C": "That is C — but only in the bass clef. This stave carries a treble clef, so the same line or space is a different note.",
+        "G": "That is one line or space out. G is the next step down from A — count again from a clef landmark you are sure of.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — check the clef sign carefully. An easy mix-up is naming the note as it would be read on the other clef, or miscounting the line or space by one.",
@@ -89134,7 +89134,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     "kb_version": "g1-2026-07-10",
     "prompt": "Write the name of this note.",
     "srs_tags": [
-      "note_read:treble:B3",
+      "note_read:treble:A5",
     ],
     "stimulus": {
       "music": {
@@ -89146,7 +89146,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "B3",
+                "pitch": "A5",
                 "type": "note",
               },
             ],
@@ -89505,7 +89505,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "accepted_alternatives": [],
       "canonical": {
         "dur": "minim",
-        "pitch": "C6",
+        "pitch": "C2",
       },
     },
     "distractors": [],
@@ -89520,14 +89520,14 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
     "id": "note_naming_stave_input:g2:s2",
     "interaction": {
       "config": {
-        "clef": "treble",
+        "clef": "bass",
       },
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
     "prompt": "Write C on the stave, as a minim.",
     "srs_tags": [
-      "note_read:treble:C6",
+      "note_read:bass:C2",
     ],
     "stimulus": {
       "music": null,
@@ -89577,13 +89577,13 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "accepted_alternatives": [],
       "canonical": {
         "dur": "quaver",
-        "pitch": "C2",
+        "pitch": "D2",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to C, then add the accidental and choose the quaver.",
+      "incorrect": "Not quite — count the lines and spaces to D, then add the accidental and choose the quaver.",
     },
     "grade": 2,
     "hints": [
@@ -89597,9 +89597,9 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write C on the stave, as a quaver.",
+    "prompt": "Write D on the stave, as a quaver.",
     "srs_tags": [
-      "note_read:bass:C2",
+      "note_read:bass:D2",
     ],
     "stimulus": {
       "music": null,
@@ -89865,13 +89865,13 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "accepted_alternatives": [],
       "canonical": {
         "dur": "minim",
-        "pitch": "B3",
+        "pitch": "A5",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the minim.",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the minim.",
     },
     "grade": 2,
     "hints": [
@@ -89885,9 +89885,9 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write B on the stave, as a minim.",
+    "prompt": "Write A on the stave, as a minim.",
     "srs_tags": [
-      "note_read:treble:B3",
+      "note_read:treble:A5",
     ],
     "stimulus": {
       "music": null,
@@ -89937,13 +89937,13 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "accepted_alternatives": [],
       "canonical": {
         "dur": "quaver",
-        "pitch": "B3",
+        "pitch": "A5",
       },
     },
     "distractors": [],
     "feedback": {
       "correct": "Correct!",
-      "incorrect": "Not quite — count the lines and spaces to B, then add the accidental and choose the quaver.",
+      "incorrect": "Not quite — count the lines and spaces to A, then add the accidental and choose the quaver.",
     },
     "grade": 2,
     "hints": [
@@ -89957,9 +89957,9 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte not
       "type": "stave_input",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Write B on the stave, as a quaver.",
+    "prompt": "Write A on the stave, as a quaver.",
     "srs_tags": [
-      "note_read:treble:B3",
+      "note_read:treble:A5",
     ],
     "stimulus": {
       "music": null,

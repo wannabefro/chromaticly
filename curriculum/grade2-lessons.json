@@ -138,7 +138,7 @@
         ],
         "concept": {
           "title": "Grade 2 harmonic minor",
-          "body": "Harmonic minor is the natural minor scale — the one the key signature gives you — with a single change: the 7th note is raised a semitone. A minor's raised 7th is G♯, E minor's is D♯, and D minor's is C♯. That one accidental changes the shape of the scale. Semitones now fall between the 2nd and 3rd, between the 5th and 6th, and between the 7th and 8th, and a gap of three semitones opens between the 6th and 7th. Three semitones written as a 2nd is called an augmented 2nd, and it is the interval that gives harmonic minor its distinctive sound. The raised 7th is written note by note, never in the key signature, because the key signature spells the natural form of the scale.",
+          "body": "Harmonic minor is the natural minor scale — the one the key signature gives you — with a single change: the 7th note is raised a semitone. A minor's raised 7th is G♯, E minor's is D♯, and D minor's is C♯. That one accidental changes the shape of the scale. Semitones now fall between the 2nd and 3rd, between the 5th and 6th, and between the 7th and 8th, and a gap of three semitones opens between the 6th and 7th. Three semitones written as a 2nd is called an augmented 2nd, and it is the interval that gives harmonic minor its distinctive sound. It is a name for a feature of this scale rather than something you are asked to work out at this grade — Grade 2 still names intervals by number alone, and interval qualities arrive at Grade 3. The raised 7th is written note by note, never in the key signature, because the key signature spells the natural form of the scale.",
           "example": {
             "template_id": "scale_construction",
             "grade": 2,
@@ -251,10 +251,12 @@
       "atoms": [
         "note_read:treble:A3",
         "note_read:treble:B3",
+        "note_read:treble:A5",
         "note_read:treble:B5",
         "note_read:treble:C6",
         "note_read:bass:C2",
         "note_read:bass:D2",
+        "note_read:bass:E2",
         "note_read:bass:E4"
       ],
       "templates": [
@@ -268,13 +270,13 @@
       },
       "teach": {
         "objectives": [
-          "Read notes on a second ledger line above and below each stave",
+          "Read notes on a first and second ledger line above and below each stave",
           "Count outward in 3rds from a landmark rather than line by line",
-          "The new notes: A3 and B3 below the treble, B5 and C6 above it"
+          "The new notes: A3 and B3 below the treble, A5, B5 and C6 above it; E2, D2 and C2 below the bass, E4 above it"
         ],
         "concept": {
           "title": "One more line out",
-          "body": "Grade 1 allowed a single ledger line — middle C below the treble stave, middle C above the bass. Grade 2 allows a second, which reaches four more notes in each clef. The reliable way to read them is to count outward in 3rds from a landmark you already know, because a ledger line and the space beyond it alternate exactly as they do on the stave. From middle C below the treble stave, the next ledger line down is A3, and B3 is the space between them. Reading upward from the top line, the notes above the treble stave run B5 then C6 on its second ledger line. The bass stave works the same way in the other direction, down to C2 and up to E4.",
+          "body": "Grade 1 allowed a single ledger line — middle C below the treble stave, middle C above the bass. Grade 2 allows a second, and opens the first ledger line at the other end of each stave too. The reliable way to read them is to count outward in 3rds from a landmark you already know, because a ledger line and the space beyond it alternate exactly as they do on the stave.\n\nAbove the treble stave the top line is F5. G5 sits in the space above it, then comes the first ledger line, A5, then the space B5, then the second ledger line, C6. Below the treble stave, middle C is the first ledger line; B3 is the space under it and A3 is the second ledger line.\n\nThe bass stave works the same way. Its bottom line is G2, F2 is the space below, and then come the first ledger line E2, the space D2, and the second ledger line C2. Above the bass stave, middle C is again the first ledger line, D4 the space above it, and E4 the second ledger line.",
           "example": {
             "template_id": "note_naming",
             "grade": 2,
@@ -289,10 +291,12 @@
       "by_ear_atoms": [
         "note_read:treble:A3:by_ear",
         "note_read:treble:B3:by_ear",
+        "note_read:treble:A5:by_ear",
         "note_read:treble:B5:by_ear",
         "note_read:treble:C6:by_ear",
         "note_read:bass:C2:by_ear",
         "note_read:bass:D2:by_ear",
+        "note_read:bass:E2:by_ear",
         "note_read:bass:E4:by_ear"
       ]
     },
