@@ -412,6 +412,9 @@
       "title": "New time signatures",
       "strand": "rhythm",
       "atoms": [
+        "metre:2/2",
+        "metre:3/2",
+        "metre:4/2",
         "metre:2/8",
         "metre:3/8",
         "metre:4/8",
@@ -435,11 +438,12 @@
         "objectives": [
           "The top number decides the family; the bottom number names the note being counted",
           "6, 9 and 12 on top mean compound time — group the beats in threes",
-          "The bottom number never decides simple versus compound: 6/4, 6/8 and 6/16 are all compound duple"
+          "The bottom number never decides simple versus compound: 6/4, 6/8 and 6/16 are all compound duple",
+          "The minim can be the beat too: 2/2, 3/2 and 4/2 are simple duple, triple and quadruple"
         ],
         "concept": {
           "title": "Reading any time signature",
-          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is **two** dotted-crotchet beats, not six. The bottom number only says which note is being counted: 8 the quaver, 4 the crotchet, 16 the semiquaver. In simple time that note is the beat; in compound time three of them make one dotted beat, so 6/16 is two dotted-quaver beats and 6/4 two dotted-minim beats. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values.",
+          "body": "To classify a time signature, read the top number first. 2, 3 or 4 means simple time — that many beats, each dividing into two. 6, 9 or 12 means compound time — group the beats in threes, so 6/8 is **two** dotted-crotchet beats, not six. The bottom number only says which note is being counted: 8 the quaver, 4 the crotchet, 16 the semiquaver. In simple time that note is the beat; in compound time three of them make one dotted beat, so 6/16 is two dotted-quaver beats and 6/4 two dotted-minim beats. It never changes simple versus compound — 6/4, 6/8 and 6/16 are all compound duple, just written in bigger or smaller note values. The same reading works when the minim is the beat. 2/2, 3/2 and 4/2 put two, three and four minim beats in a bar, so they are simple duple, triple and quadruple — the family is decided by the top number here exactly as it is everywhere else.",
           "example": {
             "template_id": "metre_classification",
             "grade": 4,
@@ -468,7 +472,13 @@
       "atoms": [
         "grouping:2/8",
         "grouping:4/8",
-        "grouping:6/4"
+        "grouping:4/2",
+        "grouping:6/4",
+        "grouping:9/4",
+        "grouping:12/4",
+        "grouping:6/16",
+        "grouping:9/16",
+        "grouping:12/16"
       ],
       "templates": [
         "note_grouping",
@@ -483,11 +493,11 @@
         "objectives": [
           "The rule never changes: one beamed group per beat",
           "In 2/8 and 4/8 the quaver is the beat, so semiquavers beam in pairs",
-          "In 6/4 the dotted minim is the beat, so quavers beam in sixes"
+          "In the /4 and /16 compound metres the beat is a dotted note, so the group is three of the division"
         ],
         "concept": {
           "title": "One rule, any denominator",
-          "body": "Grade 4 opens metres with quaver and minim beats, and the grouping rule survives all of them unchanged: one beamed group per beat. In 2/8 and 4/8 the beat is a quaver, so semiquavers beam in pairs and each pair is a beat. In 6/4 the beat is a dotted minim, three crotchets long, so a bar of quavers beams as two groups of six. The groups get longer or shorter, but a reader still counts beats by counting beams. Work out the beat from the time signature, then beam that much and break.",
+          "body": "Grade 4 opens metres with quaver and minim beats, and the grouping rule survives all of them unchanged: one beamed group per beat. In 2/8 and 4/8 the beat is a quaver, so semiquavers beam in pairs and each pair is a beat. In 6/4 the beat is a dotted minim, three crotchets long, so a bar of quavers beams as two groups of six. The groups get longer or shorter, but a reader still counts beats by counting beams. Work out the beat from the time signature, then beam that much and break. The bottom number changes which value is written, never the rule. In 9/4 and 12/4 the beat is a dotted minim, so quavers beam in sixes; in 6/16, 9/16 and 12/16 the beat is a dotted quaver, so semiquavers beam in threes. In 4/2 the beat is a minim, and quavers beam in fours.",
           "example": {
             "template_id": "note_grouping",
             "grade": 4,
@@ -820,16 +830,61 @@
     },
     {
       "id": "instruments-4",
-      "title": "Instruments of the orchestra",
+      "title": "The four orchestral families",
       "strand": "terms_signs",
       "atoms": [
         "instrument_family:violin",
+        "instrument_family:viola",
+        "instrument_family:cello",
+        "instrument_family:double bass",
         "instrument_family:flute",
+        "instrument_family:oboe",
+        "instrument_family:clarinet",
+        "instrument_family:bassoon",
         "instrument_family:trumpet",
-        "instrument_family:timpani",
+        "instrument_family:horn",
+        "instrument_family:trombone",
+        "instrument_family:tuba",
+        "instrument_family:timpani"
+      ],
+      "templates": [
+        "instrument_knowledge"
+      ],
+      "worked_example": {
+        "template_id": "instrument_knowledge",
+        "grade": 4,
+        "seed": 6
+      },
+      "teach": {
+        "objectives": [
+          "The orchestra is grouped into four families: strings, woodwind, brass, and percussion",
+          "What puts an instrument in its family is how it makes its sound, not where it sits",
+          "Every instrument named here belongs to one of the four, and you can place any of them"
+        ],
+        "concept": {
+          "title": "The four families",
+          "body": "Orchestral instruments fall into four families, and what decides the family is how the sound starts. *Strings* (violin, viola, cello, double bass) are bowed or plucked. *Woodwind* (flute, oboe, clarinet, bassoon) are blown. *Brass* (trumpet, horn, trombone, tuba) sound from the player's vibrating lips against a mouthpiece — cupped on the trumpet and trombone, funnel-shaped on the horn. *Percussion* (such as the timpani) are struck. Learn the four sound-makers and you can place an instrument you have never met, which is what the exam asks.",
+          "example": {
+            "template_id": "instrument_knowledge",
+            "grade": 4,
+            "seed": 4
+          }
+        },
+        "smartTip": "Four families, four ways of starting a sound: bowed or plucked, blown, buzzed through the lips, struck.",
+        "didYouKnow": "‘Pizzicato’ is Italian for ‘pinched’ — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
+      },
+      "unlocks": "instrument-clefs-4"
+    },
+    {
+      "id": "instrument-clefs-4",
+      "title": "The clefs instruments read, and how to play",
+      "strand": "terms_signs",
+      "atoms": [
+        "instrument_clef:violin",
         "instrument_clef:viola",
         "instrument_clef:cello",
-        "instrument_clef:violin",
+        "instrument_clef:double bass",
+        "instrument_clef:flute",
         "direction:arco",
         "direction:pizzicato",
         "direction:con sordino",
@@ -845,21 +900,21 @@
       },
       "teach": {
         "objectives": [
-          "The orchestra is grouped into four families: strings, woodwind, brass, and percussion",
           "Instruments read the clef that fits their range — the viola reads the alto clef you just learned",
-          "Playing directions tell the player how to play: arco (with the bow), pizzicato (plucked), con sordino (with the mute)"
+          "Playing directions tell the player how to sound a note, not how fast to go",
+          "Arco and pizzicato are a pair, and so are con sordino and senza sordino"
         ],
         "concept": {
-          "title": "Instruments of the orchestra",
-          "body": "Orchestral instruments fall into four families. *Strings* (violin, viola, cello, double bass) are bowed or plucked. *Woodwind* (flute, oboe, clarinet, bassoon) are blown. *Brass* (trumpet, horn, trombone, tuba) sound from the player's vibrating lips against a mouthpiece — cupped on the trumpet and trombone, funnel-shaped on the horn. *Percussion* (such as the timpani) are struck. Each instrument reads the clef that best fits its range: the violin and flute read treble, the cello and double bass read bass, and the viola reads the alto clef — which is why you learned it. Composers also write playing directions telling the player how to sound a note: arco means 'with the bow', pizzicato 'plucked', and con sordino 'with the mute'.",
+          "title": "Which clef, and how to play",
+          "body": "Each instrument reads the clef that keeps its notes on the stave with the fewest ledger lines. The violin and flute read treble. The cello and double bass read bass. The viola reads the alto clef — which is exactly why that clef was worth learning, since the viola is the only common instrument that lives in it.\n\nComposers also write directions telling the player how to sound a note. *Arco* means with the bow and *pizzicato* means plucked, so one cancels the other on a string part. *Con sordino* asks for the mute and *senza sordino* takes it off again. These say how to play, never how fast — a tempo word does that.",
           "example": {
             "template_id": "instrument_knowledge",
             "grade": 4,
             "seed": 4
           }
         },
-        "smartTip": "Four families: strings, woodwind, brass, percussion. The viola is the string instrument that reads the alto clef — that is exactly why the alto clef was worth learning.",
-        "didYouKnow": "‘Pizzicato’ is Italian for ‘pinched’ — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
+        "smartTip": "Arco cancels pizzicato and senza sordino cancels con sordino. Each direction has an undo.",
+        "didYouKnow": "'Pizzicato' is Italian for 'pinched' — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
       },
       "unlocks": "french-tempo-4"
     },
