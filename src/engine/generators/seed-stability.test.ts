@@ -96,6 +96,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   scale_construction: 2,
   triplet_recognition: 2,
   metre_classification: 3,
+  rest_grouping: 3,
   metre_from_class: 3,
   time_signature_match: 2,
   anacrusis_recognition: 3,
@@ -316,6 +317,11 @@ describe('seed-stability — grade-2 generator output is pinned byte-for-byte', 
 // so generator-level grade-3 output is characterized before U5 registers the
 // real lessons; U4/U5 append their own cases to this same array.
 const GRADE_3_EXTRA_CASES: Case[] = [
+  {
+    label: 'rest_grouping (grouping-3, chromaticly-6xs.3)',
+    templateId: 'rest_grouping',
+    atoms: ['rest_grouping:6/8', 'rest_grouping:9/8', 'rest_grouping:12/8'],
+  },
   {
     label: 'mode_swap (minor-keys-3, pre-lesson pin)',
     templateId: 'mode_swap',

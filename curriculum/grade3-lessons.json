@@ -590,16 +590,20 @@
     },
     {
       "id": "grouping-3",
-      "title": "Grouping in compound time",
+      "title": "Grouping notes and rests in compound time",
       "strand": "rhythm",
       "atoms": [
         "grouping:6/8",
         "grouping:9/8",
-        "grouping:12/8"
+        "grouping:12/8",
+        "rest_grouping:6/8",
+        "rest_grouping:9/8",
+        "rest_grouping:12/8"
       ],
       "templates": [
         "note_grouping",
-        "note_grouping_metre_id"
+        "note_grouping_metre_id",
+        "rest_grouping"
       ],
       "worked_example": {
         "template_id": "note_grouping",
@@ -610,11 +614,12 @@
         "objectives": [
           "Compound time beams its quavers in threes, one group per dotted beat",
           "6/8 and 3/4 hold the same six quavers and differ only in the beams",
-          "The number of beamed groups equals the number of beats"
+          "The number of beamed groups equals the number of beats",
+          "A rest never runs past the end of a dotted beat, and a wholly silent beat is one rest"
         ],
         "concept": {
           "title": "Threes, not twos",
-          "body": "A compound beat is a dotted crotchet, which divides into three quavers rather than two. So 6/8 beams its six quavers as two groups of three, 9/8 as three groups, and 12/8 as four. This is the clearest difference between 6/8 and 3/4 on the page: both bars hold the same six quavers, but 3/4 beams them in twos for three crotchet beats and 6/8 in threes for two dotted beats. Once the time signature has named the metre, the beams are what show it note by note. Count the groups and you have counted the beats.",
+          "body": "A compound beat is a dotted crotchet, which divides into three quavers rather than two. So 6/8 beams its six quavers as two groups of three, 9/8 as three groups, and 12/8 as four. This is the clearest difference between 6/8 and 3/4 on the page: both bars hold the same six quavers, but 3/4 beams them in twos for three crotchet beats and 6/8 in threes for two dotted beats. Once the time signature has named the metre, the beams are what show it note by note. Count the groups and you have counted the beats.\n\nRests follow the same beat as the beams do. A rest never runs past the end of a dotted crotchet beat, however long the silence is. A beat that is silent the whole way through is written as one dotted crotchet rest, not as three quaver rests and not as a crotchet rest plus a quaver rest. Where the silence starts partway through a beat, finish that beat with its own rest first, then write the next beat as one rest. The reader can then see every beat without counting, which is the only reason grouping rules exist.",
           "example": {
             "template_id": "note_grouping",
             "grade": 3,

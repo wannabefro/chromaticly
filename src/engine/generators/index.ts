@@ -24,6 +24,7 @@ import { keySignatureId } from './key-signature-id';
 import { metreClassification, metreFromClass } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
+import { restGrouping } from './rest-grouping';
 import { modeSwap } from './mode-swap';
 import { tonalCentre } from './tonal-centre';
 import { accidentalCancellation } from './accidental-cancellation';
@@ -74,6 +75,7 @@ export const GENERATORS: Record<string, Generator> = {
   major_scale_steps: majorScaleSteps,
   tie_dot_value: tieDotValue,
   note_grouping: noteGrouping,
+  rest_grouping: restGrouping,
   note_grouping_metre_id: noteGroupingMetreId,
   // First steps (grade 0, chromaticly-dhe).
   pulse_count: pulseCount,

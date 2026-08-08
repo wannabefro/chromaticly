@@ -2567,6 +2567,71 @@ function tonalCentreHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+// restGroupingHook (chromaticly-6xs.3) — recompute-don't-trust. The rule is read
+// off the rendered bar, not from the generator: no rest crosses a dotted beat,
+// and a beat silent throughout is one rest. Every distractor must break it.
+const REST_QUAVERS: Record<string, number> = { quaver: 1, crotchet: 2, minim: 4, semibreve: 8 };
+
+/** Each rest in the bar as {onset, quavers}, or null if the bar is unreadable. */
+function restSpans(music: Music): { onset: number; quavers: number }[] | null {
+  const spans: { onset: number; quavers: number }[] = [];
+  let at = 0;
+  for (const ev of music.voices[0]?.events ?? []) {
+    if (ev.type === 'barline') continue;
+    if (!('dur' in ev)) return null;
+    const base = REST_QUAVERS[ev.dur];
+    if (base === undefined) return null;
+    const quavers = ev.dots === 1 ? base * 1.5 : ev.dots === 2 ? base * 1.75 : base;
+    if (ev.type === 'rest') spans.push({ onset: at, quavers });
+    at += quavers;
+  }
+  return spans;
+}
+
+/** Why this bar breaks the grouping rule, or null when it obeys it. */
+function restGroupingFault(music: Music): string | null {
+  const spans = restSpans(music);
+  if (spans === null) return 'the bar holds an event with no readable length';
+  for (const s of spans) {
+    if ((s.onset % 3) + s.quavers > 3) return `a rest at quaver ${s.onset + 1} runs past the end of its dotted beat`;
+  }
+  for (let i = 1; i < spans.length; i++) {
+    const previous = spans[i - 1];
+    if (previous.onset + previous.quavers !== spans[i].onset) continue;
+    if (Math.floor(previous.onset / 3) === Math.floor(spans[i].onset / 3)) {
+      return `two rests share the dotted beat at quaver ${Math.floor(previous.onset / 3) * 3 + 1}`;
+    }
+  }
+  return null;
+}
+
+function restGroupingHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  const options = (inst.interaction.config as { option_music?: Record<string, Music> } | undefined)?.option_music;
+  const canonical = String(inst.answer.canonical);
+  if (!options || !(canonical in options)) return ['rest_grouping: the answer names no rendered bar'];
+
+  const fault = restGroupingFault(options[canonical]);
+  if (fault !== null) errors.push(`rest_grouping: the answer "${canonical}" is wrong — ${fault}`);
+
+  for (const d of inst.distractors as string[]) {
+    if (!(d in options)) {
+      errors.push(`rest_grouping: distractor "${d}" names no rendered bar`);
+    } else if (restGroupingFault(options[d]) === null) {
+      errors.push(`rest_grouping: distractor "${d}" obeys the rule too, so the item has two answers`);
+    }
+  }
+
+  // Same rhythm in every bar, or the question becomes an arithmetic one.
+  const silence = (music: Music) => (restSpans(music) ?? []).reduce((a, s) => a + s.quavers, 0);
+  for (const [label, music] of Object.entries(options)) {
+    if (silence(music) !== silence(options[canonical])) {
+      errors.push(`rest_grouping: "${label}" holds a different amount of silence from the answer`);
+    }
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   accidental_cancellation: accidentalCancellationHook,
   pulse_count: pulseCountHook,
@@ -2576,6 +2641,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   note_shape_length: noteShapeLengthHook,
   note_naming: noteNamingHook,
   tonal_centre: tonalCentreHook,
+  rest_grouping: restGroupingHook,
   note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,
   interval_compound_reduce: intervalCompoundReduceHook,

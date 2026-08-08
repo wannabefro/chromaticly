@@ -264,6 +264,13 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
+    case 'rest_grouping': {
+      const [sig] = parts;
+      if (!isCompoundTimeSignature(sig) || !metreRenderableTimeSignatures(grade).includes(sig)) {
+        throw new Error(`lessons: atom "${atom}" is not a renderable G${grade} compound signature`);
+      }
+      return;
+    }
     case 'tonal_centre': {
       const centre = parseTonalCentreAtom(atom);
       const pairs = tonalCentrePairs(grade);
