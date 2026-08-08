@@ -108,3 +108,43 @@ describe('TapPlacement component', () => {
     expect(() => noteCount(inst)).toThrow(/config.notes/);
   });
 });
+
+// Stage 2 (chromaticly-51o): the tap lands in the score, and the paper draws it.
+describe('tapPlacementSpec — the in-score gap protocol', () => {
+  test('it asks for the gap zones, so no other template gets them', () => {
+    expect(spec().usesSurfaceGaps).toBe(true);
+    expect(lookupInteraction('mcq').usesSurfaceGaps).toBeUndefined();
+    expect(lookupInteraction('find_the_bar').usesSurfaceGaps).toBeUndefined();
+  });
+
+  test('a gap tap in the score toggles exactly as a strip tap does', () => {
+    expect(spec().onSurfaceGapTap!(4, [])).toEqual(toggleBarline([], 4));
+    expect(spec().onSurfaceGapTap!(4, [4])).toEqual([]);
+    expect(spec().onSurfaceGapTap!(2, [9])).toEqual([2, 9]);
+  });
+
+  test('before grading the paper draws what was placed and marks nothing', () => {
+    const inst = instance();
+    expect(spec().surfaceBarlines!(inst, [3, 7], null)).toEqual({
+      gaps: [3, 7],
+      marks: { wrong: [], missed: [] },
+    });
+  });
+
+  // Ruling 3: the learner's wrong line AND the one they missed, together.
+  test('after grading it marks the wrong lines and the missed ones separately', () => {
+    const inst = instance();
+    const answer = inst.answer.canonical as number[];
+    const response = [answer[0], answer[1] + 1];
+    const drawn = spec().surfaceBarlines!(inst, response, false);
+    expect(drawn.gaps).toEqual(response);
+    expect(drawn.marks.wrong).toEqual([answer[1] + 1]);
+    expect(drawn.marks.missed).toEqual(answer.slice(1));
+  });
+
+  test('a fully correct answer marks nothing wrong and nothing missed', () => {
+    const inst = instance();
+    const drawn = spec().surfaceBarlines!(inst, inst.answer.canonical as number[], true);
+    expect(drawn.marks).toEqual({ wrong: [], missed: [] });
+  });
+});

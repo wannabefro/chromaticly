@@ -102,6 +102,9 @@ ${playButton}
   var INITIAL_ABC = ${initialAbc};
   var AUTORUN = ${autorun};
   var RING_COLOR = ${ring};
+  // Semantic, not the strand hue: "mine" and "right" must not share one.
+  var MARK_WRONG = '#e0575e';
+  var MARK_RIGHT = '#3a9e63';
   var visualObj = null;
   var synth = null;
   var pressStart = 0; // touchstart time — lets onNoteClick tell a long-press from a tap
@@ -168,6 +171,7 @@ ${playButton}
       // lastNoteHighlight): the stimulus's highlightNote command routinely
       // arrives before this render completes.
       if (lastNoteHighlight) highlightNote(lastNoteHighlight.locator, lastNoteHighlight.color);
+      if (gapMode) { drawGapZones(); if (lastBarlines) drawBarlines(lastBarlines.gaps, lastBarlines.color, lastBarlines.marks); }
     } catch (e) {
       emit({ type: 'error', message: 'render: ' + (e && e.message || e) });
     }
@@ -422,6 +426,124 @@ ${playButton}
     el.insertBefore(ring, el.firstChild);
   }
 
+
+  // --- Gap tapping (chromaticly-51o: add the bar-lines) ---------------------
+  // Our own rects, not abcjs's clickListener: that hit-tests to a NOTE.
+  var gapMode = false;
+  var lastBarlines = null;
+
+  function noteEls() {
+    var svg = svgEl();
+    if (!svg) return [];
+    var els = Array.prototype.slice.call(svg.querySelectorAll('.abcjs-note.abcjs-v0'));
+    return els.sort(function (a, b) {
+      var ai = /abcjs-n(\d+)/.exec(a.getAttribute('class') || '');
+      var bi = /abcjs-n(\d+)/.exec(b.getAttribute('class') || '');
+      return (ai ? +ai[1] : 0) - (bi ? +bi[1] : 0);
+    });
+  }
+
+  /** The x of each gap centre, index 0 = the gap after note 1. */
+  function gapCentres() {
+    var els = noteEls();
+    var xs = [];
+    for (var i = 0; i < els.length; i++) {
+      var bb;
+      try { bb = els[i].getBBox(); } catch (e) { return []; }
+      xs.push(bb.x + bb.width / 2);
+    }
+    var centres = [];
+    for (var k = 1; k < xs.length; k++) centres.push((xs[k - 1] + xs[k]) / 2);
+    return centres;
+  }
+
+  /** The stave's own top and bottom, so a bar-line spans it exactly. */
+  function staveBox() {
+    var svg = svgEl();
+    var staff = svg && svg.querySelector('.abcjs-staff');
+    if (!staff) return null;
+    try { return staff.getBBox(); } catch (e) { return null; }
+  }
+
+  function clearLayer(name) {
+    var svg = svgEl();
+    if (!svg) return;
+    var old = svg.querySelector('.' + name);
+    if (old) old.parentNode.removeChild(old);
+  }
+
+  function drawGapZones() {
+    clearLayer('gap-zones');
+    var svg = svgEl();
+    var box = staveBox();
+    if (!svg || !box || !gapMode) return;
+    var centres = gapCentres();
+    if (centres.length === 0) return;
+    var layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    layer.setAttribute('class', 'gap-zones');
+    for (var i = 0; i < centres.length; i++) {
+      // Half-way to each neighbour, so the zones tile with no dead space.
+      var left = i === 0 ? box.x : (centres[i - 1] + centres[i]) / 2;
+      var right = i === centres.length - 1 ? box.x + box.width : (centres[i] + centres[i + 1]) / 2;
+      var guide = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      guide.setAttribute('x1', centres[i]); guide.setAttribute('x2', centres[i]);
+      guide.setAttribute('y1', box.y - 4); guide.setAttribute('y2', box.y + box.height + 4);
+      guide.setAttribute('stroke', '#d8d3c4');
+      guide.setAttribute('stroke-width', '1.5');
+      guide.setAttribute('stroke-dasharray', '2 3');
+      layer.appendChild(guide);
+      var zone = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      zone.setAttribute('x', left); zone.setAttribute('width', Math.max(right - left, 1));
+      zone.setAttribute('y', box.y - 10); zone.setAttribute('height', box.height + 20);
+      zone.setAttribute('fill', 'transparent');
+      zone.setAttribute('class', 'gap-zone');
+      zone.setAttribute('data-gap', i + 1);
+      zone.addEventListener('click', (function (gap) {
+        return function () { emit({ type: 'gapTapped', gap: gap }); };
+      })(i + 1));
+      layer.appendChild(zone);
+    }
+    svg.appendChild(layer);
+  }
+
+  function setGapMode(enabled) {
+    gapMode = !!enabled;
+    if (!gapMode) { lastBarlines = null; clearLayer('gap-zones'); clearLayer('placed-barlines'); return; }
+    drawGapZones();
+  }
+
+  function drawBarlines(gaps, color, marks) {
+    lastBarlines = { gaps: gaps || [], color: color, marks: marks || null };
+    clearLayer('placed-barlines');
+    var svg = svgEl();
+    var box = staveBox();
+    if (!svg || !box) return;
+    var centres = gapCentres();
+    var layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    layer.setAttribute('class', 'placed-barlines');
+    var wrong = (marks && marks.wrong) || [];
+    var missed = (marks && marks.missed) || [];
+    function line(gap, stroke, dashed) {
+      var x = centres[gap - 1];
+      if (x == null) return;
+      var el = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      el.setAttribute('x1', x); el.setAttribute('x2', x);
+      el.setAttribute('y1', box.y); el.setAttribute('y2', box.y + box.height);
+      el.setAttribute('stroke', stroke);
+      el.setAttribute('stroke-width', '2.4');
+      el.setAttribute('stroke-linecap', 'round');
+      if (dashed) el.setAttribute('stroke-dasharray', '3 3');
+      layer.appendChild(el);
+    }
+    for (var i = 0; i < lastBarlines.gaps.length; i++) {
+      var gap = lastBarlines.gaps[i];
+      line(gap, wrong.indexOf(gap) >= 0 ? MARK_WRONG : (color || RING_COLOR), false);
+    }
+    // Printing the answer alone hides half the lesson.
+    for (var j = 0; j < missed.length; j++) line(missed[j], MARK_RIGHT, true);
+    svg.appendChild(layer);
+  }
+
   function handle(cmd) {
     if (!cmd || !cmd.type) return;
     if (cmd.type === 'render') renderAbc(cmd.abc, cmd.scale, cmd.staffwidth);
@@ -431,6 +553,8 @@ ${playButton}
     else if (cmd.type === 'highlightBar') highlightBar(cmd.bar, cmd.color);
     else if (cmd.type === 'highlightNote') highlightNote(cmd.locator, cmd.color);
     else if (cmd.type === 'playAbc') playAbc(cmd.abc);
+    else if (cmd.type === 'setGapMode') setGapMode(cmd.enabled);
+    else if (cmd.type === 'setBarlines') drawBarlines(cmd.gaps, cmd.color, cmd.marks);
   }
 
   // RN -> WebView (react-native-webview delivers to window 'message').

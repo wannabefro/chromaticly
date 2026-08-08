@@ -65,6 +65,14 @@ export interface InteractionSpec<Response = unknown> {
   onSurfaceTap?(bar: number, response: Response): Response;
   /** Which bar (1-indexed) the current response should tint in the score, or null. */
   surfaceHighlight?(response: Response): number | null;
+  /** tap_placement: a position BETWEEN two notes, which no bar index addresses. */
+  usesSurfaceGaps?: boolean;
+  onSurfaceGapTap?(gap: number, response: Response): Response;
+  surfaceBarlines?(
+    instance: ExerciseInstance,
+    response: Response,
+    graded: boolean | null,
+  ): { gaps: number[]; marks: { wrong: number[]; missed: number[] } };
   /** Per-item feedback summary (D5): non-null only when some but not all items are
    *  correct — drives the amber `partial` FeedbackSheet instead of the plain
    *  incorrect one. All-right and all-wrong both return null (those route to the

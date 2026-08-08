@@ -495,12 +495,16 @@ and it reuses the existing contracts rather than adding to them:
    Principle 4 is that wrong answers teach, and printing the right answer alone leaves the learner
    to diff two pictures from memory.
 
-**Built in two stages, and the first one is visibly short of the card above.** The approved card
-draws the bar-lines inside the paper, which needs the surface to report a tap *between* two notes.
-`src/music-surface/bridge.ts` emits `barTapped` only — a tap resolves to the note abcjs hit-tested,
-never to a gap. So stage 1 puts the tap zones in the answer card below the stave, exactly as
-`find_the_bar`'s bar strip does, and grades the same set of positions. Stage 2 adds the gap event
-and moves the zones into the paper. Tracked on chromaticly-51o.
+**Built in two stages; both have landed.** Stage 1 put the tap zones in the answer card below the
+stave. Stage 2 moved them into the paper, which is the card as drawn: `setGapMode` tiles transparent
+zones between consecutive notes, a tap emits `gapTapped`, and `setBarlines` draws the placed lines
+and the marking. The zones are our own rects rather than abcjs's `clickListener`, because that
+hit-tests a tap to a NOTE and can never report the space between two. Gap mode is off by default —
+the zones sit above the notes, so no other template may have them.
+
+**The strip below the stave stays.** It is the guaranteed path, exactly as `find_the_bar` keeps its
+bar strip: a 44px zone inside a WebView is not a target every learner will hit, and the strip also
+carries the placed count and works with a screen reader.
 
 The rejected alternative is recorded there too: an mcq that labels candidate positions and asks
 where the FIRST bar-line goes. It ships without a design decision, and it asks for one bar-line

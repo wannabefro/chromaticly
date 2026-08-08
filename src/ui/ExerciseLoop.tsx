@@ -105,6 +105,9 @@ export function ExerciseLoop({
       if (ev.type === 'barTapped' && graded === null && spec.onSurfaceTap) {
         setResponse((prev: unknown) => spec.onSurfaceTap!(ev.bar, prev));
       }
+      if (ev.type === 'gapTapped' && graded === null && spec.onSurfaceGapTap) {
+        setResponse((prev: unknown) => spec.onSurfaceGapTap!(ev.gap, prev));
+      }
     },
     [spec, graded],
   );
@@ -112,6 +115,17 @@ export function ExerciseLoop({
   useEffect(() => {
     surfaceRef.current?.highlightBar(spec.surfaceHighlight?.(response) ?? null, hue);
   }, [spec, response, hue]);
+
+  // chromaticly-51o. The zones sit above the notes, so they stay off by default.
+  useEffect(() => {
+    surfaceRef.current?.setGapMode(spec.usesSurfaceGaps === true);
+  }, [spec, instance]);
+
+  useEffect(() => {
+    if (!spec.surfaceBarlines) return;
+    const drawn = spec.surfaceBarlines(instance, response, graded);
+    surfaceRef.current?.setBarlines(drawn.gaps, hue, drawn.marks);
+  }, [spec, instance, response, graded, hue]);
 
   // D9 "hear yours": an answer card (e.g. transposition_input) builds its own
   // Music and plays it through the persistent STIMULUS surface — no second

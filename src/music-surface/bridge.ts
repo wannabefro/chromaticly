@@ -28,7 +28,11 @@ export type SurfaceCommand =
    *  transposition_input) whose Music is built from the learner's own response,
    *  not the stimulus — a second WebView would fight the one-persistent-surface
    *  architecture, so this reuses the single mounted surface instead. */
-  | { type: 'playAbc'; abc: string };
+  | { type: 'playAbc'; abc: string }
+  /** tap_placement (chromaticly-51o). Off elsewhere: the zones sit above the
+   *  notes. `gaps` are indices, 1 = the space after note 1. */
+  | { type: 'setGapMode'; enabled: boolean }
+  | { type: 'setBarlines'; gaps: number[]; color?: string; marks?: { wrong: number[]; missed: number[] } };
 
 /** WebView → RN events, including instrumentation timings (ms). */
 export type SurfaceEvent =
@@ -48,7 +52,9 @@ export type SurfaceEvent =
   | { type: 'barTapped'; bar: number }
   /** The learner long-pressed a bar to hear just it (1-indexed, design 4c). The surface
    *  plays that bar itself; this fires so RN can react (feedback), not to drive audio. */
-  | { type: 'barHeld'; bar: number };
+  | { type: 'barHeld'; bar: number }
+  /** The learner tapped the gap after note `gap` (1-indexed, chromaticly-51o). */
+  | { type: 'gapTapped'; gap: number };
 
 export function encodeCommand(cmd: SurfaceCommand): string {
   return JSON.stringify(cmd);

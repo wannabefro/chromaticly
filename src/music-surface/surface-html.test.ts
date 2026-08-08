@@ -353,3 +353,38 @@ describe('highlightNote — null/out-of-range locator clears or ignores without 
     expect(posted.some((p) => JSON.parse(p).type === 'error')).toBe(false);
   });
 });
+
+// chromaticly-51o stage 2. abcjs hit-tests a tap to a NOTE, so the gap zones are
+// our own rects. The invariants that make them work live in the emitted script.
+describe('surface HTML — gap zones (chromaticly-51o)', () => {
+  const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
+
+  test('a gap tap emits its 1-indexed position, not a bar', () => {
+    expect(html).toContain("type: 'gapTapped'");
+  });
+
+  test('gap mode is off unless a command turns it on', () => {
+    expect(html).toContain('var gapMode = false;');
+    expect(html).toContain("cmd.type === 'setGapMode'");
+  });
+
+  test('the zones tile — each reaches half-way to its neighbour', () => {
+    expect(html).toContain('(centres[i - 1] + centres[i]) / 2');
+    expect(html).toContain('(centres[i] + centres[i + 1]) / 2');
+  });
+
+  // Ordering by DOM position would follow abcjs's paint order, not the score's.
+  test('notes are ordered by their abcjs voice index, not by document order', () => {
+    expect(html).toContain('abcjs-n(');
+  });
+
+  test('marking uses the semantic colours, never the strand hue', () => {
+    expect(html).toContain("var MARK_WRONG = '#e0575e';");
+    expect(html).toContain("var MARK_RIGHT = '#3a9e63';");
+  });
+
+  // Drawn from getBBox, so a command landing before the paint finds nothing.
+  test('a render replays the zones and the placed lines', () => {
+    expect(html).toContain('if (gapMode) { drawGapZones();');
+  });
+});

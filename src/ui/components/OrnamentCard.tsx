@@ -54,6 +54,9 @@ export const OrnamentCard = forwardRef<NotationCardHandle, OrnamentCardProps>(fu
     highlightNote: (locator, color) => heroRef.current?.highlightNote(locator, color),
     playAbc: (abc: string) => heroRef.current?.playAbc(abc),
     playMusic: (m: Music) => heroRef.current?.playMusic(m),
+    // An ornament card never asks for a bar-line, so these are inert here.
+    setGapMode: () => {},
+    setBarlines: () => {},
   }));
 
   return (

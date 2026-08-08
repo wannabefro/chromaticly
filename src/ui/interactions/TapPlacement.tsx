@@ -2,11 +2,9 @@
 // approved 2026-08-08). The rhythm is rendered above on paper by the exercise
 // loop; this is the gap strip the learner answers with.
 //
-// Staged, and the stage is recorded in the divergence entry: the approved card
-// draws the bar-lines INSIDE the paper, which needs the surface to report a tap
-// between two notes. It reports `barTapped` only. So the strip below is the
-// input path today, exactly as find_the_bar's bar strip is, and the in-score tap
-// lands when the surface gains a gap event.
+// The tap lands in the score: `gapTapped` reports the space between two notes
+// and the paper draws the placed lines. The strip below stays, as
+// find_the_bar's does — a 44px WebView zone is not a target everyone hits.
 
 import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -16,7 +14,6 @@ import type { Music, MusicEvent } from '../../music/types';
 import { colors, shape, strandDef, type as typo } from '../theme';
 import type { InteractionComponentProps } from './types';
 
-/** The note positions the learner has placed a bar-line after, ascending. */
 export type TapPlacementResponse = number[];
 
 /** Fails loud, like `barCount`. A strip with no gaps is unanswerable, and
@@ -127,8 +124,27 @@ function sameSet(a: number[], b: number[]): boolean {
   return a.length === b.length && [...a].sort((x, y) => x - y).every((v, i) => v === [...b].sort((x, y) => x - y)[i]);
 }
 
+export function barlineMarks(
+  instance: ExerciseInstance,
+  response: TapPlacementResponse,
+  graded: boolean | null,
+): { gaps: number[]; marks: { wrong: number[]; missed: number[] } } {
+  const correct = (instance.answer.canonical as number[]) ?? [];
+  if (graded === null) return { gaps: response, marks: { wrong: [], missed: [] } };
+  return {
+    gaps: response,
+    marks: {
+      wrong: response.filter((p) => !correct.includes(p)),
+      missed: correct.filter((p) => !response.includes(p)),
+    },
+  };
+}
+
 export const tapPlacementSpec = {
   Component: TapPlacement,
+  usesSurfaceGaps: true,
+  onSurfaceGapTap: (gap: number, response: TapPlacementResponse) => toggleBarline(response, gap),
+  surfaceBarlines: barlineMarks,
   emptyResponse: (): TapPlacementResponse => [],
   canCheck: (response: TapPlacementResponse) => response.length > 0,
   // Set equality, as the template spec requires: the tap order cannot matter.

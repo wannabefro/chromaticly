@@ -28,6 +28,10 @@ export interface MusicSurfaceHandle {
   /** Convenience over `playAbc` — emits `music` through the existing abc
    *  emitter first (D9). */
   playMusic(music: Music): void;
+  /** tap_placement (chromaticly-51o): turn the between-note tap zones on, and
+   *  draw the bar-lines the learner has placed. */
+  setGapMode(enabled: boolean): void;
+  setBarlines(gaps: number[], color?: string, marks?: { wrong: number[]; missed: number[] }): void;
 }
 
 export interface MusicSurfaceProps {
@@ -133,6 +137,8 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
       },
       playAbc: (abc: string) => send({ type: 'playAbc', abc }),
       playMusic: (music: Music) => send({ type: 'playAbc', abc: musicToAbc(music) }),
+      setGapMode: (enabled: boolean) => send({ type: 'setGapMode', enabled }),
+      setBarlines: (gaps, color, marks) => send({ type: 'setBarlines', gaps, color, marks }),
     }),
     [send, sendHighlight],
   );
