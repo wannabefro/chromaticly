@@ -7,7 +7,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import type { Music } from '../../music/types';
-import { colors, elevation, shape, strandDef, type, type Strand } from '../theme';
+import { colors, elevation, glyph, shape, strandDef, type, type Strand } from '../theme';
 import { NotationGlyph } from './NotationGlyph';
 
 const GLYPH_HEIGHT = 52;
@@ -66,11 +66,11 @@ const styles = StyleSheet.create({
   },
   op: {
     ...type.title,
-    fontSize: 26,
+    fontSize: glyph.xl,
     color: colors.paperMuted,
   },
   q: {
     ...type.hero,
-    fontSize: 30,
+    fontSize: glyph.xxl,
   },
 });

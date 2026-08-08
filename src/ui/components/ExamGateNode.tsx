@@ -6,7 +6,7 @@
 
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, shape, type as typo } from '../theme';
+import { colors, glyph, shape, type as typo } from '../theme';
 
 export interface ExamGateNodeProps {
   levelGrade: number;
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   title: {
     ...typo.cardTitle,
-    fontSize: 13.5,
+    fontSize: typo.body.fontSize,
     color: colors.hint,
   },
   subtitle: {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     color: colors.textFaint,
   },
   chevron: {
-    fontSize: 14,
+    fontSize: glyph.sm,
     color: colors.textFaint,
   },
 });

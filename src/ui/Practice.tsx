@@ -15,7 +15,7 @@ import { generate } from '../engine/generators';
 import { generateByEar } from '../engine/generators/by-ear-cards';
 import { useProgressContext } from '../learn/ProgressContext';
 import { nextPracticeTemplate } from '../learn/practice-plan';
-import { colors, shape, strandDef, type as typo } from './theme';
+import { colors, glyph, shape, strandDef, type as typo } from './theme';
 import { ExerciseLoop } from './ExerciseLoop';
 import type { AttemptResult } from './grading';
 
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
   },
   chipOn: { borderColor: colors.text, backgroundColor: colors.surfaceCard },
-  chipGlyph: { fontSize: 13 },
+  chipGlyph: { fontSize: glyph.sm },
   chipLabel: { ...typo.label, color: colors.textMuted },
   chipLabelOn: { color: colors.text },
   empty: { gap: shape.spaceInline, padding: shape.spaceScreenX },

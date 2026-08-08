@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   collapsedTitle: {
     ...typo.cardTitle,
-    fontSize: 14,
+    fontSize: typo.body.fontSize,
     color: colors.textMuted,
   },
   readinessChip: {
@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
   },
   readinessChipText: {
     ...typo.label,
-    fontSize: 10,
     color: colors.readinessText,
   },
   expanded: {

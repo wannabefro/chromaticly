@@ -20,7 +20,7 @@ import { NotationCard } from '../components/NotationCard';
 import { StaticNotation } from '../components/StaticNotation';
 import type { Option } from '../grading';
 import { Screen } from '../Screen';
-import { colors, examColors as x, shape, type } from '../theme';
+import { colors, examColors as x, glyph, shape, type } from '../theme';
 
 export interface ExamReviewProps {
   paper: ExamPaper;
@@ -171,9 +171,9 @@ export function ExamReview({
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: x.bg },
   head: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline, paddingHorizontal: shape.spaceScreenX, paddingTop: shape.spaceTight },
-  back: { fontFamily: type.label.fontFamily, fontSize: 22, color: x.muted },
-  title: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.ink },
-  summary: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.muted },
+  back: { fontFamily: type.label.fontFamily, fontSize: glyph.lg, color: x.muted },
+  title: { fontFamily: type.examPrompt.fontFamily, fontSize: type.cardTitle.fontSize, color: x.ink },
+  summary: { fontFamily: type.label.fontFamily, fontSize: type.caption.fontSize, color: x.muted },
 
   strip: { flexDirection: 'row', gap: shape.spaceTight, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceInline },
   stripCell: { flex: 1, height: 6, borderRadius: shape.radiusChip },
@@ -185,9 +185,9 @@ const styles = StyleSheet.create({
 
   body: { padding: shape.spaceScreenX, gap: shape.spaceCard, paddingBottom: shape.spaceScreenBottom },
   qHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
-  section: { fontFamily: type.examPrompt.fontFamily, fontSize: 15, color: x.ink },
-  mark: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.muted },
-  counter: { fontFamily: type.label.fontFamily, fontSize: 11, color: x.faint },
+  section: { fontFamily: type.examPrompt.fontFamily, fontSize: type.body.fontSize, color: x.ink },
+  mark: { fontFamily: type.label.fontFamily, fontSize: type.caption.fontSize, color: x.muted },
+  counter: { fontFamily: type.label.fontFamily, fontSize: type.label.fontSize, color: x.faint },
   prompt: { fontFamily: type.examPrompt.fontFamily, fontSize: type.examPrompt.fontSize, lineHeight: type.examPrompt.lineHeight, color: x.ink },
 
   options: { gap: shape.spaceInline },
@@ -204,9 +204,9 @@ const styles = StyleSheet.create({
   optionCorrect: { borderColor: colors.correct },
   optionWrong: { borderColor: x.accent },
   optionBody: { flex: 1, gap: shape.spaceTight },
-  optionLabel: { fontFamily: type.body.fontFamily, fontSize: 16, color: x.ink },
-  optionNote: { fontFamily: type.label.fontFamily, fontSize: 11, color: x.faint },
-  marker: { fontFamily: type.label.fontFamily, fontSize: 15, color: x.faint, width: 14 },
+  optionLabel: { fontFamily: type.body.fontFamily, fontSize: type.option.fontSize, color: x.ink },
+  optionNote: { fontFamily: type.label.fontFamily, fontSize: type.label.fontSize, color: x.faint },
+  marker: { fontFamily: type.label.fontFamily, fontSize: type.body.fontSize, color: x.faint, width: 14 },
   markerCorrect: { color: colors.correct },
   markerWrong: { color: x.accent },
 
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     padding: shape.spaceCard,
   },
   whyText: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, lineHeight: type.body.lineHeight, color: x.ink },
-  revise: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.accent },
+  revise: { fontFamily: type.label.fontFamily, fontSize: type.caption.fontSize, color: x.accent },
 
   footer: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline, padding: shape.spaceScreenX },
   ghostButton: { paddingVertical: shape.spaceCard, paddingHorizontal: shape.spaceInline },
@@ -233,6 +233,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: shape.tapMin,
   },
-  primaryLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.card },
+  primaryLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: type.option.fontSize, color: x.card },
   disabled: { opacity: 0.4 },
 });

@@ -19,7 +19,7 @@ import {
   type NoteValueResponse,
   type NoteValueTarget,
 } from '../grading';
-import { colors, fonts, shape, strandDef, type as typo } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo } from '../theme';
 import { CLEF_GLYPH, LINE_GAP, LINE_TOP, ledgerLineYs, noteY, PAPER_INSET, STAVE_LINES, STEP } from './stave-geometry';
 import type { InteractionComponentProps, InteractionSpec } from './types';
 import type { ExerciseInstance } from '../../engine/schema';
@@ -228,14 +228,14 @@ const styles = StyleSheet.create({
   staveCard: { backgroundColor: colors.paper, borderRadius: shape.radiusPaper, alignSelf: 'stretch', overflow: 'hidden' },
   play: { position: 'absolute', right: shape.spaceCard, bottom: shape.spaceCard },
   staveLine: { position: 'absolute', left: PAPER_INSET, right: PAPER_INSET, height: 1.4, backgroundColor: colors.paperLine },
-  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
+  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: glyph.xxl, color: colors.paperInk },
   slot: { position: 'absolute', top: 0, bottom: 0 },
   ghost: { position: 'absolute', left: '50%', marginLeft: -5, width: 11, height: 11, borderRadius: 6, backgroundColor: colors.paperSlot },
   notehead: { position: 'absolute', left: '50%', marginLeft: -8, width: 15, height: 11, borderRadius: 7, transform: [{ rotate: '-20deg' }] },
   stem: { position: 'absolute', left: '50%', marginLeft: shape.spaceTight, width: 1.6, height: 22 },
   dot: { position: 'absolute', left: '50%', marginLeft: shape.spaceInline, width: 3, height: 3, borderRadius: 1.5 },
   ledgerLine: { position: 'absolute', left: '50%', marginLeft: -14, width: 28, height: 1.4, backgroundColor: colors.paperLine },
-  valueTag: { position: 'absolute', top: '100%', left: '50%', width: 80, marginLeft: -40, textAlign: 'center', ...typo.label, fontSize: 9 },
+  valueTag: { position: 'absolute', top: '100%', left: '50%', width: 80, marginLeft: -40, textAlign: 'center', ...typo.label },
   paletteRow: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline },
   chip: {
     minHeight: shape.tapMin,
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     borderWidth: shape.borderWActive,
     backgroundColor: colors.surfaceCard,
   },
-  chipText: { ...typo.option, fontSize: 13, color: colors.text },
+  chipText: { ...typo.option, fontSize: typo.body.fontSize, color: colors.text },
   footer: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
   caption: { ...typo.label, color: colors.textFaint, flex: 1 },
   undoButton: {

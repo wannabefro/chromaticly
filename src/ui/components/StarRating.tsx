@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   },
   star: {
     ...typo.label,
-    fontSize: 12,
     letterSpacing: 1,
     color: colors.hint,
   },

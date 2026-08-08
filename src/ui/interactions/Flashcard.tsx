@@ -195,5 +195,5 @@ const styles = StyleSheet.create({
   },
   gradeButtonDisabled: { opacity: 0.35 },
   gradeLabel: { ...typo.option },
-  gradeInterval: { ...typo.label, fontSize: 9 },
+  gradeInterval: { ...typo.label },
 });

@@ -9,7 +9,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Music, Pitch } from '../../music/types';
-import { colors, fonts, shape, strandDef } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo } from '../theme';
 import type { InteractionComponentProps } from './types';
 
 /** ~14% tint of the strand hue (design/README 12–16% band), built from the theme
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
   },
   axisLabel: {
     fontFamily: fonts.mono,
-    fontSize: 10,
+    fontSize: typo.label.fontSize,
     color: colors.textMuted,
   },
   chip: {
@@ -249,15 +249,15 @@ const styles = StyleSheet.create({
   },
   numeral: {
     fontFamily: fonts.examBold,
-    fontSize: 22,
+    fontSize: glyph.lg,
     color: colors.text,
   },
   positionGlyph: {
-    fontSize: 18,
+    fontSize: glyph.md,
   },
   caption: {
     fontFamily: fonts.mono,
-    fontSize: 10,
+    fontSize: typo.label.fontSize,
     color: colors.textFaint,
   },
   readout: {
@@ -273,11 +273,11 @@ const styles = StyleSheet.create({
   },
   readoutLabel: {
     fontFamily: fonts.mono,
-    fontSize: 10,
+    fontSize: typo.label.fontSize,
     color: colors.textMuted,
   },
   readoutValue: {
     fontFamily: fonts.examBold,
-    fontSize: 20,
+    fontSize: typo.prompt.fontSize,
   },
 });

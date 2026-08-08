@@ -13,7 +13,7 @@
 
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, fonts, shape, strandDef, type as typo, type Strand } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo, type Strand } from '../theme';
 
 export interface PrereqChipProps {
   /** The lane this unit leans on — the chip's hue, glyph and destination. */
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   glyph: {
     fontFamily: fonts.music,
-    fontSize: 15,
+    fontSize: glyph.sm,
     lineHeight: 18,
   },
   body: {

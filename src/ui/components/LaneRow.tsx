@@ -29,7 +29,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { LaneDepth } from '../../learn/lane-depth';
-import { colors, fonts, shape, strandDef, type as typo, type Strand } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo, type Strand } from '../theme';
 
 /** The five ABRSM grades the bar always shows, so every lane is read against the
  *  same ruler — a lane with content at 4-5 only still occupies five slots, with
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   glyph: {
     fontFamily: fonts.music,
-    fontSize: 17,
+    fontSize: glyph.md,
   },
   body: {
     flex: 1,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   name: {
     ...typo.cardTitle,
-    fontSize: 14.5,
+    fontSize: typo.body.fontSize,
     lineHeight: 18,
     color: colors.text,
   },
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   },
   chev: {
     ...typo.label,
-    fontSize: 17,
+    fontSize: glyph.md,
     flexShrink: 0,
     color: colors.textGhost,
   },

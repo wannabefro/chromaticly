@@ -12,7 +12,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import type { ExerciseInstance } from '../../engine/schema';
 import type { BarlineMarks } from '../../music-surface/bridge';
 import type { Music, MusicEvent } from '../../music/types';
-import { colors, shape, strandDef, type as typo } from '../theme';
+import { colors, glyph, shape, strandDef, type as typo } from '../theme';
 import type { InteractionComponentProps } from './types';
 
 export type TapPlacementResponse = number[];
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   strip: { flexDirection: 'row', alignItems: 'center', paddingVertical: shape.spaceTight },
   pair: { flexDirection: 'row', alignItems: 'center' },
-  note: { fontSize: 26, lineHeight: 34, color: colors.text },
+  note: { fontSize: glyph.xl, lineHeight: 34, color: colors.text },
   // Tall and narrow: the gaps tile with no dead space, so no gap can be missed.
   gap: { width: shape.tapMin, minHeight: shape.tapMin, alignItems: 'center', justifyContent: 'center' },
   rule: { width: 1.5, height: 30, borderRadius: 2, backgroundColor: colors.borderStrong },

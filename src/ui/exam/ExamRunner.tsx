@@ -17,7 +17,7 @@ import { assembleOptions, type Option } from '../grading';
 import { ExamReview } from './ExamReview';
 import { NotationCard } from '../components/NotationCard';
 import { Screen } from '../Screen';
-import { colors, examColors as x, shape, type } from '../theme';
+import { colors, examColors as x, glyph, shape, type } from '../theme';
 
 type Phase = 'start' | 'paper' | 'review' | 'results' | 'marked';
 
@@ -513,7 +513,7 @@ const styles = StyleSheet.create({
   h1: { fontFamily: type.examTitle.fontFamily, fontSize: type.examTitle.fontSize, lineHeight: type.examTitle.lineHeight, color: x.ink },
   conditions: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, lineHeight: type.body.lineHeight, color: x.muted },
   startHead: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
-  close: { fontFamily: type.label.fontFamily, fontSize: 20, color: x.muted },
+  close: { fontFamily: type.label.fontFamily, fontSize: glyph.md, color: x.muted },
   statRow: { flexDirection: 'row', gap: shape.spaceInline },
   statTile: {
     flex: 1,
@@ -525,7 +525,7 @@ const styles = StyleSheet.create({
     borderColor: x.border,
     paddingVertical: shape.spaceInline,
   },
-  statValue: { fontFamily: type.examTitle.fontFamily, fontSize: 20, lineHeight: 24, color: x.ink },
+  statValue: { fontFamily: type.examTitle.fontFamily, fontSize: type.prompt.fontSize, lineHeight: 24, color: x.ink },
   stat: { fontFamily: type.overline.fontFamily, fontSize: type.overline.fontSize, letterSpacing: type.overline.letterSpacing, color: x.faint },
   // exam bar (3c): answered-marks counter + the running clock
   examBar: {
@@ -536,7 +536,7 @@ const styles = StyleSheet.create({
     paddingTop: shape.spaceSnug,
     paddingBottom: shape.spaceInline,
   },
-  marks: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.muted },
+  marks: { fontFamily: type.label.fontFamily, fontSize: type.caption.fontSize, color: x.muted },
   marksNow: { color: x.ink },
   timer: {
     flexDirection: 'row',
@@ -550,7 +550,7 @@ const styles = StyleSheet.create({
     paddingVertical: shape.spaceTight,
   },
   timerDot: { width: 7, height: 7, borderRadius: 4, backgroundColor: x.accent },
-  timerLabel: { fontFamily: type.label.fontFamily, fontSize: 13, color: x.ink },
+  timerLabel: { fontFamily: type.label.fontFamily, fontSize: type.body.fontSize, color: x.ink },
   // section navigator: sections done / current / still to come
   navigator: { flexDirection: 'row', gap: shape.spaceTight, paddingHorizontal: shape.spaceScreenX, paddingBottom: shape.spaceInline },
   navSeg: { flex: 1, height: 6, borderRadius: shape.radiusChip, backgroundColor: x.borderStrong },
@@ -568,8 +568,8 @@ const styles = StyleSheet.create({
   sectionNameCol: { flex: 1, minWidth: 0 },
   // The continuity marker sits UNDER the section name and in the muted register, so
   // it reads as a footnote to the paper's verdict rather than competing with it.
-  flagged: { fontFamily: type.label.fontFamily, fontSize: 11, color: x.faint },
-  sectionName: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, lineHeight: 21, color: x.ink },
+  flagged: { fontFamily: type.label.fontFamily, fontSize: type.label.fontSize, color: x.faint },
+  sectionName: { fontFamily: type.examPrompt.fontFamily, fontSize: type.cardTitle.fontSize, lineHeight: 21, color: x.ink },
   // Marks are numbers users scan, so they're mono (design/README.md).
   sectionMarks: { fontFamily: type.label.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   weak: { color: x.accent },
@@ -580,7 +580,7 @@ const styles = StyleSheet.create({
   footer: { padding: shape.spaceScreenX, gap: shape.spaceInline },
   paperFooter: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceCard, padding: shape.spaceScreenX },
   flag: { paddingVertical: shape.spaceInline },
-  flagLabel: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.faint },
+  flagLabel: { fontFamily: type.label.fontFamily, fontSize: type.caption.fontSize, color: x.faint },
   flagOn: { color: x.accent },
   nextButton: { flex: 1 },
   primary: {
@@ -592,15 +592,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   primaryDisabled: { opacity: 0.4 },
-  primaryLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.card },
+  primaryLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: type.option.fontSize, color: x.card },
   ghost: { paddingVertical: shape.spaceInline, alignItems: 'center' },
   ghostLabel: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   // results. Ruling C: scannable numbers are ALWAYS mono, the results total
   // included — serif is for exam words (headings, band names), never digits.
-  total: { fontFamily: type.label.fontFamily, fontSize: 44, lineHeight: 48, color: x.ink },
-  totalOf: { fontFamily: type.label.fontFamily, fontSize: 22, color: x.muted },
+  total: { fontFamily: type.label.fontFamily, fontSize: type.display.fontSize, lineHeight: type.display.lineHeight, color: x.ink },
+  totalOf: { fontFamily: type.label.fontFamily, fontSize: type.prompt.fontSize, color: x.muted },
   bandChip: { alignSelf: 'flex-start', borderRadius: shape.radiusChip, paddingHorizontal: shape.spaceCard, paddingVertical: shape.spaceSnug },
-  bandChipLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.card },
+  bandChipLabel: { fontFamily: type.examPrompt.fontFamily, fontSize: type.cardTitle.fontSize, color: x.card },
   // paper
   paperHeader: {
     flexDirection: 'row',
@@ -612,7 +612,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: shape.borderW,
     borderBottomColor: x.border,
   },
-  sectionTag: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.ink },
+  sectionTag: { fontFamily: type.examPrompt.fontFamily, fontSize: type.cardTitle.fontSize, color: x.ink },
   qCount: { fontFamily: type.overline.fontFamily, fontSize: type.overline.fontSize, letterSpacing: type.overline.letterSpacing, color: x.muted },
   paperBody: { padding: shape.spaceScreenX, gap: shape.spaceCard },
   prompt: { fontFamily: type.examPrompt.fontFamily, fontSize: type.examPrompt.fontSize, lineHeight: type.examPrompt.lineHeight, color: x.ink },
@@ -628,6 +628,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   optionSelected: { borderColor: x.accent, backgroundColor: x.bg },
-  optionLabel: { fontFamily: type.body.fontFamily, fontSize: 16, lineHeight: 21, color: x.ink },
+  optionLabel: { fontFamily: type.body.fontFamily, fontSize: type.option.fontSize, lineHeight: 21, color: x.ink },
   optionLabelSelected: { color: x.ink },
 });

@@ -114,7 +114,7 @@ export const glyph = {
   md: 18,
   lg: 22,
   xl: 28,
-  clef: 32,
+  xxl: 32,
 } as const;
 
 /** Font families (loaded via expo-font in _layout; keys match the loaded names). */

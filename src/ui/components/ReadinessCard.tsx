@@ -24,7 +24,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { ExamReadiness, ReadinessRow } from '../../learn/mastery-rollup';
-import { colors, fonts, shape, strandDef, type as typo, type Strand } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo, type Strand } from '../theme';
 
 export interface ReadinessCardProps {
   readiness: ExamReadiness;
@@ -128,12 +128,12 @@ const styles = StyleSheet.create({
   // Fixed width, not intrinsic: the seven music glyphs differ in advance width
   // (the interval arrow is roughly twice the sharp), so an intrinsic column left every
   // row's text starting at a different x.
-  glyph: { fontFamily: fonts.music, fontSize: 17, width: 22, flexShrink: 0, textAlign: 'center' },
+  glyph: { fontFamily: fonts.music, fontSize: glyph.md, width: 22, flexShrink: 0, textAlign: 'center' },
   rowBody: { flex: 1, minWidth: 0 },
   rowTitle: { ...typo.body, color: colors.text },
   rowNote: { ...typo.label, color: colors.textMuted },
   marks: { ...typo.label, fontFamily: fonts.mono, color: colors.textMuted, flexShrink: 0 },
-  chev: { ...typo.label, fontSize: 17, color: colors.textGhost, flexShrink: 0 },
+  chev: { ...typo.label, fontSize: glyph.md, color: colors.textGhost, flexShrink: 0 },
   notExamined: { ...typo.label, color: colors.textGhost },
   sit: {
     minHeight: shape.tapMin,

@@ -28,7 +28,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { diatonicPitchesInRange, scopeForGrade } from '../../engine/scope';
 import type { Clef, Duration, KeySig, Music, Pitch } from '../../music/types';
 import { useSettingsContext } from '../../learn/SettingsContext';
-import { colors, fonts, shape, strandDef, type as typo } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo } from '../theme';
 import {
   CLEF_GLYPH,
   DURATION_GLYPH,
@@ -294,8 +294,8 @@ const styles = StyleSheet.create({
     height: 1.4,
     backgroundColor: colors.paperLine,
   },
-  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
-  keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: 18, color: colors.paperInk },
+  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: glyph.xxl, color: colors.paperInk },
+  keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: glyph.md, color: colors.paperInk },
   slotTarget: {
     position: 'absolute',
     height: shape.tapMin,
@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
     padding: shape.spaceTight,
   },
   accidentalButton: { width: 26, height: 26, borderRadius: 6, alignItems: 'center', justifyContent: 'center' },
-  accidentalGlyph: { fontFamily: fonts.music, fontSize: 16, color: colors.text },
+  accidentalGlyph: { fontFamily: fonts.music, fontSize: glyph.sm, color: colors.text },
   paletteRow: { gap: shape.spaceSnug },
   paletteCaption: { ...typo.label, color: colors.textFaint },
   paletteButtons: { flexDirection: 'row', gap: shape.spaceSnug, alignItems: 'center' },
@@ -340,7 +340,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: shape.spaceTight,
   },
-  durationGlyph: { fontFamily: fonts.music, fontSize: 22, color: colors.text, textAlign: 'center' },
+  durationGlyph: { fontFamily: fonts.music, fontSize: glyph.lg, color: colors.text, textAlign: 'center' },
   paletteEcho: { ...typo.label, color: colors.textFaint },
   undoButton: {
     minWidth: 46,

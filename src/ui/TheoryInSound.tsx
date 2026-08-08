@@ -17,7 +17,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { beatGrid, rhythmToMusic, type TeachRhythm } from '../content/teach-rhythm';
 import { MusicSurface, type MusicSurfaceHandle } from '../music-surface/MusicSurface';
 import { PlayButton } from './components/PlayButton';
-import { colors, shape, strandDef, type as typo, type Strand } from './theme';
+import { colors, glyph, shape, strandDef, type as typo, type Strand } from './theme';
 
 /** How long a wrong tap stays amber before settling back (8c). */
 const WRONG_PULSE_MS = 1200;
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     gap: shape.spaceInline,
   },
   head: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceSnug },
-  icon: { fontSize: 17 },
+  icon: { fontSize: glyph.md },
   title: { ...typo.cardTitle, color: colors.text },
   prompt: { ...typo.body, color: colors.textMuted },
 

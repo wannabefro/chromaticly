@@ -9,6 +9,7 @@ const { join } = require('path');
 
 const HEX_LITERAL = /#[0-9a-fA-F]{3,8}\b/;
 const RAW_SPACING = /\b\w*(?:[Pp]adding|[Mm]argin|[Gg]ap)\w*\s*:\s*\d/;
+const RAW_FONT_SIZE = /\bfontSize\s*:\s*\d/;
 const SRC = join(__dirname, '..', '..'); // repo src/
 
 const ROOTS = ['ui', 'screens'];
@@ -47,5 +48,10 @@ describe('slice surfaces — tokens only, never a literal (KTD1/A8)', () => {
   // A padding of 10 is not a decision, it is a guess. shape.* names the rhythm.
   test('every surface reads padding, margin and gap from shape, never a number', () => {
     expect(offenders(RAW_SPACING)).toEqual([]);
+  });
+
+  // Text reads type.*; a drawn shape reads glyph.*. Neither reads a number.
+  test('every surface sizes text and glyphs from a token, never a number', () => {
+    expect(offenders(RAW_FONT_SIZE)).toEqual([]);
   });
 });

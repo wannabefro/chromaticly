@@ -9,7 +9,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Ellipse, Line, Path } from 'react-native-svg';
 
 import type { OrnamentKind } from '../../music/types';
-import { colors, fonts } from '../theme';
+import { colors, fonts, glyph } from '../theme';
 
 export interface OrnamentSignProps {
   kind: OrnamentKind;
@@ -62,5 +62,5 @@ export function OrnamentSign({ kind, color = INK, testID }: OrnamentSignProps) {
 
 const styles = StyleSheet.create({
   box: { width: SIZE, height: SIZE, alignItems: 'center', justifyContent: 'center' },
-  tr: { fontFamily: fonts.examSemibold, fontSize: 24, fontStyle: 'italic' },
+  tr: { fontFamily: fonts.examSemibold, fontSize: glyph.lg, fontStyle: 'italic' },
 });

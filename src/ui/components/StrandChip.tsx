@@ -5,7 +5,7 @@
 
 import { StyleSheet, Text, View } from 'react-native';
 
-import { fonts, shape, strandDef, type, type Strand } from '../theme';
+import { fonts, glyph, shape, strandDef, type, type Strand } from '../theme';
 
 export interface StrandChipProps {
   strand: Strand;
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   glyph: {
     fontFamily: fonts.music,
-    fontSize: 13,
+    fontSize: glyph.sm,
   },
   label: {
     fontFamily: type.overline.fontFamily,

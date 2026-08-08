@@ -37,7 +37,7 @@ import { useProgressContext } from '../learn/ProgressContext';
 import { PrereqChip } from '../ui/components/PrereqChip';
 import { UnitRow, type UnitState } from '../ui/components/UnitRow';
 import { Screen } from '../ui/Screen';
-import { colors, fonts, shape, strandDef, type as typo, type Strand } from '../ui/theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo, type Strand } from '../ui/theme';
 
 /** The five ABRSM grades the picker always lists, so a sparse strand can say
  *  "nothing here yet" rather than silently omitting a grade. */
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
   },
   glyph: {
     fontFamily: fonts.music,
-    fontSize: 19,
+    fontSize: glyph.md,
   },
   title: {
     ...typo.overline,
@@ -365,7 +365,6 @@ const styles = StyleSheet.create({
   },
   primaryLabel: {
     ...typo.option,
-    fontSize: 15,
     color: colors.bg,
   },
   ghost: {
@@ -381,7 +380,6 @@ const styles = StyleSheet.create({
   },
   ghostLabel: {
     ...typo.option,
-    fontSize: 15,
     color: colors.text,
   },
   more: {
@@ -415,7 +413,7 @@ const styles = StyleSheet.create({
   },
   gradeName: {
     ...typo.option,
-    fontSize: 14,
+    fontSize: typo.body.fontSize,
     color: colors.text,
   },
   gradeNote: {

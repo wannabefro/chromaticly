@@ -9,7 +9,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { ExerciseInstance } from '../../engine/schema';
-import { colors, shape, strandDef, type as typo } from '../theme';
+import { colors, glyph, shape, strandDef, type as typo } from '../theme';
 import type { InteractionComponentProps } from './types';
 
 export type FindTheBarResponse = number | null;
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     paddingVertical: shape.spaceInline,
     paddingHorizontal: shape.spaceCard,
   },
-  hintIcon: { fontSize: 15 },
+  hintIcon: { fontSize: glyph.sm },
   hintText: { ...typo.body, color: colors.textMuted, flex: 1 },
 
   strip: { flexDirection: 'row', gap: shape.spaceSnug },
@@ -89,5 +89,5 @@ const styles = StyleSheet.create({
     minHeight: shape.tapMin,
     justifyContent: 'center',
   },
-  barLabel: { ...typo.label, fontSize: 13, color: colors.textMuted },
+  barLabel: { ...typo.label, color: colors.textMuted },
 });

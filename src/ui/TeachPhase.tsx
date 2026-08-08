@@ -19,7 +19,7 @@ import { RichText } from './components/RichText';
 import { StrandChip } from './components/StrandChip';
 import { TheoryInSound } from './TheoryInSound';
 import { assembleOptions, type Option } from './grading';
-import { colors, shape, strandDef, type as typo, type Strand } from './theme';
+import { colors, glyph, shape, strandDef, type as typo, type Strand } from './theme';
 
 export interface TeachPhaseProps {
   lesson: Lesson;
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     paddingTop: shape.spaceInline,
     paddingBottom: shape.spaceInline,
   },
-  chevron: { fontFamily: typo.title.fontFamily, fontSize: 24, color: colors.textMuted },
+  chevron: { fontFamily: typo.title.fontFamily, fontSize: glyph.lg, color: colors.textMuted },
   headerText: { flex: 1 },
   headerTitle: { ...typo.cardTitle, color: colors.text },
   headerSub: { ...typo.label, color: colors.textFaint },
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
     borderRadius: shape.radiusControl,
     padding: shape.spaceCard,
   },
-  tipIcon: { fontSize: 20 },
+  tipIcon: { fontSize: glyph.md },
   tipBody: { flex: 1, gap: shape.spaceTight },
   tipLabel: { ...typo.label, color: colors.hint, letterSpacing: 0.6 },
   tipText: { ...typo.body, color: colors.text },

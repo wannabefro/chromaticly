@@ -25,7 +25,7 @@ import {
 import { spellInKeySig } from '../../engine/generators/key-spelling';
 import { naturalPitchAtOrdinal, scientificPitchOrdinal } from '../../engine/generators/pitch-math';
 import { diatonicPitchesInRange } from '../../engine/scope';
-import { colors, fonts, shape, strandDef, type as typo } from '../theme';
+import { colors, fonts, glyph, shape, strandDef, type as typo } from '../theme';
 import {
   CLEF_GLYPH,
   keySigGlyphs,
@@ -420,8 +420,8 @@ const styles = StyleSheet.create({
   },
   play: { position: 'absolute', right: shape.spaceCard, bottom: shape.spaceCard },
   staveLine: { position: 'absolute', left: PAPER_INSET, right: PAPER_INSET, height: 1.4, backgroundColor: colors.paperLine },
-  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: 32, color: colors.paperInk },
-  keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: 18, color: colors.paperInk },
+  clef: { position: 'absolute', left: PAPER_INSET, fontFamily: fonts.music, fontSize: glyph.xxl, color: colors.paperInk },
+  keySig: { position: 'absolute', fontFamily: fonts.music, fontSize: glyph.md, color: colors.paperInk },
   tapSurface: { position: 'absolute', left: PAPER_INSET + SLOT_MARGIN_LEFT - 10, right: PAPER_INSET, top: 0, bottom: 0 },
   slot: { position: 'absolute', top: 0, bottom: 0 },
   ghostSlot: { position: 'absolute', left: '50%', marginLeft: -5, width: 10, height: 10, borderRadius: 5, backgroundColor: colors.paperSlot },
@@ -441,7 +441,7 @@ const styles = StyleSheet.create({
     borderStyle: 'dashed',
     borderColor: colors.paperCorrect,
   },
-  mark: { position: 'absolute', left: '50%', marginLeft: -6, ...typo.label, fontSize: 14 },
+  mark: { position: 'absolute', left: '50%', marginLeft: -6, ...typo.label, fontSize: typo.body.fontSize },
   footer: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
   caption: { ...typo.label, color: colors.textFaint, flex: 1 },
   undoButton: {

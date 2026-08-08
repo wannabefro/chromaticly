@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
   title: {
     ...typo.cardTitle,
-    fontSize: 14,
+    fontSize: typo.body.fontSize,
     color: colors.text,
   },
   trailing: {

@@ -12,7 +12,7 @@
 import { SymbolView, type SFSymbol } from 'expo-symbols';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, shape, type as typo } from '../theme';
+import { colors, glyph, shape, type as typo } from '../theme';
 
 export type TabKey = 'learn' | 'practice' | 'exams' | 'profile';
 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: shape.spaceSnug,
   },
   tab: { alignItems: 'center', gap: shape.spaceSnug, minWidth: 64, minHeight: shape.tapMin },
-  glyph: { fontSize: 19, lineHeight: 24, color: colors.textFaint, textAlign: 'center' },
+  glyph: { fontSize: glyph.md, lineHeight: 24, color: colors.textFaint, textAlign: 'center' },
   glyphActive: { color: colors.text },
   label: { ...typo.label, color: colors.textFaint },
   labelActive: { color: colors.text, fontWeight: '700' },

@@ -524,7 +524,7 @@ scale were added, and every spacing literal now reads from `shape`.
    `--space-screen-top` 48 (onboarding containers) and `--space-screen-bottom` 24.
 3. **Notation and icon glyphs left the type scale.** A clef, a notehead, a
    duration glyph and a chevron are drawn shapes, so sizing them on a text scale
-   was a category error. They now read `--glyph-sm|md|lg|xl|clef` (14/18/22/28/32).
+   was a category error. They now read `--glyph-sm|md|lg|xl|xxl` (14/18/22/28/32).
 4. **`--text-caption` 12** fills the step between `--text-label` 11 and
    `--text-body` 14, which 17 uses had been inventing. `--text-display` 44 is the
    exam mark, the one number a screen is entirely about.

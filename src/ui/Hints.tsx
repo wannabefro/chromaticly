@@ -12,7 +12,7 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { colors, shape, type as typo } from './theme';
+import { colors, glyph, shape, type as typo } from './theme';
 
 export interface HintsProps {
   hints: string[];
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: shape.radiusControl,
     padding: shape.spaceCard,
   },
-  tipIcon: { fontSize: 20 },
+  tipIcon: { fontSize: glyph.md },
   tipBody: { flex: 1, gap: shape.spaceTight },
   tipLabel: { ...typo.label, color: colors.hint, letterSpacing: 0.6 },
   tipText: { ...typo.body, color: colors.text },
