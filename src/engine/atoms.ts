@@ -445,11 +445,11 @@ export function keyboardAtom(letter: string): string {
   return `keyboard:${letter}`;
 }
 
-/** The parts of a stave a beginner must be able to name before Grade 1 assumes
- *  them: whether a note sits on a line or in a space, and which of two notes is
- *  higher — the latter always asked within ONE clef, because unqualified it is
- *  false the moment the bass clef arrives. */
-export const STAVE_ANATOMY_KINDS: readonly string[] = ['line_or_space', 'higher_lower'];
+/** The parts of a stave a beginner must name before Grade 1 assumes them.
+ *  `higher_lower` is always asked within ONE clef, because unqualified it is
+ *  false the moment the bass clef arrives. `earlier_later` is the other axis:
+ *  the stave reads left to right in time, not up the page (chromaticly-bpu.2). */
+export const STAVE_ANATOMY_KINDS: readonly string[] = ['line_or_space', 'higher_lower', 'earlier_later'];
 
 export function staveAnatomyAtom(kind: string): string {
   return `stave_anatomy:${kind}`;

@@ -217,6 +217,39 @@ describe('stave_position (lesson 4) — both question shapes, and the clef quali
     }
   });
 
+  // chromaticly-bpu.2. Objective 3 is "up the page is pitch, left to right is
+  // time", and only the pitch half had an atom.
+  test('the earlier-later shape names the notes by height, never by side', () => {
+    for (const seed of SEEDS) {
+      const instance = generate('stave_position', { grade: 0, seed, atoms: [staveAnatomyAtom('earlier_later')] });
+      expect(instance.prompt).toContain('first');
+      expect([instance.answer.canonical, ...instance.distractors].sort()).toEqual(['The higher one', 'The lower one']);
+    }
+  });
+
+  // Options named "left"/"right" would answer the question in their own labels.
+  // Naming them by height is what forces the left-to-right read.
+  test('the note it calls first really is the one drawn first, at every grade', () => {
+    const ord = (p: string) => Number(p[1]) * 7 + ['C', 'D', 'E', 'F', 'G', 'A', 'B'].indexOf(p[0]);
+    for (const grade of ALL_GRADES) {
+      for (const seed of SEEDS) {
+        const instance = generate('stave_position', { grade, seed, atoms: [staveAnatomyAtom('earlier_later')] });
+        const music = instance.stimulus.music as { voices: { events: { pitch: string }[] }[] };
+        const [first, second] = music.voices[0].events.map((e) => e.pitch);
+        expect(instance.answer.canonical).toBe(ord(first) > ord(second) ? 'The higher one' : 'The lower one');
+        expect(ord(first)).not.toBe(ord(second));
+      }
+    }
+  });
+
+  // Both orders must occur, or the answer is a constant a learner can ride.
+  test('the higher note leads on some draws and trails on others', () => {
+    const answers = new Set(
+      SEEDS.map((seed) => generate('stave_position', { grade: 0, seed, atoms: [staveAnatomyAtom('earlier_later')] }).answer.canonical),
+    );
+    expect(answers).toEqual(new Set(['The higher one', 'The lower one']));
+  });
+
   // Content correction 2. Unqualified, "higher on the stave means higher in pitch"
   // is false the moment the learner meets the bass clef in Grade 1.
   test('every higher-lower explanation qualifies itself to one clef', () => {

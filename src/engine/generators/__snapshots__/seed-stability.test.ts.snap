@@ -61265,74 +61265,23 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "On a line",
+      "canonical": "The second one",
     },
     "distractors": [
-      "In a space",
+      "The first one",
     ],
     "feedback": {
       "by_distractor": {
-        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
-      },
-      "correct": "Yes — the line runs through the middle of it.",
-      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
-    },
-    "grade": 1,
-    "hints": [
-      "A note on a line has the line running straight through the middle of it.",
-    ],
-    "id": "stave_position:g1:s0",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Is this note on a line, or in a space?",
-    "srs_tags": [
-      "stave_anatomy:line_or_space",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "D3",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "stave_position",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "The first one",
-    },
-    "distractors": [
-      "The second one",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
       "correct": "Yes — within one clef, further up the stave is the higher sound.",
-      "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+      "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
     },
     "grade": 1,
     "hints": [
       "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
     ],
-    "id": "stave_position:g1:s1",
+    "id": "stave_position:g1:s0",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -61352,12 +61301,68 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "C4",
+                "pitch": "C3",
                 "type": "note",
               },
               {
                 "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The lower one",
+    },
+    "distractors": [
+      "The higher one",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "The higher one": "That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.",
+      },
+      "correct": "Yes — the note further left is played first.",
+      "incorrect": "The lower one comes first: it is further to the LEFT, and music is read left to right.",
+    },
+    "grade": 1,
+    "hints": [
+      "Music is read left to right, like words on a page. The note on the left is played first.",
+    ],
+    "id": "stave_position:g1:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes do you play first?",
+    "srs_tags": [
+      "stave_anatomy:earlier_later",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
                 "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
                 "type": "note",
               },
             ],
@@ -61423,57 +61428,6 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "In a space",
-    },
-    "distractors": [
-      "On a line",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "On a line": "A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.",
-      },
-      "correct": "Yes — it sits in the gap between two lines.",
-      "incorrect": "That one is in a space: it sits in the gap between two lines.",
-    },
-    "grade": 1,
-    "hints": [
-      "A note on a line has the line running straight through the middle of it.",
-    ],
-    "id": "stave_position:g1:s3",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Is this note on a line, or in a space?",
-    "srs_tags": [
-      "stave_anatomy:line_or_space",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "A4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "stave_position",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
       "canonical": "The second one",
     },
     "distractors": [
@@ -61490,7 +61444,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     "hints": [
       "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
     ],
-    "id": "stave_position:g1:s4",
+    "id": "stave_position:g1:s3",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -61502,6 +61456,62 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     ],
     "stimulus": {
       "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "E5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The higher one",
+    },
+    "distractors": [
+      "The lower one",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "The lower one": "That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.",
+      },
+      "correct": "Yes — the note further left is played first.",
+      "incorrect": "The higher one comes first: it is further to the LEFT, and music is read left to right.",
+    },
+    "grade": 1,
+    "hints": [
+      "Music is read left to right, like words on a page. The note on the left is played first.",
+    ],
+    "id": "stave_position:g1:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes do you play first?",
+    "srs_tags": [
+      "stave_anatomy:earlier_later",
+    ],
+    "stimulus": {
+      "music": {
         "clef": "bass",
         "key_sig": null,
         "time_sig": null,
@@ -61510,12 +61520,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "A2",
+                "pitch": "E3",
                 "type": "note",
               },
               {
                 "dur": "semibreve",
-                "pitch": "E3",
+                "pitch": "A2",
                 "type": "note",
               },
             ],
@@ -61581,21 +61591,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "The first one",
+      "canonical": "The lower one",
     },
     "distractors": [
-      "The second one",
+      "The higher one",
     ],
     "feedback": {
       "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
+        "The higher one": "That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.",
       },
-      "correct": "Yes — within one clef, further up the stave is the higher sound.",
-      "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+      "correct": "Yes — the note further left is played first.",
+      "incorrect": "The lower one comes first: it is further to the LEFT, and music is read left to right.",
     },
     "grade": 1,
     "hints": [
-      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+      "Music is read left to right, like words on a page. The note on the left is played first.",
     ],
     "id": "stave_position:g1:s6",
     "interaction": {
@@ -61603,9 +61613,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these two notes sounds higher?",
+    "prompt": "Which of these two notes do you play first?",
     "srs_tags": [
-      "stave_anatomy:higher_lower",
+      "stave_anatomy:earlier_later",
     ],
     "stimulus": {
       "music": {
@@ -61617,12 +61627,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "E5",
+                "pitch": "C5",
                 "type": "note",
               },
               {
                 "dur": "semibreve",
-                "pitch": "C5",
+                "pitch": "E5",
                 "type": "note",
               },
             ],
@@ -61749,108 +61759,6 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "In a space",
-    },
-    "distractors": [
-      "On a line",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "On a line": "A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.",
-      },
-      "correct": "Yes — it sits in the gap between two lines.",
-      "incorrect": "That one is in a space: it sits in the gap between two lines.",
-    },
-    "grade": 1,
-    "hints": [
-      "A note on a line has the line running straight through the middle of it.",
-    ],
-    "id": "stave_position:g1:s9",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Is this note on a line, or in a space?",
-    "srs_tags": [
-      "stave_anatomy:line_or_space",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "F2",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "stave_position",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "On a line",
-    },
-    "distractors": [
-      "In a space",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
-      },
-      "correct": "Yes — the line runs through the middle of it.",
-      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
-    },
-    "grade": 1,
-    "hints": [
-      "A note on a line has the line running straight through the middle of it.",
-    ],
-    "id": "stave_position:g1:s10",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Is this note on a line, or in a space?",
-    "srs_tags": [
-      "stave_anatomy:line_or_space",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitch": "C4",
-                "type": "note",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "pitch",
-    "template_id": "stave_position",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
       "canonical": "The second one",
     },
     "distractors": [
@@ -61867,7 +61775,63 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
     "hints": [
       "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
     ],
-    "id": "stave_position:g1:s11",
+    "id": "stave_position:g1:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes sounds higher?",
+    "srs_tags": [
+      "stave_anatomy:higher_lower",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitch": "F2",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "F3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The first one",
+    },
+    "distractors": [
+      "The second one",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
+      },
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+    },
+    "grade": 1,
+    "hints": [
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+    ],
+    "id": "stave_position:g1:s10",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -61892,7 +61856,63 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
               },
               {
                 "dur": "semibreve",
+                "pitch": "B3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "stave_position",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "The higher one",
+    },
+    "distractors": [
+      "The lower one",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "The lower one": "That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.",
+      },
+      "correct": "Yes — the note further left is played first.",
+      "incorrect": "The higher one comes first: it is further to the LEFT, and music is read left to right.",
+    },
+    "grade": 1,
+    "hints": [
+      "Music is read left to right, like words on a page. The note on the left is played first.",
+    ],
+    "id": "stave_position:g1:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these two notes do you play first?",
+    "srs_tags": [
+      "stave_anatomy:earlier_later",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
                 "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
                 "type": "note",
               },
             ],
@@ -62065,21 +62085,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "On a line",
+      "canonical": "The second one",
     },
     "distractors": [
-      "In a space",
+      "The first one",
     ],
     "feedback": {
       "by_distractor": {
-        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
+        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
       },
-      "correct": "Yes — the line runs through the middle of it.",
-      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+      "correct": "Yes — within one clef, further up the stave is the higher sound.",
+      "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
     },
     "grade": 1,
     "hints": [
-      "A note on a line has the line running straight through the middle of it.",
+      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
     ],
     "id": "stave_position:g1:s15",
     "interaction": {
@@ -62087,9 +62107,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Is this note on a line, or in a space?",
+    "prompt": "Which of these two notes sounds higher?",
     "srs_tags": [
-      "stave_anatomy:line_or_space",
+      "stave_anatomy:higher_lower",
     ],
     "stimulus": {
       "music": {
@@ -62102,6 +62122,11 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
               {
                 "dur": "semibreve",
                 "pitch": "A3",
+                "type": "note",
+              },
+              {
+                "dur": "semibreve",
+                "pitch": "C4",
                 "type": "note",
               },
             ],
@@ -62218,21 +62243,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "The first one",
+      "canonical": "The lower one",
     },
     "distractors": [
-      "The second one",
+      "The higher one",
     ],
     "feedback": {
       "by_distractor": {
-        "The second one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The first one is higher.",
+        "The higher one": "That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.",
       },
-      "correct": "Yes — within one clef, further up the stave is the higher sound.",
-      "incorrect": "The first one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+      "correct": "Yes — the note further left is played first.",
+      "incorrect": "The lower one comes first: it is further to the LEFT, and music is read left to right.",
     },
     "grade": 1,
     "hints": [
-      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+      "Music is read left to right, like words on a page. The note on the left is played first.",
     ],
     "id": "stave_position:g1:s18",
     "interaction": {
@@ -62240,9 +62265,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these two notes sounds higher?",
+    "prompt": "Which of these two notes do you play first?",
     "srs_tags": [
-      "stave_anatomy:higher_lower",
+      "stave_anatomy:earlier_later",
     ],
     "stimulus": {
       "music": {
@@ -62254,12 +62279,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "B4",
+                "pitch": "E4",
                 "type": "note",
               },
               {
                 "dur": "semibreve",
-                "pitch": "E4",
+                "pitch": "B4",
                 "type": "note",
               },
             ],
@@ -62274,21 +62299,21 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "The second one",
+      "canonical": "The higher one",
     },
     "distractors": [
-      "The first one",
+      "The lower one",
     ],
     "feedback": {
       "by_distractor": {
-        "The first one": "That one sits LOWER on the stave, so in this clef it is the lower sound. The second one is higher.",
+        "The lower one": "That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.",
       },
-      "correct": "Yes — within one clef, further up the stave is the higher sound.",
-      "incorrect": "The second one is higher: it sits further up the stave, and in this clef that means a higher sound.",
+      "correct": "Yes — the note further left is played first.",
+      "incorrect": "The higher one comes first: it is further to the LEFT, and music is read left to right.",
     },
     "grade": 1,
     "hints": [
-      "Within one clef, the note further up the stave is the higher sound. Tap play to hear it.",
+      "Music is read left to right, like words on a page. The note on the left is played first.",
     ],
     "id": "stave_position:g1:s19",
     "interaction": {
@@ -62296,9 +62321,9 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these two notes sounds higher?",
+    "prompt": "Which of these two notes do you play first?",
     "srs_tags": [
-      "stave_anatomy:higher_lower",
+      "stave_anatomy:earlier_later",
     ],
     "stimulus": {
       "music": {
@@ -62310,12 +62335,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "F5",
+                "pitch": "A5",
                 "type": "note",
               },
               {
                 "dur": "semibreve",
-                "pitch": "A5",
+                "pitch": "F5",
                 "type": "note",
               },
             ],

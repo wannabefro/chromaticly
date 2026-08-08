@@ -134,7 +134,8 @@
       "strand": "pitch",
       "atoms": [
         "stave_anatomy:line_or_space",
-        "stave_anatomy:higher_lower"
+        "stave_anatomy:higher_lower",
+        "stave_anatomy:earlier_later"
       ],
       "templates": [
         "stave_position"
@@ -152,7 +153,7 @@
         ],
         "concept": {
           "title": "Five lines, and two directions",
-          "body": "Written music sits on a **stave**: five lines, with four spaces between them. A note is either **on a line**, with the line running straight through the middle of it, or **in a space**, sitting in the gap. There is no third option.\n\nThe stave carries two different things at once, and telling them apart is the whole trick. **Up and down** the page is **pitch** — how high or low a note sounds. **Left to right** is **time** — the order you play things in, first to last. So a note higher up the page sounds higher, and a note further right happens later.\n\nOne caution about that first rule: it holds within a single **clef**. A clef is the symbol at the start of the stave, and its job is to fix a reference pitch so you know which line means what. Change the clef and the same line means a different note, so 'higher up means higher sound' is only safe to use while you stay in one clef. You will meet a second clef in Grade 1.",
+          "body": "Written music sits on a **stave**: five lines, with four spaces between them. A note is either **on a line**, with the line running straight through the middle of it, or **in a space**, sitting in the gap. There is no third option.\n\nThe stave carries two different things at once, and telling them apart is the whole trick. **Up and down** the page is **pitch** — how high or low a note sounds. **Left to right** is **time** — the order you play things in, first to last. So a note higher up the page sounds higher, and a note further right happens later.\n\nOne caution about that first rule: it holds within a single **clef**. A clef is the symbol at the start of the stave, and its job is to fix a reference pitch so you know which line means what. Change the clef and the same line means a different note, so 'higher up means higher sound' is only safe to use while you stay in one clef. You will meet a second clef in Grade 1. The two directions do different jobs, and it is easy to mix them up. Up the page means a higher sound. Left to right means later in time. So the note further to the left is played first, however high or low it sits.",
           "example": {
             "template_id": "stave_position",
             "grade": 0,

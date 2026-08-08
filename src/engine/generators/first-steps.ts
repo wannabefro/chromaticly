@@ -232,7 +232,7 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
   const clef = pick(rng, [...scopeForGrade(grade).clefs]);
   const bottomLine: Pitch = clef === 'treble' ? 'E4' : clef === 'bass' ? 'G2' : 'F3';
   const pitches = diatonicPitchesInRange(clef, grade);
-  const kinds = scopeTo(atoms, 'stave_anatomy', ['line_or_space', 'higher_lower'] as const);
+  const kinds = scopeTo(atoms, 'stave_anatomy', ['line_or_space', 'higher_lower', 'earlier_later'] as const);
   const kind = pick(rng, kinds);
 
   if (kind === 'line_or_space') {
@@ -260,6 +260,52 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
           : { 'On a line': 'A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.' },
       },
       srs_tags: [staveAnatomyAtom('line_or_space')],
+      kb_version: KB_VERSION,
+    };
+  }
+
+  // The other axis (chromaticly-bpu.2). The options name the notes by HEIGHT, so
+  // the learner has to read left-to-right for time rather than up-the-page — a
+  // "which is first" with left/right options would answer itself.
+  if (kind === 'earlier_later') {
+    const lowIndex = Math.floor(rng() * (pitches.length - 1));
+    const high = pick(rng, pitches.slice(lowIndex + 1));
+    const low = pitches[lowIndex];
+    const highFirst = rng() < 0.5;
+    const music: Music = {
+      clef,
+      key_sig: null,
+      time_sig: null,
+      voices: [
+        {
+          events: [
+            { type: 'note', pitch: highFirst ? high : low, dur: 'semibreve' },
+            { type: 'note', pitch: highFirst ? low : high, dur: 'semibreve' },
+          ],
+        },
+      ],
+    };
+    const answer = highFirst ? 'The higher one' : 'The lower one';
+    const wrong = highFirst ? 'The lower one' : 'The higher one';
+    return {
+      id: makeInstanceId('stave_position', grade, idSeed),
+      template_id: 'stave_position',
+      grade,
+      strand: 'pitch',
+      prompt: 'Which of these two notes do you play first?',
+      stimulus: { music, text: null },
+      interaction: { type: 'mcq', config: {} },
+      answer: { canonical: answer, accepted_alternatives: [] },
+      distractors: [wrong],
+      hints: ['Music is read left to right, like words on a page. The note on the left is played first.'],
+      feedback: {
+        correct: 'Yes — the note further left is played first.',
+        incorrect: `${answer} comes first: it is further to the LEFT, and music is read left to right.`,
+        by_distractor: {
+          [wrong]: 'That one is further to the right, so it is played second. Height tells you how high a note sounds, not when it arrives.',
+        },
+      },
+      srs_tags: [staveAnatomyAtom('earlier_later')],
       kb_version: KB_VERSION,
     };
   }

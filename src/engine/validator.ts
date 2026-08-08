@@ -2411,11 +2411,20 @@ function stavePositionHook(inst: ExerciseInstance): string[] {
     return expected === canonical ? [] : [`stave_position: ${pitch} in ${music.clef} is ${expected}, not ${canonical}`];
   }
 
-  // The higher/lower shape: recompute by comparing the two drawn pitches.
-  if (events.length !== 2) return ['stave_position: a higher/lower question must draw exactly two notes'];
+  // The two-note shapes: recompute by comparing the drawn pitches.
+  if (events.length !== 2) return ['stave_position: a two-note question must draw exactly two notes'];
   const ord = (p: string) => Number(p[1]) * 7 + ['C', 'D', 'E', 'F', 'G', 'A', 'B'].indexOf(p[0]);
   const [first, second] = events.map((e) => e.pitch ?? '');
-  if (!first || !second) return ['stave_position: a higher/lower question is missing a pitch'];
+  if (!first || !second) return ['stave_position: a two-note question is missing a pitch'];
+  if (first === second) return [`stave_position: ${first} twice gives the question no answer`];
+
+  // earlier_later (chromaticly-bpu.2) names the notes by HEIGHT and asks which
+  // is played first, so the answer is the height of the note drawn FIRST.
+  if (canonical === 'The higher one' || canonical === 'The lower one') {
+    const expected = ord(first) > ord(second) ? 'The higher one' : 'The lower one';
+    return expected === canonical ? [] : [`stave_position: ${first} then ${second} makes it ${expected}, not ${canonical}`];
+  }
+
   const expected = ord(first) > ord(second) ? 'The first one' : 'The second one';
   return expected === canonical ? [] : [`stave_position: ${first} vs ${second} makes it ${expected}, not ${canonical}`];
 }
