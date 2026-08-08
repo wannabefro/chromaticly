@@ -437,8 +437,8 @@ ${playButton}
     if (!svg) return [];
     var els = Array.prototype.slice.call(svg.querySelectorAll('.abcjs-note.abcjs-v0'));
     return els.sort(function (a, b) {
-      var ai = /abcjs-n(\d+)/.exec(a.getAttribute('class') || '');
-      var bi = /abcjs-n(\d+)/.exec(b.getAttribute('class') || '');
+      var ai = /abcjs-n(\\d+)/.exec(a.getAttribute('class') || '');
+      var bi = /abcjs-n(\\d+)/.exec(b.getAttribute('class') || '');
       return (ai ? +ai[1] : 0) - (bi ? +bi[1] : 0);
     });
   }

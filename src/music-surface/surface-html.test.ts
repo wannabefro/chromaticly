@@ -65,10 +65,14 @@ describe('buildSurfaceHtml', () => {
   // \d collapses to a literal "d" in the emitted HTML and the measure regex silently
   // never matches (the bug that made bar-tap do nothing on device). The emitted HTML
   // must carry a real \d.
-  test('the measure regex reaches the page as \\d, not a literal d', () => {
+  // The page is a JS template literal, so a single-backslash \d collapses to a
+  // literal "d" and the regex silently never matches (chromaticly-a47). Guard the
+  // class, not each regex: the note sort shipped broken while the measure one passed.
+  test('every character class reaches the page escaped, never collapsed', () => {
     const html = buildSurfaceHtml({ abcjsSource: FAKE_ABCJS });
     expect(html).toContain('abcjs-mm(\\d+)');
-    expect(html).not.toContain('abcjs-mm(d+)');
+    expect(html).toContain('abcjs-n(\\d+)');
+    for (const collapsed of ['(d+)', '(w+)', '(s+)', '(d*)']) expect(html).not.toContain(collapsed);
   });
 
   // Design 5c notation size: a `render` command may carry an explicit abcjs staff scale;
