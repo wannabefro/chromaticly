@@ -92,14 +92,14 @@ const styles = StyleSheet.create({
   statText: { ...type.body, color: colors.text },
   primary: {
     borderRadius: shape.radiusButton,
-    paddingVertical: 14,
+    paddingVertical: shape.spaceCard,
     alignItems: 'center',
     alignSelf: 'stretch',
     minHeight: shape.tapMin,
     justifyContent: 'center',
   },
   primaryLabel: { ...type.option, color: colors.bg },
-  secondary: { alignItems: 'center', paddingVertical: 6, minHeight: shape.tapMin, justifyContent: 'center' },
+  secondary: { alignItems: 'center', paddingVertical: shape.spaceSnug, minHeight: shape.tapMin, justifyContent: 'center' },
   secondaryLabel: { ...type.option, color: colors.textMuted },
   pressed: { transform: [{ scale: 0.98 }] },
 });

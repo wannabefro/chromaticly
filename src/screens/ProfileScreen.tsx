@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 48,
     height: 48,
-    borderRadius: 24,
+    borderRadius: shape.radiusCardLg,
     backgroundColor: colors.surfaceCard,
     borderWidth: shape.borderW,
     borderColor: colors.border,

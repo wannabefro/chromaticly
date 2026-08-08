@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     // the page centres the stave itself (#paper's flex + #inner's margin:auto).
     alignItems: 'stretch',
     justifyContent: 'center',
-    paddingTop: 22,
-    paddingBottom: 12,
+    paddingTop: shape.spaceScreenX,
+    paddingBottom: shape.spaceInline,
   },
   rule: {
     borderTopWidth: 1,
@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
   inset: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    gap: shape.spaceInline,
+    paddingHorizontal: shape.spaceInline,
+    paddingVertical: shape.spaceSnug,
   },
   insetStave: {
     // Same zero-width trap as `hero`: flexShrink alone leaves the stave content-sized,

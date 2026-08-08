@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   lanes: {
-    gap: 7,
+    gap: shape.spaceSnug,
   },
   muted: {
     ...typo.body,

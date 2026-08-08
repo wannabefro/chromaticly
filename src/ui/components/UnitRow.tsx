@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: shape.spaceInline,
     paddingHorizontal: shape.spaceInline,
-    paddingVertical: 11,
+    paddingVertical: shape.spaceInline,
     borderRadius: shape.radiusControl,
     borderWidth: shape.borderWActive,
     borderColor: 'transparent',
   },
   body: {
     flex: 1,
-    gap: 3,
+    gap: shape.spaceTight,
   },
   title: {
     ...typo.cardTitle,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   trailing: {
     alignItems: 'flex-end',
-    gap: 4,
+    gap: shape.spaceTight,
   },
   cue: {
     ...typo.label,

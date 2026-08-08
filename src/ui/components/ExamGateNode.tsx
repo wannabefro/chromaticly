@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   seal: {
     width: 42,
     height: 42,
-    borderRadius: 21,
+    borderRadius: shape.radiusCardLg,
     borderWidth: shape.borderWActive,
     borderColor: colors.hint,
     alignItems: 'center',
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    gap: 2,
+    gap: shape.spaceHairline,
   },
   title: {
     ...typo.cardTitle,

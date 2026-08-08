@@ -88,9 +88,9 @@ export function TrueFalse({ instance, response, graded, onResponseChange }: Inte
 
 const styles = StyleSheet.create({
   container: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceInline },
-  barGroup: { alignItems: 'center', gap: 6 },
+  barGroup: { alignItems: 'center', gap: shape.spaceSnug },
   barLabel: { ...typo.overline, color: colors.textMuted },
-  togglePair: { flexDirection: 'row', gap: 5 },
+  togglePair: { flexDirection: 'row', gap: shape.spaceTight },
   toggle: {
     width: 34,
     height: 30,

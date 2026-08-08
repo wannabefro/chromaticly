@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     backgroundColor: colors.surfaceCard,
     paddingHorizontal: shape.spaceCard,
-    paddingVertical: 10,
+    paddingVertical: shape.spaceInline,
   },
   badge: {
     width: 28,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    gap: 2,
+    gap: shape.spaceHairline,
   },
   label: {
     ...type.option,

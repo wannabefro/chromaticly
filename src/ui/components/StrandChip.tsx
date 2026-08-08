@@ -5,7 +5,7 @@
 
 import { StyleSheet, Text, View } from 'react-native';
 
-import { fonts, strandDef, type, type Strand } from '../theme';
+import { fonts, shape, strandDef, type, type Strand } from '../theme';
 
 export interface StrandChipProps {
   strand: Strand;
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: shape.spaceSnug,
   },
   glyph: {
     fontFamily: fonts.music,

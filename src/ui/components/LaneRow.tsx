@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: shape.spaceInline,
-    paddingHorizontal: 14,
-    paddingVertical: 11,
+    paddingHorizontal: shape.spaceCard,
+    paddingVertical: shape.spaceInline,
     borderRadius: shape.radiusCard,
     borderWidth: shape.borderWActive,
     borderColor: colors.border,
@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
   segs: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 3,
-    marginTop: 7,
+    gap: shape.spaceTight,
+    marginTop: shape.spaceSnug,
   },
   seg: {
     width: 20,

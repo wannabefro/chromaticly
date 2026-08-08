@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
     paddingBottom: shape.spaceStack,
   },
   back: {
-    paddingVertical: 4,
+    paddingVertical: shape.spaceTight,
   },
   backLabel: {
     ...typo.label,
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: shape.spaceSnug,
   },
   glyph: {
     fontFamily: fonts.music,
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'baseline',
     justifyContent: 'space-between',
-    marginTop: 2,
+    marginTop: shape.spaceHairline,
   },
   sectionLabel: {
     ...typo.overline,
@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     color: colors.textGhost,
   },
   unit: {
-    gap: 6,
+    gap: shape.spaceSnug,
   },
   chipWrap: {
     paddingLeft: shape.spaceInline,
@@ -345,7 +345,7 @@ const styles = StyleSheet.create({
     borderStyle: 'dashed',
     borderRadius: shape.radiusCard,
     padding: shape.spaceCard,
-    gap: 6,
+    gap: shape.spaceSnug,
   },
   emptyText: {
     ...typo.body,
@@ -358,10 +358,10 @@ const styles = StyleSheet.create({
   primary: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 14,
+    paddingVertical: shape.spaceCard,
     borderRadius: shape.radiusButton,
     minHeight: shape.tapMin,
-    marginTop: 2,
+    marginTop: shape.spaceHairline,
   },
   primaryLabel: {
     ...typo.option,
@@ -371,13 +371,13 @@ const styles = StyleSheet.create({
   ghost: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 14,
+    paddingVertical: shape.spaceCard,
     borderRadius: shape.radiusButton,
     borderWidth: shape.borderWActive,
     borderColor: colors.borderStrong,
     backgroundColor: colors.surfaceCard,
     minHeight: shape.tapMin,
-    marginTop: 2,
+    marginTop: shape.spaceHairline,
   },
   ghostLabel: {
     ...typo.option,
@@ -387,7 +387,7 @@ const styles = StyleSheet.create({
   more: {
     ...typo.label,
     color: colors.textGhost,
-    paddingVertical: 8,
+    paddingVertical: shape.spaceSnug,
   },
   picker: {
     backgroundColor: colors.surfaceCardSunken,
@@ -395,19 +395,19 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderRadius: shape.radiusCard,
     padding: shape.spaceInline,
-    gap: 4,
+    gap: shape.spaceTight,
   },
   pickerHead: {
     ...typo.overline,
     color: colors.textFaint,
-    marginBottom: 4,
+    marginBottom: shape.spaceTight,
   },
   gradeRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 12,
-    paddingVertical: 11,
+    paddingHorizontal: shape.spaceInline,
+    paddingVertical: shape.spaceInline,
     borderRadius: shape.radiusControl,
     borderWidth: shape.borderWActive,
     borderColor: 'transparent',

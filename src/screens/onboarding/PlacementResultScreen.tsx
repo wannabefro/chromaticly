@@ -120,13 +120,13 @@ export function PlacementResultScreen({ staged, asked, onRetest, onAccept }: Pla
 
 const styles = StyleSheet.create({
   screen: { flex: 1 },
-  body: { padding: shape.spaceScreenX, gap: shape.spaceInline, paddingBottom: 24 },
+  body: { padding: shape.spaceScreenX, gap: shape.spaceInline, paddingBottom: shape.spaceScreenBottom },
   over: { ...typo.label, fontFamily: fonts.mono, color: colors.textFaint, letterSpacing: 1 },
   title: { ...typo.title, color: colors.text },
   blurb: { ...typo.body, color: colors.textMuted },
   // This screen IS the radar, so it carries all seven hues and keeps its own accent
   // neutral — the same approved exception LanesScreen and TabBar take.
-  rows: { gap: 2, marginTop: shape.spaceInline },
+  rows: { gap: shape.spaceHairline, marginTop: shape.spaceInline },
   notAsked: { ...typo.label, color: colors.textGhost },
   tip: {
     flexDirection: 'row',

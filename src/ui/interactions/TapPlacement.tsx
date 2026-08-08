@@ -110,10 +110,10 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
     backgroundColor: colors.surfaceCardSunken,
     borderRadius: shape.radiusControl,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
+    paddingVertical: shape.spaceInline,
+    paddingHorizontal: shape.spaceInline,
   },
-  strip: { flexDirection: 'row', alignItems: 'center', paddingVertical: 4 },
+  strip: { flexDirection: 'row', alignItems: 'center', paddingVertical: shape.spaceTight },
   pair: { flexDirection: 'row', alignItems: 'center' },
   note: { fontSize: 26, lineHeight: 34, color: colors.text },
   // Tall and narrow: the gaps tile with no dead space, so no gap can be missed.

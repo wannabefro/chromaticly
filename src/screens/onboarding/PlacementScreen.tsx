@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: shape.spaceScreenX,
-    paddingTop: 4,
+    paddingTop: shape.spaceTight,
   },
   close: { ...typo.title, color: colors.textMuted },
   counter: { ...typo.label, fontFamily: fonts.mono, color: colors.textMuted },

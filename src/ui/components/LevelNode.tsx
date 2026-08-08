@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   collapsedBody: {
     flex: 1,
-    gap: 2,
+    gap: shape.spaceHairline,
   },
   collapsedTitle: {
     ...typo.cardTitle,
@@ -128,8 +128,8 @@ const styles = StyleSheet.create({
     borderWidth: shape.borderW,
     borderColor: colors.readinessBorder,
     backgroundColor: colors.readinessSurface,
-    paddingHorizontal: 9,
-    paddingVertical: 4,
+    paddingHorizontal: shape.spaceSnug,
+    paddingVertical: shape.spaceTight,
   },
   readinessChipText: {
     ...typo.label,
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   headerBody: {
     flex: 1,
-    gap: 2,
+    gap: shape.spaceHairline,
   },
   headerTitle: {
     ...typo.cardTitle,
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   },
   units: {
     paddingHorizontal: shape.spaceInline,
-    paddingVertical: 6,
-    gap: 2,
+    paddingVertical: shape.spaceSnug,
+    gap: shape.spaceHairline,
   },
 });

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg,
     justifyContent: 'space-between',
     paddingHorizontal: shape.spaceScreenX,
-    paddingVertical: 48,
+    paddingVertical: shape.spaceScreenTop,
   },
   // The sign-in block used to fill the lower half. With it gone the brand centres
   // in the space instead of sitting under a screen of empty canvas.
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 12,
+    gap: shape.spaceInline,
   },
   brandMark: {
     width: 132,

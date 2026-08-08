@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
   hint: { ...typo.label, color: colors.textFaint },
 
   chartRow: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
-  legend: { flex: 1, gap: 6 },
-  legendRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  legend: { flex: 1, gap: shape.spaceSnug },
+  legendRow: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceSnug },
   legendRowIdle: { opacity: 0.4 },
   swatch: { width: 9, height: 9, borderRadius: 3 },
   legendLabel: { ...typo.body, color: colors.text },

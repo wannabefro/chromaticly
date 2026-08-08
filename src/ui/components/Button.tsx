@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   base: {
     alignSelf: 'stretch',
     borderRadius: shape.radiusButton,
-    paddingVertical: 15,
+    paddingVertical: shape.spaceCard,
     alignItems: 'center',
     justifyContent: 'center',
   },

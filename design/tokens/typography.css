@@ -14,11 +14,21 @@
   --text-prompt: 700 20px/1.35 var(--font-ui);        /* question prompts (max 2 lines, wrap never truncate) */
   --text-card-title: 700 16px/1.3 var(--font-ui);
   --text-body: 400 14px/1.55 var(--font-ui);
+  --text-caption: 400 12px/1.4 var(--font-ui);        /* the step between label and body */
+  --text-display: 800 44px/1.1 var(--font-ui);        /* one number the screen is about */
   --text-option: 600 16px/1.3 var(--font-ui);         /* answer options */
   --text-label: 500 11px/1.4 var(--font-mono);        /* mono meta labels */
   --text-overline: 500 11px/1.4 var(--font-mono);     /* + letter-spacing .12em, uppercase */
 
   --tracking-overline: 0.12em;
+
+  /* glyph sizes — notation and icons are drawn shapes, not text, so they do not
+     sit on the scale above */
+  --glyph-sm: 14px;
+  --glyph-md: 18px;
+  --glyph-lg: 22px;
+  --glyph-xl: 28px;
+  --glyph-clef: 32px;
 }
 
 /* Usage rules:

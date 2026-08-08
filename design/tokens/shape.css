@@ -18,6 +18,11 @@
   --space-card: 16px;
   --space-stack: 16px;        /* gap between stacked cards */
   --space-inline: 12px;       /* gap inside rows */
+  --space-snug: 8px;          /* below --space-inline the rhythm is 4px */
+  --space-tight: 4px;
+  --space-hairline: 2px;      /* inside ONE text block: a label over its value */
+  --space-screen-top: 48px;   /* onboarding screen top inset */
+  --space-screen-bottom: 24px;/* screen bottom inset */
 
   /* tap targets: minimum 44px; answer options ~56px; SRS grade buttons 56px */
   --tap-min: 44px;

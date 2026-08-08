@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: shape.spaceInline,
     minHeight: shape.tapMin,
-    paddingVertical: 6,
+    paddingVertical: shape.spaceSnug,
   },
   // Fixed width, not intrinsic: the seven music glyphs differ in advance width
   // (the interval arrow is roughly twice the sharp), so an intrinsic column left every

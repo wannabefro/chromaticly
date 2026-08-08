@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bg,
     paddingHorizontal: shape.spaceScreenX,
-    paddingTop: 48,
-    paddingBottom: 24,
+    paddingTop: shape.spaceScreenTop,
+    paddingBottom: shape.spaceScreenBottom,
     gap: shape.spaceStack,
   },
   title: {
@@ -114,10 +114,10 @@ const styles = StyleSheet.create({
   },
   yearListContent: {
     padding: shape.spaceInline,
-    gap: 4,
+    gap: shape.spaceTight,
   },
   yearRow: {
-    paddingVertical: 12,
+    paddingVertical: shape.spaceInline,
     paddingHorizontal: shape.spaceInline,
     borderRadius: shape.radiusControl,
     minHeight: shape.tapMin,

@@ -58,9 +58,9 @@ const styles = StyleSheet.create({
   chip: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    gap: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
+    gap: shape.spaceSnug,
+    paddingHorizontal: shape.spaceInline,
+    paddingVertical: shape.spaceSnug,
     borderRadius: shape.radiusControl,
     borderWidth: shape.borderW,
     minHeight: shape.tapMin,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 1,
-    gap: 2,
+    gap: shape.spaceHairline,
   },
   lead: {
     ...typo.label,

@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     ...type.label,
     color: colors.paperMuted,
     textAlign: 'center',
-    marginTop: 4,
+    marginTop: shape.spaceTight,
   },
   play: {
     position: 'absolute',

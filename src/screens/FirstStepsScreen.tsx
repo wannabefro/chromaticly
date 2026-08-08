@@ -136,10 +136,10 @@ const styles = StyleSheet.create({
     // rows ran to the bezel.
     paddingHorizontal: shape.spaceScreenX,
     paddingTop: shape.spaceStack,
-    paddingBottom: 32,
+    paddingBottom: shape.spaceScreenBottom,
   },
   muted: { ...typo.body, color: colors.textMuted },
-  header: { gap: 6 },
+  header: { gap: shape.spaceSnug },
   overline: { ...typo.overline, color: colors.textFaint },
   title: { ...typo.title, color: colors.text },
   lead: { ...typo.body, color: colors.textMuted },
@@ -154,6 +154,6 @@ const styles = StyleSheet.create({
   },
   handoffTitle: { ...typo.cardTitle, color: colors.text },
   handoffBody: { ...typo.body, color: colors.textMuted },
-  skip: { paddingVertical: 12, alignItems: 'center' },
+  skip: { paddingVertical: shape.spaceInline, alignItems: 'center' },
   skipLabel: { ...typo.body, color: colors.textFaint },
 });

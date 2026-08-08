@@ -57,12 +57,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    gap: 10,
+    gap: shape.spaceInline,
   },
   term: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
+    gap: shape.spaceInline,
   },
   op: {
     ...type.title,

@@ -86,6 +86,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderTopColor: 'transparent',
     borderBottomColor: 'transparent',
-    marginLeft: 2,
+    marginLeft: shape.spaceHairline,
   },
 });

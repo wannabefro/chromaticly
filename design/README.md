@@ -509,3 +509,31 @@ carries the placed count and works with a screen reader.
 The rejected alternative is recorded there too: an mcq that labels candidate positions and asks
 where the FIRST bar-line goes. It ships without a design decision, and it asks for one bar-line
 rather than the rhythm.
+
+### The scales grew rather than the screens drifting · approved 2026-08-08
+
+Measured on 2026-08-08: the code used 20 distinct spacing values against the 3
+`shape.css` defined, and 20 type sizes against 6. Sam ruled: unify on the tokens,
+and add a token only where one is essential. Five spacing tokens and a glyph
+scale were added, and every spacing literal now reads from `shape`.
+
+1. **The rhythm below `--space-inline` is 4px** — `--space-snug` 8, `--space-tight`
+   4. `--space-hairline` 2 is narrower than a rhythm step on purpose: it is the
+   gap **inside one text block**, a label over its value, never between two things.
+2. **Two screen insets are named for their role**, not their number:
+   `--space-screen-top` 48 (onboarding containers) and `--space-screen-bottom` 24.
+3. **Notation and icon glyphs left the type scale.** A clef, a notehead, a
+   duration glyph and a chevron are drawn shapes, so sizing them on a text scale
+   was a category error. They now read `--glyph-sm|md|lg|xl|clef` (14/18/22/28/32).
+4. **`--text-caption` 12** fills the step between `--text-label` 11 and
+   `--text-body` 14, which 17 uses had been inventing. `--text-display` 44 is the
+   exam mark, the one number a screen is entirely about.
+5. **Radii below `--radius-control` stay untokenised, deliberately.** Every one of
+   them is notation geometry — a notehead, a ghost slot, a dot, a rule — whose
+   corner follows the shape's own size. A token would be false precision. Only
+   chrome takes a radius token.
+
+No fold moves a value by more than 2px, with one stated exception: three
+`paddingBottom` values on scrolling containers (30, 32) fold to
+`--space-screen-bottom` 24.
+

@@ -98,8 +98,23 @@ export const shape = {
   spaceCard: 16,
   spaceStack: 16,
   spaceInline: 12,
+  // Below spaceInline the rhythm is 4px; spaceHairline sits inside one block.
+  spaceSnug: 8,
+  spaceTight: 4,
+  spaceHairline: 2,
+  spaceScreenTop: 48,
+  spaceScreenBottom: 24,
 
   tapMin: 44,
+} as const;
+
+/** Notation and icon glyphs are drawn shapes, not text, so they scale apart. */
+export const glyph = {
+  sm: 14,
+  md: 18,
+  lg: 22,
+  xl: 28,
+  clef: 32,
 } as const;
 
 /** Font families (loaded via expo-font in _layout; keys match the loaded names). */
@@ -127,11 +142,13 @@ export const type = {
   prompt: { fontFamily: fonts.uiBold, fontSize: 20, lineHeight: 27 },
   cardTitle: { fontFamily: fonts.uiBold, fontSize: 16, lineHeight: 21 },
   body: { fontFamily: fonts.ui, fontSize: 14, lineHeight: 22 },
+  caption: { fontFamily: fonts.ui, fontSize: 12, lineHeight: 17 },
   option: { fontFamily: fonts.uiSemibold, fontSize: 16, lineHeight: 21 },
   label: { fontFamily: fonts.mono, fontSize: 11, lineHeight: 15 },
   overline: { fontFamily: fonts.mono, fontSize: 11, lineHeight: 15, letterSpacing: 1.3, textTransform: 'uppercase' as const },
   // Exam register headings swap to the serif face (rule 4); exam body stays sans
   // (reuse `body`). Assessment mode only.
+  display: { fontFamily: fonts.uiHeavy, fontSize: 44, lineHeight: 48 },
   examTitle: { fontFamily: fonts.examBold, fontSize: 24, lineHeight: 28 },
   examPrompt: { fontFamily: fonts.examSemibold, fontSize: 20, lineHeight: 27 },
 } as const;

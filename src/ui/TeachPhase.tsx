@@ -210,8 +210,8 @@ const styles = StyleSheet.create({
   cardTitle: { ...typo.cardTitle, color: colors.text },
   body: { ...typo.body, color: colors.textMuted },
 
-  objectives: { gap: 8 },
-  objectiveRow: { flexDirection: 'row', gap: 10 },
+  objectives: { gap: shape.spaceSnug },
+  objectiveRow: { flexDirection: 'row', gap: shape.spaceInline },
   objectiveNum: { ...typo.body, fontFamily: typo.cardTitle.fontFamily },
   objectiveText: { ...typo.body, color: colors.text, flex: 1 },
 
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     padding: shape.spaceCard,
   },
   tipIcon: { fontSize: 20 },
-  tipBody: { flex: 1, gap: 3 },
+  tipBody: { flex: 1, gap: shape.spaceTight },
   tipLabel: { ...typo.label, color: colors.hint, letterSpacing: 0.6 },
   tipText: { ...typo.body, color: colors.text },
 
@@ -236,24 +236,24 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderRadius: shape.radiusCard,
     padding: shape.spaceCard,
-    gap: 9,
+    gap: shape.spaceSnug,
   },
   factHead: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   factCollected: { ...typo.label, color: colors.hint },
   factText: { ...typo.body, color: colors.text },
   factFoot: { ...typo.label, color: colors.textFaint },
 
-  workedOptions: { flexDirection: 'row', gap: 9 },
-  workedOptionsStacked: { flexDirection: 'column', gap: 9 },
+  workedOptions: { flexDirection: 'row', gap: shape.spaceSnug },
+  workedOptionsStacked: { flexDirection: 'column', gap: shape.spaceSnug },
   workedOptionRow: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
   // The box centres its text options; a stave needs the full width or it
   // collapses to a sliver (the chromaticly-9c8 class of bug).
   workedOptionWide: { alignItems: 'stretch' as const },
-  workedOptionTick: { ...typo.body, color: colors.hint, marginTop: 4, textAlign: 'center' as const },
+  workedOptionTick: { ...typo.body, color: colors.hint, marginTop: shape.spaceTight, textAlign: 'center' as const },
   workedOption: {
     flex: 1,
-    paddingVertical: 11,
-    paddingHorizontal: 8,
+    paddingVertical: shape.spaceInline,
+    paddingHorizontal: shape.spaceSnug,
     borderRadius: shape.radiusControl,
     borderWidth: shape.borderWActive,
     borderColor: colors.border,
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
   footer: {
     paddingHorizontal: shape.spaceScreenX,
     paddingTop: shape.spaceInline,
-    paddingBottom: 30,
+    paddingBottom: shape.spaceScreenBottom,
     borderTopWidth: shape.borderW,
     borderTopColor: colors.border,
     backgroundColor: colors.bg,

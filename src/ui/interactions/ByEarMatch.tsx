@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
   listenRow: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
   listenLabel: { ...typo.body, color: colors.textMuted, flex: 1 },
 
-  verdictRow: { flexDirection: 'row', gap: 9 },
+  verdictRow: { flexDirection: 'row', gap: shape.spaceSnug },
   verdict: {
     flex: 1,
-    paddingVertical: 14,
+    paddingVertical: shape.spaceCard,
     borderRadius: shape.radiusControl,
     borderWidth: shape.borderWActive,
     alignItems: 'center',
@@ -132,10 +132,10 @@ const styles = StyleSheet.create({
 
   whereBlock: { gap: shape.spaceInline },
   whereLabel: { ...typo.body, color: colors.textMuted },
-  cells: { flexDirection: 'row', gap: 6 },
+  cells: { flexDirection: 'row', gap: shape.spaceSnug },
   cell: {
     flex: 1,
-    paddingVertical: 12,
+    paddingVertical: shape.spaceInline,
     borderRadius: shape.radiusControl,
     borderWidth: shape.borderWActive,
     borderColor: colors.border,

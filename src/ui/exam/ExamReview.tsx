@@ -170,12 +170,12 @@ export function ExamReview({
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: x.bg },
-  head: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline, paddingHorizontal: shape.spaceScreenX, paddingTop: 4 },
+  head: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline, paddingHorizontal: shape.spaceScreenX, paddingTop: shape.spaceTight },
   back: { fontFamily: type.label.fontFamily, fontSize: 22, color: x.muted },
   title: { fontFamily: type.examPrompt.fontFamily, fontSize: 16, color: x.ink },
   summary: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.muted },
 
-  strip: { flexDirection: 'row', gap: 3, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceInline },
+  strip: { flexDirection: 'row', gap: shape.spaceTight, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceInline },
   stripCell: { flex: 1, height: 6, borderRadius: shape.radiusChip },
   // Green/red, not two exam tans: the strip's whole job is telling right from wrong at
   // a glance, and the warm palette's bands are too close together to do that.
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   stripWrong: { backgroundColor: colors.incorrect },
   stripCurrent: { height: 10 },
 
-  body: { padding: shape.spaceScreenX, gap: shape.spaceCard, paddingBottom: 24 },
+  body: { padding: shape.spaceScreenX, gap: shape.spaceCard, paddingBottom: shape.spaceScreenBottom },
   qHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
   section: { fontFamily: type.examPrompt.fontFamily, fontSize: 15, color: x.ink },
   mark: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.muted },
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   optionCorrect: { borderColor: colors.correct },
   optionWrong: { borderColor: x.accent },
-  optionBody: { flex: 1, gap: 4 },
+  optionBody: { flex: 1, gap: shape.spaceTight },
   optionLabel: { fontFamily: type.body.fontFamily, fontSize: 16, color: x.ink },
   optionNote: { fontFamily: type.label.fontFamily, fontSize: 11, color: x.faint },
   marker: { fontFamily: type.label.fontFamily, fontSize: 15, color: x.faint, width: 14 },
@@ -222,13 +222,13 @@ const styles = StyleSheet.create({
   revise: { fontFamily: type.label.fontFamily, fontSize: 12, color: x.accent },
 
   footer: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline, padding: shape.spaceScreenX },
-  ghostButton: { paddingVertical: 14, paddingHorizontal: 12 },
+  ghostButton: { paddingVertical: shape.spaceCard, paddingHorizontal: shape.spaceInline },
   ghostLabel: { fontFamily: type.body.fontFamily, fontSize: type.body.fontSize, color: x.muted },
   primary: {
     flex: 1,
     backgroundColor: x.accent,
     borderRadius: shape.radiusButton,
-    paddingVertical: 15,
+    paddingVertical: shape.spaceCard,
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: shape.tapMin,

@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bg,
     paddingHorizontal: shape.spaceScreenX,
-    paddingTop: 48,
-    paddingBottom: 24,
+    paddingTop: shape.spaceScreenTop,
+    paddingBottom: shape.spaceScreenBottom,
     justifyContent: 'space-between',
   },
   // Centred in the space above the footer. Top-aligned, this screen was 55% empty.
-  head: { flex: 1, gap: 12, justifyContent: 'center' },
+  head: { flex: 1, gap: shape.spaceInline, justifyContent: 'center' },
   overline: {
     fontFamily: type.overline.fontFamily,
     fontSize: type.overline.fontSize,

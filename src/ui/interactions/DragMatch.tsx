@@ -130,7 +130,7 @@ function slotTextStyle(state: 'empty' | 'filled' | 'correct' | 'incorrect') {
 
 const styles = StyleSheet.create({
   container: { gap: shape.spaceInline },
-  row: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceSnug },
   term: {
     flex: 1,
     minHeight: shape.tapMin,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceCard,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: shape.spaceInline,
   },
   termText: { ...typo.option, color: colors.text, fontWeight: '700', textAlign: 'center' },
   connector: { width: 20, height: 2, backgroundColor: colors.border },
@@ -151,10 +151,10 @@ const styles = StyleSheet.create({
     borderWidth: shape.borderWActive,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 10,
+    paddingHorizontal: shape.spaceInline,
   },
   slotText: { ...typo.option, textAlign: 'center' },
-  pool: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 6 },
+  pool: { flexDirection: 'row', flexWrap: 'wrap', gap: shape.spaceSnug, marginTop: shape.spaceSnug },
   poolChip: {
     minHeight: shape.tapMin,
     borderRadius: shape.radiusControl,
@@ -163,8 +163,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceCard,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    paddingHorizontal: shape.spaceCard,
+    paddingVertical: shape.spaceSnug,
   },
   poolText: { ...typo.option, color: colors.text },
 });

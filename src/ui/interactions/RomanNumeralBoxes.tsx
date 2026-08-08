@@ -244,8 +244,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceCard,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    gap: 3,
+    paddingVertical: shape.spaceInline,
+    gap: shape.spaceTight,
   },
   numeral: {
     fontFamily: fonts.examBold,
@@ -261,7 +261,7 @@ const styles = StyleSheet.create({
     color: colors.textFaint,
   },
   readout: {
-    marginTop: 4,
+    marginTop: shape.spaceTight,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     borderWidth: shape.borderW,
     borderRadius: shape.radiusControl,
     backgroundColor: colors.surfaceCardSunken,
-    paddingVertical: 9,
+    paddingVertical: shape.spaceSnug,
   },
   readoutLabel: {
     fontFamily: fonts.mono,

@@ -138,13 +138,13 @@ const styles = StyleSheet.create({
     padding: shape.spaceCard,
     gap: shape.spaceInline,
   },
-  head: { flexDirection: 'row', alignItems: 'center', gap: 9 },
+  head: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceSnug },
   icon: { fontSize: 17 },
   title: { ...typo.cardTitle, color: colors.text },
   prompt: { ...typo.body, color: colors.textMuted },
 
-  row: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  beats: { flex: 1, flexDirection: 'row', alignItems: 'flex-end', gap: 4, height: 36 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: shape.spaceInline },
+  beats: { flex: 1, flexDirection: 'row', alignItems: 'flex-end', gap: shape.spaceTight, height: 36 },
   beatHit: { flex: 1, height: '100%', justifyContent: 'flex-end' },
   beat: {
     width: '100%',
