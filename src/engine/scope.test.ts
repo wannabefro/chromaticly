@@ -99,8 +99,37 @@ describe('scopeForGrade(1).intervalRule', () => {
   });
 });
 
+// chromaticly-tqg.5. The grade-1 bounds were A5 and E2, and both were one
+// position too far because the stave geometry was misread. Numbers alone would
+// not have caught it, so this asserts the RULE the numbers come from.
+describe('grade 1 draws no ledger line but middle C', () => {
+  const LINE_INDEX = (p: string) => Number(p[1]) * 7 + 'CDEFGAB'.indexOf(p[0]);
+  const STAVE = { treble: { bottom: 'E4', top: 'F5' }, bass: { bottom: 'G2', top: 'A3' } } as const;
+
+  test.each(['treble', 'bass'] as const)('%s: every out-of-stave pitch is a space, except middle C', (clef) => {
+    const { bottom, top } = STAVE[clef];
+    for (const pitch of diatonicPitchesInRange(clef, 1)) {
+      const outside = LINE_INDEX(pitch) < LINE_INDEX(bottom) || LINE_INDEX(pitch) > LINE_INDEX(top);
+      if (!outside) continue;
+      const onLedger = (LINE_INDEX(pitch) - LINE_INDEX(bottom)) % 2 === 0;
+      if (onLedger) expect(pitch).toBe('C4');
+    }
+  });
+
+  // The bound itself, not a value inside it: one position further out is the
+  // ledger line, which is exactly the mistake this replaced.
+  test.each([
+    ['treble', 'G5', 'A5'],
+    ['bass', 'F2', 'E2'],
+  ])('%s stops at %s, because %s is a ledger line', (clef, kept, dropped) => {
+    const pitches = diatonicPitchesInRange(clef as 'treble' | 'bass', 1);
+    expect(pitches).toContain(kept);
+    expect(pitches).not.toContain(dropped);
+  });
+});
+
 describe('diatonicPitchesInRange — every enumerated pitch stays within the declared clef bounds', () => {
-  test('treble pitches never go below C4 or above A5 at grade 1', () => {
+  test('treble pitches never go below C4 or above G5 at grade 1', () => {
     const pitches = diatonicPitchesInRange('treble', 1);
     expect(pitches.length).toBeGreaterThan(0);
     for (const p of pitches) {
@@ -116,10 +145,10 @@ describe('diatonicPitchesInRange — every enumerated pitch stays within the dec
       if (octave === 5) expect('CDEFGAB'.indexOf(letter)).toBeLessThanOrEqual('CDEFGAB'.indexOf('A'));
     }
     expect(pitches[0]).toBe('C4');
-    expect(pitches[pitches.length - 1]).toBe('A5');
+    expect(pitches[pitches.length - 1]).toBe('G5');
   });
 
-  test('bass pitches never go below E2 or above D4 at grade 1', () => {
+  test('bass pitches never go below F2 or above D4 at grade 1', () => {
     const pitches = diatonicPitchesInRange('bass', 1);
     expect(pitches.length).toBeGreaterThan(0);
     for (const p of pitches) {
@@ -128,11 +157,11 @@ describe('diatonicPitchesInRange — every enumerated pitch stays within the dec
       const [, letter, octaveStr] = match!;
       const octave = Number(octaveStr);
       expect(octave).toBeGreaterThanOrEqual(2);
-      if (octave === 2) expect('CDEFGAB'.indexOf(letter)).toBeGreaterThanOrEqual('CDEFGAB'.indexOf('E'));
+      if (octave === 2) expect('CDEFGAB'.indexOf(letter)).toBeGreaterThanOrEqual('CDEFGAB'.indexOf('F'));
       expect(octave).toBeLessThanOrEqual(4);
       if (octave === 4) expect('CDEFGAB'.indexOf(letter)).toBeLessThanOrEqual('CDEFGAB'.indexOf('D'));
     }
-    expect(pitches[0]).toBe('E2');
+    expect(pitches[0]).toBe('F2');
     expect(pitches[pitches.length - 1]).toBe('D4');
   });
 
@@ -445,8 +474,10 @@ describe('scopeForGrade(3) — grade-3 scope entry (D1): keys/forms are grade-2 
       rhythmDevices: ['tie', 'single_dot'],
       intervalRule: { aboveTonicOnly: true, namingStyle: 'number', maxOctaves: 1 },
       pitchRanges: {
-        treble: { low: 'C4', high: 'A5' },
-        bass: { low: 'E2', high: 'D4' },
+        // chromaticly-tqg.5 narrowed both by one position: A5 and E2 are ledger
+        // lines, and grade 1's ledger allowance is middle C only.
+        treble: { low: 'C4', high: 'G5' },
+        bass: { low: 'F2', high: 'D4' },
         // alto is the grade-4 clef (fyu.5) and tenor the grade-5 one
         // (chromaticly-e3z.7); both are required by the exhaustive Record<Clef>
         // but neither is ever read at grade 1, whose clefs exclude them.
@@ -488,8 +519,8 @@ describe('scopeForGrade(3).pitchRanges — ledger-lines-3 widening (chromaticly-
     // Asserts treble/bass specifically (not the whole object) — the alto key
     // added for Grade 4 (fyu.5) is a grade-4-only clef and must not be read as
     // a change to the grade-1/2 treble/bass reading bounds this guards.
-    expect(GRADE_SCOPES[1].pitchRanges.treble).toEqual({ low: 'C4', high: 'A5' });
-    expect(GRADE_SCOPES[1].pitchRanges.bass).toEqual({ low: 'E2', high: 'D4' });
+    expect(GRADE_SCOPES[1].pitchRanges.treble).toEqual({ low: 'C4', high: 'G5' });
+    expect(GRADE_SCOPES[1].pitchRanges.bass).toEqual({ low: 'F2', high: 'D4' });
     expect(GRADE_SCOPES[2].pitchRanges.treble).toEqual({ low: 'A3', high: 'C6' });
     expect(GRADE_SCOPES[2].pitchRanges.bass).toEqual({ low: 'C2', high: 'E4' });
   });

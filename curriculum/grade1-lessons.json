@@ -18,8 +18,7 @@
         "note_read:treble:D5",
         "note_read:treble:E5",
         "note_read:treble:F5",
-        "note_read:treble:G5",
-        "note_read:treble:A5"
+        "note_read:treble:G5"
       ],
       "templates": [
         "note_naming",
@@ -34,11 +33,12 @@
         "objectives": [
           "The notes on the treble lines — E, G, B, D, F",
           "The notes in the treble spaces — F, A, C, E",
-          "How the treble clef fixes G on the second line"
+          "How the treble clef fixes G on the second line",
+          "The three notes just outside the stave — middle C on its ledger line, D below the stave, G above it"
         ],
         "concept": {
           "title": "Reading the treble stave",
-          "body": "The treble clef curls around the second line up, which fixes that line as G — everything else is counted from there. The five **lines**, bottom to top, spell E, G, B, D, F: Every Good Boy Deserves Football. The four **spaces**, bottom to top, spell F, A, C, E, which is just the word face. Notes step through the alphabet as they climb, line, space, line, space, and after G it starts again at A. To name a note you do not recognise, find the nearest landmark you do know and count up or down from it one step at a time.",
+          "body": "The treble clef curls around the second line up, which fixes that line as G — everything else is counted from there. The five **lines**, bottom to top, spell E, G, B, D, F: Every Good Boy Deserves Football. The four **spaces**, bottom to top, spell F, A, C, E, which is just the word face. Notes step through the alphabet as they climb, line, space, line, space, and after G it starts again at A. To name a note you do not recognise, find the nearest landmark you do know and count up or down from it one step at a time. Three more notes sit just outside the five lines. D hangs in the space below the bottom line, and G sits in the space above the top line. Middle C is lower still, and it needs a short ledger line of its own — the only ledger line Grade 1 asks for.",
           "example": {
             "template_id": "note_naming",
             "grade": 1,
@@ -62,8 +62,7 @@
         "note_read:treble:D5:by_ear",
         "note_read:treble:E5:by_ear",
         "note_read:treble:F5:by_ear",
-        "note_read:treble:G5:by_ear",
-        "note_read:treble:A5:by_ear"
+        "note_read:treble:G5:by_ear"
       ]
     },
     {
@@ -126,7 +125,6 @@
       "title": "Reading notes on the bass stave",
       "strand": "pitch",
       "atoms": [
-        "note_read:bass:E2",
         "note_read:bass:F2",
         "note_read:bass:G2",
         "note_read:bass:A2",
@@ -154,11 +152,12 @@
         "objectives": [
           "The notes on the bass lines — G, B, D, F, A",
           "The notes in the bass spaces — A, C, E, G",
-          "How the bass clef fixes F on the fourth line"
+          "How the bass clef fixes F on the fourth line",
+          "The notes just outside the stave — F below it, B above it, and middle C on its ledger line"
         ],
         "concept": {
           "title": "Reading the bass stave",
-          "body": "The bass clef is the F clef: its two dots sit either side of the fourth line up, which fixes that line as F. The five **lines**, bottom to top, spell G, B, D, F, A — Good Boys Deserve Football Always. The four **spaces** spell A, C, E, G — All Cows Eat Grass. The letters climb through the alphabet exactly as they do in the treble, so the method is the same: find a landmark and count. The lines and spaces sit **lower** than the treble ones, which is the point of a second clef — it saves writing ledger lines for every low note.",
+          "body": "The bass clef is the F clef: its two dots sit either side of the fourth line up, which fixes that line as F. The five **lines**, bottom to top, spell G, B, D, F, A — Good Boys Deserve Football Always. The four **spaces** spell A, C, E, G — All Cows Eat Grass. The letters climb through the alphabet exactly as they do in the treble, so the method is the same: find a landmark and count. The lines and spaces sit **lower** than the treble ones, which is the point of a second clef — it saves writing ledger lines for every low note. Notes also sit just outside the five lines. F hangs in the space below the bottom line, and B sits in the space above the top line. Above B comes middle C on a short ledger line, and D in the space above that. Middle C is the note the two staves share: it is one ledger line above the bass and one below the treble.",
           "example": {
             "template_id": "note_naming",
             "grade": 1,
@@ -171,7 +170,6 @@
       "unlocks": "rests-1",
       "by_ear_source": "note_naming",
       "by_ear_atoms": [
-        "note_read:bass:E2:by_ear",
         "note_read:bass:F2:by_ear",
         "note_read:bass:G2:by_ear",
         "note_read:bass:A2:by_ear",

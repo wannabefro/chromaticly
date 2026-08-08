@@ -93,20 +93,19 @@ const GRADE_1_SCOPE: GradeScope = {
     namingStyle: 'number',
     maxOctaves: 1,
   },
-  // knowledge-base.json's grade_scopes["1"].pitch_range is prose, not concrete
-  // bounds ("G5 (top of stave... A5 space above)" for treble; "D4 (ledger
-  // context above middle C)" for bass). These concrete numeric bounds are the
-  // judgment call that resolves that prose:
-  //   - treble: C4 (1 ledger line below stave) .. A5. The JSON names G5 as
-  //     "top of stave" but explicitly calls out A5 as the space immediately
-  //     above it, and G1's ledger-line allowance is "middle C only" — A5 sits
-  //     on the stave/just above it, not on a new ledger line, so it's within
-  //     scope and used here as the effective usable high bound.
-  //   - bass: E2 (bottom line, "lower not required") .. D4 (explicitly named
-  //     ledger-line-above-middle-C bound).
+  // chromaticly-tqg.5. The bounds were A5 and E2, and both were off by one
+  // position because the stave geometry was misread here AND in the KB prose
+  // this comment was resolving. Measured: the treble top line is F5, so G5 is
+  // the space above and A5 is the first LEDGER LINE above; the bass bottom line
+  // is G2, so F2 is the space below and E2 is the first LEDGER LINE below.
+  //
+  // Grade 1's ledger allowance is middle C only, so both extremes were out of
+  // scope. The bounds now stop at the space outside each stave, which leaves
+  // exactly the two allowed ledger notes: C4 under the treble and C4 over the
+  // bass. D4 stays the bass high bound, the space above that ledger line.
   pitchRanges: {
-    treble: { low: 'C4', high: 'A5' },
-    bass: { low: 'E2', high: 'D4' },
+    treble: { low: 'C4', high: 'G5' },
+    bass: { low: 'F2', high: 'D4' },
     // Alto is a Grade-4-only clef (grades 1-3 clefs exclude it), so this entry
     // exists only to satisfy the exhaustive Record<Clef> and is never read at
     // this grade. The alto reading range is defined once at grade 3 (inherited

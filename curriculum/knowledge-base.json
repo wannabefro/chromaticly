@@ -1,140 +1,485 @@
 {
   "$schema_note": "Grade scopes define the material pool available to exercise generators. Scopes are CUMULATIVE: the effective pool at grade N is the union of grades 1..N. Only additions are listed per grade.",
-
   "theory_data": {
     "note_values": {
-      "breve": {"beats_in_crotchets": 8, "us_name": "double whole note"},
-      "semibreve": {"beats_in_crotchets": 4, "us_name": "whole note"},
-      "minim": {"beats_in_crotchets": 2, "us_name": "half note"},
-      "crotchet": {"beats_in_crotchets": 1, "us_name": "quarter note"},
-      "quaver": {"beats_in_crotchets": 0.5, "us_name": "8th note"},
-      "semiquaver": {"beats_in_crotchets": 0.25, "us_name": "16th note"},
-      "demisemiquaver": {"beats_in_crotchets": 0.125, "us_name": "32nd note"}
+      "breve": {
+        "beats_in_crotchets": 8,
+        "us_name": "double whole note"
+      },
+      "semibreve": {
+        "beats_in_crotchets": 4,
+        "us_name": "whole note"
+      },
+      "minim": {
+        "beats_in_crotchets": 2,
+        "us_name": "half note"
+      },
+      "crotchet": {
+        "beats_in_crotchets": 1,
+        "us_name": "quarter note"
+      },
+      "quaver": {
+        "beats_in_crotchets": 0.5,
+        "us_name": "8th note"
+      },
+      "semiquaver": {
+        "beats_in_crotchets": 0.25,
+        "us_name": "16th note"
+      },
+      "demisemiquaver": {
+        "beats_in_crotchets": 0.125,
+        "us_name": "32nd note"
+      }
     },
     "dot_rules": {
       "single_dot": "adds half the value of the note/rest",
       "double_dot": "adds half plus a quarter of the value (grade 4+)"
     },
     "key_signatures": {
-      "sharp_order": ["F#", "C#", "G#", "D#", "A#", "E#"],
-      "flat_order": ["Bb", "Eb", "Ab", "Db", "Gb", "Cb"],
+      "sharp_order": [
+        "F#",
+        "C#",
+        "G#",
+        "D#",
+        "A#",
+        "E#"
+      ],
+      "flat_order": [
+        "Bb",
+        "Eb",
+        "Ab",
+        "Db",
+        "Gb",
+        "Cb"
+      ],
       "majors": {
-        "C": 0, "G": 1, "D": 2, "A": 3, "E": 4, "B": 5, "F#": 6,
-        "F": -1, "Bb": -2, "Eb": -3, "Ab": -4, "Db": -5, "Gb": -6
+        "C": 0,
+        "G": 1,
+        "D": 2,
+        "A": 3,
+        "E": 4,
+        "B": 5,
+        "F#": 6,
+        "F": -1,
+        "Bb": -2,
+        "Eb": -3,
+        "Ab": -4,
+        "Db": -5,
+        "Gb": -6
       },
       "minors": {
-        "A": 0, "E": 1, "B": 2, "F#": 3, "C#": 4, "G#": 5, "D#": 6,
-        "D": -1, "G": -2, "C": -3, "F": -4, "Bb": -5, "Eb": -6
+        "A": 0,
+        "E": 1,
+        "B": 2,
+        "F#": 3,
+        "C#": 4,
+        "G#": 5,
+        "D#": 6,
+        "D": -1,
+        "G": -2,
+        "C": -3,
+        "F": -4,
+        "Bb": -5,
+        "Eb": -6
       },
       "relative_rule": "relative minor tonic = major tonic minus a minor 3rd; same key signature"
     },
     "scale_patterns": {
-      "major": ["T", "T", "S", "T", "T", "T", "S"],
-      "harmonic_minor": ["T", "S", "T", "T", "S", "T+S", "S"],
-      "melodic_minor_asc": ["T", "S", "T", "T", "T", "T", "S"],
-      "melodic_minor_desc": ["T", "S", "T", "T", "S", "T", "T"],
+      "major": [
+        "T",
+        "T",
+        "S",
+        "T",
+        "T",
+        "T",
+        "S"
+      ],
+      "harmonic_minor": [
+        "T",
+        "S",
+        "T",
+        "T",
+        "S",
+        "T+S",
+        "S"
+      ],
+      "melodic_minor_asc": [
+        "T",
+        "S",
+        "T",
+        "T",
+        "T",
+        "T",
+        "S"
+      ],
+      "melodic_minor_desc": [
+        "T",
+        "S",
+        "T",
+        "T",
+        "S",
+        "T",
+        "T"
+      ],
       "chromatic": "12 semitones; notate without using the same letter name more than twice in succession"
     },
-    "degree_names": ["tonic", "supertonic", "mediant", "subdominant", "dominant", "submediant", "leading note"],
+    "degree_names": [
+      "tonic",
+      "supertonic",
+      "mediant",
+      "subdominant",
+      "dominant",
+      "submediant",
+      "leading note"
+    ],
     "interval_qualities": {
-      "perfect_numbers": [1, 4, 5, 8],
-      "major_minor_numbers": [2, 3, 6, 7],
+      "perfect_numbers": [
+        1,
+        4,
+        5,
+        8
+      ],
+      "major_minor_numbers": [
+        2,
+        3,
+        6,
+        7
+      ],
       "modification_rules": "major -1 semitone = minor; minor -1 = diminished; major +1 = augmented; perfect -1 = diminished; perfect +1 = augmented",
       "compound_rule": "interval > octave; name = simple name + 7 (e.g. compound major 2nd = major 9th)"
     },
     "beaming_rules_by_time_signature": {
-      "2/4": {"beat_unit": "crotchet", "beam_within_beats": true, "quaver_full_bar_beam": "allowed as one group of 4"},
-      "3/4": {"beat_unit": "crotchet", "beam_within_beats": true, "quaver_full_bar_beam": "allowed as one group of 6"},
-      "4/4": {"beat_unit": "crotchet", "beam_within_beats": true, "quaver_pair_rule": "may beam beats 1-2 or 3-4 together; never across the middle of the bar"},
-      "2/2 3/2 4/2": {"beat_unit": "minim", "beam_within_beats": true},
-      "3/8": {"beat_unit": "quaver (or dotted-crotchet bar)", "beam_within_beats": true},
-      "6/8 9/8 12/8": {"beat_unit": "dotted crotchet", "beam_within_beats": true, "rest_rule": "show each dotted-crotchet beat; whole-beat rest = crotchet rest + quaver rest or dotted-crotchet rest per house style"},
-      "5/4 7/4": {"beat_unit": "crotchet", "grouping": "show subdivision 2+3 / 3+2 / 3+4 / 4+3 etc.", "grade": 5}
+      "2/4": {
+        "beat_unit": "crotchet",
+        "beam_within_beats": true,
+        "quaver_full_bar_beam": "allowed as one group of 4"
+      },
+      "3/4": {
+        "beat_unit": "crotchet",
+        "beam_within_beats": true,
+        "quaver_full_bar_beam": "allowed as one group of 6"
+      },
+      "4/4": {
+        "beat_unit": "crotchet",
+        "beam_within_beats": true,
+        "quaver_pair_rule": "may beam beats 1-2 or 3-4 together; never across the middle of the bar"
+      },
+      "2/2 3/2 4/2": {
+        "beat_unit": "minim",
+        "beam_within_beats": true
+      },
+      "3/8": {
+        "beat_unit": "quaver (or dotted-crotchet bar)",
+        "beam_within_beats": true
+      },
+      "6/8 9/8 12/8": {
+        "beat_unit": "dotted crotchet",
+        "beam_within_beats": true,
+        "rest_rule": "show each dotted-crotchet beat; whole-beat rest = crotchet rest + quaver rest or dotted-crotchet rest per house style"
+      },
+      "5/4 7/4": {
+        "beat_unit": "crotchet",
+        "grouping": "show subdivision 2+3 / 3+2 / 3+4 / 4+3 etc.",
+        "grade": 5
+      }
     },
     "rest_placement": {
       "semibreve_rest": "hangs from the 4th line; also used for a whole bar of silence in any time signature",
       "minim_rest": "sits on the 3rd line"
     }
   },
-
   "grade_scopes": {
     "1": {
-      "clefs": ["treble", "bass"],
-      "time_signatures": ["2/4", "3/4", "4/4"],
-      "note_values": ["semibreve", "minim", "crotchet", "quaver", "semiquaver"],
-      "rests": ["semibreve", "minim", "crotchet", "quaver", "semiquaver", "whole_bar"],
-      "rhythm_devices": ["tie", "single_dot"],
+      "clefs": [
+        "treble",
+        "bass"
+      ],
+      "time_signatures": [
+        "2/4",
+        "3/4",
+        "4/4"
+      ],
+      "note_values": [
+        "semibreve",
+        "minim",
+        "crotchet",
+        "quaver",
+        "semiquaver"
+      ],
+      "rests": [
+        "semibreve",
+        "minim",
+        "crotchet",
+        "quaver",
+        "semiquaver",
+        "whole_bar"
+      ],
+      "rhythm_devices": [
+        "tie",
+        "single_dot"
+      ],
       "pitch_range": {
-        "treble": {"low": "C4 (middle C, 1 ledger line below)", "high": "G5 (top of stave... A5 space above)"},
-        "bass": {"low": "E2 (bottom line... lower not required)", "high": "D4 (ledger context above middle C)"},
+        "treble": {
+          "low": "C4 (middle C, 1 ledger line below)",
+          "high": "G5 (space above the stave; the top line is F5)"
+        },
+        "bass": {
+          "low": "F2 (space below the stave; the bottom line is G2)",
+          "high": "D4 (ledger context above middle C)"
+        },
         "ledger_lines": "middle C only (plus D above middle C in bass clef)"
       },
-      "accidentals": ["sharp", "flat", "natural"],
-      "keys_major": ["C", "G", "D", "F"],
+      "accidentals": [
+        "sharp",
+        "flat",
+        "natural"
+      ],
+      "keys_major": [
+        "C",
+        "G",
+        "D",
+        "F"
+      ],
       "keys_minor": [],
-      "scale_knowledge": ["major construction", "tone/semitone positions", "degrees by number"],
-      "intervals": {"above_tonic_only": true, "naming": "number only", "max": "8ve"},
-      "chords": {"tonic_triad_root_position": true},
+      "scale_knowledge": [
+        "major construction",
+        "tone/semitone positions",
+        "degrees by number"
+      ],
+      "intervals": {
+        "above_tonic_only": true,
+        "naming": "number only",
+        "max": "8ve"
+      },
+      "chords": {
+        "tonic_triad_root_position": true
+      },
       "melody_writing_context": "single-line melody, treble or bass clef, 4-8 bars"
     },
     "2": {
       "adds": {
-        "time_signatures": ["2/2", "3/2", "4/2", "3/8"],
-        "rhythm_devices": ["triplet", "triplet_with_rests", "dotted_rests"],
-        "pitch_range": {"ledger_lines": "up to 2 above and below each stave"},
-        "keys_major": ["A", "Bb", "Eb"],
-        "keys_minor": ["A", "E", "D"],
-        "minor_forms": ["harmonic"],
-        "scale_knowledge": ["relative major/minor", "harmonic minor construction"]
+        "time_signatures": [
+          "2/2",
+          "3/2",
+          "4/2",
+          "3/8"
+        ],
+        "rhythm_devices": [
+          "triplet",
+          "triplet_with_rests",
+          "dotted_rests"
+        ],
+        "pitch_range": {
+          "ledger_lines": "up to 2 above and below each stave"
+        },
+        "keys_major": [
+          "A",
+          "Bb",
+          "Eb"
+        ],
+        "keys_minor": [
+          "A",
+          "E",
+          "D"
+        ],
+        "minor_forms": [
+          "harmonic"
+        ],
+        "scale_knowledge": [
+          "relative major/minor",
+          "harmonic minor construction"
+        ]
       }
     },
     "3": {
       "adds": {
-        "time_signatures": ["6/8", "9/8", "12/8"],
-        "note_values": ["demisemiquaver"],
-        "rests": ["demisemiquaver"],
-        "rhythm_devices": ["anacrusis"],
-        "metre_classification": ["simple vs compound", "duple/triple/quadruple"],
-        "pitch_range": {"ledger_lines": "up to 3 (and beyond) above and below"},
-        "transposition": ["octave, treble<->bass"],
-        "keys_major": ["E", "Ab"],
-        "keys_minor": ["B", "G", "F#", "C", "C#", "F"],
-        "minor_forms": ["melodic"],
-        "intervals": {"naming": "number + type (perfect, major, minor)", "above_tonic_only": true}
+        "time_signatures": [
+          "6/8",
+          "9/8",
+          "12/8"
+        ],
+        "note_values": [
+          "demisemiquaver"
+        ],
+        "rests": [
+          "demisemiquaver"
+        ],
+        "rhythm_devices": [
+          "anacrusis"
+        ],
+        "metre_classification": [
+          "simple vs compound",
+          "duple/triple/quadruple"
+        ],
+        "pitch_range": {
+          "ledger_lines": "up to 3 (and beyond) above and below"
+        },
+        "transposition": [
+          "octave, treble<->bass"
+        ],
+        "keys_major": [
+          "E",
+          "Ab"
+        ],
+        "keys_minor": [
+          "B",
+          "G",
+          "F#",
+          "C",
+          "C#",
+          "F"
+        ],
+        "minor_forms": [
+          "melodic"
+        ],
+        "intervals": {
+          "naming": "number + type (perfect, major, minor)",
+          "above_tonic_only": true
+        }
       }
     },
     "4": {
       "adds": {
-        "time_signatures": ["2/8", "4/8", "6/4", "9/4", "12/4", "6/16", "9/16", "12/16"],
-        "note_values": ["breve"],
-        "rests": ["breve"],
-        "rhythm_devices": ["double_dot", "duplet"],
-        "clefs": ["alto"],
-        "accidentals": ["double_sharp", "double_flat"],
-        "pitch_knowledge": ["enharmonic equivalents", "same pitch across treble/alto/bass", "octave transposition to/from alto"],
-        "keys_major": ["B", "Db"],
-        "keys_minor": ["Bb", "G#"],
-        "scale_knowledge": ["technical degree names", "chromatic scale"],
-        "intervals": {"above_tonic_only": false, "between": "any two diatonic notes", "naming": "number + type incl. augmented, diminished, minor 2nd", "max": "8ve"},
-        "chords": {"primary_triads_and_chords": ["I", "IV", "V"], "position": "root only", "minor_basis": "harmonic"},
-        "ornaments_recognize": ["trill", "turn", "upper mordent", "lower mordent", "acciaccatura", "appoggiatura"],
+        "time_signatures": [
+          "2/8",
+          "4/8",
+          "6/4",
+          "9/4",
+          "12/4",
+          "6/16",
+          "9/16",
+          "12/16"
+        ],
+        "note_values": [
+          "breve"
+        ],
+        "rests": [
+          "breve"
+        ],
+        "rhythm_devices": [
+          "double_dot",
+          "duplet"
+        ],
+        "clefs": [
+          "alto"
+        ],
+        "accidentals": [
+          "double_sharp",
+          "double_flat"
+        ],
+        "pitch_knowledge": [
+          "enharmonic equivalents",
+          "same pitch across treble/alto/bass",
+          "octave transposition to/from alto"
+        ],
+        "keys_major": [
+          "B",
+          "Db"
+        ],
+        "keys_minor": [
+          "Bb",
+          "G#"
+        ],
+        "scale_knowledge": [
+          "technical degree names",
+          "chromatic scale"
+        ],
+        "intervals": {
+          "above_tonic_only": false,
+          "between": "any two diatonic notes",
+          "naming": "number + type incl. augmented, diminished, minor 2nd",
+          "max": "8ve"
+        },
+        "chords": {
+          "primary_triads_and_chords": [
+            "I",
+            "IV",
+            "V"
+          ],
+          "position": "root only",
+          "minor_basis": "harmonic"
+        },
+        "ornaments_recognize": [
+          "trill",
+          "turn",
+          "upper mordent",
+          "lower mordent",
+          "acciaccatura",
+          "appoggiatura"
+        ],
         "instruments": "orchestral families, ranges, clefs used, directions (arco, pizzicato, con sordino etc.)"
       }
     },
     "5": {
       "adds": {
-        "time_signatures": ["5/4", "7/4", "5/8", "7/8"],
-        "rhythm_devices": ["irregular divisions (quintuplet, sextuplet, septuplet)", "rewrite simple<->compound"],
-        "clefs": ["tenor"],
-        "transposition": ["any clef to any clef at the octave", "by major 2nd / minor 3rd / perfect 5th up or down", "transposing instruments in Bb, A, F to/from concert pitch"],
-        "keys_major": ["F#", "Gb"],
-        "keys_minor": ["D#", "Eb"],
-        "intervals": {"between": "any two notes", "compound": true, "with_or_without_key_signature": true},
-        "chords": {"chord_set": ["I", "II", "IV", "V"], "positions": ["root (a)", "1st inversion (b)", "2nd inversion (c)"], "cadence_keys": ["C", "G", "D", "F"], "cadences": ["perfect (V-I)", "plagal (IV-I)", "imperfect (ends on V)"]},
+        "time_signatures": [
+          "5/4",
+          "7/4",
+          "5/8",
+          "7/8"
+        ],
+        "rhythm_devices": [
+          "irregular divisions (quintuplet, sextuplet, septuplet)",
+          "rewrite simple<->compound"
+        ],
+        "clefs": [
+          "tenor"
+        ],
+        "transposition": [
+          "any clef to any clef at the octave",
+          "by major 2nd / minor 3rd / perfect 5th up or down",
+          "transposing instruments in Bb, A, F to/from concert pitch"
+        ],
+        "keys_major": [
+          "F#",
+          "Gb"
+        ],
+        "keys_minor": [
+          "D#",
+          "Eb"
+        ],
+        "intervals": {
+          "between": "any two notes",
+          "compound": true,
+          "with_or_without_key_signature": true
+        },
+        "chords": {
+          "chord_set": [
+            "I",
+            "II",
+            "IV",
+            "V"
+          ],
+          "positions": [
+            "root (a)",
+            "1st inversion (b)",
+            "2nd inversion (c)"
+          ],
+          "cadence_keys": [
+            "C",
+            "G",
+            "D",
+            "F"
+          ],
+          "cadences": [
+            "perfect (V-I)",
+            "plagal (IV-I)",
+            "imperfect (ends on V)"
+          ]
+        },
         "ornaments": "replace written-out ornamentation with signs (not vice versa)",
-        "voices": ["soprano", "alto", "tenor", "bass"],
+        "voices": [
+          "soprano",
+          "alto",
+          "tenor",
+          "bass"
+        ],
         "instruments": "extended set incl. harp; families and sound production; clefs used",
-        "term_languages": ["Italian", "French (from G4)", "German"]
+        "term_languages": [
+          "Italian",
+          "French (from G4)",
+          "German"
+        ]
       }
     }
   }

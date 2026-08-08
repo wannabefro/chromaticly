@@ -42,7 +42,7 @@ describe('slotToPitch — deterministic per-clef slot -> pitch mapping (pure, je
     expect(slotToPitch('treble', 0)).toBe('C4');
     expect(slotToPitch('treble', 1)).toBe('D4');
     expect(slotToPitch('treble', 2)).toBe('E4');
-    expect(slotToPitch('bass', 0)).toBe('E2');
+    expect(slotToPitch('bass', 0)).toBe('F2');
   });
 
   test('is a pure deterministic function — repeated calls with the same input agree', () => {
