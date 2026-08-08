@@ -33,7 +33,7 @@ describe('every credited atom is reachable by review', () => {
     // 755 before the minor-key primary triads, which add 3: chord_minor:I/IV/V.
     // G4 item 4 asks for those chords in ANY key set for the grade; the course
     // had only the major ones (chromaticly-7xv).
-    expect(ALL.length).toBe(821);
+    expect(ALL.length).toBe(824);
   });
 
   test('every atom routes to a template', () => {

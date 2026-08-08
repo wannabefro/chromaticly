@@ -236,3 +236,74 @@ describe('instrument_knowledge — Grade 5 voice types', () => {
     }
   });
 });
+
+// chromaticly-ic5.3. G5 item 5 names "the clefs they use", and instruments-5
+// scored sound mechanisms only.
+describe('instrument_knowledge — the second clef three instruments read (chromaticly-ic5.3)', () => {
+  const ATOMS = ['instrument_clef_upper:cello', 'instrument_clef_upper:bassoon', 'instrument_clef_upper:trombone'];
+
+  test('every item is validator-clean and answers Tenor', () => {
+    for (let seed = 0; seed < 24; seed++) {
+      const inst = generate('instrument_knowledge', { grade: 5, seed, atoms: ATOMS });
+      expect(inst.answer.canonical).toBe('Tenor');
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+    }
+  });
+
+  // The prompt gives the everyday clef, so offering it back is a free elimination.
+  test('the everyday clef is named in the prompt and never offered as an option', () => {
+    for (const atom of ATOMS) {
+      const inst = generate('instrument_knowledge', { grade: 5, seed: 0, atoms: [atom] });
+      expect(inst.prompt).toContain('bass clef');
+      expect(inst.distractors).not.toContain('Bass');
+      expect(inst.distractors).toEqual(expect.arrayContaining(['Treble', 'Alto']));
+    }
+  });
+
+  test.each(ATOMS)('a single due atom %s is a whole item', (atom) => {
+    const inst = generate('instrument_knowledge', { grade: 5, seed: 0, atoms: [atom] });
+    expect(inst.srs_tags).toEqual([atom]);
+    expect(validate(inst)).toEqual({ ok: true, errors: [] });
+  });
+
+  test('all three instruments are asked within one set', () => {
+    const asked = new Set<string>();
+    for (let seed = 0; seed < 24; seed++) {
+      asked.add(generate('instrument_knowledge', { grade: 5, seed, atoms: ATOMS }).srs_tags[0]);
+    }
+    expect([...asked].sort()).toEqual([...ATOMS].sort());
+  });
+
+  // The viola reads alto all the time, so it has no "second clef" to ask about.
+  test('an instrument with no second clef throws rather than inventing one', () => {
+    expect(() => generate('instrument_knowledge', { grade: 5, seed: 0, atoms: ['instrument_clef_upper:viola'] })).toThrow();
+  });
+
+  test('the grade-4 clef question is unchanged — viola still answers Alto against three options', () => {
+    const inst = generate('instrument_knowledge', { grade: 4, seed: 0, atoms: ['instrument_clef:viola'] });
+    expect(inst.answer.canonical).toBe('Alto');
+    expect([...inst.distractors].sort()).toEqual(['Bass', 'Treble']);
+  });
+});
+
+describe('instrument_knowledge upper-clef hook rejects a tampered instance', () => {
+  const gen = () => generate('instrument_knowledge', { grade: 5, seed: 0, atoms: ['instrument_clef_upper:cello'] });
+
+  test('an answer that is not the upper clef', () => {
+    const inst = gen();
+    inst.answer.canonical = 'Alto';
+    expect(validate(inst).errors.some((e) => e.includes('upper clef'))).toBe(true);
+  });
+
+  test('a distractor list that offers the everyday clef back', () => {
+    const inst = gen();
+    inst.distractors = ['Treble', 'Bass'];
+    expect(validate(inst).errors.some((e) => e.includes('everyday clef'))).toBe(true);
+  });
+
+  test('an srs_tag naming an instrument that reads no second clef', () => {
+    const inst = gen();
+    inst.srs_tags = ['instrument_clef_upper:viola'];
+    expect(validate(inst).errors.some((e) => e.includes('no second clef'))).toBe(true);
+  });
+});

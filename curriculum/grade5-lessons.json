@@ -875,7 +875,7 @@
         "smartTip": "Stave first, then stem: treble stave = Soprano or Alto, bass stave = Tenor or Bass. Stem up = the higher voice of that pair (Soprano, Tenor); stem down = the lower voice (Alto, Bass).",
         "didYouKnow": "SATB writing comes from choral music, where the four voice types sit in that same top-to-bottom order — but the same layout works just as well for four-part keyboard harmony with no singers at all."
       },
-      "unlocks": "instruments-5",
+      "unlocks": "instrument-clefs-5",
       "by_ear_source": "satb_voice_recognition",
       "by_ear_atoms": [
         "satb_voice:soprano:by_ear",
@@ -883,6 +883,43 @@
         "satb_voice:tenor:by_ear",
         "satb_voice:bass:by_ear"
       ]
+    },
+    {
+      "id": "instrument-clefs-5",
+      "title": "The instruments that read the tenor clef",
+      "strand": "terms_signs",
+      "atoms": [
+        "instrument_clef_upper:cello",
+        "instrument_clef_upper:bassoon",
+        "instrument_clef_upper:trombone"
+      ],
+      "templates": [
+        "instrument_knowledge"
+      ],
+      "worked_example": {
+        "template_id": "instrument_knowledge",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "The cello, the bassoon and the trombone each read a second clef for their higher passages",
+          "That second clef is the tenor clef you learned to read earlier in this grade",
+          "A clef change keeps the notes on the stave; it never changes the instrument or the pitch"
+        ],
+        "concept": {
+          "title": "Why the tenor clef exists",
+          "body": "The cello, the bassoon and the trombone all live in the bass clef most of the time. All three also climb, and up there the bass clef runs out — the notes pile up on ledger lines above the stave and become slow to read.\n\nSo the part changes clef. The tenor clef puts middle C on the 4th line, which lifts the whole stave and brings those high notes back on to it. Nothing about the sound changes. The player is not transposing and not changing instrument; only the ruler being read against has moved.\n\nThe viola is the exception to remember. It reads the *alto* clef all the time rather than as a second clef, which is why the alto clef is the one you met at Grade 4.",
+          "example": {
+            "template_id": "instrument_knowledge",
+            "grade": 5,
+            "seed": 1
+          }
+        },
+        "smartTip": "Bass clef most of the time, tenor clef when the notes climb. Cello, bassoon and trombone all do it.",
+        "didYouKnow": "A cello part can move through bass, tenor and treble clef inside one phrase. The publisher picks whichever clef needs the fewest ledger lines at that moment."
+      },
+      "unlocks": "instruments-5"
     },
     {
       "id": "instruments-5",

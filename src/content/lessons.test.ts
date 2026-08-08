@@ -975,8 +975,9 @@ describe('satb-voice-5 lesson (U6, chromaticly-0iy)', () => {
     expect(lesson().strand).toBe('pitch');
     expect(lesson().templates).toEqual(['satb_voice_recognition', 'satb_voice_position']);
     expect(lessonById('irregular-divisions-5')!.unlocks).toBe('satb-voice-5');
-    // instruments-5 sits between it and the tail (chromaticly-e3z.16).
-    expect(lesson().unlocks).toBe('instruments-5');
+    // instrument-clefs-5 then instruments-5 sit between it and the tail.
+    expect(lesson().unlocks).toBe('instrument-clefs-5');
+    expect(lessonById('instrument-clefs-5')!.unlocks).toBe('instruments-5');
     expect(lessonById('instruments-5')!.unlocks).toBe('music-in-context-5');
   });
 

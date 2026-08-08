@@ -303452,6 +303452,771 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte instrument_knowledge @ instrument-clefs-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The cello moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The cello moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the cello reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The cello usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:cello",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The trombone moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The trombone moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trombone reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The trombone usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:trombone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The trombone moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The trombone moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trombone reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The trombone usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:trombone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The trombone moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The trombone moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trombone reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The trombone usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:trombone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The cello moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The cello moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the cello reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The cello usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:cello",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The cello moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The cello moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the cello reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The cello usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:cello",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The trombone moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The trombone moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trombone reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The trombone usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:trombone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The trombone moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The trombone moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the trombone reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The trombone usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:trombone",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The cello moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The cello moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the cello reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The cello usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:cello",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Tenor",
+    },
+    "distractors": [
+      "Treble",
+      "Alto",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Alto": "The alto clef suits the viola. The bassoon moves to the tenor clef when the notes climb.",
+        "Treble": "The treble clef suits the violin and the flute. The bassoon moves to the tenor clef when the notes climb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — the bassoon reads the tenor clef for its higher passages.",
+    },
+    "grade": 5,
+    "hints": [
+      "A second clef exists to keep high notes on the stave instead of on ledger lines.",
+    ],
+    "id": "instrument_knowledge:g5:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "The bassoon usually reads the bass clef. Which clef does it also read for its higher passages?",
+    "srs_tags": [
+      "instrument_clef_upper:bassoon",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": null,
+    },
+    "strand": "terms_signs",
+    "template_id": "instrument_knowledge",
+  },
+]
+`;
+
 exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte instrument_knowledge @ instruments-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

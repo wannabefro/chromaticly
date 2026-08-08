@@ -375,6 +375,12 @@ export function instrumentClefAtom(inst: string): string {
   return `instrument_clef:${inst}`;
 }
 
+/** Grade 5 (chromaticly-ic5.3): the clef an instrument also reads for its
+ *  higher passages. Only the three UPPER_CLEF_TABLE instruments have one. */
+export function instrumentClefUpperAtom(inst: string): string {
+  return `instrument_clef_upper:${inst}`;
+}
+
 /** Grade-4 instrument-knowledge playing directions (instrument_knowledge, KB
  *  directions). Mirrors DIRECTION_TABLE's keys in instrument-knowledge.ts —
  *  kept in sync by hand, guarded by instrument-knowledge.test.ts. */

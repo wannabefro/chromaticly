@@ -24,6 +24,7 @@ import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
 import { parseCancellationAtom } from '../engine/generators/accidental-cancellation';
 import { parseTonalCentreAtom, tonalCentrePairs } from '../engine/generators/tonal-centre';
+import { UPPER_CLEF_TABLE } from '../engine/generators/instrument-knowledge';
 import { dottedRestsInScope, parseRestToken } from '../engine/generators/rest-math';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -369,6 +370,13 @@ export function assertAtomResolves(atom: string, grade: number): void {
       const [instrument] = parts;
       if (grade < 4 || !(INSTRUMENTS as readonly string[]).includes(instrument)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} instrument`);
+      }
+      return;
+    }
+    case 'instrument_clef_upper': {
+      const [instrument] = parts;
+      if (grade < 5 || !(instrument in UPPER_CLEF_TABLE)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} upper-clef instrument`);
       }
       return;
     }

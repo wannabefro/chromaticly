@@ -18,11 +18,13 @@ import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_NUMERALS_MINOR, CHORD_POSITION
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import {
   CLEFS_DISPLAY,
+  CLEFS_DISPLAY_G5,
   DIRECTION_TABLE,
   FAMILIES,
   INSTRUMENT_TABLE,
   SOUND_MECHANISMS,
   SOUND_TABLE,
+  UPPER_CLEF_TABLE,
   VOICE_RANK_WORD,
   VOICE_TABLE,
 } from './generators/instrument-knowledge';
@@ -2162,6 +2164,18 @@ function instrumentKnowledgeHook(inst: ExerciseInstance): string[] {
       const expectedDistractors = FAMILIES.filter((f) => f !== family);
       if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expectedDistractors].sort())) {
         errors.push('instrument_knowledge: family distractors must be exactly the other three families');
+      }
+    } else if (kind === 'instrument_clef_upper') {
+      const clef = UPPER_CLEF_TABLE[instrument];
+      if (clef === undefined) {
+        errors.push(`instrument_knowledge: the ${instrument} reads no second clef`);
+      } else if (inst.answer.canonical !== clef) {
+        errors.push(`instrument_knowledge: canonical "${String(inst.answer.canonical)}" is not ${instrument}'s upper clef "${clef}"`);
+      }
+      // The everyday clef is in the prompt, so offering it back is a free elimination.
+      const expected = CLEFS_DISPLAY_G5.filter((c) => c !== clef && c !== INSTRUMENT_TABLE[instrument].clef);
+      if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expected].sort())) {
+        errors.push('instrument_knowledge: upper-clef distractors must exclude the answer and the everyday clef');
       }
     } else if (kind === 'instrument_clef') {
       const clef = INSTRUMENT_TABLE[instrument].clef;

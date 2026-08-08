@@ -16,6 +16,7 @@ import {
   directionAtom,
   INSTRUMENTS,
   instrumentClefAtom,
+  instrumentClefUpperAtom,
   instrumentFamilyAtom,
   instrumentSoundAtom,
   parseAtom,
@@ -45,6 +46,16 @@ export const INSTRUMENT_TABLE: Record<string, { family: 'Strings' | 'Woodwind' |
 
 export const FAMILIES = ['Strings', 'Woodwind', 'Brass', 'Percussion'] as const;
 export const CLEFS_DISPLAY = ['Treble', 'Alto', 'Bass'] as const;
+
+// Grade 5 (chromaticly-ic5.3). Kept out of INSTRUMENT_TABLE's `clef`, so the
+// grade-4 question is unchanged.
+export const UPPER_CLEF_TABLE: Record<string, 'Tenor'> = {
+  cello: 'Tenor',
+  bassoon: 'Tenor',
+  trombone: 'Tenor',
+};
+
+export const CLEFS_DISPLAY_G5 = ['Treble', 'Alto', 'Tenor', 'Bass'] as const;
 
 // Grade 5 (chromaticly-e3z.16): "the basic way by which they produce sound".
 export const SOUND_TABLE: Record<string, string> = {
@@ -106,6 +117,7 @@ export const DIRECTION_TABLE: Record<string, string> = {
 type QuestionAtom =
   | { kind: 'instrument_family'; instrument: string }
   | { kind: 'instrument_clef'; instrument: string }
+  | { kind: 'instrument_clef_upper'; instrument: string }
   | { kind: 'instrument_sound'; instrument: string }
   | { kind: 'voice_type'; voice: string }
   | { kind: 'direction'; term: string };
@@ -117,6 +129,13 @@ function questionAtomsFrom(atoms: string[]): QuestionAtom[] {
   const result: QuestionAtom[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
+    if (kind === 'instrument_clef_upper') {
+      if (!(parts[0] in UPPER_CLEF_TABLE)) {
+        throw new Error(`instrument_knowledge: the ${parts[0]} reads no second clef`);
+      }
+      result.push({ kind, instrument: parts[0] });
+      continue;
+    }
     if (kind === 'instrument_family' || kind === 'instrument_clef' || kind === 'instrument_sound') {
       const [inst] = parts;
       if (!(INSTRUMENTS as readonly string[]).includes(inst)) {
@@ -189,6 +208,13 @@ const CLEF_READERS: Record<string, string> = {
   Alto: 'the viola',
 };
 
+// The prompt names the everyday clef, so the copy must not name it back.
+const CLEF_READERS_G5: Record<string, string> = {
+  Treble: 'the violin and the flute',
+  Bass: 'the double bass and the tuba',
+  Alto: 'the viola',
+};
+
 function buildFamilyMcq(idSeed: number, grade: number, inst: string): ExerciseInstance {
   const family = INSTRUMENT_TABLE[inst].family;
   const distractors = FAMILIES.filter((f) => f !== family);
@@ -240,6 +266,37 @@ function buildClefMcq(idSeed: number, grade: number, inst: string): ExerciseInst
       ),
     },
     srs_tags: [instrumentClefAtom(inst)],
+    kb_version: KB_VERSION,
+  };
+}
+
+// The prompt gives the everyday clef, so this is not the grade-4 question.
+function buildUpperClefMcq(idSeed: number, grade: number, inst: string): ExerciseInstance {
+  const clef = UPPER_CLEF_TABLE[inst];
+  const everyday = INSTRUMENT_TABLE[inst].clef;
+  const distractors = CLEFS_DISPLAY_G5.filter((c) => c !== clef && c !== everyday);
+  return {
+    id: makeInstanceId('instrument_knowledge', grade, idSeed),
+    template_id: 'instrument_knowledge',
+    grade,
+    strand: 'terms_signs',
+    prompt: `The ${inst} usually reads the ${everyday.toLowerCase()} clef. Which clef does it also read for its higher passages?`,
+    stimulus: { music: null, text: null },
+    interaction: { type: 'mcq', config: {} },
+    answer: { canonical: clef, accepted_alternatives: [] },
+    distractors,
+    hints: ['A second clef exists to keep high notes on the stave instead of on ledger lines.'],
+    feedback: {
+      correct: 'Correct!',
+      incorrect: `Not quite — the ${inst} reads the tenor clef for its higher passages.`,
+      by_distractor: Object.fromEntries(
+        distractors.map((c) => [
+          c,
+          `The ${c.toLowerCase()} clef suits ${CLEF_READERS_G5[c]}. The ${inst} moves to the tenor clef when the notes climb.`,
+        ]),
+      ),
+    },
+    srs_tags: [instrumentClefUpperAtom(inst)],
     kb_version: KB_VERSION,
   };
 }
@@ -335,6 +392,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
   if (selected.kind === 'instrument_family') return buildFamilyMcq(idSeed, grade, selected.instrument);
   if (selected.kind === 'instrument_clef') return buildClefMcq(idSeed, grade, selected.instrument);
+  if (selected.kind === 'instrument_clef_upper') return buildUpperClefMcq(idSeed, grade, selected.instrument);
   if (selected.kind === 'instrument_sound') return buildSoundMcq(rng, idSeed, grade, selected.instrument);
   if (selected.kind === 'voice_type') return buildVoiceMcq(rng, idSeed, grade, selected.voice);
   return buildDirectionMatch(rng, idSeed, grade, directionsFromAtoms(atoms));
