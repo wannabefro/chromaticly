@@ -22,6 +22,7 @@ import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
 import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
+import { dottedRestsInScope, parseRestToken } from '../engine/generators/rest-math';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
 import { TERM_ATOM_SLUGS, termAtomSlugsForGrade } from '../engine/generators/term-meaning';
@@ -167,10 +168,15 @@ export function assertAtomResolves(atom: string, grade: number): void {
     case 'rest': {
       // chromaticly-gni: rest:<duration> resolves iff the duration is a rest
       // value in scope at this grade (scope.rests mirrors noteValues per the KB).
+      // chromaticly-7xv.3: `dotted_rests` opens one dot, `double_dot` opens two.
       if (parts.length !== 1) throw new Error(`lessons: malformed rest atom "${atom}"`);
-      const [dur] = parts;
-      if (!scopeForGrade(grade).rests.includes(dur as Duration)) {
+      const value = parseRestToken(parts[0]);
+      const scope = scopeForGrade(grade);
+      if (!value || !scope.rests.includes(value.dur)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} rest value`);
+      }
+      if (value.dots > 0 && !dottedRestsInScope(scope.rests, scope.rhythmDevices).some((r) => r.dur === value.dur && r.dots === value.dots)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} dotted rest value`);
       }
       return;
     }

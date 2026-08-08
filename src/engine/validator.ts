@@ -13,7 +13,7 @@
 
 import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind, RestEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
-import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
+import { parseRestLabel, restToken, restUnits } from './generators/rest-math';
 import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_NUMERALS_MINOR, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import {
@@ -2244,19 +2244,21 @@ function restCompletionHook(inst: ExerciseInstance): string[] {
   if (!music || typeof music.time_sig !== 'string') {
     return ['rest_completion: stimulus must carry a time signature'];
   }
-  const answerDur = durationFromRestLabel(String(inst.answer.canonical));
-  if (!answerDur) {
+  const answerRest = parseRestLabel(String(inst.answer.canonical));
+  if (!answerRest) {
     return [`rest_completion: canonical "${String(inst.answer.canonical)}" is not a rest label`];
   }
+  const answerUnits = restUnits(answerRest);
   const soundingUnits = (music.voices[0]?.events ?? []).reduce((sum, ev) => sum + musicEventUnits(ev), 0);
   const barUnits = barUnitsFor(music.time_sig);
-  if (soundingUnits + REST_UNITS[answerDur] !== barUnits) {
+  if (soundingUnits + answerUnits !== barUnits) {
     errors.push(
-      `rest_completion: sounding (${soundingUnits}) + answer rest (${REST_UNITS[answerDur]}) != bar (${barUnits}) for ${music.time_sig}`,
+      `rest_completion: sounding (${soundingUnits}) + answer rest (${answerUnits}) != bar (${barUnits}) for ${music.time_sig}`,
     );
   }
-  if (inst.srs_tags[0] !== `rest:${answerDur}`) {
-    errors.push(`rest_completion: srs_tag "${inst.srs_tags[0]}" must name the answer rest "rest:${answerDur}"`);
+  const expectedTag = `rest:${restToken(answerRest)}`;
+  if (inst.srs_tags[0] !== expectedTag) {
+    errors.push(`rest_completion: srs_tag "${inst.srs_tags[0]}" must name the answer rest "${expectedTag}"`);
   }
   return errors;
 }

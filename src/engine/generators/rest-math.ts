@@ -9,7 +9,7 @@
 // no simple bar holds a breve, but a breve REST is exactly what Grade 4 teaches,
 // so rest_completion owns its own table rather than reusing bar-math's (Codex C4).
 
-import type { Duration } from '../../music/types';
+import type { Dots, Duration } from '../../music/types';
 import { barUnitsFor } from './bar-math';
 
 export const REST_UNITS: Record<Duration, number> = {
@@ -22,17 +22,76 @@ export const REST_UNITS: Record<Duration, number> = {
   breve: 64,
 };
 
-/** The graded answer/label for a rest of a given duration, e.g. "minim rest".
- *  ASCII and stable — grading is a plain string equal. */
-export function restLabel(dur: Duration): string {
-  return `${dur} rest`;
+/** A rest value: a duration plus its dots. `dots: 0` is the plain rest. */
+export interface RestValue {
+  dur: Duration;
+  dots: Dots;
 }
 
-/** Reverse of restLabel: "minim rest" -> "minim". Returns null for a non-label. */
-export function durationFromRestLabel(label: string): Duration | null {
-  const m = /^(\w+) rest$/.exec(label);
-  const dur = m?.[1] as Duration | undefined;
-  return dur && dur in REST_UNITS ? dur : null;
+// chromaticly-7xv.3. A dotted rest was declared in scope from Grade 2
+// (GRADE_2_SCOPE.rhythmDevices carries 'dotted_rests') and generated at no grade,
+// so the atom, the label and the arithmetic all start here. The token form keeps
+// ONE part — `rest:dotted_crotchet`, not `rest:crotchet:1` — so the by-ear suffix
+// still composes as `rest:dotted_crotchet:by_ear`.
+const DOT_PREFIXES: ReadonlyArray<readonly [string, Dots]> = [
+  ['double_dotted_', 2],
+  ['dotted_', 1],
+];
+
+const DOT_WORDS: Record<Dots, string> = { 0: '', 1: 'dotted ', 2: 'double-dotted ' };
+
+/** Length in bar-math units. Each dot adds half of the running value, so one dot
+ *  is 1.5x and two dots 1.75x — integral for every value this course offers. */
+export function restUnits({ dur, dots }: RestValue): number {
+  const base = REST_UNITS[dur];
+  return dots === 0 ? base : dots === 1 ? base * 1.5 : base * 1.75;
+}
+
+/** The atom/scope token for a rest value, e.g. `{minim, 2}` -> "double_dotted_minim". */
+export function restToken({ dur, dots }: RestValue): string {
+  return dots === 0 ? dur : `${DOT_PREFIXES.find(([, d]) => d === dots)![0]}${dur}`;
+}
+
+/** Reverse of restToken. Returns null for a token that names no rest value. */
+export function parseRestToken(token: string): RestValue | null {
+  for (const [prefix, dots] of DOT_PREFIXES) {
+    if (!token.startsWith(prefix)) continue;
+    const dur = token.slice(prefix.length) as Duration;
+    return dur in REST_UNITS ? { dur, dots } : null;
+  }
+  return token in REST_UNITS ? { dur: token as Duration, dots: 0 } : null;
+}
+
+/** The graded answer/label for a rest value, e.g. "dotted minim rest".
+ *  ASCII and stable — grading is a plain string equal. */
+export function restLabel(dur: Duration, dots: Dots = 0): string {
+  return `${DOT_WORDS[dots]}${dur} rest`;
+}
+
+/** Reverse of restLabel: "dotted minim rest" -> {minim, 1}. Null for a non-label. */
+export function parseRestLabel(label: string): RestValue | null {
+  const m = /^(?:(double-dotted|dotted) )?(\w+) rest$/.exec(label);
+  if (!m) return null;
+  const dots: Dots = m[1] === 'double-dotted' ? 2 : m[1] === 'dotted' ? 1 : 0;
+  const dur = m[2] as Duration;
+  return dur in REST_UNITS ? { dur, dots } : null;
+}
+
+// A dot is only offered where the dotted length lands on a whole bar-math unit —
+// below that the rest cannot fill an exact gap. One dot needs 2 units, two dots
+// need 4, which rules the demisemiquaver out of both and the semiquaver out of
+// the double dot.
+const MIN_UNITS_FOR_DOTS: Record<1 | 2, number> = { 1: 2, 2: 4 };
+
+/** Every dotted rest value the grade's rhythm devices admit, plain rests excluded.
+ *  `dotted_rests` opens one dot (Grade 2); `double_dot` opens two (Grade 4). */
+export function dottedRestsInScope(rests: readonly Duration[], rhythmDevices: readonly string[]): RestValue[] {
+  const dotCounts: Dots[] = [];
+  if (rhythmDevices.includes('dotted_rests')) dotCounts.push(1);
+  if (rhythmDevices.includes('double_dot')) dotCounts.push(2);
+  return dotCounts.flatMap((dots) =>
+    rests.filter((dur) => REST_UNITS[dur] >= MIN_UNITS_FOR_DOTS[dots as 1 | 2]).map((dur) => ({ dur, dots })),
+  );
 }
 
 // rest_completion's OWN renderable time-signature policy (Codex C4): the global

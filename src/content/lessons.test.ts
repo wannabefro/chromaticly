@@ -767,7 +767,13 @@ describe('rhythm-doubledot-4 lesson (chromaticly-2fc)', () => {
   const lesson = () => lessonById('rhythm-doubledot-4')!;
 
   test('scopes rhythm_sum to the double-dot atom (grade-4 only)', () => {
-    expect(lesson().atoms).toEqual(['rhythm_sum:double_dot']);
+    // chromaticly-7xv.3 added the two rest atoms alongside it — G4 item 1 reads
+    // "Double-dotted notes AND RESTS", and the rests half was scored nowhere.
+    expect(lesson().atoms).toEqual([
+      'rhythm_sum:double_dot',
+      'rest:double_dotted_crotchet',
+      'rest:double_dotted_minim',
+    ]);
     expect(() => assertAtomResolves('rhythm_sum:double_dot', 4)).not.toThrow();
     expect(() => assertAtomResolves('rhythm_sum:double_dot', 3)).toThrow();
     // A bare rhythm_sum atom still resolves at every grade (grade-1 note-values).
@@ -778,7 +784,7 @@ describe('rhythm-doubledot-4 lesson (chromaticly-2fc)', () => {
   // targets a double-dotted value — the regression this fixes was zero of them.
   test('every item in the deterministic set targets a double-dotted rhythm', () => {
     for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
-      const inst = generate('rhythm_sum', { grade: 4, seed, atoms: lesson().atoms });
+      const inst = generate('rhythm_sum', { grade: 4, seed, atoms: ['rhythm_sum:double_dot'] });
       expect(validate(inst)).toEqual({ ok: true, errors: [] });
       expect((inst.answer.canonical as { dots: number }).dots).toBe(2);
       expect(inst.srs_tags[0]).toBe('rhythm_sum:double_dot');

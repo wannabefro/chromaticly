@@ -326,14 +326,17 @@
     },
     {
       "id": "rhythm-doubledot-4",
-      "title": "Double-dotted notes",
+      "title": "Double-dotted notes and rests",
       "strand": "rhythm",
       "atoms": [
-        "rhythm_sum:double_dot"
+        "rhythm_sum:double_dot",
+        "rest:double_dotted_crotchet",
+        "rest:double_dotted_minim"
       ],
       "templates": [
         "rhythm_sum",
-        "rhythm_sum_reverse"
+        "rhythm_sum_reverse",
+        "rest_value_id"
       ],
       "worked_example": {
         "template_id": "rhythm_sum",
@@ -344,18 +347,19 @@
         "objectives": [
           "A first dot adds half the note's value; a second dot adds half again — half of the first dot",
           "A double-dotted note therefore lasts one and three-quarter times its plain value",
-          "Example: a double-dotted minim = minim + crotchet + quaver = three and a half crotchet beats"
+          "Example: a double-dotted minim = minim + crotchet + quaver = three and a half crotchet beats",
+          "A rest takes both dots the same way, and lasts exactly as long as the note it silences"
         ],
         "concept": {
-          "title": "Double-dotted notes",
-          "body": "A single dot adds half the note's value. A second dot adds half again — but half of the **first** dot, not the note. So a double-dotted note lasts one and three-quarter times its plain value. A double-dotted minim is minim + crotchet + quaver (2 + 1 + ½ = 3½ crotchet beats); a double-dotted crotchet is crotchet + quaver + semiquaver. Each dot is worth half of whatever sits immediately to its left.",
+          "title": "Double dots, on notes and on rests",
+          "body": "A single dot adds half the note's value. A second dot adds half again — but half of the **first** dot, not the note. So a double-dotted note lasts one and three-quarter times its plain value. A double-dotted minim is minim + crotchet + quaver (2 + 1 + ½ = 3½ crotchet beats); a double-dotted crotchet is crotchet + quaver + semiquaver. Each dot is worth half of whatever sits immediately to its left. Rests take dots on the same terms: a double-dotted minim rest is three and a half beats of silence, and a double-dotted crotchet rest is one and three-quarter beats.",
           "example": {
             "template_id": "rhythm_sum",
             "grade": 4,
             "seed": 22
           }
         },
-        "smartTip": "First dot = half the note; second dot = half the first dot (a quarter of the note). Add them up: 1 + ½ + ¼ = 1¾ of the plain value.",
+        "smartTip": "First dot = half the note; second dot = half the first dot (a quarter of the note). Add them up: 1 + ½ + ¼ = 1¾ of the plain value — for a rest just as for a note.",
         "didYouKnow": "Double dots make a dotted rhythm crisper — the following short note becomes even shorter and snappier. Baroque overtures and marches lean on this for their dignified, pointed feel."
       },
       "unlocks": "rhythm-duplet-4"
