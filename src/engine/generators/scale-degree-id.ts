@@ -21,12 +21,12 @@
 
 import { KB_VERSION } from '../../content/knowledge-base';
 import type { Clef, Music } from '../../music/types';
-import { degreeNumberAtom, parseAtom, TONIC_TRIAD_ATOM } from '../atoms';
+import { degreeNumberAtom, parseAtom, TONIC_TRIAD_ATOM, TONIC_TRIAD_MINOR_ATOM } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import { scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
-import { buildTriad } from './chord-recognition';
-import { spellInKey, tonicLetter } from './key-spelling';
+import { buildMinorTriad, buildTriad } from './chord-recognition';
+import { spellInKey, spellInKeySig, tonicLetter } from './key-spelling';
 import { diatonicPitchesInComfortableRange, diatonicPitchesInRange } from '../scope';
 import { naturalPitchStepsAbove, parseNaturalPitch } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
@@ -121,10 +121,13 @@ function buildDegree(rng: () => number, grade: number, idSeed: number, numbers: 
   };
 }
 
-function buildTonicTriad(rng: () => number, grade: number, idSeed: number): ExerciseInstance {
+function buildTonicTriad(rng: () => number, grade: number, idSeed: number, minor = false): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const clef = pick(rng, [...DEGREE_CLEFS]);
-  const key = pick(rng, [...scope.keysMajor]);
+  const mode = minor ? 'minor' : 'major';
+  const pool = minor ? scope.keysMinor : scope.keysMajor;
+  if (pool.length === 0) throw new Error(`scale_degree_id: grade ${grade} has no ${mode} keys`);
+  const key = pick(rng, [...pool]);
 
   // The stimulus is the key NAME, and the options are the staves. That is the
   // way round design/components/core/AnswerOption.prompt.md describes ("for
@@ -133,9 +136,19 @@ function buildTonicTriad(rng: () => number, grade: number, idSeed: number): Exer
   // against the options, because there is nothing on the stimulus to match.
   const staveFor = (numeral: string): Music => ({
     clef,
-    key_sig: `${key}_major`,
+    key_sig: `${key}_${mode}`,
     time_sig: null,
-    voices: [{ events: [{ type: 'chord', pitches: buildTriad(clef, grade, key, numeral), dur: 'semibreve' }] }],
+    voices: [
+      {
+        events: [
+          {
+            type: 'chord',
+            pitches: minor ? buildMinorTriad(clef, grade, key, numeral) : buildTriad(clef, grade, key, numeral),
+            dur: 'semibreve',
+          },
+        ],
+      },
+    ],
   });
 
   // The two wrong triads are the ones built on the neighbouring primary degrees
@@ -149,8 +162,8 @@ function buildTonicTriad(rng: () => number, grade: number, idSeed: number): Exer
     template_id: 'scale_degree_id',
     grade,
     strand: 'scales_keys',
-    prompt: `Which of these is the tonic triad of ${key} major?`,
-    stimulus: { music: null, text: `${key} major` },
+    prompt: `Which of these is the tonic triad of ${key} ${mode}?`,
+    stimulus: { music: null, text: `${key} ${mode}` },
     interaction: {
       type: 'mcq',
       config: { option_music: { I: staveFor('I'), IV: staveFor('IV'), V: staveFor('V') } },
@@ -168,7 +181,7 @@ function buildTonicTriad(rng: () => number, grade: number, idSeed: number): Exer
         V: `That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is ${key}.`,
       },
     },
-    srs_tags: [TONIC_TRIAD_ATOM],
+    srs_tags: [minor ? TONIC_TRIAD_MINOR_ATOM : TONIC_TRIAD_ATOM],
     kb_version: KB_VERSION,
   };
 }
@@ -177,8 +190,12 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const rng = mulberry32(contentSeed);
   const numbers = degreeNumbersFromAtoms(atoms);
   if (numbers.length > 0) return buildDegree(rng, grade, idSeed, numbers);
-  if (atoms.includes(TONIC_TRIAD_ATOM)) return buildTonicTriad(rng, grade, idSeed);
-  throw new Error('scale_degree_id: needs at least one degree:<n> or tonic_triad atom');
+  const wants = [TONIC_TRIAD_ATOM, TONIC_TRIAD_MINOR_ATOM].filter((a) => atoms.includes(a));
+  if (wants.length === 0) throw new Error('scale_degree_id: needs at least one degree:<n> or tonic_triad atom');
+  // Only spend an rng draw when there is a choice, so a major-only lesson keeps
+  // the draw sequence it had before the minor atom existed.
+  const minor = wants.length === 1 ? wants[0] === TONIC_TRIAD_MINOR_ATOM : pick(rng, wants) === TONIC_TRIAD_MINOR_ATOM;
+  return buildTonicTriad(rng, grade, idSeed, minor);
 }
 
 export const scaleDegreeId: Generator = (opts: GenerateOptions) =>
@@ -235,9 +252,9 @@ function buildDegreeStaveInput(rng: () => number, grade: number, idSeed: number,
 const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
 /** Which degree of `inKey` a root sits on, or null when it is not in that scale. */
-function degreeOfRootIn(root: string, inKey: string): number | null {
+function degreeOfRootIn(root: string, inKey: string, mode: 'major' | 'minor' = 'major'): number | null {
   const natural = root.replace(/[#b]/g, '');
-  if (spellInKey(natural, inKey) !== root) return null;
+  if (spellInKeySig(natural, `${inKey}_${mode}`) !== root) return null;
   const a = LETTERS.indexOf(natural[0]);
   const b = LETTERS.indexOf(tonicLetter(inKey));
   return ((a - b + 7) % 7) + 1;
@@ -247,24 +264,31 @@ function noteWords(pitch: string): string {
   return pitch.replace(/\d+$/, '').replace(/#/, ' sharp').replace(/b/, ' flat');
 }
 
-function buildTonicTriadKeyId(rng: () => number, grade: number, idSeed: number): ExerciseInstance {
+// chromaticly-6xs.2. G3 item 3 asks for the tonic triad of every key set for
+// the grade, and the lesson built only major ones. A minor tonic triad is drawn
+// from keysMinor and built on the natural form, so no raised 7th appears — the
+// 7th is not in the chord.
+function buildTonicTriadKeyId(rng: () => number, grade: number, idSeed: number, minor = false): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const clef = pick(rng, [...DEGREE_CLEFS]);
-  const key = pick(rng, [...scope.keysMajor]);
-  const others = scope.keysMajor.filter((k) => k !== key);
-  const triad = buildTriad(clef, grade, key, 'I');
+  const pool = minor ? scope.keysMinor : scope.keysMajor;
+  if (pool.length === 0) throw new Error(`tonic_triad_key_id: grade ${grade} has no ${minor ? 'minor' : 'major'} keys`);
+  const mode = minor ? 'minor' : 'major';
+  const key = pick(rng, [...pool]);
+  const others = pool.filter((k) => k !== key);
+  const triad = minor ? buildMinorTriad(clef, grade, key, 'I') : buildTriad(clef, grade, key, 'I');
   const root = triad[0];
 
   // The keys this chord is the IV or the V of — the misread-the-degree mistake.
   const ranked = [...others].sort((a, b) => {
     const rank = (k: string) => {
-      const d = degreeOfRootIn(root, k);
+      const d = degreeOfRootIn(root, k, mode);
       return d === null ? 2 : [4, 5].includes(d) ? 0 : 1;
     };
     return rank(a) - rank(b) || others.indexOf(a) - others.indexOf(b);
   });
   const chosen = ranked.slice(0, 2);
-  const distractors = chosen.map((k) => `${k} major`);
+  const distractors = chosen.map((k) => `${k} ${mode}`);
   if (distractors.length < 2) throw new Error(`tonic_triad_key_id: ${key} has too few sibling keys at grade ${grade}`);
 
   // No key signature is printed — it would name the key the question asks for.
@@ -283,25 +307,25 @@ function buildTonicTriadKeyId(rng: () => number, grade: number, idSeed: number):
     prompt: 'This is a tonic triad. Which key is it in?',
     stimulus: { music, text: null },
     interaction: { type: 'mcq', config: {} },
-    answer: { canonical: `${key} major`, accepted_alternatives: [] },
+    answer: { canonical: `${key} ${mode}`, accepted_alternatives: [] },
     distractors,
     hints: ['A tonic triad is built on the keynote, so the lowest note names the key.'],
     feedback: {
       correct: 'Correct!',
-      incorrect: `The lowest note is ${noteWords(root)}, and a tonic triad is built on the keynote — so this is ${key} major.`,
+      incorrect: `The lowest note is ${noteWords(root)}, and a tonic triad is built on the keynote — so this is ${key} ${mode}.`,
       by_distractor: Object.fromEntries(
         chosen.map((k) => {
-          const d = degreeOfRootIn(root, k);
+          const d = degreeOfRootIn(root, k, mode);
           return [
-            `${k} major`,
+            `${k} ${mode}`,
             d === null
-              ? `${noteWords(root)} is not in the ${k} major scale, so no ${k} chord starts on it.`
-              : `In ${k} major this chord is built on the ${DEGREE_ORDINALS[d - 1]} degree, not the 1st.`,
+              ? `${noteWords(root)} is not in the ${k} ${mode} scale, so no ${k} chord starts on it.`
+              : `In ${k} ${mode} this chord is built on the ${DEGREE_ORDINALS[d - 1]} degree, not the 1st.`,
           ];
         }),
       ),
     },
-    srs_tags: [TONIC_TRIAD_ATOM],
+    srs_tags: [minor ? TONIC_TRIAD_MINOR_ATOM : TONIC_TRIAD_ATOM],
     kb_version: KB_VERSION,
   };
 }
@@ -315,6 +339,11 @@ export const scaleDegreeStaveInput: Generator = (opts: GenerateOptions) =>
 
 export const tonicTriadKeyId: Generator = (opts: GenerateOptions) =>
   generateValidated(opts.seed, (candidateSeed) => {
-    if (!opts.atoms.includes(TONIC_TRIAD_ATOM)) throw new Error('tonic_triad_key_id: needs the tonic_triad atom');
-    return buildTonicTriadKeyId(mulberry32(candidateSeed), opts.grade, opts.seed);
+    const wants = [TONIC_TRIAD_ATOM, TONIC_TRIAD_MINOR_ATOM].filter((a) => opts.atoms.includes(a));
+    if (wants.length === 0) throw new Error('tonic_triad_key_id: needs the tonic_triad or tonic_triad_minor atom');
+    const rng = mulberry32(candidateSeed);
+    // Only spend an rng draw when there is a choice: a lesson naming one mode
+    // must keep the draw sequence it had before the other mode existed.
+    const minor = wants.length === 1 ? wants[0] === TONIC_TRIAD_MINOR_ATOM : pick(rng, wants) === TONIC_TRIAD_MINOR_ATOM;
+    return buildTonicTriadKeyId(rng, opts.grade, opts.seed, minor);
   });

@@ -168,10 +168,11 @@
     },
     {
       "id": "tonic-triads-3",
-      "title": "Tonic triads up to four accidentals",
+      "title": "Tonic triads, major and minor",
       "strand": "scales_keys",
       "atoms": [
-        "tonic_triad"
+        "tonic_triad",
+        "tonic_triad_minor"
       ],
       "templates": [
         "scale_degree_id",
@@ -184,20 +185,20 @@
       },
       "teach": {
         "objectives": [
-          "Build the tonic triad of a major key in root position",
+          "Build the tonic triad of any key set for this grade, major or minor",
           "The tonic triad is the 1st, 3rd and 5th degrees stacked",
-          "Root position means the keynote is the lowest note"
+          "A minor key gives a minor triad, because its 3rd degree is a semitone lower"
         ],
         "concept": {
           "title": "Three notes that fix the key",
-          "body": "The tonic triad is the 1st, 3rd and 5th degrees, and that holds in E major and A♭ major exactly as it held in C. The signature supplies the accidentals: E major's triad is E, G♯ and B, and every one of those sharps is already in the signature, so nothing is written on the note. Build from the letters, check the signature, and only add an accidental if the key does not already give it to you.",
+          "body": "The tonic triad is the 1st, 3rd and 5th degrees, and that holds in E major and A♭ major exactly as it held in C. The signature supplies the accidentals: E major's triad is E, G♯ and B, and every one of those sharps is already in the signature, so nothing is written on the note. Build from the letters, check the signature, and only add an accidental if the key does not already give it to you.\n\nThe same method builds a minor tonic triad, and the signature does the same work. B minor gives B, D and F♯; C minor gives C, E♭ and G. The difference you hear is the 3rd: it sits a semitone lower than in the major key of the same letter, which is what makes the chord minor. The 7th degree is not in the triad at all, so the raised 7th of the harmonic minor never appears here.",
           "example": {
             "template_id": "scale_degree_id",
             "grade": 3,
             "seed": 2
           }
         },
-        "smartTip": "Letters first, signature second. E-G-B in E major reads as E, G♯, B without writing a single accidental.",
+        "smartTip": "Letters first, signature second — in either mode. E-G-B reads as E, G♯, B in E major and B-D-F reads as B, D, F♯ in B minor, without writing a single accidental.",
         "didYouKnow": "This is why a key signature is worth having at all. Without one, E major's tonic triad would need a sharp written on the G every time it appeared."
       },
       "unlocks": "character-3"

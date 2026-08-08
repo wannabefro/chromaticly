@@ -439,9 +439,14 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (grade > 3) throw new Error(`lessons: atom "${atom}" is superseded by degree_name at G${grade}`);
       return;
     }
-    case 'tonic_triad': {
-      if (parts.length !== 0) throw new Error(`lessons: malformed tonic_triad atom "${atom}"`);
+    case 'tonic_triad':
+    case 'tonic_triad_minor': {
+      if (parts.length !== 0) throw new Error(`lessons: malformed ${kind} atom "${atom}"`);
       if (grade > 3) throw new Error(`lessons: atom "${atom}" is superseded by chord_recognition at G${grade}`);
+      // chromaticly-6xs.2: a minor tonic triad needs a minor key to build in.
+      if (kind === 'tonic_triad_minor' && scopeForGrade(grade).keysMinor.length === 0) {
+        throw new Error(`lessons: atom "${atom}" has no minor key at G${grade}`);
+      }
       return;
     }
     case 'cadence': {

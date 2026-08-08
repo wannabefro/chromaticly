@@ -154388,23 +154388,23 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is F.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is F.",
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is B.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is B.",
       },
       "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is F.",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is B.",
     },
     "grade": 3,
     "hints": [
-      "The tonic triad is built on the 1st degree. Find F on the stave, then stack the 3rd and the 5th above it.",
+      "The tonic triad is built on the 1st degree. Find B on the stave, then stack the 3rd and the 5th above it.",
     ],
     "id": "scale_degree_id:g3:s0",
     "interaction": {
       "config": {
         "option_music": {
           "I": {
-            "clef": "bass",
-            "key_sig": "F_major",
+            "clef": "treble",
+            "key_sig": "B_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154412,9 +154412,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "F2",
-                      "A2",
-                      "C3",
+                      "B3",
+                      "D4",
+                      "F#4",
                     ],
                     "type": "chord",
                   },
@@ -154423,8 +154423,8 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
             ],
           },
           "IV": {
-            "clef": "bass",
-            "key_sig": "F_major",
+            "clef": "treble",
+            "key_sig": "B_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154432,9 +154432,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Bb2",
-                      "D3",
-                      "F3",
+                      "E4",
+                      "G4",
+                      "B4",
                     ],
                     "type": "chord",
                   },
@@ -154443,8 +154443,8 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
             ],
           },
           "V": {
-            "clef": "bass",
-            "key_sig": "F_major",
+            "clef": "treble",
+            "key_sig": "B_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154452,9 +154452,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "C2",
-                      "E2",
-                      "G2",
+                      "F#4",
+                      "A#4",
+                      "C#5",
                     ],
                     "type": "chord",
                   },
@@ -154467,13 +154467,13 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of F major?",
+    "prompt": "Which of these is the tonic triad of B minor?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": null,
-      "text": "F major",
+      "text": "B minor",
     },
     "strand": "scales_keys",
     "template_id": "scale_degree_id",
@@ -154489,15 +154489,15 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Ab.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Ab.",
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is C#.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is C#.",
       },
       "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Ab.",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is C#.",
     },
     "grade": 3,
     "hints": [
-      "The tonic triad is built on the 1st degree. Find Ab on the stave, then stack the 3rd and the 5th above it.",
+      "The tonic triad is built on the 1st degree. Find C# on the stave, then stack the 3rd and the 5th above it.",
     ],
     "id": "scale_degree_id:g3:s1",
     "interaction": {
@@ -154505,7 +154505,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
         "option_music": {
           "I": {
             "clef": "bass",
-            "key_sig": "Ab_major",
+            "key_sig": "C#_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154513,9 +154513,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Ab2",
-                      "C3",
-                      "Eb3",
+                      "C#2",
+                      "E2",
+                      "G#2",
                     ],
                     "type": "chord",
                   },
@@ -154525,7 +154525,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
           },
           "IV": {
             "clef": "bass",
-            "key_sig": "Ab_major",
+            "key_sig": "C#_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154533,9 +154533,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Db2",
-                      "F2",
-                      "Ab2",
+                      "F#2",
+                      "A2",
+                      "C#3",
                     ],
                     "type": "chord",
                   },
@@ -154545,7 +154545,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
           },
           "V": {
             "clef": "bass",
-            "key_sig": "Ab_major",
+            "key_sig": "C#_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154553,9 +154553,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Eb2",
-                      "G2",
-                      "Bb2",
+                      "G#2",
+                      "B#2",
+                      "D#3",
                     ],
                     "type": "chord",
                   },
@@ -154568,13 +154568,13 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Ab major?",
+    "prompt": "Which of these is the tonic triad of C# minor?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": null,
-      "text": "Ab major",
+      "text": "C# minor",
     },
     "strand": "scales_keys",
     "template_id": "scale_degree_id",
@@ -154590,23 +154590,23 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is D.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is D.",
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is A.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is A.",
       },
       "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is D.",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is A.",
     },
     "grade": 3,
     "hints": [
-      "The tonic triad is built on the 1st degree. Find D on the stave, then stack the 3rd and the 5th above it.",
+      "The tonic triad is built on the 1st degree. Find A on the stave, then stack the 3rd and the 5th above it.",
     ],
     "id": "scale_degree_id:g3:s2",
     "interaction": {
       "config": {
         "option_music": {
           "I": {
-            "clef": "bass",
-            "key_sig": "D_major",
+            "clef": "treble",
+            "key_sig": "A_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154614,9 +154614,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "D2",
-                      "F#2",
-                      "A2",
+                      "A3",
+                      "C4",
+                      "E4",
                     ],
                     "type": "chord",
                   },
@@ -154625,8 +154625,8 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
             ],
           },
           "IV": {
-            "clef": "bass",
-            "key_sig": "D_major",
+            "clef": "treble",
+            "key_sig": "A_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154634,9 +154634,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "G2",
-                      "B2",
-                      "D3",
+                      "D4",
+                      "F4",
+                      "A4",
                     ],
                     "type": "chord",
                   },
@@ -154645,8 +154645,8 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
             ],
           },
           "V": {
-            "clef": "bass",
-            "key_sig": "D_major",
+            "clef": "treble",
+            "key_sig": "A_minor",
             "time_sig": null,
             "voices": [
               {
@@ -154654,9 +154654,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "A2",
-                      "C#3",
-                      "E3",
+                      "E4",
+                      "G#4",
+                      "B4",
                     ],
                     "type": "chord",
                   },
@@ -154669,13 +154669,13 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of D major?",
+    "prompt": "Which of these is the tonic triad of A minor?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": null,
-      "text": "D major",
+      "text": "A minor",
     },
     "strand": "scales_keys",
     "template_id": "scale_degree_id",
@@ -154792,107 +154792,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Eb.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Eb.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Eb.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find Eb on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s4",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "bass",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Eb2",
-                      "G2",
-                      "Bb2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "bass",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Ab2",
-                      "C3",
-                      "Eb3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "bass",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Bb2",
-                      "D3",
-                      "F3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Eb major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Eb major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
         "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is D.",
         "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is D.",
       },
@@ -154903,417 +154802,13 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "hints": [
       "The tonic triad is built on the 1st degree. Find D on the stave, then stack the 3rd and the 5th above it.",
     ],
-    "id": "scale_degree_id:g3:s5",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "D_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "D4",
-                      "F#4",
-                      "A4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "D_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "G4",
-                      "B4",
-                      "D5",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "D_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "A3",
-                      "C#4",
-                      "E4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of D major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "D major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Ab.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Ab.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Ab.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find Ab on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s6",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Ab3",
-                      "C4",
-                      "Eb4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Db4",
-                      "F4",
-                      "Ab4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "Ab_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Eb4",
-                      "G4",
-                      "Bb4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Ab major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Ab major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Bb.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Bb.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Bb.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find Bb on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s7",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Bb3",
-                      "D4",
-                      "F4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Eb4",
-                      "G4",
-                      "Bb4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "F4",
-                      "A4",
-                      "C5",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Bb major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Bb major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is A.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is A.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is A.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find A on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s8",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "A3",
-                      "C#4",
-                      "E4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "D4",
-                      "F#4",
-                      "A4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "E4",
-                      "G#4",
-                      "B4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of A major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "A major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is F.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is F.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is F.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find F on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s9",
+    "id": "scale_degree_id:g3:s4",
     "interaction": {
       "config": {
         "option_music": {
           "I": {
             "clef": "bass",
-            "key_sig": "F_major",
+            "key_sig": "D_minor",
             "time_sig": null,
             "voices": [
               {
@@ -155321,9 +154816,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
+                      "D2",
                       "F2",
                       "A2",
-                      "C3",
                     ],
                     "type": "chord",
                   },
@@ -155333,7 +154828,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
           },
           "IV": {
             "clef": "bass",
-            "key_sig": "F_major",
+            "key_sig": "D_minor",
             "time_sig": null,
             "voices": [
               {
@@ -155341,9 +154836,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
+                      "G2",
                       "Bb2",
                       "D3",
-                      "F3",
                     ],
                     "type": "chord",
                   },
@@ -155353,68 +154848,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
           },
           "V": {
             "clef": "bass",
-            "key_sig": "F_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "C2",
-                      "E2",
-                      "G2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of F major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "F major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is A.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is A.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is A.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find A on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s10",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "bass",
-            "key_sig": "A_major",
+            "key_sig": "D_minor",
             "time_sig": null,
             "voices": [
               {
@@ -155432,664 +154866,18 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               },
             ],
           },
-          "IV": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "D2",
-                      "F#2",
-                      "A2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "bass",
-            "key_sig": "A_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "E2",
-                      "G#2",
-                      "B2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
         },
       },
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of A major?",
+    "prompt": "Which of these is the tonic triad of D minor?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": null,
-      "text": "A major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Eb.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Eb.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Eb.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find Eb on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s11",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "bass",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Eb2",
-                      "G2",
-                      "Bb2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "bass",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Ab2",
-                      "C3",
-                      "Eb3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "bass",
-            "key_sig": "Eb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Bb2",
-                      "D3",
-                      "F3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Eb major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Eb major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is D.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is D.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is D.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find D on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s12",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "D_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "D4",
-                      "F#4",
-                      "A4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "D_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "G4",
-                      "B4",
-                      "D5",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "D_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "A3",
-                      "C#4",
-                      "E4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of D major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "D major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is C.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is C.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is C.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find C on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s13",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "C_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "C4",
-                      "E4",
-                      "G4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "C_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "F4",
-                      "A4",
-                      "C5",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "C_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "G4",
-                      "B4",
-                      "D5",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of C major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "C major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Bb.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Bb.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Bb.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find Bb on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s14",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Bb3",
-                      "D4",
-                      "F4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Eb4",
-                      "G4",
-                      "Bb4",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "treble",
-            "key_sig": "Bb_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "F4",
-                      "A4",
-                      "C5",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Bb major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Bb major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is F.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is F.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is F.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find F on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s15",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "bass",
-            "key_sig": "F_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "F2",
-                      "A2",
-                      "C3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "bass",
-            "key_sig": "F_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "Bb2",
-                      "D3",
-                      "F3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "bass",
-            "key_sig": "F_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "C2",
-                      "E2",
-                      "G2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of F major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "F major",
-    },
-    "strand": "scales_keys",
-    "template_id": "scale_degree_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "I",
-    },
-    "distractors": [
-      "IV",
-      "V",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is C.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is C.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is C.",
-    },
-    "grade": 3,
-    "hints": [
-      "The tonic triad is built on the 1st degree. Find C on the stave, then stack the 3rd and the 5th above it.",
-    ],
-    "id": "scale_degree_id:g3:s16",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "I": {
-            "clef": "bass",
-            "key_sig": "C_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "C2",
-                      "E2",
-                      "G2",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "IV": {
-            "clef": "bass",
-            "key_sig": "C_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "F2",
-                      "A2",
-                      "C3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-          "V": {
-            "clef": "bass",
-            "key_sig": "C_major",
-            "time_sig": null,
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "semibreve",
-                    "pitches": [
-                      "G2",
-                      "B2",
-                      "D3",
-                    ],
-                    "type": "chord",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of C major?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "C major",
+      "text": "D minor",
     },
     "strand": "scales_keys",
     "template_id": "scale_degree_id",
@@ -156115,7 +154903,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "hints": [
       "The tonic triad is built on the 1st degree. Find G on the stave, then stack the 3rd and the 5th above it.",
     ],
-    "id": "scale_degree_id:g3:s17",
+    "id": "scale_degree_id:g3:s5",
     "interaction": {
       "config": {
         "option_music": {
@@ -156206,6 +154994,107 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Bb.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Bb.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Bb.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find Bb on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s6",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "D3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "Bb_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "A2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of Bb major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Bb major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
         "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Eb.",
         "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Eb.",
       },
@@ -156216,12 +155105,12 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "hints": [
       "The tonic triad is built on the 1st degree. Find Eb on the stave, then stack the 3rd and the 5th above it.",
     ],
-    "id": "scale_degree_id:g3:s18",
+    "id": "scale_degree_id:g3:s7",
     "interaction": {
       "config": {
         "option_music": {
           "I": {
-            "clef": "treble",
+            "clef": "bass",
             "key_sig": "Eb_major",
             "time_sig": null,
             "voices": [
@@ -156230,9 +155119,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Eb4",
-                      "G4",
-                      "Bb4",
+                      "Eb2",
+                      "G2",
+                      "Bb2",
                     ],
                     "type": "chord",
                   },
@@ -156241,7 +155130,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
             ],
           },
           "IV": {
-            "clef": "treble",
+            "clef": "bass",
             "key_sig": "Eb_major",
             "time_sig": null,
             "voices": [
@@ -156250,9 +155139,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Ab3",
-                      "C4",
-                      "Eb4",
+                      "Ab2",
+                      "C3",
+                      "Eb3",
                     ],
                     "type": "chord",
                   },
@@ -156261,7 +155150,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
             ],
           },
           "V": {
-            "clef": "treble",
+            "clef": "bass",
             "key_sig": "Eb_major",
             "time_sig": null,
             "voices": [
@@ -156270,9 +155159,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Bb3",
-                      "D4",
-                      "F4",
+                      "Bb2",
+                      "D3",
+                      "F3",
                     ],
                     "type": "chord",
                   },
@@ -156307,23 +155196,23 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Eb.",
-        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Eb.",
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is A.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is A.",
       },
       "correct": "Correct!",
-      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Eb.",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is A.",
     },
     "grade": 3,
     "hints": [
-      "The tonic triad is built on the 1st degree. Find Eb on the stave, then stack the 3rd and the 5th above it.",
+      "The tonic triad is built on the 1st degree. Find A on the stave, then stack the 3rd and the 5th above it.",
     ],
-    "id": "scale_degree_id:g3:s19",
+    "id": "scale_degree_id:g3:s8",
     "interaction": {
       "config": {
         "option_music": {
           "I": {
-            "clef": "treble",
-            "key_sig": "Eb_major",
+            "clef": "bass",
+            "key_sig": "A_major",
             "time_sig": null,
             "voices": [
               {
@@ -156331,9 +155220,110 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Eb4",
+                      "A2",
+                      "C#3",
+                      "E3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D2",
+                      "F#2",
+                      "A2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "A_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E2",
+                      "G#2",
+                      "B2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of A major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "A major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is E.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is E.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is E.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find E on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s9",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "E_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
                       "G4",
-                      "Bb4",
+                      "B4",
                     ],
                     "type": "chord",
                   },
@@ -156343,7 +155333,290 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
           },
           "IV": {
             "clef": "treble",
-            "key_sig": "Eb_major",
+            "key_sig": "E_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "E_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B3",
+                      "D#4",
+                      "F#4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of E minor?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "E minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is F.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is F.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is F.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find F on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s10",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "F_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "Ab4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "F_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb3",
+                      "Db4",
+                      "F4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "F_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "E4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of F minor?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "F minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is F.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is F.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is F.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find F on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s11",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "F_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F2",
+                      "Ab2",
+                      "C3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "F_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Bb2",
+                      "Db3",
+                      "F3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "F_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of F minor?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "F minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Ab.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Ab.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Ab.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find Ab on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s12",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
             "time_sig": null,
             "voices": [
               {
@@ -156361,9 +155634,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               },
             ],
           },
-          "V": {
+          "IV": {
             "clef": "treble",
-            "key_sig": "Eb_major",
+            "key_sig": "Ab_major",
             "time_sig": null,
             "voices": [
               {
@@ -156371,9 +155644,29 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
                   {
                     "dur": "semibreve",
                     "pitches": [
-                      "Bb3",
-                      "D4",
+                      "Db4",
                       "F4",
+                      "Ab4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
                     ],
                     "type": "chord",
                   },
@@ -156386,13 +155679,720 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which of these is the tonic triad of Eb major?",
+    "prompt": "Which of these is the tonic triad of Ab major?",
     "srs_tags": [
       "tonic_triad",
     ],
     "stimulus": {
       "music": null,
-      "text": "Eb major",
+      "text": "Ab major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Ab.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Ab.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Ab.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find Ab on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s13",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab3",
+                      "C4",
+                      "Eb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db4",
+                      "F4",
+                      "Ab4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb4",
+                      "G4",
+                      "Bb4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of Ab major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ab major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is G.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is G.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find G on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "G_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G2",
+                      "B2",
+                      "D3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "G_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "G_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D2",
+                      "F#2",
+                      "A2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of G major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is C.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is C.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is C.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find C on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s15",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "C_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C4",
+                      "Eb4",
+                      "G4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "C_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F4",
+                      "Ab4",
+                      "C5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "C_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of C minor?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "C minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is B.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is B.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is B.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find B on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s16",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "B_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "B3",
+                      "D4",
+                      "F#4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "B_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "E4",
+                      "G4",
+                      "B4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "B_minor",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "F#4",
+                      "A#4",
+                      "C#5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of B minor?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "B minor",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is D.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is D.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is D.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find D on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s17",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D4",
+                      "F#4",
+                      "A4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G4",
+                      "B4",
+                      "D5",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "treble",
+            "key_sig": "D_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "A3",
+                      "C#4",
+                      "E4",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of D major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "D major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is G.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is G.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is G.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find G on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s18",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "G_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "G2",
+                      "B2",
+                      "D3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "G_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "C2",
+                      "E2",
+                      "G2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "G_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "D2",
+                      "F#2",
+                      "A2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of G major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "G major",
+    },
+    "strand": "scales_keys",
+    "template_id": "scale_degree_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "That triad is built on the 4th degree, not the 1st. The tonic triad's lowest note is Ab.",
+        "V": "That triad is built on the 5th degree, not the 1st. The tonic triad's lowest note is Ab.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The tonic triad starts on the 1st degree of the scale, so its lowest note is Ab.",
+    },
+    "grade": 3,
+    "hints": [
+      "The tonic triad is built on the 1st degree. Find Ab on the stave, then stack the 3rd and the 5th above it.",
+    ],
+    "id": "scale_degree_id:g3:s19",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "I": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Ab2",
+                      "C3",
+                      "Eb3",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "IV": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Db2",
+                      "F2",
+                      "Ab2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+          "V": {
+            "clef": "bass",
+            "key_sig": "Ab_major",
+            "time_sig": null,
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "semibreve",
+                    "pitches": [
+                      "Eb2",
+                      "G2",
+                      "Bb2",
+                    ],
+                    "type": "chord",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Which of these is the tonic triad of Ab major?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "Ab major",
     },
     "strand": "scales_keys",
     "template_id": "scale_degree_id",
@@ -167066,19 +167066,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "F major",
+      "canonical": "B minor",
     },
     "distractors": [
-      "C major",
-      "Bb major",
+      "E minor",
+      "F# minor",
     ],
     "feedback": {
       "by_distractor": {
-        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
-        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
+        "E minor": "In E minor this chord is built on the 5th degree, not the 1st.",
+        "F# minor": "In F# minor this chord is built on the 4th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
+      "incorrect": "The lowest note is B, and a tonic triad is built on the keynote — so this is B minor.",
     },
     "grade": 3,
     "hints": [
@@ -167092,11 +167092,11 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "This is a tonic triad. Which key is it in?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": {
-        "clef": "bass",
+        "clef": "treble",
         "key_sig": null,
         "time_sig": null,
         "voices": [
@@ -167105,9 +167105,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "F2",
-                  "A2",
-                  "C3",
+                  "B3",
+                  "D4",
+                  "F#4",
                 ],
                 "type": "chord",
               },
@@ -167123,19 +167123,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Ab major",
+      "canonical": "C# minor",
     },
     "distractors": [
-      "Eb major",
-      "C major",
+      "F# minor",
+      "B minor",
     ],
     "feedback": {
       "by_distractor": {
-        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
-        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
+        "B minor": "In B minor this chord is built on the 2nd degree, not the 1st.",
+        "F# minor": "In F# minor this chord is built on the 5th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
+      "incorrect": "The lowest note is C sharp, and a tonic triad is built on the keynote — so this is C# minor.",
     },
     "grade": 3,
     "hints": [
@@ -167149,7 +167149,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "This is a tonic triad. Which key is it in?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": {
@@ -167162,9 +167162,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "Ab2",
-                  "C3",
-                  "Eb3",
+                  "C#2",
+                  "E2",
+                  "G#2",
                 ],
                 "type": "chord",
               },
@@ -167180,19 +167180,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "D major",
+      "canonical": "A minor",
     },
     "distractors": [
-      "G major",
-      "A major",
+      "E minor",
+      "D minor",
     ],
     "feedback": {
       "by_distractor": {
-        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
-        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+        "D minor": "In D minor this chord is built on the 5th degree, not the 1st.",
+        "E minor": "In E minor this chord is built on the 4th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A minor.",
     },
     "grade": 3,
     "hints": [
@@ -167206,11 +167206,11 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "This is a tonic triad. Which key is it in?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": {
-        "clef": "bass",
+        "clef": "treble",
         "key_sig": null,
         "time_sig": null,
         "voices": [
@@ -167219,9 +167219,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "D2",
-                  "F#2",
-                  "A2",
+                  "A3",
+                  "C4",
+                  "E4",
                 ],
                 "type": "chord",
               },
@@ -167294,19 +167294,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Eb major",
+      "canonical": "D minor",
     },
     "distractors": [
-      "Bb major",
-      "Ab major",
+      "A minor",
+      "G minor",
     ],
     "feedback": {
       "by_distractor": {
-        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
-        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+        "A minor": "In A minor this chord is built on the 4th degree, not the 1st.",
+        "G minor": "In G minor this chord is built on the 5th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D minor.",
     },
     "grade": 3,
     "hints": [
@@ -167320,7 +167320,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "This is a tonic triad. Which key is it in?",
     "srs_tags": [
-      "tonic_triad",
+      "tonic_triad_minor",
     ],
     "stimulus": {
       "music": {
@@ -167333,9 +167333,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "Eb2",
-                  "G2",
-                  "Bb2",
+                  "D2",
+                  "F2",
+                  "A2",
                 ],
                 "type": "chord",
               },
@@ -167351,19 +167351,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "D major",
+      "canonical": "G major",
     },
     "distractors": [
-      "G major",
-      "A major",
+      "C major",
+      "D major",
     ],
     "feedback": {
       "by_distractor": {
-        "A major": "In A major this chord is built on the 4th degree, not the 1st.",
-        "G major": "In G major this chord is built on the 5th degree, not the 1st.",
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is D, and a tonic triad is built on the keynote — so this is D major.",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
     },
     "grade": 3,
     "hints": [
@@ -167390,66 +167390,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "D4",
-                  "F#4",
-                  "A4",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "Ab major",
-    },
-    "distractors": [
-      "Eb major",
-      "C major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
-        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s6",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "Ab3",
-                  "C4",
-                  "Eb4",
+                  "G4",
+                  "B4",
+                  "D5",
                 ],
                 "type": "chord",
               },
@@ -167483,6 +167426,63 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "hints": [
       "A tonic triad is built on the keynote, so the lowest note names the key.",
     ],
+    "id": "tonic_triad_key_id:g3:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Bb2",
+                  "D3",
+                  "F3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Eb major",
+    },
+    "distractors": [
+      "Bb major",
+      "Ab major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
+        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
     "id": "tonic_triad_key_id:g3:s7",
     "interaction": {
       "config": {},
@@ -167495,7 +167495,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
+        "clef": "bass",
         "key_sig": null,
         "time_sig": null,
         "voices": [
@@ -167504,9 +167504,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "Bb3",
-                  "D4",
-                  "F4",
+                  "Eb2",
+                  "G2",
+                  "Bb2",
                 ],
                 "type": "chord",
               },
@@ -167552,120 +167552,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "A3",
-                  "C#4",
-                  "E4",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "F major",
-    },
-    "distractors": [
-      "C major",
-      "Bb major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
-        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s9",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "F2",
-                  "A2",
-                  "C3",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "A major",
-    },
-    "distractors": [
-      "D major",
-      "E major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "D major": "In D major this chord is built on the 5th degree, not the 1st.",
-        "E major": "In E major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is A, and a tonic triad is built on the keynote — so this is A major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s10",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
         "clef": "bass",
         "key_sig": null,
         "time_sig": null,
@@ -167693,25 +167579,310 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Eb major",
+      "canonical": "E minor",
     },
     "distractors": [
-      "Bb major",
-      "Ab major",
+      "A minor",
+      "B minor",
     ],
     "feedback": {
       "by_distractor": {
-        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
-        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+        "A minor": "In A minor this chord is built on the 5th degree, not the 1st.",
+        "B minor": "In B minor this chord is built on the 4th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+      "incorrect": "The lowest note is E, and a tonic triad is built on the keynote — so this is E minor.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F minor",
+    },
+    "distractors": [
+      "C minor",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "In A minor this chord is built on the 6th degree, not the 1st.",
+        "C minor": "In C minor this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F minor.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "Ab4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F minor",
+    },
+    "distractors": [
+      "C minor",
+      "A minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A minor": "In A minor this chord is built on the 6th degree, not the 1st.",
+        "C minor": "In C minor this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F minor.",
     },
     "grade": 3,
     "hints": [
       "A tonic triad is built on the keynote, so the lowest note names the key.",
     ],
     "id": "tonic_triad_key_id:g3:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "Ab2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "Eb major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
+        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab3",
+                  "C4",
+                  "Eb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "Ab major",
+    },
+    "distractors": [
+      "Eb major",
+      "C major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
+        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "Ab3",
+                  "C4",
+                  "Eb4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G major",
+    },
+    "distractors": [
+      "C major",
+      "D major",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "C major": "In C major this chord is built on the 5th degree, not the 1st.",
+        "D major": "In D major this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is G, and a tonic triad is built on the keynote — so this is G major.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s14",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -167732,9 +167903,123 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "Eb2",
                   "G2",
-                  "Bb2",
+                  "B2",
+                  "D3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "C minor",
+    },
+    "distractors": [
+      "G minor",
+      "F minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F minor": "In F minor this chord is built on the 5th degree, not the 1st.",
+        "G minor": "In G minor this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C minor.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "Eb4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "scales_keys",
+    "template_id": "tonic_triad_key_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B minor",
+    },
+    "distractors": [
+      "E minor",
+      "F# minor",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E minor": "In E minor this chord is built on the 5th degree, not the 1st.",
+        "F# minor": "In F# minor this chord is built on the 4th degree, not the 1st.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The lowest note is B, and a tonic triad is built on the keynote — so this is B minor.",
+    },
+    "grade": 3,
+    "hints": [
+      "A tonic triad is built on the keynote, so the lowest note names the key.",
+    ],
+    "id": "tonic_triad_key_id:g3:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "This is a tonic triad. Which key is it in?",
+    "srs_tags": [
+      "tonic_triad_minor",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "D4",
+                  "F#4",
                 ],
                 "type": "chord",
               },
@@ -167768,7 +168053,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "hints": [
       "A tonic triad is built on the keynote, so the lowest note names the key.",
     ],
-    "id": "tonic_triad_key_id:g3:s12",
+    "id": "tonic_triad_key_id:g3:s17",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -167807,234 +168092,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "C major",
-    },
-    "distractors": [
-      "G major",
-      "F major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
-        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s13",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "C4",
-                  "E4",
-                  "G4",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "Bb major",
-    },
-    "distractors": [
-      "F major",
-      "Eb major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "Eb major": "In Eb major this chord is built on the 5th degree, not the 1st.",
-        "F major": "In F major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is B flat, and a tonic triad is built on the keynote — so this is Bb major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s14",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "Bb3",
-                  "D4",
-                  "F4",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "F major",
-    },
-    "distractors": [
-      "C major",
-      "Bb major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "Bb major": "In Bb major this chord is built on the 5th degree, not the 1st.",
-        "C major": "In C major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is F, and a tonic triad is built on the keynote — so this is F major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s15",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "F2",
-                  "A2",
-                  "C3",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "C major",
-    },
-    "distractors": [
-      "G major",
-      "F major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "F major": "In F major this chord is built on the 5th degree, not the 1st.",
-        "G major": "In G major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is C, and a tonic triad is built on the keynote — so this is C major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
-    "id": "tonic_triad_key_id:g3:s16",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "C2",
-                  "E2",
-                  "G2",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
       "canonical": "G major",
     },
     "distractors": [
@@ -168053,63 +168110,6 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     "hints": [
       "A tonic triad is built on the keynote, so the lowest note names the key.",
     ],
-    "id": "tonic_triad_key_id:g3:s17",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "This is a tonic triad. Which key is it in?",
-    "srs_tags": [
-      "tonic_triad",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "treble",
-        "key_sig": null,
-        "time_sig": null,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "semibreve",
-                "pitches": [
-                  "G4",
-                  "B4",
-                  "D5",
-                ],
-                "type": "chord",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "scales_keys",
-    "template_id": "tonic_triad_key_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "Eb major",
-    },
-    "distractors": [
-      "Bb major",
-      "Ab major",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
-        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
-      },
-      "correct": "Correct!",
-      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
-    },
-    "grade": 3,
-    "hints": [
-      "A tonic triad is built on the keynote, so the lowest note names the key.",
-    ],
     "id": "tonic_triad_key_id:g3:s18",
     "interaction": {
       "config": {},
@@ -168122,7 +168122,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
+        "clef": "bass",
         "key_sig": null,
         "time_sig": null,
         "voices": [
@@ -168131,9 +168131,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "Eb4",
-                  "G4",
-                  "Bb4",
+                  "G2",
+                  "B2",
+                  "D3",
                 ],
                 "type": "chord",
               },
@@ -168149,19 +168149,19 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "Eb major",
+      "canonical": "Ab major",
     },
     "distractors": [
-      "Bb major",
-      "Ab major",
+      "Eb major",
+      "C major",
     ],
     "feedback": {
       "by_distractor": {
-        "Ab major": "In Ab major this chord is built on the 5th degree, not the 1st.",
-        "Bb major": "In Bb major this chord is built on the 4th degree, not the 1st.",
+        "C major": "A flat is not in the C major scale, so no C chord starts on it.",
+        "Eb major": "In Eb major this chord is built on the 4th degree, not the 1st.",
       },
       "correct": "Correct!",
-      "incorrect": "The lowest note is E flat, and a tonic triad is built on the keynote — so this is Eb major.",
+      "incorrect": "The lowest note is A flat, and a tonic triad is built on the keynote — so this is Ab major.",
     },
     "grade": 3,
     "hints": [
@@ -168179,7 +168179,7 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
     ],
     "stimulus": {
       "music": {
-        "clef": "treble",
+        "clef": "bass",
         "key_sig": null,
         "time_sig": null,
         "voices": [
@@ -168188,9 +168188,9 @@ exports[`seed-stability — grade-3 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "Eb4",
-                  "G4",
-                  "Bb4",
+                  "Ab2",
+                  "C3",
+                  "Eb3",
                 ],
                 "type": "chord",
               },
@@ -323954,831 +323954,6 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     },
     "strand": "pitch",
     "template_id": "octave_transposition",
-  },
-]
-`;
-
-exports[`seed-stability — grade-5 lesson-derived generator output is pinned byte-for-byte ornament_effect @ ornaments-to-sign-5 instances are a pure function of (template, grade, seed, atoms) 1`] = `
-[
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick down to the note below and back",
-    },
-    "distractors": [
-      "a curl through the note above, the note, and the note below",
-      "one quick flick up to the note above and back",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
-        "one quick flick up to the note above and back": "That is upper mordent. Lower mordent is one quick flick down to the note below and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s0",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "lower_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a lower mordent play?",
-    "srs_tags": [
-      "ornament:lower_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Lower mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick down to the note below and back",
-    },
-    "distractors": [
-      "a small unslashed grace note leaning on the beat",
-      "a small slashed grace note crushed in before the main note",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s1",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "lower_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a lower mordent play?",
-    "srs_tags": [
-      "ornament:lower_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Lower mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick down to the note below and back",
-    },
-    "distractors": [
-      "a curl through the note above, the note, and the note below",
-      "a long rapid alternation with the note above",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a curl through the note above, the note, and the note below": "That is turn. Lower mordent is one quick flick down to the note below and back.",
-        "a long rapid alternation with the note above": "That is trill. Lower mordent is one quick flick down to the note below and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s2",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "lower_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a lower mordent play?",
-    "srs_tags": [
-      "ornament:lower_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Lower mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a long rapid alternation with the note above",
-    },
-    "distractors": [
-      "one quick flick up to the note above and back",
-      "one quick flick down to the note below and back",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "one quick flick down to the note below and back": "That is lower mordent. Trill is a long rapid alternation with the note above.",
-        "one quick flick up to the note above and back": "That is upper mordent. Trill is a long rapid alternation with the note above.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Trill is a long rapid alternation with the note above.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s3",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "trill",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a trill play?",
-    "srs_tags": [
-      "ornament:trill:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Trill",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a small slashed grace note crushed in before the main note",
-    },
-    "distractors": [
-      "one quick flick down to the note below and back",
-      "a curl through the note above, the note, and the note below",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a curl through the note above, the note, and the note below": "That is turn. Acciaccatura is a small slashed grace note crushed in before the main note.",
-        "one quick flick down to the note below and back": "That is lower mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s4",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "acciaccatura",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an acciaccatura play?",
-    "srs_tags": [
-      "ornament:acciaccatura:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Acciaccatura",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "a curl through the note above, the note, and the note below",
-      "a long rapid alternation with the note above",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
-        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s5",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "a small unslashed grace note leaning on the beat",
-      "one quick flick down to the note below and back",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
-        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s6",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "one quick flick down to the note below and back",
-      "a small slashed grace note crushed in before the main note",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
-        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s7",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "one quick flick down to the note below and back",
-      "a curl through the note above, the note, and the note below",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a curl through the note above, the note, and the note below": "That is turn. Upper mordent is one quick flick up to the note above and back.",
-        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s8",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a small unslashed grace note leaning on the beat",
-    },
-    "distractors": [
-      "a curl through the note above, the note, and the note below",
-      "a long rapid alternation with the note above",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a curl through the note above, the note, and the note below": "That is turn. Appoggiatura is a small unslashed grace note leaning on the beat.",
-        "a long rapid alternation with the note above": "That is trill. Appoggiatura is a small unslashed grace note leaning on the beat.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s9",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "appoggiatura",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an appoggiatura play?",
-    "srs_tags": [
-      "ornament:appoggiatura:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Appoggiatura",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a small unslashed grace note leaning on the beat",
-    },
-    "distractors": [
-      "one quick flick up to the note above and back",
-      "a small slashed grace note crushed in before the main note",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Appoggiatura is a small unslashed grace note leaning on the beat.",
-        "one quick flick up to the note above and back": "That is upper mordent. Appoggiatura is a small unslashed grace note leaning on the beat.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Appoggiatura is a small unslashed grace note leaning on the beat.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s10",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "appoggiatura",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an appoggiatura play?",
-    "srs_tags": [
-      "ornament:appoggiatura:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Appoggiatura",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick down to the note below and back",
-    },
-    "distractors": [
-      "a small slashed grace note crushed in before the main note",
-      "a small unslashed grace note leaning on the beat",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Lower mordent is one quick flick down to the note below and back.",
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Lower mordent is one quick flick down to the note below and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Lower mordent is one quick flick down to the note below and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s11",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "lower_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a lower mordent play?",
-    "srs_tags": [
-      "ornament:lower_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Lower mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a curl through the note above, the note, and the note below",
-    },
-    "distractors": [
-      "one quick flick up to the note above and back",
-      "a small unslashed grace note leaning on the beat",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Turn is a curl through the note above, the note, and the note below.",
-        "one quick flick up to the note above and back": "That is upper mordent. Turn is a curl through the note above, the note, and the note below.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s12",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "turn",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a turn play?",
-    "srs_tags": [
-      "ornament:turn:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Turn",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "a long rapid alternation with the note above",
-      "a small unslashed grace note leaning on the beat",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s13",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a curl through the note above, the note, and the note below",
-    },
-    "distractors": [
-      "a small slashed grace note crushed in before the main note",
-      "a long rapid alternation with the note above",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s14",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "turn",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a turn play?",
-    "srs_tags": [
-      "ornament:turn:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Turn",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a small slashed grace note crushed in before the main note",
-    },
-    "distractors": [
-      "one quick flick up to the note above and back",
-      "a small unslashed grace note leaning on the beat",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Acciaccatura is a small slashed grace note crushed in before the main note.",
-        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s15",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "acciaccatura",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an acciaccatura play?",
-    "srs_tags": [
-      "ornament:acciaccatura:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Acciaccatura",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a small slashed grace note crushed in before the main note",
-    },
-    "distractors": [
-      "a long rapid alternation with the note above",
-      "one quick flick up to the note above and back",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a long rapid alternation with the note above": "That is trill. Acciaccatura is a small slashed grace note crushed in before the main note.",
-        "one quick flick up to the note above and back": "That is upper mordent. Acciaccatura is a small slashed grace note crushed in before the main note.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Acciaccatura is a small slashed grace note crushed in before the main note.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s16",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "acciaccatura",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an acciaccatura play?",
-    "srs_tags": [
-      "ornament:acciaccatura:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Acciaccatura",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "a long rapid alternation with the note above",
-      "one quick flick down to the note below and back",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a long rapid alternation with the note above": "That is trill. Upper mordent is one quick flick up to the note above and back.",
-        "one quick flick down to the note below and back": "That is lower mordent. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s17",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "a curl through the note above, the note, and the note below",
-    },
-    "distractors": [
-      "a small slashed grace note crushed in before the main note",
-      "a long rapid alternation with the note above",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a long rapid alternation with the note above": "That is trill. Turn is a curl through the note above, the note, and the note below.",
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Turn is a curl through the note above, the note, and the note below.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Turn is a curl through the note above, the note, and the note below.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s18",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "turn",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does a turn play?",
-    "srs_tags": [
-      "ornament:turn:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Turn",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "one quick flick up to the note above and back",
-    },
-    "distractors": [
-      "a small slashed grace note crushed in before the main note",
-      "a small unslashed grace note leaning on the beat",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "a small slashed grace note crushed in before the main note": "That is acciaccatura. Upper mordent is one quick flick up to the note above and back.",
-        "a small unslashed grace note leaning on the beat": "That is appoggiatura. Upper mordent is one quick flick up to the note above and back.",
-      },
-      "correct": "Correct!",
-      "incorrect": "Upper mordent is one quick flick up to the note above and back.",
-    },
-    "grade": 5,
-    "hints": [
-      "Picture the notes written out in full: how many are there, and do they go above the main note, below it, or both?",
-    ],
-    "id": "ornament_effect:g5:s19",
-    "interaction": {
-      "config": {
-        "direction": "written_to_sign",
-        "ornament": "upper_mordent",
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "What does an upper mordent play?",
-    "srs_tags": [
-      "ornament:upper_mordent:written_to_sign",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "Upper mordent",
-    },
-    "strand": "terms_signs",
-    "template_id": "ornament_effect",
   },
 ]
 `;

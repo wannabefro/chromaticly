@@ -175,6 +175,11 @@ export function degreeNumberAtom(degree: number): string {
  *  the generator from the grade's own key set. */
 export const TONIC_TRIAD_ATOM = 'tonic_triad';
 
+/** The tonic triad of a MINOR key (Grade 3, chromaticly-6xs.2). Its own atom
+ *  because the triad is minor, not major, and the third is the fact being
+ *  learned — a learner who builds C-E-G does not thereby build C-Eb-G. */
+export const TONIC_TRIAD_MINOR_ATOM = 'tonic_triad_minor';
+
 /** Grade-4 technical degree name atom (fyu.4 degree-names slice), e.g.
  *  degreeNameAtom('dominant') -> "degree_name:dominant". */
 export function degreeNameAtom(name: string): string {

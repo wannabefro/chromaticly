@@ -5,6 +5,7 @@
 
 import { generate } from './index';
 import { validate } from '../validator';
+import { scopeForGrade } from '../scope';
 
 const DEGREES = ['degree:1', 'degree:3', 'degree:5', 'degree:7'];
 const TRIAD = ['tonic_triad'];
@@ -99,5 +100,62 @@ describe('tonic_triad_key_id — the triad is printed and its key named', () => 
         expect(validate(keyId(seed, grade))).toEqual({ ok: true, errors: [] });
       }
     }
+  });
+});
+
+// chromaticly-6xs.2. G3 item 3 asks for the tonic triad of every key set for
+// the grade. tonic-triads-3 built major ones only, in both of its templates.
+describe('the tonic triad of a minor key', () => {
+  const MINOR = ['tonic_triad_minor'];
+  const g3 = (tmpl: string, seed: number, atoms = MINOR) => generate(tmpl, { grade: 3, seed, atoms });
+
+  test.each(['tonic_triad_key_id', 'scale_degree_id'])('%s builds a minor triad and credits its own atom', (tmpl) => {
+    for (let seed = 0; seed < 24; seed++) {
+      const inst = g3(tmpl, seed);
+      expect(validate(inst)).toEqual({ ok: true, errors: [] });
+      expect(inst.srs_tags).toEqual(MINOR);
+    }
+  });
+
+  // The third is the whole fact. A major triad wearing a minor key's name would
+  // pass every other check here.
+  test('the printed chord really is minor — the 3rd is 3 semitones above the root', () => {
+    const SEMI: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+    const semitone = (p: string) => SEMI[p[0]] + (p.includes('#') ? 1 : p.includes('b') ? -1 : 0) + Number(p.slice(-1)) * 12;
+    for (let seed = 0; seed < 24; seed++) {
+      const music = g3('tonic_triad_key_id', seed).stimulus.music as { voices: { events: { pitches?: string[] }[] }[] };
+      const [root, third, fifth] = music.voices[0].events[0].pitches!;
+      expect(semitone(third) - semitone(root)).toBe(3);
+      expect(semitone(fifth) - semitone(root)).toBe(7);
+    }
+  });
+
+  test('every minor key the grade sets is reachable, not just the first', () => {
+    const keys = new Set<string>();
+    for (let seed = 0; seed < 80; seed++) keys.add(String(g3('tonic_triad_key_id', seed).answer.canonical));
+    expect(keys.size).toBe(scopeForGrade(3).keysMinor.length);
+    for (const key of keys) expect(key).toMatch(/ minor$/);
+  });
+
+  // The distractors are other keys of the SAME mode, or the question offers a
+  // free elimination: a minor triad cannot be the tonic of a major key.
+  test('every distractor names a minor key too', () => {
+    for (let seed = 0; seed < 24; seed++) {
+      for (const d of g3('tonic_triad_key_id', seed).distractors as string[]) expect(d).toMatch(/ minor$/);
+    }
+  });
+
+  // A major-only lesson must keep the draw sequence it had before the minor
+  // atom existed, or every grade-1 and grade-2 pin moves for nothing.
+  test('naming one mode spends no extra rng draw', () => {
+    for (let seed = 0; seed < 8; seed++) {
+      const major = generate('tonic_triad_key_id', { grade: 3, seed, atoms: ['tonic_triad'] });
+      expect(String(major.answer.canonical)).toMatch(/ major$/);
+      expect(major.srs_tags).toEqual(['tonic_triad']);
+    }
+  });
+
+  test('the atom is refused at a grade with no minor keys', () => {
+    expect(() => generate('tonic_triad_key_id', { grade: 1, seed: 0, atoms: MINOR })).toThrow();
   });
 });
