@@ -494,7 +494,10 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       return;
     }
-    case 'cadence': {
+    case 'cadence':
+    // cadence_choose:<kind> asks for the missing chord rather than the name
+    // (chromaticly-ic5.6). Same scope, different question.
+    case 'cadence_choose': {
       const [name] = parts;
       if (!(CADENCE_KINDS as readonly string[]).includes(name)) {
         throw new Error(`lessons: atom "${atom}" is not a cadence in scope (perfect, plagal, imperfect)`);

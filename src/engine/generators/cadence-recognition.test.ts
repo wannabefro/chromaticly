@@ -9,6 +9,7 @@ import { CADENCE_KEYS, CADENCE_KINDS, CADENCES } from './cadence-recognition';
 import { buildTriad } from './chord-recognition';
 
 const ATOMS = CADENCE_KINDS.map((k) => `cadence:${k}`);
+const CHOOSE_ATOMS = CADENCE_KINDS.map((k) => `cadence_choose:${k}`);
 const SEEDS = Array.from({ length: 40 }, (_, i) => i);
 
 function instanceAt(seed: number, atoms: string[] = ATOMS) {
@@ -102,27 +103,41 @@ describe('cadence_recognition — the rendered chords are the cadence claimed', 
   });
 });
 
+const variantOf = (prompt: string): string =>
+  prompt.includes('Which cadence') ? 'name' : prompt.includes('comes before') ? 'approach' : 'complete';
+
 describe('cadence_recognition — what each variant asks', () => {
-  test('the three variants all appear, and each grades on its own answer', () => {
-    const prompts = new Set<string>();
+  // chromaticly-ic5.6. The atom decides the question, both ways round.
+  test('a cadence:* atom only ever asks for the name', () => {
     for (const seed of SEEDS) {
       const inst = instanceAt(seed);
-      prompts.add(
-        inst.prompt.includes('Which cadence')
-          ? 'name'
-          : inst.prompt.includes('comes before')
-            ? 'approach'
-            : 'complete',
-      );
+      expect(variantOf(inst.prompt)).toBe('name');
+      expect(inst.srs_tags[0].startsWith('cadence:')).toBe(true);
     }
-    expect([...prompts].sort()).toEqual(['approach', 'complete', 'name']);
+  });
+
+  test('a cadence_choose:* atom asks for a chord, and reaches both halves', () => {
+    const variants = new Set<string>();
+    for (const seed of SEEDS) {
+      const inst = instanceAt(seed, CHOOSE_ATOMS);
+      variants.add(variantOf(inst.prompt));
+      expect(inst.srs_tags[0].startsWith('cadence_choose:')).toBe(true);
+      expect(['I', 'IV', 'V']).toContain(inst.answer.canonical);
+    }
+    expect([...variants].sort()).toEqual(['approach', 'complete']);
+  });
+
+  test.each(CADENCE_KINDS)('a single due atom cadence_choose:%s is a whole item', (kind) => {
+    const inst = instanceAt(0, [`cadence_choose:${kind}`]);
+    expect(inst.srs_tags).toEqual([`cadence_choose:${kind}`]);
+    expect(inst.distractors).not.toContain(inst.answer.canonical);
   });
 
   // The discriminating variant: perfect and plagal both end on I, so asking what
   // ENDS the cadence cannot tell them apart. Asking what precedes it can.
   test('the approach variant answers V for perfect and IV for plagal', () => {
     for (const seed of SEEDS) {
-      const inst = instanceAt(seed);
+      const inst = instanceAt(seed, CHOOSE_ATOMS);
       if (!inst.prompt.includes('comes before')) continue;
       const kind = inst.srs_tags[0].split(':')[1] as (typeof CADENCE_KINDS)[number];
       expect(CADENCES[kind].approaches).toContain(inst.answer.canonical);

@@ -333,8 +333,7 @@
       "teach": {
         "objectives": [
           "Name the perfect, plagal and imperfect cadences from the two chords that make them",
-          "A cadence is named by where it **ends** and by what comes before it",
-          "Choose a suitable chord at a cadential point in C, G, D or F major"
+          "A cadence is named by where it **ends** and by what comes before it"
         ],
         "concept": {
           "title": "How a phrase closes",
@@ -348,13 +347,50 @@
         "smartTip": "Ends on V? Imperfect. Ends on I? Then look at the chord before: V makes it perfect, IV makes it plagal.",
         "didYouKnow": "The plagal cadence is called the 'Amen cadence' because it is what generations of hymn books put under that word. Its softer arrival is why it feels like a benediction rather than a conclusion."
       },
-      "unlocks": "german-tempo-5",
+      "unlocks": "cadence-choice-5",
       "by_ear_source": "cadence_recognition",
       "by_ear_atoms": [
         "cadence:perfect:by_ear",
         "cadence:plagal:by_ear",
         "cadence:imperfect:by_ear"
       ]
+    },
+    {
+      "id": "cadence-choice-5",
+      "title": "Choosing the chord at a cadence",
+      "strand": "chords",
+      "atoms": [
+        "cadence_choose:perfect",
+        "cadence_choose:plagal",
+        "cadence_choose:imperfect"
+      ],
+      "templates": [
+        "cadence_recognition"
+      ],
+      "worked_example": {
+        "template_id": "cadence_recognition",
+        "grade": 5,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "Choose a suitable chord at a cadential point in C, G, D or F major",
+          "Name the cadence you are asked for first, then work out which chord is missing",
+          "The chord **before** the tonic is what separates a perfect cadence from a plagal one"
+        ],
+        "concept": {
+          "title": "Working backwards from the name",
+          "body": "Naming a cadence you can see is one skill. Supplying a chord that is not there yet is another, and the exam asks for both.\n\nThe question always names the cadence, so start there and work out both of its chords before you look at the options. A *perfect* cadence is V then I. A *plagal* cadence is IV then I. An *imperfect* cadence ends on V, and can be approached from I or from IV — so it is the one cadence with more than one right approach chord.\n\nThe half worth practising is the approach chord. Perfect and plagal both end on the tonic, so knowing \"it finishes at home\" answers nothing. What comes before the tonic is the whole difference between them.",
+          "example": {
+            "template_id": "cadence_recognition",
+            "grade": 5,
+            "seed": 2
+          }
+        },
+        "smartTip": "Write out both chords of the named cadence before you look at the options. Then the missing one is obvious.",
+        "didYouKnow": "An imperfect cadence is the only one of the three named by its ending alone. That is why it accepts more than one approach chord, while perfect and plagal each accept exactly one."
+      },
+      "unlocks": "german-tempo-5"
     },
     {
       "id": "german-tempo-5",

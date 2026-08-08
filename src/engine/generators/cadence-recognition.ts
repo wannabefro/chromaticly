@@ -31,7 +31,7 @@
 
 import { KB_VERSION } from '../../content/knowledge-base';
 import type { ChordEvent, Music, NoteEvent, Voice } from '../../music/types';
-import { cadenceAtom, parseAtom } from '../atoms';
+import { cadenceAtom, cadenceChooseAtom, parseAtom } from '../atoms';
 import { mulberry32, pick } from '../rng';
 import type { ExerciseInstance } from '../schema';
 import { buildTriad, raiseOctave } from './chord-recognition';
@@ -60,18 +60,22 @@ export const CADENCE_KINDS: readonly CadenceKind[] = ['perfect', 'plagal', 'impe
  *  cadence questions are set in these four only. */
 export const CADENCE_KEYS: readonly string[] = ['C', 'G', 'D', 'F'];
 
-function cadencesFromAtoms(atoms: string[]): CadenceKind[] {
+/** The cadences, and which skill the atoms name (chromaticly-ic5.6). */
+function cadencesFromAtoms(atoms: string[]): { kinds: CadenceKind[]; choose: boolean } {
   const kinds: CadenceKind[] = [];
+  let choose = false;
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
-    if (kind !== 'cadence' || parts.length !== 1) continue;
+    if ((kind !== 'cadence' && kind !== 'cadence_choose') || parts.length !== 1) continue;
     const name = parts[0] as CadenceKind;
-    if (CADENCE_KINDS.includes(name) && !kinds.includes(name)) kinds.push(name);
+    if (!CADENCE_KINDS.includes(name)) continue;
+    if (kind === 'cadence_choose') choose = true;
+    if (!kinds.includes(name)) kinds.push(name);
   }
   if (kinds.length === 0) {
     throw new Error('cadence_recognition: needs at least one cadence:<kind> atom');
   }
-  return kinds;
+  return { kinds, choose };
 }
 
 /** One chord of the cadence as a treble triad over its own bass root.
@@ -120,12 +124,17 @@ const WHY: Record<CadenceKind, string> = {
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const kind = pick(rng, cadencesFromAtoms(atoms));
+  const { kinds, choose } = cadencesFromAtoms(atoms);
+  const kind = pick(rng, kinds);
   const key = pick(rng, [...CADENCE_KEYS]);
   const spec = CADENCES[kind];
   const approach = pick(rng, [...spec.approaches]);
   const numerals: [string, string] = [approach, spec.ends];
-  const variant = pick(rng, ['name', 'complete', 'approach'] as const);
+
+  // A name atom must not be credited by a choosing item. `pick` on one
+  // entry still spends its draw.
+  const variant = pick(rng, choose ? (['complete', 'approach'] as const) : (['name'] as const));
+  const tag = choose ? cadenceChooseAtom(kind) : cadenceAtom(kind);
 
   if (variant === 'name') {
     const others = CADENCE_KINDS.filter((k) => k !== kind);
@@ -147,7 +156,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
         incorrect: `${WHY[kind]} These chords are ${numerals[0]} then ${numerals[1]}.`,
         by_distractor: Object.fromEntries(others.map((k) => [CADENCES[k].label, `${WHY[k]} This one is ${numerals[0]} to ${numerals[1]}.`])),
       },
-      srs_tags: [cadenceAtom(kind)],
+      srs_tags: [tag],
       kb_version: KB_VERSION,
     };
   }
@@ -177,7 +186,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
           ]),
         ),
       },
-      srs_tags: [cadenceAtom(kind)],
+      srs_tags: [tag],
       kb_version: KB_VERSION,
     };
   }
@@ -208,7 +217,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
         ]),
       ),
     },
-    srs_tags: [cadenceAtom(kind)],
+    srs_tags: [tag],
     kb_version: KB_VERSION,
   };
 }

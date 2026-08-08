@@ -227,6 +227,13 @@ export function chordMinorAtom(numeral: string): string {
  *  bass), c = 2nd inversion (5th in bass). ABRSM figuring. */
 export const CHORD_POSITIONS = ['a', 'b', 'c'] as const;
 
+/** Grade 5 (chromaticly-ic5.6): CHOOSING the chord at a cadential point, as
+ *  opposed to naming the cadence. Its own atom because a learner who can name
+ *  a cadence and cannot supply its missing chord must be caught, not averaged. */
+export function cadenceChooseAtom(kind: string): string {
+  return `cadence_choose:${kind}`;
+}
+
 /** Grade-5 position-qualified chord atom, e.g. chordPositionAtom('IV','b') ->
  *  "chord:IV:b". The 3-part shape (vs the bare 2-part `chord:<numeral>`) is what
  *  gates the generator into inversions mode, leaving the grade-4 root-position
