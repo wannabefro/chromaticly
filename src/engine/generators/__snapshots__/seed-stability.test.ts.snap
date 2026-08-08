@@ -194567,6 +194567,1611 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chord_recognition @ minor-chords-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of B minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of B minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s0",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "IV": [
+            "E2",
+            "G2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is B minor.",
+    "srs_tags": [
+      "chord_minor:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E2",
+                  "G2",
+                  "B2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of Bb minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of Bb minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s1",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "Bb2",
+            "Db3",
+            "F3",
+          ],
+          "IV": [
+            "Eb2",
+            "Gb2",
+            "Bb2",
+          ],
+          "V": [
+            "F2",
+            "A2",
+            "C3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is Bb minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "Bb_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "A2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of B minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of B minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s2",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "IV": [
+            "E2",
+            "G2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is B minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "D3",
+                  "F#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of G minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of G minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s3",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "G4",
+            "Bb4",
+            "D5",
+          ],
+          "IV": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "V": [
+            "D4",
+            "F#4",
+            "A4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is G minor.",
+    "srs_tags": [
+      "chord_minor:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "Eb4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of F minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of F minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s4",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F2",
+            "Ab2",
+            "C3",
+          ],
+          "IV": [
+            "Bb2",
+            "Db3",
+            "F3",
+          ],
+          "V": [
+            "C2",
+            "E2",
+            "G2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is F minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F2",
+                  "Ab2",
+                  "C3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of D minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of D minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s5",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "IV": [
+            "G4",
+            "Bb4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is D minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of A minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of A minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s6",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A3",
+            "C4",
+            "E4",
+          ],
+          "IV": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "V": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is A minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "A3",
+                  "C4",
+                  "E4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of C minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of C minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s7",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "IV": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is C minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G4",
+                  "B4",
+                  "D5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of F# minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of F# minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s8",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F#4",
+            "A4",
+            "C#5",
+          ],
+          "IV": [
+            "B3",
+            "D4",
+            "F#4",
+          ],
+          "V": [
+            "C#4",
+            "E#4",
+            "G#4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is F# minor.",
+    "srs_tags": [
+      "chord_minor:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B3",
+                  "D4",
+                  "F#4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of B minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of B minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s9",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "IV": [
+            "E2",
+            "G2",
+            "B2",
+          ],
+          "V": [
+            "F#2",
+            "A#2",
+            "C#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is B minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "B2",
+                  "D3",
+                  "F#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of F# minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of F# minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s10",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F#2",
+            "A2",
+            "C#3",
+          ],
+          "IV": [
+            "B2",
+            "D3",
+            "F#3",
+          ],
+          "V": [
+            "C#2",
+            "E#2",
+            "G#2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is F# minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "F#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C#2",
+                  "E#2",
+                  "G#2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of C# minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of C# minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s11",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C#2",
+            "E2",
+            "G#2",
+          ],
+          "IV": [
+            "F#2",
+            "A2",
+            "C#3",
+          ],
+          "V": [
+            "G#2",
+            "B#2",
+            "D#3",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is C# minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "C#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G#2",
+                  "B#2",
+                  "D#3",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of B minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of B minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s12",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "B3",
+            "D4",
+            "F#4",
+          ],
+          "IV": [
+            "E4",
+            "G4",
+            "B4",
+          ],
+          "V": [
+            "F#4",
+            "A#4",
+            "C#5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is B minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "B_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F#4",
+                  "A#4",
+                  "C#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of A minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of A minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s13",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A3",
+            "C4",
+            "E4",
+          ],
+          "IV": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "V": [
+            "E4",
+            "G#4",
+            "B4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is A minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "E4",
+                  "G#4",
+                  "B4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of C minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of C minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s14",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C4",
+            "Eb4",
+            "G4",
+          ],
+          "IV": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "V": [
+            "G4",
+            "B4",
+            "D5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is C minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "C4",
+                  "Eb4",
+                  "G4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of G minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of G minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s15",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "G2",
+            "Bb2",
+            "D3",
+          ],
+          "IV": [
+            "C2",
+            "Eb2",
+            "G2",
+          ],
+          "V": [
+            "D2",
+            "F#2",
+            "A2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is G minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "G_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F#2",
+                  "A2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "IV",
+    },
+    "distractors": [
+      "I",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of A minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of A minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s16",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "A2",
+            "C3",
+            "E3",
+          ],
+          "IV": [
+            "D2",
+            "F2",
+            "A2",
+          ],
+          "V": [
+            "E2",
+            "G#2",
+            "B2",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is A minor.",
+    "srs_tags": [
+      "chord_minor:IV",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": "A_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D2",
+                  "F2",
+                  "A2",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of D minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of D minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s17",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "D4",
+            "F4",
+            "A4",
+          ],
+          "IV": [
+            "G4",
+            "Bb4",
+            "D5",
+          ],
+          "V": [
+            "A3",
+            "C#4",
+            "E4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is D minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "D_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "D4",
+                  "F4",
+                  "A4",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "I",
+    },
+    "distractors": [
+      "IV",
+      "V",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "IV": "IV is built on the 4th degree of F minor. This chord's lowest note is not there.",
+        "V": "V is built on the 5th degree of F minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s18",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "F4",
+            "Ab4",
+            "C5",
+          ],
+          "IV": [
+            "Bb3",
+            "Db4",
+            "F4",
+          ],
+          "V": [
+            "C4",
+            "E4",
+            "G4",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is F minor.",
+    "srs_tags": [
+      "chord_minor:I",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "F_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "F4",
+                  "Ab4",
+                  "C5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "V",
+    },
+    "distractors": [
+      "I",
+      "IV",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "I": "I is built on the 1st degree of C# minor. This chord's lowest note is not there.",
+        "IV": "IV is built on the 4th degree of C# minor. This chord's lowest note is not there.",
+      },
+      "correct": "Correct!",
+      "incorrect": "Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.",
+    },
+    "grade": 4,
+    "hints": [
+      "Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.",
+    ],
+    "id": "chord_recognition:g4:s19",
+    "interaction": {
+      "config": {
+        "numerals": [
+          "I",
+          "IV",
+          "V",
+        ],
+        "triads": {
+          "I": [
+            "C#4",
+            "E4",
+            "G#4",
+          ],
+          "IV": [
+            "F#4",
+            "A4",
+            "C#5",
+          ],
+          "V": [
+            "G#4",
+            "B#4",
+            "D#5",
+          ],
+        },
+      },
+      "type": "roman_numeral_boxes",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name this chord (Roman numeral). The key is C# minor.",
+    "srs_tags": [
+      "chord_minor:V",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": "C#_minor",
+        "time_sig": null,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "semibreve",
+                "pitches": [
+                  "G#4",
+                  "B#4",
+                  "D#5",
+                ],
+                "type": "chord",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "chords",
+    "template_id": "chord_recognition",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chromatic_scale @ chromatic-scale-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {

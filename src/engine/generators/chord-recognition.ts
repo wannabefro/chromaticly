@@ -13,8 +13,10 @@ import { KB_VERSION } from '../../content/knowledge-base';
 import {
   CHORD_NUMERALS,
   CHORD_NUMERALS_G5,
+  CHORD_NUMERALS_MINOR,
   CHORD_POSITIONS,
   chordAtom,
+  chordMinorAtom,
   chordPositionAtom,
   parseAtom,
 } from '../atoms';
@@ -22,7 +24,8 @@ import { mulberry32, pick } from '../rng';
 import { comfortablePitchRange, diatonicPitchesInComfortableRange, scopeForGrade } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import type { Clef, Music } from '../../music/types';
-import { spellInKey, tonicLetter } from './key-spelling';
+import { spellInKey, spellInKeySig, tonicLetter } from './key-spelling';
+import { shiftAccidental } from './minor-keys';
 import { naturalPitchStepsAbove, parseNaturalPitch, scientificPitchOrdinal } from './pitch-math';
 import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
@@ -151,6 +154,121 @@ export function buildTriad(
   return [spellInKey(rootNatural, key), spellInKey(thirdNatural, key), spellInKey(fifthNatural, key)];
 }
 
+/** The `chord_minor:<numeral>` atoms in `atoms`, deduplicated in atom order.
+ *  Their presence is what gates the minor-key path, exactly as the 3-part
+ *  position atom gates inversions. */
+function minorNumeralsFromAtoms(atoms: string[]): string[] {
+  const numerals: string[] = [];
+  for (const atom of atoms) {
+    const { kind, parts } = parseAtom(atom);
+    if (kind !== 'chord_minor' || parts.length !== 1) continue;
+    if (!(CHORD_NUMERALS_MINOR as readonly string[]).includes(parts[0])) continue;
+    if (!numerals.includes(parts[0])) numerals.push(parts[0]);
+  }
+  return numerals;
+}
+
+/** Root-position triad on the 1st, 4th or 5th degree of a MINOR key, spelled
+ *  under that key's signature — which spells the NATURAL form.
+ *
+ *  i and iv take the signature unchanged and come out minor. V does not: its
+ *  third IS the 7th degree, and the harmonic form raises it, which is the whole
+ *  reason V is major in a minor key and can act as a dominant. Raising it here
+ *  rather than in the key signature is also how it is written on the page — the
+ *  accidental appears against the note (chromaticly-7xv, G4 item 4, which says
+ *  "the harmonic form of the scale will be used in minor keys"). */
+export function buildMinorTriad(
+  clef: Clef,
+  grade: number,
+  tonic: string,
+  numeral: string,
+  minSpan = 4,
+): [string, string, string] {
+  const keySig = `${tonic}_minor`;
+  const range = comfortablePitchRange(clef, grade);
+  const tonicOccurrences = diatonicPitchesInComfortableRange(clef, grade).filter((p) => p.startsWith(tonic[0]));
+  if (tonicOccurrences.length === 0) {
+    throw new Error(`chord_recognition: no in-range occurrence of tonic ${tonic} for clef ${clef}`);
+  }
+
+  const rootLetter = parseNaturalPitch(
+    naturalPitchStepsAbove(tonicOccurrences[0], CHORD_DEGREE_STEPS[numeral]),
+  ).letter;
+  const fittingRoots = diatonicPitchesInComfortableRange(clef, grade)
+    .filter((p) => parseNaturalPitch(p).letter === rootLetter)
+    .filter((p) => scientificPitchOrdinal(range.high) - scientificPitchOrdinal(p) >= minSpan);
+  if (fittingRoots.length === 0) {
+    throw new Error(
+      `chord_recognition: no root occurrence of ${rootLetter} leaves room for a triad within range for clef ${clef}`,
+    );
+  }
+
+  const rootNatural = fittingRoots[0];
+  const root = spellInKeySig(rootNatural, keySig);
+  const third = spellInKeySig(naturalPitchStepsAbove(rootNatural, 2), keySig);
+  const fifth = spellInKeySig(naturalPitchStepsAbove(rootNatural, 4), keySig);
+
+  return numeral === 'V' ? [root, shiftAccidental(third, 1), fifth] : [root, third, fifth];
+}
+
+function buildMinorKey(
+  contentSeed: number,
+  grade: number,
+  idSeed: number,
+  numerals: string[],
+): ExerciseInstance {
+  const scope = scopeForGrade(grade);
+  const rng = mulberry32(contentSeed);
+  const clef = pick(rng, [...CHORD_CLEFS]);
+  const tonic = pick(rng, [...scope.keysMinor]);
+  const numeral = pick(rng, numerals);
+
+  const triads: Record<string, [string, string, string]> = {};
+  for (const n of CHORD_NUMERALS_MINOR) {
+    triads[n] = buildMinorTriad(clef, grade, tonic, n);
+  }
+
+  const distractors = CHORD_NUMERALS_MINOR.filter((n) => n !== numeral);
+
+  return {
+    id: makeInstanceId('chord_recognition', grade, idSeed),
+    template_id: 'chord_recognition',
+    grade,
+    strand: 'chords',
+    prompt: `Name this chord (Roman numeral). The key is ${tonic} minor.`,
+    stimulus: {
+      music: {
+        clef,
+        key_sig: `${tonic}_minor`,
+        time_sig: null,
+        voices: [{ events: [{ type: 'chord', pitches: triads[numeral], dur: 'semibreve' }] }],
+      },
+      text: null,
+    },
+    // Same component as the major path, so the two read as one skill rather than
+    // two, and so the tapped-chip replay has its chord to play.
+    interaction: { type: 'roman_numeral_boxes', config: { numerals: [...CHORD_NUMERALS_MINOR], triads } },
+    answer: { canonical: numeral, accepted_alternatives: [] },
+    distractors: [...distractors],
+    hints: [
+      'Find the lowest note, then count how far it is above the keynote: the keynote itself is I, three letters up is IV, four is V.',
+    ],
+    feedback: {
+      correct: 'Correct!',
+      incorrect:
+        'Not quite — find the lowest note and count it up from the keynote. I sits on the keynote, IV on the 4th degree, V on the 5th.',
+      by_distractor: Object.fromEntries(
+        distractors.map((n) => [
+          n,
+          `${n} is built on the ${n === 'I' ? '1st' : n === 'IV' ? '4th' : '5th'} degree of ${tonic} minor. This chord's lowest note is not there.`,
+        ]),
+      ),
+    },
+    srs_tags: [chordMinorAtom(numeral)],
+    kb_version: KB_VERSION,
+  };
+}
+
 /** Grade-5 inversions path (chromaticly-ehp / plan U2): name a triad AND its
  *  position (a/b/c). Selected by 3-part `chord:<numeral>:<pos>` atoms; the
  *  answer is the structured { numeral, position } pair, graded on both axes. */
@@ -240,6 +358,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const inversionPairs = inversionPairsFromAtoms(atoms);
   if (inversionPairs.length > 0) {
     return buildInversion(contentSeed, grade, idSeed, inversionPairs);
+  }
+  const minorNumerals = minorNumeralsFromAtoms(atoms);
+  if (minorNumerals.length > 0) {
+    return buildMinorKey(contentSeed, grade, idSeed, minorNumerals);
   }
 
   const scope = scopeForGrade(grade);

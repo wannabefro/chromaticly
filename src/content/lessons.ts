@@ -15,7 +15,7 @@ import grade2Raw from '../../curriculum/grade2-lessons.json';
 import grade3Raw from '../../curriculum/grade3-lessons.json';
 import grade4Raw from '../../curriculum/grade4-lessons.json';
 import grade5Raw from '../../curriculum/grade5-lessons.json';
-import { ALPHABET_LETTERS, CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, isByEarAtom, NOTE_SHAPES, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, STAVE_ANATOMY_KINDS, VOICE_TYPES, writtenAtomOf } from '../engine/atoms';
+import { ALPHABET_LETTERS, CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_NUMERALS_MINOR, CHORD_POSITIONS, CONTEXT_KINDS, DIRECTIONS, ENHARMONIC_NOTES, INSTRUMENTS, INSTRUMENT_TRANSPOSITIONS, isByEarAtom, NOTE_SHAPES, ORNAMENT_KINDS, ORNAMENT_WRITTEN_TO_SIGN, parseAtom, SATB_VOICES, STAVE_ANATOMY_KINDS, VOICE_TYPES, writtenAtomOf } from '../engine/atoms';
 import { GENERATORS, generate } from '../engine/generators';
 import { byEarCardFor } from '../engine/generators/by-ear-cards';
 import { COMPOUND_NUMBERS } from '../engine/interval-quality';
@@ -296,6 +296,16 @@ export function assertAtomResolves(atom: string, grade: number): void {
       }
       if (grade < 4 || !(CHORD_NUMERALS as readonly string[]).includes(numeral)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} primary-triad chord numeral`);
+      }
+      return;
+    }
+    // The minor-key primary triads (chromaticly-7xv). G4 item 4 asks for tonic,
+    // subdominant and dominant chords in ANY key set for the grade, and the
+    // course had only the major ones.
+    case 'chord_minor': {
+      const [numeral] = parts;
+      if (grade < 4 || parts.length !== 1 || !(CHORD_NUMERALS_MINOR as readonly string[]).includes(numeral)) {
+        throw new Error(`lessons: atom "${atom}" is not a G${grade} minor-key primary triad`);
       }
       return;
     }

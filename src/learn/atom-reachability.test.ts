@@ -30,7 +30,10 @@ describe('every credited atom is reachable by review', () => {
     // 746 before the major-scale lessons, which add 9 `major_steps:<tonic>` atoms
     // — A/Bb/Eb at grade 2, E/Ab at 3, B/Db at 4, F#/Gb at 5. The syllabus asks
     // for the SCALES as well as the key signatures at every one of those grades.
-    expect(ALL.length).toBe(755);
+    // 755 before the minor-key primary triads, which add 3: chord_minor:I/IV/V.
+    // G4 item 4 asks for those chords in ANY key set for the grade; the course
+    // had only the major ones (chromaticly-7xv).
+    expect(ALL.length).toBe(758);
   });
 
   test('every atom routes to a template', () => {

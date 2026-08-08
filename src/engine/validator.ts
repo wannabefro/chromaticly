@@ -14,7 +14,7 @@
 import type { ChordEvent, Clef, Music, MusicEvent, NoteEvent, OrnamentKind, RestEvent } from '../music/types';
 import { barUnitsFor } from './generators/bar-math';
 import { durationFromRestLabel, REST_UNITS } from './generators/rest-math';
-import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
+import { CHORD_NUMERALS, CHORD_NUMERALS_G5, CHORD_NUMERALS_MINOR, CHORD_POSITIONS, INSTRUMENT_TRANSPOSITIONS, ORNAMENT_KINDS, parseAtom } from './atoms';
 import { CHORD_DEGREE_STEPS } from './generators/chord-recognition';
 import {
   CLEFS_DISPLAY,
@@ -1695,6 +1695,32 @@ function assertMajorTriad(pitches: unknown, label: string, errors: string[]): vo
   }
 }
 
+/** The same recompute as assertMajorTriad, parameterised by the quality the
+ *  chord is supposed to have. A minor key's i and iv are minor triads and its V
+ *  is major — that asymmetry IS the raised 7th, so checking it here is what
+ *  catches a dominant built without one. */
+function assertTriadQuality(pitches: unknown, quality: 'major' | 'minor', label: string, errors: string[]): void {
+  if (!Array.isArray(pitches) || pitches.length !== 3 || pitches.some((p) => typeof p !== 'string')) {
+    errors.push(`chord_recognition: ${label} must be exactly 3 spelled pitches`);
+    return;
+  }
+  const [root, third, fifth] = pitches as string[];
+  const lower = quality === 'major' ? 'major' : 'minor';
+  const upper = quality === 'major' ? 'minor' : 'major';
+  try {
+    const thirdNumber = diatonicIntervalNumber(root, third);
+    if (thirdNumber !== 3 || intervalQuality(root, third, thirdNumber) !== lower) {
+      errors.push(`chord_recognition: ${label} root-third is not a ${lower} 3rd`);
+    }
+    const fifthNumber = diatonicIntervalNumber(third, fifth);
+    if (fifthNumber !== 3 || intervalQuality(third, fifth, fifthNumber) !== upper) {
+      errors.push(`chord_recognition: ${label} third-fifth is not a ${upper} 3rd`);
+    }
+  } catch (err) {
+    errors.push(`chord_recognition: ${label}: ${err instanceof Error ? err.message : String(err)}`);
+  }
+}
+
 /** Recompute a triad's root LETTER and its position (a/b/c) from spelled
  *  pitches, without trusting the generator (chromaticly-ehp). The root is the
  *  letter whose diatonic 3rd (+2) and 5th (+4) are the other two letters; the
@@ -1767,6 +1793,57 @@ function chordInversionErrors(inst: ExerciseInstance, tonic: string, stimulusPit
   return errors;
 }
 
+// chordMinorErrors (chromaticly-7xv) — the minor-key primary triads. Recomputes
+// the numeral from the root letter's distance above the tonic, exactly as the
+// major path does, and then checks the one thing that distinguishes the mode:
+// i and iv must be MINOR triads and V must be MAJOR. A dominant built from the
+// key signature alone comes out minor, so this is the check that proves the
+// raised 7th is actually on the page.
+function chordMinorErrors(inst: ExerciseInstance, tonic: string, stimulusPitches: string[]): string[] {
+  const errors: string[] = [];
+  const [root] = stimulusPitches;
+  const rootLetterMatch = /^([A-G])/.exec(root);
+  if (!rootLetterMatch) {
+    return [`chord_recognition: chord root "${root}" is not a spelled pitch`];
+  }
+  const steps =
+    (LETTER_ORDER.indexOf(rootLetterMatch[1] as (typeof LETTER_ORDER)[number]) -
+      LETTER_ORDER.indexOf(tonic[0] as (typeof LETTER_ORDER)[number]) +
+      7) %
+    7;
+  const recomputed = Object.entries(CHORD_DEGREE_STEPS).find(([, s]) => s === steps)?.[0];
+  if (!recomputed || !(CHORD_NUMERALS_MINOR as readonly string[]).includes(recomputed)) {
+    errors.push(`chord_recognition: chord root "${root}" does not sit on a primary-triad degree of ${tonic} minor`);
+  } else if (inst.answer.canonical !== recomputed) {
+    errors.push(
+      `chord_recognition: canonical "${String(inst.answer.canonical)}" does not match the numeral recomputed from the stimulus root ("${recomputed}")`,
+    );
+  }
+
+  assertTriadQuality(stimulusPitches, recomputed === 'V' ? 'major' : 'minor', `the ${recomputed ?? '?'} chord`, errors);
+
+  const expected = CHORD_NUMERALS_MINOR.filter((n) => n !== inst.answer.canonical);
+  if (JSON.stringify([...inst.distractors].sort()) !== JSON.stringify([...expected].sort())) {
+    errors.push('chord_recognition: distractors must be exactly the other two minor-key primary triads');
+  }
+
+  // Every chip's chord is checked, not just the one shown: the UI replays a
+  // tapped chip, so a wrong V in the map would sound a minor dominant even when
+  // the notated chord is right.
+  const triads = inst.interaction.config?.triads as Record<string, unknown> | undefined;
+  if (!triads || typeof triads !== 'object') {
+    errors.push('chord_recognition: interaction.config.triads is required');
+    return errors;
+  }
+  for (const numeral of CHORD_NUMERALS_MINOR) {
+    assertTriadQuality(triads[numeral], numeral === 'V' ? 'major' : 'minor', `config.triads.${numeral}`, errors);
+  }
+  if (!deepEqual(triads[inst.answer.canonical as string], stimulusPitches)) {
+    errors.push("chord_recognition: config.triads[answer.canonical] does not match the stimulus chord's pitches");
+  }
+  return errors;
+}
+
 // chordRecognitionHook (fyu.10) — recompute-don't-trust: the numeral is
 // recomputed from the stimulus chord's ROOT LETTER's diatonic distance above
 // the key's tonic (CHORD_DEGREE_STEPS, shared with the generator as fixed
@@ -1781,7 +1858,12 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
   if (!music) return ['chord_recognition: stimulus music is required'];
   if (typeof music.key_sig !== 'string') return ['chord_recognition: stimulus must carry a key signature'];
   const [tonic, mode] = music.key_sig.split('_');
-  if (mode !== 'major') return [`chord_recognition: key signature "${music.key_sig}" is not a major key`];
+  if (mode !== 'major' && mode !== 'minor') {
+    return [`chord_recognition: key signature "${music.key_sig}" names no mode`];
+  }
+  if (mode === 'minor' && inst.grade < 4) {
+    return [`chord_recognition: minor-key harmony is not in scope at grade ${inst.grade}`];
+  }
 
   const chordEvents = music.voices.flatMap((v) => v.events).filter((ev): ev is ChordEvent => ev.type === 'chord');
   if (chordEvents.length !== 1 || chordEvents[0].pitches.length !== 3) {
@@ -1794,6 +1876,10 @@ function chordRecognitionHook(inst: ExerciseInstance): string[] {
   // its own recompute — the root is NOT positionally first once inverted.
   if (inst.answer.canonical && typeof inst.answer.canonical === 'object') {
     return chordInversionErrors(inst, tonic, stimulusPitches);
+  }
+
+  if (mode === 'minor') {
+    return chordMinorErrors(inst, tonic, stimulusPitches);
   }
 
   const [root] = stimulusPitches;

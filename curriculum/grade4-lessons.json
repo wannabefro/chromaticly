@@ -718,13 +718,50 @@
         "smartTip": "Read the key signature, then look at the chord's lowest note — in root position that is the root. If it is the key's 1st degree the chord is I, the 4th degree IV, the 5th degree V.",
         "didYouKnow": "I, IV and V are called the primary triads because between them they use every note of the major scale — which is why so much music can be harmonised with just these three chords."
       },
-      "unlocks": "ornaments-4",
+      "unlocks": "minor-chords-4",
       "by_ear_source": "chord_recognition",
       "by_ear_atoms": [
         "chord:I:by_ear",
         "chord:IV:by_ear",
         "chord:V:by_ear"
       ]
+    },
+    {
+      "id": "minor-chords-4",
+      "title": "Primary chords in a minor key",
+      "strand": "chords",
+      "atoms": [
+        "chord_minor:I",
+        "chord_minor:IV",
+        "chord_minor:V"
+      ],
+      "templates": [
+        "chord_recognition"
+      ],
+      "worked_example": {
+        "template_id": "chord_recognition",
+        "grade": 4,
+        "seed": 0
+      },
+      "teach": {
+        "objectives": [
+          "I, IV and V are built on the same three degrees in a minor key",
+          "I and IV come out minor; V comes out major, because of the raised 7th",
+          "The sharp or natural that raises the 7th is written on the note, never in the key signature"
+        ],
+        "concept": {
+          "title": "Two minor, one major",
+          "body": "The primary triads sit on the same degrees in a minor key as in a major one: I on the keynote, IV on the 4th, V on the 5th. What changes is how they sound. Build them from the key signature alone and I and IV come out minor, which is what you would expect. V does not. Its middle note is the 7th degree of the scale, and a minor key raises that 7th — the harmonic form — so V comes out major. That is the whole reason V can lead back to the keynote: the raised 7th is a semitone below it and pulls. In A minor the raised 7th is G♯, so V is E, G♯, B rather than E, G, B. The accidental is written against the note, because the key signature spells the natural form.",
+          "example": {
+            "template_id": "chord_recognition",
+            "grade": 4,
+            "seed": 4
+          }
+        },
+        "smartTip": "Check the middle note of V. If it carries an accidental the key signature did not give it, that is the raised 7th, and the chord is major.",
+        "didYouKnow": "This is why so much minor-key music has one stray accidental appearing again and again. It is almost always the raised 7th, arriving with the dominant chord."
+      },
+      "unlocks": "ornaments-4"
     },
     {
       "id": "ornaments-4",

@@ -192,6 +192,21 @@ export function chordAtom(numeral: string): string {
  *  CHORD_NUMERALS so grade-4 chord_recognition output stays byte-identical. */
 export const CHORD_NUMERALS_G5 = ['I', 'II', 'IV', 'V'] as const;
 
+/** Grade-4 primary triads in a MINOR key (chromaticly-7xv). The numerals are the
+ *  same three degrees and ABRSM keeps them upper-case at this level, so the atom
+ *  carries the mode rather than the numeral's case: `chord:I` and `chord_minor:I`
+ *  are different facts and are scored apart.
+ *
+ *  A separate kind rather than a third part of `chord:<numeral>:<x>`, because
+ *  that shape is already the Grade-5 position axis — `chord:I:a` is an inversion,
+ *  not a mode. Keeping them apart also leaves every grade-4 pin byte-identical. */
+export const CHORD_NUMERALS_MINOR = ['I', 'IV', 'V'] as const;
+
+/** e.g. chordMinorAtom('IV') -> "chord_minor:IV". */
+export function chordMinorAtom(numeral: string): string {
+  return `chord_minor:${numeral}`;
+}
+
 /** Chord positions (Grade 5 inversions): a = root, b = 1st inversion (3rd in
  *  bass), c = 2nd inversion (5th in bass). ABRSM figuring. */
 export const CHORD_POSITIONS = ['a', 'b', 'c'] as const;

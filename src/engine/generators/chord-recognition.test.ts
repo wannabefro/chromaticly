@@ -1,3 +1,4 @@
+import { assertAtomResolves } from '../../content/lessons';
 import { validate } from '../validator';
 import { intervalQuality, diatonicIntervalNumber } from '../interval-quality';
 import { CHORD_DEGREE_STEPS } from './chord-recognition';
@@ -259,5 +260,54 @@ describe('chord_recognition — the Grade-4 bare-atom path is untouched (still a
   test('bare chord:* atoms still produce a string canonical, not a { numeral, position } object', () => {
     const inst = generate('chord_recognition', opts(0));
     expect(typeof inst.answer.canonical).toBe('string');
+  });
+});
+
+// chromaticly-7xv — the minor-key primary triads. The point of these is the
+// asymmetry: i and iv fall out of the key signature, V does not.
+describe('chord_recognition — minor keys (G4 item 4)', () => {
+  const at = (numeral: string, seed = 0) =>
+    generate('chord_recognition', { grade: 4, seed, atoms: [`chord_minor:${numeral}`] });
+
+  const pitches = (i: ReturnType<typeof at>) =>
+    ((i.stimulus.music as any).voices[0].events[0].pitches as string[]);
+
+  test.each(['I', 'IV', 'V'])('%s credits its own atom and answers its own numeral', (numeral) => {
+    const i = at(numeral);
+    expect(i.srs_tags).toEqual([`chord_minor:${numeral}`]);
+    expect(i.answer.canonical).toBe(numeral);
+  });
+
+  // The defect this content exists to fix: a dominant built from the key
+  // signature alone is MINOR, and cannot function as a dominant. Checked as a
+  // semitone count so it does not depend on the validator agreeing.
+  test('V is major and i/iv are minor, on every seed', () => {
+    const semis = (a: string, b: string) => {
+      const step: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+      const parse = (p: string) => {
+        const m = /^([A-G])(#{1,2}|b{1,2})?(-?\d+)$/.exec(p)!;
+        const acc = (m[2] ?? '').startsWith('#') ? m[2]!.length : (m[2] ?? '').startsWith('b') ? -m[2]!.length : 0;
+        return step[m[1]] + acc + 12 * Number(m[3]);
+      };
+      return parse(b) - parse(a);
+    };
+    for (let seed = 0; seed < 8; seed++) {
+      for (const numeral of ['I', 'IV', 'V']) {
+        const [root, third, fifth] = pitches(at(numeral, seed));
+        expect(semis(root, fifth)).toBe(7);
+        expect(semis(root, third)).toBe(numeral === 'V' ? 4 : 3);
+      }
+    }
+  });
+
+  test('the stimulus carries a minor key signature, and the raised 7th is not in it', () => {
+    const i = at('V', 3);
+    expect((i.stimulus.music as any).key_sig).toMatch(/_minor$/);
+  });
+
+  // Minor harmony is Grade 4 content. The atom must not resolve below it.
+  test('the atom does not resolve below grade 4', () => {
+    expect(() => assertAtomResolves('chord_minor:V', 3)).toThrow();
+    expect(() => assertAtomResolves('chord_minor:V', 4)).not.toThrow();
   });
 });
