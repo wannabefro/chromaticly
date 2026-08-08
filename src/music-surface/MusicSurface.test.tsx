@@ -161,4 +161,36 @@ describe('MusicSurface', () => {
       { type: 'highlightNote', locator, color: undefined },
     ]);
   });
+  // chromaticly-1em. ExerciseLoop turns the gap zones on from an effect whose
+  // deps do not include `ready`, so the command lands before the page listens.
+  test('gap mode and the placed bar-lines requested before ready are deferred, then flushed in order', () => {
+    const ref = createRef<MusicSurfaceHandle>();
+    render(<MusicSurface ref={ref} music={MUSIC} />);
+
+    act(() => ref.current!.setGapMode(true));
+    act(() => ref.current!.setBarlines([2, 4], '#123456', { wrong: [4], missed: [6] }));
+    expect(postedCommands().filter((c) => c.type === 'setGapMode' || c.type === 'setBarlines')).toHaveLength(0);
+
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'ready' }) } }));
+
+    expect(postedCommands().filter((c) => c.type === 'setGapMode' || c.type === 'setBarlines')).toEqual([
+      { type: 'setGapMode', enabled: true },
+      { type: 'setBarlines', gaps: [2, 4], color: '#123456', marks: { wrong: [4], missed: [6] } },
+    ]);
+  });
+
+  test('gap mode turned off before ready does not replay bar-lines the page has dropped', () => {
+    const ref = createRef<MusicSurfaceHandle>();
+    render(<MusicSurface ref={ref} music={MUSIC} />);
+
+    act(() => ref.current!.setBarlines([2], '#123456'));
+    act(() => ref.current!.setGapMode(false));
+
+    const onMessage = capturedProps!.onMessage as (e: { nativeEvent: { data: string } }) => void;
+    act(() => onMessage({ nativeEvent: { data: JSON.stringify({ type: 'ready' }) } }));
+
+    expect(postedCommands().filter((c) => c.type === 'setBarlines')).toHaveLength(0);
+    expect(postedCommands().filter((c) => c.type === 'setGapMode')).toEqual([{ type: 'setGapMode', enabled: false }]);
+  });
 });

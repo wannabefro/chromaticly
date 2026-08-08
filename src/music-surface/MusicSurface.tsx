@@ -14,6 +14,8 @@ const ABCJS_SOURCE = (abcjsSource as { source: string }).source;
 /** Note-granularity ring target: which staff/voice/note-in-voice to ring. */
 export type NoteLocator = { staff: number; voice: number; noteIndex: number };
 
+type Barlines = { gaps: number[]; color?: string; marks?: { wrong: number[]; missed: number[] } };
+
 export interface MusicSurfaceHandle {
   play(): void;
   stop(): void;
@@ -125,6 +127,14 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
     [send],
   );
 
+  // The gap zones race the boot the same way (chromaticly-1em).
+  const gapMode = useRef<boolean | undefined>(undefined);
+  const barlines = useRef<Barlines | undefined>(undefined);
+  const sendGaps = useCallback(() => {
+    if (gapMode.current !== undefined) send({ type: 'setGapMode', enabled: gapMode.current });
+    if (barlines.current) send({ type: 'setBarlines', ...barlines.current });
+  }, [send]);
+
   useImperativeHandle(
     ref,
     () => ({
@@ -137,16 +147,26 @@ export const MusicSurface = forwardRef<MusicSurfaceHandle, MusicSurfaceProps>(fu
       },
       playAbc: (abc: string) => send({ type: 'playAbc', abc }),
       playMusic: (music: Music) => send({ type: 'playAbc', abc: musicToAbc(music) }),
-      setGapMode: (enabled: boolean) => send({ type: 'setGapMode', enabled }),
-      setBarlines: (gaps, color, marks) => send({ type: 'setBarlines', gaps, color, marks }),
+      setGapMode: (enabled: boolean) => {
+        gapMode.current = enabled;
+        // The page drops its bar-lines when gap mode goes off.
+        if (!enabled) barlines.current = undefined;
+        if (readyRef.current) send({ type: 'setGapMode', enabled });
+      },
+      setBarlines: (gaps, color, marks) => {
+        barlines.current = { gaps, color, marks };
+        if (readyRef.current) send({ type: 'setBarlines', gaps, color, marks });
+      },
     }),
     [send, sendHighlight],
   );
 
-  // Flush a highlight requested before boot, once the surface is ready.
+  // Flush anything requested before boot, once the surface is ready.
   useEffect(() => {
-    if (ready && pendingHighlight.current !== undefined) sendHighlight(pendingHighlight.current);
-  }, [ready, sendHighlight]);
+    if (!ready) return;
+    if (pendingHighlight.current !== undefined) sendHighlight(pendingHighlight.current);
+    sendGaps();
+  }, [ready, sendHighlight, sendGaps]);
 
   // The surface is persistent (reused across exercises via new render commands),
   // so drop the previous stimulus's measured height when the music changes: fall
