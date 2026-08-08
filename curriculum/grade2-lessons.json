@@ -37,6 +37,43 @@
         "smartTip": "Count them: three sharps is A major; two flats is B♭ major, three flats is E♭ major.",
         "didYouKnow": "Flats are written in the order B, E, A, D, G, C, F — exactly the sharp order (F, C, G, D, A, E, B) reversed."
       },
+      "unlocks": "major-scales-2"
+    },
+    {
+      "id": "major-scales-2",
+      "title": "Major scales with sharps and flats",
+      "strand": "scales_keys",
+      "atoms": [
+        "major_steps:A",
+        "major_steps:Bb",
+        "major_steps:Eb"
+      ],
+      "templates": [
+        "major_scale_steps"
+      ],
+      "worked_example": {
+        "template_id": "major_scale_steps",
+        "grade": 2,
+        "seed": 11
+      },
+      "teach": {
+        "objectives": [
+          "Build A, B♭ and E♭ major from the same tone-and-semitone pattern",
+          "The key signature holds exactly the accidentals the pattern needs — no more",
+          "Semitones still fall between the 3rd and 4th notes and between the 7th and 8th"
+        ],
+        "concept": {
+          "title": "The pattern does not change; the accidentals do",
+          "body": "Grade 1 built C, G, D and F major. The three new keys are built the same way, because the pattern is what makes a scale major: tone, tone, semitone, tone, tone, tone, semitone. What changes is how many accidentals it takes to get that pattern from a new starting note. A major needs three sharps, B♭ major two flats and E♭ major three. Those are not arbitrary — each one is forced. Start on E♭ and step a tone to F, a tone to G, then a semitone: the next letter is A, and only A♭ is a semitone above G. The key signature is simply the list of what the pattern demanded, written once at the front so you do not have to keep writing it.",
+          "example": {
+            "template_id": "major_scale_steps",
+            "grade": 2,
+            "seed": 3
+          }
+        },
+        "smartTip": "Work the letters up from the keynote first, then ask what each one needs to keep the pattern. The key signature is the answer, not the question.",
+        "didYouKnow": "This is why key signatures grow in a fixed order. Each new key a 5th up needs exactly one more sharp, and it is always the next letter in the F, C, G, D order."
+      },
       "unlocks": "minor-keys-2"
     },
     {

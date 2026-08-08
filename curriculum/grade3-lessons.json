@@ -36,6 +36,42 @@
         "smartTip": "Four sharps is E major; four flats is A♭ major.",
         "didYouKnow": "The last sharp in a signature is always the seventh note of the key, a semitone below the keynote — so E major's final D♯ sits just under E. Spotting that last sharp names the key without counting."
       },
+      "unlocks": "major-scales-3"
+    },
+    {
+      "id": "major-scales-3",
+      "title": "Building E and A♭ major",
+      "strand": "scales_keys",
+      "atoms": [
+        "major_steps:E",
+        "major_steps:Ab"
+      ],
+      "templates": [
+        "major_scale_steps"
+      ],
+      "worked_example": {
+        "template_id": "major_scale_steps",
+        "grade": 3,
+        "seed": 7
+      },
+      "teach": {
+        "objectives": [
+          "Build E major and A♭ major, four sharps and four flats",
+          "Every letter is used once, in order, whatever accidentals it takes",
+          "The semitone positions are the same as in every other major scale"
+        ],
+        "concept": {
+          "title": "Four accidentals, one unchanged pattern",
+          "body": "E major has four sharps and A♭ major four flats, and both are built by the rule you already have. Write the seven letters up from the keynote first — E F G A B C D for E major, A♭ B C D E F G for A♭ major — and only then decide what each letter needs. That order matters more here than it did at Grade 1, because with four accidentals it is easy to reach for a note that sounds right and spell it wrong. A scale steps through every letter exactly once, so E major's third note is a kind of G and can never be an A♭, however similar they sound.",
+          "example": {
+            "template_id": "major_scale_steps",
+            "grade": 3,
+            "seed": 0
+          }
+        },
+        "smartTip": "Letters first, accidentals second. Seven letters, each used once, in order — then make each one fit the pattern.",
+        "didYouKnow": "E major and A♭ major sit at opposite ends of the key signatures taught here, four sharps against four flats, yet a listener cannot tell which is which from the sound alone. The pattern is identical; only the starting pitch moves."
+      },
       "unlocks": "minor-keys-3"
     },
     {

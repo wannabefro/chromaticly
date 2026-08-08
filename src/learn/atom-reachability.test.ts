@@ -27,7 +27,10 @@ describe('every credited atom is reachable by review', () => {
   test('the curriculum credits exactly the atoms it currently declares', () => {
     // 725 before First steps (chromaticly-dhe), which adds 21: one pulse, seven
     // letters, seven keyboard letters, two stave-anatomy kinds, four note shapes.
-    expect(ALL.length).toBe(746);
+    // 746 before the major-scale lessons, which add 9 `major_steps:<tonic>` atoms
+    // — A/Bb/Eb at grade 2, E/Ab at 3, B/Db at 4, F#/Gb at 5. The syllabus asks
+    // for the SCALES as well as the key signatures at every one of those grades.
+    expect(ALL.length).toBe(755);
   });
 
   test('every atom routes to a template', () => {

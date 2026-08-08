@@ -36,6 +36,42 @@
         "smartTip": "Six sharps is F# major; six flats is Gb major. Count them — nothing else in the course has six.",
         "didYouKnow": "Play F# major and Gb major on a piano and you press the same keys. They are *enharmonic*: the same sounds spelled differently. Composers choose whichever spelling makes the page easier to read."
       },
+      "unlocks": "major-scales-5"
+    },
+    {
+      "id": "major-scales-5",
+      "title": "Building F♯ and G♭ major",
+      "strand": "scales_keys",
+      "atoms": [
+        "major_steps:F#",
+        "major_steps:Gb"
+      ],
+      "templates": [
+        "major_scale_steps"
+      ],
+      "worked_example": {
+        "template_id": "major_scale_steps",
+        "grade": 5,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Build F♯ major and G♭ major, six sharps and six flats",
+          "The two are enharmonic — the same sounds spelled two different ways",
+          "G♭ major needs a C♭, which is the note C written a semitone lower"
+        ],
+        "concept": {
+          "title": "The same scale, spelled twice",
+          "body": "F♯ major has six sharps and G♭ major six flats, and on a keyboard they are the same seven sounds. Only the spelling differs, and it differs because a scale must use each letter once. F♯ major runs F♯ G♯ A♯ B C♯ D♯ E♯ — the seventh letter is a kind of E, so it is E♯ rather than F. G♭ major runs G♭ A♭ B♭ C♭ D♭ E♭ F, and the fourth letter is a kind of C, so it is C♭ rather than B. Both spellings look strange and both are forced by the same rule: seven letters, each used once, in order from the keynote.",
+          "example": {
+            "template_id": "major_scale_steps",
+            "grade": 5,
+            "seed": 3
+          }
+        },
+        "smartTip": "If a note looks wrong, check the letter rather than the sound. E♯ and C♭ are correct here precisely because F and B are already taken.",
+        "didYouKnow": "Six sharps against six flats is where the two directions round the key signatures meet. One more step either way and the spellings would need double accidentals, which is why this course stops here."
+      },
       "unlocks": "minor-keys-5"
     },
     {

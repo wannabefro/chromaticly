@@ -72,6 +72,42 @@
         "smartTip": "Count first, then decide: five sharps is B major, four is E major; five flats is D♭ major, four is A♭ major.",
         "didYouKnow": "The order the sharps appear in is always the same — F♯ C♯ G♯ D♯ A♯ — so B major's fifth sharp is A♯, and reading that last sharp is a quick way to confirm the key."
       },
+      "unlocks": "major-scales-4"
+    },
+    {
+      "id": "major-scales-4",
+      "title": "Building B and D♭ major",
+      "strand": "scales_keys",
+      "atoms": [
+        "major_steps:B",
+        "major_steps:Db"
+      ],
+      "templates": [
+        "major_scale_steps"
+      ],
+      "worked_example": {
+        "template_id": "major_scale_steps",
+        "grade": 4,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Build B major and D♭ major, five sharps and five flats",
+          "Five of the seven letters carry an accidental, and two do not",
+          "Naming which two are unaltered is faster than checking all seven"
+        ],
+        "concept": {
+          "title": "Five accidentals, and the two that are left alone",
+          "body": "B major has five sharps and D♭ major five flats. With five of the seven letters altered, it is quicker to remember the exceptions than the rule. In B major the two plain letters are B and E; every other letter is sharpened. In D♭ major the plain letters are F and C; every other letter is flattened. Build the scale the same way as always — the seven letters in order from the keynote, then the accidental each one needs — and use the exceptions as a check at the end rather than as the method.",
+          "example": {
+            "template_id": "major_scale_steps",
+            "grade": 4,
+            "seed": 3
+          }
+        },
+        "smartTip": "Name the two unaltered letters first: B and E in B major, F and C in D♭ major. Everything else takes the accidental.",
+        "didYouKnow": "B major and C♭ major are the same sounds written two ways, but C♭ major needs seven flats to B major’s five sharps. Composers pick the spelling that costs fewer accidentals, which is why you meet B major and not C♭ major."
+      },
       "unlocks": "minor-scales-4"
     },
     {

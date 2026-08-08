@@ -358,6 +358,7 @@ describe('grade2 lessons — the bundled doc loads and cross-checks clean', () =
   test('LESSONS_BY_GRADE[2] has the single linear key-signatures-2 -> ... -> music-in-context-2 chain', () => {
     expect(LESSONS_BY_GRADE[2].map((l) => l.id)).toEqual([
       'key-signatures-2',
+      'major-scales-2',
       'minor-keys-2',
       'minor-scales-2',
       'degrees-2',
@@ -398,6 +399,7 @@ describe('grade3 lessons — the bundled doc loads and cross-checks clean', () =
   test('LESSONS_BY_GRADE[3] chain: major-keys-3 -> minor-keys-3 -> ... -> rests-3 -> intervals-3 ...', () => {
     expect(LESSONS_BY_GRADE[3].map((l) => l.id)).toEqual([
       'major-keys-3',
+      'major-scales-3',
       'minor-keys-3',
       'degrees-3',
       'tonic-triads-3',
@@ -882,9 +884,10 @@ describe('major-keys-4 lesson (chromaticly-fm9)', () => {
     expect(lesson().templates).toEqual(['key_signature_id']);
   });
 
-  test('the chain rethreads keys-4 -> major-keys-4 -> minor-scales-4', () => {
+  test('the chain rethreads keys-4 -> major-keys-4 -> major-scales-4 -> minor-scales-4', () => {
     expect(lessonById('keys-4')!.unlocks).toBe('major-keys-4');
-    expect(lesson().unlocks).toBe('minor-scales-4');
+    expect(lesson().unlocks).toBe('major-scales-4');
+    expect(lessonById('major-scales-4')!.unlocks).toBe('minor-scales-4');
   });
 
   test('every atom resolves at grade 4; the new major keys throw at grade 3', () => {
