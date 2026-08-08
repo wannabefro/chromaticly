@@ -1047,17 +1047,22 @@
     },
     {
       "id": "double-accidentals-4",
-      "title": "Double sharps and double flats",
+      "title": "Double sharps, double flats, and cancelling them",
       "strand": "pitch",
       "atoms": [
         "note_read:treble:F##4",
         "note_read:treble:G##4",
         "note_read:bass:Bbb3",
-        "note_read:bass:Ebb3"
+        "note_read:bass:Ebb3",
+        "accidental_cancel:double_sharp_to_natural",
+        "accidental_cancel:double_sharp_to_sharp",
+        "accidental_cancel:double_flat_to_natural",
+        "accidental_cancel:double_flat_to_flat"
       ],
       "templates": [
         "note_naming",
-        "note_sounds_as"
+        "note_sounds_as",
+        "accidental_cancellation"
       ],
       "worked_example": {
         "template_id": "note_naming",
@@ -1068,11 +1073,12 @@
         "objectives": [
           "A double sharp (𝄪) raises a note by two semitones — a whole tone above the natural",
           "A double flat (𝄫) lowers a note by two semitones — a whole tone below the natural",
-          "Name one by its letter plus “double sharp” or “double flat”: F𝄪 is “F double sharp”, not G"
+          "Name one by its letter plus “double sharp” or “double flat”: F𝄪 is “F double sharp”, not G",
+          "A natural cancels a double sharp or a double flat outright; a single sharp or flat cancels only half of it"
         ],
         "concept": {
           "title": "Raising and lowering by a whole tone",
-          "body": "You already met a double sharp inside a scale: the raised 7th of G♯ harmonic minor is F𝄪. A double sharp (written 𝄪, sometimes an ×) raises the letter by two semitones — F𝄪 sounds the same as G, but it is still spelled as an F because the key needs it that way. A double flat (written 𝄫) lowers by two semitones, so B𝄫 sounds like A. Keep the letter, name the accidental: F𝄪 is “F double sharp”, never “G”.",
+          "body": "You already met a double sharp inside a scale: the raised 7th of G♯ harmonic minor is F𝄪. A double sharp (written 𝄪, sometimes an ×) raises the letter by two semitones — F𝄪 sounds the same as G, but it is still spelled as an F because the key needs it that way. A double flat (written 𝄫) lowers by two semitones, so B𝄫 sounds like A. Keep the letter, name the accidental: F𝄪 is “F double sharp”, never “G”. A double accidental holds for the rest of the bar, exactly as a single one does, and a later sign on the same note replaces it rather than adding to it. A natural cancels the whole thing: after F double sharp, a natural gives plain F. A single sharp cancels only half of it, leaving F sharp. Older printing sometimes wrote a natural beside the new sign to make the change plain, but the sign alone is enough.",
           "example": {
             "template_id": "note_naming",
             "grade": 4,

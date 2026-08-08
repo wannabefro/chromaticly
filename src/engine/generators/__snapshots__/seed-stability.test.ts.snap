@@ -190938,6 +190938,1311 @@ exports[`seed-stability — grade-3-only generator extras are pinned byte-for-by
 ]
 `;
 
+exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte accidental_cancellation @ double-accidentals-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F sharp",
+    },
+    "distractors": [
+      "F double sharp",
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "A sharp means exactly F sharp, no more and no less.",
+        "F double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is F sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G flat",
+    },
+    "distractors": [
+      "G double flat",
+      "G",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G": "A flat means exactly G flat, no more and no less.",
+        "G double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is G flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Gb4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F sharp",
+    },
+    "distractors": [
+      "F double sharp",
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "A sharp means exactly F sharp, no more and no less.",
+        "F double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is F sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F##2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "E double flat",
+      "E",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "A flat means exactly E flat, no more and no less.",
+        "E double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is E flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D sharp",
+    },
+    "distractors": [
+      "D double sharp",
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "A sharp means exactly D sharp, no more and no less.",
+        "D double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "E": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is D sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B flat",
+    },
+    "distractors": [
+      "B double flat",
+      "B",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "A flat means exactly B flat, no more and no less.",
+        "B double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "C": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is B flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D sharp",
+    },
+    "distractors": [
+      "D double sharp",
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "A sharp means exactly D sharp, no more and no less.",
+        "D double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "E": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is D sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double flat",
+      "A flat",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "A flat": "A natural means exactly A, no more and no less.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Abb1",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "E double flat",
+      "E",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "A flat means exactly E flat, no more and no less.",
+        "E double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is E flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Ebb5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D flat",
+    },
+    "distractors": [
+      "D double flat",
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "A flat means exactly D flat, no more and no less.",
+        "D double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "E": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is D flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Dbb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B1",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double sharp",
+      "G sharp",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G sharp": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G##5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A sharp",
+    },
+    "distractors": [
+      "A double sharp",
+      "A",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A sharp means exactly A sharp, no more and no less.",
+        "A double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is A sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+]
+`;
+
 exports[`seed-stability — grade-4 lesson-derived generator output is pinned byte-for-byte chord_from_name @ chords-4 instances are a pure function of (template, grade, seed, atoms) 1`] = `
 [
   {
@@ -249955,6 +251260,1311 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     },
     "strand": "terms_signs",
     "template_id": "term_meaning_flashcard",
+  },
+]
+`;
+
+exports[`seed-stability — grade-4-only generator extras are pinned byte-for-byte accidental_cancellation (double-accidentals-4, chromaticly-7xv.2) instances are a pure function of (template, grade, seed, atoms) 1`] = `
+[
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s0",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F sharp",
+    },
+    "distractors": [
+      "F double sharp",
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "A sharp means exactly F sharp, no more and no less.",
+        "F double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is F sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s1",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s2",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G flat",
+    },
+    "distractors": [
+      "G double flat",
+      "G",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G": "A flat means exactly G flat, no more and no less.",
+        "G double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is G flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s3",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Gb4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s4",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "F sharp",
+    },
+    "distractors": [
+      "F double sharp",
+      "F",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "A sharp means exactly F sharp, no more and no less.",
+        "F double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is F sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s5",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "F##2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F#2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s6",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "E double flat",
+      "E",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "A flat means exactly E flat, no more and no less.",
+        "E double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is E flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s7",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Ebb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D sharp",
+    },
+    "distractors": [
+      "D double sharp",
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "A sharp means exactly D sharp, no more and no less.",
+        "D double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "E": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is D sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s8",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s9",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "B flat",
+    },
+    "distractors": [
+      "B double flat",
+      "B",
+      "C",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "B": "A flat means exactly B flat, no more and no less.",
+        "B double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "C": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is B flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s10",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Bbb3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "F4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Bb3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s11",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D sharp",
+    },
+    "distractors": [
+      "D double sharp",
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "A sharp means exactly D sharp, no more and no less.",
+        "D double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "E": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is D sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s12",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "D##4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D#4",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double flat",
+      "A flat",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "A flat": "A natural means exactly A, no more and no less.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s13",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Abb1",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A1",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "E flat",
+    },
+    "distractors": [
+      "E double flat",
+      "E",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "E": "A flat means exactly E flat, no more and no less.",
+        "E double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is E flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Ebb5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Eb5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A",
+    },
+    "distractors": [
+      "A double sharp",
+      "A sharp",
+      "B",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "A sharp": "A natural means exactly A, no more and no less.",
+        "B": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is A.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s15",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double flat",
+      "G flat",
+      "F",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "F": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double flat": "The natural replaces the double flat — it does not stay in force once a new sign appears.",
+        "G flat": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double flat, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s16",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Gbb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "D flat",
+    },
+    "distractors": [
+      "D double flat",
+      "D",
+      "E",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "D": "A flat means exactly D flat, no more and no less.",
+        "D double flat": "The flat replaces the double flat — it does not stay in force once a new sign appears.",
+        "E": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The flat cancels the double flat, so the last note is D flat.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double flat holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s17",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_flat_to_flat",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "Dbb2",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "B1",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "Db2",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "G",
+    },
+    "distractors": [
+      "G double sharp",
+      "G sharp",
+      "A",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+        "G double sharp": "The natural replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G sharp": "A natural means exactly G, no more and no less.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The natural cancels the double sharp, so the last note is G.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s18",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_natural",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "treble",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "G##5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "D5",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "G5",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "A sharp",
+    },
+    "distractors": [
+      "A double sharp",
+      "A",
+      "G",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "A": "A sharp means exactly A sharp, no more and no less.",
+        "A double sharp": "The sharp replaces the double sharp — it does not stay in force once a new sign appears.",
+        "G": "That is the next letter up or down. The sign changes the pitch, never the letter.",
+      },
+      "correct": "Correct!",
+      "incorrect": "The sharp cancels the double sharp, so the last note is A sharp.",
+    },
+    "grade": 4,
+    "hints": [
+      "A double sharp holds for the rest of the bar. A later sign on the same note replaces it — it does not add to it.",
+    ],
+    "id": "accidental_cancellation:g4:s19",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Name the last note in this bar.",
+    "srs_tags": [
+      "accidental_cancel:double_sharp_to_sharp",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "bass",
+        "key_sig": null,
+        "time_sig": "3/4",
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "crotchet",
+                "pitch": "A##3",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "crotchet",
+                "pitch": "A#3",
+                "type": "note",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "pitch",
+    "template_id": "accidental_cancellation",
   },
 ]
 `;

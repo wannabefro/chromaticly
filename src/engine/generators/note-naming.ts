@@ -126,7 +126,7 @@ function adjacentLetter(letter: Letter, direction: 1 | -1): Letter {
   return LETTER_ORDER[(idx + direction + 7) % 7];
 }
 
-function formatNoteName(letter: Letter, accidental: Accidental): string {
+export function formatNoteName(letter: Letter, accidental: Accidental): string {
   // 'double_sharp' -> "double sharp" so the canonical reads "F double sharp".
   return accidental ? `${letter} ${accidental.replace('_', ' ')}` : letter;
 }

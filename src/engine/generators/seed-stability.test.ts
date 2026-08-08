@@ -111,6 +111,7 @@ const TEMPLATE_INTRODUCED_AT: Record<string, 2 | 3 | 4 | 5> = {
   instrument_knowledge: 4,
   enharmonic_recognition: 4,
   note_sounds_as: 4,
+  accidental_cancellation: 4,
   note_value_equivalence: 4,
   rhythm_sum_reverse: 4,
   clef_equivalence: 4,
@@ -510,6 +511,16 @@ const GRADE_4_EXTRA_CASES: Case[] = [
     label: 'note_sounds_as (double-accidentals-4, chromaticly-lgi)',
     templateId: 'note_sounds_as',
     atoms: ['note_read:treble:F##4', 'note_read:treble:G##4', 'note_read:bass:Bbb3', 'note_read:bass:Ebb3'],
+  },
+  {
+    label: 'accidental_cancellation (double-accidentals-4, chromaticly-7xv.2)',
+    templateId: 'accidental_cancellation',
+    atoms: [
+      'accidental_cancel:double_sharp_to_natural',
+      'accidental_cancel:double_sharp_to_sharp',
+      'accidental_cancel:double_flat_to_natural',
+      'accidental_cancel:double_flat_to_flat',
+    ],
   },
   {
     label: 'chord_recognition (chords-4, pre-lesson pin)',

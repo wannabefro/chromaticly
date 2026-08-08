@@ -25,6 +25,7 @@ import { metreClassification, metreFromClass } from './metre-classification';
 import { metreRewrite } from './metre-rewrite';
 import { noteGrouping, noteGroupingMetreId } from './note-grouping';
 import { modeSwap } from './mode-swap';
+import { accidentalCancellation } from './accidental-cancellation';
 import { noteNaming, noteNamingStaveInput, noteSoundsAs } from './note-naming';
 import { alphabetStep, keyboardFind, noteShapeLength, pulseCount, stavePosition } from './first-steps';
 import { noteValueCompare, noteValueEquivalence } from './note-value-compare';
@@ -44,6 +45,7 @@ export const GENERATORS: Record<string, Generator> = {
   note_naming: noteNaming,
   note_naming_stave_input: noteNamingStaveInput,
   note_sounds_as: noteSoundsAs,
+  accidental_cancellation: accidentalCancellation,
   interval_naming: intervalNaming,
   interval_compound_reduce: intervalCompoundReduce,
   interval_naming_stave_input: intervalNamingStaveInput,

@@ -2435,7 +2435,52 @@ function noteShapeLengthHook(inst: ExerciseInstance): string[] {
     : [`note_shape_length: the stimulus draws a ${drawn} but the answer says ${inst.answer.canonical}`];
 }
 
+// accidentalCancellationHook (chromaticly-7xv.2) — recompute-don't-trust. The
+// whole item is the claim that the last note is cancelled, so the hook reads the
+// three drawn pitches and rebuilds the answer rather than believing the label.
+const ACCIDENTAL_WORD: Record<string, string> = { '##': ' double sharp', bb: ' double flat', '#': ' sharp', b: ' flat' };
+
+function accidentalCancellationHook(inst: ExerciseInstance): string[] {
+  const music = inst.stimulus.music as Music | null;
+  const events = music?.voices[0]?.events ?? [];
+  const pitches = events.map((ev) => ('pitch' in ev ? String(ev.pitch) : ''));
+  if (pitches.length !== 3 || pitches.some((p) => p === '')) {
+    return ['accidental_cancellation: the stimulus must draw three notes'];
+  }
+  const parts = pitches
+    .map((p) => /^([A-G])(##|bb|#|b)?(-?\d+)$/.exec(p))
+    .filter((m): m is RegExpExecArray => m !== null);
+  if (parts.length !== 3) return [`accidental_cancellation: unreadable pitches ${pitches.join(' ')}`];
+  const [first, middle, last] = parts;
+
+  const errors: string[] = [];
+  if (first[1] !== last[1] || first[3] !== last[3]) {
+    errors.push(`accidental_cancellation: ${pitches[0]} and ${pitches[2]} are not the same note to cancel`);
+  }
+  if (first[2] !== '##' && first[2] !== 'bb') {
+    errors.push(`accidental_cancellation: ${pitches[0]} carries no double accidental to cancel`);
+  }
+  if (last[2] === '##' || last[2] === 'bb') {
+    errors.push(`accidental_cancellation: ${pitches[2]} is still doubled, so nothing was cancelled`);
+  }
+  if (middle[1] === first[1]) {
+    errors.push(`accidental_cancellation: the middle note ${pitches[1]} repeats the letter under test`);
+  }
+  const expected = `${last[1]}${last[2] ? ACCIDENTAL_WORD[last[2]] : ''}`;
+  if (inst.answer.canonical !== expected) {
+    errors.push(`accidental_cancellation: the bar ends on ${expected} but the answer says "${String(inst.answer.canonical)}"`);
+  }
+  const from = first[2] === '##' ? 'double_sharp' : 'double_flat';
+  const to = last[2] === '#' ? 'sharp' : last[2] === 'b' ? 'flat' : 'natural';
+  const tag = `accidental_cancel:${from}_to_${to}`;
+  if (inst.srs_tags[0] !== tag) {
+    errors.push(`accidental_cancellation: srs_tag "${inst.srs_tags[0]}" must name the drawn cancellation "${tag}"`);
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
+  accidental_cancellation: accidentalCancellationHook,
   pulse_count: pulseCountHook,
   alphabet_step: alphabetStepHook,
   keyboard_find: keyboardFindHook,

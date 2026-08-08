@@ -843,19 +843,25 @@ describe('double-accidentals-4 lesson (chromaticly-9ig)', () => {
     expect(lesson()).toBeTruthy();
     expect(lesson().grade).toBe(4);
     expect(lesson().strand).toBe('pitch');
-    expect(lesson().templates).toEqual(['note_naming', 'note_sounds_as']);
+    expect(lesson().templates).toEqual(['note_naming', 'note_sounds_as', 'accidental_cancellation']);
     expect(lessonById('enharmonics-4')!.unlocks).toBe('double-accidentals-4');
     expect(lesson().unlocks).toBeNull();
   });
 
-  test('atoms are double-accidental note_read pitches, resolving at the loader', () => {
+  // chromaticly-7xv.2. G4 item 2 names the cancellation; only the signs scored.
+  test('atoms are the double-accidental reads plus the four cancellations', () => {
     expect(lesson().atoms).toEqual([
       'note_read:treble:F##4',
       'note_read:treble:G##4',
       'note_read:bass:Bbb3',
       'note_read:bass:Ebb3',
+      'accidental_cancel:double_sharp_to_natural',
+      'accidental_cancel:double_sharp_to_sharp',
+      'accidental_cancel:double_flat_to_natural',
+      'accidental_cancel:double_flat_to_flat',
     ]);
     for (const atom of lesson().atoms) expect(() => assertAtomResolves(atom, 4)).not.toThrow();
+    expect(() => assertAtomResolves('accidental_cancel:double_sharp_to_sharp', 3)).toThrow();
   });
 
   // The double accidental is in scope only at Grade 4 — a below-grade generate

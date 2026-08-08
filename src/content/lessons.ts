@@ -22,6 +22,7 @@ import { COMPOUND_NUMBERS } from '../engine/interval-quality';
 import { TUPLET_SIZES } from '../engine/generators/tuplet-recognition';
 import { CADENCE_KINDS } from '../engine/generators/cadence-recognition';
 import { CHROMATIC_TONICS } from '../engine/generators/chromatic-scale';
+import { parseCancellationAtom } from '../engine/generators/accidental-cancellation';
 import { dottedRestsInScope, parseRestToken } from '../engine/generators/rest-math';
 import { DEGREE_ORDER } from '../engine/generators/degree-name-id';
 import { BAR_PROPERTIES } from '../engine/generators/find-the-bar';
@@ -178,6 +179,12 @@ export function assertAtomResolves(atom: string, grade: number): void {
       if (value.dots > 0 && !dottedRestsInScope(scope.rests, scope.rhythmDevices).some((r) => r.dur === value.dur && r.dots === value.dots)) {
         throw new Error(`lessons: atom "${atom}" is not a G${grade} dotted rest value`);
       }
+      return;
+    }
+    case 'accidental_cancel': {
+      // chromaticly-7xv.2. G4 item 2 names the cancellation; nothing scored it.
+      if (grade < 4) throw new Error(`lessons: atom "${atom}" only resolves from grade 4`);
+      if (!parseCancellationAtom(atom)) throw new Error(`lessons: atom "${atom}" is not a cancellation`);
       return;
     }
     case 'add_time_signature': {

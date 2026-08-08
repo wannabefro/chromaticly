@@ -79,10 +79,8 @@ describe('rest_completion generator (chromaticly-gni)', () => {
   });
 });
 
-// chromaticly-7xv.3. GRADE_2_SCOPE.rhythmDevices has carried 'dotted_rests'
-// since it was written, and no generator ever drew one — so the dot on a rest
-// was in scope at four grades and assessed at none. G4 item 1 ("Double-dotted
-// notes and rests") is the same gap one dot further on.
+// chromaticly-7xv.3. GRADE_2_SCOPE.rhythmDevices carries 'dotted_rests' and no
+// generator drew one. G4 item 1 adds the second dot.
 describe('dotted rests (chromaticly-7xv.3)', () => {
   test('a dotted answer still fills the bar exactly — 1.5x, not 1x', () => {
     for (let seed = 0; seed < WRITTEN_ITEMS; seed++) {
@@ -111,8 +109,7 @@ describe('dotted rests (chromaticly-7xv.3)', () => {
     expect(seen).toContain('crotchet rest');
   });
 
-  // The boundary itself, not a value near it: one dot needs 2 units and two dots
-  // need 4, because a half-unit rest can fill no gap bar-math can express.
+  // The boundary itself, not a value near it: one dot needs 2 units, two need 4.
   test('the dot is refused exactly where the halved value stops being whole', () => {
     const g4 = scopeForGrade(4);
     const dotted = dottedRestsInScope(g4.rests, g4.rhythmDevices);
