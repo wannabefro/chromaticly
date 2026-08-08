@@ -2703,6 +2703,63 @@ function addBarlinesHook(inst: ExerciseInstance): string[] {
   return errors;
 }
 
+/** find_the_bar (chromaticly-302.27). Recomputed from the drawn bars, never
+ *  read off the label. A tie is unanswerable, so it is an error. */
+function findTheBarHook(inst: ExerciseInstance): string[] {
+  const errors: string[] = [];
+  // `music_in_context` also names the passage runner. The interaction sorts them.
+  if (inst.interaction.type !== 'find_the_bar') return [];
+  const music = inst.stimulus.music as Music | null;
+  if (!music) return ['music_in_context: the stimulus needs a stave'];
+
+  const property = String(inst.srs_tags[0] ?? '').split(':')[1];
+  if (!['highest', 'lowest', 'longest'].includes(property)) {
+    return [`music_in_context: srs_tags does not name a find_bar property, got "${inst.srs_tags[0]}"`];
+  }
+
+  // A rest competes for nothing, so it is skipped. Dropping a bar would
+  // renumber the rest.
+  const bars: { ordinal: number; units: number }[][] = [[]];
+  for (const ev of music.voices[0]?.events ?? []) {
+    if (ev.type === 'barline') {
+      bars.push([]);
+      continue;
+    }
+    if (ev.type !== 'note') continue;
+    const parsed = parseScientificPitch(ev.pitch);
+    const units = BARLINE_UNITS[ev.dur];
+    if (!parsed || units === undefined) return [`music_in_context: cannot measure the note ${ev.pitch} ${ev.dur}`];
+    bars[bars.length - 1].push({ ordinal: pitchOrdinal(parsed.letter, parsed.octave), units });
+  }
+  while (bars.length > 0 && bars[bars.length - 1].length === 0) bars.pop();
+  if (bars.length === 0) return ['music_in_context: the passage holds no notes'];
+
+  const scoreOf = (bar: { ordinal: number; units: number }[]): number =>
+    bar.length === 0
+      ? -Infinity
+      : property === 'highest'
+        ? Math.max(...bar.map((n) => n.ordinal))
+        : property === 'lowest'
+          ? -Math.min(...bar.map((n) => n.ordinal))
+          : Math.max(...bar.map((n) => n.units));
+  const scores = bars.map(scoreOf);
+  const best = Math.max(...scores);
+  const winners = scores.flatMap((v, i) => (v === best ? [i + 1] : []));
+
+  if (winners.length > 1) {
+    errors.push(`music_in_context: bars ${winners.join(' and ')} tie on the ${property} note`);
+  } else if (inst.answer.canonical !== winners[0]) {
+    errors.push(`music_in_context: bar ${winners[0]} holds the ${property} note, but the answer says ${String(inst.answer.canonical)}`);
+  }
+
+  const bad = (inst.distractors as unknown[]).filter((d) => d === inst.answer.canonical);
+  if (bad.length > 0) errors.push('music_in_context: the answer also appears among the distractors');
+  if (new Set(inst.distractors as unknown[]).size !== inst.distractors.length) {
+    errors.push('music_in_context: two distractors name the same bar');
+  }
+  return errors;
+}
+
 const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   accidental_cancellation: accidentalCancellationHook,
   pulse_count: pulseCountHook,
@@ -2714,6 +2771,7 @@ const TEMPLATE_HOOKS: Record<string, TemplateHook> = {
   tonal_centre: tonalCentreHook,
   rest_grouping: restGroupingHook,
   add_barlines: addBarlinesHook,
+  music_in_context: findTheBarHook,
   note_naming_stave_input: noteNamingStaveInputHook,
   interval_naming: intervalNamingHook,
   interval_compound_reduce: intervalCompoundReduceHook,

@@ -93,3 +93,34 @@ describe('findTheBar — the passage is well formed', () => {
     }
   });
 });
+
+// chromaticly-302.27. The generator builds its winner true-by-construction, so
+// the suite proved nothing about the validator. These tamper the score.
+describe('the validator hook recomputes the winning bar', () => {
+  const ORDER = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+  const ordinal = (pitch: string) => Number(pitch.slice(-1)) * 7 + ORDER.indexOf(pitch[0]);
+
+  test('a moved answer is rejected', () => {
+    const inst = instanceFor('highest', 3);
+    const moved = JSON.parse(JSON.stringify(inst));
+    moved.answer.canonical = (inst.answer.canonical as number) === 1 ? 2 : 1;
+    expect(validate(moved).errors.some((e) => e.includes('holds the highest note'))).toBe(true);
+  });
+
+  test('a tie is rejected — two winning bars make the question unanswerable', () => {
+    const inst = instanceFor('highest', 3);
+    const tied = JSON.parse(JSON.stringify(inst));
+    const events = tied.stimulus.music.voices[0].events as MusicEvent[];
+    const notes = events.filter((e) => e.type === 'note') as NoteEvent[];
+    const top = notes.map((n) => n.pitch).sort((a, b) => ordinal(a) - ordinal(b)).pop()!;
+    (events[events.findIndex((e) => e.type === 'note')] as NoteEvent).pitch = top;
+    expect(validate(tied).errors.some((e) => e.includes('tie on the highest note'))).toBe(true);
+  });
+
+  test('a duplicated distractor is rejected', () => {
+    const inst = instanceFor('longest', 5);
+    const dupe = JSON.parse(JSON.stringify(inst));
+    dupe.distractors = [...dupe.distractors, dupe.answer.canonical];
+    expect(validate(dupe).errors.some((e) => e.includes('also appears among the distractors'))).toBe(true);
+  });
+});
