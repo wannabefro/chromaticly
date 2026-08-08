@@ -91,15 +91,21 @@ export function validate(instance: ExerciseInstance): ValidationResult {
 
 const LETTER_ORDER = ['C', 'D', 'E', 'F', 'G', 'A', 'B'] as const;
 
-// Enharmonic-of-a-natural spellings: Cb, Fb, B#, E#. Cb/Fb are never taught
-// through this slice — Cb first appears at Gb major, grade 5 — so they stay
-// rejected at every grade (D6). B#/E# are grade-aware (D6): they hold
-// through Grade 2 (Eb major is 3 flats Bb/Eb/Ab, and G2 harmonic-minor raised
-// 7ths are G#/D#/C#; none of those spell a natural) but become LEGAL at
-// Grade 3, where they're required — C# minor's raised 7th is B#, F# minor's
-// is E# (both harmonic and melodic-ascending).
-const NEVER_SPELLINGS_ALWAYS = new Set(['Cb', 'Fb']);
+// Enharmonic-of-a-natural spellings: Cb, Fb, B#, E#. All four are grade-aware
+// (D6), each admitted at the grade whose keys first require it.
+//
+//  • B#/E# hold through Grade 2 — Eb major is Bb/Eb/Ab and the G2 harmonic-minor
+//    raised 7ths are G#/D#/C#, so none of those spells a natural — and become
+//    LEGAL at Grade 3, where C# minor's raised 7th is B# and F# minor's is E#.
+//  • Cb holds through Grade 4 and becomes LEGAL at Grade 5, where the six-flat
+//    keys arrive: it is the 4th of Gb major and the 6th of Eb minor. Eb minor's
+//    answer notation already spelled it correctly, so this only stops a Gb major
+//    STIMULUS being rejected as out of scope.
+//  • Fb stays rejected at every grade. It first appears in Cb major and Ab minor,
+//    at seven flats, which this course never reaches.
+const NEVER_SPELLINGS_ALWAYS = new Set(['Fb']);
 const NEVER_SPELLINGS_THROUGH_G2 = new Set(['B#', 'E#']);
+const NEVER_SPELLINGS_THROUGH_G4 = new Set(['Cb']);
 
 interface ParsedPitch {
   letter: string;
@@ -140,7 +146,11 @@ function checkPitchScope(
   // grade-aware (D6) — legal from Grade 3, where they're the raised-7th spelling
   // of F#/C# minor.
   const spelling = `${parsed.letter}${parsed.accidental ?? ''}`;
-  if (NEVER_SPELLINGS_ALWAYS.has(spelling) || (grade <= 2 && NEVER_SPELLINGS_THROUGH_G2.has(spelling))) {
+  if (
+    NEVER_SPELLINGS_ALWAYS.has(spelling) ||
+    (grade <= 2 && NEVER_SPELLINGS_THROUGH_G2.has(spelling)) ||
+    (grade <= 4 && NEVER_SPELLINGS_THROUGH_G4.has(spelling))
+  ) {
     errors.push(`scope: pitch "${pitch}" spells a natural (never used at Grade 1)`);
   }
   if (!range) return;

@@ -574,6 +574,28 @@ describe('validate — grade-aware never-spellings (D6): B#/E# become legal at g
     }
   });
 
+  // Cb arrives with the six-flat keys: it is the 4th of Gb major and the 6th of
+  // Eb minor. The boundary itself is tested, not a value near it — grade 4 must
+  // still reject it, or "admitted at grade 5" is only proven at one end.
+  test.each([
+    [4, false],
+    [5, true],
+  ])('Cb is rejected at grade %i: accepted=%s', (grade, accepted) => {
+    const instance = validNoteNamingInstance();
+    instance.grade = grade;
+    (instance.stimulus.music as any).voices[0].events[0].pitch = 'Cb4';
+    expect(validate(instance).errors.some((e) => e.includes('spells a natural'))).toBe(!accepted);
+  });
+
+  // Fb is the one that never becomes legal. It first appears at seven flats — Cb
+  // major and Ab minor — which this course does not reach.
+  test.each([1, 3, 5])('Fb stays rejected at grade %i', (grade) => {
+    const instance = validNoteNamingInstance();
+    instance.grade = grade;
+    (instance.stimulus.music as any).voices[0].events[0].pitch = 'Fb2';
+    expect(validate(instance).errors.some((e) => e.includes('spells a natural'))).toBe(true);
+  });
+
   test('a double-accidental pitch is still rejected at grade 3 — D6 only touches the never-spellings set', () => {
     const instance = validNoteNamingInstance();
     instance.grade = 3;
