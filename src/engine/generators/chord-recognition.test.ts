@@ -390,14 +390,17 @@ describe('chord_recognition — inversions in a minor key (chromaticly-ic5.5)', 
 
 // The inversion branch never checked quality before this.
 describe('chordInversionErrors rejects a triad of the wrong quality', () => {
-  const minor = () => generate('chord_recognition', { grade: 5, seed: 1, atoms: ['chord_minor:I:a'] });
-
   test('a ii built minor instead of diminished', () => {
-    const inst = minor();
-    const triads = (inst.interaction.config as { triads: Record<string, string[]> }).triads;
+    // Some keys spell the 5th of ii with no accidental, so stripping one is a
+    // no-op there. Search for a key where the tamper actually bites.
+    const inst = Array.from({ length: 20 }, (_, seed) =>
+      generate('chord_recognition', { grade: 5, seed, atoms: ['chord_minor:I:a'] }),
+    ).find((i) => /[#b]/.test((i.interaction.config as { triads: Record<string, string[]> }).triads.II[2]));
+    expect(inst).toBeDefined();
+    const triads = (inst!.interaction.config as { triads: Record<string, string[]> }).triads;
     const [root, third] = triads.II;
     triads.II = [root, third, `${triads.II[2].replace(/[#b]/g, '')}`];
-    expect(validate(inst).errors.some((e) => e.includes('config.triads.II'))).toBe(true);
+    expect(validate(inst!).errors.some((e) => e.includes('config.triads.II'))).toBe(true);
   });
 
   test('a V built without its raised 7th', () => {
@@ -412,9 +415,28 @@ describe('chordInversionErrors rejects a triad of the wrong quality', () => {
   });
 
   test('a chip map whose answer chord is not the notated one', () => {
-    const inst = minor();
+    const inst = generate('chord_recognition', { grade: 5, seed: 1, atoms: ['chord_minor:I:a'] });
     const triads = (inst.interaction.config as { triads: Record<string, string[]> }).triads;
     triads.I = triads.IV;
     expect(validate(inst).errors.some((e) => e.includes('does not spell the stimulus chord'))).toBe(true);
+  });
+});
+
+// chromaticly-9kx. Placement pools both families. Branching on family made
+// every item minor.
+describe('chord_recognition — a pooled atom set reaches both inversion families', () => {
+  const POOLED = ['chord:I:b', 'chord:IV:c', 'chord_minor:I:b', 'chord_minor:IV:c'];
+
+  test('every seed credits an atom the pool actually holds', () => {
+    for (let seed = 0; seed < 40; seed++) {
+      expect(POOLED).toContain(generate('chord_recognition', { grade: 5, seed, atoms: POOLED }).srs_tags[0]);
+    }
+  });
+
+  test('all four pooled atoms are reachable', () => {
+    const seen = new Set(
+      Array.from({ length: 40 }, (_, seed) => generate('chord_recognition', { grade: 5, seed, atoms: POOLED }).srs_tags[0]),
+    );
+    expect(seen).toEqual(new Set(POOLED));
   });
 });

@@ -60,22 +60,21 @@ export const CADENCE_KINDS: readonly CadenceKind[] = ['perfect', 'plagal', 'impe
  *  cadence questions are set in these four only. */
 export const CADENCE_KEYS: readonly string[] = ['C', 'G', 'D', 'F'];
 
-/** The cadences, and which skill the atoms name (chromaticly-ic5.6). */
-function cadencesFromAtoms(atoms: string[]): { kinds: CadenceKind[]; choose: boolean } {
-  const kinds: CadenceKind[] = [];
-  let choose = false;
+/** The skill belongs to the atom, not the pool (chromaticly-2o4). */
+function cadencesFromAtoms(atoms: string[]): { kind: CadenceKind; choose: boolean }[] {
+  const pairs: { kind: CadenceKind; choose: boolean }[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
     if ((kind !== 'cadence' && kind !== 'cadence_choose') || parts.length !== 1) continue;
     const name = parts[0] as CadenceKind;
     if (!CADENCE_KINDS.includes(name)) continue;
-    if (kind === 'cadence_choose') choose = true;
-    if (!kinds.includes(name)) kinds.push(name);
+    const choose = kind === 'cadence_choose';
+    if (!pairs.some((p) => p.kind === name && p.choose === choose)) pairs.push({ kind: name, choose });
   }
-  if (kinds.length === 0) {
+  if (pairs.length === 0) {
     throw new Error('cadence_recognition: needs at least one cadence:<kind> atom');
   }
-  return { kinds, choose };
+  return pairs;
 }
 
 /** One chord of the cadence as a treble triad over its own bass root.
@@ -124,8 +123,7 @@ const WHY: Record<CadenceKind, string> = {
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  const { kinds, choose } = cadencesFromAtoms(atoms);
-  const kind = pick(rng, kinds);
+  const { kind, choose } = pick(rng, cadencesFromAtoms(atoms));
   const key = pick(rng, [...CADENCE_KEYS]);
   const spec = CADENCES[kind];
   const approach = pick(rng, [...spec.approaches]);

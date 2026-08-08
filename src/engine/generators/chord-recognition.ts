@@ -76,11 +76,18 @@ function applyInversion(triad: [string, string, string], position: string): [str
   }
 }
 
+/** The mode belongs to the pair, not the pool (chromaticly-9kx). */
+export interface InversionPair {
+  numeral: string;
+  position: string;
+  mode: 'major' | 'minor';
+}
+
 /** The (numeral, position) pairs named by `chord:<numeral>:<pos>` atoms, in atom
  *  order, deduplicated. Presence of any such 3-part atom is what selects the
  *  Grade-5 inversions path over the Grade-4 root-position path. */
-function inversionPairsFromAtoms(atoms: string[]): { numeral: string; position: string }[] {
-  const pairs: { numeral: string; position: string }[] = [];
+function inversionPairsFromAtoms(atoms: string[]): InversionPair[] {
+  const pairs: InversionPair[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
     if (kind !== 'chord' || parts.length < 2) continue;
@@ -92,7 +99,7 @@ function inversionPairsFromAtoms(atoms: string[]): { numeral: string; position: 
       throw new Error(`chord_recognition: atom "${atom}" names an unknown chord position`);
     }
     if (!pairs.some((p) => p.numeral === numeral && p.position === position)) {
-      pairs.push({ numeral, position });
+      pairs.push({ numeral, position, mode: 'major' });
     }
   }
   return pairs;
@@ -176,8 +183,8 @@ function minorNumeralsFromAtoms(atoms: string[]): string[] {
 }
 
 /** The `chord_minor:<numeral>:<pos>` pairs — the minor inversions path. */
-function minorInversionPairsFromAtoms(atoms: string[]): { numeral: string; position: string }[] {
-  const pairs: { numeral: string; position: string }[] = [];
+function minorInversionPairsFromAtoms(atoms: string[]): InversionPair[] {
+  const pairs: InversionPair[] = [];
   for (const atom of atoms) {
     const { kind, parts } = parseAtom(atom);
     if (kind !== 'chord_minor' || parts.length !== 2) continue;
@@ -189,7 +196,7 @@ function minorInversionPairsFromAtoms(atoms: string[]): { numeral: string; posit
       throw new Error(`chord_recognition: atom "${atom}" names an unknown chord position`);
     }
     if (!pairs.some((p) => p.numeral === numeral && p.position === position)) {
-      pairs.push({ numeral, position });
+      pairs.push({ numeral, position, mode: 'minor' });
     }
   }
   return pairs;
@@ -320,14 +327,14 @@ function buildInversion(
   contentSeed: number,
   grade: number,
   idSeed: number,
-  pairs: { numeral: string; position: string }[],
-  mode: 'major' | 'minor' = 'major',
+  pairs: InversionPair[],
 ): ExerciseInstance {
   const scope = scopeForGrade(grade);
   const rng = mulberry32(contentSeed);
   const clef = pick(rng, [...CHORD_CLEFS]);
+  // Round-robin, as tonal_centre does: a drawn pair leaves the pool part-asked.
+  const { numeral, position, mode } = pairs[(idSeed + Math.floor(idSeed / 8)) % pairs.length];
   const key = pick(rng, mode === 'minor' ? [...scope.keysMinor] : [...scope.keysMajor]);
-  const { numeral, position } = pick(rng, pairs);
 
   // Root-position triads for every G5 numeral, built with room for the widest
   // (2nd-inversion) voicing so any of them could be inverted and still fit.
@@ -383,11 +390,8 @@ function buildInversion(
 }
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
-  const minorInversionPairs = minorInversionPairsFromAtoms(atoms);
-  if (minorInversionPairs.length > 0) {
-    return buildInversion(contentSeed, grade, idSeed, minorInversionPairs, 'minor');
-  }
-  const inversionPairs = inversionPairsFromAtoms(atoms);
+  // One pool, both families. Branching made a mixed pool always minor.
+  const inversionPairs = [...minorInversionPairsFromAtoms(atoms), ...inversionPairsFromAtoms(atoms)];
   if (inversionPairs.length > 0) {
     return buildInversion(contentSeed, grade, idSeed, inversionPairs);
   }

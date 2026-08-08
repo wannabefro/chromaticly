@@ -159,3 +159,21 @@ describe('cadence_recognition — what each variant asks', () => {
     }
   });
 });
+
+// chromaticly-2o4. A pool-wide `choose` flag let one family credit the other.
+describe('cadence_recognition — the skill belongs to the atom, not to the pool', () => {
+  const MIXED = ['cadence:perfect', 'cadence_choose:plagal'];
+
+  test('a mixed pool never credits an atom it was not given', () => {
+    for (const seed of SEEDS) {
+      expect(MIXED).toContain(generate('cadence_recognition', { grade: 5, seed, atoms: MIXED }).srs_tags[0]);
+    }
+  });
+
+  test('a mixed pool reaches both families', () => {
+    const seen = new Set(
+      SEEDS.map((seed) => generate('cadence_recognition', { grade: 5, seed, atoms: MIXED }).srs_tags[0]),
+    );
+    expect(seen).toEqual(new Set(MIXED));
+  });
+});
