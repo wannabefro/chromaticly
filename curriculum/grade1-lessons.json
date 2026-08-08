@@ -87,19 +87,20 @@
       "teach": {
         "objectives": [
           "How many crotchet beats each note lasts",
-          "How note values add up to fill a bar",
+          "What the two numbers of a time signature mean",
+          "How note values add up to fill one bar, between two bar-lines",
           "How a dot adds half a note's value again"
         ],
         "concept": {
           "title": "How long each note lasts",
-          "body": "Each note value lasts twice as long as the next one down, so the whole family halves step by step: a semibreve is four crotchet beats, a minim two, a crotchet one, a quaver half a beat and a semiquaver a quarter of one. A dot placed after a note adds **half** of that note again — a dotted minim is two beats plus one, so three. The crotchet is the beat here because Grade 1 counts in crotchets; in other time signatures a different note takes the beat, which is why the values are described as ratios rather than as seconds.",
+          "body": "Music is divided into bars by thin vertical lines called bar-lines, and each bar holds the same amount of time. The time signature at the start says how much. Read it as two separate numbers, not as a fraction: the top number is how many beats are in each bar, and the bottom number says which note value gets one beat. A 4 on the bottom means the crotchet, so 3/4 is three crotchet beats in every bar. A double bar-line marks the end of a section, and a thin line followed by a thick one marks the end of the piece.\n\nEach note value lasts twice as long as the next one down, so the whole family halves step by step: a semibreve is four crotchet beats, a minim two, a crotchet one, a quaver half a beat and a semiquaver a quarter of one. A dot placed after a note adds **half** of that note again — a dotted minim is two beats plus one, so three. The crotchet is the beat here because Grade 1 counts in crotchets; in other time signatures a different note takes the beat, which is why the values are described as ratios rather than as seconds.",
           "example": {
             "template_id": "bar_validity",
             "grade": 1,
             "seed": 5
           }
         },
-        "smartTip": "Each step down the note tree halves the value — semibreve, minim, crotchet, quaver, semiquaver.",
+        "smartTip": "Read a time signature downwards, never as a fraction: top says how many, bottom says which note. 3/4 is three crotchets, not three quarters of anything.",
         "didYouKnow": "‘Semibreve’ means ‘half-short’ — it was one of the shorter notes in use centuries ago, before faster values arrived.",
         "theoryInSound": {
           "prompt": "Play the rhythm and tap each strong beat you hear — the beat that feels accented.",
@@ -615,11 +616,12 @@
         "objectives": [
           "How to name an interval by its number",
           "That you count both the lower and upper notes",
-          "The intervals from a 2nd up to an octave"
+          "The intervals from a 2nd up to an octave",
+          "At this grade the lower note is always the keynote of the scale"
         ],
         "concept": {
           "title": "Counting intervals",
-          "body": "An interval is the distance between two notes, and at Grade 1 it is named by a number alone. Count the **letter names** from the lower note to the upper, and count both ends. C up to G is C, D, E, F, G — five letters, so a 5th. The commonest mistake is counting the gaps instead of the notes, which gives an answer one too small. Two names are special: the same note twice is a unison, and eight letters apart, where the letter comes round again, is an octave. Accidentals do not change the number — only the letters count.",
+          "body": "An interval is the distance between two notes, and at Grade 1 it is named by a number alone. Count the **letter names** from the lower note to the upper, and count both ends. C up to G is C, D, E, F, G — five letters, so a 5th. The commonest mistake is counting the gaps instead of the notes, which gives an answer one too small. Two names are special: the same note twice is a unison, and eight letters apart, where the letter comes round again, is an octave. Accidentals do not change the number — only the letters count. At Grade 1 the lower note is always the keynote, so every interval you are asked for is measured up from it. Later grades ask for the distance between any two notes.",
           "example": {
             "template_id": "interval_naming",
             "grade": 1,
