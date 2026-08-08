@@ -94,4 +94,6 @@ Never-violate rules (from the brief):
 
 Code ↔ design: `src/music-surface/MusicSurface` implements the `NotationCard` contract; `src/ui/{ExerciseLoop,Lesson,Practice}` build the exercise-loop/SRS screens; `src/ui/{Feedback,Hints,interactions/*}` map to FeedbackSheet / smart-tip hints / AnswerOption.
 
-Reality gap: the Grade 1 slice is functionally complete but **not yet styled to this system** — screens use placeholder styling. New UI work adopts the tokens/components now; a retro-styling pass over existing screens is pending (unscheduled).
+Styling state (measured 2026-08-08): the retro-styling pass has landed. All 9 core design components have RN counterparts in `src/ui/components` (RomanNumeralBoxes lives in `src/ui/interactions`), and every file under `src/ui` and `src/screens` reads colour from the theme — `src/ui/components/no-raw-hex.test.ts` now walks both trees and fails on any hex literal outside `theme/tokens.ts` and `theme/strands.ts`.
+
+That guard covers colour only. Spacing, the type scale, and each component's behavioural contract are **not** machine-checked, so `design/` stays the authority for any screen you touch.
