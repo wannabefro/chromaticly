@@ -184,7 +184,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   // the off-by-one reading is written last so it wins, because it is the mistake
   // a learner reading the RIGHT clef would make.
   const byDistractor: Record<string, string> = {
-    [wrongClef]: `That is ${wrongClef} — but only in the ${otherClef(clef)} clef. This stave carries ${clefPhrase(clef)}, so the same line or space is a different note.`,
+    [wrongClef]: accidental
+      ? `That line or space is ${wrongClef} in the ${otherClef(clef)} clef, and the accidental would still apply to it. This stave carries ${clefPhrase(clef)}, so the note is ${canonical}.`
+      : `That is ${wrongClef} — but only in the ${otherClef(clef)} clef. This stave carries ${clefPhrase(clef)}, so the same line or space is a different note.`,
     [offByOne]: `That is one line or space out. ${offByOne} is the next step ${direction === 1 ? 'up' : 'down'} from ${canonical} — count again from a clef landmark you are sure of.`,
   };
 

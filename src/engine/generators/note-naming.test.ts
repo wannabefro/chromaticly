@@ -372,3 +372,23 @@ describe('noteNamingStaveInput accepts every octave the prompt allows', () => {
     }
   });
 });
+
+const ACCIDENTAL_ATOMS = ['note_read:treble:F#5', 'note_read:treble:C#5', 'note_read:treble:Bb4', 'note_read:bass:F#3', 'note_read:bass:Bb2'];
+
+describe('note_naming — the wrong-clef feedback accounts for a printed accidental', () => {
+  // It said "That is E, but only in the bass clef". The sharp applies there
+  // too: E sharp.
+  test('an accidental stimulus never claims the other clef reads it as a natural', () => {
+    const wrong: string[] = [];
+    for (let seed = 0; seed < 200; seed++) {
+      const inst = noteNaming({ grade: 1, seed, atoms: ACCIDENTAL_ATOMS });
+      const canonical = inst.answer.canonical as string;
+      if (!/sharp|flat/.test(canonical)) continue;
+      for (const [option, why] of Object.entries(inst.feedback.by_distractor ?? {})) {
+        if (!/only in the/.test(why as string)) continue;
+        wrong.push(`seed ${seed}: answer ${canonical}, "${option}" -> ${why}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+});
