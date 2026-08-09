@@ -12,7 +12,7 @@
 import { KB, KB_VERSION } from '../../content/knowledge-base';
 import type { Duration, MusicEvent } from '../../music/types';
 import { findBarAtom } from '../atoms';
-import { isCompoundTimeSignature } from '../metre';
+import { crotchetsPerBar, isCompoundTimeSignature } from '../metre';
 import { mulberry32, pick } from '../rng';
 import { drawMelody } from '../../music/melody';
 import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
@@ -65,15 +65,14 @@ function fillBar(rng: () => number, beats: number, maxBeats: number): Duration[]
 
 function build(contentSeed: number, grade: number, idSeed: number, property: BarProperty): ExerciseInstance {
   const rng = mulberry32(contentSeed);
-  // Simple time only, so the beat is the crotchet and a bar holds `top` beats.
-  // Deferred (D6): grade-2 /2 meters need minim-beat bar math, so this stays
-  // the /4 subset at every grade until the time-signatures slice. D13 guard:
-  // grade 3 opens compound signatures in renderableTimeSignatures (U2), so
-  // filter them out — compound support for this template is a deferred slice.
-  const timeSignatures = renderableTimeSignatures(grade).filter((t) => !isCompoundTimeSignature(t));
+  // Compound support is a deferred slice. A bar under two crotchets goes too:
+  // the "longest" variant plants a minim, which such a bar cannot hold.
+  const timeSignatures = renderableTimeSignatures(grade).filter(
+    (t) => !isCompoundTimeSignature(t) && crotchetsPerBar(t) >= 2,
+  );
   const pool = diatonicPitchesInRange('treble', grade); // ascending
   const timeSig = pick(rng, [...timeSignatures]);
-  const beatsPerBar = Number(timeSig.split('/')[0]);
+  const beatsPerBar = crotchetsPerBar(timeSig);
   const targetBar = 1 + Math.floor(rng() * BARS);
 
   // For "longest", the target bar carries a minim and every other bar is capped at

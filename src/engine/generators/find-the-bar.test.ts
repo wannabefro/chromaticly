@@ -3,7 +3,7 @@
 // these tests re-derive the answer from the notes themselves. A tie would make the
 // question unanswerable, so uniqueness of the winning bar is the core invariant.
 
-import { isCompoundTimeSignature } from '../metre';
+import { crotchetsPerBar, isCompoundTimeSignature } from '../metre';
 import type { MusicEvent, NoteEvent } from '../../music/types';
 import { validate } from '../validator';
 import { BAR_PROPERTIES, findTheBar, type BarProperty } from './find-the-bar';
@@ -59,7 +59,9 @@ describe('findTheBar — the passage is well formed', () => {
     for (let seed = 0; seed < 30; seed++) {
       const instance = instanceFor(BAR_PROPERTIES[seed % BAR_PROPERTIES.length], seed);
       const music = instance.stimulus.music!;
-      const beatsPerBar = Number(music.time_sig!.split('/')[0]);
+      // The numerator alone is the bug this test used to share: a 2/2 bar is
+      // four crotchets, not two, so it passed on notation that was half a bar short.
+      const beatsPerBar = crotchetsPerBar(music.time_sig!);
       for (const notes of bars(music.voices[0].events)) {
         const total = notes.reduce((sum, n) => sum + BEATS[n.dur], 0);
         expect(total).toBeCloseTo(beatsPerBar, 6);

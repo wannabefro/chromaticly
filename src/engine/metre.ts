@@ -51,6 +51,13 @@ export function isCompoundTimeSignature(sig: string): boolean {
   return num % 3 === 0 && num > 3;
 }
 
+/** A bar's length in crotchets. The numerator alone is only right when the
+ *  denominator is 4: a 2/2 bar holds four crotchets, a 3/8 bar one and a half. */
+export function crotchetsPerBar(sig: string): number {
+  const { num, den } = parseSignature(sig);
+  return (num * 4) / den;
+}
+
 /** Classifies a time signature as simple/compound × duple/triple/quadruple by
  *  its NUMERATOR — compound (dotted-note beat) when num ∈ {6,9,12} with
  *  beats = num/3; simple otherwise with beats = num. The denominator never

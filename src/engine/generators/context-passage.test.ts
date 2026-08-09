@@ -2,7 +2,7 @@
 // sub-question is ANSWERABLE: the passage is built at random and then checked, so a
 // tie (two bars both holding the highest note) must never reach a learner.
 
-import { isCompoundTimeSignature } from '../metre';
+import { crotchetsPerBar, isCompoundTimeSignature } from '../metre';
 import { KB } from '../../content/knowledge-base';
 import { musicToAbc } from '../../music/abc-emitter';
 import type { NoteEvent } from '../../music/types';
@@ -37,6 +37,18 @@ describe('music in context — one passage, several questions (8d)', () => {
 
   test('the same seed builds the same passage (deterministic)', () => {
     expect(JSON.stringify(buildContextPassage(opts(7)))).toBe(JSON.stringify(buildContextPassage(opts(7))));
+  });
+
+  // The numerator alone is not the bar length. Every /2 and /8 passage shipped
+  // half or double its metre, and the metre sub-question graded against it.
+  test.each([1, 2, 3, 4, 5])('grade %i: every bar fills its time signature exactly', (grade) => {
+    for (const seed of SEEDS) {
+      const passage = buildContextPassage({ grade, seed, atoms: [] });
+      const want = crotchetsPerBar(passage.music.time_sig!);
+      const sums = new Map<number, number>();
+      for (const n of notesOf(passage)) sums.set(n.bar, (sums.get(n.bar) ?? 0) + n.beats);
+      for (const [, total] of sums) expect(total).toBeCloseTo(want, 6);
+    }
   });
 
   // The reason the generator retries rather than constructs: a passage with two
