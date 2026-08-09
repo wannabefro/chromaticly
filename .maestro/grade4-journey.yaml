@@ -30,16 +30,26 @@ appId: host.exp.Exponent
 - tapOn: { id: "placement-start" }
 - assertVisible: { id: "placement-item" }
 
-# One item per placeable strand. `optional: true` absorbs the non-MCQ shapes
-# (the context passage's bar taps, the chord numeral chips).
+# Looped on the item being on screen, not on a count. Every tap is optional, so
+# one body absorbs all three input shapes the bank serves.
 - repeat:
-    times: 7
+    while:
+      visible: { id: "placement-item" }
     commands:
       - tapOn: { id: "option-0", optional: true }
+      # The context item's bar strip sits below the passage card, off-screen on a
+      # phone. It is a native Pressable, not part of the abcjs WebView, so it is
+      # tappable — but only once scrolled to.
+      - scrollUntilVisible:
+          element: { id: "bar-1" }
+          direction: DOWN
+          visibilityPercentage: 60
+          timeout: 4000
+          optional: true
       - tapOn: { id: "bar-1", optional: true }
       - tapOn: { id: "roman-numeral-I", optional: true }
-      - tapOn: { id: "check" }
-      - tapOn: { id: "feedback-sheet-continue" }
+      - tapOn: { id: "check", optional: true }
+      - tapOn: { id: "feedback-sheet-continue", optional: true }
 
 - extendedWaitUntil:
     visible: { id: "placement-result" }

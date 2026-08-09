@@ -45,17 +45,28 @@ appId: host.exp.Exponent
     id: "placement-item"
 
 # ── Step 2: the mixed pass, one item per placeable strand ────────────────────
-# Seven repeats, one per strand. `optional: true` on each tap absorbs the two
-# non-MCQ shapes the bank serves — the context passage's bar taps and the chord
-# numeral chips — so the flow does not need to know which strand came up.
+# Looped on the ITEM being on screen, not on a count of 7. Placement's length is
+# derived from the placeable strands, and every tap is optional, so one loop body
+# absorbs all three input shapes the bank serves — MCQ cards, the context
+# passage's bar taps, the chord numeral chips — and the pass ends when it ends.
 - repeat:
-    times: 7
+    while:
+      visible: { id: "placement-item" }
     commands:
       - tapOn: { id: "option-0", optional: true }
+      # The context item's bar strip sits below the passage card, off-screen on a
+      # phone. It is a native Pressable, not part of the abcjs WebView, so it is
+      # tappable — but only once scrolled to.
+      - scrollUntilVisible:
+          element: { id: "bar-1" }
+          direction: DOWN
+          visibilityPercentage: 60
+          timeout: 4000
+          optional: true
       - tapOn: { id: "bar-1", optional: true }
       - tapOn: { id: "roman-numeral-I", optional: true }
-      - tapOn: { id: "check" }
-      - tapOn: { id: "feedback-sheet-continue" }
+      - tapOn: { id: "check", optional: true }
+      - tapOn: { id: "feedback-sheet-continue", optional: true }
 
 # ── Step 2 → 3: the seven depths, then the plan ──────────────────────────────
 - extendedWaitUntil:
