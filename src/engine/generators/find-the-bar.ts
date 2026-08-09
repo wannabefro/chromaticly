@@ -76,23 +76,12 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
   const beatsPerBar = Number(timeSig.split('/')[0]);
   const targetBar = 1 + Math.floor(rng() * BARS);
 
-  // The peak is derived from the line, not anchored at the top of the range
-  // (chromaticly-e3o). Anchoring first made it a two-octave outlier.
-  const headroom = 1 + Math.floor(rng() * 2); // 1..2 steps clear of the line
-  const band =
-    property === 'highest'
-      ? pool.slice(0, Math.max(1, pool.length - headroom))
-      : property === 'lowest'
-        ? pool.slice(Math.min(headroom, pool.length - 1))
-        : pool;
-
   // For "longest", the target bar carries a minim and every other bar is capped at
   // a crotchet, so the long note is unique.
   const winnerDur: Duration = 'minim';
   const otherMaxBeats = property === 'longest' ? 1 : beatsPerBar;
 
-  // Durations first, so the melody is one line rather than a contour that
-  // restarts at every barline.
+  // Durations first, so the melody is one line, not a per-bar contour.
   const barDurations: Duration[][] = [];
   for (let bar = 1; bar <= BARS; bar++) {
     const isTarget = bar === targetBar;
@@ -102,22 +91,18 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
         : fillBar(rng, beatsPerBar, isTarget ? beatsPerBar : otherMaxBeats),
     );
   }
+  const total = barDurations.reduce((n, b) => n + b.length, 0);
 
-  const line = drawMelody(rng, band, barDurations.reduce((n, b) => n + b.length, 0));
-
-  // Drawn before the peak, so the peak is measured against the notes that
-  // SURVIVE. Otherwise the winner can replace the line's own maximum.
+  // Chosen before the line, so the melody is written WITH its climax there.
   const winnerSlot = Math.floor(rng() * barDurations[targetBar - 1].length);
   const winnerIndex = barDurations.slice(0, targetBar - 1).reduce((n, b) => n + b.length, 0) + winnerSlot;
-  const survivors = line.filter((_, i) => i !== winnerIndex).map((p) => pool.indexOf(p));
 
-  // Clears every surviving note by `headroom` alone, not by the range's width.
-  const winnerPitch =
-    property === 'highest'
-      ? pool[Math.min(pool.length - 1, Math.max(...survivors) + headroom)]
-      : property === 'lowest'
-        ? pool[Math.max(0, Math.min(...survivors) - headroom)]
-        : null;
+  const line = drawMelody(rng, pool, total, {
+    climaxAt: property === 'highest' ? winnerIndex : undefined,
+    nadirAt: property === 'lowest' ? winnerIndex : undefined,
+    // An excerpt read for its highest note is not a cadence.
+    closeOnTonic: property === 'longest',
+  });
 
   const events: MusicEvent[] = [];
   // What each bar's own best note is — the per-bar answer to the same question.
@@ -129,9 +114,8 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
     const durs = barDurations[bar - 1];
 
     const barPitches: string[] = [];
-    durs.forEach((dur, slot) => {
-      const isWinner = isTarget && winnerPitch !== null && slot === winnerSlot;
-      const pitch = isWinner ? winnerPitch : line[cursor];
+    durs.forEach((dur) => {
+      const pitch = line[cursor];
       cursor += 1;
       barPitches.push(pitch);
       events.push({ type: 'note', pitch, dur });
