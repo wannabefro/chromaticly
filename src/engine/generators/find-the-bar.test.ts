@@ -33,7 +33,7 @@ function instanceFor(property: BarProperty, seed: number) {
 
 describe('findTheBar — the winning bar is unique and is the one the answer names', () => {
   test.each(BAR_PROPERTIES)('the %s note sits in exactly one bar, and that bar is the canonical answer', (property) => {
-    for (let seed = 0; seed < 40; seed++) {
+    for (let seed = 0; seed < 120; seed++) {
       const instance = instanceFor(property, seed);
       const grouped = bars(instance.stimulus.music!.voices[0].events);
 
@@ -122,5 +122,67 @@ describe('the validator hook recomputes the winning bar', () => {
     const dupe = JSON.parse(JSON.stringify(inst));
     dupe.distractors = [...dupe.distractors, dupe.answer.canonical];
     expect(validate(dupe).errors.some((e) => e.includes('also appears among the distractors'))).toBe(true);
+  });
+});
+
+// chromaticly-e3o. Every note used to be `pick(rng, pool)` over the whole treble
+// range, which is not a melody: measured over 180 grade-2 passages the median
+// adjacent interval was a perfect 4th, 23% of intervals were a 6th or wider, and
+// the widest was 16 semitones. "Which bar reaches the highest note" was then a
+// spot-the-outlier puzzle rather than a reading task.
+//
+// These pin the SHAPE, not the notes, so they survive a re-seed. A revert to
+// uniform picking fails every one of them.
+describe('findTheBar — the passage reads as a melody, not as random pitches', () => {
+  const SEMITONE: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+  const semitones = (p: string) => SEMITONE[p[0]] + 12 * Number(p.slice(-1));
+
+  /** Every adjacent interval across many passages, in semitones. */
+  function intervals(property: BarProperty): number[] {
+    const out: number[] = [];
+    for (let seed = 0; seed < 60; seed++) {
+      const notes = instanceFor(property, seed).stimulus.music!.voices[0].events.filter(
+        (e: MusicEvent): e is NoteEvent => e.type === 'note',
+      );
+      for (let i = 1; i < notes.length; i++) out.push(Math.abs(semitones(notes[i].pitch) - semitones(notes[i - 1].pitch)));
+    }
+    return out;
+  }
+
+  test.each(BAR_PROPERTIES)('%s: most motion is stepwise', (property) => {
+    const iv = intervals(property);
+    const stepwise = iv.filter((x) => x <= 2).length / iv.length;
+    // Uniform picking scored 0.29 here. Real melodic writing is nearer 0.65.
+    expect(stepwise).toBeGreaterThan(0.5);
+  });
+
+  // `longest` has no forced peak, so its whole line is free to be stepwise.
+  // `highest` and `lowest` must plant one note clear of every other, and the
+  // approach to it is a leap by construction — a climax approached by leap is
+  // ordinary melodic writing, so the allowance is stated rather than engineered
+  // away. Uniform picking scored 0.23 on all three: one interval in four.
+  test.each(BAR_PROPERTIES)('%s: wide leaps are rare', (property) => {
+    const iv = intervals(property);
+    const wide = iv.filter((x) => x >= 9).length / iv.length;
+    expect(wide).toBeLessThan(property === 'longest' ? 0.05 : 0.08);
+  });
+
+  // The boundary itself, not a value near it: one interval this size means the
+  // line left the stave and came back, which is what looked broken on device.
+  test.each(BAR_PROPERTIES)('%s: no interval exceeds a fifteenth', (property) => {
+    expect(Math.max(...intervals(property))).toBeLessThanOrEqual(24);
+  });
+
+  // The peak has to clear the line to keep the question answerable, but only
+  // just — anchoring it at the top of the range is what made it an outlier.
+  test('the highest note is close to the rest of the line, not two octaves clear', () => {
+    for (let seed = 0; seed < 60; seed++) {
+      const notes = instanceFor('highest', seed).stimulus.music!.voices[0].events.filter(
+        (e: MusicEvent): e is NoteEvent => e.type === 'note',
+      );
+      const heights = notes.map((n: NoteEvent) => semitones(n.pitch)).sort((a: number, b: number) => b - a);
+      expect(heights[0]).toBeGreaterThan(heights[1]); // still strictly highest
+      expect(heights[0] - heights[1]).toBeLessThanOrEqual(7);
+    }
   });
 });

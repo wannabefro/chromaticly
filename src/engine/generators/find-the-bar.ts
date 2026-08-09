@@ -14,6 +14,7 @@ import type { Duration, MusicEvent } from '../../music/types';
 import { findBarAtom } from '../atoms';
 import { isCompoundTimeSignature } from '../metre';
 import { mulberry32, pick } from '../rng';
+import { drawMelody } from '../../music/melody';
 import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import type { ExerciseInstance } from '../schema';
 import { generateValidated, makeInstanceId } from './retry';
@@ -75,18 +76,14 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
   const beatsPerBar = Number(timeSig.split('/')[0]);
   const targetBar = 1 + Math.floor(rng() * BARS);
 
-  // Pitch window. For "highest" the peak sits near the top of the range and every
-  // other note is drawn strictly below it; "lowest" is the mirror image. For
-  // "longest" pitch doesn't decide the answer, so the whole pool is fair game.
-  const peakIndex = pool.length - 1 - Math.floor(rng() * 3); // near the top
-  const troughIndex = Math.floor(rng() * 3); // near the bottom
-
-  const winnerPitch = property === 'highest' ? pool[peakIndex] : property === 'lowest' ? pool[troughIndex] : null;
-  const otherPitches =
+  // The peak is derived from the line, not anchored at the top of the range
+  // (chromaticly-e3o). Anchoring first made it a two-octave outlier.
+  const headroom = 1 + Math.floor(rng() * 2); // 1..2 steps clear of the line
+  const band =
     property === 'highest'
-      ? pool.slice(0, peakIndex) // strictly lower than the peak
+      ? pool.slice(0, Math.max(1, pool.length - headroom))
       : property === 'lowest'
-        ? pool.slice(troughIndex + 1) // strictly higher than the trough
+        ? pool.slice(Math.min(headroom, pool.length - 1))
         : pool;
 
   // For "longest", the target bar carries a minim and every other bar is capped at
@@ -94,27 +91,48 @@ function build(contentSeed: number, grade: number, idSeed: number, property: Bar
   const winnerDur: Duration = 'minim';
   const otherMaxBeats = property === 'longest' ? 1 : beatsPerBar;
 
+  // Durations first, so the melody is one line rather than a contour that
+  // restarts at every barline.
+  const barDurations: Duration[][] = [];
+  for (let bar = 1; bar <= BARS; bar++) {
+    const isTarget = bar === targetBar;
+    barDurations.push(
+      property === 'longest' && isTarget
+        ? [winnerDur, ...fillBar(rng, beatsPerBar - beatsOf(winnerDur), 1)]
+        : fillBar(rng, beatsPerBar, isTarget ? beatsPerBar : otherMaxBeats),
+    );
+  }
+
+  const line = drawMelody(rng, band, barDurations.reduce((n, b) => n + b.length, 0));
+
+  // Drawn before the peak, so the peak is measured against the notes that
+  // SURVIVE. Otherwise the winner can replace the line's own maximum.
+  const winnerSlot = Math.floor(rng() * barDurations[targetBar - 1].length);
+  const winnerIndex = barDurations.slice(0, targetBar - 1).reduce((n, b) => n + b.length, 0) + winnerSlot;
+  const survivors = line.filter((_, i) => i !== winnerIndex).map((p) => pool.indexOf(p));
+
+  // Clears every surviving note by `headroom` alone, not by the range's width.
+  const winnerPitch =
+    property === 'highest'
+      ? pool[Math.min(pool.length - 1, Math.max(...survivors) + headroom)]
+      : property === 'lowest'
+        ? pool[Math.max(0, Math.min(...survivors) - headroom)]
+        : null;
+
   const events: MusicEvent[] = [];
   // What each bar's own best note is — the per-bar answer to the same question.
   const barBest: Record<number, string> = {};
 
+  let cursor = 0;
   for (let bar = 1; bar <= BARS; bar++) {
     const isTarget = bar === targetBar;
-
-    let durs: Duration[];
-    if (property === 'longest' && isTarget) {
-      durs = [winnerDur, ...fillBar(rng, beatsPerBar - beatsOf(winnerDur), 1)];
-    } else {
-      durs = fillBar(rng, beatsPerBar, isTarget ? beatsPerBar : otherMaxBeats);
-    }
-
-    // Where the winning pitch lands inside the target bar.
-    const winnerSlot = Math.floor(rng() * durs.length);
+    const durs = barDurations[bar - 1];
 
     const barPitches: string[] = [];
     durs.forEach((dur, slot) => {
       const isWinner = isTarget && winnerPitch !== null && slot === winnerSlot;
-      const pitch = isWinner ? winnerPitch : pick(rng, otherPitches);
+      const pitch = isWinner ? winnerPitch : line[cursor];
+      cursor += 1;
       barPitches.push(pitch);
       events.push({ type: 'note', pitch, dur });
     });

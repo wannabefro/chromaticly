@@ -23,6 +23,7 @@ import type { Duration, Dynamic, Music, MusicEvent, Pitch } from '../../music/ty
 import { contextAtom, findBarAtom } from '../atoms';
 import { isCompoundTimeSignature } from '../metre';
 import { mulberry32, pick } from '../rng';
+import { drawMelody } from '../../music/melody';
 import { diatonicPitchesInRange, renderableTimeSignatures } from '../scope';
 import { scientificPitchOrdinal } from './pitch-math';
 import type { ExerciseInstance } from '../schema';
@@ -93,9 +94,14 @@ function drawPassage(rng: () => number, grade: number): { notes: Note[]; timeSig
   const notes: Note[] = [];
   const events: MusicEvent[] = [];
 
+  // Durations first, so the melody is one line, not a per-bar contour.
+  const barDurations = Array.from({ length: BARS }, () => fillBar(rng, beatsPerBar));
+  const line = drawMelody(rng, pool, barDurations.reduce((n, b) => n + b.length, 0));
+
+  let n = 0;
   for (let bar = 1; bar <= BARS; bar++) {
-    for (const dur of fillBar(rng, beatsPerBar)) {
-      const pitch = pick(rng, pool);
+    for (const dur of barDurations[bar - 1]) {
+      const pitch = line[n++];
       notes.push({ pitch, dur, bar });
       events.push({ type: 'note', pitch, dur });
     }
