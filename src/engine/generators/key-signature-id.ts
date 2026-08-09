@@ -49,9 +49,16 @@ function neighbourKeys(key: string, scope: { keysMajor: readonly string[] }, cou
 
 function tonicPitchInRange(clef: Clef, key: string, grade: number): string {
   // Spelled in the key, so a flat tonic sits under its signature.
-  const candidates = diatonicPitchesInRange(clef, grade).filter((p) => p.startsWith(tonicLetter(key)));
+  const range = diatonicPitchesInRange(clef, grade);
+  const candidates = range.filter((p) => p.startsWith(tonicLetter(key)));
   if (candidates.length === 0) throw new Error(`no in-range tonic ${key} for clef ${clef}`);
-  return spellInKey(candidates[0], key);
+  // Nearest the middle, not the lowest. The lowest put Ab three ledger lines
+  // below the bass staff.
+  const middle = (range.length - 1) / 2;
+  const best = candidates.reduce((a, b) =>
+    Math.abs(range.indexOf(a) - middle) <= Math.abs(range.indexOf(b) - middle) ? a : b,
+  );
+  return spellInKey(best, key);
 }
 
 /** One tonic semibreve — enough context to place the accidentals for a clef. */
