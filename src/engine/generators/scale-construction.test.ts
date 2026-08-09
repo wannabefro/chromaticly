@@ -187,7 +187,7 @@ describe('scale_construction — un-raised 7th is the headline misconception (co
     const headline = instances.filter((inst) => inst.answer.canonical === '7th note');
     expect(headline.length).toBeGreaterThan(0);
     for (const inst of headline) {
-      expect(inst.feedback.incorrect).toMatch(/raised/i);
+      expect(inst.feedback.incorrect).toMatch(/rais(e|ed|es)/i);
       expect(inst.feedback.incorrect).toMatch(/7th/);
     }
   });

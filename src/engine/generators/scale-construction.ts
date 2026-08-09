@@ -86,7 +86,7 @@ const FORM_TABLE: Partial<Record<string, FormEntry>> = {
         semitones: -1,
         headline: true,
         feedback:
-          'The 7th note must be raised with a sharp in harmonic minor — a natural 7th belongs to natural minor, not harmonic.',
+          'Harmonic minor raises the 7th note a semitone above the key signature — left as the signature writes it, the scale is natural minor.',
       },
       {
         degree: 5,
@@ -111,13 +111,13 @@ const FORM_TABLE: Partial<Record<string, FormEntry>> = {
           semitones: -1,
           headline: true,
           feedback:
-            'The 6th note must be raised going up in melodic minor — a natural 6th belongs to the descent, not the ascent.',
+            'Going up, melodic minor raises the 6th note a semitone above the key signature — left as the signature writes it, it belongs to the descent.',
         },
         {
           degree: 6,
           semitones: -1,
           feedback:
-            'The 7th note must also be raised going up in melodic minor — a natural 7th belongs to the descent, not the ascent.',
+            'Going up, melodic minor raises the 7th note too — left as the key signature writes it, it belongs to the descent.',
         },
         {
           degree: 2,

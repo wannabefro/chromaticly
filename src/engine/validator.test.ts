@@ -110,7 +110,7 @@ function validScaleConstructionInstance(): ExerciseInstance {
     hints: ['Compare each note against the A harmonic minor scale — only one note is wrong.'],
     feedback: {
       correct: 'Correct!',
-      incorrect: 'The 7th note must be raised with a sharp in harmonic minor.',
+      incorrect: 'Harmonic minor raises the 7th note a semitone above the key signature.',
     },
     srs_tags: ['scale:A_minor_harmonic'],
     kb_version: 'g1-2026-07-10',
@@ -137,7 +137,7 @@ function validScaleConstructionGrade3HarmonicInstance(): ExerciseInstance {
     hints: ['Compare each note against the F# harmonic minor scale — only one note is wrong.'],
     feedback: {
       correct: 'Correct!',
-      incorrect: 'The 7th note must be raised with a sharp in harmonic minor.',
+      incorrect: 'Harmonic minor raises the 7th note a semitone above the key signature.',
     },
     srs_tags: ['scale:F#_minor_harmonic'],
     kb_version: 'g1-2026-07-10',

@@ -109,19 +109,21 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     const lower = pick(rng, SEMITONE_STEPS);
     const correct = pairLabel(lower);
     const wrong = [pairLabel(lower === 3 ? 4 : 6), pairLabel(lower === 3 ? 2 : 5)];
+    // A major scale has TWO semitones, so the stem must say which one.
+    const which = lower === 3 ? 'first' : 'second';
     return {
       ...common,
-      prompt: `This is ${key} major. Which two notes have a semitone between them?`,
+      prompt: `This is ${key} major. Between which two notes does the ${which} semitone fall?`,
       stimulus: { music: scaleMusic(clef, key, pitches), text: null },
       answer: { canonical: correct, accepted_alternatives: [] },
       distractors: wrong,
-      hints: ['A semitone is the smallest step: the two notes are next to each other, with nothing in between.'],
+      hints: [`Count up from the keynote. A semitone is the smallest step, and the ${which} one is what is asked.`],
       feedback: {
         correct: 'Correct!',
-        incorrect: `A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th.`,
+        incorrect: `A major scale has its semitones between the 3rd and 4th notes and between the 7th and 8th. The ${which} falls between the ${correct}.`,
         by_distractor: {
-          [wrong[0]]: 'That step is a tone. The semitones are between the 3rd and 4th, and the 7th and 8th.',
-          [wrong[1]]: 'That step is a tone too. Count up from the keynote: the first semitone is the 3rd to the 4th.',
+          [wrong[0]]: `That step is a tone. The ${which} semitone falls between the ${correct}.`,
+          [wrong[1]]: `That step is a tone too. Count up from the keynote: the ${which} semitone is the ${correct}.`,
         },
       },
     };

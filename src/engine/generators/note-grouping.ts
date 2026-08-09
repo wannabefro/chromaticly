@@ -138,14 +138,17 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const noun = NOTE_PLURAL[value];
   const [num] = timeSig.split('/').map(Number);
   const compound = num % 3 === 0 && num > 3;
-  const beatWord = compound ? 'dotted beat' : num === 5 || num === 7 ? 'group' : 'beat';
+  const irregular = num === 5 || num === 7;
+  const beatWord = compound ? 'dotted beat' : irregular ? 'group' : 'beat';
 
   return {
     id: makeInstanceId('note_grouping', grade, idSeed),
     template_id: 'note_grouping',
     grade,
     strand: 'rhythm',
-    prompt: `A bar of ${timeSig} is filled with ${noun}. Which beaming groups them correctly?`,
+    // 5/8 and 7/8 only: the lesson says a composer may beam 2 + 3, so there
+    // only the NORMAL grouping is unique.
+    prompt: `A bar of ${timeSig} is filled with ${noun}. Which beaming ${irregular ? 'shows the normal grouping' : 'groups them correctly'}?`,
     stimulus: { music: null, text: timeSig },
     interaction: { type: 'mcq', config: { option_music: optionMusic } },
     answer: { canonical: label(correct), accepted_alternatives: [] },
@@ -153,7 +156,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     hints: [`Work out how many ${noun} fill one ${beatWord} of ${timeSig}. The beams show the beats.`],
     feedback: {
       correct: 'Correct!',
-      incorrect: `${timeSig} groups its ${noun} as ${label(correct)}. Beams show the beat, so a reader can see it without counting.`,
+      incorrect: `${timeSig} ${irregular ? 'normally groups' : 'groups'} its ${noun} as ${label(correct)}. Beams show the beat, so a reader can see it without counting.`,
       by_distractor: Object.fromEntries(
         wrong.map((w) => [
           label(w),
@@ -161,7 +164,9 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
             ? `Beaming the whole bar as one group hides the beat. ${timeSig} is ${label(correct)}.`
             : w.every((n) => n === 1)
               ? `Leaving every note unbeamed shows no beat at all. ${timeSig} is ${label(correct)}.`
-              : `That is ${label(w)}, which is a different metre's beat. ${timeSig} is ${label(correct)}.`,
+              : irregular
+                ? `A composer may beam ${label(w)}, but the normal grouping of ${timeSig} is ${label(correct)}.`
+                : `That is ${label(w)}, which is a different metre's beat. ${timeSig} is ${label(correct)}.`,
         ]),
       ),
     },

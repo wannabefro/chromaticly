@@ -144,7 +144,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     answer: { canonical: targetVoice, accepted_alternatives: [] },
     distractors,
     hints: [
-      'Stems up point away from the middle (soprano, tenor); stems down point toward it (alto, bass). The treble staff carries the upper pair (soprano/alto), the bass staff the lower pair (tenor/bass).',
+      'The staff names the pair: treble is soprano/alto, bass is tenor/bass. The stem names which of the pair: up is the higher voice, down is the lower.',
     ],
     feedback: {
       correct: 'Correct!',
