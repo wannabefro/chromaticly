@@ -19,10 +19,9 @@
 // what finishes the named cadence, and 'approach' shows the final chord and
 // asks what precedes it.
 //
-// 'approach' is the one that discriminates. A perfect and a plagal cadence both
-// END on I, so a learner who only knows "it finishes on the tonic" can answer
-// 'complete' for either and still not tell them apart. Asking what comes BEFORE
-// the tonic is the question that has a different answer for each.
+// 'approach' is the one that discriminates. Perfect and plagal both END on I, so
+// 'complete' cannot tell them apart; what comes BEFORE the tonic can. It is never
+// asked of an imperfect cadence: I-V and IV-V are both imperfect, two answers.
 //
 // The stimulus is a keyboard-style reduction: the triad on the treble staff
 // over its root on the bass staff. The bass is not decoration — the fall of a
@@ -39,6 +38,8 @@ import { generateValidated, makeInstanceId } from './retry';
 import type { GenerateOptions, Generator } from './types';
 
 export type CadenceKind = 'perfect' | 'plagal' | 'imperfect';
+
+type Variant = 'name' | 'complete' | 'approach';
 
 /** The three cadences in scope, each as the chord pair that makes it.
  *
@@ -131,7 +132,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
   // A name atom must not be credited by a choosing item. `pick` on one
   // entry still spends its draw.
-  const variant = pick(rng, choose ? (['complete', 'approach'] as const) : (['name'] as const));
+  //
+  // 'approach' needs ONE answer; see the header. Imperfect has two.
+  const chooseVariants: Variant[] = spec.approaches.length > 1 ? ['complete'] : ['complete', 'approach'];
+  const variant = pick(rng, choose ? chooseVariants : (['name'] as Variant[]));
   const tag = choose ? cadenceChooseAtom(kind) : cadenceAtom(kind);
 
   if (variant === 'name') {

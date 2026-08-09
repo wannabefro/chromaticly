@@ -311899,23 +311899,23 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "I",
+      "canonical": "V",
     },
     "distractors": [
+      "I",
       "IV",
-      "V",
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "IV to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
-        "V": "V to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
       },
       "correct": "Correct!",
       "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
     },
     "grade": 5,
     "hints": [
-      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
     ],
     "id": "cadence_recognition:g5:s9",
     "interaction": {
@@ -311923,7 +311923,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "This chord ends an imperfect cadence in G major. Which chord comes before it?",
+    "prompt": "This is the start of an imperfect cadence in G major. Which chord ends it?",
     "srs_tags": [
       "cadence_choose:imperfect",
     ],
@@ -311942,9 +311942,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
-                  "D4",
-                  "F#4",
-                  "A4",
+                  "G4",
+                  "B4",
+                  "D5",
                 ],
                 "type": "chord",
               },
@@ -311961,7 +311961,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "D3",
+                "pitch": "G3",
                 "type": "note",
               },
               {
@@ -312487,23 +312487,23 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "I",
+      "canonical": "V",
     },
     "distractors": [
+      "I",
       "IV",
-      "V",
     ],
     "feedback": {
       "by_distractor": {
-        "IV": "IV to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
-        "V": "V to V is not an imperfect cadence. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "I": "An imperfect cadence does not end on I. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
+        "IV": "An imperfect cadence does not end on IV. An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
       },
       "correct": "Correct!",
       "incorrect": "An imperfect cadence ENDS on V. It does not resolve, which is what leaves it sounding unfinished.",
     },
     "grade": 5,
     "hints": [
-      "Perfect and plagal cadences both end on the tonic. What tells them apart is the chord before it.",
+      "Every cadence is named by where it ends. Two of the three end on the tonic; one does not.",
     ],
     "id": "cadence_recognition:g5:s16",
     "interaction": {
@@ -312511,7 +312511,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "This chord ends an imperfect cadence in C major. Which chord comes before it?",
+    "prompt": "This is the start of an imperfect cadence in C major. Which chord ends it?",
     "srs_tags": [
       "cadence_choose:imperfect",
     ],
@@ -312530,9 +312530,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               {
                 "dur": "semibreve",
                 "pitches": [
+                  "C4",
+                  "E4",
                   "G4",
-                  "B4",
-                  "D5",
                 ],
                 "type": "chord",
               },
@@ -312549,7 +312549,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "G3",
+                "pitch": "C3",
                 "type": "note",
               },
               {
