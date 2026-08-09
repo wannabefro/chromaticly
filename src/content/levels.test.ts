@@ -1,5 +1,5 @@
 import { hasExamPaper } from '../learn/exam';
-import { accountNudgeStats, isLevelUnlocked } from '../learn/mastery-rollup';
+import { accountNudgeStats } from '../learn/mastery-rollup';
 import { ProgressStore } from '../learn/store';
 import { LESSONS, LESSONS_BY_GRADE, lessonsForGrade, lessonById } from './lessons';
 import { isStartableGrade, LEVELS } from './levels';
@@ -13,7 +13,7 @@ describe('levels — Level 1 derives dynamically from LESSONS_BY_GRADE[1] (AD7, 
   test('Level 1 is unlocked (grade === 1, unconditionally, D5) and has one unit id per grade-1 lesson, in lesson order', () => {
     expect(level1.id).toBe('level-1');
     expect(level1.grade).toBe(1);
-    expect(isLevelUnlocked(level1, new ProgressStore())).toBe(true);
+    expect(level1.unitIds.length).toBeGreaterThan(0);
     expect(level1.unitIds).toEqual(LESSONS_BY_GRADE[1].map((l) => l.id));
   });
 
@@ -46,9 +46,8 @@ describe('levels — Level 2 derives dynamically from LESSONS_BY_GRADE[2] (D5, U
   // fyu.2: unlock is a derivation over the store, not a field — but under free
   // grade access it no longer gates on the previous grade's exam, only on
   // content presence, so Level 2 is reachable on a fresh store.
-  test('Level 2 is reachable on a fresh store — content presence is the only gate, no exam required', () => {
-    const store = new ProgressStore();
-    expect(isLevelUnlocked(level2, store)).toBe(true);
+  test('Level 2 has content, which is now the whole of reachability', () => {
+    expect(level2.unitIds.length).toBeGreaterThan(0);
   });
 });
 
@@ -71,19 +70,11 @@ describe('levels — Level 3 derives dynamically from LESSONS_BY_GRADE[3] (D9, U
     expect(level3.examGate!.unlockAtStars).toBe(57);
   });
 
-  // fyu.2: reachability is content presence only — Level 3 is reachable on a
-  // fresh store, and exam state (cleared or not, any grade) doesn't move it.
-  test('Level 3 is reachable on a fresh store — content presence is the only gate, independent of any exam state', () => {
-    const fresh = new ProgressStore();
-    expect(isLevelUnlocked(level3, fresh)).toBe(true);
-
-    const grade1Cleared = new ProgressStore();
-    grade1Cleared.recordExamCleared(1);
-    expect(isLevelUnlocked(level3, grade1Cleared)).toBe(true);
-
-    const grade2Cleared = new ProgressStore();
-    grade2Cleared.recordExamCleared(2);
-    expect(isLevelUnlocked(level3, grade2Cleared)).toBe(true);
+  // fyu.2 made reachability content presence alone, and U12 deleted the
+  // derivation that said so. The invariant it computed survives here: a level
+  // never opens onto nothing, and no exam clears anything.
+  test('Level 3 has content, which is now the whole of reachability', () => {
+    expect(level3.unitIds.length).toBeGreaterThan(0);
   });
 
   // No stub Grade-3 (or Grade-2) exam paper exists — exam recording is a
@@ -108,8 +99,8 @@ describe('levels — Level 4 derives dynamically from LESSONS_BY_GRADE[4] (fyu.1
     expect(level4.examGate!.unlockAtStars).toBe(LESSONS_BY_GRADE[4].length * 3);
   });
 
-  test('Level 4 is reachable on a fresh store — content presence is the only gate (free access)', () => {
-    expect(isLevelUnlocked(level4, new ProgressStore())).toBe(true);
+  test('Level 4 has content, which is now the whole of reachability', () => {
+    expect(level4.unitIds.length).toBeGreaterThan(0);
   });
 });
 
@@ -129,7 +120,7 @@ describe('levels — Level 5 derives dynamically from LESSONS_BY_GRADE[5] (chrom
   });
 
   test('Level 5 is reachable on a fresh store — content presence is the only gate (free access)', () => {
-    expect(isLevelUnlocked(level5, new ProgressStore())).toBe(true);
+    expect(level5.unitIds.length).toBeGreaterThan(0);
   });
 
   // No stub Grade-5 exam paper exists — content reachability and exam-paper

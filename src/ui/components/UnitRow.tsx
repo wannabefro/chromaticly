@@ -16,14 +16,13 @@ import { StrandChip } from './StrandChip';
 
 /** The row's own status, owned here rather than by `mastery-rollup` (G6 U7).
  *
- *  It used to be `mastery-rollup`'s `UnitState`, which U12 deletes with the level
- *  map — so a row state that outlives that derivation has to live with the
- *  component that renders it.
+ *  It used to be `mastery-rollup`'s `UnitState`, so a row state that outlives any
+ *  one derivation lives with the component that renders it.
  *
- *  `'active'` is TRANSITIONAL: only `unitStates` emits it, only `LevelMapScreen`
- *  passes it, and U12 removes it with both. `LaneScreen` emits `'current'`. The
- *  two mean the same thing; they are not merged yet because narrowing the union
- *  now would fail the typecheck at the moment this lands. */
+ *  `'active'` and `'current'` mean the same thing: `unitStates` emits the first
+ *  (First steps), `LaneScreen` emits the second. U12 was meant to delete both with
+ *  the level map, but First steps still needs `unitStates`. Merging them is
+ *  chromaticly-uni. */
 export type UnitState = 'active' | 'current' | 'started' | 'done';
 
 export interface UnitRowProps {

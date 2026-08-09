@@ -6,7 +6,7 @@
 // carry real content and derive their unit lists the same way (Grade 5 shipped
 // its slice, chromaticly-ehp), so there are no content-less placeholder levels
 // left. Whether a level is reachable is NOT a field here — it is a derivation over
-// the store (`isLevelUnlocked`, `src/learn/mastery-rollup.ts`, D5), so it can
+// the store (U12 deleted that derivation; content presence is now the whole of
 // never drift out of sync with the persisted exam-clear record. This module
 // must stay RN/expo-free (core-boundary test).
 
@@ -68,7 +68,7 @@ function level2(): Level {
 
 // D9: same anti-drift rule as level1()/level2() — unitIds and the exam-gate
 // threshold derive from the grade-3 doc, never a frozen literal. Level 3 is
-// still locked for real learners this slice: isLevelUnlocked gates on
+// still locked for real learners this slice: reachability gates on
 // isExamCleared(2), and no Grade 2 exam paper exists yet (hasExamPaper(2) is
 // false), so that gate is unreachable except via the __DEV__ seed seam.
 function level3(): Level {
@@ -85,7 +85,7 @@ function level3(): Level {
 
 // fyu.13: Grade 4 is now real — unitIds and the exam-gate threshold derive from
 // the grade-4 doc, same anti-drift rule as level1()–level3(). This is what makes
-// Grade 4 startable (isStartableGrade), reachable (isLevelUnlocked), and walkable
+// Grade 4 startable (isStartableGrade), content-ful, and walkable
 // end-to-end for a real learner.
 function level4(): Level {
   const unitIds = LESSONS_BY_GRADE[4].map((l) => l.id);

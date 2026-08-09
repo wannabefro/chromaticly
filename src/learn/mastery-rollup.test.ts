@@ -3,7 +3,7 @@ import { LEVELS } from '../content/levels';
 import { EXAM_PAPER_GRADE, GRADE1_EXAM_SECTIONS, QUESTIONS_PER_SECTION } from './exam';
 import { atomsFor, contentGradesFor, laneDepths, SLACK_FACTOR, writtenLaneDepths } from './lane-depth';
 import { MASTERY_THRESHOLD } from './mastery';
-import { accountNudgeStats, currentLevel, deriveStars, examReadiness, isLevelUnlocked, strandMastery, unitStates } from './mastery-rollup';
+import { accountNudgeStats, deriveStars, examReadiness, strandMastery, unitStates } from './mastery-rollup';
 import { initialSrs } from './srs';
 import { ProgressStore } from './store';
 
@@ -274,51 +274,24 @@ describe('accountNudgeStats — real backed nudge stats (design 6c, 302.9)', () 
   });
 });
 
-// fyu.2/chromaticly-ehp: free grade access removed the exam gate on
-// reachability — a level is reachable iff it has content (every grade 1-5
-// now, since Grade 5 shipped its slice). There are no content-less levels
-// left, so nothing ever fails to "open" onto units.
-describe('isLevelUnlocked / currentLevel — level unlock derivation (D5, fyu.2)', () => {
-  // By grade, not by position: LEVELS now opens with First steps (grade 0).
-  const byGrade = (g: number) => LEVELS.find((l) => l.grade === g)!;
-  const [level1, level2, level5] = [byGrade(1), byGrade(2), byGrade(5)];
-
-  test('Level 1 is always unlocked, even on a fresh store', () => {
+// U12 deleted `isLevelUnlocked` and `currentLevel` with the level map, the only
+// surface that read them. What they computed is not lost — every level's
+// reachability is now just "does it have content", which `levels.test.ts`
+// asserts per level, and the working grade is `store.getGrade()` directly.
+//
+// One derived fact had no other home, so it is kept here: an absent grade must
+// resolve to Grade 1, never to LEVELS[0], which is First steps.
+describe('the working grade defaults to 1, not to the first level in the list', () => {
+  test('a profile with no stored grade is not a First steps learner', () => {
     const store = new ProgressStore();
-    expect(isLevelUnlocked(level1, store)).toBe(true);
-  });
-
-  test('Level 2 is reachable on a fresh store — it has content, so no exam gate blocks it', () => {
-    const store = new ProgressStore();
-    expect(level2.unitIds.length).toBeGreaterThan(0); // guards the premise: content-ful
-    expect(isLevelUnlocked(level2, store)).toBe(true);
-  });
-
-  test('Level 5 is reachable regardless of exam state — content presence is the only gate, same rule as every other level', () => {
-    const fresh = new ProgressStore();
-    expect(level5.unitIds.length).toBeGreaterThan(0); // guards the premise: content-ful
-    expect(isLevelUnlocked(level5, fresh)).toBe(true);
-
-    const everyExamCleared = new ProgressStore();
-    everyExamCleared.recordExamCleared(1);
-    everyExamCleared.recordExamCleared(2);
-    everyExamCleared.recordExamCleared(3);
-    everyExamCleared.recordExamCleared(4);
-    expect(isLevelUnlocked(level5, everyExamCleared)).toBe(true);
-  });
-
-  test('currentLevel follows the working grade (Profile.grade), not the highest reachable level', () => {
-    const store = new ProgressStore();
-    // Grade 1, not LEVELS[0] — the list now opens with First steps (grade 0), and
-    // a profile with no stored grade must not land there.
-    expect(currentLevel(LEVELS, store)).toBe(level1);
+    expect(store.getGrade() ?? 1).toBe(1);
     expect(LEVELS[0].grade).toBe(0);
+  });
 
+  test('a stored grade is reported verbatim', () => {
+    const store = new ProgressStore();
     store.setProfile({ grade: 2, onboardedAt: '2026-07-13T00:00:00.000Z' });
-    // Level 3 is also reachable (has content) at this point, but currentLevel
-    // must still report Level 2 — the learner's chosen working grade.
-    expect(isLevelUnlocked(LEVELS.find((l) => l.grade === 3)!, store)).toBe(true);
-    expect(currentLevel(LEVELS, store)).toBe(level2);
+    expect(store.getGrade()).toBe(2);
   });
 });
 

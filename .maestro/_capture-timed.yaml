@@ -12,8 +12,10 @@ appId: host.exp.Exponent
     optional: true
 - tapOn: { text: "Continue", optional: true }
 
+# The seed resolves the unit's own lane, so the shell opens on lane detail — the
+# level map this waited on has had no route since G6 U7 and is now deleted.
 - extendedWaitUntil:
-    visible: { id: "level-map-screen" }
+    visible: { id: "lane-screen" }
     timeout: 90000
 
 - scrollUntilVisible:

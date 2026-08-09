@@ -55,6 +55,7 @@ interface Handlers {
   onBack?: () => void;
   onOpenLane?: (strand: Strand) => void;
   onOpenLesson?: (lesson: Lesson) => void;
+  onRetest?: (strand: Strand) => void;
 }
 
 function renderLane(strand: Strand, store = new ProgressStore(), handlers: Handlers = {}) {
@@ -324,5 +325,28 @@ describe('LaneScreen — unit ordering and entry', () => {
 
     act(() => fireEvent.press(getByTestId('lane-back')));
     expect(onBack).toHaveBeenCalled();
+  });
+});
+
+// R7a — the lane's own "this reading looks wrong" affordance. The screen only
+// ASKS: the shell owns the runner, exactly as it does for a lesson, so a re-test
+// entered from a lane behaves like one entered anywhere else.
+describe('LaneScreen — asking for a re-test (R7a)', () => {
+  test('the control asks about THIS lane, not whichever was open last', async () => {
+    const onRetest = jest.fn();
+    const { findByTestId, getByTestId } = renderLane('rhythm', new ProgressStore(), { onRetest });
+    await findByTestId('lane-screen');
+
+    act(() => fireEvent.press(getByTestId('lane-retest')));
+    expect(onRetest).toHaveBeenCalledWith('rhythm');
+  });
+
+  // A control that renders with no handler is a dead tap. The prop is optional
+  // because LaneScreen is rendered in tests and by callers that cannot route.
+  test('it does not render when no handler is supplied', async () => {
+    const { findByTestId, queryByTestId } = renderLane('rhythm');
+    await findByTestId('lane-screen');
+
+    expect(queryByTestId('lane-retest')).toBeNull();
   });
 });

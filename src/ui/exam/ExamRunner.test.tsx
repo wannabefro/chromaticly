@@ -41,7 +41,7 @@ async function renderExam(props: Partial<ExamRunnerProps> = {}) {
   const storage = memoryStorage();
   const utils = render(
     <ProgressProvider storage={storage}>
-      <ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} {...props} />
+      <ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} flaggedBefore={[]} {...props} />
     </ProgressProvider>,
   );
   await act(async () => {});
@@ -341,7 +341,7 @@ describe('ExamRunner — the result per skill is the plan (7e)', () => {
     expect(queryByTestId('exam-section-intervals-flagged')).toBeNull();
   });
 
-  // The LevelMapScreen path, which cannot supply readiness until U12 deletes it.
+  // No caller may omit readiness now: U12 deleted the one that could not supply it.
   test('omitting the readiness prop renders the rows unchanged, with no marker and no crash', async () => {
     const { getByTestId, queryByTestId } = await renderExam();
     fireEvent.press(getByTestId('exam-begin'));

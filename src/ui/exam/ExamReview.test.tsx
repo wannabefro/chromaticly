@@ -36,7 +36,7 @@ function memoryStorage(): SnapshotStorage & { blob: string | null } {
 async function renderExam() {
   const utils = render(
     <ProgressProvider storage={memoryStorage()}>
-      <ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} />
+      <ExamRunner grade={1} onExit={jest.fn()} paperSeed={0} flaggedBefore={[]} />
     </ProgressProvider>,
   );
   await act(async () => {});

@@ -1,4 +1,4 @@
-// U2 acceptance tests for the level-map unit row (design 3a).
+// U2 acceptance tests for the unit row (design 3a).
 
 import { fireEvent, render } from '@testing-library/react-native';
 

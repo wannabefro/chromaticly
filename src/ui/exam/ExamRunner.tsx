@@ -69,14 +69,12 @@ export interface ExamRunnerProps {
    *  says is weakest. Falls back to `onExit` where no caller can route. */
   onOpenLane?: (strand: string) => void;
   /** Strands pre-exam readiness had already flagged, for the continuity marker
-   *  ("we flagged this before the paper").
+   *  ("we flagged this before the paper"). Empty means no marker.
    *
-   *  OPTIONAL, and omission means NO MARKER — there is nothing to fall back to.
-   *  `LevelMapScreen` still renders this runner until U12 and cannot supply it.
-   *  Recomputing readiness here instead would resurrect exactly the inversion this
-   *  unit removes: a prediction of the paper standing in for the paper's own
-   *  verdict. U12 makes the prop required along with its last caller. */
-  flaggedBefore?: readonly string[];
+   *  REQUIRED since U12 deleted the level map, the one caller that could not
+   *  supply it. Recomputing readiness here instead would resurrect the inversion
+   *  U12 removes: a prediction of the paper standing in for the paper's verdict. */
+  flaggedBefore: readonly string[];
 }
 
 export function ExamRunner({ grade, onExit, paperSeed = 0, onOpenLane, flaggedBefore }: ExamRunnerProps) {
