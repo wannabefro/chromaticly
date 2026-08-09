@@ -2,18 +2,30 @@
 // melody.test.ts. The pool is an ASCENDING DIATONIC scale, so an index difference
 // is scale steps and `index % 7` is a degree — hence no key signature here.
 
-const STABLE_OPENINGS = [0, 2, 4] as const;
+// Every weight below is a measured share of the Essen Folksong Collection:
+// 5365 melodies, 259263 intervals, counted in scale steps.
+const STABLE_OPENINGS: readonly (readonly [number, number])[] = [
+  [4, 55],
+  [0, 35],
+  [2, 10],
+];
+const OPENING_WEIGHT = STABLE_OPENINGS.reduce((sum, [, w]) => sum + w, 0);
 
 const STEP_WEIGHTS: readonly (readonly [number, number])[] = [
-  [1, 62],
-  [2, 20],
-  [3, 9],
-  [4, 6],
+  [0, 22],
+  [1, 49],
+  [2, 17],
+  [3, 7],
+  [4, 3],
   [5, 2],
   [7, 1],
 ];
 
 const TOTAL_WEIGHT = STEP_WEIGHTS.reduce((sum, [, w]) => sum + w, 0);
+
+/** Essen continues a step 55.5% of the time. A coin gives 50%, and the
+ *  compass pushes further, so the walk zigzagged. */
+const INERTIA = 0.68;
 
 const LEAP = 3;
 
@@ -54,9 +66,10 @@ export function drawMelody(rng: () => number, pool: readonly string[], count: nu
   return line.map((i) => pool[i]);
 }
 
-/** A uniform start puts a passage below the stave as often as it centres one. */
+/** Essen opens on the dominant most often, on the mediant rarely. Centred,
+ *  because a uniform start sits below the stave. */
 function openOn(rng: () => number, size: number, tonic: number, span: number): number {
-  const degree = STABLE_OPENINGS[Math.floor(rng() * STABLE_OPENINGS.length)];
+  const degree = pick(STABLE_OPENINGS, rng() * OPENING_WEIGHT, 0);
   const middle = (size - 1) / 2;
   let best: number | null = null;
   for (let i = 0; i < size; i++) {
@@ -84,13 +97,19 @@ function nextNote(rng: () => number, line: number[], size: number, span: number,
     if (ok(back)) return back;
   }
 
-  const t = rng() * TOTAL_WEIGHT * 2;
-  const up = t < TOTAL_WEIGHT;
-  const step = weightedStep(up ? t : t - TOTAL_WEIGHT);
+  const step = pick(STEP_WEIGHTS, rng() * TOTAL_WEIGHT, 1);
+  if (step === 0) return from;
+  const up = rng() < riseChance(from, previous);
   for (const candidate of [from + (up ? step : -step), from + (up ? -step : step), from + (up ? -1 : 1), from + (up ? 1 : -1)]) {
     if (ok(candidate)) return candidate;
   }
   return from;
+}
+
+function riseChance(from: number, previous: number | null): number {
+  const last = previous === null ? 0 : from - previous;
+  if (last === 0 || Math.abs(last) >= LEAP) return 0.5;
+  return last > 0 ? INERTIA : 1 - INERTIA;
 }
 
 function fits(index: number, line: number[], span: number, size: number): boolean {
@@ -127,12 +146,12 @@ function nearestDegree(from: number, tonic: number, size: number): number | null
   return null;
 }
 
-function weightedStep(ticket: number): number {
-  for (const [step, weight] of STEP_WEIGHTS) {
-    if (ticket < weight) return step;
+function pick(table: readonly (readonly [number, number])[], ticket: number, fallback: number): number {
+  for (const [value, weight] of table) {
+    if (ticket < weight) return value;
     ticket -= weight;
   }
-  return 1;
+  return fallback;
 }
 
 function mod7(n: number): number {

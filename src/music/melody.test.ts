@@ -109,6 +109,51 @@ describe('drawMelody — the rules of melodic writing', () => {
   });
 });
 
+// Measured over the Essen Folksong Collection: 5365 melodies, 259263 intervals.
+// The bounds are wide: a generator must not copy a corpus exactly.
+describe('drawMelody — the shape matches the Essen Folksong Collection', () => {
+  const SAMPLE = Array.from({ length: 300 }, (_, s) => drawMelody(lcg(s + 1), POOL, 16));
+  const IV = SAMPLE.flatMap(motion).map(Math.abs);
+  const share = (test: (d: number) => boolean) => IV.filter(test).length / IV.length;
+
+  test('it repeats a note about as often as folk melody does — Essen 22.2%', () => {
+    expect(share((d) => d === 0)).toBeGreaterThan(0.15);
+    expect(share((d) => d === 0)).toBeLessThan(0.28);
+  });
+
+  test('unison and step together carry the line — Essen 71.3%', () => {
+    expect(share((d) => d <= 1)).toBeGreaterThan(0.65);
+    expect(share((d) => d <= 1)).toBeLessThan(0.82);
+  });
+
+  test('a fourth or wider stays rare — Essen 11.5%', () => {
+    expect(share((d) => d >= 3)).toBeLessThan(0.16);
+  });
+
+  // Huron's step inertia. This fails on any build that draws direction by coin.
+  test('after a step the line more often runs on than turns — Essen reverses 44.5%', () => {
+    let turns = 0;
+    let steps = 0;
+    for (const line of SAMPLE) {
+      const m = motion(line);
+      for (let i = 1; i < m.length; i++) {
+        if (m[i - 1] === 0 || m[i] === 0 || Math.abs(m[i - 1]) >= 3) continue;
+        steps++;
+        if (Math.sign(m[i]) !== Math.sign(m[i - 1])) turns++;
+      }
+    }
+    expect(turns / steps).toBeGreaterThan(0.36);
+    expect(turns / steps).toBeLessThan(0.53);
+  });
+
+  test('the dominant is the commonest opening — Essen 54.9%, ahead of the tonic', () => {
+    const first = SAMPLE.map((line) => degrees(line)[0]);
+    const rate = (d: number) => first.filter((x) => x === d).length / first.length;
+    expect(rate(4)).toBeGreaterThan(rate(0));
+    expect(rate(0)).toBeGreaterThan(rate(2));
+  });
+});
+
 describe('drawMelody — one climax, which is also the question', () => {
   test('climaxAt makes exactly one note the highest, and it is that one', () => {
     for (let s = 1; s <= 60; s++) {

@@ -96,7 +96,11 @@ function drawPassage(rng: () => number, grade: number): { notes: Note[]; timeSig
 
   // Durations first, so the melody is one line, not a per-bar contour.
   const barDurations = Array.from({ length: BARS }, () => fillBar(rng, beatsPerBar));
-  const line = drawMelody(rng, pool, barDurations.reduce((n, b) => n + b.length, 0));
+  const total = barDurations.reduce((n, b) => n + b.length, 0);
+  // Real melody repeats a note 22% of the time, so a drawn top note ties.
+  const climaxAt = Math.floor(rng() * total);
+  const nadirAt = (climaxAt + 1 + Math.floor(rng() * (total - 1))) % total;
+  const line = drawMelody(rng, pool, total, { climaxAt, nadirAt });
 
   let n = 0;
   for (let bar = 1; bar <= BARS; bar++) {
