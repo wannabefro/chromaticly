@@ -17,13 +17,8 @@ import { StrandChip } from './StrandChip';
 /** The row's own status, owned here rather than by `mastery-rollup` (G6 U7).
  *
  *  It used to be `mastery-rollup`'s `UnitState`, so a row state that outlives any
- *  one derivation lives with the component that renders it.
- *
- *  `'active'` and `'current'` mean the same thing: `unitStates` emits the first
- *  (First steps), `LaneScreen` emits the second. U12 was meant to delete both with
- *  the level map, but First steps still needs `unitStates`. Merging them is
- *  chromaticly-uni. */
-export type UnitState = 'active' | 'current' | 'started' | 'done';
+ *  one derivation lives with the component that renders it. */
+export type UnitState = 'current' | 'started' | 'done';
 
 export interface UnitRowProps {
   strand: Strand;
@@ -40,7 +35,7 @@ export function UnitRow({ strand, title, stars, state, showStrand = true, onPres
   const hue = strandDef(strand).hue;
   // Only the frontier row is emphasised. A 0-star row further down is untouched
   // work, not work in progress, so it neither glows nor says "continue".
-  const emphasized = state === 'active' || state === 'current' || (state === 'started' && stars > 0);
+  const emphasized = state === 'current' || (state === 'started' && stars > 0);
   // Derived from `stars`, not from `state`: a row can be the frontier with no
   // progress ("start") or with some ("continue"), and the state alone cannot tell.
   const cue = state === 'done' ? undefined : stars === 0 ? 'start ›' : 'continue ›';

@@ -8,7 +8,7 @@ describe('UnitRow', () => {
   // Rule 3: strand colour is always paired with a glyph/label — never colour alone.
   test('shows the strand glyph and label alongside the title', () => {
     const { getByText } = render(
-      <UnitRow strand="rhythm" title="Note values and rhythm sums" stars={0} state="active" />,
+      <UnitRow strand="rhythm" title="Note values and rhythm sums" stars={0} state="current" />,
     );
 
     expect(getByText('Rhythm')).toBeTruthy();
@@ -55,7 +55,7 @@ describe('UnitRow', () => {
   // carries a 🔒 or a "finish X to unlock" note — the advisory prerequisite chip
   // that replaces that affordance is a separate component (PrereqChip).
   test('every state fires onPress when tapped, and none renders a lock affordance', () => {
-    for (const state of ['active', 'started', 'done'] as const) {
+    for (const state of ['current', 'started', 'done'] as const) {
       const onPress = jest.fn();
       const { getByTestId, queryByText, unmount } = render(
         <UnitRow strand="rhythm" title="Rhythm" stars={0} state={state} onPress={onPress} testID="unit-row" />,

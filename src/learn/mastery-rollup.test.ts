@@ -227,7 +227,7 @@ describe('unitStates — per-unit state for the level map', () => {
   test('the first not-done unit is "active"; a later 0-star unit is "started", not active', () => {
     const store = new ProgressStore();
     const rows = unitStates(['active', 'second'], store, lessonAtoms);
-    expect(rows[0]).toEqual({ unitId: 'active', stars: 0, state: 'active' });
+    expect(rows[0]).toEqual({ unitId: 'active', stars: 0, state: 'current' });
     expect(rows[1]).toEqual({ unitId: 'second', stars: 0, state: 'started' });
   });
 
@@ -243,7 +243,7 @@ describe('unitStates — per-unit state for the level map', () => {
     masterAtoms(store, atomsById.done);
     const rows = unitStates(['done', 'active'], store, lessonAtoms);
     expect(rows[0].state).toBe('done');
-    expect(rows[1]).toEqual({ unitId: 'active', stars: 0, state: 'active' });
+    expect(rows[1]).toEqual({ unitId: 'active', stars: 0, state: 'current' });
   });
 });
 

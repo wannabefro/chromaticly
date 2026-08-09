@@ -76,7 +76,7 @@ export function strandMastery(store: ProgressStore, now: number): Record<string,
 /** G6 U3 retired `'locked'`: under non-linear progression nothing is gated, so a
  *  row can no longer be in that state. The union survives (minus that member)
  *  until U12 deletes this derivation with the level map. */
-export type UnitState = 'active' | 'started' | 'done';
+export type UnitState = 'current' | 'started' | 'done';
 
 /** Per-unit state for the level map. Only one not-yet-started unit can be the
  *  frontier — the first such unit in list order is marked `active`; any other
@@ -93,7 +93,7 @@ export function unitStates(
     if (stars === 3) return { unitId, stars, state: 'done' as const };
     if (stars === 0 && !activeAssigned) {
       activeAssigned = true;
-      return { unitId, stars, state: 'active' as const };
+      return { unitId, stars, state: 'current' as const };
     }
     return { unitId, stars, state: 'started' as const };
   });
