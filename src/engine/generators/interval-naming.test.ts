@@ -11,6 +11,7 @@ import preChangeGrade1Fixture from './__fixtures__/interval-naming-grade1-pre-u3
 import { intervalNaming, intervalNamingStaveInput } from './interval-naming';
 import { spellInKeySig } from './key-spelling';
 import { scientificPitchOrdinal } from './pitch-math';
+import { gradeStaveInput } from '../../ui/grading';
 
 describe('intervalNaming — reproducibility (KTD4: pure function of seed)', () => {
   test('the same (grade, seed) produces a deeply-equal instance', () => {
@@ -250,9 +251,13 @@ describe('intervalNaming — grade-1 byte-identity (U3 hard core): the else-bran
 
   test('the alternative is the same note without its key-signature accidental, never a second note', () => {
     for (let seed = 0; seed < 40; seed++) {
-      const { answer } = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
-      const { pitch } = answer.canonical as { pitch: string };
-      expect(answer.accepted_alternatives).toEqual(/[#b]/.test(pitch) ? [pitch.replace(/[#b]/g, '')] : []);
+      const instance = intervalNamingStaveInput({ grade: 1, seed, atoms: [] });
+      const { pitch, dur } = instance.answer.canonical as { pitch: string; dur: string };
+      const natural = pitch.replace(/[#b]/g, '');
+      expect(instance.answer.accepted_alternatives).toEqual(natural === pitch ? [] : [{ pitch: natural, dur }]);
+      // The grader, not the literal. A bare pitch string looked right here and
+      // was rejected at the point it mattered.
+      if (natural !== pitch) expect(gradeStaveInput(instance, { pitch: natural, dur })).toBe(true);
     }
   });
 

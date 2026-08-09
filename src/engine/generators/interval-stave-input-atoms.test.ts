@@ -5,6 +5,7 @@
 
 import { generate } from './index';
 import { validate } from '../validator';
+import { gradeStaveInput } from '../../ui/grading';
 
 const KEY = ['interval_key:A_major', 'interval_key:Bb_major', 'interval_key:A_minor', 'interval_key:D_minor'];
 const TYPE = ['interval_type:2', 'interval_type:3', 'interval_type:5', 'interval_type:8'];
@@ -41,14 +42,19 @@ describe('interval_naming_stave_input atom scoping', () => {
     }
   });
 
+  // This asserted the alternative's literal shape and called that "accepted".
+  // It was a bare pitch string, `gradeStaveInput` reads `.pitch`/`.dur`, and so
+  // every alternative was rejected while the test stayed green. Ask the grader.
   test('a key-signature spelling is accepted with or without the explicit accidental', () => {
     // Bb under two flats is the same note as B on the same slot, so both are right.
     const seen = new Set<string>();
     for (let seed = 0; seed < 60; seed++) {
       const inst = make(seed, 2, KEY);
-      const { pitch } = inst.answer.canonical as { pitch: string };
+      const { pitch, dur } = inst.answer.canonical as { pitch: string; dur: string };
       if (/[#b]/.test(pitch)) {
-        expect(inst.answer.accepted_alternatives).toEqual([pitch.replace(/[#b]/g, '')]);
+        const natural = pitch.replace(/[#b]/g, '');
+        expect(inst.answer.accepted_alternatives).toEqual([{ pitch: natural, dur }]);
+        expect(gradeStaveInput(inst, { pitch: natural, dur })).toBe(true);
         seen.add(pitch);
       } else {
         expect(inst.answer.accepted_alternatives).toEqual([]);

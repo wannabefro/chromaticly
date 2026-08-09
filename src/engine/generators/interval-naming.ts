@@ -716,10 +716,13 @@ function intervalAnyTargets(atoms: string[]): number[] {
 }
 
 /** A key signature already sharpens or flattens the note, so a learner who taps
- *  the slot and no accidental has written the right note. Accept both spellings. */
-function keySpelledAlternatives(pitch: string): string[] {
+ *  the slot and no accidental has written the right note. Accept both spellings.
+ *
+ *  The shape matters: `gradeStaveInput` reads `.pitch` and `.dur` off each
+ *  target, so a bare pitch string matches nothing and the alternative is inert. */
+function keySpelledAlternatives(pitch: string, dur: string): { pitch: string; dur: string }[] {
   const natural = pitch.replace(/[#b]/g, '');
-  return natural === pitch ? [] : [natural];
+  return natural === pitch ? [] : [{ pitch: natural, dur }];
 }
 
 interface StaveInputParts {
@@ -753,7 +756,7 @@ function staveInputInstance(grade: number, idSeed: number, parts: StaveInputPart
       text: null,
     },
     interaction: { type: 'stave_input', config: {} },
-    answer: { canonical: { pitch: targetPitch, dur: targetDur }, accepted_alternatives: keySpelledAlternatives(targetPitch) },
+    answer: { canonical: { pitch: targetPitch, dur: targetDur }, accepted_alternatives: keySpelledAlternatives(targetPitch, targetDur) },
     distractors: [],
     hints: [
       'Count the letter names from the given note up to the target note, counting both ends — then match the requested duration.',
