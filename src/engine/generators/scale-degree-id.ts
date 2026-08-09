@@ -260,6 +260,12 @@ function degreeOfRootIn(root: string, inKey: string, mode: 'major' | 'minor' = '
   return ((a - b + 7) % 7) + 1;
 }
 
+/** The first note the key signature does not spell that way. `degreeOfRootIn`
+ *  asks only the root, so it called C#-E-G# the supertonic of B minor. */
+function foreignNote(pitches: readonly string[], inKey: string, mode: 'major' | 'minor'): string | null {
+  return pitches.find((p) => spellInKeySig(p.replace(/[#b]/g, ''), `${inKey}_${mode}`) !== p) ?? null;
+}
+
 function noteWords(pitch: string): string {
   return pitch.replace(/\d+$/, '').replace(/#/, ' sharp').replace(/b/, ' flat');
 }
@@ -316,11 +322,14 @@ function buildTonicTriadKeyId(rng: () => number, grade: number, idSeed: number, 
       by_distractor: Object.fromEntries(
         chosen.map((k) => {
           const d = degreeOfRootIn(root, k, mode);
+          const foreign = foreignNote(triad, k, mode);
           return [
             `${k} ${mode}`,
             d === null
               ? `${noteWords(root)} is not in the ${k} ${mode} scale, so no ${k} chord starts on it.`
-              : `In ${k} ${mode} this chord is built on the ${DEGREE_ORDINALS[d - 1]} degree, not the 1st.`,
+              : foreign
+                ? `${noteWords(root)} is the ${DEGREE_ORDINALS[d - 1]} degree of ${k} ${mode}, but ${noteWords(foreign)} does not belong to that key.`
+                : `In ${k} ${mode} this chord is built on the ${DEGREE_ORDINALS[d - 1]} degree, not the 1st.`,
           ];
         }),
       ),

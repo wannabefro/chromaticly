@@ -81,8 +81,12 @@ function accidentalPhrase(key: string): string {
   return `${words[letters.length]} ${kind}${letters.length === 1 ? '' : 's'}`;
 }
 
-function whyWrong(wrongKey: string, key: string): string {
-  return `${wrongKey} major has ${accidentalPhrase(wrongKey)}. This signature has ${accidentalPhrase(key)}, which is ${key} major.`;
+/** "This signature" is the printed one when naming, the picked one when
+ *  choosing. Two different sentences. */
+function whyWrong(wrongKey: string, key: string, picked: boolean): string {
+  return picked
+    ? `That stave has ${accidentalPhrase(wrongKey)}, which is ${wrongKey} major. ${key} major has ${accidentalPhrase(key)}.`
+    : `${wrongKey} major has ${accidentalPhrase(wrongKey)}. This signature has ${accidentalPhrase(key)}, which is ${key} major.`;
 }
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
@@ -94,7 +98,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   const distractorKeys = keys.length > 1 ? keys.filter((k) => k !== key) : neighbourKeys(key, scope, 3);
   const variant = pick(rng, ['name', 'choose'] as const);
 
-  const common = {
+  const common = (picked: boolean) => ({
     id: makeInstanceId('key_signature_id', grade, idSeed),
     template_id: 'key_signature_id' as const,
     grade,
@@ -104,16 +108,17 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     feedback: {
       correct: 'Correct!',
       incorrect: `Count the sharps or flats and their order on the stave: ${accidentalPhrase(key)} is ${key} major.`,
-      by_distractor: Object.fromEntries(distractorKeys.map((k) => [`${k} major`, whyWrong(k, key)])),
+      by_distractor: Object.fromEntries(distractorKeys.map((k) => [`${k} major`, whyWrong(k, key, picked)])),
     },
     srs_tags: [keySigAtom(`${key}_major`)],
     kb_version: KB_VERSION,
-  };
+  });
 
   if (variant === 'name') {
     return {
-      ...common,
-      prompt: 'Name this key.',
+      ...common(false),
+      // Six sharps is F# major OR D# minor, and this template only asks major.
+      prompt: 'Name this major key.',
       stimulus: { music: keyMusic(clef, key, grade), text: null },
       interaction: { type: 'mcq', config: {} },
       hints: ['Count the sharps or flats on the stave and match them to a key you know.'],
@@ -125,7 +130,7 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
     optionMusic[`${k} major`] = keyMusic(clef, k, grade);
   }
   return {
-    ...common,
+    ...common(true),
     prompt: `Which of these is the key signature of ${key} major?`,
     stimulus: { music: null, text: `${key} major` },
     interaction: { type: 'mcq', config: { option_music: optionMusic } },

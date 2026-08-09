@@ -78,7 +78,7 @@ describe('tonic_triad_key_id — the triad is printed and its key named', () => 
       for (const [option, reason] of Object.entries(inst.feedback.by_distractor ?? {})) {
         const key = option.replace(' major', '');
         expect(reason).toContain(key);
-        expect(reason).toMatch(/(degree, not the 1st|is not in the)/);
+        expect(reason).toMatch(/(degree, not the 1st|is not in the|does not belong to that key)/);
       }
     }
   });

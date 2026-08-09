@@ -183,8 +183,16 @@ describe('keySignatureId — the item cannot be answered by matching staves', ()
       const instance = keySignatureId(optsFor(twoKeys, seed));
       const wrong = instance.distractors[0] as string;
       const said = JSON.stringify(instance.feedback);
-      expect(said).toContain(`${wrong} has ${counts[wrong]}`);
-      expect(said).toContain(`has ${counts[instance.answer.canonical as string]}, which is`);
+      // Two phrasings, one fact: naming the printed signature reads "F major has
+      // one flat", picking a stave reads "That stave has one flat, which is F major".
+      const key = wrong.replace(' major', '');
+      expect(said).toMatch(
+        new RegExp(`(${wrong} has ${counts[wrong]}|has ${counts[wrong]}, which is ${key} major)`),
+      );
+      const right = instance.answer.canonical as string;
+      expect(said).toMatch(
+        new RegExp(`(has ${counts[right]}, which is|${right} has ${counts[right]})`),
+      );
     }
   });
 });
