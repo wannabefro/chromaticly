@@ -5663,13 +5663,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "F",
     },
     "distractors": [
-      "C",
-      "B",
+      "D",
+      "G",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from E.",
-        "C": "C is somewhere else in the row. Read A B C D E F G and step forward from E.",
+        "D": "D comes before E. You read the row the wrong way.",
+        "G": "G is two places forward from E. Step one, not two.",
       },
       "correct": "Yes — F comes after E.",
       "incorrect": "The letters run A B C D E F G and then back to A, so F comes after E.",
@@ -5701,13 +5701,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "G",
+      "E",
       "B",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
-        "G": "G is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "B": "B is two places back from D. Step one, not two.",
+        "E": "E comes after D. You read the row the wrong way.",
       },
       "correct": "Yes — C comes before D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
@@ -5739,13 +5739,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "E",
     },
     "distractors": [
-      "A",
-      "B",
+      "C",
+      "F",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from D.",
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from D.",
+        "C": "C comes before D. You read the row the wrong way.",
+        "F": "F is two places forward from D. Step one, not two.",
       },
       "correct": "Yes — E comes after D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so E comes after D.",
@@ -5777,13 +5777,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
+      "A",
       "D",
-      "F",
     ],
     "feedback": {
       "by_distractor": {
-        "D": "D is somewhere else in the row. Read A B C D E F G and step forward from B.",
-        "F": "F is somewhere else in the row. Read A B C D E F G and step forward from B.",
+        "A": "A comes before B. You read the row the wrong way.",
+        "D": "D is two places forward from B. Step one, not two.",
       },
       "correct": "Yes — C comes after B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes after B.",
@@ -5815,13 +5815,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "B",
+      "F",
       "C",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step back from E.",
-        "C": "C is somewhere else in the row. Read A B C D E F G and step back from E.",
+        "C": "C is two places back from E. Step one, not two.",
+        "F": "F comes after E. You read the row the wrong way.",
       },
       "correct": "Yes — D comes before E.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes before E.",
@@ -5853,13 +5853,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "A",
+      "B",
       "E",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step forward from C.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "B": "B comes before C. You read the row the wrong way.",
+        "E": "E is two places forward from C. Step one, not two.",
       },
       "correct": "Yes — D comes after C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
@@ -5891,13 +5891,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "B",
     },
     "distractors": [
-      "E",
       "D",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "D": "D is somewhere else in the row. Read A B C D E F G and step back from C.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "A": "A is two places back from C. Step one, not two.",
+        "D": "D comes after C. You read the row the wrong way.",
       },
       "correct": "Yes — B comes before C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so B comes before C.",
@@ -5929,13 +5929,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "F",
+      "E",
       "B",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step back from D.",
-        "F": "F is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "B": "B is two places back from D. Step one, not two.",
+        "E": "E comes after D. You read the row the wrong way.",
       },
       "correct": "Yes — C comes before D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
@@ -5968,12 +5968,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     },
     "distractors": [
       "E",
-      "A",
+      "B",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from D.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step back from D.",
+        "B": "B is two places back from D. Step one, not two.",
+        "E": "E comes after D. You read the row the wrong way.",
       },
       "correct": "Yes — C comes before D.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes before D.",
@@ -6005,13 +6005,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "A",
     },
     "distractors": [
+      "F",
       "B",
-      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from G.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from G.",
+        "B": "B is two places forward from G. Step one, not two.",
+        "F": "F comes before G. You read the row the wrong way.",
       },
       "correct": "Yes — after G the letters start again at A. There is no H in music.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes after G.",
@@ -6044,12 +6044,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     },
     "distractors": [
       "F",
-      "C",
+      "B",
     ],
     "feedback": {
       "by_distractor": {
-        "C": "C is somewhere else in the row. Read A B C D E F G and step forward from G.",
-        "F": "F is somewhere else in the row. Read A B C D E F G and step forward from G.",
+        "B": "B is two places forward from G. Step one, not two.",
+        "F": "F comes before G. You read the row the wrong way.",
       },
       "correct": "Yes — after G the letters start again at A. There is no H in music.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes after G.",
@@ -6081,13 +6081,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "G",
-      "A",
+      "F",
+      "C",
     ],
     "feedback": {
       "by_distractor": {
-        "A": "A is somewhere else in the row. Read A B C D E F G and step back from E.",
-        "G": "G is somewhere else in the row. Read A B C D E F G and step back from E.",
+        "C": "C is two places back from E. Step one, not two.",
+        "F": "F comes after E. You read the row the wrong way.",
       },
       "correct": "Yes — D comes before E.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes before E.",
@@ -6119,13 +6119,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "C",
     },
     "distractors": [
-      "G",
+      "A",
       "D",
     ],
     "feedback": {
       "by_distractor": {
-        "D": "D is somewhere else in the row. Read A B C D E F G and step forward from B.",
-        "G": "G is somewhere else in the row. Read A B C D E F G and step forward from B.",
+        "A": "A comes before B. You read the row the wrong way.",
+        "D": "D is two places forward from B. Step one, not two.",
       },
       "correct": "Yes — C comes after B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so C comes after B.",
@@ -6157,13 +6157,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "D",
     },
     "distractors": [
-      "G",
-      "F",
+      "B",
+      "E",
     ],
     "feedback": {
       "by_distractor": {
-        "F": "F is somewhere else in the row. Read A B C D E F G and step forward from C.",
-        "G": "G is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "B": "B comes before C. You read the row the wrong way.",
+        "E": "E is two places forward from C. Step one, not two.",
       },
       "correct": "Yes — D comes after C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
@@ -6196,12 +6196,12 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     },
     "distractors": [
       "C",
-      "E",
+      "G",
     ],
     "feedback": {
       "by_distractor": {
-        "C": "C is somewhere else in the row. Read A B C D E F G and step back from B.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step back from B.",
+        "C": "C comes after B. You read the row the wrong way.",
+        "G": "G is two places back from B. Step one, not two.",
       },
       "correct": "Yes — A comes before B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes before B.",
@@ -6233,13 +6233,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "G",
     },
     "distractors": [
-      "D",
-      "B",
+      "E",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from F.",
-        "D": "D is somewhere else in the row. Read A B C D E F G and step forward from F.",
+        "A": "A is two places forward from F. Step one, not two.",
+        "E": "E comes before F. You read the row the wrong way.",
       },
       "correct": "Yes — G comes after F.",
       "incorrect": "The letters run A B C D E F G and then back to A, so G comes after F.",
@@ -6271,13 +6271,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "G",
     },
     "distractors": [
-      "B",
       "E",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from F.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from F.",
+        "A": "A is two places forward from F. Step one, not two.",
+        "E": "E comes before F. You read the row the wrong way.",
       },
       "correct": "Yes — G comes after F.",
       "incorrect": "The letters run A B C D E F G and then back to A, so G comes after F.",
@@ -6314,8 +6314,8 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
     ],
     "feedback": {
       "by_distractor": {
-        "B": "B is somewhere else in the row. Read A B C D E F G and step forward from C.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step forward from C.",
+        "B": "B comes before C. You read the row the wrong way.",
+        "E": "E is two places forward from C. Step one, not two.",
       },
       "correct": "Yes — D comes after C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so D comes after C.",
@@ -6347,13 +6347,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "A",
     },
     "distractors": [
-      "D",
-      "E",
+      "C",
+      "G",
     ],
     "feedback": {
       "by_distractor": {
-        "D": "D is somewhere else in the row. Read A B C D E F G and step back from B.",
-        "E": "E is somewhere else in the row. Read A B C D E F G and step back from B.",
+        "C": "C comes after B. You read the row the wrong way.",
+        "G": "G is two places back from B. Step one, not two.",
       },
       "correct": "Yes — A comes before B.",
       "incorrect": "The letters run A B C D E F G and then back to A, so A comes before B.",
@@ -6385,13 +6385,13 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte alp
       "canonical": "B",
     },
     "distractors": [
-      "G",
-      "F",
+      "D",
+      "A",
     ],
     "feedback": {
       "by_distractor": {
-        "F": "F is somewhere else in the row. Read A B C D E F G and step back from C.",
-        "G": "G is somewhere else in the row. Read A B C D E F G and step back from C.",
+        "A": "A is two places back from C. Step one, not two.",
+        "D": "D comes after C. You read the row the wrong way.",
       },
       "correct": "Yes — B comes before C.",
       "incorrect": "The letters run A B C D E F G and then back to A, so B comes before C.",
@@ -49673,10 +49673,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a crotchet.",
       },
-      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "correct": "Yes — a crotchet is a filled notehead with a stem. It is written as 1 beat.",
       "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
     },
     "grade": 1,
@@ -49726,10 +49726,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a crotchet.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a crotchet.",
       },
-      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "correct": "Yes — a crotchet is a filled notehead with a stem. It is written as 1 beat.",
       "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
     },
     "grade": 1,
@@ -49779,10 +49779,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a crotchet.",
       },
-      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "correct": "Yes — a crotchet is a filled notehead with a stem. It is written as 1 beat.",
       "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
     },
     "grade": 1,
@@ -49832,10 +49832,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a semibreve.",
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a semibreve.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a semibreve.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a semibreve.",
       },
-      "correct": "Yes — a semibreve is an open notehead with no stem, and it is written as 4 beats.",
+      "correct": "Yes — a semibreve is an open notehead with no stem. It is written as 4 beats.",
       "incorrect": "This is a semibreve: an open notehead with no stem. It is written as 4 beats.",
     },
     "grade": 1,
@@ -49885,10 +49885,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a crotchet.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a crotchet.",
       },
-      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "correct": "Yes — a crotchet is a filled notehead with a stem. It is written as 1 beat.",
       "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
     },
     "grade": 1,
@@ -49938,10 +49938,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -49991,10 +49991,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50044,10 +50044,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50097,10 +50097,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50150,10 +50150,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a quaver.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a quaver.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a quaver.",
       },
-      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
+      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
       "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
     },
     "grade": 1,
@@ -50208,10 +50208,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a quaver.",
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a quaver.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a quaver.",
       },
-      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
+      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
       "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
     },
     "grade": 1,
@@ -50261,10 +50261,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a crotchet.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a crotchet.",
       },
-      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "correct": "Yes — a crotchet is a filled notehead with a stem. It is written as 1 beat.",
       "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
     },
     "grade": 1,
@@ -50314,10 +50314,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50367,10 +50367,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50420,10 +50420,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50473,10 +50473,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a crotchet.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a crotchet.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a crotchet.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a crotchet.",
       },
-      "correct": "Yes — a crotchet is a filled notehead with a stem, and it is written as 1 beat.",
+      "correct": "Yes — a crotchet is a filled notehead with a stem. It is written as 1 beat.",
       "incorrect": "This is a crotchet: a filled notehead with a stem. It is written as 1 beat.",
     },
     "grade": 1,
@@ -50526,10 +50526,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a quaver.",
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a quaver.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a quaver.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a quaver.",
       },
-      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour, and it is written as half a beat.",
+      "correct": "Yes — a quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
       "incorrect": "This is a quaver: a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat.",
     },
     "grade": 1,
@@ -50584,10 +50584,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "semibreve": "A semibreve is an open notehead with no stem and is written as 4 beats. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "semibreve": "A semibreve is an open notehead with no stem. It is written as 4 beats, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -50637,10 +50637,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a semibreve.",
-        "minim": "A minim is an open notehead with a stem and is written as 2 beats. This one is a semibreve.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a semibreve.",
+        "minim": "A minim is an open notehead with a stem. It is written as 2 beats, and this one is a semibreve.",
       },
-      "correct": "Yes — a semibreve is an open notehead with no stem, and it is written as 4 beats.",
+      "correct": "Yes — a semibreve is an open notehead with no stem. It is written as 4 beats.",
       "incorrect": "This is a semibreve: an open notehead with no stem. It is written as 4 beats.",
     },
     "grade": 1,
@@ -50690,10 +50690,10 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte not
     ],
     "feedback": {
       "by_distractor": {
-        "crotchet": "A crotchet is a filled notehead with a stem and is written as 1 beat. This one is a minim.",
-        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour and is written as half a beat. This one is a minim.",
+        "crotchet": "A crotchet is a filled notehead with a stem. It is written as 1 beat, and this one is a minim.",
+        "quaver": "A quaver is a filled notehead with a tail — or beamed to its neighbour. It is written as half a beat, and this one is a minim.",
       },
-      "correct": "Yes — a minim is an open notehead with a stem, and it is written as 2 beats.",
+      "correct": "Yes — a minim is an open notehead with a stem. It is written as 2 beats.",
       "incorrect": "This is a minim: an open notehead with a stem. It is written as 2 beats.",
     },
     "grade": 1,
@@ -66522,17 +66522,17 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "On a line",
+      "canonical": "In a space",
     },
     "distractors": [
-      "In a space",
+      "On a line",
     ],
     "feedback": {
       "by_distractor": {
-        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
+        "On a line": "A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.",
       },
-      "correct": "Yes — the line runs through the middle of it.",
-      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
+      "correct": "Yes — it sits in the gap between two lines.",
+      "incorrect": "That one is in a space: it sits in the gap between two lines.",
     },
     "grade": 1,
     "hints": [
@@ -66558,7 +66558,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "E4",
+                "pitch": "F4",
                 "type": "note",
               },
             ],
@@ -66909,17 +66909,17 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "In a space",
+      "canonical": "On a line",
     },
     "distractors": [
-      "On a line",
+      "In a space",
     ],
     "feedback": {
       "by_distractor": {
-        "On a line": "A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.",
+        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
       },
-      "correct": "Yes — it sits in the gap between two lines.",
-      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
     },
     "grade": 1,
     "hints": [
@@ -66945,7 +66945,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "G5",
+                "pitch": "F5",
                 "type": "note",
               },
             ],
@@ -66960,17 +66960,17 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "In a space",
+      "canonical": "On a line",
     },
     "distractors": [
-      "On a line",
+      "In a space",
     ],
     "feedback": {
       "by_distractor": {
-        "On a line": "A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.",
+        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
       },
-      "correct": "Yes — it sits in the gap between two lines.",
-      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
     },
     "grade": 1,
     "hints": [
@@ -66996,7 +66996,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "G5",
+                "pitch": "F5",
                 "type": "note",
               },
             ],
@@ -67174,17 +67174,17 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "In a space",
+      "canonical": "On a line",
     },
     "distractors": [
-      "On a line",
+      "In a space",
     ],
     "feedback": {
       "by_distractor": {
-        "On a line": "A line note has the line running through its middle. This one sits in the gap between two lines, so it is in a space.",
+        "In a space": "A space note sits in the gap. This one has a line running straight through its middle, so it is on a line.",
       },
-      "correct": "Yes — it sits in the gap between two lines.",
-      "incorrect": "That one is in a space: it sits in the gap between two lines.",
+      "correct": "Yes — the line runs through the middle of it.",
+      "incorrect": "That one is on a line: the line runs straight through the middle of the note.",
     },
     "grade": 1,
     "hints": [
@@ -67210,7 +67210,7 @@ exports[`seed-stability — grade-1 generator output is pinned byte-for-byte sta
             "events": [
               {
                 "dur": "semibreve",
-                "pitch": "F4",
+                "pitch": "G4",
                 "type": "note",
               },
             ],

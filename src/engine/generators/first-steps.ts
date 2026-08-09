@@ -124,7 +124,11 @@ function buildAlphabetStep(contentSeed: number, grade: number, idSeed: number, a
   const up = rng() < 0.5;
   const answer = ALPHABET_LETTERS[(index + (up ? 1 : ALPHABET_LETTERS.length - 1)) % ALPHABET_LETTERS.length];
 
-  const distractors = sampleDistinct(rng, ALPHABET_LETTERS.filter((l) => l !== answer && l !== letter), 2);
+  // The two real mistakes: read the row backwards, or step twice.
+  const step = (n: number) => ALPHABET_LETTERS[(index + n + ALPHABET_LETTERS.length * 2) % ALPHABET_LETTERS.length];
+  const reversed = step(up ? -1 : 1);
+  const overshot = step(up ? 2 : -2);
+  const distractors = [reversed, overshot];
 
   return {
     id: makeInstanceId('alphabet_step', grade, idSeed),
@@ -143,9 +147,10 @@ function buildAlphabetStep(contentSeed: number, grade: number, idSeed: number, a
           ? 'Yes — after G the letters start again at A. There is no H in music.'
           : `Yes — ${answer} comes ${up ? 'after' : 'before'} ${letter}.`,
       incorrect: `The letters run A B C D E F G and then back to A, so ${answer} comes ${up ? 'after' : 'before'} ${letter}.`,
-      by_distractor: Object.fromEntries(
-        distractors.map((d) => [d, `${d} is somewhere else in the row. Read A B C D E F G and step ${up ? 'forward' : 'back'} from ${letter}.`]),
-      ),
+      by_distractor: {
+        [reversed]: `${reversed} comes ${up ? 'before' : 'after'} ${letter}. You read the row the wrong way.`,
+        [overshot]: `${overshot} is two places ${up ? 'forward' : 'back'} from ${letter}. Step one, not two.`,
+      },
     },
     srs_tags: [alphabetAtom(letter)],
     kb_version: KB_VERSION,
@@ -216,9 +221,13 @@ export const keyboardFind: Generator = (opts: GenerateOptions) =>
  *  the pitch's own position rather than a table, so it cannot drift from what the
  *  emitter draws: in treble the bottom line is E4, and every second diatonic step
  *  up from there is a line. */
-function isOnLine(pitch: Pitch, bottomLine: Pitch): boolean {
+function staveStep(pitch: Pitch, bottomLine: Pitch): number {
   const ord = (p: string) => Number(p[1]) * 7 + ['C', 'D', 'E', 'F', 'G', 'A', 'B'].indexOf(p[0]);
-  return (ord(pitch) - ord(bottomLine)) % 2 === 0;
+  return ord(pitch) - ord(bottomLine);
+}
+
+function isOnLine(pitch: Pitch, bottomLine: Pitch): boolean {
+  return staveStep(pitch, bottomLine) % 2 === 0;
 }
 
 /** Lesson 4. Grade 1 assumes you know what a stave is. Two question shapes: on a
@@ -236,7 +245,10 @@ function buildStavePosition(contentSeed: number, grade: number, idSeed: number, 
   const kind = pick(rng, kinds);
 
   if (kind === 'line_or_space') {
-    const pitch = pick(rng, pitches);
+    // Five lines and four spaces only. A note below the stave sits in no gap,
+    // and the feedback claimed one.
+    const onStave = pitches.filter((p) => staveStep(p, bottomLine) >= 0 && staveStep(p, bottomLine) <= 8);
+    const pitch = pick(rng, onStave);
     const onLine = isOnLine(pitch, bottomLine);
     const music: Music = { clef, key_sig: null, time_sig: null, voices: [{ events: [{ type: 'note', pitch, dur: 'semibreve' }] }] };
     return {
@@ -413,10 +425,10 @@ function buildNoteShapeLength(contentSeed: number, grade: number, idSeed: number
     distractors: others,
     hints: [`Look at the notehead first: is it open or filled? A ${shape} is ${SHAPE_LOOK[shape]}.`],
     feedback: {
-      correct: `Yes — a ${shape} is ${SHAPE_LOOK[shape]}, and it is written as ${SHAPE_BEATS[shape]}.`,
+      correct: `Yes — a ${shape} is ${SHAPE_LOOK[shape]}. It is written as ${SHAPE_BEATS[shape]}.`,
       incorrect: `This is a ${shape}: ${SHAPE_LOOK[shape]}. It is written as ${SHAPE_BEATS[shape]}.`,
       by_distractor: Object.fromEntries(
-        others.map((o) => [o, `A ${o} is ${SHAPE_LOOK[o]} and is written as ${SHAPE_BEATS[o]}. This one is a ${shape}.`]),
+        others.map((o) => [o, `A ${o} is ${SHAPE_LOOK[o]}. It is written as ${SHAPE_BEATS[o]}, and this one is a ${shape}.`]),
       ),
     },
     srs_tags: [noteShapeAtom(shape)],

@@ -293,3 +293,31 @@ describe('note_shape_length (lesson 5) — shape and meaning arrive together', (
     expect(instance.feedback.correct).toContain('2 beats');
   });
 });
+
+describe('first steps — the feedback describes the note that is actually drawn', () => {
+  // "In a space" was true of D4, but no gap exists below the bottom line.
+  test('line_or_space never draws a note off the stave, over 200 seeds', () => {
+    const OFF_STAVE: Record<string, string[]> = {
+      treble: ['E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5'],
+      bass: ['G2', 'A2', 'B2', 'C3', 'D3', 'E3', 'F3', 'G3', 'A3'],
+    };
+    const drawn: string[] = [];
+    for (let seed = 0; seed < 200; seed++) {
+      const inst = generate('stave_position', { grade: 0, seed, atoms: [staveAnatomyAtom('line_or_space')] });
+      const clef = inst.stimulus.music!.clef;
+      const pitch = (inst.stimulus.music!.voices[0].events[0] as { pitch: string }).pitch;
+      if (!OFF_STAVE[clef].includes(pitch)) drawn.push(`${clef} ${pitch}`);
+    }
+    expect(drawn).toEqual([]);
+  });
+
+  test('an alphabet_step distractor is a named mistake, not a random letter', () => {
+    for (let seed = 0; seed < 60; seed++) {
+      const inst = generate('alphabet_step', { grade: 0, seed, atoms: [] });
+      const why = Object.values(inst.feedback.by_distractor ?? {});
+      expect(why).toHaveLength(2);
+      expect(why.join(' ')).toContain('the wrong way');
+      expect(why.join(' ')).toContain('two places');
+    }
+  });
+});
