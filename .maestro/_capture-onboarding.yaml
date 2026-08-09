@@ -25,11 +25,32 @@ appId: host.exp.Exponent
 - tapOn:
     id: "start-learning"
 - assertVisible:
-    id: "grade-select-screen"
-- takeScreenshot: ${OUT}/02-grade-select
+    id: "placement-intro"
+- takeScreenshot: ${OUT}/02-placement-intro
 
 - tapOn:
-    id: "start-grade"
+    id: "placement-start"
+- assertVisible:
+    id: "placement-item"
+- takeScreenshot: ${OUT}/02b-placement-item
+
+- repeat:
+    times: 7
+    commands:
+      - tapOn: { id: "option-0", optional: true }
+      - tapOn: { id: "bar-1", optional: true }
+      - tapOn: { id: "roman-numeral-I", optional: true }
+      - tapOn: { id: "check" }
+      - tapOn: { id: "feedback-sheet-continue" }
+
+- extendedWaitUntil:
+    visible:
+      id: "placement-result"
+    timeout: 15000
+- takeScreenshot: ${OUT}/02c-placement-result
+
+- tapOn:
+    id: "placement-accept"
 - assertVisible:
     id: "plan-screen"
 - takeScreenshot: ${OUT}/03-plan
