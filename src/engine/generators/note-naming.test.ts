@@ -1,3 +1,5 @@
+import type { Clef } from '../../music/types';
+import { diatonicPitchesInRange } from '../scope';
 import { validate } from '../validator';
 import { spellInKeySig } from './key-spelling';
 import { noteNaming, noteNamingStaveInput } from './note-naming';
@@ -330,5 +332,43 @@ describe('noteNamingHook rejects an answer the stave does not print', () => {
 describe('noteNamingStaveInput refuses a keyed-only pool', () => {
   test('it throws rather than crediting the plain atom for a question never asked', () => {
     expect(() => noteNamingStaveInput({ grade: 4, seed: 0, atoms: ['note_read_keyed:alto:C4'] })).toThrow();
+  });
+});
+
+// "Write D on the stave" names a pitch class. Both a treble D4 and a treble D5
+// answer it, and only one used to be accepted — the seed decided which.
+describe('noteNamingStaveInput accepts every octave the prompt allows', () => {
+  const instances = [TREBLE, BASS, ACCIDENTALS].flatMap((atoms) =>
+    [1, 2, 3, 4].map((seed) => noteNamingStaveInput(optsFor(atoms, seed))),
+  );
+
+  test('an alternative differs from the answer only in its octave', () => {
+    for (const inst of instances) {
+      const { pitch, dur } = inst.answer.canonical as { pitch: string; dur: string };
+      for (const alt of inst.answer.accepted_alternatives as { pitch: string; dur: string }[]) {
+        expect(alt.dur).toBe(dur);
+        expect(alt.pitch.replace(/\d+$/, '')).toBe(pitch.replace(/\d+$/, ''));
+        expect(alt.pitch).not.toBe(pitch);
+      }
+    }
+  });
+
+  test('every other octave in the clef range is offered, so no seed marks one wrong', () => {
+    for (const inst of instances) {
+      const { pitch } = inst.answer.canonical as { pitch: string; dur: string };
+      const clef = (inst.interaction.config as { clef: Clef }).clef;
+      const letter = pitch[0];
+      const inRange = diatonicPitchesInRange(clef, inst.grade).filter((p) => p.startsWith(letter));
+      expect(inst.answer.accepted_alternatives).toHaveLength(inRange.length - 1);
+    }
+  });
+
+  // The old copy told a learner writing a plain D to "add the accidental".
+  test('the accidental is mentioned only when the answer has one', () => {
+    for (const inst of instances) {
+      const { pitch } = inst.answer.canonical as { pitch: string };
+      const altered = /[#b]/.test(pitch);
+      expect(inst.feedback.incorrect.includes('add the accidental')).toBe(altered);
+    }
   });
 });

@@ -238,6 +238,12 @@ function buildStaveInput(contentSeed: number, grade: number, idSeed: number, ato
   }
   const dur = pick(rng, [...scopeForGrade(grade).noteValues]);
   const canonical = formatNoteName(letter, accidental);
+  // "Write D" names a pitch class, and a stave holds more than one D. Marking
+  // the other octave wrong asks for an octave the prompt never gave.
+  const sign = pitch.replace(/^[A-G]/, '').replace(/\d+$/, '');
+  const octaves = diatonicPitchesInRange(clef, grade)
+    .filter((p) => p !== natural && p.startsWith(natural[0]))
+    .map((p) => ({ pitch: p.replace(/^[A-G]/, `$&${sign}`), dur }));
 
   return {
     id: makeInstanceId('note_naming_stave_input', grade, idSeed),
@@ -247,14 +253,18 @@ function buildStaveInput(contentSeed: number, grade: number, idSeed: number, ato
     prompt: `Write ${canonical} on the stave, as a ${dur}.`,
     stimulus: { music: null, text: null },
     interaction: { type: 'stave_input', config: { clef } },
-    answer: { canonical: { pitch, dur }, accepted_alternatives: [] },
+    answer: { canonical: { pitch, dur }, accepted_alternatives: octaves },
     distractors: [],
     hints: [
-      'Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.',
+      accidental
+        ? 'Step to the letter from a clef landmark you already know. An accidental changes the note, never which line or space it sits on.'
+        : 'Step to the letter from a clef landmark you already know. Any octave of it will do.',
     ],
     feedback: {
       correct: 'Correct!',
-      incorrect: `Not quite — count the lines and spaces to ${letter}, then add the accidental and choose the ${dur}.`,
+      incorrect: accidental
+        ? `Not quite — count the lines and spaces to ${letter}, then add the accidental and choose the ${dur}.`
+        : `Not quite — count the lines and spaces to ${letter}, then choose the ${dur}. It needs no sharp or flat.`,
     },
     srs_tags: [noteReadAtom(clef, pitch)],
     kb_version: KB_VERSION,
