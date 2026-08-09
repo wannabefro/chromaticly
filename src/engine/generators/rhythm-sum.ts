@@ -166,23 +166,26 @@ function buildDistractors(target: ValueEntry, valueTable: readonly ValueEntry[])
   return distractors;
 }
 
-const BEATS_BY_UNITS: Record<number, string> = {
-  4: 'half a beat',
-  8: '1 beat',
-  16: '2 beats',
-  24: '3 beats',
-  28: '3\u00bd beats',
-  32: '4 beats',
-};
+const FRACTIONS: Record<number, string> = { 0.25: '\u00bc', 0.5: '\u00bd', 0.75: '\u00be' };
+
+/** `units` is sixteenths of a crotchet, so it is computed, not looked up. The
+ *  table this replaced was keyed in eighths and missed on every single value. */
+function beatsPhrase(units: number): string {
+  const beats = units / 16;
+  const whole = Math.floor(beats);
+  const part = FRACTIONS[beats - whole] ?? '';
+  if (whole === 0) return part === '\u00bd' ? 'half a beat' : `${part} of a beat`;
+  return `${whole}${part} beat${whole === 1 && !part ? '' : 's'}`;
+}
 
 /** Each wrong value is a different total, and the undotted twin is the dot
  *  itself being dropped. */
 function whyWrong(entry: ValueEntry, target: ValueEntry): string {
   const droppedDot = entry.dur === target.dur && entry.dots < target.dots;
-  const value = `A ${formatValue(entry)} is ${BEATS_BY_UNITS[entry.units]}`;
+  const value = `A ${formatValue(entry)} is ${beatsPhrase(entry.units)}`;
   return droppedDot
-    ? `${value}. Each dot adds half again, so the answer is ${BEATS_BY_UNITS[target.units]}.`
-    : `${value}, but the sum comes to ${BEATS_BY_UNITS[target.units]}.`;
+    ? `${value}. Each dot adds half again, so the answer is ${beatsPhrase(target.units)}.`
+    : `${value}, but the sum comes to ${beatsPhrase(target.units)}.`;
 }
 
 function build(contentSeed: number, grade: number, idSeed: number, atoms: string[]): ExerciseInstance {
@@ -285,14 +288,14 @@ function buildReverse(contentSeed: number, grade: number, idSeed: number, atoms:
     interaction: { type: 'mcq', config: {} },
     answer: { canonical, accepted_alternatives: [] },
     distractors,
-    hints: [`A ${formatValue(target)} is ${BEATS_BY_UNITS[target.units]}. Add each sum up and keep the one that matches.`],
+    hints: [`A ${formatValue(target)} is ${beatsPhrase(target.units)}. Add each sum up and keep the one that matches.`],
     feedback: {
       correct: 'Correct!',
-      incorrect: `A ${formatValue(target)} is ${BEATS_BY_UNITS[target.units]}. Each dot adds half of what came before it.`,
+      incorrect: `A ${formatValue(target)} is ${beatsPhrase(target.units)}. Each dot adds half of what came before it.`,
       by_distractor: Object.fromEntries(
         wrongTargets.map((t) => [
           sumLabel(t),
-          `That sum comes to ${BEATS_BY_UNITS[t.units]}, which is a ${formatValue(t)}. A ${formatValue(target)} is ${BEATS_BY_UNITS[target.units]}.`,
+          `That sum comes to ${beatsPhrase(t.units)}, which is a ${formatValue(t)}. A ${formatValue(target)} is ${beatsPhrase(target.units)}.`,
         ]),
       ),
     },
