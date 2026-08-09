@@ -57,6 +57,10 @@ export interface LaneScreenProps {
   onOpenLane?: (strand: Strand) => void;
   /** Entering a unit. The shell owns the runner, so this screen never renders one. */
   onOpenLesson?: (lesson: Lesson) => void;
+  /** Re-measure this one skill — four questions on its ladder (R7a). The design's
+   *  alternative was a nudge-up/nudge-down slider, which is self-assessment. The
+   *  shell owns the runner, exactly as it does for a lesson. */
+  onRetest?: (strand: Strand) => void;
 }
 
 /** One grade's units for one strand, in authored order.
@@ -103,7 +107,7 @@ function rowState(index: number, stars: 0 | 1 | 2 | 3, frontier: number): UnitSt
   return index === frontier ? 'current' : 'started';
 }
 
-export default function LaneScreen({ strand, initialGrade, onBack, onOpenLane, onOpenLesson }: LaneScreenProps) {
+export default function LaneScreen({ strand, initialGrade, onBack, onOpenLane, onOpenLesson, onRetest }: LaneScreenProps) {
   const { ready, store, revision, clock } = useProgressContext();
   const [picking, setPicking] = useState(false);
   /** null = "wherever the learner is working", recomputed as the store changes.
@@ -235,6 +239,14 @@ export default function LaneScreen({ strand, initialGrade, onBack, onOpenLane, o
         <Pressable testID="lane-other-grades" onPress={() => setPicking((open) => !open)} accessibilityRole="button">
           <Text style={styles.more}>Other grades {picking ? '⌃' : '⌄'}</Text>
         </Pressable>
+
+        {/* Muted, like the grade picker: re-measuring is a correction, not the
+            work. Placement's result screen offers the same action pre-commit. */}
+        {onRetest ? (
+          <Pressable testID="lane-retest" onPress={() => onRetest(strand)} accessibilityRole="button">
+            <Text style={styles.more}>This reading looks wrong — ask me four questions</Text>
+          </Pressable>
+        ) : null}
 
         {picking ? (
           <View style={styles.picker} testID="lane-grade-picker">

@@ -28,6 +28,7 @@ import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import type { Lesson } from '../content/lessons';
+import { LADDER_BUDGET } from '../learn/placement';
 import { useProgressContext } from '../learn/ProgressContext';
 import { TabBar, type TabKey } from '../ui/components/TabBar';
 import { SetRunner } from '../ui/SetRunner';
@@ -37,6 +38,7 @@ import ExamsScreen from './ExamsScreen';
 import { FIRST_STEPS_GRADE, FirstStepsScreen, NEXT_GRADE } from './FirstStepsScreen';
 import LanesScreen from './LanesScreen';
 import LaneScreen from './LaneScreen';
+import { PlacementScreen } from './onboarding/PlacementScreen';
 import PracticeScreen from './PracticeScreen';
 import ProfileScreen from './ProfileScreen';
 
@@ -47,7 +49,7 @@ export interface AppShellProps {
 }
 
 export default function AppShell({ initialLane }: AppShellProps = {}) {
-  const { grade, markNudgeSeen, setGrade } = useProgressContext();
+  const { grade, markNudgeSeen, setGrade, commitRetest, reserveSeq } = useProgressContext();
   const [tab, setTab] = useState<TabKey>('learn');
   /** The Learn pane: null is the lane list, a strand is that lane's detail. */
   const [lane, setLane] = useState<Strand | null>(initialLane ?? null);
@@ -57,11 +59,14 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [accountFlow, setAccountFlow] = useState(false);
   const [examImmersive, setExamImmersive] = useState(false);
+  /** The strand being re-measured (R7a), and the seed offset for its draw. Held
+   *  together so one state change opens the overlay and varies the items. */
+  const [retest, setRetest] = useState<{ strand: Strand; seedBase: number } | null>(null);
 
-  // The working grade still follows the unit being entered, as it did on the level
-  // map (fyu.3). Nothing RENDERS `profile.grade` any more — U8 took Profile's last
-  // three grade surfaces out — but onboarding still seeds it and U12 owns the field
-  // itself, so the write stays until then.
+  // The working grade still follows the unit being entered (fyu.3). Nothing RENDERS
+  // `profile.grade` — U8 took Profile's last three grade surfaces out — but it is
+  // the routing sentinel that puts a grade-0 learner in First steps below, so the
+  // field and this write both stay.
   const openLesson = async (next: Lesson) => {
     await setGrade(next.grade);
     setLesson(next);
@@ -110,6 +115,35 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
     );
   }
 
+  // Re-measuring one skill (R7a) — the same runner onboarding used, in ladder mode.
+  // Full-pane with no tab bar, like a running set: four questions is a measurement,
+  // and a tab out mid-ladder would leave a half-walked strand.
+  if (retest) {
+    const done = () => {
+      setRetest(null);
+      setLane(retest.strand);
+      setTab('learn');
+    };
+    return (
+      <View style={styles.shell} testID="app-shell">
+        <View style={styles.pane}>
+          <PlacementScreen
+            retestStrand={retest.strand}
+            seedBase={retest.seedBase}
+            onSkip={done}
+            onDone={async (staged) => {
+              const seed = staged[retest.strand];
+              // A walk can resolve without stamping. No seed means no write — the
+              // depth simply stands, which beats a crash on an absent key.
+              if (seed) await commitRetest(retest.strand, seed);
+              done();
+            }}
+          />
+        </View>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.shell} testID="app-shell">
       <View style={styles.pane}>
@@ -136,6 +170,9 @@ export default function AppShell({ initialLane }: AppShellProps = {}) {
               }}
               onOpenLane={(next) => openLane(next)}
               onOpenLesson={openLesson}
+              // Monotonic, so consecutive re-tests of one strand never redraw the
+              // identical item. Reserving writes nothing.
+              onRetest={(s) => setRetest({ strand: s, seedBase: reserveSeq() * LADDER_BUDGET })}
             />
           ))}
         {tab === 'practice' && <PracticeScreen />}

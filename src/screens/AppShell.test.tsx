@@ -12,6 +12,7 @@ jest.mock('react-native-webview', () => {
 import { act, fireEvent, render, waitFor } from '@testing-library/react-native';
 
 import { buildExamPaper } from '../learn/exam';
+import { LADDER_BUDGET } from '../learn/placement';
 import { ProgressStore } from '../learn/store';
 import { ProgressProvider } from '../learn/ProgressContext';
 import type { SnapshotStorage } from '../learn/store';
@@ -284,5 +285,105 @@ describe('AppShell — the Learn tab at grade 0 is First steps, not the seven la
       fireEvent.press(getByTestId('tab-practice'));
     });
     expect(getByTestId('practice-screen')).toBeTruthy();
+  });
+});
+
+// R7a — re-measuring one skill after onboarding. The shell owns the runner, as it
+// does for a lesson, so `LaneScreen` stays a navigator. The write must go through
+// `commitRetest`: `commitOnboarding` also writes a profile and assumes a full
+// vector, so reusing it would silently reset the learner's other six lanes.
+describe('AppShell — the per-lane re-test (R7a)', () => {
+  /** Answer whatever interaction the ladder serves. Placement is wider than MCQ. */
+  async function answerCurrentItem(api: ReturnType<typeof render>) {
+    const { queryByTestId, getByTestId } = api;
+    if (queryByTestId('mcq')) await act(async () => fireEvent.press(getByTestId('option-0')));
+    else if (queryByTestId('find-the-bar')) await act(async () => fireEvent.press(getByTestId('bar-1')));
+    else if (queryByTestId('roman-numeral-boxes')) await act(async () => fireEvent.press(getByTestId('roman-numeral-I')));
+    else throw new Error('the re-test served an interaction this helper cannot answer');
+    await act(async () => fireEvent.press(getByTestId('check')));
+    await act(async () => fireEvent.press(getByTestId('feedback-sheet-continue')));
+  }
+
+  /** Walk the ladder to its end. It usually stops short of LADDER_BUDGET — the
+   *  never-revisit rule resolves a walk early — so this is bounded, not counted. */
+  async function walkLadder(api: ReturnType<typeof render>) {
+    for (let i = 0; i < LADDER_BUDGET; i++) {
+      if (api.queryByTestId('lane-screen')) return;
+      await answerCurrentItem(api);
+    }
+    await api.findByTestId('lane-screen');
+  }
+
+  async function openRetest(api: ReturnType<typeof render>) {
+    await api.findByTestId('lanes-screen');
+    await act(async () => fireEvent.press(api.getByTestId('lane-row-pitch')));
+    await api.findByTestId('lane-screen');
+    await act(async () => fireEvent.press(api.getByTestId('lane-retest')));
+    await api.findByTestId('placement-item');
+  }
+
+  test('a lane offers the re-test, and it opens the ladder runner', async () => {
+    const api = renderShell();
+    await openRetest(api);
+
+    // A re-test goes straight to its question — the expectation screen is for a
+    // first pass, and re-explaining a deliberate choice is furniture.
+    expect(api.queryByTestId('placement-intro')).toBeNull();
+    // "~4" because the never-revisit rule usually stops a short ladder early.
+    expect(api.getByTestId('placement-counter')).toHaveTextContent('1/~4');
+  });
+
+  test('the tab bar is hidden while the ladder runs', async () => {
+    const api = renderShell();
+    await api.findByTestId('lanes-screen');
+    expect(api.getByTestId('tab-bar')).toBeTruthy();
+
+    await openRetest(api);
+    expect(api.queryByTestId('tab-bar')).toBeNull();
+  });
+
+  test('cancelling returns to the same lane and writes nothing', async () => {
+    const storage = memoryStorage();
+    const api = render(
+      <ProgressProvider storage={storage}>
+        <AppShell />
+      </ProgressProvider>,
+    );
+    await openRetest(api);
+    await act(async () => fireEvent.press(api.getByTestId('placement-close')));
+
+    await api.findByTestId('lane-screen');
+    expect(api.getByTestId('lane-heading').props.children).toBe('Pitch & Notation');
+    expect(storage.blob).toBeNull();
+  });
+
+  test('completing the ladder writes one seeded depth and returns to the lane', async () => {
+    const storage = memoryStorage();
+    const api = render(
+      <ProgressProvider storage={storage}>
+        <AppShell />
+      </ProgressProvider>,
+    );
+    await openRetest(api);
+
+    await walkLadder(api);
+
+    const seeded = new ProgressStore(JSON.parse(storage.blob as string)).allSeededDepths();
+    expect(Object.keys(seeded)).toEqual(['pitch']);
+  });
+
+  // commitOnboarding would also stamp a profile. A re-test is not an onboarding.
+  test('the re-test leaves the profile untouched', async () => {
+    const storage = memoryStorage();
+    const api = render(
+      <ProgressProvider storage={storage}>
+        <AppShell />
+      </ProgressProvider>,
+    );
+    await openRetest(api);
+
+    await walkLadder(api);
+
+    expect(new ProgressStore(JSON.parse(storage.blob as string)).getProfile()).toBeNull();
   });
 });
