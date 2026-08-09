@@ -1,34 +1,50 @@
-// First-run router (U7). The new onboarding journey (design "First-run journey"):
-// Welcome → grade select → your plan → coached warm-up → landed → the grade home
-// (level map). No age gate on the primary path — it moves to account creation (6b),
-// which isn't built (plan KTD1/KTD4; AgeGateScreen + age.ts are parked for it).
+// First-run router (U11). The journey is now MEASURED, not asked:
+// Welcome → placement (A1/A2) → result (7c) → your plan → coached warm-up →
+// landed → the seven-lane Learn tab. Declining the questions detours through the
+// skip screen, which asks only where to begin.
+//
+// No age gate on the primary path — it moves to account creation (6b), which
+// isn't built (plan KTD1/KTD4; AgeGateScreen + age.ts are parked for it).
 //
 // The whole journey is local `step` state — no extra expo-router routes / deep
 // links. While progress is loading it renders nothing (splash stays up) so a
-// returning user never flashes Welcome (A7). Continue on Landing is the single
-// transition that persists the profile (selected grade), flipping isOnboarded via
-// real state so this falls through to the level map (KTD5).
+// returning user never flashes Welcome (A7).
+//
+// ONE PERSISTENCE POINT, and it is Landed (KTD6). Every route stages and none
+// writes early — including skip, which would otherwise be a second commit site.
+// A learner who kills the app mid-journey restarts it. That is the honest
+// consequence of a single write, and it is cheaper than a half-placed store.
 
 import * as Linking from 'expo-linking';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { lessonById } from '../content/lessons';
 import { useProgressContext } from '../learn/ProgressContext';
+import type { SeededDepth } from '../learn/store';
 import { type GemState } from '../ui/components/MasteryGems';
 import { CoachedWarmUp } from '../ui/CoachedWarmUp';
 import type { Strand } from '../ui/theme';
 import { GradeSelectScreen } from './onboarding/GradeSelectScreen';
 import { LandedScreen } from './onboarding/LandedScreen';
+import { PlacementResultScreen } from './onboarding/PlacementResultScreen';
+import { PlacementScreen } from './onboarding/PlacementScreen';
 import { PlanScreen } from './onboarding/PlanScreen';
 import { WelcomeScreen } from './onboarding/WelcomeScreen';
 import AppShell from './AppShell';
 
-type Step = 'welcome' | 'grade' | 'plan' | 'warmup' | 'landed';
+type Step = 'welcome' | 'placement' | 'result' | 'skip' | 'plan' | 'warmup' | 'landed';
+
+/** How the learner arrived at Plan, and therefore what gets committed. A boolean
+ *  cannot carry it: skipping has two outcomes and they write different grades. */
+type Destination = { kind: 'placed' } | { kind: 'skipped'; grade: 0 | 1 };
 
 export default function RootRouter() {
-  const { ready, isOnboarded, completeOnboarding, seedTo } = useProgressContext();
+  const { ready, isOnboarded, commitOnboarding, commitSkip, seedTo } = useProgressContext();
   const [step, setStep] = useState<Step>('welcome');
-  const [grade, setGrade] = useState(1);
+  const [staged, setStaged] = useState<Record<string, SeededDepth>>({});
+  const [asked, setAsked] = useState(0);
+  const [destination, setDestination] = useState<Destination>({ kind: 'placed' });
+  const [retest, setRetest] = useState<Strand | null>(null);
   const [gems, setGems] = useState<GemState[]>([]);
 
   // DEV/E2E only (302.5): a `--/?seed=<unitId>` deep link fast-forwards progress so
@@ -61,27 +77,70 @@ export default function RootRouter() {
     }
   }, [url, ready, seeded, seedTo]);
 
+  // Both Landed CTAs commit, and the write is async, so a second tap can land
+  // before `isOnboarded` flips and unmounts the screen. A ref, not state: it must
+  // be true on the very next call, not on the next render.
+  const committing = useRef(false);
+  const finish = useCallback(() => {
+    if (committing.current) return;
+    committing.current = true;
+    const at = new Date().toISOString();
+    void (destination.kind === 'skipped' ? commitSkip(destination.grade, at) : commitOnboarding(staged, at));
+  }, [destination, staged, commitOnboarding, commitSkip]);
+
   if (!ready) return null; // A7: no flash before persisted state is known
 
   if (!isOnboarded) {
     switch (step) {
       case 'welcome':
-        return <WelcomeScreen onStart={() => setStep('grade')} />;
-      case 'grade':
+        return <WelcomeScreen onStart={() => setStep('placement')} />;
+      case 'placement':
         return (
-          <GradeSelectScreen
-            onSelectGrade={(g) => {
-              setGrade(g);
+          <PlacementScreen
+            // Remounting on a re-test restarts the runner on that strand's ladder.
+            key={retest ?? 'mixed'}
+            retestStrand={retest ?? undefined}
+            seedBase={retest ? asked : 0}
+            onDone={(measured, count) => {
+              setStaged((prev) => ({ ...prev, ...measured }));
+              setAsked((prev) => prev + count);
+              setRetest(null);
+              setStep('result');
+            }}
+            onSkip={retest ? undefined : () => setStep('skip')}
+          />
+        );
+      case 'result':
+        return (
+          <PlacementResultScreen
+            staged={staged}
+            asked={asked}
+            onRetest={(strand) => {
+              setRetest(strand);
+              setStep('placement');
+            }}
+            onAccept={() => {
+              setDestination({ kind: 'placed' });
               setStep('plan');
             }}
           />
         );
+      case 'skip':
+        return (
+          <GradeSelectScreen
+            onSelectGrade={(grade) => {
+              setDestination({ kind: 'skipped', grade });
+              setStep('plan');
+            }}
+            onBack={() => setStep('placement')}
+          />
+        );
       case 'plan':
-        return <PlanScreen grade={grade} onStartWarmUp={() => setStep('warmup')} />;
+        return <PlanScreen firstSteps={isFirstSteps(destination)} onStartWarmUp={() => setStep('warmup')} />;
       case 'warmup':
         return (
           <CoachedWarmUp
-            grade={grade}
+            grade={isFirstSteps(destination) ? 0 : null}
             onComplete={(earned) => {
               setGems(earned);
               setStep('landed');
@@ -89,12 +148,15 @@ export default function RootRouter() {
             onClose={() => setStep('plan')}
           />
         );
-      case 'landed': {
-        // Both CTAs mark the guest onboarded; completeOnboarding persists the grade
-        // and bumps context revision → isOnboarded flips → level map (grade home).
-        const finish = () => completeOnboarding(grade, new Date().toISOString());
-        return <LandedScreen onContinue={finish} onExplore={finish} gems={gems} grade={grade} />;
-      }
+      case 'landed':
+        return (
+          <LandedScreen
+            onContinue={finish}
+            onExplore={finish}
+            gems={gems}
+            grade={isFirstSteps(destination) ? 0 : null}
+          />
+        );
     }
   }
 
@@ -102,4 +164,8 @@ export default function RootRouter() {
   // lanes (7a). Keyed on the seed lane so a deep link that resolves AFTER the shell
   // has mounted still opens the right lane rather than being ignored.
   return <AppShell key={seedLane ?? 'root'} initialLane={seedLane ?? undefined} />;
+}
+
+function isFirstSteps(destination: Destination): boolean {
+  return destination.kind === 'skipped' && destination.grade === 0;
 }

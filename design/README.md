@@ -537,3 +537,25 @@ No fold moves a value by more than 2px, with one stated exception: three
 `paddingBottom` values on scrolling containers (30, 32) fold to
 `--space-screen-bottom` 24.
 
+
+### Placement replaced the grade ladder, so two 2026-08-06 rulings lose their subject · approved 2026-08-09
+
+R1 landed: onboarding measures seven strand depths instead of asking for one grade
+(design 7c and A1/A2). `GradeSelectScreen` is no longer the setup question — it is
+the destination of placement's "Skip — start from the beginning", and it offers two
+starting points, not five rungs.
+
+Two earlier rulings on this page describe cards that no longer exist. Neither is
+overturned; both are preserved by construction, and this note records why they
+stop being enforceable rather than letting them read as silently ignored.
+
+1. **"First steps sits above the grade ladder, not inside it"** (2026-08-06) — there
+   is no ladder left to sit inside. First steps now leads a two-item choice and is
+   preselected, because "the beginning" is the alphabet and the stave, not Grade 1.
+2. **"The grade cards are numbered, in one accent"** (2026-08-06) — the numerals
+   went with the rungs they identified. The accent still means "selected", and it
+   still appears exactly once per screen.
+
+Grade 1 stays as the second choice. A learner who reads music but declined to be
+measured is not a First-steps learner, and placement's own copy would be a lie if
+skipping had only one outcome.

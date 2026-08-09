@@ -8,13 +8,15 @@
 
 import { StyleSheet, Text, View } from 'react-native';
 
-import { LEVELS } from '../../content/levels';
 import { warmUpFor } from '../../learn/warm-up';
 import { Button } from '../../ui/components/Button';
 import { colors, shape, type } from '../../ui/theme';
 
 export interface PlanScreenProps {
-  grade: number;
+  /** Which ending the third card describes. Under R1 there is no grade to name
+   *  here — placement seeds seven depths — so the one thing this screen still
+   *  needs to know is whether the learner is inside the exam ladder or below it. */
+  firstSteps: boolean;
   onStartWarmUp: () => void;
 }
 
@@ -37,11 +39,11 @@ const HANDOFF_CARD = {
   body: 'No exam here — when these five are done, Grade 1 picks up right where they leave off.',
 } as const;
 
-export function PlanScreen({ grade, onStartWarmUp }: PlanScreenProps) {
+export function PlanScreen({ firstSteps, onStartWarmUp }: PlanScreenProps) {
   // The title, never the number — "Grade 0" is the words the naming decision forbids.
-  const level = LEVELS.find((l) => l.grade === grade);
-  const name = level?.title ?? `Grade ${grade}`;
-  const cards = [...PLAN_CARDS, level?.examGate ? EXAM_CARD : HANDOFF_CARD];
+  const name = firstSteps ? 'First steps' : 'Chromaticly';
+  const cards = [...PLAN_CARDS, firstSteps ? HANDOFF_CARD : EXAM_CARD];
+  const warmUp = warmUpFor(firstSteps ? 0 : null);
 
   return (
     <View style={styles.container} testID="plan-screen">
@@ -61,7 +63,7 @@ export function PlanScreen({ grade, onStartWarmUp }: PlanScreenProps) {
 
       <View style={styles.warmupBlock}>
         <Text style={styles.overline}>First up · 2 min</Text>
-        <Text style={styles.warmupTitle}>{warmUpFor(grade).title}</Text>
+        <Text style={styles.warmupTitle}>{warmUp.title}</Text>
         <Text style={styles.warmupBody}>3 quick questions to draw your first mastery point.</Text>
       </View>
 

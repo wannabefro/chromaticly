@@ -1,45 +1,42 @@
-// Grade select (design screen 5a): the ONLY setup question (R2). Grade pills are
-// the fast path; the placement quiz is a deferred branch (shown disabled). A grade
-// is selectable once levels.ts gives it units, so onboarding never persists an
-// ungenerated grade. The reassurance line ("switch any time") kills choice anxiety
-// per the design annotation.
+// The skip destination (R1, design 7c). Reached only from placement's "Skip —
+// start from the beginning", so it asks WHERE to begin, not WHICH grade.
 //
-// First steps leads the list as a set-apart lead-in card, never as a sixth rung —
-// design/README.md, "First steps sits above the grade ladder, not inside it". The
-// grade numerals are what make that visible: the five are numbered rungs and it
-// is not. See "The grade cards are numbered, in one accent" in the same file.
+// The five numbered pills are gone. Under R1 there is no single current grade to
+// pick — placement seeds seven independent depths, and a learner who declines it
+// is choosing between two starting points, not five rungs. First steps leads and
+// is preselected: "the beginning" is the alphabet and the stave, not Grade 1.
+//
+// Grade 1 stays as the second choice because a learner who reads music but
+// declined to be measured is not a First-steps learner. Continue is always
+// enabled, so this screen can never trap anyone.
+//
+// Nothing here writes. The choice is staged and committed at Landed with
+// everything else (KTD6).
 
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { isStartableGrade, LEVELS } from '../../content/levels';
-import { placeableStrands } from '../../learn/placement';
 import { Button } from '../../ui/components/Button';
 import { ACCENT, colors, shape, type } from '../../ui/theme';
 
 export interface GradeSelectScreenProps {
-  onSelectGrade: (grade: number) => void;
+  /** 0 for First steps, 1 for the grade ladder's first rung. */
+  onSelectGrade: (grade: 0 | 1) => void;
+  /** Back to the placement pass. */
+  onBack?: () => void;
 }
 
-/** Verbatim from design 5a for grades 1-5. Each names content that exists —
- *  melodic-minor-3, chromatic-scale-4, alto-reading-4, tenor-reading-5,
- *  cadences-5, satb-voice-5. Grade 0 names its own, and states "no exam", which
- *  is the structural fact separating it from the five. */
-const GRADE_DESCRIPTORS: Record<number, string> = {
-  0: 'New to reading music — pulse, letters, the stave. No exam.',
-  1: 'The basics — note values, simple time',
-  2: 'New keys, triplets, more intervals',
-  3: 'Compound time, melodic minor',
-  4: 'Chromatic scales, alto clef',
-  5: 'The gateway exam — harmony, tenor clef',
-};
+interface StartPoint {
+  grade: 0 | 1;
+  title: string;
+  descriptor: string;
+}
 
-const STARTER_LEVELS = LEVELS.filter((l) => l.grade < 1);
-const GRADED_LEVELS = LEVELS.filter((l) => l.grade >= 1);
-
-/** Grade 1, not First steps. A default that drops every tap-through learner into
- *  the beginner level is worse than one that misses a beginner (design ruling). */
-const DEFAULT_GRADE = GRADED_LEVELS.find((l) => isStartableGrade(l.grade))?.grade ?? 1;
+/** Verbatim from design 5a, minus the four rungs the ladder no longer lists. */
+const START_POINTS: StartPoint[] = [
+  { grade: 0, title: 'First steps', descriptor: 'New to reading music — pulse, letters, the stave. No exam.' },
+  { grade: 1, title: 'Grade 1', descriptor: 'I read music already — note values, simple time' },
+];
 
 /** The system's signature staff-line motif, drawn rather than tiled — RN has no
  *  repeating-linear-gradient. Decorative only, so it stays out of the a11y tree. */
@@ -53,84 +50,49 @@ function StaffLines() {
   );
 }
 
-export function GradeSelectScreen({ onSelectGrade }: GradeSelectScreenProps) {
-  // Default-select so the primary CTA is immediately actionable (keeps the <90s
-  // path fast); locked grades can't become selected.
-  const [selectedGrade, setSelectedGrade] = useState<number>(DEFAULT_GRADE);
-  const selectedLevel = LEVELS.find((l) => l.grade === selectedGrade);
+export function GradeSelectScreen({ onSelectGrade, onBack }: GradeSelectScreenProps) {
+  const [selected, setSelected] = useState<0 | 1>(0);
+  const chosen = START_POINTS.find((p) => p.grade === selected) ?? START_POINTS[0];
 
   return (
     <View style={styles.container} testID="grade-select-screen">
       <View style={styles.head}>
-        <Text style={styles.overline}>1 of 1 — that&apos;s the whole setup</Text>
+        <Text style={styles.overline}>No test — your call</Text>
         <Text style={styles.title}>Where should we start?</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.pills}>
-        {STARTER_LEVELS.map((level) => {
-          const selected = level.grade === selectedGrade;
+        {START_POINTS.map((point) => {
+          const isSelected = point.grade === selected;
           return (
             <Pressable
-              key={level.id}
-              testID={`grade-pill-${level.grade}`}
-              onPress={() => setSelectedGrade(level.grade)}
-              style={[styles.pill, styles.starter, selected && styles.pillSelected]}
+              key={point.grade}
+              testID={`start-point-${point.grade}`}
+              accessibilityRole="radio"
+              accessibilityState={{ selected: isSelected }}
+              onPress={() => setSelected(point.grade)}
+              style={[styles.pill, isSelected && styles.pillSelected]}
             >
               <StaffLines />
               <View style={styles.pillTextBlock}>
-                <Text style={[styles.pillGrade, styles.pillGradeSelected]}>{level.title}</Text>
-                <Text style={styles.pillDescriptor}>{GRADE_DESCRIPTORS[level.grade]}</Text>
+                <Text style={[styles.pillGrade, isSelected && styles.pillGradeSelected]}>{point.title}</Text>
+                <Text style={styles.pillDescriptor}>{point.descriptor}</Text>
               </View>
             </Pressable>
           );
         })}
-
-        {STARTER_LEVELS.length > 0 && <Text style={styles.groupLabel}>or pick your grade</Text>}
-
-        {GRADED_LEVELS.map((level) => {
-          const selectable = isStartableGrade(level.grade);
-          const selected = selectable && level.grade === selectedGrade;
-          return (
-            <Pressable
-              key={level.id}
-              testID={`grade-pill-${level.grade}`}
-              disabled={!selectable}
-              onPress={() => setSelectedGrade(level.grade)}
-              style={[styles.pill, styles.graded, selected && styles.pillSelected, !selectable && styles.pillLocked]}
-            >
-              {/* The numeral identifies the rung; the accent states which one is
-                  chosen. Two jobs, two devices — 5a gave each badge its own hue,
-                  which spends the screen's one accent five times to say nothing. */}
-              <View style={[styles.badge, selected && styles.badgeSelected]}>
-                <Text style={[styles.badgeNumeral, selected && styles.badgeNumeralSelected]}>{level.grade}</Text>
-              </View>
-              <View style={styles.pillTextBlock}>
-                <Text style={[styles.pillGrade, selected && styles.pillGradeSelected]}>{level.title}</Text>
-                <Text style={styles.pillDescriptor}>{GRADE_DESCRIPTORS[level.grade]}</Text>
-              </View>
-              {!selectable && <Text style={styles.comingSoon}>Coming soon</Text>}
-            </Pressable>
-          );
-        })}
-
-        <Pressable testID="placement-quiz" disabled style={styles.quiz}>
-          <Text style={styles.quizLabel}>Not sure? Take the placement quiz</Text>
-          {/* Derived, per the 7c ruling — it stays true when a strand gains a lesson. */}
-          <Text style={styles.quizMeta}>
-            {placeableStrands().length} questions · ~3 min · recommends a grade · coming soon
-          </Text>
-        </Pressable>
       </ScrollView>
 
       <View style={styles.footer}>
-        <Text style={styles.reassurance}>You can switch any time in Profile.</Text>
+        <Text style={styles.reassurance}>Every grade stays one tap away. Nothing here locks.</Text>
         {/* The title, never the number — "Start Grade 0" would print the words the
             naming decision forbids. */}
-        <Button
-          label={`Start ${selectedLevel?.title ?? `Grade ${selectedGrade}`}`}
-          onPress={() => onSelectGrade(selectedGrade)}
-          testID="start-grade"
-        />
+        <Button label={`Start ${chosen.title}`} onPress={() => onSelectGrade(selected)} testID="start-grade" />
+        {onBack && (
+          <Pressable testID="grade-select-back" onPress={onBack} style={styles.back}>
+            <Text style={styles.backLabel}>Back — I&rsquo;ll take the questions</Text>
+          </Pressable>
+        )}
       </View>
     </View>
   );
@@ -165,36 +127,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderRadius: shape.radiusCard,
+    borderRadius: shape.radiusCardLg,
     borderWidth: shape.borderW,
-    borderColor: colors.border,
+    borderColor: colors.borderStrong,
     backgroundColor: colors.surfaceCard,
     paddingVertical: shape.spaceCard,
     paddingHorizontal: shape.spaceCard,
     minHeight: shape.tapMin,
+    overflow: 'hidden',
   },
   pillSelected: {
     borderWidth: shape.borderWActive,
     borderColor: ACCENT,
     backgroundColor: colors.surfaceCardSunken,
   },
-  pillLocked: { opacity: 0.4 },
-  graded: { gap: shape.spaceInline },
-  // 34pt at radius 10, the numbers design 5a states. Neutral at rest, so the
-  // accent appears exactly once on the screen — on the card that is chosen.
-  badge: {
-    width: 34,
-    height: 34,
-    borderRadius: 10,
-    backgroundColor: colors.surfaceCardSunken,
-    borderWidth: shape.borderW,
-    borderColor: colors.borderStrong,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  badgeSelected: { backgroundColor: ACCENT, borderColor: ACCENT },
-  badgeNumeral: { ...type.option, color: colors.textFaint },
-  badgeNumeralSelected: { color: 'rgba(0,0,0,0.82)' },
   pillTextBlock: { flex: 1, gap: shape.spaceHairline },
   pillGrade: {
     fontFamily: type.option.fontFamily,
@@ -209,12 +155,6 @@ const styles = StyleSheet.create({
     lineHeight: type.body.lineHeight,
     color: colors.textFaint,
   },
-  // Set apart by treatment, never by the accent — the accent means "selected" here.
-  starter: {
-    borderRadius: shape.radiusCardLg,
-    borderColor: colors.borderStrong,
-    overflow: 'hidden',
-  },
   staffLines: {
     position: 'absolute',
     top: 0,
@@ -226,44 +166,6 @@ const styles = StyleSheet.create({
     opacity: 0.035,
   },
   staffLine: { height: 1, backgroundColor: colors.text },
-  groupLabel: {
-    fontFamily: type.overline.fontFamily,
-    fontSize: type.overline.fontSize,
-    lineHeight: type.overline.lineHeight,
-    letterSpacing: type.overline.letterSpacing,
-    textTransform: type.overline.textTransform,
-    color: colors.textGhost,
-    marginTop: shape.spaceTight,
-  },
-  comingSoon: {
-    fontFamily: type.label.fontFamily,
-    fontSize: type.label.fontSize,
-    lineHeight: type.label.lineHeight,
-    color: colors.textFaint,
-    marginLeft: shape.spaceInline,
-  },
-  quiz: {
-    borderRadius: shape.radiusCard,
-    borderWidth: shape.borderW,
-    borderColor: colors.border,
-    borderStyle: 'dashed',
-    paddingVertical: shape.spaceCard,
-    paddingHorizontal: shape.spaceCard,
-    gap: shape.spaceHairline,
-    opacity: 0.5,
-  },
-  quizLabel: {
-    fontFamily: type.option.fontFamily,
-    fontSize: type.option.fontSize,
-    lineHeight: type.option.lineHeight,
-    color: colors.textMuted,
-  },
-  quizMeta: {
-    fontFamily: type.body.fontFamily,
-    fontSize: type.body.fontSize,
-    lineHeight: type.body.lineHeight,
-    color: colors.textFaint,
-  },
   footer: { gap: shape.spaceInline },
   reassurance: {
     fontFamily: type.body.fontFamily,
@@ -271,5 +173,12 @@ const styles = StyleSheet.create({
     lineHeight: type.body.lineHeight,
     color: colors.textMuted,
     textAlign: 'center',
+  },
+  back: { alignItems: 'center', minHeight: shape.tapMin, justifyContent: 'center' },
+  backLabel: {
+    fontFamily: type.label.fontFamily,
+    fontSize: type.label.fontSize,
+    lineHeight: type.label.lineHeight,
+    color: colors.textFaint,
   },
 });
