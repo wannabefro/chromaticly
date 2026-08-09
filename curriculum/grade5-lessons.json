@@ -841,6 +841,8 @@
       "title": "Grouping in irregular time",
       "strand": "rhythm",
       "atoms": [
+        "grouping:5/4",
+        "grouping:7/4",
         "grouping:5/8",
         "grouping:7/8"
       ],
@@ -856,12 +858,12 @@
       "teach": {
         "objectives": [
           "An irregular bar has no equal beats, so the beams define the groups",
-          "5/8 is normally grouped 3 + 2 and 7/8 as 3 + 2 + 2",
+          "Five groups as 3 + 2 and seven as 3 + 2 + 2, in 5/4 and 7/4 as well as 5/8 and 7/8",
           "Regrouping the same notes changes how the bar is felt"
         ],
         "concept": {
           "title": "The beams are the metre",
-          "body": "Five and seven do not divide into equal beats, so an irregular bar has to say how it is grouped, and the beams are how it says it. A bar of 5/8 is normally written as a group of three quavers followed by a group of two, and 7/8 as three then two then two. Other readings exist, and a composer who wants 2 + 3 writes the beams that way. That is the point: in irregular time the grouping is not implied by the time signature the way it is in 3/4, so nothing but the beaming tells a player where the accents fall.",
+          "body": "Five and seven do not divide into equal beats, so an irregular bar has to say how it is grouped, and the beams are how it says it. A bar of 5/8 is normally written as a group of three quavers followed by a group of two, and 7/8 as three then two then two. The same shape holds when the beat is a crotchet: this grade sets 5/4 and 7/4 alongside them, grouped 3 + 2 and 3 + 2 + 2 in crotchets. Other readings exist, and a composer who wants 2 + 3 writes the beams that way. That is the point: in irregular time the grouping is not implied by the time signature the way it is in 3/4, so nothing but the beaming tells a player where the accents fall.",
           "example": {
             "template_id": "note_grouping",
             "grade": 5,
@@ -874,6 +876,8 @@
       "unlocks": "irregular-divisions-5",
       "by_ear_source": "note_grouping_metre_id",
       "by_ear_atoms": [
+        "grouping:5/4:by_ear",
+        "grouping:7/4:by_ear",
         "grouping:5/8:by_ear",
         "grouping:7/8:by_ear"
       ]

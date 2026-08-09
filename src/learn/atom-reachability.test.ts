@@ -33,7 +33,10 @@ describe('every credited atom is reachable by review', () => {
     // 755 before the minor-key primary triads, which add 3: chord_minor:I/IV/V.
     // G4 item 4 asks for those chords in ANY key set for the grade; the course
     // had only the major ones (chromaticly-7xv).
-    expect(ALL.length).toBe(845);
+    // 845 before grouping 5/4 and 7/4, which add 4 (two atoms, two by-ear). The
+    // syllabus sets four irregular signatures and asks for the grouping of all
+    // of them; grouping-5 taught only the two /8 ones.
+    expect(ALL.length).toBe(849);
   });
 
   test('every atom routes to a template', () => {

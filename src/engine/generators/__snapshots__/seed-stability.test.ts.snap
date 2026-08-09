@@ -338996,50 +338996,39 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2 + 2",
+      "canonical": "3 + 2",
     },
     "distractors": [
-      "2 + 2 + 3",
-      "7",
+      "2 + 3",
+      "5",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 2 + 3": "A composer may beam 2 + 2 + 3, but the normal grouping of 7/8 is 3 + 2 + 2.",
-        "7": "Beaming the whole bar as one group hides the beat. 7/8 is 3 + 2 + 2.",
+        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
+        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "7/8 normally groups its quavers as 3 + 2 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 7/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s0",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 2 + 3": {
+          "2 + 3": {
             "beam_groups": [
-              1,
               1,
               1.5,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "C3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C3",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "C3",
@@ -339073,23 +339062,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2 + 2": {
+          "3 + 2": {
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "C3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C3",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "C3",
@@ -339123,26 +339102,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "7": {
+          "5": {
             "beam_groups": [
-              3.5,
+              2.5,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "C3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C3",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "C3",
@@ -339181,13 +339150,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 7/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": null,
-      "text": "7/8",
+      "text": "5/8",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -339195,50 +339164,39 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2 + 2",
+      "canonical": "3 + 2",
     },
     "distractors": [
-      "2 + 2 + 3",
-      "7",
+      "2 + 3",
+      "5",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 2 + 3": "A composer may beam 2 + 2 + 3, but the normal grouping of 7/8 is 3 + 2 + 2.",
-        "7": "Beaming the whole bar as one group hides the beat. 7/8 is 3 + 2 + 2.",
+        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
+        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "7/8 normally groups its quavers as 3 + 2 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 7/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s1",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 2 + 3": {
+          "2 + 3": {
             "beam_groups": [
-              1,
               1,
               1.5,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B4",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "B4",
@@ -339272,23 +339230,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2 + 2": {
+          "3 + 2": {
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B4",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "B4",
@@ -339322,26 +339270,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "7": {
+          "5": {
             "beam_groups": [
-              3.5,
+              2.5,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B4",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "B4",
@@ -339380,13 +339318,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 7/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": null,
-      "text": "7/8",
+      "text": "5/8",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -339394,50 +339332,39 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2 + 2",
+      "canonical": "3 + 2",
     },
     "distractors": [
-      "2 + 2 + 3",
-      "7",
+      "2 + 3",
+      "5",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 2 + 3": "A composer may beam 2 + 2 + 3, but the normal grouping of 7/8 is 3 + 2 + 2.",
-        "7": "Beaming the whole bar as one group hides the beat. 7/8 is 3 + 2 + 2.",
+        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
+        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "7/8 normally groups its quavers as 3 + 2 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 7/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s2",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 2 + 3": {
+          "2 + 3": {
             "beam_groups": [
-              1,
               1,
               1.5,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "D2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "D2",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "D2",
@@ -339471,23 +339398,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2 + 2": {
+          "3 + 2": {
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "D2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "D2",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "D2",
@@ -339521,26 +339438,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "7": {
+          "5": {
             "beam_groups": [
-              3.5,
+              2.5,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "D2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "D2",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "D2",
@@ -339579,13 +339486,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 7/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": null,
-      "text": "7/8",
+      "text": "5/8",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -339593,39 +339500,67 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 6",
+      "2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2, but the normal grouping of 5/4 is 6 + 4.",
+        "4 + 6": "A composer may beam 4 + 6, but the normal grouping of 5/4 is 6 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/4 normally groups its quavers as 6 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s3",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "5/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "B2",
@@ -339659,56 +339594,107 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "bass",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              3,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "5/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": "5/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "B2",
@@ -339747,13 +339733,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:5/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "5/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -339761,50 +339747,39 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2 + 2",
+      "canonical": "3 + 2",
     },
     "distractors": [
-      "2 + 2 + 3",
-      "7",
+      "2 + 3",
+      "5",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 2 + 3": "A composer may beam 2 + 2 + 3, but the normal grouping of 7/8 is 3 + 2 + 2.",
-        "7": "Beaming the whole bar as one group hides the beat. 7/8 is 3 + 2 + 2.",
+        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
+        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "7/8 normally groups its quavers as 3 + 2 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 7/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s4",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 2 + 3": {
+          "2 + 3": {
             "beam_groups": [
-              1,
               1,
               1.5,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "D3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "D3",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "D3",
@@ -339838,23 +339813,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2 + 2": {
+          "3 + 2": {
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "D3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "D3",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "D3",
@@ -339888,26 +339853,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "7": {
+          "5": {
             "beam_groups": [
-              3.5,
+              2.5,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "D3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "D3",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "D3",
@@ -339946,13 +339901,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 7/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": null,
-      "text": "7/8",
+      "text": "5/8",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -339960,39 +339915,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s5",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E2",
@@ -340026,56 +340031,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "bass",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E2",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E2",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E2",
@@ -340114,13 +340211,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -340128,39 +340225,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s6",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "C4",
@@ -340194,56 +340341,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "tenor",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "C4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C4",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "tenor",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "C4",
@@ -340282,13 +340521,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -340296,39 +340535,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s7",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "A4",
@@ -340362,56 +340651,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "alto",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "A4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "A4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "A4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "A4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "A4",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "alto",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "A4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "A4",
@@ -340450,13 +340831,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -340464,39 +340845,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s8",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "B3",
@@ -340530,56 +340961,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "alto",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "alto",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B3",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "B3",
@@ -340618,13 +341141,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -341030,50 +341553,39 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2 + 2",
+      "canonical": "3 + 2",
     },
     "distractors": [
-      "2 + 2 + 3",
-      "7",
+      "2 + 3",
+      "5",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 2 + 3": "A composer may beam 2 + 2 + 3, but the normal grouping of 7/8 is 3 + 2 + 2.",
-        "7": "Beaming the whole bar as one group hides the beat. 7/8 is 3 + 2 + 2.",
+        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
+        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "7/8 normally groups its quavers as 3 + 2 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 7/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s11",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 2 + 3": {
+          "2 + 3": {
             "beam_groups": [
-              1,
               1,
               1.5,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "E5",
@@ -341107,23 +341619,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2 + 2": {
+          "3 + 2": {
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "E5",
@@ -341157,26 +341659,16 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "7": {
+          "5": {
             "beam_groups": [
-              3.5,
+              2.5,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "7/8",
+            "time_sig": "5/8",
             "voices": [
               {
                 "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
                   {
                     "dur": "quaver",
                     "pitch": "E5",
@@ -341215,13 +341707,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 7/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": null,
-      "text": "7/8",
+      "text": "5/8",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -341229,39 +341721,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s12",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E4",
@@ -341295,56 +341837,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "bass",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "bass",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "bass",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E4",
@@ -341383,13 +342017,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -341397,39 +342031,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s13",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "treble",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "C6",
@@ -341463,56 +342147,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "treble",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "C6",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C6",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C6",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C6",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "C6",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "treble",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C6",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "C6",
@@ -341551,13 +342327,323 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
+    },
+    "strand": "rhythm",
+    "template_id": "note_grouping",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "6 + 4 + 4",
+    },
+    "distractors": [
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
+      },
+      "correct": "Correct!",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
+    },
+    "grade": 5,
+    "hints": [
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
+    ],
+    "id": "note_grouping:g5:s14",
+    "interaction": {
+      "config": {
+        "option_music": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
+            "beam_groups": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+            ],
+            "clef": "alto",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "4 + 4 + 6": {
+            "beam_groups": [
+              2,
+              2,
+              3,
+            ],
+            "clef": "alto",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "alto",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "C3",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
+    "srs_tags": [
+      "grouping:7/4",
+    ],
+    "stimulus": {
+      "music": null,
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -341583,7 +342669,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "hints": [
       "Work out how many quavers fill one group of 5/8. The beams show the beats.",
     ],
-    "id": "note_grouping:g5:s14",
+    "id": "note_grouping:g5:s15",
     "interaction": {
       "config": {
         "option_music": {
@@ -341592,7 +342678,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               1,
               1.5,
             ],
-            "clef": "alto",
+            "clef": "bass",
             "key_sig": null,
             "time_sig": "5/8",
             "voices": [
@@ -341600,27 +342686,27 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
                 "events": [
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
@@ -341632,7 +342718,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             ],
           },
           "3 + 2": {
-            "clef": "alto",
+            "clef": "bass",
             "key_sig": null,
             "time_sig": "5/8",
             "voices": [
@@ -341640,27 +342726,27 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
                 "events": [
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
@@ -341675,7 +342761,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
             "beam_groups": [
               2.5,
             ],
-            "clef": "alto",
+            "clef": "bass",
             "key_sig": null,
             "time_sig": "5/8",
             "voices": [
@@ -341683,27 +342769,27 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
                 "events": [
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
                     "dur": "quaver",
-                    "pitch": "C3",
+                    "pitch": "B3",
                     "type": "note",
                   },
                   {
@@ -341726,205 +342812,6 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "stimulus": {
       "music": null,
       "text": "5/8",
-    },
-    "strand": "rhythm",
-    "template_id": "note_grouping",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "3 + 2 + 2",
-    },
-    "distractors": [
-      "2 + 2 + 3",
-      "7",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "2 + 2 + 3": "A composer may beam 2 + 2 + 3, but the normal grouping of 7/8 is 3 + 2 + 2.",
-        "7": "Beaming the whole bar as one group hides the beat. 7/8 is 3 + 2 + 2.",
-      },
-      "correct": "Correct!",
-      "incorrect": "7/8 normally groups its quavers as 3 + 2 + 2. Beams show the beat, so a reader can see it without counting.",
-    },
-    "grade": 5,
-    "hints": [
-      "Work out how many quavers fill one group of 7/8. The beams show the beats.",
-    ],
-    "id": "note_grouping:g5:s15",
-    "interaction": {
-      "config": {
-        "option_music": {
-          "2 + 2 + 3": {
-            "beam_groups": [
-              1,
-              1,
-              1.5,
-            ],
-            "clef": "bass",
-            "key_sig": null,
-            "time_sig": "7/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "3 + 2 + 2": {
-            "clef": "bass",
-            "key_sig": null,
-            "time_sig": "7/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "7": {
-            "beam_groups": [
-              3.5,
-            ],
-            "clef": "bass",
-            "key_sig": null,
-            "time_sig": "7/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B3",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-        },
-      },
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 7/8 is filled with quavers. Which beaming shows the normal grouping?",
-    "srs_tags": [
-      "grouping:7/8",
-    ],
-    "stimulus": {
-      "music": null,
-      "text": "7/8",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -342131,39 +343018,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s17",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "treble",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E4",
@@ -342197,56 +343134,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "treble",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E4",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "treble",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "treble",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E4",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E4",
@@ -342285,13 +343314,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -342299,39 +343328,67 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 6",
+      "2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2, but the normal grouping of 5/4 is 6 + 4.",
+        "4 + 6": "A composer may beam 4 + 6, but the normal grouping of 5/4 is 6 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "5/4 normally groups its quavers as 6 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 5/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s18",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "5/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "B2",
@@ -342365,56 +343422,107 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "tenor",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "B2",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              3,
             ],
             "clef": "tenor",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "5/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4": {
+            "clef": "tenor",
+            "key_sig": null,
+            "time_sig": "5/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "B2",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "B2",
@@ -342453,13 +343561,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 5/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:5/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "5/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -342467,39 +343575,89 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "3 + 2",
+      "canonical": "6 + 4 + 4",
     },
     "distractors": [
-      "2 + 3",
-      "5",
+      "4 + 4 + 6",
+      "2 + 2 + 2 + 2 + 2 + 2 + 2",
     ],
     "feedback": {
       "by_distractor": {
-        "2 + 3": "A composer may beam 2 + 3, but the normal grouping of 5/8 is 3 + 2.",
-        "5": "Beaming the whole bar as one group hides the beat. 5/8 is 3 + 2.",
+        "2 + 2 + 2 + 2 + 2 + 2 + 2": "A composer may beam 2 + 2 + 2 + 2 + 2 + 2 + 2, but the normal grouping of 7/4 is 6 + 4 + 4.",
+        "4 + 4 + 6": "A composer may beam 4 + 4 + 6, but the normal grouping of 7/4 is 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "5/8 normally groups its quavers as 3 + 2. Beams show the beat, so a reader can see it without counting.",
+      "incorrect": "7/4 normally groups its quavers as 6 + 4 + 4. Beams show the beat, so a reader can see it without counting.",
     },
     "grade": 5,
     "hints": [
-      "Work out how many quavers fill one group of 5/8. The beams show the beats.",
+      "Work out how many quavers fill one group of 7/4. The beams show the beats.",
     ],
     "id": "note_grouping:g5:s19",
     "interaction": {
       "config": {
         "option_music": {
-          "2 + 3": {
+          "2 + 2 + 2 + 2 + 2 + 2 + 2": {
             "beam_groups": [
               1,
-              1.5,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E5",
@@ -342533,56 +343691,148 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               },
             ],
           },
-          "3 + 2": {
-            "clef": "alto",
-            "key_sig": null,
-            "time_sig": "5/8",
-            "voices": [
-              {
-                "events": [
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "dur": "quaver",
-                    "pitch": "E5",
-                    "type": "note",
-                  },
-                  {
-                    "style": "double",
-                    "type": "barline",
-                  },
-                ],
-              },
-            ],
-          },
-          "5": {
+          "4 + 4 + 6": {
             "beam_groups": [
-              2.5,
+              2,
+              2,
+              3,
             ],
             "clef": "alto",
             "key_sig": null,
-            "time_sig": "5/8",
+            "time_sig": "7/4",
             "voices": [
               {
                 "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "style": "double",
+                    "type": "barline",
+                  },
+                ],
+              },
+            ],
+          },
+          "6 + 4 + 4": {
+            "clef": "alto",
+            "key_sig": null,
+            "time_sig": "7/4",
+            "voices": [
+              {
+                "events": [
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
+                  {
+                    "dur": "quaver",
+                    "pitch": "E5",
+                    "type": "note",
+                  },
                   {
                     "dur": "quaver",
                     "pitch": "E5",
@@ -342621,13 +343871,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "A bar of 5/8 is filled with quavers. Which beaming shows the normal grouping?",
+    "prompt": "A bar of 7/4 is filled with quavers. Which beaming shows the normal grouping?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": null,
-      "text": "5/8",
+      "text": "7/4",
     },
     "strand": "rhythm",
     "template_id": "note_grouping",
@@ -342640,19 +343890,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7/8",
+      "canonical": "5/8",
     },
     "distractors": [
+      "2/4",
       "3/4",
-      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
+        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
+        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2 + 2, which is how 7/8 groups them.",
+      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -342666,27 +343916,17 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
         "key_sig": null,
-        "time_sig": "7/8",
+        "time_sig": "5/8",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
               {
                 "dur": "quaver",
                 "pitch": "C3",
@@ -342728,19 +343968,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7/8",
+      "canonical": "5/8",
     },
     "distractors": [
+      "2/4",
       "3/4",
-      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
+        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
+        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2 + 2, which is how 7/8 groups them.",
+      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -342754,27 +343994,17 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": {
         "clef": "tenor",
         "key_sig": null,
-        "time_sig": "7/8",
+        "time_sig": "5/8",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
-              {
-                "dur": "quaver",
-                "pitch": "B4",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "B4",
-                "type": "note",
-              },
               {
                 "dur": "quaver",
                 "pitch": "B4",
@@ -342816,19 +344046,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7/8",
+      "canonical": "5/8",
     },
     "distractors": [
+      "2/4",
       "3/4",
-      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
+        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
+        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2 + 2, which is how 7/8 groups them.",
+      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -342842,27 +344072,17 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
         "key_sig": null,
-        "time_sig": "7/8",
+        "time_sig": "5/8",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
-              {
-                "dur": "quaver",
-                "pitch": "D2",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "D2",
-                "type": "note",
-              },
               {
                 "dur": "quaver",
                 "pitch": "D2",
@@ -342904,19 +344124,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "5/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "9/8",
+      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 6 + 4.",
+        "9/8": "9/8 would beam these quavers as 3 + 3 + 3. This bar is beamed 6 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4, which is how 5/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -342930,17 +344150,42 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:5/4",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "5/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "B2",
@@ -342982,19 +344227,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7/8",
+      "canonical": "5/8",
     },
     "distractors": [
+      "2/4",
       "3/4",
-      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
+        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
+        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2 + 2, which is how 7/8 groups them.",
+      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343008,27 +344253,17 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": {
         "clef": "tenor",
         "key_sig": null,
-        "time_sig": "7/8",
+        "time_sig": "5/8",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
-              {
-                "dur": "quaver",
-                "pitch": "D3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "D3",
-                "type": "note",
-              },
               {
                 "dur": "quaver",
                 "pitch": "D3",
@@ -343070,19 +344305,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343096,17 +344331,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E2",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "E2",
@@ -343148,19 +344428,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343174,17 +344454,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "tenor",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C4",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "C4",
@@ -343226,19 +344551,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343252,17 +344577,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "A4",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "A4",
@@ -343304,19 +344674,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343330,17 +344700,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B3",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "B3",
@@ -343558,19 +344973,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "7/8",
+      "canonical": "5/8",
     },
     "distractors": [
+      "2/4",
       "3/4",
-      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
+        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
+        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2 + 2, which is how 7/8 groups them.",
+      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343584,27 +344999,17 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:7/8",
+      "grouping:5/8",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
         "key_sig": null,
-        "time_sig": "7/8",
+        "time_sig": "5/8",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
-              {
-                "dur": "quaver",
-                "pitch": "E5",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "E5",
-                "type": "note",
-              },
               {
                 "dur": "quaver",
                 "pitch": "E5",
@@ -343646,19 +345051,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343672,17 +345077,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "bass",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "E4",
@@ -343724,19 +345174,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -343750,13 +345200,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
@@ -343784,6 +345234,174 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
               {
                 "dur": "quaver",
                 "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C6",
+                "type": "note",
+              },
+              {
+                "style": "double",
+                "type": "barline",
+              },
+            ],
+          },
+        ],
+      },
+      "text": null,
+    },
+    "strand": "rhythm",
+    "template_id": "note_grouping_metre_id",
+  },
+  {
+    "answer": {
+      "accepted_alternatives": [],
+      "canonical": "7/4",
+    },
+    "distractors": [
+      "3/2",
+      "4/2",
+    ],
+    "feedback": {
+      "by_distractor": {
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+      },
+      "correct": "Correct!",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
+    },
+    "grade": 5,
+    "hints": [
+      "Count the quavers inside each beam. The beam groups are the beats.",
+    ],
+    "id": "note_grouping_metre_id:g5:s14",
+    "interaction": {
+      "config": {},
+      "type": "mcq",
+    },
+    "kb_version": "g1-2026-07-10",
+    "prompt": "Read the beams. Which time signature is this bar in?",
+    "srs_tags": [
+      "grouping:7/4",
+    ],
+    "stimulus": {
+      "music": {
+        "clef": "alto",
+        "key_sig": null,
+        "time_sig": "7/4",
+        "time_sig_hidden": true,
+        "voices": [
+          {
+            "events": [
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "C3",
                 "type": "note",
               },
               {
@@ -343820,7 +345438,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "hints": [
       "Count the quavers inside each beam. The beam groups are the beats.",
     ],
-    "id": "note_grouping_metre_id:g5:s14",
+    "id": "note_grouping_metre_id:g5:s15",
     "interaction": {
       "config": {},
       "type": "mcq",
@@ -343832,101 +345450,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "stimulus": {
       "music": {
-        "clef": "alto",
+        "clef": "bass",
         "key_sig": null,
         "time_sig": "5/8",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "C3",
-                "type": "note",
-              },
-              {
-                "style": "double",
-                "type": "barline",
-              },
-            ],
-          },
-        ],
-      },
-      "text": null,
-    },
-    "strand": "rhythm",
-    "template_id": "note_grouping_metre_id",
-  },
-  {
-    "answer": {
-      "accepted_alternatives": [],
-      "canonical": "7/8",
-    },
-    "distractors": [
-      "3/4",
-      "4/4",
-    ],
-    "feedback": {
-      "by_distractor": {
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 3 + 2 + 2.",
-      },
-      "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2 + 2, which is how 7/8 groups them.",
-    },
-    "grade": 5,
-    "hints": [
-      "Count the quavers inside each beam. The beam groups are the beats.",
-    ],
-    "id": "note_grouping_metre_id:g5:s15",
-    "interaction": {
-      "config": {},
-      "type": "mcq",
-    },
-    "kb_version": "g1-2026-07-10",
-    "prompt": "Read the beams. Which time signature is this bar in?",
-    "srs_tags": [
-      "grouping:7/8",
-    ],
-    "stimulus": {
-      "music": {
-        "clef": "bass",
-        "key_sig": null,
-        "time_sig": "7/8",
-        "time_sig_hidden": true,
-        "voices": [
-          {
-            "events": [
-              {
-                "dur": "quaver",
-                "pitch": "B3",
-                "type": "note",
-              },
-              {
-                "dur": "quaver",
-                "pitch": "B3",
-                "type": "note",
-              },
               {
                 "dur": "quaver",
                 "pitch": "B3",
@@ -344056,19 +345586,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -344082,17 +345612,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "treble",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E4",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "E4",
@@ -344134,19 +345709,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "5/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "9/8",
+      "4/4",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "4/4": "4/4 would beam these quavers as 2 + 2 + 2 + 2. This bar is beamed 6 + 4.",
+        "9/8": "9/8 would beam these quavers as 3 + 3 + 3. This bar is beamed 6 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4, which is how 5/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -344160,17 +345735,42 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:5/4",
     ],
     "stimulus": {
       "music": {
         "clef": "tenor",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "5/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "B2",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "B2",
@@ -344212,19 +345812,19 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
   {
     "answer": {
       "accepted_alternatives": [],
-      "canonical": "5/8",
+      "canonical": "7/4",
     },
     "distractors": [
-      "2/4",
-      "3/4",
+      "3/2",
+      "4/2",
     ],
     "feedback": {
       "by_distractor": {
-        "2/4": "2/4 would beam these quavers as 2 + 2. This bar is beamed 3 + 2.",
-        "3/4": "3/4 would beam these quavers as 2 + 2 + 2. This bar is beamed 3 + 2.",
+        "3/2": "3/2 would beam these quavers as 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
+        "4/2": "4/2 would beam these quavers as 4 + 4 + 4 + 4. This bar is beamed 6 + 4 + 4.",
       },
       "correct": "Correct!",
-      "incorrect": "These quavers are beamed 3 + 2, which is how 5/8 groups them.",
+      "incorrect": "These quavers are beamed 6 + 4 + 4, which is how 7/4 groups them.",
     },
     "grade": 5,
     "hints": [
@@ -344238,17 +345838,62 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "kb_version": "g1-2026-07-10",
     "prompt": "Read the beams. Which time signature is this bar in?",
     "srs_tags": [
-      "grouping:5/8",
+      "grouping:7/4",
     ],
     "stimulus": {
       "music": {
         "clef": "alto",
         "key_sig": null,
-        "time_sig": "5/8",
+        "time_sig": "7/4",
         "time_sig_hidden": true,
         "voices": [
           {
             "events": [
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
+              {
+                "dur": "quaver",
+                "pitch": "E5",
+                "type": "note",
+              },
               {
                 "dur": "quaver",
                 "pitch": "E5",
