@@ -138,6 +138,16 @@ export interface UseProgress {
    *  and assumes a full vector. By KTD7 the fresh `seq` takes authority back from
    *  any attempt that preceded it — which is the whole point of a re-test. */
   commitRetest: (strand: string, staged: SeededDepth) => Promise<void>;
+  /** Persist the profile for a learner who SKIPPED placement, seeding nothing.
+   *
+   *  It exists because `commitOnboarding` clamps to 1..5, and must keep doing so:
+   *  an all-zero MEASUREMENT is a reading about seven lanes, not a beginner. A
+   *  skip is the opposite — an unmeasured learner who said where to start — so
+   *  grade 0 has to be writable, and only deliberately. */
+  commitSkip: (grade: 0 | 1, onboardedAt: string) => Promise<void>;
+  /** Reserve the next write-ordering counter without writing (KTD7). Callers
+   *  outside placement need it to vary a re-test's item draw. */
+  reserveSeq: () => number;
   /** Switch the working grade (free grade access, fyu.3). Replaces the profile
    *  with a fresh object that keeps every other field (name, onboardedAt,
    *  birthYear) and only changes `grade`; persists and mirrors to real state so
@@ -277,9 +287,9 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       if (!store) return;
       for (const [strand, seed] of Object.entries(staged)) store.setSeededDepth(strand, seed);
       // The profile grade is clamped, never derived from the vector: R1 says there
-      // is no single current grade, and this field survives only because
-      // onboarding still seeds it (U12 removes it). An all-zero placement must
-      // still write 1, never 0.
+      // is no single current grade, and the field survives as a routing sentinel
+      // (First steps at 0, the working grade a lane opens on). An all-zero
+      // MEASUREMENT must still write 1 — `commitSkip` owns the grade-0 route.
       const highest = Object.values(staged).reduce((max, seed) => (seed.depth > max ? seed.depth : max), 0);
       const next: Profile = { grade: Math.min(5, Math.max(1, highest)), onboardedAt };
       store.setProfile(next);
@@ -302,6 +312,22 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
     },
     [store, storage],
   );
+
+  const commitSkip = useCallback<UseProgress['commitSkip']>(
+    async (grade, onboardedAt) => {
+      if (!store) return;
+      // Written verbatim. Every lane then reads its derived depth, which for an
+      // untouched store is 0 (KTD3).
+      const next: Profile = { grade, onboardedAt };
+      store.setProfile(next);
+      await saveProgress(store, storage);
+      setProfileState(next); // real state → RootRouter reactively sees isOnboarded flip
+      setRevision((r) => r + 1);
+    },
+    [store, storage],
+  );
+
+  const reserveSeq = useCallback<UseProgress['reserveSeq']>(() => store?.reserveSeq() ?? 0, [store]);
 
   const createAccount = useCallback<UseProgress['createAccount']>(
     async (name) => {
@@ -398,6 +424,8 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       stampDepth,
       commitOnboarding,
       commitRetest,
+      commitSkip,
+      reserveSeq,
       setGrade,
       seedTo,
       recordExamResult,
@@ -426,6 +454,8 @@ export function useProgress(storage: SnapshotStorage, lessons: Lesson[], clock: 
       stampDepth,
       commitOnboarding,
       commitRetest,
+      commitSkip,
+      reserveSeq,
       setGrade,
       seedTo,
       recordExamResult,

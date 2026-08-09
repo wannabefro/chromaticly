@@ -385,4 +385,62 @@ describe('useProgress — stamping and committing a placement (G6 U11)', () => {
     const store = result.current.store as ProgressStore;
     expect(store.seededDepthFor('pitch')!.seq).toBeGreaterThan(store.getAtom('x').srs.seq ?? 0);
   });
+
+  test('a depth-5 vector commits grade 5 — the clamp does not cap below the top grade', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.commitOnboarding({ pitch: result.current.stampDepth(5) }, '2026-08-09T00:00:00.000Z');
+
+    expect((result.current.store as ProgressStore).getProfile()?.grade).toBe(5);
+  });
+});
+
+// A skip is not a measurement of zero. commitOnboarding must keep clamping to
+// 1..5 so a measured all-zero learner gets grade-1 lanes at depth 0; commitSkip
+// is the only route to grade 0, which is where First steps lives.
+describe('useProgress — commitSkip: the grade-0 route (2026-08-09 delta plan, finding 3)', () => {
+  test('commitSkip(0) writes grade 0, which First steps routes on', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.commitSkip(0, '2026-08-09T00:00:00.000Z');
+
+    const store = result.current.store as ProgressStore;
+    expect(store.getProfile()?.grade).toBe(0);
+    expect(store.allSeededDepths()).toEqual({});
+  });
+
+  test('commitSkip(1) writes grade 1 and still seeds nothing', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.commitSkip(1, '2026-08-09T00:00:00.000Z');
+
+    const store = result.current.store as ProgressStore;
+    expect(store.getProfile()?.grade).toBe(1);
+    expect(store.allSeededDepths()).toEqual({});
+  });
+
+  test('commitSkip persists, so a reload keeps the learner out of onboarding', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    await result.current.commitSkip(0, '2026-08-09T00:00:00.000Z');
+
+    expect(new ProgressStore(JSON.parse(storage.blob as string)).getProfile()?.grade).toBe(0);
+  });
+
+  test('reserveSeq is monotonic and writes nothing', async () => {
+    const storage = memoryStorage();
+    const { result } = renderHook(() => useProgress(storage, [lessonA, lessonB, lessonG2]));
+    await waitFor(() => expect(result.current.ready).toBe(true));
+
+    expect(result.current.reserveSeq()).toBeLessThan(result.current.reserveSeq());
+    expect(storage.blob).toBeNull();
+  });
 });
