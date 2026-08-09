@@ -147,6 +147,31 @@ describe('RootRouter — the measured first-run journey (R1, A7, no age gate)', 
     expect(Object.keys(seeded).sort()).toEqual([...placeableStrands()].sort());
   });
 
+  // The latch that stops a double tap also survived a rejected write, so both
+  // CTAs were dead until relaunch.
+  test('a failed write leaves the Landed CTAs live for a retry', async () => {
+    const storage = memoryStorage();
+    let failWrites = false;
+    const save = storage.save.bind(storage);
+    storage.save = async (serialized: string) => {
+      if (failWrites) throw new Error('sqlite is unavailable');
+      await save(serialized);
+    };
+
+    const api = renderRouter(storage);
+    await walkPlacement(api);
+    await act(async () => fireEvent.press(api.getByTestId('placement-accept')));
+    await walkToLanding(api);
+
+    failWrites = true;
+    await act(async () => fireEvent.press(api.getByTestId('landed-continue')));
+    expect(api.queryByTestId('lanes-screen')).toBeNull();
+    failWrites = false;
+
+    await act(async () => fireEvent.press(api.getByTestId('landed-continue')));
+    expect(await api.findByTestId('lanes-screen')).toBeTruthy();
+  });
+
   test('the "Explore the app" CTA also onboards (both Landing CTAs persist)', async () => {
     const api = renderRouter();
 

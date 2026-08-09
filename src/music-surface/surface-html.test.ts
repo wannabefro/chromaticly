@@ -389,6 +389,13 @@ describe('surface HTML — gap zones (chromaticly-51o)', () => {
     expect(html).toContain('right.indexOf(gap) >= 0 ? MARK_RIGHT');
   });
 
+  // placed-barlines is appended after gap-zones, so the drawn line sits on top
+  // of the rect that carries the listener.
+  test('a placed line never intercepts the tap that removes it', () => {
+    expect(html).toContain("layer.setAttribute('class', 'placed-barlines');");
+    expect(html).toContain("layer.setAttribute('pointer-events', 'none');");
+  });
+
   // Drawn from getBBox, so a command landing before the paint finds nothing.
   test('a render replays the zones and the placed lines', () => {
     expect(html).toContain('if (gapMode) { drawGapZones();');

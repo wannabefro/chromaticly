@@ -169,9 +169,12 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
 
   const canonical = formatNoteName(letter, accidental);
   const offByOne = formatNoteName(adjacent, inKey(adjacent));
-  const wrongClef = keySig
-    ? formatNoteName(clefConfusion, inKey(clefConfusion))
-    : formatNoteName(clefConfusion, safeDistractorAccidental(clefConfusion, accidental));
+  // What the OTHER clef's reading carries — not the canonical note's.
+  const wrongClefAcc = keySig ? inKey(clefConfusion) : accidental;
+  const wrongClef = formatNoteName(
+    clefConfusion,
+    keySig ? wrongClefAcc : safeDistractorAccidental(clefConfusion, accidental),
+  );
   const distractors = [offByOne, wrongClef];
 
   // The two distractors are the two named misconceptions, so each one can say
@@ -184,8 +187,10 @@ function build(contentSeed: number, grade: number, idSeed: number, atoms: string
   // the off-by-one reading is written last so it wins, because it is the mistake
   // a learner reading the RIGHT clef would make.
   const byDistractor: Record<string, string> = {
-    [wrongClef]: accidental
-      ? `That line or space is ${wrongClef} in the ${otherClef(clef)} clef, and the accidental would still apply to it. This stave carries ${clefPhrase(clef)}, so the note is ${canonical}.`
+    [wrongClef]: wrongClefAcc
+      ? keySig
+        ? `That line or space is ${formatNoteName(clefConfusion, wrongClefAcc)} in the ${otherClef(clef)} clef, because the key signature applies to that letter too. This stave carries ${clefPhrase(clef)}, so the note is ${canonical}.`
+        : `That line or space is ${clefConfusion} in the ${otherClef(clef)} clef, and the printed ${wrongClefAcc.replace('_', ' ')} would still apply, making it ${formatNoteName(clefConfusion, wrongClefAcc)}. This stave carries ${clefPhrase(clef)}, so the note is ${canonical}.`
       : `That is ${wrongClef} — but only in the ${otherClef(clef)} clef. This stave carries ${clefPhrase(clef)}, so the same line or space is a different note.`,
     [offByOne]: `That is one line or space out. ${offByOne} is the next step ${direction === 1 ? 'up' : 'down'} from ${canonical} — count again from a clef landmark you are sure of.`,
   };

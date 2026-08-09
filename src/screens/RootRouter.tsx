@@ -85,7 +85,11 @@ export default function RootRouter() {
     if (committing.current) return;
     committing.current = true;
     const at = new Date().toISOString();
-    void (destination.kind === 'skipped' ? commitSkip(destination.grade, at) : commitOnboarding(staged, at));
+    const write = destination.kind === 'skipped' ? commitSkip(destination.grade, at) : commitOnboarding(staged, at);
+    // A rejected write left the latch set, so both CTAs stayed dead for good.
+    void write.catch(() => {
+      committing.current = false;
+    });
   }, [destination, staged, commitOnboarding, commitSkip]);
 
   if (!ready) return null; // A7: no flash before persisted state is known

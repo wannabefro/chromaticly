@@ -374,6 +374,7 @@ describe('noteNamingStaveInput accepts every octave the prompt allows', () => {
 });
 
 const ACCIDENTAL_ATOMS = ['note_read:treble:F#5', 'note_read:treble:C#5', 'note_read:treble:Bb4', 'note_read:bass:F#3', 'note_read:bass:Bb2'];
+const KEYED_ATOMS = ['note_read_keyed:alto:C4', 'note_read_keyed:alto:E4', 'note_read_keyed:alto:G4', 'note_read_keyed:treble:D5'];
 
 describe('note_naming — the wrong-clef feedback accounts for a printed accidental', () => {
   // It said "That is E, but only in the bass clef". The sharp applies there
@@ -387,6 +388,20 @@ describe('note_naming — the wrong-clef feedback accounts for a printed acciden
       for (const [option, why] of Object.entries(inst.feedback.by_distractor ?? {})) {
         if (!/only in the/.test(why as string)) continue;
         wrong.push(`seed ${seed}: answer ${canonical}, "${option}" -> ${why}`);
+      }
+    }
+    expect(wrong).toEqual([]);
+  });
+
+  // Branching on the CANONICAL accidental made 122 of 500 items claim one
+  // where the signature prints none.
+  test('a keyed item never claims the signature accidentals an option it prints plain', () => {
+    const wrong: string[] = [];
+    for (let seed = 0; seed < 500; seed++) {
+      const inst = noteNaming({ grade: 4, seed, atoms: KEYED_ATOMS });
+      for (const [option, why] of Object.entries(inst.feedback.by_distractor ?? {})) {
+        if (!/would still apply|applies to that letter/.test(why as string)) continue;
+        if (!/sharp|flat/.test(option)) wrong.push(`seed ${seed}: "${option}" -> ${why}`);
       }
     }
     expect(wrong).toEqual([]);

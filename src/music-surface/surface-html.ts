@@ -521,6 +521,9 @@ ${playButton}
     var centres = gapCentres();
     var layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     layer.setAttribute('class', 'placed-barlines');
+    // Painted after the gap zones, so without this the 2.4-wide stroke takes
+    // the tap meant to remove the line it draws.
+    layer.setAttribute('pointer-events', 'none');
     var wrong = (marks && marks.wrong) || [];
     var missed = (marks && marks.missed) || [];
     var right = (marks && marks.correct) || [];

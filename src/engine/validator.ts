@@ -586,6 +586,11 @@ const DURATION_UNITS: Record<string, number> = {
   breve: 64,
 };
 
+/** A dot adds half the note again; a second dot adds a quarter. */
+function withDots(base: number, dots: number): number {
+  return dots === 1 ? base * 1.5 : dots === 2 ? base * 1.75 : base;
+}
+
 function sumLabelUnits(label: string): number {
   let total = 0;
   for (const term of label.split(' + ')) {
@@ -593,7 +598,7 @@ function sumLabelUnits(label: string): number {
     if (!match) throw new Error(`"${term}" is not a note value`);
     const base = DURATION_UNITS[match[2]];
     if (base === undefined) throw new Error(`"${match[2]}" is not a note value`);
-    total += base * (match[1] === 'double-dotted ' ? 1.75 : match[1] === 'dotted ' ? 1.5 : 1);
+    total += withDots(base, match[1] === 'double-dotted ' ? 2 : match[1] === 'dotted ' ? 1 : 0);
   }
   return total;
 }
@@ -2608,7 +2613,7 @@ function restSpans(music: Music): { onset: number; quavers: number }[] | null {
     if (!('dur' in ev)) return null;
     const base = REST_QUAVERS[ev.dur];
     if (base === undefined) return null;
-    const quavers = ev.dots === 1 ? base * 1.5 : ev.dots === 2 ? base * 1.75 : base;
+    const quavers = withDots(base, ev.dots ?? 0);
     if (ev.type === 'rest') spans.push({ onset: at, quavers });
     at += quavers;
   }
@@ -2662,9 +2667,6 @@ function restGroupingHook(inst: ExerciseInstance): string[] {
 // addBarlinesHook (chromaticly-51o) — recompute-don't-trust. The answer is
 // recomputed by summing the drawn note lengths and marking every note index
 // where the running total lands exactly on a bar.
-const BARLINE_UNITS: Record<string, number> = {
-  demisemiquaver: 1, semiquaver: 2, quaver: 4, crotchet: 8, minim: 16, semibreve: 32, breve: 64,
-};
 
 function addBarlinesHook(inst: ExerciseInstance): string[] {
   const errors: string[] = [];
@@ -2674,7 +2676,7 @@ function addBarlinesHook(inst: ExerciseInstance): string[] {
 
   const events = (music.voices[0]?.events ?? []).filter((ev) => ev.type !== 'barline');
   if (events.some((ev) => ev.type !== 'note')) return ['add_barlines: the rhythm must be notes only'];
-  if (events.some((ev) => 'pitch' in ev && ev.type === 'note' && !(ev.dur in BARLINE_UNITS))) {
+  if (events.some((ev) => 'pitch' in ev && ev.type === 'note' && !(ev.dur in DURATION_UNITS))) {
     return ['add_barlines: the rhythm holds a length this template cannot measure'];
   }
 
@@ -2685,9 +2687,8 @@ function addBarlinesHook(inst: ExerciseInstance): string[] {
   const expected: number[] = [];
   let running = 0;
   events.forEach((ev, index) => {
-    const base = BARLINE_UNITS[(ev as { dur: string }).dur];
-    const dots = (ev as { dots?: number }).dots ?? 0;
-    running += dots === 1 ? base * 1.5 : dots === 2 ? base * 1.75 : base;
+    const base = DURATION_UNITS[(ev as { dur: string }).dur];
+    running += withDots(base, (ev as { dots?: number }).dots ?? 0);
     if (running % barUnits === 0 && index < events.length - 1) expected.push(index + 1);
   });
   if (running % barUnits !== 0) {
@@ -2727,7 +2728,7 @@ function findTheBarHook(inst: ExerciseInstance): string[] {
     }
     if (ev.type !== 'note') continue;
     const parsed = parseScientificPitch(ev.pitch);
-    const units = BARLINE_UNITS[ev.dur];
+    const units = DURATION_UNITS[ev.dur];
     if (!parsed || units === undefined) return [`music_in_context: cannot measure the note ${ev.pitch} ${ev.dur}`];
     bars[bars.length - 1].push({ ordinal: pitchOrdinal(parsed.letter, parsed.octave), units });
   }
