@@ -23,6 +23,15 @@ const DeckSchema = z.object({
   signs: z.array(TermsEntrySchema),
 });
 
+const GroupsSchema = z.array(z.array(z.string()).min(2));
+const groups = GroupsSchema.parse((raw as { confusable_groups: unknown }).confusable_groups);
+
+/** Slug to its confusable-group id. Two members never share an item's options.
+ *  Rationale: the deck's `$confusable_note`. */
+export const CONFUSABLE_GROUP: ReadonlyMap<string, number> = new Map(
+  groups.flatMap((slugs, id) => slugs.map((slug) => [slug, id] as const)),
+);
+
 const parsedGrade1 = DeckSchema.parse((raw as { grade_1: unknown }).grade_1);
 const parsedGrade2 = DeckSchema.parse((raw as { grade_2: unknown }).grade_2);
 const parsedGrade3 = DeckSchema.parse((raw as { grade_3: unknown }).grade_3);

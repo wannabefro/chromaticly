@@ -1,5 +1,74 @@
 {
   "$schema_note": "SRS deck for the Terms & Signs strand. Each entry: term, abbreviation/sign, meaning, category (used for plausible-distractor selection), language, grade introduced. Decks are cumulative. SOURCE: the ABRSM 'Grade 1 to 5 Terms and Signs' lists for exams from January 2021, transcribed 2026-08-09. Grade counts are ABRSM's own: G1 24 terms and 10 signs, G2 24 and 9, G3 23, G4 15 Italian and 6 French, G5 15 Italian and 6 German. terms-deck.test.ts asserts those counts, so a term added here without a syllabus line behind it fails the suite.",
+  "$confusable_note": "Slugs whose meanings are close enough that offering two of them in one MCQ gives the learner two defensible answers. The generator bars a distractor that shares a group with the answer. Identical meaning strings are already barred in code; this catches the near-misses, such as 'slow' against 'slow and stately'.",
+  "confusable_groups": [
+    [
+      "adagio",
+      "lento",
+      "largo",
+      "larghetto",
+      "langsam",
+      "grave",
+      "lent"
+    ],
+    [
+      "mesto",
+      "triste_tristamente",
+      "traurig",
+      "doloroso",
+      "con_dolore"
+    ],
+    [
+      "morendo",
+      "smorzando",
+      "perdendosi",
+      "a_niente"
+    ],
+    [
+      "animato",
+      "anim",
+      "lebhaft",
+      "vivace_vivo"
+    ],
+    [
+      "ritenuto",
+      "retenu"
+    ],
+    [
+      "dolce",
+      "douce"
+    ],
+    [
+      "cantabile",
+      "cantando"
+    ],
+    [
+      "prima_primo",
+      "come_prima"
+    ],
+    [
+      "molto",
+      "assai"
+    ],
+    [
+      "allargando",
+      "largamente"
+    ],
+    [
+      "accelerando",
+      "stringendo"
+    ],
+    [
+      "sforzando_sforzato",
+      "rinforzando"
+    ],
+    [
+      "moderato",
+      "mod_r",
+      "m_ssig",
+      "comodo_tempo_comodo"
+    ]
+  ],
   "grade_1": {
     "verified": true,
     "dynamics": [
@@ -531,7 +600,7 @@
       {
         "term": "rinforzando",
         "abbr": "rf / rfz / rinf",
-        "meaning": "a sudden accent on a note or chord"
+        "meaning": "reinforcing, with more emphasis"
       },
       {
         "term": "smorzando",

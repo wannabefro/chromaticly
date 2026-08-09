@@ -3,6 +3,7 @@
 
 import { KB_VERSION } from '../../content/knowledge-base';
 import {
+  CONFUSABLE_GROUP,
   termsDeckForGrade,
   TERMS_DECK_G1,
   TERMS_DECK_G2,
@@ -117,8 +118,12 @@ function build(contentSeed: number, grade: number, idSeed: number, deck: TermsDe
   // languages (adagio, lento, lent, langsam), and the other direction would
   // print the same option text twice.
   const seenMeanings = new Set([entry.meaning]);
+  // A near-synonym is barred too: "Which means 'slow'?" had offered largo,
+  // glossed "slow and stately".
+  const group = CONFUSABLE_GROUP.get(slugify(label(entry)));
   const pool = termsDeckForGrade(grade).filter((e) => {
     if (e.category !== entry.category || e === entry || seenMeanings.has(e.meaning)) return false;
+    if (group !== undefined && CONFUSABLE_GROUP.get(slugify(label(e))) === group) return false;
     seenMeanings.add(e.meaning);
     return true;
   });

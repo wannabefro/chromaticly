@@ -1,4 +1,4 @@
-import { TERMS_DECK_G1 } from '../../content/terms-deck';
+import { CONFUSABLE_GROUP, TERMS_DECK_G1, termsDeckForGrade } from '../../content/terms-deck';
 import { validate } from '../validator';
 import { termMeaning, termMeaningFlashcard } from './term-meaning';
 
@@ -151,6 +151,16 @@ describe('termMeaningFlashcard — self-graded flashcard variant (U7/AD2)', () =
 
 // A same-meaning distractor is a SECOND correct answer in the meaning_to_term
 // direction. The deck holds four terms glossed "slow" across four languages.
+/** An option is a label in one direction and a meaning in the other. */
+const GROUP_OF_OPTION = new Map<string, number>();
+for (const entry of termsDeckForGrade(5)) {
+  const label = entry.term ?? entry.sign ?? '';
+  const id = CONFUSABLE_GROUP.get(label.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, ''));
+  if (id === undefined) continue;
+  GROUP_OF_OPTION.set(label, id);
+  GROUP_OF_OPTION.set(entry.meaning, id);
+}
+
 describe('term_meaning — no option repeats another option\'s meaning', () => {
   test.each([1, 2, 3, 4, 5])('grade %i: every option is a distinct meaning, over 200 seeds', (grade) => {
     for (let seed = 0; seed < 200; seed++) {
@@ -161,6 +171,21 @@ describe('term_meaning — no option repeats another option\'s meaning', () => {
       ];
       expect(new Set(values).size).toBe(values.length);
     }
+  });
+
+  // Codex found three: "slow" vs "slow and stately", "sad, mournful" vs
+  // "sad, sorrowful", "with grief" vs "sorrowful".
+  test.each([1, 2, 3, 4, 5])('grade %i: no item offers two confusable terms, over 300 seeds', (grade) => {
+    const clashes: string[] = [];
+    for (let seed = 0; seed < 300; seed++) {
+      const inst = termMeaning({ grade, seed, atoms: [] });
+      const answer = (inst.answer.canonical as { value: string }).value;
+      const id = GROUP_OF_OPTION.get(answer);
+      if (id === undefined) continue;
+      const clash = (inst.distractors as { value: string }[]).filter((d) => GROUP_OF_OPTION.get(d.value) === id);
+      if (clash.length > 0) clashes.push(`seed ${seed}: "${answer}" against ${clash.map((d) => `"${d.value}"`).join(', ')}`);
+    }
+    expect(clashes).toEqual([]);
   });
 
   test('the four "slow" terms are never offered against each other', () => {

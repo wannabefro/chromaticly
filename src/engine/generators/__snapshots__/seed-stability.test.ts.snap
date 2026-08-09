@@ -105136,11 +105136,11 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a moderate speed",
+        "value": "with movement",
       },
       {
         "category": "tempo",
-        "value": "fairly quick",
+        "value": "less movement, slower",
       },
       {
         "category": "tempo",
@@ -105149,9 +105149,9 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     ],
     "feedback": {
       "by_distractor": {
-        "at a moderate speed": "That is what "moderato" means.",
-        "fairly quick": "That is what "allegretto" means.",
         "held back (immediately slower)": "That is what "ritenuto" means.",
+        "less movement, slower": "That is what "meno mosso" means.",
+        "with movement": "That is what "con moto" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -105248,16 +105248,16 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "con moto",
       },
       {
         "category": "tempo",
-        "value": "largo",
+        "value": "vivace / vivo",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "largo": ""largo" means slow and stately.",
+        "con moto": ""con moto" means with movement.",
         "moderato": ""moderato" means at a moderate speed.",
         "vivace / vivo": ""vivace / vivo" means lively, quick.",
       },
@@ -105298,22 +105298,22 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "largo",
+        "value": "vivace / vivo",
+      },
+      {
+        "category": "tempo",
+        "value": "allegro",
       },
       {
         "category": "tempo",
         "value": "allargando",
       },
-      {
-        "category": "tempo",
-        "value": "allegretto",
-      },
     ],
     "feedback": {
       "by_distractor": {
         "allargando": ""allargando" means broadening.",
-        "allegretto": ""allegretto" means fairly quick.",
-        "largo": ""largo" means slow and stately.",
+        "allegro": ""allegro" means quick.",
+        "vivace / vivo": ""vivace / vivo" means lively, quick.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -105576,14 +105576,14 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "fairly quick",
+        "value": "less movement, slower",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "fairly quick": "That is what "allegretto" means.",
         "fast": "That is what "presto" means.",
         "in time (resume the original speed)": "That is what "a tempo" means.",
+        "less movement, slower": "That is what "meno mosso" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -105622,7 +105622,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "moderato",
+        "value": "con moto",
       },
       {
         "category": "tempo",
@@ -105630,13 +105630,13 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "con moto",
+        "value": "meno mosso",
       },
     ],
     "feedback": {
       "by_distractor": {
         "con moto": ""con moto" means with movement.",
-        "moderato": ""moderato" means at a moderate speed.",
+        "meno mosso": ""meno mosso" means less movement, slower.",
         "rallentando": ""rallentando" means gradually getting slower.",
       },
       "correct": "Correct!",
@@ -105792,14 +105792,14 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "slow",
+        "value": "quick",
       },
     ],
     "feedback": {
       "by_distractor": {
         "less movement, slower": "That is what "meno mosso" means.",
         "lively, quick": "That is what "vivace / vivo" means.",
-        "slow": "That is what "adagio" means.",
+        "quick": "That is what "allegro" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -105892,7 +105892,7 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
     "distractors": [
       {
         "category": "tempo",
-        "value": "più mosso",
+        "value": "rallentando",
       },
       {
         "category": "tempo",
@@ -105900,14 +105900,14 @@ exports[`seed-stability — grade-2 generator output is pinned byte-for-byte ter
       },
       {
         "category": "tempo",
-        "value": "allargando",
+        "value": "allegro",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "allargando": ""allargando" means broadening.",
+        "allegro": ""allegro" means quick.",
         "moderato": ""moderato" means at a moderate speed.",
-        "più mosso": ""più mosso" means more movement, quicker.",
+        "rallentando": ""rallentando" means gradually getting slower.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -268958,22 +268958,22 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "with movement",
       },
       {
         "category": "tempo",
-        "value": "very slow, solemn",
+        "value": "at a moderate speed",
       },
       {
         "category": "tempo",
-        "value": "fast",
+        "value": "slow",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "fast": "That is what "presto" means.",
-        "lively, quick": "That is what "vivace / vivo" means.",
-        "very slow, solemn": "That is what "grave" means.",
+        "at a moderate speed": "That is what "moderato" means.",
+        "slow": "That is what "adagio" means.",
+        "with movement": "That is what "con moto" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -269070,7 +269070,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "gradually getting faster",
       },
       {
         "category": "tempo",
@@ -269080,7 +269080,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "fast": "That is what "presto" means.",
-        "gradually getting slower": "That is what "rallentando" means.",
+        "gradually getting faster": "That is what "stringendo" means.",
         "slow and stately": "That is what "largo" means.",
       },
       "correct": "Correct!",
@@ -269120,7 +269120,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "allegretto",
+        "value": "come prima",
       },
       {
         "category": "tempo",
@@ -269133,8 +269133,8 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "allegretto": ""allegretto" means fairly quick.",
         "animato": ""animato" means animated, lively.",
+        "come prima": ""come prima" means as at first.",
         "presto": ""presto" means fast.",
       },
       "correct": "Correct!",
@@ -269174,22 +269174,22 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "allargando",
+        "value": "retenu",
       },
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "con moto",
       },
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "rubato / tempo rubato",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "accelerando": ""accelerando" means gradually getting quicker.",
-        "allargando": ""allargando" means broadening.",
-        "vivace / vivo": ""vivace / vivo" means lively, quick.",
+        "con moto": ""con moto" means with movement.",
+        "retenu": ""retenu" means held back.",
+        "rubato / tempo rubato": ""rubato / tempo rubato" means with some freedom of time.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -269228,7 +269228,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "con moto",
+        "value": "vivace / vivo",
       },
       {
         "category": "tempo",
@@ -269241,9 +269241,9 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "con moto": ""con moto" means with movement.",
         "largo": ""largo" means slow and stately.",
         "più mosso": ""più mosso" means more movement, quicker.",
+        "vivace / vivo": ""vivace / vivo" means lively, quick.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -269444,7 +269444,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "gradually getting slower",
+        "value": "gradually getting faster",
       },
       {
         "category": "tempo",
@@ -269452,13 +269452,13 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "as fast as possible",
+        "value": "less movement, slower",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "as fast as possible": "That is what "prestissimo" means.",
-        "gradually getting slower": "That is what "rallentando" means.",
+        "gradually getting faster": "That is what "stringendo" means.",
+        "less movement, slower": "That is what "meno mosso" means.",
         "with movement": "That is what "con moto" means.",
       },
       "correct": "Correct!",
@@ -269502,18 +269502,18 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "quick",
+        "value": "slow",
       },
       {
         "category": "tempo",
-        "value": "gradually getting faster",
+        "value": "gradually getting quicker",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "gradually getting faster": "That is what "stringendo" means.",
+        "gradually getting quicker": "That is what "accelerando" means.",
         "in time (resume the original speed)": "That is what "a tempo" means.",
-        "quick": "That is what "allegro" means.",
+        "slow": "That is what "adagio" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -269552,21 +269552,21 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
+        "value": "animé",
+      },
+      {
+        "category": "tempo",
+        "value": "animato",
+      },
+      {
+        "category": "tempo",
         "value": "retenu",
-      },
-      {
-        "category": "tempo",
-        "value": "largo",
-      },
-      {
-        "category": "tempo",
-        "value": "allargando",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "allargando": ""allargando" means broadening.",
-        "largo": ""largo" means slow and stately.",
+        "animato": ""animato" means animated, lively.",
+        "animé": ""animé" means animated.",
         "retenu": ""retenu" means held back.",
       },
       "correct": "Correct!",
@@ -269768,7 +269768,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "allargando",
+        "value": "retenu",
       },
       {
         "category": "tempo",
@@ -269776,14 +269776,14 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "prestissimo",
+        "value": "meno mosso",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "allargando": ""allargando" means broadening.",
         "allegretto": ""allegretto" means fairly quick.",
-        "prestissimo": ""prestissimo" means as fast as possible.",
+        "meno mosso": ""meno mosso" means less movement, slower.",
+        "retenu": ""retenu" means held back.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -270097,7 +270097,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "molto",
+        "value": "con forza",
       },
       {
         "category": "other_terms",
@@ -270105,14 +270105,14 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "triste / tristamente",
+        "value": "appassionato",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "molto": ""molto" means very, much.",
+        "appassionato": ""appassionato" means with passion.",
+        "con forza": ""con forza" means with force.",
         "sostenuto": ""sostenuto" means sustained.",
-        "triste / tristamente": ""triste / tristamente" means sad, sorrowful.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -270970,7 +270970,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "at a moderate speed",
+        "value": "as fast as possible",
       },
       {
         "category": "tempo",
@@ -270979,8 +270979,8 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
+        "as fast as possible": "That is what "prestissimo" means.",
         "at a comfortable speed": "That is what "comodo / tempo comodo" means.",
-        "at a moderate speed": "That is what "moderato" means.",
         "slow and stately": "That is what "largo" means.",
       },
       "correct": "Correct!",
@@ -271132,7 +271132,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "fairly quick",
+        "value": "as at first",
       },
       {
         "category": "tempo",
@@ -271141,8 +271141,8 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
+        "as at first": "That is what "come prima" means.",
         "at a walking pace": "That is what "andante" means.",
-        "fairly quick": "That is what "allegretto" means.",
         "slow and stately": "That is what "largo" means.",
       },
       "correct": "Correct!",
@@ -271182,22 +271182,22 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "prestissimo",
+        "value": "ritenuto",
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "grave",
       },
       {
         "category": "tempo",
-        "value": "più mosso",
+        "value": "comodo / tempo comodo",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "andante": ""andante" means at a walking pace.",
-        "più mosso": ""più mosso" means more movement, quicker.",
-        "prestissimo": ""prestissimo" means as fast as possible.",
+        "comodo / tempo comodo": ""comodo / tempo comodo" means at a comfortable speed.",
+        "grave": ""grave" means very slow, solemn.",
+        "ritenuto": ""ritenuto" means held back (immediately slower).",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -271236,7 +271236,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "lively, quick",
+        "value": "with movement",
       },
       {
         "category": "tempo",
@@ -271250,7 +271250,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "animated, lively": "That is what "animato" means.",
-        "lively, quick": "That is what "vivace / vivo" means.",
+        "with movement": "That is what "con moto" means.",
         "with some freedom of time": "That is what "rubato / tempo rubato" means.",
       },
       "correct": "Correct!",
@@ -271290,11 +271290,11 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "moderato",
+        "value": "prestissimo",
       },
       {
         "category": "tempo",
-        "value": "animé",
+        "value": "retenu",
       },
       {
         "category": "tempo",
@@ -271303,8 +271303,8 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "animé": ""animé" means animated.",
-        "moderato": ""moderato" means at a moderate speed.",
+        "prestissimo": ""prestissimo" means as fast as possible.",
+        "retenu": ""retenu" means held back.",
         "rubato / tempo rubato": ""rubato / tempo rubato" means with some freedom of time.",
       },
       "correct": "Correct!",
@@ -271564,7 +271564,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "rubato / tempo rubato",
+        "value": "più mosso",
       },
       {
         "category": "tempo",
@@ -271575,7 +271575,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       "by_distractor": {
         "adagio": ""adagio" means slow.",
         "animato": ""animato" means animated, lively.",
-        "rubato / tempo rubato": ""rubato / tempo rubato" means with some freedom of time.",
+        "più mosso": ""più mosso" means more movement, quicker.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -271726,17 +271726,17 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "ritenuto",
+        "value": "con moto",
       },
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "prestissimo",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "accelerando": ""accelerando" means gradually getting quicker.",
-        "ritenuto": ""ritenuto" means held back (immediately slower).",
+        "con moto": ""con moto" means with movement.",
+        "prestissimo": ""prestissimo" means as fast as possible.",
         "stringendo": ""stringendo" means gradually getting faster.",
       },
       "correct": "Correct!",
@@ -271884,7 +271884,7 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "animated",
+        "value": "held back",
       },
       {
         "category": "tempo",
@@ -271892,14 +271892,14 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "at a comfortable speed",
+        "value": "gradually getting slower",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "animated": "That is what "animé" means.",
         "animated, lively": "That is what "animato" means.",
-        "at a comfortable speed": "That is what "comodo / tempo comodo" means.",
+        "gradually getting slower": "That is what "rallentando" means.",
+        "held back": "That is what "retenu" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -271938,11 +271938,11 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "prestissimo",
       },
       {
         "category": "tempo",
-        "value": "andante",
+        "value": "grave",
       },
       {
         "category": "tempo",
@@ -271952,8 +271952,8 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "a tempo": ""a tempo" means in time (resume the original speed).",
-        "accelerando": ""accelerando" means gradually getting quicker.",
-        "andante": ""andante" means at a walking pace.",
+        "grave": ""grave" means very slow, solemn.",
+        "prestissimo": ""prestissimo" means as fast as possible.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -271992,22 +271992,22 @@ exports[`seed-stability — grade-4 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "accelerando",
+        "value": "rubato / tempo rubato",
       },
       {
         "category": "tempo",
-        "value": "più mosso",
+        "value": "comodo / tempo comodo",
       },
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "con moto",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "accelerando": ""accelerando" means gradually getting quicker.",
-        "più mosso": ""più mosso" means more movement, quicker.",
-        "vivace / vivo": ""vivace / vivo" means lively, quick.",
+        "comodo / tempo comodo": ""comodo / tempo comodo" means at a comfortable speed.",
+        "con moto": ""con moto" means with movement.",
+        "rubato / tempo rubato": ""rubato / tempo rubato" means with some freedom of time.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -360754,22 +360754,22 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "fairly quick",
-      },
-      {
-        "category": "tempo",
-        "value": "animated, lively",
-      },
-      {
-        "category": "tempo",
         "value": "as at first",
+      },
+      {
+        "category": "tempo",
+        "value": "at a walking pace",
+      },
+      {
+        "category": "tempo",
+        "value": "broadening",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "animated, lively": "That is what "animato" means.",
         "as at first": "That is what "come prima" means.",
-        "fairly quick": "That is what "allegretto" means.",
+        "at a walking pace": "That is what "andante" means.",
+        "broadening": "That is what "allargando" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -360866,7 +360866,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "gradually getting faster",
+        "value": "gradually getting quicker",
       },
       {
         "category": "tempo",
@@ -360875,7 +360875,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "gradually getting faster": "That is what "stringendo" means.",
+        "gradually getting quicker": "That is what "accelerando" means.",
         "slow": "That is what "adagio" means.",
         "slow and stately": "That is what "largo" means.",
       },
@@ -360920,7 +360920,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "comodo / tempo comodo",
+        "value": "rallentando",
       },
       {
         "category": "tempo",
@@ -360929,9 +360929,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "comodo / tempo comodo": ""comodo / tempo comodo" means at a comfortable speed.",
         "larghetto": ""larghetto" means rather slow.",
         "presto": ""presto" means fast.",
+        "rallentando": ""rallentando" means gradually getting slower.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -360974,18 +360974,18 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "con moto",
+        "value": "vivace / vivo",
       },
       {
         "category": "tempo",
-        "value": "rubato / tempo rubato",
+        "value": "allegretto",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "con moto": ""con moto" means with movement.",
+        "allegretto": ""allegretto" means fairly quick.",
         "ritenuto": ""ritenuto" means held back (immediately slower).",
-        "rubato / tempo rubato": ""rubato / tempo rubato" means with some freedom of time.",
+        "vivace / vivo": ""vivace / vivo" means lively, quick.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361024,7 +361024,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "rubato / tempo rubato",
       },
       {
         "category": "tempo",
@@ -361032,14 +361032,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "animato",
+        "value": "più mosso",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "animato": ""animato" means animated, lively.",
         "largo": ""largo" means slow and stately.",
-        "vivace / vivo": ""vivace / vivo" means lively, quick.",
+        "più mosso": ""più mosso" means more movement, quicker.",
+        "rubato / tempo rubato": ""rubato / tempo rubato" means with some freedom of time.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361078,11 +361078,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "calm",
+        "value": "well",
       },
       {
         "category": "other_terms",
-        "value": "with grief",
+        "value": "mysterious",
       },
       {
         "category": "other_terms",
@@ -361091,9 +361091,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "calm": "That is what "tranquillo" means.",
         "less": "That is what "meno" means.",
-        "with grief": "That is what "con dolore" means.",
+        "mysterious": "That is what "misterioso" means.",
+        "well": "That is what "ben" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -361132,11 +361132,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "little (by little)",
+        "value": "emphatic, accented",
       },
       {
         "category": "other_terms",
-        "value": "majestic",
+        "value": "graceful",
       },
       {
         "category": "other_terms",
@@ -361145,8 +361145,8 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "little (by little)": "That is what "poco (a poco)" means.",
-        "majestic": "That is what "maestoso" means.",
+        "emphatic, accented": "That is what "marcato" means.",
+        "graceful": "That is what "grazioso" means.",
         "pleasant, amiable": "That is what "amabile" means.",
       },
       "correct": "Correct!",
@@ -361248,14 +361248,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "less movement, slower",
+        "value": "more movement, quicker",
       },
     ],
     "feedback": {
       "by_distractor": {
         "fairly quick": "That is what "allegretto" means.",
         "gradually getting quicker": "That is what "accelerando" means.",
-        "less movement, slower": "That is what "meno mosso" means.",
+        "more movement, quicker": "That is what "più mosso" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361302,14 +361302,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "gradually getting quicker",
+        "value": "with movement",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "gradually getting quicker": "That is what "accelerando" means.",
         "in time (resume the original speed)": "That is what "a tempo" means.",
         "quick": "That is what "allegro" means.",
+        "with movement": "That is what "con moto" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361510,11 +361510,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "at a comfortable speed",
+        "value": "gradually getting slower",
       },
       {
         "category": "tempo",
-        "value": "gradually getting faster",
+        "value": "gradually getting quicker",
       },
       {
         "category": "tempo",
@@ -361524,8 +361524,8 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "animated": "That is what "animé" means.",
-        "at a comfortable speed": "That is what "comodo / tempo comodo" means.",
-        "gradually getting faster": "That is what "stringendo" means.",
+        "gradually getting quicker": "That is what "accelerando" means.",
+        "gradually getting slower": "That is what "rallentando" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361572,13 +361572,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "meno mosso",
+        "value": "più mosso",
       },
     ],
     "feedback": {
       "by_distractor": {
         "larghetto": ""larghetto" means rather slow.",
-        "meno mosso": ""meno mosso" means less movement, slower.",
+        "più mosso": ""più mosso" means more movement, quicker.",
         "retenu": ""retenu" means held back.",
       },
       "correct": "Correct!",
@@ -361622,7 +361622,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "ritenuto",
+        "value": "animé",
       },
       {
         "category": "tempo",
@@ -361632,8 +361632,8 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "adagio": ""adagio" means slow.",
+        "animé": ""animé" means animated.",
         "largo": ""largo" means slow and stately.",
-        "ritenuto": ""ritenuto" means held back (immediately slower).",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361677,7 +361677,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "tempo",
-        "value": "with movement",
+        "value": "lively, quick",
       },
       {
         "category": "tempo",
@@ -361692,7 +361692,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "by_distractor": {
         "fast": "That is what "presto" means.",
         "held back": "That is what "retenu" means.",
-        "with movement": "That is what "con moto" means.",
+        "lively, quick": "That is what "vivace / vivo" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361731,7 +361731,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "dynamics",
-        "value": "a niente",
+        "value": "pianissimo",
       },
       {
         "category": "dynamics",
@@ -361744,9 +361744,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "a niente": ""a niente" means to nothing.",
         "fortissimo": ""fortissimo" means very loud.",
-        "rinforzando": ""rinforzando" means a sudden accent on a note or chord.",
+        "pianissimo": ""pianissimo" means very quiet.",
+        "rinforzando": ""rinforzando" means reinforcing, with more emphasis.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different dynamic marking. Review the category and try again.",
@@ -361793,14 +361793,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "dynamics",
-        "value": "to nothing",
+        "value": "very quiet",
       },
     ],
     "feedback": {
       "by_distractor": {
         "gradually getting louder": "That is what "crescendo" means.",
         "gradually getting quieter": "That is what "decrescendo" means.",
-        "to nothing": "That is what "a niente" means.",
+        "very quiet": "That is what "pianissimo" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different dynamic marking. Review the category and try again.",
@@ -361897,18 +361897,18 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "allegretto",
+        "value": "con moto",
       },
       {
         "category": "tempo",
-        "value": "retenu",
+        "value": "allegro",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "allegretto": ""allegretto" means fairly quick.",
+        "allegro": ""allegro" means quick.",
         "come prima": ""come prima" means as at first.",
-        "retenu": ""retenu" means held back.",
+        "con moto": ""con moto" means with movement.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -361941,7 +361941,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [
@@ -362001,7 +362001,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "dynamics",
-        "value": "mezzo piano",
+        "value": "crescendo",
       },
       {
         "category": "dynamics",
@@ -362014,8 +362014,8 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
+        "crescendo": ""crescendo" means gradually getting louder.",
         "mezzo forte": ""mezzo forte" means moderately loud.",
-        "mezzo piano": ""mezzo piano" means moderately quiet.",
         "smorzando": ""smorzando" means muffling, damping the tone.",
       },
       "correct": "Correct!",
@@ -362033,13 +362033,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which term or sign means "a sudden accent on a note or chord"?",
+    "prompt": "Which term or sign means "reinforcing, with more emphasis"?",
     "srs_tags": [
       "term:rinforzando",
     ],
     "stimulus": {
       "music": null,
-      "text": "a sudden accent on a note or chord",
+      "text": "reinforcing, with more emphasis",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -362055,7 +362055,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "dynamics",
-        "value": "pianissimo",
+        "value": "mezzo forte",
       },
       {
         "category": "dynamics",
@@ -362063,14 +362063,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "dynamics",
-        "value": "sforzando / sforzato",
+        "value": "mezzo piano",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "pianissimo": ""pianissimo" means very quiet.",
-        "rinforzando": ""rinforzando" means a sudden accent on a note or chord.",
-        "sforzando / sforzato": ""sforzando / sforzato" means forced, accented.",
+        "mezzo forte": ""mezzo forte" means moderately loud.",
+        "mezzo piano": ""mezzo piano" means moderately quiet.",
+        "rinforzando": ""rinforzando" means reinforcing, with more emphasis.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different dynamic marking. Review the category and try again.",
@@ -362279,14 +362279,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "tempo",
-        "value": "vivace / vivo",
+        "value": "largo",
       },
     ],
     "feedback": {
       "by_distractor": {
         "accelerando": ""accelerando" means gradually getting quicker.",
         "allegro": ""allegro" means quick.",
-        "vivace / vivo": ""vivace / vivo" means lively, quick.",
+        "largo": ""largo" means slow and stately.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different tempo term. Review the category and try again.",
@@ -362373,7 +362373,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [
@@ -362383,18 +362383,18 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "dynamics",
-        "value": "forced, accented",
+        "value": "moderately quiet",
       },
       {
         "category": "dynamics",
-        "value": "gradually getting quieter",
+        "value": "muffling, damping the tone",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "forced, accented": "That is what "sforzando / sforzato" means.",
-        "gradually getting quieter": "That is what "decrescendo" means.",
         "moderately loud": "That is what "mezzo forte" means.",
+        "moderately quiet": "That is what "mezzo piano" means.",
+        "muffling, damping the tone": "That is what "smorzando" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different dynamic marking. Review the category and try again.",
@@ -362589,7 +362589,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [
@@ -362599,17 +362599,17 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "dynamics",
-        "value": "gradually getting louder",
+        "value": "gradually getting quieter",
       },
       {
         "category": "dynamics",
-        "value": "forced, accented",
+        "value": "moderately quiet",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "forced, accented": "That is what "sforzando / sforzato" means.",
-        "gradually getting louder": "That is what "crescendo" means.",
+        "gradually getting quieter": "That is what "decrescendo" means.",
+        "moderately quiet": "That is what "mezzo piano" means.",
         "muffling, damping the tone": "That is what "smorzando" means.",
       },
       "correct": "Correct!",
@@ -362649,7 +362649,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "dynamics",
-        "value": "fortissimo",
+        "value": "forte",
       },
       {
         "category": "dynamics",
@@ -362657,14 +362657,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "dynamics",
-        "value": "sforzando / sforzato",
+        "value": "crescendo",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "fortissimo": ""fortissimo" means very loud.",
+        "crescendo": ""crescendo" means gradually getting louder.",
+        "forte": ""forte" means loud.",
         "pianissimo": ""pianissimo" means very quiet.",
-        "sforzando / sforzato": ""sforzando / sforzato" means forced, accented.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different dynamic marking. Review the category and try again.",
@@ -362707,7 +362707,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "dynamics",
-        "value": "mezzo piano",
+        "value": "crescendo",
       },
       {
         "category": "dynamics",
@@ -362716,9 +362716,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
+        "crescendo": ""crescendo" means gradually getting louder.",
         "fortepiano": ""fortepiano" means loud, then immediately quiet.",
         "mezzo forte": ""mezzo forte" means moderately loud.",
-        "mezzo piano": ""mezzo piano" means moderately quiet.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different dynamic marking. Review the category and try again.",
@@ -362735,13 +362735,13 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "type": "mcq",
     },
     "kb_version": "g1-2026-07-10",
-    "prompt": "Which term or sign means "a sudden accent on a note or chord"?",
+    "prompt": "Which term or sign means "reinforcing, with more emphasis"?",
     "srs_tags": [
       "term:rinforzando",
     ],
     "stimulus": {
       "music": null,
-      "text": "a sudden accent on a note or chord",
+      "text": "reinforcing, with more emphasis",
     },
     "strand": "terms_signs",
     "template_id": "term_meaning",
@@ -362762,7 +362762,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "sweet",
+        "value": "rhythmically",
       },
       {
         "category": "other_terms",
@@ -362770,14 +362770,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "majestic",
+        "value": "with force",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "majestic": "That is what "maestoso" means.",
         "peaceful": "That is what "ruhig" means.",
-        "sweet": "That is what "dolce" means.",
+        "rhythmically": "That is what "ritmico" means.",
+        "with force": "That is what "con forza" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -362924,11 +362924,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "calm",
+        "value": "with force",
       },
       {
         "category": "other_terms",
-        "value": "bold, strong",
+        "value": "not too much",
       },
       {
         "category": "other_terms",
@@ -362937,9 +362937,9 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     ],
     "feedback": {
       "by_distractor": {
-        "bold, strong": "That is what "risoluto" means.",
-        "calm": "That is what "tranquillo" means.",
+        "not too much": "That is what "non troppo" means.",
         "very, much": "That is what "molto" means.",
+        "with force": "That is what "con forza" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -363032,11 +363032,11 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "sorrowful",
+        "value": "smoothly",
       },
       {
         "category": "other_terms",
-        "value": "rhythmically",
+        "value": "with passion",
       },
       {
         "category": "other_terms",
@@ -363046,8 +363046,8 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "in the style of a march": "That is what "alla marcia" means.",
-        "rhythmically": "That is what "ritmico" means.",
-        "sorrowful": "That is what "doloroso" means.",
+        "smoothly": "That is what "legato" means.",
+        "with passion": "That is what "appassionato" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -363360,18 +363360,18 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "molto",
+        "value": "grazioso",
       },
       {
         "category": "other_terms",
-        "value": "pesante",
+        "value": "leggiero",
       },
     ],
     "feedback": {
       "by_distractor": {
         "alla marcia": ""alla marcia" means in the style of a march.",
-        "molto": ""molto" means very, much.",
-        "pesante": ""pesante" means heavy.",
+        "grazioso": ""grazioso" means graceful.",
+        "leggiero": ""leggiero" means light, nimble.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -363414,7 +363414,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "simple, plain",
+        "value": "light, nimble",
       },
       {
         "category": "other_terms",
@@ -363424,8 +363424,8 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "feedback": {
       "by_distractor": {
         "and": "That is what "e / ed" means.",
+        "light, nimble": "That is what "leggiero" means.",
         "repeat from the beginning": "That is what "da capo" means.",
-        "simple, plain": "That is what "semplice" means.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -363518,7 +363518,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
     "distractors": [
       {
         "category": "other_terms",
-        "value": "con spirito",
+        "value": "douce",
       },
       {
         "category": "other_terms",
@@ -363526,14 +363526,14 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "legato",
+        "value": "staccato",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "con spirito": ""con spirito" means with spirit.",
+        "douce": ""douce" means soft, sweet.",
         "giocoso": ""giocoso" means playful, merry.",
-        "legato": ""legato" means smoothly.",
+        "staccato": ""staccato" means detached.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -363738,18 +363738,18 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       },
       {
         "category": "other_terms",
-        "value": "molto",
+        "value": "meno",
       },
       {
         "category": "other_terms",
-        "value": "triste / tristamente",
+        "value": "giocoso",
       },
     ],
     "feedback": {
       "by_distractor": {
-        "molto": ""molto" means very, much.",
+        "giocoso": ""giocoso" means playful, merry.",
+        "meno": ""meno" means less.",
         "pesante": ""pesante" means heavy.",
-        "triste / tristamente": ""triste / tristamente" means sad, sorrowful.",
       },
       "correct": "Correct!",
       "incorrect": "Not quite — that's a different term. Review the category and try again.",
@@ -364746,7 +364746,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [],
@@ -364782,7 +364782,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [],
@@ -365034,7 +365034,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [],
@@ -365178,7 +365178,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [],
@@ -365250,7 +365250,7 @@ exports[`seed-stability — grade-5 lesson-derived generator output is pinned by
       "accepted_alternatives": [],
       "canonical": {
         "category": "dynamics",
-        "value": "a sudden accent on a note or chord",
+        "value": "reinforcing, with more emphasis",
       },
     },
     "distractors": [],
