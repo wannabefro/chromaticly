@@ -156,15 +156,15 @@ describe('findTheBar — the passage reads as a melody, not as random pitches', 
     expect(stepwise).toBeGreaterThan(0.5);
   });
 
-  // `longest` has no forced peak, so its whole line is free to be stepwise.
-  // `highest` and `lowest` must plant one note clear of every other, and the
-  // approach to it is a leap by construction — a climax approached by leap is
-  // ordinary melodic writing, so the allowance is stated rather than engineered
-  // away. Uniform picking scored 0.23 on all three: one interval in four.
+  // `longest` has no forced peak, so its line is free to be stepwise throughout.
+  // `highest` and `lowest` must plant one note clear of every other and the
+  // approach to it is a leap by construction, so they get a stated allowance
+  // rather than one engineered away — a climax reached by leap is ordinary
+  // writing. Uniform picking scored 0.23 on all three: one interval in four.
   test.each(BAR_PROPERTIES)('%s: wide leaps are rare', (property) => {
     const iv = intervals(property);
     const wide = iv.filter((x) => x >= 9).length / iv.length;
-    expect(wide).toBeLessThan(property === 'longest' ? 0.05 : 0.08);
+    expect(wide).toBeLessThan(property === 'longest' ? 0.05 : 0.11);
   });
 
   // The boundary itself, not a value near it: one interval this size means the

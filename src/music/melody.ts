@@ -28,7 +28,9 @@ export function drawMelody(rng: () => number, pool: readonly string[], count: nu
   if (count <= 0) return [];
 
   const span = options.tessitura ?? Math.min(TESSITURA, Math.max(1, Math.floor((pool.length - 1) / 2)));
-  const home = options.start ?? Math.floor(rng() * pool.length);
+  // Centred, with jitter — a uniform draw puts a whole passage below the stave
+  // about as often as it centres one.
+  const home = options.start ?? Math.round((pool.length - 1) / 2 + (rng() - 0.5) * span);
   let index = clamp(home, 0, pool.length - 1);
 
   const line = [pool[index]];
