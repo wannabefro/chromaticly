@@ -1,5 +1,5 @@
 {
-  "$schema_note": "SRS deck for the Terms & Signs strand. Each entry: term, abbreviation/sign, meaning, category (used for plausible-distractor selection), language, grade introduced. Decks are cumulative. VERIFICATION STATUS: grade 1 = transcribed from the workbook chapter 10; grades 2-5 = NOT verified, and measured wrong on 2026-08-09. They follow the 2019 syllabus: 31 terms of the 2020 list are absent, 13 sit at the wrong grade, and 33 are terms ABRSM no longer sets. The per-grade `verified` flag is a schema literal, not evidence. See bead chromaticly-i8e for the full diff and the source. Verify against workbook chapters G2 ch.9, G3 ch.8, G4 ch.8-9, G5 ch.7-8.",
+  "$schema_note": "SRS deck for the Terms & Signs strand. Each entry: term, abbreviation/sign, meaning, category (used for plausible-distractor selection), language, grade introduced. Decks are cumulative. SOURCE: the ABRSM 'Grade 1 to 5 Terms and Signs' lists for exams from January 2021, transcribed 2026-08-09. Grade counts are ABRSM's own: G1 24 terms and 10 signs, G2 24 and 9, G3 23, G4 15 Italian and 6 French, G5 15 Italian and 6 German. terms-deck.test.ts asserts those counts, so a term added here without a syllabus line behind it fails the suite.",
   "grade_1": {
     "verified": true,
     "dynamics": [
@@ -36,20 +36,17 @@
       {
         "term": "crescendo",
         "abbr": "cresc.",
-        "meaning": "gradually getting louder",
-        "sign": "hairpin_open"
+        "meaning": "gradually getting louder"
       },
       {
         "term": "decrescendo",
         "abbr": "decresc.",
-        "meaning": "gradually getting quieter",
-        "sign": "hairpin_close"
+        "meaning": "gradually getting quieter"
       },
       {
         "term": "diminuendo",
         "abbr": "dim.",
-        "meaning": "gradually getting quieter",
-        "sign": "hairpin_close"
+        "meaning": "gradually getting quieter"
       }
     ],
     "tempo": [
@@ -123,8 +120,12 @@
     ],
     "signs": [
       {
-        "sign": "accent",
-        "meaning": "accent the note (play with emphasis)"
+        "sign": "crescendo hairpin",
+        "meaning": "gradually getting louder"
+      },
+      {
+        "sign": "diminuendo hairpin",
+        "meaning": "gradually getting quieter"
       },
       {
         "sign": "slur",
@@ -135,61 +136,61 @@
         "meaning": "hold for the value of both notes"
       },
       {
-        "sign": "staccato_dot",
+        "sign": "staccato dot",
         "meaning": "detached"
+      },
+      {
+        "sign": "accent",
+        "meaning": "accent the note (play with emphasis)"
       },
       {
         "sign": "pause",
         "meaning": "pause on the note or rest"
       },
       {
-        "sign": "metronome_mark",
+        "sign": "metronome mark",
         "meaning": "play at this many beats per minute"
       },
       {
-        "sign": "repeat_marks",
+        "sign": "repeat marks",
         "meaning": "repeat the section between the two signs"
+      },
+      {
+        "sign": "common time",
+        "abbr": "C",
+        "meaning": "four crotchet beats in a bar, as 4/4"
       }
     ]
   },
   "grade_2": {
     "verified": true,
+    "dynamics": [
+      {
+        "term": "fortepiano",
+        "abbr": "fp",
+        "meaning": "loud, then immediately quiet"
+      }
+    ],
     "tempo": [
       {
-        "term": "adagietto",
-        "meaning": "rather slow"
+        "term": "allargando",
+        "meaning": "broadening"
       },
       {
-        "term": "andantino",
-        "meaning": "slightly faster (or slower) than andante"
-      },
-      {
-        "term": "largo",
-        "meaning": "slow and stately"
-      },
-      {
-        "term": "larghetto",
-        "meaning": "rather slow"
-      },
-      {
-        "term": "lento",
-        "meaning": "slow"
-      },
-      {
-        "term": "presto",
-        "meaning": "fast"
-      },
-      {
-        "term": "vivace / vivo",
-        "meaning": "lively, quick"
+        "term": "con moto",
+        "meaning": "with movement"
       },
       {
         "term": "grave",
         "meaning": "very slow, solemn"
       },
       {
-        "term": "con moto",
-        "meaning": "with movement"
+        "term": "largo",
+        "meaning": "slow and stately"
+      },
+      {
+        "term": "lento",
+        "meaning": "slow"
       },
       {
         "term": "meno mosso",
@@ -200,20 +201,36 @@
         "meaning": "more movement, quicker"
       },
       {
+        "term": "presto",
+        "meaning": "fast"
+      },
+      {
         "term": "ritenuto",
         "abbr": "riten. / rit.",
         "meaning": "held back (immediately slower)"
-      }
-    ],
-    "dynamics": [],
-    "other_terms": [
-      {
-        "term": "grazioso",
-        "meaning": "graceful"
       },
       {
-        "term": "giocoso",
-        "meaning": "playful, merry"
+        "term": "vivace / vivo",
+        "meaning": "lively, quick"
+      }
+    ],
+    "other_terms": [
+      {
+        "term": "alla marcia",
+        "meaning": "in the style of a march"
+      },
+      {
+        "term": "con / col",
+        "meaning": "with"
+      },
+      {
+        "term": "dal segno",
+        "abbr": "D.S.",
+        "meaning": "repeat from the sign"
+      },
+      {
+        "term": "e / ed",
+        "meaning": "and"
       },
       {
         "term": "espressivo",
@@ -221,8 +238,16 @@
         "meaning": "expressive"
       },
       {
-        "term": "poco (a poco)",
-        "meaning": "little (by little)"
+        "term": "grazioso",
+        "meaning": "graceful"
+      },
+      {
+        "term": "ma",
+        "meaning": "but"
+      },
+      {
+        "term": "meno",
+        "meaning": "less"
       },
       {
         "term": "molto",
@@ -233,8 +258,12 @@
         "meaning": "not too much"
       },
       {
-        "term": "sempre",
-        "meaning": "always"
+        "term": "più",
+        "meaning": "more"
+      },
+      {
+        "term": "poco (a poco)",
+        "meaning": "little (by little)"
       },
       {
         "term": "senza",
@@ -243,95 +272,88 @@
     ],
     "signs": [
       {
-        "term": "dal segno",
-        "abbr": "D.S.",
-        "meaning": "repeat from the sign"
+        "sign": "marcato accent",
+        "meaning": "a strong accent on the note"
       },
       {
-        "term": "al fine",
-        "meaning": "to the end"
+        "sign": "portato",
+        "meaning": "slightly detached, under a slur"
       },
       {
-        "term": "simile",
-        "abbr": "sim.",
-        "meaning": "continue in the same way"
+        "sign": "staccatissimo",
+        "meaning": "very short and detached"
       },
       {
-        "term": "tenuto",
+        "sign": "tenuto",
         "abbr": "ten.",
-        "meaning": "held",
-        "sign": "tenuto_line"
+        "meaning": "held for its full value"
       },
       {
         "sign": "8va",
         "meaning": "perform an octave higher/lower than written"
       },
       {
-        "term": "fortepiano",
-        "abbr": "fp",
-        "meaning": "loud, then immediately quiet"
+        "sign": "cut common time",
+        "abbr": "¢",
+        "meaning": "two minim beats in a bar, as 2/2"
       },
       {
-        "term": "sforzando / sforzato",
-        "abbr": "sf / sfz",
-        "meaning": "forced, accented"
+        "sign": "multi-bar rest",
+        "meaning": "rest for this number of whole bars"
+      },
+      {
+        "sign": "first-time bar",
+        "meaning": "play this bar the first time only"
+      },
+      {
+        "sign": "second-time bar",
+        "meaning": "play this bar on the repeat instead"
       }
     ]
   },
   "grade_3": {
     "verified": true,
+    "dynamics": [
+      {
+        "term": "sforzando / sforzato",
+        "abbr": "sf / sfz",
+        "meaning": "forced, accented"
+      }
+    ],
     "tempo": [
       {
-        "term": "adagissimo",
-        "meaning": "very slow"
-      },
-      {
-        "term": "prestissimo",
-        "meaning": "as fast as possible"
-      },
-      {
-        "term": "allargando",
-        "meaning": "broadening"
-      },
-      {
-        "term": "rubato (tempo rubato)",
-        "meaning": "with some freedom of time"
+        "term": "andantino",
+        "meaning": "slightly faster (or slower) than andante"
       },
       {
         "term": "animato",
         "meaning": "animated, lively"
+      },
+      {
+        "term": "prestissimo",
+        "meaning": "as fast as possible"
       }
     ],
-    "dynamics": [],
     "other_terms": [
-      {
-        "term": "ad libitum",
-        "abbr": "ad lib.",
-        "meaning": "at choice, freely"
-      },
       {
         "term": "agitato",
         "meaning": "agitated"
       },
       {
-        "term": "brio (con brio)",
-        "meaning": "vigour (with vigour)"
+        "term": "ben",
+        "meaning": "well"
       },
       {
-        "term": "deciso",
-        "meaning": "with determination"
-      },
-      {
-        "term": "delicato",
-        "meaning": "delicate"
+        "term": "con forza",
+        "meaning": "with force"
       },
       {
         "term": "energico",
         "meaning": "energetic"
       },
       {
-        "term": "forza (con forza)",
-        "meaning": "force (with force)"
+        "term": "giocoso",
+        "meaning": "playful, merry"
       },
       {
         "term": "leggiero",
@@ -342,8 +364,17 @@
         "meaning": "majestic"
       },
       {
+        "term": "marcato",
+        "abbr": "marc.",
+        "meaning": "emphatic, accented"
+      },
+      {
         "term": "pesante",
         "meaning": "heavy"
+      },
+      {
+        "term": "prima / primo",
+        "meaning": "first"
       },
       {
         "term": "risoluto",
@@ -358,12 +389,18 @@
         "meaning": "simple, plain"
       },
       {
-        "term": "sostenuto",
-        "meaning": "sustained"
+        "term": "sempre",
+        "meaning": "always"
       },
       {
-        "term": "sotto voce",
-        "meaning": "in an undertone"
+        "term": "simile",
+        "abbr": "sim.",
+        "meaning": "continue in the same way"
+      },
+      {
+        "term": "sostenuto",
+        "abbr": "sost.",
+        "meaning": "sustained"
       },
       {
         "term": "subito",
@@ -379,286 +416,208 @@
         "meaning": "sad, sorrowful"
       }
     ],
-    "signs": [
-      {
-        "term": "marcato",
-        "abbr": "marc.",
-        "meaning": "emphatic, accented"
-      },
-      {
-        "term": "prima / primo",
-        "meaning": "first"
-      },
-      {
-        "term": "seconda / secondo",
-        "meaning": "second"
-      },
-      {
-        "term": "volta (prima/seconda volta)",
-        "meaning": "time (first/second time)"
-      }
-    ]
+    "signs": []
   },
   "grade_4": {
     "verified": true,
-    "note": "Grade 4 introduces FRENCH terms. The instrument directions and ornament signs of the old seed are owned by instruments-4 and ornaments-4, so they are not duplicated here.",
     "dynamics": [],
     "tempo": [
       {
-        "term": "animé",
-        "lang": "fr",
-        "meaning": "animated, lively"
+        "term": "come prima",
+        "meaning": "as at first"
       },
       {
-        "term": "cédez",
-        "lang": "fr",
-        "meaning": "yield, relax the speed"
+        "term": "comodo / tempo comodo",
+        "meaning": "at a comfortable speed"
+      },
+      {
+        "term": "larghetto",
+        "meaning": "rather slow"
+      },
+      {
+        "term": "rubato / tempo rubato",
+        "meaning": "with some freedom of time"
+      },
+      {
+        "term": "stringendo",
+        "meaning": "gradually getting faster"
+      },
+      {
+        "term": "animé",
+        "meaning": "animated",
+        "lang": "fr"
       },
       {
         "term": "lent",
-        "lang": "fr",
-        "meaning": "slow"
+        "meaning": "slow",
+        "lang": "fr"
       },
       {
         "term": "modéré",
-        "lang": "fr",
-        "meaning": "at a moderate speed"
+        "meaning": "at a moderate speed",
+        "lang": "fr"
       },
       {
-        "term": "presser / en pressant",
-        "lang": "fr",
-        "meaning": "hurry, hurrying on"
-      },
-      {
-        "term": "ralentir",
-        "lang": "fr",
-        "meaning": "slow down"
-      },
-      {
-        "term": "retenu / en retenant",
-        "lang": "fr",
-        "meaning": "held back, holding back"
-      },
-      {
-        "term": "vif",
-        "lang": "fr",
-        "meaning": "lively"
+        "term": "retenu",
+        "meaning": "held back",
+        "lang": "fr"
       },
       {
         "term": "vite",
-        "lang": "fr",
-        "meaning": "quick"
+        "meaning": "quick",
+        "lang": "fr"
       }
     ],
     "other_terms": [
       {
-        "term": "à / au",
-        "lang": "fr",
-        "meaning": "to, at"
+        "term": "affettuoso",
+        "meaning": "with tenderness"
       },
       {
-        "term": "assez",
-        "lang": "fr",
-        "meaning": "enough, sufficiently"
+        "term": "alla breve",
+        "meaning": "with a minim beat, two beats in a bar"
       },
       {
-        "term": "avec",
-        "lang": "fr",
-        "meaning": "with"
+        "term": "amabile",
+        "meaning": "pleasant, amiable"
+      },
+      {
+        "term": "appassionato",
+        "meaning": "with passion"
+      },
+      {
+        "term": "assai",
+        "meaning": "very"
+      },
+      {
+        "term": "con brio",
+        "meaning": "with vigour"
+      },
+      {
+        "term": "deciso",
+        "meaning": "with determination"
+      },
+      {
+        "term": "mesto",
+        "meaning": "sad, mournful"
+      },
+      {
+        "term": "misterioso",
+        "meaning": "mysterious"
+      },
+      {
+        "term": "ritmico",
+        "meaning": "rhythmically"
       },
       {
         "term": "douce",
-        "lang": "fr",
-        "meaning": "sweet"
-      },
-      {
-        "term": "en dehors",
-        "lang": "fr",
-        "meaning": "prominent (bring out the part)"
-      },
-      {
-        "term": "et",
-        "lang": "fr",
-        "meaning": "and"
-      },
-      {
-        "term": "légèrement / léger",
-        "lang": "fr",
-        "meaning": "light, lightly"
-      },
-      {
-        "term": "mais",
-        "lang": "fr",
-        "meaning": "but"
-      },
-      {
-        "term": "moins",
-        "lang": "fr",
-        "meaning": "less"
-      },
-      {
-        "term": "non",
-        "lang": "fr",
-        "meaning": "not"
-      },
-      {
-        "term": "peu",
-        "lang": "fr",
-        "meaning": "little"
-      },
-      {
-        "term": "plus",
-        "lang": "fr",
-        "meaning": "more"
-      },
-      {
-        "term": "sans",
-        "lang": "fr",
-        "meaning": "without"
-      },
-      {
-        "term": "très",
-        "lang": "fr",
-        "meaning": "very"
+        "meaning": "soft, sweet",
+        "lang": "fr"
       }
     ],
     "signs": []
   },
   "grade_5": {
     "verified": true,
-    "note": "Grade 5 introduces GERMAN terms plus piano-specific terms and signs",
-    "dynamics": [],
+    "dynamics": [
+      {
+        "term": "a niente",
+        "meaning": "to nothing"
+      },
+      {
+        "term": "morendo",
+        "meaning": "dying"
+      },
+      {
+        "term": "rinforzando",
+        "abbr": "rf / rfz / rinf",
+        "meaning": "a sudden accent on a note or chord"
+      },
+      {
+        "term": "smorzando",
+        "abbr": "smorz.",
+        "meaning": "muffling, damping the tone"
+      }
+    ],
     "tempo": [
       {
+        "term": "largamente",
+        "meaning": "broadly"
+      },
+      {
         "term": "langsam",
-        "lang": "de",
-        "meaning": "slow"
+        "meaning": "slow",
+        "lang": "de"
       },
       {
         "term": "lebhaft",
-        "lang": "de",
-        "meaning": "lively"
+        "meaning": "lively",
+        "lang": "de"
       },
       {
         "term": "mässig",
-        "lang": "de",
-        "meaning": "at a moderate speed"
+        "meaning": "at a moderate speed",
+        "lang": "de"
       },
       {
         "term": "schnell",
-        "lang": "de",
-        "meaning": "fast"
-      },
-      {
-        "term": "bewegt",
-        "lang": "de",
-        "meaning": "with movement, agitated"
-      },
-      {
-        "term": "breit",
-        "lang": "de",
-        "meaning": "broad, expansive"
+        "meaning": "fast",
+        "lang": "de"
       }
     ],
     "other_terms": [
       {
-        "term": "mit Ausdruck",
-        "lang": "de",
-        "meaning": "with expression"
+        "term": "ad libitum",
+        "abbr": "ad lib.",
+        "meaning": "at choice, freely"
+      },
+      {
+        "term": "attacca",
+        "meaning": "go straight on without a break"
+      },
+      {
+        "term": "cantando",
+        "meaning": "singing"
+      },
+      {
+        "term": "con dolore",
+        "meaning": "with grief"
+      },
+      {
+        "term": "con spirito",
+        "meaning": "with spirit"
+      },
+      {
+        "term": "doloroso",
+        "meaning": "sorrowful"
+      },
+      {
+        "term": "perdendosi",
+        "meaning": "losing itself, fading and slowing"
+      },
+      {
+        "term": "quasi",
+        "meaning": "as if, almost"
+      },
+      {
+        "term": "sonoro",
+        "meaning": "resonant, with a rich tone"
+      },
+      {
+        "term": "sotto voce",
+        "meaning": "in an undertone"
       },
       {
         "term": "ruhig",
-        "lang": "de",
-        "meaning": "peaceful"
+        "meaning": "peaceful",
+        "lang": "de"
       },
       {
         "term": "traurig",
-        "lang": "de",
-        "meaning": "sad"
-      },
-      {
-        "term": "zart",
-        "lang": "de",
-        "meaning": "tender, delicate"
-      },
-      {
-        "term": "voll",
-        "lang": "de",
-        "meaning": "full"
-      },
-      {
-        "term": "wenig",
-        "lang": "de",
-        "meaning": "little"
-      },
-      {
-        "term": "ein wenig",
-        "lang": "de",
-        "meaning": "a little"
-      },
-      {
-        "term": "aber",
-        "lang": "de",
-        "meaning": "but"
-      },
-      {
-        "term": "etwas",
-        "lang": "de",
-        "meaning": "somewhat, rather"
-      },
-      {
-        "term": "immer",
-        "lang": "de",
-        "meaning": "always"
-      },
-      {
-        "term": "mit",
-        "lang": "de",
-        "meaning": "with"
-      },
-      {
-        "term": "nicht",
-        "lang": "de",
-        "meaning": "not"
-      },
-      {
-        "term": "ohne",
-        "lang": "de",
-        "meaning": "without"
-      },
-      {
-        "term": "sehr",
-        "lang": "de",
-        "meaning": "very"
+        "meaning": "sad",
+        "lang": "de"
       }
     ],
-    "signs": [
-      {
-        "term": "una corda",
-        "meaning": "one string: use the left (soft) pedal"
-      },
-      {
-        "term": "tre corde",
-        "meaning": "three strings: release the left pedal"
-      },
-      {
-        "term": "mano destra",
-        "abbr": "M.D.",
-        "meaning": "right hand"
-      },
-      {
-        "term": "mano sinistra",
-        "abbr": "M.S.",
-        "meaning": "left hand"
-      },
-      {
-        "sign": "ped",
-        "meaning": "depress the sustaining pedal"
-      },
-      {
-        "sign": "ped_release",
-        "meaning": "release the sustaining pedal"
-      }
-    ]
+    "signs": []
   }
 }

@@ -256,15 +256,22 @@ cannot, for four separate reasons:
 | `key-signatures`, `key-signatures-2`, `major-keys-3`, `major-keys-4`, `major-keys-5` | Naming a key from sound alone is absolute pitch, which the product contract already puts out of scope |
 | `enharmonics-4` | F♯ and G♭ are the same sound. The question cannot be built at all |
 | `instruments-4`, `instruments-5` | Timbre, `arco` and `pizzicato`. The audio path has one soundfont voice |
-| `piano-directions-5` | `una corda`, `ped`, `mano destra` — technique nothing in the audio path renders |
-| `character-3`, `expression-2` | `deciso` against `risoluto`, `grazioso` against `giocoso`. A synth cannot separate interpretive synonyms fairly |
+| `character-3`, `expression-2` | `risoluto` against `energico`, `espressivo` against `grazioso`. A synth cannot separate interpretive synonyms fairly |
 
 The same test applies **per atom**, not only per lesson, because `by_ear_atoms` declares a subset.
-Inside the 11 buildable terms lessons, 41 atoms still fail it: `da capo`, `fine`, `repeat marks` and
-`prima/seconda volta` name navigation, and `poco a poco`, `molto`, `sempre`, `assez`, `sehr` are
-modifiers rather than sounds.
+Inside the buildable terms lessons, roughly 40 atoms still fail it: `da capo`, `fine` and `repeat
+marks` name navigation, and `poco a poco`, `molto`, `sempre`, `assai`, `quasi` are modifiers rather
+than sounds.
 
-Coverage therefore lands at **80 of 91**, and the 11 are recorded here rather than tracked as a gap.
+The 10 are recorded here rather than tracked as a gap.
+
+**Amended 2026-08-09, terms deck moved to the ABRSM 2020 lists (chromaticly-i8e).** Two rows of the
+table changed and the decision behind them did not. `piano-directions-5` is deleted: `una corda`,
+`ped` and `mano destra` are not on any ABRSM list for grades 1 to 5, so the lesson no longer exists
+and the exclusion count falls from 11 to 10. The `character-3` / `expression-2` row keeps its reason
+and loses its examples, because `deciso` moved to grade 4 and `giocoso` to grade 3; the pairs named
+above are the current ones. The earlier "80 of 91" coverage figure is dropped rather than restated —
+the lesson count moved several times before this change and the figure was already stale.
 
 ### A by-ear card carries one play control, and it belongs to the question · approved 2026-08-06
 

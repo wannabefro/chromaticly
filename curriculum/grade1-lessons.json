@@ -428,7 +428,9 @@
         "term:forte",
         "term:fortissimo",
         "term:crescendo",
+        "term:crescendo_hairpin",
         "term:diminuendo",
+        "term:diminuendo_hairpin",
         "term:decrescendo"
       ],
       "templates": [
@@ -448,7 +450,7 @@
         ],
         "concept": {
           "title": "How loud to play",
-          "body": "Dynamics are the words that say how loud. Six of them form one scale, quietest to loudest: pianissimo (pp) very quiet, piano (p) quiet, mezzo piano (mp) moderately quiet, mezzo forte (mf) moderately loud, forte (f) loud, fortissimo (ff) very loud. Only two Italian words are really at work there — piano and forte — and mezzo means \"half\", so it pulls whichever word it sits with back toward the middle. Three more ask for a gradual change rather than a level: crescendo gets gradually louder, while diminuendo and decrescendo both mean gradually quieter.",
+          "body": "Dynamics are the words that say how loud. Six of them form one scale, quietest to loudest: pianissimo (pp) very quiet, piano (p) quiet, mezzo piano (mp) moderately quiet, mezzo forte (mf) moderately loud, forte (f) loud, fortissimo (ff) very loud. Only two Italian words are really at work there — piano and forte — and mezzo means \"half\", so it pulls whichever word it sits with back toward the middle. Three more ask for a gradual change rather than a level: crescendo gets gradually louder, while diminuendo and decrescendo both mean gradually quieter. Each also has a hairpin, drawn under the stave: the one that opens to the right is a crescendo, the one that closes is a diminuendo.",
           "example": {
             "template_id": "term_meaning_flashcard",
             "grade": 1,
@@ -700,7 +702,8 @@
         "term:dolce",
         "term:da_capo",
         "term:fine",
-        "term:repeat_marks"
+        "term:repeat_marks",
+        "term:common_time"
       ],
       "templates": [
         "term_meaning_flashcard",
@@ -719,7 +722,7 @@
         ],
         "concept": {
           "title": "The marks on the page",
-          "body": "Some marks change how a note sounds. Legato means smoothly, and a slur — a curved line over notes of **different** pitch — asks for exactly that. Staccato means short and detached, written as a dot above or below the notehead. An accent is a small wedge asking for extra emphasis. Cantabile means in a singing style and dolce means sweetly. A tie looks exactly like a slur but joins two notes of the **same** pitch, and it makes one longer note rather than two. A pause holds a note longer than written. Repeat marks send you back to the opening repeat sign, or to the very beginning if there is no opening repeat sign; D.C. (da capo) means go back to the beginning, and Fine marks where to stop.",
+          "body": "Some marks change how a note sounds. Legato means smoothly, and a slur — a curved line over notes of **different** pitch — asks for exactly that. Staccato means short and detached, written as a dot above or below the notehead. An accent is a small wedge asking for extra emphasis. Cantabile means in a singing style and dolce means sweetly. A tie looks exactly like a slur but joins two notes of the **same** pitch, and it makes one longer note rather than two. A pause holds a note longer than written. Repeat marks send you back to the opening repeat sign, or to the very beginning if there is no opening repeat sign; D.C. (da capo) means go back to the beginning, and Fine marks where to stop. One more sign sets the metre rather than the sound: common time is the C printed where a time signature belongs, and it means four crotchet beats in a bar, the same as 4/4.",
           "example": {
             "template_id": "term_meaning_flashcard",
             "grade": 1,

@@ -500,18 +500,16 @@
       "title": "More words for speed",
       "strand": "terms_signs",
       "atoms": [
-        "term:adagietto",
-        "term:andantino",
-        "term:largo",
-        "term:larghetto",
-        "term:lento",
-        "term:presto",
-        "term:vivace_vivo",
-        "term:grave",
+        "term:allargando",
         "term:con_moto",
+        "term:grave",
+        "term:largo",
+        "term:lento",
         "term:meno_mosso",
         "term:pi_mosso",
-        "term:ritenuto"
+        "term:presto",
+        "term:ritenuto",
+        "term:vivace_vivo"
       ],
       "templates": [
         "term_meaning_flashcard",
@@ -524,20 +522,20 @@
       },
       "teach": {
         "objectives": [
-          "Recognise the Grade 2 tempo words and the words that modify a speed",
-          "Larghetto is less slow than largo, and adagietto less slow than adagio",
-          "Ritenuto is an immediate change; rallentando is gradual"
+          "Recognise the Grade 2 tempo words and the words that change a speed",
+          "Largo, lento and grave are three shades of slow; presto and vivace two of fast",
+          "Allargando broadens gradually; ritenuto holds back at once"
         ],
         "concept": {
           "title": "Filling in the speeds",
-          "body": "Grade 1 gave you a ladder from adagio to allegro. Grade 2 fills in the rungs between and beyond. *Largo* and *lento* are slow, *grave* slower and heavier still; *presto* is fast and *vivace* is lively. Two endings do a lot of work: *-etto* makes a word gentler, so *larghetto* is less slow than largo, and *adagietto* less slow than adagio. *-ino* does something similar to andantino. Then there are the words that change a speed rather than set one: *meno mosso* is less movement, *più mosso* is more, *con moto* is with movement, and *ritenuto* holds back at once rather than gradually.",
+          "body": "Grade 1 gave you a ladder from adagio to allegro. Grade 2 fills in the rungs at both ends. *Largo* is slow and stately, *lento* simply slow, and *grave* slower and heavier still; at the other end *presto* is fast and *vivace* (or *vivo*) is lively. The rest change a speed rather than set one. *Con moto* asks for movement, *meno mosso* is less movement and *più mosso* is more. Two pull the speed back in different ways: *allargando* broadens gradually, while *ritenuto* holds back at once. That last pair is the one to keep apart, because only one of them is gradual.",
           "example": {
             "template_id": "term_meaning",
             "grade": 2,
             "seed": 1
           }
         },
-        "smartTip": "-etto and -ino soften a word. Larghetto is less slow than largo, not more.",
+        "smartTip": "Più mosso and meno mosso adjust a speed you already have. Neither sets one on its own.",
         "didYouKnow": "Ritenuto and rallentando are often confused even by players. Rallentando slows gradually; ritenuto drops the speed immediately, like a handbrake rather than a gentle brake."
       },
       "unlocks": "expression-2"
@@ -547,13 +545,18 @@
       "title": "Words that colour a passage",
       "strand": "terms_signs",
       "atoms": [
-        "term:grazioso",
-        "term:giocoso",
+        "term:alla_marcia",
+        "term:con_col",
+        "term:e_ed",
         "term:espressivo",
-        "term:poco_a_poco",
+        "term:fortepiano",
+        "term:grazioso",
+        "term:ma",
+        "term:meno",
         "term:molto",
         "term:non_troppo",
-        "term:sempre",
+        "term:pi",
+        "term:poco_a_poco",
         "term:senza"
       ],
       "templates": [
@@ -567,20 +570,20 @@
       },
       "teach": {
         "objectives": [
-          "Recognise the Grade 2 words for character and degree",
-          "Poco, molto, non troppo and sempre never stand alone",
-          "Senza means without, and attaches to a direction the same way"
+          "Recognise the Grade 2 words for character, degree and joining",
+          "Poco, molto, meno, più and non troppo never stand alone",
+          "fp is one instruction on one note: loud, then immediately quiet"
         ],
         "concept": {
           "title": "How much, and in what mood",
-          "body": "Two kinds of word here, and they work together. The first names a mood for a whole passage: *espressivo* expressive, *grazioso* graceful, *giocoso* playful. The second says **how much** of something else — *poco* a little, *poco a poco* little by little, *molto* very, *non troppo* not too much, *sempre* always. None of those appears alone; each attaches to another word and adjusts it, so allegro non troppo is fast but not too fast, and cresc. poco a poco is a swell that arrives gradually. *Senza* means without, and it works the same way: senza rit. is an instruction not to slow down.",
+          "body": "Three kinds of word here. The first names a character: *espressivo* expressive, *grazioso* graceful, *alla marcia* in the style of a march. The second says **how much** of something else — *poco* a little, *poco a poco* little by little, *molto* very, *meno* less, *più* more, *non troppo* not too much. None of those appears alone; each attaches to another word and adjusts it, so allegro non troppo is fast but not too fast. The small joining words work the same way: *con* (or *col*) is with, *e* (or *ed*) is and, *ma* is but, *senza* is without, so allegro ma non troppo reads straight across. One dynamic joins them: *fortepiano* (fp) is loud, then immediately quiet, on a single note.",
           "example": {
             "template_id": "term_meaning",
             "grade": 2,
             "seed": 1
           }
         },
-        "smartTip": "Poco, molto, non troppo and sempre always modify the word next to them. Read the pair, not the word.",
+        "smartTip": "Read the pair, not the word. Meno mosso and più mosso are these same two words doing the job to a speed.",
         "didYouKnow": "Non troppo exists because players kept overdoing it. Allegro non troppo is a composer saying 'yes, fast — but I have heard what you do with allegro, and not that fast.'"
       },
       "unlocks": "signs-2"
@@ -591,12 +594,15 @@
       "strand": "terms_signs",
       "atoms": [
         "term:dal_segno",
-        "term:al_fine",
-        "term:simile",
+        "term:first_time_bar",
+        "term:second_time_bar",
+        "term:marcato_accent",
+        "term:portato",
+        "term:staccatissimo",
         "term:tenuto",
         "term:8va",
-        "term:fortepiano",
-        "term:sforzando_sforzato"
+        "term:cut_common_time",
+        "term:multi_bar_rest"
       ],
       "templates": [
         "term_meaning_flashcard",
@@ -610,19 +616,19 @@
       "teach": {
         "objectives": [
           "Recognise the Grade 2 articulation marks and navigation signs",
-          "Tenuto, fortepiano and sforzando each shape a single note",
-          "Dal segno and al fine tell you where to go; 8va moves a passage an octave"
+          "Tenuto, portato, staccatissimo and marcato each shape how one note is played",
+          "Dal segno and the time bars tell you where to go next"
         ],
         "concept": {
           "title": "Shaping a note, and finding your way",
-          "body": "These do two jobs. Three of them shape a single note: *tenuto* holds it for its full value, *fortepiano* (fp) attacks it loudly then drops instantly to quiet, and *sforzando* (sf) forces it out. Two send you somewhere: *dal segno* (D.S.) goes back to the sign, and *al fine* says play on to the word 'fine'. The last two do neither. *8va* moves a passage an octave from where it is written, and *simile* says carry on in the same way, so a pattern already established does not have to be re-marked on every note.",
+          "body": "These do two jobs. Four shape how a note is played: *tenuto* holds it for its full value, the *marcato* wedge gives it a strong accent, *staccatissimo* makes it very short, and *portato* — dots under a slur — detaches it only slightly. The rest are directions. *Dal segno* (D.S.) sends you back to the sign, and a *first-time bar* and *second-time bar* tell you which ending to take on a repeat. *8va* moves a passage an octave from where it is written. A *multi-bar rest* counts whole bars of silence in one symbol, and *cut common time* (¢) means two minim beats in a bar, the same as 2/2.",
           "example": {
             "template_id": "term_meaning",
             "grade": 2,
             "seed": 1
           }
         },
-        "smartTip": "fp is one instruction, not two: loud then immediately quiet, on the same note.",
+        "smartTip": "Staccato dot, staccatissimo wedge, tenuto line, marcato wedge — four marks above one notehead, four different lengths and weights.",
         "didYouKnow": "Writing 8va above a passage saves a copyist from drawing five ledger lines on every note. It survived into print because it is genuinely easier to read."
       },
       "unlocks": "music-in-context-2"

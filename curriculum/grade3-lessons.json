@@ -210,12 +210,11 @@
       "atoms": [
         "term:agitato",
         "term:animato",
-        "term:deciso",
+        "term:con_forza",
         "term:energico",
-        "term:risoluto",
-        "term:brio_con_brio",
-        "term:forza_con_forza",
-        "term:maestoso"
+        "term:giocoso",
+        "term:maestoso",
+        "term:risoluto"
       ],
       "templates": [
         "term_meaning_flashcard",
@@ -230,19 +229,19 @@
         "objectives": [
           "Recognise the Grade 3 words for energy and attitude",
           "A character word says how the music should sound, not how fast it goes",
-          "Con brio and con forza pair 'with' to a noun"
+          "Con forza pairs 'with' to a noun, which is why the 'con' is needed"
         ],
         "concept": {
           "title": "How it should feel, not how fast",
-          "body": "Most of what Grade 3 adds is not about speed at all. This half is about drive. *Agitato* is agitated, *animato* animated, *energico* energetic. Some are attitudes rather than energies: *deciso* with determination, *risoluto* bold, *maestoso* majestic. Two come as a noun you meet with 'con': *con brio* is with vigour, *con forza* with force — the word after 'con' is a thing, not a description, which is why it needs the 'con' at all. A tempo marking says how fast; these say what it should sound like at that speed.",
+          "body": "Most of what Grade 3 adds is not about speed at all. This half is about drive. *Agitato* is agitated, *animato* animated, *energico* energetic. Some are attitudes rather than energies: *risoluto* bold, *maestoso* majestic, *giocoso* playful. One comes as a noun you meet with 'con': *con forza* is with force — the word after 'con' is a thing, not a description, which is why it needs the 'con' at all. A tempo marking says how fast; these say what it should sound like at that speed.",
           "example": {
             "template_id": "term_meaning",
             "grade": 3,
             "seed": 1
           }
         },
-        "smartTip": "These do not change the speed. Allegro con brio is the same tempo as allegro, played with more bite.",
-        "didYouKnow": "Beethoven marked a movement 'con brio' more often than almost any other composer. It is the difference between the right notes and the right performance, and the only part a metronome cannot help with."
+        "smartTip": "These do not change the speed. Allegro energico is the same tempo as allegro, played with more bite.",
+        "didYouKnow": "Animato and agitato look alike and are not. Animato is lively and willing; agitato is unsettled, and the same notes played that way sound anxious rather than eager."
       },
       "unlocks": "expression-3"
     },
@@ -251,7 +250,6 @@
       "title": "Words for weight and mood",
       "strand": "terms_signs",
       "atoms": [
-        "term:delicato",
         "term:leggiero",
         "term:pesante",
         "term:scherzando",
@@ -277,7 +275,7 @@
         ],
         "concept": {
           "title": "How heavy, and how it feels",
-          "body": "This half of the Grade 3 vocabulary is about weight and mood. *Leggiero* is light and nimble, *pesante* heavy, *delicato* delicate, *sostenuto* sustained. The moods run from *tranquillo* calm to *triste* (or *tristamente*) sad to *scherzando* joking. And *semplice* asks for plainness itself — play the passage simply and unaffectedly. None of these changes the tempo. A piece marked andante tranquillo goes at exactly the speed andante asks for; the second word tells you what it should sound like when it gets there.",
+          "body": "This half of the Grade 3 vocabulary is about weight and mood. *Leggiero* is light and nimble, *pesante* heavy, *sostenuto* sustained. The moods run from *tranquillo* calm to *triste* (or *tristamente*) sad to *scherzando* joking. And *semplice* asks for plainness itself — play the passage simply and unaffectedly. None of these changes the tempo. A piece marked andante tranquillo goes at exactly the speed andante asks for; the second word tells you what it should sound like when it gets there.",
           "example": {
             "template_id": "term_meaning",
             "grade": 3,
@@ -291,20 +289,18 @@
     },
     {
       "id": "directions-3",
-      "title": "Extremes, and marks on the page",
+      "title": "Extremes, and words that qualify",
       "strand": "terms_signs",
       "atoms": [
-        "term:adagissimo",
-        "term:prestissimo",
-        "term:allargando",
-        "term:rubato_tempo_rubato",
-        "term:ad_libitum",
-        "term:sotto_voce",
-        "term:subito",
+        "term:andantino",
+        "term:ben",
         "term:marcato",
+        "term:prestissimo",
         "term:prima_primo",
-        "term:seconda_secondo",
-        "term:volta_prima_seconda_volta"
+        "term:sempre",
+        "term:sforzando_sforzato",
+        "term:simile",
+        "term:subito"
       ],
       "templates": [
         "term_meaning_flashcard",
@@ -317,21 +313,21 @@
       },
       "teach": {
         "objectives": [
-          "Recognise the Grade 3 tempo extremes and the marks that direct a repeat",
+          "Recognise the Grade 3 tempo extremes and the words that qualify another word",
           "-issimo pushes a word to its extreme",
-          "Prima means first and seconda means second, whether they mark a repeat ending or a part"
+          "Sempre, ben and subito never stand alone"
         ],
         "concept": {
-          "title": "The far ends, and where to look",
-          "body": "Two of these push a tempo word to its limit: *adagissimo* is very slow and *prestissimo* as fast as possible, the *-issimo* ending doing the same job it does in fortissimo. *Allargando* broadens, and *tempo rubato* gives the player freedom with the time — literally 'stolen time', taken from one note and paid back to another. *Ad libitum* leaves the manner of a passage to the player, to be taken freely. *Subito* means suddenly, so subito piano is an instant drop, and *sotto voce* asks for an undertone. The rest are marks on the page rather than instructions in words: *marcato* emphasises a note, and *prima volta* and *seconda volta* are the first-time and second-time bars that tell you which ending to take on a repeat. *Prima* (or *primo*) simply means first and *seconda* (or *secondo*) means second, so the same two words label the parts of a piano duet: primo is the upper part, secondo the lower.",
+          "title": "The far ends, and the words that qualify",
+          "body": "*Prestissimo* pushes a tempo word to its limit, the *-issimo* ending doing the same job it does in fortissimo. *Andantino* sits beside andante and is the awkward one: most editions read it as slightly faster, some as slightly slower, so the safe answer names andante and says slightly faster (or slower) than it. The rest qualify something else. *Sempre* is always, *ben* is well, *subito* is suddenly — so subito piano is an instant drop. *Simile* says carry on in the same way, so a pattern already marked need not be re-marked on every note. *Marcato* emphasises a note and *sforzando* (sf) forces one out. *Prima* (or *primo*) simply means first, which is why it also labels the upper part of a piano duet.",
           "example": {
             "template_id": "term_meaning",
             "grade": 3,
             "seed": 1
           }
         },
-        "smartTip": "-issimo means 'most'. It works the same on prestissimo as it does on fortissimo.",
-        "didYouKnow": "Rubato means stolen. The old rule was that time borrowed from one note had to be repaid to another, so the bar still lasted exactly as long — the freedom was inside the bar, not on top of it."
+        "smartTip": "Sempre, ben and subito attach to the word beside them. Read the pair.",
+        "didYouKnow": "Andantino has been argued over for two centuries. Beethoven wrote to his publisher in 1813 asking whether an andantino should be faster or slower than an andante, and admitted he was not sure himself."
       },
       "unlocks": "minor-scales-3"
     },
@@ -571,7 +567,7 @@
         ],
         "concept": {
           "title": "The shorter rests, and the dot",
-          "body": "The smaller note values each have a matching rest. A quaver rest lasts half a crotchet, a semiquaver rest a quarter of one and a demisemiquaver rest an eighth. Read them against the crotchet, not against the beat: in compound time the beat is a dotted crotchet, so a quaver rest is a third of it. Their symbols echo the notes: as the note gains a tail, the rest gains a hook — one for the quaver rest, two for the semiquaver, three for the demisemiquaver. A rest may also carry a dot, and the dot does the same job it does on a note: it adds half the value again. A dotted crotchet rest lasts a crotchet plus a quaver, so one and a half crotchets \u2014 which is one whole beat in 6/8. To complete a bar, find how much time is missing and pick the rest of exactly that length.",
+          "body": "The smaller note values each have a matching rest. A quaver rest lasts half a crotchet, a semiquaver rest a quarter of one and a demisemiquaver rest an eighth. Read them against the crotchet, not against the beat: in compound time the beat is a dotted crotchet, so a quaver rest is a third of it. Their symbols echo the notes: as the note gains a tail, the rest gains a hook — one for the quaver rest, two for the semiquaver, three for the demisemiquaver. A rest may also carry a dot, and the dot does the same job it does on a note: it adds half the value again. A dotted crotchet rest lasts a crotchet plus a quaver, so one and a half crotchets — which is one whole beat in 6/8. To complete a bar, find how much time is missing and pick the rest of exactly that length.",
           "example": {
             "template_id": "rest_completion",
             "grade": 3,

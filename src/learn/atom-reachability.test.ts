@@ -25,18 +25,8 @@ function servedTagsFor(atom: string): { template: string; tagged: boolean } | nu
 
 describe('every credited atom is reachable by review', () => {
   test('the curriculum credits exactly the atoms it currently declares', () => {
-    // 725 before First steps (chromaticly-dhe), which adds 21: one pulse, seven
-    // letters, seven keyboard letters, two stave-anatomy kinds, four note shapes.
-    // 746 before the major-scale lessons, which add 9 `major_steps:<tonic>` atoms
-    // — A/Bb/Eb at grade 2, E/Ab at 3, B/Db at 4, F#/Gb at 5. The syllabus asks
-    // for the SCALES as well as the key signatures at every one of those grades.
-    // 755 before the minor-key primary triads, which add 3: chord_minor:I/IV/V.
-    // G4 item 4 asks for those chords in ANY key set for the grade; the course
-    // had only the major ones (chromaticly-7xv).
-    // 845 before grouping 5/4 and 7/4, which add 4 (two atoms, two by-ear). The
-    // syllabus sets four irregular signatures and asks for the grouping of all
-    // of them; grouping-5 taught only the two /8 ones.
-    expect(ALL.length).toBe(849);
+    // Move this only for a syllabus line. Past moves: `git log -L28,29:$0`.
+    expect(ALL.length).toBe(847);
   });
 
   test('every atom routes to a template', () => {

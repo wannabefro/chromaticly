@@ -963,21 +963,103 @@
         "smartTip": "Arco cancels pizzicato and senza sordino cancels con sordino. Each direction has an undo.",
         "didYouKnow": "'Pizzicato' is Italian for 'pinched' — the player plucks the string with a fingertip instead of drawing the bow across it, giving a short, bright, detached note."
       },
-      "unlocks": "french-tempo-4"
+      "unlocks": "italian-character-4"
     },
     {
-      "id": "french-tempo-4",
-      "title": "French words for speed",
+      "id": "italian-character-4",
+      "title": "Italian words for character",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:affettuoso",
+        "term:amabile",
+        "term:appassionato",
+        "term:con_brio",
+        "term:deciso",
+        "term:mesto",
+        "term:misterioso",
+        "term:ritmico"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 4,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 4 Italian words for mood and attitude",
+          "A character word never changes the tempo",
+          "Con brio pairs 'with' to a noun, the same way con forza does"
+        ],
+        "concept": {
+          "title": "The mood, named in Italian",
+          "body": "Grade 4 adds fifteen Italian words, and this is the half that names a mood. *Affettuoso* asks for tenderness, *amabile* for a pleasant, amiable manner, *appassionato* for passion. Against those sit the darker ones: *mesto* is sad and mournful, *misterioso* mysterious. Two are about attack rather than feeling: *deciso* is with determination and *con brio* with vigour — 'con' again followed by a noun, exactly as in con forza. *Ritmico* asks for the rhythm itself to be brought out. None of these touches the speed: allegro con brio is allegro, played with more edge.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 4,
+            "seed": 5
+          }
+        },
+        "smartTip": "If a word names a feeling, it is not the tempo. Find the tempo word separately.",
+        "didYouKnow": "Beethoven marked a movement con brio more often than almost any other composer. It is the difference between the right notes and the right performance, and the only part a metronome cannot help with."
+      },
+      "unlocks": "italian-directions-4"
+    },
+    {
+      "id": "italian-directions-4",
+      "title": "Italian words for speed and time",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:alla_breve",
+        "term:assai",
+        "term:come_prima",
+        "term:comodo_tempo_comodo",
+        "term:larghetto",
+        "term:rubato_tempo_rubato",
+        "term:stringendo"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 4,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 4 Italian words that set or change a speed",
+          "Stringendo drives forward; rubato bends the time without changing it",
+          "Alla breve sets the beat, not the speed"
+        ],
+        "concept": {
+          "title": "Speed, and freedom with it",
+          "body": "The other half of the Grade 4 Italian is about time. *Larghetto* is rather slow — the *-etto* ending softens largo, so larghetto is less slow than largo, not more. *Comodo* (or *tempo comodo*) asks for a comfortable speed and *come prima* for the speed you had at first. *Stringendo* drives gradually forward. *Rubato* (or *tempo rubato*) is different in kind: it gives the player freedom with the time — literally 'stolen time', taken from one note and paid back to another. *Assai* means very and qualifies whatever it follows, so allegro assai is very fast. *Alla breve* is not a speed at all: it says the beat is a minim, two in a bar.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 4,
+            "seed": 5
+          }
+        },
+        "smartTip": "The -etto ending softens a word. Larghetto is less slow than largo.",
+        "didYouKnow": "Rubato means stolen. The old rule was that time borrowed from one note had to be repaid to another, so the bar still lasted exactly as long — the freedom was inside the bar, not on top of it."
+      },
+      "unlocks": "french-terms-4"
+    },
+    {
+      "id": "french-terms-4",
+      "title": "French words in the score",
       "strand": "terms_signs",
       "atoms": [
         "term:anim",
-        "term:c_dez",
+        "term:douce",
         "term:lent",
         "term:mod_r",
-        "term:presser_en_pressant",
-        "term:ralentir",
-        "term:retenu_en_retenant",
-        "term:vif",
+        "term:retenu",
         "term:vite"
       ],
       "templates": [
@@ -991,70 +1073,21 @@
       },
       "teach": {
         "objectives": [
-          "French composers mark speed in French, not Italian",
-          "lent is slow, vif and vite are quick, modéré is moderate",
-          "cédez, ralentir and retenu all pull the speed back"
+          "Recognise the six French words the syllabus sets at this grade",
+          "Lent is slow, vite is quick, modéré is a moderate speed",
+          "Retenu holds the speed back"
         ],
         "concept": {
           "title": "Speed, in French",
-          "body": "From Grade 4 the paper can mark a piece in French. The core speeds read straight across: lent is slow, modéré is a moderate speed, and vif and vite both mean quick, with animé for lively. The changes of speed are the group worth learning together, because three of them slow the music and one drives it on. Cédez asks you to yield, ralentir to slow down, and retenu or en retenant to hold back. Against them, presser or en pressant means hurry on. French marks are often written as a verb telling the player what to do, where the Italian equivalent names a state, which is why so many of them end in -ez or -ant.",
+          "body": "From Grade 4 the paper can mark a piece in French, and six words are set. Four of them are speeds and read straight across: *lent* is slow, *modéré* a moderate speed, *vite* quick, and *animé* animated. *Retenu* pulls the speed back — the Italian equivalent is ritenuto, and the two even look alike. *Douce* is the odd one out, naming a manner rather than a speed: soft and sweet, the French for dolce. French marks are often written as a verb telling the player what to do, where the Italian names a state, which is why so many of them end in -é or -ant.",
           "example": {
             "template_id": "term_meaning",
             "grade": 4,
             "seed": 5
           }
         },
-        "smartTip": "A French mark usually tells you to do something. Ask what the player is being asked to change.",
+        "smartTip": "Each French word here has an Italian twin you already know. Retenu is ritenuto, douce is dolce, lent is lento.",
         "didYouKnow": "Debussy and Ravel marked almost everything in French. Debussy went further and wrote whole performance sentences, not single words."
-      },
-      "unlocks": "french-expression-4"
-    },
-    {
-      "id": "french-expression-4",
-      "title": "French words for how to play",
-      "strand": "terms_signs",
-      "atoms": [
-        "term:au",
-        "term:assez",
-        "term:avec",
-        "term:douce",
-        "term:en_dehors",
-        "term:et",
-        "term:l_g_rement_l_ger",
-        "term:mais",
-        "term:moins",
-        "term:non",
-        "term:peu",
-        "term:plus",
-        "term:sans",
-        "term:tr_s"
-      ],
-      "templates": [
-        "term_meaning_flashcard",
-        "term_meaning"
-      ],
-      "worked_example": {
-        "template_id": "term_meaning",
-        "grade": 4,
-        "seed": 2
-      },
-      "teach": {
-        "objectives": [
-          "Small French words change the word they sit beside",
-          "très is very, assez is fairly, peu is little, moins is less and plus is more",
-          "sans and avec are the without/with pair, like senza and con"
-        ],
-        "concept": {
-          "title": "The words in between",
-          "body": "Most French marks are built from a character word and a small qualifier, exactly as the Italian ones are. The qualifiers do the same jobs you already know: très is very, assez is fairly or rather, peu is little, moins is less and plus is more. Sans and avec are without and with, the French senza and con. Mais is but, et is and, non is not, and à or au is to or at. Two carry meaning on their own: douce is sweet, and légèrement or léger asks for a light touch. En dehors is the one to learn deliberately, because it is an instruction about balance rather than character: bring this part out.",
-          "example": {
-            "template_id": "term_meaning",
-            "grade": 4,
-            "seed": 7
-          }
-        },
-        "smartTip": "Learn the qualifiers first. They recombine endlessly, so each one you know unlocks several marks.",
-        "didYouKnow": "En dehors literally means \"outside\". A pianist reading it lifts one line clear of the texture rather than playing louder overall."
       },
       "unlocks": "music-in-context-4"
     },

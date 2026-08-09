@@ -390,136 +390,131 @@
         "smartTip": "Write out both chords of the named cadence before you look at the options. Then the missing one is obvious.",
         "didYouKnow": "An imperfect cadence is the only one of the three named by its ending alone. That is why it accepts more than one approach chord, while perfect and plagal each accept exactly one."
       },
-      "unlocks": "german-tempo-5"
+      "unlocks": "italian-expression-5"
     },
     {
-      "id": "german-tempo-5",
-      "title": "German words for speed",
+      "id": "italian-expression-5",
+      "title": "Italian words for manner",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:attacca",
+        "term:cantando",
+        "term:con_dolore",
+        "term:con_spirito",
+        "term:doloroso",
+        "term:quasi",
+        "term:sonoro",
+        "term:sotto_voce"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 5,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 5 Italian words for manner and tone",
+          "Quasi means 'as if' and always qualifies the word beside it",
+          "Attacca is an instruction to the player, not a description"
+        ],
+        "concept": {
+          "title": "How it should sound at Grade 5",
+          "body": "Grade 5 adds fifteen Italian words on top of everything below it, and this group names a manner. *Cantando* asks for singing, *sonoro* for a resonant, rich tone, *sotto voce* for an undertone. Two name grief: *doloroso* is sorrowful and *con dolore* is with grief. Against them *con spirito* asks for spirit. *Quasi* means 'as if' or 'almost' and never stands alone, so quasi allegretto is almost allegretto. *Attacca* is the only one that is not a description at all: it tells the player to go straight on into the next movement without a break.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 5,
+            "seed": 5
+          }
+        },
+        "smartTip": "Con dolore and con spirito are both con plus a noun. Learn the noun and the pair follows.",
+        "didYouKnow": "Attacca is printed at the end of a movement rather than the start of the next one. It is a warning to the player not to let the audience clap."
+      },
+      "unlocks": "italian-dynamics-5"
+    },
+    {
+      "id": "italian-dynamics-5",
+      "title": "Fading, and freedom",
+      "strand": "terms_signs",
+      "atoms": [
+        "term:a_niente",
+        "term:ad_libitum",
+        "term:largamente",
+        "term:morendo",
+        "term:perdendosi",
+        "term:rinforzando",
+        "term:smorzando"
+      ],
+      "templates": [
+        "term_meaning_flashcard",
+        "term_meaning"
+      ],
+      "worked_example": {
+        "template_id": "term_meaning",
+        "grade": 5,
+        "seed": 1
+      },
+      "teach": {
+        "objectives": [
+          "Recognise the Grade 5 words for fading away",
+          "Morendo, smorzando, perdendosi and a niente all fade, and differ in what else they do",
+          "Rinforzando is a sudden accent, not a gradual change"
+        ],
+        "concept": {
+          "title": "Four ways to fade",
+          "body": "Four of these fade, and the paper expects them apart. *Morendo* is dying, and is the plainest of the four. *Smorzando* muffles and damps the tone. *Perdendosi* loses itself, fading and slowing at once. *A niente* goes the whole way to nothing, to silence. Against them, *rinforzando* (rf, rfz or rinf) is the opposite in shape: a sudden accent on one note or chord, not a gradual change at all. *Largamente* asks for broad playing, and *ad libitum* (ad lib.) leaves the manner of a passage to the player, to be taken freely.",
+          "example": {
+            "template_id": "term_meaning",
+            "grade": 5,
+            "seed": 5
+          }
+        },
+        "smartTip": "Only perdendosi slows as well as fading. Morendo is the plain one; smorzando damps the tone.",
+        "didYouKnow": "A niente is usually printed with a hairpin that closes to a point. Composers write it when a diminuendo is not enough — the note has to arrive at silence, not merely at quiet."
+      },
+      "unlocks": "german-terms-5"
+    },
+    {
+      "id": "german-terms-5",
+      "title": "German words in the score",
       "strand": "terms_signs",
       "atoms": [
         "term:langsam",
-        "term:schnell",
-        "term:m_ssig",
         "term:lebhaft",
-        "term:bewegt",
-        "term:breit"
-      ],
-      "templates": [
-        "term_meaning",
-        "term_meaning_flashcard"
-      ],
-      "worked_example": {
-        "template_id": "term_meaning",
-        "grade": 5,
-        "seed": 3
-      },
-      "teach": {
-        "objectives": [
-          "Recognise the German words for tempo that Grade 5 adds",
-          "German terms do the same job as the Italian ones you already know",
-          "Breit and bewegt describe the motion, not only the speed"
-        ],
-        "concept": {
-          "title": "The other language on the page",
-          "body": "Grade 5 is where a second language arrives. Italian became the international language of musical instruction, but German composers often wrote in German, so a score by Schumann, Brahms or Mahler gives its directions in German. The tempo words map onto the Italian you already know: *langsam* is slow, like adagio; *schnell* is fast, like allegro; *mässig* is at a moderate speed, like moderato. *Lebhaft* means lively. Two of them describe how the music moves rather than how fast it goes: *bewegt* is with movement, and *breit* is broad and expansive, which usually means slower and heavier. You are not expected to speak German. You are expected to recognise about twenty words when they appear.",
-          "example": {
-            "template_id": "term_meaning",
-            "grade": 5,
-            "seed": 9
-          }
-        },
-        "smartTip": "Recognise a German marking by its vocabulary, not by its capital letter — every word here is an adjective and takes none.",
-        "didYouKnow": "Beethoven marked his late piano sonatas in both languages at once, giving the Italian and then the German. He was arguing, in print, that a composer should be understood at home."
-      },
-      "unlocks": "german-expression-5"
-    },
-    {
-      "id": "german-expression-5",
-      "title": "German words for mood and degree",
-      "strand": "terms_signs",
-      "atoms": [
-        "term:mit_ausdruck",
+        "term:m_ssig",
         "term:ruhig",
-        "term:traurig",
-        "term:zart",
-        "term:voll",
-        "term:sehr",
-        "term:wenig",
-        "term:ein_wenig",
-        "term:etwas",
-        "term:immer",
-        "term:aber",
-        "term:mit",
-        "term:ohne",
-        "term:nicht"
+        "term:schnell",
+        "term:traurig"
       ],
       "templates": [
-        "term_meaning",
-        "term_meaning_flashcard"
+        "term_meaning_flashcard",
+        "term_meaning"
       ],
       "worked_example": {
         "template_id": "term_meaning",
         "grade": 5,
-        "seed": 5
+        "seed": 1
       },
       "teach": {
         "objectives": [
-          "Recognise the German words for mood the syllabus names",
-          "The small words — sehr, wenig, nicht, ohne — modify the word beside them",
-          "A German marking is often built from two or three of these together"
+          "Recognise the six German words the syllabus sets at this grade",
+          "Langsam is slow, schnell is fast, mässig is a moderate speed",
+          "Ruhig and traurig name a mood, not a speed"
         ],
         "concept": {
-          "title": "Small words, built up",
-          "body": "Half of the German vocabulary is moods: *mit Ausdruck* with expression, *ruhig* peaceful, *traurig* sad, *zart* tender, *voll* full. The other half is the words that join them up, and they matter more than they look. *Sehr* is very, *wenig* is little, *ein wenig* is a little, *etwas* is somewhat, *immer* is always, *aber* is but, *mit* is with, *ohne* is without and *nicht* is not. German builds its instructions by stacking these, so a marking is read as a phrase rather than as one word: nicht zu schnell is not too fast, sehr langsam is very slow, and immer leiser und leiser is always quieter and quieter. Learn the small words and the long markings decode themselves.",
+          "title": "Speed and mood, in German",
+          "body": "Grade 5 sets six German words. Four are speeds: *langsam* slow, *mässig* a moderate speed, *lebhaft* lively, *schnell* fast. Two name a mood: *ruhig* peaceful and *traurig* sad. A longer German marking is usually built from pieces like these, so it can often be read by finding the word you know inside it. The paper prints a German marking in the same place it would print an Italian one, so read the language first and the word second.",
           "example": {
             "template_id": "term_meaning",
             "grade": 5,
-            "seed": 11
+            "seed": 5
           }
         },
-        "smartTip": "Read a German marking from the small words out. Nicht and ohne reverse the word they attach to.",
-        "didYouKnow": "Mahler wrote some of the longest performance directions ever printed, including one asking for a passage to sound 'like a sound of nature'. Every word of it is built from this vocabulary."
-      },
-      "unlocks": "piano-directions-5"
-    },
-    {
-      "id": "piano-directions-5",
-      "title": "Directions at the keyboard",
-      "strand": "terms_signs",
-      "atoms": [
-        "term:una_corda",
-        "term:tre_corde",
-        "term:mano_destra",
-        "term:mano_sinistra",
-        "term:ped",
-        "term:ped_release"
-      ],
-      "templates": [
-        "term_meaning",
-        "term_meaning_flashcard"
-      ],
-      "worked_example": {
-        "template_id": "term_meaning",
-        "grade": 5,
-        "seed": 7
-      },
-      "teach": {
-        "objectives": [
-          "Read the two pedal instructions and know which pedal each names",
-          "Una corda and tre corde are the soft pedal down and released",
-          "M.D. and M.S. tell you which hand plays a note"
-        ],
-        "concept": {
-          "title": "Which pedal, and which hand",
-          "body": "These are the instructions a piano score gives that no other instrument needs. Two of them are pedalling. *Ped* marks where the sustaining pedal — the right one — goes down, and its release sign marks where it comes up. *Una corda* means one string and asks for the left pedal, which shifts the action so the hammers strike fewer strings and the tone softens; *tre corde*, three strings, releases it again. The other two sort out the hands. *Mano destra* (M.D.) is the right hand and *mano sinistra* (M.S.) is the left, and they appear when a note is written on a stave that the other hand would normally play.",
-          "example": {
-            "template_id": "term_meaning",
-            "grade": 5,
-            "seed": 13
-          }
-        },
-        "smartTip": "Una corda and tre corde are the **left** pedal. Ped and its release are the right one.",
-        "didYouKnow": "Una corda is literally true on a grand piano: the action shifts sideways so each hammer hits two of the three strings, or one on older instruments. On an upright the pedal moves the hammers closer instead, which is why the effect is weaker."
+        "smartTip": "Four speeds and two moods. Sort a German word into one of those two groups before translating it.",
+        "didYouKnow": "Mahler marked his scores in German rather than Italian, and his instructions read like sentences. One of them is simply 'Nicht eilen' — do not hurry."
       },
       "unlocks": "transposing-instruments-5"
     },
