@@ -566,3 +566,27 @@ stop being enforceable rather than letting them read as silently ignored.
 Grade 1 stays as the second choice. A learner who reads music but declined to be
 measured is not a First-steps learner, and placement's own copy would be a lie if
 skipping had only one outcome.
+
+### A failed save speaks in amber, not the marking red · proposed 2026-08-09
+
+The design set has no error state for an onboarding screen, and the theme has no
+error token. Landed needs one: when the onboarding commit rejects, both CTAs stay
+live and the learner is expected to tap again, so something has to say so.
+
+This is a decision I made without a source of truth. It is recorded as **proposed**
+rather than approved, and it is cheap to overturn — one style block in
+`src/screens/onboarding/LandedScreen.tsx`.
+
+1. **Amber, not red.** `colors.hint` on `colors.hintSurface`. The red pair
+   `colors.incorrect` means *wrong answer* everywhere else, and on a screen that
+   has just said "3 for 3" it reads as a marking result. The advisory pair is
+   reused rather than a new colour added.
+2. **Above the CTAs, not a toast.** The retry is the Continue button, so the
+   message sits against the control it refers to. A toast can dismiss itself
+   before it is read, and it separates the fix from the instruction.
+3. **The copy names the fix.** "We could not save your progress. Tap again to
+   retry." What happened, then what to do. No apology and no error code.
+
+Only a rejected storage write reaches this state. Every other write path in
+`useProgress` is equally unhandled, so this is the first of a set rather than a
+complete answer: `chromaticly-sch`.

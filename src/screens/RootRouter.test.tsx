@@ -149,7 +149,7 @@ describe('RootRouter — the measured first-run journey (R1, A7, no age gate)', 
 
   // The latch that stops a double tap also survived a rejected write, so both
   // CTAs were dead until relaunch.
-  test('a failed write leaves the Landed CTAs live for a retry', async () => {
+  test('a failed write says so, and leaves the Landed CTAs live for a retry', async () => {
     const storage = memoryStorage();
     let failWrites = false;
     const save = storage.save.bind(storage);
@@ -166,6 +166,7 @@ describe('RootRouter — the measured first-run journey (R1, A7, no age gate)', 
     failWrites = true;
     await act(async () => fireEvent.press(api.getByTestId('landed-continue')));
     expect(api.queryByTestId('lanes-screen')).toBeNull();
+    expect(api.getByTestId('landed-save-failed')).toBeTruthy();
     failWrites = false;
 
     await act(async () => fireEvent.press(api.getByTestId('landed-continue')));

@@ -81,14 +81,17 @@ export default function RootRouter() {
   // before `isOnboarded` flips and unmounts the screen. A ref, not state: it must
   // be true on the very next call, not on the next render.
   const committing = useRef(false);
+  const [saveFailed, setSaveFailed] = useState(false);
   const finish = useCallback(() => {
     if (committing.current) return;
     committing.current = true;
+    setSaveFailed(false);
     const at = new Date().toISOString();
     const write = destination.kind === 'skipped' ? commitSkip(destination.grade, at) : commitOnboarding(staged, at);
     // A rejected write left the latch set, so both CTAs stayed dead for good.
     void write.catch(() => {
       committing.current = false;
+      setSaveFailed(true);
     });
   }, [destination, staged, commitOnboarding, commitSkip]);
 
@@ -159,6 +162,7 @@ export default function RootRouter() {
             onExplore={finish}
             gems={gems}
             grade={isFirstSteps(destination) ? 0 : null}
+            saveFailed={saveFailed}
           />
         );
     }

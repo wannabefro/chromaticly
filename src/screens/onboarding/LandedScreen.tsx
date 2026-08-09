@@ -17,13 +17,15 @@ import { colors, shape, strandDef, type, type Strand } from '../../ui/theme';
 export interface LandedScreenProps {
   onContinue: () => void;
   onExplore: () => void;
+  /** Set when the commit rejected. Both CTAs stay live, so the copy says retry. */
+  saveFailed?: boolean;
   /** One gem per warm-up item, from CoachedWarmUp — the point the copy names. */
   gems: GemState[];
   /** The chosen level, so this screen names the strand the warm-up actually drilled. */
   grade?: number | null;
 }
 
-export function LandedScreen({ onContinue, onExplore, gems, grade }: LandedScreenProps) {
+export function LandedScreen({ onContinue, onExplore, gems, grade, saveFailed = false }: LandedScreenProps) {
   const def = strandDef(warmUpFor(grade).strand as Strand);
 
   return (
@@ -42,6 +44,11 @@ export function LandedScreen({ onContinue, onExplore, gems, grade }: LandedScree
       </View>
 
       <View style={styles.footer}>
+        {saveFailed ? (
+          <Text style={styles.notice} testID="landed-save-failed">
+            We could not save your progress. Tap again to retry.
+          </Text>
+        ) : null}
         <Button label="Continue" onPress={onContinue} testID="landed-continue" />
         <Button label="Explore the app" onPress={onExplore} variant="secondary" testID="landed-explore" />
       </View>
@@ -57,6 +64,18 @@ const styles = StyleSheet.create({
     paddingTop: shape.spaceScreenTop,
     paddingBottom: shape.spaceScreenBottom,
     justifyContent: 'space-between',
+  },
+  // Amber, not the red marking pair: a failed save needs attention, and
+  // `incorrect` would read as a wrong answer.
+  notice: {
+    fontFamily: type.body.fontFamily,
+    fontSize: type.body.fontSize,
+    lineHeight: type.body.lineHeight,
+    color: colors.hint,
+    backgroundColor: colors.hintSurface,
+    borderRadius: shape.radiusControl,
+    paddingVertical: shape.spaceSnug,
+    paddingHorizontal: shape.spaceInline,
   },
   // Centred in the space above the footer. Top-aligned, this screen was 55% empty.
   head: { flex: 1, gap: shape.spaceInline, justifyContent: 'center' },
