@@ -199,6 +199,8 @@ const findTheBarSpec: InteractionSpec<FindTheBarResponse> = {
   canCheck: (response) => response !== null,
   grade: (instance, response) => gradeMcq(instance, response),
   submits: true,
+  // The passage runs to three systems, so the strip lands below the fold.
+  stickyInput: true,
   correctAnswerView: findTheBarCorrectAnswerView,
   selectedValue: (_instance, response) => response ?? undefined,
   // Design 4c: tapping a bar in the score is the same answer as tapping the strip,

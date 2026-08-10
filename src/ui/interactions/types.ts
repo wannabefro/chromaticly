@@ -50,6 +50,10 @@ export interface InteractionSpec<Response = unknown> {
    *  flashcard) and routes to a different path than the shared correct/incorrect
    *  FeedbackSheet; a boolean is the verdict for a checked interaction. */
   grade(instance: ExerciseInstance, response: Response): boolean | null;
+  /** Pins the input to the sticky footer instead of the scrolling body. A tall
+   *  stimulus otherwise pushes it off-screen with nothing saying so: the
+   *  three-system context passage did exactly that (chromaticly-sr6). */
+  stickyInput?: boolean;
   /** `true` — uses the shared Check button. `false` — the interaction owns its
    *  own submission affordance (e.g. flashcard's self-grade buttons) and the
    *  shared Check button is hidden. */

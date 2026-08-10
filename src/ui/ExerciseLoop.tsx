@@ -225,15 +225,17 @@ export function ExerciseLoop({
 
         {coachMark}
 
-        <spec.Component
-          instance={instance}
-          response={response}
-          graded={graded}
-          strand={strand}
-          onResponseChange={setResponse}
-          onSelfGrade={onSelfGrade}
-          onPlayMusic={music != null || playedMusic != null ? handlePlayMusic : undefined}
-        />
+        {!spec.stickyInput && (
+          <spec.Component
+            instance={instance}
+            response={response}
+            graded={graded}
+            strand={strand}
+            onResponseChange={setResponse}
+            onSelfGrade={onSelfGrade}
+            onPlayMusic={music != null || playedMusic != null ? handlePlayMusic : undefined}
+          />
+        )}
 
         {/* Keyed on the instance so the reveal count resets with the item. Nothing
             remounts between items (the WebView must survive), and `hintsUsedRef`
@@ -252,16 +254,31 @@ export function ExerciseLoop({
       </ScrollView>
 
       {/* Sticky, so it stays reachable however tall the options grow (notation
-          answers are full staves and overflow the screen). */}
-      {graded === null && spec.submits && (
+          answers are full staves and overflow the screen). A `stickyInput`
+          interaction pins its own control here too, and keeps it after grading
+          so the pick stays visible behind the FeedbackSheet. */}
+      {(spec.stickyInput || (graded === null && spec.submits)) && (
         <View style={styles.footer}>
-          <Button
-            label={spec.checkLabel?.(instance, response) ?? 'Check'}
-            strand={strand}
-            disabled={!canCheck}
-            onPress={check}
-            testID="check"
-          />
+          {spec.stickyInput && (
+            <spec.Component
+              instance={instance}
+              response={response}
+              graded={graded}
+              strand={strand}
+              onResponseChange={setResponse}
+              onSelfGrade={onSelfGrade}
+              onPlayMusic={music != null || playedMusic != null ? handlePlayMusic : undefined}
+            />
+          )}
+          {graded === null && spec.submits && (
+            <Button
+              label={spec.checkLabel?.(instance, response) ?? 'Check'}
+              strand={strand}
+              disabled={!canCheck}
+              onPress={check}
+              testID="check"
+            />
+          )}
         </View>
       )}
 
@@ -305,6 +322,7 @@ const styles = StyleSheet.create({
   warmUpCaption: { ...typo.label, fontFamily: fonts.mono, color: colors.textGhost, textAlign: 'center' },
   body: { gap: shape.spaceCard, paddingHorizontal: shape.spaceScreenX, paddingVertical: shape.spaceCard },
   footer: {
+    gap: shape.spaceInline,
     paddingHorizontal: shape.spaceScreenX,
     paddingTop: shape.spaceInline,
     paddingBottom: shape.spaceCard,

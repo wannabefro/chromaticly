@@ -32,6 +32,8 @@ jest.mock('react-native-webview', () => {
   };
 });
 
+import { ScrollView } from 'react-native';
+
 import { fireEvent, render } from '@testing-library/react-native';
 
 import { generate } from '../engine/generators';
@@ -534,5 +536,34 @@ describe('ExerciseLoop — an aural item with no notation can still be heard', (
 
     const { queryByTestId } = render(<ExerciseLoop instance={textOnly} onResult={jest.fn()} />);
     expect(queryByTestId('audio-only-surface')).toBeNull();
+  });
+});
+
+// chromaticly-sr6: the three-system passage pushed the bar strip below the fold,
+// and the Check footer covered the bottom edge. Maestro could not reach bar-1.
+describe('ExerciseLoop — a tall stimulus must not push its answer control off-screen', () => {
+  const barInstance = generate('music_in_context', { grade: 1, seed: 2, atoms: ['find_bar:highest'] });
+
+  /** Returns a boolean by identity: comparing two RN trees with toBe serialises
+   *  both on failure and runs the heap out. */
+  function hasAncestor(node: unknown, ancestor: unknown): boolean {
+    for (let n: any = node; n; n = n.parent) if (n === ancestor) return true;
+    return false;
+  }
+
+  test('find_the_bar sits outside the scrolling body, where Check already lives', () => {
+    const { getByTestId, UNSAFE_getByType } = render(<ExerciseLoop instance={barInstance} onResult={jest.fn()} />);
+    const body = UNSAFE_getByType(ScrollView);
+    expect(hasAncestor(getByTestId('find-the-bar'), body)).toBe(false);
+    expect(hasAncestor(getByTestId('check'), body)).toBe(false);
+    // The stimulus it was hiding behind is still in the body, uncropped (design 9a).
+    expect(hasAncestor(getByTestId('stimulus-music'), body)).toBe(true);
+  });
+
+  test('the strip survives grading, so the pick stays visible behind the sheet', () => {
+    const { getByTestId } = render(<ExerciseLoop instance={barInstance} onResult={jest.fn()} />);
+    fireEvent.press(getByTestId('bar-1'));
+    fireEvent.press(getByTestId('check'));
+    expect(getByTestId('find-the-bar')).toBeTruthy();
   });
 });
