@@ -113,24 +113,39 @@ export function ContextRunner({ passage, onSubResult, onDone, warmUp = false }: 
           {instance.prompt}
         </Text>
 
-        <spec.Component
-          instance={instance}
-          response={response}
-          graded={graded}
-          strand={strand}
-          onResponseChange={setResponse}
-        />
+        {!spec.stickyInput && (
+          <spec.Component
+            instance={instance}
+            response={response}
+            graded={graded}
+            strand={strand}
+            onResponseChange={setResponse}
+          />
+        )}
       </ScrollView>
 
-      {graded === null && spec.submits && (
+      {/* A `stickyInput` control is pinned here beside Check, and stays after
+          grading so the pick is visible behind the FeedbackSheet. */}
+      {(spec.stickyInput || (graded === null && spec.submits)) && (
         <View style={styles.footer}>
-          <Button
-            label="Check"
-            strand={strand}
-            disabled={!spec.canCheck(response)}
-            onPress={check}
-            testID="check"
-          />
+          {spec.stickyInput && (
+            <spec.Component
+              instance={instance}
+              response={response}
+              graded={graded}
+              strand={strand}
+              onResponseChange={setResponse}
+            />
+          )}
+          {graded === null && spec.submits && (
+            <Button
+              label="Check"
+              strand={strand}
+              disabled={!spec.canCheck(response)}
+              onPress={check}
+              testID="check"
+            />
+          )}
         </View>
       )}
 
@@ -155,6 +170,7 @@ const styles = StyleSheet.create({
   question: { padding: shape.spaceScreenX, gap: shape.spaceCard },
   prompt: { ...typo.prompt, color: colors.text },
   footer: {
+    gap: shape.spaceInline,
     paddingHorizontal: shape.spaceScreenX,
     paddingTop: shape.spaceInline,
     paddingBottom: shape.spaceCard,
