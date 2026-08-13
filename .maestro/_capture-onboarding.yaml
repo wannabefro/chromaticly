@@ -39,15 +39,8 @@ appId: host.exp.Exponent
       visible: { id: "placement-item" }
     commands:
       - tapOn: { id: "option-0", optional: true }
-      # The context item's bar strip sits below the passage card, off-screen on a
-      # phone. It is a native Pressable, not part of the abcjs WebView, so it is
-      # tappable — but only once scrolled to.
-      - scrollUntilVisible:
-          element: { id: "bar-1" }
-          direction: DOWN
-          visibilityPercentage: 60
-          timeout: 4000
-          optional: true
+      # The bar strip is pinned in the sticky footer beside Check (chromaticly-sr6),
+      # so it needs no scroll.
       - tapOn: { id: "bar-1", optional: true }
       - tapOn: { id: "roman-numeral-I", optional: true }
       - tapOn: { id: "check", optional: true }
