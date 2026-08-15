@@ -590,3 +590,109 @@ rather than approved, and it is cheap to overturn — one style block in
 Only a rejected storage write reaches this state. Every other write path in
 `useProgress` is equally unhandled, so this is the first of a set rather than a
 complete answer: `chromaticly-sch`.
+
+### A learner may name their own grade, so 5a's five rungs come back · approved 2026-08-15
+
+R1 removed the five numbered grade cards on the argument that placement seeds
+seven independent depths, so no single current grade exists. That argument holds
+for what the app **measures**. It was never true of what a learner **claims**. A
+returning Grade 3 candidate knows where they are, and answering seven questions
+to say so is a toll, not a measurement.
+
+Approved with the proposal at `docs/` — six moves, drawn before/after against a
+device capture of the shipped flow.
+
+**The intro screen becomes a fork.** It carried one sentence and a tip, which is
+furniture. It now carries the only decision on the first run worth a screen:
+*Measure me — 7 questions* or *I know my grade*. The reassurance it used to hold
+moves to the first question's footer, where the doubt actually occurs; from the
+second question that footer reverts to what a wrong answer costs.
+
+**The claim seeds, it does not shortcut.** `seedVectorForGrade` sets every
+placeable strand to its own highest rung at or below the choice, so Grade 3 seeds
+chords 0 — the chords ladder is [4, 5] and claiming 3 would assert a grade the
+syllabus does not teach. The vector then stages exactly like a pass and lands on
+the same result screen, framed "Your call · Grade 3" rather than "Placement · 7
+questions". A coarse claim that the learner can see and re-test beats a coarse
+claim that disappears into the profile.
+
+**Two 2026-08-06 rulings become enforceable again**, and are followed verbatim
+rather than re-decided: First steps sits above the ladder and stays unnumbered;
+the numerals are neutral at 34pt / radius 10 and the accent marks only the chosen
+card; **Grade 1 is the default**, never First steps; and the primary button reads
+the level title, so "Grade 0" is still printed nowhere. The 2026-08-09 note that
+declared both unenforceable is superseded on this point only — its subject exists
+again.
+
+First steps keeps `commitSkip` and seeds nothing. There is no rung below the
+ladder to claim.
+
+### The placement result fills in, one strand at a time · approved 2026-08-15
+
+`design/` specifies no motion anywhere, so this is a decision with no source of
+truth. It is recorded as **approved** because it was reviewed as a running
+animation, not as prose.
+
+The result was the payoff of seven questions and was simply present on mount.
+Each lane's filled segments now grow from zero over 340ms, staggered 70ms in
+strand order — about 700ms end to end. The stagger is the whole point: it reads
+as seven separate findings, which is the claim the screen makes, rather than one
+verdict.
+
+Three constraints:
+
+1. **Only what was earned grows.** A `gap` segment does not move, because nothing
+   was measured there.
+2. **The unrevealed state is the final state.** `revealDelay` is optional and the
+   scale is null until reduced motion resolves, so a bar never waits to be true.
+   `AccessibilityInfo.isReduceMotionEnabled` skips the animation outright.
+3. **Landed reuses it at the same 70ms**, because it draws the same board.
+
+### Landed draws the board its copy names · approved 2026-08-15
+
+The screen said "your first Rhythm point is on the board", drew three gems on no
+board, and left roughly half the canvas empty (`chromaticly-gxn` item 2). It now
+draws all seven lanes through the same `LaneRow` the Learn tab uses, with the
+warm-up's strand carrying LaneRow's existing one-lane note — so this screen and
+the next cannot disagree (R3), for the same reason 7c's result uses the bar
+instead of a numeral.
+
+**The gems stay.** They are the three warm-up items and the board is the seven
+strands; they answer different questions.
+
+**No "+1" anywhere.** Three warm-up items do not lift a lane by a grade, and
+drawing one would be the kind of claim this whole model exists to prevent.
+
+**The copy is gated on the board.** Device capture found the named lane reading
+zero: the warm-up's own attempt discards that strand's placement seed
+(`chromaticly-h3e`, a pre-existing defect this screen made visible). The "first
+point" tag and the "Here it is." clause only appear when the lane actually reads
+above 0. The board itself always shows the true value — a preview that disagrees
+with the Learn tab is precisely what R3 forbids.
+
+**First steps draws no board.** It seeds nothing, so the board would be seven
+empty bars — worse than the copy it replaces.
+
+### Welcome demonstrates the tagline · approved 2026-08-15
+
+"Music theory that you can hear" was a claim held for five screens: Welcome, the
+fork, seven placement questions and the plan were all silent. The brand mark is
+now the play affordance and sounds a C major arpeggio.
+
+**Tap, never autoplay.** A cold launch that makes noise on its own is the
+behaviour people turn phones face-down over.
+
+**No second WebView.** `SvgRenderProvider` already runs one warm offscreen abcjs
+surface and already speaks `playAbc`; Welcome reaches it through a context.
+
+Two things drawn in the proposal and **not built**, both recorded so the gap
+reads as deliberate:
+
+| not built | why |
+|---|---|
+| The wheel's seven segments lighting per note | The mark ships as a PNG. Per-segment animation needs the logo rebuilt as SVG |
+| A stave preview on the plan screen | Never-violate rule 2 requires a play affordance on every notation display. `StaticNotation` is play-less by design, and the alternative is a second abcjs WebView on a screen the learner crosses in seconds |
+
+The plan screen still gets its two measured fixes: the title clipped mid-word on
+device and now wraps, and the 440pt void between the last card and the CTA is
+gone — the cards and the warm-up block share one centred flex region.

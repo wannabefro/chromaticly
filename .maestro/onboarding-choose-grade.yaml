@@ -1,0 +1,56 @@
+# The fork's second door (design 5a). Welcome → fork → "I know my grade" →
+# Grade 3 → result → plan → warm-up → landed, with its board.
+#
+# Warm-up answers are fixed by `warmUpFor` and tapped by LABEL — see
+# onboarding-first-set.yaml.
+#
+#   maestro test -e DEV_URL=exp://127.0.0.1:48090 .maestro/onboarding-choose-grade.yaml
+appId: host.exp.Exponent
+---
+- clearState
+- openLink: ${DEV_URL}
+- runFlow: _dev-menu.yaml
+- extendedWaitUntil:
+    visible:
+      id: "welcome-screen"
+    timeout: 60000
+
+- tapOn: { id: "brand-play" }
+- tapOn: { id: "start-learning" }
+- assertVisible: { id: "placement-intro" }
+
+- tapOn: { id: "placement-skip" }
+- assertVisible: { id: "grade-select-screen" }
+- assertVisible: { id: "start-point-0" }
+- tapOn: { id: "start-point-3" }
+- tapOn: { id: "start-grade" }
+
+- extendedWaitUntil:
+    visible: { id: "placement-result" }
+    timeout: 20000
+- assertVisible: "Your call · Grade 3"
+- tapOn: { id: "placement-accept" }
+
+- assertVisible: { id: "plan-screen" }
+- tapOn: { id: "plan-start-warmup" }
+- assertVisible: { id: "warm-up-screen" }
+
+- tapOn: "3/4"
+- tapOn: { id: "check" }
+- tapOn: { id: "feedback-sheet-continue" }
+- tapOn: "2/4"
+- tapOn: { id: "check" }
+- tapOn: { id: "feedback-sheet-continue" }
+- tapOn: "4/4"
+- tapOn: { id: "check" }
+- tapOn: { id: "feedback-sheet-continue" }
+
+- extendedWaitUntil:
+    visible: { id: "landed-screen" }
+    timeout: 15000
+- assertVisible: { id: "landed-board" }
+- assertVisible: { id: "landed-row-rhythm" }
+- tapOn: { id: "landed-continue" }
+- extendedWaitUntil:
+    visible: { id: "lanes-screen" }
+    timeout: 15000

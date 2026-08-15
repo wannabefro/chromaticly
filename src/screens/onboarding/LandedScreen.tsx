@@ -38,6 +38,10 @@ export function LandedScreen({ onContinue, onExplore, gems, grade, staged = {}, 
   const def = strandDef(warmUpStrand);
   const depths = usePreviewDepths(staged);
   const board = Object.keys(staged).length > 0;
+  // The warm-up's own attempt currently discards its strand's seed
+  // (chromaticly-h3e), so the lane the copy points at can read 0. Say nothing
+  // the board does not show.
+  const pointVisible = board && depths[warmUpStrand].depth > 0;
 
   return (
     <View style={styles.container} testID="landed-screen">
@@ -48,7 +52,7 @@ export function LandedScreen({ onContinue, onExplore, gems, grade, staged = {}, 
           Your first{' '}
           {/* Strand colour is always paired with its text label (never-violate rule 3). */}
           <Text style={[styles.strandLabel, { color: def.hue }]}>{def.short}</Text> point is on the board.
-          {board ? ' Here it is.' : ' The full lesson picks up right here.'}
+          {pointVisible ? ' Here it is.' : ' The full lesson picks up right here.'}
         </Text>
         {/* The copy named a point and nothing showed it. One gem per warm-up item. */}
         <MasteryGems items={gems} hue={def.hue} testID="landed-gems" />
@@ -62,7 +66,7 @@ export function LandedScreen({ onContinue, onExplore, gems, grade, staged = {}, 
                 key={strand}
                 strand={strand}
                 depth={depths[strand]}
-                note={strand === warmUpStrand ? 'first point' : undefined}
+                note={pointVisible && strand === warmUpStrand ? 'first point' : undefined}
                 revealDelay={i * REVEAL_STAGGER_MS}
                 testID={`landed-row-${strand}`}
               />

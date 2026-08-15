@@ -109,3 +109,14 @@ describe('LandedScreen — the board the copy names (chromaticly-gxn item 2)', (
     expect(getByText(/The full lesson picks up right here/)).toBeTruthy();
   });
 });
+
+// chromaticly-h3e: the tagged lane can read 0.
+test('no point is claimed when the lane it names reads nothing', async () => {
+  const { findByTestId, queryByTestId, getByText } = renderLanded({
+    staged: { pitch: { depth: 3, day: DAY, seq: 1 } },
+  });
+
+  await findByTestId('landed-board');
+  expect(queryByTestId('landed-row-rhythm-note')).toBeNull();
+  expect(getByText(/The full lesson picks up right here/)).toBeTruthy();
+});
