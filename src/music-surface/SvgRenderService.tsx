@@ -10,6 +10,7 @@ import { StyleSheet, View } from 'react-native';
 import { WebView, type WebViewMessageEvent } from 'react-native-webview';
 
 import { colors } from '../ui/theme';
+import { AbcPlayerContext, type PlayAbc } from './abc-player';
 import abcjsSource from './abcjs-source.json';
 import { decodeEvent, encodeCommand } from './bridge';
 import { buildSurfaceHtml } from './surface-html';
@@ -66,6 +67,12 @@ export function SvgRenderProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  const playAbc = useCallback<PlayAbc>((abc) => {
+    const msg = encodeCommand({ type: 'playAbc', abc });
+    if (readyRef.current) webRef.current?.postMessage(msg);
+    else queueRef.current.push(msg);
+  }, []);
+
   const onMessage = useCallback((e: WebViewMessageEvent) => {
     let ev;
     try {
@@ -89,18 +96,24 @@ export function SvgRenderProvider({ children }: { children: ReactNode }) {
 
   return (
     <SvgRenderContext.Provider value={renderToSvg}>
-      <View style={styles.offscreen} pointerEvents="none">
-        <WebView
-          ref={webRef}
-          originWhitelist={['*']}
-          source={{ html }}
-          onMessage={onMessage}
-          javaScriptEnabled
-          domStorageEnabled
-          style={styles.web}
-        />
-      </View>
-      {children}
+      <AbcPlayerContext.Provider value={playAbc}>
+        <View style={styles.offscreen} pointerEvents="none">
+          <WebView
+            ref={webRef}
+            originWhitelist={['*']}
+            source={{ html }}
+            onMessage={onMessage}
+            javaScriptEnabled
+            domStorageEnabled
+            // The tap happens in RN, not in the page, so the page must not
+            // require its own gesture.
+            mediaPlaybackRequiresUserAction={false}
+            allowsInlineMediaPlayback
+            style={styles.web}
+          />
+        </View>
+        {children}
+      </AbcPlayerContext.Provider>
     </SvgRenderContext.Provider>
   );
 }

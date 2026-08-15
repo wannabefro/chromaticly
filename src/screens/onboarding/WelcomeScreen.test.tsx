@@ -3,6 +3,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react-native';
 
+import { AbcPlayerContext } from '../../music-surface/abc-player';
 import { WelcomeScreen } from './WelcomeScreen';
 
 describe('WelcomeScreen — guest is the only path; the app promises no sync (R1)', () => {
@@ -26,5 +27,35 @@ describe('WelcomeScreen — guest is the only path; the app promises no sync (R1
       expect(screen.queryByTestId(testID)).toBeNull();
     }
     expect(screen.queryByText(/sync|sign in/i)).toBeNull();
+  });
+});
+
+describe('WelcomeScreen — the tagline is demonstrated, not just claimed', () => {
+  test('tapping the mark sounds an arpeggio through the shared surface', () => {
+    const playAbc = jest.fn();
+    const { getByTestId } = render(
+      <AbcPlayerContext.Provider value={playAbc}>
+        <WelcomeScreen onStart={jest.fn()} />
+      </AbcPlayerContext.Provider>,
+    );
+
+    fireEvent.press(getByTestId('brand-play'));
+    expect(playAbc).toHaveBeenCalledTimes(1);
+    expect(playAbc.mock.calls[0][0]).toContain('K:C');
+  });
+
+  // The promise is audio, so the affordance must be visible, not a secret.
+  test('the mark carries a visible play affordance and says so', () => {
+    const { getByTestId, getByText } = render(<WelcomeScreen onStart={jest.fn()} />);
+
+    expect(getByTestId('brand-play-glyph')).toBeTruthy();
+    expect(getByText('tap to hear it')).toBeTruthy();
+  });
+
+  // No provider means no surface. Silence, never a crash.
+  test('with no shared surface mounted the tap is silent, not a crash', () => {
+    const { getByTestId } = render(<WelcomeScreen onStart={jest.fn()} />);
+
+    expect(() => fireEvent.press(getByTestId('brand-play'))).not.toThrow();
   });
 });
