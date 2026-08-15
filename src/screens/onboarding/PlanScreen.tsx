@@ -52,19 +52,23 @@ export function PlanScreen({ firstSteps, onStartWarmUp }: PlanScreenProps) {
         <Text style={styles.title}>Here&apos;s how {name} works</Text>
       </View>
 
-      <View style={styles.cards}>
-        {cards.map((card) => (
-          <View key={card.title} style={styles.card}>
-            <Text style={styles.cardTitle}>{card.title}</Text>
-            <Text style={styles.cardBody}>{card.body}</Text>
-          </View>
-        ))}
-      </View>
+      {/* One flex region, centred: the cards used to sit at the top and the
+          warm-up block was pushed to the bottom, leaving 440pt of void between. */}
+      <View style={styles.middle}>
+        <View style={styles.cards}>
+          {cards.map((card) => (
+            <View key={card.title} style={styles.card}>
+              <Text style={styles.cardTitle}>{card.title}</Text>
+              <Text style={styles.cardBody}>{card.body}</Text>
+            </View>
+          ))}
+        </View>
 
-      <View style={styles.warmupBlock}>
-        <Text style={styles.overline}>First up · 2 min</Text>
-        <Text style={styles.warmupTitle}>{warmUp.title}</Text>
-        <Text style={styles.warmupBody}>3 quick questions to draw your first mastery point.</Text>
+        <View style={styles.warmupBlock}>
+          <Text style={styles.overline}>First up · 2 min</Text>
+          <Text style={styles.warmupTitle}>{warmUp.title}</Text>
+          <Text style={styles.warmupBody}>3 quick questions to draw your first mastery point.</Text>
+        </View>
       </View>
 
       <View style={styles.footer}>
@@ -92,12 +96,16 @@ const styles = StyleSheet.create({
     textTransform: type.overline.textTransform,
     color: colors.textFaint,
   },
+  // The name is long enough to overrun one line, and on device the title clipped
+  // mid-word rather than wrapping.
   title: {
     fontFamily: type.title.fontFamily,
     fontSize: type.title.fontSize,
     lineHeight: type.title.lineHeight,
     color: colors.text,
+    flexShrink: 1,
   },
+  middle: { flex: 1, justifyContent: 'center', gap: shape.spaceStack },
   cards: { gap: shape.spaceInline },
   card: {
     borderRadius: shape.radiusCard,
@@ -121,7 +129,6 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
   },
   warmupBlock: {
-    marginTop: 'auto',
     borderRadius: shape.radiusCard,
     backgroundColor: colors.surfaceCardSunken,
     paddingVertical: shape.spaceCard,

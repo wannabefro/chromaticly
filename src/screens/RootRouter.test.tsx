@@ -350,6 +350,32 @@ describe('RootRouter — the "I know my grade" route (delta plan finding 3, 5a r
     expect(api.queryByText(/Placement · \d+ question/)).toBeNull();
   });
 
+  // The board is the point of Landed; wiring it only in the screen leaves the
+  // router free to pass nothing and nothing to fail.
+  test('the placed route reaches Landed with its board', async () => {
+    const api = renderRouter();
+
+    await walkSkip(api);
+    await act(async () => fireEvent.press(api.getByTestId('start-point-3')));
+    await act(async () => fireEvent.press(api.getByTestId('start-grade')));
+    await api.findByTestId('placement-result');
+    await act(async () => fireEvent.press(api.getByTestId('placement-accept')));
+    await walkToLanding(api);
+
+    expect(await api.findByTestId('landed-board')).toBeTruthy();
+  });
+
+  test('the First-steps route lands with no board, because it seeds nothing', async () => {
+    const api = renderRouter();
+
+    await walkSkip(api);
+    await act(async () => fireEvent.press(api.getByTestId('start-point-0')));
+    await act(async () => fireEvent.press(api.getByTestId('start-grade')));
+    await walkToLanding(api, 0);
+
+    expect(api.queryByTestId('landed-board')).toBeNull();
+  });
+
   test('Back returns to the placement pass', async () => {
     const api = renderRouter();
 

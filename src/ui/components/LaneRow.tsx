@@ -26,10 +26,13 @@
 // The row does not decide anything — `laneDepths` is the single derivation behind
 // this, the radar, exam readiness and the placement result (R3).
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import { AccessibilityInfo, Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { LaneDepth } from '../../learn/lane-depth';
 import { colors, fonts, glyph, shape, strandDef, type as typo, type Strand } from '../theme';
+
+const REVEAL_MS = 340;
 
 /** The five ABRSM grades the bar always shows, so every lane is read against the
  *  same ruler — a lane with content at 4-5 only still occupies five slots, with
@@ -43,13 +46,17 @@ export interface LaneRowProps {
    *  depth and paired with the emphasised border. Omitted on every other row, so
    *  exactly one lane can carry the suggestion. */
   note?: string;
+  /** Grow the filled segments in after this many ms. Staggered, the rows read as
+   *  separate findings. */
+  revealDelay?: number;
   onPress?: () => void;
   testID?: string;
 }
 
-export function LaneRow({ strand, depth, note, onPress, testID }: LaneRowProps) {
+export function LaneRow({ strand, depth, note, revealDelay, onPress, testID }: LaneRowProps) {
   const def = strandDef(strand);
   const suggested = note !== undefined;
+  const grow = useReveal(revealDelay);
 
   return (
     <Pressable
@@ -73,7 +80,7 @@ export function LaneRow({ strand, depth, note, onPress, testID }: LaneRowProps) 
           {GRADES.map((grade) => {
             const state = segmentState(grade, depth);
             return (
-              <View
+              <Animated.View
                 key={grade}
                 testID={testID ? `${testID}-seg-${grade}-${state}` : undefined}
                 style={[
@@ -81,6 +88,8 @@ export function LaneRow({ strand, depth, note, onPress, testID }: LaneRowProps) 
                   state === 'filled' && { backgroundColor: def.hue },
                   state === 'slipped' && [styles.segSlipped, { borderColor: def.hue }],
                   state === 'gap' && styles.segGap,
+                  // Only what was earned grows; a gap is not a finding.
+                  state === 'filled' && grow != null && { transform: [{ scaleX: grow }], transformOrigin: 'left' },
                 ]}
               />
             );
@@ -98,6 +107,30 @@ export function LaneRow({ strand, depth, note, onPress, testID }: LaneRowProps) 
       <Text style={[styles.chev, suggested && { color: def.hue }]}>›</Text>
     </Pressable>
   );
+}
+
+/** The scale filled segments ride, or null when nothing reveals. Null is also
+ *  the final state. */
+function useReveal(delay: number | undefined): Animated.Value | null {
+  const value = useRef(new Animated.Value(0)).current;
+  const [reduced, setReduced] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let live = true;
+    void AccessibilityInfo.isReduceMotionEnabled().then((on) => live && setReduced(on));
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (delay === undefined || reduced !== false) return;
+    const animation = Animated.timing(value, { toValue: 1, duration: REVEAL_MS, delay, useNativeDriver: true });
+    animation.start();
+    return () => animation.stop();
+  }, [delay, reduced, value]);
+
+  return delay !== undefined && reduced === false ? value : null;
 }
 
 /** `filled` — held and at or below the lane's depth. `slipped` — inside the depth

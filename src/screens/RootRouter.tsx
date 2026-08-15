@@ -176,6 +176,7 @@ export default function RootRouter() {
             onExplore={finish}
             gems={gems}
             grade={isFirstSteps(destination) ? 0 : null}
+            staged={destination.kind === 'placed' ? staged : {}}
             saveFailed={saveFailed}
           />
         );

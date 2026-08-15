@@ -2,7 +2,8 @@
 // these tests guard is the reading: a sparse matrix must not read as "behind", and
 // depth 0 must not read as "one grade in".
 
-import { fireEvent, render } from '@testing-library/react-native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 import { contentGradesFor, type LaneDepth } from '../../learn/lane-depth';
 import { strandDef } from '../theme';
@@ -150,11 +151,10 @@ describe('LaneRow — a lane that has slid back says so (R5, chromaticly-cel)', 
       <LaneRow strand="scales_keys" depth={decayed(2, 4)} testID="lane-row" />,
     );
 
-    expect(getByTestId('lane-row-seg-3-slipped').props.style).toEqual(
-      expect.arrayContaining([
-        expect.arrayContaining([expect.objectContaining({ borderColor: strandDef('scales_keys').hue })]),
-      ]),
-    );
+    expect(StyleSheet.flatten(getByTestId('lane-row-seg-3-slipped').props.style)).toMatchObject({
+      borderColor: strandDef('scales_keys').hue,
+      backgroundColor: 'transparent',
+    });
   });
 
   test('the accessibility label carries what the bar draws — the depth now, and the depth before', () => {
@@ -181,5 +181,30 @@ describe('LaneRow — a lane that has slid back says so (R5, chromaticly-cel)', 
     expect(getByLabelText('Scales & Keys, not started, was grade 3')).toBeTruthy();
     expect(getByTestId('lane-row-seg-1-slipped')).toBeTruthy();
     expect(getByTestId('lane-row-seg-4-empty')).toBeTruthy();
+  });
+});
+
+describe('LaneRow — the placement reveal (design/ is silent on motion)', () => {
+  test('without revealDelay the bar is simply present, as every other surface draws it', () => {
+    const { getByTestId } = render(<LaneRow strand="rhythm" depth={lane('rhythm', 3)} testID="lane-row" />);
+
+    expect(StyleSheet.flatten(getByTestId('lane-row-seg-1-filled').props.style).transform).toBeUndefined();
+  });
+
+  // Reduced motion resolves async, so the first frame is already the final one.
+  test('a revealing row still renders every segment in its final state', async () => {
+    const { getByTestId, findByTestId } = render(
+      <LaneRow strand="rhythm" depth={lane('rhythm', 3)} revealDelay={140} testID="lane-row" />,
+    );
+
+    await findByTestId('lane-row-seg-1-filled');
+    for (const grade of [2, 3]) expect(getByTestId(`lane-row-seg-${grade}-filled`)).toBeTruthy();
+    for (const grade of [4, 5]) expect(getByTestId(`lane-row-seg-${grade}-empty`)).toBeTruthy();
+
+    await waitFor(() =>
+      expect(StyleSheet.flatten(getByTestId('lane-row-seg-1-filled').props.style).transform).toBeDefined(),
+    );
+    // An empty segment has nothing to reveal, so it never scales.
+    expect(StyleSheet.flatten(getByTestId('lane-row-seg-5-empty').props.style).transform).toBeUndefined();
   });
 });

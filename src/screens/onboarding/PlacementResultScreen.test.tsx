@@ -9,6 +9,7 @@ jest.mock('react-native-webview', () => {
 });
 
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 import { fixedClock } from '../../learn/clock';
 import { laneDepths, STRAND_ORDER } from '../../learn/lane-depth';
@@ -37,7 +38,13 @@ function seed(depth: number, seq: number): SeededDepth {
 
 function renderResult(
   staged: Record<string, SeededDepth> = { rhythm: seed(3, 1), pitch: seed(3, 2), terms_signs: seed(4, 3) },
-  overrides: { onRetest?: (s: string) => void; onAccept?: () => void; asked?: number; storage?: ReturnType<typeof memoryStorage> } = {},
+  overrides: {
+    onRetest?: (s: string) => void;
+    onAccept?: () => void;
+    asked?: number;
+    chosenGrade?: number;
+    storage?: ReturnType<typeof memoryStorage>;
+  } = {},
 ) {
   const storage = overrides.storage ?? memoryStorage(JSON.stringify(new ProgressStore().toSnapshot()));
   return {
@@ -48,6 +55,7 @@ function renderResult(
         <PlacementResultScreen
           staged={staged}
           asked={overrides.asked ?? Object.keys(staged).length}
+          chosenGrade={overrides.chosenGrade}
           onRetest={overrides.onRetest ?? jest.fn()}
           onAccept={overrides.onAccept ?? jest.fn()}
         />
@@ -166,5 +174,27 @@ describe('PlacementResultScreen — seven depths, honestly uneven (7c, R7)', () 
     fireEvent.press(getByTestId('placement-accept'));
 
     await waitFor(() => expect(storage.blob).toBe(before));
+  });
+});
+
+describe('PlacementResultScreen — the reveal, and the claim it frames', () => {
+  // Staggering says seven findings, which is what the screen claims.
+  test('the rows grow in rather than being present on mount', async () => {
+    const { findByTestId, getByTestId } = renderResult();
+    await findByTestId('placement-result');
+
+    await waitFor(() =>
+      expect(StyleSheet.flatten(getByTestId('placement-row-rhythm-seg-1-filled').props.style).transform).toBeDefined(),
+    );
+  });
+
+  test('a chosen grade is framed as a call, and a measured pass is not', async () => {
+    const chosen = renderResult(undefined, { chosenGrade: 3 });
+    await chosen.findByTestId('placement-result');
+    expect(chosen.getByText('Your call · Grade 3')).toBeTruthy();
+
+    const measured = renderResult();
+    await measured.findByTestId('placement-result');
+    expect(measured.getByText('Placement · 3 questions')).toBeTruthy();
   });
 });

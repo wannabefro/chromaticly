@@ -25,15 +25,17 @@
 // as a row state: it is a fact about the PASS, not about the learner, and drawing
 // it as an empty lane would be a claim placement never made.
 
-import { useMemo } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { laneDepths, STRAND_ORDER } from '../../learn/lane-depth';
-import { useProgressContext } from '../../learn/ProgressContext';
-import { ProgressStore, type SeededDepth } from '../../learn/store';
+import { STRAND_ORDER } from '../../learn/lane-depth';
+import { usePreviewDepths } from '../../learn/usePreviewDepths';
+import { type SeededDepth } from '../../learn/store';
 import { LaneRow } from '../../ui/components/LaneRow';
 import { Screen } from '../../ui/Screen';
 import { colors, fonts, shape, strandDef, type as typo, type Strand } from '../../ui/theme';
+
+/** 70ms per row, so all seven land inside about 700ms. */
+const REVEAL_STAGGER_MS = 70;
 
 export interface PlacementResultScreenProps {
   /** Every strand the pass measured, stamped but NOT yet persisted. A strand
@@ -55,17 +57,7 @@ export interface PlacementResultScreenProps {
 }
 
 export function PlacementResultScreen({ staged, asked, chosenGrade, onRetest, onAccept }: PlacementResultScreenProps) {
-  const { store, clock, revision } = useProgressContext();
-
-  // The preview store is thrown away on every render — it exists only so the one
-  // depth derivation can be asked a hypothetical question.
-  const depths = useMemo(() => {
-    const snapshot = store ? (JSON.parse(JSON.stringify(store.toSnapshot())) as ReturnType<ProgressStore['toSnapshot']>) : undefined;
-    const transient = new ProgressStore(snapshot, clock.now());
-    for (const [strand, seed] of Object.entries(staged)) transient.setSeededDepth(strand, seed);
-    return laneDepths(transient, clock.now());
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- revision is the mutation signal (AD6), not read directly above
-  }, [store, revision, clock, staged]);
+  const depths = usePreviewDepths(staged);
 
   const notAsked = STRAND_ORDER.filter((strand) => staged[strand] === undefined);
 
@@ -88,11 +80,14 @@ export function PlacementResultScreen({ staged, asked, chosenGrade, onRetest, on
         </Text>
 
         <View style={styles.rows}>
-          {STRAND_ORDER.map((strand) => (
+          {/* Staggered, so the vector reads as seven separate findings rather
+              than one verdict that was simply there. */}
+          {STRAND_ORDER.map((strand, i) => (
             <LaneRow
               key={strand}
               strand={strand}
               depth={depths[strand]}
+              revealDelay={i * REVEAL_STAGGER_MS}
               onPress={() => onRetest(strand)}
               testID={`placement-row-${strand}`}
             />
