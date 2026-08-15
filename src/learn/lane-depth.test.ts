@@ -183,8 +183,8 @@ describe('laneDepths — decay (R5)', () => {
   });
 });
 
-describe('laneDepths — seed authority and seed decay (KTD7)', () => {
-  test('a seed governs while it is at least as recent as any attempt', () => {
+describe('laneDepths — the seed floor and seed decay (KTD7, chromaticly-h3e)', () => {
+  test('a seed sets the lane on its own, with no evidence at all', () => {
     const store = new ProgressStore();
     store.setSeededDepth('chords', { depth: 5, day: DAY, seq: 10 });
 
@@ -194,40 +194,47 @@ describe('laneDepths — seed authority and seed decay (KTD7)', () => {
     expect(chords.heldGrades).toEqual([4, 5]);
   });
 
-  test('evidence wins once it is newer — even when it reads LOWER than the seed', () => {
-    // This is why authority is recency, not max(). A seed of 5 must not resurrect
-    // itself over an attempt that says otherwise.
+  // chromaticly-h3e: three warm-up items used to drop a lane seeded at 3 to 0.
+  test('one attempt does not discard the seed — doing the work never demotes you', () => {
     const store = new ProgressStore();
-    store.setSeededDepth('chords', { depth: 5, day: DAY, seq: 1 });
-    master(store, 'chords', 4, DAY); // advances writeSeq past the seed
+    store.setSeededDepth('rhythm', { depth: 3, day: DAY, seq: store.reserveSeq() });
+    expect(laneDepths(store, DAY).rhythm.depth).toBe(3);
 
-    const chords = laneDepths(store, DAY).chords;
-    expect(chords.source).toBe('evidence');
-    expect(chords.depth).toBe(4);
+    const atom = atomsFor('rhythm', 1)[0];
+    store.setAtom(atom, { mastery: initialMastery(), srs: { ...initialSrs(), seq: store.reserveSeq() } });
+
+    expect(laneDepths(store, DAY).rhythm.depth).toBe(3);
   });
 
-  test('same-day ordering resolves by seq in both directions — the F1b regression', () => {
-    // Whole days cannot separate these. Only the monotonic counter can, and the
-    // per-skill re-test is exactly this comparison.
-    const seedWins = new ProgressStore();
-    master(seedWins, 'chords', 4, DAY);
-    seedWins.setSeededDepth('chords', { depth: 5, day: DAY, seq: seedWins.reserveSeq() });
-    expect(laneDepths(seedWins, DAY).chords.source).toBe('seed');
-
-    const attemptWins = new ProgressStore();
-    attemptWins.setSeededDepth('chords', { depth: 5, day: DAY, seq: attemptWins.reserveSeq() });
-    master(attemptWins, 'chords', 4, DAY);
-    expect(laneDepths(attemptWins, DAY).chords.source).toBe('evidence');
-  });
-
-  test('a re-test takes authority back after practice', () => {
+  test('evidence below the floor leaves the lane where the seed put it', () => {
     const store = new ProgressStore();
     store.setSeededDepth('chords', { depth: 5, day: DAY, seq: 1 });
     master(store, 'chords', 4, DAY);
-    expect(laneDepths(store, DAY).chords.source).toBe('evidence');
 
+    const chords = laneDepths(store, DAY).chords;
+    expect(chords.depth).toBe(5);
+    expect(chords.source).toBe('seed');
+  });
+
+  test('evidence above the floor raises the lane, and says it was evidence', () => {
+    const store = new ProgressStore();
+    store.setSeededDepth('chords', { depth: 4, day: DAY, seq: 1 });
+    master(store, 'chords', 4, DAY);
+    master(store, 'chords', 5, DAY);
+
+    const chords = laneDepths(store, DAY).chords;
+    expect(chords.depth).toBe(5);
+    expect(chords.source).toBe('evidence');
+  });
+
+  // What makes a wrong placement fixable without waiting for decay.
+  test('a re-test overwrites the seed, downward as well as up', () => {
+    const store = new ProgressStore();
     store.setSeededDepth('chords', { depth: 5, day: DAY, seq: store.reserveSeq() });
-    expect(laneDepths(store, DAY).chords.source).toBe('seed');
+    expect(laneDepths(store, DAY).chords.depth).toBe(5);
+
+    store.setSeededDepth('chords', { depth: 4, day: DAY, seq: store.reserveSeq() });
+    expect(laneDepths(store, DAY).chords.depth).toBe(4);
   });
 
   test('a seed sheds a grade per interval and eventually says nothing', () => {
@@ -340,22 +347,18 @@ describe('written-only depth keeps by-ear credit out of exam readiness', () => {
     return store;
   }
 
-  // R10 both ways, including when it decides whether the seed still governs.
-  test('a by-ear answer does not revoke the placement seed for written readiness', () => {
-    const written = writtenLaneDepths(seededThenByEar(), DAY).rhythm;
-    expect(written.source).toBe('seed');
-    expect(written.depth).toBe(3);
+  // Nothing revokes a seed now, so R10 holds by construction.
+  test('a by-ear answer leaves the placement seed standing in both vectors', () => {
+    const store = seededThenByEar();
+    expect(writtenLaneDepths(store, DAY).rhythm.depth).toBe(3);
+    expect(laneDepths(store, DAY).rhythm.depth).toBe(3);
   });
 
-  test('the same by-ear answer DOES revoke it for the full vector', () => {
-    expect(laneDepths(seededThenByEar(), DAY).rhythm.source).toBe('evidence');
-  });
-
-  test('a WRITTEN answer still revokes the seed for written readiness', () => {
+  test('a written answer leaves it standing too', () => {
     const store = new ProgressStore();
     store.setSeededDepth('rhythm', { depth: 3, day: DAY, seq: store.reserveSeq() });
     store.setAtom('rest:crotchet', { mastery: initialMastery(), srs: { ...initialSrs(), seq: store.reserveSeq() } });
-    expect(writtenLaneDepths(store, DAY).rhythm.source).toBe('evidence');
+    expect(writtenLaneDepths(store, DAY).rhythm.depth).toBe(3);
   });
 });
 

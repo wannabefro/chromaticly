@@ -38,9 +38,8 @@ export function LandedScreen({ onContinue, onExplore, gems, grade, staged = {}, 
   const def = strandDef(warmUpStrand);
   const depths = usePreviewDepths(staged);
   const board = Object.keys(staged).length > 0;
-  // The warm-up's own attempt currently discards its strand's seed
-  // (chromaticly-h3e), so the lane the copy points at can read 0. Say nothing
-  // the board does not show.
+  // A measured pass can genuinely put the named lane at 0. Say nothing the
+  // board does not show.
   const pointVisible = board && depths[warmUpStrand].depth > 0;
 
   return (

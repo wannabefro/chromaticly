@@ -664,11 +664,11 @@ strands; they answer different questions.
 drawing one would be the kind of claim this whole model exists to prevent.
 
 **The copy is gated on the board.** Device capture found the named lane reading
-zero: the warm-up's own attempt discards that strand's placement seed
-(`chromaticly-h3e`, a pre-existing defect this screen made visible). The "first
-point" tag and the "Here it is." clause only appear when the lane actually reads
-above 0. The board itself always shows the true value — a preview that disagrees
-with the Learn tab is precisely what R3 forbids.
+zero, which turned out to be `chromaticly-h3e` — the warm-up's own attempt
+discarded that strand's placement seed. That is fixed: a seed is now a floor
+rather than an authority. The gate stays anyway, because a measured pass can
+genuinely put the named lane at 0, and the "first point" tag and the "Here it
+is." clause must never name what the board does not draw.
 
 **First steps draws no board.** It seeds nothing, so the board would be seven
 empty bars — worse than the copy it replaces.

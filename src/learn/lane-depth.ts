@@ -164,44 +164,23 @@ function depthFrom(contentGrades: number[], held: Set<number>): number {
   return depth;
 }
 
-/** The most recent write sequence across a strand's atoms — 0 when untouched.
- *  Derived, never stored: compared only against a seed's `seq`.
- *  `writtenOnly` must reach here, or by-ear revokes the seed (R10). */
-function lastAttemptSeq(store: ProgressStore, strand: Strand, writtenOnly: boolean): number {
-  let max = 0;
-  for (const grade of contentGradesFor(strand)) {
-    for (const atom of atomsFor(strand, grade, writtenOnly)) {
-      const seq = store.getAtom(atom).srs.seq ?? 0;
-      if (seq > max) max = seq;
-    }
-  }
-  return max;
-}
-
 function depthForStrand(store: ProgressStore, strand: Strand, now: number, writtenOnly: boolean): LaneDepth {
   const contentGrades = contentGradesFor(strand);
 
-  // 1. Authority. A seed governs while it is at least as recent as anything the
-  //    learner has actually done in this strand. Compared by `seq`, never by day:
-  //    a re-test and a practice attempt on the SAME day must still order, and
-  //    that is precisely the case the per-skill re-test exists for.
+  // A seed is a FLOOR, not an authority (chromaticly-h3e). Evidence only RAISES.
+  // Decay, staleness and a re-test can still lower a lane.
   const seed = store.seededDepthFor(strand);
-  if (seed && seed.seq >= lastAttemptSeq(store, strand, writtenOnly)) {
-    const depth = decayedSeedDepth(seed, now);
-    return {
-      depth,
-      // A seed asserts a contiguous claim ("I'm about grade 3"), so every content
-      // grade at or below it is held — exact, not an approximation.
-      heldGrades: contentGrades.filter((g) => g <= depth),
-      contentGrades,
-      ...(depth < seed.depth ? { decayedFrom: seed.depth } : {}),
-      source: 'seed' as const,
-    };
-  }
+  const floor = seed ? decayedSeedDepth(seed, now) : 0;
+  const undecayedFloor = seed ? seed.depth : 0;
 
-  // 2. Evidence.
-  const held = new Set(contentGrades.filter((g) => cellHeld(store, strand, g, now, false, writtenOnly)));
-  const heldIgnoringStaleness = new Set(contentGrades.filter((g) => cellHeld(store, strand, g, now, true, writtenOnly)));
+  const evidence = contentGrades.filter((g) => cellHeld(store, strand, g, now, false, writtenOnly));
+  const evidenceIgnoringStaleness = contentGrades.filter((g) => cellHeld(store, strand, g, now, true, writtenOnly));
+
+  const held = new Set([...contentGrades.filter((g) => g <= floor), ...evidence]);
+  const heldIgnoringStaleness = new Set([
+    ...contentGrades.filter((g) => g <= undecayedFloor),
+    ...evidenceIgnoringStaleness,
+  ]);
 
   const depth = depthFrom(contentGrades, held);
   const undecayed = depthFrom(contentGrades, heldIgnoringStaleness);
@@ -211,7 +190,7 @@ function depthForStrand(store: ProgressStore, strand: Strand, now: number, writt
     heldGrades: contentGrades.filter((g) => held.has(g)),
     contentGrades,
     ...(undecayed > depth ? { decayedFrom: undecayed } : {}),
-    source: 'evidence' as const,
+    source: depthFrom(contentGrades, new Set(evidence)) >= depth ? ('evidence' as const) : ('seed' as const),
   };
 }
 
