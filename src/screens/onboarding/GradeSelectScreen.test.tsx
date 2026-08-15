@@ -1,32 +1,31 @@
-// The skip destination (R1). This screen used to be the grade ladder — five
-// numbered pills plus a disabled placement-quiz card. Placement replaced all of
-// it, so what is guarded here is the OPPOSITE invariant to the old file's: that
-// no numbered rung survives, and that a learner who declines the questions still
-// gets a real choice between the two starting points.
+// "I know my grade" — the fork's second door (design 5a).
 //
-// The design/README.md ruling "First steps sits above the grade ladder, not
-// inside it" is now preserved by construction — there is no ladder to sit inside.
+// These tests guard the four 2026-08-06 rulings the restored ladder brings back.
 
 import { fireEvent, render } from '@testing-library/react-native';
 
 import { GradeSelectScreen } from './GradeSelectScreen';
 
-describe('GradeSelectScreen — the skip destination, with no grade ladder left (R1)', () => {
-  test('renders the question and both starting points', () => {
+describe('GradeSelectScreen — "I know my grade" (5a)', () => {
+  test('renders the question, First steps, and all five rungs', () => {
     const { getByTestId, getByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
 
     expect(getByTestId('grade-select-screen')).toBeTruthy();
     expect(getByText('Where should we start?')).toBeTruthy();
-    expect(getByTestId('start-point-0')).toBeTruthy();
-    expect(getByTestId('start-point-1')).toBeTruthy();
+    for (let g = 0; g <= 5; g++) expect(getByTestId(`start-point-${g}`)).toBeTruthy();
   });
 
-  // R1's whole claim is that there is no single current grade to pick. A numbered
-  // rung is that claim contradicted on the first screen after placement.
-  test('no numbered grade pill survives', () => {
-    const { queryByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+  test('one mono group label separates the lead-in card from the ladder', () => {
+    const { getByText } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+    expect(getByText('or pick your grade')).toBeTruthy();
+  });
 
-    for (let g = 1; g <= 5; g++) expect(queryByTestId(`grade-pill-${g}`)).toBeNull();
+  // A sixth numeral would assert First steps IS the grade below Grade 1.
+  test('the five rungs are numbered and First steps is not', () => {
+    const { getByTestId, queryByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
+
+    for (let g = 1; g <= 5; g++) expect(getByTestId(`start-point-${g}-numeral`)).toHaveTextContent(String(g));
+    expect(queryByTestId('start-point-0-numeral')).toBeNull();
   });
 
   // Superseded by placement itself (chromaticly-302.14, closed 2026-08-09): a
@@ -36,26 +35,36 @@ describe('GradeSelectScreen — the skip destination, with no grade ladder left 
     expect(queryByTestId('placement-quiz')).toBeNull();
   });
 
-  // "Skip — start from the beginning" is the CTA that lands here, so the beginning
-  // is what it must offer. A Grade 1 default would make the copy a lie.
-  test('First steps is preselected, so Continue alone starts at the beginning', () => {
+  // First steps is read first, not chosen.
+  test('Grade 1 is the default, and First steps is not preselected', () => {
     const onSelectGrade = jest.fn();
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={onSelectGrade} />);
 
+    expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
+    fireEvent.press(getByTestId('start-grade'));
+    expect(onSelectGrade).toHaveBeenCalledWith(1);
+  });
+
+  test('every rung is selectable and reports its own grade', () => {
+    for (let g = 2; g <= 5; g++) {
+      const onSelectGrade = jest.fn();
+      const { getByTestId } = render(<GradeSelectScreen onSelectGrade={onSelectGrade} />);
+
+      fireEvent.press(getByTestId(`start-point-${g}`));
+      expect(getByTestId('start-grade')).toHaveTextContent(`Start Grade ${g}`);
+      fireEvent.press(getByTestId('start-grade'));
+      expect(onSelectGrade).toHaveBeenCalledWith(g);
+    }
+  });
+
+  test('First steps is still reachable, and reports grade 0', () => {
+    const onSelectGrade = jest.fn();
+    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={onSelectGrade} />);
+
+    fireEvent.press(getByTestId('start-point-0'));
     expect(getByTestId('start-grade')).toHaveTextContent('Start First steps');
     fireEvent.press(getByTestId('start-grade'));
     expect(onSelectGrade).toHaveBeenCalledWith(0);
-  });
-
-  test('Grade 1 is the second choice, for a reader who declined the questions', () => {
-    const onSelectGrade = jest.fn();
-    const { getByTestId } = render(<GradeSelectScreen onSelectGrade={onSelectGrade} />);
-
-    fireEvent.press(getByTestId('start-point-1'));
-    expect(getByTestId('start-grade')).toHaveTextContent('Start Grade 1');
-
-    fireEvent.press(getByTestId('start-grade'));
-    expect(onSelectGrade).toHaveBeenCalledWith(1);
   });
 
   // The level has no exam and no place in exam readiness, and "Grade 0" reads as
@@ -71,17 +80,17 @@ describe('GradeSelectScreen — the skip destination, with no grade ladder left 
     expect(getByText(/No exam\./)).toBeTruthy();
   });
 
-  // One accent per screen (never-violate rule 3), and here it means "selected".
-  test('selecting the other card moves the accent rather than adding one', () => {
+  // One accent per screen (rule 3): exactly one card holds it.
+  test('selecting a card moves the accent rather than adding one', () => {
     const { getByTestId } = render(<GradeSelectScreen onSelectGrade={jest.fn()} />);
     const state = (g: number) => getByTestId(`start-point-${g}`).props.accessibilityState?.selected;
+    const chosen = () => [0, 1, 2, 3, 4, 5].filter((g) => state(g) === true);
 
-    expect(state(0)).toBe(true);
-    expect(state(1)).toBe(false);
-
-    fireEvent.press(getByTestId('start-point-1'));
-    expect(state(0)).toBe(false);
-    expect(state(1)).toBe(true);
+    expect(chosen()).toEqual([1]);
+    fireEvent.press(getByTestId('start-point-4'));
+    expect(chosen()).toEqual([4]);
+    fireEvent.press(getByTestId('start-point-0'));
+    expect(chosen()).toEqual([0]);
   });
 
   test('Back returns to the placement pass, and is absent when there is nowhere to go', () => {

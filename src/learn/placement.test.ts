@@ -1,5 +1,6 @@
 import { isByEarAtom } from '../engine/atoms';
 import { atomsFor, contentGradesFor, STRAND_ORDER } from './lane-depth';
+import type { Strand } from '../content/lessons';
 import { SELF_GRADED_INTERACTIONS } from '../engine/schema';
 import {
   answerPlacement,
@@ -11,6 +12,7 @@ import {
   MIXED_PASS_BUDGET,
   placeableStrands,
   placementOutcome,
+  seedVectorForGrade,
   PLACEMENT_SKIPS,
   SKIPPED_PLACEMENT,
   startPlacement,
@@ -342,5 +344,33 @@ describe('placement never reaches below Grade 1 (First steps is opt-in only)', (
       terms_signs: 3,
       context: 3,
     });
+  });
+});
+
+describe('an explicitly chosen grade seeds every placeable strand', () => {
+  test('a strand seeds at its highest rung at or below the choice, never above it', () => {
+    const vector = seedVectorForGrade(3);
+    for (const [strand, depth] of Object.entries(vector)) {
+      expect(depth).toBeLessThanOrEqual(3);
+      if (depth > 0) expect(ladderFor(strand as Strand)).toContain(depth);
+    }
+  });
+
+  test('chords is 0 at grade 3, because its ladder starts at 4', () => {
+    expect(seedVectorForGrade(3).chords).toBe(0);
+    expect(seedVectorForGrade(4).chords).toBe(4);
+  });
+
+  test('every placeable strand appears, so nothing reads "not asked"', () => {
+    const vector = seedVectorForGrade(1);
+    expect(Object.keys(vector).sort()).toEqual([...placeableStrands()].sort());
+  });
+
+  test('grade 5 seeds each strand at the top of its own ladder', () => {
+    const vector = seedVectorForGrade(5);
+    for (const strand of placeableStrands()) {
+      const ladder = ladderFor(strand);
+      expect(vector[strand]).toBe(ladder[ladder.length - 1]);
+    }
   });
 });

@@ -292,7 +292,7 @@ describe('RootRouter — one persistence point, and it is Landed (KTD6)', () => 
 // "Skip — start from the beginning" is the CTA that reaches this route, so the
 // beginning is what it has to deliver. Before the delta plan, commitOnboarding's
 // 1..5 clamp made First steps unreachable from onboarding and nothing failed.
-describe('RootRouter — the skip route reaches First steps (delta plan finding 3)', () => {
+describe('RootRouter — the "I know my grade" route (delta plan finding 3, 5a restored)', () => {
   async function walkSkip(api: ReturnType<typeof render>) {
     await api.findByTestId('welcome-screen');
     await act(async () => fireEvent.press(api.getByTestId('start-learning')));
@@ -301,10 +301,12 @@ describe('RootRouter — the skip route reaches First steps (delta plan finding 
     await api.findByTestId('grade-select-screen');
   }
 
-  test('the default choice commits grade 0, and seeds nothing', async () => {
+  // First steps sits below the ladder, so there is no rung to claim.
+  test('First steps commits grade 0, and seeds nothing', async () => {
     const api = renderRouter();
 
     await walkSkip(api);
+    await act(async () => fireEvent.press(api.getByTestId('start-point-0')));
     await act(async () => fireEvent.press(api.getByTestId('start-grade')));
     await walkToLanding(api, 0);
     await act(async () => fireEvent.press(api.getByTestId('landed-continue')));
@@ -314,18 +316,38 @@ describe('RootRouter — the skip route reaches First steps (delta plan finding 
     expect(store.allSeededDepths()).toEqual({});
   });
 
-  test('choosing Grade 1 commits grade 1, still with an empty vector', async () => {
+  // A named grade claims all seven strands, so it seeds the whole vector.
+  test('choosing Grade 3 seeds every placeable strand, not just the profile', async () => {
     const api = renderRouter();
 
     await walkSkip(api);
-    await act(async () => fireEvent.press(api.getByTestId('start-point-1')));
+    await act(async () => fireEvent.press(api.getByTestId('start-point-3')));
     await act(async () => fireEvent.press(api.getByTestId('start-grade')));
+    await api.findByTestId('placement-result');
+    await act(async () => fireEvent.press(api.getByTestId('placement-accept')));
     await walkToLanding(api);
     await act(async () => fireEvent.press(api.getByTestId('landed-continue')));
 
     const store = new ProgressStore(JSON.parse(api.storage.blob as string));
-    expect(store.getProfile()?.grade).toBe(1);
-    expect(store.allSeededDepths()).toEqual({});
+    const seeded = store.allSeededDepths();
+    expect(Object.keys(seeded).sort()).toEqual([...placeableStrands()].sort());
+    expect(seeded.rhythm?.depth).toBe(3);
+    // Chords teaches nothing below grade 4, so the claim stops at its own ladder.
+    expect(seeded.chords?.depth).toBe(0);
+    expect(store.getProfile()?.grade).toBe(3);
+  });
+
+  // A claim the learner cannot see is a claim they cannot correct.
+  test('a named grade lands on the result screen, framed as a call rather than a measurement', async () => {
+    const api = renderRouter();
+
+    await walkSkip(api);
+    await act(async () => fireEvent.press(api.getByTestId('start-point-2')));
+    await act(async () => fireEvent.press(api.getByTestId('start-grade')));
+
+    await api.findByTestId('placement-result');
+    expect(api.getByText('Your call · Grade 2')).toBeTruthy();
+    expect(api.queryByText(/Placement · \d+ question/)).toBeNull();
   });
 
   test('Back returns to the placement pass', async () => {
@@ -343,6 +365,7 @@ describe('RootRouter — the skip route reaches First steps (delta plan finding 
     const api = renderRouter();
 
     await walkSkip(api);
+    await act(async () => fireEvent.press(api.getByTestId('start-point-0')));
     await act(async () => fireEvent.press(api.getByTestId('start-grade')));
     await api.findByTestId('plan-screen');
 

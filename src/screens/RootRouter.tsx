@@ -1,7 +1,6 @@
 // First-run router (U11). The journey is now MEASURED, not asked:
-// Welcome → placement (A1/A2) → result (7c) → your plan → coached warm-up →
-// landed → the seven-lane Learn tab. Declining the questions detours through the
-// skip screen, which asks only where to begin.
+// Welcome → fork → placement (A1/A2) → result (7c) → your plan → coached warm-up
+// → landed → the Learn tab. The fork's other door is 5a's ladder, a claim.
 //
 // No age gate on the primary path — it moves to account creation (6b), which
 // isn't built (plan KTD1/KTD4; AgeGateScreen + age.ts are parked for it).
@@ -20,6 +19,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { lessonById } from '../content/lessons';
 import { useProgressContext } from '../learn/ProgressContext';
+import { seedVectorForGrade } from '../learn/placement';
 import type { SeededDepth } from '../learn/store';
 import { type GemState } from '../ui/components/MasteryGems';
 import { CoachedWarmUp } from '../ui/CoachedWarmUp';
@@ -39,12 +39,13 @@ type Step = 'welcome' | 'placement' | 'result' | 'skip' | 'plan' | 'warmup' | 'l
 type Destination = { kind: 'placed' } | { kind: 'skipped'; grade: 0 | 1 };
 
 export default function RootRouter() {
-  const { ready, isOnboarded, commitOnboarding, commitSkip, seedTo } = useProgressContext();
+  const { ready, isOnboarded, commitOnboarding, commitSkip, seedTo, stampDepth } = useProgressContext();
   const [step, setStep] = useState<Step>('welcome');
   const [staged, setStaged] = useState<Record<string, SeededDepth>>({});
   const [asked, setAsked] = useState(0);
   const [destination, setDestination] = useState<Destination>({ kind: 'placed' });
   const [retest, setRetest] = useState<Strand | null>(null);
+  const [chosenGrade, setChosenGrade] = useState<number | null>(null);
   const [gems, setGems] = useState<GemState[]>([]);
 
   // DEV/E2E only (302.5): a `--/?seed=<unitId>` deep link fast-forwards progress so
@@ -122,7 +123,9 @@ export default function RootRouter() {
           <PlacementResultScreen
             staged={staged}
             asked={asked}
+            chosenGrade={chosenGrade}
             onRetest={(strand) => {
+              setChosenGrade(null);
               setRetest(strand);
               setStep('placement');
             }}
@@ -136,8 +139,19 @@ export default function RootRouter() {
         return (
           <GradeSelectScreen
             onSelectGrade={(grade) => {
-              setDestination({ kind: 'skipped', grade });
-              setStep('plan');
+              // A rung claims all seven strands; First steps claims none.
+              if (grade === 0) {
+                setDestination({ kind: 'skipped', grade });
+                setStep('plan');
+                return;
+              }
+              const vector = seedVectorForGrade(grade);
+              setStaged(
+                Object.fromEntries(Object.entries(vector).map(([strand, depth]) => [strand, stampDepth(depth ?? 0)])),
+              );
+              setChosenGrade(grade);
+              setDestination({ kind: 'placed' });
+              setStep('result');
             }}
             onBack={() => setStep('placement')}
           />

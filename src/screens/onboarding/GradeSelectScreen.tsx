@@ -1,17 +1,7 @@
-// The skip destination (R1, design 7c). Reached only from placement's "Skip —
-// start from the beginning", so it asks WHERE to begin, not WHICH grade.
+// "I know my grade" (design 5a) — the fork's second door.
 //
-// The five numbered pills are gone. Under R1 there is no single current grade to
-// pick — placement seeds seven independent depths, and a learner who declines it
-// is choosing between two starting points, not five rungs. First steps leads and
-// is preselected: "the beginning" is the alphabet and the stave, not Grade 1.
-//
-// Grade 1 stays as the second choice because a learner who reads music but
-// declined to be measured is not a First-steps learner. Continue is always
-// enabled, so this screen can never trap anyone.
-//
-// Nothing here writes. The choice is staged and committed at Landed with
-// everything else (KTD6).
+// R1 removed the rungs: placement measures depths, not a grade. That holds for
+// measurement, not for a claim.
 
 import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -19,24 +9,37 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Button } from '../../ui/components/Button';
 import { ACCENT, colors, shape, type } from '../../ui/theme';
 
+export type StartGrade = 0 | 1 | 2 | 3 | 4 | 5;
+
 export interface GradeSelectScreenProps {
-  /** 0 for First steps, 1 for the grade ladder's first rung. */
-  onSelectGrade: (grade: 0 | 1) => void;
+  /** 0 for First steps; 1-5 seed the whole vector at that rung. */
+  onSelectGrade: (grade: StartGrade) => void;
   /** Back to the placement pass. */
   onBack?: () => void;
 }
 
 interface StartPoint {
-  grade: 0 | 1;
+  grade: StartGrade;
   title: string;
   descriptor: string;
 }
 
-/** Verbatim from design 5a, minus the four rungs the ladder no longer lists. */
-const START_POINTS: StartPoint[] = [
-  { grade: 0, title: 'First steps', descriptor: 'New to reading music — pulse, letters, the stave. No exam.' },
-  { grade: 1, title: 'Grade 1', descriptor: 'I read music already — note values, simple time' },
+/** Descriptors verbatim from design 5a. */
+const FIRST_STEPS: StartPoint = {
+  grade: 0,
+  title: 'First steps',
+  descriptor: 'New to reading music — pulse, letters, the stave. No exam.',
+};
+
+const RUNGS: StartPoint[] = [
+  { grade: 1, title: 'Grade 1', descriptor: 'the basics — note values, simple time' },
+  { grade: 2, title: 'Grade 2', descriptor: 'new keys, triplets, more intervals' },
+  { grade: 3, title: 'Grade 3', descriptor: 'compound time, melodic minor' },
+  { grade: 4, title: 'Grade 4', descriptor: 'chromatic scales, alto clef' },
+  { grade: 5, title: 'Grade 5', descriptor: 'the gateway exam — harmony, tenor clef' },
 ];
+
+const START_POINTS: StartPoint[] = [FIRST_STEPS, ...RUNGS];
 
 /** The system's signature staff-line motif, drawn rather than tiled — RN has no
  *  repeating-linear-gradient. Decorative only, so it stays out of the a11y tree. */
@@ -51,8 +54,42 @@ function StaffLines() {
 }
 
 export function GradeSelectScreen({ onSelectGrade, onBack }: GradeSelectScreenProps) {
-  const [selected, setSelected] = useState<0 | 1>(0);
-  const chosen = START_POINTS.find((p) => p.grade === selected) ?? START_POINTS[0];
+  // Grade 1, never First steps: dropping every tap-through learner into the
+  // beginner level costs more than missing a beginner.
+  const [selected, setSelected] = useState<StartGrade>(1);
+  const chosen = START_POINTS.find((p) => p.grade === selected) ?? RUNGS[0];
+
+  const renderPoint = (point: StartPoint) => {
+    const isSelected = point.grade === selected;
+    const lead = point.grade === 0;
+    return (
+      <Pressable
+        key={point.grade}
+        testID={`start-point-${point.grade}`}
+        accessibilityRole="radio"
+        accessibilityState={{ selected: isSelected }}
+        onPress={() => setSelected(point.grade)}
+        style={[styles.pill, lead ? styles.pillLead : styles.pillRung, isSelected && styles.pillSelected]}
+      >
+        {lead && <StaffLines />}
+        {/* The numeral names the rung; the accent states the selection. */}
+        {!lead && (
+          <View style={styles.badge}>
+            <Text
+              testID={`start-point-${point.grade}-numeral`}
+              style={[styles.badgeNumeral, isSelected && styles.badgeNumeralSelected]}
+            >
+              {point.grade}
+            </Text>
+          </View>
+        )}
+        <View style={styles.pillTextBlock}>
+          <Text style={[styles.pillGrade, isSelected && styles.pillGradeSelected]}>{point.title}</Text>
+          <Text style={styles.pillDescriptor}>{point.descriptor}</Text>
+        </View>
+      </Pressable>
+    );
+  };
 
   return (
     <View style={styles.container} testID="grade-select-screen">
@@ -62,25 +99,11 @@ export function GradeSelectScreen({ onSelectGrade, onBack }: GradeSelectScreenPr
       </View>
 
       <ScrollView contentContainerStyle={styles.pills}>
-        {START_POINTS.map((point) => {
-          const isSelected = point.grade === selected;
-          return (
-            <Pressable
-              key={point.grade}
-              testID={`start-point-${point.grade}`}
-              accessibilityRole="radio"
-              accessibilityState={{ selected: isSelected }}
-              onPress={() => setSelected(point.grade)}
-              style={[styles.pill, isSelected && styles.pillSelected]}
-            >
-              <StaffLines />
-              <View style={styles.pillTextBlock}>
-                <Text style={[styles.pillGrade, isSelected && styles.pillGradeSelected]}>{point.title}</Text>
-                <Text style={styles.pillDescriptor}>{point.descriptor}</Text>
-              </View>
-            </Pressable>
-          );
-        })}
+        {renderPoint(FIRST_STEPS)}
+        {/* One mono group label carries the whole distinction — no second heading,
+            no segmented control. */}
+        <Text style={styles.groupLabel}>or pick your grade</Text>
+        {RUNGS.map(renderPoint)}
       </ScrollView>
 
       <View style={styles.footer}>
@@ -122,20 +145,48 @@ const styles = StyleSheet.create({
     lineHeight: type.title.lineHeight,
     color: colors.text,
   },
-  pills: { gap: shape.spaceInline, paddingVertical: shape.spaceTight },
+  pills: { gap: shape.spaceSnug, paddingVertical: shape.spaceTight },
+  groupLabel: {
+    fontFamily: type.overline.fontFamily,
+    fontSize: type.overline.fontSize,
+    lineHeight: type.overline.lineHeight,
+    letterSpacing: type.overline.letterSpacing,
+    textTransform: type.overline.textTransform,
+    color: colors.textFaint,
+    marginTop: shape.spaceSnug,
+    marginBottom: shape.spaceTight,
+  },
   pill: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    borderRadius: shape.radiusCardLg,
+    gap: shape.spaceInline,
     borderWidth: shape.borderW,
     borderColor: colors.borderStrong,
     backgroundColor: colors.surfaceCard,
-    paddingVertical: shape.spaceCard,
+    paddingVertical: shape.spaceInline,
     paddingHorizontal: shape.spaceCard,
     minHeight: shape.tapMin,
     overflow: 'hidden',
   },
+  // Set apart by treatment, so the accent is not spent here.
+  pillLead: { borderRadius: shape.radiusCardLg, paddingVertical: shape.spaceCard },
+  pillRung: { borderRadius: shape.radiusCard },
+  badge: {
+    width: 34,
+    height: 34,
+    flexShrink: 0,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.surfaceCardSunken,
+  },
+  badgeNumeral: {
+    fontFamily: type.cardTitle.fontFamily,
+    fontSize: type.cardTitle.fontSize,
+    lineHeight: type.cardTitle.lineHeight,
+    color: colors.textFaint,
+  },
+  badgeNumeralSelected: { color: colors.textMuted },
   pillSelected: {
     borderWidth: shape.borderWActive,
     borderColor: ACCENT,

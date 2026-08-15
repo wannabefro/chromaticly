@@ -43,6 +43,10 @@ export interface PlacementResultScreenProps {
    *  caller from the placeable strands, never hardcoded: it must stay true when
    *  chords gains a grade-3 lesson. */
   asked: number;
+  /** Set when the vector is a CLAIM the learner made rather than a measurement.
+   *  The rows are identical either way — only the framing changes, because a flat
+   *  row of one grade is not something the pass could ever have produced. */
+  chosenGrade?: number | null;
   /** Re-test one strand — four questions on that skill alone (R7a). The design's
    *  alternative was a nudge-up/nudge-down slider, which is self-assessment. */
   onRetest: (strand: Strand) => void;
@@ -50,7 +54,7 @@ export interface PlacementResultScreenProps {
   onAccept: () => void;
 }
 
-export function PlacementResultScreen({ staged, asked, onRetest, onAccept }: PlacementResultScreenProps) {
+export function PlacementResultScreen({ staged, asked, chosenGrade, onRetest, onAccept }: PlacementResultScreenProps) {
   const { store, clock, revision } = useProgressContext();
 
   // The preview store is thrown away on every render — it exists only so the one
@@ -69,14 +73,18 @@ export function PlacementResultScreen({ staged, asked, onRetest, onAccept }: Pla
     <Screen style={styles.screen} testID="placement-result">
       <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.over}>
-          Placement · {asked} question{asked === 1 ? '' : 's'}
+          {chosenGrade != null ? `Your call · Grade ${chosenGrade}` : `Placement · ${asked} question${asked === 1 ? '' : 's'}`}
         </Text>
         {/* No name: onboarding has none. A display name is not captured until
             account creation (6b), so 7c's "Here's where you are, Maya" cannot be
             honoured on the screen it was drawn for. */}
-        <Text style={styles.title}>Here&rsquo;s where you are</Text>
+        <Text style={styles.title}>
+          {chosenGrade != null ? 'Here’s where we’ll start you' : 'Here’s where you are'}
+        </Text>
         <Text style={styles.blurb}>
-          Uneven is normal — most people are. Think one&rsquo;s wrong? Tap it and we&rsquo;ll ask four more.
+          {chosenGrade != null
+            ? `Grade ${chosenGrade} across the board. Think one’s wrong? Tap it and we’ll ask four more.`
+            : 'Uneven is normal — most people are. Think one’s wrong? Tap it and we’ll ask four more.'}
         </Text>
 
         <View style={styles.rows}>
@@ -102,8 +110,9 @@ export function PlacementResultScreen({ staged, asked, onRetest, onAccept }: Pla
         <View style={styles.tip} testID="placement-drift-tip">
           <Text style={styles.tipGlyph}>💡</Text>
           <Text style={styles.tipText}>
-            We only asked one question per skill, so this is a rough start. It moves with every answer you give — and a
-            skill you leave alone will quietly slide back down.
+            {chosenGrade != null
+              ? 'Nobody is level across all seven. A re-test is 4 questions on that skill alone, and every answer you give from here on keeps moving it.'
+              : 'We only asked one question per skill, so this is a rough start. It moves with every answer you give — and a skill you leave alone will quietly slide back down.'}
           </Text>
         </View>
       </ScrollView>

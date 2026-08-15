@@ -103,30 +103,28 @@ export function PlacementScreen({ retestStrand, onDone, onSkip, seedBase = 0 }: 
     return (
       <Screen style={styles.screen} testID="placement-intro">
         <View style={styles.introBody}>
-          <Text style={styles.title}>
-            {total} quick question{total === 1 ? '' : 's'}
-          </Text>
+          <Text style={styles.title}>Where should we start you?</Text>
           <Text style={styles.blurb}>
-            About two minutes. They cover all seven skills, so we can start you in roughly the right place in each — not
-            one grade for everything.
+            Two ways in. Neither locks anything — every answer you give from here on keeps moving it.
           </Text>
-
-          <View style={styles.tip} testID="placement-intro-tip">
-            <Text style={styles.tipGlyph}>💡</Text>
-            <Text style={styles.tipText}>
-              A rough start is fine. Nothing gets locked, and every answer you give from here on keeps moving it.
-            </Text>
-          </View>
         </View>
 
+        {/* Two doors, drawn as peers. The screen used to carry one sentence and a
+            tip, which is furniture; a decision is the one thing on the first run
+            worth a screen of its own. */}
         <View style={styles.footer}>
-          <Pressable style={styles.primary} onPress={() => setStarted(true)} testID="placement-start">
-            <Text style={styles.primaryLabel}>Start</Text>
+          <Pressable style={[styles.door, styles.doorPrimary]} onPress={() => setStarted(true)} testID="placement-start">
+            <Text style={styles.doorTitle}>
+              Measure me — {total} question{total === 1 ? '' : 's'}
+            </Text>
+            <Text style={styles.doorBody}>
+              About two minutes, one per skill. Starts you in roughly the right place in each, instead of one grade for
+              everything.
+            </Text>
           </Pressable>
-          {/* A peer action, not a buried one — and the copy no longer promises grade
-              1, because under R7 skipping seeds nothing at all (KTD3). */}
-          <Pressable style={styles.skip} onPress={onSkip} testID="placement-skip">
-            <Text style={styles.skipLabel}>Skip — start from the beginning</Text>
+          <Pressable style={styles.door} onPress={onSkip} testID="placement-skip">
+            <Text style={styles.doorTitle}>I know my grade</Text>
+            <Text style={styles.doorBody}>Pick it yourself. You can still re-test any skill afterwards.</Text>
           </Pressable>
         </View>
       </Screen>
@@ -172,8 +170,10 @@ export function PlacementScreen({ retestStrand, onDone, onSkip, seedBase = 0 }: 
       {/* Naming the strand on every item is what teaches the seven-lane model
           before the learner ever reaches 7a. `ExerciseLoop`'s own StrandChip does
           the accent; this says what a wrong answer costs, which the chip cannot. */}
+      {/* The reassurance the intro used to carry, moved to where the doubt is: the
+          first question. From the second it reverts to what a wrong answer costs. */}
       <Text style={[styles.foot, { color: def.hue }]} testID="placement-foot">
-        not sure? skip it — that&rsquo;s an answer too
+        {asked.current === 0 ? 'a rough start is fine — nothing gets locked' : 'not sure? skip it — that’s an answer too'}
       </Text>
     </Screen>
   );
@@ -212,16 +212,17 @@ const styles = StyleSheet.create({
   loop: { flex: 1 },
   foot: { ...typo.label, textAlign: 'center', paddingBottom: shape.spaceInline },
 
-  footer: { padding: shape.spaceScreenX, gap: shape.spaceInline, alignItems: 'center' },
-  primary: {
-    width: '100%',
+  footer: { padding: shape.spaceScreenX, gap: shape.spaceInline },
+  door: {
+    gap: shape.spaceSnug,
     minHeight: shape.tapMin,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: shape.radiusButton,
-    backgroundColor: colors.text,
+    borderRadius: shape.radiusCard,
+    borderWidth: shape.borderW,
+    borderColor: colors.border,
+    backgroundColor: colors.surfaceCard,
+    padding: shape.spaceCard,
   },
-  primaryLabel: { ...typo.cardTitle, color: colors.bg },
-  skip: { minHeight: shape.tapMin, justifyContent: 'center', alignItems: 'center' },
-  skipLabel: { ...typo.body, color: colors.textMuted },
+  doorPrimary: { borderWidth: shape.borderWActive, borderColor: colors.borderStrong },
+  doorTitle: { ...typo.cardTitle, color: colors.text },
+  doorBody: { ...typo.body, color: colors.textMuted },
 });

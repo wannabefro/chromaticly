@@ -70,7 +70,7 @@ describe('PlacementScreen — the ask (A1)', () => {
     const { findByTestId, getByText } = renderPlacement();
     await findByTestId('placement-intro');
 
-    expect(getByText(`${placeableStrands().length} quick questions`)).toBeTruthy();
+    expect(getByText(`Measure me — ${placeableStrands().length} questions`)).toBeTruthy();
   });
 
   // KTD3/R7: skipping seeds nothing at all, so promising grade 1 would be a claim

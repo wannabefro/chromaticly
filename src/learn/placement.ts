@@ -278,3 +278,13 @@ export function placementOutcome(session: PlacementSession): PlacementOutcome {
   }
   return { kind: 'placed', depths };
 }
+
+/** A claim, not a measurement. Chords is [4, 5], so Grade 3 seeds chords 0. */
+export function seedVectorForGrade(grade: number): Partial<Record<Strand, number>> {
+  const depths: Partial<Record<Strand, number>> = {};
+  for (const strand of placeableStrands()) {
+    const reached = ladderFor(strand).filter((rung) => rung <= grade);
+    depths[strand] = reached.length > 0 ? reached[reached.length - 1] : 0;
+  }
+  return depths;
+}
